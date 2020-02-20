@@ -93,5 +93,20 @@
   })
 </script>
 
+
+<script>
+  $(function () {
+    $('').DataTable()
+    $('#example4').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true
+    })
+  })
+</script>
+
 </body>
 </html>
