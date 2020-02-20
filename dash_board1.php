@@ -523,7 +523,7 @@ $mydb = new db(); // create a new object, class db()
               <div class="row">
                 <div class="col-md-12">
                 
-                  <strong>Monitoring of ORS and BURS</strong>
+                  <strong>Monitoring of Payments</strong>
                   <p></p>
              <br>
 
