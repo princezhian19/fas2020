@@ -10,49 +10,35 @@ $mydb = new db(); // create a new object, class db()
   <title>Asset Management System</title>
 </head>
 <body>
-    <div class="">
-      <div class="panel panel-default">
+<div class="box">
+  <div class="box-body">
         <div class=""> 
           <div class="">
-            <br>
+          
       
-            <h1 align="">&nbsp&nbsp &nbsp Requisition and Issue Slip</h1>
-             <div class="box-header with-border">
+            <h1 align="">Requisition and Issue Slip</h1>
+             <div class="box-header">
     </div>
-    <br>
-    &nbsp&nbsp&nbsp&nbsp &nbsp &nbsp &nbsp &nbsp  <li class="btn btn-success"><a href="CreateRIS.php" style="color:white;text-decoration: none;">Create</a></li>
-      <!-- &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="CreateRIS.php" style="color:white;text-decoration: none;">Create</a></li> -->
-      <br>
-      <br>
+  
+    <li class="btn btn-success"><a href="CreateRIS.php" style="color:white;text-decoration: none;">Create</a></li>
+     
+    
 
 
-<!-- <h3 align="center"><b>Inspection Acceptance Report</b></h3> -->
-<input type="text" style="height: 35px; width: 500px; margin-left: 40px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" >
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                    <script>
-                    $(document).ready(function(){
-                      $("#myInput").on("keyup", function() {
-                        var value = $(this).val().toLowerCase();
-                        $("#example1 tr").filter(function() {
-                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                        });
-                      });
-                    });
-                    </script>
-                    <br>
+        <br>
+        <br>
         <br>
             <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;font-family: Arial, Helvetica, sans-serif;">
-                        <th width="0"></th>
+                      
                         <th width="80">RIS NO.</th>
                         <th width="80">PO NO.</th>
                         <th>DIVISION</th>
                         <th>PURPOSE</th>
-                        <th>&nbsp</th>
-                        <th>&nbsp</th>
-                        <th>&nbsp</th>
-                        <th width="0"></th>
+                        <th>ACTION</th>
+                        
+                      
 
                     </tr>
                 </thead>
@@ -78,23 +64,21 @@ $mydb = new db(); // create a new object, class db()
                     // }
                     
                     echo "<tr align = ''>
-                    <td></td>
+                  
                     <td>$ris_no</td>
                     <td>$po_no</td>
                     <td>$division</td>
                     <td>$purpose</td>
                     <td>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp<a href='export_ris.php?id=$id' ><i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
-                    </td>
-                    <td>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp<a href='UpdateRIS.php?id=$id' ><i style='font-size:20px' class='fa'>&#xf044;</i> </a>
+                    <a href='export_ris.php?id=$id' ><i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+                  
+                    <a href='UpdateRIS.php?id=$id' ><i style='font-size:20px' class='fa'>&#xf044;</i> </a>
+                    
+                  
+                    <a href='deleteRIS.php?id=$id' ><i style='font-size:24px' class='fa fa-trash-o'></i> </a>
                     
                     </td>
-                    <td>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp<a href='deleteRIS.php?id=$id' ><i style='font-size:24px' class='fa fa-trash-o'></i> </a>
-                    
-                    </td>
-                    <td></td>
+                  
 
                     
                     </tr>"; 

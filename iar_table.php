@@ -12,23 +12,24 @@ $mydb = new db(); // create a new object, class db()
 
 </head>
 <body>
-    <div class="">
-      <div class="panel panel-default">
+
+<div class="box">
+  <div class="box-body">
         <div class=""> 
           <div class="">
-            <br>
-            <h1 align="">&nbsp&nbsp&nbsp&nbsp&nbspInspection Acceptance Report</h1>
-    <div class="box-header with-border">
+           
+            <h1 align="">Inspection Acceptance Report</h1>
+    <div class="box-header">
     </div>
-    <br>
+  
 
-      &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp  <li class="btn btn-success"><a href="CreateIAR.php" style="color:white;text-decoration: none;">Create</a></li>
+     <li class="btn btn-success"><a href="CreateIAR.php" style="color:white;text-decoration: none;">Create</a></li>
       <br>
       <br>
             <!-- <h3 align="center"><b>Inspection Acceptance Report</b></h3> -->
-            <input type="text" style="height: 35px; width: 500px; margin-left: 40px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" >
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                    <script>
+           <!-- <input type="text" style="height: 35px; width: 500px; margin-left: 40px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" > -->
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+                  <!--   <script>
                     $(document).ready(function(){
                       $("#myInput").on("keyup", function() {
                         var value = $(this).val().toLowerCase();
@@ -37,21 +38,21 @@ $mydb = new db(); // create a new object, class db()
                         });
                       });
                     });
-                    </script>
+                    </script> -->
                     <br>
         <br>
-            <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
+        <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
-                    <tr style="background-color: white;color:blue;">
-                        <th width="0"></th>
+                    <tr style="background-color: white; color:blue;">
+                        
                         <th>PO NUMBER</th>
                         <th>PO DATE</th>
                         <th>IAR NUMBER</th>
                         <th>IAR DATE</th>
                         <th>REQUISITION DEPT.</th>
-                        <th>&nbsp</th>
-                        <th>&nbsp</th>
-                        <th width="0"></th>
+                        <th>ACTION</th>
+                      
+                        
                     </tr>
                 </thead>
                 <?php 
@@ -71,23 +72,18 @@ $mydb = new db(); // create a new object, class db()
                     $stock_no = $row['stock_no'];
                     
                     echo "<tr align = ''>
-                    <td></td>
+                   
                     <td>$po_no</td>
                     <td>$po_date</td>
                     <td>$iar_no</td>
                     <td>$iar_date</td>
                     <td>$dept</td>
+                    
                     <td>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp<a href='export_iar.php?getiar=$id' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
-                    
+                    <a href='export_iar.php?getiar=$id' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+                    <a href='UpdateIAR.php?id=$id' '> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
                     </td>
-                     <td>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp<a href='UpdateIAR.php?id=$id' '> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
-                    
-                    </td>
-                    <td></td>
 
-                    
                     </tr>"; 
                 }
                 echo "</table>";
@@ -103,7 +99,7 @@ $mydb = new db(); // create a new object, class db()
 </body>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('').DataTable();
+        $('#example1').DataTable();
     } );
 </script>
 </div>

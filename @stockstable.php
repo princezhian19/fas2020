@@ -14,11 +14,11 @@ include('db.class.php'); // call db.class.php
   <div class="box-body">
         <div class=""> 
           <div class="">
-            <br>
+       
             
-            <h1 align="">Stock</h1>
+            <h1 align="">Stocks</h1>
 
-             <div class="box-header with-border">
+             <div class="box-header ">
     </div>
     <br>
           
