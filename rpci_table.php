@@ -13,18 +13,18 @@ $mydb = new db(); // create a new object, class db()
 </head>
 
 <body>
-    <div class="">
-      <div class="panel panel-default">
+<div class="box">
+  <div class="box-body">
         <div class=""> 
           <div class="">
-            <br>
-            <h1 align="">&nbspReport On The Physical Count Of Inventories</h1>
+           
+            <h1 align="">Report On The Physical Count Of Inventories</h1>
 
-            <div class="box-header with-border">
+            <div class="box-header">
             </div>
-            <br>
+        
 
-            &nbsp<li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;">Create</a></li>
+            <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;">Create</a></li>
             <br>
             <br>
             <!-- <h3 align="center"><b>Inspection Acceptance Report</b></h3> -->
@@ -32,21 +32,19 @@ $mydb = new db(); // create a new object, class db()
             <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;">
-                        <th width="0"></th>
-                        <th>Ariticle</th>
-                        <th>Description</th>
-                        <th>Stock No.</th>
-                        <th>Unit of Measure</th>
-                        <th>Unit Value</th>
-                        <th>Balance Per Card</th>
-                        <th>On Hand Per Count</th>
-                        <th>Shortage(Quantity)</th>
-                        <th>Shortage(Value)</th>
-                        <th>Remarks</th>
-                        <th width="0"></th>
-                        <th width="0"></th>
-                        <th width="0"></th>
-                    </tr>
+                     
+                        <th>ARTICLE</th>
+                        <th width = "200">DESCRIPTION</th>
+                        <th width = "200">STOCK NO.</th>
+                        <th width = "200">UNIT OF MEASURE</th>
+                        <th>UNIT VALUE</th>
+                        <th>BALANCE PER CARD</th>
+                        <th>ON HAND PER COUNT</th>
+                        <th width = "200">SHORTAGE(QUANTITY)</th>
+                        <th width = "200">SHORTAGE(VALUE)</th>
+                        <th>REMARKS</th>
+                        <th>ACTION</th>
+                       
                 </thead>
                 <?php 
                 $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
@@ -68,7 +66,7 @@ $mydb = new db(); // create a new object, class db()
 
                     ?>
                     <tr>
-                        <td></td>
+                       
                         <td><?php echo $article;?></td>
                         <td><?php echo $description;?></td>
                         <td><?php echo $stock_number;?></td>
@@ -84,18 +82,17 @@ $mydb = new db(); // create a new object, class db()
 
                          &nbsp&nbsp&nbsp&nbsp&nbsp<a  href='UpdateRPCI.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
 
-                     </td>
                      <!-- <td>
                     &nbsp&nbsp&nbsp&nbsp&nbsp<a href='ViewRFQdetails.php?id=<?php echo $id; ?> '> 
                     <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
                     
                 </td> -->
-                <td>
+              
                     &nbsp&nbsp&nbsp&nbsp&nbsp<a  onclick="return confirm('Are you sure you want to Delete this item?');" href='delete_rpci.php?id=<?php echo $id; ?>  ' title="Delete"> 
                         <i style='font-size:20px' class='fa fa-trash-o' ></i> </a>
 
                     </td>
-                    <td></td>
+                  
 
                     
                 </tr>

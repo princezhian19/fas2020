@@ -8,16 +8,16 @@ $mydb = new db(); // create a new object, class db()
   <title>Asset Management System</title>
 </head>
 <body>
-    <div class="">
-      <div class="panel panel-default">
+<div class="box">
+  <div class="box-body">
         <div class=""> 
              <div class="table-responsive">
-            <br>
+           
             <h1 align="">&nbspProperty Plant And Equipment</h1>
-            <div class="box-header with-border">
+            <div class="box-header">
             </div>
             <br>
-            &nbsp<li class="btn btn-success"><a href="CreateRPCPPE.php" style="color:white;text-decoration: none;">Create</a></li>
+            <li class="btn btn-success"><a href="CreateRPCPPE.php" style="color:white;text-decoration: none;">Create</a></li>
             <form action="export_rpcppe.php">
             <div style="padding-left: 300px;">
               <div class="col-md-3">
@@ -56,19 +56,19 @@ $mydb = new db(); // create a new object, class db()
             <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;">
-                        <th>Ariticle</th>
-                        <th>Description</th>
-                        <th>Property No.</th>
-                        <th>Date Aquired</th>
-                        <th>Unit Value</th>
-                        <th>Unit Of Measure</th>
-                        <th>Property Card</th>
-                        <th>Physical Count</th>
-                        <th>Shortage(Quantity)</th>
-                        <th>Shortage(Value)</th>
-                        <th>Remarks</th>
-                        <th width="0"></th>
-                        <th width="0"></th>
+                        <th>ARTICLE</th>
+                        <th>DESCRIPTION</th>
+                        <th>PROPERTY NO.</th>
+                        <th>DATE ACQUIRED</th>
+                        <th>UNIT VALUE</th>
+                        <th>UNIT OF MEASURE</th>
+                        <th>PROPERTY CARD</th>
+                        <th>PHYSICAL COUNT</th>
+                        <th>SHORTAGE(QUANTITY)</th>
+                        <th>SHORTAGE(VALUE)</th>
+                        <th>REMARKS</th>
+                        <th>ACTION</th>
+                       
                     </tr>
                 </thead>
                 <?php 
@@ -104,18 +104,8 @@ $mydb = new db(); // create a new object, class db()
                         <td><?php echo $shortage_V;?></td>
                         <td><?php echo $remarks;?></td>
                         <td>
-                         <!--  &nbsp&nbsp&nbsp&nbsp&nbsp<a href='export_pr.php?id=<?php echo $id; ?>' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> -->
-
-                         &nbsp&nbsp&nbsp&nbsp&nbsp<a  href='ViewPPE.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
-
-                     </td>
-                     <!-- <td>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp<a href='ViewRFQdetails.php?id=<?php echo $id; ?> '> 
-                    <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
-                    
-                </td> -->
-                <td>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp<a  onclick="return confirm('Are you sure you want to Delete this item?');" href='delete_rpcppe.php?id=<?php echo $id; ?>  ' title="Delete"> 
+                        <a  href='ViewPPE.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+                        <a  onclick="return confirm('Are you sure you want to Delete this item?');" href='delete_rpcppe.php?id=<?php echo $id; ?>  ' title="Delete"> 
                         <i style='font-size:20px' class='fa fa-trash-o' ></i> </a>
 
                     </td>
