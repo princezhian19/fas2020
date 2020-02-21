@@ -31,7 +31,7 @@ $saronum = $_GET['saronum'];
 $ppa = $_GET['ppa'];
 $uacs = $_GET['uacs'];
 $amount = $_GET['amount'];
-$remarks = $_GET['remarks'];x
+$remarks = $_GET['remarks'];
 $sarogroup = $_GET['sarogroup'];
 $status = $_GET['status'];
 

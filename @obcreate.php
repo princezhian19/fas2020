@@ -248,6 +248,7 @@ function app($connect)
                   var x=row.cells;
                   document.getElementById("saronum").value = x[0].innerHTML;
                   document.getElementById("sarogroup").value = x[5].innerHTML;
+                  document.getElementById("ppa").value = x[6].innerHTML;
                   
                   
                 }
