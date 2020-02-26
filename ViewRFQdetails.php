@@ -32,7 +32,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
-        <li class="active">Rfq Update</li>
+        <li class="active">PR Update</li>
       </ol>
       <br>
       <br>
