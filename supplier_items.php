@@ -18,36 +18,36 @@ $mydb = new db(); // create a new object, class db()
 
             ?>
 <body>
-    <div class="">
-      <div class="panel panel-default">
+<div class="box">
+  <div class="box-body">
         <div class=""> 
           <div class="">
-            <br>
-            <h1 align="">&nbsp&nbsp&nbsp&nbspSupplier Quote</h1>
+       
+            <h1 align="">Supplier Quote</h1>
             <div class="box-header with-border">
             </div>
             <br>
             <br>
-     &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp   <li class="btn btn-success"><a href="/pmis/frontend/web/supplier-quote/encode?rfq=<?php echo $id;?>" style="color:white;text-decoration: none;">Create Supplier</a></li>
+            <li class="btn btn-success"><a href="/pmis/frontend/web/supplier-quote/encode?rfq=<?php echo $id;?>" style="color:white;text-decoration: none;">Create Supplier</a></li>
 
-            <br>
-            <br>
-             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" style="height: 35px; width: 400px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" >
+          
+<!--              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" style="height: 35px; width: 400px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" > -->
             <br>
             <br>
             <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;">
-                        <th width="30"></th>
+                      
                         <th>SUPPLIER</th>
-                        <th>Supplier Address</th>
-                        <th>Supplier Contact</th>
-                        <th>Remarks</th>
-                        <th></th>
-                        <th></th>
+                        <th>SUPPLIER ADDRESS</th>
+                        <th>SUPPLIER CONTACT</th>
+                        <th>REMARKS</th>
+                        <th>ACTION</th>
+
+                        
                     </tr>
                 </thead>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                     <script>
                     $(document).ready(function(){
                       $("#myInput").on("keyup", function() {
@@ -57,7 +57,7 @@ $mydb = new db(); // create a new object, class db()
                         });
                       });
                     });
-                    </script>
+                    </script> -->
                 <?php
                 while ($row = mysqli_fetch_assoc($view_query)) {
                     $ids = $row["id"];  
@@ -67,7 +67,7 @@ $mydb = new db(); // create a new object, class db()
                     $remarks = $row["remarks"];
                     ?>
                     <tr>
-                        <td></td>
+                     
                         <td><?php echo $supplier_title;?></td>
                         <td><?php echo $supplier_address;?></td>
                         <td><?php echo $contact_details;?></td>

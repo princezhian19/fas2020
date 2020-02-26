@@ -11,7 +11,7 @@ if(isset($_POST["query"]))
 $q = $_POST["query"];
 	
 //$results = $conn->prepare("SELECT  supplier_quote.id,supplier.supplier_title, po.po_no, rfq.purpose FROM selected_quote sq LEFT JOIN rfq ON rfq.id = sq.rfq_id LEFT JOIN supplier_quote ON supplier_quote.id = sq.supplier_quote_id LEFT JOIN supplier ON supplier_quote.supplier_id = supplier.id LEFT JOIN po ON po.id = sq.po_id  WHERE po_no LIKE '%".$q."%' LIMIT 1");
-$results = $conn->prepare("SELECT DISTINCT * FROM saro  WHERE ppa LIKE '%".$q."%' LIMIT 1 ");
+$results = $conn->prepare("SELECT DISTINCT * FROM saro  WHERE ppa LIKE '%".$q."%' ");
 }
 else
 {

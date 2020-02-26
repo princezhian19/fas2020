@@ -14,7 +14,7 @@ if(empty($_POST["query"])){
 $q = $_POST["query"];
     
 
-$results = $conn->prepare("SELECT DISTINCT * FROM saro  WHERE uacs LIKE '%".$q."%' LIMIT 1 ");
+$results = $conn->prepare("SELECT DISTINCT * FROM saro  WHERE uacs LIKE '%".$q."%' LIMIT 5 ");
 
 
 
@@ -25,7 +25,7 @@ else
     $q = $_POST["query"];
     
  
- $results = $conn->prepare("SELECT DISTINCT * FROM saro  WHERE uacs LIKE '%".$q."%' LIMIT 1 ");
+ $results = $conn->prepare("SELECT DISTINCT * FROM saro  WHERE uacs LIKE '%".$q."%' LIMIT 5");
 
 
 }

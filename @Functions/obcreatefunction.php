@@ -26,12 +26,15 @@ $d4 = date('Y-m-d', strtotime($datereleased));
 $ors = $_GET['ors'];
 $po = $_GET['ponum'];
 $payee = $_GET['payee'];
+
+$supplier = $_GET['supplier'];
+
 $particular = $_GET['particular'];
 $saronum = $_GET['saronum'];
 $ppa = $_GET['ppa'];
 $uacs = $_GET['uacs'];
 $amount = $_GET['amount'];
-$remarks = $_GET['remarks'];x
+$remarks = $_GET['remarks'];
 $sarogroup = $_GET['sarogroup'];
 $status = $_GET['status'];
 
@@ -51,8 +54,22 @@ if ($conn->connect_error) {
 //echo "Connected successfully";
 
 // Perform queries
-$query = mysqli_query($conn,"INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-VALUES ('$d1','$d2 ','$d3','$d4','$ors','$po','$payee','$particular','$saronum','$ppa','$uacs','$amount','$remarks','$sarogroup','$status')");
+
+
+if($supplier==""){
+    $query = mysqli_query($conn,"INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+    VALUES ('$d1','$d2 ','$d3','$d4','$ors','$po','$payee','$particular','$saronum','$ppa','$uacs','$amount','$remarks','$sarogroup','$status')");
+
+}
+
+if($payee==""){
+
+    $query = mysqli_query($conn,"INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+    VALUES ('$d1','$d2 ','$d3','$d4','$ors','$po','$supplier','$particular','$saronum','$ppa','$uacs','$amount','$remarks','$sarogroup','$status')");
+
+}
+
+
 //updating obligation
 $update = mysqli_query($conn,"Update saro set obligated = obligated + $amount where saronumber = '$saronum' and uacs = '$uacs' ");
 //updating balance

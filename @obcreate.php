@@ -75,6 +75,10 @@ function app($connect)
       <li class="btn btn-success"><a href="@obligation.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
+
+      
+
+      
       <!-- Start form -->
   <form class="" type='GET' action="@Functions/obcreatefunction.php" >
         <!-- Start Menu -->
@@ -117,9 +121,11 @@ function app($connect)
                   }
                   else
                   {
-                    document.getElementById('payee').value = "";
+                    load_data();
+                    document.getElementById('supplier').value = "";
                     document.getElementById('particular').value = "";
                     document.getElementById("ponum").value = "";
+                    $("#main").show();
                     
                   }
                 });
@@ -127,7 +133,7 @@ function app($connect)
               function showRow(row)
               {
                 var x=row.cells;
-                document.getElementById("payee").value = x[0].innerHTML;
+                document.getElementById("supplier").value = x[0].innerHTML;
                 document.getElementById("particular").value = x[1].innerHTML;
                 document.getElementById("ponum").value = x[2].innerHTML;
                 
@@ -142,7 +148,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input required type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datereceived">
+                        <input value="<?php echo date('m/d/Y')?>" required type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datereceived">
                     </div>
                     <br>
                     <br>
@@ -153,7 +159,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
+                        <input value="<?php echo date('m/d/Y')?>"date rety required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
                         <br>
                     </div>
                 </div>
@@ -164,12 +170,69 @@ function app($connect)
              <!-- ORS -->
             <div class="row">
                 <div class="col-md-6">
-                    <label>Payee/Supplier</label>
+                    <label>Payee</label>
                     <input  type="text"  class="form-control" style="height: 35px;" id="payee" placeholder="Payee" name="payee">
                     <br>
+
+                    <label>Supplier</label>
+                    <input  type="text"  class="form-control" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
+                    <br>
+                    <table class="table table-striped table-hover" id="main4">
+                      <tbody id="result4">
+                      </tbody>
+                      </table>
+
                     <label>Particular/Purpose</label>
                     <input  type="text"   class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
                 </div>
+
+              <!-- supplier -->
+
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script type="text/javascript">
+              $(document).ready(function(){
+                function load_data(query)
+                {
+                  $.ajax({
+                    url:"@obsupplier.php",
+                    method:"POST",
+                    data:{query:query},
+                    success:function(data)
+                    {
+                      $('#result4').html(data);
+                    }
+                  });
+                }
+                $('#supplier').keyup(function(){
+                  var search = $(this).val();
+                  if(search != '')
+                  {
+                    load_data(search);
+                  }
+                  else
+                  {
+
+                    load_data();
+                    document.getElementById('supplier').value = "";
+                   
+                    $("#main4").show();
+                    
+                  }
+                });
+              });
+              function showRow4(row)
+              {
+                var x=row.cells;
+                document.getElementById("supplier").value = x[0].innerHTML;
+                
+                
+              }
+            </script>
+
+
+
+
+
                 <div class="col-md-6">
                 <label>Date Returned</label>
                     <br>
@@ -187,9 +250,10 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input required type="text" class="form-control pull-right" id="datepicker4" placeholder='Enter Date' name="datereleased">
+                        <input value="<?php echo date('m/d/Y')?>" required type="text" class="form-control pull-right" id="datepicker4" placeholder='Enter Date' name="datereleased">
                         <br>
                     </div>
+
                    
                 </div>
                 <!-- @Funtions/obsearchvalue.php -->
@@ -237,6 +301,7 @@ function app($connect)
                       document.getElementById('saronum').value = "";
                       document.getElementById("main1").value="";
                       document.getElementById("sarogroup").value = "";
+                      $("#main1").show();
                      
                       
                       
@@ -256,7 +321,7 @@ function app($connect)
                 
                 <div class="col-md-3">
                     <label>MFO/PPA</label>
-                    <input required  type="text"  class="form-control" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa">
+                    <input readonly required  type="text"  class="form-control" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa">
                     <table class="table table-striped table-hover" id="main3">
                     <tbody id="result3">
                     </tbody>
@@ -289,9 +354,10 @@ function app($connect)
                   }
                   else
                   {
+                    load_data();
                     document.getElementById('ppa').value = "";
                    
-                    
+                    $("#main3").show();
                     
                   }
                 });
@@ -340,10 +406,10 @@ function app($connect)
                   else
                   {
                     // document.getElementById('uacs').value = "";
-                   //load_data();
+                    load_data();
           /* document.getElementById("code").value = ""; */
                     document.getElementById("uacs").value = "";
-                    
+                    $("#main2").show();
                     
                     
                   }
@@ -380,7 +446,7 @@ function app($connect)
                     <!-- <option>Select Group</option> -->
                     <!-- <?php echo app($connect);?> -->
                     <!-- </select> -->
-                    <input  type="text"  class="form-control" style="height: 40px;" id="sarogroup" placeholder="" name="sarogroup" readonly>
+                    <input   type="text"  class="form-control" style="height: 40px;" id="sarogroup" placeholder="SARO Group" name="sarogroup" readonly>
                 </div>
                 <div class="col-md-4">
                     <label>Status</label>
@@ -539,6 +605,49 @@ function app($connect)
       showInputs: false
     })
   })
+</script>
+
+
+<script>
+$(document).ready(function(){
+  $("#result").click(function(){
+    $("#main").hide();
+  });
+});
+</script>
+
+<script>
+$(document).ready(function(){
+  $("#result1").click(function(){
+    $("#main1").hide();
+  });
+});
+</script>
+
+<script>
+$(document).ready(function(){
+  $("#result2").click(function(){
+    $("#main2").hide();
+  });
+});
+</script>
+
+<script>
+$(document).ready(function(){
+  $("#result3").click(function(){
+    $("#main3").hide();
+  });
+});
+</script>
+
+
+
+<script>
+$(document).ready(function(){
+  $("#result4").click(function(){
+    $("#main4").hide();
+  });
+});
 </script>
 
 
