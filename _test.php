@@ -1,11 +1,31 @@
 <?php
-
+session_start();
+$username = $_SESSION['username'];
 require_once('_includes/setting.php');
 require_once('_includes/dbaseCon.php');
 require_once('_includes/library.php');
 require_once('_includes/sql_statements.php');
 require_once('_includes/secure.php');
 
+
+
+$link = mysqli_connect("localhost","calaba9_intra","{^-LouqU_vpV", "calaba9_intranetdb");
+    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+                 
+    $division_c = '';
+    $position_c = '';
+    $email = '';
+
+                  $query = "SELECT * FROM `end_users` INNER JOIN tblemployee ON end_users.pmo_id = tblemployee.DIVISION_C WHERE end_users.username = $username ";
+                  $result = mysqli_query($link, $query);
+                  $val = array();
+                  while($row = mysqli_fetch_array($result))
+                  {
+                    $division_c = $row['DIVISION_C'];
+                    $position_c = $row['POSITION_C'];
+                    $email = $row['EMAIL'];
+                
+                  }
 function dbConnect() {
 	$DB = new mysqli('localhost','root','','db_dilg_pmis');            //{^-LouqU_vpV
 	if (mysqli_connect_errno()) {
