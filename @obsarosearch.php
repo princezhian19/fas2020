@@ -12,13 +12,13 @@ $q = $_POST["query"];
 	
 
 
-$results = $conn->prepare("SELECT  * FROM saro  WHERE saronumber LIKE '%".$q."%' group by saronumber desc  LIMIT 3 ");
+$results = $conn->prepare("SELECT  * FROM saro  WHERE saronumber LIKE '%".$q."%' group by saronumber desc  LIMIT 5 ");
 }
 
 else
 {
  $q = $_POST["query"];
- $results = $conn->prepare("SELECT  * FROM saro  WHERE saronumber LIKE '%".$q."%' group by saronumber desc  LIMIT 3  ");
+ $results = $conn->prepare("SELECT  * FROM saro  WHERE saronumber LIKE '%".$q."%' group by saronumber desc  LIMIT 5  ");
 
 }
 
