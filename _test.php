@@ -1,5 +1,4 @@
 <?php
-session_start();
 $username = $_SESSION['username'];
 require_once('_includes/setting.php');
 require_once('_includes/dbaseCon.php');
