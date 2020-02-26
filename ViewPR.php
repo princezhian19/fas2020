@@ -35,7 +35,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Purchase Reques</li>
+        <li class="active">Purchase Request</li>
       </ol>
       <br>
       <br>

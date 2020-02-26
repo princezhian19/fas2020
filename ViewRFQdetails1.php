@@ -40,7 +40,7 @@ header('location:login.php');
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="ViewRIS.php"><i class=""></i> Home</a></li>
-        <li class="active">Update RIS</li>
+        <li class="active">PR Update</li>
       </ol>
       <br>
       <br>
