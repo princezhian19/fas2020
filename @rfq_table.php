@@ -148,14 +148,27 @@ $mydb = new db(); // create a new object, class db()
                         $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
                         $rowrfq = mysqli_fetch_array($view_queryrfq);
                         $rfqid = $rowrfq['id'];
-                       
+                                                
+                        $query = mysqli_query($conn,"SELECT id FROM rfq WHERE id = '$rfqid' ");
+                        $row = mysqli_fetch_array($query);
+                        $rfq_id = $row['id'];
+
+                        $query_2 = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id ");
+                        $row_2 = mysqli_fetch_array($query_2);
+                        $rfq_items_id = $row_2['id'];
+
+                        $query_3 = mysqli_query($conn,"SELECT * FROM supplier_quote WHERE rfq_item_id = '$rfq_items_id'");
+                        
                         ?>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='supplier0.php?id=<?php echo $rfqid; ?>' title="View"> encode </a>
+                         <?php if (mysqli_num_rows($query_3) > 0 ): ?>
+                          <a class="btn btn-primary btn-xs"  href='ViewSupplierItems.php?rfq=<?php echo $rfq_items_id; ?>' title="View"> View Suppliers Quote </a>
+                         
+                          <?php else: ?>
+                          &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='/pmis/frontend/web/supplier-quote/encode?rfq=<?php echo $rfqid; ?>' title="View"> Encode </a> 
+
+                          <?php endif?>
                         <?php endif?>
 
-                        <?php if ($stat == "0"): ?>
-                        
-                          <?php endif?>
                         </td>
                         
                         <td>
@@ -163,12 +176,30 @@ $mydb = new db(); // create a new object, class db()
 
                         <?php if ($stat == "1"): ?>
                         <?php
-                       /*  $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
+                        
+                        $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
                         $rowrfq = mysqli_fetch_array($view_queryrfq);
-                        $rfqid = $rowrfq['id']; */
-                       
+                        $rfqid = $rowrfq['id'];
+                                                
+                        $query = mysqli_query($conn,"SELECT id FROM rfq WHERE id = '$rfqid' ");
+                        $row = mysqli_fetch_array($query);
+                        $rfq_id = $row['id'];
+                          
+                          $view_aoq = mysqli_query($conn,"SELECT rfq_id FROM abstract_of_quote WHERE rfq_id = $rfq_id ");
+                          $rowraoq = mysqli_fetch_array($view_aoq);
+                          $rfq_idaoq = $rowraoq['rfq_id'];
+                         
                         ?>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> encode </a>
+
+                          <?php if (mysqli_num_rows($view_aoq) > 0 ): ?>
+                          <a class="btn btn-primary btn-xs"  href='../frontend/web/abstract-of-quote/view?id=<?php echo $rfq_idaoq; ?>' title="View"> View Abstract of Quote </a>
+                         
+                          <?php else: ?>
+                          <a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/create' title="View"> Encode </a>
+
+                          <?php endif?>
+
+                          
                         <?php endif?>
 
                         <?php if ($stat == "0"): ?>
@@ -181,12 +212,33 @@ $mydb = new db(); // create a new object, class db()
                           
                         <?php if ($stat == "1"): ?>
                         <?php
-                       /*  $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
-                        $rowrfq = mysqli_fetch_array($view_queryrfq);
-                        $rfqid = $rowrfq['id']; */
-                       
-                        ?>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href=' ../frontend/web/purchase-order/index' title="View"> encode </a>
+
+                           
+                      $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
+                      $rowrfq = mysqli_fetch_array($view_queryrfq);
+                      $rfqid = $rowrfq['id'];
+                                              
+                      $query = mysqli_query($conn,"SELECT id FROM rfq WHERE id = '$rfqid' ");
+                      $row = mysqli_fetch_array($query);
+                      $rfq_id = $row['id'];
+                        
+                        $view_po = mysqli_query($conn,"SELECT rfq_id FROM selected_quote WHERE rfq_id = $rfq_id ");
+                        $rowrpo = mysqli_fetch_array($view_po);
+                        $rfq_idpo = $rowraoq['rfq_id'];
+                      
+                      ?>
+
+                        <?php if (mysqli_num_rows($view_po) > 0 ): ?>
+                        <a class="btn btn-primary btn-xs"  href='../frontend/web/purchase-order/view?id=<?php echo $rfq_idpo; ?>' title="View"> View Purchase Order </a>
+                      
+                        <?php else: ?>
+                        <a class="btn btn-success btn-xs"  href='../frontend/web/purchase-order/create' title="View"> Encode </a>
+
+                        <?php endif?>
+
+                    
+                      
+                        
                         <?php endif?>
 
                         <?php if ($stat == "0"): ?>

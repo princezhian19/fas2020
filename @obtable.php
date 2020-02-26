@@ -169,7 +169,7 @@ include('db.class.php'); // call db.class.php
                                   <a href='@obupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> 
                                 
                                 </a>
-                                <a onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=$id'><i style='font-size:24px' class='fa fa-trash-o'></i></a>
+                                <a onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i style='font-size:24px' class='fa fa-trash-o'></i></a>
                                 </td>
                               
                               </tr> 
