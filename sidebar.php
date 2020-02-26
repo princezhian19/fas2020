@@ -92,20 +92,7 @@
            <li><a href="@stockledger.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> SUPPLIES LEDGER CARD</a></li>
 
            <li><a href="ViewIAR.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> IAR</a></li>
-            <!-- <li><a href="ViewRIS.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Requisition and Issue Slip</a></li> -->
-            <!-- <li class="treeview">
-          <a href="#" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"></i>
-            <span style="color:black;text-decoration: none;">Requisition and Issue Slip</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu" >
-            <li><a href="ViewRIS.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> Issue to All</a></li>
-            <li><a href="ViewRISmany.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> Issue to Many</a></li>
-          </ul>
-        </li> -->
+      
             <li><a href="ViewRIS.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>RIS</a></li>
             <li><a href="ViewRPCI.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ICS</a></li>
             <li><a href="ViewRPCPPE.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAR</a></li>
@@ -187,21 +174,10 @@
             <li><a href="/pmis/frontend/web/iso-doc/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> ISO DOCUMENT</a></li>
             <li><a href="/pmis/frontend/web/notes/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> RFQ NOTES</a></li>
             <li><a href="/pmis/frontend/web/checklist/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV CHECKLIST</a></li>
-            <!-- <li><a href="" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Purchase Order</a></li>
-            <li><a href="" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Contract & MOA</a></li>
-            <li><a href="" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Resolution </a></li> -->
+          
           </ul>
         </li>
 
-        <!-- <!-- <li><a style="color:black;text-decoration: none;" href="/pmis/frontend/web/notification-doc/index"><i class="fa fa-folder-o"></i> <span>Document Template</span></a></li> --> 
-
-        <!-- <!-- <li><a style="color:black;text-decoration: none;" href="/pmis/frontend/web/iso-doc/index"><i class="fa fa-folder-o"></i> <span>ISO Document</span></a></li> --> 
-
-        <!-- <li><a style="color:black;text-decoration: none;" href="/pmis/frontend/web/notes/index"><i class="fa fa-folder-o"></i> <span>RFQ Notes</span></a></li> -->
-
-        <!-- <!-- <li><a style="color:black;text-decoration: none;" href="/pmis/frontend/web/checklist/index"><i class="fa fa-folder-o"></i> <span>Dv Checklist</span></a></li> --> 
-
-        <!-- <li><a style="color:black;text-decoration: none;" href="/pmis/frontend/web/supplier/index"><i class="fa fa-folder-o"></i> <span>Supplier</span></a></li> -->
 
 
 

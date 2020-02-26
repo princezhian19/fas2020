@@ -188,7 +188,7 @@ $mydb = new db(); // create a new object, class db()
                           $view_aoq = mysqli_query($conn,"SELECT rfq_id FROM abstract_of_quote WHERE rfq_id = $rfq_id ");
                           $rowraoq = mysqli_fetch_array($view_aoq);
                           $rfq_idaoq = $rowraoq['rfq_id'];
-                         
+                        
                         ?>
 
                           <?php if (mysqli_num_rows($view_aoq) > 0 ): ?>

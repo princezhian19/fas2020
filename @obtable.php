@@ -6,6 +6,10 @@ include('db.class.php'); // call db.class.php
 <head>
   <title>Financial Management System</title>
   
+
+
+
+
 </head>
 <body>
 <div class="box">
