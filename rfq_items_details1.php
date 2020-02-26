@@ -348,8 +348,12 @@ $sql_items = $conn->query("SELECT pr.id,pr.pr_no,a.procurement,a.sn,pr.descripti
               $app_id = $row['procurement'];
               $description = $row['description'];
               $unit = $row['unit'];
-              $abc = $row['abc'];
-              $qty = $row['qty'];
+
+              $abc1 = $row['abc'];
+              $abc = number_format( $abc1,2);
+
+              $qty1 = $row['qty'];
+              $qty = number_format( $qty1,2);
 
 
               if ($unit == "1") {
@@ -433,7 +437,10 @@ $sql_items = $conn->query("SELECT pr.id,pr.pr_no,a.procurement,a.sn,pr.descripti
 
               if ($unit == "21") {
                 $unit = "cart";
-              } 
+              }
+              if ($unit == "22"){
+                $unit = "pax";
+              }
               ?>
 
               <td hidden><?php echo $pr_no?> </td>
@@ -449,7 +456,7 @@ $sql_items = $conn->query("SELECT pr.id,pr.pr_no,a.procurement,a.sn,pr.descripti
               <td><?php echo $description?></td>
               <td><?php echo $qty?></td>
               <td><?php echo $abc?></td>
-               <td><?php  $ans = $abc*$qty;  echo $ans; ?></td>
+               <td><?php  $ans1 = $abc*$qty; $ans = number_format($ans1,2);  echo $ans; ?></td>
 
               <td>
                <?php echo '<a href="ViewUpdateRFQ1.php?id2='.$_GET['id'].'&id='.$id.'&id='.$id.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?>

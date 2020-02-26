@@ -159,10 +159,7 @@ if (isset($_POST['submit'])) {
   if ($unit == "unit"){
     $unit = 5;
   }
-  if ($unit == "liter"){
-    $unit = 22;
-  }
-
+  
   if ($unit == "pax"){
     $unit = 22;
   }

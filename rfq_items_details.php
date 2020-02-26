@@ -348,7 +348,8 @@ if ($update) {
               $app_id = $row['procurement'];
               $description = $row['description'];
               $unit = $row['unit'];
-              $abc = $row['abc'];
+              $abc1 = $row['abc'];
+              $abc = number_format( $abc1,2);
               $qty = $row['qty'];
 
 
@@ -435,7 +436,7 @@ if ($update) {
                 $unit = "cart";
               } 
                if ($unit == "22") {
-                $unit = "liter";
+                $unit = "pax";
               } 
               ?>
 
@@ -452,7 +453,7 @@ if ($update) {
               <td><?php echo $description?></td>
               <td><?php echo $qty?></td>
               <td><?php echo $abc?></td>
-               <td><?php  $ans = $abc*$qty;  echo $ans; ?></td>
+               <td><?php  $ans = $abc*$qty;  echo number_format($ans,2); ?></td>
 
               <td>
                <?php echo '<a href="ViewUpdateRFQ.php?id2='.$_GET['id'].'&id='.$id.'&id='.$id.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?>
