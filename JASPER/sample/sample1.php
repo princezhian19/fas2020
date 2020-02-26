@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 include_once("../PHPJasperXML.inc.php");
-require_once('../../../_includes/setting.php');
-require_once('../../../_includes/dbaseCon.php');
-require_once('../../../_includes/library.php');
-require_once('../../../_includes/sql_statements.php');
-require_once('../../../_includes/secure.php');
-require_once('../../../calendar/bdd.php');
+require_once('_includes/setting.php');
+require_once('_includes/dbaseCon.php');
+require_once('_includes/library.php');
+require_once('_includes/sql_statements.php');
+require_once('_includes/secure.php');
+require_once('calendar/bdd.php');
 
 $request_date = $_POST['request_date'];
 $req_date_format = date("Y-m-d",strtotime($request_date));
@@ -87,7 +87,7 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                `SERIAL_NO`, 
                `IP_ADDRESS`,
                `MAC_ADDRESS`, 
-               `TYPE_REQ`, 
+               `TYPE_REQ`,
                `TYPE_REQ_DESC`, 
                `ISSUE_PROBLEM`, 
                `START_DATE`,
@@ -588,16 +588,7 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                                     "mac_address"=>$mac_address);
             break;
     
-    
-        
-         
- 
 
-
- 
- 
-        
-       
 
     }
 }

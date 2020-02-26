@@ -78,8 +78,6 @@ if (isset($_POST['submit'])) {
     $pmo3 =7 ;
   }
 
-
-
   if ($pmo == "ORD") {
     $pmo3 = 1;
   }
@@ -342,14 +340,7 @@ if (isset($_POST['add'])) {
  }
 }
 }
-  // for($count = 0; $count < count($_POST["app_items"]); $count++)
-  // {  
-  //   // echo '<p style = "background-color:red;color:white;padding:10px;"> WARNING : You Entered Invalid Quantity </p>   ';
-  //  // header('location: CreatePr.php?pr_no='.$pr_no.'&pr_date='.$pr_date.'&pmo='.$pmo.'&purpose='.$purpose.' ');
-  //   $insert_items = mysqli_query($conn,'INSERT INTO pr_approved(pr_no,items,description,unit,existing_qty,qty,abc) 
-  //     VALUES("'.$_POST['pr_no'].'","'.$_POST['app_items'][$count].'","'.$_POST['description'][$count].'","'.$_POST['unit'][$count].'","'.$_POST['two'][$count].'","'.$_POST['qty'][$count].'","'.$_POST['abc'][$count].'")');
-  //   echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Successfuly Saved!  </p> </div></div>  ';  
-  //   }
+
 
 ?>
 
@@ -395,7 +386,7 @@ if (isset($_POST['add'])) {
     });
     function showRow(row)
     {
-      
+
       var x=row.cells;
       document.getElementById("id").value = x[0].innerHTML;
       document.getElementById("abc").value = x[1].innerHTML;
