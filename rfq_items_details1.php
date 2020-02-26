@@ -356,6 +356,10 @@ $sql_items = $conn->query("SELECT pr.id,pr.pr_no,a.procurement,a.sn,pr.descripti
               $qty = number_format( $qty1,2);
 
 
+              $ans1 = $qty1*$abc1;
+              //echo $ans = number_format($ans1,2);
+              
+
               if ($unit == "1") {
                 $unit = "piece";
               }
@@ -441,6 +445,9 @@ $sql_items = $conn->query("SELECT pr.id,pr.pr_no,a.procurement,a.sn,pr.descripti
               if ($unit == "22"){
                 $unit = "pax";
               }
+            
+
+
               ?>
 
               <td hidden><?php echo $pr_no?> </td>
@@ -454,9 +461,9 @@ $sql_items = $conn->query("SELECT pr.id,pr.pr_no,a.procurement,a.sn,pr.descripti
               <td><?php echo $unit?></td>
               <td><?php echo $app_id?></td>
               <td><?php echo $description?></td>
-              <td><?php echo $qty?></td>
+              <td><?php echo $qty1?></td>
               <td><?php echo $abc?></td>
-               <td><?php  $ans1 = $abc*$qty; $ans = number_format($ans1,2);  echo $ans; ?></td>
+               <td><?php echo $ans; ?></td>
 
               <td>
                <?php echo '<a href="ViewUpdateRFQ1.php?id2='.$_GET['id'].'&id='.$id.'&id='.$id.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?>

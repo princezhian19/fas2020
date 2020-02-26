@@ -195,7 +195,7 @@ $mydb = new db(); // create a new object, class db()
                           <a class="btn btn-primary btn-xs"  href='../frontend/web/abstract-of-quote/view?id=<?php echo $rfq_idaoq; ?>' title="View"> View Abstract of Quote </a>
                          
                           <?php else: ?>
-                          <a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/create' title="View"> Encode </a>
+                          <a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> Encode </a>
 
                           <?php endif?>
 
