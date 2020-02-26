@@ -38,6 +38,9 @@
         <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
           </ul>
         </li>
+        <li><a style="color:black;text-decoration: none;" href="home1.php"><i class="fa fa-dashboard"></i> <span>TA</span></a></li>
+
+
 
 <div hidden>
         <li class="treeview" tyle="background-color: lightgray;">
