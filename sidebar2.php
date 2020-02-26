@@ -38,7 +38,7 @@
         <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
           </ul>
         </li>
-        <li><a style="color:black;text-decoration: none;" href="_techassistance.php"><i class="fa">&#xf0f6;</i><span>TA</span></a></li>
+        <li><a style="color:black;text-decoration: none;" href="_techassistance.php"><i class="fa">&#xf0f6;</i><span>ICT Technical Assistance Form</span></a></li>
 
 
 
