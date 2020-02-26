@@ -49,7 +49,7 @@
     <div class="panel panel-default">
         <br>
       
-            <h1 align="">&nbspCreate Payment</h1>
+            <h1 align="">&nbspPayment</h1>
             <div class="box-header with-border">
     
         <br>
