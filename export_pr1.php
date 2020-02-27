@@ -177,6 +177,14 @@ if ($unit == "21") {
     //$objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,number_format($total,2));
     $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$total);
 
+    
+    $objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
+
+    $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
+
 
 
        // $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$excelrow['abc']);

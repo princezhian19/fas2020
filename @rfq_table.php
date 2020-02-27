@@ -62,7 +62,7 @@ $mydb = new db(); // create a new object, class db()
                 <?php
  
                 $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
-                $view_query = mysqli_query($conn, "SELECT a.submitted_date,a.received_date,a.id,a.pr_no,a.pmo,a.purpose,a.pr_date,a.type,a.target_date,a.stat,b.rfq_no,b.rfq_date FROM pr as a left join rfq as b ON a.pr_no=b.pr_no order by a.id DESC");
+                $view_query = mysqli_query($conn, "SELECT a.submitted_date,a.received_date,a.id,a.pr_no,a.pmo,a.purpose,a.pr_date,a.type,a.target_date,a.stat,b.rfq_no,b.rfq_date FROM pr as a left join rfq as b ON a.pr_no=b.pr_no where a.submitted_date is not NULL Order by a.id DESC");
                 // $view_query = mysqli_query($conn, "SELECT rfq.id, rfq.pr_no, pr.date,pr.pmo, pr.purpose, pr.target_date FROM rfq LEFT join pr ON rfq.pr_no = pr.pr_no  order by id desc ");
                 while ($row = mysqli_fetch_assoc($view_query)) {
                    // $getID = $row["id"]; 
@@ -83,9 +83,7 @@ $mydb = new db(); // create a new object, class db()
                     $rfq_no =  $row["rfq_no"];
                     $rfq_date =  $row["rfq_date"];
                     $rfq_date1 = date('F d, Y', strtotime($rfq_date));
-                    
-
-
+                  
                     ?>
                     <tr>
                        
