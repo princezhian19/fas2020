@@ -8,23 +8,32 @@ require_once('_includes/sql_statements.php');
 
 
 
-$link = mysqli_connect("localhost","root","", "db_dilg_pmis");
-    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
-                 
-    $division_c = '';
-    $position_c = '';
-    $email = '';
+function showUser()
+{
+ $position_c = '';
+  echo '<select class="form-control select2" style="width: 100%;" name="requested_by" id="type" >';
+  $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+  if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
-                  $query = "SELECT * FROM `end_users` INNER JOIN tblemployee ON end_users.pmo_id = tblemployee.DIVISION_C WHERE end_users.username = '$username' ";
-                  $result = mysqli_query($link, $query);
-                  $val = array();
-                  while($row = mysqli_fetch_array($result))
-                  {
-                    $division_c = $row['DIVISION_C'];
-                    $position_c = $row['POSITION_C'];
-                    $email = $row['EMAIL'];
-                  }
+  $query = "SELECT * FROM `tblpersonneldivision` INNER JOIN tblemployee ON tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C WHERE tblpersonneldivision.DIVISION_M like '%$username%' ";
+  $result = mysqli_query($link, $query);
+  $val = array();
+  while($row = mysqli_fetch_array($result))
+    {
+     
+      $_SESSION['position'] = $position_c;
+      echo '<option value = '.$row['EMP_N'].'>'.$row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'].'</option>';
+    }
+  echo '</select>';
+  // echo '<input type = "text" value = '.$position_c.' />';
+}
 
+
+
+
+
+
+ 
 // function getControlNo()
 // {
     
@@ -197,15 +206,29 @@ background-position: 90px 5px;
                     <div>
                         <h1>Technical Assistance Request Form</h1><br>
                     </div>
-                    <!-- JASPER/phpjasperxml-master/sample/sample1.php -->
-                    <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "#" >    
+                    <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/phpjasperxml-master/sample/sample1.php" >    
                         <input type = "hidden" name = "curuser" value = "<?php echo $currentuser;?>" />
                         <table  border = 1 class = "center-text" style = "width:100%;">
                             <tbody>
                                 <tr>
                                     <td colspan = 4>ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
                                     <td class = "label-text left-text">Control<br>Number.</td>
-                                    <td colspan = 2><input readonly  placeholder = "Control No."  text="text" name = "control_no" class = "sizeMax alphanum subtxt" value=""/></td>
+                                    <td colspan = 2>
+                                    <?php 
+                                    $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+                                    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+
+                                                  $query = "SELECT count(*) as 'count' from tbltechnical_assistance ";
+                                                  $result = mysqli_query($link, $query);
+                                                  $val = array();
+                                                  if($row = mysqli_fetch_array($result))
+                                                  {
+                                                    $count= $row['count']+1;
+                                                    echo '<input style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-000'.$count.' />';
+
+                                                  }
+                                      ?>
+                                    </td>
                                 </tr>
                                 
                                 <tr>
@@ -229,31 +252,32 @@ background-position: 90px 5px;
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly placeholder = "Requested By" type="text" name = "requested_by" class = "sizeMax alphanum subtxt"  value = "" readonly /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;">
+                                      <?php echo showUser(); ?>
                                     <td class = "label-text left-text">Brand Model:</td>
                                     <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Brand Model" type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td class = "label-text left-text">Office:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "" readonly/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "office" readonly placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "" readonly/></td>
                                     <td class = "label-text left-text">Property No.:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Property No." type = "text" name = "property_no" class = "sizeMax alphanum subtxt" /> </td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Position/Designation:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = ""  /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "position" readonly placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = ""  /></td>
                                     <td class = "label-text left-text">Serial No.:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Serial No." type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Contact Number:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "" /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "phone" placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "" /></td>
                                     <td class = "label-text left-text">IP Address:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "IP Address" type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" value = "" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Email Address:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $email;?>"/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "email" placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $email;?>"/></td>
                                     <td class = "label-text left-text">MAC Address:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "MAC Address" type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = "" /></td>
                                 </tr>
@@ -370,23 +394,51 @@ background-position: 90px 5px;
 
 </td>
 <td style = "width:12.5%;">Started Date:</td>
-<td style = "width:12.5%;"><input readonly placeholder = "Started Date" type = "text" name = "started_date"  class = "datePicker2 setDateIcon sizeMax alphanum subtxt" /></td>
+<td style = "width:12.5%;">
+  <div class="input-group date">
+    <div class="input-group-addon">
+      <i class="fa fa-calendar"></i>
+    </div>
+    <input type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
+  </div>
+</td>
 <td style = "width:12.5%;">Completed Date:</td>
-<td style = "width:12.5%;"><input readonly placeholder = "Completed Date" ttype = "text" name = "completed_date" class = "datePicker3 setDateIcon sizeMax alphanum subtxt" /></td>
+<td style = "width:12.5%;">
+<div class="input-group date">
+    <div class="input-group-addon">
+      <i class="fa fa-calendar"></i>
+    </div>
+    <input type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="" required>
+  </div>
+</td>
 </tr>
 <tr> 
 <td colspan = 4>
-Assisted By:
+<!-- Assisted By:
 <select name="assisted_by" class="dropdown size250">
 <option value = "Charles Adrian T. Odi">Charles Adrian T. Odi</option>
 <option value = "Christian Paul V. Ferrer">Christian Paul V. Ferrer</option>
 <option value = "Mark Kim A. Sacluti">Mark Kim A. Sacluti</option>
-</select>
+</select> -->
 </td>
 <td style = "width:12.5%;">Started Time:</td>
-<td style = "width:12.5%;"><input readonly placeholder = "Started Time" type = "text" name = "started_time"  class = "sizeMax alphanum subtxt" value =""/></td>
+<td style = "width:12.5%;">
+  <div class="input-group date">
+    <div class="input-group-addon">
+      <i class="fa fa-calendar"></i>
+    </div>
+    <input type="text" name = "started_time" placeholder = "Started Time" class="datePicker1" value="" required>
+  </div>
+</td>
 <td style = "width:12.5%;">Completed Time:</td>
-<td style = "width:12.5%;"><input readonly placeholder = "Completed Time" type = "text" name = "completed_time" class = "sizeMax alphanum subtxt" /></td>
+<td style = "width:12.5%;">
+  <div class="input-group date">
+    <div class="input-group-addon">
+      <i class="fa fa-calendar"></i>
+    </div>
+    <input type="text" name = "completed_time" placeholder = "Completed Time" class="datePicker1" value="" required>
+  </div>
+</td>
 </tr>
 
 
@@ -437,7 +489,29 @@ Assisted By:
 <script src="dist/js/demo.js"></script>
 <!-- Page script -->
 <script>
+   
   $(function () {
+  
+    $('.select2').on('change', function()
+      {
+      var value = this.value;
+        $.ajax({
+            url:"_fetchOfficeInfo.php",
+            method:"POST",
+            data:{
+            id:value
+            },
+            success:function(data)
+            {
+              var result = JSON.parse(data);
+              $('#office').val(result[0].office);
+              $('#position').val(result[0].position);
+              $('#phone').val(result[0].phone);
+              $('#email').val(result[0].email);
+            }
+          });
+        });
+   
     //Initialize Select2 Elements
     $('.select2').select2()
 
