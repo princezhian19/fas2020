@@ -156,7 +156,7 @@ function inetmainmenu_v2($parent,$level)
 
 	<?php
 			// Getting all the codes in table employee
-			$link = mysqli_connect("localhost","calaba9_intra","{^-LouqU_vpV", "calaba9_intranetdb");
+			$link = mysqli_connect("localhost","root","", "db_dilg_pmis");
 
 			if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 			$query = "SELECT ACCESSLIST FROM tblemployee WHERE CODE='".$_SESSION['inet_credentials']['code']."'";

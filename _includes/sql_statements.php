@@ -3,9 +3,9 @@ $DIR_MAIN_FOLDER = '/pcf';
 $DIR_PHYSICAL = 'C:/xammp/htdocs/'.$DIR_MAIN_FOLDER.'/';
 
 $DB_HOST = 'localhost';
-$DB_USER = 'calaba9_intra';
-$DB_PASS = '{^-LouqU_vpV';
-$BD_TABLE = 'calaba9_intranetdb';
+$DB_USER = 'root';
+$DB_PASS = '';
+$BD_TABLE = 'db_dilg_pmis';
 $target=$_SERVER['SERVER_NAME'].$DIR_MAIN_FOLDER;
 // $target="dreams.freetzi.com";
 

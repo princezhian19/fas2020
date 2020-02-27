@@ -1,7 +1,7 @@
 <?php
 try
 {
-	$bdd = new PDO('mysql:host=localhost;dbname=calaba9_intranetdb;charset=utf8', 'calaba9_intra', '{^-LouqU_vpV');
+	$bdd = new PDO('mysql:host=localhost;dbname=db_dilg_pmis;charset=utf8', 'root', '');
 }
 catch(Exception $e)
 {
