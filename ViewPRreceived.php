@@ -28,26 +28,29 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <?php include('sidebar.php');?>
-  
+
+
+
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">NTA</li>
+        <li class="active">Purchase Reques</li>
       </ol>
       <br>
       <br>
-        <?php include('@ntatable.php');?>
+        <?php include('pr_table_received.php');?>
+
     </section>
   </div>
  
 </div>
-<!-- <script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="bower_components/fastclick/lib/fastclick.js"></script> -->
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
 <!-- <script src="dist/js/adminlte.min.js"></script>
 <script src="dist/js/demo.js"></script> -->
 <script>
