@@ -382,8 +382,8 @@ background-position: 90px 5px;
 <option value = "NO">NO</option>
 </select>
 </td>
-<td style = "width:12.5%;">Quality</td>
-<td style = "width:12.5%;text-align:center">
+<td style = "width:12.5%;text-align:center;">Quality</td>
+<td style = "width:12.5%;text-align:center;">
 <select name="quality" class="dropdown size250">
 <option value = "5">Outstanding</option>
 <option value = "4">Very-Satisfatory</option>
