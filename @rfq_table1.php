@@ -12,7 +12,7 @@ $mydb = new db(); // create a new object, class db()
 </head>
 
 <body>
-    
+    <
     <div class="box">
   <div class="box-body">
             <h1 align="">Request For Quotation</h1>
@@ -30,21 +30,20 @@ $mydb = new db(); // create a new object, class db()
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;">
-                      
+                        <th width="0"></th>
                         <th>PR NO</th>
                         <th>PR DATE</th>
                         <th>OFFICE</th>
                         <th width="100">TYPE</th>
                         <th width="200">PURPOSE</th>
                         <th>TARGET DATE</th>
-                        <th>RECEIVE PR</th>
                         <th>RFQ NO</th>
                         <th>RFQ DATE</th>
                         <th>RFQ</th>
                         <th>SUPPLIER QOUTE</th>
                         <th>ABSTRACT</th>
                         <th>PURCHASE ORDER</th>
-                      
+                        <th width="0"></th>
                     </tr>
                 </thead>
 
@@ -62,15 +61,13 @@ $mydb = new db(); // create a new object, class db()
                 <?php
  
                 $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
-                $view_query = mysqli_query($conn, "SELECT a.submitted_date,a.received_date,a.id,a.pr_no,a.pmo,a.purpose,a.pr_date,a.type,a.target_date,a.stat,b.rfq_no,b.rfq_date FROM pr as a left join rfq as b ON a.pr_no=b.pr_no order by a.id DESC");
+                $view_query = mysqli_query($conn, "SELECT a.id,a.pr_no,a.pmo,a.purpose,a.pr_date,a.type,a.target_date,a.stat,b.rfq_no,b.rfq_date FROM pr as a left join rfq as b ON a.pr_no=b.pr_no order by a.id DESC");
                 // $view_query = mysqli_query($conn, "SELECT rfq.id, rfq.pr_no, pr.date,pr.pmo, pr.purpose, pr.target_date FROM rfq LEFT join pr ON rfq.pr_no = pr.pr_no  order by id desc ");
                 while ($row = mysqli_fetch_assoc($view_query)) {
                    // $getID = $row["id"]; 
                     $id = $row["id"];
                     $pr_no = $row["pr_no"];  
                     $pmo = $row["pmo"];
-                    $submitted_date = $row["submitted_date"];
-                    $received_date = $row["received_date"];
 
                     $purpose = $row["purpose"];
                     $pr_date = $row["pr_date"];
@@ -88,7 +85,7 @@ $mydb = new db(); // create a new object, class db()
 
                     ?>
                     <tr>
-                       
+                        <td></td>
                         <td><?php echo $pr_no;?></td>
                         <td><?php echo $pr_date1;?></td>
                         <td><?php echo $pmo;?></td>
@@ -110,20 +107,6 @@ $mydb = new db(); // create a new object, class db()
                         <?php endif?>
                         <td><?php echo $purpose;?></td>
                         <td><?php echo $target_date1;?></td>
-
-                        <?php if ($submitted_date == NULL): ?>
-                          <td></td>
-                          <?php else: ?>
-                            <?php if ($submitted_date != NULL AND $received_date == NULL): ?>
-                        <td>
-                          <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Received this item?');" href='received_pr.php?id=<?php echo $id; ?>  ' title="Submit"> 
-                          Received </a>    
-                        </td>
-                            <?php else: ?>
-                              <td>Received Date <?php echo $received_date?></td>
-                            <?php endif ?>
-                        <?php endif ?>
-
                         <td><?php echo $rfq_no;?></td>
                         
                         <?php if ($rfq_date == ""): ?>
@@ -165,14 +148,27 @@ $mydb = new db(); // create a new object, class db()
                         $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
                         $rowrfq = mysqli_fetch_array($view_queryrfq);
                         $rfqid = $rowrfq['id'];
-                       
+                                                
+                        $query = mysqli_query($conn,"SELECT id FROM rfq WHERE id = '$rfqid' ");
+                        $row = mysqli_fetch_array($query);
+                        $rfq_id = $row['id'];
+
+                        $query_2 = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id ");
+                        $row_2 = mysqli_fetch_array($query_2);
+                        $rfq_items_id = $row_2['id'];
+
+                        $query_3 = mysqli_query($conn,"SELECT * FROM supplier_quote WHERE rfq_item_id = '$rfq_items_id'");
+                        
                         ?>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='supplier0.php?id=<?php echo $rfqid; ?>' title="View"> encode </a>
+                         <?php if (mysqli_num_rows($query_3) > 0 ): ?>
+                          <a class="btn btn-primary btn-xs"  href='ViewSupplierItems.php?rfq=<?php echo $rfq_items_id; ?>' title="View"> View Suppliers Quote </a>
+                         
+                          <?php else: ?>
+                          &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='/pmis/frontend/web/supplier-quote/encode?rfq=<?php echo $rfqid; ?>' title="View"> Encode </a> 
+
+                          <?php endif?>
                         <?php endif?>
 
-                        <?php if ($stat == "0"): ?>
-                        
-                          <?php endif?>
                         </td>
                         
                         <td>
@@ -180,12 +176,30 @@ $mydb = new db(); // create a new object, class db()
 
                         <?php if ($stat == "1"): ?>
                         <?php
-                       /*  $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
+                        
+                        $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
                         $rowrfq = mysqli_fetch_array($view_queryrfq);
-                        $rfqid = $rowrfq['id']; */
-                       
+                        $rfqid = $rowrfq['id'];
+                                                
+                        $query = mysqli_query($conn,"SELECT id FROM rfq WHERE id = '$rfqid' ");
+                        $row = mysqli_fetch_array($query);
+                        $rfq_id = $row['id'];
+                          
+                          $view_aoq = mysqli_query($conn,"SELECT rfq_id FROM abstract_of_quote WHERE rfq_id = $rfq_id ");
+                          $rowraoq = mysqli_fetch_array($view_aoq);
+                          $rfq_idaoq = $rowraoq['rfq_id'];
+                        
                         ?>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> encode </a>
+
+                          <?php if (mysqli_num_rows($view_aoq) > 0 ): ?>
+                          <a class="btn btn-primary btn-xs"  href='../frontend/web/abstract-of-quote/view?id=<?php echo $rfq_idaoq; ?>' title="View"> View Abstract of Quote </a>
+                         
+                          <?php else: ?>
+                          <a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> Encode </a>
+
+                          <?php endif?>
+
+                          
                         <?php endif?>
 
                         <?php if ($stat == "0"): ?>
@@ -198,12 +212,33 @@ $mydb = new db(); // create a new object, class db()
                           
                         <?php if ($stat == "1"): ?>
                         <?php
-                       /*  $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
-                        $rowrfq = mysqli_fetch_array($view_queryrfq);
-                        $rfqid = $rowrfq['id']; */
-                       
-                        ?>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href=' ../frontend/web/purchase-order/index' title="View"> encode </a>
+
+                           
+                      $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
+                      $rowrfq = mysqli_fetch_array($view_queryrfq);
+                      $rfqid = $rowrfq['id'];
+                                              
+                      $query = mysqli_query($conn,"SELECT id FROM rfq WHERE id = '$rfqid' ");
+                      $row = mysqli_fetch_array($query);
+                      $rfq_id = $row['id'];
+                        
+                        $view_po = mysqli_query($conn,"SELECT rfq_id FROM selected_quote WHERE rfq_id = $rfq_id ");
+                        $rowrpo = mysqli_fetch_array($view_po);
+                        $rfq_idpo = $rowraoq['rfq_id'];
+                      
+                      ?>
+
+                        <?php if (mysqli_num_rows($view_po) > 0 ): ?>
+                        <a class="btn btn-primary btn-xs"  href='../frontend/web/purchase-order/view?id=<?php echo $rfq_idpo; ?>' title="View"> View Purchase Order </a>
+                      
+                        <?php else: ?>
+                        <a class="btn btn-success btn-xs"  href='../frontend/web/purchase-order/create' title="View"> Encode </a>
+
+                        <?php endif?>
+
+                    
+                      
+                        
                         <?php endif?>
 
                         <?php if ($stat == "0"): ?>
@@ -211,7 +246,16 @@ $mydb = new db(); // create a new object, class db()
                           <?php endif?>
                        
                         </td>
-                      
+                        <td></td>
+                        <!-- <td>                     
+                        
+                         &nbsp&nbsp&nbsp&nbsp&nbsp<a  onclick="return confirm('Are you sure you want to Delete this item?');" href='deletePRfinalize.php?id=<?php echo $id; ?>  ' title="Delete"> 
+                        <i style='font-size:24px' class='fa fa-trash-o' ></i> </a>
+
+                    </td> -->
+
+
+                    
                 </tr>
             <?php } ?>
 

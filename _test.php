@@ -4,18 +4,18 @@ require_once('_includes/setting.php');
 require_once('_includes/dbaseCon.php');
 require_once('_includes/library.php');
 require_once('_includes/sql_statements.php');
-require_once('_includes/secure.php');
+// require_once('_includes/secure.php');
 
 
 
-$link = mysqli_connect("localhost","calaba9_intra","{^-LouqU_vpV", "calaba9_intranetdb");
+$link = mysqli_connect("localhost","root","", "db_dilg_pmis");
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
                  
     $division_c = '';
     $position_c = '';
     $email = '';
 
-                  $query = "SELECT * FROM `end_users` INNER JOIN tblemployee ON end_users.pmo_id = tblemployee.DIVISION_C WHERE end_users.username = $username ";
+                  $query = "SELECT * FROM `end_users` INNER JOIN tblemployee ON end_users.pmo_id = tblemployee.DIVISION_C WHERE end_users.username = '$username' ";
                   $result = mysqli_query($link, $query);
                   $val = array();
                   while($row = mysqli_fetch_array($result))
@@ -23,133 +23,122 @@ $link = mysqli_connect("localhost","calaba9_intra","{^-LouqU_vpV", "calaba9_intr
                     $division_c = $row['DIVISION_C'];
                     $position_c = $row['POSITION_C'];
                     $email = $row['EMAIL'];
-                
                   }
-function dbConnect() {
-	$DB = new mysqli('localhost','root','','db_dilg_pmis');            //{^-LouqU_vpV
-	if (mysqli_connect_errno()) {
-		echo 'Cannot connect to database: ' . mysqli_connect_error();
-		//mail("ber2x@yahoo.com", "URGENT ATTENTION: PCF Website Cannot Connect to the Database","Development Team, Please give attention! The PCF Website cannot connect to the database!".mysqli_connect_error(),"CC: phagemaster@gmail.com");
-    }
 
-	return $DB;
-        // $DB->close();
-
-}
-function getControlNo()
-{
+// function getControlNo()
+// {
     
-    $data = '';
-    $DBConn = dbConnect();
-	if (!$DBConn) {
-		return false;
-	}
-    	$query = "SELECT count(*) as 'count' from tbltechnical_assistance";
-	$rowRs = $DBConn->query( $query );
-	if ($rowRs->num_rows)
-	{
-		$rs = $rowRs->fetch_assoc();
+//     $data = '';
+//     $DBConn = dbConnect();
+// 	if (!$DBConn) {
+// 		return false;
+// 	}
+//     	$query = "SELECT count(*) as 'count' from tbltechnical_assistance";
+// 	$rowRs = $DBConn->query( $query );
+// 	if ($rowRs->num_rows)
+// 	{
+// 		$rs = $rowRs->fetch_assoc();
 	
-		$data = $rs['count']+1;
+// 		$data = $rs['count']+1;
 		
-	}
-	else $data = '';
-	$rowRs->close();
+// 	}
+// 	else $data = '';
+// 	$rowRs->close();
 
-	return $data;
+// 	return $data;
     
-}
-function usersData($user)
-{
+// }
+// function usersData($user)
+// {
     
-    $data = '';
-    $DBConn = dbConnect();
-	if (!$DBConn) {
-		return false;
-	}
-    	$query = "SELECT FIRST_M, MIDDLE_M, LAST_M,EMAIL  FROM `tblemployee` WHERE EMP_N = '".$user."' ";
-	$rowRs = $DBConn->query( $query );
-	if ($rowRs->num_rows)
-	{
-		$rs = $rowRs->fetch_assoc();
+//     $data = '';
+//     $DBConn = dbConnect();
+// 	if (!$DBConn) {
+// 		return false;
+// 	}
+//     	$query = "SELECT FIRST_M, MIDDLE_M, LAST_M,EMAIL  FROM `tblemployee` WHERE EMP_N = '".$user."' ";
+// 	$rowRs = $DBConn->query( $query );
+// 	if ($rowRs->num_rows)
+// 	{
+// 		$rs = $rowRs->fetch_assoc();
 	
-		$data = $rs ['FIRST_M'].' '.$rs['MIDDLE_M'].' '.$rs['LAST_M'];
+// 		$data = $rs ['FIRST_M'].' '.$rs['MIDDLE_M'].' '.$rs['LAST_M'];
 		
-	}
-	else $data = '';
-	$rowRs->close();
+// 	}
+// 	else $data = '';
+// 	$rowRs->close();
 
-	return $data;
+// 	return $data;
     
-}
-function division($division_c)
-{
-    $DBConn = dbConnect();
-    if (!$DBConn)
-    {
-    return false;
-    }
+// }
+// function division($division_c)
+// {
+//     $DBConn = dbConnect();
+//     if (!$DBConn)
+//     {
+//     return false;
+//     }
 
-    $query = "SELECT DIVISION_N, DIVISION_M FROM tblpersonneldivision where DIVISION_N = '".$division_c."' ";
-    $data = "";
-    $isSelected = "";
-    $rowRs = $DBConn->query($query);
-    if ($rowRs->num_rows)
-    {
-    if ($row = $rowRs->fetch_assoc())
-        {
+//     $query = "SELECT DIVISION_N, DIVISION_M FROM tblpersonneldivision where DIVISION_N = '".$division_c."' ";
+//     $data = "";
+//     $isSelected = "";
+//     $rowRs = $DBConn->query($query);
+//     if ($rowRs->num_rows)
+//     {
+//     if ($row = $rowRs->fetch_assoc())
+//         {
 
-        $data.= $row['DIVISION_M'];
-        }
-    }
+//         $data.= $row['DIVISION_M'];
+//         }
+//     }
 
-    $rowRs->close();
-    return $data;
-}
-function position($position_c)
-{
-	$DBConn = dbConnect();
-	if (!$DBConn) {
-		return false;
-	}	
+//     $rowRs->close();
+//     return $data;
+// }
+// function position($position_c)
+// {
+// 	$DBConn = dbConnect();
+// 	if (!$DBConn) {
+// 		return false;
+// 	}	
 	
-	$query = "SELECT POSITION_ID, POSITION_M FROM `tbldilgposition` WHERE POSITION_ID = '".$position_c."' ";						
-	$data = "";
-	$isSelected = "";
+// 	$query = "SELECT POSITION_ID, POSITION_M FROM `tbldilgposition` WHERE POSITION_ID = '".$position_c."' ";						
+// 	$data = "";
+// 	$isSelected = "";
 	
-	$rowRs = $DBConn->query( $query );	
+// 	$rowRs = $DBConn->query( $query );	
 
-	if ($rowRs->num_rows)
-	{
-		if ($row = $rowRs->fetch_assoc()) {
+// 	if ($rowRs->num_rows)
+// 	{
+// 		if ($row = $rowRs->fetch_assoc()) {
 						
-			$data .= $row['POSITION_M'];
-		}
+// 			$data .= $row['POSITION_M'];
+// 		}
 				
-	}	
-	$rowRs->close();
+// 	}	
+// 	$rowRs->close();
 	
-	return $data;
-}
-function setPhoneNo($user)
-{
-    $data = '';
-    $DBConn = dbConnect();
-	if (!$DBConn) {
-		return false;
-	}
-    	$query = "SELECT MOBILEPHONE  FROM `tblemployee` WHERE EMP_N = '".$user."' ";
-	$rowRs = $DBConn->query( $query );
-	if ($rowRs->num_rows)
-	{
-		$rs = $rowRs->fetch_assoc();
-		$data = $rs ['MOBILEPHONE'];
-	}
-	else $data = '';
-	$rowRs->close();
+// 	return $data;
+// }
+// function setPhoneNo($user)
+// {
+//     $data = '';
+//     $DBConn = dbConnect();
+// 	if (!$DBConn) {
+// 		return false;
+// 	}
+//     	$query = "SELECT MOBILEPHONE  FROM `tblemployee` WHERE EMP_N = '".$user."' ";
+// 	$rowRs = $DBConn->query( $query );
+// 	if ($rowRs->num_rows)
+// 	{
+// 		$rs = $rowRs->fetch_assoc();
+// 		$data = $rs ['MOBILEPHONE'];
+// 	}
+// 	else $data = '';
+// 	$rowRs->close();
 
-	return $data;
-}
+// 	return $data;
+// }
 ?>
  
 <!DOCTYPE html>
@@ -180,11 +169,11 @@ function setPhoneNo($user)
     input[type=checkbox]
 {
   /* Double-sized Checkboxes */
-  -ms-transform: scale(2); /* IE */
-  -moz-transform: scale(2); /* FF */
-  -webkit-transform: scale(2); /* Safari and Chrome */
-  -o-transform: scale(2); /* Opera */
-  transform: scale(2);
+  -ms-transform: scale(1); /* IE */
+  -moz-transform: scale(1); /* FF */
+  -webkit-transform: scale(1); /* Safari and Chrome */
+  -o-transform: scale(1); /* Opera */
+  transform: scale(1);
   padding: 10px;
 }
 .setDateIcon{
@@ -206,22 +195,31 @@ background-position: 90px 5px;
             <div class="panel panel-default">
                 <div class="box-body">      
                     <div>
-                        <h1>Technical Assistance Request Form</h1>
+                        <h1>Technical Assistance Request Form</h1><br>
                     </div>
-                    <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/phpjasperxml-master/sample/sample1.php" >    
+                    <!-- JASPER/phpjasperxml-master/sample/sample1.php -->
+                    <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "#" >    
                         <input type = "hidden" name = "curuser" value = "<?php echo $currentuser;?>" />
-                        <table  border = 1 class = "center-text" style = "padding:20%;width:100%;">
+                        <table  border = 1 class = "center-text" style = "width:100%;">
                             <tbody>
                                 <tr>
                                     <td colspan = 4>ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
                                     <td class = "label-text left-text">Control<br>Number.</td>
-                                    <td colspan = 2><input readonly  placeholder = "Control No."  text="text" name = "control_no" class = "sizeMax alphanum subtxt" value="2020-00<?php echo getControlNo();?>"/></td>
+                                    <td colspan = 2><input readonly  placeholder = "Control No."  text="text" name = "control_no" class = "sizeMax alphanum subtxt" value=""/></td>
                                 </tr>
+                                
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Request Date:</td>
-                                    <td style = "width:15%;padding:5px 5px 5px 5px;"><input type = "text"  placeholder = "Request Date" name = "request_date" class = "datePicker1 setDateIcon sizeMax alphanum subtxt" value = "" /></td>
+                                    <td style = "width:15%;padding:5px 5px 5px 5px;">
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" name = "request_date" placeholder = "Request Date" class="datePicker1" value="" required placeholder="mm/dd/yyyy">
+                                        </div>
+                                    </td>
                                     <td style = "width:15%;"class = "label-text">Request Time:</td>
-                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("g:i a");?>"/></td>
+                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input style = "text-align:center;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("g:i a");?>"/></td>
                                     <td colspan = 4 class = "label-text">HARDWARE INFORMATION</td>
                                 </tr>
                                 <tr>
@@ -231,25 +229,25 @@ background-position: 90px 5px;
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly placeholder = "Requested By" type="text" name = "requested_by" class = "sizeMax alphanum subtxt"  value = "<?php echo usersData($currentuser);?>" readonly /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly placeholder = "Requested By" type="text" name = "requested_by" class = "sizeMax alphanum subtxt"  value = "" readonly /></td>
                                     <td class = "label-text left-text">Brand Model:</td>
                                     <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Brand Model" type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td class = "label-text left-text">Office:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo division($division_c);?>" readonly/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "" readonly/></td>
                                     <td class = "label-text left-text">Property No.:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Property No." type = "text" name = "property_no" class = "sizeMax alphanum subtxt" /> </td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Position/Designation:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo position($position_c);?>"  /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = ""  /></td>
                                     <td class = "label-text left-text">Serial No.:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Serial No." type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Contact Number:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo setPhoneNo($currentuser);?>" /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "" /></td>
                                     <td class = "label-text left-text">IP Address:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "IP Address" type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" value = "" /></td>
                                 </tr>
@@ -263,7 +261,7 @@ background-position: 90px 5px;
                         </table><br>
                         <u style = "margin-top:20px;">TYPE OF REQUEST</u>
 
-                        <table style = "margin-top:20px;">
+                        <table style = "margin-top:20px;width:100%;">
                         <tr>
                             <td>
                                 <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g1" class = "checkbox_group" value = "DESKTOP/LAPTOP"> <b>DESKTOP/LAPTOP</b><br>
@@ -329,7 +327,7 @@ background-position: 90px 5px;
 
 </tr>
 </table>
-<table border = 1 style = "margin-top:20px;">
+<table border = 1 style = "margin-top:20px;width:100%;">
 <tr>
 <td colspan = 4 class = "center-text label-text" style = "width:50%;">END-USER</td>
 <td colspan = 4 class = "center-text label-text">RICTU</td>
@@ -342,12 +340,12 @@ background-position: 90px 5px;
 
 <tr>
 <td colspan = 4>
-<textarea rows="20" name = "issue" cols="56"  style ="resize:none;text-align:left;" >
+<textarea rows="20" name = "issue" cols="56"  style ="resize:none;width:100%;" >
 
 </textarea>
 </td>
 <td colspan = 4>
-<textarea rows="20" cols="56" style ="resize:none;" name = "status" class = "disabletxtarea">
+<textarea rows="20" cols="56" style ="resize:none;width:100%;" name = "status" class = "disabletxtarea">
 
 </textarea>
 </td>
@@ -438,6 +436,163 @@ Assisted By:
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- Page script -->
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
 
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Date picker,
+    $( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+
+
+    $('#datepicker2').datepicker({
+      autoclose: true
+    })
+    $('#datepicker3').datepicker({
+      autoclose: true
+    })
+    $('#datepicker4').datepicker({
+      autoclose: true
+    })
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass   : 'iradio_minimal-blue'
+    })
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass   : 'iradio_minimal-red'
+    })
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    })
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
+    })
+  })
+</script>
+<script type = "text/javascript">
+$(function() {
+    enable_cb1();
+    enable_cb2();
+    enable_cb3();
+    enable_cb4();
+    enable_cb5();
+  $("#checkboxgroup_g1").click(enable_cb1);
+  $("#checkboxgroup_g2").click(enable_cb2);
+  $("#checkboxgroup_g3").click(enable_cb3);
+  $("#checkboxgroup_g4").click(enable_cb4);
+  $("#checkboxgroup_g5").click(enable_cb5);
+});
+
+function enable_cb1() {
+  if (this.checked) {
+    $(".checkboxgroup_g1").removeAttr("disabled");
+  } else {
+    $(".checkboxgroup_g1").attr("disabled", true);
+  }
+}
+function enable_cb2() {
+  if (this.checked) {
+    $(".checkboxgroup_g2").removeAttr("disabled");
+  } else {
+    $(".checkboxgroup_g2").attr("disabled", true);
+  }
+}
+function enable_cb3() {
+  if (this.checked) {
+    $(".checkboxgroup_g3").removeAttr("disabled");
+  } else {
+    $(".checkboxgroup_g3").attr("disabled", true);
+  }
+}
+function enable_cb4() {
+  if (this.checked) {
+    $(".checkboxgroup_g4").removeAttr("disabled");
+  } else {
+    $(".checkboxgroup_g4").attr("disabled", true);
+  }
+}
+function enable_cb5() {
+  if (this.checked) {
+    $(".checkboxgroup_g5").removeAttr("disabled");
+  } else {
+    $(".checkboxgroup_g5").attr("disabled", true);
+  }
+}
+$('.checkboxgroup_g1').on('change', function() {
+    $('.checkboxgroup_g1').not(this).prop('checked', false);  
+});
+$('.checkboxgroup_g2').on('change', function() {
+    $('.checkboxgroup_g2').not(this).prop('checked', false);  
+});
+$('.checkboxgroup_g3').on('change', function() {
+    $('.checkboxgroup_g3').not(this).prop('checked', false);  
+});
+$('.checkboxgroup_g4').on('change', function() {
+    $('.checkboxgroup_g4').not(this).prop('checked', false);  
+});
+$('.checkboxgroup_g5').on('change', function() {
+    $('.checkboxgroup_g5').not(this).prop('checked', false);  
+});
+$('.checkboxgroup_g6').on('change', function() {
+    $('.checkboxgroup_g6').not(this).prop('checked', false);  
+});
+
+
+$('.checkbox_group').on('change', function() {
+    $('.checkbox_group').not(this).prop('checked', false);  
+});
+
+// DATE PICKER
+$(function() {
+$( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+$( ".datePicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+$( ".datePicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+
+    
+});
+</script>
 
 

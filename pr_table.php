@@ -44,7 +44,7 @@ $mydb = new db(); // create a new object, class db()
                          <th width="200">TYPE</th>
                         <th width="500">PURPOSE</th>
                         <th>TARGET DATE</th>
-                        <th>ACTION</th>
+                        <th width="">ACTION</th>
                        
                     </tr>
                 </thead>
