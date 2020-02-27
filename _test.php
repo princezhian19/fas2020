@@ -8,6 +8,7 @@ require_once('_includes/sql_statements.php');
 
 
 
+// exit();
 function showUser()
 {
  $position_c = '';
@@ -15,7 +16,7 @@ function showUser()
   $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
-  $query = "SELECT * FROM `tblpersonneldivision` INNER JOIN tblemployee ON tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C WHERE tblpersonneldivision.DIVISION_M like '%$username%' ";
+  $query = "SELECT * FROM `tblpersonneldivision` LEFT JOIN tblemployee ON tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C WHERE tblpersonneldivision.DIVISION_M LIKE '%".$_SESSION['username']."%' ";
   $result = mysqli_query($link, $query);
   $val = array();
   while($row = mysqli_fetch_array($result))

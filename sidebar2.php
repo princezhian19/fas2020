@@ -39,7 +39,7 @@
           </ul>
         </li>
         <li><a style="color:black;text-decoration: none;" href="_techassistance.php"><i class="fa">&#xf0f6;</i><span>ICT Technical Assistance Form</span></a></li>
-
+        <li><a style="color:black;text-decoration: none;" href="login.php"><i class = "fa fa-sign-out"></i>Logout</li>
 
 
 <div hidden>
