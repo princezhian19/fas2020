@@ -4,12 +4,7 @@
  * and open the template in the editor.
  */
 include_once("../PHPJasperXML.inc.php");
-require_once('_includes/setting.php');
-require_once('_includes/dbaseCon.php');
-require_once('_includes/library.php');
-require_once('_includes/sql_statements.php');
-require_once('_includes/secure.php');
-require_once('calendar/bdd.php');
+
 
 $request_date = $_POST['request_date'];
 $req_date_format = date("Y-m-d",strtotime($request_date));
@@ -45,12 +40,12 @@ $mac_address = $_POST['mac_address'];
 
 
 
-$link = mysqli_connect("localhost","calaba9_intra","{^-LouqU_vpV", "calaba9_intranetdb");
+$link = mysqli_connect("localhost","root","", "db_dilg_pmis");
               if(mysqli_connect_errno()){echo mysqli_connect_error();}  
-             $currentuser = $_POST['curuser'];
+            //  $currentuser = $_POST['curuser'];
 
 
-              $query = "SELECT * FROM tblemployee where EMP_N = $currentuser";
+              $query = "SELECT * FROM tblemployee where EMP_N = 3174";
               $name = '';
               $result = mysqli_query($link, $query);
               $val = array();
