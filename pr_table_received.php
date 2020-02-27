@@ -7,90 +7,84 @@ $mydb = new db(); // create a new object, class db()
 <html>
 <head>
   <title>Procurement</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 
+
 <body>
-    
-    <div class="box">
-  <div class="box-body">
-            <h1 align="">Request For Quotation</h1>
-            <div class="box-header">
-            </div>
-            <br>
-
-            <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<li class="btn btn-success"><a href="CreatePR.php" style="color:white;text-decoration: none;">Create</a></li> -->
-
-            <br>
+<div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-body"> 
+          
+          
+            <h1 align="">Purchase Request</h1>
             
+            <br>
+
+            <li class="btn btn-success"><a href="CreatePR.php" style="color:white;text-decoration: none;">Create</a></li>
+
+            <br>
+            <br>
+
+             <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" style="height: 35px; width: 400px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" > -->
+
+            <br>
+            <br>
    
             <!-- <h3 align="center"><b>Inspection Acceptance Report</b></h3> -->
 
-            <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
+            <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                 <thead>
-                    <tr style="background-color: white;color:blue;">
-                      
+                <tr style="background-color: white;color:blue;">
+                       
                         <th>PR NO</th>
                         <th>PR DATE</th>
                         <th>OFFICE</th>
-                        <th width="100">TYPE</th>
-                        <th width="200">PURPOSE</th>
+                         <th width="200">TYPE</th>
+                        <th width="500">PURPOSE</th>
                         <th>TARGET DATE</th>
-                        <th>RECEIVE PR</th>
-                        <th>RFQ NO</th>
-                        <th>RFQ DATE</th>
-                        <th>RFQ</th>
-                        <th>SUPPLIER QOUTE</th>
-                        <th>ABSTRACT</th>
-                        <th>PURCHASE ORDER</th>
-                      
+                        <th width="200">ACTION</th>
+                        <th width="200"></th>
+                       
                     </tr>
                 </thead>
-
-                    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                    <script>
-                    $(document).ready(function(){
-                      $("#myInput").on("keyup", function() {
-                        var value = $(this).val().toLowerCase();
-                        $("#example1 tr").filter(function() {
-                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                        });
-                      });
-                    });
-                    </script> -->
                 <?php
- 
                 $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
-                $view_query = mysqli_query($conn, "SELECT a.submitted_date,a.received_date,a.id,a.pr_no,a.pmo,a.purpose,a.pr_date,a.type,a.target_date,a.stat,b.rfq_no,b.rfq_date FROM pr as a left join rfq as b ON a.pr_no=b.pr_no order by a.id DESC");
-                // $view_query = mysqli_query($conn, "SELECT rfq.id, rfq.pr_no, pr.date,pr.pmo, pr.purpose, pr.target_date FROM rfq LEFT join pr ON rfq.pr_no = pr.pr_no  order by id desc ");
+                $view_query = mysqli_query($conn, "SELECT * FROM pr order by id desc");
+
                 while ($row = mysqli_fetch_assoc($view_query)) {
-                   // $getID = $row["id"]; 
+                    $getID = $row["id"]; 
                     $id = $row["id"];
                     $pr_no = $row["pr_no"];  
                     $pmo = $row["pmo"];
-                    $submitted_date = $row["submitted_date"];
                     $received_date = $row["received_date"];
+                    $submitted_date = $row["submitted_date"];
+
 
                     $purpose = $row["purpose"];
-                    $pr_date = $row["pr_date"];
-                    $pr_date1 = date('F d, Y', strtotime($pr_date));
-                    $type = $row["type"];
-                    $target_date = $row["target_date"];
-                    $target_date1 = date('F d, Y', strtotime($target_date));
-                    
-                    $stat = $row["stat"];
-                    $rfq_no =  $row["rfq_no"];
-                    $rfq_date =  $row["rfq_date"];
-                    $rfq_date1 = date('F d, Y', strtotime($rfq_date));
-                    
 
+                    $pr_date = $row["pr_date"];
+                    $pr_date11 = date('F d, Y', strtotime($pr_date));
+
+                    $type = $row["type"];
+
+                    $target_date = $row["target_date"];
+                    $target_date11 = date('F d, Y', strtotime($target_date));
 
                     ?>
                     <tr>
-                       
+                      
+                        <?php if ($pr_no == ''): ?>
+                        <td><a href="set_pr.php?id=<?php echo $id;?>" class="btn btn-primary btn-xs">Set Pr</a></td>
+                          <?php else: ?>
                         <td><?php echo $pr_no;?></td>
-                        <td><?php echo $pr_date1;?></td>
+                        <?php endif ?>
+                         <?php if ($pr_date == "0000-00-00"): ?>
+                          <td></td>
+                        <?php else:?>
+                          <td><?php echo $pr_date11;?></td>
+                        <?php endif?>
                         <td><?php echo $pmo;?></td>
                     
                         <?php if ($type == "1"): ?>
@@ -108,9 +102,22 @@ $mydb = new db(); // create a new object, class db()
                         <?php if ($type == "5"): ?>
                           <td><?php echo "Other Services";?></td>
                         <?php endif?>
-                        <td><?php echo $purpose;?></td>
-                        <td><?php echo $target_date1;?></td>
+                        <?php if ($type == "6"): ?>
+                          <td><?php echo " Reimbursement and Petty Cash";?></td>
+                        <?php endif?>
 
+                       
+                        <td><?php echo $purpose;?></td>
+                        <td><?php echo $target_date11;?></td>
+                        <td>
+
+
+
+                          &nbsp&nbsp&nbsp&nbsp&nbsp<a href='ViewRFQdetails.php?id=<?php echo $getID; ?>' > <i style='font-size:20px' class='fa'>&#xf044;</i> </a>
+
+                         &nbsp&nbsp&nbsp&nbsp&nbsp<a  href='ViewPRv.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+
+                        </td>
                         <?php if ($submitted_date == NULL): ?>
                           <td></td>
                           <?php else: ?>
@@ -123,95 +130,16 @@ $mydb = new db(); // create a new object, class db()
                               <td>Received Date <?php echo $received_date?></td>
                             <?php endif ?>
                         <?php endif ?>
-
-                        <td><?php echo $rfq_no;?></td>
-                        
-                        <?php if ($rfq_date == ""): ?>
-                          <td></td>
-                        <?php endif?>  
-                        <?php if ($rfq_date != ""): ?>
-                          <td><?php echo $rfq_date1;?></td>
-                        <?php endif?>
-                        
-                        <td>
-                        <?php if ($stat == "1"): ?>
-                       <?php
-                        $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
-                        $rowrfq = mysqli_fetch_array($view_queryrfq);
-                        $rfqid = $rowrfq['id'];
                        
-                        ?>
-                         <!-- &nbsp&nbsp&nbsp&nbsp&nbsp<a href='/pmis/frontend/web/rfq/view?id=<?php echo $rfqid; ?>'> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> -->
+                        <!-- <td>                     
                         
-                         &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary btn-xs" href='/pmis/frontend/web/rfq/view?id=<?php echo $rfqid; ?>'> View RFQ </a>
-                        <?php endif?>
+                         &nbsp&nbsp&nbsp&nbsp&nbsp<a  onclick="return confirm('Are you sure you want to Delete this item?');" href='deletePRfinalize.php?id=<?php echo $id; ?>  ' title="Delete"> 
+                        <i style='font-size:24px' class='fa fa-trash-o' ></i> </a>
 
-                        <?php if ($stat == "0"): ?>
-                          <!-- <?php echo "For Encode";?> -->
+                    </td> -->
 
-                        <!-- &nbsp&nbsp&nbsp&nbsp&nbsp<a  href='CreateRFQ.php?prID=<?php echo $id;?>' title="View"> Create RFQ </a> -->
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs" href='CreateRFQ.php?prID=<?php echo $id;?>' >Create RFQ</a>
-                        <?php endif?>
-                        
-                        <!-- &nbsp&nbsp&nbsp&nbsp&nbsp<a href='ViewRFQdetails.php?id=<?php echo $getID; ?>' > <i style='font-size:20px' class='fa'>&#xf044;</i> </a> -->
 
-                         <!-- &nbsp&nbsp&nbsp&nbsp&nbsp<a  href='ViewPRv.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> -->
-
-                        </td>
-                        <td>
-
-                        <?php if ($stat == "1"): ?>
-                        <?php
-                        $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
-                        $rowrfq = mysqli_fetch_array($view_queryrfq);
-                        $rfqid = $rowrfq['id'];
-                       
-                        ?>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='supplier0.php?id=<?php echo $rfqid; ?>' title="View"> encode </a>
-                        <?php endif?>
-
-                        <?php if ($stat == "0"): ?>
-                        
-                          <?php endif?>
-                        </td>
-                        
-                        <td>
-                        
-
-                        <?php if ($stat == "1"): ?>
-                        <?php
-                       /*  $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
-                        $rowrfq = mysqli_fetch_array($view_queryrfq);
-                        $rfqid = $rowrfq['id']; */
-                       
-                        ?>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> encode </a>
-                        <?php endif?>
-
-                        <?php if ($stat == "0"): ?>
-                        
-                          <?php endif?>
-                      
-                        </td>
-                        <td>
-                        
-                          
-                        <?php if ($stat == "1"): ?>
-                        <?php
-                       /*  $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
-                        $rowrfq = mysqli_fetch_array($view_queryrfq);
-                        $rfqid = $rowrfq['id']; */
-                       
-                        ?>
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href=' ../frontend/web/purchase-order/index' title="View"> encode </a>
-                        <?php endif?>
-
-                        <?php if ($stat == "0"): ?>
-                        
-                          <?php endif?>
-                       
-                        </td>
-                      
+                    
                 </tr>
             <?php } ?>
 
@@ -222,12 +150,12 @@ $mydb = new db(); // create a new object, class db()
 
 </div>
 </div>
+</div>
 
 </body>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#exmaple1').DataTable();
-
+        $('#example1').DataTable();
     } );
 </script>
 
@@ -337,7 +265,7 @@ $mydb = new db(); // create a new object, class db()
       showInputs: false
     })
   })
-</script>
+</script>  
 
 
 </div>

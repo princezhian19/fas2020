@@ -50,6 +50,7 @@
           </ul> -->
         </li>
         <li><a href="ViewApp.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> APP</a></li>
+        <!-- <li><a href="ViewPRreceived.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> PR Received</a></li> -->
         <li><a href="ViewPR.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> PURCHASE REQUEST</a></li>
         <!-- <li class="treeview">
           <a href="#" style="color:black;text-decoration: none;">
