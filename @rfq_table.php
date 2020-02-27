@@ -12,7 +12,7 @@ $mydb = new db(); // create a new object, class db()
 </head>
 
 <body>
-    <
+    
     <div class="box">
   <div class="box-body">
             <h1 align="">Request For Quotation</h1>

@@ -38,7 +38,6 @@
       <br>
       <br>
         <?php include('@ntatable.php');?>
-
     </section>
   </div>
  
