@@ -195,9 +195,10 @@ background-position: 90px 5px;
             <div class="panel panel-default">
                 <div class="box-body">      
                     <div>
-                        <h1>Technical Assistance Request Form</h1>
+                        <h1>Technical Assistance Request Form</h1><br>
                     </div>
-                    <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/phpjasperxml-master/sample/sample1.php" >    
+                    <!-- JASPER/phpjasperxml-master/sample/sample1.php -->
+                    <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "#" >    
                         <input type = "hidden" name = "curuser" value = "<?php echo $currentuser;?>" />
                         <table  border = 1 class = "center-text" style = "width:100%;">
                             <tbody>
