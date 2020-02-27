@@ -20,13 +20,12 @@ function showUser()
   $val = array();
   while($row = mysqli_fetch_array($result))
     {
-     
-      $_SESSION['position'] = $position_c;
-      echo '<option value = '.$row['EMP_N'].'>'.$row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'].'</option>';
+          echo '<option value = '.$row['EMP_N'].'>'.$row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'].'</option>';
     }
   echo '</select>';
   // echo '<input type = "text" value = '.$position_c.' />';
-}
+  }
+
 
 
 
@@ -207,13 +206,13 @@ background-position: 90px 5px;
                         <h1>Technical Assistance Request Form</h1><br>
                     </div>
                     <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/sample/sample1.php" >    
-                        <input type = "hidden" name = "curuser" value = "<?php echo $currentuser;?>" />
+                        <input type = "hidden" name = "curuser" value = "" id = "selectedUser" />
                         <table  border = 1 class = "center-text" style = "width:100%;">
                             <tbody>
                                 <tr>
                                     <td colspan = 4>ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
                                     <td class = "label-text left-text">Control<br>Number.</td>
-                                    <td colspan = 2>
+                                    <td colspan = 2 style = "padding:5px 5px 5px 5px;">
                                     <?php 
                                     $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
                                     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
@@ -248,7 +247,7 @@ background-position: 90px 5px;
                                 <tr>
                                     <td colspan = 4 class = "label-text">END-USER INFORMATION </td>
                                     <td class = "label-text left-text">Equipment</td>
-                                    <td colspan = 3 class = "left-text " style = "padding:5px 5px 5px 5px;"><input  style ="max-width:500%;" placeholder = "Equipment Type" type = "text" name = "equipment_type" class = "alphanum subtxt" /></td>
+                                    <td colspan = 3 class = "left-text " style = "padding:5px 5px 5px 5px;"><input  style ="width:100%;" placeholder = "Equipment Type" type = "text" name = "equipment_type" class = "alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:</td>
@@ -303,12 +302,12 @@ background-position: 90px 5px;
                                     <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
                                     <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                     <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
-                                    <input type = "text" name = "site" value = "" style = "width:30%;" /><br>
-                                    Purpose:<input type = "text" name = "purpose" value = ""/><br>
+                                    <input type = "text" name = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
+                                    Purpose:<input type = "text" name = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                    Purpose:<input type = "text" name = "purpose2" value = ""/><br>
+                                    Purpose:<input type = "text" name = "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                 </div>
-                            </td> 
+                            </td>  
                             <td style = "width:35%;">
                                 <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
                                 <div style = "margin-left:20px;padding-top:10px;">
@@ -317,7 +316,7 @@ background-position: 90px 5px;
                                     <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
                                     <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
                                     <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
-                                    <br><input type = "text" name = "softwares" value = ""/><br>
+                                    <br><input type = "text" name = "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                 </div>
                             </td> 
                         </tr>
@@ -337,15 +336,15 @@ background-position: 90px 5px;
 <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
 <div style = "margin-left:30px;padding-top:10px;">
 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
-<input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input type = "text" name = "changeaccount" value = "" style = "width:30%;" /><br>
+<input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input type = "text" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
 </div>
 </td> 
 <td>
 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "Others"><b>Others</b><br>
-<input type = "text" name = "others1" value = "" /><br>
-<input type = "text" name = "others2" value = ""/><br>
-<input type = "text" name = "others3" value = ""/><br>
+<input type = "text" name = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+<input type = "text" name = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+<input type = "text" name = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
 
 </td> 
 
@@ -377,14 +376,15 @@ background-position: 90px 5px;
 <tr>
 <td style = "width:12.5%;">Timeliness</td>
 <td style = "width:12.5%;">
-<select name="timeliness" class="dropdown" style = "width:60%;text-align:center;">
+<select class="form-control " style="width: 100%;" name="timeliness" >
 <option value = "YES">YES</option>
 <option value = "NO">NO</option>
 </select>
 </td>
 <td style = "width:12.5%;text-align:center;">Quality</td>
 <td style = "width:12.5%;text-align:center;">
-<select name="quality" class="dropdown size250">
+<select class="form-control " style="width: 100%;" name="quality" >
+
 <option value = "5">Outstanding</option>
 <option value = "4">Very-Satisfatory</option>
 <option value = "3">Satisfatory</option>
@@ -399,7 +399,7 @@ background-position: 90px 5px;
     <div class="input-group-addon">
       <i class="fa fa-calendar"></i>
     </div>
-    <input type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
+    <input disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
   </div>
 </td>
 <td style = "width:12.5%;">Completed Date:</td>
@@ -408,7 +408,7 @@ background-position: 90px 5px;
     <div class="input-group-addon">
       <i class="fa fa-calendar"></i>
     </div>
-    <input type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="" required>
+    <input disabled type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="" required>
   </div>
 </td>
 </tr>
@@ -427,7 +427,7 @@ background-position: 90px 5px;
     <div class="input-group-addon">
       <i class="fa fa-calendar"></i>
     </div>
-    <input type="text" name = "started_time" placeholder = "Started Time" class="datePicker1" value="" required>
+    <input disabled type="text" name = "started_time" placeholder = "Started Time"  value="" required>
   </div>
 </td>
 <td style = "width:12.5%;">Completed Time:</td>
@@ -436,7 +436,7 @@ background-position: 90px 5px;
     <div class="input-group-addon">
       <i class="fa fa-calendar"></i>
     </div>
-    <input type="text" name = "completed_time" placeholder = "Completed Time" class="datePicker1" value="" required>
+    <input disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
   </div>
 </td>
 </tr>
@@ -504,6 +504,7 @@ background-position: 90px 5px;
             success:function(data)
             {
               var result = JSON.parse(data);
+              $('#selectedUser').val(result[0].currentuser);
               $('#office').val(result[0].office);
               $('#position').val(result[0].position);
               $('#phone').val(result[0].phone);

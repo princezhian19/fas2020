@@ -5,7 +5,6 @@
  */
 include_once("../PHPJasperXML.inc.php");
 
-
 $request_date = $_POST['request_date'];
 $req_date_format = date("Y-m-d",strtotime($request_date));
 
@@ -15,7 +14,14 @@ $position = $_POST['position'];
 $contact_no = $_POST['contact_no'];
 $email_address = $_POST['email_address'];
 $req_type_category = $_POST['req_type_category'];
-$req_type_subcategory = $_POST['req_type_subcategory'];
+if(isset($_POST['req_type_subcategory']))
+{
+    $req_type_subcategory = $_POST['req_type_subcategory'];
+
+}else{
+    $req_type_subcategory = '';
+
+}
 $site = $_POST['site'];
 $purpose = $_POST['purpose'];
 $purpose2 = $_POST['purpose2'];
@@ -28,7 +34,7 @@ $issue = $_POST['issue'];
 $timeliness = $_POST['timeliness'];
 $quality = $_POST['quality'];
 $control_no = $_POST['control_no'];
-$assisted_by = $_POST['assisted_by'];
+$assisted_by ='';
 $status = $_POST['status'];
 
 $equipment_type = $_POST['equipment_type'];
@@ -40,12 +46,12 @@ $mac_address = $_POST['mac_address'];
 
 
 
-$link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+$link = mysqli_connect('localhost','root','','db_dilg_pmis');
               if(mysqli_connect_errno()){echo mysqli_connect_error();}  
-            //  $currentuser = $_POST['curuser'];
+             $currentuser = $_POST['curuser'];
 
 
-              $query = "SELECT * FROM tblemployee where EMP_N = 3174";
+              $query = "SELECT * FROM tblemployee where EMP_N = $currentuser";
               $name = '';
               $result = mysqli_query($link, $query);
               $val = array();
@@ -124,8 +130,9 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                '$quality',
                null
                )";
-
- $bdd->prepare($sql_insert)->execute([$control_no,$req_date_format,$request_time,$name,$office,$position,$contact_no,$email_address,$equipment_type,$brand_model,$property_no,$serial_no,$ip_address,$mac_address,$type_req,$type_subreq,$issue,$assisted_by,$name,$timeliness,$quality]);
+if (mysqli_query($link, $sql_insert)) {
+ } else {
+ }
     // ============================================================================
    if($_POST['req_type_category'][$i] == "Others"){
         $PHPJasperXML->arrayParameter=array(
@@ -589,7 +596,7 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
 }
 
 $PHPJasperXML->load_xml_file("report1.jrxml");
-$PHPJasperXML->transferDBtoArray('localhost','calaba9_intra','{^-LouqU_vpV','calaba9_intranetdb');
+$PHPJasperXML->transferDBtoArray('localhost','root','','db_dilg_pmis');
 $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
 
 
