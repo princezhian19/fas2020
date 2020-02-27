@@ -463,7 +463,7 @@ $sql_items = $conn->query("SELECT pr.id,pr.pr_no,a.procurement,a.sn,pr.descripti
               <td><?php echo $description?></td>
               <td><?php echo $qty1?></td>
               <td><?php echo $abc?></td>
-               <td><?php echo $ans; ?></td>
+              <td><?php  $ans = $abc1*$qty;  echo number_format($ans,2); ?></td>
 
               <td>
                <?php echo '<a href="ViewUpdateRFQ1.php?id2='.$_GET['id'].'&id='.$id.'&id='.$id.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?>
