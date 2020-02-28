@@ -1,12 +1,14 @@
 <?php 
 $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
 $id = $_GET['id'];
+/* echo $id;
+exit(); */
 
-$query = mysqli_query($conn,"SELECT id FROM rfq WHERE id = '$id' ");
+/* $query = mysqli_query($conn,"SELECT id FROM rfq WHERE id = '$id' ");
 $row = mysqli_fetch_array($query);
-$rfq_id = $row['id'];
+$rfq_id = $row['id']; */
 
-$query_2 = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id ");
+$query_2 = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $id ");
 $row_2 = mysqli_fetch_array($query_2);
 $rfq_items_id = $row_2['id'];
 
@@ -23,9 +25,5 @@ echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.location.href = '/pmis/frontend/web/supplier-quote/encode?rfq=$id';
       </SCRIPT>");
 }
-
-
-
-
 
 ?>
