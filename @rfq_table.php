@@ -118,7 +118,7 @@ $mydb = new db(); // create a new object, class db()
                           Received </a>    
                         </td>
                             <?php else: ?>
-                              <td>Received Date <?php echo $received_date?></td>
+                              <td><?php echo $received_date?></td>
                             <?php endif ?>
                         <?php endif ?>
 
@@ -176,19 +176,21 @@ $mydb = new db(); // create a new object, class db()
                        
                         ?>
 
-                        <?php if (mysqli_num_rows($query_3) > 0): ?>
+                        <?php if (mysqli_num_rows($query_3) == 0): ?>
 
-                          &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary btn-xs" href='ViewSupplierItems.php?rfq=<?php echo $rfq_items_id; ?>' title="View"> View Supplier of Quote </a>
-                     
+                      
+                          &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='/pmis/frontend/web/supplier-quote/encode?rfq=<?php echo $rfqid; ?>' title="View"> Encode </a>
 
 
 
                         <?php else : ?>
 
+                       
+
+                          
+                          &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary btn-xs" href='ViewSupplierItems.php?rfq=<?php echo $rfq_items_id; ?>' title="View"> View </a>
                         
-                          &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='/pmis/frontend/web/supplier-quote/encode?rfq=<?php echo $rfqid; ?>' title="View"> Encode </a>
-                        
-                        <?php endif?> 
+                        <?php endif?>
 
 
 
@@ -232,16 +234,28 @@ $mydb = new db(); // create a new object, class db()
 
                         <?php if (mysqli_num_rows($query_3) > 0): ?>
 
-                          &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary btn-xs" href='../frontend/web/abstract-of-quote/view?id=<?php echo $rowaoq_id; ?>' title="View"> View Abstract of Quote </a>
+                        
+                          <?php if ($rowaoq_id==NULL): ?>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> Encode </a>
+
+                         
+                          <?php else : ?>
+
+                            &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary btn-xs" href='../frontend/web/abstract-of-quote/view?id=<?php echo $rowaoq_id; ?>' title="View"> View </a>
+
                      
+                          <?php endif?> 
+                        
+                       
+                          
+
 
 
 
                         <?php else : ?>
 
-                        
                          
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> Encode </a>
+
                         
                         <?php endif?> 
                   
@@ -280,24 +294,36 @@ $mydb = new db(); // create a new object, class db()
 
                    /*      echo $rowpo_id;
                         exit(); */
-                        $query_4 = mysqli_query($conn,"SELECT * FROM  po WHERE id = '$rowpo_id'");
-                       
-                        $po_id = mysqli_fetch_array($query_4);
-                        $po_idget = $po_id['id'];
+                     
                        
                         ?>
 
                         <?php if (mysqli_num_rows($query_3) > 0): ?>
+                       
+                             
+                          <?php if ($rowpo_id==NULL): ?>
 
-                          &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary btn-xs" href='../frontend/web/purchase-order/view?id=<?php echo $po_idget; ?>' title="View"> View PO </a>
+
+
+                            &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href=' ../frontend/web/purchase-order/index' title="View"> Encode </a>
+                         
+                          <?php else : ?>
+                              <?php
+                              $query_4 = mysqli_query($conn,"SELECT * FROM  po WHERE id = '$rowpo_id'");
+                       
+                              $po_id = mysqli_fetch_array($query_4);
+                              $po_idget = $po_id['id'];?>
+
+
+                            &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary btn-xs" href='../frontend/web/purchase-order/view?id=<?php echo $po_idget; ?>' title="View"> View PO </a>
+                            
+
+                     
+                          <?php endif?> 
+                        
                      
 
-
-
-                        <?php else : ?>
-
-                       
-                          &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href=' ../frontend/web/purchase-order/index' title="View"> Encode </a>
+                        
                         
                         <?php endif?> 
 

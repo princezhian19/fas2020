@@ -41,7 +41,7 @@ while ($row = mysqli_fetch_assoc($auto)) {
 
   $idGet = $row["a"];
 }
-$latest_pr_no = $getDate.'-'.$m.'-'.'00'.$idGet;
+$latest_pr_no = $getDate.'-'.$m.'-'.'0'.$idGet;
 
 $pmo = $_GET['pmo'];
 $pr_date = $_GET['pr_date'];
@@ -373,6 +373,7 @@ if (isset($_POST['add'])) {
 					document.getElementById("stocknumber").value = "";
           document.getElementById("abc").value="";
           document.getElementById("unit").value="";
+          $("#main").show();
         }
       });
     });
@@ -571,7 +572,7 @@ function confirmDelete(delUrl) {
                   <?php if ($type == ''): ?>
 
                   <select class="form-control select2" style="width: 100%;" name="type" id="type" >
-                      <option value="5">------------------------SELECT TYPE------------------------</option>
+                    <!--   <option value="5">------------------------SELECT TYPE------------------------</option> -->
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
                       <option value="3">Repair and Maintenance</option>
