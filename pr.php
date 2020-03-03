@@ -28,7 +28,7 @@ while ($row = mysqli_fetch_assoc($auto)) {
   $idGet = $row["a"];
 }
 
-$latest_pr_no = $getDate.'-'.$m.'-'.'00'.$idGet;
+$latest_pr_no = $getDate.'-'.$m.'-'.'0'.$idGet;
 
 $pmo = $_GET['pmo'];
 $pr_date = $_GET['pr_date'];
@@ -450,11 +450,11 @@ function confirmDelete(delUrl) {
                 <label>PR No. <label style="color: Red;" >*</label> </label>
                 <?php if ($pr_no != ''): ?>
                  <!--  <input class="form-control" type="text" name="pr_no" id="pr_no" autocomplete = "off" value="<?php echo $pr_no ?>"> -->
-                 <input readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'00'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span>
+                 <input readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'0'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span>
                  <?php else:  ?>
                   <!--   <input class="form-control" type="text" name="pr_no" id="pr_no" autocomplete = "off" value="<?php echo isset($_POST['pr_no']) ? $_POST['pr_no'] : '' ?>"> -->
 
-                  <input  readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'00'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
+                  <input  readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'0'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
                 <?php endif ?>
 
               </div>
@@ -536,7 +536,7 @@ function confirmDelete(delUrl) {
                   <?php if ($type == ''): ?>
 
                   <select class="form-control select2" style="width: 100%;" name="type" id="type" >
-                      <option value="5">------------------------SELECT TYPE------------------------</option>
+                   <!--    <option value="5">------------------------SELECT TYPE------------------------</option> -->
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
                       <option value="3">Repair and Maintenance</option>
@@ -747,6 +747,8 @@ function confirmDelete(delUrl) {
             $pr_no = $_GET['pr_no'];
           }
           $sql_items = $conn->query("SELECT a.sn,pa.id,pa.qty,pa.items,pa.app_id,pa.pr_no,pa.description,pa.unit,pa.abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' AND pmo = '$pmo' ");
+
+        
           while ($row = $sql_items->fetch()) {
             $sn = $row['sn'];
             $id = $row['id'];

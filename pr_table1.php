@@ -49,7 +49,7 @@ $mydb = new db(); // create a new object, class db()
                     <th width="500">PURPOSE</th>
                     <th>TARGET DATE</th>
                     <th width="200">ACTION</th>
-                    <th width="200"></th>
+                    <th width="200">RECEIVED DATE</th>
                   </tr>
                 </thead>
 
@@ -175,7 +175,7 @@ $mydb = new db(); // create a new object, class db()
                               Waiting to Received
                             </td>
                             <?php else: ?>
-                              <td>Received Date <?php echo $received_date?></td>
+                              <td><?php echo $received_date?></td>
 
                             <?php endif ?>
                           <?php endif ?>

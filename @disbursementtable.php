@@ -19,7 +19,7 @@ include('db.class.php'); // call db.class.php
         
           <div class="" >
             <div class="col-md-2" style="">
-              &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="@obcreate.php" style="color:white;text-decoration: none;">Create</a></li>
+              &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="@disbursementcreate.php" style="color:white;text-decoration: none;">Create</a></li>
             </div>
             <div class="col-md-0" style="">
             </div>
