@@ -89,17 +89,27 @@ $(document).ready (function() {
                     {
                     targets: [-1], render: function (a, b, data, d) {
                       
-                        return "<center><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view'>&#xf044;</i>";
+            var id = jsonObject[0].CONTROL_NO;
+                        return "<center><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i> </a>";
                     }
                 }],
             });
-            $('#example1 tbody').on( 'click', '#view', function () 
+            $('#example1 tbody').on( 'click', '#edit', function () 
              {
                     var oTableApi = $('#example1').dataTable().api();
                     var tr = $(this).closest('tr');
                     td = tr.find("td:first")
                     var cell = oTableApi.cell(td);
                   window.location="_editTA.php?id="+cell.data();
+            });
+
+            $('#example1 tbody').on( 'click', '#view', function () 
+             {
+                    var oTableApi = $('#example1').dataTable().api();
+                    var tr = $(this).closest('tr');
+                    td = tr.find("td:first")
+                    var cell = oTableApi.cell(td);
+                  window.location="JASPER/sample/viewTA.php?id="+cell.data();
             });
 
         }
