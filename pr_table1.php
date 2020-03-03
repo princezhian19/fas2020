@@ -158,9 +158,9 @@ $mydb = new db(); // create a new object, class db()
                         <td><?php echo $purpose;?></td>
                         <td><?php echo $target_date11;?></td>
                         <td>
-                         <!--  &nbsp&nbsp&nbsp&nbsp&nbsp<a href='export_pr.php?id=<?php echo $id; ?>' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> --> &nbsp&nbsp&nbsp&nbsp&nbsp<a href='ViewRFQdetails1.php?id=<?php echo $getID; ?>' > <i style='font-size:20px' class='fa'>&#xf044;</i> </a>
+                         <!--  &nbsp&nbsp&nbsp&nbsp&nbsp<a href='export_pr.php?id=<?php echo $id; ?>' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> --> <a href='ViewRFQdetails1.php?id=<?php echo $getID; ?>' > <i style='font-size:20px' class='fa'>&#xf044;</i> </a>
 
-                         &nbsp&nbsp&nbsp&nbsp&nbsp<a  href='ViewPRv1.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+                       <a  href='ViewPRv1.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
 
                        </td>
                        <?php if ($submitted_date == NULL): ?>

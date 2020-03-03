@@ -27,7 +27,7 @@ $mydb = new db(); // create a new object, class db()
    
             <!-- <h3 align="center"><b>Inspection Acceptance Report</b></h3> -->
 
-            <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
+            <table id="example1" class="table table-striped table-bordered" >
                 <thead>
                     <tr style="background-color: white;color:blue;">
                       
@@ -90,7 +90,7 @@ $mydb = new db(); // create a new object, class db()
                         <td><?php echo $pr_no;?></td>
                         <td><?php echo $pr_date1;?></td>
                         <td><?php echo $pmo;?></td>
-                    
+
                         <?php if ($type == "1"): ?>
                           <td><?php echo "Catering Services";?></td>
                         <?php endif?>
@@ -141,14 +141,14 @@ $mydb = new db(); // create a new object, class db()
                         ?>
                          <!-- &nbsp&nbsp&nbsp&nbsp&nbsp<a href='/pmis/frontend/web/rfq/view?id=<?php echo $rfqid; ?>'> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> -->
                         
-                         &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary btn-xs" href='/pmis/frontend/web/rfq/view?id=<?php echo $rfqid; ?>'> View RFQ </a>
+                        <a class="btn btn-primary btn-xs" href='/pmis/frontend/web/rfq/view?id=<?php echo $rfqid; ?>'> View </a>
                         <?php endif?>
 
                         <?php if ($stat == "0"): ?>
                           <!-- <?php echo "For Encode";?> -->
 
                         <!-- &nbsp&nbsp&nbsp&nbsp&nbsp<a  href='CreateRFQ.php?prID=<?php echo $id;?>' title="View"> Create RFQ </a> -->
-                        &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs" href='CreateRFQ.php?prID=<?php echo $id;?>' >Create RFQ</a>
+                        <a class="btn btn-success btn-xs" href='CreateRFQ.php?prID=<?php echo $id;?>' >Create</a>
                         <?php endif?>
                         
                         <!-- &nbsp&nbsp&nbsp&nbsp&nbsp<a href='ViewRFQdetails.php?id=<?php echo $getID; ?>' > <i style='font-size:20px' class='fa'>&#xf044;</i> </a> -->
@@ -179,7 +179,7 @@ $mydb = new db(); // create a new object, class db()
                         <?php if (mysqli_num_rows($query_3) == 0): ?>
 
                       
-                          &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='/pmis/frontend/web/supplier-quote/encode?rfq=<?php echo $rfqid; ?>' title="View"> Encode </a>
+                          <a class="btn btn-success btn-xs"  href='/pmis/frontend/web/supplier-quote/encode?rfq=<?php echo $rfqid; ?>' title="View"> Encode </a>
 
 
 
@@ -188,7 +188,7 @@ $mydb = new db(); // create a new object, class db()
                        
 
                           
-                          &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary btn-xs" href='ViewSupplierItems.php?rfq=<?php echo $rfq_items_id; ?>' title="View"> View </a>
+                         <a class="btn btn-primary btn-xs" href='ViewSupplierItems.php?rfq=<?php echo $rfq_items_id; ?>' title="View"> View </a>
                         
                         <?php endif?>
 
@@ -236,12 +236,12 @@ $mydb = new db(); // create a new object, class db()
 
                         
                           <?php if ($rowaoq_id==NULL): ?>
-                            &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> Encode </a>
+                           <a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> Encode </a>
 
                          
                           <?php else : ?>
 
-                            &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary btn-xs" href='../frontend/web/abstract-of-quote/view?id=<?php echo $rowaoq_id; ?>' title="View"> View </a>
+                            <a class="btn btn-primary btn-xs" href='../frontend/web/abstract-of-quote/view?id=<?php echo $rowaoq_id; ?>' title="View"> View </a>
 
                      
                           <?php endif?> 
@@ -305,7 +305,7 @@ $mydb = new db(); // create a new object, class db()
 
 
 
-                            &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success btn-xs"  href=' ../frontend/web/purchase-order/index' title="View"> Encode </a>
+                           <a class="btn btn-success btn-xs"  href=' ../frontend/web/purchase-order/index' title="View"> Encode </a>
                          
                           <?php else : ?>
                               <?php
@@ -315,7 +315,7 @@ $mydb = new db(); // create a new object, class db()
                               $po_idget = $po_id['id'];?>
 
 
-                            &nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary btn-xs" href='../frontend/web/purchase-order/view?id=<?php echo $po_idget; ?>' title="View"> View PO </a>
+                           <a class="btn btn-primary btn-xs" href='../frontend/web/purchase-order/view?id=<?php echo $po_idget; ?>' title="View"> View PO </a>
                             
 
                      

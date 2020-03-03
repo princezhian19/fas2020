@@ -10,7 +10,6 @@ $mydb = new db(); // create a new object, class db()
 
 </head>
 
-
 <body>
 <div class="row">
     <div class="col-md-12">
@@ -42,7 +41,7 @@ $mydb = new db(); // create a new object, class db()
                         <th>PR DATE</th>
                         <th>OFFICE</th>
                          <th width="200">TYPE</th>
-                        <th width="500">PURPOSE</th>
+                        <th width="300">PURPOSE</th>
                         <th>TARGET DATE</th>
                         <th width="">ACTION</th>
                        
@@ -125,9 +124,9 @@ $mydb = new db(); // create a new object, class db()
 
 
 
-                          &nbsp&nbsp&nbsp&nbsp&nbsp<a href='ViewRFQdetails.php?id=<?php echo $getID; ?>' > <i style='font-size:20px' class='fa'>&#xf044;</i> </a>
+                         <a href='ViewRFQdetails.php?id=<?php echo $getID; ?>' > <i style='font-size:20px' class='fa'>&#xf044;</i> </a>
 
-                         &nbsp&nbsp&nbsp&nbsp&nbsp<a  href='ViewPRv.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+                        <a  href='ViewPRv.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
 
                         </td>
                        
