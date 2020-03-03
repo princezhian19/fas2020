@@ -281,7 +281,8 @@ var c_n = $('#control_no').val();
             {
               setTimeout(function () {
               swal("Record saved successfully!");
-              }, 2000);
+              }, 1000);
+              window.location = "_techassistance.php";
             }
           });
       });
