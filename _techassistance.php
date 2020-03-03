@@ -8,32 +8,20 @@ header('location:login.php');
 
 <!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
+
 <title>FAS Dashboard</title>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Encode PR</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
-  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
-  <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -47,34 +35,84 @@ header('location:login.php');
       </ol>
       <br>
       <br>
-        <?php include('_test.php');?>
-
+        <?php include('_tableTA.php');?>
     </section>
   </div>
  
 </div>
-
-<!-- <script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="bower_components/fastclick/lib/fastclick.js"></script> -->
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
 <!-- <script src="dist/js/adminlte.min.js"></script>
 <script src="dist/js/demo.js"></script> -->
 <script>
-  $(function () {
-    $('#example2').DataTable()
-    $('#example1').DataTable({
-      'paging'      : true,
-      'lengthChange': true,
-      'searching'   : true,
-      'ordering'    : false,
-      'info'        : true,
-      'autoWidth'   : true
-    })
-  })
+
+
+$(document).ready (function() {
+    $.ajax({
+        url: '_ajax.php',
+        success : function(response) 
+        {
+            var jsonObject = $.parseJSON(response); 
+            var id = jsonObject[0].CONTROL_NO;
+            var table = $('#example1').dataTable( {
+                "data" : jsonObject,
+                "serverSide": false,
+                "processing": true,
+                "autoWidth": false,
+                "order": [[ 0, "desc" ]],
+                "language": {
+                    "searchPlaceholder": "Search records",
+                 },
+                 aLengthMenu: [
+                  [5, 10, 20, -1],
+                  [5, 10, 20, "All"]
+                ],
+                columns: 
+                [
+                        {"data" : "CONTROL_NO"},
+                        {"data" : "REQ_DATE"}, 
+                        {"data" : "REQ_TIME"},
+                        {"data" : "REQ_BY"},
+                        {"data" : "OFFICE"},
+                        {"data" : "ISSUE_PROBLEM"},
+                        {"data" : "TYPE_REQ_DESC"},
+                        {"data" : null}      
+                                  
+                ],
+                columnDefs: 
+                [
+                          {"className": "dt-center", "targets": "_all"},
+                    {
+                    targets: [-1], render: function (a, b, data, d) {
+                      
+                        return "<center><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view'>&#xf044;</i>";
+                    }
+                }],
+            });
+            $('#example1 tbody').on( 'click', '#view', function () 
+             {
+                    var oTableApi = $('#example1').dataTable().api();
+                    var tr = $(this).closest('tr');
+                    td = tr.find("td:first")
+                    var cell = oTableApi.cell(td);
+                  window.location="_editTA.php?id="+cell.data();
+            });
+
+        }
+
+    });
+
+
+
+});
+
+
 </script>
+
 
 </body>
 </html>

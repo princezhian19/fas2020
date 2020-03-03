@@ -130,6 +130,8 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                '$quality',
                null
                )";
+            //    echo $sql_insert;
+            //    exit();
 if (mysqli_query($link, $sql_insert)) {
  } else {
  }

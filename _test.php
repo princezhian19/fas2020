@@ -27,127 +27,6 @@ function showUser()
   // echo '<input type = "text" value = '.$position_c.' />';
   }
 
-
-
-
-
-
-
- 
-// function getControlNo()
-// {
-    
-//     $data = '';
-//     $DBConn = dbConnect();
-// 	if (!$DBConn) {
-// 		return false;
-// 	}
-//     	$query = "SELECT count(*) as 'count' from tbltechnical_assistance";
-// 	$rowRs = $DBConn->query( $query );
-// 	if ($rowRs->num_rows)
-// 	{
-// 		$rs = $rowRs->fetch_assoc();
-	
-// 		$data = $rs['count']+1;
-		
-// 	}
-// 	else $data = '';
-// 	$rowRs->close();
-
-// 	return $data;
-    
-// }
-// function usersData($user)
-// {
-    
-//     $data = '';
-//     $DBConn = dbConnect();
-// 	if (!$DBConn) {
-// 		return false;
-// 	}
-//     	$query = "SELECT FIRST_M, MIDDLE_M, LAST_M,EMAIL  FROM `tblemployee` WHERE EMP_N = '".$user."' ";
-// 	$rowRs = $DBConn->query( $query );
-// 	if ($rowRs->num_rows)
-// 	{
-// 		$rs = $rowRs->fetch_assoc();
-	
-// 		$data = $rs ['FIRST_M'].' '.$rs['MIDDLE_M'].' '.$rs['LAST_M'];
-		
-// 	}
-// 	else $data = '';
-// 	$rowRs->close();
-
-// 	return $data;
-    
-// }
-// function division($division_c)
-// {
-//     $DBConn = dbConnect();
-//     if (!$DBConn)
-//     {
-//     return false;
-//     }
-
-//     $query = "SELECT DIVISION_N, DIVISION_M FROM tblpersonneldivision where DIVISION_N = '".$division_c."' ";
-//     $data = "";
-//     $isSelected = "";
-//     $rowRs = $DBConn->query($query);
-//     if ($rowRs->num_rows)
-//     {
-//     if ($row = $rowRs->fetch_assoc())
-//         {
-
-//         $data.= $row['DIVISION_M'];
-//         }
-//     }
-
-//     $rowRs->close();
-//     return $data;
-// }
-// function position($position_c)
-// {
-// 	$DBConn = dbConnect();
-// 	if (!$DBConn) {
-// 		return false;
-// 	}	
-	
-// 	$query = "SELECT POSITION_ID, POSITION_M FROM `tbldilgposition` WHERE POSITION_ID = '".$position_c."' ";						
-// 	$data = "";
-// 	$isSelected = "";
-	
-// 	$rowRs = $DBConn->query( $query );	
-
-// 	if ($rowRs->num_rows)
-// 	{
-// 		if ($row = $rowRs->fetch_assoc()) {
-						
-// 			$data .= $row['POSITION_M'];
-// 		}
-				
-// 	}	
-// 	$rowRs->close();
-	
-// 	return $data;
-// }
-// function setPhoneNo($user)
-// {
-//     $data = '';
-//     $DBConn = dbConnect();
-// 	if (!$DBConn) {
-// 		return false;
-// 	}
-//     	$query = "SELECT MOBILEPHONE  FROM `tblemployee` WHERE EMP_N = '".$user."' ";
-// 	$rowRs = $DBConn->query( $query );
-// 	if ($rowRs->num_rows)
-// 	{
-// 		$rs = $rowRs->fetch_assoc();
-// 		$data = $rs ['MOBILEPHONE'];
-// 	}
-// 	else $data = '';
-// 	$rowRs->close();
-
-// 	return $data;
-// }
 ?>
  
 <!DOCTYPE html>
@@ -197,7 +76,23 @@ background-position: 90px 5px;
 </style>
 </head>
 
-<body>
+<body>        
+<!-- <button class="btn btn-lg btn-danger sweet-14" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Danger']);">Danger</button> -->
+
+<script>
+   document.querySelector('.sweet-14').onclick = function(){
+        swal({
+          title: "Are you sure you want to proceed?",
+          text: "You will not be able to recover this imaginary file!",
+          type: "error",
+          showCancelButton: true,
+          confirmButtonClass: 'btn-danger',
+          confirmButtonText: 'Yes'
+        }, function () {
+          alert('a');
+      });
+   }
+</script>
 <div class="row">
     <div class="col-md-12">
         <div class="box">
@@ -224,7 +119,7 @@ background-position: 90px 5px;
                                                   if($row = mysqli_fetch_array($result))
                                                   {
                                                     $count= $row['count']+1;
-                                                    echo '<input style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-000'.$count.' />';
+                                                    echo '<input style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-0'.$count.' />';
 
                                                   }
                                       ?>
@@ -447,7 +342,8 @@ background-position: 90px 5px;
 
 
 </table><br>
-<input type = "submit" value = "Submit" class="button white normalrounded" />
+
+<input style ="float:right;" type = "submit" value = "Submit" class="btn btn-primary btn-s " />
                     </form>
                 </div>
             </div>

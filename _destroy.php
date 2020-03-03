@@ -1,4 +1,4 @@
-<?php
-session_start();
-session_destroy();
-?>
+<form  method= "POST" id="submit" >
+<input type = "submit" value = "submit" />
+</form>
+
