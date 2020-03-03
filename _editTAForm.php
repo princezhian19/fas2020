@@ -280,7 +280,7 @@ var c_n = $('#control_no').val();
             success:function(data)
             {
               setTimeout(function () {
-              swal("Record save successfully!");
+              swal("Record saved successfully!");
               }, 2000);
             }
           });
