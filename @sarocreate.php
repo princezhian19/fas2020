@@ -100,7 +100,16 @@
                     <input  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa">
                     <br>
                     <label>Expense Class</label>
-                    <input  type="text"   class="form-control" style="height: 35px;" id="expenseclass" placeholder="Enter Expense Class" name="expenseclass">
+                    <select  class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
+           
+                    <option value = "PS">Personnel Service</option>
+                    <option value = "MOOE">Maintenance and Other Operating Expenses</option>
+                    <option value = "FE">Financial Expenses</option>
+                    <option value = "CO">Capital Outlay</option>
+                    </select>
+                    
+                  <!--   <input  type="text"   class="form-control" style="height: 35px;" id="expenseclass" placeholder="Enter Expense Class" name="expenseclass"> -->
+                    <br>
                 </div>
                 <div class="col-md-6">
                 <label>Particulars</label>

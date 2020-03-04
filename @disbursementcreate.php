@@ -189,7 +189,7 @@ $ors = $rowB['ors'];
                   
                  
                   // document.getElementById("sarogroup").value = x[5].innerHTML;
-                  
+        
                   
                 }
               </script>
@@ -225,7 +225,7 @@ $ors = $rowB['ors'];
              <input value="<?php echo $ppa;?>"  type="text" class="form-control" style="height: 35px;" id="ppa" placeholder=" PPA" name="ppa" readonly>
              <br>
              <label>UACS</label>
-             <input value="<?php echo $uacs;?>"  type="text" class="form-control" style="height: 35px;" id="uacs" placeholder=" UACS." name="uacs" readonly>
+             <input value="<?php echo $uacs;?>"  type="text" class="form-control" style="height: 35px;" id="uacs" placeholder=" UACS." name="uacs">
              <br>
                 
                 </div>
@@ -307,19 +307,13 @@ $ors = $rowB['ors'];
              <label>Other Payables</label>
              <input  type="Number" class="form-control" style="height: 35px;" id="other" placeholder="Enter Phil Health" name="other">
              <br>
-
-                     <br>
-           
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-          
+             <br>
+             
+                   
         
-                    <br>
 
                     <!-- <label>Status</label> -->
-             <select hidden class="" style="width: 100%; height: 40px;" name="status" id="status" required >
+             <select  class="form-control" style="width: 100%; height: 40px;" name="status" id="status"  >
            
              <option value = "Disbursed">Disbursed</option>
              <option value = "Pending">Pending</option>
