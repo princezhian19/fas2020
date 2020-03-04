@@ -57,7 +57,7 @@ include('db.class.php'); // call db.class.php
                     &nbsp  <button type="Summary" name="Summary" style="width:%; height: 35px" class="btn btn-success ">Export Summary</button>
           
                    
-                  </div>                        
+                  </div>                 
                 </form>
 
             </div>

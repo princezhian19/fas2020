@@ -106,6 +106,9 @@ $mydb = new db(); // create a new object, class db()
                         <?php if ($type == "5"): ?>
                           <td><?php echo "Other Services";?></td>
                         <?php endif?>
+                        <?php if ($type == "6"): ?>
+                          <td><?php echo "Reimbursement and Petty Cash";?></td>
+                        <?php endif?>
                         <td><?php echo $purpose;?></td>
                         <td><?php echo $target_date1;?></td>
 
@@ -115,7 +118,7 @@ $mydb = new db(); // create a new object, class db()
                             <?php if ($submitted_date != NULL AND $received_date == NULL): ?>
                         <td>
                           <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Received this item?');" href='received_pr.php?id=<?php echo $id; ?>  ' title="Submit"> 
-                          Received </a>    
+                          Receive </a>    
                         </td>
                             <?php else: ?>
                               <td><?php echo $received_date?></td>
