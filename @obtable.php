@@ -52,7 +52,7 @@ include('db.class.php'); // call db.class.php
                     <tr style="background-color: white;color:blue;">
                  
                   <th>DATE RECEIVED</th>
-                  <th>DATE OBLIGATE</th>
+                  <th>DATE OBLIGATED</th>
                   <th>DATE RETURNED</th>
                   <th>DATE RELEASED</th>
                   <th>ORS NUMBER</th>

@@ -155,6 +155,9 @@ $mydb = new db(); // create a new object, class db()
                         <?php if ($type == "5"): ?>
                           <td><?php echo "Other Services";?></td>
                         <?php endif?>
+                        <?php if ($type == "6"): ?>
+                          <td><?php echo "Reimbursement and Petty Cash";?></td>
+                        <?php endif?>
                         <td><?php echo $purpose;?></td>
                         <td><?php echo $target_date11;?></td>
                         <td>

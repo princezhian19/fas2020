@@ -114,7 +114,7 @@ $mydb = new db(); // create a new object, class db()
                           <td><?php echo "Other Services";?></td>
                         <?php endif?>
                         <?php if ($type == "6"): ?>
-                          <td><?php echo " Reimbursement and Petty Cash";?></td>
+                          <td><?php echo "Reimbursement and Petty Cash";?></td>
                         <?php endif?>
 
                        
