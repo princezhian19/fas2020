@@ -73,7 +73,7 @@ $ors = $rowB['ors'];
             <div class="row">
                 <div class="col-md-6">
                       <label>DVs no.</label>
-                      <input  type="text" class="form-control" style="height: 35px;" id="" placeholder="Enter DV No." name="dv" required>
+                      <input  type="text" class="form-control" style="height: 35px;" id="" placeholder=" DV No." name="dv" required>
                       <br>
                      
                       
@@ -213,7 +213,7 @@ $ors = $rowB['ors'];
               <label>SR no.</label>
               <br>
            
-             <input value="<?php echo $sr;?>"  type="text" class="form-control" style="height: 35px;" id="sr" placeholder="Enter DV No." name="sr" readonly>
+             <input value="<?php echo $sr;?>"  type="text" class="form-control" style="height: 35px;" id="sr" placeholder="SR No." name="sr" readonly>
              <br>
              
                 </div>
@@ -222,10 +222,10 @@ $ors = $rowB['ors'];
                 <div class="col-md-6">
                 
                 <label>PPA</label>
-             <input value="<?php echo $ppa;?>"  type="text" class="form-control" style="height: 35px;" id="ppa" placeholder="Enter DV No." name="ppa" readonly>
+             <input value="<?php echo $ppa;?>"  type="text" class="form-control" style="height: 35px;" id="ppa" placeholder=" PPA" name="ppa" readonly>
              <br>
              <label>UACS</label>
-             <input value="<?php echo $uacs;?>"  type="text" class="form-control" style="height: 35px;" id="uacs" placeholder="Enter DV No." name="uacs" readonly>
+             <input value="<?php echo $uacs;?>"  type="text" class="form-control" style="height: 35px;" id="uacs" placeholder=" UACS." name="uacs" readonly>
              <br>
                 
                 </div>
@@ -236,10 +236,10 @@ $ors = $rowB['ors'];
               </div>
             
              <label>Payee</label>
-             <input value="<?php echo $supplier;?>"  type="text" class="form-control" style="height: 35px;" id="payee" placeholder="Enter DV No." name="payee" readonly>
+             <input value="<?php echo $supplier;?>"  type="text" class="form-control" style="height: 35px;" id="payee" placeholder="Payee" name="payee" readonly>
              <br>  
              <label>Particular</label>
-             <input value="<?php echo $purpose;?>"   type="text" class="form-control" style="height: 35px;" id="particular" placeholder="Enter DV No." name="particular" readonly>
+             <input value="<?php echo $purpose;?>"   type="text" class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular" readonly>
              <br>  
              <label>Gross</label>
              <input value="<?php echo $amount;?>"  readonly  type="text" class="form-control" style="height: 35px;" id="amount" placeholder="Enter Amount" name="amount" >
@@ -250,11 +250,6 @@ $ors = $rowB['ors'];
             </div>
            
             <!-- </div> -->
-
-
-
-
-
             
             <div class="col-md-3">
 

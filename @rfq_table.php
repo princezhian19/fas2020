@@ -241,21 +241,16 @@ $mydb = new db(); // create a new object, class db()
                          
                           <?php else : ?>
 
+
+
                             <a class="btn btn-primary btn-xs" href='../frontend/web/abstract-of-quote/view?id=<?php echo $rowaoq_id; ?>' title="View"> View </a>
 
                      
                           <?php endif?> 
                         
-                       
-                          
-
-
-
-
                         <?php else : ?>
 
                          
-
                         
                         <?php endif?> 
                   

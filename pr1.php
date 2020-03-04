@@ -147,13 +147,17 @@ if ($unit == "bottle"){
   if ($unit == "pax"){
     $unit = 22;
   }
+
+  $datedefault = 
+
   
   $check = mysqli_query($conn,"SELECT pr_no FROM pr WHERE pr_no = '$pr_no1' ");
 
   if (mysqli_num_rows($check)>0) {
     echo "<div style='background-color:lightblue;color:red;'> <p> <b>This PR_NO is already existing</b> <p> <div>";
   }else{
-
+    
+    $today = date("Y-m-d h:i:sa");
 
     $insert_pr = mysqli_query($conn,"INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2')");
 

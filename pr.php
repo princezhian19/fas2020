@@ -169,7 +169,7 @@ if (isset($_POST['submit'])) {
   }else{
 
 
-    $insert_pr = mysqli_query($conn,"INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2')");
+    $insert_pr = mysqli_query($conn,"INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date,submitted_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2',now())");
 
     for($count = 0; $count < count($_POST["items1"]); $count++)
     {  
