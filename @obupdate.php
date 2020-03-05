@@ -67,6 +67,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
     $ors = $row["ors"];
     $ponum = $row["ponum"];
     $payee = $row["payee"];
+    //$supplier = $row["supplier"];
     $particular = $row["particular"];
     $saronumber = $row["saronumber"];
     $ppa = $row["ppa"];
@@ -193,11 +194,65 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
             <div class="row">
                 <div class="col-md-6">
                     <label>Payee/Supplier</label>
-                    <input  type="text" readonly class="form-control" style="height: 35px;" id="payee" placeholder="Payee" name="payee" value="<?php echo $payee;?>">
+                    <input  type="text" class="form-control" style="height: 35px;" id="payee" placeholder="Payee" name="payee" value="<?php echo $payee;?>">
                     <br>
+<!-- 
+                    <label>Supplier</label>
+                    <input  type="text"  class="form-control" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
+                    <br>
+                    <table class="table table-striped table-hover" id="main4">
+                      <tbody id="result4">
+                      </tbody>
+                      </table>
+ -->
+
                     <label>Particular/Purpose</label>
                     <input  type="text" readonly  class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular" value="<?php echo $particular;?>">
+                    
                 </div>
+
+
+<!-- 
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script type="text/javascript">
+              $(document).ready(function(){
+                function load_data(query)
+                {
+                  $.ajax({
+                    url:"@obsupplier.php",
+                    method:"POST",
+                    data:{query:query},
+                    success:function(data)
+                    {
+                      $('#result4').html(data);
+                    }
+                  });
+                }
+                $('#supplier').keyup(function(){
+                  var search = $(this).val();
+                  if(search != '')
+                  {
+                    load_data(search);
+                  }
+                  else
+                  {
+
+                    load_data();
+                    document.getElementById('supplier').value = "";
+                   
+                    $("#main4").show();
+                    
+                  }
+                });
+              });
+              function showRow4(row)
+              {
+                var x=row.cells;
+                document.getElementById("supplier").value = x[0].innerHTML;
+                
+                
+              }
+            </script> -->
                 <div class="col-md-6">
                 <label>Date Returned</label>
                     <br>
@@ -229,7 +284,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                 <div class="row">
                 <div class="col-md-3">
                     <label>Fund Source</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="saronum" placeholder="Fund Source" name="saronum"class="typeahead"/>
+                    <input  type="text"  class="form-control" style="height: 40px;" id="saronum" placeholder="Fund Source" name="saronum" value="<?php echo $saronumber;?>" class="typeahead"/>
                     <!-- <input type="text" name="txtCountry" id="txtCountry" class="typeahead"/> -->
                       <table class="table table-striped table-hover" id="main1">
                       <tbody id="result1">
@@ -264,8 +319,6 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                       document.getElementById('saronum').value = "";
                       document.getElementById("main1").value="";
                       document.getElementById("sarogroup").value = "";
-                     
-                      
                       
                     }
                   });
@@ -318,7 +371,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                     <label>Status</label>
                     <!-- <textarea class="form-control" placeholder="Remarks" name="remarks" ></textarea> --> 
                     <select class="form-control select" style="width: 100%; height: 40px;" name="status" id="status" required >
-                    <option>Select Status</option>
+                 
                     <option value = "Obligated">Obligated</option>
                     <option value = "Pending">Pending</option>
                     <!-- <option>Select Status</option> -->
