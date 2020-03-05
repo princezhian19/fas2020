@@ -104,7 +104,7 @@ background-position: 90px 5px;
                                                   if($row = mysqli_fetch_array($result))
                                                   {
                                                     $count= $row['count']+1;
-                                                    echo '<input style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-0'.$count.' />';
+                                                    echo '<input style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020- />';
 
                                                   }
                                       ?>

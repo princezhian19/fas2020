@@ -19,7 +19,7 @@ $link = mysqli_connect('localhost','root','','db_dilg_pmis');
               while($row = mysqli_fetch_array($result))
               {
                 $name = $row['REQ_BY'];
-                $request_date = $row['REQ_DATE'];
+                $request_date = date('M d, Y',strtotime($row['REQ_DATE']));
                   // $req_date_format = date("Y-m-d",strtotime($request_date));
                 $control_no = $row['CONTROL_NO'];
                 $request_time = $row['REQ_TIME'];
