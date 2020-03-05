@@ -469,7 +469,7 @@ function app($connect)
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width: %;" class="btn btn-success">Submit</button>
+    &nbsp&nbsp&nbsp<button type="submit" name="submit" class="btn btn-success">Submit</button>
     <br>
     <br>
     </div>
