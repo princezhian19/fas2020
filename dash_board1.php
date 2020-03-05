@@ -2,20 +2,17 @@
    $pr_date11 ="";
 ?>
 <div class="row">
-        <div class="col-md-12">
-          <div class="box">
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <h1>Dashboard</h1>
-                  <strong>Monitoring for PRs</strong>
-                  <p></p>
-
-
-
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Dashboard</h1>
+              <strong>Monitoring for PRs</strong>
+                <p></p>
                   <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
-                <thead>
-                    <tr style="background-color: white;color:blue;">
+                    <thead>
+                      <tr style="background-color: white;color:blue;">
                         <th>PR NO</th>
                         <th>PR DATE</th>
                         <th>OFFICE</th>
@@ -26,17 +23,16 @@
                         <th width="100">WINNING SUPPLIER</th>
                         <th>PO NO</th>
                         <th>PO DATE</th>
-                    </tr>
-                </thead>
-                
+                      </tr>
+                    </thead>
                 <?php 
-
-
                   $pmoUser="";
                   $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
-                  $user = $_SESSION['username']; $QQ = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$user'");
+                  $user = $_SESSION['username']; 
+                  $QQ = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$user'");
 
-                  $rowUser=mysqli_fetch_array($QQ);$user_id=$rowUser['pmo_id'];
+                  $rowUser=mysqli_fetch_array($QQ);
+                  $user_id=$rowUser['pmo_id'];
                   if ($user_id == 1){
                     $pmoUser="ORD";
                   }
@@ -44,26 +40,18 @@
                     $pmoUser="LGMED";
                   }
 
-
-
                   if ($user_id == 4){
                   $pmoUser="LGCDD";
                   }
                   
-
-
                   if ($user_id == 5){
                     $pmoUser="FAD";
                   }
-                    
-
-
+          
                   if ($user_id == 6){
                     $pmoUser="LGMED-PDMU";
                   }
                   
-
-
                   if ($user_id == 7){
                     $pmoUser="LGCDD-MBRTG";
 
@@ -72,75 +60,61 @@
 
                 $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
                 $view_query = mysqli_query($conn,"SELECT * FROM pr  where pmo = '$pmoUser'  order by id desc");
-
                 while ($row = mysqli_fetch_assoc($view_query)) {
                     $id = $row["id"];
                     $pr_no = $row["pr_no"];
-                    
                     $pr_date = $row["pr_date"];
-
-                    
-                  /*   if($pr_date = '0000-00-00'){
-                      
-                    }
-                    else{
-                      $pr_date11 = date('F d, Y', strtotime($pr_date));
-
-                    }
-                     */
-                   $pr_date11 = date('F d, Y', strtotime($pr_date));
-                 
+                    $pr_date11 = date('F d, Y', strtotime($pr_date));
                     $pmo = $row["pmo"];
                     $purpose = $row["purpose"];
-                    
                     $target_date = $row["target_date"];
                     $target_date11 = date('F d, Y', strtotime($target_date));
-
-                   
                     ?>
-                    
                      <tr>
-                         <td><a href="ViewPRv1.php?id=<?php echo $id ?>"><?php echo $pr_no;?></a></td>
+                        <td><a href="ViewPRv1.php?id=<?php echo $id ?>"><?php echo $pr_no;?></a></td>
                         <td><?php echo $pr_date11;?></td>
-                        
                         <td><?php echo $pmo;?></td>
                         <td><?php echo $purpose;?></td>
                         <td><?php echo $target_date;?></td>
-
-                        <td><?php 
-
-                        $RFQ = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
-                        $rowID = mysqli_fetch_array($RFQ);
-                        $rfq_id = $rowID['id'];
-                        $rfq_no = $rowID['rfq_no'];
-                        $rfq_date = $rowID['rfq_date'];
-                        $rfq_date11 = date('F d, Y', strtotime($rfq_date));
-                        if (mysqli_num_rows($RFQ)>0) {
-                          echo "<p style='color:green'><b>$rfq_no</b></p>";
-                        }else{ 
-                          echo " ";
-                          }
-                        ?></td>
-                        <td><?php 
-                        if (mysqli_num_rows($RFQ) > 0) {
-                          echo "<p style='color:green'><b>$rfq_date11</b></p>";
-                        }else{ 
-                          echo " ";
-                          }
-                        ?></td>
-                        <td><?php 
-                        $selectABS = mysqli_query($conn,"SELECT * FROM abstract_of_quote WHERE rfq_id = '$rfq_id'");
-                        if (mysqli_num_rows($selectABS) > 0 ) {
-                        $rowABS = mysqli_fetch_array($selectABS);
-                        $supplier_id = $rowABS['supplier_id'];
-                        $select_sup = mysqli_query($conn,"SELECT supplier_title from supplier WHERE id = '$supplier_id'");
-                        $rowSup = mysqli_fetch_array($select_sup);
-                        $win_supplier = $rowSup['supplier_title'];
-                          echo "<p style='color:green'><b>$win_supplier</b></p>";
-                        }else{
-                        echo "";
-                        }
-                        ?></td>
+                        <td>
+                          <?php 
+                          $RFQ = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
+                          $rowID = mysqli_fetch_array($RFQ);
+                          $rfq_id = $rowID['id'];
+                          $rfq_no = $rowID['rfq_no'];
+                          $rfq_date = $rowID['rfq_date'];
+                          $rfq_date11 = date('F d, Y', strtotime($rfq_date));
+                          if (mysqli_num_rows($RFQ)>0) {
+                            echo "<p style='color:green'><b>$rfq_no</b></p>";
+                          }else{ 
+                            echo " ";
+                            }
+                          ?>
+                        </td>
+                        <td>
+                          <?php 
+                          if (mysqli_num_rows($RFQ) > 0) {
+                            echo "<p style='color:green'><b>$rfq_date11</b></p>";
+                          }else{ 
+                            echo " ";
+                            }
+                          ?>
+                        </td>
+                        <td>
+                          <?php 
+                            $selectABS = mysqli_query($conn,"SELECT * FROM abstract_of_quote WHERE rfq_id = '$rfq_id'");
+                            if (mysqli_num_rows($selectABS) > 0 ) {
+                            $rowABS = mysqli_fetch_array($selectABS);
+                            $supplier_id = $rowABS['supplier_id'];
+                            $select_sup = mysqli_query($conn,"SELECT supplier_title from supplier WHERE id = '$supplier_id'");
+                            $rowSup = mysqli_fetch_array($select_sup);
+                            $win_supplier = $rowSup['supplier_title'];
+                              echo "<p style='color:green'><b>$win_supplier</b></p>";
+                            }else{
+                            echo "";
+                            }
+                          ?>
+                        </td>
                         <td><?php 
                         $selectPO = mysqli_query($conn,"SELECT po.po_no FROM selected_quote sq LEFT JOIN po on po.id = sq.po_id WHERE sq.rfq_id = '$rfq_id'");
                         if (mysqli_num_rows($selectPO) > 0 ) {

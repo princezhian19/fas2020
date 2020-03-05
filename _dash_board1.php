@@ -6,82 +6,35 @@ $mydb = new db(); // create a new object, class db()
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Procurement</title>
+  <title>Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<style>
-th{
-  color:blue;
-}
-</style>
+
 </head>
 
 <body>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box">
-        <div class="panel panel-default">
-          <div class="box-body"> 
-            <div>
-                <h1>Monitoring for ICT Technical Assistance Request</h1><br>
-                <?php 
-                ?>
-            </div>
-            <br>
-            <br>
-            <div class="well">
-              <div class="row">
-                  <div class="col-md-2">
-                        <select class="form-control " id = "selectMonth" style="width: 100%;">
-                          <option value="1">January</option>
-                          <option value="2">February</option>
-                          <option value="3">March</option>
-                          <option value="4">April</option>
-                          <option value="5">May</option>
-                          <option value="6">June</option>
-                          <option value="7">July</option>
-                          <option value="8">August</option>
-                          <option value="9">September</option>
-                          <option value="10">October</option>
-                          <option value="11">November</option>
-                          <option value="12">December</option>
-                        </select>
-                  </div>
-                  <div class="col-md-2">
-                        <select class="form-control " id="selectYear" style="width: 100%;">
-                          <?php 
-                          for($i= 2018; $i < 2021; $i++)
-                          {
-                            echo '<option value='.$i.'>'.$i.'</option>';
-                          }
-                          ?>
-                        </select>
-                  </div>
-                  
-                  <div class="col-md-2">
-                    <ol style = "decoration:none;margin-left:-20px;"><button class="btn btn-success" id = "fml"> Export FML Report</button></ol>
-                  </div>
-                  <div class="col-md-2" style = "margin-left:-30px;">
-                    <li class="btn btn-success"><a href="#" style="color:white;text-decoration: none;">Export PSL Report</a></li>
-                  </div>
-
-                  <div class = "col-md-2" style = "float:right;margin-right:-100px;">
-                  <li class="btn btn-success"><a href="_requestForm.php" style="color:white;text-decoration: none;">Create</a></li>
-                  </div>
-              </div>
-            </div>
-            <br>
-              <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
+<div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Dashboard</h1>
+              <strong>Monitoring for PRs</strong>
+                <p></p>
+                  <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                     <thead>
-                        <th>REFERENCE NO.</th>
-                        <th>RECEIVED DATE</th>
-                        <th>RECEIVED TIME</th>
-                        <th>END USER</th>
+                    <th>PR NO</th>
+                        <th>PR DATE</th>
                         <th>OFFICE</th>
-                        <th>ISSUE/CONCERN</th>
-                        <th>MODE OF REQUEST</th>
-                        <th style = "text-align:center;">ACTION</th>
+                        <th width="300">PURPOSE</th>
+                        <th width="100">TARGET DATE</th>
+                        <th>RFQ NO</th>
+                        <th>RFQ DATE</th>
+                        <th width="100">WINNING SUPPLIER</th>
+                        <th>PO NO</th>
+                        <th>PO DATE</th>
                     </thead>
                         
                         
@@ -130,20 +83,6 @@ th{
       <script src="dist/js/demo.js"></script>
       <!-- Page script -->
       <script>
-         
-  $(function () {
-    $('#fml').on('click', function()
-    {
-      var month = $('#selectMonth').val();
-      var year = $('#selectYear').val();
-     window.location = "_fmlReport.php?month="+month+"&&year="+year;
-
-
-    });
-
-
-  });
-
         $(function () {
     //Initialize Select2 Elements
 

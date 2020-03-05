@@ -68,6 +68,19 @@ $mac_address = $_POST['mac_address'];
                 $name = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
               }
 
+              
+              $query = "SELECT * FROM tbltechnical_assistance where CONTROL_NO = $control_no";
+              $name = '';
+              $result = mysqli_query($link, $query);
+              $val = array();
+              while($row = mysqli_fetch_array($result))
+              {
+                $req_date_format = $row['REQ_DATE'];
+                echo $req_date_format;
+              }
+exit();
+
+
 
 
 $PHPJasperXML = new PHPJasperXML();

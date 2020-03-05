@@ -78,21 +78,6 @@ background-position: 90px 5px;
 
 <body>        
 <!-- <button class="btn btn-lg btn-danger sweet-14" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Danger']);">Danger</button> -->
-
-<script>
-   document.querySelector('.sweet-14').onclick = function(){
-        swal({
-          title: "Are you sure you want to proceed?",
-          text: "You will not be able to recover this imaginary file!",
-          type: "error",
-          showCancelButton: true,
-          confirmButtonClass: 'btn-danger',
-          confirmButtonText: 'Yes'
-        }, function () {
-          alert('a');
-      });
-   }
-</script>
 <div class="row">
     <div class="col-md-12">
         <div class="box">
@@ -137,7 +122,7 @@ background-position: 90px 5px;
                                         </div>
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Request Time:</td>
-                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input style = "text-align:center;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("g:i a");?>"/></td>
+                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input style = "text-align:center;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("H:i A",strtotime(date("h:m A")));?>"/></td>
                                     <td colspan = 4 class = "label-text">HARDWARE INFORMATION</td>
                                 </tr>
                                 <tr>
@@ -181,169 +166,169 @@ background-position: 90px 5px;
                         <u style = "margin-top:20px;">TYPE OF REQUEST</u>
 
                         <table style = "margin-top:20px;width:100%;">
-                        <tr>
-                            <td>
-                                <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g1" class = "checkbox_group" value = "DESKTOP/LAPTOP"> <b>DESKTOP/LAPTOP</b><br>
-                                <div style = "margin-left:30px;padding-top:10px;">
-                                    <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Hardware Error"> Hardware Error<br>
-                                    <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Software Error"> Software Error<br>
-                                    <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Computer Assembly"> Computer Assembly<br>
-                                    <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Parts Replacement"> Parts Replacement<br>
-                                    <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Virus Scanning"> Virus Scanning
-                                </div>
-                            </td> 
-                            <td><br>
-                                <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
-                                <div style = "margin-left:30px;padding-top:10px;">
-                                    <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
-                                    <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
-                                    <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
-                                    <input type = "text" name = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                    Purpose:<input type = "text" name = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                                    <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                    Purpose:<input type = "text" name = "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                                </div>
-                            </td>  
-                            <td style = "width:35%;">
-                                <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
-                                <div style = "margin-left:20px;padding-top:10px;">
-                                    <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
-                                    <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
-                                    <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
-                                    <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
-                                    <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
-                                    <br><input type = "text" name = "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                                </div>
-                            </td> 
-                        </tr>
-<tr>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<td>
-<input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g4" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>PRINTER/SCANNER</b><br>
-<div style = "margin-left:30px;padding-top:10px;">
-<input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Installation"> Installation<br>
-<input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Troubleshooting"> Troubleshooting<br>
-<input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Sharing/Networking"> Sharing/Networking<br>
-</div>
-</td> 
-<td>
-<input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
-<div style = "margin-left:30px;padding-top:10px;">
-<input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
-<input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input type = "text" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-<input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
-</div>
-</td> 
-<td>
-<input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "Others"><b>Others</b><br>
-<input type = "text" name = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-<input type = "text" name = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-<input type = "text" name = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <tr>
+                              <td>
+                                  <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g1" class = "checkbox_group" value = "DESKTOP/LAPTOP"> <b>DESKTOP/LAPTOP</b><br>
+                                  <div style = "margin-left:30px;padding-top:10px;">
+                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Hardware Error"> Hardware Error<br>
+                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Software Error"> Software Error<br>
+                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Computer Assembly"> Computer Assembly<br>
+                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Parts Replacement"> Parts Replacement<br>
+                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Virus Scanning"> Virus Scanning
+                                  </div>
+                              </td> 
+                              <td><br>
+                                  <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
+                                  <div style = "margin-left:30px;padding-top:10px;">
+                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
+                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
+                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
+                                      <input type = "text" name = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
+                                      Purpose:<input type = "text" name = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
+                                      Purpose:<input type = "text" name = "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                  </div>
+                              </td>  
+                              <td style = "width:35%;">
+                                  <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
+                                  <div style = "margin-left:20px;padding-top:10px;">
+                                      <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
+                                      <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
+                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
+                                      <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
+                                      <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
+                                      <br><input type = "text" name = "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                  </div>
+                              </td> 
+                          </tr>
+                          <tr>
+                          <td>&nbsp;</td>
+                          </tr>
+                          <tr>
+                          <td>
+                          <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g4" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>PRINTER/SCANNER</b><br>
+                          <div style = "margin-left:30px;padding-top:10px;">
+                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Installation"> Installation<br>
+                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Troubleshooting"> Troubleshooting<br>
+                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Sharing/Networking"> Sharing/Networking<br>
+                          </div>
+                          </td> 
+                          <td>
+                          <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
+                          <div style = "margin-left:30px;padding-top:10px;">
+                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
+                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input type = "text" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
+                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
+                          </div>
+                          </td> 
+                          <td>
+                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "Others"><b>Others</b><br>
+                          <input type = "text" name = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input type = "text" name = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input type = "text" name = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
 
-</td> 
+                          </td> 
 
-</tr>
-</table>
-<table border = 1 style = "margin-top:20px;width:100%;">
-<tr>
-<td colspan = 4 class = "center-text label-text" style = "width:50%;">END-USER</td>
-<td colspan = 4 class = "center-text label-text">RICTU</td>
-</tr>
-<tr>
-<td colspan = 4>ISSUE/PROBLEM/ERROR DETAILS:</td>
-<td colspan = 4>FINDINGS AND RESOLUTION/RECOMMENDATION</td>
-</tr>
-
-
-<tr>
-<td colspan = 4>
-<textarea rows="20" name = "issue" cols="56"  style ="resize:none;width:100%;" >
-
-</textarea>
-</td>
-<td colspan = 4>
-<textarea rows="20" cols="56" style ="resize:none;width:100%;" name = "status" class = "disabletxtarea">
-
-</textarea>
-</td>
-</tr>
-<tr>
-<td style = "width:12.5%;">Timeliness</td>
-<td style = "width:12.5%;">
-<select class="form-control " style="width: 100%;" name="timeliness" >
-<option value = "YES">YES</option>
-<option value = "NO">NO</option>
-</select>
-</td>
-<td style = "width:12.5%;text-align:center;">Quality</td>
-<td style = "width:12.5%;text-align:center;">
-<select class="form-control " style="width: 100%;" name="quality" >
-
-<option value = "5">Outstanding</option>
-<option value = "4">Very-Satisfatory</option>
-<option value = "3">Satisfatory</option>
-<option value = "2">Unsatisfatory</option>
-<option value = "1">Poor</option>
-</select>
-
-</td>
-<td style = "width:12.5%;">Started Date:</td>
-<td style = "width:12.5%;">
-  <div class="input-group date">
-    <div class="input-group-addon">
-      <i class="fa fa-calendar"></i>
-    </div>
-    <input disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
-  </div>
-</td>
-<td style = "width:12.5%;">Completed Date:</td>
-<td style = "width:12.5%;">
-<div class="input-group date">
-    <div class="input-group-addon">
-      <i class="fa fa-calendar"></i>
-    </div>
-    <input disabled type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="" required>
-  </div>
-</td>
-</tr>
-<tr> 
-<td colspan = 4>
-<!-- Assisted By:
-<select name="assisted_by" class="dropdown size250">
-<option value = "Charles Adrian T. Odi">Charles Adrian T. Odi</option>
-<option value = "Christian Paul V. Ferrer">Christian Paul V. Ferrer</option>
-<option value = "Mark Kim A. Sacluti">Mark Kim A. Sacluti</option>
-</select> -->
-</td>
-<td style = "width:12.5%;">Started Time:</td>
-<td style = "width:12.5%;">
-  <div class="input-group date">
-    <div class="input-group-addon">
-      <i class="fa fa-calendar"></i>
-    </div>
-    <input disabled type="text" name = "started_time" placeholder = "Started Time"  value="" required>
-  </div>
-</td>
-<td style = "width:12.5%;">Completed Time:</td>
-<td style = "width:12.5%;">
-  <div class="input-group date">
-    <div class="input-group-addon">
-      <i class="fa fa-calendar"></i>
-    </div>
-    <input disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
-  </div>
-</td>
-</tr>
+                          </tr>
+                          </table>
+                        <table border = 1 style = "margin-top:20px;width:100%;">
+                                                  <tr>
+                                                  <td colspan = 4 class = "center-text label-text" style = "width:50%;">END-USER</td>
+                                                  <td colspan = 4 class = "center-text label-text">RICTU</td>
+                                                  </tr>
+                                                  <tr>
+                                                  <td colspan = 4>ISSUE/PROBLEM/ERROR DETAILS:</td>
+                                                  <td colspan = 4>FINDINGS AND RESOLUTION/RECOMMENDATION</td>
+                                                  </tr>
 
 
+                                                  <tr>
+                                                  <td colspan = 4>
+                                                  <textarea rows="20" name = "issue" cols="56"  style ="resize:none;width:100%;" >
+
+                                                  </textarea>
+                                                  </td>
+                                                  <td colspan = 4>
+                                                  <textarea rows="20" cols="56" style ="resize:none;width:100%;" name = "status" class = "disabletxtarea">
+
+                                                  </textarea>
+                                                  </td>
+                                                  </tr>
+                                                  <tr>
+                                                  <td style = "width:12.5%;">Timeliness</td>
+                                                  <td style = "width:12.5%;">
+                                                  <select class="form-control " style="width: 100%;" name="timeliness" >
+                                                  <option value = "YES">YES</option>
+                                                  <option value = "NO">NO</option>
+                                                  </select>
+                                                  </td>
+                                                  <td style = "width:12.5%;text-align:center;">Quality</td>
+                                                  <td style = "width:12.5%;text-align:center;">
+                                                  <select class="form-control " style="width: 100%;" name="quality" >
+
+                                                  <option value = "5">Outstanding</option>
+                                                  <option value = "4">Very-Satisfatory</option>
+                                                  <option value = "3">Satisfatory</option>
+                                                  <option value = "2">Unsatisfatory</option>
+                                                  <option value = "1">Poor</option>
+                                                  </select>
+
+                                                  </td>
+                                                  <td style = "width:12.5%;">Started Date:</td>
+                                                  <td style = "width:12.5%;">
+                                                    <div class="input-group date">
+                                                      <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                      </div>
+                                                      <input disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
+                                                    </div>
+                                                  </td>
+                                                  <td style = "width:12.5%;">Completed Date:</td>
+                                                  <td style = "width:12.5%;">
+                                                  <div class="input-group date">
+                                                      <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                      </div>
+                                                      <input disabled type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="" required>
+                                                    </div>
+                                                  </td>
+                                                  </tr>
+                                                  <tr> 
+                                                  <td colspan = 4>
+                                                  <!-- Assisted By:
+                                                  <select name="assisted_by" class="dropdown size250">
+                                                  <option value = "Charles Adrian T. Odi">Charles Adrian T. Odi</option>
+                                                  <option value = "Christian Paul V. Ferrer">Christian Paul V. Ferrer</option>
+                                                  <option value = "Mark Kim A. Sacluti">Mark Kim A. Sacluti</option>
+                                                  </select> -->
+                                                  </td>
+                                                  <td style = "width:12.5%;">Started Time:</td>
+                                                  <td style = "width:12.5%;">
+                                                    <div class="input-group date">
+                                                      <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                      </div>
+                                                      <input disabled type="text" name = "started_time" placeholder = "Started Time"  value="" required>
+                                                    </div>
+                                                  </td>
+                                                  <td style = "width:12.5%;">Completed Time:</td>
+                                                  <td style = "width:12.5%;">
+                                                    <div class="input-group date">
+                                                      <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                      </div>
+                                                      <input disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
+                                                    </div>
+                                                  </td>
+                                                  </tr>
 
 
 
-</table><br>
 
-<input style ="float:right;" type = "submit" value = "Submit" class="btn btn-primary btn-s " />
+
+                        </table><br>
+
+                      <input style ="float:right;" type = "submit" value = "Submit" class="btn btn-primary btn-s sweet-14" />
                     </form>
                 </div>
             </div>
