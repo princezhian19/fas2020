@@ -10,7 +10,7 @@ $return_arr = array();
 
 $query = "SELECT 
 * FROM `tbltechnical_assistance` WHERE `OFFICE` LIKE  '%".$_SESSION['username']."%' ";
-echo $query;
+
 $result = mysqli_query($con,$query);
 
 while($row = mysqli_fetch_array($result)){

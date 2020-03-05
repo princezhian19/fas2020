@@ -9,7 +9,7 @@ $_SESSION['username'] = $username ;
 
 if($_SESSION['username'] ='mmmonteiro')
 {
-  ($_SESSION['username'] = 'fad';
+  $_SESSION['username'] = 'fad';
 }else{
   $_SESSION['username'] = $username ;
 
@@ -46,10 +46,6 @@ else{
 }
 
 }
-
-
-
-
 
 
 ?>
