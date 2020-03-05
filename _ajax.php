@@ -26,8 +26,8 @@ while($row = mysqli_fetch_array($result)){
     $st = $row['START_TIME'];
     $cd = $row['COMPLETED_DATE'];
     $ct = $row['COMPLETED_TIME'];
-    // $to_time = strtotime("2020-03-02 11:50:00");
-    // $from_time = strtotime("2020-03-02 10:50:00");
+    $to_time = strtotime("2020-03-02 9:00");
+    $from_time = strtotime("2020-03-02 10:50:00");
     // $rt = round(abs($to_time - $from_time) / 60,2). " minute";
 
     $return_arr[] = array(

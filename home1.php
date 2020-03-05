@@ -4,21 +4,8 @@ if(!isset($_SESSION['username'])){
 header('location:login.php');
 }
 ?>
-
-
 <!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
 <title>Dashboard</title>
 <head>
   <meta charset="utf-8">
@@ -29,20 +16,18 @@ header('location:login.php');
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-  <?php include('sidebar2.php');?>
-  
-  <div class="content-wrapper">
-    <section class="content-header">
-      <ol class="breadcrumb">
-        <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">APP</li>
-      </ol>
+  <div class="wrapper">
+    <?php include('sidebar2.php');?>
+
+      <div class="content-wrapper">
+        <section class="content-header">
+          <ol class="breadcrumb">
+            <li><a href="home.php"><i class=""></i> Home</a></li>
+            <li class="active">APP</li>
+          </ol>
       <br>
       <br>
         <?php include('dash_board1.php');?>
@@ -68,7 +53,13 @@ header('location:login.php');
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,
-      'autoWidth'   : true
+      'autoWidth'   : true,
+      aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
     })
   })
 </script>
@@ -82,7 +73,13 @@ header('location:login.php');
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,
-      'autoWidth'   : true
+      'autoWidth'   : true,
+      aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
     })
   })
 </script>
@@ -96,7 +93,13 @@ header('location:login.php');
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,
-      'autoWidth'   : true
+      'autoWidth'   : true,
+        aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
     })
   })
 </script>

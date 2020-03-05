@@ -12,7 +12,9 @@ $insert ="UPDATE `tbltechnical_assistance` SET
 `SERIAL_NO`='".$_POST['serial_no']."',
 `IP_ADDRESS`='".$_POST['ip_address']."',
 `MAC_ADDRESS`='".$_POST['mac_address']."',
-`ISSUE_PROBLEM`='".$_POST['issue_concern']."' WHERE `CONTROL_NO` = '".$_POST['control_no']."'";
+`ISSUE_PROBLEM`='".$_POST['issue_concern']."',
+`ASSIST_BY` = '".$_POST['assist_by']."'
+WHERE `CONTROL_NO` = '".$_POST['control_no']."'";
 
 if (mysqli_query($link, $insert)) {
 } else {

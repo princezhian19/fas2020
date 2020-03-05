@@ -48,6 +48,15 @@ function fillInputs()
                           <?php echo $row['ISSUE_PROBLEM'];?>
                           </textarea>
                           </div>
+
+                      <div class="form-group">
+                          <label>Assist By:<small style="color:red;">*</small></label>
+                          <select class="form-control " style="width: 100%;" name="assist_by" >
+                          <option value = "Charles Adrian T. Odi">Charles Adrian T. Odi</option>
+                          <option value = "Mark Kim A. Sacluti">Mark Kim A. Sacluti</option>
+                          <option value = "Christian Paul Ferrer">ChrisTian Paul Ferrer </option>
+                          </select>
+                              </div>
                    
       <?php
     }

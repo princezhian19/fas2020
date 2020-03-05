@@ -3,6 +3,7 @@ session_start();
 if(!isset($_SESSION['username'])){
 header('location:login.php');
 }
+  
 ?>
 
 
@@ -71,6 +72,11 @@ $(document).ready (function() {
                   [5, 10, 20, -1],
                   [5, 10, 20, "All"]
                 ],
+                "bPaginate": true,
+                "bLengthChange": false,
+                "bFilter": true,
+                "bInfo": false,
+                "bAutoWidth": false,
                 columns: 
                 [
                         {"data" : "CONTROL_NO"},
@@ -115,9 +121,6 @@ $(document).ready (function() {
         }
 
     });
-
-
-
 });
 
 
