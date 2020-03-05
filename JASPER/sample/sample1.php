@@ -5,8 +5,9 @@
  */
 include_once("../PHPJasperXML.inc.php");
 
-$request_date = $_POST['request_date'];
-$req_date_format = date("Y-m-d",strtotime($request_date));
+$request_date =  date("M d, Y",strtotime($_POST['request_date']));
+$request_date1 = $_POST['request_date'];
+$req_date_format = date("Y-m-d",strtotime($request_date1));
 
 // $request_time = $_POST['request_time'];
 if (strstr($_POST['request_time'], 'PM' ) ) {

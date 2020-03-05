@@ -15,7 +15,7 @@ $result = mysqli_query($con,$query);
 
 while($row = mysqli_fetch_array($result)){
     $cn = $row['CONTROL_NO'];
-    $rd = $row['REQ_DATE'];//date format
+    $rd = date('M d, Y',strtotime($row['REQ_DATE']));//date format
     $rtI = $row['REQ_TIME'];
     $rb = $row['REQ_BY'];
     $office=$row['OFFICE'];
