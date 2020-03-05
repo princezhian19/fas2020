@@ -30,7 +30,15 @@ th{
             </div>
             <br>
             <br>
-            <div class="well">
+            <?php
+            if($_SESSION['username'] != 'fad')
+            {
+              ?>
+              <li class="btn btn-success"><a href="_requestForm.php" style="color:white;text-decoration: none;">Create</a></li>
+              <?php
+            }else{
+              ?>
+               <div class="well">
               <div class="row">
                   <div class="col-md-2">
                         <select class="form-control " id = "selectMonth" style="width: 100%;">
@@ -71,6 +79,10 @@ th{
                   </div>
               </div>
             </div>
+              <?php
+            }
+            ?>
+           
             <br>
               <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                     <thead>
