@@ -60,7 +60,13 @@
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,
-      'autoWidth'   : true
+      'autoWidth'   : true,
+      aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
     })
   })
 </script>
@@ -74,7 +80,13 @@
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,
-      'autoWidth'   : true
+      'autoWidth'   : true,
+      aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
     })
   })
 </script>
@@ -88,7 +100,12 @@
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,
-      'autoWidth'   : true
+      'autoWidth'   : true,   aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
     })
   })
 </script>
@@ -103,7 +120,13 @@
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,
-      'autoWidth'   : true
+      'autoWidth'   : true,
+      aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
     })
   })
 </script>
