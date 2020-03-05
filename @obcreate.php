@@ -68,7 +68,7 @@ function app($connect)
     <div class="panel panel-default">
         <br>
       
-            <h1 align="">&nbspCreate Obligation</h1>
+            <h1 align="">Create Obligation</h1>
             <div class="box-header with-border">
     
         <br>
@@ -151,7 +151,7 @@ function app($connect)
                         <input value="<?php echo date('m/d/Y')?>" required type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datereceived">
                     </div>
                     <br>
-                    <br>
+                    
                     
                     <label>Date Processed</label>
                     <br>
