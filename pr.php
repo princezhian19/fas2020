@@ -169,7 +169,7 @@ if (isset($_POST['submit'])) {
   }else{
 
 
-    $insert_pr = mysqli_query($conn,"INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2')");
+    $insert_pr = mysqli_query($conn,"INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date,submitted_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2',now())");
 
     for($count = 0; $count < count($_POST["items1"]); $count++)
     {  
@@ -334,6 +334,13 @@ if (isset($_POST['add'])) {
        
          $insert_items = mysqli_query($conn,'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc) 
           VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'")');
+
+        /*   echo 'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc) 
+          VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'")';
+          exit();
+ */
+
+
      echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Successfuly Saved!  </p> </div></div>  '; 
      }
    }

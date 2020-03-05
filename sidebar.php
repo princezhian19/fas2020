@@ -120,8 +120,8 @@
           </a>
           <ul class="treeview-menu" >
             <!-- <li><a href="/pmis/frontend/web/rfq/index" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> Draft/For Posting RFQs</a></li> -->
-            <li><a href="@saro.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> SARO</a></li>
-            <li><a href="@obligation.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> OBLIGATION</a></li>
+            <li><a href="@saro.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> SARO/SUB-ARO</a></li>
+            <li><a href="@obligation.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
           </ul>
         </li>
          <li class="treeview">
@@ -133,7 +133,7 @@
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="@nta.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA</a></li>
+            <li><a href="@nta.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA/NCA</a></li>
             <li><a href="@disbursement.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li>
           
             <!-- <li><a href="@ntaobligation.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA Payment</a></li> -->

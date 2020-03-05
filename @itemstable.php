@@ -72,12 +72,12 @@ include('db.class.php'); // call db.class.php
         
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT * FROM item_list order by id asc");
+            $view_query = mysqli_query($conn, "SELECT * FROM app order by id asc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
                   $id = $row["id"];  
-                  $code = $row["code"];
-                  $items = $row["item"];
+                  $code = $row["sn"];
+                  $items = $row["procurement"];
                   
                 
 

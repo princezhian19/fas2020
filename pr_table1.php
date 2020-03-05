@@ -48,8 +48,8 @@ $mydb = new db(); // create a new object, class db()
                     <th width="200">TYPE</th>
                     <th width="500">PURPOSE</th>
                     <th>TARGET DATE</th>
-                    <th width="200">ACTION</th>
-                    <th width="200">RECEIVED DATE</th>
+                    <th width="">ACTION</th>
+                    <th width="">RECEIVED DATE</th>
                   </tr>
                 </thead>
 
@@ -155,15 +155,24 @@ $mydb = new db(); // create a new object, class db()
                         <?php if ($type == "5"): ?>
                           <td><?php echo "Other Services";?></td>
                         <?php endif?>
+                        <?php if ($type == "6"): ?>
+                          <td><?php echo "Reimbursement and Petty Cash";?></td>
+                        <?php endif?>
                         <td><?php echo $purpose;?></td>
                         <td><?php echo $target_date11;?></td>
                         <td>
-                         <!--  &nbsp&nbsp&nbsp&nbsp&nbsp<a href='export_pr.php?id=<?php echo $id; ?>' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> --> <a href='ViewRFQdetails1.php?id=<?php echo $getID; ?>' > <i style='font-size:20px' class='fa'>&#xf044;</i> </a>
+                        <?php if ($submitted_date == NULL || $received_date == NULL): ?>
+                              <!--  &nbsp&nbsp&nbsp&nbsp&nbsp<a href='export_pr.php?id=<?php echo $id; ?>' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> --> <a href='ViewRFQdetails1.php?id=<?php echo $getID; ?>' > <i style='font-size:20px' class='fa'>&#xf044;</i> </a>
 
-                       <a  href='ViewPRv1.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+                              <a  href='ViewPRv1.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+                          <?php else: ?>
 
+                            <a  href='ViewPRv1.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+
+                            <?php endif ?>
+                       
                        </td>
-                       <?php if ($submitted_date == NULL): ?>
+                       <?php if ($submitted_date == NULL ): ?>
                          <td>
                           <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Submit this item?');" href='submit_pr1.php?id=<?php echo $id; ?>  ' title="Submit"> 
                           Submit </a>    

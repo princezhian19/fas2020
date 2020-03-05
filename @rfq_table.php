@@ -62,7 +62,7 @@ $mydb = new db(); // create a new object, class db()
                 <?php
  
                 $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
-                $view_query = mysqli_query($conn, "SELECT a.submitted_date,a.received_date,a.id,a.pr_no,a.pmo,a.purpose,a.pr_date,a.type,a.target_date,a.stat,b.rfq_no,b.rfq_date FROM pr as a left join rfq as b ON a.pr_no=b.pr_no where a.submitted_date is not NULL Order by a.id DESC");
+                $view_query = mysqli_query($conn, "SELECT a.submitted_date,a.received_date,a.id,a.pr_no,a.pmo,a.purpose,a.pr_date,a.type,a.target_date,a.stat,b.rfq_no,b.rfq_date FROM pr as a left join rfq as b ON a.pr_no=b.pr_no Order by a.id DESC");
                 // $view_query = mysqli_query($conn, "SELECT rfq.id, rfq.pr_no, pr.date,pr.pmo, pr.purpose, pr.target_date FROM rfq LEFT join pr ON rfq.pr_no = pr.pr_no  order by id desc ");
                 while ($row = mysqli_fetch_assoc($view_query)) {
                    // $getID = $row["id"]; 
@@ -87,7 +87,7 @@ $mydb = new db(); // create a new object, class db()
                     ?>
                     <tr>
                        
-                        <td><?php echo $pr_no;?></td>
+                        <td><a href="ViewPRv.php?id=<?php echo $id?>"><?php echo $pr_no;?></a></td>
                         <td><?php echo $pr_date1;?></td>
                         <td><?php echo $pmo;?></td>
 
@@ -106,17 +106,21 @@ $mydb = new db(); // create a new object, class db()
                         <?php if ($type == "5"): ?>
                           <td><?php echo "Other Services";?></td>
                         <?php endif?>
+                        <?php if ($type == "6"): ?>
+                          <td><?php echo "Reimbursement and Petty Cash";?></td>
+                        <?php endif?>
                         <td><?php echo $purpose;?></td>
                         <td><?php echo $target_date1;?></td>
 
                         <?php if ($submitted_date == NULL): ?>
-                          <td></td>
+                          <td><b>DRAFT</b></td>
                           <?php else: ?>
                             <?php if ($submitted_date != NULL AND $received_date == NULL): ?>
                         <td>
                           <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Received this item?');" href='received_pr.php?id=<?php echo $id; ?>  ' title="Submit"> 
-                          Received </a>    
+                          Receive </a>    
                         </td>
+                           
                             <?php else: ?>
                               <td><?php echo $received_date?></td>
                             <?php endif ?>
@@ -179,7 +183,7 @@ $mydb = new db(); // create a new object, class db()
                         <?php if (mysqli_num_rows($query_3) == 0): ?>
 
                       
-                          <a class="btn btn-success btn-xs"  href='/pmis/frontend/web/supplier-quote/encode?rfq=<?php echo $rfqid; ?>' title="View"> Encode </a>
+                          <a class="btn btn-success btn-xs"  href='/pmis/frontend/web/supplier-quote/encode?rfq=<?php echo $rfqid; ?>' title="View"> Create </a>
 
 
 
@@ -193,14 +197,13 @@ $mydb = new db(); // create a new object, class db()
                         <?php endif?>
 
 
-
                         <?php endif?>
+
 
                         <?php if ($stat == "0"): ?>
                         
                           <?php endif?> 
                          
-
                          <!--  /pmis/frontend/web/rfq/view?id= -->
                         </td>
                         
@@ -224,6 +227,7 @@ $mydb = new db(); // create a new object, class db()
                         $query_3 = mysqli_query($conn,"SELECT * FROM  abstract_of_quote WHERE rfq_id = '$rfqid'");
                        
                         $rowaoq = mysqli_fetch_array($query_3);
+                        /* while(); */
                         $rowaoq_id = $rowaoq['abstract_no'];
                        
                       /*   echo "SELECT * FROM abstract_of_quote WHERE rfq_id = '$rfqid'";
@@ -236,26 +240,21 @@ $mydb = new db(); // create a new object, class db()
 
                         
                           <?php if ($rowaoq_id==NULL): ?>
-                           <a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> Encode </a>
+                           <a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> Create </a>
 
                          
                           <?php else : ?>
+
+
 
                             <a class="btn btn-primary btn-xs" href='../frontend/web/abstract-of-quote/view?id=<?php echo $rowaoq_id; ?>' title="View"> View </a>
 
                      
                           <?php endif?> 
                         
-                       
-                          
-
-
-
-
                         <?php else : ?>
 
                          
-
                         
                         <?php endif?> 
                   
@@ -305,7 +304,7 @@ $mydb = new db(); // create a new object, class db()
 
 
 
-                           <a class="btn btn-success btn-xs"  href=' ../frontend/web/purchase-order/index' title="View"> Encode </a>
+                           <a class="btn btn-success btn-xs"  href=' ../frontend/web/purchase-order/index' title="View"> Create </a>
                          
                           <?php else : ?>
                               <?php
