@@ -1,6 +1,8 @@
 <?php
-ini_set('display_errors', 0);
-error_reporting(0);
+require_once('_includes/setting.php');
+require_once('_includes/dbaseCon.php');
+require_once('_includes/library.php');
+require_once('_includes/sql_statements.php');
 require_once('functions.php'); 
 
 $UNAME = $_SESSION['username'];
@@ -159,13 +161,13 @@ function fillInputs2()
 
                     <div class="form-group">
                       <label>Started Time:<small style="color:red;">*</small></label>
-                        <input placeholder = "Contact No" required autocomplete = "false"  class="form-control" name="contact_no" type="text" id="supplier" value = "<?php echo $row['CONTACT_NO'];?>">
+                        <input placeholder = "Started Time:" required autocomplete = "false"  class="form-control" name="started_time" type="text" id="supplier"  value ="<?php echo date("H:i A",strtotime(date("h:m A")));?>" >
                           </div>    
 
                     <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <input name = "cb1" type="checkbox" class="checkboxgroup_g1 form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Resolved</label>
-                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <input name = "cb1" type="checkbox" class="checkboxgroup_g2 form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Defectived (to be referred to GSS for repair)</label>
                               </div>
 
@@ -180,19 +182,19 @@ function fillInputs2()
                           <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                               </div>
-                                <input  type="text" name = "started_date" placeholder = "Started Date" class="datePicker1 form-control"  value="" required>
+                                <input  type="text" name = "completed_date" placeholder = "Started Date" class="datePicker1 form-control"  value="" required>
                                   </div>
                                     </div>
 
                     <div class="form-group">
                       <label>Completed Time:<small style="color:red;">*</small></label>
-                        <input placeholder = "Contact No" required autocomplete = "false"  class="form-control" name="contact_no" type="text" id="supplier" value = "<?php echo $row['CONTACT_NO'];?>">
+                        <input placeholder = "Completed Time:" required autocomplete = "false"  class="form-control" name="completed_time" type="text" id="supplier"value ="<?php echo date("H:i A",strtotime(date("h:m A")));?>" >
                           </div>  
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
                         <label>Completion of ICT Technical Assistance: <small style="color:red;">*</small></label>
-                          <textarea class="form-control" rows="5" name="issue_concern" >
+                          <textarea class="form-control" rows="5" name="diagnose_desc" >
                             </textarea>
                               </div>
                     </div>
@@ -334,6 +336,10 @@ function fillInputs2()
 <link rel="stylesheet" href="_includes/sweetalert.css">
 
 <script>
+    $(".datePicker1").datepicker().datepicker("setDate", new Date());
+
+// ========================================================================================
+// ========================================================================================
 var c_n = $('#control_no').val();
    document.querySelector('.sweet-14').onclick = function(){
         swal({
@@ -357,7 +363,7 @@ var c_n = $('#control_no').val();
                 setTimeout(function () {
                 swal("Record saved successfully!");
                 }, 3000);
-                window.location = "_techassistance.php";
+                // window.location = "_techassistance.php";
             }
           });
       });
