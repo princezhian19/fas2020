@@ -97,7 +97,15 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                `IP_ADDRESS`,
                `MAC_ADDRESS`, 
                `TYPE_REQ`,
-               `TYPE_REQ_DESC`, 
+               `TYPE_REQ_DESC`,
+               `TEXT1`,
+               `TEXT2`,
+               `TEXT3`,
+               `TEXT4`,
+               `TEXT5`,
+               `TEXT6`,
+               `TEXT7`,
+               `TEXT8`,
                `ISSUE_PROBLEM`, 
                `START_DATE`,
                `START_TIME`, 
@@ -108,7 +116,8 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                `PERSON_ASSISTED`, 
                `TIMELINESS`, 
                `QUALITY`, 
-               `STATUS`)
+               `STATUS`,
+               `STATUS_REQUEST`)
                VALUES (null,
                '$control_no',
                '$req_date_format',
@@ -126,6 +135,14 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                '$mac_address',
                '$type_req',
                '$type_subreq',
+               '$site',
+               '$purpose',
+               '$purpose2',
+               '$softwares',
+               '$changeaccount',
+               '$others1',
+               '$others2',
+               '$others3',
                '$issue',
                '0000-00-00',
                null,
@@ -136,8 +153,10 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                '$name',
                '$timeliness',
                '$quality',
-               null
+               null,
+               'Pending'
                )";
+
             //    echo $sql_insert;
             //    exit();
 if (mysqli_query($link, $sql_insert)) {

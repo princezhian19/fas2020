@@ -38,7 +38,11 @@ th{
               <?php
             }else{
               ?>
-               <div class="well">
+
+              <?php
+            }
+            ?>
+            <div class="well">
               <div class="row">
                   <div class="col-md-2">
                         <select class="form-control " id = "selectMonth" style="width: 100%;">
@@ -79,26 +83,22 @@ th{
                   </div>
               </div>
             </div>
-              <?php
-            }
-            ?>
-           
             <br>
               <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                     <thead>
-                        <th>REFERENCE NO.</th>
+                        <th>CONTROL NO.</th>
                         <th>RECEIVED DATE</th>
                         <th>RECEIVED TIME</th>
                         <th>END USER</th>
                         <th>OFFICE</th>
                         <th>ISSUE/CONCERN</th>
                         <th>MODE OF REQUEST</th>
+                        <th>Assigned Person</th>
+                        <th>STATUS</th>
                         <th style = "text-align:center;">ACTION</th>
                     </thead>
                         
                         
-
-                    </tbody>
 
 
                 </table>
@@ -144,6 +144,7 @@ th{
       <script>
          
   $(function () {
+  
     $('#fml').on('click', function()
     {
       var month = $('#selectMonth').val();

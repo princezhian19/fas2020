@@ -7,13 +7,13 @@ $password = $_POST['password'];
 // for mam
 $_SESSION['username'] = $username ;
 
-if($_SESSION['username'] ='mmmonteiro')
-{
-  ($_SESSION['username'] = 'fad';
-}else{
-  $_SESSION['username'] = $username ;
+// if($_SESSION['username'] ='mmmonteiro')
+// {
+//   $_SESSION['username'] = 'fad';
+// }else{
+//   $_SESSION['username'] = $username ;
 
-}
+// }
 
 $selectUser = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$username' AND password = '$password' ");
 

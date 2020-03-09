@@ -2,7 +2,7 @@
 ini_set('display_errors', 0);
 error_reporting(0);
 require_once('functions.php'); 
-session_start();  
+
 $UNAME = $_SESSION['username'];
 
 function fillInputs()
@@ -49,14 +49,14 @@ function fillInputs()
                           </textarea>
                           </div>
 
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                           <label>Assist By:<small style="color:red;">*</small></label>
                           <select class="form-control " style="width: 100%;" name="assist_by" >
                           <option value = "Charles Adrian T. Odi">Charles Adrian T. Odi</option>
                           <option value = "Mark Kim A. Sacluti">Mark Kim A. Sacluti</option>
                           <option value = "Christian Paul Ferrer">ChrisTian Paul Ferrer </option>
                           </select>
-                              </div>
+                              </div> -->
                    
       <?php
     }
@@ -136,6 +136,72 @@ function fillInputs2()
                 <?php echo fillInputs2(); ?>
                 </div>
             </div>
+            <!-- FOR RICTU ONLY -->
+            <?php
+            if($_SESSION['username'] != 'fad')
+            {
+
+            }else{
+            ?>
+            <div class="well">
+                <div class="row">
+                  <div class="col-sm-6 col-md-6">
+
+                    <div class="form-group">
+                      <label>Started Date:<small style="color:red;">*</small></label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                              </div>
+                                <input  type="text" name = "started_date" placeholder = "Started Date" class="datePicker1 form-control"  value="" required>
+                                  </div>
+                                    </div>
+
+                    <div class="form-group">
+                      <label>Started Time:<small style="color:red;">*</small></label>
+                        <input placeholder = "Contact No" required autocomplete = "false"  class="form-control" name="contact_no" type="text" id="supplier" value = "<?php echo $row['CONTACT_NO'];?>">
+                          </div>    
+
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Resolved</label>
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Defectived (to be referred to GSS for repair)</label>
+                              </div>
+
+                
+
+
+                  </div>
+                  <div class="col-sm-6 col-md-6">
+                  <div class="form-group">
+                      <label>Completed Date:<small style="color:red;">*</small></label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                              </div>
+                                <input  type="text" name = "started_date" placeholder = "Started Date" class="datePicker1 form-control"  value="" required>
+                                  </div>
+                                    </div>
+
+                    <div class="form-group">
+                      <label>Completed Time:<small style="color:red;">*</small></label>
+                        <input placeholder = "Contact No" required autocomplete = "false"  class="form-control" name="contact_no" type="text" id="supplier" value = "<?php echo $row['CONTACT_NO'];?>">
+                          </div>  
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Completion of ICT Technical Assistance: <small style="color:red;">*</small></label>
+                          <textarea class="form-control" rows="5" name="issue_concern" >
+                            </textarea>
+                              </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+            }
+            ?>
+            
           </div>
 
           <button class="btn btn-primary btn-s  sweet-14" style="float: right;" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Danger']); "id="finalizeButton" type="button" onclick="return confirm('Are you sure you want to save now?');">Save Changes</button>
@@ -288,10 +354,10 @@ var c_n = $('#control_no').val();
             
             success:function(data)
             {
-              setTimeout(function () {
-              swal("Record saved successfully!");
-              }, 3000);
-              window.location = "_techassistance.php";
+                setTimeout(function () {
+                swal("Record saved successfully!");
+                }, 3000);
+                window.location = "_techassistance.php";
             }
           });
       });

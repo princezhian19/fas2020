@@ -1,5 +1,11 @@
 <?php
-session_start();
+
+
+// destroy the session and check to make sure it has been destroyed
 session_destroy();
-header("Location: home.php");
+    if(!session_is_registered('username')){
+        $loginMessage = 'You have been logged out.';
+        include 'home1.php';
+        exit();
+    }
 ?>

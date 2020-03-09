@@ -104,7 +104,7 @@ background-position: 90px 5px;
                                                   if($row = mysqli_fetch_array($result))
                                                   {
                                                     $count= $row['count']+1;
-                                                    echo '<input style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020- />';
+                                                    echo '<input style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-0'.$count.' />';
 
                                                   }
                                       ?>
@@ -118,7 +118,7 @@ background-position: 90px 5px;
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" name = "request_date" placeholder = "Request Date" class="datePicker1" value="" required placeholder="mm/dd/yyyy">
+                                            <input type="text" name = "request_date" placeholder = "Request Date" class="datePicker1" value="" required placeholder="mm/dd/yyyy" >
                                         </div>
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Request Time:</td>
@@ -183,10 +183,10 @@ background-position: 90px 5px;
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
-                                      <input type = "text" name = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                      Purpose:<input type = "text" name = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
+                                      Purpose:<input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                      Purpose:<input type = "text" name = "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      Purpose:<input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td>  
                               <td style = "width:35%;">
@@ -197,7 +197,7 @@ background-position: 90px 5px;
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
                                       <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
                                       <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
-                                      <br><input type = "text" name = "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <br><input type = "text" name = "softwares" id= "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td> 
                           </tr>
@@ -217,15 +217,15 @@ background-position: 90px 5px;
                           <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
                           <div style = "margin-left:30px;padding-top:10px;">
                           <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
-                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input type = "text" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
+                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
                           <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
                           </div>
                           </td> 
                           <td>
                           <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "Others"><b>Others</b><br>
-                          <input type = "text" name = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                          <input type = "text" name = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                          <input type = "text" name = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
 
                           </td> 
 
@@ -430,6 +430,7 @@ background-position: 90px 5px;
 
     //Date picker,
     $( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $(".datePicker1").datepicker().datepicker("setDate", new Date());
 
 
     $('#datepicker2').datepicker({
@@ -471,6 +472,16 @@ background-position: 90px 5px;
 </script>
 <script type = "text/javascript">
 $(function() {
+  document.getElementById("site").disabled = true;
+  document.getElementById("purpose").disabled = true;
+  document.getElementById("purpose2").disabled = true; 
+  document.getElementById("softwares").disabled = true;
+  document.getElementById("changeaccount").disabled = true; 
+  document.getElementById("others1").disabled = true; 
+  document.getElementById("others2").disabled = true; 
+  document.getElementById("others3").disabled = true; 
+  
+
     enable_cb1();
     enable_cb2();
     enable_cb3();
@@ -481,6 +492,7 @@ $(function() {
   $("#checkboxgroup_g3").click(enable_cb3);
   $("#checkboxgroup_g4").click(enable_cb4);
   $("#checkboxgroup_g5").click(enable_cb5);
+  
 });
 
 function enable_cb1() {
@@ -493,15 +505,29 @@ function enable_cb1() {
 function enable_cb2() {
   if (this.checked) {
     $(".checkboxgroup_g2").removeAttr("disabled");
+    document.getElementById("site").disabled = false; 
+    document.getElementById("purpose").disabled = false; 
+    document.getElementById("purpose2").disabled = false; 
+
+
   } else {
     $(".checkboxgroup_g2").attr("disabled", true);
+    document.getElementById("site").disabled = true; 
+    document.getElementById("purpose").disabled = true; 
+    document.getElementById("purpose2").disabled = true; 
+
+
   }
 }
 function enable_cb3() {
   if (this.checked) {
     $(".checkboxgroup_g3").removeAttr("disabled");
+    document.getElementById("softwares").disabled = false; 
+
   } else {
     $(".checkboxgroup_g3").attr("disabled", true);
+    document.getElementById("softwares").disabled = true; 
+
   }
 }
 function enable_cb4() {
@@ -514,8 +540,13 @@ function enable_cb4() {
 function enable_cb5() {
   if (this.checked) {
     $(".checkboxgroup_g5").removeAttr("disabled");
+    document.getElementById("changeaccount").disabled = false; 
+
   } else {
     $(".checkboxgroup_g5").attr("disabled", true);
+    document.getElementById("changeaccount").disabled = true; 
+    
+
   }
 }
 $('.checkboxgroup_g1').on('change', function() {

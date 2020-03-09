@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['username'])){
 header('location:login.php');
 }
-  
+ $username =  $_SESSION['username'];
 ?>
 
 
@@ -47,24 +47,51 @@ header('location:login.php');
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
+
+<script src="_includes/sweetalert.min.js"></script>
+<link rel="stylesheet" href="_includes/sweetalert.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css" rel="stylesheet"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
 <!-- <script src="dist/js/adminlte.min.js"></script>
 <script src="dist/js/demo.js"></script> -->
 <script>
 
 
-$(document).ready (function() {
+$(document).ready(function() {
+  $('.select2').on('change', function()
+      {
+        swal({
+          title: "Are you sure you want to save?",
+          text: "Control No:",
+          type: "info",
+          showCancelButton: true,
+          confirmButtonClass: 'btn-danger',
+          confirmButtonText: 'Yes',
+  closeOnConfirm: false,
+  showLoaderOnConfirm: true
+        }, function () {
+        
+      });
+      });
+
+
+
+
+  // ===========================================================================
     $.ajax({
         url: '_ajax.php',
         success : function(response) 
         {
             var jsonObject = $.parseJSON(response); 
             var id = jsonObject[0].CONTROL_NO;
+            
             var table = $('#example1').dataTable( {
                 "data" : jsonObject,
                 "serverSide": false,
                 "processing": true,
                 "autoWidth": false,
-                "order": [[ 0, "desc" ]],
+                "order": [[ 1, "desc" ]],
                 "language": {
                     "searchPlaceholder": "Search records",
                  },
@@ -86,8 +113,9 @@ $(document).ready (function() {
                         {"data" : "OFFICE"},
                         {"data" : "ISSUE_PROBLEM"},
                         {"data" : "TYPE_REQ_DESC"},
+                        {"data" : "ASSIGNED_PERSON"},
+                        {"data" : 'STATUS_REQUEST'},
                         {"data" : null}      
-                                  
                 ],
                 columnDefs: 
                 [
@@ -96,10 +124,68 @@ $(document).ready (function() {
                     targets: [-1], render: function (a, b, data, d) {
                       
             var id = jsonObject[0].CONTROL_NO;
-                        return "<center><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i> </a>";
+            if(<?php echo  "'".$username."'";?> == 'fad')
+            {
+              return "<center><i id = 'sweet-14' style = 'font-size:20px;color:#2196F3;tex-align:center;' class=' fa fa-check-circle' aria-hidden='true'></i>&nbsp;<i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i>";
+
+            }else{
+              return "<center><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i>";
+
+            }
                     }
                 }],
             });
+            $('#example1 tbody').on( 'click', '#sweet-14', function () 
+             {
+              var oTableApi = $('#example1').dataTable().api();
+                    var tr = $(this).closest('tr');
+                    td = tr.find("td:first")
+                    var cell = oTableApi.cell(td);
+              //  =====================================================
+                  swal({
+                  title: 'Approved by:',
+                  input: 'select',
+                  inputOptions: {
+                    'Mark Kim Sacluti': 'Mark Kim Sacluti',
+                    'Charles Adrian Odi': 'Charles Adrian Odi',
+                    'Christian Paul Ferrer': 'Christian Paul Ferrer'
+                  },
+                  inputPlaceholder: 'Select ICT Staff',
+                  showCancelButton: true,
+                  inputValidator: function (value) {
+                    return new Promise(function (resolve, reject) {
+                      if (value === 'Mark Kim Sacluti') {
+                        resolve()
+                      }else if(value == 'Charles Adrian Odi')
+                      {
+                        resolve()
+                      } else {
+                        resolve()
+                      }
+                    })
+                  }
+                }).then(function (result) {
+                  swal({
+                    type: 'success',
+                    html: 'Successfully approved by:' + result,
+                    closeOnConfirm: false
+                  })
+                  $.ajax({
+                    url:"_approvedTA.php",
+                    method:"POST",
+                    data:{
+                      ict_staff:result,
+                      control_no:cell.data()
+                    },
+                    success:function()
+                    {
+                     window.location = '_techassistance.php';
+                    console.log(ict_staff);
+                    }
+                  });
+                })
+            });
+
             $('#example1 tbody').on( 'click', '#edit', function () 
              {
                     var oTableApi = $('#example1').dataTable().api();

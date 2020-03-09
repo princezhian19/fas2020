@@ -1,3 +1,4 @@
+
 <header class="main-header" >
     <a href="" class="logo" style="text-decoration: none; background-color: #3c8dbc;">
       <span class="logo-lg" style="color:white;">FAS</span>
@@ -38,7 +39,20 @@
         <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
           </ul>
         </li>
-        <li><a style="color:black;text-decoration: none;" href="_techassistance.php"><i class="fa">&#xf0f6;</i><span>ICT Technical Assistance Form</span></a></li>
+        <li><a style="color:black;text-decoration: none;" href="_techassistance.php"><i class="fa">&#xf0f6;</i>TA REQUEST 
+        
+        <?php 
+        if($_SESSION['username'] != 'fad')
+        {
+
+        }else{
+          ?>
+                  <span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span>
+
+          <?php
+        }
+        ?>
+  <span class="sr-only">unread messages</span></span></a></li>
         <li><a style="color:black;text-decoration: none;" href="login.php"><i class = "fa fa-sign-out"></i>Logout</li>
 
 
@@ -180,3 +194,10 @@
 
     </section>
   </aside>
+  <script>
+  setInterval(function(){
+$('#ta_request').load('_countTA.php');
+}, 100); /* time in milliseconds (ie 2 se  conds)*/
+
+
+  </script>
