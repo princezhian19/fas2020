@@ -19,6 +19,10 @@ if($name == 'fad')
     $result = mysqli_query($con,$query);
 }
 
+$query = "SELECT 
+* FROM `tbltechnical_assistance` WHERE `OFFICE` LIKE  '%".$_SESSION['username']."%' ";
+
+$result = mysqli_query($con,$query);
 
 while($row = mysqli_fetch_array($result)){
     $cn = $row['CONTROL_NO'];

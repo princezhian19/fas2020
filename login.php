@@ -12,7 +12,6 @@ $_SESSION['username'] = $username ;
 //   $_SESSION['username'] = 'fad';
 // }else{
 //   $_SESSION['username'] = $username ;
-
 // }
 
 $selectUser = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$username' AND password = '$password' ");
@@ -46,10 +45,6 @@ else{
 }
 
 }
-
-
-
-
 
 
 ?>
