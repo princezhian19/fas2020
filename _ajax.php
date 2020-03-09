@@ -19,10 +19,7 @@ if($name == 'fad')
     $result = mysqli_query($con,$query);
 }
 
-$query = "SELECT 
-* FROM `tbltechnical_assistance` WHERE `OFFICE` LIKE  '%".$_SESSION['username']."%' ";
 
-$result = mysqli_query($con,$query);
 
 while($row = mysqli_fetch_array($result)){
     $cn = $row['CONTROL_NO'];
@@ -41,6 +38,7 @@ while($row = mysqli_fetch_array($result)){
     $from_time = strtotime("2020-03-02 10:50:00");
     $stat = $row['STATUS'];
     $sr = $row['STATUS_REQUEST'];
+    $_SESSION['status_request'] = $sr;
     // $rt = round(abs($to_time - $from_time) / 60,2). " minute";
 if($sr == 'Pending')
 {
@@ -60,7 +58,7 @@ if($sr == 'Pending')
                     "OFFICE"     => $office,
                     "ISSUE_PROBLEM"=>$issue,
                     "TYPE_REQ_DESC"=>$rt,
-                    "ASSIGNED_PERSON"=>'sample',
+                    "ASSIGNED_PERSON"=>$ab,
                     "STATUS_REQUEST"=>$sr,
                     );
 }

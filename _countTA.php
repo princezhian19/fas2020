@@ -2,7 +2,7 @@
      $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
      if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
-                   $query = "SELECT count(*) as 'count' from tbltechnical_assistance where `STATUS_REQUEST` = 'Pending' ";
+                   $query = "SELECT count(*) as 'count' from tbltechnical_assistance where `STATUS_REQUEST` = 'Pending'  ";
                    $result = mysqli_query($link, $query);
                    $val = array();
                    while($row = mysqli_fetch_array($result))

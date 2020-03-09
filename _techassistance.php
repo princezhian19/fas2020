@@ -127,7 +127,7 @@ $(document).ready(function() {
             if(<?php echo  "'".$username."'";?> == 'fad')
             {
               return "<center><i id = 'sweet-14' style = 'font-size:20px;color:#2196F3;tex-align:center;' class=' fa fa-check-circle' aria-hidden='true'></i>&nbsp;<i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i>";
-
+                
             }else{
               return "<center><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i>";
 
