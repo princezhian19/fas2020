@@ -216,8 +216,8 @@ if (isset($_POST['submit'])) {
    $qty = $_POST["qty"][$count];
    $id1 = $_POST["id1"][$count];
    // $update_app = mysqli_query($conn,"UPDATE app SET pmo_id = '$pmo', qty='$qty'  WHERE id = $id1");
-   $update_app = mysqli_query($conn,"UPDATE app SET  qty='$qty'  WHERE id = $id1");
-   $update_app2 = mysqli_query($conn,"UPDATE app_items SET  qty='$qty'  WHERE sn = $sn1");
+   $update_app = mysqli_query($conn,"UPDATE app SET  qty='$qty',pmo_id=$pmo  WHERE id = $id1");
+   $update_app2 = mysqli_query($conn,"UPDATE app_items SET  qty='$qty',pmo_id=$pmo  WHERE sn = '$sn1' ");
  }
 
  $uapp = mysqli_query($conn,"UPDATE app SET unit_id = '$unit_id11', sn = '$sn1' , code = '$code1' , procurement = '$item1', source_of_funds_id = $fund1, category_id = $category1, mode_of_proc_id = $mode1, price = '$price1',app_price = '$app_price1', remarks = '$remarks1' WHERE id = $id ");
@@ -225,7 +225,7 @@ if (isset($_POST['submit'])) {
  $update_budget = mysqli_query($conn,"UPDATE estimated_budget SET mooe = '$mooe1' , co = '$co1' , total_budget = '$budget1' WHERE app_id = $app_id ");
  echo ("<SCRIPT LANGUAGE='JavaScript'>
   window.alert('Successfuly Update!');
-  window.location.href = 'UpdateAPP.php?id=$id';
+  window.location.href = 'ViewApp.php?id=$id';
   </SCRIPT>");
 
 }

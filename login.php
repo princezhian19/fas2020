@@ -12,6 +12,10 @@ $_SESSION['username'] = $username ;
 //   $_SESSION['username'] = 'fad';
 // }else{
 //   $_SESSION['username'] = $username ;
+<<<<<<< HEAD
+=======
+
+>>>>>>> f8727a0fa9449dfb5a393b5a003141064d306927
 // }
 
 $selectUser = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$username' AND password = '$password' ");

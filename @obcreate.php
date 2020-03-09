@@ -301,6 +301,8 @@ function app($connect)
                       document.getElementById('saronum').value = "";
                       document.getElementById("main1").value="";
                       document.getElementById("sarogroup").value = "";
+                      //document.getElementById("ppa").value = "";
+
                       $("#main1").show();
                      
                       
@@ -314,6 +316,7 @@ function app($connect)
                   document.getElementById("saronum").value = x[0].innerHTML;
                   document.getElementById("sarogroup").value = x[5].innerHTML;
                   document.getElementById("ppa").value = x[6].innerHTML;
+                  document.getElementById("uacs").value = x[1].innerHTML;
                   
                   
                 }

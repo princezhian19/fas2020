@@ -165,6 +165,7 @@ if ($unit == "21") {
   $unit = "cart";
 }
 
+      $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(-1);
 
     $total = $excelrow['qty']*$excelrow['abc'];
     $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['sn']);
