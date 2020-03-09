@@ -31,6 +31,10 @@ if(isset($_POST['req_type_subcategory']))
     $req_type_subcategory = '';
 
 }
+
+
+if(isset($site ,$purpose, $purpose2, $changeaccount, $others1, $others2,$others3))
+{
 $site = $_POST['site'];
 $purpose = $_POST['purpose'];
 $purpose2 = $_POST['purpose2'];
@@ -39,6 +43,17 @@ $changeaccount = $_POST['changeaccount'];
 $others1 = $_POST['others1'];
 $others2 = $_POST['others2'];
 $others3 = $_POST['others3'];
+}else{
+    $site = '';
+    $purpose = '';
+    $purpose2 ='';
+    $softwares = '';
+    $changeaccount = '';
+    $others1 = '';
+    $others2 = '';
+    $others3 = '';
+}
+
 $issue = $_POST['issue'];
 $timeliness = $_POST['timeliness'];
 $quality = $_POST['quality'];

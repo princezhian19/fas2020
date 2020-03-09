@@ -197,7 +197,7 @@ background-position: 90px 5px;
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
                                       <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
                                       <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
-                                      <br><input type = "text" name = "softwares" id= "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <br><input type = "text" name = "softwares" id= "softwares" value = "dd" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td> 
                           </tr>
