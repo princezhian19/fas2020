@@ -29,7 +29,7 @@
       }
       else
       {
-
+        
       }
     });
   });
@@ -119,7 +119,7 @@
 
             <div class="col-xs-3">
               <label>Approve by : </label>
-              <input type="text" readonly class="form-control" style="height: 40px;" id="approved_by" placeholder="" name="approved_by" value="ELIAS F. FERNANDEZ JR.">
+              <input type="text" readonly class="form-control" style="height: 40px;" id="approved_by" placeholder="" name="approved_by" value="NOEL R. BARTOLABAC, CESO V">
             </div>
 
             <div class="col-xs-3">

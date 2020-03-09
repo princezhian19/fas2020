@@ -28,7 +28,7 @@ while($row = $results->fetch(PDO::FETCH_ASSOC))
      echo '<tr onclick="javascript:showRow1(this);">' .
       
     '<td hidden>' . $row['saronumber'] . '</td>' . 
-    '<td hidden>' . $row['saronumber'] .'</td>' . 
+    '<td hidden>' . $row['uacs'] .'</td>' . 
     '<td hidden>' . $row['saronumber'] . '</td>' . 
     '<td hidden>' . $row['saronumber'] . '</td>' . 
     '<td style="text-align: center;" >' . $row['saronumber'] . '</td>' . 

@@ -368,7 +368,7 @@ $objPHPExcel->getActiveSheet()->getStyle('C'.$rowF.':C'.$rowG)->applyFromArray($
 $objPHPExcel->getActiveSheet()->getStyle('C'.$rowF.':C'.$rowG)->applyFromArray($styleRight);
 
 if ($request_by == 1 ) {
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowI,"ELOISA G. ROZUL");
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowI,"JAY-AR T. BELTRAN");
   $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ,"Chief, LGCDD");
 
 }
@@ -426,7 +426,7 @@ $objPHPExcel->getActiveSheet()->getStyle('B'.$rowI)->applyFromArray($styleRight)
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowJ,"Designation:");
 $objPHPExcel->getActiveSheet()->mergeCells('D'.$rowJ.':E'.$rowJ);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowJ,"Assistan Regional Director");
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowJ,"Assistant Regional Director");
 $objPHPExcel->getActiveSheet()->mergeCells('F'.$rowJ.':G'.$rowJ);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$rowJ,"Chief, GSS");
 $objPHPExcel->getActiveSheet()->getStyle('A'.$rowJ)->applyFromArray($styleContent3);

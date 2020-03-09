@@ -186,10 +186,7 @@ $mydb = new db(); // create a new object, class db()
                           <a class="btn btn-success btn-xs"  href='/pmis/frontend/web/supplier-quote/encode?rfq=<?php echo $rfqid; ?>' title="View"> Create </a>
 
 
-
                         <?php else : ?>
-
-                       
 
                           
                          <a class="btn btn-primary btn-xs" href='ViewSupplierItems.php?rfq=<?php echo $rfq_items_id; ?>' title="View"> View </a>
@@ -237,15 +234,12 @@ $mydb = new db(); // create a new object, class db()
                         ?>
 
                         <?php if (mysqli_num_rows($query_3) > 0): ?>
-
                         
                           <?php if ($rowaoq_id==NULL): ?>
                            <a class="btn btn-success btn-xs"  href='../frontend/web/abstract-of-quote/index' title="View"> Create </a>
 
                          
                           <?php else : ?>
-
-
 
                             <a class="btn btn-primary btn-xs" href='../frontend/web/abstract-of-quote/view?id=<?php echo $rowaoq_id; ?>' title="View"> View </a>
 

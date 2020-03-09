@@ -34,8 +34,8 @@ $mydb = new db(); // create a new object, class db()
                       
                         <th width="80">RIS NO.</th>
                         <th width="80">PO NO.</th>
-                        <th>DIVISION</th>
-                        <th>PURPOSE</th>
+                        <th width="80">DIVISION</th>
+                        <th width="750">PURPOSE</th>
                         <th>ACTION</th>
                         
                       
@@ -53,15 +53,15 @@ $mydb = new db(); // create a new object, class db()
                     $po_no = $row['po_no'];
                     $purpose = $row['purpose'];
 
-                    // if ($request_by == 1 ) {
-                    //   $request_by = "ELOISA G. ROZUL";
-                    // }
-                    // if ($request_by == 2 ) {
-                    //   $request_by = "JOHN M. CEREZO";
-                    // }
-                    // if ($request_by == 3 ) {
-                    //   $request_by = "DR. CARINA S. CRUZ";
-                    // }
+                    if ($request_by == 1 ) {
+                      $request_by = "Jay-ar T. Beltran";
+                    }
+                    if ($request_by == 2 ) {
+                      $request_by = "JOHN M. CEREZO";
+                    }
+                    if ($request_by == 3 ) {
+                      $request_by = "DR. CARINA S. CRUZ";
+                    }
                     
                     echo "<tr align = ''>
                   

@@ -79,10 +79,10 @@ a{
       </button>
       
       <div id="demoDrop" class="w3-dropdown-content w3-bar-block w3-white w3-card">
-        <a style="text-decoration: none;" href="iar_view.php" class="w3-bar-item w3-button"><i class="fa">&#xf0f6;</i>&nbspIAR</a>
-        <a style="text-decoration: none;" href="ris_view.php" class="w3-bar-item w3-button"><i class="fa">&#xf0f6;</i>&nbspRIS</a>
-        <a style="text-decoration: none;" href="#" class="w3-bar-item w3-button"><i class="fa">&#xf0f6;</i>&nbspICS</a>
-        <a style="text-decoration: none;" href="#" class="w3-bar-item w3-button"><i class="fa">&#xf0f6;</i>&nbspPAR</a>
+        <a style="text-decoration: none;" href="iar_view.php" class="w3-bar-item w3-button"><i class="fa">&#xf0f6;</i>IAR</a>
+        <a style="text-decoration: none;" href="ris_view.php" class="w3-bar-item w3-button"><i class="fa">&#xf0f6;</i>RIS</a>
+        <a style="text-decoration: none;" href="#" class="w3-bar-item w3-button"><i class="fa">&#xf0f6;</i>ICS</a>
+        <a style="text-decoration: none;" href="#" class="w3-bar-item w3-button"><i class="fa">&#xf0f6;</i>PAR</a>
       </div>
     </div>
     <br>
