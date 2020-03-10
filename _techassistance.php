@@ -84,8 +84,8 @@ $(document).ready(function() {
         success : function(response) 
         {
             var jsonObject = $.parseJSON(response); 
+           
             var id = jsonObject[0].CONTROL_NO;
-            
             var table = $('#example1').dataTable( {
                 "data" : jsonObject,
                 "serverSide": false,
@@ -117,19 +117,19 @@ $(document).ready(function() {
                         {"data" : 'STATUS_REQUEST'},
                         {"data" : null}      
                 ],
-                columnDefs: 
+                columnDefs:   
                 [
                           {"className": "dt-center", "targets": "_all"},
                     {
                     targets: [-1], render: function (a, b, data, d) {
                       
             var id = jsonObject[0].CONTROL_NO;
-            if(<?php echo  "'".$username."'";?> == 'fad')
+            if(<?php echo  "'".$username."'";?> == 'fad' || <?php echo  "'".$username."'";?> == 'FAD')
             {
               return "<center><i id = 'sweet-14' style = 'font-size:20px;color:#2196F3;tex-align:center;' class=' fa fa-check-circle' aria-hidden='true'></i>&nbsp;<i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i>";
                 
             }else{
-              return "<center><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i>";
+              return "<center><i id = 'sweet-14' style = 'font-size:20px;color:#2196F3;tex-align:center;' class=' fa fa-check-circle' aria-hidden='true'></i>&nbsp;<i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i>";
 
             }
                     }
@@ -148,7 +148,8 @@ $(document).ready(function() {
                   inputOptions: {
                     'Mark Kim Sacluti': 'Mark Kim Sacluti',
                     'Charles Adrian Odi': 'Charles Adrian Odi',
-                    'Christian Paul Ferrer': 'Christian Paul Ferrer'
+                    'Christian Paul Ferrer': 'Christian Paul Ferrer',
+                    'Shiela Mei Olivar':'Shiela Mei Olivar',
                   },
                   inputPlaceholder: 'Select ICT Staff',
                   showCancelButton: true,
@@ -159,8 +160,10 @@ $(document).ready(function() {
                       }else if(value == 'Charles Adrian Odi')
                       {
                         resolve()
-                      } else {
+                      } else if(value == 'Christian Paul Ferrer'){
                         resolve()
+                      }else{
+                        resolve();
                       }
                     })
                   }
