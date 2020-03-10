@@ -35,9 +35,9 @@ include('db.class.php'); // call db.class.php
          
           <br>
           <div class=""  style="overflow-x:auto;">
-
+            
             <div class="col-md-1" style="overflow-x:auto;">
-             <li class="btn btn-success"><a href="@disbursementcreate.php" style="color:white;text-decoration: none;">Create</a></li>
+           <!--   <li class="btn btn-success"><a href="@disbursementcreate.php" style="color:white;text-decoration: none;">Create</a></li> -->
             </div>
             <div class="col-md-10" style="overflow-x:auto;">
             <form method = "POST" action = "@Functions/ddateexport1.php">
@@ -101,6 +101,9 @@ include('db.class.php'); // call db.class.php
                 </tr>
               </thead>
               <?php
+
+               
+
               $servername = "localhost";
               $username = "root";
               $password = "";
