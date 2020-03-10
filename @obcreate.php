@@ -40,17 +40,17 @@ function app($connect)
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
 
-  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 
   <!-- Auto Complete -->
-    
-
-
+  
 </head>
+
+     
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <?php include('sidebar.php');?>
@@ -65,31 +65,37 @@ function app($connect)
       <br>
        
     <!-- Start Panel -->
-    <div class="panel panel-default">
-        <br>
+   <!--  <div class="panel panel-default">
+ -->        <br>
+        <div class="box">
+          <div class="box-body">
       
             <h1 align="">Create Obligation</h1>
-            <div class="box-header with-border">
-    
+         <!--    <div class="box-header with-border">
+     -->
         <br>
       <li class="btn btn-success"><a href="@obligation.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
 
       
+    <!--   <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+      </div> -->
 
-      
       <!-- Start form -->
-  <form class="" type='GET' action="@Functions/obcreatefunction.php" >
+      <!-- <form id="fupForm" name="form1" method="post"> -->
+      <form id="fupForm" name="form1" Type="GET">
+     <!--  <form class="" type='GET' action="@Functions/obcreatefunction.php" > -->
         <!-- Start Menu -->
         <div class="class-bordered" >
             <div class="row">
                 <div class="col-md-6">
                       <label>ORS Serial No.</label>
-                      <input  type="text" class="form-control" style="height: 35px;" id="" placeholder="Enter ORS Number" name="ors" required>
+                      <input  type="text" class="form-control" style="height: 35px;" id="ors" placeholder="Enter ORS Number" name="ors" required>
                       <br>
                       <label>PO No.</label>
-                      <input  type="text" class="typeahead form-control" style="height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum">
+                      <input  type="text" class="typeahead form-control" style="height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum" value="<?php echo isset($_GET['ponum']) ? $_GET['ponum'] : '' ?>">
                       
                       <table class="table table-striped table-hover" id="main">
                       <tbody id="result">
@@ -98,6 +104,7 @@ function app($connect)
                       <br>
                   <!-- Getting PO NUmber -->      
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            
             
             <script type="text/javascript">
               $(document).ready(function(){
@@ -301,7 +308,7 @@ function app($connect)
                       document.getElementById('saronum').value = "";
                       document.getElementById("main1").value="";
                       document.getElementById("sarogroup").value = "";
-                      //document.getElementById("ppa").value = "";
+                      document.getElementById("uacs").value = "";
 
                       $("#main1").show();
                      
@@ -423,15 +430,13 @@ function app($connect)
                 var x=row.cells;
                 document.getElementById("uacs").value = x[0].innerHTML;
                 
-
-                
                 
               }
             </script>
 
                 <div class="col-md-3">
                     <label>Amount</label>
-                    <input required  type="text"  class="form-control" style="height: 40px;" id="" placeholder="Amount" name="amount">
+                    <input required  type="text"  class="form-control" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
                 </div>
             </div>
             
@@ -439,7 +444,7 @@ function app($connect)
             <div class="row">
                 <div class="col-md-4">
                     <label>Remarks</label>
-                    <textarea class="form-control" placeholder="Remarks" name="remarks" style="width: 100%; height: 40px;" ></textarea> 
+                    <textarea class="form-control" placeholder="Remarks" id="remarks" name="remarks" style="width: 100%; height: 40px;" ></textarea> 
                 </div>
 
                 <div class="col-md-4">
@@ -466,13 +471,14 @@ function app($connect)
             </div>
             <!-- END SARO -->
             <br>
-            
+            <input type="button" name="save" class="btn btn-primary" value="Save" id="butsave">
         </div>
         <!-- End Menu -->
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit" class="btn btn-success">Submit</button>
+    <!-- &nbsp&nbsp&nbsp<button type="submit" name="submit" class="btn btn-success">Submit</button> -->
+  
     <br>
     <br>
     </div>
@@ -484,6 +490,78 @@ function app($connect)
   </div>
  
 </div>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<script>
+/* AJAX */
+$(document).ready(function() {
+	$('#butsave').on('click', function() {
+		$("#butsave").attr("enabled", "enabled");
+
+		var datereceived = $('#datepicker1').val();
+		var datereprocessed = $('#datepicker2').val();
+		var datereturned = $('#datepicker3').val();
+		var datereleased = $('#datepicker4').val();
+    var ors = $('#ors').val();
+    var ponum = $('#ponum').val();
+    var payee = $('#payee').val();
+    var supplier = $('#supplier').val();
+    var particular = $('#particular').val();
+    var saronum = $('#saronum').val();
+    var ppa = $('#ppa').val();
+    var uacs = $('#uacs').val();
+    var amount = $('#amount').val();
+    var remarks = $('#remarks').val();
+    var sarogroup = $('#sarogroup').val();
+    var status = $('#status').val();
+		if(ors!="" ){
+			$.ajax({
+				url: "obcreatefunction.php",
+				type: "POST",
+				data: {
+					datereceived: datereceived,
+					datereprocessed: datereprocessed,
+					datereturned: datereturned,
+					datereleased: datereleased,
+          ors: ors,
+					ponum: ponum,
+					payee: payee,
+					supplier: supplier,
+          particular: particular,
+					saronum: saronum,
+					ppa: ppa,
+          uacs: uacs,
+					amount: amount,
+          remarks: remarks,
+					sarogroup: sarogroup,
+					status: status,
+					
+				},
+				cache: false,
+				success: function(dataResult){
+					var dataResult = JSON.parse(dataResult);
+					if(dataResult.statusCode==200){
+            
+						$("#butsave").removeAttr("disabled");
+					//$('#fupForm').find('input:text').val('');
+						$("#success").show();
+					//	$('#success').html('Data added successfully!');
+            alert("Data added successfully!");
+           						
+					}
+					else if(dataResult.statusCode==201){
+					   alert("Error occured !");
+					}
+					
+				}
+			});
+		}
+		else{
+			alert('Please fill all the field !');
+		}
+	});
+});
+</script>
+
 
 <script src="dist/js/demo.js">
 </script>
@@ -500,7 +578,6 @@ function app($connect)
     })
   })
 </script> -->
-
 
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
