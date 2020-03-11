@@ -417,7 +417,7 @@ function app($connect)
                   {
                     // document.getElementById('uacs').value = "";
                     load_data();
-          /* document.getElementById("code").value = ""; */
+                    /* document.getElementById("code").value = ""; */
                     document.getElementById("uacs").value = "";
                     $("#main2").show();
                     
@@ -491,6 +491,12 @@ function app($connect)
  
 </div>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+
+
+
+
+
 <script>
 /* AJAX */
 $(document).ready(function() {
