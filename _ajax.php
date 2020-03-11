@@ -22,13 +22,25 @@ if($name == 'fad')
 
 while($row = mysqli_fetch_array($result)){
     $cn = $row['CONTROL_NO'];
-    $rd = date('M d, Y',strtotime($row['REQ_DATE']));//date format
-    $d = $row['REQ_TIME'].' '.$row['REQ_DATE'];
-    $rtI =date('h:i a', strtotime($d));
-
+    if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == 'Jan 01, 1970')
+    {
+        $sd = '';
+    }else{
     $sd = date('M d, Y',strtotime($row['START_DATE']));//date format
+
+}
+$rd = date('M d, Y',strtotime($row['REQ_DATE']));//date format
+if($row['START_TIME'] == '')
+{
+    
+$stI = '';
+}else{
     $dd = $row['START_TIME'].' '.$row['START_DATE'];
-    $stI =date('h:i a', strtotime($dd));
+    $stI =date('H:i a', strtotime($dd)); 
+}
+$d = $row['REQ_TIME'].' '.$row['REQ_DATE'];
+$rtI =date('h:i a', strtotime($d));
+
 
 
     $rb = $row['REQ_BY'];

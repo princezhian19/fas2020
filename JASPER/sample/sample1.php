@@ -12,11 +12,11 @@ $req_date_format = date("Y-m-d",strtotime($request_date1));
 // $request_time = $_POST['request_time'];
 if (strstr($_POST['request_time'], 'PM' ) ) {
     $a = str_replace("PM","",$_POST['request_time']);
-    $request_time  = date("H:i",strtotime($a));
+    $request_time =  date("H:i", strtotime($_POST['request_time']));
 
 }else{
     $a = str_replace("AM","",$_POST['request_time']);
-    $request_time  = date("H:i",strtotime($a));
+    $request_time  = date("H:i",strtotime($_POST['request_time']));
 }
 $office = $_POST['office'];
 $position = $_POST['position'];
