@@ -146,7 +146,7 @@ $(document).ready(function() {
                     
               var oTableApi = $('#example1').dataTable().api();
                     var tr = $(this).closest('tr');
-                    td = tr.find("td:eq(8)")
+                    td = tr.find("td:eq(10)")
                     var cell = oTableApi.cell(td);
                     if(cell.data() == '<span class="badge badge-pill" style = "background-color:red;">Pending</span>')
                     {
