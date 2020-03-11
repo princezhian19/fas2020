@@ -169,7 +169,7 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                '',
                '',
                null,
-               'Pending'
+               'Submitted'
                )";
 
             //    echo $sql_insert;
