@@ -79,10 +79,13 @@ $(document).ready(function() {
 
 
   // ===========================================================================
+  
     $.ajax({
         url: '_ajax.php',
         success : function(response) 
         {
+          
+          // ==================================================
             var jsonObject = $.parseJSON(response); 
            
             var id = jsonObject[0].CONTROL_NO;
@@ -91,13 +94,13 @@ $(document).ready(function() {
                 "serverSide": false,
                 "processing": true,
                 "autoWidth": false,
-                "order": [[ 1, "desc" ]],
+                "order": [[ 8, "desc" ]],
                 "language": {
                     "searchPlaceholder": "Search records",
                  },
                  aLengthMenu: [
-                  [5, 10, 20, -1],
-                  [5, 10, 20, "All"]
+                  [10, 10, 20, -1],
+                  [10, 10, 20, "All"]
                 ],
                 "bPaginate": true,
                 "bLengthChange": false,
@@ -107,6 +110,8 @@ $(document).ready(function() {
                 columns: 
                 [
                         {"data" : "CONTROL_NO"},
+                        {"data" : "START_DATE"},
+                        {"data" : "START_TIME"},
                         {"data" : "REQ_DATE"}, 
                         {"data" : "REQ_TIME"},
                         {"data" : "REQ_BY"},
@@ -115,80 +120,150 @@ $(document).ready(function() {
                         {"data" : "TYPE_REQ_DESC"},
                         {"data" : "ASSIGNED_PERSON"},
                         {"data" : 'STATUS_REQUEST'},
-                        {"data" : null}      
+                        {"data" : "BUTTON"}      
                 ],
-                columnDefs:   
-                [
-                          {"className": "dt-center", "targets": "_all"},
-                    {
-                    targets: [-1], render: function (a, b, data, d) {
+            //     columnDefs:   
+            //     [
+            //               {"className": "dt-center", "targets": "_all"},
+            //         {
+            //         targets: [-1], render: function (a, b, data, d) {
                       
-            var id = jsonObject[0].CONTROL_NO;
-            if(<?php echo  "'".$username."'";?> == 'fad' || <?php echo  "'".$username."'";?> == 'FAD')
-            {
-              return "<center><i id = 'sweet-14' style = 'font-size:20px;color:#2196F3;tex-align:center;' class=' fa fa-check-circle' aria-hidden='true'></i>&nbsp;<i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i>";
+            // var id = jsonObject[0].CONTROL_NO;
+            // if(<?php echo  "'".$username."'";?> == 'fad' || <?php echo  "'".$username."'";?> == 'FAD')
+            // {
+            //   return "<center><i id = 'sweet-14' style = 'font-size:20px;color:#2196F3;tex-align:center;' class=' fa fa-check-circle' aria-hidden='true'></i>&nbsp;<i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i>";
                 
-            }else{
-              return "<center><i id = 'sweet-14' style = 'font-size:20px;color:#2196F3;tex-align:center;' class=' fa fa-check-circle' aria-hidden='true'></i>&nbsp;<i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i>";
+            // }else{
+            //   return "<center><i id = 'sweet-14' style = 'font-size:20px;color:#2196F3;tex-align:center;' class=' fa fa-check-circle' aria-hidden='true'></i>&nbsp;<i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'edit'>&#xf044;</i><i style = 'font-size:20px;color:#2196F3;tex-align:center;' class='fa' id = 'view' >&#xf06e;</i>";
 
-            }
-                    }
-                }],
+            // }
+            //         }
+            //     }],
             });
+          $
             $('#example1 tbody').on( 'click', '#sweet-14', function () 
              {
+                    
               var oTableApi = $('#example1').dataTable().api();
                     var tr = $(this).closest('tr');
-                    td = tr.find("td:first")
+                    td = tr.find("td:eq(8)")
                     var cell = oTableApi.cell(td);
-              //  =====================================================
-                  swal({
-                  title: 'Approved by:',
-                  input: 'select',
-                  inputOptions: {
-                    'Mark Kim Sacluti': 'Mark Kim Sacluti',
-                    'Charles Adrian Odi': 'Charles Adrian Odi',
-                    'Christian Paul Ferrer': 'Christian Paul Ferrer',
-                    'Shiela Mei Olivar':'Shiela Mei Olivar',
-                  },
-                  inputPlaceholder: 'Select ICT Staff',
-                  showCancelButton: true,
-                  inputValidator: function (value) {
-                    return new Promise(function (resolve, reject) {
-                      if (value === 'Mark Kim Sacluti') {
-                        resolve()
-                      }else if(value == 'Charles Adrian Odi')
-                      {
-                        resolve()
-                      } else if(value == 'Christian Paul Ferrer'){
-                        resolve()
-                      }else{
-                        resolve();
-                      }
-                    })
-                  }
-                }).then(function (result) {
-                  swal({
-                    type: 'success',
-                    html: 'Successfully approved by:' + result,
-                    closeOnConfirm: false
-                  })
-                  $.ajax({
-                    url:"_approvedTA.php",
-                    method:"POST",
-                    data:{
-                      ict_staff:result,
-                      control_no:cell.data()
-                    },
-                    success:function()
+                    if(cell.data() == '<span class="badge badge-pill" style = "background-color:red;">Pending</span>')
                     {
-                     window.location = '_techassistance.php';
-                    console.log(ict_staff);
+                      var oTableApi = $('#example1').dataTable().api();
+                      var tr = $(this).closest('tr');
+                      td = tr.find("td:first")
+                      var cn = oTableApi.cell(td);
+                      swal({
+                            title: 'Approved by:',
+                            input: 'select',
+                            inputOptions: {
+                              'Mark Kim Sacluti': 'Mark Kim Sacluti',
+                              'Charles Adrian Odi': 'Charles Adrian Odi',
+                              'Christian Paul Ferrer': 'Christian Paul Ferrer',
+                              'Shiela Mei Olivar':'Shiela Mei Olivar',
+                            },
+                            inputPlaceholder: 'Select ICT Staff',
+                            showCancelButton: true,
+                            inputValidator: function (value) {
+                              return new Promise(function (resolve, reject) {
+                                if (value === 'Mark Kim Sacluti') {
+                                  resolve()
+                                }else if(value == 'Charles Adrian Odi')
+                                {
+                                  resolve()
+                                } else if(value == 'Christian Paul Ferrer'){
+                                  resolve()
+                                }else{
+                                  resolve()
+                                }
+                              })
+                            }
+                          }).then(function (result) {
+                            swal({
+                              type: 'success',
+                              html: 'Successfully approved by:' + result,
+                              closeOnConfirm: false
+                            })
+                            $.ajax({
+                              url:"_approvedTA.php",
+                              method:"POST",
+                              data:{
+                                ict_staff:result,
+                                control_no:cn.data()
+                              },
+                              success:function()
+                              {
+                                alert(cn.data());
+                              window.location = '_techassistance.php';
+                              }
+                            });
+                          });
+                    }else if(cell.data() == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
+                    {
+                      var oTableApi = $('#example1').dataTable().api();
+                      var tr = $(this).closest('tr');
+                      td = tr.find("td:first")
+                      var cn = oTableApi.cell(td);
+                      swal({
+                            title: 'Approved by:',
+                            input: 'select',
+                            inputOptions: {
+                              'Mark Kim Sacluti': 'Mark Kim Sacluti',
+                              'Charles Adrian Odi': 'Charles Adrian Odi',
+                              'Christian Paul Ferrer': 'Christian Paul Ferrer',
+                              'Shiela Mei Olivar':'Shiela Mei Olivar',
+                            },
+                            inputPlaceholder: 'Select ICT Staff',
+                            showCancelButton: true,
+                            inputValidator: function (value) {
+                              return new Promise(function (resolve, reject) {
+                                if (value === 'Mark Kim Sacluti') {
+                                  resolve()
+                                }else if(value == 'Charles Adrian Odi')
+                                {
+                                  resolve()
+                                } else if(value == 'Christian Paul Ferrer'){
+                                  resolve()
+                                }else{
+                                  resolve();
+                                }
+                              })
+                            }
+                          }).then(function (result) {
+                            swal({
+                              type: 'success',
+                              html: 'Successfully approved by:' + result,
+                              closeOnConfirm: false
+                            })
+                            $.ajax({
+                              url:"_approvedTA.php",
+                              method:"POST",
+                              data:{
+                                ict_staff:result,
+                                control_no:cn.data()
+                              },
+                              success:function()
+                              {
+                              window.location = '_techassistance.php';
+                              console.log(ict_staff);
+                              }
+                            });
+                          });
+                    }else if(cell.data() == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
+                    {
+                      alert('Rate Us!! ');
                     }
-                  });
-                })
-            });
-
+             });
+            // $('#example1 tbody').on( 'click', '#sweet-14', function () 
+            //  {
+            //   var oTableApi = $('#example1').dataTable().api();
+            //         var tr = $(this).closest('tr');
+            //         td = tr.find("td:first")
+            //         var cell = oTableApi.cell(td);
+            
+            // });
+            // ========================================================
             $('#example1 tbody').on( 'click', '#edit', function () 
              {
                     var oTableApi = $('#example1').dataTable().api();

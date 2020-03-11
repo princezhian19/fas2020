@@ -28,8 +28,6 @@ th{
                 <?php 
                 ?>
             </div>
-            <br>
-            <br>
             <?php
             if($_SESSION['username'] != 'fad')
             {
@@ -60,7 +58,7 @@ th{
                       <div class="col-md-2">
                             <select class="form-control " id="selectYear" style="width: 100%;">
                               <?php 
-                              for($i= 2018; $i < 2021; $i++)
+                              for($i= 2020; $i < 2021; $i++)
                               {
                                 echo '<option value='.$i.'>'.$i.'</option>';
                               }
@@ -68,14 +66,14 @@ th{
                             </select>
                       </div>
                       <div class="col-md-2">
-                        <ol style = "decoration:none;margin-left:-20px;"><button class="btn btn-success" id = "fml"> Export FML Report</button></ol>
+                        <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export FML Report</button></ol>
                       </div>
                       <div class="col-md-2" style = "margin-left:-30px;">
-                        <li class="btn btn-success"><a href="#" style="color:white;text-decoration: none;">Export PSL Report</a></li>
+                        <li class="btn btn-success"><a  href="#" style="color:white;text-decoration: none;">Export PSL Report</a></li>
                       </div>
 
-                      <div class = "col-md-2" style = "float:right;margin-right:-100px;">
-                        <li class="btn btn-success"><a href="_requestForm.php" style="color:white;text-decoration: none;">Create</a></li>
+                      <div class = "col-md-2" style = "float:right;margin-right:-30px;">
+                        <li class="btn btn-success"><a href="_requestForm.php" style="color:white;text-decoration: none;">Create Request</a></li>
                       </div>
                   </div>
                 </div>
@@ -84,10 +82,11 @@ th{
             
             ?>
         
-            <br>
               <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                     <thead>
                         <th>CONTROL NO.</th>
+                        <th>REQUEST DATE</th>
+                        <th>REQUEST TIME</th>
                         <th>RECEIVED DATE</th>
                         <th>RECEIVED TIME</th>
                         <th>END USER</th>

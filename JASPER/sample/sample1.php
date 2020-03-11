@@ -3,7 +3,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-include_once("../PHPJasperXML.inc.php");
+// include_once("../PHPJasperXML.inc.php");
 
 $request_date =  date("M d, Y",strtotime($_POST['request_date']));
 $request_date1 = $_POST['request_date'];
@@ -33,8 +33,8 @@ if(isset($_POST['req_type_subcategory']))
 }
 
 
-if(isset($site ,$purpose, $purpose2, $changeaccount, $others1, $others2,$others3))
-{
+// if(isset($site ,$purpose, $purpose2, $changeaccount, $others1, $others2,$others3))
+// {
 $site = $_POST['site'];
 $purpose = $_POST['purpose'];
 $purpose2 = $_POST['purpose2'];
@@ -43,16 +43,16 @@ $changeaccount = $_POST['changeaccount'];
 $others1 = $_POST['others1'];
 $others2 = $_POST['others2'];
 $others3 = $_POST['others3'];
-}else{
-    $site = '';
-    $purpose = '';
-    $purpose2 ='';
-    $softwares = '';
-    $changeaccount = '';
-    $others1 = '';
-    $others2 = '';
-    $others3 = '';
-}
+// }else{
+//     $site = '';
+//     $purpose = '';
+//     $purpose2 ='';
+//     $softwares = '';
+//     $changeaccount = '';
+//     $others1 = '';
+//     $others2 = '';
+//     $others3 = '';
+// }
 
 $issue = $_POST['issue'];
 $timeliness = $_POST['timeliness'];
@@ -86,7 +86,7 @@ $mac_address = $_POST['mac_address'];
 
 
 
-$PHPJasperXML = new PHPJasperXML();
+// $PHPJasperXML = new PHPJasperXML();
 // $PHPJasperXML->debugsql=true;
 for($i = 0; $i < count($_POST['req_type_category']); $i++)
 {
@@ -166,8 +166,8 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                null,
                '$assisted_by',
                '$name',
-               '$timeliness',
-               '$quality',
+               '',
+               '',
                null,
                'Pending'
                )";
@@ -177,471 +177,474 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
 if (mysqli_query($link, $sql_insert)) {
  } else {
  }
+ ?>
+<script>window.location = '../../_techassistance.php';</script>
+ <?php
     // ============================================================================
-   if($_POST['req_type_category'][$i] == "Others"){
-        $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "others1"=> $others1,
-                                    "others2"=> $others2,
-                                    "others3"=> $others3,
-                                    "req_type_subcategory21"=>'correct.png',
-                                    "currentuser"=>$name,                                     "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address);
-   }
+//    if($_POST['req_type_category'][$i] == "Others"){
+//         $PHPJasperXML->arrayParameter=array(
+//                                     "timeliness"=>$timeliness,
+//                                     "quality"=>$quality,
+//                                     "others1"=> $others1,
+//                                     "others2"=> $others2,
+//                                     "others3"=> $others3,
+//                                     "req_type_subcategory21"=>'correct.png',
+//                                     "currentuser"=>$name,                                     "assisted_by"=>$assisted_by,
+//                                     "requested_date"=>$request_date,
+//                                     "requested_time"=>$request_time,
+//                                     "office"=>$office,
+//                                     "position"=>$position,
+//                                     "contact_no"=>$contact_no,
+//                                     "email"=>$email_address);
+//    }
     
-    switch($_POST['req_type_subcategory'][$i])
-    {
+    // switch($_POST['req_type_subcategory'][$i])
+    // {
        
-        case 'Hardware Error':
-                $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "issue"=>$issue,
-                                    "req_type_category1"=>'correct.png',
-                                    "req_type_subcategory1"=>'correct.png',
-                                    "currentuser"=>$name,
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-        break;
-        case 'Software Error':
-                $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category1"=>'correct.png',
-                                    "req_type_subcategory2"=>'correct.png',
-                                    "currentuser"=>$name,
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-        break;
-        case 'Computer Assembly':
-                      $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category1"=>'correct.png',
-                                    "req_type_subcategory3"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-        break;
-        case 'Parts Replacement':
-                      $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category1"=>'correct.png',
-                                    "req_type_subcategory4"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-        break;
-        case 'Virus Scanning':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category1"=>'correct.png',
-                                    "req_type_subcategory5"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-        break;
-        // 2nd group of checkbox
-        case 'New Connection(Wired or Wireless)':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category2"=>'correct.png',
-                                    "req_type_subcategory6"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-        break;
-        case 'No Internet Connection(Cross or Exclamation)':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category2"=>'correct.png',
-                                    "req_type_subcategory7"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-        break;
-        case 'Access to Blocked Site:':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "site"=>$site,
-                                    "purpose"=>$purpose,
-                                    "req_type_category2"=>'correct.png',
-                                    "req_type_subcategory8"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-        break;
-        case 'Internet for Personal Phone/Tablet/Laptop':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "purpose2"=>$purpose2,
-                                    "req_type_category2"=>'correct.png',
-                                    "req_type_subcategory9"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-        break;
-        // 3rd group of checkbox
-        case 'Operating System, Office, Anti-Virus':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category3"=>'correct.png',
-                                    "req_type_subcategory10"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-            break;
-        case 'Records Tracking System';
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category3"=>'correct.png',
-                                    "req_type_subcategory11"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
+    //     case 'Hardware Error':
+    //             $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "issue"=>$issue,
+    //                                 "req_type_category1"=>'correct.png',
+    //                                 "req_type_subcategory1"=>'correct.png',
+    //                                 "currentuser"=>$name,
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //     break;
+    //     case 'Software Error':
+    //             $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category1"=>'correct.png',
+    //                                 "req_type_subcategory2"=>'correct.png',
+    //                                 "currentuser"=>$name,
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //     break;
+    //     case 'Computer Assembly':
+    //                   $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category1"=>'correct.png',
+    //                                 "req_type_subcategory3"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //     break;
+    //     case 'Parts Replacement':
+    //                   $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category1"=>'correct.png',
+    //                                 "req_type_subcategory4"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //     break;
+    //     case 'Virus Scanning':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category1"=>'correct.png',
+    //                                 "req_type_subcategory5"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //     break;
+    //     // 2nd group of checkbox
+    //     case 'New Connection(Wired or Wireless)':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category2"=>'correct.png',
+    //                                 "req_type_subcategory6"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //     break;
+    //     case 'No Internet Connection(Cross or Exclamation)':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category2"=>'correct.png',
+    //                                 "req_type_subcategory7"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //     break;
+    //     case 'Access to Blocked Site:':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "site"=>$site,
+    //                                 "purpose"=>$purpose,
+    //                                 "req_type_category2"=>'correct.png',
+    //                                 "req_type_subcategory8"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //     break;
+    //     case 'Internet for Personal Phone/Tablet/Laptop':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "purpose2"=>$purpose2,
+    //                                 "req_type_category2"=>'correct.png',
+    //                                 "req_type_subcategory9"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //     break;
+    //     // 3rd group of checkbox
+    //     case 'Operating System, Office, Anti-Virus':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category3"=>'correct.png',
+    //                                 "req_type_subcategory10"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //         break;
+    //     case 'Records Tracking System';
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category3"=>'correct.png',
+    //                                 "req_type_subcategory11"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
         
-        break;
-        case 'Google Drive';
-        $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category3"=>'correct.png',
-                                    "req_type_subcategory12"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
+    //     break;
+    //     case 'Google Drive';
+    //     $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category3"=>'correct.png',
+    //                                 "req_type_subcategory12"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
         
-        break;
-        case 'DILG Portals/Systems':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category3"=>'correct.png',
-                                    "req_type_subcategory13"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
+    //     break;
+    //     case 'DILG Portals/Systems':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category3"=>'correct.png',
+    //                                 "req_type_subcategory13"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
         
-        break;
-        case 'Other software/s (please specify)':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "softwares"=>$softwares,    
-                                    "req_type_category3"=>'correct.png',
-                                    "req_type_subcategory14"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-            break;
-        // 4th group of checkbox
-        case 'Installation':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category4"=>'correct.png',
-                                    "req_type_subcategory15"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-            break;
+    //     break;
+    //     case 'Other software/s (please specify)':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "softwares"=>$softwares,    
+    //                                 "req_type_category3"=>'correct.png',
+    //                                 "req_type_subcategory14"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //         break;
+    //     // 4th group of checkbox
+    //     case 'Installation':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category4"=>'correct.png',
+    //                                 "req_type_subcategory15"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //         break;
         
-        case 'Troubleshooting':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category4"=>'correct.png',
-                                    "req_type_subcategory16"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-            break;
+    //     case 'Troubleshooting':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category4"=>'correct.png',
+    //                                 "req_type_subcategory16"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //         break;
             
-        case 'Sharing/Networking':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category4"=>'correct.png',
-                                    "req_type_subcategory17"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-            break;
+    //     case 'Sharing/Networking':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category4"=>'correct.png',
+    //                                 "req_type_subcategory17"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //         break;
         
-        case 'New Account':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category5"=>'correct.png',
-                                    "req_type_subcategory18"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-            break;
-        case 'Change Account to':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "changeaccount"=>$changeaccount,
-                                    "req_type_category5"=>'correct.png',
-                                    "req_type_subcategory19"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-            break;
-        case 'Password Reset':
-            $PHPJasperXML->arrayParameter=array(
-                                    "timeliness"=>$timeliness,
-                                    "quality"=>$quality,
-                                    "req_type_category5"=>'correct.png',
-                                    "req_type_subcategory20"=>'correct.png',
-                                    "currentuser"=>$name,                                     
-                                    "assisted_by"=>$assisted_by,
-                                    "requested_date"=>$request_date,
-                                    "requested_time"=>$request_time,
-                                    "office"=>$office,
-                                    "position"=>$position,
-                                    "contact_no"=>$contact_no,
-                                    "email"=>$email_address,
-                                    "equipment_type"=>$equipment_type,
-                                    "brand_model"=>$brand_model,
-                                    "property_no"=>$property_no,
-                                    "serial_no"=>$serial_no,
-                                    "ip_address"=>$ip_address,
-                                    "mac_address"=>$mac_address);
-            break;
+    //     case 'New Account':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category5"=>'correct.png',
+    //                                 "req_type_subcategory18"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //         break;
+    //     case 'Change Account to':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "changeaccount"=>$changeaccount,
+    //                                 "req_type_category5"=>'correct.png',
+    //                                 "req_type_subcategory19"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //         break;
+    //     case 'Password Reset':
+    //         $PHPJasperXML->arrayParameter=array(
+    //                                 "timeliness"=>$timeliness,
+    //                                 "quality"=>$quality,
+    //                                 "req_type_category5"=>'correct.png',
+    //                                 "req_type_subcategory20"=>'correct.png',
+    //                                 "currentuser"=>$name,                                     
+    //                                 "assisted_by"=>$assisted_by,
+    //                                 "requested_date"=>$request_date,
+    //                                 "requested_time"=>$request_time,
+    //                                 "office"=>$office,
+    //                                 "position"=>$position,
+    //                                 "contact_no"=>$contact_no,
+    //                                 "email"=>$email_address,
+    //                                 "equipment_type"=>$equipment_type,
+    //                                 "brand_model"=>$brand_model,
+    //                                 "property_no"=>$property_no,
+    //                                 "serial_no"=>$serial_no,
+    //                                 "ip_address"=>$ip_address,
+    //                                 "mac_address"=>$mac_address);
+    //         break;
     
 
 
-    }
+    // }
 }
 
-$PHPJasperXML->load_xml_file("report1.jrxml");
-$PHPJasperXML->transferDBtoArray('localhost','root','','db_dilg_pmis');
-$PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
+// $PHPJasperXML->load_xml_file("report1.jrxml");
+// $PHPJasperXML->transferDBtoArray('localhost','root','','db_dilg_pmis');
+// $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
 
 
 ?>

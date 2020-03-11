@@ -18,11 +18,22 @@ function fillInputs()
   $val = array();
   while($row = mysqli_fetch_array($result))
     {
+      $date = date('m/d/Y', strtotime($row['REQ_DATE']));
       ?>
                         <div class="form-group">
                           <label>Requested By:</label>
                             <input placeholder = "Requested By" autocomplete = "false"  class="form-control" name="requested_by" type="text" value = "<?php echo $row['REQ_BY'];?>" >
                               </div>
+
+                    <div class="form-group">
+                      <label>Requested Date:<small style="color:red;">*</small></label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                              </div>
+                                <input  type="text" name = "requested_date" placeholder = "Requested Date" class="datePicker2 form-control"  value="<?php echo $date;?>" required>
+                                  </div>
+                                    </div>
 
                         <div class="form-group">
                           <label>Office :<small style="color:red;">*</small></label>
@@ -81,6 +92,10 @@ function fillInputs2()
                         <label>Control No :</label>
                           <input placeholder = "Control No." readonly autocomplete = "false"  class="form-control" name = "control_no" type="text" id="control_no" value = "<?php echo $row['CONTROL_NO'];?>" >
                             </div>
+                      <div class="form-group">
+                        <label>Requested Time:</label>
+                        <input placeholder = "Requested Time"  autocomplete = "false"  class="form-control" name = "requested_time" type="text" id="timepicker" value = "<?php echo $row['REQ_TIME'];?>" >
+                      </div>
 
                       <div class="form-group">
                         <label>Equipment Type : <small style="color:red;">*</small></label>
@@ -161,7 +176,7 @@ function fillInputs2()
 
                     <div class="form-group">
                       <label>Started Time:<small style="color:red;">*</small></label>
-                        <input placeholder = "Started Time:" required autocomplete = "false"  class="form-control" name="started_time" type="text" id="supplier"  value ="<?php echo date("H:i A",strtotime(date("h:m A")));?>" >
+                        <input placeholder = "Started Time:" required autocomplete = "false"  class="form-control" name="started_time" id = "started_time" type="text" id="supplier"  value ="<?php echo date("H:i A",strtotime(date("h:m A")));?>" >
                           </div>    
 
                     <div class="form-check">
@@ -188,7 +203,7 @@ function fillInputs2()
 
                     <div class="form-group">
                       <label>Completed Time:<small style="color:red;">*</small></label>
-                        <input placeholder = "Completed Time:" required autocomplete = "false"  class="form-control" name="completed_time" type="text" id="supplier"value ="<?php echo date("H:i A",strtotime(date("h:m A")));?>" >
+                        <input placeholder = "Completed Time:" required autocomplete = "false"  class="form-control" name="completed_time" id = "completed_time" type="text" id="supplier"value ="<?php echo date("H:i A",strtotime(date("h:m A")));?>" >
                           </div>  
                   </div>
                   <div class="col-md-12">
@@ -337,6 +352,10 @@ function fillInputs2()
 
 <script>
     $(".datePicker1").datepicker().datepicker("setDate", new Date());
+    $(".datePicker2").datepicker();
+    $('#timepicker').timepicker();
+    $('#started_time').timepicker();
+    $('#completed_time').timepicker();
 
 // ========================================================================================
 // ========================================================================================
@@ -363,7 +382,7 @@ var c_n = $('#control_no').val();
                 setTimeout(function () {
                 swal("Record saved successfully!");
                 }, 3000);
-                // window.location = "_techassistance.php";
+                window.location = "_techassistance.php";
             }
           });
       });

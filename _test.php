@@ -122,7 +122,8 @@ background-position: 90px 5px;
                                         </div>
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Request Time:</td>
-                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input style = "text-align:center;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("H:i A",strtotime(date("h:m A")));?>"/></td>
+                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input style = "text-align:center;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/></td>
+                                    <!-- date("H:i A",strtotime(date("h:m A"))) -->
                                     <td colspan = 4 class = "label-text">HARDWARE INFORMATION</td>
                                 </tr>
                                 <tr>
@@ -197,7 +198,7 @@ background-position: 90px 5px;
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
                                       <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
                                       <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
-                                      <br><input type = "text" name = "softwares" id= "softwares" value = "dd" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <br><input type = "text" name = "softwares" id= "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td> 
                           </tr>
@@ -249,29 +250,33 @@ background-position: 90px 5px;
                                                   </textarea>
                                                   </td>
                                                   <td colspan = 4>
-                                                  <textarea rows="20" cols="56" style ="resize:none;width:100%;" name = "status" class = "disabletxtarea">
+                                                  <textarea rows="20" cols="56" style ="resize:none;width:100%;text-align:left;" name = "status" class = "disabletxtarea">
 
                                                   </textarea>
                                                   </td>
                                                   </tr>
                                                   <tr>
-                                                  <td style = "width:12.5%;">Timeliness</td>
+                                                  <td style = "width:12.5%;"></td>
                                                   <td style = "width:12.5%;">
-                                                  <select class="form-control " style="width: 100%;" name="timeliness" >
+                                                  <input type = "hidden" name = "timeliness" value="" />
+                                                                                                    <input type = "hidden" name = "quality" value="" />
+
+                                                  <!-- <select class="form-control " style="width: 100%;" name="timeliness" >
                                                   <option value = "YES">YES</option>
                                                   <option value = "NO">NO</option>
-                                                  </select>
+                                                  </select> -->
                                                   </td>
-                                                  <td style = "width:12.5%;text-align:center;">Quality</td>
+                                                  <td style = "width:12.5%;text-align:center;"></td>
                                                   <td style = "width:12.5%;text-align:center;">
-                                                  <select class="form-control " style="width: 100%;" name="quality" >
+
+                                                  <!-- <select class="form-control " style="width: 100%;" name="quality" >
 
                                                   <option value = "5">Outstanding</option>
                                                   <option value = "4">Very-Satisfatory</option>
                                                   <option value = "3">Satisfatory</option>
                                                   <option value = "2">Unsatisfatory</option>
                                                   <option value = "1">Poor</option>
-                                                  </select>
+                                                  </select> -->
 
                                                   </td>
                                                   <td style = "width:12.5%;">Started Date:</td>
@@ -477,9 +482,9 @@ $(function() {
   document.getElementById("purpose2").disabled = true; 
   document.getElementById("softwares").disabled = true;
   document.getElementById("changeaccount").disabled = true; 
-  document.getElementById("others1").disabled = true; 
-  document.getElementById("others2").disabled = true; 
-  document.getElementById("others3").disabled = true; 
+  document.getElementById("others1").disabled = false ; 
+  document.getElementById("others2").disabled = false; 
+  document.getElementById("others3").disabled = false; 
   
 
     enable_cb1();
