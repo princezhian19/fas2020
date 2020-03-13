@@ -4,7 +4,7 @@
 
 
 $datereceived = json_decode($_POST["datereceived"]);
-//$d1 = date('Y-m-d', strtotime($datereceived));
+
 
 $datereprocessed = json_decode($_POST["datereprocessed"]);
 //$d2 = date('Y-m-d', strtotime($datereprocessed));
@@ -23,8 +23,11 @@ $datereleased = json_decode($_POST["datereleased"]);
 //$d4 = date('Y-m-d', strtotime($datereleased));
 
 $ors = json_decode($_POST["ors"]);
+
 $po = json_decode($_POST["ponum"]);
 $payee = json_decode($_POST["payee"]);
+
+
 $supplier = json_decode($_POST["supplier"]);
 $particular = json_decode($_POST["particular"]);
 $saronum = json_decode($_POST["saronum"]);
@@ -43,7 +46,10 @@ echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
 for ($i = 0; $i < count($datereceived); $i++) {
-/* if(($ors[$i] != "")){ /*not allowing empty values and the row which has been removed.*/ 
+if(($ors[$i] != "")){ /*not allowing empty values and the row which has been removed.*/ 
+
+
+    
 
     if($supplier[$i]==""){
       /*   $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
@@ -53,10 +59,13 @@ for ($i = 0; $i < count($datereceived); $i++) {
        if (!mysqli_query($con,$sql))
        {
        die('Error: ' . mysqli_error($con));
+       Print "Error";
        }
        
        else{
-        Print "Data added Successfully !";
+       
+       
+      /*   Print "Data added Successfully !"; */
          //updating obligation
          $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
          //updating balance
@@ -74,10 +83,11 @@ for ($i = 0; $i < count($datereceived); $i++) {
      if (!mysqli_query($con,$sql))
      {
      die('Error: ' . mysqli_error($con));
+     Print "Error";
      }
      
      else{
-        Print "Data added Successfully !";
+        
        //updating obligation
        $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
        //updating balance
@@ -87,6 +97,7 @@ for ($i = 0; $i < count($datereceived); $i++) {
   
     } 
 }
-/* } */
+}
+Print "Data added Successfully !";
 mysqli_close($con);
 ?>

@@ -309,7 +309,7 @@ function app($connect)
                       document.getElementById('saronum').value = "";
                       document.getElementById("main1").value="";
                       document.getElementById("sarogroup").value = "";
-                      document.getElementById("uacs").value = "";
+                     // document.getElementById("uacs").value = "";
 
                       $("#main1").show();
                      
@@ -324,7 +324,7 @@ function app($connect)
                   document.getElementById("saronum").value = x[0].innerHTML;
                   document.getElementById("sarogroup").value = x[5].innerHTML;
                   document.getElementById("ppa").value = x[6].innerHTML;
-                  document.getElementById("uacs").value = x[1].innerHTML;
+                  //document.getElementById("uacs").value = x[1].innerHTML;
                   
                   
                 }
@@ -437,7 +437,7 @@ function app($connect)
 
                 <div class="col-md-3">
                     <label>Amount</label>
-                    <input required  type="text"  class="form-control" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
+                    <input required  type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
                 </div>
             </div>
             
@@ -475,7 +475,7 @@ function app($connect)
             <br>
            <!--  <input type="button" name="save" class="btn btn-primary" value="Save" id="butsave"> -->
               <input type="button" name="send" class="btn btn-primary" value="Add data" id="butsend">
-              <input type="button" name="save" class="btn btn-primary" value="Save Data" id="butsave">
+              <input type="button" name="save" class="btn btn-primary pull-right" value="Save Data" id="butsave">
               <br>
               <br>
 
@@ -508,6 +508,9 @@ function app($connect)
           </tbody>
           </table>
           </div>
+
+
+
           <script>
           $(document).ready(function() {
           var id = 1; 
@@ -558,8 +561,8 @@ function app($connect)
           $("#butsave").click(function() {
           var lastRowId = $('#table1 tr:last').attr("id"); /*finds id of the last row inside table*/
 
-          var datereceived = new Array(); 
-		      var datereprocessed = new Array(); 
+          var datereceived = new Array();
+		      var datereprocessed = new Array();
           var datereturned = new Array(); 
           var datereleased = new Array(); 
           var ors = new Array(); 
@@ -599,7 +602,7 @@ function app($connect)
         /*   var sendName = JSON.stringify(name); 
           var sendEmail = JSON.stringify(email); */
 
-          var datereceived = JSON.stringify(datereceived); 
+          var datereceived = JSON.stringify(datereceived);
           var datereprocessed = JSON.stringify(datereprocessed);
           var datereturned = JSON.stringify(datereturned);   
           var datereleased = JSON.stringify(datereleased);
@@ -642,6 +645,8 @@ function app($connect)
           });
           });
           </script>
+
+
           </div>
         </div>
         <!-- End Menu -->

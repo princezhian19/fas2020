@@ -28,7 +28,8 @@
 
 
     <!-- Auto Complete -->
-    
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
 </head>
@@ -57,7 +58,8 @@
       <br>
       <br>
       <!-- Start form -->
-  <form class="" type='GET' action="@Functions/sarocreatefunction.php" >
+  <!-- <form class="" type='GET' action="@Functions/sarocreatefunction.php" > -->
+  <form id="fupForm" name="form1" Type="GET">
         <!-- Start Menu -->
         <div class="class-bordered" >
             <div class="row">
@@ -75,6 +77,9 @@
                     <label>Source No.</label>
                       <input  type="text" class="typeahead form-control" style="height: 35px;" id="saronumber" placeholder="Enter Source" name="saronumber">
                       <br>
+                      <label>PPA</label>
+                    <input  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa">
+                    <br>
                     
                 </div>    
                 
@@ -86,19 +91,21 @@
                     <label>Legal Basis</label>
                       <input  type="text" class="form-control" style="height: 35px;" id="legalbasis" placeholder="Enter Legal Basis" name="legalbasis">
                     <br>
+                  
+                    <label>Particulars</label>
+                    <input  type="text"   class="form-control" style="height: 35px;" id="particulars" placeholder="Enter Particulars" name="particulars">
+                    <br>
                      
                     
                 </div>
             </div>
         </div>
-        
+        <div class="well">
         <div class="class">
              <!-- ORS -->
             <div class="row">
                 <div class="col-md-6">
-                    <label>PPA</label>
-                    <input  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa">
-                    <br>
+                   
                     <label>Expense Class</label>
                     <select  class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
            
@@ -112,9 +119,7 @@
                     <br>
                 </div>
                 <div class="col-md-6">
-                <label>Particulars</label>
-                    <input  type="text"   class="form-control" style="height: 35px;" id="particulars" placeholder="Enter Particulars" name="particulars">
-                    <br>
+              
                     
                     <label>UACS</label>
                     <input  type="text"   class="form-control" style="height: 35px;" id="uacs" placeholder="Enter UACS" name="uacs">
@@ -138,35 +143,190 @@
 
                 <div class="col-md-3">
                     <label>Amount</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" name="amount">
+                    <input  type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" name="amount">
                    
                 </div>
 
-                
-             
-                
+              
                 <div class="col-md-3">
                     <label>Disbursement</label>
-                    <input  type="text" readonly  class="form-control" style="height: 40px;" id="obligated" placeholder="Enter Obligated" name="obligated" value="0">
+                    <input  type="text" readonly  class="form-control" style="height: 40px;" id="obligated" placeholder="" name="obligated" value="0">
                     
                 </div>
 
                 <div class="col-md-3">
                     <label>Balance</label>
-                    <input  type="text" readonly  class="form-control" style="height: 40px;" id="balance" placeholder="Balance is from original Amount - Obligated" name="balance" >
+                    <input  type="text" readonly  class="form-control" style="height: 40px;" id="balance" placeholder="0" name="balance" value="0" >
                 </div>
 
             
-            </div>
+            </div>           
             <!-- END SARO -->
-            <br>
-            
+            <br> 
         </div>
+        </div>
+        <br>
+           <!--  <input type="button" name="save" class="btn btn-primary" value="Save" id="butsave"> -->
+              <input type="button" name="send" class="btn btn-primary" value="Add data" id="butsend">
+              <input type="button" name="save" class="btn btn-primary pull-right" value="Save Data" id="butsave">
+              <br>
+              <br>
+
+              <div class=""  style="overflow-x:auto;">
+              <!-- Append -->
+          <table id="table1" name="table1" class="table table-bordered"  style="background-color: white;border-width: medium;">
+         
+          <tbody>
+          <tr>
+        
+          <th width="">DATE</th>
+          <th width="">SOURCE</th>
+          <th width="">FUND</th>
+          <th width="">LEGAL BASIS</th>
+          <th width="">PPA</th>
+          <th width="">EXPENSE CLASS</th>
+          <th width="">PARTICULARS</th>
+          <th width="">UACS</th>
+          <th width="">AMOUNT</th>
+          <th width="">DISBURSEMENT</th>
+          <th width="">BALANCE</th>
+          <th width="">GROUP</th>
+          <th width="">ACTION</th>
+          
+          <tr>
+          </tbody>
+          </table>
+          </div>
+
+          
+          <script>
+          $(document).ready(function() {
+          var id = 1; 
+          /*Assigning id and class for tr and td tags for separation.*/
+          $("#butsend").click(function() {
+          var newid = id++; 
+          /* 
+          var datereceived = $('#datepicker1').val();
+		      var datereprocessed = $('#datepicker2').val();
+          var datereturned = $('#datepicker3').val();
+          var datereleased = $('#datepicker4').val();
+          var ors = $('#ors').val();
+          var ponum = $('#ponum').val();
+          var payee = $('#payee').val();
+          var supplier = $('#supplier').val();
+          var particular = $('#particular').val();
+          var saronum = $('#saronum').val();
+          var ppa = $('#ppa').val();
+          var uacs = $('#uacs').val();
+          var amount = $('#amount').val();
+          var remarks = $('#remarks').val();
+          var sarogroup = $('#sarogroup').val();
+          var status = $('#status').val(); */
+
+          $("#table1").append('<tr valign="top" id="'+newid+'">\n\
+          <td width="100px" class="date'+newid+'">' + $("#datepicker1").val() + '</td>\n\
+          <td width="100px" class="saronumber'+newid+'">' + $("#saronumber").val() + '</td>\n\
+          <td width="100px" class="fund'+newid+'">' + $("#fund").val() + '</td>\n\
+          <td width="100px" class="legalbasis'+newid+'">' + $("#legalbasis").val() + '</td>\n\
+          <td width="100px" class="ppa'+newid+'">' + $("#ppa").val() + '</td>\n\
+          <td width="100px" class="expenseclass'+newid+'">' + $("#expenseclass").val() + '</td>\n\
+          <td width="100px" class="particulars'+newid+'">' + $("#particulars").val() + '</td>\n\
+          <td width="100px" class="uacs'+newid+'">' + $("#uacs").val() + '</td>\n\
+          <td width="100px" class="amount'+newid+'">' + $("#amount").val() + '</td>\n\
+          <td width="100px" class="obligated'+newid+'">' + $("#obligated").val() + '</td>\n\
+          <td width="100px" class="balance'+newid+'">' + $("#balance").val() + '</td>\n\
+          <td width="100px" class="group'+newid+'">' + $("#group").val() + '</td>\n\
+          <td width="100px"><a href="javascript:void(0);" class="remCF">Remove</a></td>\n\ </tr>');
+          });
+          $("#table1").on('click', '.remCF', function() {
+          $(this).parent().parent().remove();
+          });
+          /*crating new click event for save button*/
+          $("#butsave").click(function() {
+          var lastRowId = $('#table1 tr:last').attr("id"); /*finds id of the last row inside table*/
+
+          var date = new Array();
+		      var saronumber = new Array();
+          var fund = new Array(); 
+          var legalbasis = new Array(); 
+          var ppa = new Array(); 
+          var expenseclass = new Array(); 
+          var particulars = new Array(); 
+          var uacs = new Array(); 
+          var amount = new Array(); 
+          var obligated = new Array(); 
+          var balance = new Array(); 
+          var group = new Array(); 
+       
+        
+          for ( var i = 1; i <= lastRowId; i++) {
+        // name.push($("#"+i+" .name"+i).html()); /*pushing all the names listed in the table*/
+        // email.push($("#"+i+" .email"+i).html()); /*pushing all the emails listed in the table*/
+        date.push($("#"+i+" .date"+i).html());
+        saronumber.push($("#"+i+" .saronumber"+i).html()); 
+        fund.push($("#"+i+" .fund"+i).html());
+        legalbasis.push($("#"+i+" .legalbasis"+i).html()); 
+        ppa.push($("#"+i+" .ppa"+i).html()); 
+        expenseclass.push($("#"+i+" .expenseclass"+i).html()); 
+        particulars.push($("#"+i+" .particulars"+i).html()); 
+        uacs.push($("#"+i+" .uacs"+i).html()); 
+        amount.push($("#"+i+" .amount"+i).html()); 
+        obligated.push($("#"+i+" .obligated"+i).html()); 
+        balance.push($("#"+i+" .balance"+i).html()); 
+        group.push($("#"+i+" .group"+i).html()); 
+        
+          }
+        /*   var sendName = JSON.stringify(name); 
+          var sendEmail = JSON.stringify(email); */
+
+          var date = JSON.stringify(date);
+          var saronumber = JSON.stringify(saronumber);
+          var fund = JSON.stringify(fund);   
+          var legalbasis = JSON.stringify(legalbasis);
+          var ppa = JSON.stringify(ppa); 
+          var expenseclass = JSON.stringify(expenseclass);
+          var particulars = JSON.stringify(particulars);  
+          var uacs = JSON.stringify(uacs);  
+          var amount = JSON.stringify(amount);
+          var obligated = JSON.stringify(obligated); 
+          var balance = JSON.stringify(balance);
+          var group = JSON.stringify(group);   
+        
+          $.ajax({
+          url: "sarocreatefunction.php",
+          type: "post",
+          data: {date : date, 
+            saronumber : saronumber, 
+            fund : fund, 
+            legalbasis : legalbasis, 
+            ppa : ppa, 
+            expenseclass : expenseclass, 
+            particulars : particulars, 
+            uacs : uacs, 
+            amount : amount, 
+            obligated : obligated, 
+            balance : balance, 
+            group : group
+           },
+          success : function(data){
+          alert(data); /* alerts the response from php.*/
+          window.location.href='/pmis/AMS/@saro.php';
+          }
+          });
+          });
+          });
+          </script>
+
+
+
+        
         <!-- End Menu -->
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Create</button>
+
+    
+   <!--  &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Create</button> -->
     <br>
     <br>
     </div>
@@ -178,6 +338,7 @@
   </div>
  
 </div>
+
 
 <script src="dist/js/demo.js">
 </script>
