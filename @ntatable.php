@@ -17,7 +17,7 @@
   <div class="box-body">
             
       
-            <h1 align="">&nbspNTA</h1>
+            <h1 align="">&nbspNTA/NCA</h1>
              <div class="box-header "  style="overflow-x:auto;">
     </div>
     <br>
@@ -94,7 +94,7 @@
                         <th style="text-align:center" width="800">SARO</th>
                         <th style="text-align:center" width="800">PARTICULAR</th>
                         <th style="text-align:center" width="800">AMOUNT</th>
-                        <th style="text-align:center" width="800">OBLIGATED</th>
+                        <th style="text-align:center" width="800">DISBURSEMENT</th>
 
                         <th style="text-align:center" width="800">BALANCE</th>
                        <!--  <th style="text-align:center" width="800">UACS</th>

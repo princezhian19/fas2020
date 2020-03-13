@@ -2,115 +2,91 @@
 <?php
 //include('../@classes/db.php');
 
-$datereceived = $_POST['datereceived'];
-$d1 = date('Y-m-d', strtotime($datereceived));
 
-$datereprocessed = $_POST['datereprocessed'];
-$d2 = date('Y-m-d', strtotime($datereprocessed));
+$datereceived = json_decode($_POST["datereceived"]);
+//$d1 = date('Y-m-d', strtotime($datereceived));
 
-// $datereturned = $_GET['datereturned'];
-// $d3 = date('Y-m-d', strtotime($datereturned));
+$datereprocessed = json_decode($_POST["datereprocessed"]);
+//$d2 = date('Y-m-d', strtotime($datereprocessed));
 
-$datereturned = $_POST['datereturned'];
+$datereturned = json_decode($_POST["datereturned"]);
+/* $datereturned = $_GET['datereturned'];
 if($datereturned==''){
     $d3 = "";
 }
 else{
-    $d3 = date('Y-m-d', strtotime($datereturned));
-}
-
-$datereleased = $_POST['datereleased'];
-$d4 = date('Y-m-d', strtotime($datereleased));
-
-$ors = $_POST['ors'];
-$po = $_POST['ponum'];
-$payee = $_POST['payee'];
-$supplier = $_POST['supplier'];
-$particular = $_POST['particular'];
-$saronum = $_POST['saronum'];
-$ppa = $_POST['ppa'];
-$uacs = $_POST['uacs'];
-$amount = $_POST['amount'];
-$remarks = $_POST['remarks'];
-$sarogroup = $_POST['sarogroup'];
-$status = $_POST['status'];
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "db_dilg_pmis";
-// Create connection
-$conn = new mysqli($servername, $username, $password,$database);
-
-// Check connection
-if ($conn->connect_error) {
-   die("Connection failed: " . $conn->connect_error);
-}
-//echo "Connected successfully";
-
-// Perform queries
-
-
-if($supplier==""){
-    $query ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-    VALUES ('$d1','$d2 ','$d3','$d4','$ors','$po','$payee','$particular','$saronum','$ppa','$uacs','$amount','$remarks','$sarogroup','$status')";
-   
-
-        if (mysqli_query($conn, $query)) {
-            echo json_encode(array("statusCode"=>200));
-            
-
-        } 
-        else {
-            echo json_encode(array("statusCode"=>201));
-        }
-
-
-}
-
-if($payee==""){
-
-    $query ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-    VALUES ('$d1','$d2 ','$d3','$d4','$ors','$po','$supplier','$particular','$saronum','$ppa','$uacs','$amount','$remarks','$sarogroup','$status')";
-
-    if (mysqli_query($conn, $query)) {
-        echo json_encode(array("statusCode"=>200));
-        
-    } 
-    else {
-        echo json_encode(array("statusCode"=>201));
-    }
-
-}
-
-
-//updating obligation
-$update = mysqli_query($conn,"Update saro set obligated = obligated + $amount where saronumber = '$saronum' and uacs = '$uacs' ");
-//updating balance
-$update = mysqli_query($conn,"Update saro set balance = amount - obligated where saronumber = '$saronum' and uacs = '$uacs' ");
-
-mysqli_close($conn);
-
-/* if($query){
-    
-    //if query is successful
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Data Added Successfully!')
-    window.location.href='../@obcreate.php';
-    </SCRIPT>");
-
-    //header('Location:../@obligation.php?message=Data Added Successfully!');
-
-}
-else{
-
-    //if query has error
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    
-    window.alert('Error!')
-    window.location.href='../@obcreate.php';
-    </SCRIPT>");
+    $d3 =date('Y-m-d', strtotime($datereturned));
 } */
 
 
+$datereleased = json_decode($_POST["datereleased"]);
+//$d4 = date('Y-m-d', strtotime($datereleased));
+
+$ors = json_decode($_POST["ors"]);
+$po = json_decode($_POST["ponum"]);
+$payee = json_decode($_POST["payee"]);
+$supplier = json_decode($_POST["supplier"]);
+$particular = json_decode($_POST["particular"]);
+$saronum = json_decode($_POST["saronum"]);
+$ppa = json_decode($_POST["ppa"]);
+$uacs = json_decode($_POST["uacs"]);
+$amount = json_decode($_POST["amount"]);
+$remarks = json_decode($_POST["remarks"]);
+$sarogroup = json_decode($_POST["sarogroup"]);
+$status = json_decode($_POST["status"]);
+
+
+$con=mysqli_connect("localhost","root","","db_dilg_pmis");
+if (mysqli_connect_errno())
+{
+echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+
+for ($i = 0; $i < count($datereceived); $i++) {
+/* if(($ors[$i] != "")){ /*not allowing empty values and the row which has been removed.*/ 
+
+    if($supplier[$i]==""){
+      /*   $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+        VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
+       $sql = "INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+       VALUES ('','','','','$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+       if (!mysqli_query($con,$sql))
+       {
+       die('Error: ' . mysqli_error($con));
+       }
+       
+       else{
+        Print "Data added Successfully !";
+         //updating obligation
+         $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+         //updating balance
+         $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+       
+       }
+    }
+
+    if($payee[$i]==""){
+    
+       /*  $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+        VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
+        $sql = "INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+        VALUES ('','','','','$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+     if (!mysqli_query($con,$sql))
+     {
+     die('Error: ' . mysqli_error($con));
+     }
+     
+     else{
+        Print "Data added Successfully !";
+       //updating obligation
+       $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+       //updating balance
+       $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+     
+     }
+  
+    } 
+}
+/* } */
+mysqli_close($con);
 ?>

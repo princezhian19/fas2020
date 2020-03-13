@@ -69,17 +69,23 @@
                           }
                         ?></td>
                         <td><?php 
-                        $selectABS = mysqli_query($conn,"SELECT * FROM abstract_of_quote WHERE rfq_id = '$rfq_id'");
-                        if (mysqli_num_rows($selectABS) > 0 ) {
+                        $selectABS = mysqli_query($conn,"SELECT * FROM abstract_of_quote WHERE rfq_id = '$rfq_id' and abstract_no is not NULL");
+                        //echo "SELECT * FROM abstract_of_quote WHERE rfq_id = '$rfq_id'";
+                       /*  if (mysqli_num_rows($selectABS) > 0 ) { */
                         $rowABS = mysqli_fetch_array($selectABS);
                         $supplier_id = $rowABS['supplier_id'];
+                       // echo $supplier_id;
+
                         $select_sup = mysqli_query($conn,"SELECT supplier_title from supplier WHERE id = '$supplier_id'");
                         $rowSup = mysqli_fetch_array($select_sup);
                         $win_supplier = $rowSup['supplier_title'];
                           echo "<p style='color:green'><b>$win_supplier</b></p>";
-                        }else{
+                       
+                          //echo "SELECT supplier_title from supplier WHERE id = '$supplier_id'";
+
+                      /*   }else{
                         echo "";
-                        }
+                        } */
                         ?></td>
                         <td><?php 
                         $selectPO = mysqli_query($conn,"SELECT po.po_no FROM selected_quote sq LEFT JOIN po on po.id = sq.po_id WHERE sq.rfq_id = '$rfq_id'");

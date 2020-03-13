@@ -52,6 +52,7 @@ $mydb = new db(); // create a new object, class db()
                     $division = $row["division"];
                     $po_no = $row['po_no'];
                     $purpose = $row['purpose'];
+                    $request_by = $row['request_by'];
 
                     if ($request_by == 1 ) {
                       $request_by = "Jay-ar T. Beltran";

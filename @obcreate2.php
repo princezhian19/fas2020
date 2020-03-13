@@ -270,7 +270,6 @@ function app($connect)
              
              <br>
             <!-- SARO -->
-            <div class="well">
             <div class="row">
                 <div class="col-md-3">
                     <label>Fund Source</label>
@@ -418,7 +417,7 @@ function app($connect)
                   {
                     // document.getElementById('uacs').value = "";
                     load_data();
-          /* document.getElementById("code").value = ""; */
+                    /* document.getElementById("code").value = ""; */
                     document.getElementById("uacs").value = "";
                     $("#main2").show();
                     
@@ -470,179 +469,9 @@ function app($connect)
                     </select>
                 </div>
             </div>
-            </div>
             <!-- END SARO -->
             <br>
-           <!--  <input type="button" name="save" class="btn btn-primary" value="Save" id="butsave"> -->
-              <input type="button" name="send" class="btn btn-primary" value="Add data" id="butsend">
-              <input type="button" name="save" class="btn btn-primary" value="Save Data" id="butsave">
-              <br>
-              <br>
-
-              <div class=""  style="overflow-x:auto;">
-              <!-- Append -->
-          <table id="table1" name="table1" class="table table-bordered"  style="background-color: white;border-width: medium;">
-         
-          <tbody>
-          <tr>
-        
-          <th>DATE RECEIVED</th>
-          <th>DATE OBLIGATED</th>
-          <th>DATE RETURNED</th>
-          <th>DATE RELEASED</th>
-          <th>ORS NUMBER</th>
-          <th>PO NUMBER</th>
-          <th>PAYEE</th>
-          <th>SUPPLIER</th>
-          <th>PARTICULAR</th>
-          <th>SARO NUMBER</th>
-          <th>PPA</th>
-          <th>UACS</th>
-          <th>AMOUNT</th>
-          <th>REMARKS</th>
-          <th>GROUP</th>
-          <th>STATUS</th>
-          <th>ACTION</th>
-         
-          <tr>
-          </tbody>
-          </table>
-          </div>
-          <script>
-          $(document).ready(function() {
-          var id = 1; 
-          /*Assigning id and class for tr and td tags for separation.*/
-          $("#butsend").click(function() {
-          var newid = id++; 
-          /* 
-          var datereceived = $('#datepicker1').val();
-		      var datereprocessed = $('#datepicker2').val();
-          var datereturned = $('#datepicker3').val();
-          var datereleased = $('#datepicker4').val();
-          var ors = $('#ors').val();
-          var ponum = $('#ponum').val();
-          var payee = $('#payee').val();
-          var supplier = $('#supplier').val();
-          var particular = $('#particular').val();
-          var saronum = $('#saronum').val();
-          var ppa = $('#ppa').val();
-          var uacs = $('#uacs').val();
-          var amount = $('#amount').val();
-          var remarks = $('#remarks').val();
-          var sarogroup = $('#sarogroup').val();
-          var status = $('#status').val(); */
-
-          $("#table1").append('<tr valign="top" id="'+newid+'">\n\
-          <td width="100px" class="datereceived'+newid+'">' + $("#datepicker1").val() + '</td>\n\
-          <td width="100px" class="datereprocessed'+newid+'">' + $("#datepicker2").val() + '</td>\n\
-          <td width="100px" class="datereturned'+newid+'">' + $("#datepicker3").val() + '</td>\n\
-          <td width="100px" class="datereleased'+newid+'">' + $("#datepicker4").val() + '</td>\n\
-          <td width="100px" class="ors'+newid+'">' + $("#ors").val() + '</td>\n\
-          <td width="100px" class="ponum'+newid+'">' + $("#ponum").val() + '</td>\n\
-          <td width="100px" class="payee'+newid+'">' + $("#payee").val() + '</td>\n\
-          <td width="100px" class="supplier'+newid+'">' + $("#supplier").val() + '</td>\n\
-          <td width="100px" class="particular'+newid+'">' + $("#particular").val() + '</td>\n\
-          <td width="100px" class="saronum'+newid+'">' + $("#saronum").val() + '</td>\n\
-          <td width="100px" class="ppa'+newid+'">' + $("#ppa").val() + '</td>\n\
-          <td width="100px" class="uacs'+newid+'">' + $("#uacs").val() + '</td>\n\
-          <td width="100px" class="amount'+newid+'">' + $("#amount").val() + '</td>\n\
-          <td width="100px" class="remarks'+newid+'">' + $("#remarks").val() + '</td>\n\
-          <td width="100px" class="sarogroup'+newid+'">' + $("#sarogroup").val() + '</td>\n\
-          <td width="100px" class="status'+newid+'">' + $("#status").val() + '</td>\n\
-          <td width="100px"><a href="javascript:void(0);" class="remCF">Remove</a></td>\n\ </tr>');
-          });
-          $("#table1").on('click', '.remCF', function() {
-          $(this).parent().parent().remove();
-          });
-          /*crating new click event for save button*/
-          $("#butsave").click(function() {
-          var lastRowId = $('#table1 tr:last').attr("id"); /*finds id of the last row inside table*/
-
-          var datereceived = new Array(); 
-		      var datereprocessed = new Array(); 
-          var datereturned = new Array(); 
-          var datereleased = new Array(); 
-          var ors = new Array(); 
-          var ponum = new Array(); 
-          var payee = new Array(); 
-          var supplier = new Array(); 
-          var particular = new Array(); 
-          var saronum = new Array(); 
-          var ppa = new Array(); 
-          var uacs = new Array(); 
-          var amount = new Array(); 
-          var remarks = new Array(); 
-          var sarogroup = new Array(); 
-          var status = new Array(); 
-        
-          for ( var i = 1; i <= lastRowId; i++) {
-        // name.push($("#"+i+" .name"+i).html()); /*pushing all the names listed in the table*/
-        // email.push($("#"+i+" .email"+i).html()); /*pushing all the emails listed in the table*/
-         datereceived.push($("#"+i+" .datereceived"+i).html());
-         datereprocessed.push($("#"+i+" .datereprocessed"+i).html()); 
-         datereturned.push($("#"+i+" .datereturned"+i).html());
-         datereleased.push($("#"+i+" .datereleased"+i).html()); 
-         ors.push($("#"+i+" .ors"+i).html()); 
-         ponum.push($("#"+i+" .ponum"+i).html()); 
-         payee.push($("#"+i+" .payee"+i).html()); 
-         supplier.push($("#"+i+" .supplier"+i).html()); 
-         particular.push($("#"+i+" .particular"+i).html()); 
-         saronum.push($("#"+i+" .saronum"+i).html()); 
-         ppa.push($("#"+i+" .ppa"+i).html()); 
-         uacs.push($("#"+i+" .uacs"+i).html()); 
-         amount.push($("#"+i+" .amount"+i).html()); 
-         remarks.push($("#"+i+" .remarks"+i).html()); 
-         sarogroup.push($("#"+i+" .sarogroup"+i).html()); 
-         status.push($("#"+i+" .status"+i).html()); 
-		 
-          }
-        /*   var sendName = JSON.stringify(name); 
-          var sendEmail = JSON.stringify(email); */
-
-          var datereceived = JSON.stringify(datereceived); 
-          var datereprocessed = JSON.stringify(datereprocessed);
-          var datereturned = JSON.stringify(datereturned);   
-          var datereleased = JSON.stringify(datereleased);
-          var ors = JSON.stringify(ors); 
-          var ponum = JSON.stringify(ponum);
-          var payee = JSON.stringify(payee);   
-          var supplier = JSON.stringify(supplier);
-          var particular = JSON.stringify(particular); 
-          var saronum = JSON.stringify(saronum);
-          var ppa = JSON.stringify(ppa);   
-          var uacs = JSON.stringify(uacs);
-          var amount = JSON.stringify(amount); 
-          var remarks = JSON.stringify(remarks);
-          var sarogroup = JSON.stringify(sarogroup);   
-          var status = JSON.stringify(status);
-          $.ajax({
-          url: "obcreatefunction.php",
-          type: "post",
-          data: {datereceived : datereceived , 
-            datereprocessed : datereprocessed, 
-            datereturned : datereturned, 
-            datereleased : datereleased, 
-            ors : ors, 
-            ponum : ponum, 
-            payee : payee, 
-            supplier : supplier, 
-            particular : particular, 
-            saronum : saronum, 
-            ppa : ppa, 
-            uacs : uacs, 
-            amount : amount, 
-            remarks : remarks, 
-            sarogroup : sarogroup, 
-            status : status},
-          success : function(data){
-          alert(data); /* alerts the response from php.*/
-          window.location.href='/pmis/AMS/@obligation.php';
-          }
-          });
-          });
-          });
-          </script>
-          </div>
+            <input type="button" name="save" class="btn btn-primary" value="Save" id="butsave">
         </div>
         <!-- End Menu -->
     <!-- End Panel -->
@@ -662,7 +491,13 @@ function app($connect)
  
 </div>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-<!-- <script>
+
+
+
+
+
+
+<script>
 /* AJAX */
 $(document).ready(function() {
 	$('#butsave').on('click', function() {
@@ -731,7 +566,7 @@ $(document).ready(function() {
 		}
 	});
 });
-</script> -->
+</script>
 
 
 <script src="dist/js/demo.js">

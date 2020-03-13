@@ -40,7 +40,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
-        <li class="active">Create NTA</li>
+        <li class="active">Create NTA/NCA</li>
       </ol>
       <br>
       <br>
@@ -49,7 +49,7 @@
     <div class="panel panel-default">
         <br>
       
-            <h1 align="">&nbspCreate NTA</h1>
+            <h1 align="">&nbspCreate NTA/NCA</h1>
             <div class="box-header with-border">
     
         <br>
@@ -116,7 +116,7 @@
                     
                 </div>
                 <div class="col-md-6">
-                <label>Particular</label>
+                <label>NTA/NCA Particular</label>
                     <input  type="text"   class="form-control" style="height: 35px;" id="expenseclass" placeholder="Enter Particular" name="particular">
                    
 
@@ -142,7 +142,7 @@
              
                 
                 <div class="col-md-4">
-                    <label>Obligated</label>
+                    <label>Disbursement</label>
                     <input  type="text" readonly  class="form-control" style="height: 40px;" id="obligated" placeholder="Enter Obligated" name="obligated" value="0">
                     
                 </div>

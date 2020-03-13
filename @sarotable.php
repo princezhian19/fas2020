@@ -19,7 +19,7 @@ include('db.class.php'); // call db.class.php
             
             
       
-            <h1 align="">SARO</h1>
+            <h1 align="">SARO/SUB-ARO</h1>
              <div class=""  style="overflow-x:auto;">
     </div>
     <br>
@@ -109,7 +109,7 @@ include('db.class.php'); // call db.class.php
                         <th width="800">PARTICULARS</th>
                         <th width="800">UACS</th>
                         <th width="800">AMOUNT</th>
-                        <th width="800">OBLIGATED</th>
+                        <th width="800">DISBURSEMENT</th>
                         <th width="800">BALANCE</th>
                         <th width="800">GROUP</th>
                         <th width="800">ACTION</th>

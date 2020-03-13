@@ -48,8 +48,9 @@ $mydb = new db(); // create a new object, class db()
                     <th width="200">TYPE</th>
                     <th width="500">PURPOSE</th>
                     <th>TARGET DATE</th>
-                    <th width="">ACTION</th>
+                    <th width="">SUBMITTED DATE</th>
                     <th width="">RECEIVED DATE</th>
+                    <th width="">ACTION</th>
                   </tr>
                 </thead>
 
@@ -115,7 +116,10 @@ $mydb = new db(); // create a new object, class db()
                     $pr_no = $row["pr_no"];  
                     $pmo = $row["pmo"];
                     $submitted_date = $row["submitted_date"];
+                    $submitted_date1 = date('F d, Y', strtotime($submitted_date));
+
                     $received_date = $row["received_date"];
+                    $received_date1 = date('F d, Y', strtotime($received_date));
 
                     $purpose = $row["purpose"];
                     $pr_date = $row["pr_date"];
@@ -160,7 +164,32 @@ $mydb = new db(); // create a new object, class db()
                         <?php endif?>
                         <td><?php echo $purpose;?></td>
                         <td><?php echo $target_date11;?></td>
+                        
                         <td>
+                          <?php if ($submitted_date == NULL): ?>
+                          
+                            <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Submit this item?');" href='submit_pr1.php?id=<?php echo $id; ?>  ' title="Submit"> 
+                            Submit </a>  
+                          
+                            <?php else: ?>
+                            <?php echo $submitted_date1?>
+
+                            <?php endif ?>
+                          </td>
+                            
+
+                    
+                          <?php if ($received_date == NULL): ?>
+                            <td>
+                             
+                            </td>
+                            <?php else: ?>
+                              <td><?php echo $received_date1?></td>
+
+                            <?php endif ?>
+                     
+
+                      <td>
                         <?php if ($submitted_date == NULL || $received_date == NULL): ?>
                               <!--  &nbsp&nbsp&nbsp&nbsp&nbsp<a href='export_pr.php?id=<?php echo $id; ?>' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> --> <a href='ViewRFQdetails1.php?id=<?php echo $getID; ?>' > <i style='font-size:20px' class='fa'>&#xf044;</i> </a>
 
@@ -172,31 +201,6 @@ $mydb = new db(); // create a new object, class db()
                             <?php endif ?>
                        
                        </td>
-                       <?php if ($submitted_date == NULL ): ?>
-                         <td>
-                          <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Submit this item?');" href='submit_pr1.php?id=<?php echo $id; ?>  ' title="Submit"> 
-                          Submit </a>    
-                        </td>
-
-                        <?php else: ?>
-                          <?php if ($received_date == NULL): ?>
-                            <td>
-                              Waiting to Received
-                            </td>
-                            <?php else: ?>
-                              <td><?php echo $received_date?></td>
-
-                            <?php endif ?>
-                          <?php endif ?>
-
-                        <!-- <td>                     
-                        
-                         &nbsp&nbsp&nbsp&nbsp&nbsp<a  onclick="return confirm('Are you sure you want to Delete this item?');" href='deletePRfinalize.php?id=<?php echo $id; ?>  ' title="Delete"> 
-                        <i style='font-size:24px' class='fa fa-trash-o' ></i> </a>
-
-                      </td> -->
-
-
 
                     </tr>
                   <?php } ?>

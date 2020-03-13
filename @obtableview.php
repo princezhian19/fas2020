@@ -37,8 +37,8 @@ $getUacs = $_GET['getuacs'];
             <!--  Getting Hidden Variables -->
 
 
-            <h1 align="" >&nbspObligation for the Fund Source :  <label ><?php echo $getSaro?></label></h1>
-            <h1 align="" >&nbspObligation for the UACS :   <label name="uacs" ><?php echo $getUacs?></label></h1>
+            <h1 align="" >&nbspDisbursement for the Fund Source :  <label ><?php echo $getSaro?></label></h1>
+            <h1 align="" >&nbspDisbursement for the UACS :   <label name="uacs" ><?php echo $getUacs?></label></h1>
             <h1 align="" >&nbspAllotment Amount :   <label ><?php
               
               $servername = "localhost";

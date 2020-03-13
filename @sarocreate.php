@@ -40,7 +40,7 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
-        <li class="active">Create SARO</li>
+        <li class="active">Create SARO/SUB-ARO</li>
       </ol>
       <br>
       <br>
@@ -49,7 +49,7 @@
     <div class="panel panel-default">
         <br>
       
-            <h1 align="">&nbspCreate SARO</h1>
+            <h1 align="">&nbspCreate SARO/SUB-ARO</h1>
             <div class="box-header with-border">
     
         <br>
@@ -146,7 +146,7 @@
              
                 
                 <div class="col-md-3">
-                    <label>Obligated</label>
+                    <label>Disbursement</label>
                     <input  type="text" readonly  class="form-control" style="height: 40px;" id="obligated" placeholder="Enter Obligated" name="obligated" value="0">
                     
                 </div>
