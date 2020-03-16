@@ -14,6 +14,7 @@ $styleLeft = array(
   ),
 );
 
+
 $styleRight = array(
   'borders' => array(
     'right' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
@@ -25,6 +26,8 @@ $stylebottom = array(
     'bottom' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
   ),
 );
+
+
 $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
 $id = $_GET['id'];
 $sql = mysqli_query($conn, "SELECT * FROM burs WHERE id = '$id' ");
@@ -36,7 +39,7 @@ $address = $row['address'];
 $purpose = $row['purpose'];
 $amount = $row['amount'];
 
-$sql2 = mysqli_query($conn, "SELECT pmo.pmo_contact_person,pmo.designation FROM pmo LEFT JOIN burs b on b.office = pmo.id WHERE b.id = '$id' ");
+$sql2 = mysqli_query($conn, "SELECT pmo.pmo_contact_person,pmo.designation FROM pmo LEFT JOIN pr on pr.pmo = pmo.id WHERE pr.id = '$id' ");
 $row2 = mysqli_fetch_array($sql2);
 $pmo_title = $row2['pmo_contact_person'];
 $designation = $row2['designation'];

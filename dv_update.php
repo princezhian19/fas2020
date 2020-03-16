@@ -14,6 +14,7 @@ $address = $row['address'];
 $purpose = $row['purpose'];
 $amount = $row['amount'];
 $doc_type = $row['doc_type'];
+$date_submit = $row['date_submit'];
 
 if (isset($_POST['submit'])) {
   $po_no1 = $_POST['po_no'];
@@ -23,7 +24,7 @@ if (isset($_POST['submit'])) {
   $address1 = $_POST['address'];
   $burs1 = $_POST['burs'];
 
-  $update = mysqli_query($conn,"UPDATE dv SET office = '$burs1' , po_no = '$po_no1', supplier = '$supplier1',purpose = '$purpose1', amount = '$amount1', address = '$address1' ");
+  $update = mysqli_query($conn,"UPDATE dv SET po_no = '$po_no1', supplier = '$supplier1',purpose = '$purpose1', amount = '$amount1', address = '$address1' ");
   if ($update) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Saved!')
@@ -47,10 +48,8 @@ if (isset($_POST['submit'])) {
     <br>
   <?php $btn = $_GET['btn']; ?>
   <?php if ($btn == 'no'): ?>
-    &nbsp &nbsp &nbsp   <li class="btn btn-primary btn-s"><a href="ViewDVreturn.php" style="color:white;text-decoration: none;">Back</a></li>
     <?php else: ?>
-    &nbsp &nbsp &nbsp   <li class="btn btn-primary btn-s"><a href="ViewDV.php" style="color:white;text-decoration: none;">Back</a></li>
-   | <li class="btn btn-success btn-s"><a href="export_dv.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;">Export</a></li>
+    <li class="btn btn-success btn-s"><a href="export_dv.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;">Export</a></li>
   <?php endif ?>
     <br>
     <br>
@@ -99,9 +98,11 @@ if (isset($_POST['submit'])) {
       </div>
     </div>
   </div>
-  <?php if ($btn=="no"): ?>
+  <?php if ($date_submit != NULL): ?>
+    
     <?php else: ?>
   <button class="btn btn-primary btn-s" style="float: right;" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Update</button>
+
   <?php endif ?>
   <br>
 </form>

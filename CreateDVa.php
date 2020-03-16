@@ -1,13 +1,9 @@
-<?php
-session_start();
-$username = $_SESSION['username'];
-?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Update BURS/ORS</title>
+  <title>Encode DV</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
@@ -21,23 +17,19 @@ $username = $_SESSION['username'];
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
- <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ): ?>
-  <?php include('sidebar.php');?>
-    <?php else: ?>
-  <?php include('sidebar2.php');?>
-
-  <?php endif ?>
+ 
   
+  <?php include('sidebar.php');?>
 
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="ViewAcceptance.php"><i class=""></i> Home</a></li>
-        <li class="active">Update BURS</li>
+        <li class="active">Create DV</li>
       </ol>
       <br>
       <br>
-        <?php include('dv_update.php');?>
+        <?php include('dvA.php');?>
 
     </section>
   </div>

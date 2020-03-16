@@ -36,7 +36,15 @@ $implode2 = implode(',', $rfq_items_id_abc);
 $select_tots = mysqli_query($conn,"SELECT sum(ppu*qty) as ABCtots FROM supplier_quote sq LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE rfq_item_id in($implode2) AND supplier_id = $supplier_id");
 while($rowppu = mysqli_fetch_array($select_tots)){
     $po_amount = number_format($rowppu['ABCtots'],2);
+    $po_amount2 = $rowppu['ABCtots'];
 }
+
+
+$select_ors = mysqli_query($conn,"SELECT po_no,id FROM burs WHERE po_no = '$po_no'");
+$rowpo = mysqli_fetch_array($select_ors);
+$rowpo_no = $rowpo['po_no'];
+$id = $rowpo['id'];
+
 
 
 ?>
@@ -85,99 +93,122 @@ while($rowppu = mysqli_fetch_array($select_tots)){
                                         </tr>
                                         <tr>
                                             <th>ORS </th>
-                                            <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="export_obligation_po.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>">Obligation Request Status</a></td>
-                                        </tr>
-                                        <tr>
-                                            <th>DV </th>
-                                            <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="export_dv_po.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>">Disbursement Voucher</a></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
+                                            <?php if ($rowpo_no != ''): ?>
+                                                <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="UpdateBURS.php?id=<?php echo $id;?>">Obligation Request Status</a></td>
+                                                <?php else: ?>
+                                                    <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="CreateORSa.php?po_no=<?php echo $po_no;?>&rfq_id=<?php echo $rfq_id;?>&supplier_titleD=<?php echo $supplier_titleD; ?>&supplier_address=<?php echo $supplier_addressD; ?>&po_amount=<?php echo $po_amount2; ?>">Obligation Request Status</a></td>
 
-                        </div>
-                        <div class="col-md-4">
+                                                <?php endif ?>
+                                            </tr>
+                                            <tr>
+                                                <th>DV </th>
+                                                <?php 
+                                                $select_dv = mysqli_query($conn,"SELECT po_no,id FROM dv WHERE po_no = '$po_no'");
+                                                $rowpo1 = mysqli_fetch_array($select_dv);
+                                                $rowpo_no1 = $rowpo1['po_no'];
+                                                $id = $rowpo1['id'];
 
-                            <div class="box box-success">
-                                <div class="box-header with-border" align="left">
-                                    <h4>RFQ No. <?php echo $rfqnoD;?></h4>
-                                </div>
-                                <div class="box-body table-responsive no-padding">
-                                    <div class="box-body">
-                                        <table id="example1" class="table table-striped table-bordered" style="background-color white;">
-                                            <tr>
-                                                <th>Mode of Procurement</th>
-                                                <td><?php echo $mode_of_proc_title;?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>RFQ Date</th>
-                                                <td><?php echo $rfq_dateD;?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Office</th>
-                                                <td><?php echo $office;?></td>
-                                            </tr>
+                                                ?>
+                                                <?php if ($rowpo_no1 != ''): ?>
+                                                      <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="UpdateDV.php?id=<?php echo $id;?>">Disbursement Voucher</a></td>
 
-                                            <tr>
-                                                <th>Supplier</th>
-                                                <td><?php echo $supplier_titleD;?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <td><?php echo $supplier_addressD;?></td>
-                                            </tr>
-                                            <tr>
-                                                <th>Contact No.</th>
-                                                <td><?php echo $supplier_contactD;?></td>
+                                                    
+                                                    <?php else: ?>
+
+                                                <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="CreateDVa.php?po_no=<?php echo $po_no;?>&rfq_id=<?php echo $rfq_id;?>&supplier_titleD=<?php echo $supplier_titleD; ?>&supplier_address=<?php echo $supplier_addressD; ?>&po_amount=<?php echo $po_amount2; ?>">Disbursement Voucher</a></td>
+
+                                                <?php endif ?>
+
                                             </tr>
                                         </table>
                                     </div>
                                 </div>
+
                             </div>
-                        </div>
-                    </div>    
-                    <h3>Item(s)</h3>
-                    <table id="example1" class="table table-striped table-bordered" style="background-color white;">
-                        <thead>
-                            <tr style="background-color white;colorblue;">
-                                <th width="500">Item</th>
-                                <th width="500">Qty</th>
-                                <th width="500">Unit</th>
-                                <th width="500">ABC Per Item</th>
-                                <th width="500">Pricer Per Unit</th>
-                                <th width="500">Remarks</th>
-                            </tr>
-                        </thead>
-                        <?php 
+                            <div class="col-md-4">
 
-                        $select_rfqitems = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id");
-                        while ($rfqitems = mysqli_fetch_assoc($select_rfqitems)) {
-                          $rfq_items_id_abc[] = $rfqitems['id'];
-                      }
-                      $implode = implode(',', $rfq_items_id_abc);
+                                <div class="box box-success">
+                                    <div class="box-header with-border" align="left">
+                                        <h4>RFQ No. <?php echo $rfqnoD;?></h4>
+                                    </div>
+                                    <div class="box-body table-responsive no-padding">
+                                        <div class="box-body">
+                                            <table id="example1" class="table table-striped table-bordered" style="background-color white;">
+                                                <tr>
+                                                    <th>Mode of Procurement</th>
+                                                    <td><?php echo $mode_of_proc_title;?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>RFQ Date</th>
+                                                    <td><?php echo $rfq_dateD;?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Office</th>
+                                                    <td><?php echo $office;?></td>
+                                                </tr>
 
-                    $view_query = mysqli_query($conn, "SELECT rq.total_amount as abc,iu.item_unit_title,rq.qty,app.procurement,sq.ppu,sq.remarks FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN supplier_quote sq on sq.rfq_item_id = rq.id LEFT JOIN item_unit iu on iu.id = rq.unit_id WHERE rq.id in($implode) AND sq.supplier_id = $supplier_id ");
+                                                <tr>
+                                                    <th>Supplier</th>
+                                                    <td><?php echo $supplier_titleD;?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Address</th>
+                                                    <td><?php echo $supplier_addressD;?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Contact No.</th>
+                                                    <td><?php echo $supplier_contactD;?></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                        <h3>Item(s)</h3>
+                        <table id="example1" class="table table-striped table-bordered" style="background-color white;">
+                            <thead>
+                                <tr style="background-color white;colorblue;">
+                                    <th width="500">Item</th>
+                                    <th width="500">Qty</th>
+                                    <th width="500">Unit</th>
+                                    <th width="500">ABC Per Item</th>
+                                    <th width="500">Pricer Per Unit</th>
+                                    <th width="500">Remarks</th>
+                                </tr>
+                            </thead>
 
-                    while ($row = mysqli_fetch_assoc($view_query)) {
-                        $ppu1 = $row["ppu"];  
-                        $remarks1 = $row["remarks"];
-                        $procurement1 = $row["procurement"];
-                        $qty1 = $row["qty"];
-                        $abc1 = $row["abc"];
-                        $item_unit_title1 = $row["item_unit_title"];
-                        echo "<tr align = ''>
-                        <td>$procurement1</td>
-                        <td>$qty1</td>
-                        <td>$item_unit_title1</td>
-                        <td>$abc1</td>
-                        <td>$ppu1</td>
-                        <td>$remarks1</td>
-                        </tr>"; 
-                    }
-                    ?>
-                </table>
+
+                            <?php 
+
+                            $select_rfqitems = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id");
+                            while ($rfqitems = mysqli_fetch_assoc($select_rfqitems)) {
+                              $rfq_items_id_abc[] = $rfqitems['id'];
+                          }
+                          $implode = implode(',', $rfq_items_id_abc);
+
+                          $view_query = mysqli_query($conn, "SELECT rq.total_amount as abc,iu.item_unit_title,rq.qty,app.procurement,sq.ppu,sq.remarks FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN supplier_quote sq on sq.rfq_item_id = rq.id LEFT JOIN item_unit iu on iu.id = rq.unit_id WHERE rq.id in($implode) AND sq.supplier_id = $supplier_id ");
+
+                          while ($row = mysqli_fetch_assoc($view_query)) {
+                            $ppu1 = $row["ppu"];  
+                            $remarks1 = $row["remarks"];
+                            $procurement1 = $row["procurement"];
+                            $qty1 = $row["qty"];
+                            $abc1 = $row["abc"];
+                            $item_unit_title1 = $row["item_unit_title"];
+                            echo "<tr align = ''>
+                            <td>$procurement1</td>
+                            <td>$qty1</td>
+                            <td>$item_unit_title1</td>
+                            <td>$abc1</td>
+                            <td>$ppu1</td>
+                            <td>$remarks1</td>
+                            </tr>"; 
+                        }
+                        ?>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>

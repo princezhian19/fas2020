@@ -48,18 +48,15 @@ echo "Failed to connect to MySQL: " . mysqli_connect_error();
 for ($i = 0; $i < count($datereceived); $i++) {
 if(($ors[$i] != "")){ /*not allowing empty values and the row which has been removed.*/ 
 
-
-    
-
     if($supplier[$i]==""){
       /*   $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
         VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
        $sql = "INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-       VALUES ('','','','','$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+       VALUES (now(),now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
        if (!mysqli_query($con,$sql))
        {
        die('Error: ' . mysqli_error($con));
-       Print "Error";
+      // Print "Error";
        }
        
        else{
@@ -79,7 +76,7 @@ if(($ors[$i] != "")){ /*not allowing empty values and the row which has been rem
        /*  $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
         VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
         $sql = "INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-        VALUES ('','','','','$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+        VALUES (now(),now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
      if (!mysqli_query($con,$sql))
      {
      die('Error: ' . mysqli_error($con));
@@ -92,7 +89,6 @@ if(($ors[$i] != "")){ /*not allowing empty values and the row which has been rem
        $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
        //updating balance
        $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
-     
      }
   
     } 

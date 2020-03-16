@@ -44,14 +44,14 @@ $SelectedStyleG = array(
 'fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID,'color' => array('rgb' => 'd9edf7'))
 );
 
-$styleContent = array('font'  => array('size'  => 9, 'name'  => 'Cambria'));
+$styleContent = array('font'  => array('bold'  => true,'size'  => 10, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 // $styleContent2 = array('font'  => array('bold'  => true,'size'  => 9, 'name'  => 'Cambria'));
 $styleContent2 = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 $styleContent21 = array('font'  => array('size'  => 11, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 
 $styleLabel = array('font'  => array('size'  => 9, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
-$ALIGNRIGHT = array('font'  => array('size'  => 9, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_RIGHT));
+$ALIGNRIGHT = array('font'  => array('size'  => 10, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_RIGHT));
 
 $GrayStyle = array(
             'font'  => array('bold'  => true,'size'  => 9, 'name'  => 'Cambria'),
@@ -89,10 +89,12 @@ $header_content = mysqli_query($conn,"SELECT mop.mode_of_proc_title,rfq.rfq_no,r
 $hc = mysqli_fetch_array($header_content);
 $mode_of_proc_title = $hc['mode_of_proc_title'];
 $rfq_no = $hc['rfq_no'];
-$rfq_date = $hc['rfq_date'];
+$rfq_date1 = $hc['rfq_date'];
+$rfq_date = date('F d, Y',strtotime($rfq_date1));
 $pr_no = $hc['pr_no'];
 $pmo = $hc['pmo'];
-$pr_date = $hc['pr_date'];
+$pr_date1 = $hc['pr_date'];
+$pr_date = date('F d, Y',strtotime($pr_date1));
 $purpose = $hc['purpose'];
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C10',$pr_no);
@@ -240,6 +242,10 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   $objPHPExcel->getActiveSheet()->getStyle('G'.$rowOne)->applyFromArray($styleContent);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$rowOne,$item_unit_title);
   $objPHPExcel->getActiveSheet()->getStyle('H'.$rowOne)->applyFromArray($border);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($styleContent);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($ALIGNRIGHT);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$rowOne)->applyFromArray($styleContent);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$rowOne)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->getActiveSheet()->getStyle('H'.$rowOne)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('H'.$rowOne)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowOne,number_format($excelrow['abc']));
@@ -276,6 +282,7 @@ while ($rowrfid1 = mysqli_fetch_assoc($select_rfid1)) {
   $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($styleContent);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$rowFirst,number_format($ppu1));
+  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowFirst,number_format($price_per_item1));
   $rowFirst++;
@@ -292,6 +299,7 @@ $totalABCperItem = $tots_sup['totalABCperItem'];
   $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($border);
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($ALIGNRIGHT);
+  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowFirst,number_format($totalABCperItem));
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($border);
 
@@ -319,6 +327,7 @@ while ($rowrfid2 = mysqli_fetch_assoc($select_rfid2)) {
   $objPHPExcel->getActiveSheet()->getStyle('L'.$rowsecond)->applyFromArray($border);
   $objPHPExcel->getActiveSheet()->getStyle('K'.$rowsecond)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('L'.$rowsecond)->applyFromArray($styleContent);
+  $objPHPExcel->getActiveSheet()->getStyle('K'.$rowsecond)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('K'.$rowsecond,number_format($ppu2));
   $objPHPExcel->getActiveSheet()->getStyle('L'.$rowsecond)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowsecond,number_format($price_per_item2));
@@ -359,6 +368,7 @@ while ($rowrfid3 = mysqli_fetch_assoc($select_rfid3)) {
   $objPHPExcel->getActiveSheet()->getStyle('N'.$rowthird)->applyFromArray($border);
   $objPHPExcel->getActiveSheet()->getStyle('M'.$rowthird)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('N'.$rowthird)->applyFromArray($styleContent);
+  $objPHPExcel->getActiveSheet()->getStyle('M'.$rowthird)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('M'.$rowthird,number_format($ppu3));
   $objPHPExcel->getActiveSheet()->getStyle('N'.$rowthird)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('N'.$rowthird,number_format($price_per_item3));
@@ -421,14 +431,14 @@ if ($rowabsno3 != NULL) {
   $objPHPExcel->getActiveSheet()->getStyle('E'.$rowE)->applyFromArray($styleContent21);
   $objPHPExcel->getActiveSheet()->mergeCells('E'.$rowE.':'.'H'.$rowE);
   $objPHPExcel->getActiveSheet()->mergeCells('E'.$rowF.':'.'H'.$rowF);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowF,'GILBERTO L. TUMAMAC');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowE,'BAC Member');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowE,'GILBERTO L. TUMAMAC');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowF,'BAC Member');
 
    $objPHPExcel->getActiveSheet()->getStyle('J'.$rowF)->applyFromArray($styleContent2);
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowE)->applyFromArray($styleContent21);
   $objPHPExcel->getActiveSheet()->mergeCells('J'.$rowE.':'.'L'.$rowE);
   $objPHPExcel->getActiveSheet()->mergeCells('J'.$rowF.':'.'L'.$rowF);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowF,'BRIAN B. BALLON');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowF,'JAY-AR T. BELTRAN');
   $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowE,'Alternate BAC Member');
   }else{
 

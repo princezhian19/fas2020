@@ -2,12 +2,26 @@
 ini_set('display_errors', 0);
 error_reporting(0);
 // require_once('functions.php'); 
-session_start();  
-$UNAME = $_SESSION['username'];
+// session_start();  
+// $UNAME = $_SESSION['username'];
 $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
-$query = mysqli_query($conn,"SELECT pmo_id FROM end_users WHERE username = '$UNAME'");
-$row = mysqli_fetch_array($query);
-$pmo_id = $row['pmo_id'];
+// $query = mysqli_query($conn,"SELECT pmo_id FROM end_users WHERE username = '$UNAME'");
+// $row = mysqli_fetch_array($query);
+// $pmo_id = $row['pmo_id'];
+
+$pmo_id = 5;
+$rfq_id = $_GET['rfq_id'];
+$po_no = $_GET['po_no'];
+$supplier_titleD = $_GET['supplier_titleD'];
+$supplier_address = $_GET['supplier_address'];
+$po_amount = $_GET['po_amount'];
+
+$select_purp = mysqli_query($conn,"SELECT pr.purpose FROM rfq LEFT JOIN pr on pr.pr_no = rfq.pr_no WHERE rfq.id = $rfq_id");
+$purp = mysqli_fetch_array($select_purp);
+$purpose = $purp['purpose'];
+
+
+
 if (isset($_POST['submit'])) {
   $po_no = $_POST['po_no'];
   $supplier = $_POST['supplier'];
@@ -60,12 +74,12 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-group">
               <label>PO No. :  </label>
-              <input autocomplete = "false"  class="form-control" name="po_no" type="text" id="po_no">
+              <input autocomplete = "false"  class="form-control" name="po_no" type="text" id="po_no" value="<?php echo $po_no;?>">
 
             </div>
             <div class="form-group">
               <label>Payee/Supplier : <small style="color:red;">*</small></label>
-              <input required autocomplete = "false"  class="form-control" name="supplier" type="text" id="supplier">
+              <input required autocomplete = "false"  class="form-control" name="supplier" type="text" id="supplier" value="<?php echo $supplier_titleD;?>">
             </div>
 
           </div>
@@ -73,17 +87,17 @@ if (isset($_POST['submit'])) {
 
            <div class="form-group">
             <label>Address :</label>
-            <input required autocomplete = "false"  class="form-control" name="address" type="text" id="address">
+            <input required autocomplete = "false"  class="form-control" name="address" type="text" id="address" value="<?php echo $supplier_address;?>">
           </div>
 
           <div class="form-group">
             <label>Particular/Purpose : <small style="color:red;">*</small></label>
-            <input required autocomplete = "false"  class="form-control" name="purpose" type="text" id="purpose">
+            <input required autocomplete = "false"  class="form-control" name="purpose" type="text" id="purpose" value="<?php echo $purpose;?>">
           </div>
 
           <div class="form-group">
             <label>Amount : <small style="color:red;">*</small></label>
-            <input required autocomplete = "false"  class="form-control" name="amount" type="text" id="amount">
+            <input required autocomplete = "false"  class="form-control" name="amount" type="text" id="amount" value="<?php echo $po_amount;?>">
           </div>
 
         </div>

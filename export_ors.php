@@ -44,10 +44,10 @@ $chief = strtoupper($pmo_title);
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D6',$supplier);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D10',$address);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D15',$purpose);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D16',$purpose);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('L16',$amount);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C43',$chief);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C45',$designation);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('C31',$chief);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('C34',$designation);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));

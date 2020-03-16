@@ -41,7 +41,7 @@ $mydb = new db(); // create a new object, class db()
                         <th>RFQ NO</th>
                         <th>RFQ DATE</th>
                       <!--   <th>RFQ</th> -->
-                        <th>SUPPLIER QOUTE</th>
+                        <th width="100">SUPPLIER QOUTE</th>
                         <th>ABSTRACT</th>
                         <th>PURCHASE ORDER</th>
                       

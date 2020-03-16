@@ -42,12 +42,12 @@ $pmo_title = $row2['pmo_contact_person'];
 $designation = $row2['designation'];
 $chief = strtoupper($pmo_title);
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('E11',$supplier);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('E13',$address);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B17',$purpose);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('AC17',$amount);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B30',$chief);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B31',$designation);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E10',$supplier);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E12',$address);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B16',$purpose);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('AB15',$amount);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B33',$chief);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B34',$designation);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));

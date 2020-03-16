@@ -3,6 +3,7 @@ require_once('functions.php');
 error_reporting(0);
 ini_set('display_errors', 0);
 session_start();
+$username = $_SESSION['username'];
 $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
 $id = $_GET['id'];
 $query = mysqli_query($conn,"SELECT * FROM burs WHERE id = '$id'");
@@ -24,7 +25,7 @@ if (isset($_POST['submit'])) {
   $address1 = $_POST['address'];
   $burs1 = $_POST['burs'];
 
-  $update = mysqli_query($conn,"UPDATE burs SET office = '$burs1' , po_no = '$po_no1', supplier = '$supplier1',purpose = '$purpose1', amount = '$amount1', address = '$address1' ");
+  $update = mysqli_query($conn,"UPDATE burs SET doc_type = '$burs1' , po_no = '$po_no1', supplier = '$supplier1',purpose = '$purpose1', amount = '$amount1', address = '$address1' ");
   if ($update) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Saved!')
@@ -52,14 +53,11 @@ if (isset($_POST['submit'])) {
     <br>
   <?php $btn = $_GET['btn']; ?>
   <?php if ($btn == 'no'): ?>
-    &nbsp &nbsp &nbsp   <li class="btn btn-primary btn-s"><a href="ViewBURSreturn.php" style="color:white;text-decoration: none;">Back</a></li>
     <?php else: ?>
       <?php if ($doc_type == 1): ?>
-    &nbsp &nbsp &nbsp   <li class="btn btn-primary btn-s"><a href="ViewBURS.php" style="color:white;text-decoration: none;">Back</a></li>
-   | <li class="btn btn-success btn-s"><a href="export_ors.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;">Export</a></li>
+   <li class="btn btn-success btn-s"><a href="export_ors.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;">Export</a></li>
     <?php else: ?>
-       &nbsp &nbsp &nbsp   <li class="btn btn-primary btn-s"><a href="ViewBURS.php" style="color:white;text-decoration: none;">Back</a></li>
-   | <li class="btn btn-success btn-s"><a href="export_burs.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;">Export</a></li>
+       <li class="btn btn-success btn-s"><a href="export_burs.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;">Export</a></li>
   <?php endif ?>
   <?php endif ?>
 

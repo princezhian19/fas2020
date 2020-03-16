@@ -29,7 +29,6 @@ $pr_date = $row['pr_received_date'];
 if (isset($_POST['submit'])) {
 
     $supplier_id = $_POST['supplier_id'];
-
     $sql_items1 = mysqli_query($conn, "SELECT sum(pr.qty*pr.abc) as totalABC,pr.id,item.item_unit_title,app.procurement,pr.unit,pr.qty,pr.abc FROM pr_items pr LEFT JOIN app on app.id = pr.items left join item_unit item on item.id = pr.unit WHERE pr_no = '$pr_no' ");
     $rowA = mysqli_fetch_array($sql_items1);
     $totalABC = $rowA["totalABC"];

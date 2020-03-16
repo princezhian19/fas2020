@@ -51,7 +51,14 @@ $insert_nota = mysqli_query($conn,"INSERT INTO po_checklist(po_id,checklist_id) 
 
 }
 
-
+$idGet='';
+$getDate = date('Y');
+$m = date('m');
+$auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM po order by id desc limit 1");
+while ($row = mysqli_fetch_assoc($auto)) {
+  $idGet = $row["a"];
+}
+$autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
 
 
 ?>
@@ -71,7 +78,7 @@ $insert_nota = mysqli_query($conn,"INSERT INTO po_checklist(po_id,checklist_id) 
               <div class="col-md-6">
                  <div class="form-group">
                     <label>PO No. :  </label>
-                    <input required type="text" name="po_no" class="form-control">
+                    <input required type="text" name="po_no" class="form-control" value = '<?php echo $autoNo;?>'>
                 </div>
                 <div class="form-group">
                     <label>RFQ No. :  </label>

@@ -1,3 +1,7 @@
+<?php
+session_start();
+$username = $_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +23,12 @@
 <div class="wrapper">
  
   
+<?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ): ?>
+  <?php include('sidebar.php');?>
+    <?php else: ?>
   <?php include('sidebar2.php');?>
+
+  <?php endif ?>
 
   <div class="content-wrapper">
     <section class="content-header">
