@@ -4,8 +4,15 @@ error_reporting(0);
 ini_set('display_errors', 0);
 session_start();
 $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
-$UNAME = $_SESSION['username'];
-$query = mysqli_query($conn,"SELECT pmo_id FROM end_users WHERE username = '$UNAME'");
+$username = $_SESSION['username'];
+$select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+$rowdiv = mysqli_fetch_array($select_user);
+$DIVISION_C = $rowdiv['DIVISION_C'];
+if ($DIVISION_C == '10' || $DIVISION_C == '11' || $DIVISION_C == '12' || $DIVISION_C == '13' || $DIVISION_C == '14' || $DIVISION_C == '15' || $DIVISION_C == '16' ) {
+
+  $DIVISION_C = 5;
+}
+$query = mysqli_query($conn,"SELECT pmo_id FROM end_users WHERE username = '$DIVISION_C'");
 $row = mysqli_fetch_array($query);
 $pmo_id = $row['pmo_id'];
 

@@ -178,7 +178,7 @@ $objPHPExcel->getActiveSheet()
 ->getNumberFormat()
 ->setFormatCode( PHPExcel_Style_NumberFormat::FORMAT_TEXT );
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLabel);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$sumtotal);
+//$objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$sumtotal);
 $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(30);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($border);
 $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($border);

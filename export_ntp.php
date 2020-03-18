@@ -64,6 +64,7 @@ $objPHPExcel->getActiveSheet()->getStyle('A17')->getFont()->setBold(true);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A13',$po_date);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A15',$contact_person);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A16',$supplier_title);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A45',$supplier_title);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A17',$supplier_address);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A20','Dear Mr./Ms. '.$contact_person);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A23',$supplier_title.' that the asd for the'.$pmo.' shall commence upon receipt of the  ');
