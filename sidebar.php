@@ -193,7 +193,12 @@ $username = $_SESSION['username'];
             <li><a href="/pmis/frontend/web/notes/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> RFQ NOTES</a></li>
             <li><a href="/pmis/frontend/web/checklist/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV CHECKLIST</a></li>
           </ul>
-        </li>
+        </li> 
+        <li><a href="index.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> LOGOUT</a></li>
+     
+       
+           
+     
     </section>
   </aside>
 

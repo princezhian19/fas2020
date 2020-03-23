@@ -1,9 +1,14 @@
+<?php
+session_start();
+$username = $_SESSION['username'];
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Encode DV</title>
+  <title>Encode ORS/BURS</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
@@ -17,9 +22,12 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
- 
-  
+    <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' ): ?>
   <?php include('sidebar.php');?>
+    <?php else: ?>
+  <?php include('sidebar2.php');?>
+
+  <?php endif ?>
 
   <div class="content-wrapper">
     <section class="content-header">

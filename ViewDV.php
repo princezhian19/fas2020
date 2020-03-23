@@ -1,3 +1,9 @@
+<?php
+session_start();
+$username = $_SESSION['username'];
+
+?>
+
 <!DOCTYPE html>
 <html>
 <!-- <style>
@@ -11,6 +17,7 @@
   color: blue;
 }
 </style> -->
+<title>Dv</title>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,18 +27,24 @@
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+    <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' ): ?>
+  <?php include('sidebar.php');?>
+    <?php else: ?>
   <?php include('sidebar2.php');?>
+
+  <?php endif ?>
   
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="ViewIAR.php"><i class=""></i> Home</a></li>
-        <li class="active">DV</li>
+        <li><a href="home.php"><i class=""></i> Home</a></li>
+        <li class="active">Dv</li>
       </ol>
       <br>
       <br>
@@ -41,14 +54,17 @@
   </div>
  
 </div>
-
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<!-- <script src="dist/js/adminlte.min.js"></script>
+<script src="dist/js/demo.js"></script> -->
 <script>
   $(function () {
-    $('#example').DataTable()
-    $('#example').DataTable({
+    $('#example1').DataTable({
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
