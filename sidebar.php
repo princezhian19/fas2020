@@ -79,8 +79,8 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="@saro.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> SARO/SUB-ARO</a></li>
-            <li><a href="@obligation.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
+            <li><a href="saro.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> SARO/SUB-ARO</a></li>
+            <li><a href="obligation.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
           </ul>
         </li>
          <li class="treeview">
@@ -92,8 +92,8 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="@nta.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA/NCA</a></li>
-            <li><a href="@disbursement.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li>
+            <li><a href="nta.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA/NCA</a></li>
+            <li><a href="disbursement.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li>
           </ul>
         </li>
          <li class="treeview">
@@ -105,7 +105,7 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="@ntaobligation.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAYMENT</a></li>
+            <li><a href="ntaobligation.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAYMENT</a></li>
           </ul>
         </li>
           </ul>
@@ -125,6 +125,7 @@ $username = $_SESSION['username'];
             <li><a href="/pmis/frontend/web/checklist/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV CHECKLIST</a></li>
           </ul>
         </li>
+        <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
     </section>
   </aside>
 <?php else: ?>
@@ -198,7 +199,6 @@ $username = $_SESSION['username'];
      
        
            
-     
     </section>
   </aside>
 
@@ -248,21 +248,21 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="@saro.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> SARO/SUB-ARO</a></li>
-            <li><a href="@obligation.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
+            <li><a href="saro.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> SARO/SUB-ARO</a></li>
+            <li><a href="obligation.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
           </ul>
         </li>
          <li class="treeview">
           <a href="#" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"></i>
-            <span style="color:black;text-decoration: none;">ACCOUNTING</span>
+            <span style="color:black;text-decoration: none;">ACCOUNTINGasasassa</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="@nta.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA/NCA</a></li>
-            <li><a href="@disbursement.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li>
+            <li><a href="nta.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA/NCA</a></li>
+            <li><a href="disbursement.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li>
           </ul>
         </li>
          <li class="treeview">
@@ -274,7 +274,7 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="@ntaobligation.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAYMENT</a></li>
+            <li><a href="ntaobligation.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAYMENT</a></li>
           </ul>
         </li>
           </ul>

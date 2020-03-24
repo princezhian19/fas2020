@@ -24,15 +24,11 @@ include('db.class.php'); // call db.class.php
     </div>
     <br>
     <br>
-   
   
-  
-
-
     <div class="class"  style="overflow-x:auto;">
           
          <div class="col-md-1">
-          <li class="btn btn-success"><a href="@sarocreate.php" style="color:white;text-decoration: none;">Create</a></li>
+          <li class="btn btn-success"><a href="sarocreate.php" style="color:white;text-decoration: none;">Create</a></li>
 
 
            
@@ -57,8 +53,7 @@ include('db.class.php'); // call db.class.php
                         &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
 
                           &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none;">Export All</a></li>
-                    </div>                        
-                      
+                    </div>                            
           </form>
 
 

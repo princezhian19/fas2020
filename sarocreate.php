@@ -310,7 +310,7 @@
            },
           success : function(data){
           alert(data); /* alerts the response from php.*/
-          window.location.href='/pmis/AMS/@saro.php';
+          window.location.href='saro.php';
           }
           });
           });

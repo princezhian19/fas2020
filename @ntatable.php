@@ -27,7 +27,7 @@
     <div class="class"  style="overflow-x:auto;">
           
          <div class="col-md-1">
-         <li class="btn btn-success"><a href="@ntacreate.php" style="color:white;text-decoration: none;">Create</a></li>
+         <li class="btn btn-success"><a href="ntacreate.php" style="color:white;text-decoration: none;">Create</a></li>
 
 
           </div>

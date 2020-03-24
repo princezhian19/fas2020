@@ -639,7 +639,7 @@ function app($connect)
             status : status},
           success : function(data){
           alert(data); /* alerts the response from php.*/
-          window.location.href='/pmis/AMS/@obligation.php';
+          window.location.href='obligation.php';
           }
           });
           });
