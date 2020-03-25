@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : tcpdf.php
 // Version     : 6.0.023
 // Begin       : 2002-08-03
@@ -100,7 +100,7 @@
 // Aleksey Kuznetsov for some suggestions and text shadows.
 // Jim Hanlon for several suggestions and patches.
 // Anyone else that has reported a bug or sent a suggestion.
-//============================================================+
+//====+
 
 /**
  * @file
@@ -24064,6 +24064,6 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 
 } // END OF TCPDF CLASS
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

@@ -11,7 +11,7 @@
 
 
 0 - Sommaire
-============
+=====
     1 - Introduction
     2 - What's new
     3 - Corrected bugs
@@ -23,14 +23,14 @@
     9 - Contribute
 
 1 - Introduction
-================
+==
 
   PclZip is a library that allow you to manage a Zip archive.
 
   Full documentation about PclZip can be found here : http://www.phpconcept.net/pclzip
 
 2 - What's new
-==============
+
 
   Version 2.8.2 :
     - PCLZIP_CB_PRE_EXTRACT and PCLZIP_CB_POST_EXTRACT are now supported with 
@@ -296,7 +296,7 @@
 
 
 3 - Corrected bugs
-==================
+====
 
   Corrected in Version 2.0 :
     - Corrected : During an extraction, if a call-back fucntion is used and try to skip
@@ -337,7 +337,7 @@
 
 
 4 - Known bugs or limitations
-=============================
+=
 
   Please publish bugs reports in SourceForge :
     http://sourceforge.net/tracker/?group_id=40254&atid=427564
@@ -379,7 +379,7 @@
 
 
 5 - License
-===========
+====
 
   Since version 1.1.2, PclZip Library is released under GNU/LGPL license.
   This library is free, so you can use it at no cost.
@@ -397,7 +397,7 @@
   For more information about GNU/LGPL license : http://www.gnu.org
 
 6 - Warning
-=================
+===
 
   This library and the associated files are non commercial, non professional work.
   It should not have unexpected results. However if any damage is caused by this software
@@ -405,17 +405,17 @@
   The use of this software is at the risk of the user.
 
 7 - Documentation
-=================
+===
   PclZip User Manuel is available in English on PhpConcept : http://www.phpconcept.net/pclzip/man/en/index.php
   A Russian translation was done by Feskov Kuzma : http://php.russofile.ru/ru/authors/unsort/zip/
 
 8 - Author
-==========
+===
 
   This software was written by Vincent Blavet (vincent@phpconcept.net) on its leasure time.
 
 9 - Contribute
-==============
+
   If you want to contribute to the development of PclZip, please contact vincent@phpconcept.net.
   If you can help in financing PhpConcept hosting service, please go to
   http://www.phpconcept.net/soutien.php

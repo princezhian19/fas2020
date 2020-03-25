@@ -40,7 +40,7 @@
   };
 
   // Tree Class Definition
-  // =====================
+  // 
   var Tree = function (element, options) {
     this.element = element;
     this.options = options;
@@ -113,7 +113,7 @@
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -132,14 +132,14 @@
   $.fn.tree.Constructor = Tree;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.tree.noConflict = function () {
     $.fn.tree = old;
     return this;
   };
 
   // Tree Data API
-  // =============
+  // ======
   $(window).on('load', function () {
     $(Selector.data).each(function () {
       Plugin.call($(this));

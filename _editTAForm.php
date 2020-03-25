@@ -357,8 +357,8 @@ function fillInputs2()
     $('#started_time').timepicker();
     $('#completed_time').timepicker();
 
-// ========================================================================================
-// ========================================================================================
+// ====
+// ====
 var c_n = $('#control_no').val();
    document.querySelector('.sweet-14').onclick = function(){
         swal({

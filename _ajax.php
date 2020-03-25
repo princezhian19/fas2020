@@ -7,7 +7,7 @@ $return_arr = array();
 $name = $_SESSION['username'];
 $division  = $_SESSION['division'];
 $complete_name = $_SESSION['complete_name'];
-// ===============================================================================
+// ==
 $query = "SELECT * from tblemployee where UNAME = '$name'";
 $result = mysqli_query($con,$query);
 if($row = mysqli_fetch_array($result))
@@ -70,7 +70,7 @@ if($row = mysqli_fetch_array($result))
     {
         $sr = '<span class="badge badge-pill" style = "background-color:green;">'.$sr.'</span>';
     }
-    // =========================================================================================
+    // =====
     if($action == 'Submitted' && $division == 16)
     {
        
@@ -151,7 +151,7 @@ if($row = mysqli_fetch_array($result))
 
 
 
-// ===============================================================================
+// ==
 
 
 

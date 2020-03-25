@@ -155,7 +155,7 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
 if (mysqli_query($link, $sql_insert)) {
  } else {
  }
-    // ============================================================================
+    // ======
    if($_POST['req_type_category'][$i] == "Others"){
         $PHPJasperXML->arrayParameter=array(
                                     "timeliness"=>$timeliness,

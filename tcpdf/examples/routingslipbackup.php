@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_003.php
 // Begin       : 2008-03-04
 // Last Update : 2013-05-14
@@ -14,7 +14,7 @@
 //               Tecnick.com LTD
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -710,6 +710,6 @@ $pdf->SetFont('Times','',11);
 // $pdf->WriteHTMLCell(0,0,'','',"<i>(1)Approval/Signature  (2)Appropriate Action  (3)Comment/Recommendation  (4)Information/Reference  (5)Prepare Speech/Talking Points/Message  (6)Disseminate/Circularize  (7)Noted/File</i>",0,0);
 $pdf->Output();
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

@@ -24,7 +24,7 @@ if (strstr($_POST['completed_time'], 'PM' ) ) {
 }
 echo $completed_time;
 
-// ========================================================================
+// ==
 // if(strstr($_POST['requested_time'],'PM'))
 // {
 //     $c = str_replace("PM","",$_POST['requested_time']);

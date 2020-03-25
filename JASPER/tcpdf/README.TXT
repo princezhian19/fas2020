@@ -1,5 +1,5 @@
 TCPDF - README
-============================================================
+====
 
 I WISH TO IMPROVE AND EXPAND TCPDF BUT I NEED YOUR SUPPORT.
 PLEASE MAKE A DONATION:
@@ -94,4 +94,4 @@ Third party fonts
 	 - DejaVu fonts 2.33 (Bitstream) - Copyright, License and other info: fonts/dejavu-fonts-ttf-2.33
 	 - GNU FreeFont (GNU-GPLv3) - Copyright, License and other info: fonts/freefont-20100919
 
-============================================================
+====

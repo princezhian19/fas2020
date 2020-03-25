@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_037.php
 // Begin       : 2008-09-12
 // Last Update : 2011-10-03
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -138,6 +138,6 @@ $pdf->Text(73, $starty + 8, 'My TCPDF Yellow');
 //Close and output PDF document
 $pdf->Output('example_037.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

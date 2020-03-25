@@ -1,10 +1,10 @@
 <?php
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
-<<<<<<< HEAD
+
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-=======
+
 $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
->>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
+
 
 $pr_no = $_GET['pr_no'];
 $pr_date = $_GET['pr_date'];

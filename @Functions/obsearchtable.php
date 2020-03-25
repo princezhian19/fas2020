@@ -92,13 +92,13 @@ include('db.class.php'); // call db.class.php
             
             <?php
             $servername = "localhost";
-<<<<<<< HEAD
+
             $username = "fascalab_2020";
             $password = "w]zYV6X9{*BN";
-=======
+
             $username = "fascalab_2020";
             $password = "w]zYV6X9{*BN";
->>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
+
             $database = "fascalab_2020";
             
             // Create connection

@@ -4,7 +4,7 @@
    contain the fascalab_2020 `toctree` directive.
 
 Welcome to PHPWord's documentation
-==================================
+======
 
 |PHPWord|
 
@@ -31,7 +31,7 @@ Format (RTF).
    references
 
 Indices and tables
-==================
+====
 
 * :ref:`genindex`
 * :ref:`modindex`

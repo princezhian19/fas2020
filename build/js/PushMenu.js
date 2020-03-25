@@ -1,5 +1,5 @@
 /* PushMenu()
- * ==========
+ * ===
  * Adds the push menu functionality to the sidebar.
  *
  * @usage: $('.btn').pushMenu(options)
@@ -44,7 +44,7 @@
   };
 
   // PushMenu Class Definition
-  // =========================
+  // ====
   var PushMenu = function (options) {
     this.options = options;
     this.init();
@@ -137,7 +137,7 @@
   };
 
   // PushMenu Plugin Definition
-  // ==========================
+  // =====
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -158,14 +158,14 @@
   $.fn.pushMenu.Constructor = PushMenu;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.pushMenu.noConflict = function () {
     $.fn.pushMenu = old;
     return this;
   };
 
   // Data API
-  // ========
+  // =
   $(document).on('click', Selector.button, function (e) {
     e.preventDefault();
     Plugin.call($(this), 'toggle');

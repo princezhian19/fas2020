@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_041.php
 // Begin       : 2008-12-07
 // Last Update : 2010-08-08
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -85,6 +85,6 @@ $pdf->Annotation(85, 27, 5, 5, 'text file', array('Subtype'=>'FileAttachment', '
 //Close and output PDF document
 $pdf->Output('example_041.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE                                                
-//============================================================+
+//====+

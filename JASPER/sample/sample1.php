@@ -180,7 +180,7 @@ if (mysqli_query($link, $sql_insert)) {
  ?>
 <script>window.location = '../../_techassistance.php';</script>
  <?php
-    // ============================================================================
+    // ======
 //    if($_POST['req_type_category'][$i] == "Others"){
 //         $PHPJasperXML->arrayParameter=array(
 //                                     "timeliness"=>$timeliness,

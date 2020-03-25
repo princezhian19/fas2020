@@ -188,7 +188,7 @@ function fillCheckbox()
                                   </div>
                     </td>
                     </tr>
-                    <!-- ================ -->
+                    <!-- == -->
                     <tr>
                     <td>&nbsp;</td>
                     </tr>

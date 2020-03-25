@@ -26,13 +26,13 @@
   
 
 $servername = "localhost";
-<<<<<<< HEAD
+
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
-=======
+
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
->>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
+
 $database = "fascalab_2020";
 // Create connection
 $conn = new mysqli($servername, $username, $password,$database);

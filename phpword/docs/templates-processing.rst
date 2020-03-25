@@ -1,7 +1,7 @@
 .. _templates-processing:
 
 Templates processing
-====================
+======
 
 You can create an OOXML document template with included search-patterns (macros) which can be replaced by any value you wish. Only single-line values can be replaced.
 

@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_043.php
 // Begin       : 2009-01-02
 // Last Update : 2010-08-08
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -80,6 +80,6 @@ $pdf->MultiCell(0, 0, 'DISK CACHING TEST: check the parameters of the class cons
 //Close and output PDF document
 $pdf->Output('example_043.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE                                                
-//============================================================+
+//====+

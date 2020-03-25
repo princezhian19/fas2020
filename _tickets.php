@@ -264,7 +264,7 @@ if($_GET['division'] == 16)
       </ol>
       <br>
       <br>
-        <!-- ==================== TICKETING STARTS HERE ============================-->
+        <!-- ====== TICKETING STARTS HERE -->
             <div class = "row">
             
                 <div class = "col-md-9">

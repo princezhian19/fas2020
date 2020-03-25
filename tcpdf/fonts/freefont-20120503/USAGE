@@ -1,7 +1,7 @@
 	Usage of GNU FreeFont
 
 Language scripts and faces
-==========================
+=====
 
 There are three faces (serif, sans-serif, and monospace), and four styles
 (regular, bold, cursive/italic, and bold cursive/italic) for each face.
@@ -20,7 +20,7 @@ For an overview of which scripts and sets of symbols are supported by
 which face, see the FreeFont 'coverage' web page.
 
 Font features
-=============
+======
 
 FreeFont has numerous font "features" that perform alterations to the basic
 letters of the font, replacing them with other letters, or positioning them
@@ -30,7 +30,7 @@ Many features are activated automatically, but in some environments, they
 present some user control.  This documents those features with user control.
 
 Language-specific features
-==========================
+=====
 
 Some OpenType font features are activated only when the text is specified to
 be of a certain language. 
@@ -74,7 +74,7 @@ By specifying the language of the text, an appropriate glyph for 'danda'
 will be obtained.
 
 Style sets
-==========
+===
 
 These replacements are activated by specifying a "Style Set".
 These features are accessible only from typesetting software.
@@ -84,7 +84,7 @@ Cyrillic	Bulgarian modern (ss01)
 Devanagari	Bombay (ss02), Calcutta (ss03), Nepali (ss04)
 
 Discretionary features
-======================
+=
 These features are accessible only from typesetting software.
 Typically the user must specifically request them.
 
@@ -129,7 +129,7 @@ A slashed form of the numeral zero is available at discretion.
 Available in all faces.
 
 Alternative characters
-======================
+=
 
 FreeSerif has some listings of alternatives for specific characters.
 Again this is use primarily in specialized typesetting software.
@@ -137,7 +137,7 @@ Again this is use primarily in specialized typesetting software.
 Greek, Latin
 
 Use in LaTeX
-============
+=====
 It is possible to use Unicode fonts in recent LaTeX implementations, but in
 	LuaTeX http://www.luatex.org/ and
 	XeTeX http://tug.org/xetex/

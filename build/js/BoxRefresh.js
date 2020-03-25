@@ -1,5 +1,5 @@
 /* BoxRefresh()
- * =========
+ * ==
  * Adds AJAX content control to a box.
  *
  * @Usage: $('#my-box').boxRefresh(options)
@@ -31,7 +31,7 @@
   };
 
   // BoxRefresh Class Definition
-  // =========================
+  // ====
   var BoxRefresh = function (element, options) {
     this.element  = element;
     this.options  = options;
@@ -76,7 +76,7 @@
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -102,14 +102,14 @@
   $.fn.boxRefresh.Constructor = BoxRefresh;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.boxRefresh.noConflict = function () {
     $.fn.boxRefresh = old;
     return this;
   };
 
   // BoxRefresh Data API
-  // =================
+  // ===
   $(window).on('load', function () {
     $(Selector.data).each(function () {
       Plugin.call($(this));

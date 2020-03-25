@@ -84,14 +84,14 @@ $(document).ready(function() {
 
 
 
-  // ===========================================================================
+  // =====
   
     $.ajax({
         url: '_ajax.php',
         success : function(response) 
         {
           
-          // ==================================================
+          // =
             var jsonObject = $.parseJSON(response); 
            
             var id = jsonObject[0].CONTROL_NO;
@@ -168,7 +168,7 @@ $(document).ready(function() {
                       <?php
                     }
                     ?>
-// ===========================================================================================================================================
+// ======
                     // if(cell.data() == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
                     // {
                     //   var oTableApi = $('#example1').dataTable().api();
@@ -282,7 +282,7 @@ $(document).ready(function() {
             //         var cell = oTableApi.cell(td);
             
             // });
-            // ========================================================
+            // 
             $('#example1 tbody').on( 'click', '#edit', function () 
              {
                     var oTableApi = $('#example1').dataTable().api();
