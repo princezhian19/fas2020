@@ -143,7 +143,13 @@ $query = mysqli_query($conn,"SELECT * FROM disbursement where ID = '$getid' ");
                       <br>
                   <!-- Getting PO NUmber -->      
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            
+            <script>
+        $(document).ready(function(){
+          $("#result").click(function(){
+            $("#main").hide();
+          });
+        });
+        </script>
             <script type="text/javascript">
               $(document).ready(function(){
                 function load_data(query)
@@ -166,6 +172,7 @@ $query = mysqli_query($conn,"SELECT * FROM disbursement where ID = '$getid' ");
                   }
                   else
                   {
+                    $("#main").show();
                     load_data();
                     document.getElementById('sr').value = "";
                     document.getElementById('ppa').value = "";
@@ -416,9 +423,9 @@ $query = mysqli_query($conn,"SELECT * FROM disbursement where ID = '$getid' ");
 <!-- FastClick -->
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<!-- <script src="dist/js/adminlte.min.js"></script> -->
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<!-- <script src="dist/js/demo.js"></script> -->
 <!-- Page script -->
 <script>
   $(function () {

@@ -112,7 +112,7 @@ if($query){
 //if query is successful
 echo ("<SCRIPT LANGUAGE='JavaScript'>
 window.alert('Data Updated Successfully!')
-window.location.href='../@disbursement.php';
+window.location.href='../disbursement.php';
 </SCRIPT>");
 
 }
@@ -122,7 +122,7 @@ else{
 echo ("<SCRIPT LANGUAGE='JavaScript'>
 
 window.alert('Error!')
-window.location.href='../@disbursement.php';
+window.location.href='../disbursement.php';
 </SCRIPT>");
 }
 
