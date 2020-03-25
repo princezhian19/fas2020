@@ -30,7 +30,7 @@
 
                   $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-                  $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+                  
 
                   $user = $_SESSION['username']; 
                   $QQ = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$user'");
@@ -64,7 +64,7 @@
 
                 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-                $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+                
 
                 $username = $_SESSION['username'];
               
