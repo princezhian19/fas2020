@@ -1,8 +1,28 @@
 <?php 
-error_reporting(0);
-ini_set('display_errors', 0);
 session_start();
 $username = $_SESSION['username'];
+
+
+// function showDivision()
+// {
+//   $username = $_SESSION['username'];
+//   $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+//   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+//   $query = "SELECT * FROM `tblemployee` WHERE md5(UNAME) = '".md5($username)."' ";
+//   $result = mysqli_query($link, $query);
+//   while($row = mysqli_fetch_array($result))
+//     {
+      
+//       $division =$row['DIVISION_C'];
+//       if ($division != 16) 
+//       {
+
+//       }else{
+//         echo '<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>';
+//       }
+     
+//     }
+// }
 ?>
 <header class="main-header" >
     <a href="" class="logo" style="text-decoration: none; background-color: #3c8dbc;">
@@ -125,6 +145,10 @@ $username = $_SESSION['username'];
             <li><a href="/pmis/frontend/web/checklist/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV CHECKLIST</a></li>
           </ul>
         </li>
+        <li><a style="color:black;text-decoration: none;" href="_techassistance.php?division=<?php echo $_GET['division'];?>"><i class="fa">&#xf0f6;</i>TA REQUEST<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
+       
+  <span class="sr-only">unread messages</span></span></a></li>
+        <li><a style="color:black;text-decoration: none;" href="login.php"><i class = "fa fa-sign-out"></i>Logout</li>
     </section>
   </aside>
 <?php else: ?>
@@ -207,3 +231,10 @@ $username = $_SESSION['username'];
     </section>
   </aside>
   <?php endif ?>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <script>
+  setInterval(function(){
+$('#ta_request').load('_countTA.php');
+}, 100); /* time in milliseconds (ie 2 se  conds)*/
+  </script>

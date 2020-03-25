@@ -1,5 +1,14 @@
 
 <?php
+    //  function hoursandmins($time, $format = '%02d:%02d')
+    //  {
+    //      if ($time < 1) {
+    //          return;
+    //      }
+    //      $hours = floor($time / 60);
+    //      $minutes = ($time % 60);
+    //      return sprintf($format, $hours, $minutes);
+    //    }
 $connection=mysqli_connect("localhost","root","","db_dilg_pmis");
 date_default_timezone_set('Asia/Manila');
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
@@ -59,20 +68,92 @@ $year = $_GET['year'];
     $objPHPExcel->getActiveSheet(2)->getStyle('E'.$row)->getAlignment()->setWrapText(true);
     }
 
+    $startTime = date('Y-m-d',strtotime($excelrow['START_DATE']));
+    $endTime = date('Y-m-d',strtotime($excelrow['COMPLETED_DATE']));
+    
 
-    $to_time_format = date('g:i',strtotime($excelrow['START_DATE'].''.$excelrow['START_TIME']));
-    $from_time_format = date('g:i',strtotime($excelrow['COMPLETED_DATE'].''.$excelrow['COMPLETED_TIME']));
-    $to_time = strtotime($excelrow['START_DATE'].''.$to_time_format);
-    $from_time = strtotime($excelrow['COMPLETED_DATE'].''.$from_time_format);
-    $rt= round(abs($to_time - $from_time) / 60,2). "minutes";
-    // $date = date("h:m A");
-    // $a = str_replace("AM","",'16:03 AM');
 
-    // $time_in_24_hour_format  = date("H:i",strtotime($a));
+$date1 = strtotime($startTime."".$excelrow['START_TIME']);  
+$date2 = strtotime($endTime."".$excelrow['COMPLETED_TIME']);  
+  
+// Formulate the Difference between two dates 
+$diff = abs($date2 - $date1);  
+  
+  
+// To get the year divide the resultant date into 
+// total seconds in a year (365*60*60*24) 
+$years = floor($diff / (365*60*60*24));  
+  
+  
+// To get the month, subtract it with years and 
+// divide the resultant date into 
+// total seconds in a month (30*60*60*24) 
+$months = floor(($diff - $years * 365*60*60*24) 
+                               / (30*60*60*24));  
+  
+  
+// To get the day, subtract it with years and  
+// months and divide the resultant date into 
+// total seconds in a days (60*60*24) 
+$days = floor(($diff - $years * 365*60*60*24 -  
+             $months*30*60*60*24)/ (60*60*24)); 
+  
+  
+// To get the hour, subtract it with years,  
+// months & seconds and divide the resultant 
+// date into total seconds in a hours (60*60) 
+$hours = floor(($diff - $years * 365*60*60*24  
+       - $months*30*60*60*24 - $days*60*60*24) 
+                                   / (60*60));  
+  
+  
+// To get the minutes, subtract it with years, 
+// months, seconds and hours and divide the  
+// resultant date into total seconds i.e. 60 
+$minutes = floor(($diff - $years * 365*60*60*24  
+         - $months*30*60*60*24 - $days*60*60*24  
+                          - $hours*60*60)/ 60);  
+  
+  
+// To get the minutes, subtract it with years, 
+// months, seconds, hours and minutes  
+$seconds = floor(($diff - $years * 365*60*60*24  
+         - $months*30*60*60*24 - $days*60*60*24 
+                - $hours*60*60 - $minutes*60));  
+  
+// Print the result 
+ $calc_mins = sprintf("%d hours and %d minutes",$hours, $minutes);
+    // echo $excelrow['START_TIME'];
 
-    // echo $time_in_24_hour_format;
-    // exit();
-
+    
+    
+      // $calc_mins = '';
+      // $to_time_format = date('g:i',strtotime($excelrow['START_DATE'].''.$excelrow['START_TIME']));
+      // $from_time_format = date('g:i',strtotime($excelrow['COMPLETED_DATE'].''.$excelrow['COMPLETED_TIME']));
+      // $to_time = strtotime($excelrow['START_DATE'].''.$to_time_format);
+      // $from_time = strtotime($excelrow['COMPLETED_DATE'].''.$from_time_format);
+      // $calc_mins = round(abs($to_time - $from_time) / 60,2);
+      
+      // if($calc_mins < 60)
+      // {
+      //   $calc_mins = round(abs($to_time - $from_time) / 60,2).' minutes';
+      //   echo  $calc_mins.'<br>';
+      // }else{
+        
+      //   $date1 = new DateTime($excelrow['START_DATE'].''.$excelrow['START_TIME']);
+      //   $date2 = new DateTime($excelrow['COMPLETED_DATE'].''.$excelrow['COMPLETED_TIME']);
+        
+      //   $diff = $date2->diff($date1);
+        
+      //   $hours = $diff->h;
+      //   $hours = $hours + ($diff->days*24);
+      //   $minutes = ($calc_mins % 60);
+        
+      //   echo $hours.'hours and '.$minutes.'<br>';
+      // }
+ 
+  
+  
   
 
     
@@ -95,7 +176,7 @@ $year = $_GET['year'];
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('M'.$row,$start_time);
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('N'.$row,$excelrow['COMPLETED_DATE']);
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('O'.$row,$completed_time);
-        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('P'.$row,$rt);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('P'.$row,$calc_mins);
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('Q'.$row,$excelrow['QUALITY']);
         $objPHPExcel->getActiveSheet(0)->mergeCells("E11"."".":Q11");
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E11','Month of '.$excelrow['month'].' '.$year);

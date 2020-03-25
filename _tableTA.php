@@ -29,64 +29,73 @@ th{
                 ?>
             </div>
             <?php
-            if($_SESSION['username'] != 'fad')
+            $con = mysqli_connect("localhost","root","", "db_dilg_pmis");
+
+            $name = $_SESSION['username'];
+            $query = "SELECT * from tblemployee where UNAME = '$name'";
+            $result = mysqli_query($con,$query);
+            if($row = mysqli_fetch_array($result))
             {
-              ?>
-              <li class="btn btn-success"><a href="_requestForm.php" style="color:white;text-decoration: none;">Create</a></li>
-              <?php
-            }else{
-
-              ?>
-                <div class="well">
-                  <div class="row">
-                      <div class="col-md-2">
-                            <select class="form-control " id = "selectMonth" style="width: 100%;">
-                              <option value="1">January</option>
-                              <option value="2">February</option>
-                              <option value="3">March</option>
-                              <option value="4">April</option>
-                              <option value="5">May</option>
-                              <option value="6">June</option>
-                              <option value="7">July</option>
-                              <option value="8">August</option>
-                              <option value="9">September</option>
-                              <option value="10">October</option>
-                              <option value="11">November</option>
-                              <option value="12">December</option>
-                            </select>
-                      </div>
-                      <div class="col-md-2">
-                            <select class="form-control " id="selectYear" style="width: 100%;">
-                              <?php 
-                              for($i= 2020; $i < 2021; $i++)
-                              {
-                                echo '<option value='.$i.'>'.$i.'</option>';
-                              }
-                              ?>
-                            </select>
-                      </div>
-                      <div class="col-md-2">
-                        <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export FML Report</button></ol>
-                      </div>
-                      <div class="col-md-2" style = "margin-left:-30px;">
-                        <li class="btn btn-success"><a  href="#" style="color:white;text-decoration: none;">Export PSL Report</a></li>
-                      </div>
-
-                      <div class = "col-md-2" style = "float:right;margin-right:-30px;">
-                        <li class="btn btn-success"><a href="_requestForm.php" style="color:white;text-decoration: none;">Create Request</a></li>
-                      </div>
+              if($row['DIVISION_C'] != '16')
+              {
+                ?>
+                <li class="btn btn-success"><a href="_requestForm.php" style="color:white;text-decoration: none;">Create</a></li>
+                <?php
+              }else{
+  
+                ?>
+                  <div class="well">
+                    <div class="row">
+                        <div class="col-md-2">
+                              <select class="form-control " id = "selectMonth" style="width: 100%;">
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                              </select>
+                        </div>
+                        <div class="col-md-2">
+                              <select class="form-control " id="selectYear" style="width: 100%;">
+                                <?php 
+                                for($i= 2020; $i < 2021; $i++)
+                                {
+                                  echo '<option value='.$i.'>'.$i.'</option>';
+                                }
+                                ?>
+                              </select>
+                        </div>
+                        <div class="col-md-2">
+                          <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export FML Report</button></ol>
+                        </div>
+                        <div class="col-md-2" style = "margin-left:-30px;">
+                          <li class="btn btn-success"><a  href="#" style="color:white;text-decoration: none;">Export PSL Report</a></li>
+                        </div>
+  
+                        <div class = "col-md-2" style = "float:right;margin-right:-30px;">
+                          <li class="btn btn-success"><a href="_requestForm.php" style="color:white;text-decoration: none;">Create Request</a></li>
+                        </div>
+                    </div>
                   </div>
-                </div>
-              <?php
+                <?php
+              }
             }
+          
             
             ?>
         
               <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                     <thead>
                         <th>CONTROL NO.</th>
-                        <th>REQUEST DATE</th>
-                        <th>REQUEST TIME</th>
+                        <th>REQUESTED DATE</th>
+                        <th>REQUESTED TIME</th>
                         <th>RECEIVED DATE</th>
                         <th>RECEIVED TIME</th>
                         <th>END USER</th>

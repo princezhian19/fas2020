@@ -1,4 +1,6 @@
 <?php
+
+
 $username = $_SESSION['username'];
 require_once('_includes/setting.php');
 require_once('_includes/dbaseCon.php');
@@ -207,7 +209,7 @@ background-position: 90px 5px;
                           </tr>
                           <tr>
                           <td>
-                          <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g4" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>PRINTER/SCANNER</b><br>
+                          <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g4" class = "checkbox_group" value = "PRINTER/SCANNER"> <b>PRINTER/SCANNER</b><br>
                           <div style = "margin-left:30px;padding-top:10px;">
                           <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Installation"> Installation<br>
                           <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Troubleshooting"> Troubleshooting<br>

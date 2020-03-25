@@ -1,8 +1,6 @@
 <?php
-session_start();
-if(!isset($_SESSION['username'])){
-header('location:login.php');
-}
+
+
 ?>
 
 
@@ -38,8 +36,9 @@ header('location:login.php');
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+
   <?php include('sidebar2.php');?>
-  
+
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">

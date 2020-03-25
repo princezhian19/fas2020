@@ -1,4 +1,36 @@
+<?php 
+session_start();
+$username = $_SESSION['username'];
 
+
+function showDivision()
+{
+  $username = $_SESSION['username'];
+  $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+  if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+  $query = "SELECT * FROM `tblemployee` WHERE md5(UNAME) = '".md5($username)."' ";
+  
+  $result = mysqli_query($link, $query);
+  while($row = mysqli_fetch_array($result))
+    {
+      
+      if (
+        $username == 'charlesodi' || 
+        $username == 'mmmonteiro' || 
+        $username == 'jamonteiro' || 
+        $username == 'cvferrer' || 
+        $username == 'masacluti' || 
+        $username == 'seolivar' 
+        ) 
+      {
+        echo '<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>';
+
+      }else{
+      }
+     
+    }
+}
+?>
 <header class="main-header" >
     <a href="" class="logo" style="text-decoration: none; background-color: #3c8dbc;">
       <span class="logo-lg" style="color:white;">FAS</span>
@@ -39,18 +71,10 @@
         <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
           </ul>
         </li>
-        <li><a style="color:black;text-decoration: none;" href="_techassistance.php"><i class="fa">&#xf0f6;</i>TA REQUEST 
+        <li><a style="color:black;text-decoration: none;" href="_techassistance.php?division=<?php echo $_GET['division'];?>"><i class="fa">&#xf0f6;</i>TA REQUEST 
         
         <?php 
-        if($_SESSION['username'] != 'fad')
-        {
-
-        }else{
-          ?>
-                  <span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span>
-
-          <?php
-        }
+       echo showDivision();
         ?>
   <span class="sr-only">unread messages</span></span></a></li>
         <li><a style="color:black;text-decoration: none;" href="login.php"><i class = "fa fa-sign-out"></i>Logout</li>
@@ -194,9 +218,10 @@
 
     </section>
   </aside>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>
   setInterval(function(){
-$('#ta_request').load('_countTA.php');
+$('#ta_request').load('_countCompletedTA.php');
 }, 100); /* time in milliseconds (ie 2 se  conds)*/
 
 

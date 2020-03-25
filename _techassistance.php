@@ -1,10 +1,3 @@
-<?php
-session_start();
-if(!isset($_SESSION['username'])){
-header('location:login.php');
-}
- $username =  $_SESSION['username'];
-?>
 
 
 <!DOCTYPE html>
@@ -21,12 +14,19 @@ header('location:login.php');
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include('sidebar2.php');?>
+<?php
+if($_GET['division'] == 16)
+{
+  include('sidebar.php'); 
+}else{
+  include('sidebar2.php');
+}
+?>
   
   <div class="content-wrapper">
     <section class="content-header">
@@ -68,12 +68,12 @@ $(document).ready(function() {
           showCancelButton: true,
           confirmButtonClass: 'btn-danger',
           confirmButtonText: 'Yes',
-  closeOnConfirm: false,
-  showLoaderOnConfirm: true
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
         }, function () {
         
       });
-      });
+    });
 
 
 
@@ -94,7 +94,7 @@ $(document).ready(function() {
                 "serverSide": false,
                 "processing": true,
                 "autoWidth": false,
-                "order": [[ 8, "desc" ]],
+                "order": [[ 10, "desc" ]],
                 "language": {
                     "searchPlaceholder": "Search records",
                  },
@@ -146,114 +146,127 @@ $(document).ready(function() {
                     
               var oTableApi = $('#example1').dataTable().api();
                     var tr = $(this).closest('tr');
-                    td = tr.find("td:eq(10)")
+                    td = tr.find("td:eq(0)")
                     var cell = oTableApi.cell(td);
-                    if(cell.data() == '<span class="badge badge-pill" style = "background-color:red;">Pending</span>')
+                    <?php 
+                    if($_GET['division'] == 16)
                     {
-                      var oTableApi = $('#example1').dataTable().api();
-                      var tr = $(this).closest('tr');
-                      td = tr.find("td:first")
-                      var cn = oTableApi.cell(td);
-                      swal({
-                            title: 'Approved by:',
-                            input: 'select',
-                            inputOptions: {
-                              'Mark Kim Sacluti': 'Mark Kim Sacluti',
-                              'Charles Adrian Odi': 'Charles Adrian Odi',
-                              'Christian Paul Ferrer': 'Christian Paul Ferrer',
-                              'Shiela Mei Olivar':'Shiela Mei Olivar',
-                            },
-                            inputPlaceholder: 'Select ICT Staff',
-                            showCancelButton: true,
-                            inputValidator: function (value) {
-                              return new Promise(function (resolve, reject) {
-                                if (value === 'Mark Kim Sacluti') {
-                                  resolve()
-                                }else if(value == 'Charles Adrian Odi')
-                                {
-                                  resolve()
-                                } else if(value == 'Christian Paul Ferrer'){
-                                  resolve()
-                                }else{
-                                  resolve()
-                                }
-                              })
-                            }
-                          }).then(function (result) {
-                            swal({
-                              type: 'success',
-                              html: 'Successfully approved by:' + result,
-                              closeOnConfirm: false
-                            })
-                            $.ajax({
-                              url:"_approvedTA.php",
-                              method:"POST",
-                              data:{
-                                ict_staff:result,
-                                control_no:cn.data()
-                              },
-                              success:function()
-                              {
-                                alert(cn.data());
-                              window.location = '_techassistance.php';
-                              }
-                            });
-                          });
-                    }else if(cell.data() == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
-                    {
-                      var oTableApi = $('#example1').dataTable().api();
-                      var tr = $(this).closest('tr');
-                      td = tr.find("td:first")
-                      var cn = oTableApi.cell(td);
-                      swal({
-                            title: 'Approved by:',
-                            input: 'select',
-                            inputOptions: {
-                              'Mark Kim Sacluti': 'Mark Kim Sacluti',
-                              'Charles Adrian Odi': 'Charles Adrian Odi',
-                              'Christian Paul Ferrer': 'Christian Paul Ferrer',
-                              'Shiela Mei Olivar':'Shiela Mei Olivar',
-                            },
-                            inputPlaceholder: 'Select ICT Staff',
-                            showCancelButton: true,
-                            inputValidator: function (value) {
-                              return new Promise(function (resolve, reject) {
-                                if (value === 'Mark Kim Sacluti') {
-                                  resolve()
-                                }else if(value == 'Charles Adrian Odi')
-                                {
-                                  resolve()
-                                } else if(value == 'Christian Paul Ferrer'){
-                                  resolve()
-                                }else{
-                                  resolve();
-                                }
-                              })
-                            }
-                          }).then(function (result) {
-                            swal({
-                              type: 'success',
-                              html: 'Successfully approved by:' + result,
-                              closeOnConfirm: false
-                            })
-                            $.ajax({
-                              url:"_approvedTA.php",
-                              method:"POST",
-                              data:{
-                                ict_staff:result,
-                                control_no:cn.data()
-                              },
-                              success:function()
-                              {
-                              window.location = '_techassistance.php';
-                              console.log(ict_staff);
-                              }
-                            });
-                          });
-                    }else if(cell.data() == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
-                    {
-                      alert('Rate Us!! ');
+                      ?>
+                      window.location="_tickets.php?division=<?php echo $_GET['division'];?>&ticket_id="+cell.data();
+                      <?php
                     }
+                    else{
+                      ?>
+                       window.location="_tickets.php?ticket_id="+cell.data();
+
+                      <?php
+                    }
+                    ?>
+// ===========================================================================================================================================
+                    // if(cell.data() == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
+                    // {
+                    //   var oTableApi = $('#example1').dataTable().api();
+                    //   var tr = $(this).closest('tr');
+                    //   td = tr.find("td:first")
+                    //   var cn = oTableApi.cell(td);
+                    //   swal({
+                    //         title: 'Approved by:',
+                    //         input: 'select',
+                    //         inputOptions: {
+                    //           'Mark Kim Sacluti': 'Mark Kim Sacluti',
+                    //           'Charles Adrian Odi': 'Charles Adrian Odi',
+                    //           'Christian Paul Ferrer': 'Christian Paul Ferrer',
+                    //           'Shiela Mei Olivar':'Shiela Mei Olivar',
+                    //         },
+                    //         inputPlaceholder: 'Select ICT Staff',
+                    //         showCancelButton: true,
+                    //         inputValidator: function (value) {
+                    //           return new Promise(function (resolve, reject) {
+                    //             if (value === 'Mark Kim Sacluti') {
+                    //               resolve()
+                    //             }else if(value == 'Charles Adrian Odi')
+                    //             {
+                    //               resolve()
+                    //             } else if(value == 'Christian Paul Ferrer'){
+                    //               resolve()
+                    //             }else{
+                    //               resolve()
+                    //             }
+                    //           })
+                    //         }
+                    //       }).then(function (result) {
+                    //         swal({
+                    //           type: 'success',
+                    //           html: 'Successfully approved by:' + result,
+                    //           closeOnConfirm: false
+                    //         })
+                    //         $.ajax({
+                    //           url:"_approvedTA.php",
+                    //           method:"POST",
+                    //           data:{
+                    //             ict_staff:result,
+                    //             control_no:cn.data()
+                    //           },
+                    //           success:function()
+                    //           {
+                    //           window.location = '_techassistance.php';
+                    //           }
+                    //         });
+                    //       });
+                    // }else if(cell.data() == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
+                    // {
+                    //   var oTableApi = $('#example1').dataTable().api();
+                    //   var tr = $(this).closest('tr');
+                    //   td = tr.find("td:first")
+                    //   var cn = oTableApi.cell(td);
+                    //   swal({
+                    //         title: 'Approved by:',
+                    //         input: 'select',
+                    //         inputOptions: {
+                    //           'Mark Kim Sacluti': 'Mark Kim Sacluti',
+                    //           'Charles Adrian Odi': 'Charles Adrian Odi',
+                    //           'Christian Paul Ferrer': 'Christian Paul Ferrer',
+                    //           'Shiela Mei Olivar':'Shiela Mei Olivar',
+                    //         },
+                    //         inputPlaceholder: 'Select ICT Staff',
+                    //         showCancelButton: true,
+                    //         inputValidator: function (value) {
+                    //           return new Promise(function (resolve, reject) {
+                    //             if (value === 'Mark Kim Sacluti') {
+                    //               resolve()
+                    //             }else if(value == 'Charles Adrian Odi')
+                    //             {
+                    //               resolve()
+                    //             } else if(value == 'Christian Paul Ferrer'){
+                    //               resolve()
+                    //             }else{
+                    //               resolve();
+                    //             }
+                    //           })
+                    //         }
+                    //       }).then(function (result) {
+                    //         swal({
+                    //           type: 'success',
+                    //           html: 'Successfully approved by:' + result,
+                    //           closeOnConfirm: false
+                    //         })
+                    //         $.ajax({
+                    //           url:"_approvedTA.php",
+                    //           method:"POST",
+                    //           data:{
+                    //             ict_staff:result,
+                    //             control_no:cn.data()
+                    //           },
+                    //           success:function()
+                    //           {
+                    //           window.location = '_techassistance.php';
+                    //           console.log(ict_staff);
+                    //           }
+                    //         });
+                    //       });
+                    // }else if(cell.data() == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
+                    // {
+                    // }
              });
             // $('#example1 tbody').on( 'click', '#sweet-14', function () 
             //  {
@@ -270,7 +283,9 @@ $(document).ready(function() {
                     var tr = $(this).closest('tr');
                     td = tr.find("td:first")
                     var cell = oTableApi.cell(td);
-                  window.location="_editTA.php?id="+cell.data();
+                  // window.location="_editTA.php?id="+cell.data();
+                  window.location="_editRequestTA.php?id="+cell.data();
+
             });
 
             $('#example1 tbody').on( 'click', '#view', function () 
