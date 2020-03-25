@@ -18,6 +18,8 @@ if (isset($_POST['submit'])) {
 
  if ($num_row == 1){
 
+  
+
   if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13 || $division == 15) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Login!')
