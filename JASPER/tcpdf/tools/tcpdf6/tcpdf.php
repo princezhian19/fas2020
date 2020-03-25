@@ -342,7 +342,7 @@ class TCPDF {
 	protected $images = array();
 
 	/**
-	 * Depth of the svg tag, to keep track if the svg tag is a subtag or the root tag.
+	 * Depth of the svg tag, to keep track if the svg tag is a subtag or the fascalab_2020 tag.
 	 * @protected
 	 */
 	protected $svg_tag_depth = 0;
@@ -838,7 +838,7 @@ class TCPDF {
 	protected $outlines = array();
 
 	/**
-	 * Outline root for bookmark.
+	 * Outline fascalab_2020 for bookmark.
 	 * @protected
 	 * @since 2.1.002 (2008-02-12)
 	 */
@@ -8025,7 +8025,7 @@ class TCPDF {
 			$p = $this->_getrawstream($p);
 			$this->_out('<<'.$filter.'/Length '.strlen($p).'>> stream'."\n".$p."\n".'endstream'."\n".'endobj');
 		}
-		//Pages root
+		//Pages fascalab_2020
 		$out = $this->_getobj(1)."\n";
 		$out .= '<< /Type /Pages /Kids [';
 		foreach($this->page_obj_id as $page_obj) {
@@ -9975,7 +9975,7 @@ class TCPDF {
 		$out = 'trailer'."\n";
 		$out .= '<<';
 		$out .= ' /Size '.($this->n + 1);
-		$out .= ' /Root '.$objid_catalog.' 0 R';
+		$out .= ' /fascalab_2020 '.$objid_catalog.' 0 R';
 		$out .= ' /Info '.$objid_info.' 0 R';
 		if ($this->encrypted) {
 			$out .= ' /Encrypt '.$this->encryptdata['objid'].' 0 R';
@@ -12466,7 +12466,7 @@ class TCPDF {
 			$out .= "\n".'endobj';
 			$this->_out($out);
 		}
-		//Outline root
+		//Outline fascalab_2020
 		$this->OutlineRoot = $this->_newobj();
 		$this->_out('<< /Type /Outlines /First '.$n.' 0 R /Last '.($n + $lru[0]).' 0 R >>'."\n".'endobj');
 	}
@@ -16413,7 +16413,7 @@ class TCPDF {
 		$thead = false; // true when we are inside the THEAD tag
 		++$key;
 		$level = array();
-		array_push($level, 0); // root
+		array_push($level, 0); // fascalab_2020
 		while ($elkey < $maxel) {
 			$dom[$key] = array();
 			$element = $a[$elkey];
@@ -23604,15 +23604,15 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 								}
 								$numerator = (($rx2 * $ry2) - ($rx2 * $ya2) - ($ry2 * $xa2));
 								if ($numerator < 0) {
-									$root = 0;
+									$fascalab_2020 = 0;
 								} else {
-									$root = sqrt($numerator / (($rx2 * $ya2) + ($ry2 * $xa2)));
+									$fascalab_2020 = sqrt($numerator / (($rx2 * $ya2) + ($ry2 * $xa2)));
 								}
 								if ($fa == $fs){
-									$root *= -1;
+									$fascalab_2020 *= -1;
 								}
-								$cax = $root * (($rx * $ya) / $ry);
-								$cay = -$root * (($ry * $xa) / $rx);
+								$cax = $fascalab_2020 * (($rx * $ya) / $ry);
+								$cay = -$fascalab_2020 * (($ry * $xa) / $rx);
 								// coordinates of ellipse center
 								$cx = ($cax * $cos_ang) - ($cay * $sin_ang) + (($x0 + $x) / 2);
 								$cy = ($cax * $sin_ang) + ($cay * $cos_ang) + (($y0 + $y) / 2);

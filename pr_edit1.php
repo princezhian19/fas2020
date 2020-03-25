@@ -1,6 +1,10 @@
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=db_dilg_pmis", "root", "");
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 $id = $_GET['id'];
 $pmo = $_GET['pmo'];
 $pr_date = $_GET['pr_date'];

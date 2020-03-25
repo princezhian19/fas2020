@@ -1,14 +1,14 @@
 .. _elements:
 
 Elements
-========
+=
 
 Below are the matrix of element availability in each container. The
 column shows the containers while the rows lists the elements.
 
 +-------+-----------------+-----------+----------+----------+---------+------------+------------+
 | Num   | Element         | Section   | Header   | Footer   | Cell    | Text Run   | Footnote   |
-+=======+=================+===========+==========+==========+=========+============+============+
+++===+====+===+===+==+=====+=====+
 | 1     | Text            | v         | v        | v        | v       | v          | v          |
 +-------+-----------------+-----------+----------+----------+---------+------------+------------+
 | 2     | Text Run        | v         | v        | v        | v       | -          | -          |

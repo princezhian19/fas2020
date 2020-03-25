@@ -11213,7 +11213,7 @@
 
 	* FreeSerifItalic.sfd,
 	  FreeMono.sfd,
-	  FreeSerif.sfd: Math symbols ============
+	  FreeSerif.sfd: Math symbols =====
 	  SerifItalic Greek lunate epsilon FreeMono many additions in math
 	  range reduced size of binary union, intersection, vee, wedge
 	  correcte empty set
@@ -11250,15 +11250,15 @@
 
 	* FreeSans.sfd,
 	  FreeSerif.sfd: Supplemental Math operators
-	  ============== Added a few of the "n-ary" operators. Math
-	  operators ============== Corrected n-ary union, intersection, and
+	   Added a few of the "n-ary" operators. Math
+	  operators  Corrected n-ary union, intersection, and
 	  spikes to be larger than the binary operators Made (many of) the
 	  operators based on + - = to use those symbols directly (by
 	  reference or copying). I think it is good practice to harmonize
 	  the appearance of math operators with the Latin character set.
-	  Geometrical Shapes ================== Made the large circle
+	  Geometrical Shapes ==== Made the large circle
 	  larger still. When is it large enough? Combining marks for
-	  Symbols =========================== Made the combining circle to
+	  Symbols ====== Made the combining circle to
 	  really combine. Made a circle-slash
 
 2008-03-08 10:15 +0000 [r538]  Stevan_White:

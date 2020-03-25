@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_012.php
 // Begin       : 2008-03-04
 // Last Update : 2010-08-08
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -200,6 +200,6 @@ $pdf->Ellipse($xc, $yc, $rx=30, $ry=15, $angle=45, $astart=45, $afinish=90, $sty
 //Close and output PDF document
 $pdf->Output('example_012.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

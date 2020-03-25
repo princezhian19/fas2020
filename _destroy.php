@@ -2,6 +2,6 @@
 session_start();
 session_destroy();
 session_unset();
-include 'login.php';
+include 'index.php';
 
 ?>

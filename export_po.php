@@ -81,7 +81,7 @@ $styleLabel2 = array('font'  => array('size'  => 11, 'name'  => 'Cambria'),'alig
 
 //         );
 
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
 $supplier_id = $_GET['supplier_id'];
 $po_id = $_GET['po_id'];

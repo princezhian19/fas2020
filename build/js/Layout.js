@@ -1,5 +1,5 @@
 /* Layout()
- * ========
+ * =
  * Implements AdminLTE layout.
  * Fixes the layout height in case min-height fails.
  *
@@ -142,7 +142,7 @@
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -168,14 +168,14 @@
   $.fn.layout.Constuctor = Layout;
 
   // No conflict mode
-  // ================
+  // ==
   $.fn.layout.noConflict = function () {
     $.fn.layout = old;
     return this;
   };
 
   // Layout DATA-API
-  // ===============
+  // =
   $(window).on('load', function () {
     Plugin.call($('body'));
   });

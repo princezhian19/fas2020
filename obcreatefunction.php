@@ -39,7 +39,7 @@ $sarogroup = json_decode($_POST["sarogroup"]);
 $status = json_decode($_POST["status"]);
 
 
-$con=mysqli_connect("localhost","root","","db_dilg_pmis");
+$con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 if (mysqli_connect_errno())
 {
 echo "Failed to connect to MySQL: " . mysqli_connect_error();

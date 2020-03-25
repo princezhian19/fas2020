@@ -7,7 +7,7 @@ include_once("../PHPJasperXML.inc.php");
 
 
 
-$link = mysqli_connect('localhost','root','','db_dilg_pmis');
+$link = mysqli_connect('localhost','fascalab_2020','','fascalab_2020');
               if(mysqli_connect_errno()){echo mysqli_connect_error();}  
              $cn = $_GET['id'];
 
@@ -545,7 +545,7 @@ switch($req_type_subcategory)
 
 
 $PHPJasperXML->load_xml_file("report1.jrxml");
-$PHPJasperXML->transferDBtoArray('localhost','root','','db_dilg_pmis');
+$PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','','fascalab_2020');
 $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
 
 

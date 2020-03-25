@@ -115,9 +115,14 @@ include('db.class.php'); // call db.class.php
             
             <?php
             $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "db_dilg_pmis";
+
+            $username = "fascalab_2020";
+            $password = "w]zYV6X9{*BN";
+
+            $username = "fascalab_2020";
+            $password = "w]zYV6X9{*BN";
+
+            $database = "fascalab_2020";
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);

@@ -64,7 +64,7 @@ $mydb = new db(); // create a new object, class db()
                 
                 
                 
-                $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+                $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                 $view_query = mysqli_query($conn, "SELECT * FROM pr where pmo='FAD' order by id desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {

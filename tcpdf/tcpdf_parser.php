@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : tcpdf_parser.php
 // Version     : 1.0.003
 // Begin       : 2011-05-23
@@ -30,7 +30,7 @@
 //
 // Description : This is a PHP class for parsing PDF documents.
 //
-//============================================================+
+//====+
 
 /**
  * @file
@@ -204,8 +204,8 @@ class TCPDF_PARSER {
 				if (preg_match('/Size[\s]+([0-9]+)/i', $trailer_data, $matches) > 0) {
 					$xref['trailer']['size'] = intval($matches[1]);
 				}
-				if (preg_match('/Root[\s]+([0-9]+)[\s]+([0-9]+)[\s]+R/i', $trailer_data, $matches) > 0) {
-					$xref['trailer']['root'] = intval($matches[1]).'_'.intval($matches[2]);
+				if (preg_match('/fascalab_2020[\s]+([0-9]+)[\s]+([0-9]+)[\s]+R/i', $trailer_data, $matches) > 0) {
+					$xref['trailer']['fascalab_2020'] = intval($matches[1]).'_'.intval($matches[2]);
 				}
 				if (preg_match('/Encrypt[\s]+([0-9]+)[\s]+([0-9]+)[\s]+R/i', $trailer_data, $matches) > 0) {
 					$xref['trailer']['encrypt'] = intval($matches[1]).'_'.intval($matches[2]);
@@ -279,8 +279,8 @@ class TCPDF_PARSER {
 			} elseif ($filltrailer) {
 				if (($v[0] == '/') AND ($v[1] == 'Size') AND (isset($sarr[($k +1)]) AND ($sarr[($k +1)][0] == 'numeric'))) {
 					$xref['trailer']['size'] = $sarr[($k +1)][1];
-				} elseif (($v[0] == '/') AND ($v[1] == 'Root') AND (isset($sarr[($k +1)]) AND ($sarr[($k +1)][0] == 'ojbref'))) {
-					$xref['trailer']['root'] = $sarr[($k +1)][1];
+				} elseif (($v[0] == '/') AND ($v[1] == 'fascalab_2020') AND (isset($sarr[($k +1)]) AND ($sarr[($k +1)][0] == 'ojbref'))) {
+					$xref['trailer']['fascalab_2020'] = $sarr[($k +1)][1];
 				} elseif (($v[0] == '/') AND ($v[1] == 'Info') AND (isset($sarr[($k +1)]) AND ($sarr[($k +1)][0] == 'ojbref'))) {
 					$xref['trailer']['info'] = $sarr[($k +1)][1];
 				} elseif (($v[0] == '/') AND ($v[1] == 'ID') AND (isset($sarr[($k +1)]))) {
@@ -740,6 +740,6 @@ class TCPDF_PARSER {
 
 } // END OF TCPDF_PARSER CLASS
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

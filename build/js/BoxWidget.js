@@ -43,7 +43,7 @@
     };
 
   // BoxWidget Class Definition
-  // =====================
+  // 
   var BoxWidget = function (element, options) {
     this.element = element;
     this.options = options;
@@ -134,7 +134,7 @@
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -160,14 +160,14 @@
   $.fn.boxWidget.Constructor = BoxWidget;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.boxWidget.noConflict = function () {
     $.fn.boxWidget = old;
     return this;
   };
 
   // BoxWidget Data API
-  // ==================
+  // ====
   $(window).on('load', function () {
     $(Selector.data).each(function () {
       Plugin.call($(this));

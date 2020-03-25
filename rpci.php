@@ -1,7 +1,11 @@
 <?php
 // error_reporting(0);
 // ini_set('display_errors', 0);
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 
 if (isset($_POST['submit'])) {
   $article = $_POST['article'];

@@ -49,7 +49,7 @@ $mydb = new db(); // create a new object, class db()
                     });
                     </script>
                 <?php
-                $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+                $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                 $select_rfqID = mysqli_query($conn,"SELECT rfq_id FROM abstract_of_quote ");
                 while ($rowRID = mysqli_fetch_assoc($select_rfqID)) {
                     $RFQ_ID = $rowRID['rfq_id'];

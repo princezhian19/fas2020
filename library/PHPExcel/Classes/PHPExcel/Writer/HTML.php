@@ -49,7 +49,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
 	private $_sheetIndex	= 0;
 
 	/**
-	 * Images root
+	 * Images fascalab_2020
 	 *
 	 * @var string
 	 */
@@ -579,7 +579,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
 						$filename = substr($filename, 1);
 					}
 
-					// Prepend images root
+					// Prepend images fascalab_2020
 					$filename = $this->getImagesRoot() . $filename;
 
 					// Strip off eventual '.'
@@ -1321,7 +1321,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
 	}
 
 	/**
-	 * Get images root
+	 * Get images fascalab_2020
 	 *
 	 * @return string
 	 */
@@ -1330,7 +1330,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
 	}
 
 	/**
-	 * Set images root
+	 * Set images fascalab_2020
 	 *
 	 * @param string $pValue
 	 * @return PHPExcel_Writer_HTML

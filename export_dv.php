@@ -25,7 +25,7 @@ $stylebottom = array(
     'bottom' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
   ),
 );
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
 $sql = mysqli_query($conn, "SELECT * FROM dv WHERE id = '$id' ");
 $row = mysqli_fetch_array($sql);

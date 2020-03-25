@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_055.php
 // Begin       : 2009-10-21
 // Last Update : 2011-01-01
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Display all characters available on core fonts.
@@ -110,5 +110,5 @@ foreach($core_fonts as $font) {
 //Close and output PDF document
 $pdf->Output('example_055.pdf', 'I');
 
-//============================================================+
-// END OF FILE                                               //============================================================+
+//====+
+// END OF FILE                                               //====+

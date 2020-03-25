@@ -1,15 +1,14 @@
 <?php 
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-} 
+error_reporting(0);
+ini_set('display_errors', 0);
+session_start(); 
 $username = $_SESSION['username'];
 
 
 // function showDivision()
 // {
 //   $username = $_SESSION['username'];
-//   $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+//   $link = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN", "fascalab_2020");
 //   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 //   $query = "SELECT * FROM `tblemployee` WHERE md5(UNAME) = '".md5($username)."' ";
 //   $result = mysqli_query($link, $query);
@@ -279,7 +278,7 @@ $username = $_SESSION['username'];
          <li class="treeview">
           <a href="#" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"></i>
-            <span style="color:black;text-decoration: none;">ACCOUNTINGasasassa</span>
+            <span style="color:black;text-decoration: none;">ACCOUNTING</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

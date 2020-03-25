@@ -1,6 +1,6 @@
 <?php
 
-/** PHPExcel root directory */
+/** PHPExcel fascalab_2020 directory */
 if (!defined('PHPEXCEL_ROOT')) {
     /**
      * @ignore

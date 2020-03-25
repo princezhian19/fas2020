@@ -90,7 +90,7 @@
     - Add missing closedir() statement.
     - When adding a folder, and removing the path of this folder, files were
       incorrectly added with a '/' at the beginning. Which means files are 
-      related to root in unix systems. Corrected.
+      related to fascalab_2020 in unix systems. Corrected.
     - Add conditional if before constant definition. This will allow users
       to redefine constants without changing the file, and then improve
       upgrade of pclzip code for new versions.

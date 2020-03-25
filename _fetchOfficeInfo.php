@@ -1,6 +1,6 @@
 <?php
 $id = $_POST['id'];
-$link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+$link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
 if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
 

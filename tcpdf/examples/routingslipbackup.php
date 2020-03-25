@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_003.php
 // Begin       : 2008-03-04
 // Last Update : 2013-05-14
@@ -14,7 +14,7 @@
 //               Tecnick.com LTD
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -127,7 +127,7 @@ $pdf->AddPage();
 
 
 session_start();
-$conn=mysqli_connect("localhost","root","","loop");
+$conn=mysqli_connect("localhost","fascalab_2020","","loop");
 
 
 // $sqltable = "tblrecords";
@@ -183,7 +183,7 @@ $rrecievemode = $fdata['RECEIVE_MODE'];
 $uurl = $fdata['URL'];
 $sstatus = $fdata['STATUS'];
   // echo $rn;
-$conn = mysqli_connect("localhost", "root", "", "loop");   
+$conn = mysqli_connect("localhost", "fascalab_2020", "", "loop");   
       $sql = "SELECT FLAGAS, URL, ROUTING_N, ROUTED_TO, ROUTED_FROM, concat(FIRST_M,' ', LAST_M) as NAME, UNAME, ACTION, REMARKS, DATE_ROUTED, TIME_ROUTED
                                      from tblrouting
                                     left join tblemployee on tblrouting.SENDER_M=tblemployee.EMP_N
@@ -277,7 +277,7 @@ $pdf->WriteHTMLCell(30,0,'','',$sstatus,0,0);
 function fetch_data()  
  {  
       $output = '';  
-      $conn = mysqli_connect("localhost", "root", "", "loop");   
+      $conn = mysqli_connect("localhost", "fascalab_2020", "", "loop");   
       $sql = "SELECT FLAGAS, URL, ROUTING_N, ROUTED_TO, ROUTED_FROM, concat(FIRST_M,' ', LAST_M) as NAME, UNAME, ACTION, REMARKS, DATE_ROUTED, TIME_ROUTED
                                      from tblrouting
                                     left join tblemployee on tblrouting.SENDER_M=tblemployee.EMP_N
@@ -508,7 +508,7 @@ $pdf->Ln();
 
 function fetch_dataRelease()  
  {  
-  $conn = mysqli_connect("localhost", "root", "", "loop");   
+  $conn = mysqli_connect("localhost", "fascalab_2020", "", "loop");   
       $output1 = '';  
       $queryrelease = "select TYPE, UNAME, URL, RELEASED_N, RELEASED_TO, RELEASED_FROM, concat(FIRST_M,' ', LAST_M) as NAME, REMARKS, DATE_RELEASED, TIME_RELEASED
                                      from tblrecordrelease
@@ -710,6 +710,6 @@ $pdf->SetFont('Times','',11);
 // $pdf->WriteHTMLCell(0,0,'','',"<i>(1)Approval/Signature  (2)Appropriate Action  (3)Comment/Recommendation  (4)Information/Reference  (5)Prepare Speech/Talking Points/Message  (6)Disseminate/Circularize  (7)Noted/File</i>",0,0);
 $pdf->Output();
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

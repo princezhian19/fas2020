@@ -1956,7 +1956,7 @@ Expr = Sizzle.selectors = {
 			return hash && hash.slice( 1 ) === elem.id;
 		},
 
-		"root": function( elem ) {
+		"fascalab_2020": function( elem ) {
 			return elem === docElem;
 		},
 
@@ -2855,7 +2855,7 @@ jQuery.fn.extend( {
 // Initialize a jQuery object
 
 
-// A central reference to the root jQuery(document)
+// A central reference to the fascalab_2020 jQuery(document)
 var rootjQuery,
 
 	// A simple way to check for HTML strings
@@ -2863,7 +2863,7 @@ var rootjQuery,
 	// Strict HTML recognition (#11290: must start with <)
 	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
 
-	init = jQuery.fn.init = function( selector, context, root ) {
+	init = jQuery.fn.init = function( selector, context, fascalab_2020 ) {
 		var match, elem;
 
 		// HANDLE: $(""), $(null), $(undefined), $(false)
@@ -2873,7 +2873,7 @@ var rootjQuery,
 
 		// init accepts an alternate rootjQuery
 		// so migrate can support jQuery.sub (gh-2101)
-		root = root || rootjQuery;
+		fascalab_2020 = fascalab_2020 || rootjQuery;
 
 		// Handle HTML strings
 		if ( typeof selector === "string" ) {
@@ -2946,7 +2946,7 @@ var rootjQuery,
 
 			// HANDLE: $(expr, $(...))
 			} else if ( !context || context.jquery ) {
-				return ( context || root ).find( selector );
+				return ( context || fascalab_2020 ).find( selector );
 
 			// HANDLE: $(expr, context)
 			// (which is just equivalent to: $(context).find(expr)
@@ -2963,8 +2963,8 @@ var rootjQuery,
 		// HANDLE: $(function)
 		// Shortcut for document ready
 		} else if ( jQuery.isFunction( selector ) ) {
-			return typeof root.ready !== "undefined" ?
-				root.ready( selector ) :
+			return typeof fascalab_2020.ready !== "undefined" ?
+				fascalab_2020.ready( selector ) :
 
 				// Execute immediately if ready is not present
 				selector( jQuery );

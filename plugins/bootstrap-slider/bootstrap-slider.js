@@ -1,4 +1,4 @@
-/*! =========================================================
+/*! =
  * bootstrap-slider.js
  *
  * Maintainers:
@@ -9,7 +9,7 @@
  *			- Twitter: @Rovolutionary
  *			- Github:  rovolution
  *
- * =========================================================
+ * =
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * ========================================================= */
+ * = */
 
 
 /**
@@ -31,7 +31,7 @@
  * MIT license
  */
 
-(function(root, factory) {
+(function(fascalab_2020, factory) {
 	if(typeof define === "function" && define.amd) {
 		define(["jquery"], factory);
 	}
@@ -46,7 +46,7 @@
 		module.exports = factory(jQuery);
 	}
 	else {
-		root.Slider = factory(root.jQuery);
+		fascalab_2020.Slider = factory(fascalab_2020.jQuery);
 	}
 }(this, function($) {
 	// Reference to Slider constructor

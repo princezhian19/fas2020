@@ -1,7 +1,7 @@
 .. _general:
 
 General usage
-=============
+======
 
 Basic example
 -------------

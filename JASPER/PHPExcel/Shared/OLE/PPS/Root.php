@@ -17,11 +17,11 @@
 // | Based on OLE::Storage_Lite by Kawai, Takanori                        |
 // +----------------------------------------------------------------------+
 //
-// $Id: Root.php,v 1.9 2005/04/23 21:53:49 dufuz Exp $
+// $Id: fascalab_2020.php,v 1.9 2005/04/23 21:53:49 dufuz Exp $
 
 
 /**
-* Class for creating Root PPS's for OLE containers
+* Class for creating fascalab_2020 PPS's for OLE containers
 *
 * @author   Xavier Noguer <xnoguer@php.net>
 * @category PHPExcel
@@ -44,7 +44,7 @@ class PHPExcel_Shared_OLE_PPS_Root extends PHPExcel_Shared_OLE_PPS
     {
         $this->_tempDir = PHPExcel_Shared_File::sys_get_temp_dir();
 
-        parent::__construct(null, PHPExcel_Shared_OLE::Asc2Ucs('Root Entry'), PHPExcel_Shared_OLE::OLE_PPS_TYPE_ROOT, null, null, null, $time_1st, $time_2nd, null, $raChild);
+        parent::__construct(null, PHPExcel_Shared_OLE::Asc2Ucs('fascalab_2020 Entry'), PHPExcel_Shared_OLE::OLE_PPS_TYPE_ROOT, null, null, null, $time_1st, $time_2nd, null, $raChild);
     }
 
     /**
@@ -216,7 +216,7 @@ class PHPExcel_Shared_OLE_PPS_Root extends PHPExcel_Shared_OLE_PPS
             . "\x00\x00\x00\x00"
             . "\x00\x00\x00\x00"
             . pack("V", $iBdCnt)
-            . pack("V", $iBBcnt+$iSBDcnt) //ROOT START
+            . pack("V", $iBBcnt+$iSBDcnt) //fascalab_2020 START
             . pack("V", 0)
             . pack("V", 0x1000)
             . pack("V", $iSBDcnt ? 0 : -2) //Small Block Depot

@@ -2,7 +2,11 @@
 
 include('db.class.php'); 
 $mydb = new db();
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 if (isset($_POST['submit'])) 
 {
 	$id = $_GET['id'];
@@ -85,7 +89,7 @@ if (isset($_POST['submit']))
 							<div class="col-xs-3">
 								<label>CODE : </label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="text" class="form-control" style="height: 40px;" name="code" value="'.$row['code'].'" />';   
@@ -95,7 +99,7 @@ if (isset($_POST['submit']))
 							<div class="col-xs-3">
 								<label>ITEMS : </label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="text" class="form-control" style="height: 40px;" readonly name="items" value="'.$row['items'].'" />';   
@@ -105,7 +109,7 @@ if (isset($_POST['submit']))
 							<div class="col-xs-3">
 								<label>UNIT : </label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="text" class="form-control" style="height: 40px;" readonly name="unit" value="'.$row['unit'].'" />';   
@@ -115,7 +119,7 @@ if (isset($_POST['submit']))
 							<div class="col-xs-3">
 								<label>Stock No. : </label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="text" class="form-control" style="height: 40px;" readonly name="sn" value="'.$row['sn'].'" />';   
@@ -127,7 +131,7 @@ if (isset($_POST['submit']))
 							<div class="col-xs-3">
 								<label>BALANCE AS OF : </label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="text" class="" id="datepicker1" placeholder="Enter Date" name="balanceone" style="height: 35px; width: 320px" value="'.$row['balanceone'].'"/>';   
@@ -137,7 +141,7 @@ if (isset($_POST['submit']))
 							<div class="col-xs-3">
 								<label>Quantity :</label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="number" class="form-control" style="height: 40px;"  name="one" value="'.$row['one'].'" />';   
@@ -147,7 +151,7 @@ if (isset($_POST['submit']))
 							<div class="col-xs-3">
 								<label>Delivery for the month : </label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="number" class="form-control" style="height: 40px;"  name="delivery" value="'.$row['delivery'].'" />';   
@@ -157,7 +161,7 @@ if (isset($_POST['submit']))
 							<div class="col-xs-3">
 								<label>Available Balance : </label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="number" class="form-control" style="height: 40px;"  name="avail_balance" value="'.$row['avail_balance'].'" />';   
@@ -169,7 +173,7 @@ if (isset($_POST['submit']))
 							<div class="col-xs-3">
 								<label>Issued for the month : </label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="number" class="form-control" style="height: 40px;"  name="issue_month" value="'.$row['issue_month'].'" />';   
@@ -179,7 +183,7 @@ if (isset($_POST['submit']))
 							<div class="col-xs-3">
 								<label>BALANCE AS OF : </label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="text" class="" id="datepicker2" placeholder="Enter Date" name="balancetwo" style="height: 35px; width: 320px" value="'.$row['balancetwo'].'"/>';
@@ -190,7 +194,7 @@ if (isset($_POST['submit']))
 							<div  class="col-xs-3">
 								<label>Quantity:</label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="number" class="form-control" style="height: 40px;"  name="two" value="'.$row['two'].'" />';   
@@ -200,7 +204,7 @@ if (isset($_POST['submit']))
 							<div  class="col-xs-3">
 								<label>Current Price:</label>
 								<?php
-								$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+								$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 								$sq = mysqli_query($conn,"SELECT * FROM old_stock where id ='".$_GET['id']."' ");
 								while ($row = mysqli_fetch_assoc($sq)) {
 									echo '<input type="number" class="form-control" style="height: 40px;"  name="current_price" value="'.$row['current_price'].'" />';   

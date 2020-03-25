@@ -42,9 +42,9 @@ $getUacs = $_GET['getuacs'];
             <h1 align="" >&nbspAllotment Amount :   <label ><?php
               
               $servername = "localhost";
-              $username = "root";
-              $password = "";
-              $database = "db_dilg_pmis";
+              $username = "fascalab_2020";
+              $password = "w]zYV6X9{*BN";
+              $database = "fascalab_2020";
               
             $conn = new mysqli($servername, $username, $password,$database);
              $getAmount = mysqli_query($conn, "SELECT * FROM  saro where  saronumber = '$getSaro' and uacs = '$getUacs' ");
@@ -57,9 +57,9 @@ $getUacs = $_GET['getuacs'];
           
             
             $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "db_dilg_pmis";
+            $username = "fascalab_2020";
+            $password = "w]zYV6X9{*BN";
+            $database = "fascalab_2020";
             
             $conn = new mysqli($servername, $username, $password,$database);
             $AmountAll = mysqli_query($conn, "SELECT sum(amount) as a FROM saroob where saronumber = '$getSaro' and uacs = '$getUacs' and status='Obligated' "); 
@@ -196,9 +196,9 @@ $getUacs = $_GET['getuacs'];
             $getSaro = $_GET['getsaroID'];
 
             $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "db_dilg_pmis";
+            $username = "fascalab_2020";
+            $password = "w]zYV6X9{*BN";
+            $database = "fascalab_2020";
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);

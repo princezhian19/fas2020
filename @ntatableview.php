@@ -48,9 +48,9 @@ $getparticular = $_GET['getparticular'];
             <!-- <h1 align="" >&nbspAllotment Amount :   <label ><?php
               
               $servername = "localhost";
-              $username = "root";
-              $password = "";
-              $database = "db_dilg_pmis";
+              $username = "fascalab_2020";
+              $password = "w]zYV6X9{*BN";
+              $database = "fascalab_2020";
               
             $conn = new mysqli($servername, $username, $password,$database);
              $getAmount = mysqli_query($conn, "SELECT * FROM  nta where  nta = '$getntano' and particular = '$getparticular' ");
@@ -63,9 +63,14 @@ $getparticular = $_GET['getparticular'];
           
             
             $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "db_dilg_pmis";
+
+            $username = "fascalab_2020";
+            $password = "w]zYV6X9{*BN";
+
+            $username = "fascalab_2020";
+            $password = "w]zYV6X9{*BN";
+
+            $database = "fascalab_2020";
             
             $conn = new mysqli($servername, $username, $password,$database);
             $AmountAll = mysqli_query($conn, "SELECT sum(net) as a FROM disbursement where nta = '$getntano' and ntaparticular = '$getparticular' and status='Disbursed' "); 
@@ -145,9 +150,9 @@ $getparticular = $_GET['getparticular'];
               </thead>
               <?php
               $servername = "localhost";
-              $username = "root";
-              $password = "";
-              $database = "db_dilg_pmis";
+              $username = "fascalab_2020";
+              $password = "w]zYV6X9{*BN";
+              $database = "fascalab_2020";
             // Create connection
               $conn = new mysqli($servername, $username, $password,$database);
               $view_query = mysqli_query($conn, "SELECT * FROM disbursement where nta='$getntano' and ntaparticular = '$getparticular' order by datereleased asc");

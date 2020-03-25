@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_063.php
 // Begin       : 2010-09-29
 // Last Update : 2012-06-21
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -126,6 +126,6 @@ $pdf->setFontSpacing(0);
 //Close and output PDF document
 $pdf->Output('example_063.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

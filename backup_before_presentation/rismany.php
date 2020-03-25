@@ -1,6 +1,6 @@
 
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=db_dilg_pmis", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 $app_id = $_GET['app_id'];
 $rfq_id = $_GET['rfq_id'];
 $iar_id = $_GET['iar_id'];
@@ -184,7 +184,7 @@ $po_no = $_GET['po_no'];
            </tr>
            <tr>
             <?php 
-            $conn = new PDO('mysql:host=localhost;dbname=db_dilg_pmis;charset=utf8', 'root', '');
+            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', '');
             $sql_items = $conn->query("SELECT * FROM iar_stock WHERE po_no = '$po_no'");
             while ($row = $sql_items->fetch()) {
               $id = $row['id'];
@@ -253,8 +253,12 @@ $po_no = $_GET['po_no'];
 
 <?php
 if (isset($_POST['submit'])) { 
- $connect = new PDO("mysql:host=localhost;dbname=db_dilg_pmis", "root", "");
- $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+ $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+
+ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+ 
+
  $rfq_id = $_POST['rfq_id'];
  $iar_id = $_POST['iar_id'];
  $iar_id = $_POST['iar_id'];

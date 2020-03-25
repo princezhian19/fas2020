@@ -1,6 +1,10 @@
 <?php 
 $id = $_GET['id'];
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 $delete2 = mysqli_query($conn,"DELETE FROM estimated_budget WHERE app_id = '$id' ");
 $select = mysqli_query($conn,"SELECT * FROM app WHERE id = '$id'");
 $row = mysqli_fetch_array($select);

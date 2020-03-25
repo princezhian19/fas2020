@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : tcpdf_config.php
 // Begin       : 2004-06-11
 // Last Update : 2011-04-15
@@ -26,7 +26,7 @@
 // along with TCPDF.  If not, see <http://www.gnu.org/licenses/>.
 //
 // See LICENSE.TXT file for more information.
-//============================================================+
+//====+
 
 /**
  * Alternative configuration file for TCPDF.
@@ -239,6 +239,6 @@ define('K_THAI_TOPCHARS', true);
  */
 define('K_TCPDF_CALLS_IN_HTML', true);
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
 		$discriminant = PHPExcel_Calculation::getInstance()->calculateFormula($discriminantFormula);
 
 		$r1Formula = '=IMDIV(IMSUM(-'.$_POST['B'].',IMSQRT('.$discriminant.')),2 * '.$_POST['A'].')';
-		$r2Formula = '=IF('.$discriminant.'=0,"Only one root",IMDIV(IMSUB(-'.$_POST['B'].',IMSQRT('.$discriminant.')),2 * '.$_POST['A'].'))';
+		$r2Formula = '=IF('.$discriminant.'=0,"Only one fascalab_2020",IMDIV(IMSUB(-'.$_POST['B'].',IMSQRT('.$discriminant.')),2 * '.$_POST['A'].'))';
 
 		echo PHPExcel_Calculation::getInstance()->calculateFormula($r1Formula).'<br />';
 		echo PHPExcel_Calculation::getInstance()->calculateFormula($r2Formula).'<br />';

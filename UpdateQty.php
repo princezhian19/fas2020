@@ -1,6 +1,10 @@
 <?php 
 $id = $_GET['id'];
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 $selectQuery = mysqli_query($conn,"SELECT * FROM ris_stock_issuetomany WHERE id = '$id' ");
 $row = mysqli_fetch_array($selectQuery);
 $procurement_id = $row['procurement_id'];

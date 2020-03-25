@@ -1,8 +1,8 @@
 <?php
 
-	$db_username = 'root';
+	$db_username = 'fascalab_2020';
 	$db_password = '';
-	$db_name = 'db_dilg_pmis';
+	$db_name = 'fascalab_2020';
 	$db_host = 'localhost';
 	$item_per_page = 7;
 	

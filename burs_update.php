@@ -4,7 +4,11 @@ error_reporting(0);
 ini_set('display_errors', 0);
 session_start();
 $username = $_SESSION['username'];
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 $id = $_GET['id'];
 $query = mysqli_query($conn,"SELECT * FROM burs WHERE id = '$id'");
 $row = mysqli_fetch_array($query);

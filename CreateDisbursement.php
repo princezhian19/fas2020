@@ -1,6 +1,6 @@
 <?php 
 $id = $_GET['id'];
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 $select_part = mysqli_query($conn,"SELECT * FROM disbursement WHERE id = '$id'");
 $rowB = mysqli_fetch_array($select_part);
@@ -43,9 +43,14 @@ $other = $_POST['other'];
 $remarks = $_POST['remarks'];
 $status = $_POST['status'];
 $servername = "localhost";
-$username = "root";
-$password = "";
-$database = "db_dilg_pmis";
+
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
+
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
+
+$database = "fascalab_2020";
 $conn = new mysqli($servername, $username, $password,$database);
 
 $query = mysqli_query($conn,"UPDATE disbursement SET datereleased = now(), dv = '$dv',ors = '$ors',sr = '$sr',ppa = '$ppa',uacs = '$uacs',payee = '$payee',particular = '$particular',amount = '$amount',datereceived = '$dr',timereceived = '$tr',tax = '$tax',gsis = '$gsis',pagibig = '$pagibig',philhealth = '$philhealth',other = '$other',remarks = '$remarks',status = '$status' WHERE id ='$id' ");

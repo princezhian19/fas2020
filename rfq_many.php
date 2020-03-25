@@ -2,8 +2,8 @@
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 error_reporting(E_ALL);
-$connect = new PDO("mysql:host=localhost;dbname=db_dilg_pmis", "root", "");
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 function fill_unit_select_box($connect)
 { 
   $output = '';
@@ -164,7 +164,7 @@ if (isset($_POST['submit'])) {
 
       echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successful!');
-      window.location.href='../frontend/web/rfq/view?id=$rfq_idd';
+      window.location.href='RFQdetails.php?id=$rfq_idd';
       </SCRIPT>");
 
    // header('location: ../frontend/web/rfq/index');

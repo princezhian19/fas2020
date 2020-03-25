@@ -1,6 +1,6 @@
 <?php
 require_once('functions.php'); 
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
 $select_ = mysqli_query($conn,"SELECT rfq.rfq_no,s.id,s.supplier_title FROM abstract_of_quote abs LEFT JOIN rfq on rfq.id = abs.rfq_id LEFT JOIN supplier s on s.id = abs.supplier_id LEFT JOIN rfq_items rq on rq.rfq_id = abs.rfq_id WHERE abs.rfq_id = $rfq_id AND abs.abstract_no IS NOT NULL");
 $row_ = mysqli_fetch_array($select_);
@@ -48,6 +48,12 @@ foreach ($_POST['note_id'] as $notas) {
 $insert_nota = mysqli_query($conn,"INSERT INTO po_checklist(po_id,checklist_id) VALUES($rowrecentid,$notas)");
 
 }
+
+
+echo ("<SCRIPT LANGUAGE='JavaScript'>
+window.alert('Successful!');
+window.location.href='ViewPO.php?rfq_id=$rfq_id&supplier_id=$supplier_id';
+</SCRIPT>");
 
 }
 
@@ -121,7 +127,7 @@ $autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
                 <label>Check List(s)</label>
                 <br>
                 <?php 
-                $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+                $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                 $select = mysqli_query($conn,"SELECT * FROM checklist");
                 while ($rowC = mysqli_fetch_assoc($select)) {
                     $id = $rowC['id'];

@@ -45,7 +45,7 @@ in your application required.
 
 Example:
 
-If your web root folder is /var/www/ you may want to create a subfolder called
+If your web fascalab_2020 folder is /var/www/ you may want to create a subfolder called
 /var/www/Classes/ and copy the files into that folder so you end up with files:
 
 /var/www/Classes/PHPExcel.php

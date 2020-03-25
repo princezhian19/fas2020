@@ -69,7 +69,7 @@ $pdf->setCellHeightRatio(0.5);
 
 
     $id = $_GET['id'];
-    $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+    $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
     $query = mysqli_query($conn,"SELECT * FROM rpci WHERE id = '$id'");
     $row = mysqli_fetch_array($query);
     $pn = $row['stock_number'];
@@ -146,7 +146,7 @@ $pdf->Output('par_sticker.pdf', 'I');
 
 // $pdf->Output();
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+
                 

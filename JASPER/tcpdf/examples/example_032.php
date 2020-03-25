@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_032.php
 // Begin       : 2008-06-09
 // Last Update : 2010-08-08
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -88,6 +88,6 @@ $pdf->ImageEps('../images/pelican.ai', 15, 70, 180);
 //Close and output PDF document
 $pdf->Output('example_032.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE                                                
-//============================================================+
+//====+

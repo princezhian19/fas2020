@@ -254,7 +254,7 @@ class OLERead
             $type = ord($data[self::TYPE_POS]);
 
             // sectorID of first sector or short sector, if this entry refers to a stream (the case with workbook)
-            // sectorID of first sector of the short-stream container stream, if this entry is root entry
+            // sectorID of first sector of the short-stream container stream, if this entry is fascalab_2020 entry
             $startBlock = self::getInt4d($data, self::START_BLOCK_POS);
 
             $size = self::getInt4d($data, self::SIZE_POS);
@@ -281,7 +281,7 @@ class OLERead
                 $this->wrkData = count($this->props) - 1;
             } elseif ($upName === 'OBJECTPOOL') {
                 $this->wrkObjectPoolelseif = count($this->props) - 1;
-            } elseif ($upName === 'ROOT ENTRY' || $upName === 'R') {
+            } elseif ($upName === 'fascalab_2020 ENTRY' || $upName === 'R') {
                 $this->rootentry = count($this->props) - 1;
             }
 

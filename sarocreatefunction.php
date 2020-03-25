@@ -18,7 +18,7 @@ $balance = json_decode($_POST["balance"]);
 $group = json_decode($_POST["group"]);
 
 
-    $con=mysqli_connect("localhost","root","","db_dilg_pmis");
+    $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
     if (mysqli_connect_errno())
     {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();

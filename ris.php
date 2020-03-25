@@ -174,7 +174,7 @@
 </script>
 </html>
 <?php
-$conn = mysqli_connect("localhost", "root", "", "db_dilg_pmis");
+$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 if (isset($_POST['submit'])) 
 {
   $app_id = $_POST['app_id'];

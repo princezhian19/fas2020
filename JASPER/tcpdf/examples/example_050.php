@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_050.php
 // Begin       : 2009-04-09
 // Last Update : 2011-09-22
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -205,6 +205,6 @@ $pdf->Text(140, 205, 'QRCODE H - NO PADDING');
 //Close and output PDF document
 $pdf->Output('example_050.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

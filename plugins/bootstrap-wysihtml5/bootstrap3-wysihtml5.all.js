@@ -763,7 +763,7 @@ var wysihtml5 = {
 
         function comparePoints(nodeA, offsetA, nodeB, offsetB) {
             // See http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.html#Level-2-Range-Comparing
-            var nodeC, root, childA, childB, n;
+            var nodeC, fascalab_2020, childA, childB, n;
             if (nodeA == nodeB) {
                 // Case 1: nodes are the same
                 return offsetA === offsetB ? 0 : (offsetA < offsetB) ? -1 : 1;
@@ -774,20 +774,20 @@ var wysihtml5 = {
                 // Case 3: node C (container A or an ancestor) is a child node of B
                 return getNodeIndex(nodeC) < offsetB  ? -1 : 1;
             } else {
-                root = getCommonAncestor(nodeA, nodeB);
-                if (!root) {
+                fascalab_2020 = getCommonAncestor(nodeA, nodeB);
+                if (!fascalab_2020) {
                     throw new Error("comparePoints error: nodes have no common ancestor");
                 }
 
                 // Case 4: containers are siblings or descendants of siblings
-                childA = (nodeA === root) ? root : getClosestAncestorIn(nodeA, root, true);
-                childB = (nodeB === root) ? root : getClosestAncestorIn(nodeB, root, true);
+                childA = (nodeA === fascalab_2020) ? fascalab_2020 : getClosestAncestorIn(nodeA, fascalab_2020, true);
+                childB = (nodeB === fascalab_2020) ? fascalab_2020 : getClosestAncestorIn(nodeB, fascalab_2020, true);
 
                 if (childA === childB) {
                     // This shouldn't be possible
                     throw module.createError("comparePoints got to case 4 and childA and childB are the same!");
                 } else {
-                    n = root.firstChild;
+                    n = fascalab_2020.firstChild;
                     while (n) {
                         if (n === childA) {
                             return -1;
@@ -865,9 +865,9 @@ var wysihtml5 = {
             module.fail("No means of obtaining computed style properties found");
         }
 
-        function NodeIterator(root) {
-            this.root = root;
-            this._next = root;
+        function NodeIterator(fascalab_2020) {
+            this.fascalab_2020 = fascalab_2020;
+            this._next = fascalab_2020;
         }
 
         NodeIterator.prototype = {
@@ -886,7 +886,7 @@ var wysihtml5 = {
                         this._next = child;
                     } else {
                         next = null;
-                        while ((n !== this.root) && !(next = n.nextSibling)) {
+                        while ((n !== this.fascalab_2020) && !(next = n.nextSibling)) {
                             n = n.parentNode;
                         }
                         this._next = next;
@@ -896,12 +896,12 @@ var wysihtml5 = {
             },
 
             detach: function() {
-                this._current = this._next = this.root = null;
+                this._current = this._next = this.fascalab_2020 = null;
             }
         };
 
-        function createIterator(root) {
-            return new NodeIterator(root);
+        function createIterator(fascalab_2020) {
+            return new NodeIterator(fascalab_2020);
         }
 
         function DomPosition(node, offset) {
@@ -1185,16 +1185,16 @@ var wysihtml5 = {
                 this.so = range.startOffset;
                 this.ec = range.endContainer;
                 this.eo = range.endOffset;
-                var root = range.commonAncestorContainer;
+                var fascalab_2020 = range.commonAncestorContainer;
 
                 if (this.sc === this.ec && isCharacterDataNode(this.sc)) {
                     this.isSingleCharacterDataNode = true;
                     this._first = this._last = this._next = this.sc;
                 } else {
-                    this._first = this._next = (this.sc === root && !isCharacterDataNode(this.sc)) ?
-                        this.sc.childNodes[this.so] : getClosestAncestorIn(this.sc, root, true);
-                    this._last = (this.ec === root && !isCharacterDataNode(this.ec)) ?
-                        this.ec.childNodes[this.eo - 1] : getClosestAncestorIn(this.ec, root, true);
+                    this._first = this._next = (this.sc === fascalab_2020 && !isCharacterDataNode(this.sc)) ?
+                        this.sc.childNodes[this.so] : getClosestAncestorIn(this.sc, fascalab_2020, true);
+                    this._last = (this.ec === fascalab_2020 && !isCharacterDataNode(this.ec)) ?
+                        this.ec.childNodes[this.eo - 1] : getClosestAncestorIn(this.ec, fascalab_2020, true);
                 }
             }
         }
@@ -1871,14 +1871,14 @@ var wysihtml5 = {
             return function() {
                 assertRangeValid(this);
 
-                var sc = this.startContainer, so = this.startOffset, root = this.commonAncestorContainer;
+                var sc = this.startContainer, so = this.startOffset, fascalab_2020 = this.commonAncestorContainer;
 
                 var iterator = new RangeIterator(this, true);
 
                 // Work out where to position the range after content removal
                 var node, boundary;
-                if (sc !== root) {
-                    node = getClosestAncestorIn(sc, root, true);
+                if (sc !== fascalab_2020) {
+                    node = getClosestAncestorIn(sc, fascalab_2020, true);
                     boundary = getBoundaryAfterNode(node);
                     sc = boundary.node;
                     so = boundary.offset;
@@ -1914,7 +1914,7 @@ var wysihtml5 = {
             function setRangeStart(range, node, offset) {
                 var ec = range.endContainer, eo = range.endOffset;
                 if (node !== range.startContainer || offset !== range.startOffset) {
-                    // Check the root containers of the range and the new boundary, and also check whether the new boundary
+                    // Check the fascalab_2020 containers of the range and the new boundary, and also check whether the new boundary
                     // is after the current end. In either case, collapse the range to the new position
                     if (getRootContainer(node) != getRootContainer(ec) || comparePoints(node, offset, ec, eo) == 1) {
                         ec = node;
@@ -1927,7 +1927,7 @@ var wysihtml5 = {
             function setRangeEnd(range, node, offset) {
                 var sc = range.startContainer, so = range.startOffset;
                 if (node !== range.endContainer || offset !== range.endOffset) {
-                    // Check the root containers of the range and the new boundary, and also check whether the new boundary
+                    // Check the fascalab_2020 containers of the range and the new boundary, and also check whether the new boundary
                     // is after the current end. In either case, collapse the range to the new position
                     if (getRootContainer(node) != getRootContainer(sc) || comparePoints(node, offset, sc, so) == -1) {
                         sc = node;

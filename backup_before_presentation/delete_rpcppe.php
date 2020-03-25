@@ -1,6 +1,10 @@
 <?php 
 $id = $_GET['id'];
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 $delete = mysqli_query($conn,"DELETE FROM rpcppe WHERE id = '$id' ");
 if ($delete) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>

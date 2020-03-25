@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost","root","","db_dilg_pmis");
+$connect = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 if(isset($_POST["code"],$_POST["items"], $_POST["unit"], $_POST["balanceone"], $_POST["one"], $_POST["delivery"], $_POST["avail_balance"], $_POST["issue_month"], $_POST["balancetwo"], $_POST["two"], $_POST["current_price"]))
 {
  $code = mysqli_real_escape_string($connect, $_POST["code"]);
