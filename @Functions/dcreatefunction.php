@@ -28,19 +28,19 @@ $dr = date('Y-m-d', strtotime($datereceived));
 $tr = date('h:i a', strtotime($timereceived)); */
 
 
-$datereleased = $_GET['datereleased'];
-$dreleased = date('Y-m-d', strtotime($datereleased));
+// $datereleased = $_GET['datereleased'];
+// $dreleased = date('Y-m-d', strtotime($datereleased));
 /* $timereleased = $_GET['timereleased'];
 $treleased = date('h:i a', strtotime($timereleased)); */
-$datereturned = $_GET['datereturned'];
-if($datereturned ==""){
-    $dreturned = "0000-00-00";
+// $datereturned = $_GET['datereturned'];
+// if($datereturned ==""){
+//     $dreturned = "0000-00-00";
 
-}
-else{
+// }
+// else{
    
-    $dreturned = date('Y-m-d', strtotime($datereturned));
-}
+//     $dreturned = date('Y-m-d', strtotime($datereturned));
+// }
 /* $timereturned = $_GET['timereturned'];
 $treturned = date('h:i a', strtotime($timereturned)); */
 
@@ -61,6 +61,7 @@ if($remarks==""){
 $status = $_GET['status'];
 
 $ntaid = $_GET['ntaid'];
+
 $ntano = $_GET['ntano'];
 $ntaparticular = $_GET['ntaparticular'];
 
@@ -74,8 +75,8 @@ $servername = "localhost";
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
 
-$username = "fascalab_2020";
-$password = "w]zYV6X9{*BN";
+// $username = "fascalab_2020";
+// $password = "w]zYV6X9{*BN";
 
 $database = "fascalab_2020";
 // Create connection
@@ -89,34 +90,38 @@ if ($conn->connect_error) {
 
 
 // Perform queries
-$query = mysqli_query($conn,"INSERT INTO disbursement (nta,ntaparticular,dv,ors,sr,ppa,uacs,payee,particular,amount,datereceived,timereceived,tax,gsis,pagibig,philhealth,other,datereleased,timereleased,datereturned,timereturned,remarks,status) 
-VALUES ('$ntano','$ntaparticular','$dv','$ors ','$sr','$ppa','$uacs','$payee','$particular','$amount','$dr','','$tax','$gsis','$pagibig','$philhealth','$other','$dreleased','','$dreturned','','$remarks','$status')");
+ $query = mysqli_query($conn,"INSERT INTO disbursement (nta,ntaparticular,dv,ors,sr,ppa,uacs,payee,particular,amount,datereceived,tax,gsis,pagibig,philhealth,other,remarks,status) 
+ VALUES ('$ntano','$ntaparticular','$dv','$ors','$sr','$ppa','$uacs','$payee','$particular','$amount','$dr','$tax','$gsis','$pagibig','$philhealth','$other','$remarks','$status')");
+
+
 
     // echo "INSERT INTO disbursement (dv,ors,sr,ppa,uacs,payee,particular,amount,datereceived,timereceived,tax,gsis,pagibig,philhealth,other,datereleased,timereleased,datereturned,timereturned,remarks,status) 
     // VALUES ('$dv','$ors ','$sr','$ppa','$uacs','$payee','$particular','$amount','$dr','$tr','$tax','$gsis','$pagibig','$philhealth','$other','$dreleased','$treleased','$dreturned','$treturned','$remarks','$status')";
-    // exit();
-//updating total
-$update = mysqli_query($conn,"Update disbursement set total = tax+gsis+pagibig+philhealth+other where dv = '$dv'");
-//updating net
-$update3 = mysqli_query($conn,"Update disbursement set net = amount - total where dv = '$dv' ");
 
+  
+    //updating total
+    $update = mysqli_query($conn,"Update disbursement set total = tax+gsis+pagibig+philhealth+other where dv = '$dv'");
+    //updating net
+    $update3 = mysqli_query($conn,"Update disbursement set net = amount - total where dv = '$dv' ");
+    
+    
+    
+    //updating nta obligated
+    $update11 = mysqli_query($conn,"Update nta set obligated = obligated + $net where id = '$ntaid' ");
+    //updating nta balance
+    $update22 = mysqli_query($conn,"Update nta set balance = amount - obligated where where id = '$ntaid' ");
 
-//updating nta obligated
-$update11 = mysqli_query($conn,"Update nta set obligated = obligated + $net where id = '$ntaid' ");
-//updating nta balance
-$update22 = mysqli_query($conn,"Update nta set balance = amount - obligated where where id = '$ntaid' ");
+    
+
+mysqli_close($conn);
+/* exit(); */
+if($query){
+  
 // $update = mysqli_query($conn,"Update nta set amount = amount - $totaldeduc where id = '$ntaid' ");
 
 /*  echo "Update nta set obligated = obligated + $net where id = '$ntaid'";
 // echo $totaldeduc;
  echo "Update nta set balance = amount - obligated where where id = '$ntaid'"; */
-
-
-
-mysqli_close($conn);
-/* exit(); */
-if($query){
-    
     //if query is successfulxx
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Data Added Successfully!')

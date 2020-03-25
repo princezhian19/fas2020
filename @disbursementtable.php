@@ -83,7 +83,7 @@ include('db.class.php'); // call db.class.php
                   <th style="text-align:center" width="800">PPA</th>
                   <th style="text-align:center" width="800">UACS</th>
                   <th style="text-align:center" width="800">DATE RECEIVED</th>
-                  <th style="text-align:center" width="800">DATE DISBURSE</th>
+                  <th style="text-align:center" width="800">DATE DISBURSED</th>
                   <th style="text-align:center" width="800">DATE RELEASE</th>
                   <th style="text-align:center" width="800">PAYEE</th>
                   <th style="text-align:center" width="800">PARTICULAR</th>
