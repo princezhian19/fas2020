@@ -156,18 +156,13 @@ if ($app_items == "------------------------------SELECT ITEM--------------------
 
   echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Successfuly Saved!  </p> </div></div>  ';
 
-   // header('location: ViewRFQdetails.php?id='.$id.' ');
-   //  echo ("<SCRIPT LANGUAGE='JavaScript'>
-   //     window.alert('SUCCESS : Item Successfuly added!')
-   //    window.location.href='ViewRFQdetails.php?id=$id';
-   //    </SCRIPT>");
+   header('location: ViewRFQdetails.php?id='.$id.' ');
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+       window.alert('SUCCESS : Item Successfuly added!')
+      window.location.href='ViewRFQdetails.php?id=$id';
+      </SCRIPT>");
   }
 }
-
-
-
-
-
 
     // }
 }

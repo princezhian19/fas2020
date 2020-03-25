@@ -38,7 +38,7 @@ $group = json_decode($_POST["group"]);
                die('Error: ' . mysqli_error($con));
               
                }else{
-                Print "Data added Successfully !";
+             
                }
               
             }
@@ -48,7 +48,7 @@ $group = json_decode($_POST["group"]);
             }
         
         }
-    
+        Print "Data added Successfully !";
         mysqli_close($con);
 
 /* if($query){
