@@ -63,8 +63,8 @@ $getparticular = $_GET['getparticular'];
           
             
             $servername = "localhost";
-            $username = "root";
-            $password = "";
+            $username = "fascalab_2020";
+            $password = "7one@2019";
             $database = "fascalab_2020";
             
             $conn = new mysqli($servername, $username, $password,$database);

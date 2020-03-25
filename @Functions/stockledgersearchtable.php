@@ -95,8 +95,8 @@ include('db.class.php'); // call db.class.php
             
             <?php
             $servername = "localhost";
-            $username = "root";
-            $password = "";
+            $username = "fascalab_2020";
+            $password = "7one@2019";
             $database = "fascalab_2020";
             
             $stocksearch="";

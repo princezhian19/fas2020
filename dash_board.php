@@ -545,8 +545,8 @@ $mydb = new db(); // create a new object, class db()
             
             <?php
             $servername = "localhost";
-            $username = "root";
-            $password = "";
+            $username = "fascalab_2020";
+            $password = "7one@2019";
             $database = "fascalab_2020";
             
             // Create connection
