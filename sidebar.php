@@ -5,6 +5,8 @@
 $username = $_SESSION['username'];
 
 
+echo $username;
+
 // function showDivision()
 // {
 //   $username = $_SESSION['username'];
@@ -278,7 +280,7 @@ $username = $_SESSION['username'];
          <li class="treeview">
           <a href="#" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"></i>
-            <span style="color:black;text-decoration: none;">ACCOUNTINGasasassa</span>
+            <span style="color:black;text-decoration: none;">ACCOUNTING</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

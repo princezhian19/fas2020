@@ -25,11 +25,9 @@
                 <?php
 
                 $user_id = ""; 
-<<<<<<< HEAD
+
                 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-=======
-                $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
->>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
+
                 $username = $_SESSION['username'];
 
                 // echo "SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'";
@@ -549,13 +547,9 @@ $mydb = new db(); // create a new object, class db()
             
             <?php
             $servername = "localhost";
-<<<<<<< HEAD
+
             $username = "fascalab_2020";
             $password = "w]zYV6X9{*BN";
-=======
-            $username = "fascalab_2020";
-            $password = "w]zYV6X9{*BN";
->>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
             $database = "fascalab_2020";
             
             // Create connection
