@@ -41,7 +41,7 @@ $mydb = new db(); // create a new object, class db()
               </tr>
             </thead>
             <?php
-            $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+            $conn=mysqli_connect("localhost","root","","fascalab_2020");
             $view_query = mysqli_query($conn, "SELECT dv.status,dv.id,pmo.pmo_title,dv.po_no,dv.supplier,dv.address,dv.purpose,dv.amount FROM dv LEFT JOIN pmo on pmo.id = dv.office  order by dv.id desc ");
             while ($row = mysqli_fetch_assoc($view_query)) {
               $id = $row["id"];

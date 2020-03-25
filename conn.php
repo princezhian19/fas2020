@@ -1,6 +1,6 @@
 <?php
 
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn=mysqli_connect("localhost","root","","fascalab_2020");
 
 if(!$conn)
 {

@@ -2,7 +2,7 @@
 $id = $_GET['createid'];
 
 
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn=mysqli_connect("localhost","root","","fascalab_2020");
 
 $select_part = mysqli_query($conn,"SELECT * FROM disbursement WHERE id = '$id'");
 $rowB = mysqli_fetch_array($select_part);

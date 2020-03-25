@@ -1,5 +1,5 @@
 <?php 
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn = mysqli_connect("localhost","root","","fascalab_2020");
 
 $id = $_GET['id'];
 $id2 = $_GET['id2'];

@@ -68,7 +68,7 @@ $mydb = new db(); // create a new object, class db()
 
                   <?php
                 //$pmoUser="";  
-               /*    $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+               /*    $conn = mysqli_connect("localhost","root","","fascalab_2020");
                   $user = $_SESSION['username'];
                   $QQ = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$user'"); */
 
@@ -76,7 +76,7 @@ $mydb = new db(); // create a new object, class db()
                 
                // session_start(); 
                 $user_id = ""; 
-                $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+                $conn = mysqli_connect("localhost","root","","fascalab_2020");
                 $username = $_SESSION['username'];
               
                // echo "SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'";
@@ -148,7 +148,7 @@ $mydb = new db(); // create a new object, class db()
 
 
 
-                  $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+                  $conn=mysqli_connect("localhost","root","","fascalab_2020");
                   $view_query11 = mysqli_query($conn, "SELECT * FROM pr where pmo = '$user_id' order by id desc ");
 
 

@@ -53,7 +53,7 @@ $mydb = new db(); // create a new object, class db()
           });
         </script>
         <?php
-        $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+        $conn=mysqli_connect("localhost","root","","fascalab_2020");
         $view_query = mysqli_query($conn, "SELECT burs.date_release,burs.date_received,burs.date_proccess,burs.status,burs.id,pmo.pmo_title,burs.po_no,burs.supplier,burs.address,burs.purpose,burs.amount FROM burs LEFT JOIN pmo on pmo.id = burs.office WHERE burs.status = 1 OR burs.status = 2 OR burs.status = 4 OR burs.status = 5 OR burs.status = 6 order by burs.id desc ");
         while ($row = mysqli_fetch_assoc($view_query)) {
           $id = $row["id"];

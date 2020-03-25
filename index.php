@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn = mysqli_connect("localhost","root","","fascalab_2020");
 if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
@@ -62,6 +62,10 @@ if (isset($_POST['submit'])) {
       <!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
+
+
+
+
 
         <form method="POST">
           <div class="form-group has-feedback">

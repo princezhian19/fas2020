@@ -25,7 +25,7 @@
                 <?php
 
                 $user_id = ""; 
-                $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+                $conn = mysqli_connect("localhost","root","","fascalab_2020");
                 $username = $_SESSION['username'];
 
                 // echo "SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'";
@@ -64,7 +64,7 @@
 
                 }
                 //echo $user_id;
-                $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+                $conn=mysqli_connect("localhost","root","","fascalab_2020");
                 $view_query = mysqli_query($conn,"SELECT * FROM pr where pmo='$user_id' order by id desc ");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
@@ -223,7 +223,7 @@ $mydb = new db(); // create a new object, class db()
               $servername = "localhost";
               $username = "root";
               $password = "";
-              $database = "db_dilg_pmis";
+              $database = "fascalab_2020";
               $conn = new mysqli($servername, $username, $password,$database);
               $view_query = mysqli_query($conn, "SELECT * FROM saroob where status = 'Obligated' order by date desc");
               while ($row = mysqli_fetch_assoc($view_query)) {
@@ -397,7 +397,7 @@ $mydb = new db(); // create a new object, class db()
               $servername = "localhost";
               $username = "root";
               $password = "";
-              $database = "db_dilg_pmis";
+              $database = "fascalab_2020";
               $conn = new mysqli($servername, $username, $password,$database);
               $view_query = mysqli_query($conn, "SELECT * FROM disbursement where status = 'Disbursed' order by datereleased desc");
               while ($row = mysqli_fetch_assoc($view_query)) {
@@ -547,7 +547,7 @@ $mydb = new db(); // create a new object, class db()
             $servername = "localhost";
             $username = "root";
             $password = "";
-            $database = "db_dilg_pmis";
+            $database = "fascalab_2020";
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);

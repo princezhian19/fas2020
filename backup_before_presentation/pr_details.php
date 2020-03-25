@@ -2,8 +2,8 @@
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 error_reporting(E_ALL);
-$connect = new PDO("mysql:host=localhost;dbname=db_dilg_pmis", "root", "");
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
+$conn = mysqli_connect("localhost","root","","fascalab_2020");
 
 $pr_no = $_GET['pr_no'];
 $pr_date = $_GET['pr_date'];
@@ -196,7 +196,7 @@ if (isset($_POST['submit'])) {
            </tr>
            <tr>
             <?php 
-            $conn = new PDO('mysql:host=localhost;dbname=db_dilg_pmis;charset=utf8', 'root', '');
+            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'root', '');
             $pr_no = $_GET['pr_no'];
             $sql_items = $conn->query("SELECT pa.id,qty,items,app_id,pr_no,description,unit,abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' ");
             while ($row = $sql_items->fetch()) {

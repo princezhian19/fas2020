@@ -3,7 +3,7 @@
 error_reporting(0);
 ini_set('display_errors', 0);
 session_start();
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn = mysqli_connect("localhost","root","","fascalab_2020");
 $username = $_SESSION['username'];
 $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
 $rowdiv = mysqli_fetch_array($select_user);

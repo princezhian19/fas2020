@@ -1,5 +1,5 @@
 <?php 
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn=mysqli_connect("localhost","root","","fascalab_2020");
 $id = $_GET['id'];
 $select_rcppe = mysqli_query($conn,"SELECT * FROM rpcppe WHERE id = '$id' ");
 $row_ppe = mysqli_fetch_array($select_rcppe);

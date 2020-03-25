@@ -15,7 +15,7 @@ function showUser()
 {
  $position_c = '';
   echo '<select class="form-control select2" style="width: 100%;" name="requested_by" id="type" >';
-  $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+  $link = mysqli_connect("localhost","root","", "fascalab_2020");
   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
   $query = "SELECT * FROM `tblpersonneldivision` LEFT JOIN tblemployee ON tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C WHERE tblpersonneldivision.DIVISION_M LIKE '%".$_SESSION['username']."%' ";
@@ -97,7 +97,7 @@ background-position: 90px 5px;
                                     <td class = "label-text left-text">Control<br>Number.</td>
                                     <td colspan = 2 style = "padding:5px 5px 5px 5px;">
                                     <?php 
-                                    $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+                                    $link = mysqli_connect("localhost","root","", "fascalab_2020");
                                     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
                                                   $query = "SELECT count(*) as 'count' from tbltechnical_assistance ";

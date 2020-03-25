@@ -97,7 +97,7 @@ include('db.class.php'); // call db.class.php
             $servername = "localhost";
             $username = "root";
             $password = "";
-            $database = "db_dilg_pmis";
+            $database = "fascalab_2020";
             
             $stocksearch="";
             $uacs="";

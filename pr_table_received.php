@@ -50,7 +50,7 @@ $mydb = new db(); // create a new object, class db()
                     </tr>
                 </thead>
                 <?php
-                $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+                $conn=mysqli_connect("localhost","root","","fascalab_2020");
                 $view_query = mysqli_query($conn, "SELECT * FROM pr order by id desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {

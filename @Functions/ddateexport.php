@@ -27,7 +27,7 @@ $stylebottom = array(
   ),
 );
 
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn=mysqli_connect("localhost","root","","fascalab_2020");
 
 
 
@@ -64,7 +64,7 @@ $stylebottom = array(
   ),
 );
 
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn=mysqli_connect("localhost","root","","fascalab_2020");
 
 
   $datefrom = $_POST['datefrom'];

@@ -1,6 +1,6 @@
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=db_dilg_pmis", "root", "");
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
+$conn = mysqli_connect("localhost","root","","fascalab_2020");
 $id = $_GET['id'];
 $id2 = $_GET['id2'];
 

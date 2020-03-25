@@ -69,7 +69,7 @@ $pdf->setCellHeightRatio(0.5);
 
 
     $id = $_GET['id'];
-    $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+    $conn = mysqli_connect("localhost","root","","fascalab_2020");
     $query = mysqli_query($conn,"SELECT * FROM rpcppe WHERE id = '$id'");
     $row = mysqli_fetch_array($query);
     $pn = $row['property_number'];
