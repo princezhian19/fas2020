@@ -49,6 +49,12 @@ $insert_nota = mysqli_query($conn,"INSERT INTO po_checklist(po_id,checklist_id) 
 
 }
 
+
+echo ("<SCRIPT LANGUAGE='JavaScript'>
+window.alert('Successful!');
+window.location.href='ViewPO.php?rfq_id=$rfq_id&supplier_id=$supplier_id';
+</SCRIPT>");
+
 }
 
 $idGet='';
