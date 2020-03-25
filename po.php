@@ -121,11 +121,7 @@ $autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
                 <label>Check List(s)</label>
                 <br>
                 <?php 
-<<<<<<< HEAD
                 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-=======
-                $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
->>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
                 $select = mysqli_query($conn,"SELECT * FROM checklist");
                 while ($rowC = mysqli_fetch_assoc($select)) {
                     $id = $rowC['id'];
