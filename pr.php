@@ -2,13 +2,10 @@
 <?php
 error_reporting(0);
 ini_set('display_errors', 0);
-<<<<<<< HEAD
-$connect = new PDO("mysql:host=localhost;dbname=db_dilg_pmis", "root", "");
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
-=======
+
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
->>>>>>> 9e7f9c0e6158da542371053117892ff2ea7e5234
+
 function app($connect)
 { 
   $output = '';
@@ -750,11 +747,8 @@ function confirmDelete(delUrl) {
          </tr>
          <tr>
           <?php 
-<<<<<<< HEAD
-          $conn = new PDO('mysql:host=localhost;dbname=db_dilg_pmis;charset=utf8', 'root', '');
-=======
-          $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', '');
->>>>>>> 9e7f9c0e6158da542371053117892ff2ea7e5234
+          $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
+
           $pr_no = $_POST['pr_no'];
           $pmo = $_POST['pmo'];
           $pr_date = $_POST['pr_date'];
