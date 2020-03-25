@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn = mysqli_connect("localhost","root","","fascalab_2020");
 $id = $_GET['id'];
 $query = mysqli_query($conn,"INSERT INTO disbursement(burs_id,office,po_no,payee,particular,address,amount)
 	SELECT id,office,po_no,supplier,purpose,address,amount FROM burs WHERE id = '$id' ");

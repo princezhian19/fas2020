@@ -10,7 +10,7 @@ $getid = $_GET['getid'];
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "db_dilg_pmis";
+$database = "fascalab_2020";
 // Create connection
 $conn = new mysqli($servername, $username, $password,$database);
 
@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 } 
 //echo "Connected successfully";
 
-$connect = new PDO("mysql:host=localhost;dbname=db_dilg_pmis", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
 function app($connect)
 { 
   $output = '';

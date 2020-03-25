@@ -1,7 +1,7 @@
 <?php
 // error_reporting(0);
 // ini_set('display_errors', 0);
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn = mysqli_connect("localhost","root","","fascalab_2020");
 $id = $_GET['id'];
 
 $select = mysqli_query($conn,"SELECT * FROM rpcppe WHERE id = '$id' ");

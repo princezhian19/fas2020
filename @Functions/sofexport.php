@@ -30,7 +30,7 @@ $stylebottom = array(
 $GetID="";
 
 
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn=mysqli_connect("localhost","root","","fascalab_2020");
 
 $date = date("F, Y", time());
 

@@ -3,7 +3,7 @@ class DBController {
     private $host = "localhost";
     private $user = "root";
     private $password = "";
-    private $database = "db_dilg_pmis";
+    private $database = "fascalab_2020";
     
     private static $conn;
     

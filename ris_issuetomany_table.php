@@ -5,7 +5,7 @@ $mydb = new db(); // create a new object, class db()
 $hostname = "localhost";
 $username = "root";
 $password = "";
-$databaseName = "db_dilg_pmis";
+$databaseName = "fascalab_2020";
 $connect = mysqli_connect($hostname, $username, $password, $databaseName);
 $query = "SELECT po_no FROM `iar`";
 $result1 = mysqli_query($connect, $query);
@@ -128,7 +128,7 @@ while($row2 = mysqli_fetch_array($result2))
               </tr>
             </thead>
             <?php 
-            $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+            $conn=mysqli_connect("localhost","root","","fascalab_2020");
             $view_query = mysqli_query($conn, "SELECT * FROM ris_stock_issuetomany GROUP BY ris_no DESC  ");
 
             while ($row = mysqli_fetch_assoc($view_query)) {

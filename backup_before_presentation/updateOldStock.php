@@ -1,5 +1,5 @@
 <?php
-$connect = mysqli_connect("localhost","root","","db_dilg_pmis");
+$connect = mysqli_connect("localhost","root","","fascalab_2020");
 if(isset($_POST["id"]))
 {
  $value = mysqli_real_escape_string($connect, $_POST["value"]);

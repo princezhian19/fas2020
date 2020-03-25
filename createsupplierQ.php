@@ -1,6 +1,6 @@
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=db_dilg_pmis", "root", "");
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
+$conn=mysqli_connect("localhost","root","","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
 
 $select_rfq = mysqli_query($conn,"SELECT * FROM rfq WHERE id = $rfq_id");
@@ -21,7 +21,7 @@ return $output;
 }
 
 function table(){
-    $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+    $conn=mysqli_connect("localhost","root","","fascalab_2020");
     $rfq_id = $_GET['rfq_id'];
   
     $select_items = mysqli_query($conn,"SELECT app.procurement,rq.id FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id WHERE rq.rfq_id = $rfq_id");

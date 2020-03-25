@@ -61,7 +61,7 @@ $mydb = new db(); // create a new object, class db()
                     </script> -->
                 <?php
  
-                $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+                $conn=mysqli_connect("localhost","root","","fascalab_2020");
                 $view_query = mysqli_query($conn, "SELECT a.submitted_date,a.received_date,a.id,a.pr_no,a.pmo,a.purpose,a.pr_date,a.type,a.target_date,a.stat,b.rfq_no,b.rfq_date FROM pr as a left join rfq as b ON a.pr_no=b.pr_no Order by a.id DESC");
                 // $view_query = mysqli_query($conn, "SELECT rfq.id, rfq.pr_no, pr.date,pr.pmo, pr.purpose, pr.target_date FROM rfq LEFT join pr ON rfq.pr_no = pr.pr_no  order by id desc ");
                 while ($row = mysqli_fetch_assoc($view_query)) {

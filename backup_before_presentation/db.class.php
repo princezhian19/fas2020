@@ -13,7 +13,7 @@ class db {
 		$this->host = 'localhost'; //hostname
 		$this->user = 'root'; //username
 		$this->password = ''; //password
-		$this->baseName = 'db_dilg_pmis'; //name of your database
+		$this->baseName = 'fascalab_2020'; //name of your database
 		$this->port = '';
 		$this->debug = true;
 		$this->connect();

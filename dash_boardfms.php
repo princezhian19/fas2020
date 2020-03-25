@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <?php 
-                $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+                $conn=mysqli_connect("localhost","root","","fascalab_2020");
                 $view_query = mysqli_query($conn,"SELECT * FROM pr ");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {

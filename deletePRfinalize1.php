@@ -1,5 +1,5 @@
 <?php 
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn = mysqli_connect("localhost","root","","fascalab_2020");
 $id = $_GET['id'];
 // $query = mysqli_query($conn,"SELECT pr_no FROM pr WHERE id = '$id' ");
 // $row = mysqli_fetch_array($query);

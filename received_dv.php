@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn = mysqli_connect("localhost","root","","fascalab_2020");
 $id = $_GET['id'];
 $select = mysqli_query($conn,"SELECT burs_id FROM disbursement WHERE id = '$id' ");
 $row = mysqli_fetch_array($select);

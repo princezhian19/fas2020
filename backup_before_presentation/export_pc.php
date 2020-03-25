@@ -31,7 +31,7 @@ $styleHeader = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  =>
 
 $styleLabel = array('font'  => array('size'  => 11, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn=mysqli_connect("localhost","root","","fascalab_2020");
 $id = $_GET['id'];
 $sql = mysqli_query($conn, "SELECT ph.name,ppe.amount,ppe.remarks,ph.position,ph.office,ph.par_date,ppe.property_number FROM par_history ph LEFT JOIN rpcppe ppe on ppe.id = ph.ppe_id WHERE ph.ppe_id = '$id' ");
 $row = mysqli_fetch_array($sql);

@@ -44,7 +44,7 @@ $styleContent3 = array('font'  => array('size'  => 12, 'name'  => 'Arial','bold'
 
 $getID="";
 
-$conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+$conn=mysqli_connect("localhost","root","","fascalab_2020");
 
 $getID = $_GET['id'];
 
