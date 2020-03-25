@@ -120,7 +120,7 @@ if($query){
     //if query is successfulxx
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Data Added Successfully!')
-    window.location.href='../@disbursement.php';
+    window.location.href='../disbursement.php';
     </SCRIPT>");
 
     //header('Location:../@obligation.php?message=Data Added Successfully!');
@@ -133,7 +133,7 @@ else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     
     window.alert('Error!')
-    window.location.href='../@disbursement.php';
+    window.location.href='../disbursement.php';
     </SCRIPT>");
 }
 

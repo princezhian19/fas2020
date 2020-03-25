@@ -90,6 +90,13 @@ $ors = $rowB['ors'];
                     
                 
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                  <script>
+        $(document).ready(function(){
+          $("#result1").click(function(){
+            $("#main1").hide();
+          });
+        });
+        </script>
                   <script type="text/javascript">
                   $(document).ready(function(){
                   function load_data(query)
@@ -112,6 +119,8 @@ $ors = $rowB['ors'];
                     }
                     else
                     {
+                           
+                    $("#main1").show();
                       load_data();
                       document.getElementById('ntano').value = "";
                       // document.getElementById("main1").value="";
@@ -147,6 +156,13 @@ $ors = $rowB['ors'];
                     
                 
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                  <script>
+        $(document).ready(function(){
+          $("#result2").click(function(){
+            $("#main2").hide();
+          });
+        });
+        </script>
                   <script type="text/javascript">
                   $(document).ready(function(){
                   function load_data(query)
@@ -169,6 +185,8 @@ $ors = $rowB['ors'];
                     }
                     else
                     {
+                           
+                    $("#main2").show();
                       load_data();
                       document.getElementById('ntaparticular').value = "";
                       document.getElementById('ntaid').value = "";
