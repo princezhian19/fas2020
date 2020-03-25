@@ -1,5 +1,5 @@
 <?php 
-$conn = mysqli_connect("localhost","root","","fascalab_2020");
+$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 $id = $_GET['id'];
 
 $selectId = mysqli_query($conn,"SELECT ris_no FROM ris WHERE id = '$id'");

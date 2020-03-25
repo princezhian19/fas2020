@@ -1,6 +1,6 @@
 <?php
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
-$conn = mysqli_connect("localhost","root","","fascalab_2020");
+$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 
 $pr_no = $_GET['pr_no'];
 $pr_date = $_GET['pr_date'];

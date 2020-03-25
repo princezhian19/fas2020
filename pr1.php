@@ -7,7 +7,7 @@ header('location:login.php');
 }
 
 
-$conn = mysqli_connect("localhost","root","","fascalab_2020");
+$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 $user = $_SESSION['username']; $QQ = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$user'");
 
 $rowUser=mysqli_fetch_array($QQ);$user_id=$rowUser['pmo_id'];
@@ -18,7 +18,7 @@ $rowUser=mysqli_fetch_array($QQ);$user_id=$rowUser['pmo_id'];
 error_reporting(0);
 ini_set('display_errors', 0);
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
-$conn = mysqli_connect("localhost","root","","fascalab_2020");
+$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 function app($connect)
 { 
   $output = '';
@@ -481,7 +481,7 @@ function confirmDelete(delUrl) {
                   <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
                   <?php
                 } */$user_id = ""; 
-                $conn = mysqli_connect("localhost","root","","fascalab_2020");
+                $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
                 $username = $_SESSION['username'];
               
               /*   echo "SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'"; */

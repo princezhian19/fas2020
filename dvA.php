@@ -4,7 +4,7 @@ error_reporting(0);
 // require_once('functions.php'); 
 // session_start();  
 // $UNAME = $_SESSION['username'];
-$conn = mysqli_connect("localhost","root","","fascalab_2020");
+$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 // $query = mysqli_query($conn,"SELECT pmo_id FROM end_users WHERE username = '$UNAME'");
 // $row = mysqli_fetch_array($query);
 // $pmo_id = $row['pmo_id'];

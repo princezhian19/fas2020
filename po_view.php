@@ -1,7 +1,7 @@
 <?php
 $rfq_id = $_GET['rfq_id'];
 $supplier_id = $_GET['supplier_id'];
-$conn = mysqli_connect("localhost","root","","fascalab_2020");
+$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 $select1 = mysqli_query($conn,"SELECT po_id FROM selected_quote WHERE rfq_id = $rfq_id");
 $row1 = mysqli_fetch_array($select1);
 $po_id = $row1['po_id'];

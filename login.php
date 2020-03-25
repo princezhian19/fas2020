@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $_SESSION['username'] = '';
-$conn = mysqli_connect("localhost","root","","fascalab_2020");
+$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
