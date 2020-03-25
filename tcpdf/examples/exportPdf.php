@@ -43,7 +43,7 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 $pdf->AddPage();
 
       // $id = $_GET['id'];
-      // $conn=mysqli_connect('localhost','root','','fascalab_2020');  
+      // $conn=mysqli_connect('localhost','fascalab_2020','','fascalab_2020');  
       // $sql = "SELECT * FROM old_stock ";
       // $result = mysqli_query($conn, $sql);
       // $get = mysqli_fetch_array($result);
@@ -79,7 +79,7 @@ function fetch_data()
  {  
       $output = '';  
       // $id = $_GET['id'];
-      $conn=mysqli_connect('localhost','root','','fascalab_2020');  
+      $conn=mysqli_connect('localhost','fascalab_2020','','fascalab_2020');  
       $sql = "SELECT * FROM old_stock";
       $result = mysqli_query($conn, $sql);  
       while($row = mysqli_fetch_array($result))  

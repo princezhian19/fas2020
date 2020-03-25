@@ -31,7 +31,7 @@
  * MIT license
  */
 
-(function(root, factory) {
+(function(fascalab_2020, factory) {
 	if(typeof define === "function" && define.amd) {
 		define(["jquery"], factory);
 	}
@@ -46,7 +46,7 @@
 		module.exports = factory(jQuery);
 	}
 	else {
-		root.Slider = factory(root.jQuery);
+		fascalab_2020.Slider = factory(fascalab_2020.jQuery);
 	}
 }(this, function($) {
 	// Reference to Slider constructor

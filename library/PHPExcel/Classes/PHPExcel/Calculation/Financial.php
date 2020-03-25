@@ -26,7 +26,7 @@
  */
 
 
-/** PHPExcel root directory */
+/** PHPExcel fascalab_2020 directory */
 if (!defined('PHPEXCEL_ROOT')) {
 	/**
 	 * @ignore
@@ -1338,7 +1338,7 @@ class PHPExcel_Calculation_Financial {
 		$values = PHPExcel_Calculation_Functions::flattenArray($values);
 		$guess = PHPExcel_Calculation_Functions::flattenSingleValue($guess);
 
-		// create an initial range, with a root somewhere between 0 and guess
+		// create an initial range, with a fascalab_2020 somewhere between 0 and guess
 		$x1 = 0.0;
 		$x2 = $guess;
 		$f1 = self::NPV($x1, $values);
@@ -1847,7 +1847,7 @@ class PHPExcel_Calculation_Financial {
 		$y0 = $pv + $pmt * $nper + $fv;
 		$y1 = $pv * $f + $pmt * (1 / $rate + $type) * ($f - 1) + $fv;
 
-		// find root by secant method
+		// find fascalab_2020 by secant method
 		$i  = $x0 = 0.0;
 		$x1 = $rate;
 		while ((abs($y0 - $y1) > FINANCIAL_PRECISION) && ($i < FINANCIAL_MAX_ITERATIONS)) {
@@ -2110,7 +2110,7 @@ class PHPExcel_Calculation_Financial {
 		$guess = PHPExcel_Calculation_Functions::flattenSingleValue($guess);
 		if (count($values) != count($dates)) return PHPExcel_Calculation_Functions::NaN();
 
-		// create an initial range, with a root somewhere between 0 and guess
+		// create an initial range, with a fascalab_2020 somewhere between 0 and guess
 		$x1 = 0.0;
 		$x2 = $guess;
 		$f1 = self::XNPV($x1, $values, $dates);

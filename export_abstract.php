@@ -65,7 +65,7 @@ $styleSam = array('font'  => array('size'  => 9, 'name'  => 'Cambria'),'alignmen
 
 
 
-$conn=mysqli_connect("localhost","root","","fascalab_2020");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
 $abstract_id = $_GET['abstract_no'];
 

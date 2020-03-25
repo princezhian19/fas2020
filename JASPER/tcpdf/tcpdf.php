@@ -929,7 +929,7 @@ class TCPDF {
 	protected $outlines = array();
 
 	/**
-	 * Outline root for bookmark.
+	 * Outline fascalab_2020 for bookmark.
 	 * @protected
 	 * @since 2.1.002 (2008-02-12)
 	 */
@@ -9504,7 +9504,7 @@ class TCPDF {
 				unlink($this->pages[$n]);
 			}
 		}
-		//Pages root
+		//Pages fascalab_2020
 		$out = $this->_getobj(1)."\n";
 		$out .= '<< /Type /Pages /Kids [';
 		foreach($this->page_obj_id as $page_obj) {
@@ -13240,7 +13240,7 @@ class TCPDF {
 		$out = 'trailer'."\n";
 		$out .= '<<';
 		$out .= ' /Size '.($this->n + 1);
-		$out .= ' /Root '.$objid_catalog.' 0 R';
+		$out .= ' /fascalab_2020 '.$objid_catalog.' 0 R';
 		$out .= ' /Info '.$objid_info.' 0 R';
 		if ($this->encrypted) {
 			$out .= ' /Encrypt '.$this->encryptdata['objid'].' 0 R';
@@ -17062,7 +17062,7 @@ class TCPDF {
 			$out .= "\n".'endobj';
 			$this->_out($out);
 		}
-		//Outline root
+		//Outline fascalab_2020
 		$this->OutlineRoot = $this->_newobj();
 		$this->_out('<< /Type /Outlines /First '.$n.' 0 R /Last '.($n + $lru[0]).' 0 R >>'."\n".'endobj');
 	}
@@ -20873,7 +20873,7 @@ class TCPDF {
 			$a = 0; // the declaration is not from is a 'style' attribute
 			$b = intval(preg_match_all('/[\#]/', $selector, $matches)); // number of ID attributes
 			$c = intval(preg_match_all('/[\[\.]/', $selector, $matches)); // number of other attributes
-			$c += intval(preg_match_all('/[\:]link|visited|hover|active|focus|target|lang|enabled|disabled|checked|indeterminate|root|nth|first|last|only|empty|contains|not/i', $selector, $matches)); // number of pseudo-classes
+			$c += intval(preg_match_all('/[\:]link|visited|hover|active|focus|target|lang|enabled|disabled|checked|indeterminate|fascalab_2020|nth|first|last|only|empty|contains|not/i', $selector, $matches)); // number of pseudo-classes
 			$d = intval(preg_match_all('/[\>\+\~\s]{1}[a-zA-Z0-9]+/', ' '.$selector, $matches)); // number of element names
 			$d += intval(preg_match_all('/[\:][\:]/', $selector, $matches)); // number of pseudo-elements
 			$specificity = $a.$b.$c.$d;
@@ -20992,7 +20992,7 @@ class TCPDF {
 								// (::first-line, ::first-letter, ::before, ::after)
 							} else { // pseudo-class
 								// pseudo-classes are not supported!
-								// (:root, :nth-child(n), :nth-last-child(n), :nth-of-type(n), :nth-last-of-type(n), :first-child, :last-child, :first-of-type, :last-of-type, :only-child, :only-of-type, :empty, :link, :visited, :active, :hover, :focus, :target, :lang(fr), :enabled, :disabled, :checked)
+								// (:fascalab_2020, :nth-child(n), :nth-last-child(n), :nth-of-type(n), :nth-last-of-type(n), :first-child, :last-child, :first-of-type, :last-of-type, :only-child, :only-of-type, :empty, :link, :visited, :active, :hover, :focus, :target, :lang(fr), :enabled, :disabled, :checked)
 							}
 							break;
 						}
@@ -21653,7 +21653,7 @@ class TCPDF {
 		$thead = false; // true when we are inside the THEAD tag
 		++$key;
 		$level = array();
-		array_push($level, 0); // root
+		array_push($level, 0); // fascalab_2020
 		while ($elkey < $maxel) {
 			$dom[$key] = array();
 			$element = $a[$elkey];
@@ -29152,15 +29152,15 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 								}
 								$numerator = (($rx2 * $ry2) - ($rx2 * $ya2) - ($ry2 * $xa2));
 								if ($numerator < 0) {
-									$root = 0;
+									$fascalab_2020 = 0;
 								} else {
-									$root = sqrt($numerator / (($rx2 * $ya2) + ($ry2 * $xa2)));
+									$fascalab_2020 = sqrt($numerator / (($rx2 * $ya2) + ($ry2 * $xa2)));
 								}
 								if ($fa == $fs){
-									$root *= -1;
+									$fascalab_2020 *= -1;
 								}
-								$cax = $root * (($rx * $ya) / $ry);
-								$cay = -$root * (($ry * $xa) / $rx);
+								$cax = $fascalab_2020 * (($rx * $ya) / $ry);
+								$cay = -$fascalab_2020 * (($ry * $xa) / $rx);
 								// coordinates of ellipse center
 								$cx = ($cax * $cos_ang) - ($cay * $sin_ang) + (($x0 + $x) / 2);
 								$cy = ($cax * $sin_ang) + ($cay * $cos_ang) + (($y0 + $y) / 2);

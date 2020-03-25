@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-$con = mysqli_connect("localhost","root","", "fascalab_2020");
+$con = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
 
 $return_arr = array();
 $name = $_SESSION['username'];

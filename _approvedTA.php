@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("localhost","root","", "fascalab_2020");
+$link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
 $ict_staff = $_POST['ict_staff'];
 $control_no = $_POST['control_no'];
 $insert ="UPDATE `tbltechnical_assistance` SET 

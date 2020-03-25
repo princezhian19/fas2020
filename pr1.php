@@ -8,7 +8,7 @@ header('location:login.php');
 
 
 <<<<<<< HEAD
-$conn = mysqli_connect("localhost","root","","fascalab_2020");
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 =======
 $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 >>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
@@ -21,9 +21,9 @@ $rowUser=mysqli_fetch_array($QQ);$user_id=$rowUser['pmo_id'];
 
 error_reporting(0);
 ini_set('display_errors', 0);
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "");
 <<<<<<< HEAD
-$conn = mysqli_connect("localhost","root","","fascalab_2020");
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 =======
 $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 >>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
@@ -490,7 +490,7 @@ function confirmDelete(delUrl) {
                   <?php
                 } */$user_id = ""; 
 <<<<<<< HEAD
-                $conn = mysqli_connect("localhost","root","","fascalab_2020");
+                $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 =======
                 $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 >>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
@@ -812,7 +812,7 @@ function confirmDelete(delUrl) {
          </tr>
          <tr>
           <?php 
-          $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'root', '');
+          $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', '');
           $pr_no = $_POST['pr_no'];
           $pmo = $_POST['pmo'];
           $pr_date = $_POST['pr_date'];

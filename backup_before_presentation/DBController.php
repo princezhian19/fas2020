@@ -1,8 +1,8 @@
 <?php
 class DBController {
     private $host = "localhost";
-    private $user = "root";
-    private $password = "";
+    private $user = "fascalab_2020";
+    private $password = "w]zYV6X9{*BN";
     private $database = "fascalab_2020";
     
     private static $conn;

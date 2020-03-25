@@ -54,7 +54,7 @@ $mac_address = $_POST['mac_address'];
 
 
 
-            $link = mysqli_connect('localhost','root','','fascalab_2020');
+            $link = mysqli_connect('localhost','fascalab_2020','','fascalab_2020');
               if(mysqli_connect_errno()){echo mysqli_connect_error();}  
              $currentuser = $_POST['curuser'];
 
@@ -618,7 +618,7 @@ if (mysqli_query($link, $sql_insert)) {
 }
 
 $PHPJasperXML->load_xml_file("report1.jrxml");
-$PHPJasperXML->transferDBtoArray('localhost','root','','fascalab_2020');
+$PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','','fascalab_2020');
 $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
 
 

@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <?php 
-                $conn=mysqli_connect("localhost","root","","fascalab_2020");
+                $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                 $view_query = mysqli_query($conn, "
                     SELECT DISTINCT app.id,app.sn,app.code,ic.item_category_title,app.procurement,mop.mode_of_proc_title,pmo.pmo_title,sof.source_of_funds_title 
                     FROM app 

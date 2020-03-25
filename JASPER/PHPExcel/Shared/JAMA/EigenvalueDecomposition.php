@@ -436,7 +436,7 @@ class EigenvalueDecomposition
                 --$l;
             }
             // Check for convergence
-            // One root found
+            // One fascalab_2020 found
             if ($l == $n) {
                 $this->H[$n][$n] = $this->H[$n][$n] + $exshift;
                 $this->d[$n] = $this->H[$n][$n];

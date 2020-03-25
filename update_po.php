@@ -1,7 +1,7 @@
 <?php
 require_once('functions.php'); 
 <<<<<<< HEAD
-$conn = mysqli_connect("localhost","root","","fascalab_2020");
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 =======
 $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 >>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
@@ -139,7 +139,7 @@ $insert_nota = mysqli_query($conn,"INSERT INTO po_checklist(po_id,checklist_id) 
                 <br>
                 <?php 
 <<<<<<< HEAD
-                $conn = mysqli_connect("localhost","root","","fascalab_2020");
+                $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 =======
                 $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 >>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c

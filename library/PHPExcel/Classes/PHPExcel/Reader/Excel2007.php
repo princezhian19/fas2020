@@ -26,7 +26,7 @@
  */
 
 
-/** PHPExcel root directory */
+/** PHPExcel fascalab_2020 directory */
 if (!defined('PHPEXCEL_ROOT')) {
 	/**
 	 * @ignore
@@ -312,7 +312,7 @@ class PHPExcel_Reader_Excel2007 extends PHPExcel_Reader_Abstract implements PHPE
 
 	public function _getFromZipArchive(ZipArchive $archive, $fileName = '')
 	{
-		// Root-relative paths
+		// fascalab_2020-relative paths
 		if (strpos($fileName, '//') !== false)
 		{
 			$fileName = substr($fileName, strpos($fileName, '//') + 1);

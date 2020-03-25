@@ -2,7 +2,7 @@
 
 <html>
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "");
 function app($connect)
 { 
   $output = '';

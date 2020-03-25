@@ -69,7 +69,7 @@ $mydb = new db(); // create a new object, class db()
                   <?php
                 //$pmoUser="";  
 <<<<<<< HEAD
-               /*    $conn = mysqli_connect("localhost","root","","fascalab_2020");
+               /*    $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 =======
                /*    $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 >>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
@@ -81,7 +81,7 @@ $mydb = new db(); // create a new object, class db()
                // session_start(); 
                 $user_id = ""; 
 <<<<<<< HEAD
-                $conn = mysqli_connect("localhost","root","","fascalab_2020");
+                $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 =======
                 $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
 >>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
@@ -156,7 +156,7 @@ $mydb = new db(); // create a new object, class db()
 
 
 
-                  $conn=mysqli_connect("localhost","root","","fascalab_2020");
+                  $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                   $view_query11 = mysqli_query($conn, "SELECT * FROM pr where pmo = '$user_id' order by id desc ");
 
 

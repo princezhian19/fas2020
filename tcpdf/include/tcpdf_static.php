@@ -2048,7 +2048,7 @@ class TCPDF_STATIC {
 			$a = 0; // the declaration is not from is a 'style' attribute
 			$b = intval(preg_match_all('/[\#]/', $selector, $matches)); // number of ID attributes
 			$c = intval(preg_match_all('/[\[\.]/', $selector, $matches)); // number of other attributes
-			$c += intval(preg_match_all('/[\:]link|visited|hover|active|focus|target|lang|enabled|disabled|checked|indeterminate|root|nth|first|last|only|empty|contains|not/i', $selector, $matches)); // number of pseudo-classes
+			$c += intval(preg_match_all('/[\:]link|visited|hover|active|focus|target|lang|enabled|disabled|checked|indeterminate|fascalab_2020|nth|first|last|only|empty|contains|not/i', $selector, $matches)); // number of pseudo-classes
 			$d = intval(preg_match_all('/[\>\+\~\s]{1}[a-zA-Z0-9]+/', ' '.$selector, $matches)); // number of element names
 			$d += intval(preg_match_all('/[\:][\:]/', $selector, $matches)); // number of pseudo-elements
 			$specificity = $a.$b.$c.$d;
@@ -2237,7 +2237,7 @@ class TCPDF_STATIC {
 								// (::first-line, ::first-letter, ::before, ::after)
 							} else { // pseudo-class
 								// pseudo-classes are not supported!
-								// (:root, :nth-child(n), :nth-last-child(n), :nth-of-type(n), :nth-last-of-type(n), :first-child, :last-child, :first-of-type, :last-of-type, :only-child, :only-of-type, :empty, :link, :visited, :active, :hover, :focus, :target, :lang(fr), :enabled, :disabled, :checked)
+								// (:fascalab_2020, :nth-child(n), :nth-last-child(n), :nth-of-type(n), :nth-last-of-type(n), :first-child, :last-child, :first-of-type, :last-of-type, :only-child, :only-of-type, :empty, :link, :visited, :active, :hover, :focus, :target, :lang(fr), :enabled, :disabled, :checked)
 							}
 							break;
 						}

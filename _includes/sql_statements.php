@@ -3,7 +3,7 @@ $DIR_MAIN_FOLDER = '/pcf';
 $DIR_PHYSICAL = 'C:/xammp/htdocs/'.$DIR_MAIN_FOLDER.'/';
 
 $DB_HOST = 'localhost';
-$DB_USER = 'root';
+$DB_USER = 'fascalab_2020';
 $DB_PASS = '';
 $BD_TABLE = 'fascalab_2020';
 $target=$_SERVER['SERVER_NAME'].$DIR_MAIN_FOLDER;

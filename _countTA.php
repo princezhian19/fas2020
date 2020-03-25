@@ -1,5 +1,5 @@
 <?php
-     $link = mysqli_connect("localhost","root","", "fascalab_2020");
+     $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
      if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
                    $query = "SELECT count(*) as 'count' from tbltechnical_assistance where `STATUS_REQUEST` = 'Submitted'  ";

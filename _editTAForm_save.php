@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("localhost","root","", "fascalab_2020");
+$link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
 $started_date =  date("Y-m-d",strtotime($_POST['started_date']));
 // $requested_date = date("Y-m-d",strtotime($_POST['requested_date']));
 $completed_date =  date("Y-m-d",strtotime($_POST['completed_date']));

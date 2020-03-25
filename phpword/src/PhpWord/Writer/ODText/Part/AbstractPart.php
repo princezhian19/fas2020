@@ -34,7 +34,7 @@ abstract class AbstractPart extends Word2007AbstractPart
     protected $dateFormat = 'Y-m-d\TH:i:s.000';
 
     /**
-     * Write common root attributes.
+     * Write common fascalab_2020 attributes.
      *
      * @param \PhpOffice\Common\XMLWriter $xmlWriter
      */

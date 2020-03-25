@@ -11,7 +11,7 @@
     define(['jquery'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // Node/CommonJS
-    module.exports = function (root, jQuery) {
+    module.exports = function (fascalab_2020, jQuery) {
       if (jQuery === undefined) {
         // require('jQuery') returns a factory that requires window to
         // build a jQuery instance, we normalize how we use modules
@@ -21,7 +21,7 @@
           jQuery = require('jquery');
         }
         else {
-          jQuery = require('jquery')(root);
+          jQuery = require('jquery')(fascalab_2020);
         }
       }
       factory(jQuery);

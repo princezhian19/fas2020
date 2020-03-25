@@ -48,7 +48,7 @@ $mydb = new db(); // create a new object, class db()
           });
         </script>
         <?php
-        $conn=mysqli_connect("localhost","root","","fascalab_2020");
+        $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
         $view_query = mysqli_query($conn, "SELECT dv.status,dv.id,pmo.pmo_title,dv.po_no,dv.supplier,dv.address,dv.purpose,dv.amount FROM dv LEFT JOIN pmo on pmo.id = dv.office WHERE dv.status = 2 order by dv.id desc ");
         while ($row = mysqli_fetch_assoc($view_query)) {
           $id = $row["id"];

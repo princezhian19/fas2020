@@ -98,10 +98,10 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
 		$this->data = '';
 		if (isset($this->params['size']) &&
 			$this->params['size'] < $this->ole->bigBlockThreshold &&
-			$blockId != $this->ole->root->_StartBlock) {
+			$blockId != $this->ole->fascalab_2020->_StartBlock) {
 
 			// Block id refers to small blocks
-			$rootPos = $this->ole->_getBlockOffset($this->ole->root->_StartBlock);
+			$rootPos = $this->ole->_getBlockOffset($this->ole->fascalab_2020->_StartBlock);
 			while ($blockId != -2) {
 				$pos = $rootPos + $blockId * $this->ole->bigBlockSize;
 				$blockId = $this->ole->sbat[$blockId];

@@ -1,6 +1,6 @@
 <?php 
 $id = $_GET['id'];
-$conn=mysqli_connect("localhost","root","","fascalab_2020");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 $select_part = mysqli_query($conn,"SELECT * FROM disbursement WHERE id = '$id'");
 $rowB = mysqli_fetch_array($select_part);
@@ -44,11 +44,11 @@ $remarks = $_POST['remarks'];
 $status = $_POST['status'];
 $servername = "localhost";
 <<<<<<< HEAD
-$username = "root";
-$password = "";
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
 =======
 $username = "fascalab_2020";
-$password = "7one@2019";
+$password = "w]zYV6X9{*BN";
 >>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
 $database = "fascalab_2020";
 $conn = new mysqli($servername, $username, $password,$database);

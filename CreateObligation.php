@@ -1,7 +1,7 @@
 
 <?php
 $id = $_GET['id'];
-$conn=mysqli_connect("localhost","root","","fascalab_2020");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 // get data from db
 $select = mysqli_query($conn,"SELECT burs_id FROM saroob WHERE id = '$id '");
 $row = mysqli_fetch_array($select);
@@ -135,7 +135,7 @@ if (isset($_POST['submit'])) {
 
 <html>
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "");
 function app($connect)
 { 
   $output = '';

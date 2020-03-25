@@ -9,7 +9,7 @@
     //      $minutes = ($time % 60);
     //      return sprintf($format, $hours, $minutes);
     //    }
-$connection=mysqli_connect("localhost","root","","fascalab_2020");
+$connection=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 date_default_timezone_set('Asia/Manila');
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';

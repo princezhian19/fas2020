@@ -1,6 +1,6 @@
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
-$conn=mysqli_connect("localhost","root","","fascalab_2020");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
 $supplier_id = $_GET['supplier_id'];
 
@@ -30,7 +30,7 @@ function supplier($connect)
   return $output;
 }
 function table(){
-  $conn=mysqli_connect("localhost","root","","fascalab_2020");
+  $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
   $rfq_id = $_GET['rfq_id'];
   $supplier_id = $_GET['supplier_id'];
   $select_sq = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id");

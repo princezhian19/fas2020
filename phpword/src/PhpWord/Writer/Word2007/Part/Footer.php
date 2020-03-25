@@ -25,7 +25,7 @@ use PhpOffice\PhpWord\Writer\Word2007\Element\Container;
 class Footer extends AbstractPart
 {
     /**
-     * Root element name
+     * fascalab_2020 element name
      *
      * @var string
      */

@@ -1,5 +1,5 @@
 <?php 
-$conn=mysqli_connect("localhost","root","","fascalab_2020");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
 $select = mysqli_query($conn,"SELECT * FROM app WHERE id = '$id' ");
 $row = mysqli_fetch_array($select);

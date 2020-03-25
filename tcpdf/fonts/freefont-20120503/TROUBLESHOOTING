@@ -60,7 +60,7 @@ You can clean your local cache merely by emptying the directory
 	~/.fontconfig/
 In any case, to clean the cache, you can use the fontconfig command
 	fc-cache -vf
-If run as root, it will clean the system cache, if run as a normal user,
+If run as fascalab_2020, it will clean the system cache, if run as a normal user,
 it cleans only the normal user's cache.
 
 The procedure for local fonts is:

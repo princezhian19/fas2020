@@ -141,7 +141,7 @@
 </body>
 </html>
 <?php
-$conn = mysqli_connect("localhost", "root", "", "fascalab_2020");
+$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 if (isset($_POST['submit'])) 
 {
 $rfq_id = $_POST['rfq_id'];

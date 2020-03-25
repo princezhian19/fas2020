@@ -9,11 +9,11 @@ $getid = $_GET['getid'];
 
 $servername = "localhost";
 <<<<<<< HEAD
-$username = "root";
-$password = "";
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
 =======
 $username = "fascalab_2020";
-$password = "7one@2019";
+$password = "w]zYV6X9{*BN";
 >>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
 $database = "fascalab_2020";
 // Create connection
@@ -25,7 +25,7 @@ if ($conn->connect_error) {
 } 
 //echo "Connected successfully";
 
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "");
 function app($connect)
 { 
   $output = '';

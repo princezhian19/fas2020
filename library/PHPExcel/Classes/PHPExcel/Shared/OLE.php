@@ -57,10 +57,10 @@ class PHPExcel_Shared_OLE
 	public $_list = array();
 
 	/**
-	 * Root directory of OLE container
+	 * fascalab_2020 directory of OLE container
 	 * @var OLE_PPS_Root
 	*/
-	public $root;
+	public $fascalab_2020;
 
 	/**
 	 * Big Block Allocation Table
@@ -119,7 +119,7 @@ class PHPExcel_Shared_OLE
 		// Number of blocks in Big Block Allocation Table
 		$bbatBlockCount = self::_readInt4($fh);
 
-		// Root chain 1st block
+		// fascalab_2020 chain 1st block
 		$directoryFirstBlockId = self::_readInt4($fh);
 
 		// Skip unused bytes
@@ -277,7 +277,7 @@ class PHPExcel_Shared_OLE
 			switch ($type) {
 			case self::OLE_PPS_TYPE_ROOT:
 				$pps = new PHPExcel_Shared_OLE_PPS_Root(null, null, array());
-				$this->root = $pps;
+				$this->fascalab_2020 = $pps;
 				break;
 			case self::OLE_PPS_TYPE_DIR:
 				$pps = new PHPExcel_Shared_OLE_PPS(null, null, null, null, null,
@@ -303,9 +303,9 @@ class PHPExcel_Shared_OLE
 			$pps->No = count($this->_list);
 			$this->_list[] = $pps;
 
-			// check if the PPS tree (starting from root) is complete
-			if (isset($this->root) &&
-				$this->_ppsTreeComplete($this->root->No)) {
+			// check if the PPS tree (starting from fascalab_2020) is complete
+			if (isset($this->fascalab_2020) &&
+				$this->_ppsTreeComplete($this->fascalab_2020->No)) {
 
 				break;
 			}
@@ -334,7 +334,7 @@ class PHPExcel_Shared_OLE
 
 	/**
 	* It checks whether the PPS tree is complete (all PPS's read)
-	* starting with the given PPS (not necessarily root)
+	* starting with the given PPS (not necessarily fascalab_2020)
 	*
 	* @access public
 	* @param integer $index The index of the PPS from which we are checking
@@ -369,12 +369,12 @@ class PHPExcel_Shared_OLE
 	}
 
 	/**
-	* Checks whether a PPS is a Root PPS or not.
+	* Checks whether a PPS is a fascalab_2020 PPS or not.
 	* If there is no PPS for the index given, it will return false.
 	*
 	* @access public
 	* @param integer $index The index for the PPS.
-	* @return bool true if it's a Root PPS, false otherwise
+	* @return bool true if it's a fascalab_2020 PPS, false otherwise
 	*/
 	public function isRoot($index)
 	{

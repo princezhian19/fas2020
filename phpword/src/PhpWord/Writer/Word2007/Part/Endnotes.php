@@ -23,7 +23,7 @@ namespace PhpOffice\PhpWord\Writer\Word2007\Part;
 class Endnotes extends Footnotes
 {
     /**
-     * Name of XML root element
+     * Name of XML fascalab_2020 element
      *
      * @var string
      */

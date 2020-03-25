@@ -53,7 +53,7 @@ $mydb = new db(); // create a new object, class db() */
                     </tr>
                 </thead>
                 <?php 
-                $conn=mysqli_connect("localhost","root","","fascalab_2020");
+                $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                 $view_query = mysqli_query($conn, "SELECT  rfq.id,rfq.rfq_no,rfq.rfq_date,rfq.pr_received_date,pmo.pmo_title,rfq_mode.rfq_mode_title FROM rfq LEFT JOIN rfq_pmo on rfq_pmo.rfq_id = rfq.id LEFT JOIN pmo on pmo.id = rfq_pmo.pmo_id LEFT JOIN rfq_mode on rfq_mode.id = rfq.rfq_mode_id GROUP BY rfq.rfq_no ORDER BY rfq.id DESC ");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {

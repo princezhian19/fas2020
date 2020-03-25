@@ -31,7 +31,7 @@ $styleHeader = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  =>
 
  $styleLabel = array('font'  => array('size'  => 11, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
-$conn=mysqli_connect("localhost","root","","fascalab_2020");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
 
 $sql = mysqli_query($conn, "SELECT * FROM pr WHERE id = '$id' ");

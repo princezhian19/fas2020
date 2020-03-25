@@ -43,7 +43,7 @@ $styleContent3 = array('font'  => array('size'  => 12, 'name'  => 'Times New Rom
 
 
 
-$conn=mysqli_connect("localhost","root","","fascalab_2020");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
 $sql = mysqli_query($conn, "SELECT * FROM ris_stock_issuetomany WHERE id = '$id' ");
 $row = mysqli_fetch_array($sql);
