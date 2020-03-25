@@ -101,9 +101,9 @@
               
                 
                 $view_query = mysqli_query($conn,"SELECT * FROM pr  where pmo = '$user_id'  order by id desc");
-                echo  $DIVISION_C;
+                // echo  $DIVISION_C; 
                 echo'<br>';
-                echo "SELECT * FROM pr  where pmo = '$user_id'  order by id desc";
+                // echo "SELECT * FROM pr  where pmo = '$user_id'  order by id desc";
                 
               
                 while ($row = mysqli_fetch_assoc($view_query)) {

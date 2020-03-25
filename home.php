@@ -51,6 +51,7 @@
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
 <script src="dist/js/demo.js"></script>
+  
 
 <script>
   $(function () {
