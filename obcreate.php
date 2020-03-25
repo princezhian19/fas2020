@@ -74,7 +74,7 @@ function app($connect)
          <!--    <div class="box-header with-border">
      -->
         <br>
-      <li class="btn btn-success"><a href="@obligation.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-success"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
 
@@ -639,7 +639,7 @@ function app($connect)
             status : status},
           success : function(data){
           alert(data); /* alerts the response from php.*/
-          window.location.href='/pmis/AMS/@obligation.php';
+          window.location.href='obligation.php';
           }
           });
           });

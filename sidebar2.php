@@ -77,7 +77,7 @@ function showDivision()
        echo showDivision();
         ?>
   <span class="sr-only">unread messages</span></span></a></li>
-        <li><a style="color:black;text-decoration: none;" href="login.php"><i class = "fa fa-sign-out"></i>Logout</li>
+        <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
 
 
 <div hidden>

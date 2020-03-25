@@ -67,11 +67,53 @@ $mydb = new db(); // create a new object, class db()
                   </script> -->
 
                   <?php
-                  $pmoUser="";
-                  $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
-                  $user = $_SESSION['username']; $QQ = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$user'");
+                //$pmoUser="";  
+               /*    $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+                  $user = $_SESSION['username'];
+                  $QQ = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$user'"); */
 
-                  $rowUser=mysqli_fetch_array($QQ);$user_id=$rowUser['pmo_id'];
+                /*       $rowUser=mysqli_fetch_array($QQ);$user_id=$rowUser['pmo_id']; */
+                
+               // session_start(); 
+                $user_id = ""; 
+                $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+                $username = $_SESSION['username'];
+              
+               // echo "SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'";
+                $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                $rowdiv = mysqli_fetch_array($select_user);
+                $DIVISION_C = $rowdiv['DIVISION_C'];
+                if ($DIVISION_C == '10' || $DIVISION_C == '11' || $DIVISION_C == '12' || $DIVISION_C == '13' || $DIVISION_C == '14' || $DIVISION_C == '15' || $DIVISION_C == '16' ) {
+
+                  $user_id = 'FAD';
+                
+                 
+                }else if($DIVISION_C == '3' || $DIVISION_C == '5'){
+
+                  $user_id = 'ORD';
+
+                }else if($DIVISION_C == '17'){
+
+                  $user_id = 'LGCDD';
+
+                }
+                else if($DIVISION_C == '9'){
+
+                  $user_id = 'LGMED-PDMU';
+
+                }
+                else if($DIVISION_C == '7'){
+
+                  $user_id = 'LGCDD-MBTRG';
+
+                }
+                else if($DIVISION_C == '18'){
+
+                  $user_id = 'LGMED';
+
+                }
+
+/* 
                   if ($user_id == 1){
                     $pmoUser="ORD";
                   }
@@ -102,12 +144,12 @@ $mydb = new db(); // create a new object, class db()
                   if ($user_id == 7){
                     $pmoUser="LGCDD-MBRTG";
 
-                  }
+                  } */
 
 
 
                   $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
-                  $view_query11 = mysqli_query($conn, "SELECT * FROM pr where pmo = '$pmoUser' order by id desc ");
+                  $view_query11 = mysqli_query($conn, "SELECT * FROM pr where pmo = '$user_id' order by id desc ");
 
 
                   while ($row = mysqli_fetch_assoc($view_query11)) {

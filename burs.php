@@ -4,11 +4,29 @@ error_reporting(0);
 ini_set('display_errors', 0);
 session_start();
 $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
-$UNAME = $_SESSION['username'];
-$query = mysqli_query($conn,"SELECT pmo_id FROM end_users WHERE username = '$UNAME'");
-$row = mysqli_fetch_array($query);
-$pmo_id = $row['pmo_id'];
+$username = $_SESSION['username'];
+$select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+$rowdiv = mysqli_fetch_array($select_user);
+$DIVISION_C = $rowdiv['DIVISION_C'];
+if ($DIVISION_C == '10' || $DIVISION_C == '11' || $DIVISION_C == '12' || $DIVISION_C == '13' || $DIVISION_C == '14' || $DIVISION_C == '15' || $DIVISION_C == '16' ) {
 
+  $pmo_id = 5;
+}elseif ($DIVISION_C == '1' || $DIVISION_C == '2' || $DIVISION_C == '3' || $DIVISION_C == '5'  ) {
+
+  $pmo_id = 1;
+}elseif ($DIVISION_C == '18' ) {
+
+  $pmo_id = 3;
+}elseif ($DIVISION_C == '8' || $DIVISION_C == '17' ) {
+
+  $pmo_id = 4;
+}elseif ($DIVISION_C == '9' ) {
+
+  $pmo_id = 6;
+}elseif ($DIVISION_C == '7' ) {
+
+  $pmo_id = 7;
+}
 if (isset($_POST['submit'])) {
   $po_no = $_POST['po_no'];
   $supplier = $_POST['supplier'];

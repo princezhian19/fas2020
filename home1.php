@@ -1,5 +1,16 @@
 <?php
+<<<<<<< HEAD
 
+=======
+/* session_start();
+if(!isset($_SESSION['username'])){
+header('location:login.php');
+} */
+session_start();
+if(!isset($_SESSION['username'])){
+header('location:index.php');
+}
+>>>>>>> 39bcaf76bbb7ff530de2916f22d635dc1002eb6a
 ?>
 <!DOCTYPE html>
 <html>

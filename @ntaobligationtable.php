@@ -22,7 +22,7 @@
 
   <div class="section group"  style="overflow-x:auto;">
         
-        <div class="col-md-1" style="overflow-x:auto;">
+        <div class="col-md-1" style="">
            <li class="btn btn-success"><a href="@ntaobcreate.php" style="color:white;text-decoration: none;">Create</a></li>
         </div>
           <div class="col-md-2" style="overflow-x:auto;">

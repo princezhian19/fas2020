@@ -37,7 +37,7 @@
       </ol>
       <br>
       <br>
-        <?php include('@rfq_table.php');?>
+        <?php include('rfqtable.php');?>
 
     </section>
   </div>

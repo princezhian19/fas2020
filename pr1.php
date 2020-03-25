@@ -452,7 +452,7 @@ function confirmDelete(delUrl) {
             <div class="form-group">
                   <label>Office <label style="color: Red;" >*</label></label>
                 
-                <?php $user = $_SESSION['username']; $QQ = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$user'");
+                <?php /* $user = $_SESSION['username']; $QQ = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$user'");
                 $rowUser=mysqli_fetch_array($QQ);$user_id=$rowUser['pmo_id'];?>
                 <?php
                 if($user_id == 1)
@@ -480,29 +480,50 @@ function confirmDelete(delUrl) {
                   ?>
                   <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
                   <?php
+                } */$user_id = ""; 
+                $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+                $username = $_SESSION['username'];
+              
+              /*   echo "SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'"; */
+                $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                $rowdiv = mysqli_fetch_array($select_user);
+                $DIVISION_C = $rowdiv['DIVISION_C'];
+                if ($DIVISION_C == '10' || $DIVISION_C == '11' || $DIVISION_C == '12' || $DIVISION_C == '13' || $DIVISION_C == '14' || $DIVISION_C == '15' || $DIVISION_C == '16' ) {
+
+                  $user_id = 'FAD';
+                
+                 
+                }else if($DIVISION_C == '3' || $DIVISION_C == '5'){
+
+                  $user_id = 'ORD';
+
+                }else if($DIVISION_C == '17'){
+
+                  $user_id = 'LGCDD';
+
+                }
+                else if($DIVISION_C == '9'){
+
+                  $user_id = 'LGMED-PDMU';
+
+                }
+                else if($DIVISION_C == '7'){
+
+                  $user_id = 'LGCDD-MBRTG';
+
+                }
+                else if($DIVISION_C == '18'){
+
+                  $user_id = 'LGMED';
+
                 }
 
                 ?>
 
 
-                <?php if ($user_id == 1): ?>
-                <input readonly = "off" value="<?php echo "ORD" ?>" class="form-control" name="pmo" type="text" id="pmo" >
-                <?php endif ?>
-                <?php if ($user_id == 3): ?>
-                <input readonly = "off" value="<?php echo "LGMED" ?>" class="form-control" name="pmo" type="text" id="pmo" >
-                <?php endif ?>
-                <?php if ($user_id == 4): ?>
-                <input readonly = "off" value="<?php echo "LGCDD" ?>" class="form-control" name="pmo" type="text" id="pmo" >
-                <?php endif ?>
-                <?php if ($user_id == 5): ?>
-                <input readonly = "off" value="<?php echo "FAD" ?>" class="form-control" name="pmo" type="text" id="pmo" >
-                <?php endif ?>
-                <?php if ($user_id == 6): ?>
-                <input readonly = "off" value="<?php echo "LGMED-PDMU" ?>" class="form-control" name="pmo" type="text" id="pmo" >
-                <?php endif ?>
-                <?php if ($user_id == 7): ?>
-                <input readonly = "off" value="<?php echo "LGCDD-MBRTG" ?>" class="form-control" name="pmo" type="text" id="pmo" >
-                <?php endif ?>
+          
+                <input readonly = "off" value="<?php echo $user_id ?>" class="form-control" name="pmo" type="text" id="pmo" >
+          
               </div>
 
               <div class="form-group">

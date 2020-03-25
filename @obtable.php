@@ -5,9 +5,6 @@ include('db.class.php'); // call db.class.php
 <html>
 <head>
   <title>Financial Management System</title>
-  
-
-
 
 
 </head>
@@ -21,7 +18,7 @@ include('db.class.php'); // call db.class.php
         
           <div class=""  style="overflow-x:auto;">
             <div class="col-md-2" style="overflow-x:auto;">
-            <li class="btn btn-success"><a href="@obcreate.php" style="color:white;text-decoration: none;">Create</a></li>
+            <li class="btn btn-success"><a href="obcreate.php" style="color:white;text-decoration: none;">Create</a></li>
             </div>
             <div class="col-md-0" style="overflow-x:auto;">
             </div>
