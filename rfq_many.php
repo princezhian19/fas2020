@@ -3,11 +3,7 @@ ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 error_reporting(E_ALL);
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
-<<<<<<< HEAD
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-=======
-$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
->>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
 function fill_unit_select_box($connect)
 { 
   $output = '';
@@ -168,7 +164,7 @@ if (isset($_POST['submit'])) {
 
       echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successful!');
-      window.location.href='../frontend/web/rfq/view?id=$rfq_idd';
+      window.location.href='RFQdetails.php?id=$rfq_idd';
       </SCRIPT>");
 
    // header('location: ../frontend/web/rfq/index');
