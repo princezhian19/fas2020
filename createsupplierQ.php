@@ -1,3 +1,12 @@
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:login.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
+?>
 <?php
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");

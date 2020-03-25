@@ -1,7 +1,11 @@
 <?php session_start();
-error_reporting(0);
+if(!isset($_SESSION['username'])){
+header('location:login.php');
+}else{
+  error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
+}
 ?>
 <!DOCTYPE html>
 <html>
