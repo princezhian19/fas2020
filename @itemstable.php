@@ -62,10 +62,6 @@ include('db.class.php'); // call db.class.php
 
             $username = "fascalab_2020";
             $password = "w]zYV6X9{*BN";
-
-            $username = "fascalab_2020";
-            $password = "w]zYV6X9{*BN";
-
             $database = "fascalab_2020";
             
             $stocksearch="";
