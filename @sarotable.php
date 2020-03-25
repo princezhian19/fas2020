@@ -168,10 +168,10 @@ include('db.class.php'); // call db.class.php
                     
                     <td style="text-align:center" > 
                     
-                    <a href='@saroupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
+                    <a href='saroupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
                    
                     <a href='@Functions/sofexport.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa fa-fw fa-download'></i></a>
-                    <a href='@obtableViewMain.php?getsaroID=<?php echo $saronumber?>&getuacs=<?php echo $uacs?>'> <i style='font-size:24px' class='fa'>&#xf06e;</i> </a>
+                    <a href='obtableViewMain.php?getsaroID=<?php echo $saronumber?>&getuacs=<?php echo $uacs?>'> <i style='font-size:24px' class='fa'>&#xf06e;</i> </a>
                     </td>
                     
                     
