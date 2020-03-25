@@ -61,7 +61,7 @@ $ors = $rowB['ors'];
             <div class="box-header with-border">
     
         <br>
-      <li class="btn btn-success"><a href="@disbursement.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-success"><a href="disbursement.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
       <!-- Start form -->

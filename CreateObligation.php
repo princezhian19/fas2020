@@ -78,7 +78,7 @@ if (isset($_POST['submit'])) {
 
       echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Data Added Successfully!')
-        window.location.href='@obligation.php';
+        window.location.href='obligation.php';
         </SCRIPT>");
     $validate = mysqli_query($conn,"SELECT * FROM disbursement WHERE burs_id = '$burs_id' ");
 //     if (mysqli_num_rows($validate)>0) {
@@ -126,7 +126,7 @@ if (isset($_POST['submit'])) {
   else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Error!')
-      window.location.href='@obligation.php';
+      window.location.href='obligation.php';
       </SCRIPT>");
   }
 }
@@ -181,8 +181,6 @@ function app($connect)
 
   <!-- Auto Complete -->
 
-
-
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -205,7 +203,7 @@ function app($connect)
           <div class="box-header with-border">
 
             <br>
-            <li class="btn btn-success"><a href="@obligation.php" style="color:white;text-decoration: none;">Back</a></li>
+            <li class="btn btn-success"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
             <br>
             <br>
             <!-- Start form -->
@@ -328,8 +326,6 @@ function app($connect)
         <!-- @Funtions/obsearchvalue.php -->
 
       </div>
-
-
       <br>
       <!-- SARO -->
       <div class="row">
@@ -343,6 +339,13 @@ function app($connect)
           </table>
         </div>
 
+        <script>
+        $(document).ready(function(){
+          $("#result1").click(function(){
+            $("#main1").hide();
+          });
+        });
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script type="text/javascript">
           $(document).ready(function(){
@@ -366,6 +369,7 @@ function app($connect)
               }
               else
               {
+                $("#main1").show();
                 load_data();
                 document.getElementById('saronum').value = "";
                 document.getElementById("main1").value="";
@@ -397,7 +401,14 @@ function app($connect)
 
 
         <!-- PPA Search -->
-
+         
+        <script>
+        $(document).ready(function(){
+          $("#result3").click(function(){
+            $("#main3").hide();
+          });
+        });
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script type="text/javascript">
           $(document).ready(function(){
@@ -421,6 +432,7 @@ function app($connect)
               }
               else
               {
+                $("#main3").show();   
                 document.getElementById('ppa').value = "";
 
 
@@ -438,6 +450,13 @@ function app($connect)
         </script>
 
         <!-- UACS Search -->
+        <script>
+        $(document).ready(function(){
+          $("#result2").click(function(){
+            $("#main2").hide();
+          });
+        });
+        </script>
         <div class="col-md-3">
           <label>UACS Object Code</label>
           <input  required type="text"  class="form-control" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs">
@@ -471,6 +490,7 @@ function app($connect)
               }
               else
               {
+                $("#main2").show();   
                     // document.getElementById('uacs').value = "";
                    //load_data();
                    /* document.getElementById("code").value = ""; */

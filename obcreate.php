@@ -897,7 +897,6 @@ $(document).ready(function(){
 </script>
 
 
-
 <script>
 $(document).ready(function(){
   $("#result4").click(function(){

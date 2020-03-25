@@ -163,7 +163,7 @@ include('db.class.php'); // call db.class.php
                             <td><?php echo $date_proccess1;?></td>
                             <?php else: ?>
                               <?php if ($datereceived != '0000-00-00'): ?>
-                                <td><a class="btn btn-success btn-xs" href='@disbursementcreate.php?id=<?php echo $id; ?>&stat=1' >Proccess</a> </td>
+                                <td><a class="btn btn-success btn-xs" href='disbursementcreate.php?id=<?php echo $id; ?>&stat=1' >Proccess</a> </td>
                                 <?php else: ?>
                                   <td></td>
                                 <?php endif ?>
@@ -198,7 +198,7 @@ include('db.class.php'); // call db.class.php
                                         <?php endif ?>
                                       <?php endif ?>
                                       <td>
-                                        <a href='@disbursementupdate.php?getid=<?php echo $id;?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
+                                        <a href='disbursementupdate.php?getid=<?php echo $id;?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
                                         <a href='@Functions/ddeletefunction.php?getid=<?php echo $id;?>'> <i style='font-size:24px'> <i class='fa fa-trash-o'></i></i> </a>
                                       </td>
                                     
