@@ -22,8 +22,8 @@ if (isset($_POST['submit'])) {
  if ($num_row == 1){
   if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Succesfully Login!".$division."')
-    window.location.href='home.php?division=".$row['DIVISION_C']."';
+    window.alert('Succesfully Login!')
+    window.location.href='home.php?division=".$division."';
     </SCRIPT>");
   }else{
    echo ("<SCRIPT LANGUAGE='JavaScript'>

@@ -1,5 +1,5 @@
 <?php 
-session_start();
+// session_start();
 $username = $_SESSION['username'];
 
 
@@ -71,7 +71,7 @@ function showDivision()
         <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
           </ul>
         </li>
-        <li><a style="color:black;text-decoration: none;" href="_techassistance.php?division=<?php echo $_GET['division'];?>"><i class="fa">&#xf0f6;</i>TA REQUEST 
+        <li><a style="color:black;text-decoration: none;" href="_techassistance.php?division=<?php echo $_GET['division'];?>"><i class="fa">&#xf0f6;</i>ICT TECHNICAL ASSISTANCE 
         
         <?php 
        echo showDivision();
