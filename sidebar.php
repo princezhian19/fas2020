@@ -274,6 +274,8 @@
         </li>
           </ul>
         </li>
+        <li><a href="index.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> LOGOUT</a></li>
+
     </section>
   </aside>
   <?php endif ?>
