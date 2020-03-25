@@ -5,8 +5,6 @@
 $username = $_SESSION['username'];
 
 
-echo $username;
-
 // function showDivision()
 // {
 //   $username = $_SESSION['username'];
