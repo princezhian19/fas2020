@@ -14,21 +14,21 @@ if (isset($_POST['submit'])) {
   $sql = mysqli_query($conn,"SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1");
   $row = mysqli_fetch_array($sql);
   $division =$row['DIVISION_C'];
+
   $_SESSION['division'] = $division;
   $_SESSION['complete_name'] = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
   $num_row = mysqli_num_rows($sql);
 
  if ($num_row == 1){
-
   if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Succesfully Login!')
+    window.alert('Succesfully Login!".$division."')
     window.location.href='home.php?division=".$row['DIVISION_C']."';
     </SCRIPT>");
   }else{
    echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Login!')
-    window.location.href='home1.php?division=".$row['DIVISION_C']."';
+    window.location.href='home1.php?division=".$division."';
     </SCRIPT>");
    }
  }else{

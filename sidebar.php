@@ -145,14 +145,8 @@ $username = $_SESSION['username'];
             <li><a href="/pmis/frontend/web/checklist/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV CHECKLIST</a></li>
           </ul>
         </li>
-<<<<<<< HEAD
         <li><a style="color:black;text-decoration: none;" href="_techassistance.php?division=<?php echo $_GET['division'];?>"><i class="fa">&#xf0f6;</i>TA REQUEST<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
-       
-  <span class="sr-only">unread messages</span></span></a></li>
-        <li><a style="color:black;text-decoration: none;" href="login.php"><i class = "fa fa-sign-out"></i>Logout</li>
-=======
-        <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
->>>>>>> 39bcaf76bbb7ff530de2916f22d635dc1002eb6a
+        <li><a style="color:black;text-decoration: none;" href="login.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
     </section>
   </aside>
 <?php else: ?>
