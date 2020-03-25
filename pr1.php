@@ -21,7 +21,7 @@ $rowUser=mysqli_fetch_array($QQ);$user_id=$rowUser['pmo_id'];
 
 error_reporting(0);
 ini_set('display_errors', 0);
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 <<<<<<< HEAD
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 =======

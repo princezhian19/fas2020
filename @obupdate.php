@@ -25,7 +25,7 @@ if ($conn->connect_error) {
 } 
 //echo "Connected successfully";
 
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 function app($connect)
 { 
   $output = '';

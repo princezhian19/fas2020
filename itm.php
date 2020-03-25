@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST["item_name"]))
 {
- $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "");
+ $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 <<<<<<< HEAD
  $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 =======
