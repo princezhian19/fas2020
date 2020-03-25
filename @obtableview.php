@@ -42,8 +42,8 @@ $getUacs = $_GET['getuacs'];
             <h1 align="" >&nbspAllotment Amount :   <label ><?php
               
               $servername = "localhost";
-              $username = "root";
-              $password = "";
+              $username = "fascalab_2020";
+              $password = "w]zYV6X9{*BN";
               $database = "fascalab_2020";
               
             $conn = new mysqli($servername, $username, $password,$database);
@@ -57,8 +57,8 @@ $getUacs = $_GET['getuacs'];
           
             
             $servername = "localhost";
-            $username = "root";
-            $password = "";
+            $username = "fascalab_2020";
+            $password = "w]zYV6X9{*BN";
             $database = "fascalab_2020";
             
             $conn = new mysqli($servername, $username, $password,$database);
@@ -196,8 +196,8 @@ $getUacs = $_GET['getuacs'];
             $getSaro = $_GET['getsaroID'];
 
             $servername = "localhost";
-            $username = "root";
-            $password = "";
+            $username = "fascalab_2020";
+            $password = "w]zYV6X9{*BN";
             $database = "fascalab_2020";
             
             // Create connection

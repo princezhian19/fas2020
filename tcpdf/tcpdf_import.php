@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : tcpdf_import.php
 // Version     : 1.0.000
 // Begin       : 2011-05-23
@@ -31,7 +31,7 @@
 // Description : This is a PHP class extension of the TCPDF library to
 //               import existing PDF documents.
 //
-//============================================================+
+//====+
 
 /**
  * @file
@@ -88,6 +88,6 @@ class TCPDF_IMPORT extends TCPDF {
 
 } // END OF CLASS
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

@@ -211,11 +211,11 @@ function isOffsetContainer(element) {
 }
 
 /**
- * Finds the root node (document, shadowDOM root) of the given element
+ * Finds the fascalab_2020 node (document, shadowDOM fascalab_2020) of the given element
  * @method
  * @memberof Popper.Utils
  * @argument {Element} node
- * @returns {Element} root node
+ * @returns {Element} fascalab_2020 node
  */
 function getRoot(node) {
   if (node.parentNode !== null) {

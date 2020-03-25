@@ -26,7 +26,7 @@ ob_start();
         <div  class="col-xs-3">
           <label>Division : </label>
           <?php
-          $conn = mysqli_connect("localhost", "root", "", "fascalab_2020");
+          $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
           $sq = mysqli_query($conn,"SELECT dept from ris_stock_issuetomany where id ='".$_GET['id']."' ");
           while ($row = mysqli_fetch_assoc($sq)) {
             echo '<input  type="text" class="form-control" style="height: 40px;"  placeholder="" name="dept" id="sup" value="'.$row['dept'].'" />';   
@@ -37,7 +37,7 @@ ob_start();
           <div  class="col-xs-3">
             <label>RIS No. : </label>
             <?php
-            $conn = mysqli_connect("localhost", "root", "", "fascalab_2020");
+            $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
             $sq = mysqli_query($conn,"SELECT ris_no from ris_stock_issuetomany where id ='".$_GET['id']."' ");
             while ($row = mysqli_fetch_assoc($sq)) {
               echo '<input  type="text" class="form-control" style="height: 40px;"  placeholder="" name="ris_no" id="sup" value="'.$row['ris_no'].'" />';   
@@ -47,7 +47,7 @@ ob_start();
             <div class="col-xs-3">
               <label>Requested By : </label>
               <?php
-              $conn = mysqli_connect("localhost", "root", "", "fascalab_2020");
+              $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
               $sq = mysqli_query($conn,"SELECT request_by from ris_stock_issuetomany where id ='".$_GET['id']."' ");
               while ($row = mysqli_fetch_assoc($sq)) {
                 $request_by = $row['request_by'];
@@ -81,7 +81,7 @@ ob_start();
             <div class="col-xs-3">
               <label>Recieved by : </label>
               <?php
-              $conn = mysqli_connect("localhost", "root", "", "fascalab_2020");
+              $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
               $sq = mysqli_query($conn,"SELECT recieved_by from ris_stock_issuetomany where id ='".$_GET['id']."' ");
               while ($row = mysqli_fetch_assoc($sq)) {
                 echo '<input type="text" class="form-control" style="height: 40px;"  placeholder="" name="recieved_by" id="sup" value="'.$row['recieved_by'].'" />';   
@@ -93,7 +93,7 @@ ob_start();
             <div class="col-xs-3">
               <label>Purpose : </label>
               <?php
-              $conn = mysqli_connect("localhost", "root", "", "fascalab_2020");
+              $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
               $sq = mysqli_query($conn,"SELECT purpose from ris_stock_issuetomany where id ='".$_GET['id']."' ");
               while ($row = mysqli_fetch_assoc($sq)) {
                 echo '<textarea type="text" class="form-control" style="width: 1000px;height: 100px;"  name="purpose" id="sup"  >'.$row['purpose'].'</textarea> ';   
@@ -119,7 +119,7 @@ ob_start();
 </body>
 </html>
 <?php
-$conn = mysqli_connect("localhost", "root", "", "fascalab_2020");
+$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 if (isset($_POST['submit'])) 
 {
   $dept = $_POST['dept'];

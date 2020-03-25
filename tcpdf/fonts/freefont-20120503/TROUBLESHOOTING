@@ -14,7 +14,7 @@ Also, some systems have settings that strongly affect the rendering
 of fonts.  It may be worth tweaking these.
 
 glyph substitution
-==================
+====
 
 When given the task of displaying characters in text, modern font rendering
 software usually tries to display *something*, even if the font it is
@@ -36,7 +36,7 @@ Then double-check that the font is really installed in the system.
 (This depends on the operating system, of course.)
 
 Linux and Unix
-==============
+
 
 Modern Linux systems use a system called fontconfig, which maintains a font
 cache, for efficiency.
@@ -60,7 +60,7 @@ You can clean your local cache merely by emptying the directory
 	~/.fontconfig/
 In any case, to clean the cache, you can use the fontconfig command
 	fc-cache -vf
-If run as root, it will clean the system cache, if run as a normal user,
+If run as fascalab_2020, it will clean the system cache, if run as a normal user,
 it cleans only the normal user's cache.
 
 The procedure for local fonts is:
@@ -73,7 +73,7 @@ The procedure for system-wide fonts is:
 	3) log in to an X Windows session
 
 LibreOffice / OpenOffice
-========================
+===
 These products have their own font rendering libraries, which have 
 idiosyncratic behavior.
 
@@ -82,7 +82,7 @@ are disabled for OpenType fonts.  If you use FreeFont with these products,
 you may want to install the TrueType versions of the fonts.
 
 Windows
-=======
+
 
 The most common complaint has to do with "blurry text".  There are two
 causes.
@@ -104,7 +104,7 @@ Note also: Firefox has a setting for ClearType:
 A value of 2 sets it to old-style GDI rendering, while -1 is the default.
 
 reporting problems
-==================
+====
 
 If you really think you're seeing a bug in FreeFont, or if you have
 a suggestion, consider opening a problem report at

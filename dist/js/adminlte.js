@@ -1,5 +1,5 @@
 /*! AdminLTE app.js
-* ================
+* ==
 * Main JS application file for AdminLTE v2. This file
 * should be included in all pages. It controls some layout
 * options and implements exclusive AdminLTE plugins.
@@ -17,7 +17,7 @@ throw new Error('AdminLTE requires jQuery')
 }
 
 /* BoxRefresh()
- * =========
+ * ==
  * Adds AJAX content control to a box.
  *
  * @Usage: $('#my-box').boxRefresh(options)
@@ -49,7 +49,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // BoxRefresh Class Definition
-  // =========================
+  // ====
   var BoxRefresh = function (element, options) {
     this.element  = element;
     this.options  = options;
@@ -94,7 +94,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -120,14 +120,14 @@ throw new Error('AdminLTE requires jQuery')
   $.fn.boxRefresh.Constructor = BoxRefresh;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.boxRefresh.noConflict = function () {
     $.fn.boxRefresh = old;
     return this;
   };
 
   // BoxRefresh Data API
-  // =================
+  // ===
   $(window).on('load', function () {
     $(Selector.data).each(function () {
       Plugin.call($(this));
@@ -182,7 +182,7 @@ throw new Error('AdminLTE requires jQuery')
     };
 
   // BoxWidget Class Definition
-  // =====================
+  // 
   var BoxWidget = function (element, options) {
     this.element = element;
     this.options = options;
@@ -273,7 +273,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -299,14 +299,14 @@ throw new Error('AdminLTE requires jQuery')
   $.fn.boxWidget.Constructor = BoxWidget;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.boxWidget.noConflict = function () {
     $.fn.boxWidget = old;
     return this;
   };
 
   // BoxWidget Data API
-  // ==================
+  // ====
   $(window).on('load', function () {
     $(Selector.data).each(function () {
       Plugin.call($(this));
@@ -316,7 +316,7 @@ throw new Error('AdminLTE requires jQuery')
 
 
 /* ControlSidebar()
- * ===============
+ * =
  * Toggles the state of the control sidebar
  *
  * @Usage: $('#control-sidebar-trigger').controlSidebar(options)
@@ -353,7 +353,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // ControlSidebar Class Definition
-  // ===============================
+  // ===
   var ControlSidebar = function (element, options) {
     this.element         = element;
     this.options         = options;
@@ -421,7 +421,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -442,14 +442,14 @@ throw new Error('AdminLTE requires jQuery')
   $.fn.controlSidebar.Constructor = ControlSidebar;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.controlSidebar.noConflict = function () {
     $.fn.controlSidebar = old;
     return this;
   };
 
   // ControlSidebar Data API
-  // =======================
+  // ==
   $(document).on('click', Selector.data, function (event) {
     if (event) event.preventDefault();
     Plugin.call($(this), 'toggle');
@@ -459,7 +459,7 @@ throw new Error('AdminLTE requires jQuery')
 
 
 /* DirectChat()
- * ===============
+ * =
  * Toggles the state of the control sidebar
  *
  * @Usage: $('#my-chat-box').directChat()
@@ -480,7 +480,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // DirectChat Class Definition
-  // ===========================
+  // ======
   var DirectChat = function (element) {
     this.element = element;
   };
@@ -490,7 +490,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -510,14 +510,14 @@ throw new Error('AdminLTE requires jQuery')
   $.fn.directChat.Constructor = DirectChat;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.directChat.noConflict = function () {
     $.fn.directChat = old;
     return this;
   };
 
   // DirectChat Data API
-  // ===================
+  // =====
   $(document).on('click', Selector.data, function (event) {
     if (event) event.preventDefault();
     Plugin.call($(this), 'toggle');
@@ -527,7 +527,7 @@ throw new Error('AdminLTE requires jQuery')
 
 
 /* PushMenu()
- * ==========
+ * ===
  * Adds the push menu functionality to the sidebar.
  *
  * @usage: $('.btn').pushMenu(options)
@@ -572,7 +572,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // PushMenu Class Definition
-  // =========================
+  // ====
   var PushMenu = function (options) {
     this.options = options;
     this.init();
@@ -665,7 +665,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // PushMenu Plugin Definition
-  // ==========================
+  // =====
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -686,14 +686,14 @@ throw new Error('AdminLTE requires jQuery')
   $.fn.pushMenu.Constructor = PushMenu;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.pushMenu.noConflict = function () {
     $.fn.pushMenu = old;
     return this;
   };
 
   // Data API
-  // ========
+  // =
   $(document).on('click', Selector.button, function (e) {
     e.preventDefault();
     Plugin.call($(this), 'toggle');
@@ -705,7 +705,7 @@ throw new Error('AdminLTE requires jQuery')
 
 
 /* TodoList()
- * =========
+ * ==
  * Converts a list into a todoList.
  *
  * @Usage: $('.my-list').todoList(options)
@@ -735,7 +735,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // TodoList Class Definition
-  // =========================
+  // ====
   var TodoList = function (element, options) {
     this.element = element;
     this.options = options;
@@ -771,7 +771,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -797,14 +797,14 @@ throw new Error('AdminLTE requires jQuery')
   $.fn.todoList.Constructor = TodoList;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.todoList.noConflict = function () {
     $.fn.todoList = old;
     return this;
   };
 
   // TodoList Data API
-  // =================
+  // ===
   $(window).on('load', function () {
     $(Selector.data).each(function () {
       Plugin.call($(this));
@@ -856,7 +856,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // Tree Class Definition
-  // =====================
+  // 
   var Tree = function (element, options) {
     this.element = element;
     this.options = options;
@@ -929,7 +929,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -948,14 +948,14 @@ throw new Error('AdminLTE requires jQuery')
   $.fn.tree.Constructor = Tree;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.tree.noConflict = function () {
     $.fn.tree = old;
     return this;
   };
 
   // Tree Data API
-  // =============
+  // ======
   $(window).on('load', function () {
     $(Selector.data).each(function () {
       Plugin.call($(this));
@@ -966,7 +966,7 @@ throw new Error('AdminLTE requires jQuery')
 
 
 /* Layout()
- * ========
+ * =
  * Implements AdminLTE layout.
  * Fixes the layout height in case min-height fails.
  *
@@ -1109,7 +1109,7 @@ throw new Error('AdminLTE requires jQuery')
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -1135,14 +1135,14 @@ throw new Error('AdminLTE requires jQuery')
   $.fn.layout.Constuctor = Layout;
 
   // No conflict mode
-  // ================
+  // ==
   $.fn.layout.noConflict = function () {
     $.fn.layout = old;
     return this;
   };
 
   // Layout DATA-API
-  // ===============
+  // =
   $(window).on('load', function () {
     Plugin.call($('body'));
   });

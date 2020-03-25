@@ -11,8 +11,8 @@ class db {
     function __construct($params=array()) {
 		$this->conn = false;
 		$this->host = 'localhost'; //hostname
-		$this->user = 'root'; //username
-		$this->password = ''; //password
+		$this->user = 'fascalab_2020'; //username
+		$this->password = 'w]zYV6X9{*BN'; //password
 		$this->baseName = 'fascalab_2020'; //name of your database
 		$this->port = '';
 		$this->debug = true;

@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_009.php
 // Begin       : 2008-03-04
 // Last Update : 2010-12-04
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -145,6 +145,6 @@ $pdf->Image('../images/image_demo.jpg', '', '', 40, 40, '', '', '', false, 300, 
 //Close and output PDF document
 $pdf->Output('example_009.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

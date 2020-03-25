@@ -28,7 +28,7 @@ use PhpOffice\PhpWord\Writer\Word2007\Style\Paragraph as ParagraphStyleWriter;
 class Footnotes extends AbstractPart
 {
     /**
-     * Name of XML root element
+     * Name of XML fascalab_2020 element
      *
      * @var string
      */

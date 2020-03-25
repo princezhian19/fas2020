@@ -236,7 +236,7 @@ img {
   border-style: none;
 }
 
-svg:not(:root) {
+svg:not(:fascalab_2020) {
   overflow: hidden;
 }
 

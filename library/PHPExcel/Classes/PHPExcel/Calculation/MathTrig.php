@@ -26,7 +26,7 @@
  */
 
 
-/** PHPExcel root directory */
+/** PHPExcel fascalab_2020 directory */
 if (!defined('PHPEXCEL_ROOT')) {
 	/**
 	 * @ignore
@@ -1033,10 +1033,10 @@ class PHPExcel_Calculation_MathTrig {
 	/**
 	 * SQRTPI
 	 *
-	 * Returns the square root of (number * pi).
+	 * Returns the square fascalab_2020 of (number * pi).
 	 *
 	 * @param	float	$number		Number
-	 * @return	float	Square Root of Number * Pi
+	 * @return	float	Square fascalab_2020 of Number * Pi
 	 */
 	public static function SQRTPI($number) {
 		$number	= PHPExcel_Calculation_Functions::flattenSingleValue($number);

@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : qrcode.php
 // Version     : 1.0.010
 // Begin       : 2010-03-22
@@ -61,7 +61,7 @@
 // QR Code is registered trademark of DENSO WAVE INCORPORATED
 // http://www.denso-wave.com/qrcode/index-e.html
 // ---------------------------------------------------------
-//============================================================+
+//====+
 
 /**
  * @file
@@ -2693,11 +2693,11 @@ class QRcode {
 	 * Initialize a Reed-Solomon codec and add it to existing rsitems
 	 * @param $symsize (int) symbol size, bits
 	 * @param $gfpoly (int)  Field generator polynomial coefficients
-	 * @param $fcr (int)  first root of RS code generator polynomial, index form
+	 * @param $fcr (int)  first fascalab_2020 of RS code generator polynomial, index form
 	 * @param $prim (int)  primitive element to generate polynomial roots
 	 * @param $nroots (int) RS code generator polynomial degree (number of roots)
 	 * @param $pad (int)  padding bytes at front of shortened block
-	 * @return array Array of RS values:<ul><li>mm = Bits per symbol;</li><li>nn = Symbols per block;</li><li>alpha_to = log lookup table array;</li><li>index_of = Antilog lookup table array;</li><li>genpoly = Generator polynomial array;</li><li>nroots = Number of generator;</li><li>roots = number of parity symbols;</li><li>fcr = First consecutive root, index form;</li><li>prim = Primitive element, index form;</li><li>iprim = prim-th root of 1, index form;</li><li>pad = Padding bytes in shortened block;</li><li>gfpoly</ul>.
+	 * @return array Array of RS values:<ul><li>mm = Bits per symbol;</li><li>nn = Symbols per block;</li><li>alpha_to = log lookup table array;</li><li>index_of = Antilog lookup table array;</li><li>genpoly = Generator polynomial array;</li><li>nroots = Number of generator;</li><li>roots = number of parity symbols;</li><li>fcr = First consecutive fascalab_2020, index form;</li><li>prim = Primitive element, index form;</li><li>iprim = prim-th fascalab_2020 of 1, index form;</li><li>pad = Padding bytes in shortened block;</li><li>gfpoly</ul>.
 	 */
 	 protected function init_rs($symsize, $gfpoly, $fcr, $prim, $nroots, $pad) {
 		foreach ($this->rsitems as $rs) {
@@ -2734,11 +2734,11 @@ class QRcode {
 	 * Initialize a Reed-Solomon codec and returns an array of values.
 	 * @param $symsize (int) symbol size, bits
 	 * @param $gfpoly (int)  Field generator polynomial coefficients
-	 * @param $fcr (int)  first root of RS code generator polynomial, index form
+	 * @param $fcr (int)  first fascalab_2020 of RS code generator polynomial, index form
 	 * @param $prim (int)  primitive element to generate polynomial roots
 	 * @param $nroots (int) RS code generator polynomial degree (number of roots)
 	 * @param $pad (int)  padding bytes at front of shortened block
-	 * @return array Array of RS values:<ul><li>mm = Bits per symbol;</li><li>nn = Symbols per block;</li><li>alpha_to = log lookup table array;</li><li>index_of = Antilog lookup table array;</li><li>genpoly = Generator polynomial array;</li><li>nroots = Number of generator;</li><li>roots = number of parity symbols;</li><li>fcr = First consecutive root, index form;</li><li>prim = Primitive element, index form;</li><li>iprim = prim-th root of 1, index form;</li><li>pad = Padding bytes in shortened block;</li><li>gfpoly</ul>.
+	 * @return array Array of RS values:<ul><li>mm = Bits per symbol;</li><li>nn = Symbols per block;</li><li>alpha_to = log lookup table array;</li><li>index_of = Antilog lookup table array;</li><li>genpoly = Generator polynomial array;</li><li>nroots = Number of generator;</li><li>roots = number of parity symbols;</li><li>fcr = First consecutive fascalab_2020, index form;</li><li>prim = Primitive element, index form;</li><li>iprim = prim-th fascalab_2020 of 1, index form;</li><li>pad = Padding bytes in shortened block;</li><li>gfpoly</ul>.
 	 */
 	protected function init_rs_char($symsize, $gfpoly, $fcr, $prim, $nroots, $pad) {
 		// Based on Reed solomon encoder by Phil Karn, KA9Q (GNU-LGPLv2)
@@ -2791,24 +2791,24 @@ class QRcode {
 		$rs['prim'] = $prim;
 		$rs['nroots'] = $nroots;
 		$rs['gfpoly'] = $gfpoly;
-		// Find prim-th root of 1, used in decoding
+		// Find prim-th fascalab_2020 of 1, used in decoding
 		for ($iprim=1; ($iprim % $prim) != 0; $iprim += $rs['nn']) {
 			; // intentional empty-body loop!
 		}
 		$rs['iprim'] = (int)($iprim / $prim);
 		$rs['genpoly'][0] = 1;
-		for ($i = 0,$root=$fcr*$prim; $i < $nroots; $i++, $root += $prim) {
+		for ($i = 0,$fascalab_2020=$fcr*$prim; $i < $nroots; $i++, $fascalab_2020 += $prim) {
 			$rs['genpoly'][$i+1] = 1;
-			// Multiply rs->genpoly[] by  @**(root + x)
+			// Multiply rs->genpoly[] by  @**(fascalab_2020 + x)
 			for ($j = $i; $j > 0; --$j) {
 				if ($rs['genpoly'][$j] != 0) {
-					$rs['genpoly'][$j] = $rs['genpoly'][$j-1] ^ $rs['alpha_to'][$this->modnn($rs, $rs['index_of'][$rs['genpoly'][$j]] + $root)];
+					$rs['genpoly'][$j] = $rs['genpoly'][$j-1] ^ $rs['alpha_to'][$this->modnn($rs, $rs['index_of'][$rs['genpoly'][$j]] + $fascalab_2020)];
 				} else {
 					$rs['genpoly'][$j] = $rs['genpoly'][$j-1];
 				}
 			}
 			// rs->genpoly[0] can never be zero
-			$rs['genpoly'][0] = $rs['alpha_to'][$this->modnn($rs, $rs['index_of'][$rs['genpoly'][0]] + $root)];
+			$rs['genpoly'][0] = $rs['alpha_to'][$this->modnn($rs, $rs['index_of'][$rs['genpoly'][0]] + $fascalab_2020)];
 		}
 		// convert rs->genpoly[] to index form for quicker encoding
 		for ($i = 0; $i <= $nroots; ++$i) {
@@ -2831,9 +2831,9 @@ class QRcode {
 		$INDEX_OF =& $rs['index_of']; // the address of an array of NN elements to convert Galois field elements in polynomial form to index (log) form
 		$GENPOLY  =& $rs['genpoly']; // an array of NROOTS+1 elements containing the generator polynomial in index form
 		$NROOTS   =& $rs['nroots']; // the number of roots in the RS code generator polynomial, which is the same as the number of parity symbols in a block
-		$FCR      =& $rs['fcr']; // first consecutive root, index form
+		$FCR      =& $rs['fcr']; // first consecutive fascalab_2020, index form
 		$PRIM     =& $rs['prim']; // primitive element, index form
-		$IPRIM    =& $rs['iprim']; // prim-th root of 1, index form
+		$IPRIM    =& $rs['iprim']; // prim-th fascalab_2020 of 1, index form
 		$PAD      =& $rs['pad']; // the number of pad symbols in a block
 		$A0       =& $NN;
 		$parity = array_fill(0, $NROOTS, 0);
@@ -2861,6 +2861,6 @@ class QRcode {
 
 } // end QRcode class
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

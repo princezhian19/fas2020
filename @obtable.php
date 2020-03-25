@@ -69,8 +69,8 @@ include('db.class.php'); // call db.class.php
               </thead>
               <?php
               $servername = "localhost";
-              $username = "root";
-              $password = "";
+              $username = "fascalab_2020";
+              $password = "w]zYV6X9{*BN";
               $database = "fascalab_2020";
               $conn = new mysqli($servername, $username, $password,$database);
               $view_query = mysqli_query($conn, "SELECT * FROM saroob order by date desc");

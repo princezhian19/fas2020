@@ -221,9 +221,9 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
 			$arrRootData[] = $OLE_DocumentSummaryInformation;
 		}
 
-		$root = new PHPExcel_Shared_OLE_PPS_Root(time(), time(), $arrRootData);
+		$fascalab_2020 = new PHPExcel_Shared_OLE_PPS_Root(time(), time(), $arrRootData);
 		// save the OLE file
-		$res = $root->save($pFilename);
+		$res = $fascalab_2020->save($pFilename);
 
 		PHPExcel_Calculation_Functions::setReturnDateType($saveDateReturnType);
 		PHPExcel_Calculation::getInstance($this->_phpExcel)->getDebugLog()->setWriteDebugLog($saveDebugLog);

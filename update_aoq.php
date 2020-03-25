@@ -1,6 +1,6 @@
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
-$conn=mysqli_connect("localhost","root","","fascalab_2020");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
 $abstract_id = $_GET['abstract_id'];
 
@@ -29,7 +29,7 @@ $abs_date = date("Y-m-d\TH:i:s",strtotime($abs_date1));
 
 function supplier($connect)
 { 
-$conn=mysqli_connect("localhost","root","","fascalab_2020");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
 $SELECT_rfq = mysqli_query($conn,"SELECT * FROM rfq_items WHERE rfq_id = $rfq_id");
 $rowR = mysqli_fetch_array($SELECT_rfq);

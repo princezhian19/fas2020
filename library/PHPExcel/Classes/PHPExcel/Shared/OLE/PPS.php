@@ -42,7 +42,7 @@ class PHPExcel_Shared_OLE_PPS
 	public $Name;
 
 	/**
-	* The PPS type. Dir, Root or File
+	* The PPS type. Dir, fascalab_2020 or File
 	* @var integer
 	*/
 	public $Type;
@@ -60,7 +60,7 @@ class PHPExcel_Shared_OLE_PPS
 	public $NextPps;
 
 	/**
-	* The index of it's first child if this is a Dir or Root PPS
+	* The index of it's first child if this is a Dir or fascalab_2020 PPS
 	* @var integer
 	*/
 	public $DirPps;
@@ -96,7 +96,7 @@ class PHPExcel_Shared_OLE_PPS
 	public $_data;
 
 	/**
-	* Array of child PPS's (only used by Root and Dir PPS's)
+	* Array of child PPS's (only used by fascalab_2020 and Dir PPS's)
 	* @var array
 	*/
 	public $children = array();
@@ -113,10 +113,10 @@ class PHPExcel_Shared_OLE_PPS
 	* @access public
 	* @param integer $No   The PPS index
 	* @param string  $name The PPS name
-	* @param integer $type The PPS type. Dir, Root or File
+	* @param integer $type The PPS type. Dir, fascalab_2020 or File
 	* @param integer $prev The index of the previous PPS
 	* @param integer $next The index of the next PPS
-	* @param integer $dir  The index of it's first child if this is a Dir or Root PPS
+	* @param integer $dir  The index of it's first child if this is a Dir or fascalab_2020 PPS
 	* @param integer $time_1st A timestamp
 	* @param integer $time_2nd A timestamp
 	* @param string  $data  The (usually binary) source data of the PPS
@@ -180,7 +180,7 @@ class PHPExcel_Shared_OLE_PPS
 			  . "\x00\x09\x02\x00"                  // 84
 			  . "\x00\x00\x00\x00"                  // 88
 			  . "\xc0\x00\x00\x00"                  // 92
-			  . "\x00\x00\x00\x46"                  // 96 // Seems to be ok only for Root
+			  . "\x00\x00\x00\x46"                  // 96 // Seems to be ok only for fascalab_2020
 			  . "\x00\x00\x00\x00"                  // 100
 			  . PHPExcel_Shared_OLE::LocalDate2OLE($this->Time1st)       // 108
 			  . PHPExcel_Shared_OLE::LocalDate2OLE($this->Time2nd)       // 116
@@ -206,7 +206,7 @@ class PHPExcel_Shared_OLE_PPS
 			return 0xFFFFFFFF;
 		} elseif( count($to_save) == 1 ) {
 			$cnt = count($raList);
-			// If the first entry, it's the root... Don't clone it!
+			// If the first entry, it's the fascalab_2020... Don't clone it!
 			$raList[$cnt] = ( $depth == 0 ) ? $to_save[0] : clone $to_save[0];
 			$raList[$cnt]->No = $cnt;
 			$raList[$cnt]->PrevPps = 0xFFFFFFFF;
@@ -217,7 +217,7 @@ class PHPExcel_Shared_OLE_PPS
 			$aPrev = array_slice($to_save, 0, $iPos);
 			$aNext = array_slice($to_save, $iPos + 1);
 			$cnt   = count($raList);
-			// If the first entry, it's the root... Don't clone it!
+			// If the first entry, it's the fascalab_2020... Don't clone it!
 			$raList[$cnt] = ( $depth == 0 ) ? $to_save[$iPos] : clone $to_save[$iPos];
 			$raList[$cnt]->No = $cnt;
 			$raList[$cnt]->PrevPps = self::_savePpsSetPnt($raList, $aPrev, $depth++);

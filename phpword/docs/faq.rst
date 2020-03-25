@@ -1,7 +1,7 @@
 .. _faq:
 
 Frequently asked questions
-==========================
+=====
 
 How contribute to PHPWord?
 --------------------------

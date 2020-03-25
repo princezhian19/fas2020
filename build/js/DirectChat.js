@@ -1,5 +1,5 @@
 /* DirectChat()
- * ===============
+ * =
  * Toggles the state of the control sidebar
  *
  * @Usage: $('#my-chat-box').directChat()
@@ -20,7 +20,7 @@
   };
 
   // DirectChat Class Definition
-  // ===========================
+  // ======
   var DirectChat = function (element) {
     this.element = element;
   };
@@ -30,7 +30,7 @@
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -50,14 +50,14 @@
   $.fn.directChat.Constructor = DirectChat;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.directChat.noConflict = function () {
     $.fn.directChat = old;
     return this;
   };
 
   // DirectChat Data API
-  // ===================
+  // =====
   $(document).on('click', Selector.data, function (event) {
     if (event) event.preventDefault();
     Plugin.call($(this), 'toggle');

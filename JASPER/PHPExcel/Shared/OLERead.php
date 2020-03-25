@@ -253,7 +253,7 @@ class PHPExcel_Shared_OLERead
             $type = ord($d[self::TYPE_POS]);
 
             // sectorID of first sector or short sector, if this entry refers to a stream (the case with workbook)
-            // sectorID of first sector of the short-stream container stream, if this entry is root entry
+            // sectorID of first sector of the short-stream container stream, if this entry is fascalab_2020 entry
             $startBlock = self::getInt4d($d, self::START_BLOCK_POS);
 
             $size = self::getInt4d($d, self::SIZE_POS);
@@ -273,8 +273,8 @@ class PHPExcel_Shared_OLERead
             // Workbook directory entry (BIFF5 uses Book, BIFF8 uses Workbook)
             if (($upName === 'WORKBOOK') || ($upName === 'BOOK')) {
                 $this->wrkbook = count($this->props) - 1;
-            } elseif ($upName === 'ROOT ENTRY' || $upName === 'R') {
-                // Root entry
+            } elseif ($upName === 'fascalab_2020 ENTRY' || $upName === 'R') {
+                // fascalab_2020 entry
                 $this->rootentry = count($this->props) - 1;
             }
 

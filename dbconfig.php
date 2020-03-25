@@ -1,6 +1,6 @@
 <?php
 
-	$db_username = 'root';
+	$db_username = 'fascalab_2020';
 	$db_password = '';
 	$db_name = 'fascalab_2020';
 	$db_host = 'localhost';

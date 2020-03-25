@@ -3,7 +3,11 @@ error_reporting(0);
 ini_set('display_errors', 0);
 session_start();
 $id = $_GET['id'];
-$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 $user = $_SESSION['username'];
 $s_user = mysqli_query($conn,"SELECT pmo_id FROM end_users WHERE username = '$user'");
 $row_u = mysqli_fetch_array($s_user);

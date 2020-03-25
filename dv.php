@@ -3,7 +3,11 @@ ini_set('display_errors', 0);
 error_reporting(0);
 // require_once('functions.php'); 
 session_start();  
-$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 $username = $_SESSION['username'];
 $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
 $rowdiv = mysqli_fetch_array($select_user);

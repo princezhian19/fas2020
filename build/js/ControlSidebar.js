@@ -1,5 +1,5 @@
 /* ControlSidebar()
- * ===============
+ * =
  * Toggles the state of the control sidebar
  *
  * @Usage: $('#control-sidebar-trigger').controlSidebar(options)
@@ -36,7 +36,7 @@
   };
 
   // ControlSidebar Class Definition
-  // ===============================
+  // ===
   var ControlSidebar = function (element, options) {
     this.element         = element;
     this.options         = options;
@@ -104,7 +104,7 @@
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -125,14 +125,14 @@
   $.fn.controlSidebar.Constructor = ControlSidebar;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.controlSidebar.noConflict = function () {
     $.fn.controlSidebar = old;
     return this;
   };
 
   // ControlSidebar Data API
-  // =======================
+  // ==
   $(document).on('click', Selector.data, function (event) {
     if (event) event.preventDefault();
     Plugin.call($(this), 'toggle');

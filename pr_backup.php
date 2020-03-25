@@ -1,8 +1,12 @@
 <?php
 error_reporting(0);
 ini_set('display_errors', 0);
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
-$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 function app($connect)
 { 
   $output = '';
@@ -627,7 +631,7 @@ function confirmDelete(delUrl) {
          </tr>
          <tr>
           <?php 
-          $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'root', '');
+          $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', '');
           $pr_no = $_POST['pr_no'];
           $pmo = $_POST['pmo'];
           $pr_date = $_POST['pr_date'];

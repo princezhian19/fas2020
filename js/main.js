@@ -2,7 +2,7 @@
 (function ($) {
     "use strict";
 
-    /*==================================================================
+    /*===
     [ Validate after type ]*/
     $('.validate-input .input100').each(function(){
         $(this).on('blur', function(){
@@ -16,7 +16,7 @@
     })
   
   
-    /*==================================================================
+    /*===
     [ Validate ]*/
     var input = $('.validate-input .input100');
 

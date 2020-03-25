@@ -105,8 +105,8 @@ include('db.class.php'); // call db.class.php
                
 
               $servername = "localhost";
-              $username = "root";
-              $password = "";
+              $username = "fascalab_2020";
+              $password = "w]zYV6X9{*BN";
               $database = "fascalab_2020";
             // Create connection
               $conn = new mysqli($servername, $username, $password,$database);

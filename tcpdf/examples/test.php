@@ -35,7 +35,7 @@ $pdf->AddPage();
 $tbl_header = '<table border="1">';
 $tbl_footer = '</table>';
 $tbl ='';
-$con=mysqli_connect("localhost","root","","loop");
+$con=mysqli_connect("localhost","fascalab_2020","","loop");
 // Check connection
 if (mysqli_connect_errno())
   {
@@ -71,7 +71,7 @@ $pdf->writeHTML($tbl_header . $tbl . $tbl_footer, true, false, false, false, '')
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
 $pdf->Output('', 'I');
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+
 ?>

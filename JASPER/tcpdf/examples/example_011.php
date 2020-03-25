@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_011.php
 // Begin       : 2008-03-04
 // Last Update : 2010-08-08
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -133,6 +133,6 @@ $pdf->ColoredTable($header, $data);
 //Close and output PDF document
 $pdf->Output('example_011.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE                                                
-//============================================================+
+//====+

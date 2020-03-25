@@ -10,7 +10,7 @@ $UNAME = $_SESSION['username'];
 function fillInputs()
 {
   echo '<div class="col-md-6">';
-  $link = mysqli_connect("localhost","root","", "fascalab_2020");
+  $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
   $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
@@ -79,7 +79,7 @@ function fillInputs()
 function fillInputs2()
 {
   echo '<div class="col-md-6">';
-  $link = mysqli_connect("localhost","root","", "fascalab_2020");
+  $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
   $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
@@ -357,8 +357,8 @@ function fillInputs2()
     $('#started_time').timepicker();
     $('#completed_time').timepicker();
 
-// ========================================================================================
-// ========================================================================================
+// ====
+// ====
 var c_n = $('#control_no').val();
    document.querySelector('.sweet-14').onclick = function(){
         swal({

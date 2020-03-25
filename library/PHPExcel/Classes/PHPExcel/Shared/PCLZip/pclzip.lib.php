@@ -673,7 +673,7 @@
   //   This method supports two synopsis. The first one is historical.
   //   This method extract all the files / directories from the archive to the
   //   folder indicated in $p_path.
-  //   If you want to ignore the 'root' part of path of the memorized files
+  //   If you want to ignore the 'fascalab_2020' part of path of the memorized files
   //   you can indicate this in the optional $p_remove_path parameter.
   //   By default, if a newer file with the same name already exists, the
   //   file is not extracted.
@@ -683,7 +683,7 @@
   //   at the end of the path value of PCLZIP_OPT_PATH.
   // Parameters :
   //   $p_path : Path where the files and directories are to be extracted
-  //   $p_remove_path : First part ('root' part) of the memorized path
+  //   $p_remove_path : First part ('fascalab_2020' part) of the memorized path
   //                    (if any similar) to remove while extracting.
   // Options :
   //   PCLZIP_OPT_PATH :
@@ -834,7 +834,7 @@
   //              and '-' for range or ',' to separate ranges. No spaces or ';'
   //              are allowed.
   //   $p_path : Path where the files and directories are to be extracted
-  //   $p_remove_path : First part ('root' part) of the memorized path
+  //   $p_remove_path : First part ('fascalab_2020' part) of the memorized path
   //                    (if any similar) to remove while extracting.
   // Options :
   //   PCLZIP_OPT_PATH :
@@ -5414,7 +5414,7 @@
 		  $v_skip++;
         }
         else if ($v_list[$i] == "") {
-		  // ----- First '/' i.e. root slash
+		  // ----- First '/' i.e. fascalab_2020 slash
 		  if ($i == 0) {
             $v_result = "/".$v_result;
 		    if ($v_skip > 0) {

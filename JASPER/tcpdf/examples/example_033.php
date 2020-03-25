@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_033.php
 // Begin       : 2008-06-24
 // Last Update : 2011-10-01
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -100,6 +100,6 @@ $pdf->MultiCell(80, 0, "[CID-0 font] : Cras eros leo, porttitor porta, accumsan 
 //Close and output PDF document
 $pdf->Output('example_033.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

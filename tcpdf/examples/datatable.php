@@ -2,7 +2,7 @@
  function fetch_data()  
  {  
       $output = '';  
-      $connect = mysqli_connect("localhost", "root", "", "testing");  
+      $connect = mysqli_connect("localhost", "fascalab_2020", "", "testing");  
       $sql = "SELECT * FROM tbl_employee ORDER BY id ASC";  
       $result = mysqli_query($connect, $sql);  
       while($row = mysqli_fetch_array($result))  

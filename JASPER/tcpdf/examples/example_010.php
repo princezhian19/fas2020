@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_010.php
 // Begin       : 2008-03-04
 // Last Update : 2011-04-26
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -145,6 +145,6 @@ $pdf->PrintChapter(2, 'LOREM IPSUM [HTML]', '../cache/chapter_demo_2.txt', true)
 //Close and output PDF document
 $pdf->Output('example_010.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

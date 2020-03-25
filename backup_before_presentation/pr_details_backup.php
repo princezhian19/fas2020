@@ -1,6 +1,10 @@
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
-$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 
 $pr_no = $_GET['pr_no'];
 $pr_date = $_GET['pr_date'];
@@ -182,7 +186,7 @@ if (isset($_POST['submit'])) {
            </tr>
            <tr>
             <?php 
-            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'root', '');
+            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', '');
             $pr_no = $_GET['pr_no'];
             $sql_items = $conn->query("SELECT * FROM pr_approved  WHERE pr_no = '$pr_no' ");
             while ($row = $sql_items->fetch()) {

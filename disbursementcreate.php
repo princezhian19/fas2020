@@ -1,8 +1,8 @@
 <?php 
-$id = $_GET['createid'];
+$id = $_GET['id'];
 
 
-$conn=mysqli_connect("localhost","root","","fascalab_2020");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 $select_part = mysqli_query($conn,"SELECT * FROM disbursement WHERE id = '$id'");
 $rowB = mysqli_fetch_array($select_part);

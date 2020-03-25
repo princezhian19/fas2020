@@ -1,7 +1,7 @@
 .. _containers:
 
 Containers
-==========
+===
 
 Containers are objects where you can put elements (texts, lists, tables,
 etc). There are 3 main containers, i.e. sections, headers, and footers.

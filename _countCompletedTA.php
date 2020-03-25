@@ -1,7 +1,7 @@
 <?php
 session_start();
 $sess_name = $_SESSION['complete_name'];
-     $link = mysqli_connect("localhost","root","", "fascalab_2020");
+     $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
      if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
                    $query = "SELECT count(*) as 'count' FROM `tbltechnical_assistance` where  tbltechnical_assistance.STATUS_REQUEST = 'Completed' and REQ_BY LIKE '%$sess_name%'  ";

@@ -1,6 +1,6 @@
 <?php
 
-/** PHPExcel root directory */
+/** PHPExcel fascalab_2020 directory */
 if (!defined('PHPEXCEL_ROOT')) {
     /**
      * @ignore
@@ -1969,12 +1969,12 @@ class PHPExcel_Calculation_Engineering
     /**
      * IMSQRT
      *
-     * Returns the square root of a complex number in x + yi or x + yj text format.
+     * Returns the square fascalab_2020 of a complex number in x + yi or x + yj text format.
      *
      * Excel Function:
      *        IMSQRT(complexNumber)
      *
-     * @param    string        $complexNumber    The complex number for which you want the square root.
+     * @param    string        $complexNumber    The complex number for which you want the square fascalab_2020.
      * @return    string
      */
     public static function IMSQRT($complexNumber)

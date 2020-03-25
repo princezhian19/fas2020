@@ -3,7 +3,11 @@
 error_reporting(0);
 ini_set('display_errors', 0);
 // session_start();
-$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 // $UNAME = $_SESSION['username'];
 // $query = mysqli_query($conn,"SELECT pmo_id FROM end_users WHERE username = '$UNAME'");
 // $row = mysqli_fetch_array($query);

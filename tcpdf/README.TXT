@@ -1,5 +1,5 @@
 TCPDF - README
-============================================================
+====
 
 I WISH TO IMPROVE AND EXPAND TCPDF BUT I NEED YOUR SUPPORT.
 PLEASE MAKE A DONATION:
@@ -107,4 +107,4 @@ Third party fonts:
 	The binary files (.z) that begins with the prefix "ae" have been extracted from the Arabeyes.org collection (GNU-GPLv2).
 	Link : http://projects.arabeyes.org/
 
-============================================================
+====

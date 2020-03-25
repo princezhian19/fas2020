@@ -1,7 +1,7 @@
 .. _writersreaders:
 
 Writers & readers
-=================
+===
 
 OOXML
 -----

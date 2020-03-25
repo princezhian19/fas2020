@@ -1,6 +1,7 @@
 <?php 
 session_start();
-$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
@@ -16,6 +17,8 @@ if (isset($_POST['submit'])) {
   $num_row = mysqli_num_rows($sql);
 
  if ($num_row == 1){
+
+  
 
   if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13 || $division == 15) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -62,6 +65,10 @@ if (isset($_POST['submit'])) {
       <!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
+
+
+
+
 
         <form method="POST">
           <div class="form-group has-feedback">

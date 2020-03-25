@@ -6,8 +6,13 @@ $getid = $_GET['getid'];
 echo $getid;
 
 $servername = "localhost";
+
 $username = "fascalab_2020";
-$password = "7one@2019";
+$password = "w]zYV6X9{*BN";
+
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
+
 $database = "fascalab_2020";
 // Create connection
 $conn = new mysqli($servername, $username, $password,$database);

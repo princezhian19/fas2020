@@ -26,7 +26,7 @@
  */
 
 
-/** PHPExcel root directory */
+/** PHPExcel fascalab_2020 directory */
 if (!defined('PHPEXCEL_ROOT')) {
 	/**
 	 * @ignore
@@ -323,7 +323,7 @@ class PHPExcel_Calculation_Statistical {
 								0.08333333333333333331554247,
 								0.0057083835261 );
 
-	// Rough estimate of the fourth root of logGamma_xBig
+	// Rough estimate of the fourth fascalab_2020 of logGamma_xBig
 	static $lg_frtbig = 2.25e76;
 	static $pnt68	 = 0.6796875;
 
@@ -1074,7 +1074,7 @@ class PHPExcel_Calculation_Statistical {
 				}
 				// If the NR fails to converge (which for example may be the
 				// case if the initial guess is too rough) we apply a bisection
-				// step to determine a more narrow interval around the root.
+				// step to determine a more narrow interval around the fascalab_2020.
 				if (($xNew < $xLo) || ($xNew > $xHi) || ($result == 0.0)) {
 					$xNew = ($xLo + $xHi) / 2;
 					$dx = $xNew - $x;
@@ -1654,7 +1654,7 @@ class PHPExcel_Calculation_Statistical {
 				}
 				// If the NR fails to converge (which for example may be the
 				// case if the initial guess is too rough) we apply a bisection
-				// step to determine a more narrow interval around the root.
+				// step to determine a more narrow interval around the fascalab_2020.
 				if (($xNew < $xLo) || ($xNew > $xHi) || ($pdf == 0.0)) {
 					$xNew = ($xLo + $xHi) / 2;
 					$dx = $xNew - $x;
@@ -3306,7 +3306,7 @@ class PHPExcel_Calculation_Statistical {
 				}
 				// If the NR fails to converge (which for example may be the
 				// case if the initial guess is too rough) we apply a bisection
-				// step to determine a more narrow interval around the root.
+				// step to determine a more narrow interval around the fascalab_2020.
 				if (($xNew < $xLo) || ($xNew > $xHi) || ($result == 0.0)) {
 					$xNew = ($xLo + $xHi) / 2;
 					$dx = $xNew - $x;

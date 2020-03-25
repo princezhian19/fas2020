@@ -24,7 +24,7 @@
 <?php
 function filldataTable()
 {
-    $link = mysqli_connect('localhost','root','','fascalab_2020');
+    $link = mysqli_connect('localhost','fascalab_2020','','fascalab_2020');
     $query = "SELECT * FROM tbltechnical_assistance 
     where `STATUS_REQUEST` = 'Submitted' 
     GROUP by tbltechnical_assistance.ID
@@ -183,7 +183,7 @@ function filldataTable()
 }
 function showICTload($itstaff)
 {
-    $link = mysqli_connect('localhost','root','','fascalab_2020');
+    $link = mysqli_connect('localhost','fascalab_2020','','fascalab_2020');
     $query = "SELECT count(*) as 'count' FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' and ASSIST_BY = '$itstaff'";
     $result = mysqli_query($link, $query);
     while($row = mysqli_fetch_array($result))
@@ -194,7 +194,7 @@ function showICTload($itstaff)
 
 function submittedReq()
 {
-    $link = mysqli_connect('localhost','root','','fascalab_2020');
+    $link = mysqli_connect('localhost','fascalab_2020','','fascalab_2020');
     $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' order by `REQ_DATE` DESC, `REQ_TIME` LIMIT 1,3 ";
     $result = mysqli_query($link, $query);
 
@@ -223,7 +223,7 @@ function submittedReq()
 
 function currentServing($assignee)
 {
-    $link = mysqli_connect('localhost','root','','fascalab_2020');
+    $link = mysqli_connect('localhost','fascalab_2020','','fascalab_2020');
     $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' and `ASSIST_BY` like  '%$assignee%' order by `REQ_DATE` DESC, `REQ_TIME` LIMIT 1 ";
     $result = mysqli_query($link, $query);
 
@@ -264,7 +264,7 @@ if($_GET['division'] == 16)
       </ol>
       <br>
       <br>
-        <!-- ==================== TICKETING STARTS HERE ============================-->
+        <!-- ====== TICKETING STARTS HERE -->
             <div class = "row">
             
                 <div class = "col-md-9">
@@ -288,7 +288,7 @@ if($_GET['division'] == 16)
 
                 <?php 
                     echo submittedReq();
-                $link = mysqli_connect('localhost','root','','fascalab_2020');
+                $link = mysqli_connect('localhost','fascalab_2020','','fascalab_2020');
                 $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' order by `REQ_DATE` DESC, `REQ_TIME` ";
                 $result = mysqli_query($link, $query);
                     if(mysqli_num_rows($result) < 3) 

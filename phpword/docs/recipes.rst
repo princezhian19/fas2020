@@ -1,7 +1,7 @@
 .. _recipes:
 
 Recipes
-=======
+
 
 Create float left image
 -----------------------

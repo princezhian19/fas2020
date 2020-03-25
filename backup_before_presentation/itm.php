@@ -1,8 +1,12 @@
 <?php
 if(isset($_POST["item_name"]))
 {
- $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
- $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+ $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+
+ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+ 
+
  // $order_id = uniqid();
  $item_quantity = $_POST['item_quantity'];
  $item_name = $_POST['item_name'];

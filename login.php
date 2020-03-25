@@ -1,7 +1,11 @@
 <?php 
 session_start();
 $_SESSION['username'] = '';
-$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
@@ -11,9 +15,14 @@ if (isset($_POST['submit'])) {
   $row = mysqli_fetch_array($sqlUsername);
   $salt       = $row['CODE'];
   $password  = crypt($_POST['password'], '$2a$10$'.$salt.'$');
+
+  // ===============================================
+ 
+  // ===============================================
   $sql = mysqli_query($conn,"SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1");
   $row = mysqli_fetch_array($sql);
   $division =$row['DIVISION_C'];
+  $division2 = $row['DIVISION_C'];
 
   $_SESSION['division'] = $division;
   $_SESSION['complete_name'] = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
@@ -23,12 +32,12 @@ if (isset($_POST['submit'])) {
   if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Login!')
-    window.location.href='home.php?division=".$division."';
+    window.location.href='home.php?division=".$row['DIVISION_C']."';
     </SCRIPT>");
   }else{
    echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Login!')
-    window.location.href='home1.php?division=".$division."';
+    window.location.href='home1.php?division=".$row['DIVISION_C']."';
     </SCRIPT>");
    }
  }else{

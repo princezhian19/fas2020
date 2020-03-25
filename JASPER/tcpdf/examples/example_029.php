@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_029.php
 // Begin       : 2008-06-09
 // Last Update : 2010-08-08
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -119,6 +119,6 @@ $pdf->Cell(0, 12, 'DISPLAY PREFERENCES - PAGE 3', 0, 0, 'C');
 //Close and output PDF document
 $pdf->Output('example_029.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE                                                
-//============================================================+
+//====+

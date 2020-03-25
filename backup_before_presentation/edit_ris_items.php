@@ -1,5 +1,9 @@
 <?php 
-$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
+
 
 $id = $_GET['id'];
 $id2 = $_GET['id2'];
@@ -44,7 +48,7 @@ $update = mysqli_query($conn,"UPDATE ris_stock SET qty = '$qty' WHERE id = '$id'
         <div  class="col-xs-3">
           <label>Quantity</label>
           <?php
-              $conn = mysqli_connect("localhost", "root", "", "fascalab_2020");
+              $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
               $sq = mysqli_query($conn,"SELECT qty from ris_stock where id ='".$_GET['id']."' ");
               while ($row = mysqli_fetch_assoc($sq)) {
                 echo '<input type="text" class="form-control" style="height: 40px;"  placeholder="" name="qty" id="qty" value="'.$row['qty'].'" />';   

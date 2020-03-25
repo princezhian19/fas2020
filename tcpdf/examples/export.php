@@ -51,7 +51,7 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 $pdf->AddPage();
 
       $id = $_GET['id'];
-      $conn=mysqli_connect('localhost','root','','midterm_zamora');  
+      $conn=mysqli_connect('localhost','fascalab_2020','','midterm_zamora');  
       $sql = "SELECT CONCAT( customerFN, ' ', customerLN ) AS firstlast,customerAddress,contact,email FROM customer WHERE customerID = '$id'";
       $result = mysqli_query($conn, $sql);
       $get = mysqli_fetch_array($result);
@@ -90,7 +90,7 @@ function fetch_data()
  {  
       $output = '';  
       $id = $_GET['id'];
-      $conn=mysqli_connect('localhost','root','','midterm_zamora');  
+      $conn=mysqli_connect('localhost','fascalab_2020','','midterm_zamora');  
       $sql = "SELECT * FROM purchase WHERE visitID = '$id'";
       $result = mysqli_query($conn, $sql);  
       while($row = mysqli_fetch_array($result))  

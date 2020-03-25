@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <?php 
-                $conn=mysqli_connect("localhost","root","","fascalab_2020");
+                $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                 $view_query = mysqli_query($conn,"SELECT * FROM pr ");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {

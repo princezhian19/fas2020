@@ -8,8 +8,13 @@ $getid = $_GET['getid'];
 //echo $id;
 
 $servername = "localhost";
+
 $username = "fascalab_2020";
-$password = "7one@2019";
+$password = "w]zYV6X9{*BN";
+
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
+
 $database = "fascalab_2020";
 // Create connection
 $conn = new mysqli($servername, $username, $password,$database);
@@ -20,7 +25,7 @@ if ($conn->connect_error) {
 } 
 //echo "Connected successfully";
 
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 function app($connect)
 { 
   $output = '';

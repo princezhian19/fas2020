@@ -1,6 +1,6 @@
 
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 $app_id = $_GET['app_id'];
 $rfq_id = $_GET['rfq_id'];
 $iar_id = $_GET['iar_id'];

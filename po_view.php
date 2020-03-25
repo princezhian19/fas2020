@@ -1,7 +1,7 @@
 <?php
 $rfq_id = $_GET['rfq_id'];
 $supplier_id = $_GET['supplier_id'];
-$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $select1 = mysqli_query($conn,"SELECT po_id FROM selected_quote WHERE rfq_id = $rfq_id");
 $row1 = mysqli_fetch_array($select1);
 $po_id = $row1['po_id'];
@@ -62,7 +62,7 @@ $id = $rowpo['id'];
                                 <div class="col-md-12">
                                     <p>
                                         <!-- <a href="" class="btn btn-primary"> Update </a> |  -->
-                                        <a href="export_po.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-success"> Export </a>
+                                        <a href="export_po.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-success"> Export </a> | <a href="UpdatePo.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-primary"> Update </a>
                                     </p> 
                                     <div class="table table-responsive table-bordered"></div>
                                     <table id="example1" class="table table-striped table-bordered" style="background-color white;">

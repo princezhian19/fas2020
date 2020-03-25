@@ -1,5 +1,5 @@
 /* TodoList()
- * =========
+ * ==
  * Converts a list into a todoList.
  *
  * @Usage: $('.my-list').todoList(options)
@@ -29,7 +29,7 @@
   };
 
   // TodoList Class Definition
-  // =========================
+  // ====
   var TodoList = function (element, options) {
     this.element = element;
     this.options = options;
@@ -65,7 +65,7 @@
   };
 
   // Plugin Definition
-  // =================
+  // ===
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this);
@@ -91,14 +91,14 @@
   $.fn.todoList.Constructor = TodoList;
 
   // No Conflict Mode
-  // ================
+  // ==
   $.fn.todoList.noConflict = function () {
     $.fn.todoList = old;
     return this;
   };
 
   // TodoList Data API
-  // =================
+  // ===
   $(window).on('load', function () {
     $(Selector.data).each(function () {
       Plugin.call($(this));

@@ -1,5 +1,5 @@
 <?php
-//============================================================+
+//====+
 // File name   : example_052.php
 // Begin       : 2009-05-07
 // Last Update : 2011-07-06
@@ -17,7 +17,7 @@
 //               UK
 //               www.tecnick.com
 //               info@tecnick.com
-//============================================================+
+//====+
 
 /**
  * Creates an example PDF TEST document using TCPDF
@@ -116,6 +116,6 @@ $pdf->addEmptySignatureAppearance(180, 80, 15, 15);
 //Close and output PDF document
 $pdf->Output('example_052.pdf', 'I');
 
-//============================================================+
+//====+
 // END OF FILE
-//============================================================+
+//====+

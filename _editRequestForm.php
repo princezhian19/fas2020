@@ -12,7 +12,7 @@ require_once('_includes/sql_statements.php');
 
 function fillTableInfo()
 {
-    $link = mysqli_connect("localhost","root","", "fascalab_2020");
+    $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
     $result = mysqli_query($link, $query);
@@ -87,7 +87,7 @@ function fillTableInfo()
 }
 function fillCheckbox()
 {
-    $link = mysqli_connect("localhost","root","", "fascalab_2020");
+    $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
     $result = mysqli_query($link, $query);
@@ -188,7 +188,7 @@ function fillCheckbox()
                                   </div>
                     </td>
                     </tr>
-                    <!-- ================ -->
+                    <!-- == -->
                     <tr>
                     <td>&nbsp;</td>
                     </tr>
@@ -512,7 +512,7 @@ function fillCheckbox()
 }
 function showIssue()
 {
-  $link = mysqli_connect("localhost","root","", "fascalab_2020");
+  $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
   $issue = '';
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT ISSUE_PROBLEM FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
