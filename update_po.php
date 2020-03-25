@@ -1,6 +1,10 @@
 <?php
 require_once('functions.php'); 
+<<<<<<< HEAD
 $conn = mysqli_connect("localhost","root","","fascalab_2020");
+=======
+$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+>>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
 $rfq_id = $_GET['rfq_id'];
 $select_ = mysqli_query($conn,"SELECT rfq.rfq_no,s.id,s.supplier_title FROM abstract_of_quote abs LEFT JOIN rfq on rfq.id = abs.rfq_id LEFT JOIN supplier s on s.id = abs.supplier_id LEFT JOIN rfq_items rq on rq.rfq_id = abs.rfq_id WHERE abs.rfq_id = $rfq_id AND abs.abstract_no IS NOT NULL");
 $row_ = mysqli_fetch_array($select_);
@@ -134,7 +138,11 @@ $insert_nota = mysqli_query($conn,"INSERT INTO po_checklist(po_id,checklist_id) 
                 <label>Check List(s)</label>
                 <br>
                 <?php 
+<<<<<<< HEAD
                 $conn = mysqli_connect("localhost","root","","fascalab_2020");
+=======
+                $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+>>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
                 $select = mysqli_query($conn,"SELECT * FROM checklist");
                 while ($rowC = mysqli_fetch_assoc($select)) {
                     $id = $rowC['id'];

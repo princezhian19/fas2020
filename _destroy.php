@@ -1,5 +1,7 @@
 <?php
 session_start();
-echo $_SESSION['username'];
+session_destroy();
+session_unset();
+include 'login.php';
 
 ?>

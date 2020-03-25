@@ -2,7 +2,11 @@
 
 include('db.class.php'); 
 $mydb = new db();
+<<<<<<< HEAD
 $conn = mysqli_connect("localhost","root","","fascalab_2020");
+=======
+$conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+>>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
 if (isset($_POST['submit'])) 
 {
 	$id = $_GET['id'];

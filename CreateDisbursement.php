@@ -43,8 +43,13 @@ $other = $_POST['other'];
 $remarks = $_POST['remarks'];
 $status = $_POST['status'];
 $servername = "localhost";
+<<<<<<< HEAD
 $username = "root";
 $password = "";
+=======
+$username = "fascalab_2020";
+$password = "7one@2019";
+>>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
 $database = "fascalab_2020";
 $conn = new mysqli($servername, $username, $password,$database);
 

@@ -254,7 +254,11 @@ $po_no = $_GET['po_no'];
 <?php
 if (isset($_POST['submit'])) { 
  $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
+<<<<<<< HEAD
  $conn = mysqli_connect("localhost","root","","fascalab_2020");
+=======
+ $conn = mysqli_connect("localhost","fascalab_2020","7one@2019","fascalab_2020");
+>>>>>>> 4e4db213f2d3f876f69b63e7348f6cddcffbe68c
  $rfq_id = $_POST['rfq_id'];
  $iar_id = $_POST['iar_id'];
  $iar_id = $_POST['iar_id'];
