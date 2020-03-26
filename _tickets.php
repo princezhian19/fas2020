@@ -165,6 +165,9 @@ function submittedReq()
                         <li class="list-group-item">
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY']?>">
                             <?php echo $row['CONTROL_NO'];?>
+                            <button type="button" class="btn btn-LG btn-primary pull-right" style = "width:150px;">
+                                <span class="badge badge-light pull-left" ><?php echo $row['TYPE_REQ'];?></span>
+                            </button>
                         </li>
                         
                    
@@ -269,6 +272,8 @@ if($_GET['division'] == 16)
             </div>
             <div class = "col-md-9">
                 <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
+                <button class = "pull-right btn btn-primary sweet-15" style = "padding-left:10px;">Recieved</button>
+
                     <thead>
                         <th></th>
                     </thead>
