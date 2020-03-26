@@ -1,8 +1,8 @@
 <?php 
-session_start();
-
-$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+$_SESSION['username'] = '';
+include 'connection.php';
 if (isset($_POST['submit'])) {
+  session_start();
   $username = $_POST['username'];
   $password = $_POST['password'];
   $_SESSION['username'] = $username ;
@@ -11,32 +11,40 @@ if (isset($_POST['submit'])) {
   $row = mysqli_fetch_array($sqlUsername);
   $salt       = $row['CODE'];
   $password  = crypt($_POST['password'], '$2a$10$'.$salt.'$');
-  $sql = mysqli_query($conn,"SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1");
-  $row = mysqli_fetch_array($sql);
-  $division =$row['DIVISION_C'];
-  $num_row = mysqli_num_rows($sql);
 
- if ($num_row == 1){
-
-  
-
-  if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13 || $division == 15) {
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Succesfully Login!')
-    window.location.href='home.php';
-    </SCRIPT>");
-  }else{
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Succesfully Login!')
-    window.location.href='home1.php';
-    </SCRIPT>");
-   }
- }else{
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Error Occured in Login!');
-    window.location.href='index.php';
-    </SCRIPT>");
- }
+  // ===============================================
+  $query = "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1 ";
+  $result = mysqli_query($conn, $query);
+  $val = array();
+  // $numrows= mysqli_num_rows($query);
+  if ($result->num_rows > 0) {
+    while($row = mysqli_fetch_array($result))
+  {
+    $division =$row['DIVISION_C'];
+    $division2 = $row['DIVISION_C'];
+    $_SESSION['division'] = $division;
+    $_SESSION['complete_name'] = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
+      if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
+        
+        echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Succesfully Login!')
+        window.location.href='home.php?division=".$division."';
+        </SCRIPT>");
+      }else{
+        
+       echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Succesfully Login!')
+        window.location.href='home1.php?division=".$division."';
+        </SCRIPT>");
+       }  
+  }
+}else{
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.alert('Error Occured in Login!');
+  window.location.href='index.php';
+  </SCRIPT>");
+}
+ 
 
 }
 
@@ -65,10 +73,6 @@ if (isset($_POST['submit'])) {
       <!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-
-
-
-
 
         <form method="POST">
           <div class="form-group has-feedback">

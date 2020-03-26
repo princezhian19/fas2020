@@ -3,6 +3,7 @@
 if(!isset($_SESSION)) 
 { 
     session_start(); 
+    $username = $_SESSION['username'];
 } 
 ?>
 <!DOCTYPE html>
@@ -20,12 +21,27 @@ if(!isset($_SESSION))
   <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
- 
-<?php include('sidebar2.php');?>
+ <?php 
+  if (
+    $username == 'charlesodi' ||
+    $username == 'mmmonteiro' ||  
+    $username == 'cvferrer' || 
+    $username == 'masacluti' || 
+    $username == 'magonzales' || 
+    $username == 'seolivar' || 
+    $username == 'jamonteiro' || 
+    $username == 'ctronquillo' || 
+    $username == 'rdmiranda')
+    {
+      include('sidebar.php');
+    }else{
+      include('sidebar2.php');
+    }
+
+ ?>
 
   <div class="content-wrapper">
     <section class="content-header">
@@ -41,20 +57,20 @@ if(!isset($_SESSION))
   </div>
  
 </div>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<script src="bower_components/moment/min/moment.min.js"></script>
-<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="plugins/iCheck/icheck.min.js"></script>
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+  <script src="plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+  <script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+  <script src="bower_components/moment/min/moment.min.js"></script>
+  <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+  <script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+  <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+  <script src="plugins/iCheck/icheck.min.js"></script>
+  <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <!-- <script src="dist/js/adminlte.min.js"></script>
 <script src="dist/js/demo.js"></script> -->
 <script>

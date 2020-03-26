@@ -10,11 +10,11 @@ $UNAME = $_SESSION['username'];
 function fillInputs()
 {
   echo '<div class="col-md-6">';
-  $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
+  include 'connection.php';
   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
   $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
-  $result = mysqli_query($link, $query);
+  $result = mysqli_query($conn, $query);
   $val = array();
   while($row = mysqli_fetch_array($result))
     {
@@ -79,11 +79,11 @@ function fillInputs()
 function fillInputs2()
 {
   echo '<div class="col-md-6">';
-  $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
+  include 'connection.php';
   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
   $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
-  $result = mysqli_query($link, $query);
+  $result = mysqli_query($conn, $query);
   $val = array();
   while($row = mysqli_fetch_array($result))
     {

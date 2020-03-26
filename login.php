@@ -2,8 +2,7 @@
 session_start();
 $_SESSION['username'] = '';
 
-$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-
+include 'connection.php';
 
 
 if (isset($_POST['submit'])) {
@@ -17,35 +16,52 @@ if (isset($_POST['submit'])) {
   $password  = crypt($_POST['password'], '$2a$10$'.$salt.'$');
 
   // ===============================================
- 
-  // ===============================================
-  $sql = mysqli_query($conn,"SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1");
-  $row = mysqli_fetch_array($sql);
-  $division =$row['DIVISION_C'];
-  $division2 = $row['DIVISION_C'];
+  $query = "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1 ";
+  $result = mysqli_query($conn, $query);
+  $val = array();
 
-  $_SESSION['division'] = $division;
-  $_SESSION['complete_name'] = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
   $num_row = mysqli_num_rows($sql);
+  if ($num_row == 1){
+  while($row = mysqli_fetch_array($result))
+  {
+    $division =$row['DIVISION_C'];
+    $division2 = $row['DIVISION_C'];
+    $_SESSION['division'] = $division;
+    $_SESSION['complete_name'] = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
+      if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
+        echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Succesfully Login!')
+        window.location.href='home.php?division=".$division."';
+        </SCRIPT>");
+      }else{
+       echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Succesfully Login!')
+        window.location.href='home1.php?division=".$division."';
+        </SCRIPT>");
+       }
+    
+    
+  
+    $_SESSION['division'] = $division;
+    $_SESSION['complete_name'] = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
+  }
+}else{
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.alert('Error Occured in Login!');
+  window.location.href='index.php';
+  </SCRIPT>");
+}
+  // ===============================================
+  // $sql = mysqli_query($conn,"SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1");
+  // $row = mysqli_fetch_array($sql);
+  // $division =$row['DIVISION_C'];
+  // $division2 = $row['DIVISION_C'];
 
- if ($num_row == 1){
-  if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Succesfully Login!')
-    window.location.href='home.php?division=".$row['DIVISION_C']."';
-    </SCRIPT>");
-  }else{
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Succesfully Login!')
-    window.location.href='home1.php?division=".$row['DIVISION_C']."';
-    </SCRIPT>");
-   }
- }else{
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Error Occured in Login!');
-    window.location.href='index.php';
-    </SCRIPT>");
- }
+  // $_SESSION['division'] = $division;
+  // $_SESSION['complete_name'] = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
+  // $num_row = mysqli_num_rows($sql);
+
+
 
 }
 

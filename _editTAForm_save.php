@@ -1,9 +1,10 @@
 <?php
-$link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
+$link = mysqli_connect("localhost","root","", "db_dilg_pmiss");
 $started_date =  date("Y-m-d",strtotime($_POST['started_date']));
 // $requested_date = date("Y-m-d",strtotime($_POST['requested_date']));
 $completed_date =  date("Y-m-d",strtotime($_POST['completed_date']));
 $status = $_POST['status'];
+$STATUS_DESC = $_POST['STATUS_DESC'];
 // $request_time = $_POST['request_time'];
 if (strstr($_POST['started_time'], 'PM' ) ) {
     $a = str_replace("PM","",$_POST['started_time']);
@@ -35,7 +36,7 @@ echo $completed_time;
 
 // }
 $insert ="UPDATE `tbltechnical_assistance` SET 
-`STATUS` ='".$status."',
+`STATUS_DESC` = '".$STATUS_DESC."',
 `START_DATE`= '".$started_date."',
 `START_TIME`= '".$started_time."',
 `COMPLETED_DATE`= '".$completed_date."',
@@ -45,6 +46,7 @@ WHERE `CONTROL_NO` = '".$_POST['control_no']."'";
 if (mysqli_query($link, $insert)) {
 } else {
 }
+echo $insert;
 ?>
 <!-- 
 

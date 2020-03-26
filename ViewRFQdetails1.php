@@ -1,9 +1,27 @@
+<<<<<<< HEAD
 <?php
+=======
+<<<<<<< HEAD
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:login.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
+?><?php
+>>>>>>> 2cd3d5e2d6b5460ee647288472ffab19b4bbe4d0
 session_start();
 if(!isset($_SESSION['username'])){
 header('location:login.php');
 }
 ?>
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 62e70434f8e88e2c5cb24a4b0c0fbcc174c8919a
+>>>>>>> 2cd3d5e2d6b5460ee647288472ffab19b4bbe4d0
 <!DOCTYPE html>
 <html>
 <!-- <style>

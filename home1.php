@@ -1,12 +1,18 @@
-<?php
-
-/* session_start();
+<?php session_start();
 if(!isset($_SESSION['username'])){
 header('location:login.php');
+<<<<<<< HEAD
 } */
 session_start();
+$username = $_SESSION['username'];
 if(!isset($_SESSION['username'])){
 header('location:index.php');
+=======
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+>>>>>>> 9ec253901d6145d4b5121733ffc2e5a4fa7a6710
 }
 ?>
 <!DOCTYPE html>
@@ -25,7 +31,24 @@ header('location:index.php');
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
-    <?php include('sidebar2.php');?>
+  <?php 
+  if (
+    $username == 'charlesodi' ||
+    $username == 'mmmonteiro' ||  
+    $username == 'cvferrer' || 
+    $username == 'masacluti' || 
+    $username == 'magonzales' || 
+    $username == 'seolivar' || 
+    $username == 'jamonteiro' || 
+    $username == 'ctronquillo' || 
+    $username == 'rdmiranda')
+    {
+      include('sidebar.php');
+    }else{
+      include('sidebar2.php');
+    }
+
+ ?>
 
       <div class="content-wrapper">
         <section class="content-header">
