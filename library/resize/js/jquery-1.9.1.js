@@ -22,7 +22,7 @@ var
 	// The deferred used on DOM ready
 	readyList,
 
-	// A central reference to the fascalab_2020 jQuery(document)
+	// A central reference to the root jQuery(document)
 	rootjQuery,
 
 	// Support: IE<9
@@ -3957,7 +3957,7 @@ function Sizzle( selector, context, results, seed ) {
 			newSelector = nodeType === 9 && selector;
 
 			// qSA works strangely on Element-rooted queries
-			// We can work around this by specifying an extra ID on the fascalab_2020
+			// We can work around this by specifying an extra ID on the root
 			// and working up from there (Thanks to Andrew Dupont for the technique)
 			// IE 8 doesn't work on object elements
 			if ( nodeType === 1 && context.nodeName.toLowerCase() !== "object" ) {
@@ -4880,7 +4880,7 @@ Expr = Sizzle.selectors = {
 			return hash && hash.slice( 1 ) === elem.id;
 		},
 
-		"fascalab_2020": function( elem ) {
+		"root": function( elem ) {
 			return elem === docElem;
 		},
 
@@ -5463,7 +5463,7 @@ function select( selector, context, results, seed ) {
 		// Try to minimize operations if there is only one group
 		if ( match.length === 1 ) {
 
-			// Take a shortcut and set the context if the fascalab_2020 selector is an ID
+			// Take a shortcut and set the context if the root selector is an ID
 			tokens = match[0] = match[0].slice( 0 );
 			if ( tokens.length > 2 && (token = tokens[0]).type === "ID" &&
 					context.nodeType === 9 && !documentIsXML &&
