@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("localhost","root","", "db_dilg_pmiss");
+include 'connection.php';
 $started_date =  date("Y-m-d",strtotime($_POST['started_date']));
 // $requested_date = date("Y-m-d",strtotime($_POST['requested_date']));
 $completed_date =  date("Y-m-d",strtotime($_POST['completed_date']));
@@ -43,7 +43,7 @@ $insert ="UPDATE `tbltechnical_assistance` SET
 `COMPLETED_TIME`= '".$completed_time."',
 `STATUS_REQUEST`='Completed'
 WHERE `CONTROL_NO` = '".$_POST['control_no']."'";
-if (mysqli_query($link, $insert)) {
+if (mysqli_query($conn, $insert)) {
 } else {
 }
 echo $insert;

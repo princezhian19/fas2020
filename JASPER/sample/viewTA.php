@@ -7,7 +7,8 @@ include_once("../PHPJasperXML.inc.php");
 
 
 
-include '../../connection.php';
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
               if(mysqli_connect_errno()){echo mysqli_connect_error();}  
              $cn = $_GET['id'];
 

@@ -1,18 +1,9 @@
-<?php session_start();
-if(!isset($_SESSION['username'])){
-header('location:login.php');
-<<<<<<< HEAD
-} */
+<?php
+
 session_start();
 $username = $_SESSION['username'];
 if(!isset($_SESSION['username'])){
 header('location:index.php');
-=======
-}else{
-  error_reporting(0);
-ini_set('display_errors', 0);
-$username = $_SESSION['username'];
->>>>>>> 9ec253901d6145d4b5121733ffc2e5a4fa7a6710
 }
 ?>
 <!DOCTYPE html>
@@ -27,7 +18,6 @@ $username = $_SESSION['username'];
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">

@@ -38,7 +38,9 @@ include 'connection.php';
               if($row['DIVISION_C'] != '16')
               {
                 ?>
-                <li class="btn btn-success"><a href="_requestForm.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a></li>
+                <li class="btn btn-success">
+                  <a href="_requestForm.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a>
+                </li>
                 <?php
               }else{
   
@@ -79,7 +81,11 @@ include 'connection.php';
                         </div>
   
                         <div class = "col-md-2" style = "float:right;margin-right:-30px;">
-                          <li class="btn btn-success"><a href="_requestForm.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create Request</a></li>
+                          <li class="btn btn-success">
+                          <a href="_requestForm.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create Request</a>
+                          
+                          </li>
+
                         </div>
                     </div>
                   </div>

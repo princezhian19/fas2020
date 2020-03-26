@@ -10,13 +10,13 @@ require_once('_includes/sql_statements.php');
 
 function fillTableInfo()
 {
-    $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+    include 'connection.php';
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT EMP_N,FIRST_M,MIDDLE_M, LAST_M, MOBILEPHONE, EMAIL,DIVISION_N, DIVISION_M , POSITION_M FROM tblpersonneldivision 
     INNER JOIN tblemployee on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C 
     INNER JOIN tbldilgposition on tblemployee.POSITION_C = tbldilgposition.POSITION_ID
     where tblemployee.UNAME  = '".$_SESSION['username']."' ";
-    $result = mysqli_query($link, $query);
+    $result = mysqli_query($conn, $query);
     $val = array();
     if($row = mysqli_fetch_array($result))
       {
@@ -95,11 +95,11 @@ function fillTableInfo()
 
 function countCN()
 {
-                                    $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+                                    include 'connection.php';
                                     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
                                                   $query = "SELECT count(*) as 'count' from tbltechnical_assistance ";
-                                                  $result = mysqli_query($link, $query);
+                                                  $result = mysqli_query($conn, $query);
                                                   $val = array();
                                                   if($row = mysqli_fetch_array($result))
                                                   {
@@ -112,7 +112,7 @@ function showUser()
 {
   $position_c = '';
   echo '<select class="form-control select2" style="width: 100%;" name="requested_by" id="type" >';
-  $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
+  include 'connection.php';
   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
   
   $query = "SELECT * FROM `tblpersonneldivision` 

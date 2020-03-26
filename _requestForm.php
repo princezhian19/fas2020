@@ -38,7 +38,7 @@ session_start();
 <div class="wrapper">
 <?php
 
-if($_GET['division'] == 16)
+if($_GET['division'] == 11 || $_GET['division'] == 12 || $_GET['division'] == 13 || $_GET['division'] == 14 || $_GET['division'] == 16)
 {
   include('sidebar.php');
 }else{

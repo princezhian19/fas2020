@@ -62,8 +62,7 @@
                   } */  
                 $user_id = ""; 
 
-                $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
-
+               include 'connection.php';
                 
 
                 $username = $_SESSION['username'];
@@ -105,7 +104,7 @@
                 }
 
                // $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-                $conn=mysqli_connect("localhost","root","","db_dilg_pmis");
+                include 'connection.php';
               
                 
                 $view_query = mysqli_query($conn,"SELECT * FROM pr  where pmo = '$user_id'  order by id desc");
@@ -591,8 +590,6 @@ $mydb = new db(); // create a new object, class db()
             $username = "fascalab_2020";
             $password = "w]zYV6X9{*BN";
 
-            $username = "fascalab_2020";
-            $password = "w]zYV6X9{*BN";
 
             $database = "fascalab_2020";
             

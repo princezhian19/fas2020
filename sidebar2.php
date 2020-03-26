@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+
 if(!isset($_SESSION['username'])){
 header('location:login.php');
 }else{
@@ -76,8 +77,7 @@ function showDivision()
         <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
           </ul>
         </li>
-        <li><a style="color:black;text-decoration: none;" href="_techassistance.php?division=<?php echo $_GET['division'];?>"><i class="fa">&#xf0f6;</i>ICT TECHNICAL ASSISTANCE 
-        
+        <li><a style="color:black;text-decoration: none;font-size:13.5px;" href="_techassistance.php?division=<?php echo $_GET['division'];?>"><i class="fa">&#xf0f6;</i>ICT TECHNICAL ASSISTANCE<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
         <?php 
        echo showDivision();
         ?>

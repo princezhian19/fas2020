@@ -33,8 +33,8 @@ if(isset($_POST['req_type_subcategory']))
 }
 
 
-// if(isset($site ,$purpose, $purpose2, $changeaccount, $others1, $others2,$others3))
-// {
+if(isset($site))
+{
 $site = $_POST['site'];
 $purpose = $_POST['purpose'];
 $purpose2 = $_POST['purpose2'];
@@ -43,16 +43,16 @@ $changeaccount = $_POST['changeaccount'];
 $others1 = $_POST['others1'];
 $others2 = $_POST['others2'];
 $others3 = $_POST['others3'];
-// }else{
-//     $site = '';
-//     $purpose = '';
-//     $purpose2 ='';
-//     $softwares = '';
-//     $changeaccount = '';
-//     $others1 = '';
-//     $others2 = '';
-//     $others3 = '';
-// }
+}else{
+    $site = '';
+    $purpose = '';
+    $purpose2 ='';
+    $softwares = '';
+    $changeaccount = '';
+    $others1 = '';
+    $others2 = '';
+    $others3 = '';
+}
 
 $issue = $_POST['issue'];
 $timeliness = $_POST['timeliness'];
@@ -70,14 +70,15 @@ $mac_address = $_POST['mac_address'];
 
 
 
-            $link = mysqli_connect('localhost','fascalab_2020','','fascalab_2020');
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
               if(mysqli_connect_errno()){echo mysqli_connect_error();}  
              $currentuser = $_POST['curuser'];
 
 
               $query = "SELECT * FROM tblemployee where EMP_N = $currentuser";
               $name = '';
-              $result = mysqli_query($link, $query);
+              $result = mysqli_query($conn, $query);
               $val = array();
               while($row = mysqli_fetch_array($result))
               {
@@ -174,11 +175,13 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
 
             //    echo $sql_insert;
             //    exit();
-if (mysqli_query($link, $sql_insert)) {
+if (mysqli_query($conn, $sql_insert)) {
  } else {
  }
  ?>
-<script>window.location = '../../_techassistance.php';</script>
+<script>
+window.location = '../../_techassistance.php?division=<?php echo $_GET['division'];?>';
+</script>
  <?php
     // ======
 //    if($_POST['req_type_category'][$i] == "Others"){

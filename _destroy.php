@@ -1,7 +1,5 @@
 <?php
 session_start();
 session_destroy();
-session_unset();
-include 'index.php';
-
+require 'index.php';
 ?>
