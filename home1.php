@@ -5,6 +5,7 @@ if(!isset($_SESSION['username'])){
 header('location:login.php');
 } */
 session_start();
+$username = $_SESSION['username'];
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }
@@ -25,7 +26,24 @@ header('location:index.php');
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
-    <?php include('sidebar2.php');?>
+  <?php 
+  if (
+    $username == 'charlesodi' ||
+    $username == 'mmmonteiro' ||  
+    $username == 'cvferrer' || 
+    $username == 'masacluti' || 
+    $username == 'magonzales' || 
+    $username == 'seolivar' || 
+    $username == 'jamonteiro' || 
+    $username == 'ctronquillo' || 
+    $username == 'rdmiranda')
+    {
+      include('sidebar.php');
+    }else{
+      include('sidebar2.php');
+    }
+
+ ?>
 
       <div class="content-wrapper">
         <section class="content-header">

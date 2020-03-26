@@ -6,7 +6,7 @@ $username = $_SESSION['username'];
 function showDivision()
 {
   $username = $_SESSION['username'];
-  $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
+  $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
   $query = "SELECT * FROM `tblemployee` WHERE md5(UNAME) = '".md5($username)."' ";
   
@@ -56,8 +56,8 @@ function showDivision()
         <li class="header" style="background-color: white;">MENUS</li>
 
 
-        <li><a style="color:black;text-decoration: none;" href="home1.php"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
-        <li><a href="ViewPR1.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PROCUREMENT</a></li>
+        <li><a style="color:black;text-decoration: none;" href="home1.php?division=<?php echo $_GET['division'];?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
+        <li><a href="ViewPr1.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PROCUREMENT</a></li>
         <li class="treeview">
           <a href="#" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"></i>
@@ -67,7 +67,7 @@ function showDivision()
             </span>
           </a>
           <ul class="treeview-menu" >
-        <li><a href="ViewBURS.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> ORS/BURS</a></li>
+        <li><a href="ViewBURS.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> ORS/BURS</a></li>
         <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
           </ul>
         </li>
@@ -218,7 +218,7 @@ function showDivision()
 
     </section>
   </aside>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="dist/js/jquery.min.js"></script>
   <script>
   setInterval(function(){
 $('#ta_request').load('_countCompletedTA.php');

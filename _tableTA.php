@@ -29,7 +29,7 @@ th{
                 ?>
             </div>
             <?php
-            $con = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
+            $con = mysqli_connect("localhost","root","", "db_dilg_pmis");
 
             $name = $_SESSION['username'];
             $query = "SELECT * from tblemployee where UNAME = '$name'";

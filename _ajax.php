@@ -1,13 +1,13 @@
 
 <?php
 session_start();
-$con = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
+$con = mysqli_connect("localhost","root","","db_dilg_pmis");
 
 $return_arr = array();
 $name = $_SESSION['username'];
 $division  = $_SESSION['division'];
 $complete_name = $_SESSION['complete_name'];
-// ==
+// ===============================================================================
 $query = "SELECT * from tblemployee where UNAME = '$name'";
 $result = mysqli_query($con,$query);
 if($row = mysqli_fetch_array($result))
@@ -70,13 +70,13 @@ if($row = mysqli_fetch_array($result))
     {
         $sr = '<span class="badge badge-pill" style = "background-color:green;">'.$sr.'</span>';
     }
-    // =====
+    // =========================================================================================
     if($action == 'Submitted' && $division == 16)
     {
        
         if($division == '16' || $uname == 'masacluti' || $uname == 'charlesodi' || $uname == 'mmmonteiro' || $uname == 'jamonteiro' || $uname == 'cvferrer' || $uname == 'seolivar'){
             // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "view" >&#xf06e;</i>
-            $action = '<i id = "sweet-14" style = "font-size:20px;color:#2196F3;tex-align:center;" class=" fa fa-check-circle" aria-hidden="true"></i>';
+            $action = '<i id = "    -14" style = "font-size:20px;color:#2196F3;tex-align:center;" class=" fa fa-check-circle" aria-hidden="true"></i>';
         }else{
             $action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "edit">&#xf044;</i>';
     
@@ -151,7 +151,7 @@ if($row = mysqli_fetch_array($result))
 
 
 
-// ==
+// ===============================================================================
 
 
 

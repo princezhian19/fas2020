@@ -12,7 +12,7 @@ require_once('_includes/sql_statements.php');
 
 function fillTableInfo()
 {
-    $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
+    $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
     $result = mysqli_query($link, $query);
@@ -21,6 +21,7 @@ function fillTableInfo()
       {
           ?>
                <table  border = 1 class = "center-text" style = "width:100%;">
+               <input type = "hidden" value = "<?php echo $_GET['id'];?>" name = "control_no" id = "control_no" />
                             <tbody>
                                 <tr>
                                     <td colspan = 4>ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
@@ -87,7 +88,7 @@ function fillTableInfo()
 }
 function fillCheckbox()
 {
-    $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
+    $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
     $result = mysqli_query($link, $query);
@@ -512,7 +513,7 @@ function fillCheckbox()
 }
 function showIssue()
 {
-  $link = mysqli_connect("localhost","fascalab_2020","", "fascalab_2020");
+  $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
   $issue = '';
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT ISSUE_PROBLEM FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
@@ -522,6 +523,19 @@ function showIssue()
         $issue = $row['ISSUE_PROBLEM'];
       }
       return $issue;
+}
+function showDiagnose()
+{
+  $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+  $status_desc = '';
+    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+    $query = "SELECT STATUS_DESC FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+    $result = mysqli_query($link, $query);
+    if($row = mysqli_fetch_array($result))
+      {
+        $status_desc = $row['STATUS_DESC'];
+      }
+      return $status_desc;
 }
 
 ?>
@@ -622,8 +636,8 @@ function showIssue()
                                                   </td>
 
                                                   <td colspan = 4>
-                                                  <textarea rows="20" cols="56" style ="resize:none;width:100%;text-align:left;" name = "status">
-
+                                                  <textarea rows="20" cols="56" style ="resize:none;width:100%;text-align:left;" name = "STATUS_DESC">
+                                                  <?php  echo showDiagnose(); ?>
                                                   </textarea>
                                                   </td>
                                                   </tr>
@@ -751,34 +765,33 @@ function showIssue()
 <link rel="stylesheet" href="_includes/sweetalert.css">
 <script>
    var c_n = $('#control_no').val();
-   document.querySelector('.sweet-14').onclick = function(){
-        swal({
-          title: "Are you sure you want to save?",
-          text: "Control No:"+c_n,
-          type: "info",
-          showCancelButton: true,
-          confirmButtonClass: 'btn-danger',
-          confirmButtonText: 'Yes',
-  closeOnConfirm: false,
-  showLoaderOnConfirm: true
-        }, function () {
-          var queryString = $('#submit').serialize();
-          $.ajax({
-            url:"_editTAForm_save.php",
-            method:"POST",
-            data:$("#submit").serialize(),
-            
-            success:function(data)
-            {
-              alert($("#submit").serialize());
-                setTimeout(function () {
-                swal("Record saved successfully!");
-                }, 3000);
-                window.location = "_techassistance.php";
-            }
-          });
-      });
-   }
+    document.querySelector('.sweet-14').onclick = function(){
+          swal({
+              title: "Are you sure you want to save?",
+              text: "Control No:"+c_n,
+              type: "info",
+              showCancelButton: true,
+              confirmButtonClass: 'btn-danger',
+              confirmButtonText: 'Yes',
+      closeOnConfirm: false,
+      showLoaderOnConfirm: true
+          }, function () {
+            var queryString = $('#submit').serialize();
+            $.ajax({
+              url:"_editTAForm_save.php",
+              method:"POST",
+              data:$("#submit").serialize(),
+              
+              success:function(data)
+              {
+                  setTimeout(function () {
+                  swal("Record saved successfully!");
+                  }, 3000);
+                  window.location = "_techassistance.php?division=<?php echo $_GET['division'];?>";
+              }
+            });
+        });
+    }
   $(function () {
   
     $('.select2').on('change', function()

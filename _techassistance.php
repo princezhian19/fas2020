@@ -20,7 +20,6 @@ if(!isset($_SESSION))
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -290,7 +289,7 @@ $(document).ready(function() {
                     td = tr.find("td:first")
                     var cell = oTableApi.cell(td);
                   // window.location="_editTA.php?id="+cell.data();
-                  window.location="_editRequestTA.php?id="+cell.data();
+                  window.location="_editRequestTA.php?division=<?php echo $_GET['division'];?>&id="+cell.data();
 
             });
 

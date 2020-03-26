@@ -36,8 +36,15 @@ session_start();
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+<?php
 
-  <?php include('sidebar2.php');?>
+if($_GET['division'] == 16)
+{
+  include('sidebar.php');
+}else{
+  include('sidebar2.php');
+}
+?>
 
   <div class="content-wrapper">
     <section class="content-header">

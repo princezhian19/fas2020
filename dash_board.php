@@ -27,7 +27,7 @@
 
                 $user_id = ""; 
 
-                $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
 
                 $username = $_SESSION['username'];
 
@@ -67,7 +67,7 @@
 
                 }
                 //echo $user_id;
-                $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
                 $view_query = mysqli_query($conn,"SELECT * FROM pr where pmo='$user_id' order by id desc ");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
@@ -224,9 +224,9 @@ $mydb = new db(); // create a new object, class db()
               </thead>
               <?php
               $servername = "localhost";
-              $username = "fascalab_2020";
-              $password = "w]zYV6X9{*BN";
-              $database = "fascalab_2020";
+              $username = "root";
+              $password = "";
+              $database = "db_dilg_pmis";
               $conn = new mysqli($servername, $username, $password,$database);
               $view_query = mysqli_query($conn, "SELECT * FROM saroob where status = 'Obligated' order by date desc");
               while ($row = mysqli_fetch_assoc($view_query)) {
@@ -398,9 +398,9 @@ $mydb = new db(); // create a new object, class db()
               </thead>
               <?php
               $servername = "localhost";
-              $username = "fascalab_2020";
-              $password = "w]zYV6X9{*BN";
-              $database = "fascalab_2020";
+              $username = "root";
+              $password = "";
+              $database = "db_dilg_pmis";
               $conn = new mysqli($servername, $username, $password,$database);
               $view_query = mysqli_query($conn, "SELECT * FROM disbursement where status = 'Disbursed' order by datereleased desc");
               while ($row = mysqli_fetch_assoc($view_query)) {

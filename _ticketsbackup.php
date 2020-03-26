@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   
   
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <style>
         pre { margin: 20px 0; padding: 20px; background: #fafafa; } .round { border-radius: 50%;vertical-align: }
 </style>
@@ -26,9 +28,9 @@ function filldataTable()
 {
     $link = mysqli_connect('localhost','root','','db_dilg_pmis');
     $query = "SELECT * FROM tbltechnical_assistance 
-    where `STATUS_REQUEST` = 'Submitted' or  `STATUS_REQUEST` = 'Received' or `STATUS_REQUEST` = 'For action' 
+    where `STATUS_REQUEST` = 'Submitted' 
     GROUP by tbltechnical_assistance.ID
-    order by `REQ_DATE` DESC, `REQ_TIME` ";
+    order by `REQ_DATE` DESC, `REQ_TIME` desc ";
     $result = mysqli_query($link, $query);
     while($row = mysqli_fetch_array($result))
     {
@@ -45,27 +47,17 @@ function filldataTable()
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="row no-gutters">
-                                                <div class="col-md-2" style = "background-color:#9FA8DA;height:112px;text-align:center;padding-top:3%;font-size:20px;height:115px;">
-                                                <?php echo '<b>'.$row['CONTROL_NO'].'</b>';?>
-                                                <?php echo '<label style = "color:blue;">'.$row['STATUS_REQUEST'].'</label>';?>
+                                                <div class="col-md-2" style = "background-color:#9FA8DA;height:112px;text-align:center;padding:1%;font-size:20px;height:115px;">
+                                                <?php echo $row['CONTROL_NO'];?>
+                                                
+                                                    <div id="<?php echo $row['CONTROL_NO']; ?>" style = "background-color:#1A237E;margin-left:-9px;color:#fff;border-radius:3%;">
+                                                    <span class = "sweet-14"><i class="fa fa-users" aria-hidden="true"></i>Assign </span>
+
+                                                    </div>
                                                     
                                                 </div>
                                                 <div class="col-md-10" style = "background-color:#CFD8DC;">
-                                                    <div class="card-body" id="<?php echo $row['CONTROL_NO']; ?>">
-                                                        <button class = "pull-right sweet-14 btn btn-primary">Assign</button>
-                                                        <?php 
-                                                        if($row['STATUS_REQUEST'] == 'Received')
-                                                        {
-
-                                                        }else{
-                                                            ?>
-                                                        <button class = "pull-right btn btn-primary sweet-15" style = "padding-left:10px;">Recieved</button>
-
-                                                            <?php
-                                                        }
-                                                        ?>
-
-
+                                                    <div class="card-body">
                                                         <h5 class="card-title">Issue/Problem</h5>
                                                         <p class="card-text"><?php echo $row['ISSUE_PROBLEM'];?></p>
                                                     </div>
@@ -77,13 +69,13 @@ function filldataTable()
                                                     ?>
                                                     <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="FAD">
                                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Assignee</span>
-                                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-59.8px;font-size:12px;">-</span>
+                                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-44.8px;font-size:12px;">-</span>
                                                     <?php
                                                 }else{
                                                     ?>
                                                     <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY'];?>">
                                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Assignee</span>
-                                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-40.8px;font-size:12px;">
+                                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-44.8px;font-size:12px;">
                                                     <?php 
                                                     $uname  = $row['ASSIST_BY'];
                                                     $uname = trim($uname);
@@ -157,20 +149,26 @@ function submittedReq()
     $link = mysqli_connect('localhost','root','','db_dilg_pmis');
     $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' order by `REQ_DATE` DESC, `REQ_TIME` LIMIT 1,3 ";
     $result = mysqli_query($link, $query);
-    echo '<ul class="list-group list-group-flush">';
+
     while($row = mysqli_fetch_array($result))
     {
         ?>
-        
-                        <li class="list-group-item">
-                            <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY']?>">
-                            <?php echo $row['CONTROL_NO'];?>
-                        </li>
-                        
-                   
+        <div class = "col-md-3">
+            <div class="card">
+                <ul  class="list-group list-group-flush">
+                    <li class="list-group-item">
+                    <h2 style = "text-align:center;"><?PHP echo $row['CONTROL_NO'];?></h2>
+                    <center>
+                        <img style="text-align:center;vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY'];?>">
+                        <span style="font-size:10px;vertical-align:top;line-height:10px;">Web Programmer</span>
+                        <span style="font-size:10px;line-height:40px;50px;margin-left:-80.8px;font-size:12px;"><?php echo $row['ASSIST_BY'];?></span>
+                    </center>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <?php
     }
-    echo '</ul>';
 
      
 }
@@ -219,18 +217,59 @@ if($_GET['division'] == 16)
       <br>
       <br>
         <!-- ====== TICKETING STARTS HERE -->
-           
+            <div class = "row">
+            
+                <div class = "col-md-9">
+                    <div class = "col-sm-12 col-md-6 col-lg-12"> 
+                        <?php echo currentServing('Mark Kim Sacluti');?>
+                        <?php echo currentServing('Christian Paul Ferrer');?>
+                    </div>
+                    <div class = "col-sm-12 col-md-6 col-lg-12"> 
+                        <?php echo currentServing('Charles Adrian Odi');?>
+                        <?php echo currentServing('Shiela Mei Olivar');?>
+
+                    </div>
+                </div>
+
+                <?php 
+                    echo submittedReq();
+    $link = mysqli_connect('localhost','root','','db_dilg_pmis');
+                $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' order by `REQ_DATE` DESC, `REQ_TIME` ";
+                $result = mysqli_query($link, $query);
+                    if(mysqli_num_rows($result) < 3) 
+                        {
+                            ?>
+                            <div class = "col-md-3">
+            <div class="card">
+                <ul  class="list-group list-group-flush">
+                    <li class="list-group-item" style = "height:127px;">
+                    <h2 style = "text-align:center;"></h2>
+                    <!-- <center>
+                        <img style="text-align:center;vertical-align:top;"  class="round" width="30" height="30" avatar="DILG">
+                        <span style="font-size:10px;vertical-align:top;line-height:10px;">Web Programmer</span>
+                        <span style="font-size:10px;line-height:40px;50px;margin-left:-80.8px;font-size:12px;"></span>
+                    </center> -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+                            <?php
+                        }
+                        else{
+                        
+                    }
+                ?>
+                
 
             <div class = "row">
             <div class = "col-md-3">
                 <div class="card" style="width: 100%;margin-top:40px;">
-                <p class="font-weight-bold"><h3>ICT Staff work load</h3></p>
-
+                
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Mark Kim">
                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Web Programmer</span>
-                            <span style="font-size:10px;line-height:40px;50px;margin-left:-73.8px;font-size:12px;">Mark Kim A. Saluti</span>
+                            <span style="font-size:10px;line-height:40px;50px;margin-left:-80.8px;font-size:12px;">Mark Kim A. Saluti</span>
                             <button type="button" class="btn btn-sm btn-primary pull-right">
                                 <span class="badge badge-light"><?php echo showICTload('Mark Kim Sacluti');?></span>
                             </button>
@@ -238,7 +277,7 @@ if($_GET['division'] == 16)
                         <li class="list-group-item">
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Christian Paul">
                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Network Administrator</span>
-                            <span style="font-size:10px;line-height:40px;50px;margin-left:-94.8px;font-size:12px;">Christian Paul Ferrer</span>
+                            <span style="font-size:10px;line-height:40px;50px;margin-left:-100.8px;font-size:12px;">Christian Paul Ferrer</span>
                             <button type="button" class="btn btn-sm btn-primary pull-right">
                                 <span class="badge badge-light"><?php echo showICTload('Christian Paul Ferrer');?></span>
                             </button>
@@ -246,7 +285,7 @@ if($_GET['division'] == 16)
                         <li class="list-group-item">
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Charles Adrian">
                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Database Administrator</span>
-                            <span style="font-size:10px;line-height:40px;50px;margin-left:-100.8px;font-size:12px;">Charles Adrian Odi</span>
+                            <span style="font-size:10px;line-height:40px;50px;margin-left:-108.8px;font-size:12px;">Charles Adrian Odi</span>
                             <button type="button" class="btn btn-sm btn-primary pull-right">
                                 <span class="badge badge-light"><?php echo showICTload('Charles Adrian Odi');?></span>
                             </button>
@@ -254,17 +293,12 @@ if($_GET['division'] == 16)
                         <li class="list-group-item">
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Shiela Mei">
                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Data Analyst</span>
-                            <span style="font-size:10px;line-height:40px;50px;margin-left:-55.8px;font-size:12px;">Shiela Mei Olivar</span>
+                            <span style="font-size:10px;line-height:40px;50px;margin-left:-62.8px;font-size:12px;">Shiela Mei Olivar</span>
                             <button type="button" class="btn btn-sm btn-primary pull-right">
                                 <span class="badge badge-light"><?php echo showICTload('Shiela Mei Olivar');?></span>
                             </button>
                         </li>
                     </ul>
-                </div>
-                <div class="card" style="width: 100%;margin-top:40px;">
-                <p class="font-weight-bold"><h3></h3></p>
-                    <h3>On-going</h3>
-                    <?php echo submittedReq();?>
                 </div>
             </div>
             <div class = "col-md-9">
@@ -297,88 +331,55 @@ if($_GET['division'] == 16)
 <script src="_includes/sweetalert2.min.js" type="text/javascript"></script>
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <script type="text/javascript">
-$('.sweet-14').click(function()
-    {
-        var ids = $(this).parent('div').attr('id');
-        swal({
-            title: 'Assign to:',
-            input: 'select',
-            inputOptions: {
-            'Mark Kim Sacluti': 'Mark Kim Sacluti',
-            'Charles Adrian Odi': 'Charles Adrian Odi',
-            'Christian Paul Ferrer': 'Christian Paul Ferrer',
-            'Shiela Mei Olivar':'Shiela Mei Olivar',
-            },
-            inputPlaceholder: 'Select ICT Staff',
-            showCancelButton: true,
-            inputValidator: function (value) {
-            return new Promise(function (resolve, reject) {
-                if (value === 'Mark Kim Sacluti') {
-                resolve()
-                }else if(value == 'Charles Adrian Odi')
-                {
-                resolve()
-                } else if(value == 'Christian Paul Ferrer'){
-                resolve()
-                }else{
-                resolve()
-                }
-            })
-            }
-        }).then(function (result) {
-            swal({
-            type: 'success',
-            html: 'Successfully approved by:' + result,
-            closeOnConfirm: false
-            })
-            $.ajax({
-            url:"_approvedTA.php",
-            method:"POST",
-            data:{
-                ict_staff:result,
-                control_no:ids
-            },
-            success:function()
-            {
+$('.sweet-14').click(function(){
+   var ids = $(this).parent('div').attr('id');
+   swal({
+                        title: 'Assign to:',
+                        input: 'select',
+                        inputOptions: {
+                        'Mark Kim Sacluti': 'Mark Kim Sacluti',
+                        'Charles Adrian Odi': 'Charles Adrian Odi',
+                        'Christian Paul Ferrer': 'Christian Paul Ferrer',
+                        'Shiela Mei Olivar':'Shiela Mei Olivar',
+                        },
+                        inputPlaceholder: 'Select ICT Staff',
+                        showCancelButton: true,
+                        inputValidator: function (value) {
+                        return new Promise(function (resolve, reject) {
+                            if (value === 'Mark Kim Sacluti') {
+                            resolve()
+                            }else if(value == 'Charles Adrian Odi')
+                            {
+                            resolve()
+                            } else if(value == 'Christian Paul Ferrer'){
+                            resolve()
+                            }else{
+                            resolve()
+                            }
+                        })
+                        }
+                    }).then(function (result) {
+                        swal({
+                        type: 'success',
+                        html: 'Successfully approved by:' + result,
+                        closeOnConfirm: false
+                        })
+                        $.ajax({
+                        url:"_approvedTA.php",
+                        method:"POST",
+                        data:{
+                            ict_staff:result,
+                            control_no:ids
+                        },
+                        success:function()
+                        {
+                            
+                        window.location = '_tickets.php?division=<?php echo $_GET['division'];?>&ticket_id=<?php echo $_GET['ticket_id']; ?>';
+                        }
+                        });
+                    });
                 
-            window.location = '_tickets.php?division=<?php echo $_GET['division'];?>&ticket_id=<?php echo $_GET['ticket_id']; ?>';
-            }
-            });
-        });
-    });
-// =====================================================================
-$('.sweet-15').click(function()
-    {
-        var ids = $(this).parent('div').attr('id');
-        swal({
-            title: "Are you sure you want to recieved this request?",
-            text: "Control No:"+ids,
-            type: "info",
-            showCancelButton: true,
-            showCancelButton: true,
-            confirmButtonText: 'Yes',
-            closeOnConfirm: false,
-            showLoaderOnConfirm: true
-        }).then(function () {
-            $.ajax({
-              url:"_ticketReleased.php",
-              method:"POST",
-              data:{
-                  id:ids
-              },
-              
-              success:function(data)
-              {
-                  setTimeout(function () {
-                  swal("Record saved successfully!");
-                  }, 3000);
-                  window.location = "_tickets.php?division=<?php echo $_GET['division']?>&ticket_id=<?php echo $_GET['ticket_id']?>";
-              }
-            });
-        });
-    });
-
-
+});
 </script>
 
 
