@@ -272,7 +272,6 @@ if($_GET['division'] == 16)
             </div>
             <div class = "col-md-9">
                 <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
-                <button class = "pull-right btn btn-primary sweet-15" style = "padding-left:10px;">Recieved</button>
 
                     <thead>
                         <th></th>
@@ -398,6 +397,8 @@ $('.sweet-15').click(function()
   $(function () {
 
     $('').DataTable()
+
+
     $('#example1').DataTable({
       'paging'      : true,
       'lengthChange': true,
