@@ -58,7 +58,7 @@ function filldataTable()
                                                     <div class="card-body" id="<?php echo $row['CONTROL_NO']; ?>">
                                                         <button class = "pull-right sweet-14 btn btn-primary">Assign</button>
                                                         <?php 
-                                                        if($row['STATUS_REQUEST'] == 'Received')
+                                                        if($row['STATUS_REQUEST'] == 'Received' || $row['STATUS_REQUEST'] == 'For action')
                                                         {
 
                                                         }else{
@@ -159,18 +159,18 @@ function showICTload($itstaff)
 function submittedReq()
 {
     $link = mysqli_connect('localhost','root','','db_dilg_pmis');
-    $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' order by `REQ_DATE` DESC, `REQ_TIME` LIMIT 1,3 ";
+    $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' order by `REQ_DATE` DESC, `REQ_TIME` ";
     $result = mysqli_query($link, $query);
     echo '<ul class="list-group list-group-flush">';
     while($row = mysqli_fetch_array($result))
     {
         ?>
         
-                        <li class="list-group-item">
+                        <li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY']?>">
                             <?php echo $row['CONTROL_NO'];?>
-                            <button type="button" class="btn btn-LG btn-primary pull-right" style = "width:150px;">
-                                <span class="badge badge-light pull-left" ><?php echo $row['TYPE_REQ'];?></span>
+                            <button type="button" class="sweet-16 btn btn-success pull-right">
+                            Completed
                             </button>
                         </li>
                         
@@ -238,7 +238,7 @@ if($_GET['division'] == 16)
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Mark Kim">
                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Web Programmer</span>
                             <span style="font-size:10px;line-height:40px;50px;margin-left:-73.8px;font-size:12px;">Mark Kim A. Saluti</span>
-                            <button type="button" class="btn btn-sm btn-primary pull-right">
+                            <button type="button" class="btn btn-sm btn-danger pull-right">
                                 <span class="badge badge-light"><?php echo showICTload('Mark Kim Sacluti');?></span>
                             </button>
                         </li>
@@ -246,7 +246,7 @@ if($_GET['division'] == 16)
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Christian Paul">
                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Network Administrator</span>
                             <span style="font-size:10px;line-height:40px;50px;margin-left:-94.8px;font-size:12px;">Christian Paul Ferrer</span>
-                            <button type="button" class="btn btn-sm btn-primary pull-right">
+                            <button type="button" class="btn btn-sm btn-danger pull-right">
                                 <span class="badge badge-light"><?php echo showICTload('Christian Paul Ferrer');?></span>
                             </button>
                         </li>
@@ -254,7 +254,7 @@ if($_GET['division'] == 16)
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Charles Adrian">
                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Database Administrator</span>
                             <span style="font-size:10px;line-height:40px;50px;margin-left:-100.8px;font-size:12px;">Charles Adrian Odi</span>
-                            <button type="button" class="btn btn-sm btn-primary pull-right">
+                            <button type="button" class="btn btn-sm btn-danger pull-right">
                                 <span class="badge badge-light"><?php echo showICTload('Charles Adrian Odi');?></span>
                             </button>
                         </li>
@@ -262,7 +262,7 @@ if($_GET['division'] == 16)
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Shiela Mei">
                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Data Analyst</span>
                             <span style="font-size:10px;line-height:40px;50px;margin-left:-55.8px;font-size:12px;">Shiela Mei Olivar</span>
-                            <button type="button" class="btn btn-sm btn-primary pull-right">
+                            <button type="button" class="btn btn-sm btn-danger pull-right">
                                 <span class="badge badge-light"><?php echo showICTload('Shiela Mei Olivar');?></span>
                             </button>
                         </li>
@@ -372,7 +372,8 @@ $('.sweet-15').click(function()
               url:"_ticketReleased.php",
               method:"POST",
               data:{
-                  id:ids
+                  id:ids,
+                  option:"released"
               },
               
               success:function(data)
@@ -385,8 +386,38 @@ $('.sweet-15').click(function()
             });
         });
     });
-
-
+// =====================================================================
+$('.sweet-16').click(function()
+    {
+        var ids = $(this).parent('li').attr('id');
+        swal({
+            title: "Are you sure you want to recieved this request?",
+            text: "Control No:"+ids,
+            type: "info",
+            showCancelButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }).then(function () {
+            $.ajax({
+              url:"_ticketReleased.php",
+              method:"POST",
+              data:{
+                  id:ids,
+                  option:'complete'
+              },
+              
+              success:function(data)
+              {
+                  setTimeout(function () {
+                  swal("Service Completed!");
+                  }, 3000);
+                  window.location = "_tickets.php?division=<?php echo $_GET['division']?>&ticket_id=<?php echo $_GET['ticket_id']?>";
+              }
+            });
+        });
+    });
 </script>
 
 
