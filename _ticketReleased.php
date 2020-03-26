@@ -1,13 +1,12 @@
 <?php
-$link = mysqli_connect("localhost","root","", "db_dilg_pmis");
-$id = $_POST['id'];
+include 'connection.php';$id = $_POST['id'];
 $option = $_POST['option'];
 switch ($option) {
     case 'released':
         $insert ="UPDATE `tbltechnical_assistance` SET 
         `STATUS_REQUEST` = 'Received'
         WHERE `CONTROL_NO` = '$id' ";
-        if (mysqli_query($link, $insert)) {
+        if (mysqli_query($conn, $insert)) {
         } else {
         }
         break;
@@ -15,7 +14,7 @@ switch ($option) {
         $insert ="UPDATE `tbltechnical_assistance` SET 
         `STATUS_REQUEST` = 'Completed'
         WHERE `CONTROL_NO` = '$id' ";
-        if (mysqli_query($link, $insert)) {
+        if (mysqli_query($conn, $insert)) {
         } else {
         }
             break;

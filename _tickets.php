@@ -28,12 +28,12 @@ $username = $_SESSION['username'];
 
 function filldataTable()
 {
-    $link = mysqli_connect('localhost','root','','db_dilg_pmis');
+    include 'connection.php';
     $query = "SELECT * FROM tbltechnical_assistance 
     where `STATUS_REQUEST` = 'Submitted' or  `STATUS_REQUEST` = 'Received' or `STATUS_REQUEST` = 'For action' 
     GROUP by tbltechnical_assistance.ID
     order by `REQ_DATE` DESC, `REQ_TIME` ";
-    $result = mysqli_query($link, $query);
+    $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
         $data[] = $row['CONTROL_NO'];
@@ -156,9 +156,9 @@ function filldataTable()
 }
 function showICTload($itstaff)
 {
-    $link = mysqli_connect('localhost','root','','db_dilg_pmis');
+    include 'connection.php';;
     $query = "SELECT count(*) as 'count' FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' and ASSIST_BY = '$itstaff'";
-    $result = mysqli_query($link, $query);
+    $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
         echo $row['count'];
@@ -167,9 +167,9 @@ function showICTload($itstaff)
 
 function submittedReq()
 {
-    $link = mysqli_connect('localhost','root','','db_dilg_pmis');
+    include 'connection.php';
     $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' order by `REQ_DATE` DESC, `REQ_TIME` ";
-    $result = mysqli_query($link, $query);
+    $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
 
     echo '<ul class="list-group list-group-flush">';
@@ -202,9 +202,9 @@ function submittedReq()
 
 function currentServing($assignee)
 {
-    $link = mysqli_connect('localhost','root','','db_dilg_pmis');
+    include 'connection.php';
     $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' and `ASSIST_BY` like  '%$assignee%' order by `REQ_DATE` DESC, `REQ_TIME` LIMIT 1 ";
-    $result = mysqli_query($link, $query);
+    $result = mysqli_query($conn, $query);
 
     while($row = mysqli_fetch_array($result))
     {

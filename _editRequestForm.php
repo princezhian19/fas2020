@@ -12,10 +12,12 @@ require_once('_includes/sql_statements.php');
 
 function fillTableInfo()
 {
-    $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+  include 'connection.php';
+
+ 
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
-    $result = mysqli_query($link, $query);
+    $result = mysqli_query($conn, $query);
     $val = array();
     if($row = mysqli_fetch_array($result))
       {
@@ -88,10 +90,11 @@ function fillTableInfo()
 }
 function fillCheckbox()
 {
-    $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+    include 'connection.php';
+
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
-    $result = mysqli_query($link, $query);
+    $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
       {
           switch ($row['TYPE_REQ']) {
@@ -513,11 +516,12 @@ function fillCheckbox()
 }
 function showIssue()
 {
-  $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+  include 'connection.php';
+
   $issue = '';
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT ISSUE_PROBLEM FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
-    $result = mysqli_query($link, $query);
+    $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
         $issue = $row['ISSUE_PROBLEM'];
@@ -526,11 +530,12 @@ function showIssue()
 }
 function showDiagnose()
 {
-  $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+  include 'connection.php';
+
   $status_desc = '';
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT STATUS_DESC FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
-    $result = mysqli_query($link, $query);
+    $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
         $status_desc = $row['STATUS_DESC'];

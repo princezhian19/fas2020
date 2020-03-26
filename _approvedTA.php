@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("localhost","root","", "db_dilg_pmis");
+include 'connection.php';
 $ict_staff = $_POST['ict_staff'];
 $control_no = $_POST['control_no'];
 $insert ="UPDATE `tbltechnical_assistance` SET 
@@ -8,7 +8,7 @@ $insert ="UPDATE `tbltechnical_assistance` SET
         WHERE `CONTROL_NO` = '$control_no' ";
         echo $insert;
 
-if (mysqli_query($link, $insert)) {
+if (mysqli_query($conn, $insert)) {
 } else {
 }
 ?>

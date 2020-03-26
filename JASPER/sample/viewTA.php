@@ -7,14 +7,14 @@ include_once("../PHPJasperXML.inc.php");
 
 
 
-$link = mysqli_connect('localhost','fascalab_2020','','fascalab_2020');
+include '../../connection.php';
               if(mysqli_connect_errno()){echo mysqli_connect_error();}  
              $cn = $_GET['id'];
 
 
               $query = "SELECT * FROM tbltechnical_assistance where CONTROL_NO = '$cn'";
               $name = '';
-              $result = mysqli_query($link, $query);
+              $result = mysqli_query($conn, $query);
               $val = array();
               while($row = mysqli_fetch_array($result))
               {
@@ -545,7 +545,7 @@ switch($req_type_subcategory)
 
 
 $PHPJasperXML->load_xml_file("report1.jrxml");
-$PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','','fascalab_2020');
+$PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
 $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
 
 

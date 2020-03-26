@@ -29,11 +29,10 @@ th{
                 ?>
             </div>
             <?php
-            $con = mysqli_connect("localhost","root","", "db_dilg_pmis");
-
+include 'connection.php';
             $name = $_SESSION['username'];
             $query = "SELECT * from tblemployee where UNAME = '$name'";
-            $result = mysqli_query($con,$query);
+            $result = mysqli_query($conn,$query);
             if($row = mysqli_fetch_array($result))
             {
               if($row['DIVISION_C'] != '16')

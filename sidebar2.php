@@ -11,8 +11,8 @@ $username = $_SESSION['username'];
 function showDivision()
 {
   $username = $_SESSION['username'];
-  $link = mysqli_connect("localhost","root","", "db_dilg_pmis");
-  if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+  $link =mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
   $query = "SELECT * FROM `tblemployee` WHERE md5(UNAME) = '".md5($username)."' ";
   
   $result = mysqli_query($link, $query);
