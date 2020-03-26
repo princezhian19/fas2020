@@ -30,7 +30,7 @@ include('db.class.php'); // call db.class.php
       
          <div class="class">
          <div class="col-md-2">
-          &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
+          &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="@obligation.php" style="color:white;text-decoration: none;">Back</a></li>
           </div>
           <div class="col-md-8">
             

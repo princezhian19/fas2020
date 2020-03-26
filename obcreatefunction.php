@@ -46,7 +46,7 @@ echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
 for ($i = 0; $i < count($datereceived); $i++) {
-if(($ors[$i] != ""  || $amount[$i] != "" )){ /*not allowing empty values and the row which has been removed.*/ 
+if(($ors[$i] != "")){ /*not allowing empty values and the row which has been removed.*/ 
 
     if($supplier[$i]==""){
       /*   $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 

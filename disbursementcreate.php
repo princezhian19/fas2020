@@ -260,7 +260,7 @@ $ors = $rowB['ors'];
              <input value="<?php echo $purpose;?>"   type="text" class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular" readonly>
              <br>  
              <label>Gross</label>
-             <input value="<?php echo $amount;?>"  required readonly  type="text" class="form-control" style="height: 35px;" id="amount" placeholder="Enter Amount" name="amount" >
+             <input value="<?php echo $amount;?>"  readonly  type="text" class="form-control" style="height: 35px;" id="amount" placeholder="Enter Amount" name="amount" >
              <br>  
 
              <input hidden required  type="text" class="" style="height: 35px;" id="ntaid" placeholder="" name="ntaid" >

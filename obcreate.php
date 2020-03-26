@@ -2,7 +2,7 @@
 
 <html>
 <?php
-$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "root", "");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 function app($connect)
 { 
   $output = '';
@@ -510,17 +510,13 @@ function app($connect)
           </div>
 
 
+
           <script>
           $(document).ready(function() {
           var id = 1; 
           /*Assigning id and class for tr and td tags for separation.*/
           $("#butsend").click(function() {
-            var amount = $('#amount').val();
-            if(amount==""){
-              alert('Amount cannot be empty')
-            }
-            else{
-              var newid = id++; 
+          var newid = id++; 
           /* 
           var datereceived = $('#datepicker1').val();
 		      var datereprocessed = $('#datepicker2').val();
@@ -557,8 +553,7 @@ function app($connect)
           <td width="100px" class="sarogroup'+newid+'">' + $("#sarogroup").val() + '</td>\n\
           <td width="100px" class="status'+newid+'">' + $("#status").val() + '</td>\n\
           <td width="100px"><a href="javascript:void(0);" class="remCF">Remove</a></td>\n\ </tr>');
-          }
-            });
+          });
           $("#table1").on('click', '.remCF', function() {
           $(this).parent().parent().remove();
           });

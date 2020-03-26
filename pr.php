@@ -357,8 +357,8 @@ if (isset($_POST['add'])) {
 <html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
-<!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
@@ -906,8 +906,6 @@ $(document).ready(function(){
 });
 </script>
 
-</script>
-
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -944,7 +942,7 @@ $(document).ready(function(){
     $('.select2').select2()
 
     //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'mm/dd/yyyy' })
     //Datemask2 mm/dd/yyyy
     $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
     //Money Euro
@@ -1014,5 +1012,34 @@ $(document).ready(function(){
       showInputs: false
     })
   })
-</script>  
+</script>
+<script>
+
+  $(document).ready(function(){
+   table = document.getElementById("item_table");
+
+   tr = table.getElementsByTagName("th");
+   var td = document.getElementById("tdvalue");
+
+   if(td <= 0){
+    $('#finalizeButton').attr('disabled','disabled');
+  } else {
+    $('#finalizeButton').attr('enabled','enabled');
+  }
+
+  $('.link').click(function(){
+
+    var f = $(this);
+    var id = f.data('id');
+
+    var pr_no = $('#pr_no').val();
+    var pr_date = $('#pr_date').val();
+    var pmo = $('#pmo').val();
+    var purpose = $('#purpose').val();
+
+    window.location = 
+    'ViewPRdetails1.php?data='+id+'&pr_no='+pr_no+'&pr_date='+pr_date+'&pmo='+pmo+'&purpose='+purpose;
+  });
+}) ;
+</script>
 
