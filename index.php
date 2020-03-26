@@ -1,6 +1,6 @@
 <?php 
 $_SESSION['username'] = '';
-$conn = mysqli_connect("localhost","root","","db_dilg_pmis");
+include 'connection.php';
 if (isset($_POST['submit'])) {
   session_start();
   $username = $_POST['username'];
@@ -16,7 +16,6 @@ if (isset($_POST['submit'])) {
   $query = "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1 ";
   $result = mysqli_query($conn, $query);
   $val = array();
-  exit();
   // $numrows= mysqli_num_rows($query);
   if ($result->num_rows > 0) {
     while($row = mysqli_fetch_array($result))

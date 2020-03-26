@@ -56,7 +56,16 @@ function filldataTable()
                                                 </div>
                                                 <div class="col-md-10" style = "background-color:#CFD8DC;">
                                                     <div class="card-body" id="<?php echo $row['CONTROL_NO']; ?>">
+                                                    <?php
+                                                    if($row['STATUS_REQUEST'] == 'For action')
+                                                    {
+                                                    }else{
+                                                        ?>
                                                         <button class = "pull-right sweet-14 btn btn-primary">Assign</button>
+
+                                                        <?php
+                                                    }
+                                                    ?>
                                                         <?php 
                                                         if($row['STATUS_REQUEST'] == 'Received' || $row['STATUS_REQUEST'] == 'For action')
                                                         {
@@ -161,7 +170,10 @@ function submittedReq()
     $link = mysqli_connect('localhost','root','','db_dilg_pmis');
     $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' order by `REQ_DATE` DESC, `REQ_TIME` ";
     $result = mysqli_query($link, $query);
+    if ($result->num_rows > 0) {
+
     echo '<ul class="list-group list-group-flush">';
+
     while($row = mysqli_fetch_array($result))
     {
         ?>
@@ -178,7 +190,13 @@ function submittedReq()
         <?php
     }
     echo '</ul>';
-
+    }else{
+        ?>
+<li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
+<img style="vertical-align:top;"  class="round" width="30" height="30" avatar=DILG>
+</li>
+        <?php
+    }
      
 }
 
