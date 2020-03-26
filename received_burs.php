@@ -16,14 +16,14 @@ if ($update) {
 	# code...
 	 echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Successfuly Saved!')
-    window.location.href = '@obligation.php';
+    window.location.href = 'obligation.php';
     </SCRIPT>");
 }
  
 }else{
  echo ("<SCRIPT LANGUAGE='JavaScript'>
   window.alert('Erro Occured!')
-  window.location.href = '@obligation.php';
+  window.location.href = 'obligation.php';
   </SCRIPT>");
 }
 

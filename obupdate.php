@@ -1,3 +1,12 @@
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:login.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -143,7 +152,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
              <div class="box-header with-border">
     
         <br>
-      <li class="btn btn-success"><a href="@obligation.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-success"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
       <!-- Start form -->
@@ -298,6 +307,13 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                 </div>
                 
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                  <script>
+        $(document).ready(function(){
+          $("#result1").click(function(){
+            $("#main1").hide();
+          });
+        });
+        </script>
                   <script type="text/javascript">
                   $(document).ready(function(){
                   function load_data(query)
@@ -320,10 +336,14 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                     }
                     else
                     {
+                      
+                    $("#main1").show();
                       load_data();
                       document.getElementById('saronum').value = "";
                       document.getElementById("main1").value="";
                       document.getElementById("sarogroup").value = "";
+                      document.getElementById("ppa").value = "";
+                      document.getElementById("uacs").value = "";
                       
                     }
                   });
@@ -333,17 +353,19 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                   var x=row.cells;
                   document.getElementById("saronum").value = x[0].innerHTML;
                   document.getElementById("sarogroup").value = x[5].innerHTML;
+                  document.getElementById("ppa").value = x[2].innerHTML;
+                  document.getElementById("uacs").value = x[1].innerHTML;
                   
                   
                 }
               </script>
                 <div class="col-md-3">
                     <label>PPA</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="" placeholder="PPA" name="ppa" value="<?php echo $ppa;?>">
+                    <input  type="text"  class="form-control" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa" value="<?php echo $ppa;?>">
                 </div>
                 <div class="col-md-2">
                     <label>UACS Code</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="" placeholder="UACS Code" name="uacs" value="<?php echo $uacs;?>"> 
+                    <input  type="text"  class="form-control" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs" value="<?php echo $uacs;?>"> 
                 </div>
                 <div class="col-md-2">
                     <label>Amount</label>

@@ -48,12 +48,12 @@ if (mysqli_num_rows($validate2)>0) {
 
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
 		window.alert('Successfuly Saved!')
-		window.location.href = '@obligation.php';
+		window.location.href = 'obligation.php';
 		</SCRIPT>");
 }else{
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
 		window.alert('Erro Occured!')
-		window.location.href = '@obligation.php';
+		window.location.href = 'obligation.php';
 		</SCRIPT>");
 }
 

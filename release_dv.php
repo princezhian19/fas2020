@@ -15,12 +15,12 @@ $query = mysqli_query($conn,"UPDATE disbursement SET datereleased = now() WHERE 
 if ($query) {
   echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Successfuly Saved!')
-    window.location.href = '@disbursement.php';
+    window.location.href = 'disbursement.php';
     </SCRIPT>");
 }else{
  echo ("<SCRIPT LANGUAGE='JavaScript'>
   window.alert('Erro Occured!')
-  window.location.href = '@disbursement.php';
+  window.location.href = 'disbursement.php';
   </SCRIPT>");
 }
 

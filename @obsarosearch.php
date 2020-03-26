@@ -29,7 +29,7 @@ while($row = $results->fetch(PDO::FETCH_ASSOC))
       
     '<td hidden>' . $row['saronumber'] . '</td>' . 
     '<td hidden>' . $row['uacs'] .'</td>' . 
-    '<td hidden>' . $row['saronumber'] . '</td>' . 
+    '<td hidden>' . $row['ppa'] . '</td>' . 
     '<td hidden>' . $row['saronumber'] . '</td>' . 
     '<td style="text-align: center;" >' . $row['saronumber'] . '</td>' . 
     '<td  hidden style="text-align: center;">' . $row['sarogroup'] . '</td>' .
