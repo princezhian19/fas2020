@@ -200,7 +200,7 @@ if (isset($_POST['submit'])) {
            </tr>
            <tr>
             <?php 
-            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', '');
+            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
             $pr_no = $_GET['pr_no'];
             $sql_items = $conn->query("SELECT pa.id,qty,items,app_id,pr_no,description,unit,abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' ");
             while ($row = $sql_items->fetch()) {

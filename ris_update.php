@@ -170,7 +170,7 @@ ob_start();
            </tr>
            <tr>
             <?php 
-            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', '');
+            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
             $con = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
             $selectRISno = mysqli_query($con,"SELECT ris_no FROM ris WHERE id = '".$_GET['id']."' ");
             $rowRIS = mysqli_fetch_array($selectRISno);

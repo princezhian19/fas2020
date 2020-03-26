@@ -123,7 +123,7 @@ if ($update) {
            </tr>
            <tr>
             <?php 
-            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', '');
+            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
 
             // $sql_items = $conn->query("SELECT rfq_items.id,rfq_id,rfq_items.pr_no,app_id,qty,description,unit_id,abc,app.procurement,rfq.rfq_no FROM rfq_items 
             //   LEFT JOIN app ON app.id = rfq_items.app_id 

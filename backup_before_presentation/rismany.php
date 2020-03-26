@@ -184,7 +184,7 @@ $po_no = $_GET['po_no'];
            </tr>
            <tr>
             <?php 
-            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', '');
+            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
             $sql_items = $conn->query("SELECT * FROM iar_stock WHERE po_no = '$po_no'");
             while ($row = $sql_items->fetch()) {
               $id = $row['id'];

@@ -186,7 +186,7 @@ if (isset($_POST['submit'])) {
            </tr>
            <tr>
             <?php 
-            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', '');
+            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
             $pr_no = $_GET['pr_no'];
             $sql_items = $conn->query("SELECT * FROM pr_approved  WHERE pr_no = '$pr_no' ");
             while ($row = $sql_items->fetch()) {

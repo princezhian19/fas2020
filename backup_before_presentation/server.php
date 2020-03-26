@@ -1,7 +1,7 @@
 <?php		
 	$keyword = strval($_POST['query']);
 	$search_param = "%{$keyword}%";
-	$conn =new mysqli('localhost', 'fascalab_2020', '' , 'fascalab_2020');
+	$conn =new mysqli('localhost', 'fascalab_2020', 'w]zYV6X9{*BN' , 'fascalab_2020');
 
 	$sql = $conn->prepare("SELECT * FROM iar WHERE po_no LIKE ?");
 	$sql->bind_param("s",$search_param);			

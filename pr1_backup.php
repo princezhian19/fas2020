@@ -640,7 +640,7 @@ function confirmDelete(delUrl) {
          </tr>
          <tr>
           <?php 
-          $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', '');
+          $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
           $pr_no = $_POST['pr_no'];
           $pmo = $_POST['pmo'];
           $pr_date = $_POST['pr_date'];
