@@ -2,6 +2,10 @@
 
 <!DOCTYPE html>
 <html>
+<?php 
+session_start();
+$username = $_SESSION['username'];
+?>
 
 <title>FAS Dashboard</title>
 <head>

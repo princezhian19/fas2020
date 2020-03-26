@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 <?php 
 session_start();
 $_SESSION['username'] = '';
 $conn = mysqli_connect("localhost","root","","db_dilg_pmis");
-=======
-<?php session_start();
-
-$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
->>>>>>> 9ec253901d6145d4b5121733ffc2e5a4fa7a6710
 if (isset($_POST['submit'])) {
   session_start();
   $username = $_POST['username'];
