@@ -1,7 +1,7 @@
 <?php
 
 	$db_username = 'fascalab_2020';
-	$db_password = '';
+	$db_password = 'w]zYV6X9{*BN';
 	$db_name = 'fascalab_2020';
 	$db_host = 'localhost';
 	$item_per_page = 7;
