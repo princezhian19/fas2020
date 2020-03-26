@@ -1,6 +1,8 @@
 
 <?php
 session_start();
+date_default_timezone_set("Asia/Manila");
+
 $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 $return_arr = array();
@@ -39,10 +41,13 @@ if($row = mysqli_fetch_array($result))
         $stI = '';
         }else{
             $dd = $row['START_TIME'].' '.$row['START_DATE'];
-            $stI =date('H:i a', strtotime($dd)); 
+            $stI =date('g:i a', strtotime($row['REQ_TIME'])); 
         }
         $d = $row['REQ_TIME'].' '.$row['REQ_DATE'];
-        $rtI =date('h:i a', strtotime($d));
+        $rtI =date('g:i a', strtotime($row['START_TIME']));
+        // $rtI  = date("g:i a", strtotime("13:30"));
+
+        
     
         $rb = $row['REQ_BY'];
         $office=$row['OFFICE'];
@@ -129,10 +134,10 @@ if($row = mysqli_fetch_array($result))
     
         $return_arr[] = array(
                         "CONTROL_NO" => $cn,
-                        "REQ_DATE"   => $sd,
-                        "REQ_TIME"   => $stI,
                         "START_DATE"   => $rd,
-                        "START_TIME"   => $rtI,
+                        "START_TIME"   => $stI,
+                        "REQ_DATE"   => $sd,
+                        "REQ_TIME"   => $rtI,
                         "REQ_BY"     => $rb,
                         "OFFICE"     => $office,
                         "ISSUE_PROBLEM"=>$issue,

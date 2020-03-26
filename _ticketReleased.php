@@ -1,9 +1,15 @@
 <?php
-include 'connection.php';$id = $_POST['id'];
+date_default_timezone_set("Asia/Manila");
+include 'connection.php';
+$id = $_POST['id'];
 $option = $_POST['option'];
 $date_recieved = date('Y-m-d');
-$time = date('H:m');
-$time_recieved  = date("H:i",strtotime($date_recieved." ".$time));
+
+$time =  date("h:i:sa");
+$time_recieved= date("H:i", strtotime($time));
+
+
+
 
 
 switch ($option) {

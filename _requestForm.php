@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+$username = $_SESSION['username'];
 ?>
 
 
@@ -31,7 +32,6 @@ session_start();
   <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <link rel="stylesheet" href="_includes/sweetalert.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
