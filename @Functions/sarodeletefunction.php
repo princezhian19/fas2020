@@ -38,7 +38,7 @@ if($query){
 //if query is successful
 echo ("<SCRIPT LANGUAGE='JavaScript'>
 window.alert('Data Deleted Successfully!')
-window.location.href='../@saro.php?message=Data Deleted Successfully!';
+window.location.href='../saro.php?message=';
 </SCRIPT>"); 
 
 //header('Location:../@obligation.php?message=Data Added Successfully!');

@@ -100,7 +100,7 @@ include('db.class.php'); // call db.class.php
                         <div class="input-group-addon">
                         TO   <i class="fa fa-calendar"></i>
                         <input type="text" class="" id="datepicker2" placeholder='Enter Date' name="dateto" style="height: 35px; width: 200px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
                         </div>                
           </form> -->
           <input type="text" class="form-control" style="height: 35px; width: 400px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" >
@@ -126,7 +126,7 @@ include('db.class.php'); // call db.class.php
          <!--  <form method = "POST" action = "@obsearch.php">
             <input  type="text" class="" style="height: 35px; width: 150px" id="" placeholder="Enter SARO Number" name="saronumber" > &nbsp AND &nbsp
             <input  type="text" class="" style="height: 35px; width: 150px" id="" placeholder="Enter UACS Code" name="uacs" >
-            &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Search</button>
+            &nbsp<button type="submit" name="submit"  class="btn btn-success ">Search</button>
           </form> -->
          <!--  <form method = "POST" action = "@Functions/sarodateexport.php">
                     <div class="input-group date">
@@ -138,7 +138,7 @@ include('db.class.php'); // call db.class.php
                         TO <i class="fa fa-calendar"></i>
                         </div>
                         <input type="text" class="" id="datepicker2" placeholder='Enter Date' name="dateto" style="height: 35px; width: 200px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
                     </div>
                     <br>
           </form> -->
@@ -147,7 +147,7 @@ include('db.class.php'); // call db.class.php
         <div class="col-md-6">
          
          <!--  <form method = "POST" action = "@Functions/obexportall.php">
-            &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Export All</button>
+            &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success ">Export All</button>
           </form> -->
 
           <form method = "POST" action = "@Functions/obdateexport.php">
@@ -162,7 +162,7 @@ include('db.class.php'); // call db.class.php
                         TO <i class="fa fa-calendar"></i>
                         </div>
                         <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
                     </div>                        
                       
           </form>

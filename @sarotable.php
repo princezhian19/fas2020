@@ -50,7 +50,7 @@ include('db.class.php'); // call db.class.php
                         TO <i class="fa fa-calendar"></i>
                         </div>
                         <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
 
                           &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none;">Export All</a></li>
                     </div>                            
@@ -67,7 +67,7 @@ include('db.class.php'); // call db.class.php
 
       </div>
 
-    <!--   <div class="class"  style=""> -->
+    <!--   <div class="class"  > -->
         
      
    
@@ -95,19 +95,19 @@ include('db.class.php'); // call db.class.php
                     <tr style="background-color: white;color:blue;">
                         
                         
-                        <th width="800">DATE</th>
-                        <th width="800">SOURCE</th>
-                        <th width="800">FUND</th>
-                        <th width="800">LEGAL BASIS</th>
-                        <th width="800">PPA</th>
-                        <th width="800">EXPENSE CLASS</th>
-                        <th width="800">PARTICULARS</th>
-                        <th width="800">UACS</th>
-                        <th width="800">AMOUNT</th>
-                        <th width="800">DISBURSEMENT</th>
-                        <th width="800">BALANCE</th>
-                        <th width="800">GROUP</th>
-                        <th width="800">ACTION</th>
+                        <th width="">DATE</th>
+                        <th width="">SOURCE</th>
+                        <th width="">FUND</th>
+                        <th width="">LEGAL BASIS</th>
+                        <th width="">PPA</th>
+                        <th width="">EXPENSE CLASS</th>
+                        <th width="">PARTICULARS</th>
+                        <th width="">UACS</th>
+                        <th width="">AMOUNT</th>
+                        <th width="">DISBURSEMENT</th>
+                        <th width="">BALANCE</th>
+                        <th width="">GROUP</th>
+                        <th width="150">ACTION</th>
                         
 
                    

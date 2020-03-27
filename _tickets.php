@@ -23,9 +23,12 @@ if(isset($_GET['ticket_id']))
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+<<<<<<< HEAD
   <link rel="stylesheet" href="_includes/fontawesome.css">
 
 
+=======
+>>>>>>> d86344815dffc1c85eb531575689c5ef20bce9f9
   
   
 <style>
@@ -441,7 +444,7 @@ $('.sweet-16').click(function()
     {
         var ids = $(this).parent('li').attr('id');
         swal({
-            title: "Are you already finished with this request?",
+            title: "Are you sure you want to recieved this request?",
             text: "Control No:"+ids,
             type: "info",
             showCancelButton: true,
@@ -485,9 +488,12 @@ $('.sweet-16').click(function()
 
 
     $('#example1').DataTable({
+<<<<<<< HEAD
 //         "search": {
 //     "search": "<?php echo $_GET['ticket_id'];?>"
 //   },
+=======
+>>>>>>> d86344815dffc1c85eb531575689c5ef20bce9f9
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

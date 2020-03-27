@@ -65,7 +65,7 @@ include('db.class.php'); // call db.class.php
         <div class="col-md-1">
          
           <form method = "POST" action = "@Functions/obexportall.php">
-            <!-- &nbsp&nbsp&nbsp<button type="submit" hdden name="submit" style="width:%; height: 35px" class="btn btn-success ">Export All</button> -->
+            <!-- &nbsp&nbsp&nbsp<button type="submit" hdden name="submit"  class="btn btn-success ">Export All</button> -->
           </form>
         </div>
       </div>

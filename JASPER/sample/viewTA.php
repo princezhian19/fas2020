@@ -20,7 +20,6 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
               while($row = mysqli_fetch_array($result))
               {
                 $name = $row['REQ_BY'];
-            
                 $request_date = date('M d, Y',strtotime($row['REQ_DATE']));
                   // $req_date_format = date("Y-m-d",strtotime($request_date));
                 $control_no = $row['CONTROL_NO'];

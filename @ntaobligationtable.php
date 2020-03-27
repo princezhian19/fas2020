@@ -14,16 +14,15 @@
   <div class="box-body">
         <div class=""style="overflow-x:auto;"> 
           <div class=""style="overflow-x:auto;">
-           
-      
+
             <h1 align="">&nbspNTA Payment</h1>
              <div class="box-header "style="overflow-x:auto;">
             </div>
 
   <div class="section group"  style="overflow-x:auto;">
         
-        <div class="col-md-1" style="">
-           <li class="btn btn-success"><a href="@ntaobcreate.php" style="color:white;text-decoration: none;">Create</a></li>
+        <div class="col-md-1" >
+           <li class="btn btn-success"><a href="ntaobcreate.php" style="color:white;text-decoration: none;">Create</a></li>
         </div>
           <div class="col-md-2" style="overflow-x:auto;">
           <!-- <form method = "POST" action = "@Functions/obdateexport.php">
@@ -34,7 +33,7 @@
                         <div class="input-group-addon">
                         TO   <i class="fa fa-calendar"></i>
                         <input type="text" class="" id="datepicker2" placeholder='Enter Date' name="dateto" style="height: 35px; width: 200px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
                         </div>                
           </form> -->
          <!--  <input type="text" class="form-control" style="height: 35px; width: 400px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" > -->       
@@ -51,7 +50,7 @@
         <div class="col-md-8" style="overflow-x:auto;">
          
          <!--  <form method = "POST" action = "@Functions/obexportall.php">
-            &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Export All</button>
+            &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success ">Export All</button>
           </form> -->
 
 
@@ -68,8 +67,8 @@
                         TO <i class="fa fa-calendar"></i>
                         </div>
                         <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
-                        &nbsp<button type="submit" name="Summary" style="width:%; height: 35px" class="btn btn-success ">Export Summary</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
+                        &nbsp<button type="submit" name="Summary"  class="btn btn-success ">Export Summary</button>
                     
                     </div>                        
                       
@@ -99,21 +98,21 @@
                 <thead>
                 <tr style="background-color: white;color:blue;">
                       
-                        <th style="text-align:center" width="800">ACCOUNT NO</th>
-                        <th style="text-align:center" width="800">DATE</th>
-                        <th style="text-align:center" width="800">PAYEE</th>
-                        <th style="text-align:center" width="800">PARTICULAR</th>
-                        <th style="text-align:center" width="800">DV NUMBER</th>
-                        <th style="text-align:center" width="800">LDDAP-ADA/CHECK</th>
-                        <th style="text-align:center" width="800">ORS NUMBER</th>
-                        <th style="text-align:center" width="800">PPA</th>
-                        <th style="text-align:center" width="800">UACS</th>
-                        <th style="text-align:center" width="800">GROSS</th>
-                        <th style="text-align:center" width="800">TAX</th>
-                        <th style="text-align:center" width="800">NET</th>
-                        <th style="text-align:center" width="800">REMARKS</th>
-                        <th style="text-align:center" width="800">STATUS</th>
-                        <th style="text-align:center" width="800">ACTION</th>
+                        <th style="text-align:center" width="">ACCOUNT NO</th>
+                        <th style="text-align:center" width="">DATE</th>
+                        <th style="text-align:center" width="">PAYEE</th>
+                        <th style="text-align:center" width="">PARTICULAR</th>
+                        <th style="text-align:center" width="">DV NUMBER</th>
+                        <th style="text-align:center" width="">LDDAP-ADA/CHECK</th>
+                        <th style="text-align:center" width="">ORS NUMBER</th>
+                        <th style="text-align:center" width="">PPA</th>
+                        <th style="text-align:center" width="">UACS</th>
+                        <th style="text-align:center" width="">GROSS</th>
+                        <th style="text-align:center" width="">TAX</th>
+                        <th style="text-align:center" width="">NET</th>
+                        <th style="text-align:center" width="">REMARKS</th>
+                        <th style="text-align:center" width="">STATUS</th>
+                        <th style="text-align:center" width="150">ACTION</th>
                        
                         
 
@@ -185,7 +184,7 @@
                 
                 <td style="text-align:center" > 
                 
-                <a href='@ntaobupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
+                <a href='ntaobupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
                 
                 <!-- <a href='@Functions/sofexport.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa fa-fw fa-download'></i></a>
                 <a href='@obtableViewMain.php?getsaroID=<?php echo $saronumber?>&getuacs=<?php echo $uacs?>'> <i style='font-size:24px' class='fa'>&#xf06e;</i> </a> -->

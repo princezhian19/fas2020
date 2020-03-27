@@ -32,11 +32,11 @@ $mydb = new db(); // create a new object, class db()
                 <thead>
                     <tr style="background-color: white;color:blue;font-family: Arial, Helvetica, sans-serif;">
                       
-                        <th width="80">RIS NO.</th>
-                        <th width="80">PO NO.</th>
-                        <th width="80">DIVISION</th>
-                        <th width="750">PURPOSE</th>
-                        <th>ACTION</th>
+                        <th >RIS NO.</th>
+                        <th >PO NO.</th>
+                        <th >DIVISION</th>
+                        <th >PURPOSE</th>
+                        <th WIDTH = "100">ACTION</th>
                         
                       
 
@@ -55,10 +55,10 @@ $mydb = new db(); // create a new object, class db()
                     $request_by = $row['request_by'];
 
                     if ($request_by == 1 ) {
-                      $request_by = "Jay-ar T. Beltran";
+                      $request_by = "JAY-AR T. BELTRAN";
                     }
                     if ($request_by == 2 ) {
-                      $request_by = "JOHN M. CEREZO";
+                      $request_by = "GILBERTO T. TUMAMAC";
                     }
                     if ($request_by == 3 ) {
                       $request_by = "DR. CARINA S. CRUZ";
@@ -76,7 +76,7 @@ $mydb = new db(); // create a new object, class db()
                     <a href='UpdateRIS.php?id=$id' ><i style='font-size:20px' class='fa'>&#xf044;</i> </a>
                     
                   
-                    <a href='deleteRIS.php?id=$id' ><i style='font-size:24px' class='fa fa-trash-o'></i> </a>
+                    <a href='deleteRIS.php?id=$id' ><i style='font-size:20px' class='fa fa-trash-o'></i> </a>
                     
                     </td>
                   

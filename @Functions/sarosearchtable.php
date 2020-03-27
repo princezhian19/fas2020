@@ -65,7 +65,7 @@ include('db.class.php'); // call db.class.php
                         </div>
                         <input type="text" class="" id="datepicker2" placeholder='Enter Date' name="dateto" style="height: 35px; width: 150px">
 
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Export Data</button>
                     </div>
                     <br>
           </form> -->
@@ -74,7 +74,7 @@ include('db.class.php'); // call db.class.php
           <!-- <form method = "POST" action = "@obsearch.php">
             <input  type="text" class="" style="height: 35px; width: 200px" id="" placeholder="Enter SARO Number" name="saronumber" > &nbsp OR &nbsp
             <input  type="text" class="" style="height: 35px; width: 200px" id="" placeholder="Enter UACS Code" name="uacs" >
-            &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Search</button>
+            &nbsp<button type="submit" name="submit"  class="btn btn-success ">Search</button>
           </form> -->
           
           </div>
@@ -82,7 +82,7 @@ include('db.class.php'); // call db.class.php
         <div class="col-md-1">
          
           <form method = "POST" action = "@Functions/obexportall.php">
-            <!-- &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Export All</button> -->
+            <!-- &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success ">Export All</button> -->
           </form>
         </div>
       </div>

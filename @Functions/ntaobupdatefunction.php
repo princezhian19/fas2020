@@ -87,7 +87,7 @@ if($query){
     //if query is successful
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Data Updated Successfully!')
-    window.location.href='../@ntaobligation.php';
+    window.location.href='../ntaobligation.php';
     </SCRIPT>"); 
     
     //header('Location:../@obligation.php?message=Data Added Successfully!');
@@ -99,7 +99,7 @@ if($query){
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     
     window.alert('Error!')
-    window.location.href='../@ntaobligation.php';
+    window.location.href='../ntaobligation.php';
     </SCRIPT>");
     }
 

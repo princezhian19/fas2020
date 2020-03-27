@@ -157,7 +157,7 @@ $getUacs = $_GET['getuacs'];
                         TO <i class="fa fa-calendar"></i>
                         </div>
                         <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
                     </div>                        
                       
           </form>
@@ -172,7 +172,7 @@ $getUacs = $_GET['getuacs'];
       <table id="example1" class="table-responsive table-striped table-bordered " style="background-color: white; overflow-x:auto;" >
                 <thead>
                 <tr style="background-color: white;color:blue;">
-                        <th width="300"></th>
+                      
                         <!-- <th style="text-align:center" width="800">DATE RECEIVED</th> -->
                         <th style="text-align:center" width="600">DATE</th>
                         <!-- <th style="text-align:center" width="800">DATE RETURNED</th> -->
@@ -187,7 +187,7 @@ $getUacs = $_GET['getuacs'];
                         <th style="text-align:center" width="800">AMOUNT</th>
                         <th style="text-align:center" width="800">STATUS</th>
                         <!-- <th style="text-align:center" width="800">ACTION</th> -->
-                        <th width="300"></th>
+                       
                     </tr>
                 </thead>
             
@@ -234,7 +234,7 @@ $getUacs = $_GET['getuacs'];
                     $amount1 = number_format($amount,2);
                         echo "<tr align = ''>
                     
-                        <td></td>
+                     
                       
                         <td align = 'center'>$datereprocessed11</td>
                         

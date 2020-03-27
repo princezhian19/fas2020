@@ -1,5 +1,15 @@
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:login.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
+?>
+
 <?php
-include('db.class.php'); // call db.class.php
+// /include('db.class.php'); // call db.class.php
 ?>
 
 <!DOCTYPE html>
@@ -52,9 +62,9 @@ include('db.class.php'); // call db.class.php
                       TO <i class="fa fa-calendar"></i>
                     </div>
                     <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                    <button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
+                    <button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
 
-                    &nbsp  <button type="Summary" name="Summary" style="width:%; height: 35px" class="btn btn-success ">Export Summary</button>
+                    &nbsp  <button type="Summary" name="Summary"  class="btn btn-success ">Export Summary</button>
           
                    
                   </div>                 
@@ -77,34 +87,34 @@ include('db.class.php'); // call db.class.php
               <thead>
                 <tr style="background-color: white;color:blue;">
                  
-                  <th style="text-align:center" width="800">DVs No.</th>
-                  <th style="text-align:center" width="800">ORS/BURS No.</th>
-                  <th style="text-align:center" width="800">SR No.</th>
-                  <th style="text-align:center" width="800">PPA</th>
-                  <th style="text-align:center" width="800">UACS</th>
-                  <th style="text-align:center" width="800">DATE RECEIVED</th>
-                  <th style="text-align:center" width="800">DATE DISBURSED</th>
-                  <th style="text-align:center" width="800">DATE RELEASE</th>
-                  <th style="text-align:center" width="800">PAYEE</th>
-                  <th style="text-align:center" width="800">PARTICULAR</th>
-                  <th style="text-align:center" width="800">AMOUNT</th>
-                  <th style="text-align:center" width="800">TAX</th>
-                  <th style="text-align:center" width="800">GSIS</th>
-                  <th style="text-align:center" width="800">PAGIBIG</th>
-                  <th style="text-align:center" width="800">PHILHEALTH</th>
-                  <th style="text-align:center" width="800">OTHER PAYABLES</th>
-                  <th style="text-align:center" width="800">TOTAL DEDUCTIONS</th>
-                  <th style="text-align:center" width="800">NET</th>
-                  <th style="text-align:center" width="800">REMARKS</th>
-                  <th style="text-align:center" width="800">STATUS</th>
-                  <th style="text-align:center" width="800">ACTION</th>
+                  <th style="text-align:center" width="">DVs No.</th>
+                  <th style="text-align:center" width="">ORS/BURS No.</th>
+                  <th style="text-align:center" width="">SR No.</th>
+                  <th style="text-align:center" width="">PPA</th>
+                  <th style="text-align:center" width="">UACS</th>
+                  <th style="text-align:center" width="">DATE RECEIVED</th>
+                  <th style="text-align:center" width="">DATE DISBURSED</th>
+                  <th style="text-align:center" width="">DATE RELEASE</th>
+                  <th style="text-align:center" width="">PAYEE</th>
+                  <th style="text-align:center" width="">PARTICULAR</th>
+                  <th style="text-align:center" width="">AMOUNT</th>
+                  <th style="text-align:center" width="">TAX</th>
+                  <th style="text-align:center" width="">GSIS</th>
+                  <th style="text-align:center" width="">PAGIBIG</th>
+                  <th style="text-align:center" width="">PHILHEALTH</th>
+                  <th style="text-align:center" width="">OTHER PAYABLES</th>
+                  <th style="text-align:center" width="">TOTAL DEDUCTIONS</th>
+                  <th style="text-align:center" width="">NET</th>
+                  <th style="text-align:center" width="">REMARKS</th>
+                  <th style="text-align:center" width="">STATUS</th>
+                  <th style="text-align:center" width="150">ACTION</th>
                 </tr>
               </thead>
               <?php
 
                
 
-              $servername = "localhost";
+              $servername ="localhost";
               $username = "fascalab_2020";
               $password = "w]zYV6X9{*BN";
               $database = "fascalab_2020";
@@ -199,7 +209,7 @@ include('db.class.php'); // call db.class.php
                                       <?php endif ?>
                                       <td>
                                         <a href='disbursementupdate.php?getid=<?php echo $id;?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
-                                        <a href='@Functions/ddeletefunction.php?getid=<?php echo $id;?>'> <i style='font-size:24px'> <i class='fa fa-trash-o'></i></i> </a>
+                                        <!-- <a href='@Functions/ddeletefunction.php?getid=<?php echo $id;?>'> <i style='font-size:24px'> <i class='fa fa-trash-o'></i></i> </a> -->
                                       </td>
                                     
                                     </tr>

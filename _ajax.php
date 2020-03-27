@@ -74,10 +74,6 @@ if($row = mysqli_fetch_array($result))
     }else if($sr == 'Completed')
     {
         $sr = '<span class="badge badge-pill" style = "background-color:green;">'.$sr.'</span>';
-    }else if($sr == 'Received')
-    {
-        $sr = '<span class="badge badge-pill" style = "background-color:orange;">'.$sr.'</span>';
- 
     }
     // =========================================================================================
     if($action == 'Submitted' && $division == 16)

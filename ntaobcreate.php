@@ -1,3 +1,14 @@
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:login.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
 <!-- <style>
@@ -119,7 +130,13 @@
                       <br>
                   <!-- Getting PO NUmber -->      
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            
+          <script>
+          $(document).ready(function(){
+            $("#result").click(function(){
+              $("#main").hide();
+            });
+          });
+          </script>
             <script type="text/javascript">
               $(document).ready(function(){
                 function load_data(query)
@@ -142,6 +159,7 @@
                   }
                   else
                   {
+                    $("#main").show();
                     load_data();
                     document.getElementById('dvno').value = "";
                     document.getElementById('orsno').value = "";
@@ -260,7 +278,7 @@
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width: %;" class="btn btn-success">Submit</button>
+    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Submit</button>
     <br>
     <br>
     </div>

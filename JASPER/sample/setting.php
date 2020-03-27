@@ -1,8 +1,8 @@
 <?php
 $server="127.0.0.1";
-$db="fascalab_2020";
+$db="phpjasperxml";
 $user="fascalab_2020";
-$pass="w]zYV6X9{*BN";
+$pass="fascalab_2020";
 $version="1.1";
 
 $pgport=5432; //only for postgresql
