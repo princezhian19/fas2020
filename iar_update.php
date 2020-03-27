@@ -3,10 +3,6 @@ ob_start();
 ?>
 <html>
 <head>
-  <title>Asset Management System</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body style="background: lightgray;">
   <div class="">
@@ -33,7 +29,7 @@ ob_start();
         <div class="col-xs-3">
           <label>Supplier : </label>
           <?php
-          $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
+          $conn = mysqli_connect("localhost", "fascalab_2020", "w]zYV6X9{*BN", "fascalab_2020");
           $sq = mysqli_query($conn,"SELECT supplier from iar where id ='".$_GET['id']."' ");
           while ($row = mysqli_fetch_assoc($sq)) {
             echo '<input type="text" class="form-control" style="height: 40px;" readonly placeholder="" name="sup" id="sup" value="'.$row['supplier'].'" />';   
@@ -44,7 +40,6 @@ ob_start();
         <div class="col-xs-3">
           <label>PO No. : </label>
           <?php
-          $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
           $sq = mysqli_query($conn,"SELECT po_no from iar where id ='".$_GET['id']."' ");
           while ($row = mysqli_fetch_assoc($sq)) {
             echo '<input type="text" class="form-control" style="height: 40px;" readonly placeholder="" name="po" id="po" value="'.$row['po_no'].'" />';   
@@ -54,7 +49,6 @@ ob_start();
         <div class="col-xs-3">
           <label>PO Date : </label>
           <?php
-          $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
           $sq = mysqli_query($conn,"SELECT po_date from iar where id ='".$_GET['id']."' ");
           while ($row = mysqli_fetch_assoc($sq)) {
             echo '<input type="text" class="form-control" style="height: 40px;" readonly placeholder="" name="po_date" id="po_date" value="'.$row['po_date'].'" />';   
@@ -64,7 +58,6 @@ ob_start();
         <div class="col-xs-3">
           <label>Requisition Dept. : </label>
           <?php
-          $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
           $sq = mysqli_query($conn,"SELECT dept from iar where id ='".$_GET['id']."' ");
           while ($row = mysqli_fetch_assoc($sq)) {
             echo '<input type="text" class="form-control" style="height: 40px;" readonly placeholder="" name="dept" id="dept" value="'.$row['dept'].'" />';   
@@ -76,7 +69,6 @@ ob_start();
         <div class="col-xs-3">
           <label>Code Center</label>
           <?php
-          $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
           $sq = mysqli_query($conn,"SELECT ccode from iar where id ='".$_GET['id']."' ");
           while ($row = mysqli_fetch_assoc($sq)) {
             echo '<input type="text" class="form-control" style="height: 40px;" placeholder="" name="ccode" id="ccode" value="'.$row['ccode'].'" />';   
@@ -86,7 +78,6 @@ ob_start();
         <div class="col-xs-3">
           <label>Iar No. : </label>
           <?php
-          $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
           $sq = mysqli_query($conn,"SELECT iar_no from iar where id ='".$_GET['id']."' ");
           while ($row = mysqli_fetch_assoc($sq)) {
             echo '<input type="text" class="form-control" style="height: 40px;" placeholder="" name="iar_no" id="iar_no" value="'.$row['iar_no'].'" />';   
@@ -96,7 +87,6 @@ ob_start();
         <div class="col-xs-3">
           <label>Iar Date : </label>
           <?php
-          $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
           $sq = mysqli_query($conn,"SELECT iar_date from iar where id ='".$_GET['id']."' ");
           while ($row = mysqli_fetch_assoc($sq)) {
             echo '<input type="text" class="form-control" style="height: 40px;" placeholder="" name="iar_date" id="iar_date" value="'.$row['iar_date'].'" />';   
@@ -106,7 +96,6 @@ ob_start();
         <div class="col-xs-3">
           <label>Invoice No. : </label>
           <?php
-          $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
           $sq = mysqli_query($conn,"SELECT invoice_no from iar where id ='".$_GET['id']."' ");
           while ($row = mysqli_fetch_assoc($sq)) {
             echo '<input type="text" class="form-control" style="height: 40px;" placeholder="" name="invoice" id="invoice" value="'.$row['invoice_no'].'" />';   
@@ -118,7 +107,6 @@ ob_start();
         <div class="col-xs-3">
           <label>Invoice Date. : </label>
           <?php
-          $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
           $sq = mysqli_query($conn,"SELECT invoice_date from iar where id ='".$_GET['id']."' ");
           while ($row = mysqli_fetch_assoc($sq)) {
             echo '<input type="text" class="form-control" style="height: 40px;" placeholder="" name="invoice_date" id="invoice_date" value="'.$row['invoice_date'].'" />';   
@@ -128,7 +116,6 @@ ob_start();
         <div class="col-xs-3">
           <label>Inspection Offircer : </label>
           <?php
-          $conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
           $sq = mysqli_query($conn,"SELECT officer from iar where id='".$_GET['id']."' ");
           while ($row = mysqli_fetch_assoc($sq)) {
 
@@ -203,7 +190,6 @@ ob_start();
 </body>
 </html>
 <?php
-$conn = mysqli_connect("localhost", "fascalab_2020", "", "fascalab_2020");
 if (isset($_POST['submit'])) 
 {
   $sup = $_POST['sup'];
