@@ -46,8 +46,8 @@
             </span>
           </a>
           <ul class="treeview-menu" >
-           <li><a href="@items.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ITEMS</a></li>
-           <li><a href="@stocks.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> STOCK CARD</a></li>
+           <!-- <li><a href="items.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ITEMS</a></li> -->
+           <li><a href="stocks.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> STOCK CARD</a></li>
            <li><a href="@stockledger.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> SUPPLIES LEDGER CARD</a></li>
            <li><a href="ViewIAR.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> IAR</a></li>
             <li><a href="ViewRIS.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>RIS</a></li>
@@ -166,7 +166,7 @@
             </span>
           </a>
           <ul class="treeview-menu" >
-           <li><a href="@items.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ITEMS</a></li>
+           <li><a href="items.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ITEMS</a></li>
            <li><a href="@stocks.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> STOCK CARD</a></li>
            <li><a href="@stockledger.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> SUPPLIES LEDGER CARD</a></li>
            <li><a href="ViewIAR.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> IAR</a></li>

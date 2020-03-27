@@ -35,7 +35,7 @@ $username = $_SESSION['username'];
       </ol>
       <br>
       <br>
-        <?php include('stocks.php');?>
+        <?php include('stocks1.php');?>
 
     </section>
   </div>

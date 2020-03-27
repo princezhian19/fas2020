@@ -1,18 +1,30 @@
+
+
+<?php /* session_start();
+if(!isset($_SESSION['username'])){
+header('location:login.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+} */
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 
 <?php
 
 $getid = $_GET['getid'];
-echo $getid;
+//echo $getid;
 
 $servername = "localhost";
 
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
 
-$username = "fascalab_2020";
-$password = "w]zYV6X9{*BN";
 
 $database = "fascalab_2020";
 // Create connection
@@ -74,7 +86,7 @@ while ($row = mysqli_fetch_assoc($view_query)) {
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
+        <li><a href="home.php"><i class=""></i> Home</a></li>
         <li class="active">Update NTA</li>
       </ol>
       <br>
@@ -88,7 +100,7 @@ while ($row = mysqli_fetch_assoc($view_query)) {
             <div class="box-header with-border">
     
         <br>
-      <li class="btn btn-success"><a href="@nta.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-success"><a href="nta.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
       <!-- Start form -->
@@ -201,7 +213,7 @@ while ($row = mysqli_fetch_assoc($view_query)) {
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width: %;" class="btn btn-success">Update</button>
+    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Update</button>
     <br>
     <br>
     </div>

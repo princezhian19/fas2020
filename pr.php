@@ -539,7 +539,6 @@ function confirmDelete(delUrl) {
                       <option value="4">Supplies, Materials and Devices</option>
                       <option value="5">Other Services</option>
                      
-                    
                     </select>
                   <?php endif ?>
                   <?php if ($type == ''): ?>

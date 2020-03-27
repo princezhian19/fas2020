@@ -564,7 +564,7 @@ class HtmlTest extends \PHPUnit\Framework\TestCase
     {
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $section = $phpWord->addSection();
-        $html = '<p style="">text</p>';
+        $html = '<p >text</p>';
         Html::addHtml($section, $html);
         $doc = TestHelperDOCX::getDocument($phpWord, 'Word2007');
         $this->assertFalse($doc->elementExists('/w:document/w:body/w:p[1]/w:pPr/w:jc'));

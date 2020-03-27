@@ -171,7 +171,7 @@ $username = $_SESSION['username'];
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width: %;" class="btn btn-success">Create</button>
+    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Create</button>
     <br>
     <br>
     </div>

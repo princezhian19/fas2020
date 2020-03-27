@@ -157,7 +157,7 @@ $getUacs = $_GET['getuacs'];
                         TO <i class="fa fa-calendar"></i>
                         </div>
                         <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
                     </div>                        
                       
           </form>

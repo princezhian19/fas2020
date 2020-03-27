@@ -44,7 +44,7 @@ include('db.class.php'); // call db.class.php
          <div class="input-group date">
             <form method = "POST" action = "@stocksearch.php">
             <input  type="text" class="form-control" style="height: 35px; width: 400px" id="form-control" placeholder="Enter Stock Number" name="stocksearch" > &nbsp
-            &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success  ">Search</button>
+            &nbsp<button type="submit" name="submit"  class="btn btn-success  ">Search</button>
           </form>
          </div>
          </div>
@@ -62,7 +62,7 @@ include('db.class.php'); // call db.class.php
                         <div class="input-group-addon">
                         TO <i class="fa fa-calendar"></i>
                         <input type="text" class="" id="datepicker2" placeholder='Enter Date' name="dateto" style="height: 35px; width: 250px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
                         </div>
                       <br> -->
                       <div class="input-group date">
@@ -71,7 +71,7 @@ include('db.class.php'); // call db.class.php
                         </div>
                         <div>
                         <input type="text" class="form-control" id="datepicker2" placeholder='Enter Date' name="dateto" style="height: 35px; width: 250px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
                        </div>
                     </div> 
           </form>
@@ -79,7 +79,7 @@ include('db.class.php'); // call db.class.php
             
            </div>
           <!--  <form method = "POST" action = "@Functions/stocksexportall.php">
-            &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Export All</button>
+            &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success ">Export All</button>
           </form> -->
         </div>
       </div>

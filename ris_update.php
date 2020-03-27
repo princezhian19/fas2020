@@ -11,15 +11,15 @@ ob_start();
 </head>
 
 <body style="background: lightgray;">
-  <div class="">
-    <div class="panel panel-default">
+<div class="box">
+        <div class="box-body"> 
       <br>
       
-            <h1 align="">&nbspUpdate Requisition and Issue Slip</h1>
+            <h1 align="">Update Requisition and Issue Slip</h1>
              <div class="box-header with-border">
     </div>
     <br>
-      &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="ViewRIS.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-success"><a href="ViewRIS.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
       <p>&nbsp</p>
@@ -156,8 +156,8 @@ ob_start();
             <br>
             <br>
             <br>
-            <div style="padding-left: 20px;"> 
-          <input type="submit" name="submit" class="btn btn-primary" value="Save" />
+            <div > 
+          <input type="button" name="submit" class="btn btn-primary" value="Save" />
             </div>
 <div class="box-header with-border">
         <div class="table-repsonsive">
