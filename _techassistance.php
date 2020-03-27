@@ -20,7 +20,8 @@ if(!isset($_SESSION))
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  
+  <link rel="stylesheet" href="_includes/sweetalert.css">
+  <link href="_includes/sweetalert2.min.css" rel="stylesheet"/>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -53,14 +54,8 @@ if($_GET['division'] == 16)
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
-
 <script src="_includes/sweetalert.min.js"></script>
-<link rel="stylesheet" href="_includes/sweetalert.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css" rel="stylesheet"/>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
-<!-- <script src="dist/js/adminlte.min.js"></script>
-<script src="dist/js/demo.js"></script> -->
+<script src="_includes/sweetalert2.min.js"></script>
 <script>
 
 

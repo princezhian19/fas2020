@@ -2,7 +2,7 @@
 
 include_once("../PHPJasperXML.inc.php");
 // Creating a workbook
-include ('setting.php');
+// include ('setting.php');
 //$xml =  simplexml_load_file("sample9.jrxml");
 
 
@@ -12,10 +12,11 @@ include ('setting.php');
 $PHPJasperXML = new PHPJasperXML("en","XLS");
 //$PHPJasperXML->debugsql=true;
 $PHPJasperXML->arrayParameter=array("parameter1"=>0);
-$PHPJasperXML->load_xml_file("sample4.jrxml");
+$PHPJasperXML->load_xml_file("sample.jrxml");
 
-$PHPJasperXML->transferDBtoArray($server,$user,$pass,$db);
-$PHPJasperXML->outpage("I","sample4.xls");    //page output method I:standard output  D:Download file
+// $PHPJasperXML->load_xml_file("report1.jrxml");
+$PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
+$PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
 
 /*
 

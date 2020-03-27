@@ -409,7 +409,7 @@ $('.sweet-16').click(function()
     {
         var ids = $(this).parent('li').attr('id');
         swal({
-            title: "Are you sure you want to recieved this request?",
+            title: "Are you already finished with this request?",
             text: "Control No:"+ids,
             type: "info",
             showCancelButton: true,
@@ -453,6 +453,9 @@ $('.sweet-16').click(function()
 
 
     $('#example1').DataTable({
+        "search": {
+    "search": "<?php echo $_GET['ticket_id'];?>"
+  },
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
