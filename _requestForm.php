@@ -33,6 +33,8 @@ $username = $_SESSION['username'];
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="_includes/sweetalert.css">
+  <link rel="stylesheet" href="_includes/fontawesome.css">
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">

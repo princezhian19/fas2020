@@ -187,7 +187,7 @@ background-position: 90px 5px;
                     <div>
                         <h1>Online ICT Technical Assistance Request Form</h1><br>
                     </div>
-                    <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/sample/sample1.php" >    
+                    <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/sample/sample1.php?division=<?php echo $_GET['division'];?>" >    
                         <?php echo fillTableInfo(); ?>
                      
                         <br>
