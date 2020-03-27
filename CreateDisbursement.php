@@ -247,7 +247,7 @@ else{
      <div class="class">
      </div>
    </div>
-   &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width: %;" class="btn btn-success btn-s">Proccess</button>
+   &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success btn-s">Proccess</button>
    <br>
    <br>
  </div>

@@ -110,7 +110,7 @@ $query = mysqli_query($conn,"SELECT * FROM disbursement where ID = '$getid' ");
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
+        <li><a href="home.php"><i class=""></i> Home</a></li>
         <li class="active">Update Disbursement</li>
       </ol>
       <br>
@@ -124,7 +124,7 @@ $query = mysqli_query($conn,"SELECT * FROM disbursement where ID = '$getid' ");
              <div class="box-header with-border">
     
         <br>
-      <li class="btn btn-success"><a href="@disbursement.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-success"><a href="disbursement.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
       <!-- Start form -->
@@ -375,7 +375,7 @@ $query = mysqli_query($conn,"SELECT * FROM disbursement where ID = '$getid' ");
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width: %;" class="btn btn-success">Update</button>
+    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Update</button>
     <br>
     <br>
     </div>

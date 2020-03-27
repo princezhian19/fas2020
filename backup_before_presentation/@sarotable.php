@@ -59,7 +59,7 @@ include('db.class.php'); // call db.class.php
 
       
           <form method = "POST" action = "@Functions/saroexportall.php">
-            &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Export All</button>
+            &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success ">Export All</button>
           </form> -->
 
           <form method = "POST" action = "@Functions/sarodateexport.php">
@@ -74,7 +74,7 @@ include('db.class.php'); // call db.class.php
                         TO <i class="fa fa-calendar"></i>
                         </div>
                         <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Filter/Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
                     </div>                        
                       
           </form>

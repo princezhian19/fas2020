@@ -38,7 +38,7 @@ if($query){
 //if query is successful
 echo ("<SCRIPT LANGUAGE='JavaScript'>
 window.alert('Data Deleted Successfully!')
-window.location.href='../@items.php?message=Data Deleted Successfully!';
+window.location.href='../items.php?message=';
 </SCRIPT>"); 
 
 
@@ -50,7 +50,7 @@ else{
 echo ("<SCRIPT LANGUAGE='JavaScript'>
 
 window.alert('Error!')
-window.location.href='../@items.php?message=Error!';
+window.location.href='../items.php?message=';
 </SCRIPT>");
 }
 

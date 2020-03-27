@@ -18,9 +18,13 @@ header('location:index.php');
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+<<<<<<< HEAD
+  <link rel="stylesheet" href="_includes/fontawesome.css">
+=======
   
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+>>>>>>> d86344815dffc1c85eb531575689c5ef20bce9f9
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">

@@ -32,7 +32,7 @@ include('db.class.php'); // call db.class.php
     <div class="class">
           
     
-        <li class="btn btn-success"><a href="@itemscreate.php" style="color:white;text-decoration: none;">Add Item</a></li>
+        <li class="btn btn-success"><a href="itemscreate.php" style="color:white;text-decoration: none;">Add Item</a></li>
        
         
         <br>
@@ -93,7 +93,7 @@ include('db.class.php'); // call db.class.php
                     
                     <td>
                     
-                    <a href='@itemupdate.php?getid=$id'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
+                    <a href='itemupdate.php?getid=$id'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
                     <a href='@Functions/itemsdeletefunction.php?getid=$id'> <i style='font-size:24px'<i class='fa fa-trash-o'></i> </a>
                     
                     </td>

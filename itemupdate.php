@@ -1,16 +1,44 @@
 <!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
+
+<!-- Getting Values from database to input -->
+<?php
+
+$getid = $_GET['getid'];
+//echo $id;
+
+$servername = "localhost";
+
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
+
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
+
+$database = "fascalab_2020";
+// Create connection
+$conn = new mysqli($servername, $username, $password,$database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+//echo "Connected successfully";
+
+
+// Getting values from id
+$query = mysqli_query($conn,"SELECT * FROM item_list where id = '$getid' ");
+    while ($row = mysqli_fetch_assoc($query)) 
+    {
+    $id = $row["id"]; 
+    $sn = $row["code"]; 
+    $item = $row["item"]; 
+    }
+
+    
+?>
+
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,16 +48,10 @@
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-
   
   <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
-
-    <!-- Auto Complete -->
-    
-
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -40,40 +62,47 @@
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
-        <li class="active">Add Item</li>
+        <li class="active">Update Item</li>
       </ol>
       <br>
       <br>
-       
+        
     <!-- Start Panel -->
     <div class="panel panel-default">
         <br>
       
-            <h1 align="">&nbspAdd Item</h1>
-            <div class="box-header with-border">
+            <h1 align="">&nbspUpdate Item at ID: <label for=""><?php echo $getid;?></h1>
+             <div class="box-header with-border">
     
         <br>
-      <li class="btn btn-success"><a href="@items.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-success"><a href="items.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
       <!-- Start form -->
-  <form class="" method='POST' action="@Functions/itemscreatefunction.php" >
+  
+        
+        <form class="" method='POST' action="@Functions/itemsupdatefunction.php" >
+
+          <!-- getting ID for update function -->
+          <input type="hidden" name="requestid" value = "<?php echo $getid;?>" >
+        <!-- getting ID for update function -->
         <!-- Start Menu -->
         <div class="class-bordered" >
             <div class="row">
                 <div class="col-md-6">
                     <label>Stock No.</label>
-                      <input  type="text" class="form-control" style="height: 35px;" id="fund" placeholder="Enter Stock Number" name="sn">
+                      <input  type="text" class="form-control" style="height: 35px;" id="fund" placeholder="Enter Stock Number" name="sn" value="<?php echo $sn;?>">
                     <br>
                     <label>Item Name</label>
-                      <input  type="text" class="form-control" style="height: 35px;" id="legalbasis" placeholder="Enter Item Name" name="item">
+                      <input  type="text" class="form-control" style="height: 35px;" id="legalbasis" placeholder="Enter Item Name" name="item" value="<?php echo $item;?>">
                     <br>
                
                 </div>    
                 
                 <div class="col-md-6">
                     
-                        
+                    
+                     
                     
                 </div>
             </div>
@@ -87,7 +116,7 @@
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width: %;" class="btn btn-success">Submit</button>
+    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Submit</button>
     <br>
     <br>
     </div>
@@ -100,8 +129,8 @@
  
 </div>
 
-<script src="dist/js/demo.js">
-</script>
+<script src="dist/js/adminlte.min.js"></script>
+<script src="dist/js/demo.js"></script>
 <!-- <script>
   $(function () {
     $('#example1').DataTable()

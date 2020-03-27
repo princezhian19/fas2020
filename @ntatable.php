@@ -1,6 +1,11 @@
-<?php
-
-
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:login.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
 ?>
 
 
@@ -46,7 +51,7 @@
                         TO <i class="fa fa-calendar"></i>
                         </div>
                         <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                        &nbsp<button type="submit" name="submit" style="width:%; height: 35px" class="btn btn-success ">Export Data</button>
+                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Export Data</button>
 
                           <!-- &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none;">Export All</a></li> -->
                     </div>                        
@@ -87,22 +92,22 @@
                     <tr style="background-color: white;color:blue;">
                         
                        
-                        <th style="text-align:center"  width="800">DATE NTA</th>
-                        <th style="text-align:center"  width="800">DATE RECEIVED</th>
-                        <th style="text-align:center" width="800">ACCOUNT NO</th>
-                        <th style="text-align:center" width="800">NTA NO</th>
-                        <th style="text-align:center" width="800">SARO</th>
-                        <th style="text-align:center" width="800">PARTICULAR</th>
-                        <th style="text-align:center" width="800">AMOUNT</th>
-                        <th style="text-align:center" width="800">DISBURSEMENT</th>
+                        <th style="text-align:center"  width="">DATE NTA</th>
+                        <th style="text-align:center"  width="">DATE RECEIVED</th>
+                        <th style="text-align:center" width="">ACCOUNT NO</th>
+                        <th style="text-align:center" width="">NTA NO</th>
+                        <th style="text-align:center" width="">SARO</th>
+                        <th style="text-align:center" width="500">PARTICULAR</th>
+                        <th style="text-align:center" width="">AMOUNT</th>
+                        <th style="text-align:center" width="">DISBURSEMENT</th>
 
-                        <th style="text-align:center" width="800">BALANCE</th>
+                        <th style="text-align:center" width="">BALANCE</th>
                        <!--  <th style="text-align:center" width="800">UACS</th>
                         <th style="text-align:center" width="800">AMOUNT</th>
                         <th style="text-align:center" width="800">OBLIGATED</th>
                         <th style="text-align:center" width="800">BALANCE</th>
                         <th style="text-align:center" width="800">GROUP</th> -->
-                        <th style="text-align:center" width="800">ACTION</th>
+                        <th style="text-align:center" width="">ACTION</th>
                        
 
                     <!-- </tr> -->
@@ -174,8 +179,8 @@
                     
                     <td style="text-align:center" > 
                     
-                    <a href='@ntaupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
-                    <a href='@ntatableViewMain.php?getntano=<?php echo $ntano?>&getparticular=<?php echo $particular?>'> <i style='font-size:24px' class='fa'>&#xf06e;</i> </a>
+                    <a href='ntaupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
+                    <a href='ntatableViewMain.php?getntano=<?php echo $ntano?>&getparticular=<?php echo $particular?>'> <i style='font-size:24px' class='fa'>&#xf06e;</i> </a>
                     
                     </td>
                    
