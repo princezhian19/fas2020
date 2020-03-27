@@ -62,7 +62,7 @@ $id = $rowpo['id'];
                                 <div class="col-md-12">
                                     <p>
                                         <!-- <a href="" class="btn btn-primary"> Update </a> |  -->
-                                        <a href="export_po.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-success"> Export </a> | <a href="UpdatePo.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-primary"> Update </a>
+                                        <a href="export_po.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-success"> Export </a> | <a href="UpdatePO.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-primary"> Update </a>
                                     </p> 
                                     <div class="table table-responsive table-bordered"></div>
                                     <table id="example1" class="table table-striped table-bordered" style="background-color white;">

@@ -100,8 +100,8 @@ Returns a string for the OLE container with the date given</span><pre>LocalDate2
 <li class="method public "><a href="#method__getBlockOffset" title="_getBlockOffset :: "><span class="description">_getBlockOffset()
         </span><pre>_getBlockOffset()</pre></a></li>
 <li class="method public "><a href="#method__ppsTreeComplete" title="_ppsTreeComplete :: It checks whether the PPS tree is complete (all PPS's read)
-starting with the given PPS (not necessarily fascalab_2020)"><span class="description">It checks whether the PPS tree is complete (all PPS's read)
-starting with the given PPS (not necessarily fascalab_2020)</span><pre>_ppsTreeComplete()</pre></a></li>
+starting with the given PPS (not necessarily root)"><span class="description">It checks whether the PPS tree is complete (all PPS's read)
+starting with the given PPS (not necessarily root)</span><pre>_ppsTreeComplete()</pre></a></li>
 <li class="method public "><a href="#method__readPpsWks" title="_readPpsWks :: Gets information about all PPS's on the OLE container from the PPS WK's
 creates an OLE_PPS object for each one."><span class="description">Gets information about all PPS's on the OLE container from the PPS WK's
 creates an OLE_PPS object for each one.</span><pre>_readPpsWks()</pre></a></li>
@@ -113,7 +113,7 @@ If there is no PPS for the index given, it will return 0."><span class="descript
 If there is no PPS for the index given, it will return 0.</span><pre>getDataLength()</pre></a></li>
 <li class="method public "><a href="#method_getStream" title="getStream :: Returns a stream for use with fread() etc."><span class="description">Returns a stream for use with fread() etc.</span><pre>getStream()</pre></a></li>
 <li class="method public "><a href="#method_isFile" title="isFile :: Checks whether a PPS is a File PPS or not."><span class="description">Checks whether a PPS is a File PPS or not.</span><pre>isFile()</pre></a></li>
-<li class="method public "><a href="#method_isRoot" title="isRoot :: Checks whether a PPS is a fascalab_2020 PPS or not."><span class="description">Checks whether a PPS is a fascalab_2020 PPS or not.</span><pre>isRoot()</pre></a></li>
+<li class="method public "><a href="#method_isRoot" title="isRoot :: Checks whether a PPS is a Root PPS or not."><span class="description">Checks whether a PPS is a Root PPS or not.</span><pre>isRoot()</pre></a></li>
 <li class="method public "><a href="#method_ppsTotal" title="ppsTotal :: Gives the total number of PPS's found in the OLE container."><span class="description">Gives the total number of PPS's found in the OLE container.</span><pre>ppsTotal()</pre></a></li>
 <li class="method public "><a href="#method_read" title="read :: Reads an OLE container from the contents of the file given."><span class="description">Reads an OLE container from the contents of the file given.</span><pre>read()</pre></a></li>
 </ul>
@@ -132,7 +132,7 @@ If there is no PPS for the index given, it will return 0.</span><pre>getDataLeng
 <li class="property public "><a href="#property__list" title="$_list :: Array of PPS's found on the OLE container"><span class="description"></span><pre>$_list</pre></a></li>
 <li class="property public "><a href="#property_bbat" title="$bbat :: Big Block Allocation Table"><span class="description"></span><pre>$bbat</pre></a></li>
 <li class="property public "><a href="#property_bigBlockSize" title="$bigBlockSize :: Size of big blocks."><span class="description"></span><pre>$bigBlockSize</pre></a></li>
-<li class="property public "><a href="#property_root" title="$fascalab_2020 :: fascalab_2020 directory of OLE container"><span class="description"></span><pre>$fascalab_2020</pre></a></li>
+<li class="property public "><a href="#property_root" title="$root :: Root directory of OLE container"><span class="description"></span><pre>$root</pre></a></li>
 <li class="property public "><a href="#property_sbat" title="$sbat :: Short Block Allocation Table"><span class="description"></span><pre>$sbat</pre></a></li>
 <li class="property public "><a href="#property_smallBlockSize" title="$smallBlockSize :: Size of small blocks."><span class="description"></span><pre>$smallBlockSize</pre></a></li>
 </ul>
@@ -279,7 +279,7 @@ Returns a string for the OLE container with the date given</h2>
 </div>
 <a id="method__ppsTreeComplete"></a><div class="element clickable method public method__ppsTreeComplete" data-toggle="collapse" data-target=".method__ppsTreeComplete .collapse">
 <h2>It checks whether the PPS tree is complete (all PPS's read)
-starting with the given PPS (not necessarily fascalab_2020)</h2>
+starting with the given PPS (not necessarily root)</h2>
 <pre>_ppsTreeComplete(integer $index) : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
@@ -408,7 +408,7 @@ use PHPExcel_Shared_OLE_PPS_File::getStream().</p></div>
 </div></div>
 </div>
 <a id="method_isRoot"></a><div class="element clickable method public method_isRoot" data-toggle="collapse" data-target=".method_isRoot .collapse">
-<h2>Checks whether a PPS is a fascalab_2020 PPS or not.</h2>
+<h2>Checks whether a PPS is a Root PPS or not.</h2>
 <pre>isRoot(integer $index) : bool</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
@@ -423,7 +423,7 @@ use PHPExcel_Shared_OLE_PPS_File::getStream().</p></div>
 <code>integer</code><p>The index for the PPS.</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
-<code>bool</code>true if it's a fascalab_2020 PPS, false otherwise</div>
+<code>bool</code>true if it's a Root PPS, false otherwise</div>
 </div></div>
 </div>
 <a id="method_ppsTotal"></a><div class="element clickable method public method_ppsTotal" data-toggle="collapse" data-target=".method_ppsTotal .collapse">
@@ -543,7 +543,7 @@ use PHPExcel_Shared_OLE_PPS_File::getStream().</p></div>
 </div>
 <a id="property_root"> </a><div class="element clickable property public property_root" data-toggle="collapse" data-target=".property_root .collapse">
 <h2></h2>
-<pre>$fascalab_2020 : \OLE_PPS_Root</pre>
+<pre>$root : \OLE_PPS_Root</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>

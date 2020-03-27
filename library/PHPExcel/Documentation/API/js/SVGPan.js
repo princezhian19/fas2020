@@ -57,17 +57,17 @@
  * or implied, of Andrea Leofreddi.
  */
 
-var fascalab_2020 = document.documentElement;
+var root = document.documentElement;
 
 var state = 'none', stateTarget, stateOrigin, stateTf;
 
-setupHandlers(fascalab_2020);
+setupHandlers(root);
 
 /**
  * Register handlers
  */
-function setupHandlers(fascalab_2020){
-	setAttributes(fascalab_2020, {
+function setupHandlers(root){
+	setAttributes(root, {
 		"onmouseup" : "add(evt)",
 		"onmousedown" : "handleMouseDown(evt)",
 		"onmousemove" : "handleMouseMove(evt)",
@@ -85,7 +85,7 @@ function setupHandlers(fascalab_2020){
  * Instance an SVGPoint object with given event coordinates.
  */
 function getEventPoint(evt) {
-	var p = fascalab_2020.createSVGPoint();
+	var p = root.createSVGPoint();
 
 	p.x = evt.clientX;
 	p.y = evt.clientY;
@@ -146,7 +146,7 @@ function handleMouseWheel(evt) {
 	p = p.matrixTransform(g.getCTM().inverse());
 
 	// Compute new scale matrix in current mouse position
-	var k = fascalab_2020.createSVGMatrix().translate(p.x, p.y).scale(z).translate(-p.x, -p.y);
+	var k = root.createSVGMatrix().translate(p.x, p.y).scale(z).translate(-p.x, -p.y);
 
         setCTM(g, g.getCTM().multiply(k));
 
@@ -175,7 +175,7 @@ function handleMouseMove(evt) {
 		// Move mode
 		var p = getEventPoint(evt).matrixTransform(g.getCTM().inverse());
 
-		setCTM(stateTarget, fascalab_2020.createSVGMatrix().translate(p.x - stateOrigin.x, p.y - stateOrigin.y).multiply(g.getCTM().inverse()).multiply(stateTarget.getCTM()));
+		setCTM(stateTarget, root.createSVGMatrix().translate(p.x - stateOrigin.x, p.y - stateOrigin.y).multiply(g.getCTM().inverse()).multiply(stateTarget.getCTM()));
 
 		stateOrigin = p;
 	}

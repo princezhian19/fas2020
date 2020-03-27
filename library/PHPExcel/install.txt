@@ -19,7 +19,7 @@
 *
 * @copyright  Copyright (c) 2006 - 2013 PHPExcel (http://www.codeplex.com/PHPExcel)
 * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt	LGPL
-* @version    1.7.9, 2013-06-02
+* @version    ##VERSION##, ##DATE##
 **************************************************************************************
 
 Requirements
@@ -45,7 +45,7 @@ in your application required.
 
 Example:
 
-If your web fascalab_2020 folder is /var/www/ you may want to create a subfolder called
+If your web root folder is /var/www/ you may want to create a subfolder called
 /var/www/Classes/ and copy the files into that folder so you end up with files:
 
 /var/www/Classes/PHPExcel.php
