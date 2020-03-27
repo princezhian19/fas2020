@@ -22,6 +22,8 @@ if(!isset($_SESSION))
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="_includes/sweetalert.css">
   <link href="_includes/sweetalert2.min.css" rel="stylesheet"/>
+  <link href="_includes/fontawesome.css" rel="stylesheet"/>
+ 
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
