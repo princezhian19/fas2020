@@ -5,6 +5,12 @@
 <?php 
 session_start();
 $username = $_SESSION['username'];
+if(isset($_GET['ticket_id']))
+{
+
+}else{
+    $_GET['ticket_id'] == '';
+}
 ?>
 
 <title>FAS Dashboard</title>
@@ -17,6 +23,12 @@ $username = $_SESSION['username'];
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+<<<<<<< HEAD
+  <link rel="stylesheet" href="_includes/fontawesome.css">
+
+
+=======
+>>>>>>> d86344815dffc1c85eb531575689c5ef20bce9f9
   
   
 <style>
@@ -66,17 +78,14 @@ function filldataTable()
                                                         <?php
                                                     }
                                                     ?>
-                                                        <?php 
-                                                        if($row['STATUS_REQUEST'] == 'Received' || $row['STATUS_REQUEST'] == 'For action')
+                                                        <!-- if($row['STATUS_REQUEST'] == 'Received' || $row['STATUS_REQUEST'] == 'For action')
                                                         {
 
                                                         }else{
                                                             ?>
                                                         <button class = "pull-right btn btn-primary sweet-15" style = "padding-left:10px;">Recieved</button>
 
-                                                            <?php
-                                                        }
-                                                        ?>
+                                                        } -->
 
 
                                                         <h5 class="card-title">Issue/Problem</h5>
@@ -168,7 +177,8 @@ function showICTload($itstaff)
 function submittedReq()
 {
     include 'connection.php';
-    $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' order by `REQ_DATE` DESC, `REQ_TIME` ";
+    $username = $_SESSION['username'];
+    $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' order by `REQ_DATE` DESC, `REQ_TIME` LIMIT 4 ";
     $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
 
@@ -176,15 +186,36 @@ function submittedReq()
 
     while($row = mysqli_fetch_array($result))
     {
-        ?>
-        
-                        <li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
+        $query1 = 'SELECT CONCAT(`FIRST_M`," ",`LAST_M`)AS NAME ,`UNAME` FROM `tblemployee`  WHERE CONCAT(`FIRST_M`," ",`LAST_M`) = "'.$row['ASSIST_BY'].'"';       
+        $result1 = mysqli_query($conn, $query1);
+        while($row1 = mysqli_fetch_array($result1))
+        {
+            if($row1['UNAME'] == $username)
+            {
+                ?>
+                    <li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY']?>">
                             <?php echo $row['CONTROL_NO'];?>
-                            <button type="button" class="sweet-16 btn btn-success pull-right">
+                            <button  type="button" class="sweet-16 btn btn-success pull-right">
                             Completed
                             </button>
                         </li>
+                <?php
+            }else{
+                ?>
+                <li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
+                            <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY']?>">
+                            <?php echo $row['CONTROL_NO'];?>
+                            <button disabled type="button" class="sweet-16 btn btn-success pull-right">
+                            Completed
+                            </button>
+                        </li>
+                <?php
+            }
+        }
+        ?>
+        
+                        
                         
                    
         <?php
@@ -192,11 +223,11 @@ function submittedReq()
     echo '</ul>';
     }else{
         ?>
-<li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
-<img style="vertical-align:top;"  class="round" width="30" height="30" avatar=DILG>
-</li>
-        <?php
-    }
+    <li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
+    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar=DILG>
+    </li>
+            <?php
+        }
      
 }
 
@@ -321,6 +352,10 @@ if($_GET['division'] == 16)
 <link href="_includes/sweetalert2.min.css" rel="stylesheet"/>
 
 <script src="_includes/sweetalert2.min.js" type="text/javascript"></script>
+
+<script src="dist/js/adminlte.min.js"></script>
+<script src="dist/js/demo.js"></script>
+
 <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <script type="text/javascript">
 $('.sweet-14').click(function()
@@ -373,37 +408,37 @@ $('.sweet-14').click(function()
         });
     });
 // =====================================================================
-$('.sweet-15').click(function()
-    {
-        var ids = $(this).parent('div').attr('id');
-        swal({
-            title: "Are you sure you want to recieved this request?",
-            text: "Control No:"+ids,
-            type: "info",
-            showCancelButton: true,
-            showCancelButton: true,
-            confirmButtonText: 'Yes',
-            closeOnConfirm: false,
-            showLoaderOnConfirm: true
-        }).then(function () {
-            $.ajax({
-              url:"_ticketReleased.php",
-              method:"POST",
-              data:{
-                  id:ids,
-                  option:"released"
-              },
+// $('.sweet-15').click(function()
+//     {
+//         var ids = $(this).parent('div').attr('id');
+//         swal({
+//             title: "Are you sure you want to recieved this request?",
+//             text: "Control No:"+ids,
+//             type: "info",
+//             showCancelButton: true,
+//             showCancelButton: true,
+//             confirmButtonText: 'Yes',
+//             closeOnConfirm: false,
+//             showLoaderOnConfirm: true
+//         }).then(function () {
+//             $.ajax({
+//               url:"_ticketReleased.php",
+//               method:"POST",
+//               data:{
+//                   id:ids,
+//                   option:"released"
+//               },
               
-              success:function(data)
-              {
-                  setTimeout(function () {
-                  swal("Record saved successfully!");
-                  }, 3000);
-                  window.location = "_tickets.php?division=<?php echo $_GET['division']?>&ticket_id=<?php echo $_GET['ticket_id']?>";
-              }
-            });
-        });
-    });
+//               success:function(data)
+//               {
+//                   setTimeout(function () {
+//                   swal("Record saved successfully!");
+//                   }, 3000);
+//                   window.location = "_tickets.php?division=<?php echo $_GET['division']?>&ticket_id=<?php echo $_GET['ticket_id']?>";
+//               }
+//             });
+//         });
+//     });
 // =====================================================================
 $('.sweet-16').click(function()
     {
@@ -431,7 +466,7 @@ $('.sweet-16').click(function()
                   setTimeout(function () {
                   swal("Service Completed!");
                   }, 3000);
-                  window.location = "_tickets.php?division=<?php echo $_GET['division']?>&ticket_id=<?php echo $_GET['ticket_id']?>";
+                  window.location = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id=<?php echo $_GET['ticket_id']?>";
               }
             });
         });
@@ -453,6 +488,12 @@ $('.sweet-16').click(function()
 
 
     $('#example1').DataTable({
+<<<<<<< HEAD
+//         "search": {
+//     "search": "<?php echo $_GET['ticket_id'];?>"
+//   },
+=======
+>>>>>>> d86344815dffc1c85eb531575689c5ef20bce9f9
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
