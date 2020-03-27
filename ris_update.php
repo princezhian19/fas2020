@@ -71,23 +71,30 @@ ob_start();
                   <option value="2">JOHN M. CEREZO</option>
                   <option value="3">DR. CARINA S. CRUZ</option>
                   </select>';   
-                }
-
-                if ($request_by == 2) {
+                }elseif ($request_by == 2) {
                   echo '<select name="request_by" class="form-control">
                   <option value="2">JOHN M. CEREZO</option>
                   <option value="1">ELOISA G. ROZUL</option>
                   <option value="3">DR. CARINA S. CRUZ</option>
                   </select>';   
-                }
-
-                if ($request_by == 3) {
+                }elseif ($request_by == 3) {
                   echo '<select name="request_by" class="form-control">
                   <option value="3">DR. CARINA S. CRUZ</option>
                   <option value="2">JOHN M. CEREZO</option>
                   <option value="1">ELOISA G. ROZUL</option>
                   </select>';   
+                }else{
+                  echo ' <select name="request_by" class="form-control">
+                  <option selected disabled>SELECT</option>
+                  <option value="1">ELOISA G. ROZUL</option>
+                  <option value="2">JOHN M. CEREZO</option>
+                  <option value="3">DR. CARINA S. CRUZ</option>
+                  </select>';
                 }
+
+                
+
+                
 
               }
               ?>
