@@ -114,7 +114,7 @@ $mydb = new db(); // create a new object, class db()
                         <td><?php echo $target_date1;?></td>
 
                         <?php if ($submitted_date == NULL): ?>
-                          <td><b>DRAFT</b></td>
+                          <td>DRAFT</td>
                           <?php else: ?>
                             <?php if ($submitted_date != NULL AND $received_date1 == NULL): ?>
                         <td>
