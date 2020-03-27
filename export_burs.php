@@ -84,14 +84,12 @@ $designation = $row2['designation'];
 $chief = strtoupper($pmo_title);
 
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('E40','BURS/JEV/RCI/        RADAI/RTRAI No.S');
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A3','BUDGET UTILIZATION REQUEST AND STATUS');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D6',$supplier);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D10',$address);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D16',$purpose);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D15',$purpose.', in the amount of..........');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('L16',$amount);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C31',$chief);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C34',$designation);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('C43',$chief);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('C45',$designation);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
