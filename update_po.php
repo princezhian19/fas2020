@@ -2,43 +2,21 @@
 require_once('functions.php'); 
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
-$select_ = mysqli_query($conn,"SELECT rfq.rfq_no,s.id,s.supplier_title FROM abstract_of_quote abs LEFT JOIN rfq on rfq.id = abs.rfq_id LEFT JOIN supplier s on s.id = abs.supplier_id LEFT JOIN rfq_items rq on rq.rfq_id = abs.rfq_id WHERE abs.rfq_id = $rfq_id AND abs.abstract_no IS NOT NULL");
-$row_ = mysqli_fetch_array($select_);
-$rfq_no = $row_['rfq_no'];
-$supplier_title = $row_['supplier_title'];
-$supplier_id = $row_['id'];
-
-$selectPPU = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id");
-while($rowP = mysqli_fetch_array($selectPPU)){
-$ritems[] = $rowP['id'];
-}
-
-$implode = implode(',', $ritems);
-
-$select_tots = mysqli_query($conn,"SELECT sum(ppu*qty) as ABCtots FROM supplier_quote sq LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE rfq_item_id in($implode) AND supplier_id = $supplier_id");
-while($row_tots = mysqli_fetch_array($select_tots)){
-$POamount = $row_tots['ABCtots'];
-}
-$select_sel = mysqli_query($conn,"SELECT abstract_no FROM abstract_of_quote WHERE rfq_id = $rfq_id AND supplier_id = $supplier_id");
-$rowsel = mysqli_fetch_array($select_sel);
-$abstract_nosel = $rowsel['abstract_no'];
-
-$select_sel = mysqli_query($conn,"SELECT po_id FROM selected_quote WHERE rfq_id = $rfq_id AND aoq_id = $abstract_nosel");
-$rowsel = mysqli_fetch_array($select_sel);
-$po_idsel = $rowsel['po_id'];
+$po_noD = $_GET['po_no'];
+$po_dateD1 = $_GET['po_date'];
+$noa_dateD1 = $_GET['noa_date'];
+$ntp_dateD1 = $_GET['ntp_date'];
+$remarksD = $_GET['remarks'];
+$supplier_title = $_GET['supplier_title'];
+$po_amount = $_GET['po_amount'];
+$rfq_no = $_GET['rfq_no'];
 
 
-
-$selectpo1 = mysqli_query($conn,"SELECT * FROM po where id = $po_idsel");
-$porow = mysqli_fetch_array($selectpo1);
-$po_noD = $porow['po_no'];
-$po_dateD1 = $porow['po_date'];
 $po_dateD = date('Y-m-d',strtotime($po_dateD1));
-$ntp_dateD1 = $porow['ntp_date'];
 $ntp_dateD = date('Y-m-d',strtotime($ntp_dateD1));
-$noa_dateD1 = $porow['noa_date'];
 $noa_dateD = date('Y-m-d',strtotime($noa_dateD1));
-$remarksD = $porow['remarks'];
+
+
 
 ?>
 <?php 
@@ -56,7 +34,7 @@ $insertPO = mysqli_query($conn,"UPDATE po SET po_date = '$po_date1', noa_date = 
 if($insertPO){
   echo ("<SCRIPT LANGUAGE='JavaScript'>
   window.alert('Successful!');
-  window.location.href='UpdatePo.php?rfq_id=$rfq_id&supplier_id=$supplier_id';
+  window.location.href='UpdatePo.php?rfq_id=$rfq_id&supplier_id=$supplier_id&po_no=$po_no&po_date=$po_date&noa_date=$noa_date&ntp_date=$ntp_date&remarks=$remarks&supplier_title=$supplsupplier_titleier_id&po_amount=$po_amount&rfq_no=$rfq_no';
   </SCRIPT>");
 }else{
   echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -86,16 +64,16 @@ if($insertPO){
               <div class="col-md-6">
                  <div class="form-group">
                     <label>PO No. :  </label>
-                    <input required type="text" name="po_no" class="form-control" value="<?php echo $po_noD;?>">
+                    <input disabled type="text" name="po_no" class="form-control" value="<?php echo $po_noD;?>">
                 </div>
                 <div class="form-group">
                     <label>RFQ No. :  </label>
-                    <input required class="form-control" type="text" name="rfq_no" value="<?php echo $rfq_no;?>">
+                    <input disabled class="form-control" type="text" name="rfq_no" value="<?php echo $rfq_no;?>">
                 </div>
                 <div class="form-group">
                     <label>Supplier : <small style="color:red;">*</small></label>
-                    <select class="form-control" name="supplier_id">
-                        <option selected value="<?php echo $supplier_id;?>"><?php echo $supplier_title;?></option>
+                    <select disabled class="form-control" name="supplier_id">
+                        <option disabled selected value="<?php echo $supplier_id;?>"><?php echo $supplier_title;?></option>
                     </select>
                 </div>
 
@@ -120,7 +98,7 @@ if($insertPO){
           </div>
             <div class="col-md-12">
           <label>PO Amount :</label>
-          <input required type="text" name="po_amount" class="form-control" value="<?php echo $POamount;?>">
+          <input disabled type="text" name="po_amount" class="form-control" value="<?php echo $po_amount;?>">
             &nbsp
           </div>
           <div class="col-md-6" hidden>

@@ -8,6 +8,7 @@ $po_id = $row1['po_id'];
 
 $select2 = mysqli_query($conn,"SELECT * FROM po WHERE id = $po_id");
 $row2 = mysqli_fetch_array($select2);
+$po_id = $row2['id'];
 $po_no = $row2['po_no'];
 $po_date = $row2['po_date'];
 $noa_date = $row2['noa_date'];
@@ -62,7 +63,7 @@ $id = $rowpo['id'];
                                 <div class="col-md-12">
                                     <p>
                                         <!-- <a href="" class="btn btn-primary"> Update </a> |  -->
-                                        <a href="export_po.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-success"> Export </a> | <a href="UpdatePO.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-primary"> Update </a>
+                                        <a href="export_po.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-success"> Export </a> | <a href="UpdatePO.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_title=<?php echo $supplier_titleD; ?>&po_no=<?php echo $po_no; ?>&po_date=<?php echo $po_date; ?>&ntp_date=<?php echo $ntp_date; ?>&noa_date=<?php echo $noa_date; ?>&remarks=<?php echo $remarks; ?>&po_amount=<?php echo $po_amount; ?>&rfq_no=<?php echo $rfqnoD; ?>" class="btn btn-primary"> Update </a>
                                     </p> 
                                     <div class="table table-responsive table-bordered"></div>
                                     <table id="example1" class="table table-striped table-bordered" style="background-color white;">
