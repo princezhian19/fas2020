@@ -1,3 +1,15 @@
+<?php 
+session_start();
+if(!isset($_SESSION['username'])){
+header('location:login.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+
+}
+?>
+
 <header class="main-header" >
     <a href="" class="logo" style="text-decoration: none; background-color: #3c8dbc;">
       <span class="logo-lg" style="color:white;">FAS</span>

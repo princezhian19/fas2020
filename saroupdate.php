@@ -1,4 +1,5 @@
-<?php session_start();
+<?php 
+session_start();
 if(!isset($_SESSION['username'])){
 header('location:login.php');
 }else{
@@ -7,17 +8,13 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
 ?>
-<!DOCTYPE html>
-<html>
+
 <?php
 
 $getid = $_GET['getid'];
-echo $getid;
+//echo $getid;
 
 $servername = "localhost";
-
-$username = "fascalab_2020";
-$password = "w]zYV6X9{*BN";
 
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
@@ -55,8 +52,19 @@ while ($row = mysqli_fetch_assoc($view_query)) {
 }
 ?>
 
-
-<!-- Getting Values from database to input -->
+<!DOCTYPE html>
+<html>
+<!-- <style>
+  a:hover {
+  color: blue;
+}
+  .p:hover {
+  color: blue;
+}
+  span:hover {
+  color: blue;
+}
+</style> -->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,7 +82,8 @@ while ($row = mysqli_fetch_assoc($view_query)) {
 
 
     <!-- Auto Complete -->
-    
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
 </head>
@@ -85,8 +94,8 @@ while ($row = mysqli_fetch_assoc($view_query)) {
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
-        <li class="active">Update SARO</li>
+        <li><a href="home.php"><i class=""></i> Home</a></li>
+        <li class="active">Create SARO/SUB-ARO</li>
       </ol>
       <br>
       <br>
