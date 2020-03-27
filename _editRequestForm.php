@@ -542,7 +542,62 @@ function showDiagnose()
       }
       return $status_desc;
 }
+function setStartDate()
+{
+  include 'connection.php';
 
+   $start_date = '';
+    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+    $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+    $result = mysqli_query($conn, $query);
+    if($row = mysqli_fetch_array($result))
+      {
+        $start_date = date('m/d/Y',strtotime($row['START_DATE']));
+      }
+      return $start_date;
+}
+function setCompletedDate()
+{
+  include 'connection.php';
+
+   $completed_date = '';
+    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+    $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+    $result = mysqli_query($conn, $query);
+    if($row = mysqli_fetch_array($result))
+      {
+        $completed_date = date('m/d/Y',strtotime($row['COMPLETED_DATE']));
+      }
+      return $completed_date;
+}
+function setStartTime()
+{
+  include 'connection.php';
+
+   $start_time = '';
+    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+    $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+    $result = mysqli_query($conn, $query);
+    if($row = mysqli_fetch_array($result))
+      {
+        $start_time = date('g:i A',strtotime($row['START_TIME']));
+      }
+      return $start_time;
+}
+function setCompletedTime()
+{
+  include 'connection.php';
+
+   $completed_time = '';
+    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+    $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+    $result = mysqli_query($conn, $query);
+    if($row = mysqli_fetch_array($result))
+      {
+        $completed_time = date('g:i A',strtotime($row['COMPLETED_TIME']));
+      }
+      return $completed_time;
+}
 ?>
  
 <!DOCTYPE html>
@@ -598,7 +653,7 @@ function showDiagnose()
             <div class="panel panel-default">
                 <div class="box-body">      
                     <div>
-                        <h1>Technical Assistance Request Form</h1><br>
+                        <h1>Online ICT Technical Assistance Request Form</h1><br>
                     </div>
                     <form method="POST" enctype="multipart/form-data" class="myformStyle" autocomplete="off" id = "submit">    
                         <input type = "hidden" name = "curuser" value = "" id = "selectedUser" />
@@ -676,7 +731,7 @@ function showDiagnose()
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input required type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
+                                                      <input required type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="<?PHP echo setStartDate();?>" required>
                                                     </div>
                                                   </td>
                                                   <td style = "width:12.5%;">Completed Date:</td>
@@ -685,7 +740,7 @@ function showDiagnose()
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="" required>
+                                                      <input type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="<?php echo setCompletedDate();?>" required>
                                                     </div>
                                                   </td>
                                                   </tr>
@@ -704,7 +759,7 @@ function showDiagnose()
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input id= "timepicker" type="text" name = "started_time" placeholder = "Started Time"  value="" required>
+                                                      <input id= "timepicker" type="text" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" required>
                                                     </div>
                                                   </td>
                                                   <td style = "width:12.5%;">Completed Time:</td>
@@ -713,7 +768,7 @@ function showDiagnose()
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input id = "timepicker2" type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
+                                                      <input id = "timepicker2" type="text" name = "completed_time" placeholder = "Completed Time"  value="<?php echo setCompletedTime();?>" required>
                                                     </div>
                                                   </td>
                                                   </tr>
@@ -855,7 +910,7 @@ function showDiagnose()
 
     //Date picker,
     $( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $(".datePicker1").datepicker().datepicker("setDate", new Date());
+    // $(".datePicker1").datepicker().datepicker("setDate", new Date());
 
 
     $('#datepicker2').datepicker({
