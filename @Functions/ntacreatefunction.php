@@ -7,8 +7,6 @@
 { */
 
 
-
-
     $datenta1 = $_GET["datenta"];
     $datenta = date('Y-m-d', strtotime($datenta1));
 

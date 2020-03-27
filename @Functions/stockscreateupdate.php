@@ -38,9 +38,7 @@ if (isset($_POST['submit']))
 		echo "Error: " ;
 	}
 }   
-
 					
-
 ?>
 
 <!DOCTYPE html>

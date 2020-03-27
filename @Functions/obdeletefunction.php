@@ -61,7 +61,7 @@ if($query){
 echo ("<SCRIPT LANGUAGE='JavaScript'>
 window.alert('Data Deleted Successfully!')
 
-window.location.href='../@obligation.php';
+window.location.href='../obligation.php';
 </SCRIPT>"); 
 
 //header('Location:../@obligation.php?message=Data Added Successfully!');
@@ -73,7 +73,7 @@ else{
 echo ("<SCRIPT LANGUAGE='JavaScript'>
 
 window.alert('Error!')
-window.location.href='../@obligation.php';
+window.location.href='../obligation.php';
 </SCRIPT>");
 }
 

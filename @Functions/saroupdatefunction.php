@@ -85,7 +85,7 @@ if($query){
 //if query is successful
 echo ("<SCRIPT LANGUAGE='JavaScript'>
 window.alert('Data Updated Successfully!')
-window.location.href='../saro.php?message=Data Updated Successfully!';
+window.location.href='../saro.php?message=';
 </SCRIPT>"); 
 
 //header('Location:../@obligation.php?message=Data Added Successfully!');
@@ -97,7 +97,7 @@ else{
 echo ("<SCRIPT LANGUAGE='JavaScript'>
 
 window.alert('Error!')
-window.location.href='../saro.php?message=Error!';
+window.location.href='../saro.php?message=';
 </SCRIPT>");
 }
 
