@@ -131,7 +131,7 @@
           </a>
           <ul class="treeview-menu" >
             <li><a href="_tickets.php?division=<?php echo $_GET['division'];?>&ticket_id=" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>On-going</a></li>
-            <li><a href="online_tech_req/techassistance.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Submitted<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
+            <li><a href="techassistance.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Submitted<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
 
           </ul>
         </li>
