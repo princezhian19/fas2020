@@ -485,12 +485,9 @@ $('.sweet-16').click(function()
 
 
     $('#example1').DataTable({
-<<<<<<< HEAD
 //         "search": {
 //     "search": "<?php echo $_GET['ticket_id'];?>"
 //   },
-=======
->>>>>>> d86344815dffc1c85eb531575689c5ef20bce9f9
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
