@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
       </div>
       <br>
       &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="ViewRPCI.php" style="color:white;text-decoration: none;">Back</a></li>
-            &nbsp &nbsp &nbsp   <li class="btn btn-info"><a href="tcpdf/examples/ics_sticker.php?id=<?php echo $id?>" style="color:white;text-decoration: none;">ICS Sticker</a></li>
+            &nbsp &nbsp &nbsp   <li class="btn btn-info"><a href="fpdf/tutorial/ics.php?id=<?php echo $id?>" style="color:white;text-decoration: none;">ICS Sticker</a></li>
 
       <br>
       <br>
