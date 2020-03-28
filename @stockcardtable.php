@@ -10,6 +10,7 @@ include('db.class.php'); // call db.class.php
   <title>Financial Management System</title>
 
   <!-- bootstrap datepicker -->
+  <link rel="shortcut icon" type="image/png" href="dilg.png">
   <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
