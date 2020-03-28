@@ -43,7 +43,7 @@ $mydb = new db(); // create a new object, class db()
                         <th width = "200">SHORTAGE(QUANTITY)</th>
                         <th width = "200">SHORTAGE(VALUE)</th>
                         <th>REMARKS</th>
-                        <th>ACTION</th>
+                        <th width = "200">ACTION</th>
                        
                 </thead>
                 <?php 
@@ -80,7 +80,7 @@ $mydb = new db(); // create a new object, class db()
                         <td>
                          <!--  &nbsp&nbsp&nbsp&nbsp&nbsp<a href='export_pr.php?id=<?php echo $id; ?>' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> -->
 
-                         &nbsp&nbsp&nbsp&nbsp&nbsp<a  href='UpdateRPCI.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+                       <a  href='UpdateRPCI.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
 
                      <!-- <td>
                     &nbsp&nbsp&nbsp&nbsp&nbsp<a href='ViewRFQdetails.php?id=<?php echo $id; ?> '> 
@@ -88,7 +88,7 @@ $mydb = new db(); // create a new object, class db()
                     
                 </td> -->
               
-                    &nbsp&nbsp&nbsp&nbsp&nbsp<a  onclick="return confirm('Are you sure you want to Delete this item?');" href='delete_rpci.php?id=<?php echo $id; ?>  ' title="Delete"> 
+                   <a  onclick="return confirm('Are you sure you want to Delete this item?');" href='delete_rpci.php?id=<?php echo $id; ?>  ' title="Delete"> 
                         <i style='font-size:20px' class='fa fa-trash-o' ></i> </a>
 
                     </td>
