@@ -9,18 +9,7 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
-<title>Dashboard</title>
+<title>Monitoring for DV</title>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,15 +33,13 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li class="active">Monitoring for DV</li>
       </ol>
       <br>
       <br>
-        <?php include('dash_board.php');?>
-
+        <?php include('dash_dv.php');?>
     </section>
   </div>
- 
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -60,19 +47,16 @@ $username = $_SESSION['username'];
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
-<!-- <script src="dist/js/adminlte.min.js"></script>
-<script src="dist/js/demo.js"></script> -->
 <script>
   $(function () {
-    $('').DataTable()
     $('#example1').DataTable({
-      'paging'      : false,
+      'paging'      : true,
       'lengthChange': true,
-      'searching'   : false,
+      'searching'   : true,
       'ordering'    : false,
       'info'        : true,
       'autoWidth'   : true,
-      aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+      aLengthMenu: [ [5, 10, 20, -1], [3, 10, 20, "All"] ],
       "bPaginate": false,
       "bLengthChange": false,
       "bFilter": true,
@@ -82,65 +66,6 @@ $username = $_SESSION['username'];
   })
 </script>
 
-<script>
-  $(function () {
-    $('').DataTable()
-    $('#example2').DataTable({
-      'paging'      : false,
-      'lengthChange': true,
-      'searching'   : false,
-      'ordering'    : false,
-      'info'        : true,
-      'autoWidth'   : true,
-      aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
-      "bPaginate": false,
-      "bLengthChange": false,
-      "bFilter": true,
-      "bInfo": false,
-      "bAutoWidth": false
-    })
-  })
-</script>
-
-<script>
-  $(function () {
-    $('').DataTable()
-    $('#example3').DataTable({
-      'paging'      : false,
-      'lengthChange': true,
-      'searching'   : false,
-      'ordering'    : false,
-      'info'        : true,
-      'autoWidth'   : true,   aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
-      "bPaginate": false,
-      "bLengthChange": false,
-      "bFilter": true,
-      "bInfo": false,
-      "bAutoWidth": false
-    })
-  })
-</script>
-
-
-<script>
-  $(function () {
-    $('').DataTable()
-    $('#example4').DataTable({
-      'paging'      : false,
-      'lengthChange': true,
-      'searching'   : false,
-      'ordering'    : false,
-      'info'        : true,
-      'autoWidth'   : true,
-      aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
-      "bPaginate": false,
-      "bLengthChange": false,
-      "bFilter": true,
-      "bInfo": false,
-      "bAutoWidth": false
-    })
-  })
-</script>
 
 </body>
 </html>
