@@ -246,12 +246,9 @@ function currentServing($assignee)
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <?php 
-if($_GET['division'] == 16)
-{
+
     include('sidebar.php');
-}else{
-    include('sidebar2.php');
-}
+
 ?>
 <?php 
 $username = $_SESSION['username'];
