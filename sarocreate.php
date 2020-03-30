@@ -83,7 +83,7 @@ $username = $_SESSION['username'];
                         <input type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="date">
                     </div>
                     <br>
-                    <label>Source No.</label>
+                    <label>Source No. <label style="color: Red;" >*</label></label>
                       <input  type="text" class="typeahead form-control" style="height: 35px;" id="saronumber" placeholder="Enter Source" name="saronumber">
                       <br>
                       <label>PPA</label>
@@ -145,13 +145,13 @@ $username = $_SESSION['username'];
 
             <div class="col-md-3">
                     <label>Group</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="group" placeholder="Enter amount" name="group">
+                    <input  type="text"  class="form-control" style="height: 40px;" id="group" placeholder="" name="group">
                    
                 </div>
 
 
                 <div class="col-md-3">
-                    <label>Amount</label>
+                    <label>Amount <label style="color: Red;" >*</label></label>
                     <input  type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" name="amount">
                    
                 </div>
@@ -206,7 +206,7 @@ $username = $_SESSION['username'];
           </tbody>
           </table>
           </div>
-
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           
           <script>
           $(document).ready(function() {
@@ -214,7 +214,16 @@ $username = $_SESSION['username'];
           /*Assigning id and class for tr and td tags for separation.*/
           $("#butsend").click(function() {
           var newid = id++; 
-          /* 
+
+          var amount = $('#amount').val();
+          var saronumber = $('#saronumber').val();
+
+
+          if(amount=="" || saronumber==""){
+            alert("Required Fields Detected!");
+          }else
+          {
+             /* 
           var datereceived = $('#datepicker1').val();
 		      var datereprocessed = $('#datepicker2').val();
           var datereturned = $('#datepicker3').val();
@@ -246,7 +255,10 @@ $username = $_SESSION['username'];
           <td width="100px" class="balance'+newid+'">' + $("#balance").val() + '</td>\n\
           <td width="100px" class="group'+newid+'">' + $("#group").val() + '</td>\n\
           <td width="100px"><a href="javascript:void(0);" class="remCF">Remove</a></td>\n\ </tr>');
-          });
+          }
+
+          }
+         );
           $("#table1").on('click', '.remCF', function() {
           $(this).parent().parent().remove();
           });
