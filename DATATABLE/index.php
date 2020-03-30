@@ -37,8 +37,9 @@ $(document).ready(function() {
 
     $('#example').DataTable( {
         "processing": true,
-        "serverSide": true,
-        "ajax": "server_processing.php"
+        "serverSide": false,
+        "ajax": "server_processing.php",
+
 
     //     columnDefs:   
     //             [
