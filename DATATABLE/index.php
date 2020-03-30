@@ -13,6 +13,7 @@
             <tr>
                 <th>ID</th>
                 <th>First name</th>
+                <th>First name</th>
                 <!-- <th>First name</th> -->
 
   
@@ -21,6 +22,7 @@
         <tfoot>
             <tr>
                 <th>ID</th>
+                <th>First name</th>
                 <th>First name</th>
                 <!-- <th>First name</th> -->
 
@@ -33,7 +35,7 @@
     <script>
            
 $(document).ready(function() {
-    var data = 1;
+    
 
     $('#example').DataTable( {
         "processing": true,
@@ -41,22 +43,22 @@ $(document).ready(function() {
         "ajax": "server_processing.php",
 
 
-    //     columnDefs:   
-    //             [
-    //                       {"className": "dt-center", "targets": "_all"},
-    //                 {
-    //                 targets: [-1], render: function (a, b, data, d) {
+        columnDefs:   
+                [
+                          {"className": "dt-center", "targets": "_all"},
+                    {
+                    targets: [-1], render: function (a, b, data, d) {
                       
-    //                     if(data == 2563 || data == 2577 )
-    //         {
-    //           return "<button class = 'btn btn-primary'>Activate</button>";
+                        if(data[0] == 2563 || data[0] == 2577 )
+            {
+              return "<button class = 'btn btn-primary'>Activate</button>";
                 
-    //         }else{
-    //           return "<button>Inactive</button>";
+            }else{
+              return "<button class = 'btn btn-danger'>Inactive</button>";
 
-    //         }
-    //                 }
-    //             }],
+            }
+                    }
+                }],
     } );
 } );
     </script>
