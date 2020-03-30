@@ -36,12 +36,13 @@
 <button id = "sweet-14">a</button>
     <script>
            
-$(document).ready(function() {    
+$(document).ready(function() {
+
+    
     var table = $('#example').DataTable( {
         "processing": true,
         "serverSide": false,
         "ajax": "server_processing.php",
-        
         columnDefs:   
             [
                 {"className": "dt-center", "targets": "_all"},  

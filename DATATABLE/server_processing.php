@@ -15,13 +15,12 @@ if($row = mysqli_fetch_array($result))
 {
     $division = $row['DIVISION_C'];
     $uname    = $row['UNAME'];
-    if($division != '16')
-    {
+
 		$fieldsName = '`ID`, `CONTROL_NO`, `REQ_DATE`, `REQ_TIME`, `REQ_BY`, `OFFICE`, `POSITION`, `CONTACT_NO`, `EMAIL_ADD`, `EQUIPMENT_TYPE`, `BRAND_MODEL`, `PROPERTY_NO`, `SERIAL_NO`, `IP_ADDRESS`, `MAC_ADDRESS`, `TYPE_REQ`, `TYPE_REQ_DESC`, `TEXT1`, `TEXT2`, `TEXT3`, `TEXT4`, `TEXT5`, `TEXT6`, `TEXT7`, `TEXT8`, `ISSUE_PROBLEM`, `START_DATE`, `START_TIME`, `STATUS_DESC`, `COMPLETED_DATE`, `COMPLETED_TIME`, `ASSIST_BY`, `PERSON_ASSISTED`, `TIMELINESS`, `QUALITY`, `STATUS`, `STATUS_REQUEST`';
 		$table = 'tbltechnical_assistance';
 		$join = '';
 		$WHERE = "WHERE `REQ_DATE` != '0000-00-00' ORDER BY `CONTROL_NO` ASC";
-	}
+	
     // }else{
 	// 	$fieldsName = '`DIVISION_N`, `DIVISION_M`, `DIVISION_COLOR`, `DIVISION_LONG_M`, `D_GROUP`, `GROUP_N`, `PGROUP_N`';
 	// 	$table = 'tblpersonneldivision';
@@ -83,7 +82,9 @@ $columns = array(
 	array('db' => 'ISSUE_PROBLEM', 'dt' => 7),
 	array('db' => 'TYPE_REQ_DESC', 'dt' => 8),
     array('db' => 'PERSON_ASSISTED', 'dt' => 9),
-    array('db' => 'STATUS_REQUEST', 'dt' => 10)
+    array('db' => 'STATUS_REQUEST', 'dt' => 10,  'formatter' => function( $d, $row ) {
+		return '<span class="badge badge-pill" style = "background-color:red;">a</span>';
+	})
 
 
 );

@@ -1,5 +1,14 @@
 
 
+<?php 
+$username = $_SESSION['username'];
+if(isset($_GET['ticket_id']))
+{
+
+}else{
+    $_GET['ticket_id'] == '';
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -250,15 +259,7 @@ function currentServing($assignee)
     include('sidebar.php');
 
 ?>
-<?php 
-$username = $_SESSION['username'];
-if(isset($_GET['ticket_id']))
-{
 
-}else{
-    $_GET['ticket_id'] == '';
-}
-?>
   
   <div class="content-wrapper">
     <section class="content-header">
