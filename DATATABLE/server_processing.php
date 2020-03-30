@@ -1,6 +1,34 @@
 <?php
+session_start();
+date_default_timezone_set("Asia/Manila");
 
+$con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
+$return_arr = array();
+$name = $_SESSION['username'];
+$division  = $_SESSION['division'];
+$complete_name = $_SESSION['complete_name'];
+// ===============================================================================
+$query = "SELECT * from tblemployee where UNAME = '$name'";
+$result = mysqli_query($con,$query);
+if($row = mysqli_fetch_array($result))
+{
+    $division = $row['DIVISION_C'];
+    $uname    = $row['UNAME'];
+    if($division != '16')
+    {
+		$fieldsName = '`ID`, `CONTROL_NO`, `REQ_DATE`, `REQ_TIME`, `REQ_BY`, `OFFICE`, `POSITION`, `CONTACT_NO`, `EMAIL_ADD`, `EQUIPMENT_TYPE`, `BRAND_MODEL`, `PROPERTY_NO`, `SERIAL_NO`, `IP_ADDRESS`, `MAC_ADDRESS`, `TYPE_REQ`, `TYPE_REQ_DESC`, `TEXT1`, `TEXT2`, `TEXT3`, `TEXT4`, `TEXT5`, `TEXT6`, `TEXT7`, `TEXT8`, `ISSUE_PROBLEM`, `START_DATE`, `START_TIME`, `STATUS_DESC`, `COMPLETED_DATE`, `COMPLETED_TIME`, `ASSIST_BY`, `PERSON_ASSISTED`, `TIMELINESS`, `QUALITY`, `STATUS`, `STATUS_REQUEST`';
+		$table = 'tbltechnical_assistance';
+		$join = '';
+		$WHERE = "WHERE `REQ_DATE` != '0000-00-00' ORDER BY `CONTROL_NO` ASC";
+	}
+    // }else{
+	// 	$fieldsName = '`DIVISION_N`, `DIVISION_M`, `DIVISION_COLOR`, `DIVISION_LONG_M`, `D_GROUP`, `GROUP_N`, `PGROUP_N`';
+	// 	$table = 'tblpersonneldivision';
+	// 	$join = 'INNER JOIN tbltechnical_assistance on tblpersonneldivision.DIVISION_M = tbltechnical_assistance.OFFICE';
+	// 	$WHERE = "WHERE tbltechnical_assistance.REQ_BY = '$complete_name'";
+	// }
+}
 
 /*
  * DataTables example server-side processing script.
@@ -20,25 +48,42 @@
  */
 // DB table to use
 
-$fieldsName = 'tblemployee.EMP_N , FIRST_M
-                ';
-$table = 'tblemployee';
-$join = '';
-$WHERE = '';
+
 
 
 
 				
 				
 // Table's primary key
-$primaryKey = 'EMP_N';
+$primaryKey = 'ID';
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array('db' => 'EMP_N', 'dt' => 0),
-    array('db' => 'FIRST_M', 'dt' => 1),
+	array('db' => 'CONTROL_NO', 'dt' => 0),
+	array(
+        'db'        => 'START_DATE',
+        'dt'        => 1,
+        'formatter' => function( $d, $row ) {
+            return date( 'M d, Y', strtotime($d));
+        }
+	),
+	array(
+        'db'        => 'START_TIME',
+        'dt'        => 2,
+        'formatter' => function( $d, $row ) {
+            return date( 'g:i A', strtotime($d));
+        }
+    ),
+	array('db' => 'REQ_DATE', 'dt' => 3),
+	array('db' => 'REQ_TIME', 'dt' => 4),
+	array('db' => 'REQ_BY', 'dt' => 5),
+	array('db' => 'OFFICE', 'dt' => 6),
+	array('db' => 'ISSUE_PROBLEM', 'dt' => 7),
+	array('db' => 'TYPE_REQ_DESC', 'dt' => 8),
+    array('db' => 'PERSON_ASSISTED', 'dt' => 9),
+    array('db' => 'STATUS_REQUEST', 'dt' => 10)
 
 
 );

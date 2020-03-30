@@ -13,44 +13,41 @@
 <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>First name</th>
-                <th>First name</th>
-                <!-- <th>First name</th> -->
+            <th>CONTROL NO.</th>
+                        <th>REQUESTED DATE</th>
+                        <th>REQUESTED TIME</th>
+                        <th>RECEIVED DATE</th>
+                        <th>RECEIVED TIME</th>
+                        <th>END USER</th>
+                        <th>OFFICE</th>
+                        <th>ISSUE/CONCERN</th>
+                        <th>MODE OF REQUEST</th>
+                        <th>Assigned Person</th>
+                        <th>STATUS</th>
+                        <th style = "text-align:center;">ACTION</th>
 
   
             </tr>
         </thead>
-        <tfoot>
-            <tr>
-                <th>ID</th>
-                <th>First name</th>
-                <th>First name</th>
-                <!-- <th>First name</th> -->
-
-            </tr>
-        </tfoot>
+       
     </table>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> -->
 <button id = "sweet-14">a</button>
     <script>
            
-$(document).ready(function() {
-
-
-    
+$(document).ready(function() {    
     var table = $('#example').DataTable( {
         "processing": true,
         "serverSide": false,
         "ajax": "server_processing.php",
+        
         columnDefs:   
             [
                 {"className": "dt-center", "targets": "_all"},  
                     {
                         targets: [-1], render: function (a, b, data, d) 
                         {
-                            var a = data[0];
                             if(data[0] == 2563 || data[0] == 2577 )
                             {
                                 return '<a class="btn btn-info btn-sm" id="sweet-14">' + 'Edit' + '</a>';
