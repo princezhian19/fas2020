@@ -5,6 +5,7 @@ include 'connection.php';
 if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
                    $query = "SELECT count(*) as 'count' FROM `tbltechnical_assistance` where  tbltechnical_assistance.STATUS_REQUEST = 'Completed' and REQ_BY LIKE '%$sess_name%'  ";
+                   
                    $result = mysqli_query($conn, $query);
                    $val = array();
                    while($row = mysqli_fetch_array($result))

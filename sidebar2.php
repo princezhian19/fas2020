@@ -77,10 +77,35 @@ function showDivision()
         <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
           </ul>
         </li>
-        <li><a style="color:black;text-decoration: none;font-size:13.5px;" href="techassistance.php?division=<?php echo $_GET['division'];?>"><i class="fa">&#xf0f6;</i>ICT TECHNICAL ASSISTANCE<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
-        <?php 
-       echo showDivision();
-        ?>
+        <!-- =================================================== -->
+        <li class="treeview" tyle="background-color: lightgray;">
+          <a href="" style="color:black;text-decoration: none;">
+            <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
+            <span style="color:black;text-decoration: none;">ICT TECHNICAL ASSISTANCE</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+              
+            </span>
+          </a>
+          <ul class="treeview-menu" >
+            <li>
+              <a href="techassistance.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;">
+                <i class="fa">&#xf0f6;</i>
+                  Completed Request
+                <span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span>
+              </a>
+            </li>
+            <li>
+              <a href="techassistance.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;">
+                <i class="fa">&#xf0f6;</i>
+                  Submitted
+                <span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span>
+              </a>
+
+          </ul>
+        </li>
+        <!-- =================================================== -->
+    
   <span class="sr-only">unread messages</span></span></a></li>
         <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
 

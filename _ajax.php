@@ -104,7 +104,7 @@ if($row = mysqli_fetch_array($result))
             $action = ' <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "edit">&#xf044;</i> <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>';
     
         }else{
-            $action = ' <i id = "sweet-14" style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-smile-o" aria-hidden="true"></i><i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>';
+            $action = ' <center><i id = "sweet-14" style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-star" aria-hidden="true"></i><i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>';
     
         }
     
