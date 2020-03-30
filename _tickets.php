@@ -1,6 +1,5 @@
-
-
 <?php 
+session_start();
 $username = $_SESSION['username'];
 if(isset($_GET['ticket_id']))
 {
