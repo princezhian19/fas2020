@@ -43,21 +43,8 @@ $(document).ready(function() {
         "processing": true,
         "serverSide": false,
         "ajax": "server_processing.php",
-        columnDefs:   
-            [
-                {"className": "dt-center", "targets": "_all"},  
-                    {
-                        targets: [-1], render: function (a, b, data, d) 
-                        {
-                            if(data[0] == 2563 || data[0] == 2577 )
-                            {
-                                return '<a class="btn btn-info btn-sm" id="sweet-14">' + 'Edit' + '</a>';
-                            }else{
-                            return "<button class = 'btn btn-danger'>Inactive</button>";
-                            }
-                            
-            }
-            }],
+        "order": [[ 10, "desc" ]]
+
     } );
     $('#example tbody').on( 'click', '#sweet-14', function () {
     var data = table.row( $(this).parents('tr') ).data();
