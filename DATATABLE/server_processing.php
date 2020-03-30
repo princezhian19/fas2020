@@ -20,7 +20,7 @@
  */
 // DB table to use
 
-$fieldsName = 'tblemployee.EMP_N 
+$fieldsName = 'tblemployee.EMP_N , FIRST_M
                 ';
 $table = 'tblemployee';
 $join = '';
@@ -38,6 +38,7 @@ $primaryKey = 'EMP_N';
 // indexes
 $columns = array(
     array('db' => 'EMP_N', 'dt' => 0),
+    array('db' => 'FIRST_M', 'dt' => 1),
 
 
 );
