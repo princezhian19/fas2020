@@ -15,6 +15,7 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 
 $pmo_id = 5;
 $rfq_id = $_GET['rfq_id'];
+$supplier_id = $_GET['supplier_id'];
 $po_no = $_GET['po_no'];
 $supplier_titleD = $_GET['supplier_titleD'];
 $supplier_address = $_GET['supplier_address'];
@@ -38,7 +39,7 @@ if (isset($_POST['submit'])) {
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Saved!')
-      window.location.href = 'ViewDV.php';
+      window.location.href = 'ViewPO.php?rfq_id=$rfq_id&supplier_id=$supplier_id';
       </SCRIPT>");
 
   }  else{

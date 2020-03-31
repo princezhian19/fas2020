@@ -5,30 +5,33 @@ header('location:login.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
+
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/style.css" rel="stylesheet" type="text/css">
 
-	<script src="js/jquery-1.11.3-jquery.min.js"></script> 
-	<script type="text/javascript" src="js/jquery.bootpag.min.js"></script>
 	
-
-	<link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+ <!-- bootstrap datepicker -->
+<link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
+
+  <script>
+$(document).ready(function()
+  $("#result").click(function(){
+    $("#t1").hide();
+  });
+});
+</script>
   <script type="text/javascript">
 		$(document).ready(function(){
 
@@ -64,7 +67,7 @@ $username = $_SESSION['username'];
                 	tr.not(el).fadeOut();
                 	el.fadeIn(); */
 					/* document.getElementById("sn").value = ""; */
-
+					$("#t1").show();
 				}
 			});
 		});
@@ -87,18 +90,23 @@ $username = $_SESSION['username'];
 
 
 </head>
-<body style="background: lightgray;">
-	<div class="">
-		<div class="panel panel-default">
+
+<div class="box">
+  <div class="box-body">
+  <body >
 			<br>
 			
-			<h1 align="">&nbspUpdate Stocks</h1>
-			<div class="box-header with-border">
+			
+			<h1 align="">Update Stocks</h1>
+			<br>
+			<li class="btn btn-success"><a href="stocks.php" style="color:white;text-decoration: none;">Back</a></li>
+
+			
+			<div class="box-header">
 			</div>
 			<br>
-			&nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="stocks.php" style="color:white;text-decoration: none;">Back</a></li>
-			<br>
-			<br>
+			
+			
 			<div class="col-xs-6">
 				<!-- <label>Search Code/Items : </label>
 				<input type="text" class="form-control" name="search_text" id="search_text" placeholder="Search Code" class="" /> -->
@@ -138,7 +146,8 @@ $username = $_SESSION['username'];
 							<div class="col-xs-3">
 								<label>BALANCE AS OF : </label>
 								<br>
-								<input type="text" class="" id="datepicker1" placeholder='Enter Date' name="balanceone" style="height: 35px; width: 375px">
+								<input type="text" class="form-control" id="datepicker1" placeholder='Enter Date' name="balanceone">
+								
 							</div>
 							<div class="col-xs-3">
 								<label>Quantity :</label>
@@ -161,7 +170,7 @@ $username = $_SESSION['username'];
 							<div class="col-xs-3">
 							<label>BALANCE AS OF : </label>
 								<br>
-								<input type="text" class="" id="datepicker2" placeholder='Enter Date' name="balancetwo" style="height: 35px; width: 375px">
+								<input type="text" class="form-control" id="datepicker2" placeholder='Enter Date' name="balancetwo" style="height: 35px;">
 							</div>
 							<div  class="col-xs-3">
 								<label>Quantity:</label>
@@ -178,11 +187,14 @@ $username = $_SESSION['username'];
 				<div style="padding: 20px;">
 					<button type="submit" name="submit"  class="btn btn-primary">Submit</button>
 				</div>
-
+				</body>
+			</html>
 
 			</form>
 		</div>
 	</div>
+	
+	
 
 	<!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -287,8 +299,7 @@ $username = $_SESSION['username'];
   })
 </script>
 
-</body>
-</html>
+
 <?php
 include('db.class.php'); 
 $mydb = new db();

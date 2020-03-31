@@ -8,6 +8,7 @@
         <div class="row">
           <div class="col-md-12">
             <h1>Dashboard</h1>
+            <p style="float:right;"><a href="Monitoring-Pr.php" class="btn btn-success btn-s">See All</a></p>
               <strong>Monitoring for PRs</strong>
                 <p></p>
                   <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
@@ -107,7 +108,7 @@
                 include 'connection.php';
               
                 
-                $view_query = mysqli_query($conn,"SELECT * FROM pr  where pmo = '$user_id'  order by id desc");
+                $view_query = mysqli_query($conn,"SELECT * FROM pr  where pmo = '$user_id'  order by id desc LIMIT 3");
                 // echo  $DIVISION_C; 
                 echo'<br>';
                 // echo "SELECT * FROM pr  where pmo = '$user_id'  order by id desc";
@@ -236,7 +237,7 @@ $mydb = new db(); // create a new object, class db()
             <div class="box-body">
               <div class="row">
                 <div class="col-md-12">
-                
+                <p style="float:right;"><a href="Monitoring-Ors.php" class="btn btn-success btn-s">See All</a></p>
                   <strong>Monitoring of ORS and BURS</strong>
                   <p></p>
              <br>
@@ -251,7 +252,7 @@ $mydb = new db(); // create a new object, class db()
                   <th>DATE RELEASED</th>
                   <th>ORS NUMBER</th>
                   <th>PO NUMBER</th>
-                  <th>PAYEE</th>
+                  <th WIDTH = "200">PAYEE</th>
                   <th>PARTICULAR</th>
                 <!--   <th>SARO NUMBER</th>
                   <th>PPA</th>
@@ -270,7 +271,7 @@ $mydb = new db(); // create a new object, class db()
               $password = "w]zYV6X9{*BN";
               $database = "fascalab_2020";
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT * FROM saroob  where status = 'Obligated' order by date desc");
+              $view_query = mysqli_query($conn, "SELECT * FROM saroob  where status = 'Obligated' order by date desc LIMIT 3");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["id"];  
 
@@ -416,6 +417,7 @@ $mydb = new db(); // create a new object, class db()
                 <div class="col-md-12">
                 
       <br>
+      <p style="float:right;"><a href="Monitoring-Dv.php" class="btn btn-success btn-s">See All</a></p>
       <strong>Monitoring of Disbursements</strong>
                   <p></p>
                   <table id="example3" class="table table-striped table-bordered" style="background-color: white;">
@@ -429,7 +431,7 @@ $mydb = new db(); // create a new object, class db()
 
                   <th>DV NUMBER</th>
                   <th>PO NUMBER</th>
-                  <th>PAYEE</th>
+                  <th WIDTH = "200">PAYEE</th>
                   <th>PARTICULAR</th>
              
                   <th>AMOUNT</th>
@@ -444,7 +446,7 @@ $mydb = new db(); // create a new object, class db()
               $password = "w]zYV6X9{*BN";
               $database = "fascalab_2020";
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT * FROM disbursement where status = 'Disbursed' order by datereleased desc");
+              $view_query = mysqli_query($conn, "SELECT * FROM disbursement where status = 'Disbursed' order by datereleased desc LIMIT 3");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["id"];  
 
@@ -555,7 +557,7 @@ $mydb = new db(); // create a new object, class db()
             <div class="box-body">
               <div class="row">
                 <div class="col-md-12">
-                
+                <p style="float:right;"><a href="Monitoring-Payment.php" class="btn btn-success btn-s">See All</a></p>
                   <strong>Monitoring of Payments</strong>
                   <p></p>
              <br>
@@ -595,7 +597,7 @@ $mydb = new db(); // create a new object, class db()
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT * FROM ntaob where status ='Paid' order by id desc");
+            $view_query = mysqli_query($conn, "SELECT * FROM ntaob where status ='Paid' order by id desc LIMIT 3");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
                   $id = $row["id"]; 

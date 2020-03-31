@@ -77,7 +77,7 @@ header('location:index.php');
     $('#example1').DataTable({
       'paging'      : true,
       'lengthChange': true,
-      'searching'   : true,
+      'searching'   : false,
       'ordering'    : false,
       'info'        : true,
       'autoWidth'   : true,
@@ -97,7 +97,7 @@ header('location:index.php');
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': true,
-      'searching'   : true,
+      'searching'   : false,
       'ordering'    : false,
       'info'        : true,
       'autoWidth'   : true,
@@ -117,7 +117,7 @@ header('location:index.php');
     $('#example3').DataTable({
       'paging'      : true,
       'lengthChange': true,
-      'searching'   : true,
+      'searching'   : false,
       'ordering'    : false,
       'info'        : true,
       'autoWidth'   : true,
@@ -138,7 +138,7 @@ header('location:index.php');
     $('#example4').DataTable({
       'paging'      : true,
       'lengthChange': true,
-      'searching'   : true,
+      'searching'   : false,
       'ordering'    : false,
       'info'        : true,
       'autoWidth'   : true

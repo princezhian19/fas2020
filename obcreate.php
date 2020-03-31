@@ -100,7 +100,7 @@ function app($connect)
         <div class="class-bordered" >
             <div class="row">
                 <div class="col-md-6">
-                      <label>ORS Serial No.</label>
+                      <label>ORS Serial No. <label style="color: Red;" >*</label></label>
                       <input  type="text" class="form-control" style="height: 35px;" id="ors" placeholder="Enter ORS Number" name="ors" required>
                       <br>
                       <label>PO No.</label>
@@ -186,11 +186,14 @@ function app($connect)
              <!-- ORS -->
             <div class="row">
                 <div class="col-md-6">
-                    <label>Payee</label>
+                <label style="color: Blue;" >Note: Payee/Supplier Required</label>
+                <br>
+            
+                    <label>Payee<label style="color: Red;" >*</label></label>
                     <input  type="text"  class="form-control" style="height: 35px;" id="payee" placeholder="Payee" name="payee">
                     <br>
 
-                    <label>Supplier</label>
+                    <label>Supplier<label style="color: Red;" >*</label></label>
                     <input  type="text"  class="form-control" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
                     <br>
                     <table class="table table-striped table-hover" id="main4">
@@ -282,7 +285,7 @@ function app($connect)
             <div class="well">
             <div class="row">
                 <div class="col-md-3">
-                    <label>Fund Source</label>
+                    <label>Fund Source <label style="color: Red;" >*</label></label>
                     <input required  type="text"  class="form-control" style="height: 40px;" id="saronum" placeholder="Fund Source" name="saronum"class="typeahead"/>
                     <!-- <input type="text" name="txtCountry" id="txtCountry" class="typeahead"/> -->
                       <table class="table table-striped table-hover" id="main1">
@@ -445,7 +448,7 @@ function app($connect)
             </script>
 
                 <div class="col-md-3">
-                    <label>Amount</label>
+                    <label>Amount <label style="color: Red;" >*</label></label>
                     <input required  type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
                 </div>
             </div>
@@ -525,7 +528,20 @@ function app($connect)
           var id = 1; 
           /*Assigning id and class for tr and td tags for separation.*/
           $("#butsend").click(function() {
-          var newid = id++; 
+          var newid = id++;
+          
+          var amount = $('#amount').val();
+          var ors = $('#ors').val();
+          var saronum = $('#saronum').val();
+          var payee = $('#payee').val();
+          var supplier = $('#supplier').val();
+
+
+          if(amount=="" || ors=="" || saronum=="" || supplier==""&&payee==""){
+            alert("Required Fields Detected!");
+          }else
+          {
+
           /* 
           var datereceived = $('#datepicker1').val();
 		      var datereprocessed = $('#datepicker2').val();
@@ -562,12 +578,22 @@ function app($connect)
           <td width="100px" class="sarogroup'+newid+'">' + $("#sarogroup").val() + '</td>\n\
           <td width="100px" class="status'+newid+'">' + $("#status").val() + '</td>\n\
           <td width="100px"><a href="javascript:void(0);" class="remCF">Remove</a></td>\n\ </tr>');
+          }
+          
           });
           $("#table1").on('click', '.remCF', function() {
           $(this).parent().parent().remove();
           });
           /*crating new click event for save button*/
           $("#butsave").click(function() {
+
+          /* var table  = $('#table1').empty();
+          if(table==""){
+            alert("Table cannot be empty");
+          }
+          else{ */
+
+          
           var lastRowId = $('#table1 tr:last').attr("id"); /*finds id of the last row inside table*/
 
           var datereceived = new Array();
@@ -608,6 +634,7 @@ function app($connect)
          status.push($("#"+i+" .status"+i).html()); 
 		 
           }
+          
         /*   var sendName = JSON.stringify(name); 
           var sendEmail = JSON.stringify(email); */
 
@@ -651,6 +678,8 @@ function app($connect)
           window.location.href='obligation.php';
           }
           });
+          /* } */
+          
           });
           });
           </script>
