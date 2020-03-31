@@ -148,7 +148,7 @@ $username = $_SESSION['username'];
         </li>
 
         <!-- ====================================================== -->
-        <li><a style="color:black;text-decoration: none;" href="_destroy.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
+        <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
     </section>
   </aside>
 <?php else: ?>

@@ -59,6 +59,8 @@ $primaryKey = 'ID';
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
+$division  = $_SESSION['division'];
+
 $columns = array(
 	array('db' => 'CONTROL_NO', 'dt' => 0),
 	array(
@@ -101,15 +103,7 @@ $columns = array(
 				$d = '<span class="badge badge-pill" style = "background-color:orange;">'.$d.'</span>';
 			}
 			return $d;
-	}),
-	array(
-		'db' => 'STATUS_REQUEST', 
-		'dt' => 11,
-		'formatter' => function ($d, $row)
-		{
-			
-			return $d;
-		}),
+	})
 
 
 );
