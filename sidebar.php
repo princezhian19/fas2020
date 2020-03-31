@@ -239,7 +239,7 @@ $username = $_SESSION['username'];
       </div>
       <ul class="sidebar-menu" data-widget="tree" s>
         <li class="header" style="background-color: white;">MENUS</li>
-        <li><a style="color:black;text-decoration: none;" href="home.php"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
+        <li><a style="color:black;text-decoration: none;" href="home1.php"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
         <li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
@@ -271,8 +271,7 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="saro.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> SARO/SUB-ARO</a></li>
-            <li><a href="obligation.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
+            <li><a href="ViewBURS.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
           </ul>
         </li>
          <li class="treeview">
@@ -284,11 +283,10 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="nta.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA/NCA</a></li>
-            <li><a href="disbursement.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li>
+            <li><a href="ViewDv.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li>
           </ul>
         </li>
-         <li class="treeview">
+         <li class="treeview" hidden>
           <a href="#" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"></i>
             <span style="color:black;text-decoration: none;">CASH</span>
