@@ -190,7 +190,7 @@
                   <th>DATE RELEASED</th>
                   <th>ORS NUMBER</th>
                   <th>PO NUMBER</th>
-                  <th>PAYEE</th>
+                  <th WIDTH = "200">PAYEE</th>
                   <th>PARTICULAR</th>
                   <th>AMOUNT</th>
                   <th>STATUS</th>
@@ -309,7 +309,7 @@
                   <th>DATE RELEASED</th>
                   <th>DV NUMBER</th>
                   <th>PO NUMBER</th>
-                  <th>PAYEE</th>
+                  <th WIDTH = "200">PAYEE</th>
                   <th>PARTICULAR</th>
                   <th>AMOUNT</th>
                   <th>STATUS</th>
