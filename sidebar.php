@@ -1,6 +1,6 @@
 <?php 
 if(!isset($_SESSION['username'])){
-header('location:login.php');
+header('location:index.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
@@ -218,7 +218,7 @@ $username = $_SESSION['username'];
             <li><a href="/pmis/frontend/web/checklist/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV CHECKLIST</a></li>
           </ul>
         </li> 
-        <li><a href="index.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> LOGOUT</a></li>
+        <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
      
        
            
@@ -300,8 +300,7 @@ $username = $_SESSION['username'];
         </li>
           </ul>
         </li>
-        <li><a href="index.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> LOGOUT</a></li>
-
+        <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
     </section>
   </aside>
   <?php endif ?>
