@@ -19,7 +19,7 @@ $username = $_SESSION['username'];
   color: blue;
 }
 </style> -->
-<title>FAS</title>
+<title>Inspection Acceptance Report</title>
 <head>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
