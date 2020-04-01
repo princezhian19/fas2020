@@ -3,7 +3,7 @@ include('db.class.php'); // call db.class.php
 ?>
 <?php session_start();
 if(!isset($_SESSION['username'])){
-header('location:login.php');
+header('location:index.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
