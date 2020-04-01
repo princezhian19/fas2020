@@ -26,12 +26,9 @@ $username = $_SESSION['username'];
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-<<<<<<< HEAD
+
   <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda'): ?>
-=======
-    <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda'):?>
->>>>>>> 7435e4025a507f8bee1fb00ca52c652f833ae4e9
-  <?php include('sidebar.php');?>
+<?php include('sidebar.php');?>
   <?php else: ?>
   <?php include('sidebar2.php');?>
   <?php endif ?>
