@@ -122,7 +122,7 @@ var action = '';
         
         }
         else if (row[10] == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
-        {
+        { 
           if(<?php echo $division?> == 16)
           {
           action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "edit">&#xf044;</i> <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>';
