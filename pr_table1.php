@@ -1,3 +1,6 @@
+
+
+
 <?php
 include('db.class.php'); // call db.class.php
 $mydb = new db(); // create a new object, class db()
@@ -54,8 +57,8 @@ $mydb = new db(); // create a new object, class db()
                   </tr>
                 </thead>
 
-                  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                    <script>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                   <!--  <script>
                     $(document).ready(function(){
                       $("#myInput").on("keyup", function() {
                         var value = $(this).val().toLowerCase();
@@ -64,8 +67,8 @@ $mydb = new db(); // create a new object, class db()
                         });
                       });
                     });
-                  </script> -->
-
+                  </script>
+ -->
                   <?php
                 //$pmoUser="";  
 
@@ -230,9 +233,7 @@ $mydb = new db(); // create a new object, class db()
 
                     
                           <?php if ($received_date == NULL): ?>
-                            <td>
-                             
-                            </td>
+                            <td></td>
                             <?php else: ?>
                               <td><?php echo $received_date1?></td>
 

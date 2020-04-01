@@ -1,4 +1,15 @@
 <?php session_start();
+
+if(!isset($_SESSION['username'])){
+header('location:login.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
+?>
+<?php 
+
 $id = $_GET['id'];
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $select_part = mysqli_query($conn,"SELECT * FROM disbursement WHERE id = '$id'");
@@ -269,7 +280,7 @@ $ors = $rowB['ors'];
             <div class="col-md-3">
 
 
-        
+                
             <label>Date Received</label>
                     <br>
                     <div class="input-group date">
@@ -285,11 +296,11 @@ $ors = $rowB['ors'];
                    
                
             <label>Tax</label>
-             <input  type="Number" class="form-control" style="height: 35px;" id="tax" placeholder="Enter Tax" name="tax">
+             <input  type="Number" class="form-control" style="height: 35px;" id="tax" placeholder="Enter Tax" name="tax" value="0">
              <br> 
             
              <label>PAG IBIG</label>
-             <input  type="Number" class="form-control" style="height: 35px;" id="pagibig" placeholder="Enter Pag Ibig" name="pagibig">
+             <input  type="Number" class="form-control" style="height: 35px;" id="pagibig" placeholder="Enter Pag Ibig" name="pagibig" value="0">
              <br> 
        
                    
@@ -311,16 +322,16 @@ $ors = $rowB['ors'];
                     
             
                     <label>GSIS</label>
-             <input  type="Number" class="form-control" style="height: 35px;" id="gsis" placeholder="Enter GSIS" name="gsis">
+             <input  type="Number" class="form-control" style="height: 35px;" id="gsis" placeholder="Enter GSIS" name="gsis" value="0">
              <br> 
               
              <label>PhilHealth</label>
-             <input  type="Number" class="form-control" style="height: 35px;" id="philhealth" placeholder="Enter Phil Health" name="philhealth">
+             <input  type="Number" class="form-control" style="height: 35px;" id="philhealth" placeholder="Enter Phil Health" name="philhealth" value="0">
              <br>
 
                
              <label>Other Payables</label>
-             <input  type="Number" class="form-control" style="height: 35px;" id="other" placeholder="Enter Phil Health" name="other">
+             <input  type="Number" class="form-control" style="height: 35px;" id="other" placeholder="Enter Phil Health" name="other" value="0">
              <br>
              <br>
              
