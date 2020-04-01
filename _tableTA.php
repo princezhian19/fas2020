@@ -156,8 +156,17 @@ include 'connection.php';
       <script src="dist/js/demo.js"></script>
       <!-- Page script -->
       <script>
-         
+<<<<<<< HEAD
+     
   $(function () {
+=======
+         
+<<<<<<< HEAD
+  $(function () {
+=======
+  // $(function () {
+>>>>>>> 4ecb19c3bc867671d4a2577f6f3084ce883c7fab
+>>>>>>> 72fa6e62f0e033239d000a36fca4a5832b312987
   
     $('#fml').on('click', function()
     {
