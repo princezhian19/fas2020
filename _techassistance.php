@@ -155,7 +155,7 @@ $(document).ready(function() {
                     var tr = $(this).closest('tr');
                     td = tr.find("td:eq(0)")
                     var cell = oTableApi.cell(td);
-                    <?php 
+                    <?php   
                     if($_GET['division'] == 16)
                     {
                       ?>
