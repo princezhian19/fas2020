@@ -1,10 +1,11 @@
 <?php session_start();
 if(!isset($_SESSION['username'])){
-header('location:login.php');
+header('location:index.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
+$division = $_GET['division'];
 }
 ?>
 <!DOCTYPE html>
@@ -77,150 +78,130 @@ $(document).ready(function() {
         
       });
     });
-
+var action = '';
     
     var table = $('#example').DataTable( {
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,   aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false,
+
+
+
         "processing": true,
         "serverSide": false,
         "ajax": "DATATABLE/server_processing.php",
-        "order": [[ 10, "desc" ]]
-
-    } );
-    $('#example tbody').on( 'click', '#sweet-14', function () {
-    var data = table.row( $(this).parents('tr') ).data();
-    alert( data[0] +"'s salary is: "+ data[ 5 ] );
-    } );
-
-
-  // =====
-  
-    // $.ajax({
-    //     url: '_ajax.php',
-    //     success : function(response) 
-    //     {
+        "order": [[ 10, "desc" ]],
+        "columnDefs": [ {
+        "targets": 11,
+        "render": function ( data, type, row, meta ) {  
+        if(row[3] == 'Jan 01, 1970' || row[0] == '0000-00-00')
+        {
+          $dateFormat = '';
+          // return $dateFormat;
+        }
+        if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
+        {
           
-    //       // =
-    //         var jsonObject = $.parseJSON(response); 
-           
-    //         var id = jsonObject[0].CONTROL_NO;
-    //         var table = $('#example1').dataTable( {
-    //             "data" : jsonObject,
-    //             "serverSide": false,
-    //             "processing": true,
-    //             "autoWidth": false,
-    //             "order": [[ 10, "desc" ]],
-    //             "language": {
-    //                 "searchPlaceholder": "Search records",
-    //              },
-    //              aLengthMenu: [
-    //               [10, 10, 20, -1],
-    //               [10, 10, 20, "All"]
-    //             ],
-    //             "bPaginate": true,
-    //             "bLengthChange": false,
-    //             "bFilter": true,
-    //             "bInfo": false,
-    //             "bAutoWidth": false,
-    //             columns: 
-    //             [
-    //                     {"data" : "CONTROL_NO"},
-    //                     {"data" : "START_DATE"},
-    //                     {"data" : "START_TIME"},
-    //                     {"data" : "REQ_DATE"}, 
-    //                     {"data" : "REQ_TIME"},
-    //                     {"data" : "REQ_BY"},
-    //                     {"data" : "OFFICE"},
-    //                     {"data" : "ISSUE_PROBLEM"},
-    //                     {"data" : "TYPE_REQ_DESC"},
-    //                     {"data" : "ASSIGNED_PERSON"},
-    //                     {"data" : 'STATUS_REQUEST'},
-    //                     {"data" : "BUTTON"}      
-    //             ],
+          if(<?php echo $division?> == 16)
+          {
+            action = '<i id = "sweet-14" style = "font-size:20px;color:#2196F3;tex-align:center;" class=" fa fa-check-circle" aria-hidden="true"></i>';
+          
+          }else{
+            action = '';
+          
+          }
+        }
+        else if (row[10] == '<span class="badge badge-pill" style = "background-color:orange;">Received</span>')
+        {
+          action = 'ON GOING';
 
-    //         });
-    //       $
-    //         $('#example1 tbody').on( 'click', '#sweet-14', function () 
-    //          {
-                    
-    //           // var oTableApi = $('#example1').dataTable().api();
-    //           //       var tr = $(this).closest('tr');
-    //           //       td = tr.find("td:eq(0)")
-    //           //       var cell = oTableApi.cell(td);
-    //           //       <?php 
-    //           //       if($_GET['division'] == 16)
-    //           //       {
-    //           //         ?>
-    //           //         window.location="_tickets.php?division=<?php echo $_GET['division'];?>&ticket_id="+cell.data();
-    //           //         <?php
-    //           //       }
-    //           //       else{
-    //           //         ?>
-    //           //          window.location="_tickets.php?ticket_id="+cell.data();
+        }
+        else if(row[10] == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
+        {
+          if(<?php echo $division?> == 16)
+          {
+            action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "edit">&#xf044;</i>';
+          }else{
+            action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "view" >&#xf06e;</i>';
 
-    //           //         <?php
-    //           //       }
-    //           //       ?>
+          }
+        
+        }
+        else if (row[10] == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
+        { 
+          if(<?php echo $division?> == 16)
+          {
+          action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "edit">&#xf044;</i> ';
+          
+          }else{
+            action = '<i id = "sweet-15" style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-star" aria-hidden="true"></i>';
+            // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>
+          }
 
-    //          });
-    //         //  ====================
-    //         $('#sweet-14').click(function()
-    // {
-    //   var oTableApi = $('#example1').dataTable().api();
-    //                 var tr = $(this).closest('tr');
-    //                 td = tr.find("td:eq(0)")
-    //                 var cell = oTableApi.cell(td);
-    //     swal({
-    //         title: "Are you sure you want to recieved this request?",
-    //         text: "Control No:"+cell.data(),
-    //         type: "info",
-    //         showCancelButton: true,
-    //         showCancelButton: true,
-    //         confirmButtonText: 'Yes',
-    //         closeOnConfirm: false,
-    //         showLoaderOnConfirm: true
-    //     }).then(function () {
-    //         $.ajax({
-    //           url:"_ticketReleased.php",
-    //           method:"POST",
-    //           data:{
-    //               id:cell.data(),
-    //               option:"released"
-    //           },
-              
-    //           success:function(data)
-    //           {
-    //               setTimeout(function () {
-    //               swal("Record saved successfully!");
-    //               }, 3000);
-    //               window.location = "_tickets.php?division=<?php echo $_GET['division']?>&ticket_id="+cell.data();
-    //           }
-    //         });
-    //     });
-    // });
-            
-    //         $('#example1 tbody').on( 'click', '#edit', function () 
-    //          {
-    //                 var oTableApi = $('#example1').dataTable().api();
-    //                 var tr = $(this).closest('tr');
-    //                 td = tr.find("td:first")
-    //                 var cell = oTableApi.cell(td);
-    //               // window.location="_editTA.php?id="+cell.data();
-    //               window.location="_editRequestTA.php?division=<?php echo $_GET['division'];?>&id="+cell.data();
+        }
+        
+        return action;
+    }
+  } ]
 
-    //         });
+    } );
+  
 
-    //         $('#example1 tbody').on( 'click', '#view', function () 
-    //          {
-    //                 var oTableApi = $('#example1').dataTable().api();
-    //                 var tr = $(this).closest('tr');
-    //                 td = tr.find("td:first")
-    //                 var cell = oTableApi.cell(td);
-    //               window.location="JASPER/sample/viewTA.php?id="+cell.data();
-    //         });
+    $('#example tbody').on( 'click', '#edit', function () {
+      var data = table.row( $(this).parents('tr') ).data();
+      window.location="_editRequestTA.php?division=<?php echo $_GET['division'];?>&id="+data[0];
+    } );
 
-    //     }
+    $('#example tbody').on( 'click', '#sweet-14', function () {
+      var data = table.row( $(this).parents('tr') ).data();
+      var a = data[0];
 
-    // });
+        swal({
+            title: "Are you sure you want to recieved this request?",
+            text: "Control No:"+data[0],
+            type: "info",
+            showCancelButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }).then(function () {
+            $.ajax({
+              url:"_ticketReleased.php",
+              method:"POST",
+              data:{
+                  id:data[0],
+                  option:"released"
+              },
+              success:function(data)
+              {
+                  setTimeout(function () {
+                  swal("Record saved successfully!");
+                  }, 3000);
+                  window.location = "allTickets.php?division=<?php echo $_GET['division']?>&ticket_id="+a;
+              }
+            });
+        });
+    });
+
+    $('#example tbody').on( 'click', '#view', function () {
+      var data = table.row( $(this).parents('tr') ).data();
+      window.location="JASPER/sample/viewTA.php?id="+data[0];
+    });
+    
+    $('#example tbody').on( 'click', '#sweet-15', function () {
+      var data = table.row( $(this).parents('tr') ).data();
+      window.location="rateService.php?division=<?php echo $_GET['division'];?>&id="+data[0];
+    });
+    
 });
 
 

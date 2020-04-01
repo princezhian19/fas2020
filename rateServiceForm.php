@@ -598,6 +598,113 @@ function setCompletedTime()
       }
       return $completed_time;
 }
+
+function setTimeliness()
+{
+    include 'connection.php';
+
+   $timeliness = '';
+    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+    $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+    $result = mysqli_query($conn, $query);
+    if($row = mysqli_fetch_array($result))
+      {
+        if($row['TIMELINESS'] == 'YES')
+        {
+            ?>
+            <select class="form-control " style="width: 100%;" name="timeliness" >
+            <option value = "YES" selected>YES</option>
+            <option value = "NO">NO</option>
+            </select> 
+            <?php
+        }else{
+            ?>
+            <select class="form-control " style="width: 100%;" name="timeliness" >
+            <option value = "YES" >YES</option>
+            <option value = "NO" selected>NO</option>
+            </select> 
+            <?php
+        }
+       
+      }
+      return $timeliness;
+}
+function setQuality()
+{
+    include 'connection.php';
+
+   $quality = '';
+    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+    $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+    $result = mysqli_query($conn, $query);
+    if($row = mysqli_fetch_array($result))
+      {
+        if($row['STATUS'] == '5')
+        {
+            ?>
+            <select class="form-control " style="width: 100%;" name="quality" >
+            <option value = "5" selected>Outstanding</option>
+            <option value = "4">Very-Satisfatory</option>
+            <option value = "3">Satisfatory</option>
+            <option value = "2">Unsatisfatory</option>
+            <option value = "1">Poor</option>
+            </select>
+            <?php
+        }else if($row['STATUS'] == '4'){
+            ?>
+            <select class="form-control " style="width: 100%;" name="quality" >
+            <option value = "5" >Outstanding</option>
+            <option value = "4" selected>Very-Satisfatory</option>
+            <option value = "3">Satisfatory</option>
+            <option value = "2">Unsatisfatory</option>
+            <option value = "1">Poor</option>
+            </select>
+            <?php
+        }else if($row['STATUS'] == '3'){
+            ?>
+            <select class="form-control " style="width: 100%;" name="quality" >
+            <option value = "5" >Outstanding</option>
+            <option value = "4" >Very-Satisfatory</option>
+            <option value = "3" selected>Satisfatory</option>
+            <option value = "2">Unsatisfatory</option>
+            <option value = "1">Poor</option>
+            </select>
+            <?php
+        }else if($row['STATUS'] == '2'){
+            ?>
+            <select class="form-control " style="width: 100%;" name="quality" >
+            <option value = "5" >Outstanding</option>
+            <option value = "4" >Very-Satisfatory</option>
+            <option value = "3" >Satisfatory</option>
+            <option value = "2" selected>Unsatisfatory</option>
+            <option value = "1">Poor</option>
+            </select>
+            <?php
+        }else if($row['STATUS'] == '1'){
+            ?>
+            <select class="form-control " style="width: 100%;" name="quality" >
+            <option value = "5" >Outstanding</option>
+            <option value = "4" >Very-Satisfatory</option>
+            <option value = "3" >Satisfatory</option>
+            <option value = "2" >Unsatisfatory</option>
+            <option value = "1" selected>Poor</option>
+            </select>
+            <?php
+        }else{
+            ?>
+            <select class="form-control " style="width: 100%;" name="quality" >
+            <option value = "5" >Outstanding</option>
+            <option value = "4" >Very-Satisfatory</option>
+            <option value = "3" >Satisfatory</option>
+            <option value = "2" >Unsatisfatory</option>
+            <option value = "1">Poor</option>
+            </select>
+            <?php
+        }
+       
+      }
+      return $quality;
+}
 ?>
  
 <!DOCTYPE html>
@@ -696,33 +803,23 @@ function setCompletedTime()
                                                   </td>
 
                                                   <td colspan = 4>
-                                                  <textarea  rows="20" cols="56" style ="resize:none;width:100%;text-align:left;" name = "STATUS_DESC">
+                                                  <textarea class= "disabletxtarea" rows="20" cols="56" style ="resize:none;width:100%;text-align:left;" name = "STATUS_DESC">
                                                   <?php  echo showDiagnose(); ?>
                                                   </textarea>
                                                   </td>
                                                   </tr>
                                                   <tr>
-                                                  <td style = "width:12.5%;"></td>
+                                                  <td style = "width:12.5%;">Timeliness</td>
                                                   <td style = "width:12.5%;">
                                                   <!-- <input type = "hidden" name = "timeliness" value="" />
                                                   <input type = "hidden" name = "quality" value="" /> -->
                                 
-                                                  <!-- <select class="form-control " style="width: 100%;" name="timeliness" >
-                                                  <option value = "YES">YES</option>
-                                                  <option value = "NO">NO</option>
-                                                  </select>  -->
+                                                  <?php echo setTimeliness();?>
                                                   </td>
-                                                  <td style = "width:12.5%;text-align:center;"></td>
+                                                  <td style = "width:12.5%;text-align:center;">Quality</td>
                                                   <td style = "width:12.5%;text-align:center;">
-<!-- 
-                                                 <select class="form-control " style="width: 100%;" name="quality" >
 
-                                                  <option value = "5">Outstanding</option>
-                                                  <option value = "4">Very-Satisfatory</option>
-                                                  <option value = "3">Satisfatory</option>
-                                                  <option value = "2">Unsatisfatory</option>
-                                                  <option value = "1">Poor</option>
-                                                  </select> -->
+                                                <?php echo setQuality();?>
 
                                                   </td>
                                                   <td style = "width:12.5%;">Started Date:</td>
@@ -731,7 +828,7 @@ function setCompletedTime()
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input required type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="<?PHP echo setStartDate();?>" required>
+                                                      <input disabled  type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="<?PHP echo setStartDate();?>" >
                                                     </div>
                                                   </td>
                                                   <td style = "width:12.5%;">Completed Date:</td>
@@ -740,7 +837,7 @@ function setCompletedTime()
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="<?php echo setCompletedDate();?>" required>
+                                                      <input disabled type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="<?php echo setCompletedDate();?>" >
                                                     </div>
                                                   </td>
                                                   </tr>
@@ -759,7 +856,7 @@ function setCompletedTime()
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input id= "timepicker" type="text" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" required>
+                                                      <input disabled id= "timepicker" type="text" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" >
                                                     </div>
                                                   </td>
                                                   <td style = "width:12.5%;">Completed Time:</td>
@@ -768,7 +865,7 @@ function setCompletedTime()
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input id = "timepicker2" type="text" name = "completed_time" placeholder = "Completed Time"  value="<?php echo setCompletedTime();?>" required>
+                                                      <input disabled id = "timepicker2" type="text" name = "completed_time" placeholder = "Completed Time"  value="<?php echo setCompletedTime();?>" >
                                                     </div>
                                                   </td>
                                                   </tr>
@@ -838,7 +935,7 @@ function setCompletedTime()
           }, function () {
             var queryString = $('#submit').serialize();
             $.ajax({
-              url:"_editTAForm_save.php",
+              url:"rateServiceForm_save.php",
               method:"POST",
               data:$("#submit").serialize(),
               
@@ -847,7 +944,7 @@ function setCompletedTime()
                   setTimeout(function () {
                   swal("Record saved successfully!");
                   }, 3000);
-                  window.location = "_techassistance.php?division=<?php echo $_GET['division'];?>";
+                  window.location = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?PHP echo $_GET['id'];?>";
               }
             });
         });

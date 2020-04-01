@@ -11,7 +11,7 @@ if(!isset($_SESSION))
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>FAS:Modify Technical Assistance Request</title>
+  <title>Encode DV</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
@@ -21,20 +21,27 @@ if(!isset($_SESSION))
   <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-<?php
-if($_GET['division'] == 16)
-{
-  include('sidebar.php'); 
-}else{
-  include('sidebar2.php');
-}
-?>
+ <?php 
+  if (
+    $username == 'charlesodi' ||
+    $username == 'mmmonteiro' ||  
+    $username == 'cvferrer' || 
+    $username == 'masacluti' || 
+    $username == 'magonzales' || 
+    $username == 'seolivar' || 
+    $username == 'jamonteiro' || 
+    $username == 'ctronquillo' || 
+    $username == 'rdmiranda')
+    {
+      include('sidebar.php');
+    }else{
+      include('sidebar2.php');
+    }
 
+ ?>
 
   <div class="content-wrapper">
     <section class="content-header">
@@ -44,7 +51,7 @@ if($_GET['division'] == 16)
       </ol>
       <br>
       <br>
-        <?php include('_editRequestForm.php');?>
+        <?php include('rateServiceForm.php');?>
 
     </section>
   </div>

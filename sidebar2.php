@@ -1,7 +1,7 @@
 <?php
 
 if(!isset($_SESSION['username'])){
-header('location:login.php');
+header('location:index.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
@@ -91,15 +91,15 @@ function showDivision()
             <li>
               <a href="techassistance.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;">
                 <i class="fa">&#xf0f6;</i>
-                  Completed Request
+                 COMPLETED REQUEST
                 <span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span>
               </a>
             </li>
             <li>
               <a href="techassistance.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;">
                 <i class="fa">&#xf0f6;</i>
-                  Submitted
-                <span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span>
+                  SUBMITTED
+                <span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b></b></span>
               </a>
 
           </ul>

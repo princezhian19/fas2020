@@ -1,4 +1,5 @@
 <?php session_start();
+<<<<<<< HEAD
 if(!isset($_SESSION['username'])){
 header('location:login.php');
 }else{
@@ -10,11 +11,10 @@ $username = $_SESSION['username'];
 
 
 <?php 
+=======
+>>>>>>> 7435e4025a507f8bee1fb00ca52c652f833ae4e9
 $id = $_GET['id'];
-
-
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-
 $select_part = mysqli_query($conn,"SELECT * FROM disbursement WHERE id = '$id'");
 $rowB = mysqli_fetch_array($select_part);
 $supplier = $rowB['payee'];

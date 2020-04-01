@@ -40,7 +40,7 @@ $(document).ready(function() {
 
     
     var table = $('#example').DataTable( {
-        "processing": true,
+        "processing": false,
         "serverSide": false,
         "ajax": "server_processing.php",
         "order": [[ 10, "desc" ]]
