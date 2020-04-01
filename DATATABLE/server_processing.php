@@ -82,7 +82,8 @@ $columns = array(
 		'dt' => 3,
 		'formatter' => function( $d, $row ) {
 			
-			return $d;
+			return date( 'M d, Y', strtotime($d));
+
 
         }
 	),
