@@ -69,12 +69,12 @@ $username = $_SESSION['username'];
 <script src="dist/js/demo.js"></script> -->
 <script>
   $(function () {
-    $('#').DataTable()
+    $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
-      'ordering'    : false,
+      'ordering'    : true,
       'info'        : true,
       'autoWidth'   : true
     })

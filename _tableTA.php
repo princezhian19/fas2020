@@ -156,7 +156,7 @@ include 'connection.php';
       <script src="dist/js/demo.js"></script>
       <!-- Page script -->
       <script>
-         
+     
   $(function () {
   
     $('#fml').on('click', function()

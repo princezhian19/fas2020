@@ -31,7 +31,7 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
 
 
 
-if (isset($_POST['Summary'])) 
+if (isset($_POST['Summary']))
 {
 
 
@@ -90,8 +90,7 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
  $totalr = $excelrowTot1['total1'];
 
   
-  /* echo $totalr;
-  exit(); */
+ 
 
 
   $row=17;
@@ -142,9 +141,7 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
 
     $getValue1 = $excelReceived['a'];
 
-    // echo $getValue1;
-    // exit();
-
+  
 
      //Getting all Returned
      if($datereturned=='0000-00-00'){
@@ -166,7 +163,7 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
     
     $minus =$getValue1-$getValueReturned;
     $num1= number_format($minus,0);
-    echo $num1;
+ 
     
     $num2 = $minus;
 
@@ -381,7 +378,6 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
 
 }
 
-//$date = date("F, Y", time());
 
 
 //$objPHPExcel->setActiveSheetIndex()->setCellValue('F11',$date);
@@ -401,11 +397,9 @@ if (isset($_POST['submit']))
 
   $objPHPExcel->setActiveSheetIndex()->setCellValue('F11',"Month of :     ".$d3."             Date :   ".$d4);
   
-
+  $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $sql_items = mysqli_query($conn, "SELECT * FROM  saroob where datereprocessed between '$d1' and '$d2' order by datereprocessed asc ");
 
-/* echo("SELECT * FROM  saroob where datereprocessed between '$d1' and '$d2' order by datereprocessed asc ");
-exit(); */
 
 }
 //$id = $row["id"];  
