@@ -128,7 +128,7 @@ var action = '';
         {
           if(<?php echo $division?> == 16)
           {
-            action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "edit">&#xf044;</i> <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>';
+            action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "edit">&#xf044;</i>';
           }else{
             action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "view" >&#xf06e;</i>';
 
@@ -139,11 +139,11 @@ var action = '';
         { 
           if(<?php echo $division?> == 16)
           {
-          action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "edit">&#xf044;</i> <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>';
+          action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "edit">&#xf044;</i> ';
           
           }else{
-            action = '<i id = "sweet-15" style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-star" aria-hidden="true"></i><i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>';
-
+            action = '<i id = "sweet-15" style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-star" aria-hidden="true"></i>';
+            // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>
           }
 
         }
