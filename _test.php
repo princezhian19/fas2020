@@ -189,7 +189,7 @@ background-position: 90px 5px;
                     </div>
                     <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/sample/sample1.php" >    
                         <?php echo fillTableInfo(); ?>
-                     
+                     <input type = "hidden" name = "division" value = "<?php echo $_GET['division'];?>" />
                         <br>
                         <u style = "margin-top:20px;">TYPE OF REQUEST</u>
 

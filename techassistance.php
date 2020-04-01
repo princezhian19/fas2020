@@ -84,7 +84,7 @@ var action = '';
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
-      'ordering'    : false,
+      'ordering'    : true,
       'info'        : true,
       'autoWidth'   : true,   aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
       "bPaginate": false,
@@ -98,7 +98,7 @@ var action = '';
         "processing": true,
         "serverSide": false,
         "ajax": "DATATABLE/server_processing.php",
-        "order": [[ 10, "desc" ]],
+        "order": [[ 1, "desc" ]],
         "columnDefs": [ {
         "targets": 11,
         "render": function ( data, type, row, meta ) {  

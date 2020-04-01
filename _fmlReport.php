@@ -3,7 +3,7 @@
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("library/fml.xlsx");
+$objPHPExcel = PHPExcel_IOFactory::load("library/_fmlReport.xlsx");
 $styleTop = array(
   'borders' => array(
     'top' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
@@ -48,8 +48,7 @@ $result = mysqli_query($conn,$sql_q10);
 if ($result->num_rows > 0) {
   $row = 15;
   $no = 1;
-  echo $sql_q10;
-  exit();
+
   while($excelrow = mysqli_fetch_array($result))
   
   {
