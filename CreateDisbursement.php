@@ -9,6 +9,7 @@ $username = $_SESSION['username'];
 ?>
 <?php 
 $id = $_GET['id'];
+//echo $id;
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 $select_part = mysqli_query($conn,"SELECT * FROM disbursement WHERE id = '$id'");
@@ -51,18 +52,15 @@ $philhealth = $_POST['philhealth'];
 $other = $_POST['other'];
 $remarks = $_POST['remarks'];
 $status = $_POST['status'];
+
+
 $servername = "localhost";
-
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
-
-$username = "fascalab_2020";
-$password = "w]zYV6X9{*BN";
-
 $database = "fascalab_2020";
 $conn = new mysqli($servername, $username, $password,$database);
 
-$query = mysqli_query($conn,"UPDATE disbursement SET datereleased = now(), dv = '$dv',ors = '$ors',sr = '$sr',ppa = '$ppa',uacs = '$uacs',payee = '$payee',particular = '$particular',amount = '$amount',datereceived = '$dr',timereceived = '$tr',tax = '$tax',gsis = '$gsis',pagibig = '$pagibig',philhealth = '$philhealth',other = '$other',remarks = '$remarks',status = '$status' WHERE id ='$id' ");
+$query = mysqli_query($conn,"UPDATE disbursement SET date_proccess=now(), datereleased = now(), dv = '$dv',ors = '$ors',sr = '$sr',ppa = '$ppa',uacs = '$uacs',payee = '$payee',particular = '$particular',amount = '$amount',datereceived = '$dr',timereceived = '$tr',tax = '$tax',gsis = '$gsis',pagibig = '$pagibig',philhealth = '$philhealth',other = '$other',remarks = '$remarks',status = '$status' WHERE ID ='$id' ");
 
 // $query = mysqli_query($conn,"INSERT INTO disbursement (dv,ors,sr,ppa,uacs,payee,particular,amount,datereceived,timereceived,tax,gsis,pagibig,philhealth,other,remarks,status) 
 //   VALUES ('$dv','$ors ','$sr','$ppa','$uacs','$payee','$particular','$amount','$dr','$tr','$tax','$gsis','$pagibig','$philhealth','$other','$remarks','$status')");
@@ -75,7 +73,7 @@ $query_dv = mysqli_query($conn,"UPDATE dv SET status = 4, date_received = now(),
 
   echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Data Added Successfully!')
-    window.location.href='@disbursement.php';
+    window.location.href='disbursement.php';
     </SCRIPT>");
 }
 else{
@@ -115,7 +113,7 @@ else{
           <h1 align="">&nbspCreate Disbursement</h1>
           <div class="box-header with-border">
             <br>
-            <li class="btn btn-success"><a href="@disbursement.php" style="color:white;text-decoration: none;">Back</a></li>
+            <li class="btn btn-success"><a href="disbursement.php" style="color:white;text-decoration: none;">Back</a></li>
             <br>
             <br>
             <form method="POST">
@@ -204,7 +202,7 @@ else{
               <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
               </div>
-              <input value="<?php echo $date_received;?>" type="date" class="form-control pull-right" id="" placeholder='Enter Date' name="datereceived" >
+              <input value="<?php echo $date_received;?>" type="date" class="form-control pull-right" id="datePicker1" placeholder='Enter Date' name="datereceived" >
             </div>
             <br>
             <label>Time Received</label>
@@ -238,7 +236,6 @@ else{
             <br>
             <label>Status</label>
             <select class="form-control select" style="width: 100%; height: 40px;" name="status" id="status" required >
-             <option>Select Status</option>
              <option value = "Disbursed">Disbursed</option>
              <option value = "Pending">Pending</option>
            </select>

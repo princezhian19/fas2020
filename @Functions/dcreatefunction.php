@@ -65,7 +65,8 @@ $ntaid = $_GET['ntaid'];
 $ntano = $_GET['ntano'];
 $ntaparticular = $_GET['ntaparticular'];
 
-$totaldeduc = $tax+$gsis+$pagibig+$philhealth+$other;
+$totaldeduc = ($tax+$gsis+$pagibig+$philhealth+$other);
+
 $net = $amount - $totaldeduc;
 
 /*  */
@@ -92,25 +93,27 @@ if ($conn->connect_error) {
 // Perform queries
  $query = mysqli_query($conn,"INSERT INTO disbursement (nta,ntaparticular,dv,ors,sr,ppa,uacs,payee,particular,amount,datereceived,tax,gsis,pagibig,philhealth,other,remarks,status) 
  VALUES ('$ntano','$ntaparticular','$dv','$ors','$sr','$ppa','$uacs','$payee','$particular','$amount','$dr','$tax','$gsis','$pagibig','$philhealth','$other','$remarks','$status')");
-
-
-
+// echo $totaldeduc;
+// echo '<br>';
+/*  echo "INSERT INTO disbursement (nta,ntaparticular,dv,ors,sr,ppa,uacs,payee,particular,amount,datereceived,tax,gsis,pagibig,philhealth,other,remarks,status) 
+ VALUES ('$ntano','$ntaparticular','$dv','$ors','$sr','$ppa','$uacs','$payee','$particular','$amount','$dr','$tax','$gsis','$pagibig','$philhealth','$other','$remarks','$status')";
+exit(); */
     // echo "INSERT INTO disbursement (dv,ors,sr,ppa,uacs,payee,particular,amount,datereceived,timereceived,tax,gsis,pagibig,philhealth,other,datereleased,timereleased,datereturned,timereturned,remarks,status) 
     // VALUES ('$dv','$ors ','$sr','$ppa','$uacs','$payee','$particular','$amount','$dr','$tr','$tax','$gsis','$pagibig','$philhealth','$other','$dreleased','$treleased','$dreturned','$treturned','$remarks','$status')";
 
   
     //updating total
-    $update = mysqli_query($conn,"Update disbursement set total = tax+gsis+pagibig+philhealth+other where dv = '$dv'");
+    $update = mysqli_query($conn,"Update disbursement set total = tax+gsis+pagibig+philhealth+other where dv = '$dv' ");
     //updating net
-    $update3 = mysqli_query($conn,"Update disbursement set net = amount - total where dv = '$dv' ");
+    $update3 = mysqli_query($conn,"Update disbursement set net = amount - total where dv = '$dv'");
     
     
     
     //updating nta obligated
-    $update11 = mysqli_query($conn,"Update nta set obligated = obligated + $net where id = '$ntaid' ");
+    $update11 = mysqli_query($conn,"Update nta set obligated = obligated + $net where id = '$ntaid'");
     //updating nta balance
-    $update22 = mysqli_query($conn,"Update nta set balance = amount - obligated where where id = '$ntaid' ");
-
+    $update22 = mysqli_query($conn,"Update nta set balance = amount - obligated where where id = '$ntaid'");
+    // exit();
     
 
 mysqli_close($conn);

@@ -46,10 +46,10 @@ $username = $_SESSION['username'];
           <br>
           <div class=""  style="overflow-x:auto;">
             
-            <div class="col-md-1" style="overflow-x:auto;">
+            <div class="col-md-0" style="overflow-x:auto;">
            <!--   <li class="btn btn-success"><a href="@disbursementcreate.php" style="color:white;text-decoration: none;">Create</a></li> -->
             </div>
-            <div class="col-md-10" style="overflow-x:auto;">
+            <div class="col-md-12" style="overflow-x:auto;">
             <form method = "POST" action = "@Functions/ddateexport1.php">
                 <div class="input-group date" style="overflow-x:auto;">
                   <div class="input-group-addon" style="overflow-x:auto;">
@@ -94,7 +94,7 @@ $username = $_SESSION['username'];
                   <th style="text-align:center" width="">UACS</th>
                   <th style="text-align:center" width="">DATE RECEIVED</th>
                   <th style="text-align:center" width="">DATE DISBURSED</th>
-                  <th style="text-align:center" width="">DATE RELEASE</th>
+                  <th style="text-align:center" width="">DATE RELEASED</th>
                   <th style="text-align:center" width="">PAYEE</th>
                   <th style="text-align:center" width="">PARTICULAR</th>
                   <th style="text-align:center" width="">AMOUNT</th>
@@ -120,7 +120,7 @@ $username = $_SESSION['username'];
               $database = "fascalab_2020";
             // Create connection
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT * FROM disbursement order by id desc");
+              $view_query = mysqli_query($conn, "SELECT * FROM disbursement order by ID desc");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["ID"]; 
                 $dv = $row["dv"];
@@ -155,7 +155,7 @@ $username = $_SESSION['username'];
                   <td><?php echo $ppa;?></td>
                   <td><?php echo $uacs;?></td>
                   <?php if ($datereceived == '1970-01-01' || $datereceived =='0000-00-00'): ?>
-                    <td><a href="received_dv.php?id=<?php echo $id;?>" class="btn btn-primary btn-xs">Received</a></td>
+                    <td><a href="received_dv.php?id=<?php echo $id;?>" class="btn btn-primary btn-xs">Receive</a></td>
                     <?php else: ?>
                       <td><?php echo $datereceived11;?></td>
                     <?php endif ?>
@@ -173,7 +173,7 @@ $username = $_SESSION['username'];
                             <td><?php echo $date_proccess1;?></td>
                             <?php else: ?>
                               <?php if ($datereceived != '0000-00-00'): ?>
-                                <td><a class="btn btn-success btn-xs" href='disbursementcreate.php?id=<?php echo $id; ?>&stat=1' >Proccess</a> </td>
+                                <td><a class="btn btn-success btn-xs" href='CreateDisbursement.php?id=<?php echo $id; ?>&stat=1' >Proccess</a> </td>
                                 <?php else: ?>
                                   <td></td>
                                 <?php endif ?>

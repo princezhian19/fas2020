@@ -24,7 +24,7 @@ function showDivision()
         $username == 'charlesodi' || 
         $username == 'mmmonteiro' || 
         $username == 'jamonteiro' || 
-        $username == 'cvferrer' || 
+        $username == 'cvferrer1' || 
         $username == 'masacluti' || 
         $username == 'seolivar' 
         ) 
