@@ -30,7 +30,7 @@
               <td><?php echo $supplier_address;?></td>
               <td><?php echo $contact;?></td>
               <td>
-                <a href='UpdateSuppliers.php?id=<?php echo $id; ?>' class = "btn btn-primary btn-xs"> <i style='font-size:20px' class='fa'>&#xf044;</i> Edit</a>
+                <a href='UpdateSuppliers.php?id=<?php echo $id; ?>' class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>
              </td>
            </tr>
          <?php } ?>
