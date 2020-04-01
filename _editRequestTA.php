@@ -21,25 +21,15 @@ if(!isset($_SESSION))
   <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
  <?php 
-  if (
-    $username == 'charlesodi' ||
-    $username == 'mmmonteiro' ||  
-    $username == 'cvferrer' || 
-    $username == 'masacluti' || 
-    $username == 'magonzales' || 
-    $username == 'seolivar' || 
-    $username == 'jamonteiro' || 
-    $username == 'ctronquillo' || 
-    $username == 'rdmiranda')
-    {
+  
       include('sidebar.php');
-    }else{
-      include('sidebar2.php');
-    }
+    
 
  ?>
 
