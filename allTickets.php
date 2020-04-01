@@ -40,7 +40,7 @@ function filldataTable()
     $query = "SELECT * FROM tbltechnical_assistance 
     where `STATUS_REQUEST` = 'Submitted' or  `STATUS_REQUEST` = 'Received' or `STATUS_REQUEST` = 'For action' 
     GROUP by tbltechnical_assistance.ID
-    order by `REQ_DATE` DESC, `REQ_TIME` ";
+    order by `REQ_DATE` DESC, `REQ_TIME` desc ";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
@@ -393,11 +393,13 @@ $('.sweet-14').click(function()
                 ict_staff:result,
                 control_no:ids
             },
-            success:function()
-            {
-                
-            window.location = '_tickets.php?division=<?php echo $_GET['division'];?>&ticket_id=<?php echo $_GET['ticket_id']; ?>';
-            }
+         success:function(data)
+              {
+                  setTimeout(function () {
+                  swal("Ticket No.already assigned!");
+                  }, 3000);
+                  window.location = 'allTickets.php?division=<?php echo $_GET['division'];?>&ticket_id='+data[0];
+              }
             });
         });
     });
@@ -438,7 +440,7 @@ $('.sweet-16').click(function()
     {
         var ids = $(this).parent('li').attr('id');
         swal({
-            title: "Are you sure you want to recieved this request?",
+            title: "Are you sure you already finished with this request?",
             text: "Control No:"+ids,
             type: "info",
             showCancelButton: true,

@@ -173,8 +173,8 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                'Submitted'
                )";
 
-            //    echo $sql_insert;
-            //    exit();
+               echo $sql_insert;
+               exit();
 if (mysqli_query($conn, $sql_insert)) {
  } else {
  }

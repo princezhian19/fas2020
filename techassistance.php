@@ -88,9 +88,14 @@ var action = '';
         "columnDefs": [ {
         "targets": 11,
         "render": function ( data, type, row, meta ) {  
-     
+        if(row[3] == 'Jan 01, 1970' || row[0] == '0000-00-00')
+        {
+          $dateFormat = '';
+          // return $dateFormat;
+        }
         if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
         {
+          
           if(<?php echo $division?> == 16)
           {
             action = '<i id = "sweet-14" style = "font-size:20px;color:#2196F3;tex-align:center;" class=" fa fa-check-circle" aria-hidden="true"></i>';
@@ -134,6 +139,7 @@ var action = '';
   } ]
 
     } );
+  
 
     $('#example tbody').on( 'click', '#edit', function () {
       var data = table.row( $(this).parents('tr') ).data();
@@ -142,6 +148,8 @@ var action = '';
 
     $('#example tbody').on( 'click', '#sweet-14', function () {
       var data = table.row( $(this).parents('tr') ).data();
+      var a = data[0];
+
         swal({
             title: "Are you sure you want to recieved this request?",
             text: "Control No:"+data[0],
@@ -156,16 +164,16 @@ var action = '';
               url:"_ticketReleased.php",
               method:"POST",
               data:{
-                  id:cell.data(),
+                  id:data[0],
                   option:"released"
               },
-              
               success:function(data)
               {
                   setTimeout(function () {
                   swal("Record saved successfully!");
                   }, 3000);
-                  window.location = "_tickets.php?division=<?php echo $_GET['division']?>&ticket_id="+data[0];
+                  alert(a);
+                  window.location = "allTickets.php?division=<?php echo $_GET['division']?>&ticket_id="+a;
               }
             });
         });
@@ -178,7 +186,7 @@ var action = '';
     
     $('#example tbody').on( 'click', '#sweet-15', function () {
       var data = table.row( $(this).parents('tr') ).data();
-      window.location="rateService.php?id="+data[0];
+      window.location="rateService.php?division=<?php echo $_GET['division'];?>&id="+data[0];
     });
     
 });
