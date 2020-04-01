@@ -41,12 +41,12 @@ $username = $_SESSION['username'];
           <ul class="treeview-menu" >
             <li class="treeview">
         </li>
-        <li><a href="ViewApp.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> APP</a></li>
+        <li><a href="ViewApp.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>APP</a></li>
    
         <li><a href="ViewPR.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> PURCHASE REQUEST</a></li>
        
-            <li><a href="ViewRFQ.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> REQUEST FOR QUOTATION</a></li>
-        <li><a style="color:black;text-decoration: none;" href="ViewSuppliers.php"><i class="fa fa-folder-o"></i> <span>SUPPLIER</span></a></li>
+            <li><a href="ViewRFQ.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> REQUEST FOR QUOTATION</a></li>
+        <li><a style="color:black;text-decoration: none;" href="ViewSuppliers.php"><i class="fa">&#xf0f6;</i><span>SUPPLIER</span></a></li>
           </ul>
         <li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
