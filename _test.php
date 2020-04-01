@@ -191,7 +191,7 @@ background-position: 90px 5px;
                         <?php echo fillTableInfo(); ?>
                      <input type = "hidden" name = "division" value = "<?php echo $_GET['division'];?>" />
                         <br>
-                        <u style = "margin-top:20px;">TYPE OF REQUEST</u>
+                        <u style = "margin-top:20px;">TYPE O       REQUEST</u>
 
                         <table style = "margin-top:20px;width:100%;">
                           <tr>

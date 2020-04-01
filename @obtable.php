@@ -182,6 +182,12 @@ include('db.class.php'); // call db.class.php
                   </div>
 
                 </body>
+
+                <script type="text/javascript">
+    $(document).ready(function() {
+        $('#example1').DataTable();
+    } );
+</script>
                 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
