@@ -48,6 +48,8 @@ $result = mysqli_query($conn,$sql_q10);
 if ($result->num_rows > 0) {
   $row = 15;
   $no = 1;
+  echo $sql_q10;
+  exit();
   while($excelrow = mysqli_fetch_array($result))
   
   {
