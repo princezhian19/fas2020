@@ -179,7 +179,7 @@ if (mysqli_query($conn, $sql_insert)) {
  }
  ?>
 <script>
-window.location = '../../_techassistance.php?division=<?php echo $_GET['division'];?>';
+window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
 </script>
  <?php
     // ======
