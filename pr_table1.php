@@ -1,6 +1,14 @@
 
 
-
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:index.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
+?>
 <?php
 include('db.class.php'); // call db.class.php
 $mydb = new db(); // create a new object, class db()
@@ -41,7 +49,7 @@ $mydb = new db(); // create a new object, class db()
               <!-- <h3 align="center"><b>Inspection Acceptance Report</b></h3> -->
 
 
-              <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
+              <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                   <tr style="background-color: white;color:blue;">
 
@@ -187,6 +195,7 @@ $mydb = new db(); // create a new object, class db()
                     <tr>
 
                       <td><?php echo $pr_no;?></td>
+                      
                       <?php if ($pr_date == "0000-00-00"): ?>
                         <td></td>
                         <?php else:?>
@@ -230,8 +239,7 @@ $mydb = new db(); // create a new object, class db()
                             <?php endif ?>
                           </td>
                             
-
-                    
+                              
                           <?php if ($received_date == NULL): ?>
                             <td></td>
                             <?php else: ?>
@@ -242,12 +250,11 @@ $mydb = new db(); // create a new object, class db()
 
                       <td>
                         <?php if ($submitted_date == NULL || $received_date == NULL): ?>
-                              <!--  &nbsp&nbsp&nbsp&nbsp&nbsp<a href='export_pr.php?id=<?php echo $id; ?>' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> --> <a href='ViewRFQdetails1.php?id=<?php echo $getID; ?>' > <i style='font-size:20px' class='fa'>&#xf044;</i> </a>
-
-                              <a  href='ViewPRv1.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+                              
+                              <a  href='ViewPRv1.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i></a>
                           <?php else: ?>
 
-                            <a  href='ViewPRv1.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
+                            <a  href='ViewPRv1.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i></a>
 
                             <?php endif ?>
                        
