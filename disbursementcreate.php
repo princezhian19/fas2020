@@ -1,5 +1,5 @@
 <?php session_start();
-<<<<<<< HEAD
+
 if(!isset($_SESSION['username'])){
 header('location:login.php');
 }else{
@@ -8,11 +8,8 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
 ?>
-
-
 <?php 
-=======
->>>>>>> 7435e4025a507f8bee1fb00ca52c652f833ae4e9
+
 $id = $_GET['id'];
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $select_part = mysqli_query($conn,"SELECT * FROM disbursement WHERE id = '$id'");
@@ -44,7 +41,7 @@ $ors = $rowB['ors'];
   <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  
+
 
   <!-- Auto Complete -->
     

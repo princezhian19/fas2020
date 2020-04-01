@@ -15,7 +15,7 @@ $username = $_SESSION['username'];
     </a>
     <nav class="navbar navbar-static-top" style="text-decoration: none; background-color: #0072C7;">
   </header>
-  <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer1' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar'): ?>
+  <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar'): ?>
 <aside class="main-sidebar">
     <section class="sidebar"  style="background-color: white;height: 1000px;">
       <div class="user-panel">
