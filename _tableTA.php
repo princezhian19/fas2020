@@ -45,21 +45,10 @@ include 'connection.php';
               }else{
   
                 ?>
-                <?php 
-                if(isset($_POST['submit'])){
-                  $f1=$_POST['f1'];
-                  $f2=$_POST['f2'];
-                  echo ("<SCRIPT LANGUAGE='JavaScript'>
-                  window.location.href = '_fmlReport.php?month=$f1&year=$f2';
-                  </SCRIPT>");
-                }
-                
-                ?>
-                <form method="POST">
                   <div class="well">
                     <div class="row">
                         <div class="col-md-2">
-                              <select class="form-control " name="f1" id = "selectMonth" style="width: 100%;">
+                              <select class="form-control " id = "selectMonth" style="width: 100%;">
                                 <option value="1">January</option>
                                 <option value="2">February</option>
                                 <option value="3">March</option>
@@ -75,7 +64,7 @@ include 'connection.php';
                               </select>
                         </div>
                         <div class="col-md-2">
-                              <select class="form-control " name="f2" id="selectYear" style="width: 100%;">
+                              <select class="form-control " id="selectYear" style="width: 100%;">
                                 <?php 
                                 for($i= 2020; $i < 2021; $i++)
                                 {
@@ -85,7 +74,7 @@ include 'connection.php';
                               </select>
                         </div>
                         <div class="col-md-2">
-                          <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml" name="submit"> Export FML Report</button></ol>
+                          <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export FML Report</button></ol>
                         </div>
                         <div class="col-md-2" style = "margin-left:-30px;">
                           <li class="btn btn-success"><a  href="#" style="color:white;text-decoration: none;">Export PSL Report</a></li>
@@ -100,7 +89,6 @@ include 'connection.php';
                         </div>
                     </div>
                   </div>
-                  </form>
                 <?php
               }
             }
@@ -168,25 +156,21 @@ include 'connection.php';
       <script src="dist/js/demo.js"></script>
       <!-- Page script -->
       <script>
-<<<<<<< HEAD
      
   $(function () {
-=======
-         
-  // $(function () {
->>>>>>> 4ecb19c3bc867671d4a2577f6f3084ce883c7fab
+
   
-  //   $('#fml').on('click', function()
-  //   {
-  //     var month = $('#selectMonth').val();
-  //     var year = $('#selectYear').val();
-  //    window.location = "_fmlReport.php?month="+month+"&&year="+year;
+    $('#fml').on('click', function()
+    {
+      var month = $('#selectMonth').val();
+      var year = $('#selectYear').val();
+     window.location = "_fmlReport.php?month="+month+"&&year="+year;
 
 
-  //   });
+    });
 
 
-  // });
+  });
 
         $(function () {
     //Initialize Select2 Elements
