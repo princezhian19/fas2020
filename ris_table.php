@@ -63,31 +63,22 @@ $mydb = new db(); // create a new object, class db()
                     if ($request_by == 3 ) {
                       $request_by = "DR. CARINA S. CRUZ";
                     }
-                    
                     echo "<tr align = ''>
-                  
                     <td>$ris_no</td>
                     <td>$po_no</td>
                     <td>$division</td>
                     <td>$purpose</td>
                     <td>
                     <a href='export_ris.php?id=$id' ><i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
-                  
                     <a href='UpdateRIS.php?id=$id' ><i style='font-size:20px' class='fa'>&#xf044;</i> </a>
-                    
-                  
-                    <a href='deleteRIS.php?id=$id' ><i style='font-size:20px' class='fa fa-trash-o'></i> </a>
-                    
                     </td>
-                  
-
-                    
                     </tr>"; 
                 }
                 echo "</table>";
-
                 ?>
             </table>
+            <!-- <a href='deleteRIS.php?id=$id' ><i style='font-size:20px' class='fa fa-trash-o'></i> </a> -->
+
         </div>
     </div>
     
