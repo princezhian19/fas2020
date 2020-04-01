@@ -172,7 +172,6 @@ var action = '';
                   setTimeout(function () {
                   swal("Record saved successfully!");
                   }, 3000);
-                  alert(a);
                   window.location = "allTickets.php?division=<?php echo $_GET['division']?>&ticket_id="+a;
               }
             });
