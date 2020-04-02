@@ -8,17 +8,6 @@ $username = $_SESSION['username'];
 }
 ?><!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
 <title>Inspection Acceptance Report</title>
 <head>
 <meta charset="utf-8">
@@ -30,7 +19,6 @@ $username = $_SESSION['username'];
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -47,10 +35,8 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('iar_table.php');?>
-
     </section>
   </div>
- 
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -64,7 +50,7 @@ $username = $_SESSION['username'];
     $('').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,

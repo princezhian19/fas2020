@@ -24,10 +24,7 @@ header('location:index.php');
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
- 
-  
   <?php include('sidebar2.php');?>
-
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
@@ -37,10 +34,8 @@ header('location:index.php');
       <br>
       <br>
         <?php include('pr_edit1.php');?>
-
     </section>
   </div>
- 
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

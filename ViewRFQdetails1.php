@@ -1,6 +1,5 @@
 
 <?php
-
 session_start();
 if(!isset($_SESSION['username'])){
 header('location:index.php');
@@ -10,28 +9,8 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
 ?>
-
-<?php
-
-session_start();
-if(!isset($_SESSION['username'])){
-header('location:index.php');
-}
-?>
-
 <!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -41,14 +20,12 @@ header('location:index.php');
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <?php include('sidebar2.php');?>
-  
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
@@ -57,7 +34,6 @@ header('location:index.php');
       </ol>
       <br>
       <br>
-        
         <?php
         if(!empty($_GET['message'])) {
         $message = $_GET['message'];
@@ -67,7 +43,6 @@ header('location:index.php');
         <?php include('rfq_items_details1.php');?>
     </section>
   </div>
- 
 </div>
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -77,14 +52,12 @@ header('location:index.php');
 <script src="bower_components/fastclick/lib/fastclick.js"></script>></script> --> -->
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
-
 <script>
   $(function () {
     $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : true,
       'ordering'    : true,
       'info'        : true,
