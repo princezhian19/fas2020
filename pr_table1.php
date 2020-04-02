@@ -177,7 +177,7 @@ $mydb = new db(); // create a new object, class db()
                             <?php endif ?>
                     
                       <td>
-                        <?php if ($submitted_date == NULL || $received_date == NULL): ?>
+                        <?php if ($submitted_date == NULL): ?>
                           <a href='ViewRFQdetails1.php?id=<?php echo $getID;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> |
                           <a  href='ViewPRv1.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
                           <?php else: ?>
