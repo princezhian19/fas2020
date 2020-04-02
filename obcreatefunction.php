@@ -67,7 +67,7 @@ if(($ors[$i] != "")){ /*not allowing empty values and the row which has been rem
          $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
          //updating balance
          $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
-         
+         $dvinsert = mysqli_query($con,"INSERT INTO disbursement (ors,sr,ppa,uacs,payee,particular,amount) VALUES ('$ors[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$payee[$i]','$particular[$i]','$amount[$i]')");
 
        }
     }
@@ -90,6 +90,7 @@ if(($ors[$i] != "")){ /*not allowing empty values and the row which has been rem
        $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
        //updating balance
        $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+       $dvinsert = mysqli_query($con,"INSERT INTO disbursement (ors,sr,ppa,uacs,payee,particular,amount) VALUES ('$ors[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$payee[$i]','$particular[$i]','$amount[$i]')");
      }
   
     } 
