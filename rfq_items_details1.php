@@ -13,7 +13,7 @@ $row = mysqli_fetch_array($query);
 $pr_no = $row['pr_no'];
 $pmo = $row['pmo'];
 $pr_date = $row['pr_date'];
-//$d11 = date('m/d/Y');
+$ddd11 = date('m/d/Y', strtotime($pr_date));
 $purpose = $row['purpose'];
 $type = $row['type'];
 $target_date = $row['target_date'];
@@ -271,13 +271,13 @@ if ($update) {
                       <i class="fa fa-calendar"></i>
                     </div>
                     <input type="text" id = "" class="form-control pull-right"  name="pr_date" value="<?php 
-                    if($pr_date='0000-00-00'){
+                    /* if($pr_date='0000-00-00'){
                       $d11 = date('m/d/Y');
                     }
                     else{
                       $d11 = date('m/d/Y', strtotime($pr_date));
-                    }
-                    echo $d11;?>" required readonly>
+                    } */
+                    echo $ddd11;?>" required readonly>
                   </div>
                 </div>
 

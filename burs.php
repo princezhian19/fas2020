@@ -116,7 +116,7 @@ if (isset($_POST['submit'])) {
                <div class="form-group">
                 <label>Please Select : <small style="color:red;">*</small></label><br>
                 <input type="checkbox" class="checkbox1" name="burs" value="1" checked> ORS &nbsp&nbsp&nbsp
-                <input type="checkbox" class="checkbox1" name="burs" value="2"> BURS
+                <input type="checkbox" class="checkbox1" name="bursburs" value="2"> BURS
                 <!-- <select name="burs" class="form-control select2">
                   <option value="1">ORS</option>
                   <option value="2">BURS</option>
@@ -156,7 +156,7 @@ if (isset($_POST['submit'])) {
 
             <div class="form-group">
               <label>Amount : <small style="color:red;">*</small></label>
-              <input onKeyPress='return dec(event)' required autocomplete = "false"  class="form-control" name="amount" type="text" id="amount">
+              <input onKeyPress='return dec(event)' required autocomplete = "false"  class="form-control" name="amount" type="number" id="amount">
 
             </div>
 
