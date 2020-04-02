@@ -633,9 +633,9 @@ function confirmDelete(delUrl) {
                       <i class="fa fa-calendar"></i>
                     </div>
                     <?php if ($pr_date ==''): ?>
-                      <input required readonly  type="text" class="form-control pull-right" name="pr_date" id="datepicker1" value="<?php $now = date("m/d/Y"); echo $now;?>">
+                      <input required readonly  type="text" class="form-control pull-right" name="pr_date" id="" value="<?php $now = date("m/d/Y"); echo $now;?>">
                     <?php else: ?>
-                        <input required readonly  type="text" class="form-control pull-right" name="pr_date" id="datepicker1" value="">
+                        <input required readonly  type="text" class="form-control pull-right" name="pr_date" id="" value="">
                       <?php endif ?>
                     </div>
                   </div>
