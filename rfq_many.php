@@ -322,7 +322,8 @@ function checkAvailability() {
                <div class="form-group">
                 <label>RFQ No.</label>
                 <!-- <input class="form-control" type="text" name="rfq_no"> -->
-                 <input class="form-control" name="rfq_no" type="text" id="rfq_no" class="demoInputBox" onBlur="checkAvailability()" value="<?php echo $getDate.'-'.'00'.$idGet?>"><span id="user-availability-status"></span>
+                 <input class="form-control" name="rfq_no" type="text" id="rfq_no" value="<?php echo $getDate.'-'.'00'.$idGet?>">
+                 <!-- <input class="form-control" name="rfq_no" type="text" id="rfq_no" class="demoInputBox" onBlur="checkAvailability()" value="<?php echo $getDate.'-'.'00'.$idGet?>"><span id="user-availability-status"></span> -->
               </div>
 
               <!-- <label>RFQ Date</label>

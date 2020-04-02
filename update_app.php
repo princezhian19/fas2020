@@ -231,13 +231,9 @@ if (isset($_POST['submit'])) {
  $update_budget = mysqli_query($conn,"UPDATE estimated_budget SET mooe = '$mooe1' , co = '$co1' , total_budget = '$budget1' WHERE app_id = $app_id ");
  echo ("<SCRIPT LANGUAGE='JavaScript'>
   window.alert('Successfuly Update!');
-  window.location.href = 'ViewApp.php?id=$id';
+  window.location.href = 'ViewApp.php';
   </SCRIPT>");
-
 }
-
-
-
 }
 ?>
 <!DOCTYPE html>
