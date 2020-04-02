@@ -42,10 +42,6 @@ if($type == ''){
   $type = $_GET['type'];
 }
 
-
-
-
-
 if (isset($_POST['submit'])) {
   $pr_date1 = $_POST['pr_date'];
 
@@ -171,7 +167,7 @@ if (isset($_POST['submit'])) {
   }else{
 
 
-    $insert_pr = mysqli_query($conn,"INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date,submitted_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2',now())");
+    $insert_pr = mysqli_query($conn,"INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2')");
 
     for($count = 0; $count < count($_POST["items1"]); $count++)
     {  
@@ -182,7 +178,7 @@ if (isset($_POST['submit'])) {
       $rowAI = mysqli_fetch_array($select_app_id);
       $snAi = $rowAI['sn'];
 
-     $insert_items = mysqli_query($conn,'INSERT INTO pr_items(pr_no,items,description,unit,qty,abc) 
+     $insert_items = mysqli_query($conn,'INSERT INTO pr_items(pr_no,items,description,unit,qty,abc)
       VALUES("'.$pr_no1.'","'.$_POST['items1'][$count].'","'.$_POST['description1'][$count].'","'.$unit1[$count].'","'.$_POST['qty1'][$count].'","'.$_POST['abc1'][$count].'")');
 
      $update_minus = mysqli_query($conn,'UPDATE app_items SET qty_original = qty_original - '.$_POST['qty1'][$count].' WHERE pmo_id = '.$pmo3.' AND sn = "'.$snAi.'" ');
@@ -477,7 +473,7 @@ function confirmDelete(delUrl) {
               <div class="form-group">
                   <label>Type <label style="color: Red;" >*</label></label>
                   <?php if ($type == 1): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
                       <option value="3">Repair and Maintenance</option>
