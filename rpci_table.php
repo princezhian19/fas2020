@@ -1,38 +1,16 @@
-<?php
-include('db.class.php'); // call db.class.php
-$mydb = new db(); // create a new object, class db()
-?>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Asset Management System</title>
-
-
-</head>
-
-<body>
 <div class="box">
   <div class="box-body">
         <div class=""> 
           <div class="">
-           
             <h1 align="">Report On The Physical Count Of Inventories</h1>
-
             <div class="box-header">
             </div>
-        
-
             <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;">Create</a></li>
             <br>
             <br>
-            <!-- <h3 align="center"><b>Inspection Acceptance Report</b></h3> -->
-
             <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;">
-                     
                         <th>ARTICLE</th>
                         <th width = "200">DESCRIPTION</th>
                         <th width = "200">STOCK NO.</th>
@@ -44,14 +22,11 @@ $mydb = new db(); // create a new object, class db()
                         <th width = "200">SHORTAGE(VALUE)</th>
                         <th>REMARKS</th>
                         <th width = "200">ACTION</th>
-                       
                 </thead>
                 <?php 
                 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                 $view_query = mysqli_query($conn, "SELECT * FROM rpci ORDER BY id DESC");
-
                 while ($row = mysqli_fetch_assoc($view_query)) {
-
                     $id = $row["id"];
                     $article = $row["article"];  
                     $description = $row["description"];
@@ -63,10 +38,8 @@ $mydb = new db(); // create a new object, class db()
                     $shortage_Q = $row["shortage_Q"];
                     $shortage_V = $row["shortage_V"];
                     $remarks = $row["remarks"];
-
                     ?>
                     <tr>
-                       
                         <td><?php echo $article;?></td>
                         <td><?php echo $description;?></td>
                         <td><?php echo $stock_number;?></td>
@@ -78,20 +51,11 @@ $mydb = new db(); // create a new object, class db()
                         <td><?php echo $shortage_V;?></td>
                         <td><?php echo $remarks;?></td>
                         <td>
-                         <!--  &nbsp&nbsp&nbsp&nbsp&nbsp<a href='export_pr.php?id=<?php echo $id; ?>' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a> -->
+                       <a  href='UpdateRPCI.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf06e;</i> Edit</a> 
+                        </td>
+           <!--         <a  onclick="return confirm('Are you sure you want to Delete this item?');" href='delete_rpci.php?id=<?php echo $id; ?>  ' title="Delete"> 
+                        <i style='font-size:20px' class='fa fa-trash-o' ></i> </a> -->
 
-                       <a  href='UpdateRPCI.php?id=<?php echo $id; ?>' title="View"> <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
-
-                     <!-- <td>
-                    &nbsp&nbsp&nbsp&nbsp&nbsp<a href='ViewRFQdetails.php?id=<?php echo $id; ?> '> 
-                    <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
-                    
-                </td> -->
-              
-                   <a  onclick="return confirm('Are you sure you want to Delete this item?');" href='delete_rpci.php?id=<?php echo $id; ?>  ' title="Delete"> 
-                        <i style='font-size:20px' class='fa fa-trash-o' ></i> </a>
-
-                    </td>
                   
 
                     

@@ -266,7 +266,7 @@ if (isset($_POST['submit'])) {
             <div class="col-md-6">
              <div class="form-group">
               <label>Stock No.</label>
-              <input readonly autocomplete = "off" value="<?php echo $sn ?>" class="form-control" name="sn" type="text" id="sn" class="demoInputBox" onBlur="checkAvailability()">
+              <input autocomplete = "off" value="<?php echo $sn ?>" class="form-control" name="sn" type="text" id="sn" class="demoInputBox" onBlur="checkAvailability()">
             </div>
             <div class="form-group">
               <label>Code (PPAP)</label>
@@ -948,7 +948,7 @@ if (isset($_POST['submit'])) {
           </div>
           <br>
           <div class="container1">
-            <button class="add_form_field btn btn-info" >Add PMO &nbsp; 
+            <button class="add_form_field btn btn-info" >Add Office &nbsp; 
               <span style="font-size:16px; font-weight:bold;">+ </span>
             </button>
 
@@ -1079,7 +1079,7 @@ if (isset($_POST['submit'])) {
               </div>
 
               <div class="form-group">
-                <label>App Price</label>
+                <label>APP Price</label>
                 <input autocomplete = "off" onKeyPress='return dec(event)' value="<?php echo $app_price ?>" class="form-control" name="app_price" type="text" id="app_price" >
 
               </div>

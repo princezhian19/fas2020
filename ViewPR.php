@@ -19,7 +19,7 @@ $username = $_SESSION['username'];
   color: blue;
 }
 </style> -->
-<title>FAS Dashboard</title>
+<title>Purchase Request</title>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +30,6 @@ $username = $_SESSION['username'];
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -59,11 +58,9 @@ $username = $_SESSION['username'];
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
-<!-- <script src="dist/js/adminlte.min.js"></script>
-<script src="dist/js/demo.js"></script> -->
+<script src="dist/js/adminlte.min.js"></script>
 <script>
   $(function () {
-    $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
       'lengthChange': true,

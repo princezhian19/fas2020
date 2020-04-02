@@ -6,14 +6,14 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
-<title>FAS Dashboard</title>
+<title>Suppliers</title>
 <head>
-  <meta charset="utf-8">
+<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="shortcut icon" type="image/png" href="dilg.png">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
@@ -29,11 +29,11 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">SARO</li>
+        <li class="active">Suppliers</li>
       </ol>
       <br>
       <br>
-        <?php include('@sarotable.php');?>
+        <?php include('suppliers_table.php');?>
     </section>
   </div>
 </div>
@@ -44,9 +44,10 @@ $username = $_SESSION['username'];
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
+<script src="dist/js/demo.js"></script>
 <script>
   $(function () {
-    $('#example2').DataTable()
+    $('').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
       'lengthChange': true,
@@ -58,4 +59,4 @@ $username = $_SESSION['username'];
   })
 </script>
 </body>
-</html>
+s</html>

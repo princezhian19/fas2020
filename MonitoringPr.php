@@ -47,6 +47,7 @@ $username = $_SESSION['username'];
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
 <script>
   $(function () {
     $('#example1').DataTable({
@@ -56,7 +57,7 @@ $username = $_SESSION['username'];
       'ordering'    : false,
       'info'        : true,
       'autoWidth'   : true,
-      aLengthMenu: [ [5, 10, 20, -1], [3, 10, 20, "All"] ],
+      aLengthMenu: [ [10, 10, 20, -1], [3, 10, 20, "All"] ],
       "bPaginate": false,
       "bLengthChange": false,
       "bFilter": true,

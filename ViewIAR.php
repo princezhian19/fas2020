@@ -19,7 +19,7 @@ $username = $_SESSION['username'];
   color: blue;
 }
 </style> -->
-<title>FAS</title>
+<title>Inspection Acceptance Report</title>
 <head>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,10 +58,7 @@ $username = $_SESSION['username'];
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
-
 <script src="dist/js/adminlte.min.js"></script>
-<script src="dist/js/demo.js"></script>
-
 <script>
   $(function () {
     $('').DataTable()
@@ -75,9 +72,5 @@ $username = $_SESSION['username'];
     })
   })
 </script>
-
-
 </body>
-
-
 </html>
