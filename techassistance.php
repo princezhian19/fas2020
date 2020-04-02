@@ -124,7 +124,7 @@ var action = '';
         {
           if(<?php echo $division?> == 16)
           {
-            action = '<a class = "btn btn-primary btn-xs"  id = "edit"> <i class="fa">&#xf044;</i> Edit</a>';          
+            action = '<a class = "btn btn-primary btn-xs"  id = "edit" style = "width:100%;"> <i class="fa">&#xf044;</i> Edit</a>';          
 
           }else{
             action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a>';          
@@ -137,7 +137,7 @@ var action = '';
         { 
           if(<?php echo $division?> == 16)
           {
-          action = '<a class = "btn btn-primary btn-xs"  id = "edit"> <i class="fa">&#xf044;</i> Edit</a>';          
+          action = '<a class = "btn btn-primary btn-xs"  id = "edit" style = "width:100%;"> <i class="fa">&#xf044;</i> Edit</a>';          
           }else{
           action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a>';          
 
