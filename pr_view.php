@@ -27,7 +27,7 @@ $type = $row['type'];
             </div>
             <div class="box-body table-responsive no-padding">
                 <div class="box-body">
-                   <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary">Update</a>
+                   <!-- <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary">Update</a> -->
                    <a href="export_pr.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a>
                    <a href="ViewPR.php" class="btn btn-warning">Back</a>
 

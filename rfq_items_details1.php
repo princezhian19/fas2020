@@ -79,7 +79,7 @@ if ($update) {
       <div class="box-header with-border">
       </div>
       <br>
-      &nbsp &nbsp   <li class="btn btn-success"><?php echo '<a href="ViewPRv1.php?id='.$id.'" style="color:white;text-decoration: none;">Back</a>' ?> </li>
+      &nbsp &nbsp   <li class="btn btn-success"><?php echo '<a href="ViewPR1.php?id='.$id.'" style="color:white;text-decoration: none;">Back</a>' ?> </li>
       <br>
       <br>
       <form method="POST">
