@@ -353,7 +353,7 @@ function checkAvailability() {
             
             <div class="form-group">
                 <label>Mode of Procurement</label>
-                <select class="form-control select2" style="width: 100%;" name="mode">
+                <select class="form-control " style="width: 100%;" name="mode">
                 <!--   <option selected="1">Select Mode of Procurement</option> -->
                   <option value="1">Small Value Procurement</option>
                   <option value="2">Shopping</option>

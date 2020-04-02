@@ -489,7 +489,7 @@ function confirmDelete(delUrl) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 2): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="2">Meals, Venue and Accommodation</option>
                       <option value="1">Catering Services</option>
                       <option value="3">Repair and Maintenance</option>
@@ -499,7 +499,7 @@ function confirmDelete(delUrl) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 3): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="3">Repair and Maintenance</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -509,7 +509,7 @@ function confirmDelete(delUrl) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 4): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="4">Supplies, Materials and Devices</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -519,7 +519,7 @@ function confirmDelete(delUrl) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 5): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="5">Other Services</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -531,7 +531,7 @@ function confirmDelete(delUrl) {
                   <?php endif ?>
 
                   <?php if ($type == 6): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="6">Reimbursement and Petty Cash</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -543,7 +543,7 @@ function confirmDelete(delUrl) {
                   <?php endif ?>
                   <?php if ($type == ''): ?>
 
-                  <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                  <select class="form-control " style="width: 100%;" name="type" id="type" >
                    <!--    <option value="5">------------------------SELECT TYPE------------------------</option> -->
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
