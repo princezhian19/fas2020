@@ -1,51 +1,26 @@
-<?php
-include('db.class.php'); // call db.class.php
-$mydb = new db(); // create a new object, class db()
-?>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Asset Management System</title>
-</head>
-<body>
 <div class="box">
   <div class="box-body">
         <div class=""> 
           <div class="">
-          
-      
             <h1 align="">Requisition and Issue Slip</h1>
              <div class="box-header">
     </div>
-  
     <li class="btn btn-success"><a href="CreateRIS.php" style="color:white;text-decoration: none;">Create</a></li>
-     
-    
-
-
-        <br>
         <br>
         <br>
             <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;font-family: Arial, Helvetica, sans-serif;">
-                      
-                        <th >RIS NO.</th>
-                        <th >PO NO.</th>
-                        <th >DIVISION</th>
+                        <th width="80">RIS NO.</th>
+                        <th width="80">PO NO.</th>
+                        <th width="80">DIVISION</th>
                         <th >PURPOSE</th>
-                        <th WIDTH = "100">ACTION</th>
-                        
-                      
-
+                        <th width="150">ACTION</th>
                     </tr>
                 </thead>
                 <?php 
                 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                 $view_query = mysqli_query($conn, "SELECT * FROM ris order by id DESC  ");
-
                 while ($row = mysqli_fetch_assoc($view_query)) {
                     $id = $row["id"];
                     $ris_no = $row["ris_no"];  
@@ -69,8 +44,8 @@ $mydb = new db(); // create a new object, class db()
                     <td>$division</td>
                     <td>$purpose</td>
                     <td>
-                    <a href='export_ris.php?id=$id' ><i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
-                    <a href='UpdateRIS.php?id=$id' ><i style='font-size:20px' class='fa'>&#xf044;</i> </a>
+                    <a href='UpdateRIS.php?id=$id' class='btn btn-primary btn-xs'><i class='fa'>&#xf044;</i> Edit</a> | 
+                    <a href='export_ris.php?id=$id' class='btn btn-success btn-xs'><i class='fa fa-fw fa-download'></i> Export</a>
                     </td>
                     </tr>"; 
                 }

@@ -1,64 +1,27 @@
-<?php
-include('db.class.php'); // call db.class.php
-$mydb = new db(); // create a new object, class db()
-?>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Asset Management System</title>
-
-
-</head>
-<body>
-
 <div class="box">
   <div class="box-body">
         <div class=""> 
           <div class="">
-           
             <h1 align="">Inspection Acceptance Report</h1>
     <div class="box-header">
     </div>
-  
-
      <li class="btn btn-success"><a href="CreateIAR.php" style="color:white;text-decoration: none;">Create</a></li>
+    <br>
       <br>
-      <br>
-            <!-- <h3 align="center"><b>Inspection Acceptance Report</b></h3> -->
-           <!-- <input type="text" style="height: 35px; width: 500px; margin-left: 40px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" > -->
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-                  <!--   <script>
-                    $(document).ready(function(){
-                      $("#myInput").on("keyup", function() {
-                        var value = $(this).val().toLowerCase();
-                        $("#example1 tr").filter(function() {
-                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                        });
-                      });
-                    });
-                    </script> -->
-                    <br>
-        <br>
         <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white; color:blue;">
-                        
                         <th>PO NUMBER</th>
                         <th>PO DATE</th>
                         <th>IAR NUMBER</th>
                         <th>IAR DATE</th>
                         <th>REQUISITION DEPT.</th>
                         <th>ACTION</th>
-                      
-                        
                     </tr>
                 </thead>
                 <?php 
                 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                 $view_query = mysqli_query($conn, "SELECT * FROM iar order by id DESC  ");
-
                 while ($row = mysqli_fetch_assoc($view_query)) {
                     $id = $row["id"];
                     $po_no = $row["po_no"];  
@@ -70,7 +33,6 @@ $mydb = new db(); // create a new object, class db()
                     $invoice_no = $row['invoice_no'];
                     $invoice_date = $row['invoice_date'];
                     $stock_no = $row['stock_no'];
-                    
                     echo "<tr align = ''>
                    
                     <td>$po_no</td>
@@ -80,22 +42,18 @@ $mydb = new db(); // create a new object, class db()
                     <td>$dept</td>
                     
                     <td>
-                    <a href='export_iar.php?getiar=$id' > <i style='font-size:20px' class='fa'>&#xf06e;</i> </a>
-                    <a href='UpdateIAR.php?id=$id' '> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
+                    <a href='UpdateIAR.php?id=$id' ' class='btn btn-primary btn-xs'> <i class='fa'>&#xf044;</i> Edit</a> | 
+                    <a href='export_iar.php?getiar=$id' class='btn btn-success btn-xs' > <i class='fa fa-fw fa-download'></i> Export</a>
                     </td>
-
                     </tr>"; 
                 }
                 echo "</table>";
-
                 ?>
             </table>
         </div>
     </div>
-    
 </div>
 </div>
-
 </body>
 <script type="text/javascript">
     $(document).ready(function() {

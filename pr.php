@@ -489,7 +489,7 @@ function confirmDelete(delUrl) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 2): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="2">Meals, Venue and Accommodation</option>
                       <option value="1">Catering Services</option>
                       <option value="3">Repair and Maintenance</option>
@@ -499,7 +499,7 @@ function confirmDelete(delUrl) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 3): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="3">Repair and Maintenance</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -509,7 +509,7 @@ function confirmDelete(delUrl) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 4): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="4">Supplies, Materials and Devices</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -519,7 +519,7 @@ function confirmDelete(delUrl) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 5): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="5">Other Services</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -531,7 +531,7 @@ function confirmDelete(delUrl) {
                   <?php endif ?>
 
                   <?php if ($type == 6): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="6">Reimbursement and Petty Cash</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -543,7 +543,7 @@ function confirmDelete(delUrl) {
                   <?php endif ?>
                   <?php if ($type == ''): ?>
 
-                  <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                  <select class="form-control " style="width: 100%;" name="type" id="type" >
                    <!--    <option value="5">------------------------SELECT TYPE------------------------</option> -->
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -868,7 +868,7 @@ function confirmDelete(delUrl) {
             <td>
             <!--  <?php echo '<a href="ViewEditPR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?> -->
 
-             <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> "><i style="font-size:24px" class="fa fa-trash-o"></i></a>
+             <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> " class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
            </td>
          </tr>
        <?php } ?>

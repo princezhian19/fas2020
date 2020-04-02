@@ -224,18 +224,16 @@ if (isset($_POST['submit'])) {
    $update_app2 = mysqli_query($conn,"UPDATE app_items SET  qty='$qty',pmo_id=$pmo  WHERE sn = '$sn1' ");
  }
 
- $uapp = mysqli_query($conn,"UPDATE app SET unit_id = '$unit_id11', sn = '$sn1' , code = '$code1' , procurement = '$item1', source_of_funds_id = $fund1, category_id = $category1, mode_of_proc_id = $mode1, price = '$price1',app_price = '$app_price1', remarks = '$remarks1' WHERE id = $id ");
+ $app = mysqli_query($conn,"UPDATE app SET unit_id = '$unit_id11', sn = '$sn1' , code = '$code1' , procurement = '$item1', source_of_funds_id = $fund1, category_id = $category1, mode_of_proc_id = $mode1, price = '$price1',app_price = '$app_price1', remarks = '$remarks1' WHERE id = $id ");
+
+ $uapp = mysqli_query($conn,"UPDATE app_items SET sn = '$sn1' WHERE sn = '$sn1'");
 
  $update_budget = mysqli_query($conn,"UPDATE estimated_budget SET mooe = '$mooe1' , co = '$co1' , total_budget = '$budget1' WHERE app_id = $app_id ");
  echo ("<SCRIPT LANGUAGE='JavaScript'>
   window.alert('Successfuly Update!');
-  window.location.href = 'ViewApp.php?id=$id';
+  window.location.href = 'ViewApp.php';
   </SCRIPT>");
-
 }
-
-
-
 }
 ?>
 <!DOCTYPE html>
@@ -266,7 +264,7 @@ if (isset($_POST['submit'])) {
             <div class="col-md-6">
              <div class="form-group">
               <label>Stock No.</label>
-              <input readonly autocomplete = "off" value="<?php echo $sn ?>" class="form-control" name="sn" type="text" id="sn" class="demoInputBox" onBlur="checkAvailability()">
+              <input autocomplete = "off" value="<?php echo $sn ?>" class="form-control" name="sn" type="text" id="sn" class="demoInputBox" onBlur="checkAvailability()">
             </div>
             <div class="form-group">
               <label>Code (PPAP)</label>
@@ -948,7 +946,7 @@ if (isset($_POST['submit'])) {
           </div>
           <br>
           <div class="container1">
-            <button class="add_form_field btn btn-info" >Add PMO &nbsp; 
+            <button class="add_form_field btn btn-info" >Add Office &nbsp; 
               <span style="font-size:16px; font-weight:bold;">+ </span>
             </button>
 
@@ -1079,7 +1077,7 @@ if (isset($_POST['submit'])) {
               </div>
 
               <div class="form-group">
-                <label>App Price</label>
+                <label>APP Price</label>
                 <input autocomplete = "off" onKeyPress='return dec(event)' value="<?php echo $app_price ?>" class="form-control" name="app_price" type="text" id="app_price" >
 
               </div>

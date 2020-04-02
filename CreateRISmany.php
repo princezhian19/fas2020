@@ -9,21 +9,10 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
+  <title>Create Requisition and Issue Slip</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">

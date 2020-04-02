@@ -1,51 +1,14 @@
-<?php session_start();
-if(!isset($_SESSION['username'])){
-header('location:index.php');
-}else{
-  error_reporting(0);
-ini_set('display_errors', 0);
-$username = $_SESSION['username'];
-}
-?>
-
-<?php
-// /include('db.class.php'); // call db.class.php
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Financial Management System</title>
-
-  <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-  
-
-  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css"> -->
-
-
-
-</head>
-<body>
 <div class="box">
   <div class="box-body">
-      <div class=""> 
-        <div class="">
-          <br>
-
           <h1 align="">&nbspDisbursement</h1>
           <div class="box-header"style="overflow-x:auto;">
           </div>
           <br>
           <br>
-         
+
+          <br>
           <br>
           <div class=""  style="overflow-x:auto;">
-            
             <div class="col-md-0" style="overflow-x:auto;">
            <!--   <li class="btn btn-success"><a href="@disbursementcreate.php" style="color:white;text-decoration: none;">Create</a></li> -->
             </div>
@@ -56,29 +19,19 @@ $username = $_SESSION['username'];
                     FROM   <i class="fa fa-calendar"></i>
                   </div>
                   <input type="text" class="form-control" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
-
                   <div class="input-group date" style="overflow-x:auto;">
                     <div class="input-group-addon" style="overflow-x:auto;">
                       TO <i class="fa fa-calendar"></i>
                     </div>
                     <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
                     <button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
-
                     &nbsp  <button type="Summary" name="Summary"  class="btn btn-success ">Export Summary</button>
-          
-                   
                   </div>                 
                 </form>
-
             </div>
             <div class="col-md-1" style="overflow-x:auto;">
-           
             </div>
-
             <div class="col-md-0" style="overflow-x:auto;">
-
-
-           
               </div>
               <br>
               <br>
@@ -86,7 +39,6 @@ $username = $_SESSION['username'];
             <table id="example1" class="table table-striped table-bordered " style="background-color: white; overflow-x:auto;" >
               <thead>
                 <tr style="background-color: white;color:blue;">
-                 
                   <th style="text-align:center" width="">DVs No.</th>
                   <th style="text-align:center" width="">ORS/BURS No.</th>
                   <th style="text-align:center" width="">SR No.</th>
@@ -111,9 +63,6 @@ $username = $_SESSION['username'];
                 </tr>
               </thead>
               <?php
-
-               
-
               $servername ="localhost";
               $username = "fascalab_2020";
               $password = "w]zYV6X9{*BN";
@@ -148,7 +97,6 @@ $username = $_SESSION['username'];
                 $datereleased = $row["datereleased"];
                 ?>
                 <tr>
-                 
                   <td><?php echo $dv;?></td>
                   <td><?php echo $ors;?></td>
                   <td><?php echo $sr;?></td>
@@ -208,10 +156,9 @@ $username = $_SESSION['username'];
                                         <?php endif ?>
                                       <?php endif ?>
                                       <td>
-                                        <a href='disbursementupdate.php?getid=<?php echo $id;?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
+                                        <a href='disbursementupdate.php?getid=<?php echo $id;?>' class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>
                                         <!-- <a href='@Functions/ddeletefunction.php?getid=<?php echo $id;?>'> <i style='font-size:24px'> <i class='fa fa-trash-o'></i></i> </a> -->
                                       </td>
-                                    
                                     </tr>
                                   <?php } ?>    
                                 </table>
@@ -227,49 +174,45 @@ $username = $_SESSION['username'];
                       </script>
                     </div>
                   </div>
-                  <div class="panel-footer"></div>
                 </div>
-              </div>
-              
-            </body>
-            </html>
 
-              <script src="bower_components/jquery/dist/jquery.min.js"></script>
-              <!-- Bootstrap 3.3.7 -->
-              <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-              <!-- Select2 -->
-              <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-              <!-- InputMask -->
-              <script src="plugins/input-mask/jquery.inputmask.js"></script>
-              <script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-              <script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
-              <!-- date-range-picker -->
-              <script src="bower_components/moment/min/moment.min.js"></script>
-              <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-              <!-- bootstrap datepicker -->
-              <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-              <!-- bootstrap color picker -->
-              <script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-              <!-- bootstrap time picker -->
-              <script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
-              <!-- SlimScroll -->
-              <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-              <!-- iCheck 1.0.1 -->
-              <script src="plugins/iCheck/icheck.min.js"></script>
-              <!-- FastClick -->
-              <script src="bower_components/fastclick/lib/fastclick.js"></script>
-              <!-- AdminLTE App -->
-              <!-- <script src="dist/js/adminlte.min.js"></script> -->
-              <!-- AdminLTE for demo purposes -->
-              <!-- <script src="dist/js/demo.js"></script> -->
-              <!-- Page script -->
-              <script>
-                $(function () {
+                <!-- jQuery 3 -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="plugins/input-mask/jquery.inputmask.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- bootstrap color picker -->
+<script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- SlimScroll -->
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- Page script -->
+<script>
+  $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
 
     //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'mm/dd/yyyy' })
     //Datemask2 mm/dd/yyyy
     $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
     //Money Euro
@@ -281,21 +224,21 @@ $username = $_SESSION['username'];
     $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
     //Date range as a button
     $('#daterange-btn').daterangepicker(
-    {
-      ranges   : {
-        'Today'       : [moment(), moment()],
-        'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-        'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-        'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-        'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
       },
-      startDate: moment().subtract(29, 'days'),
-      endDate  : moment()
-    },
-    function (start, end) {
-      $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-    }
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
     )
 
     //Date picker,

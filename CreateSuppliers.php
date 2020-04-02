@@ -6,12 +6,13 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html>
-<title>Report On The Physical Count Of Inventories</title>
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Create Supplier</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -25,17 +26,18 @@ $username = $_SESSION['username'];
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+ 
   <?php include('sidebar.php');?>
-  
+
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">IAR</li>
+        <li><a href="ViewAcceptance.php"><i class=""></i> Home</a></li>
+        <li class="active">Create Supplier</li>
       </ol>
       <br>
       <br>
-        <?php include('rpci_table.php');?>
+        <?php include('suppliers.php');?>
 
     </section>
   </div>
@@ -47,26 +49,14 @@ $username = $_SESSION['username'];
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
-
-<script src="dist/js/adminlte.min.js"></script>
-<script src="dist/js/demo.js"></script>
-
 <script>
   $(function () {
-    $('').DataTable()
-    $('#example1').DataTable({
-      'paging'      : true,
-      'lengthChange': true,
-      'searching'   : true,
-      'ordering'    : false,
-      'info'        : true,
-      'autoWidth'   : false
+    $('.select2').select2()
+    $('#datepicker').datepicker({
+      autoclose: true
     })
+   
   })
 </script>
-
-
 </body>
-
-
 </html>

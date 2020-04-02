@@ -13,7 +13,7 @@ $row = mysqli_fetch_array($query);
 $pr_no = $row['pr_no'];
 $pmo = $row['pmo'];
 $pr_date = $row['pr_date'];
-$d11 = date('m/d/Y', strtotime($pr_date));
+$ddd11 = date('m/d/Y', strtotime($pr_date));
 $purpose = $row['purpose'];
 $type = $row['type'];
 $target_date = $row['target_date'];
@@ -183,7 +183,7 @@ if ($update) {
               <div class="form-group">
                   <label>Type <label style="color: Red;" >*</label></label>
                   <?php if ($type == 1): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
                       <option value="3">Repair and Maintenance</option>
@@ -195,7 +195,7 @@ if ($update) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 2): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="2">Meals, Venue and Accommodation</option>
                       <option value="1">Catering Services</option>
                       <option value="3">Repair and Maintenance</option>
@@ -205,7 +205,7 @@ if ($update) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 3): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="3">Repair and Maintenance</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -215,7 +215,7 @@ if ($update) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 4): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="4">Supplies, Materials and Devices</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -225,7 +225,7 @@ if ($update) {
                     </select>
                   <?php endif ?>
                   <?php if ($type == 5): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="5">Other Services</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -237,7 +237,7 @@ if ($update) {
                   <?php endif ?>
 
                   <?php if ($type == 6): ?>
-                    <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="6">Reimbursement and Petty Cash</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -250,7 +250,7 @@ if ($update) {
                   <?php endif ?>
                   <?php if ($type == ''): ?>
 
-                  <select class="form-control select2" style="width: 100%;" name="type" id="type" >
+                  <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="5">------------------------SELECT TYPE------------------------</option>
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
@@ -275,13 +275,13 @@ if ($update) {
                       <i class="fa fa-calendar"></i>
                     </div>
                     <input type="text" id = "datepicker1" class="form-control pull-right"  name="pr_date" value="<?php 
-                    if($pr_date='0000-00-00'){
+                    /* if($pr_date='0000-00-00'){
                       $d11 = date('m/d/Y');
                     }
                     else{
                       $d11 = date('m/d/Y', strtotime($pr_date));
-                    }
-                    echo $d11;?>" required>
+                    } */
+                    echo $ddd11;?>" required>
                   </div>
                 </div>
 

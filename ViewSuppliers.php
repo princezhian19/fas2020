@@ -8,7 +8,7 @@ $username = $_SESSION['username'];
 }
 ?><!DOCTYPE html>
 <html>
-<title>Report On The Physical Count Of Inventories</title>
+<title>Suppliers</title>
 <head>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,27 +19,23 @@ $username = $_SESSION['username'];
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <?php include('sidebar.php');?>
-  
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">IAR</li>
+        <li class="active">Suppliers</li>
       </ol>
       <br>
       <br>
-        <?php include('rpci_table.php');?>
-
+        <?php include('suppliers_table.php');?>
     </section>
   </div>
- 
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -47,10 +43,8 @@ $username = $_SESSION['username'];
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
-
 <script src="dist/js/adminlte.min.js"></script>
 <script src="dist/js/demo.js"></script>
-
 <script>
   $(function () {
     $('').DataTable()
@@ -60,13 +54,9 @@ $username = $_SESSION['username'];
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,
-      'autoWidth'   : false
+      'autoWidth'   : true
     })
   })
 </script>
-
-
 </body>
-
-
-</html>
+s</html>

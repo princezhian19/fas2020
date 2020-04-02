@@ -8,18 +8,7 @@ $username = $_SESSION['username'];
 }
 ?><!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
-<title>FAS</title>
+<title>Requisition and Issue Slip</title>
 <head>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

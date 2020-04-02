@@ -67,7 +67,8 @@ if(($ors[$i] != "")){ /*not allowing empty values and the row which has been rem
          $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
          //updating balance
          $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
-       
+         
+
        }
     }
 

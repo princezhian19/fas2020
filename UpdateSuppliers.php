@@ -6,11 +6,12 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html>
-<title>Report On The Physical Count Of Inventories</title>
+<title>Update Supplier</title>
 <head>
-<meta charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
@@ -25,21 +26,24 @@ $username = $_SESSION['username'];
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include('sidebar.php');?>
-  
+
+  <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda'): ?>
+<?php include('sidebar.php');?>
+  <?php else: ?>
+  <?php include('sidebar2.php');?>
+  <?php endif ?>
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">IAR</li>
+        <li class="active">Update Supplier</li>
       </ol>
       <br>
       <br>
-        <?php include('rpci_table.php');?>
+        <?php include('update_suppliers.php');?>
 
     </section>
   </div>
- 
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -47,26 +51,7 @@ $username = $_SESSION['username'];
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
-
+<script src="bower_components/moment/min/moment.min.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
-<script src="dist/js/demo.js"></script>
-
-<script>
-  $(function () {
-    $('').DataTable()
-    $('#example1').DataTable({
-      'paging'      : true,
-      'lengthChange': true,
-      'searching'   : true,
-      'ordering'    : false,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-</script>
-
-
 </body>
-
-
 </html>
