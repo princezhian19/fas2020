@@ -27,7 +27,7 @@ if(!isset($_SESSION))
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <?php
-if($_GET['division'] == 16)
+if($_SESSION['division'] == 16)
 {
   include('sidebar.php'); 
 }else{
