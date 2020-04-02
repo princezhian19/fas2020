@@ -77,7 +77,7 @@ include 'connection.php';
                           <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export FML Report</button></ol>
                         </div>
                         <div class="col-md-2" style = "margin-left:-30px;">
-                          <li class="btn btn-success"><a  href="#" style="color:white;text-decoration: none;">Export PSL Report</a></li>
+                          <li class="btn btn-success"><a  href="#" style="color:white;text-decoration: none;" id = "psl">Export PSL Report</a></li>
                         </div>
   
                         <div class = "col-md-2" style = "float:right;margin-right:-30px;">
@@ -164,9 +164,14 @@ include 'connection.php';
     {
       var month = $('#selectMonth').val();
       var year = $('#selectYear').val();
-     window.location = "_fmlReport.php?month="+month+"&&year="+year;
+      window.location = "_fmlReport.php?month="+month+"&&year="+year;
+    });
 
-
+    $('#psl').on('click', function()
+    {
+      var month = $('#selectMonth').val();
+      var year = $('#selectYear').val();
+      window.location = "_pslReport.php?month="+month+"&&year="+year;
     });
 
 

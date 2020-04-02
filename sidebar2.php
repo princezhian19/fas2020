@@ -62,8 +62,8 @@ function showDivision()
         <li class="header" style="background-color: white;">MENUS</li>
 
 
-        <li><a style="color:black;text-decoration: none;" href="home1.php?division=<?php echo $_GET['division'];?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
-        <li><a href="ViewPr1.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PROCUREMENT</a></li>
+        <li><a style="color:black;text-decoration: none;" href="home1.php?division=<?php echo $_SESSION['division'];?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
+        <li><a href="ViewPr1.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PROCUREMENT</a></li>
         <li class="treeview">
           <a href="#" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"></i>
@@ -73,7 +73,7 @@ function showDivision()
             </span>
           </a>
           <ul class="treeview-menu" >
-        <li><a href="ViewBURS.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> ORS/BURS</a></li>
+        <li><a href="ViewBURS.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> ORS/BURS</a></li>
         <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
           </ul>
         </li>
@@ -89,14 +89,14 @@ function showDivision()
           </a>
           <ul class="treeview-menu" >
             <li>
-              <a href="techassistance.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;">
+              <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;">
                 <i class="fa">&#xf0f6;</i>
                  COMPLETED REQUEST
                 <span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span>
               </a>
             </li>
             <li>
-              <a href="techassistance.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;">
+              <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;">
                 <i class="fa">&#xf0f6;</i>
                   SUBMITTED
                 <span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b></b></span>
