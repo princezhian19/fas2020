@@ -34,6 +34,11 @@ $styleArray = array(
     )
   )
 );
+$fontStyle = [
+  'font' => [
+      'size' => 8
+  ]
+];
 
 
 
@@ -46,6 +51,8 @@ if (mysqli_num_rows($sql_q10)>0)
 {
     $row = 18;
     $no = 1;
+    $count = (mysqli_num_rows($sql_q10));
+   $total = ($row + $count)+1;
     while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
     {
       
@@ -59,12 +66,37 @@ if (mysqli_num_rows($sql_q10)>0)
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('N'.$row,$excelrow['count']);
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row,'100%');
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('M'.$row,'100%');
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$total,'Total');
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$total,'1');
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('M'.$total,'100%');
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$total,'100%');
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('N'.$total,'1');
+
+        $objPHPExcel->getActiveSheet(0) ->setCellValue('B'.$total,'=SUM(B18:B'.($row).')' );
+        $objPHPExcel->getActiveSheet(0) ->setCellValue('E'.$total,'=SUM(E18:E'.($row).')' );
+        $objPHPExcel->getActiveSheet(0) ->setCellValue('G'.$total,'=SUM(G18:G'.($row).')' );
+        $objPHPExcel->getActiveSheet(0) ->setCellValue('H'.$total,'=SUM(H18:H'.($row).')' );
+
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$total)->getFont()->setBold( true );
+        $objPHPExcel->getActiveSheet()->getStyle('B'.$total)->getFont()->setBold( true );
+        $objPHPExcel->getActiveSheet()->getStyle('E'.$total)->getFont()->setBold( true );
+        $objPHPExcel->getActiveSheet()->getStyle('G'.$total)->getFont()->setBold( true );
+        $objPHPExcel->getActiveSheet()->getStyle('H'.$total)->getFont()->setBold( true );
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$total)->getFont()->setBold( true );
+        $objPHPExcel->getActiveSheet()->getStyle('J'.$total)->getFont()->setBold( true );
+        $objPHPExcel->getActiveSheet()->getStyle('M'.$total)->getFont()->setBold( true );
+        $objPHPExcel->getActiveSheet()->getStyle('N'.$total)->getFont()->setBold( true );
+        
+        $objPHPExcel->getActiveSheet()
+        ->getStyle("A".$total.":Q".$total)
+        ->applyFromArray($fontStyle);
 
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':Q'.$row)->applyFromArray($styleArray);
-
-
-
-
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$total.':Q'.$total)->applyFromArray($styleArray);
+        
+      
+   
+    
 
       $row++;
     }
