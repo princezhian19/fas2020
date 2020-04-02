@@ -94,7 +94,7 @@ var action = '';
         "processing": true,
         "serverSide": false,
         "ajax": "DATATABLE/server_processing.php",
-        "order": [[ 1, "desc" ]],
+        "order": [[ 1, "asc" ]],
         "columnDefs": [ {
         "targets": 11,
         "render": function ( data, type, row, meta ) {  
@@ -108,7 +108,7 @@ var action = '';
           
           if(<?php echo $division?> == 16)
           {
-            action = '<i id = "sweet-14" style = "font-size:20px;color:#2196F3;tex-align:center;" class=" fa fa-check-circle" aria-hidden="true"></i>';
+            action = '<a class = "btn btn-info btn-xs"   id = "sweet-14"> <i class="fa fa-check-circle"></i>Receive</a>';          
           
           }else{
             action = '';
@@ -124,9 +124,11 @@ var action = '';
         {
           if(<?php echo $division?> == 16)
           {
-            action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "edit">&#xf044;</i>';
+            action = '<a class = "btn btn-primary btn-xs"  id = "edit" style = "width:100%;"> <i class="fa">&#xf044;</i> Edit</a>';          
+
           }else{
-            action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "view" >&#xf06e;</i>';
+            action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a>';          
+
 
           }
         
@@ -135,10 +137,10 @@ var action = '';
         { 
           if(<?php echo $division?> == 16)
           {
-          action = '<i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa" id = "edit">&#xf044;</i> ';
-          
+          action = '<a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a>';          
           }else{
-            action = '<i id = "sweet-15" style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-star" aria-hidden="true"></i>';
+          action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a>';          
+
             // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>
           }
 

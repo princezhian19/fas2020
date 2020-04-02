@@ -26,6 +26,14 @@ $stylebottom = array(
     'bottom' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
   ),
 );
+$styleArray = array(
+  'borders' => array(
+    'allborders' => array(
+      'style' => PHPExcel_Style_Border::BORDER_THIN
+    )
+  )
+);
+
 
 
 
@@ -126,6 +134,8 @@ $sql_q10 = mysqli_query($conn, "SELECT MONTHNAME(`REQ_DATE`) AS 'month', YEAR(`R
           $objPHPExcel->setActiveSheetIndex(0)->setCellValue('Q'.$row,$excelrow['QUALITY']);
           $objPHPExcel->getActiveSheet(0)->mergeCells("E11"."".":Q11");
           $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E11','Month of '.$excelrow['month'].' '.$year);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':Q'.$row)->applyFromArray($styleArray);
+
 
 
           $row++;
