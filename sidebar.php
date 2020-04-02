@@ -29,7 +29,7 @@ $username = $_SESSION['username'];
       </div>
       <ul class="sidebar-menu" data-widget="tree" s>
         <li class="header" style="background-color: white;">MENUS</li>
-        <li><a style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_GET['division'];?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
+        <li><a style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
         <li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
@@ -166,7 +166,7 @@ $username = $_SESSION['username'];
       </div>
       <ul class="sidebar-menu" data-widget="tree" s>
         <li class="header" style="background-color: white;">MENUS</li>
-        <li><a style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_GET['division'];?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
+        <li><a style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
         <li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
