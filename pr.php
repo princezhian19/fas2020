@@ -868,7 +868,7 @@ function confirmDelete(delUrl) {
             <td>
             <!--  <?php echo '<a href="ViewEditPR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?> -->
 
-             <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> "><i style="font-size:24px" class="fa fa-trash-o"></i></a>
+             <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> " class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
            </td>
          </tr>
        <?php } ?>
