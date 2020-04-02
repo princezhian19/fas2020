@@ -41,11 +41,11 @@ $username = $_SESSION['username'];
           <ul class="treeview-menu" >
             <li class="treeview">
         </li>
-        <li><a href="ViewApp.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>APP</a></li>
+        <li><a href="ViewApp.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>APP</a></li>
    
-        <li><a href="ViewPR.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> PURCHASE REQUEST</a></li>
+        <li><a href="ViewPR.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> PURCHASE REQUEST</a></li>
        
-            <li><a href="ViewRFQ.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> REQUEST FOR QUOTATION</a></li>
+            <li><a href="ViewRFQ.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> REQUEST FOR QUOTATION</a></li>
         <li><a style="color:black;text-decoration: none;" href="ViewSuppliers.php"><i class="fa">&#xf0f6;</i><span>SUPPLIER</span></a></li>
           </ul>
         <li class="treeview" tyle="background-color: lightgray;">
@@ -57,13 +57,13 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-           <!-- <li><a href="items.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ITEMS</a></li> -->
-           <li><a href="stocks.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> STOCK CARD</a></li>
-           <li><a href="@stockledger.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> SUPPLIES LEDGER CARD</a></li>
-           <li><a href="ViewIAR.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> IAR</a></li>
-            <li><a href="ViewRIS.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>RIS</a></li>
-            <li><a href="ViewRPCI.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ICS</a></li>
-            <li><a href="ViewRPCPPE.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAR</a></li>
+           <!-- <li><a href="items.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ITEMS</a></li> -->
+           <li><a href="stocks.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> STOCK CARD</a></li>
+           <li><a href="@stockledger.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> SUPPLIES LEDGER CARD</a></li>
+           <li><a href="ViewIAR.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> IAR</a></li>
+            <li><a href="ViewRIS.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>RIS</a></li>
+            <li><a href="ViewRPCI.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ICS</a></li>
+            <li><a href="ViewRPCPPE.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAR</a></li>
           </ul>
         </li>
         <li class="treeview" tyle="background-color: lightgray;">
@@ -84,8 +84,8 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="saro.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> SARO/SUB-ARO</a></li>
-            <li><a href="obligation.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
+            <li><a href="saro.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> SARO/SUB-ARO</a></li>
+            <li><a href="obligation.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
           </ul>
         </li>
          <li class="treeview">
@@ -97,8 +97,8 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="nta.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA/NCA</a></li>
-            <li><a href="disbursement.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li>
+            <li><a href="nta.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA/NCA</a></li>
+            <li><a href="disbursement.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li>
           </ul>
         </li>
          <li class="treeview">
@@ -110,7 +110,7 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="ntaobligation.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAYMENT</a></li>
+            <li><a href="ntaobligation.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAYMENT</a></li>
           </ul>
         </li>
           </ul>
@@ -141,8 +141,8 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="allTickets.php?division=<?php echo $_GET['division'];?>&ticket_id=" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ON-GOING</a></li>
-            <li><a href="techassistance.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>SUBMITTED<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
+            <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ON-GOING</a></li>
+            <li><a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>SUBMITTED<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
 
           </ul>
         </li>
@@ -271,7 +271,7 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="ViewBURS.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
+            <li><a href="ViewBURS.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
           </ul>
         </li>
          <li class="treeview">
@@ -283,7 +283,7 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="ViewDv.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li>
+            <li><a href="ViewDv.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li>
           </ul>
         </li>
          <li class="treeview" hidden>
@@ -295,7 +295,7 @@ $username = $_SESSION['username'];
             </span>
           </a>
           <ul class="treeview-menu" >
-            <li><a href="ntaobligation.php?division=<?php echo $_GET['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAYMENT</a></li>
+            <li><a href="ntaobligation.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAYMENT</a></li>
           </ul>
         </li>
           </ul>
