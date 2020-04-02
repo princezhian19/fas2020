@@ -59,7 +59,7 @@ $username = $_SESSION['username'];
       'lengthChange': false,
       'searching'   : true,
       'ordering'    : true,
-      'info'        : true,
+      'info'        : false,
       'autoWidth'   : true
     })
   })
