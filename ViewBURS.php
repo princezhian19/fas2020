@@ -53,7 +53,7 @@ $username = $_SESSION['username'];
   $(function () {
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,

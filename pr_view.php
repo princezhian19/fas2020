@@ -9,6 +9,7 @@ $purpose = $row['purpose'];
 $pr_date = $row['pr_date'];
 $target_date = $row['target_date'];
 $type = $row['type'];
+$submitted_date = $row['submitted_date'];
 ?>
 
 <html>
@@ -27,7 +28,15 @@ $type = $row['type'];
             </div>
             <div class="box-body table-responsive no-padding">
                 <div class="box-body">
-                   <!-- <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary">Update</a> -->
+
+           
+
+                    <?php if($submitted_date!=NULL):?>
+                    <?php else:?>
+                    <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary">Update</a>
+                    
+                    <?php endif?>
+
                    <a href="export_pr.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a>
                    <a href="ViewPR.php" class="btn btn-warning">Back</a>
 

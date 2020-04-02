@@ -9,17 +9,6 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,21 +35,17 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('burs_table_admin.php');?>
-
     </section>
   </div>
- 
 </div>
-
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
 <script>
   $(function () {
     $('#example').DataTable()
     $('#example').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : true,
       'ordering'    : true,
       'info'        : true,
@@ -68,6 +53,5 @@ $username = $_SESSION['username'];
     })
   })
 </script>
-
 </body>
 </html>

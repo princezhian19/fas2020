@@ -26,10 +26,7 @@ $username = $_SESSION['username'];
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
- 
-  
   <?php include('sidebar.php');?>
-
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
@@ -39,10 +36,8 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('po_view.php');?>
-
     </section>
   </div>
- 
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
