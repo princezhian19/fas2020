@@ -45,15 +45,16 @@ $mydb = new db(); // create a new object, class db()
                 <thead>
                   <tr style="background-color: white;color:blue;">
 
-                    <th>PR NO</th>
-                    <th>PR DATE</th>
+                 
+                    <th width="150">PR NO</th>
+                    <th width="150">PR DATE</th>
                     <th>OFFICE</th>
-                    <th width="200">TYPE</th>
+                    <th width="150">TYPE</th>
                     <th width="300">PURPOSE</th>
-                    <th>TARGET DATE</th>
-                    <th >SUBMITTED DATE</th>
-                    <th >RECEIVED DATE</th>
-                    <th width="150">ACTION</th>
+                    <th width="150">TARGET DATE</th>
+                    <th width="150">SUBMITTED DATE</th>
+                    <th width="150">RECEIVED DATE</th>
+                    <th width="180">ACTION</th>
                   </tr>
                 </thead>
 
@@ -178,8 +179,8 @@ $mydb = new db(); // create a new object, class db()
                     
                       <td>
                         <?php if ($submitted_date == NULL): ?>
-                          <a href='ViewRFQdetails1.php?id=<?php echo $getID;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> |
-                          <a  href='ViewPRv1.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
+                          <a  href='ViewPRv1.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
+                          <a href='ViewRFQdetails1.php?id=<?php echo $getID;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>
                           <?php else: ?>
                           <a  href='ViewPRv1.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>  
                           <?php endif ?>

@@ -81,8 +81,13 @@ $columns = array(
 		'db' => 'START_DATE', 
 		'dt' => 3,
 		'formatter' => function( $d, $row ) {
-			
+			if($d == '0000-00-00' || $d == null)
+			{
+				$d = '';
+				return $d;
+			}else{
 			return date( 'M d, Y', strtotime($d));
+			}
 
 
         }
@@ -91,7 +96,14 @@ $columns = array(
 		'db' => 'START_TIME', 
 		'dt' => 4,
 		'formatter' => function( $d, $row ) {
-            return date( 'g:i A', strtotime($d));
+			if($d == '' || $d == null)
+			{
+				$d = '';
+				return $d;
+			}else{
+				return date( 'g:i A', strtotime($d));
+
+			}
         }
 	),
 	array('db' => 'REQ_BY', 'dt' => 5),
