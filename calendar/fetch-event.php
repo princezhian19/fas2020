@@ -3,7 +3,6 @@
 
     $json = array();
     $sqlQuery = "SELECT id, title, start, end, color, cancelflag FROM events where cancelflag = 0 and status = 1";
-echo $sqlQuery;
     $result = mysqli_query($conn, $sqlQuery);
     $eventArray = array();
     while ($row = mysqli_fetch_assoc($result)) {
@@ -11,6 +10,5 @@ echo $sqlQuery;
     }
     mysqli_free_result($result);
 
-    mysqli_close($conn);
     echo json_encode($eventArray);
 ?>
