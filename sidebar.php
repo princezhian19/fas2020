@@ -10,34 +10,35 @@ $username = $_SESSION['username'];
 ?>
 
 <header class="main-header" >
-    <a href="" class="logo" style="text-decoration: none; background-color: #3c8dbc;">
-      <span class="logo-lg" style="color:white;">FAS</span>
-    </a>
-    <nav class="navbar navbar-static-top" style="text-decoration: none; background-color: #0072C7;">
-  </header>
-  <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar'): ?>
-<aside class="main-sidebar">
+  <a href="" class="logo" style="text-decoration: none; background-color: #3c8dbc;">
+    <span class="logo-lg" style="color:white;">FAS</span>
+      </a>
+        <nav class="navbar navbar-static-top" style="text-decoration: none; background-color: #0072C7;">
+          </header>
+
+<?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar'): ?>
+  <aside class="main-sidebar">
     <section class="sidebar"  style="background-color: white;height: 1000px;">
       <div class="user-panel">
+
         <div class="pull-left image">
-          <img src="plog.png" class="img-circle" alt="User Image">
-        </div>
+          <img src="images/plog.png" class="img-circle" alt="User Image">
+            </div>
+
         <div class="pull-left info">
           <p style="color:black;font-size: 10px;">Financial and Administrative</p>
-          <p align="center" style="color:black;font-size: 10px;">System</p>
-        </div>
+            <p align="center" style="color:black;font-size: 10px;">System</p>
+            </div>
       </div>
       <ul class="sidebar-menu" data-widget="tree" s>
         <li class="header" style="background-color: white;">MENUS</li>
-        <li><a style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
-        <li class="treeview" tyle="background-color: lightgray;">
-          <a href="" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
-            <span style="color:black;text-decoration: none;">PROCUREMENT</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
+          <li><a style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
+            <li class="treeview" tyle="background-color: lightgray;">
+              <a href="" style="color:black;text-decoration: none;">
+                <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
+                <span style="color:black;text-decoration: none;">PROCUREMENT</span>
+                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+            </a>
           <ul class="treeview-menu" >
             <li class="treeview">
         </li>
@@ -146,8 +147,24 @@ $username = $_SESSION['username'];
 
           </ul>
         </li>
-
         <!-- ====================================================== -->
+        <!-- EVENTS MANAGEMENT SYSTEM -->
+       <!-- ===================================================== -->
+       <li class="treeview" tyle="background-color: lightgray;">
+          <a href="" style="color:black;text-decoration: none;">
+            <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
+            <span style="color:black;text-decoration: none;">EVENTS</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" >
+            <li><a href="ViewCalendar.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>My Calendar</a></li>
+
+          </ul>
+        </li>
+        <!-- ====================================================== -->
+        <!-- END OF CODE -->
         <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
     </section>
   </aside>

@@ -21,7 +21,7 @@ th{
   <div class="row">
     <div class="col-md-12">
       <div class="box">
-        <div class="panel panel-default">
+        <div class="panel panel-defasult">
           <div class="box-body"> 
             <div>
                 <h1>Monitoring for ICT Technical Assistance Request</h1><br>
