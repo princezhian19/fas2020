@@ -41,7 +41,7 @@
   <div class="">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="ViewAcceptance.php" style="color:white;font-family: cambria; "><i class=""></i> Home</a></li>
+        <li><a href="index.php" style="color:white;font-family: cambria; "><i class=""></i> Home</a></li>
         <li class="active" style="color:white;font-family: cambria;">Register</li>
       </ol>
       <br>
