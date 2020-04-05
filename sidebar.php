@@ -165,6 +165,19 @@ $username = $_SESSION['username'];
         </li>
         <!-- ====================================================== -->
         <!-- END OF CODE -->
+        <li class="treeview" tyle="background-color: lightgray;">
+          <a href="" style="color:black;text-decoration: none;">
+            <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
+            <span style="color:black;text-decoration: none;">USER MANAGEMENT</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" >
+            <li><a style="color:black;text-decoration: none;" href="Accounts.php"><i class = "fa fa-fw fa-user-md"></i>Users</li>
+        <li><a style="color:black;text-decoration: none;" href="Approval.php"><i class = "fa fa-fw fa-check-square-o"></i>For Approval</li>
+          </ul>
+        </li>
         <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
     </section>
   </aside>
