@@ -138,7 +138,7 @@
            $connect->prepare($sql1)->execute([$employee_number]);
 
            echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('Successfuly Saved!')
+            window.alert('Please Contact Your Administrator For Account Activation')
             window.location.href = 'index.php?';
             </SCRIPT>");
 
@@ -170,6 +170,7 @@
    <script src="jquery-1.12.0.min.js" type="text/javascript"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script> 
    <script type="text/javascript">
     $(document).ready(function(){
 
@@ -196,8 +197,14 @@
           }
         });
       });
+    $('#username').reset();
+    $("#username").val(($.trim($("#fname").val()).charAt(0)+$.trim($("#mname").val()).charAt(0)+$("#lname").val().replace(/[\. ,-]+/g, "")).toLowerCase());
+      $("#fname, #mname, #lname").change(function(){
+        $("#username").val(($.trim($("#fname").val()).charAt(0)+$.trim($("#mname").val()).charAt(0)+$("#lname").val().replace(/[\. ,-]+/g, "")).toLowerCase());
+      });
 
     });
+
   </script>
 
   <div class="box box-success">
