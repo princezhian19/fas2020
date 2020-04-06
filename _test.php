@@ -191,7 +191,7 @@ background-position: 90px 5px;
                         <?php echo fillTableInfo(); ?>
                      <input type = "hidden" name = "division" value = "<?php echo $_GET['division'];?>" />
                         <br>
-                        <u style = "margin-top:20px;">TYPE O       REQUEST</u>
+                        <u style = "margin-top:20px;">TYPE OF REQUEST</u>
 
                         <table style = "margin-top:20px;width:100%;">
                           <tr>
@@ -242,18 +242,18 @@ background-position: 90px 5px;
                           </div>
                           </td> 
                           <td>
-                          <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
-                          <div style = "margin-left:30px;padding-top:10px;">
-                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
-                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
+                            <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
+                            <div style = "margin-left:30px;padding-top:10px;">
+                            <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
+                            <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
+                            <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
                           </div>
                           </td> 
                           <td>
-                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "Others"><b>Others</b><br>
-                          <input type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                          <input type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                          <input type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "Others"><b>Others</b><br>
+                          <input type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input type = "text" name = "others3" id = "others3" class = "checkboxgroup_g6"value = "" style = "border:none;border-bottom:1px solid black;"/><br>
 
                           </td> 
 
@@ -277,7 +277,7 @@ background-position: 90px 5px;
                                                   </textarea>
                                                   </td>
                                                   <td colspan = 4>
-                                                  <textarea rows="20" cols="56" style ="resize:none;width:100%;text-align:left;" name = "status" class = "disabletxtarea">
+                                                  <textarea rows="20" cols="56" style ="resize:none;width:100%;text-align:left;background-color:#EEEEEE;" name = "status" class = "disabletxtarea">
 
                                                   </textarea>
                                                   </td>
@@ -509,9 +509,9 @@ $(function() {
   document.getElementById("purpose2").disabled = true; 
   document.getElementById("softwares").disabled = true;
   document.getElementById("changeaccount").disabled = true; 
-  document.getElementById("others1").disabled = false ; 
-  document.getElementById("others2").disabled = false; 
-  document.getElementById("others3").disabled = false; 
+  document.getElementById("others1").disabled = true ; 
+  document.getElementById("others2").disabled = true; 
+  document.getElementById("others3").disabled = true; 
   
 
     enable_cb1();
@@ -519,13 +519,22 @@ $(function() {
     enable_cb3();
     enable_cb4();
     enable_cb5();
+    enable_cb6();
   $("#checkboxgroup_g1").click(enable_cb1);
   $("#checkboxgroup_g2").click(enable_cb2);
   $("#checkboxgroup_g3").click(enable_cb3);
   $("#checkboxgroup_g4").click(enable_cb4);
   $("#checkboxgroup_g5").click(enable_cb5);
+  $("#checkboxgroup_g6").click(enable_cb6);
   
 });
+function enable_cb6() {
+  if (this.checked) {
+    $(".checkboxgroup_g6").removeAttr("disabled");
+  } else {
+    $(".checkboxgroup_g6").attr("disabled", true);
+  }
+}
 
 function enable_cb1() {
   if (this.checked) {

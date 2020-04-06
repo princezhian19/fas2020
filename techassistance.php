@@ -82,19 +82,21 @@ var action = '';
       'searching'   : true,
       'ordering'    : true,
       'info'        : true,
-      'autoWidth'   : true,   aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+      'autoWidth'   : true,   aLengthMenu: [ [10, 10, 20, -1], [10, 10, 20, "All"] ],
       "bPaginate": false,
       "bLengthChange": false,
       "bFilter": true,
       "bInfo": false,
       "bAutoWidth": false,
+      "dom": '<"top"lf>rt<"bottom"p><"clear">',
+
 
 
 
         "processing": true,
         "serverSide": false,
         "ajax": "DATATABLE/server_processing.php",
-        "order": [[ 1, "asc" ]],
+        "order": [[ 1, "desc" ]],
         "columnDefs": [ {
         "targets": 11,
         "render": function ( data, type, row, meta ) {  
