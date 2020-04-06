@@ -88,20 +88,19 @@ if (isset($_POST['submit'])) {
             <div class="col-xs-8">
               <div class="checkbox icheck">
                 <label>
-                  <input type="checkbox"> Remember Me
+                  <a href="Registration.php" class="btn btn-success btn-xs">Not yet Registered?</a>
                 </label>
               </div>
             </div>
-            <!-- /.col -->
             <div class="col-xs-4">
               <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
             </div>
-            <!-- /.col -->
           </div>
         </form>
-
       </div>
+        
     </div>
+
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="plugins/iCheck/icheck.min.js"></script>
