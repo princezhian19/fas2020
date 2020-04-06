@@ -36,31 +36,43 @@ if ($updateQ) {
         <?php if ($role == 1): ?>
           <select class="form-control select2" name="photo">
          <option value="1">Admin</option>
-         <option value="2">User</option>
-         <option value="NULL">Finance</option>
+         <option value="NULL">User</option>
+         <option value="3">BAC-GSS</option>
+         <option value="2">Finance</option>
        </select>
         <?php endif ?>
          <?php if ($role == 2): ?>
           <select class="form-control select2" name="photo">
-         <option value="NULL">Finance</option>
+         <option value="2">Finance</option>
          <option value="1">Admin</option>
-         <option value="2">User</option>
+         <option value="NULL">User</option>
+         <option value="3">BAC-GSS</option>
+       </select>
+        <?php endif ?>
+        <?php if ($role == 3): ?>
+          <select class="form-control select2" name="photo">
+         <option value="3">BAC-GSS</option>
+         <option value="1">Admin</option>
+         <option value="NULL">User</option>
+         <option value="2">Finance</option>
        </select>
         <?php endif ?>
         <?php if ($role == NULL): ?>
           <select class="form-control select2" name="photo">
          <option value="1">Admin</option>
-         <option value="2">User</option>
-         <option value="NULL">Finance</option>
+         <option value="NULL">User</option>
+         <option value="3">BAC-GSS</option>
+         <option value="2">Finance</option>
        </select>
         <?php endif ?>
 
-        <?php if ($role != NULL && $role != 1 && $role != 2 ): ?>
+        <?php if ($role != NULL && $role != 1 && $role != 2 && $role != 3): ?>
           <select class="form-control select2" name="photo">
          <option disabled selected>Select Role</option>
-         <option value="2">User</option>
+         <option value="NULL">User</option>
          <option value="1">Admin</option>
-         <option value="NULL">Finance</option>
+         <option value="3">BAC-GSS</option>
+         <option value="2">Finance</option>
        </select>
         <?php endif ?>
         <br>
