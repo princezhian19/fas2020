@@ -100,56 +100,57 @@ var action = '';
         "columnDefs": [ {
         "targets": 11,
         "render": function ( data, type, row, meta ) {  
-        if(row[3] == 'Jan 01, 1970' || row[0] == '0000-00-00')
-        {
-          $dateFormat = '';
-          // return $dateFormat;
+            if(row[3] == 'Jan 01, 1970' || row[0] == '0000-00-00')
+            {
+              $dateFormat = '';
+              // return $dateFormat;
+            }
+            if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
+            {
+              
+              if(<?php echo $division?> == 16)
+              {
+                action = '';          
+              
+              }else{
+                action = '';
+              }
+            }
+            else if (row[10] == '<span class="badge badge-pill" style = "background-color:orange;">Received</span>')
+            {
+              action = 'ON GOING';
+
+            }
+            else if(row[10] == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
+            {
+              if(<?php echo $division?> == 16)
+              {
+                action = '<a class = "btn btn-primary btn-xs"  id = "edit" style = "width:100%;"> <i class="fa">&#xf044;</i> Edit</a>';          
+
+              }else{
+                action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a>';          
+
+
+              }
+            
+            }
+            else if (row[10] == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
+            { 
+              if(<?php echo $division?> == 16)
+              {
+              action = '<a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a>';          
+              }else{
+              action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a>';          
+
+                // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>
+              }
+
+            }
+            
+          return action;
         }
-        if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
-        {
-          
-          if(<?php echo $division?> == 16)
-          {
-            action = '<a class = "btn btn-info btn-xs"   id = "sweet-14"> <i class="fa fa-check-circle"></i>Receive</a>';          
-          
-          }else{
-            action = '';
-          
-          }
-        }
-        else if (row[10] == '<span class="badge badge-pill" style = "background-color:orange;">Received</span>')
-        {
-          action = 'ON GOING';
-
-        }
-        else if(row[10] == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
-        {
-          if(<?php echo $division?> == 16)
-          {
-            action = '<a class = "btn btn-primary btn-xs"  id = "edit" style = "width:100%;"> <i class="fa">&#xf044;</i> Edit</a>';          
-
-          }else{
-            action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a>';          
 
 
-          }
-        
-        }
-        else if (row[10] == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
-        { 
-          if(<?php echo $division?> == 16)
-          {
-          action = '<a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a>';          
-          }else{
-          action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a>';          
-
-            // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>
-          }
-
-        }
-        
-        return action;
-    }
   } ]
 
     } );
