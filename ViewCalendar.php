@@ -6,6 +6,19 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
+
+
+require_once 'calendar/sample/bdd.php';
+require_once 'calendar/sample/dbaseCon.php';
+require_once 'calendar/sample/sql_statements.php';
+
+$sql = "SELECT id, title, start, end, color, cancelflag FROM events where cancelflag = 0 and status = 1";
+
+$req = $bdd->prepare($sql);
+$req->execute();
+
+$events = $req->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -75,7 +88,7 @@ $username = $_SESSION['username'];
                 ?>
               </select>
             </div>
-            <button class="btn btn-success" id = "fml"><a href='calendar/tcpdf/examples/viewall.php' style = "decoration:none; color:#fff;"> Export FML Report</a></button>
+            <button class="btn btn-success" id = "fml"><a href='calendar/tcpdf/examples/viewall.php' style = "decoration:none; color:#fff;"> Export</a></button>
           </div>
         </div>
 <br>
@@ -104,100 +117,120 @@ $username = $_SESSION['username'];
     })
   })
 </script>
+	
 <script>
 
-$(document).ready(function () {
-    var calendar = $('#calendar').fullCalendar({
-      header: {
-					left: 'prev,next today',
-					center: 'title',
-					right: 'month,basicWeek,basicDay'
-				},
-        editable: true,
-        eventLimit: true,
-        selectable: true,
-        selectHelper: true,
-        events: "calendar/fetch-event.php",
-        displayEventTime: false,
-        selectable: true,
-        selectHelper: true,
-        eventRender: function (event, element, view) {
-            if (event.allDay === 'true') {
-                event.allDay = true;
-            } else {
-                event.allDay = false;
-            }
-        },
-        select: function (start, end, allDay) {
-            var title = prompt('Event Title:');
+$(document).ready(function() {
+  $('#calendar').fullCalendar({
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,basicWeek,basicDay'
+    },
 
-            if (title) {
-                var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-                var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+  editable: true,
+  eventLimit: true, // allow "more" link when too many events
+  selectable: true,
+  selectHelper: true,
+  select: function(start, end) {
+    
+    $('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
+    $('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
+    $('#ModalAdd').modal('show');
 
-                $.ajax({
-                    url: 'calendar/add-event.php',
-                    data: 'title=' + title + '&start=' + start + '&end=' + end,
-                    type: "POST",
-                    success: function (data) {
-                        displayMessage("Added Successfully");
-                    }
-                });
-                calendar.fullCalendar('renderEvent',
-                        {
-                            title: title,
-                            start: start,
-                            end: end,
-                            allDay: allDay
-                        },
-                true
-                        );
-            }
-            calendar.fullCalendar('unselect');
-        },
-        eventDrop: function (event, delta) {
-                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                    var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-                    alert(event.title);
-                    $.ajax({
-                        url: 'calendar/eddit-event.php',
-                        data: 'start=' + start + '&end=' + end + '&id=' + event.id,
-                        type: "POST",
-                        success: function (response) {
-                            displayMessage("Updated Successfully");
-                        }
-                    });
-                },
-        eventClick: function (event) {
-            var deleteMsg = confirm("Do you really want to delete?");
-            if (deleteMsg) {
-                $.ajax({
-                    type: "POST",
-                    url: "delete-event.php",
-                    data: "&id=" + event.id,
-                    success: function (response) {
-                        if(parseInt(response) > 0) {
-                            $('#calendar').fullCalendar('removeEvents', event.id);
-                            displayMessage("Deleted Successfully");
-                        }
-                    }
-                });
-            }
-        }
+  },
+  eventRender: function(event, element) {  
+    element.find('.fc-time').hide();
+  },
 
+  /*eventRender: function(event, element) {
+    element.bind('dblclick', function() {
+      $('#ModalEdit #id').val(event.id);
+      $('#ModalEdit #title').val(event.title);
+      $('#ModalEdit #color').val(event.color);
+      $('#ModalEdit').modal('show');
     });
-    $("#selectMonth").append('<select class="select_month form-control"><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>');
-  
-  $(".select_month").on("change", function(event) {
-  $('#calendar').fullCalendar('changeView', 'month', this.value);
-  $('#calendar').fullCalendar('gotoDate', "2020-"+this.value+"-1");
-  
-  });
-});
+  },*/
+  /*eventDrop: function(event, delta, revertFunc) { // si changement de position
 
+    edit(event);
+
+  },*/
+  /*eventResize: function(event,dayDelta,minuteDelta,revertFunc) { // si changement de longueur
+
+    edit(event);
+
+  },*/
+  events: [
+  <?php foreach($events as $event): 
+
+    $start = explode(" ", $event['start']);
+    $end = explode(" ", $event['end']);
+    if($start[1] == '00:00:00'){
+      $start = $start[0];
+    }else{
+      $start = $event['start'];
+    }
+    if($end[1] == '00:00:00'){
+      $end = $end[0];
+    }else{
+      $end = $event['end'];
+    }
+    if (TRUE) {
+      ?>
+      {
+        id: '<?php echo $event['id']; ?>',
+        title: '<?php echo $event['title']; ?>',
+        start: '<?php echo $start; ?>',
+        end: '<?php echo $end; ?>',
+        color: '<?php echo $event['color']; ?>',
+        url: 'viewEvent.php?eventid=<?php echo $event['id']; ?>',
+
+      },
+    <?php } endforeach; ?>
+    ]
+  });
+
+/*function edit(event){
+  start = event.start.format('YYYY-MM-DD HH:mm:ss');
+  if(event.end){
+    end = event.end.format('YYYY-MM-DD HH:mm:ss');
+  }else{
+    end = start;
+  }
+  
+  id =  event.id;
+  
+  Event = [];
+  Event[0] = id;
+  Event[1] = start;
+  Event[2] = end;
+  
+  $.ajax({
+   url: 'editEventDate.php',
+   type: "POST",
+   data: {Event:Event},
+   success: function(rep) {
+      if(rep == 'OK'){
+        alert('Saved');
+      }else{
+        alert('Could not be saved. try again.'); 
+      }
+    }
+  });
+}*/
+
+});
+$("#selectMonth").append('<select class="select_month form-control"><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>');
+
+$(".select_month").on("change", function(event) {
+$('#calendar').fullCalendar('changeView', 'month', this.value);
+$('#calendar').fullCalendar('gotoDate', "2020-"+this.value+"-1");
+
+});
 function displayMessage(message) {
-	    $(".response").html("<div class='success'>"+message+"</div>");
-    setInterval(function() { $(".success").fadeOut(); }, 1000);
+  $(".response").html("<div class='success'>"+message+"</div>");
+setInterval(function() { $(".success").fadeOut(); }, 1000);
 }
 </script>
 
