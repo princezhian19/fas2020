@@ -1,14 +1,14 @@
  <?php 
 $id = $_GET['id'];
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$query = mysqli_query($conn,"SELECT PHOTO,CONCAT(FIRST_M, ' ', MIDDLE_M, ' ', LAST_M) AS fullname FROM tblemployee WHERE EMP_N = $id");
+$query = mysqli_query($conn,"SELECT UROLE,CONCAT(FIRST_M, ' ', MIDDLE_M, ' ', LAST_M) AS fullname FROM tblemployee WHERE EMP_N = $id");
 $row = mysqli_fetch_array($query);
-$role = $row['PHOTO'];
+$role = $row['UROLE'];
 $fullname = $row['fullname'];
 
 if (isset($_POST['submit'])) {
-$photo = $_POST['photo'];
-$updateQ = mysqli_query($conn,"UPDATE tblemployee SET PHOTO = '$photo' WHERE EMP_N = $id");
+$UROLE = $_POST['UROLE'];
+$updateQ = mysqli_query($conn,"UPDATE tblemployee SET UROLE = '$UROLE' WHERE EMP_N = $id");
 if ($updateQ) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Successfuly Assigned!')
@@ -34,7 +34,7 @@ if ($updateQ) {
        <div class="form-group">
         <label>Select Role </label>
         <?php if ($role == 1): ?>
-          <select class="form-control select2" name="photo">
+          <select class="form-control select2" name="UROLE">
          <option value="1">Admin</option>
          <option value="NULL">User</option>
          <option value="3">BAC-GSS</option>
