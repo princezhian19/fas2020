@@ -22,12 +22,12 @@ if($row = mysqli_fetch_array($result))
 		$fieldsName = '`ID`, `CONTROL_NO`, `REQ_DATE`, `REQ_TIME`, `REQ_BY`, `OFFICE`, `POSITION`, `CONTACT_NO`, `EMAIL_ADD`, `EQUIPMENT_TYPE`, `BRAND_MODEL`, `PROPERTY_NO`, `SERIAL_NO`, `IP_ADDRESS`, `MAC_ADDRESS`, `TYPE_REQ`, `TYPE_REQ_DESC`, `TEXT1`, `TEXT2`, `TEXT3`, `TEXT4`, `TEXT5`, `TEXT6`, `TEXT7`, `TEXT8`, `ISSUE_PROBLEM`, `START_DATE`, `START_TIME`, `STATUS_DESC`, `COMPLETED_DATE`, `COMPLETED_TIME`, `ASSIST_BY`, `PERSON_ASSISTED`, `TIMELINESS`, `QUALITY`, `STATUS`, `STATUS_REQUEST`';
 		$table = 'tbltechnical_assistance';
 		$join = '';
-		$WHERE = "WHERE `REQ_DATE` != '0000-00-00' ORDER BY `CONTROL_NO` DESC";
+		$WHERE = "WHERE `REQ_DATE` != '0000-00-00'";
 	}else{
 		$fieldsName = '`ID`, `CONTROL_NO`, `REQ_DATE`, `REQ_TIME`, `REQ_BY`, `OFFICE`, `POSITION`, `CONTACT_NO`, `EMAIL_ADD`, `EQUIPMENT_TYPE`, `BRAND_MODEL`, `PROPERTY_NO`, `SERIAL_NO`, `IP_ADDRESS`, `MAC_ADDRESS`, `TYPE_REQ`, `TYPE_REQ_DESC`, `TEXT1`, `TEXT2`, `TEXT3`, `TEXT4`, `TEXT5`, `TEXT6`, `TEXT7`, `TEXT8`, `ISSUE_PROBLEM`, `START_DATE`, `START_TIME`, `STATUS_DESC`, `COMPLETED_DATE`, `COMPLETED_TIME`, `ASSIST_BY`, `PERSON_ASSISTED`, `TIMELINESS`, `QUALITY`, `STATUS`, `STATUS_REQUEST`';
 		$table = 'tbltechnical_assistance';
 		$join = '';
-		$WHERE = "WHERE `REQ_DATE` != '0000-00-00' and `REQ_BY` LIKE '%$complete_name%'  ";
+		$WHERE = "WHERE `REQ_DATE` != '0000-00-00' and `REQ_BY` LIKE '%$complete_name%' ";
 	}
 
 		
@@ -94,7 +94,7 @@ $columns = array(
 		'formatter' => function( $d, $row ) {
 			if($d == '0000-00-00' || $d == null)
 			{
-				$d = '<a class = "btn btn-info btn-xs"   id = "sweet-14"> <i class="fa fa-check-circle"></i>Receive</a>';
+				$d = '';
 				return $d;
 			}else{
 			return date( 'M d, Y', strtotime($d));
