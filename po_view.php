@@ -95,9 +95,9 @@ $id = $rowpo['id'];
                                         <tr>
                                             <th>ORS </th>
                                             <?php if ($rowpo_no != ''): ?>
-                                                <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="UpdateBURS.php?id=<?php echo $id;?>">Obligation Request Status</a></td>
+                                                <td><i lass="btn btn-primary btn-xs" class="" style="margin-right4px;"></i><a href="UpdateBURS.php?id=<?php echo $id;?>">View ORS</a></td>
                                                 <?php else: ?>
-                                                    <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="CreateORSa.php?supplier_id=<?php echo $supplier_id;?>&po_no=<?php echo $po_no;?>&rfq_id=<?php echo $rfq_id;?>&supplier_titleD=<?php echo $supplier_titleD; ?>&supplier_address=<?php echo $supplier_addressD; ?>&po_amount=<?php echo $po_amount2; ?>">Obligation Request Status</a></td>
+                                                    <td><i class="" style="margin-right4px;"></i><a class="btn btn-success btn-xs" href="CreateORSa.php?supplier_id=<?php echo $supplier_id;?>&po_no=<?php echo $po_no;?>&rfq_id=<?php echo $rfq_id;?>&supplier_titleD=<?php echo $supplier_titleD; ?>&supplier_address=<?php echo $supplier_addressD; ?>&po_amount=<?php echo $po_amount2; ?>">  Create ORS</a></td>
 
                                                 <?php endif ?>
                                             </tr>
@@ -111,12 +111,12 @@ $id = $rowpo['id'];
 
                                                 ?>
                                                 <?php if ($rowpo_no1 != ''): ?>
-                                                      <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="UpdateDV.php?id=<?php echo $id;?>">Disbursement Voucher</a></td>
+                                                      <td><i lass="btn btn-primary btn-xs"  class="" style="margin-right4px;"></i><a href="UpdateDV.php?id=<?php echo $id;?>">  View Dv</a></td>
 
                                                     
                                                     <?php else: ?>
 
-                                                <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="CreateDVa.php?supplier_id=<?php echo $supplier_id;?>&po_no=<?php echo $po_no;?>&rfq_id=<?php echo $rfq_id;?>&supplier_titleD=<?php echo $supplier_titleD; ?>&supplier_address=<?php echo $supplier_addressD; ?>&po_amount=<?php echo $po_amount2; ?>">Disbursement Voucher</a></td>
+                                                <td><i class="" style="margin-right4px;"></i><a class="btn btn-success btn-xs" href="CreateDVa.php?supplier_id=<?php echo $supplier_id;?>&po_no=<?php echo $po_no;?>&rfq_id=<?php echo $rfq_id;?>&supplier_titleD=<?php echo $supplier_titleD; ?>&supplier_address=<?php echo $supplier_addressD; ?>&po_amount=<?php echo $po_amount2; ?>">  Create DV</a></td>
 
                                                 <?php endif ?>
 
