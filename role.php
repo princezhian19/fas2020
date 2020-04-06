@@ -59,8 +59,8 @@ if ($updateQ) {
         <?php endif ?>
         <?php if ($role == NULL): ?>
           <select class="form-control select2" name="photo">
-         <option value="1">Admin</option>
          <option value="NULL">User</option>
+         <option value="1">Admin</option>
          <option value="3">BAC-GSS</option>
          <option value="2">Finance</option>
        </select>
