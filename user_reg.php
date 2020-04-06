@@ -201,6 +201,7 @@
     $("#username").val(($.trim($("#fname").val()).charAt(0)+$.trim($("#mname").val()).charAt(0)+$("#lname").val().replace(/[\. ,-]+/g, "")).toLowerCase());
       $("#fname, #mname, #lname").change(function(){
         $("#username").val(($.trim($("#fname").val()).charAt(0)+$.trim($("#mname").val()).charAt(0)+$("#lname").val().replace(/[\. ,-]+/g, "")).toLowerCase());
+        // $("#employee_number").val($("#fname").val().charAt(0));
       });
 
     });
@@ -298,7 +299,7 @@
             </div>
             <div class="col-xs-4">
               <label>First Name<font style="color:red;">*</font></label>
-              <input required type="text" name="fname" class="form-control" placeholder="First Name">
+              <input required type="text" name="fname" id="fname" class="form-control" placeholder="First Name">
             </div>
             <div class="col-xs-4">
               <label>Email</label>
@@ -317,7 +318,7 @@
             </div>
             <div class="col-xs-4">
               <label>Middle Name<font style="color:red;">*</font></label>
-              <input required type="text" name="mname" class="form-control" placeholder="Middle Name">
+              <input required type="text" name="mname" id="mname" class="form-control" placeholder="Middle Name">
             </div>
             <div class="col-xs-4">
               <label>Mobile <font style="color:red;">*</font></label>
@@ -336,7 +337,7 @@
             </div>
             <div class="col-xs-4">
               <label>Last Name<font style="color:red;">*</font></label>
-              <input required type="text" name="lname" class="form-control" placeholder="Last Name">
+              <input required type="text" name="lname" id="lname" class="form-control" placeholder="Last Name">
             </div>
             <div class="col-xs-4">
               <label>Landline</label>
