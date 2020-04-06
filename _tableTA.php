@@ -14,9 +14,9 @@ $mydb = new db(); // create a new object, class db()
 th{
   color:blue;
 }
-.dataTables_wrapper .dataTables_paginate {
+/* .dataTables_wrapper .dataTables_paginate {
     float: left;
-}
+} */
 </style>
 </head>
 

@@ -88,7 +88,7 @@ var action = '';
       "bFilter": true,
       "bInfo": false,
       "bAutoWidth": false,
-      "dom": '<"top"lf>rt<"bottom"p><"clear">',
+      // "dom": '<"top"lf>rt<"bottom"p><"clear">',
 
 
 
@@ -153,19 +153,6 @@ var action = '';
         {
             targets: 3,
             "render": function ( data, type, row, meta ) { 
-            //   if(row[10] == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
-            // {
-            //   $action2 = '';
-            //   return $action2;
-            // }else if (row[10] == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
-            // {
-            //   $action2 = '';
-            //   return $action2;
-            // }
-            // else if (row[10] == '<span class="badge badge-pill" style = "background-color:orange;">Received</span>')
-            // {
-              
-            // }
            if(row[3] == '')
             {
               $action2 = '<a class = "btn btn-info btn-xs"   id = "sweet-14"> <i class="fa fa-check-circle"></i>Receive</a>';

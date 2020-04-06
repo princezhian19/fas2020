@@ -472,7 +472,7 @@ $('.sweet-16').click(function()
                   setTimeout(function () {
                   swal("Service Completed!");
                   }, 3000);
-                  window.location = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id=<?php echo $_GET['ticket_id']?>";
+                  window.location = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id="+ids;
               }
             });
         });
