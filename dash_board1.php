@@ -9,7 +9,7 @@
           <div class="col-md-12">
             <h1>Dashboard</h1>
             <p style="float:right;"><a href="Monitoring-Pr.php" class="btn btn-success btn-s">See All</a></p>
-              <strong>Monitoring for PRs</strong>
+              <strong>Monitoring of PRs</strong>
                 <p></p>
                   <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                     <thead>

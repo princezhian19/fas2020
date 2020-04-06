@@ -85,7 +85,7 @@ if (isset($_POST['submit'])) {
     //   $insert_rfq = mysqli_query($conn,'INSERT INTO rfq (rfq_no,rfq_mode_id,rfq_date,pr_received_date,action_officer)
     // VALUES("'.$_POST['rfq_no'].'","'.$_POST['mode'].'","'.$_POST['rfq_date'].'","'.$_POST['action_officer'].'") ');
 
-        $insert_rfq = mysqli_query($conn,'INSERT INTO rfq (rfq_no,purpose,rfq_mode_id,rfq_date,pr_no,pr_received_date,action_officer)
+      $insert_rfq = mysqli_query($conn,'INSERT INTO rfq (rfq_no,purpose,rfq_mode_id,rfq_date,pr_no,pr_received_date,action_officer)
           SELECT "'.$rfq_no.'",purpose,"'.$mode.'","'.$d1.'","'.$pr_no.'",pr_date,"'.$s.'" FROM pr WHERE pr_no = "'.$pr_no.'" ');
      // }
      $UpdatePR = mysqli_query($conn,'UPDATE pr set stat="1" WHERE pr_no = "'.$pr_no.'" ');
@@ -140,26 +140,27 @@ if (isset($_POST['submit'])) {
       $select_pmo = mysqli_query($conn,'SELECT pmo FROM pr WHERE pr_no = "'.$pr_no.'"');
       $rowPMO = mysqli_fetch_array($select_pmo);
       $pmoo = $rowPMO['pmo'];
-      if ($pmoo == ORD) {
+      if ($pmoo == 'ORD') {
         $pmoo = 1;
       }
-      if ($pmoo == LGMED) {
+      if ($pmoo == 'LGMED') {
         $pmoo = 3;
       }
-      if ($pmoo == LGCDD) {
+      if ($pmoo == 'LGCDD') {
         $pmoo = 4;
       }
-      if ($pmoo == FAD) {
+      if ($pmoo == 'FAD') {
         $pmoo = 5;
       }
-      if ($pmoo == LGMED-PDMU) {
+      if ($pmoo == 'LGMED-PDMU') {
         $pmoo = 6;
       }
-      if ($pmoo == LGCDD-MBRTG) {
+      if ($pmoo == 'LGCDD-MBRTG') {
         $pmoo = 7;
       }
 
       $insert_pmo = mysqli_query($conn,"INSERT INTO rfq_pmo(rfq_id,pmo_id) VALUES('$rfq_idd','$pmoo')");
+      /* $udpateprstat = mysqli_query($conn,"INSERT INTO rfq_pmo(rfq_id,pmo_id) VALUES('$rfq_idd','$pmoo')"); */
 
 
       echo ("<SCRIPT LANGUAGE='JavaScript'>

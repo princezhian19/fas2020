@@ -142,9 +142,9 @@ if (isset($_POST['submit'])) {
              <div class="form-group">
               <label>Stock No.</label>
               <?php if ($sn != ''): ?>
-                <input readonly autocomplete = "off" value="<?php echo 'S'.$idGet?>" class="form-control" name="sn" type="text" id="sn" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
+                <input  autocomplete = "off" value="<?php echo 'S'.$idGet?>" class="form-control" name="sn" type="text" id="sn" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
                 <?php else:  ?>
-                  <input readonly autocomplete = "off" value="<?php echo 'S'.$idGet?>" class="form-control" name="sn" type="text" id="sn" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
+                  <input  autocomplete = "off" value="<?php echo 'S'.$idGet?>" class="form-control" name="sn" type="text" id="sn" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
                 <?php endif ?>
               </div>
               <div class="form-group">

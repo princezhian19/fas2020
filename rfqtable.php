@@ -14,7 +14,7 @@
                         <th width="100">TYPE</th>
                         <th width="200">PURPOSE</th>
                         <th>TARGET DATE</th>
-                        <th>RECEIVED PR</th>
+                        <th>RECEIVE PR</th>
                         <th>RFQ NO</th>
                         <th>RFQ DATE</th>
                         <th width="100">SUPPLIER QUOTE</th>
@@ -43,6 +43,11 @@
                     $rfq_no =  $row["rfq_no"];
                     $rfq_date =  $row["rfq_date"];
                     $rfq_date1 = date('F d, Y', strtotime($rfq_date));
+
+                    /* getting values for flags */
+                    $sq = $row["sq"];
+                    $aoq = $row["aoq"];
+                    $po = $row["po"];
                     ?>
                     <tr>
                         <td><a href="ViewPRv.php?id=<?php echo $id?>"><?php echo $pr_no;?></a></td>
@@ -81,7 +86,10 @@
                               <td><?php echo $received_date?></td>
                             <?php endif ?>
                         <?php endif ?>
-                        <td><!-- <a href="ViewPRv.php?id=<?php echo $id ?>"><?php echo $rfq_no;?></a> -->
+                        <td>
+                        <!-- <a href="ViewPRv.php?id=<?php echo $id ?>"><?php echo $rfq_no;?></a> -->
+
+                        <!-- RFQ -->
                         <?php if ($stat == "1"): ?>
                        <?php
                         $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
@@ -103,6 +111,8 @@
                           <td><?php echo $rfq_date1;?></td>
                         <?php endif?>
                         <td>
+                        <!--End RFQ -->
+                        <!-- Supplier Qoute -->
                         <?php if ($stat == "1"): ?>
                         <?php
                         $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
@@ -122,15 +132,17 @@
                         <?php if (mysqli_num_rows($query_3) == 0): ?>
                           <a class="btn btn-success btn-xs"  href='CreateSupplierQuote.php?rfq_id=<?php echo $rfqid; ?>' title="View"> Create </a>
                         <?php else : ?>
-                         <a class="" href='ViewSupplierItems.php?rfq_id=<?php echo $rfq_items_id; ?>' title="View"> <?php echo $win_supplier; ?> </a>
+                         <a class="btn btn-primary btn-xs" href='ViewSupplierItems.php?rfq_id=<?php echo $rfq_items_id; ?>' title="View"> View<!-- <?php echo $win_supplier; ?> --> </a>
                         <?php endif?>
                         <?php endif?>
                         <?php if ($stat == "0"): ?>
                           <?php endif?> 
                         </td>
                         <td>
+                        <!-- End Supplier Qoute -->
+                        <!-- Abstract of quote -->
                         <?php if ($stat == "1"): ?>
-                          <?php
+                        <?php
                         $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
                         $rowrfq = mysqli_fetch_array($view_queryrfq);
                         $rfqid = $rowrfq['id'];
@@ -148,18 +160,20 @@
                             $query_aoq = mysqli_query($conn,"SELECT * FROM  aoq_data WHERE id = '$rowaoq_id'"); 
                             $aoq = mysqli_fetch_array($query_aoq);
                             $aoq_no =  $aoq['aoq_no'];
-                              ?>
+                            ?>
                             <a class="" href='UpdateAoq.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>&abstract_id=<?php echo $abstract_id; ?>' title="View"><?php echo $aoq_no ; ?> </a>
                         <?php else : ?>
-                          <a class="btn btn-success btn-xs"  href='CreateAoq.php?rfq_id=<?php echo $rfqid; ?> ' title="View"> Create </a>
+                          <a class="btn btn-success btn-xs"  href='CreateAoq.php?rfq_id=<?php echo $rfqid; ?> ' title="View">Create </a>
                         <?php endif?> 
                         <?php endif?>
                         <?php if ($stat == "0"): ?>
                           <?php endif?>
                         </td>
                         <td>
+                        <!-- End Abstract of quote -->
+                        <!-- Purchase Order -->
                         <?php if ($stat == "1"): ?>
-                          <?php
+                        <?php
                         $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
                         $rowrfq = mysqli_fetch_array($view_queryrfq);
                         $rfqid = $rowrfq['id'];
@@ -184,6 +198,7 @@
                         <?php if ($stat == "0"): ?>
                           <?php endif?>
                         </td>
+                        <!--End Purchase Order -->
                 </tr>
             <?php } ?>
         </table>

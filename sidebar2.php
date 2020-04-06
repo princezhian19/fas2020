@@ -213,7 +213,7 @@ function showDivision()
           </ul>
         </li>
 
-        <li class="treeview" tyle="background-color: lightgray;">
+      <!--   <li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
             <span style="color:black;text-decoration: none;">Others</span>
@@ -230,7 +230,7 @@ function showDivision()
             <li><a href="" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Contract & MOA</a></li>
             <li><a href="" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Resolution </a></li> -->
           </ul>
-        </li>
+        </li> -->
 
       </div>
 

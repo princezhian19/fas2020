@@ -464,7 +464,7 @@ $sql_items = $conn->query("SELECT pr.id,pr.pr_no,a.procurement,a.sn,pr.descripti
               <td><?php  $ans = $abc1*$qty;  echo number_format($ans,2); ?></td>
 
               <td>
-               <?php echo '<a href="ViewUpdateRFQ1.php?id2='.$_GET['id'].'&id='.$id.'&id='.$id.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?>
+               <?php echo '<a href="ViewUpdateRFQ1.php?id2='.$_GET['id'].'&id='.$id.'&id='.$id.' "  class = "btn btn-primary btn-xs" ><i  class="fa">&#xf044;</i> Edit</a>' ?>
 
            <!--  <a onclick="return confirm('Are you sure you want to Delete?');" href="delete_rfq_items1.php?id2=<?php echo $id2; ?>&id=<?php echo $id; ?> "><i style="font-size:24px" class="fa fa-trash-o"></i></a>' -->
              </td>

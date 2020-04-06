@@ -42,6 +42,22 @@ if($type == ''){
   $type = $_GET['type'];
 }
 
+
+if(isset($POST['del'])){
+
+  $id = $_GET['id'];
+  $pr_no = $_GET['pr_no'];
+  $pmo = $_GET['pmo'];
+  $pr_date = $_GET['pr_date'];
+  $purpose = $_GET['purpose'];
+  $target_date = $_GET['target_date'];
+  $type = $_GET['type'];
+  
+  $DeleteQuery = mysqli_query($conn,"DELETE FROM pr_approved WHERE id = '$id' ");
+  echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:red;font-size:16px;"> Deleted Successfully.  </p> </div></div>  '; 
+
+}
+
 if (isset($_POST['submit'])) {
   $pr_date1 = $_POST['pr_date'];
 
@@ -198,6 +214,10 @@ if (isset($_POST['submit'])) {
  }
 
 }
+
+
+
+
 
 if (isset($_POST['add'])) {
   $pr_no = $_POST["pr_no"];
@@ -734,7 +754,8 @@ function confirmDelete(delUrl) {
           <tr>
           <th width="50">Stock/Property No.</th>
           <th width="100">Unit </th>
-           <th width="300">Item Description</th>
+           <th width="200">Item</th>
+           <th width="250">Description</th>
            <th width="100">Quantity</th>
            <th width="100">Unit Cost</th>
           <th width="150">Total Cost </th>
@@ -855,16 +876,20 @@ function confirmDelete(delUrl) {
             <td id="tdvalue" hidden><?php echo $pr_no?> </td>
             <td><?php echo $sn ?></td>
             <td><input hidden type="text" name="unit1[]" value="<?php echo $unit1 ?>"><?php echo $unit1a?></td>
-            <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php $itemconcat = $procurement1." ".$description1; echo  $itemconcat;   ?> </td>
+            <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php echo  $procurement1;?> </td>
+            <td><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
             <td><input hidden type="text" name="qty1[]" value="<?php echo $qty1 ?>"><?php echo $qty1?></td>
             <td><input hidden type="text" name="abc1[]" value="<?php echo $abc1 ?>"><?php echo $abc1?></td>
            
             <td><?php  $ans = $abc1*$qty1;  echo $ans; ?></td>
             <td hidden><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
             <td>
-            <!--  <?php echo '<a href="ViewEditPR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?> -->
+             <!-- <?php echo '<a href="ViewEditPR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'" class="btn btn-primary btn-xs" ><i class="fa">&#xf044;</i></a>' ?> -->
 
-             <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> " class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+             <a onclick="return confirm('Are you sure you want to Delete?');" name="del"  href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> " class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+
+
+             <!-- <button class="btn btn-danger btn-xs"   type="submit" name="del" onclick="/* return confirm('Are you sure you want to Add this item?'); */"><i class="fa fa-trash-o"></i> Delete</button> -->
            </td>
          </tr>
        <?php } ?>

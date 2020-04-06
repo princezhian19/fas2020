@@ -434,16 +434,18 @@ function confirmDelete(delUrl) {
                     document.getElementById("abc").value = x[6].innerHTML;
                   }
                 </script>
+               
                   </div>
                   <div class="form-group">
                     <label>Stock/Property No.  <label style="color: Red;" >*</label> </label>
                     <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
                   </div>
                   <div class="form-group">
-                    <label>Description/Specification <label style="color: Red;" >*</label> </label>
+                    <label>Description/Specification</label>
                     <textarea class="form-control" rows="3" name="description" ></textarea>
                   </div>
                 </div>
+                
 
                 <div class="col-md-6">
                   <p></p>
@@ -485,10 +487,7 @@ function confirmDelete(delUrl) {
                     </tbody>
                   </table>
                   <br>
-                  
-                   
-                  
-                 
+                
                   </div>
                   
                  
