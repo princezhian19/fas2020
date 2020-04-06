@@ -96,7 +96,7 @@ var action = '';
         "processing": true,
         "serverSide": false,
         "ajax": "DATATABLE/server_processing.php",
-        "order": [[ 1, "desc" ]],
+        "order": [[ 0, "desc" ]],
         "columnDefs": [ {
             "targets": 11,
             "render": function ( data, type, row, meta ) {  

@@ -272,7 +272,7 @@ background-position: 90px 5px;
 
                                                   <tr>
                                                   <td colspan = 4>
-                                                  <textarea rows="20" name = "issue" cols="56"  style ="resize:none;width:100%;" >
+                                                  <textarea rows="20" name = "issue" cols="56"  style ="resize:none;width:100%;text-align:left;" >
 
                                                   </textarea>
                                                   </td>

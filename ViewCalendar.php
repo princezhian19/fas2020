@@ -76,10 +76,11 @@ $events = $req->fetchAll();
           <div class="row">
             <button class="pull-right btn btn-success" style = "margin-left:10px;">Add Events</button>
             <button class="pull-right btn btn-success" id = "fml">Manage All Events</button>
+
             <div class="col-md-2" id = "selectMonth" >
             </div>
             <div class="col-md-2">
-              <select class="form-control " id="selectYear" style="width: 50%;">
+              <select class="form-control " id="selectYear" style="width: 100%;">
                 <?php 
                 for($i= 2020; $i < 2031; $i++)
                 {
@@ -88,7 +89,28 @@ $events = $req->fetchAll();
                 ?>
               </select>
             </div>
-            <button class="btn btn-success" id = "fml"><a href='calendar/tcpdf/examples/viewall.php' style = "decoration:none; color:#fff;"> Export</a></button>
+            <div class="col-md-2">
+                <?php 
+                $currentDate = '2020-04-06';
+                   require_once 'connection.php';
+                   echo '<select class="form-control " id="selectDivision" style="width: 100%;">';
+                       $sql = mysqli_query($conn, "SELECT DIVISION_N,DIVISION_M FROM `tblpersonneldivision` ORDER BY DIVISION_N ASC");
+                       if (mysqli_num_rows($sql)>0) {
+                           while($row = mysqli_fetch_assoc($sql) )
+                           {
+                            $selectedOpt = ($row['DIVISION_N'] == $_SESSION['division'])?'selected':''; 
+
+                               echo '<option text="text" value="'.$row["DIVISION_N"].'" '.$selectedOpt.' >'.$row["DIVISION_M"].'</option>';
+                           }
+                       }
+                   echo '</select>';
+                   
+                  
+                ?>
+            </div>
+            <div class="col-md-2">
+            <button class="btn btn-success" id = "fml"><a href="library/export_calendar.php?date=<?php echo $currentDate;?>&division=<?php echo $_SESSION['division'];?>" style = "decoration:none; color:#fff;"> Export</a></button>
+          </div>
           </div>
         </div>
 <br>
