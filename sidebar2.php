@@ -104,6 +104,8 @@ function showDivision()
 
           </ul>
         </li>
+        <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>CREATE REQUEST</a>
+
         <!-- =================================================== -->
     
   <span class="sr-only">unread messages</span></span></a></li>

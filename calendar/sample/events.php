@@ -54,17 +54,7 @@ while ($row = $stmt->fetch()) {
 
 	<!-- Custom CSS -->
 	<style>
-	body {
-		padding-top: 70px;
-		/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-	}
-	#calendar {
-		max-width: 930px;
-	}
-	.col-centered{
-		float: none;
-		margin: 0 auto;
-	}
+	
 </style>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -146,7 +136,7 @@ while ($row = $stmt->fetch()) {
 					right: 'month,basicWeek,basicDay'
 				},
 
-				editable: false,
+			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			selectable: true,
 			selectHelper: true,

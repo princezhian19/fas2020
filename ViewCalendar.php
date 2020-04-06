@@ -150,10 +150,11 @@ $(document).ready(function () {
         
         editable: true,
         eventDrop: function (event, delta) {
+          alert('a');
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                     $.ajax({
-                        url: 'edit-event.php',
+                        url: 'calendar/edit-event.php',
                         data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event.id,
                         type: "POST",
                         success: function (response) {

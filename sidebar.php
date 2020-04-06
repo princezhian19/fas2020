@@ -144,6 +144,7 @@ $username = $_SESSION['username'];
           <ul class="treeview-menu" >
             <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ON-GOING<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "on_going"><b>0</b></span></a></li>
             <li><a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>SUBMITTED<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
+            <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>CREATE REQUEST</a>
 
           </ul>
         </li>
