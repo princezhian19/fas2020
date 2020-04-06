@@ -9,17 +9,6 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
 <title>Annual Procurement Plan</title>
 <head>
   <meta charset="utf-8">
@@ -48,10 +37,8 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('app_table.php');?>
-
     </section>
   </div>
- 
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -65,10 +52,10 @@ $username = $_SESSION['username'];
     $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : true,
       'ordering'    : false,
-      'info'        : true,
+      'info'        : false,
       'autoWidth'   : true
     })
   })

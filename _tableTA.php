@@ -14,6 +14,9 @@ $mydb = new db(); // create a new object, class db()
 th{
   color:blue;
 }
+/* .dataTables_wrapper .dataTables_paginate {
+    float: left;
+} */
 </style>
 </head>
 
@@ -21,7 +24,7 @@ th{
   <div class="row">
     <div class="col-md-12">
       <div class="box">
-        <div class="panel panel-default">
+        <div class="panel panel-defasult">
           <div class="box-body"> 
             <div>
                 <h1>Monitoring for ICT Technical Assistance Request</h1><br>
@@ -74,7 +77,7 @@ include 'connection.php';
                               </select>
                         </div>
                         <div class="col-md-2">
-                          <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export FML Report</button></ol>
+                          <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export PML Report</button></ol>
                         </div>
                         <div class="col-md-2" style = "margin-left:-30px;">
                           <li class="btn btn-success"><a  href="#" style="color:white;text-decoration: none;" id = "psl">Export PSL Report</a></li>
@@ -106,7 +109,7 @@ include 'connection.php';
                         <th>END USER</th>
                         <th>OFFICE</th>
                         <th>ISSUE/CONCERN</th>
-                        <th>MODE OF REQUEST</th>
+                        <th>TYPE OF REQUEST</th>
                         <th>Assigned Person</th>
                         <th>STATUS</th>
                         <th style = "text-align:center;">ACTION</th>

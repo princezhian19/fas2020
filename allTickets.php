@@ -59,7 +59,18 @@ function filldataTable()
                                             <div class="row no-gutters">
                                                 <div class="col-md-2" style = "background-color:#9FA8DA;height:112px;text-align:center;padding-top:3%;font-size:20px;height:115px;">
                                                 <?php echo '<b>'.$row['CONTROL_NO'].'</b>';?>
-                                                <?php echo '<label style = "color:blue;">'.$row['STATUS_REQUEST'].'</label>';?>
+                                                <?php 
+                                                if($row['STATUS_REQUEST'] == 'Submitted')
+                                                {
+                                                    echo '<label style = "color:red;">'.$row['STATUS_REQUEST'].'</label>';
+                                                }else if($row['STATUS_REQUEST'] == 'Received')
+                                                {
+                                                    echo '<label style = "color:orange;">'.$row['STATUS_REQUEST'].'</label>';
+                                                }else if ($row['STATUS_REQUEST'] == 'For action')
+                                                {
+                                                    echo '<label style = "color:darkblue;">'.$row['STATUS_REQUEST'].'</label>';
+                                                }
+                                                ?>
                                                     
                                                 </div>
                                                 <div class="col-md-10" style = "background-color:#CFD8DC;">
@@ -93,8 +104,7 @@ function filldataTable()
                                                 if($row['ASSIST_BY'] == '' || $row['ASSIST_BY'] == null)
                                                 {
                                                     ?>
-                                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="FAD">
-                                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Assignee</span>
+                                                    <span style="font-size:10px;vertical-align:top;line-height:10px;"></span>
                                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-59.8px;font-size:12px;">-</span>
                                                     <?php
                                                 }else{
@@ -462,7 +472,7 @@ $('.sweet-16').click(function()
                   setTimeout(function () {
                   swal("Service Completed!");
                   }, 3000);
-                  window.location = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id=<?php echo $_GET['ticket_id']?>";
+                  window.location = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id="+ids;
               }
             });
         });

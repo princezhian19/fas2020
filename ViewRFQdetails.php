@@ -7,20 +7,8 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
 ?>
-
 <!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -30,14 +18,12 @@ $username = $_SESSION['username'];
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <?php include('sidebar.php');?>
-  
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
@@ -46,7 +32,6 @@ $username = $_SESSION['username'];
       </ol>
       <br>
       <br>
-        
         <?php
         if(!empty($_GET['message'])) {
         $message = $_GET['message'];
@@ -56,7 +41,6 @@ $username = $_SESSION['username'];
         <?php include('rfq_items_details.php');?>
     </section>
   </div>
- 
 </div>
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -67,16 +51,15 @@ $username = $_SESSION['username'];
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
-
 <script>
   $(function () {
     $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : true,
       'ordering'    : true,
-      'info'        : true,
+      'info'        : false,
       'autoWidth'   : true
     })
   })

@@ -8,17 +8,6 @@ $username = $_SESSION['username'];
 }
 ?><!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +24,6 @@ $username = $_SESSION['username'];
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <?php include('sidebar2.php');?>
-  
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
@@ -45,21 +33,17 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('dv_table_return.php');?>
-
     </section>
   </div>
- 
 </div>
-
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
 <script>
   $(function () {
     $('#example').DataTable()
     $('#example').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : true,
       'ordering'    : true,
       'info'        : true,

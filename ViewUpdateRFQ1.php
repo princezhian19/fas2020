@@ -9,17 +9,6 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,7 +24,6 @@ $username = $_SESSION['username'];
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <?php include('sidebar2.php');?>
-  
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
@@ -45,10 +33,8 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('update_rfq_items1.php');?>
-
     </section>
   </div>
- 
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="dist/js/adminlte.min.js"></script>

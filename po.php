@@ -74,7 +74,7 @@ $autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
 <body>
   <div class="box box-default">
     <div class="box-header with-border">
-      <h1 align="">&nbspCreate ORS/BURS</h1>
+      <h1 align="">&nbspCreate PO</h1>
       <div class="box-header with-border">
       </div>
       <form method="POST" autocomplete="off" >

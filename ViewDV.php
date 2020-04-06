@@ -7,7 +7,6 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <title>Dsibursement</title>
@@ -30,9 +29,7 @@ $username = $_SESSION['username'];
   <?php include('sidebar.php');?>
     <?php else: ?>
   <?php include('sidebar2.php');?>
-
   <?php endif ?>
-  
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
@@ -56,10 +53,10 @@ $username = $_SESSION['username'];
   $(function () {
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : true,
       'ordering'    : false,
-      'info'        : true,
+      'info'        : false,
       'autoWidth'   : true
     })
   })
