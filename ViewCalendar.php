@@ -108,9 +108,19 @@ $username = $_SESSION['username'];
 
 $(document).ready(function () {
     var calendar = $('#calendar').fullCalendar({
+      header: {
+					left: 'prev,next today',
+					center: 'title',
+					right: 'month,basicWeek,basicDay'
+				},
         editable: true,
+        eventLimit: true,
+        selectable: true,
+        selectHelper: true,
         events: "calendar/fetch-event.php",
         displayEventTime: false,
+        selectable: true,
+        selectHelper: true,
         eventRender: function (event, element, view) {
             if (event.allDay === 'true') {
                 event.allDay = true;
@@ -118,8 +128,6 @@ $(document).ready(function () {
                 event.allDay = false;
             }
         },
-        selectable: true,
-        selectHelper: true,
         select: function (start, end, allDay) {
             var title = prompt('Event Title:');
 
@@ -128,7 +136,7 @@ $(document).ready(function () {
                 var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
 
                 $.ajax({
-                    url: 'add-event.php',
+                    url: 'calendar/add-event.php',
                     data: 'title=' + title + '&start=' + start + '&end=' + end,
                     type: "POST",
                     success: function (data) {
@@ -147,15 +155,13 @@ $(document).ready(function () {
             }
             calendar.fullCalendar('unselect');
         },
-        
-        editable: true,
         eventDrop: function (event, delta) {
-          alert('a');
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                    alert(event.title);
                     $.ajax({
-                        url: 'calendar/edit-event.php',
-                        data: 'title=' + event.title + '&start=' + start + '&end=' + end + '&id=' + event.id,
+                        url: 'calendar/eddit-event.php',
+                        data: 'start=' + start + '&end=' + end + '&id=' + event.id,
                         type: "POST",
                         success: function (response) {
                             displayMessage("Updated Successfully");

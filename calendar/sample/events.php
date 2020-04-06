@@ -128,7 +128,6 @@ while ($row = $stmt->fetch()) {
 	<script>
 
 		$(document).ready(function() {
-
 			$('#calendar').fullCalendar({
 				header: {
 					left: 'prev,next today',

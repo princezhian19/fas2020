@@ -88,6 +88,8 @@ function showDivision()
             </span>
           </a>
           <ul class="treeview-menu" >
+        <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>CREATE REQUEST</a>
+
             <li>
               <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;">
                 <i class="fa">&#xf0f6;</i>
@@ -104,7 +106,6 @@ function showDivision()
 
           </ul>
         </li>
-        <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>CREATE REQUEST</a>
 
         <!-- =================================================== -->
     
