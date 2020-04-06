@@ -89,10 +89,10 @@ $columns = array(
         }
     ),
 	array(
-		'db' => 'STATUS_REQUEST', 
+		'db' => 'START_DATE', 
 		'dt' => 3,
 		'formatter' => function( $d, $row ) {
-			if($d == 'Submitted')
+			if($d == '0000-00-00' || $d == null)
 			{
 				$d = '<a class = "btn btn-info btn-xs"   id = "sweet-14"> <i class="fa fa-check-circle"></i>Receive</a>';
 				return $d;
