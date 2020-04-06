@@ -8,6 +8,7 @@
         <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
           <thead>
             <tr style="background-color: white;color:blue;">
+              <th width="150">USERNAME</th>
               <th width="150">LAST NAME</th>
               <th width="150">FIRST NAME</th>
               <th width="150">MIDDLE NAME</th>
@@ -16,14 +17,16 @@
           </thead>
           <?php
           $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-          $QUERY = mysqli_query($conn, "SELECT EMP_N,LAST_M,MIDDLE_M,FIRST_M FROM tblemployee WHERE ACTIVATED = 'No' AND BLOCK ='N' ORDER BY EMP_N DESC ");
+          $QUERY = mysqli_query($conn, "SELECT UNAME,EMP_N,LAST_M,MIDDLE_M,FIRST_M FROM tblemployee WHERE ACTIVATED = 'No' AND BLOCK ='N' ORDER BY EMP_N DESC ");
           while ($row = mysqli_fetch_assoc($QUERY)) {
             $id = $row["EMP_N"];
+            $UNAME = $row["UNAME"];
             $LAST_M = $row["LAST_M"];
             $FIRST_M = $row["FIRST_M"];  
             $MIDDLE_M = $row["MIDDLE_M"];
             ?>
             <tr>
+              <td><?php echo $UNAME;?></td>
               <td><?php echo $LAST_M;?></td>
               <td><?php echo $FIRST_M;?></td>
               <td><?php echo $MIDDLE_M;?></td>
