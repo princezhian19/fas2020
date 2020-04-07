@@ -7,7 +7,7 @@ require_once "db.php";
 $title      =       isset($_POST['title']) ? $_POST['title'] : "";
 $start      =       isset($_POST['start']) ? $_POST['start'] : "";
 $startdate  =       date('Y-m-d',strtotime($_POST['startdatetxtbox']));
-$enddate    =       date('Y-m-d',$_POST['enddatetxtbox']));
+$enddate    =       date('Y-m-d',strtotime($_POST['enddatetxtbox']));
 $description=       $_POST['descriptiontxtbox'];
 $venue      =       $_POST['venuetxtbox']; 
 $enp        =       $_POST['enptxtbox'];
@@ -22,7 +22,7 @@ $postedby   =       $name;
 $posteddate =       $today;
 $realenddate=       $enddate . "\n" . $endtime;
 $dateplusone=       new DateTime($realenddate);
-$dateplusone->modify('+12 hours');
+$dateplusone->modify('+12');
 $enddatetime=       $dateplusone->format('Y-m-d h:i:s');
 $remarks    =       $_POST['remarks'];
 $datetime1  =       strtotime($startdatetime);
@@ -32,7 +32,7 @@ $days       =       $secs / 86400;
 $cancelflag =       0;
 $office     =       $_SESSION['division'];
 $currentuser=       $_SESSION['currentuser'];
-
+$enddatetime2 =     date('Y-m-d',strtotime($_POST['startdatetxtbox']) . ' +1 day'));
 
 $sql = "INSERT INTO events 
 (office,title, 
@@ -43,7 +43,7 @@ postedby, posteddate,
 realenddate, cancelflag, 
 status,remarks) 
 VALUES 
-('$office','$title','$color','$startdatetime','$enddate','$description','$venue','$enp','$currentuser','$posteddate','$realenddate','$cancelflag','1','$remarks')";
+('$office','$title','$color','$startdatetime','$enddatetime2','$description','$venue','$enp','$currentuser','$posteddate','$realenddate','$cancelflag','1','$remarks')";
 
 $result = mysqli_query($conn, $sql);
 
