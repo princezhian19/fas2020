@@ -1,4 +1,6 @@
 <?php
+session_start();
+$complete_name = $_SESSION['complete_name'];
 date_default_timezone_set("Asia/Manila");
 include 'connection.php';
 $id = $_POST['id'];
@@ -17,11 +19,13 @@ switch ($option) {
         $insert ="UPDATE `tbltechnical_assistance` SET 
         `STATUS_REQUEST` = 'Received',
         `START_DATE` = '$date_recieved',
-        `START_TIME` = '$time_recieved'
+        `START_TIME` = '$time_recieved',
+        `ASSIST_BY`  = '$complete_name'
         WHERE `CONTROL_NO` = '$id' ";
         if (mysqli_query($conn, $insert)) {
         } else {
         }
+   
         break;
         echo $insert;
     case 'complete':
