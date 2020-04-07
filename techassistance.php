@@ -105,7 +105,7 @@ var action = '';
               $dateFormat = '';
               // return $dateFormat;
             }
-            if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
+            if(row[10] == '<span style = "background-color:red;">Submitted</span>')
             {
               
               if(<?php echo $division?> == 16)

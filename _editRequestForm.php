@@ -679,24 +679,25 @@ function setCompletedTime()
                                                   <tr>
                                                     <td colspan = 4>
                                                     <div class="form-check">
-                      <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Resolved</label>
-                          <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Defectived (to be referred to GSS for repair)</label>
-                              </div>
+                                                      <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
+                                                      <label class="form-check-label" for="exampleCheck1">Resolved</label>
+                                                      
+                                                      <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
+                                                      <label class="form-check-label" for="exampleCheck1">Defectived (to be referred to GSS for repair)</label>
+                                                    </div>
                                                     </td>
                                                   </tr>
                                                   
 
                                                   <tr>
                                                   <td colspan = 4>
-                                                  <textarea  class = "disabletxtarea" rows="20" name = "issue" cols="56"  style ="resize:none;width:100%;" >
+                                                  <textarea  class = "disabletxtarea" rows="20" name = "issue" cols="56"  style ="background-color:#ECEFF1;resize:none;width:100%;" >
                                                   <?php echo showIssue(); ?>
                                                   </textarea>
                                                   </td>
 
                                                   <td colspan = 4>
-                                                  <textarea  rows="20" cols="56" style ="resize:none;width:100%;text-align:left;" name = "STATUS_DESC">
+                                                  <textarea id ="diagnose" rows="20" cols="56" style ="resize:none;width:100%;align-content:left;" name = "STATUS_DESC">
                                                   <?php  echo showDiagnose(); ?>
                                                   </textarea>
                                                   </td>
@@ -824,8 +825,18 @@ function setCompletedTime()
 <script src="_includes/sweetalert.min.js"></script>
 <link rel="stylesheet" href="_includes/sweetalert.css">
 <script>
+$('document').ready(function()
+{
+    $('textarea').each(function(){
+            $(this).val($(this).val().trim());
+        }
+    );
+});
+
    var c_n = $('#control_no').val();
+ 
     document.querySelector('.sweet-14').onclick = function(){
+  
           swal({
               title: "Are you sure you want to save?",
               text: "Control No:"+c_n,
@@ -833,24 +844,28 @@ function setCompletedTime()
               showCancelButton: true,
               confirmButtonClass: 'btn-danger',
               confirmButtonText: 'Yes',
-      closeOnConfirm: false,
-      showLoaderOnConfirm: true
+              closeOnConfirm: false,
+              showLoaderOnConfirm: true
           }, function () {
             var queryString = $('#submit').serialize();
-            $.ajax({
+            var d = $('#diagnose').val();
+         
+              $.ajax({
               url:"_editTAForm_save.php",
               method:"POST",
               data:$("#submit").serialize(),
-              
               success:function(data)
               {
                   setTimeout(function () {
                   swal("Record saved successfully!");
                   }, 3000);
-                  window.location = "_techassistance.php?division=<?php echo $_GET['division'];?>";
+                  window.location = "techassistance.php?division=<?php echo $SESSION['division'];?>";
               }
             });
+            
+            
         });
+    
     }
   $(function () {
   
@@ -957,9 +972,9 @@ $(function() {
   document.getElementById("purpose2").disabled = true; 
   document.getElementById("softwares").disabled = true;
   document.getElementById("changeaccount").disabled = true; 
-  document.getElementById("others1").disabled = false ; 
-  document.getElementById("others2").disabled = false; 
-  document.getElementById("others3").disabled = false; 
+  document.getElementById("others1").disabled = true ; 
+  document.getElementById("others2").disabled = true; 
+  document.getElementById("others3").disabled = true; 
   
 
     enable_cb1();
@@ -974,7 +989,9 @@ $(function() {
   $("#checkboxgroup_g5").click(enable_cb5);
   
 });
-
+$('.checkboxgroup').on('change', function() {
+      $('.checkboxgroup').not(this).prop('checked', false);  
+  });
 function enable_cb1() {
   if (this.checked) {
     $(".checkboxgroup_g1").removeAttr("disabled");
