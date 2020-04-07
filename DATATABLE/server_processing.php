@@ -121,7 +121,7 @@ $columns = array(
 	array('db' => 'OFFICE', 'dt' => 6),
 	array('db' => 'ISSUE_PROBLEM', 'dt' => 7),
 	array('db' => 'TYPE_REQ_DESC', 'dt' => 8),
-    array('db' => 'PERSON_ASSISTED', 'dt' => 9),
+    array('db' => 'ASSIST_BY', 'dt' => 9),
     array(
 		'db' => 'STATUS_REQUEST', 
 		'dt' => 10,  

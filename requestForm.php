@@ -73,6 +73,13 @@ if($_GET['division'] == 11 || $_GET['division'] == 12 || $_GET['division'] == 13
 <!-- <script src="dist/js/adminlte.min.js"></script>
 <script src="dist/js/demo.js"></script> -->
 <script>
+$('document').ready(function()
+{
+    $('textarea').each(function(){
+            $(this).val($(this).val().trim());
+        }
+    );
+});
   $(function () {
     $('#example2').DataTable()
     $('#example1').DataTable({

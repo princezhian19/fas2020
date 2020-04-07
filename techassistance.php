@@ -48,7 +48,7 @@ $division = $_SESSION['division'];
  
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.j s"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
@@ -105,7 +105,7 @@ var action = '';
               $dateFormat = '';
               // return $dateFormat;
             }
-            if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
+            if(row[10] == '<span style = "background-color:red;">Submitted</span>')
             {
               
               if(<?php echo $division?> == 16)
@@ -118,7 +118,10 @@ var action = '';
             }
             else if (row[10] == '<span class="badge badge-pill" style = "background-color:orange;">Received</span>')
             {
-              action = 'ON GOING';
+              // action = 'ON GOING';
+              
+              action = '<a href = "allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" class = "btn btn-info btn-xs"   style = "width:100%;">Assign</a>';          
+
 
             }
             else if(row[10] == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
@@ -178,17 +181,18 @@ var action = '';
     $('#example tbody').on( 'click', '#sweet-14', function () {
       var data = table.row( $(this).parents('tr') ).data();
       var a = data[0];
-
-        swal({
-            title: "Are you sure you want to recieved this request?",
-            text: "Control No:"+data[0],
-            type: "info",
-            showCancelButton: true,
-            showCancelButton: true,
-            confirmButtonText: 'Yes',
-            closeOnConfirm: false,
-            showLoaderOnConfirm: true
-        }).then(function () {
+      swal("Control No: "+data[0], "You already received this request", "success")
+        // swal({
+        //     title: "Are you sure you want to recieved this request?",
+        //     text: "Control No:"+data[0],
+        //     type: "info",
+        //     showCancelButton: true,
+        //     showCancelButton: true,
+        //     confirmButtonText: 'Yes',
+        //     closeOnConfirm: false,
+        //     showLoaderOnConfirm: true
+        // })
+        .then(function () {
             $.ajax({
               url:"_ticketReleased.php",
               method:"POST",
@@ -201,7 +205,7 @@ var action = '';
                   setTimeout(function () {
                   swal("Record saved successfully!");
                   }, 3000);
-                  window.location = "allTickets.php?division=<?php echo $_GET['division']?>&ticket_id="+a;
+                  window.location = "techassistance.php?division=<?php echo $_GET['division']?>&ticket_id="+a;
               }
             });
         });
