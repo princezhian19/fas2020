@@ -49,7 +49,7 @@ $supplier_id = $_POST['supplier_id'];
 $date_opened = $_POST['date_opened'];
 $remarks = $_POST['remarks'];
 
-
+echo $supplier_id; exit;
 
 $INSERT_aoq = mysqli_query($conn,"INSERT INTO aoq_data(aoq_no,action_officer,datetime_created,date,remarks) VALUES('$abstract_no',14,'$date_opened','$date_opened','$remarks')");
 
@@ -80,13 +80,44 @@ echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='UpdateAoq.php?rfq_id=$rfq_id&abstract_id=$abstract_id';
         </SCRIPT>");
 
-// fixxxxx
-
-
-// save to selected quote rfq id, supplier_quote_id,aoq_id,
-// save to aoq_data aoq_no,action officer,remarks,date
-
 }
+
+ // S U P P L I E R S     Q U O T E      Q U E R Y
+
+
+$sql = mysqli_query($conn, "SELECT rq.id FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id WHERE rq.rfq_id = '$rfq_id' ");
+$row = mysqli_fetch_array($sql);
+$rid = $row['id'];
+
+$suppliers1 = mysqli_query($conn, "SELECT sq.id,s.id as sid,s.supplier_title FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  ");
+$rowS1 = mysqli_fetch_assoc($suppliers1);
+$supplier_title1 = $rowS1['supplier_title'];
+$sid1 = $rowS1['sid'];
+
+$suppliers2 = mysqli_query($conn, "SELECT s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  AND s.supplier_title != '$supplier_title1' ");
+$rowS2 = mysqli_fetch_assoc($suppliers2);
+$supplier_title2 = $rowS2['supplier_title'];
+$sid2 = $rowS2['sid'];
+
+
+$suppliers3 = mysqli_query($conn, "SELECT s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  AND s.id != $sid1 AND s.id != $sid2 ");
+$rowS3 = mysqli_fetch_assoc($suppliers3);
+$supplier_title3 = $rowS3['supplier_title'];
+$sid3 = $rowS3['sid'];
+
+$suppliers4 = mysqli_query($conn, "SELECT s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  AND s.id != $sid1 AND s.id != $sid2 AND s.id != $sid3");
+$rowS4 = mysqli_fetch_assoc($suppliers4);
+$supplier_title4 = $rowS4['supplier_title'];
+$sid4 = $rowS4['sid'];
+
+$sql_items = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid1 ");
+
+$sql_items2 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid2 ");
+
+$sql_items3 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid3 ");
+
+$sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid4 ");
+
 ?>
 <html>
 <head>
@@ -104,11 +135,8 @@ echo ("<SCRIPT LANGUAGE='JavaScript'>
             </div>
             <div class="box-body table-responsive no-padding">
                 <div class="box-body">
-
-                  <!--  <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a> -->
-                  <!-- <a href="ViewRFQ.php" class="btn btn-warning">Back</a> -->
                   <h4>Item(s)</h4>
-                  <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
+                  <table id="" class="table table-striped table-bordered" style="background-color: white;">
                     <thead>
                         <tr style="background-color: white;color:blue;">
                             <th width="500">Item</th>
@@ -143,25 +171,6 @@ echo ("<SCRIPT LANGUAGE='JavaScript'>
                     }
                     ?>
                 </table>
-                <br>
-                <table id="example1" class="" style="background-color: white;">
-                    <thead>
-                        <tr style="background-color: white;color:blue;">
-                            <th width="500"></th>
-                            <th width="500"></th>
-                            <th width="500"></th>
-                            <th width="500"></th>
-                            <th width="500"></th>
-                        </tr>
-                    </thead>
-                    <?php 
-                    $view_query1 = mysqli_query($conn, "SELECT  sum(abc*qty) as aa from pr_items WHERE pr_no = '$pr_no' ");
-                    $row = mysqli_fetch_array($view_query1);
-                    $abc12 = $row["aa"];
-                    $tot = number_format($abc12,2);
-                    ?>
-                </table>
-
             </div>
         </div>
     </div>
@@ -195,34 +204,23 @@ echo ("<SCRIPT LANGUAGE='JavaScript'>
                         <th width="150" >PR Date Received</th>
                         <td><?php echo $pr_date;?></td>
                     </tr>
-                     <!-- <tr>
-                        <?php 
-                    $view_query1 = mysqli_query($conn, "SELECT  sum(abc*qty) as aa from pr_items WHERE pr_no = '$pr_no' ");
-                      while ($row = mysqli_fetch_assoc($view_query1)) {
-                        $abc1 = $row["aa"];
-                                }
-                        ?>
-                        <th>ABC:</th>
-                        <td><?php echo number_format($abc1,2);?></td>
-                    </tr> -->
                 </table>
             </div>
         </div>
     </div>
 </div>
-<div class="col-md-8" >
-    <div class="box box-primary">
+<div class="col-md-12" >
+    <div class="box box-success">
         <div class="box-header with-border" align="left">
             <h4>Abstract of Quotations</h4>
-            <!-- <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a> -->
         </div>
         <div class="box-body table-responsive no-padding">
             <div class="box-body">
                 <form method="POST">
-                    <div class="col-md-10" >
+                    <div class="col-md-10" hidden>
                        <div class="form-group">
                         <label>Select Supplier</label>
-                        <select required class="form-control " style="width: 100%;" autocomplete="off" id="supplier_id" name="supplier_id" >
+                        <select  class="form-control " style="width: 100%;" autocomplete="off" id="supplier_idasd" name="supplier_idad" >
                            <option value="" disabled selected>Select your Supplier</option>
                            <?php echo supplier($connect); ?>
                        </select> 
@@ -239,19 +237,293 @@ echo ("<SCRIPT LANGUAGE='JavaScript'>
                     <input required type="datetime-local" name="date_opened" class="form-control">
                 </div>
                 <label>Remarks</label>
-                <textarea class="form-control" name="remarks" style="width: 510px;"></textarea>
+                <textarea class="form-control" name="remarks" style="width: 590px;"></textarea>
                 <br>
-                <button class="btn btn-success" name="submit" style="width: 100px;">Save</button>
 
 
             </div>
 
 
-        </form>
     </div>
 </div>
 </div>
 </div>
+<div class="col-md-12" >
+    <div class="box box-primary">
+        <div class="box-header with-border" align="left">
+            <h4>Abstract of Quotations</h4>
+        </div>
+        <div class="box-body table-responsive no-padding">
+            <div class="box-body">
+                <form method="POST">
+                    <!-- S U P P L I E R      1  [PAG DLWA LANG ANG SUPPLIER] -->
+                    <?php if ($supplier_title3 == ''): ?>
+                        <div class="box-body">
+                          <div class="row" id="boxed">
+                            <div class="col-xs-6">
+                                <table id="example1" class="  table-responsive" style="width:500px;background-color: white;" align="center">
+                                    <thead>
+                                        <th width="" ><?php echo $supplier_title1;?></th>
+                                    </thead>
+                                </table>
+                                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
+                                 <thead >
+                                    <th width="" >Procurement</th>
+                                    <th width="" >PPU</th>
+                                    <th width="" ></th>
+                                </thead>   
+                                <?php 
+                                while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
+                                    $ppu11 = $rowrfid1['ppu'];
+                                    $procurement = $rowrfid1['procurement'];
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $procurement;?></td>
+                                        <td><?php echo $ppu11;?></td>
+                                        <td><input type="checkbox" name="supplier_id" value="<?php echo $sid1 ?>"><br></td>
+                                    </tr>
+                                <?php } ?>
+                            </table>
+                        </div>
+                        <!-- S U P P L I E R      2  -->
+                        <div class="col-xs-6">
+                         <table id="example1" class="  table-responsive" style="width:500px;background-color: white;" align="center">
+                            <thead style="width:500px;">
+                                <th width="" ><?php echo $supplier_title2;?></th>
+                            </thead>
+                        </table>
+                        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
+                         <thead style="width:500px;">
+                            <th width="" >Procurement</th>
+                            <th width="" >PPU</th>
+                            <th width="" ></th>
+                        </thead>   
+                        <?php 
+                        while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
+                            $ppu112 = $rowrfid12['ppu'];
+                            $procurement2 = $rowrfid12['procurement'];
+                            ?>
+                            <tr>
+                                <td><?php echo $procurement2;?></td>
+                                <td><?php echo $ppu112;?></td>
+                                <td><input type="checkbox" name="supplier_id" value="<?php echo $sid2 ?>"><br></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="box-body">
+          <div class="row" id="boxed">
+              <!-- S U P P L I E R      1 [PAGE TATLO ANG SUPPIER] -->
+              <div class="col-xs-4">
+                  <table id="example1" class="  table-responsive" style="width:400px;background-color: white;">
+                    <thead>
+                        <th width="" ><?php echo $supplier_title1;?></th>
+                    </thead>
+                </table>
+                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:400px;background-color: white;">
+                 <thead>
+                    <th width="" >Procurement</th>
+                    <th width="" >PPU</th>
+                    <th width="" ></th>
+                </thead>   
+                <?php 
+                while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
+                    $ppu11 = $rowrfid1['ppu'];
+                    $procurement = $rowrfid1['procurement'];
+                    ?>
+                    <tr>
+                        <td><?php echo $procurement;?></td>
+                        <td><?php echo $ppu11;?></td>
+                        <td><input type="checkbox" name="supplier_id" value="<?php echo $sid1 ?>"><br></td>
+                    </tr>
+                <?php } ?>
+            </table>
+
+        </div>
+        <!-- S U P P L I E R     2  -->
+        <div class="col-xs-4">
+         <table id="example1" class="  table-responsive" style="width:400px;background-color: white;">
+            <thead>
+                <th width="" ><?php echo $supplier_title2;?></th>
+            </thead>
+        </table>
+        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:400px;background-color: white;">
+         <thead>
+            <th width="" >Procurement</th>
+            <th width="" >PPU</th>
+            <th width="" ></th>
+        </thead>   
+        <?php 
+        while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
+            $ppu112 = $rowrfid12['ppu'];
+            $procurement2 = $rowrfid12['procurement'];
+            ?>
+            <tr>
+                <td><?php echo $procurement2;?></td>
+                <td><?php echo $ppu112;?></td>
+                <td><input type="checkbox" name="supplier_id" value="<?php echo $sid2 ?>"><br></td>
+            </tr>
+        <?php } ?>
+    </table>
+</div>
+<!-- S U P P L I E R     3  -->
+<div class="col-xs-4">
+ <table id="example1" class="  table-responsive" style="width:400px;background-color: white;">
+    <thead>
+        <th width="" ><?php echo $supplier_title3;?></th>
+    </thead>
+</table>
+<table id="example1" class="table table-striped table-bordered table-responsive" style="width:400px;background-color: white;">
+ <thead>
+    <th width="" >Procurement</th>
+    <th width="" >PPU</th>
+    <th width="" ></th>
+</thead>   
+<?php 
+while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
+    $ppu113 = $rowrfid13['ppu'];
+    $procurement3 = $rowrfid13['procurement'];
+    ?>
+    <tr>
+        <td><?php echo $procurement3;?></td>
+        <td><?php echo $ppu113;?></td>
+        <td><input type="checkbox" name="supplier_id" value="<?php echo $sid3 ?>"><br></td>
+    </tr>
+<?php } ?>
+</table>
+</div>
+
+</div>
+</div>
+
+<?php endif ?>
+<?php if ($supplier_title4 !='' AND $supplier_title3 !=''): ?>
+   <div class="box-body">
+      <div class="row" id="boxed">
+          <!-- S U P P L I E R      1 [PAG APAT ANG SUPPLIER] -->
+          <div class="col-xs-3">
+              <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
+                <thead>
+                    <th width="" ><?php echo $supplier_title1;?></th>
+                </thead>
+            </table>
+            <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+             <thead>
+                <th width="" >Procurement</th>
+                <th width="" >PPU</th>
+                <th width="" ></th>
+            </thead>   
+            <?php 
+            while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
+                $ppu11 = $rowrfid1['ppu'];
+                $procurement = $rowrfid1['procurement'];
+                ?>
+                <tr>
+                    <td><?php echo $procurement;?></td>
+                    <td><?php echo $ppu11;?></td>
+                    <td><input type="checkbox" name="supplier_id" value="<?php echo $sid1 ?>"><br></td>
+                </tr>
+            <?php } ?>
+        </table>
+
+    </div>
+    <!-- S U P P L I E R     2  -->
+    <div class="col-xs-3">
+     <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
+        <thead>
+            <th width="" ><?php echo $supplier_title2;?></th>
+        </thead>
+    </table>
+    <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+     <thead>
+        <th width="" >Procurement</th>
+        <th width="" >PPU</th>
+        <th width="" ></th>
+    </thead>   
+    <?php 
+    while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
+        $ppu112 = $rowrfid12['ppu'];
+        $procurement2 = $rowrfid12['procurement'];
+        ?>
+        <tr>
+            <td><?php echo $procurement2;?></td>
+            <td><?php echo $ppu112;?></td>
+            <td><input type="checkbox" name="supplier_id" value="<?php echo $sid2 ?>"><br></td>
+        </tr>
+    <?php } ?>
+</table>
+</div>
+<!-- S U P P L I E R     3  -->
+<div class="col-xs-3">
+ <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
+    <thead>
+        <th width="" ><?php echo $supplier_title3;?></th>
+    </thead>
+</table>
+<table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+ <thead>
+    <th width="" >Procurement</th>
+    <th width="" >PPU</th>
+    <th width="" ></th>
+</thead>   
+<?php 
+while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
+    $ppu113 = $rowrfid13['ppu'];
+    $procurement3 = $rowrfid13['procurement'];
+    ?>
+    <tr>
+        <td><?php echo $procurement3;?></td>
+        <td><?php echo $ppu113;?></td>
+        <td><input type="checkbox" name="supplier_id" value="<?php echo $sid3 ?>"><br></td>
+    </tr>
+<?php } ?>
+</table>
+</div>
+<!-- S U P P L I E R     4  -->
+<div class="col-xs-3">
+ <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
+    <thead>
+        <th width="" ><?php echo $supplier_title4;?></th>
+    </thead>
+</table>
+<table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+ <thead>
+    <th width="" >Procurement</th>
+    <th width="" >PPU</th>
+    <th width="" ></th>
+</thead>   
+<?php 
+while($rowrfid14 = mysqli_fetch_assoc($sql_items4) ){
+    $ppu114 = $rowrfid14['ppu'];
+    $procurement4 = $rowrfid14['procurement'];
+    ?>
+    <tr>
+        <td><?php echo $procurement4;?></td>
+        <td><?php echo $ppu114;?></td>
+        <td><input type="checkbox" name="supplier_id" value="<?php echo $sid4 ?>"><br></td>
+    </tr>
+<?php } ?>
+</table>
+</div>
+</div>
+</div>
+<?php endif ?>
+</div>
+</div>
+</div>
+                <button class="btn btn-success" name="submit" style="width: 100px;">Save</button>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+</form>
+<!-- end of div class row -->
 </div>
 <div class="row">
     <div class="col-md-7">
