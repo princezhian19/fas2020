@@ -7,7 +7,7 @@ require_once "db.php";
 $title      =       isset($_POST['title']) ? $_POST['title'] : "";
 $start      =       isset($_POST['start']) ? $_POST['start'] : "";
 $startdate  =       date('Y-m-d',strtotime($_POST['startdatetxtbox']));
-$enddate    =       date('Y-m-d',strtotime($_POST['enddatetxtbox']));
+$enddate    =       date('Y-m-d',$_POST['enddatetxtbox']));
 $description=       $_POST['descriptiontxtbox'];
 $venue      =       $_POST['venuetxtbox']; 
 $enp        =       $_POST['enptxtbox'];
@@ -17,13 +17,13 @@ $end        =       isset($_POST['end']) ? $_POST['end'] : "";
 $starttime  =       date("H:i:s", mktime(0, 0, 0));
 $endtime    =       date("H:i:s", mktime(0, 0, 0));
 $today      =       date("Y-m-d h:i:s"); 
+$startdatetime =    $startdate . "\n" . $starttime;
 $postedby   =       $name;
 $posteddate =       $today;
 $realenddate=       $enddate . "\n" . $endtime;
 $dateplusone=       new DateTime($realenddate);
 $dateplusone->modify('+12 hours');
-$startdatetime =    $startdate . "\n" . $starttime;
-$enddatetime=       $enddate ."\n" . $endtime;
+$enddatetime=       $dateplusone->format('Y-m-d h:i:s');
 $remarks    =       $_POST['remarks'];
 $datetime1  =       strtotime($startdatetime);
 $datetime2  =       strtotime($enddatetime);
@@ -50,5 +50,5 @@ $result = mysqli_query($conn, $sql);
 if (! $result) {
     $result = mysqli_error($conn);
 }
-
+echo $sql;
 ?>
