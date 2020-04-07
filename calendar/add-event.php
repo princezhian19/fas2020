@@ -32,7 +32,7 @@ $days       =       $secs / 86400;
 $cancelflag =       0;
 $office     =       $_SESSION['division'];
 $currentuser=       $_SESSION['currentuser'];
-$enddatetime2 =     date('Y-m-d',strtotime($_POST['startdatetxtbox']) . ' +1 day'));
+// date('Y-m-d',strtotime('04/30/2020' . ' +1 day'));
 
 $sql = "INSERT INTO events 
 (office,title, 
@@ -43,7 +43,7 @@ postedby, posteddate,
 realenddate, cancelflag, 
 status,remarks) 
 VALUES 
-('$office','$title','$color','$startdatetime','$enddatetime2','$description','$venue','$enp','$currentuser','$posteddate','$realenddate','$cancelflag','1','$remarks')";
+('$office','$title','$color','$startdatetime','$realenddate','$description','$venue','$enp','$currentuser','$posteddate','$realenddate','$cancelflag','1','$remarks')";
 
 $result = mysqli_query($conn, $sql);
 
