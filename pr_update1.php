@@ -420,73 +420,75 @@ function confirmDelete(delUrl) {
               <div class="row">
                 <div class="col-md-6" style="padding-left: 30px;padding-top:10px;">
                 <label>Item/s <label style="color: Red;" >*</label> </label>
-                  <input type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
+                  <input type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="">
                   <table class="table table-striped table-hover" id="main">
                     <tbody id="result">
                     </tbody>
                   </table>
+
+                  <script type="text/javascript">
+                  $(document).ready(function(){
+                  function load_data(query)
+                  {
+                  $.ajax({
+
+
+                    url:"fetch_pr1.php",
+                    method:"POST",
+                    data:{query:query,
+                    name: $('#pmo').val()
+                    },
+                    success:function(data)
+                    {
+                      $('#result').html(data);
+                      console.log( $('#pmo').val());
+                    }
+                  });
+                  }
+                  $('#app_items').keyup(function(){
+                  var search = $(this).val();
+                  if(search != '')
+                  {
+                    load_data(search);
+                  }
+                  else
+                  {
+                    
+                    load_data();
+                    /* document.getElementById("code").value = ""; */
+                    document.getElementById("stocknumber").value = "";
+                    document.getElementById("abc").value="";
+                    document.getElementById("unit").value="";
+                    $("#main").show();
+                  }
+                  });
+                  });
+                  function showRow(row)
+                  {
+                  var x=row.cells;
+                  document.getElementById("id").value = x[0].innerHTML;
+                  document.getElementById("abc").value = x[1].innerHTML;
+                  document.getElementById("stocknumber").value = x[2].innerHTML;
+                  document.getElementById("abc").value = x[3].innerHTML;
+                  document.getElementById("app_items").value = x[4].innerHTML;
+                  document.getElementById("unit").value = x[5].innerHTML;
+                  //document.getElementById("abc").value = x[6].innerHTML;
+                  }
+                  </script>
                   <br>
                   <br>
                   
                   <div hidden>
                     <input type="text" name="app_items" id="id" class="form-control"/>
 
-                    <script type="text/javascript">
-    $(document).ready(function(){
-      function load_data(query)
-      {
-        $.ajax({
-        
-
-          url:"fetch_pr1.php",
-          method:"POST",
-          data:{query:query,
-          name: $('#pmo').val()
-          },
-          success:function(data)
-          {
-            $('#result').html(data);
-            console.log( $('#pmo').val());
-          }
-        });
-      }
-      $('#app_items').keyup(function(){
-        var search = $(this).val();
-        if(search != '')
-        {
-          load_data(search);
-        }
-        else
-        {
-          
-					load_data();
-					/* document.getElementById("code").value = ""; */
-					document.getElementById("stocknumber").value = "";
-          document.getElementById("abc").value="";
-          document.getElementById("unit").value="";
-          $("#main").show();
-        }
-      });
-    });
-    function showRow(row)
-    {
-      var x=row.cells;
-      document.getElementById("id").value = x[0].innerHTML;
-      document.getElementById("abc").value = x[1].innerHTML;
-      document.getElementById("stocknumber").value = x[2].innerHTML;
-      document.getElementById("abc").value = x[3].innerHTML;
-      document.getElementById("app_items").value = x[4].innerHTML;
-      document.getElementById("unit").value = x[5].innerHTML;
-      //document.getElementById("abc").value = x[6].innerHTML;
-    }
-  </script>
+                  
                   </div>
                   <div class="form-group">
                     <label>Stock/Property No.  <label style="color: Red;" >*</label> </label>
                     <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
                   </div>
                   <div class="form-group">
-                    <label>Description/Specification <label style="color: Red;" >*</label> </label>
+                    <label>Description/Specification</label>
                     <textarea class="form-control" rows="3" name="description" ></textarea>
                   </div>
                 </div>
@@ -499,6 +501,7 @@ function confirmDelete(delUrl) {
                     <label>Existing QTY</label>
                     <input class="form-control" type="number" readonly id="two" name="two">
                   </div>
+                  
                   <div class="form-group">
                     <label>Unit <label style="color: Red;" >*</label></label>
                     <input type="text" name="unit" id="unit"  class="form-control" readonly>

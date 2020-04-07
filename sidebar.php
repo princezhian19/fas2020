@@ -116,7 +116,7 @@ $username = $_SESSION['username'];
         </li>
           </ul>
         </li>
-        <li class="treeview" tyle="background-color: lightgray;">
+      <!--   <li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
             <span style="color:black;text-decoration: none;">OTHERS</span>
@@ -130,7 +130,7 @@ $username = $_SESSION['username'];
             <li><a href="/pmis/frontend/web/notes/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> RFQ NOTES</a></li>
             <li><a href="/pmis/frontend/web/checklist/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV CHECKLIST</a></li>
           </ul>
-        </li>
+        </li> -->
         
         <!-- ===================================================== -->
         <li class="treeview" tyle="background-color: lightgray;">

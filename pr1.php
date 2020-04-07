@@ -800,7 +800,8 @@ function confirmDelete(delUrl) {
           <tr>
           <th width="50">Stock/Property No.</th>
           <th width="100">Unit </th>
-           <th width="300">Item Description</th>
+           <th width="200">Item</th>
+           <th width="250">Description</th>
            <th width="100">Quantity</th>
            <th width="100">Unit Cost</th>
           <th width="150">Total Cost </th>
@@ -917,7 +918,9 @@ function confirmDelete(delUrl) {
             <td id="tdvalue" hidden><?php echo $pr_no?> </td>
             <td><?php echo $sn ?></td>
             <td><input hidden type="text" name="unit1[]" value="<?php echo $unit1 ?>"><?php echo $unit1a?></td>
-            <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php $itemconcat = $procurement1." ".$description1; echo  $itemconcat;   ?> </td>
+            <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php echo  $procurement1;?> </td>
+            <td><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
+            <!-- <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php $itemconcat = $procurement1." ".$description1; echo  $itemconcat;   ?> </td> -->
             <td><input hidden type="text" name="qty1[]" value="<?php echo $qty1 ?>"><?php echo $qty1?></td>
             <td><input hidden type="text" name="abc1[]" value="<?php echo $abc1 ?>"><?php echo $abc1?></td>
            
@@ -926,8 +929,9 @@ function confirmDelete(delUrl) {
             <td>
              <!-- <?php echo '<a href="ViewEditPR1.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?>  -->
 
-             <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR1.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> "><i style="font-size:24px" class="fa fa-trash-o"></i></a>
-           </td>
+             <!-- <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR1.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> "><i style="font-size:24px" class="fa fa-trash-o"></i></a> -->
+             <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> " class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+            </td>
          </tr>
        <?php } ?>
      </table>

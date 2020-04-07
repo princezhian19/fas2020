@@ -1,10 +1,10 @@
 <?php session_start();
 if(!isset($_SESSION['username'])){
-header('location:index.php');
+    header('location:index.php');
 }else{
   error_reporting(0);
-ini_set('display_errors', 0);
-$username = $_SESSION['username'];
+  ini_set('display_errors', 0);
+  $username = $_SESSION['username'];
 }
 ?>
 <?php
@@ -15,10 +15,13 @@ $rfq_id = $_GET['rfq_id'];
 $select_rfq = mysqli_query($conn,"SELECT * FROM rfq WHERE id = $rfq_id");
 $rowR = mysqli_fetch_array($select_rfq);
 $rfq_no = $rowR['rfq_no'];
+$pr_no = $rowR['pr_no'];
+/* echo $pr_no; */
+
 function supplier($connect)
 { 
   $output = '';
-  $query = "SELECT * FROM supplier GROUP BY id DESC ";
+  $query = "SELECT * FROM supplier GROUP BY supplier_title ASC ";
   $statement = $connect->prepare($query);
   $statement->execute();
   $result = $statement->fetchAll();
@@ -32,19 +35,19 @@ return $output;
 function table(){
     $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
     $rfq_id = $_GET['rfq_id'];
-  
+
     $select_items = mysqli_query($conn,"SELECT app.procurement,rq.id FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id WHERE rq.rfq_id = $rfq_id");
     while ($row = mysqli_fetch_assoc($select_items)) {
         $procurement = $row['procurement'];
         $item_id = $row['id'];
 
         echo   '<table id="example1" class="table table-bordered-striped table-bordered" style="width:;background-color: white;">
-    <thead>
-    <tr style="background-color: white;color:black;">
-    <th>Item</th>
-    <th>Price per Unit</th>
-    </tr>
-    </thead>' ;
+        <thead>
+        <tr style="background-color: white;color:black;">
+        <th>Item</th>
+        <th>Price per Unit</th>
+        </tr>
+        </thead>' ;
 
         echo  '<td width="800">';
         echo $procurement;
@@ -56,7 +59,7 @@ function table(){
         echo $item_id;    
         echo '</textarea></td>';
         echo  '<td>
-        <input type="text" required name="ppu[]" class="form-control col-md-6">
+        <input type="number" required name="ppu[]" class="form-control col-md-6">
         </td>';
     }
     echo '</table>';
@@ -67,72 +70,106 @@ if (isset($_POST['submit'])) {
     $ppu = $_POST['ppu'];
     $remarks = $_POST['remarks'];
 
-     for($count = 0; $count < count($_POST["ppu"]); $count++){
+    for($count = 0; $count < count($_POST["ppu"]); $count++){
         $ppu = $_POST['ppu'][$count]; 
         $remarks = $_POST['remarks'][$count]; 
         $item_id = $_POST['item_id'][$count]; 
+    
+    
+    /* echo "UPDATE pr set aoq = 1 where  pr_no = $pr_no"; */
+    //exit();
 
+        $INSERT = mysqli_query($conn,"INSERT INTO supplier_quote(supplier_id,rfq_item_id,ppu,remarks) VALUES('$supplier_id','$item_id','$ppu','$remarks')");
 
-    $INSERT = mysqli_query($conn,"INSERT INTO supplier_quote(supplier_id,rfq_item_id,ppu,remarks) VALUES('$supplier_id','$item_id','$ppu','$remarks')");
+        if ($INSERT) {
 
-    if ($INSERT) {
-       
+<<<<<<< HEAD
             echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Supplier Qoute Created!')
+                window.alert('Supplier Quote Created!')
+                window.location.href='CreateSupplierQuote.php?rfq_id=$rfq_id';
+                </SCRIPT>");
+
+        }else{
+=======
+    if ($INSERT) {
+
+        $updatePR = mysqli_query($conn,"UPDATE pr set aoq = '1' where  pr_no = '$pr_no'");
+        
+       
+        echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Supplier Quote Created!')
         window.location.href='CreateSupplierQuote.php?rfq_id=$rfq_id';
         </SCRIPT>");
        
    }else{
+>>>>>>> 72df766ce113e62f1c8e64bab580e894cb2a8d48
 
         }
 
     }
 
-    $insertAOQ = mysqli_query($conn,"INSERT INTO abstract_of_quote(supplier_id,rfq_id) VALUES('$supplier_id','$rfq_id')");
+
+
 }
+$insertAOQ = mysqli_query($conn,"INSERT INTO abstract_of_quote(supplier_id,rfq_id) VALUES('$supplier_id','$rfq_id')");
+$select_q = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id");
+$rowQ = mysqli_fetch_array($select_q);
+$rfq_items_idS = $rowQ['id'];
+
+$selectSupQ = mysqli_query($conn,"SELECT rfq_item_id FROM supplier_quote WHERE rfq_item_id = $rfq_items_idS");
+$selectSupQ1 = mysqli_query($conn,"SELECT count(rfq_item_id) as countQ FROM supplier_quote WHERE rfq_item_id = $rfq_items_idS");
+$rowSQ = mysqli_fetch_array($selectSupQ1);
+$countQ = $rowSQ['countQ'];
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="supplier-quote-form">
     <form method="POST">
         <div class="panel panel-default">
-           <h1><p style="padding-left: 15px;">Encode Supplier Quote for RFQ No. <?php echo $rfq_no;?></p></h1> 
-           <div class="panel-heading">
+         <h1><p style="padding-left: 15px;">Encode Supplier Quote for RFQ No. <?php echo $rfq_no;?></p></h1> 
+         <div class="panel-heading">
             <i class="fa fa-file-text"></i> Quotation(s)
             <!-- <span style="margin-right: 10px"><button type="button" class="pull-right add_form_field btn btn-success btn-xs"><i class="fa fa-plus"></i>  Add Supplier Quote</button></span> -->
             <div class="clearfix"></div>
         </div>
         <div class="panel-body container-items"><!-- widgetContainer -->
+           <?php if (mysqli_num_rows($selectSupQ)>0): ?>
             <legend class="panel-heading ">
-                <span class="panel-title-address">Quote </span>
-
+                <span class="panel-title-address">Quote <small>(<?php echo $countQ;?>) existing quote(s)</small></span>
                    <!--  <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
                     <div class="clearfix"></div> -->
+                    <?php if (mysqli_num_rows($selectSupQ)>0): ?>
+                        <a href="ViewSupplierItems.php?rfq_id=<?php echo $rfq_items_idS;?>" class="btn btn-primary btn-xs">View Suppliers</a>
+                    <?php endif ?>
                 </legend>
-                <div class="well">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <label>Select Supplier</label>
-                        <select required class="form-control select2" style="width: 100%;" autocomplete="off" id="supplier_id" name="supplier_id" >
-                         <option value="" disabled selected>Select your Supplier</option>
-                         <?php echo supplier($connect); ?>
-                     </select> 
-                 </div>
-                 <br>
-                 <br> 
-                 <br> 
-                 <br> 
-                 <?php echo table()?>
-             </div>
-         </div>
-     </div>
-     <div class="container1">
+            <?php endif ?>
 
-     </div>
-     <div style="padding-left: 15px;padding-bottom: 15px;">
-         <button class="btn btn-success" name="submit">Create</button>
-     </div>
- </form>
+            <br>
+            <br>
+            <div class="well">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Select Supplier</label>
+                    <select required class="form-control select2" style="width: 100%;" autocomplete="off" id="supplier_id" name="supplier_id" >
+                       <option value="" disabled selected>Select your Supplier</option>
+                       <?php echo supplier($connect); ?>
+                   </select> 
+               </div>
+               <br>
+               <br> 
+               <br> 
+               <br> 
+               <?php echo table()?>
+           </div>
+       </div>
+   </div>
+   <div class="container1">
+
+   </div>
+   <div style="padding-left: 15px;padding-bottom: 15px;">
+       <button class="btn btn-success" name="submit">Create</button>
+   </div>
+</form>
 </div>
 <!-- <script>
   $(document).ready(function() {

@@ -165,7 +165,7 @@
         </li>
 
 
-        <li class="treeview" tyle="background-color: lightgray;">
+       <!--  <li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
             <span style="color:black;text-decoration: none;">OTHERS</span>
@@ -180,7 +180,7 @@
             <li><a href="/pmis/frontend/web/checklist/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV CHECKLIST</a></li>
           
           </ul>
-        </li>
+        </li> -->
 
 
 

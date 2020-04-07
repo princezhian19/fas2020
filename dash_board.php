@@ -5,7 +5,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <h1>Dashboard</h1>
-                  <strong>Monitoring for PRs</strong>
+                  <strong>Monitoring of PRs</strong>
                   <p style="float:right;"><a href="MonitoringPr.php" class="btn btn-success btn-s">See All</a></p>
                   <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                 <thead>
