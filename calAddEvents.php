@@ -144,6 +144,7 @@ setInterval(function() { $(".alert").fadeOut(); }, 3000);
                setTimeout(function () {
                swal("Record saved successfully!");
                }, 3000);
+               window.location = 'ViewCalendar.php';
            }
          });
          
