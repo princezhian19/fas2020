@@ -414,7 +414,7 @@ $('#submit').click(function(){
 
 if(cb1 == '' && cb2 == '' && cb3 == '' && cb4 == '' && cb5 == '' && cb6 == '' )
 {
-  alert('Required Field: Type of Request');
+  alert('Required Field:Choose atleast one on Type of Request');
   return false;
 }
 return true;
