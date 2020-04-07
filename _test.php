@@ -21,7 +21,7 @@ function fillTableInfo()
     if($row = mysqli_fetch_array($result))
       {
           ?>
-                                  <input type = "hidden" name = "curuser" value = "<?php echo $row['EMP_N'];?>" id = "selectedUser" />
+                                  <input required type = "hidden" name = "curuser" value = "<?php echo $row['EMP_N'];?>" id = "selectedUser" />
 
                <table  border = 1 class = "center-text" style = "width:100%;">
                             <tbody>
@@ -39,12 +39,12 @@ function fillTableInfo()
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" name = "request_date" placeholder = "Request Date" class="datePicker1" value="" required placeholder="mm/dd/yyyy" >
+                                            <input required type="text" name = "request_date" placeholder = "Request Date" class="datePicker1" value="" required placeholder="mm/dd/yyyy" >
                                         </div>
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Request Time:</td>
                                     <td style = "width:15%;  padding:5px 5px 5px 5px;">
-                                    <input style = "text-align:center;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
+                                    <input required style = "text-align:center;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
                                     </td>
                                     <!-- date("H:i A",strtotime(date("h:m A"))) -->
                                     <td colspan = 4 class = "label-text">HARDWARE INFORMATION</td>
@@ -53,39 +53,39 @@ function fillTableInfo()
                                     <td colspan = 4 class = "label-text">END-USER INFORMATION </td>
                                     <td class = "label-text left-text">Equipment</td>
                                     <td colspan = 3 class = "left-text " style = "padding:5px 5px 5px 5px;">
-                                      <input  style ="width:100%;" placeholder = "Equipment Type" type = "text" name = "equipment_type" class = "alphanum subtxt" /></td>
+                                      <input required  required style ="width:100%;" placeholder = "Equipment Type" type = "text" name = "equipment_type" class = "alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;">
-                                      <input type = "hidden"  name="requested_by" value = "<?php $row['EMP_N'];?>" />
-                                      <input type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'].' ';?>" >
+                                      <input required type = "hidden"  name="requested_by" value = "<?php $row['EMP_N'];?>" />
+                                      <input required type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'].' ';?>" >
                                     <td class = "label-text left-text">Brand Model:</td>
-                                    <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Brand Model" type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = ""/></td>
+                                    <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "Brand Model" type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
                                 <tr>
                                     <td class = "label-text left-text">Office:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "office" placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['DIVISION_M'];?>" /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "office" placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['DIVISION_M'];?>" /></td>
                                     <td class = "label-text left-text">Property No.:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Property No." type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "" /> </td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "Property No." type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "" /> </td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Position/Designation:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "position"  placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION_M'];?>"  /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "position"  placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION_M'];?>"  /></td>
                                     <td class = "label-text left-text">Serial No.:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Serial No." type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "Serial No." type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Contact Number:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "phone" placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MOBILEPHONE'];?>"  /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "phone" placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MOBILEPHONE'];?>"  /></td>
                                     <td class = "label-text left-text">IP Address:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "IP Address" type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "IP Address" type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Email Address:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "email" placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['EMAIL'];?>"/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "email" placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['EMAIL'];?>"/></td>
                                     <td class = "label-text left-text">MAC Address:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "MAC Address" type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = ""/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "MAC Address" type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -104,7 +104,7 @@ function countCN()
                                                   if($row = mysqli_fetch_array($result))
                                                   {
                                                     $count= $row['count']+1;
-                                                    echo '<input style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-0'.$count.' />';
+                                                    echo '<input required style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-0'.$count.' />';
 
                                                   }
 }
@@ -125,7 +125,7 @@ function showUser()
           echo '<option value = '.$row['EMP_N'].'>'.$row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'].'</option>';
     }
   echo '</select>';
-  // echo '<input type = "text" value = '.$position_c.' />';
+  // echo '<input required type = "text" value = '.$position_c.' />';
   }
 
 ?>
@@ -189,43 +189,42 @@ background-position: 90px 5px;
                     </div>
                     <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/sample/sample1.php" >    
                         <?php echo fillTableInfo(); ?>
-                     <input type = "hidden" name = "division" value = "<?php echo $_GET['division'];?>" />
+                     <input required type = "hidden" name = "division" value = "<?php echo $_GET['division'];?>" />
                         <br>
                         <u style = "margin-top:20px;">TYPE OF REQUEST</u>
-
-                        <table style = "margin-top:20px;width:100%;">
+                        <table style = "margin-top:20px;width:100%;" >
                           <tr>
                               <td>
-                                  <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g1" class = "checkbox_group" value = "DESKTOP/LAPTOP"> <b>DESKTOP/LAPTOP</b><br>
-                                  <div style = "margin-left:30px;padding-top:10px;">
-                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Hardware Error"> Hardware Error<br>
-                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Software Error"> Software Error<br>
-                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Computer Assembly"> Computer Assembly<br>
-                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Parts Replacement"> Parts Replacement<br>
-                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Virus Scanning"> Virus Scanning
+                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g1" class = "checkbox_group" value = "DESKTOP/LAPTOP"> <b>DESKTOP/LAPTOP</b><br>
+                                  <div style = "margin-left:30px;padding-top:10px;" >
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Hardware Error"> Hardware Error<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Software Error"> Software Error<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Computer Assembly"> Computer Assembly<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Parts Replacement"> Parts Replacement<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Virus Scanning"> Virus Scanning
                                   </div>
                               </td> 
                               <td><br>
-                                  <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
-                                  <div style = "margin-left:30px;padding-top:10px;">
-                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
-                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
-                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
-                                      <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                      Purpose:<input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                      Purpose:<input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
+                                  <div style = "margin-left:30px;padding-top:10px;" >
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
+                                      <input  type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
+                                      Purpose:<input  type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
+                                      Purpose:<input  type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td>  
                               <td style = "width:35%;">
-                                  <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
-                                  <div style = "margin-left:20px;padding-top:10px;">
-                                      <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
-                                      <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
-                                      <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
-                                      <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
-                                      <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
-                                      <br><input type = "text" name = "softwares" id= "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
+                                  <div style = "margin-left:20px;padding-top:10px;" >
+                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
+                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
+                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
+                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
+                                      <br><input  type = "text" name = "softwares" id= "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td> 
                           </tr>
@@ -234,26 +233,27 @@ background-position: 90px 5px;
                           </tr>
                           <tr>
                           <td>
-                          <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g4" class = "checkbox_group" value = "PRINTER/SCANNER"> <b>PRINTER/SCANNER</b><br>
-                          <div style = "margin-left:30px;padding-top:10px;">
-                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Installation"> Installation<br>
-                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Troubleshooting"> Troubleshooting<br>
-                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Sharing/Networking"> Sharing/Networking<br>
+                          <div style = "margin-left:30px;padding-top:10px;" >
+                          <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g4" class = "checkbox_group" value = "PRINTER/SCANNER"> <b>PRINTER/SCANNER</b><br>
+
+                          <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Installation"> Installation<br>
+                          <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Troubleshooting"> Troubleshooting<br>
+                          <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Sharing/Networking"> Sharing/Networking<br>
                           </div>
                           </td> 
                           <td>
-                            <input type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
+                            <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
                             <div style = "margin-left:30px;padding-top:10px;">
-                            <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
-                            <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                            <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
+                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
+                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input required type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
+                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
                           </div>
                           </td> 
                           <td>
-                          <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "Others"><b>Others</b><br>
-                          <input type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                          <input type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                          <input type = "text" name = "others3" id = "others3" class = "checkboxgroup_g6"value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "Others"><b>Others</b><br>
+                          <input  type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input  type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input  type = "text" name = "others3" id = "others3" class = "checkboxgroup_g6"value = "" style = "border:none;border-bottom:1px solid black;"/><br>
 
                           </td> 
 
@@ -285,8 +285,8 @@ background-position: 90px 5px;
                                                   <tr>
                                                   <td style = "width:12.5%;"></td>
                                                   <td style = "width:12.5%;">
-                                                  <input type = "hidden" name = "timeliness" value="" />
-                                                                                                    <input type = "hidden" name = "quality" value="" />
+                                                  <input required type = "hidden" name = "timeliness" value="" />
+                                                                                                    <input required type = "hidden" name = "quality" value="" />
 
                                                   <!-- <select class="form-control " style="width: 100%;" name="timeliness" >
                                                   <option value = "YES">YES</option>
@@ -312,7 +312,7 @@ background-position: 90px 5px;
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
+                                                      <input required disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
                                                     </div>
                                                   </td>
                                                   <td style = "width:12.5%;">Completed Date:</td>
@@ -321,7 +321,7 @@ background-position: 90px 5px;
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input disabled type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="" required>
+                                                      <input required disabled type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="" required>
                                                     </div>
                                                   </td>
                                                   </tr>
@@ -340,7 +340,7 @@ background-position: 90px 5px;
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input disabled type="text" name = "started_time" placeholder = "Started Time"  value="" required>
+                                                      <input required disabled type="text" name = "started_time" placeholder = "Started Time"  value="" required>
                                                     </div>
                                                   </td>
                                                   <td style = "width:12.5%;">Completed Time:</td>
@@ -349,7 +349,7 @@ background-position: 90px 5px;
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
+                                                      <input required disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
                                                     </div>
                                                   </td>
                                                   </tr>
@@ -360,7 +360,7 @@ background-position: 90px 5px;
 
                         </table><br>
 
-                      <input style ="float:right;" type = "submit" value = "Submit" class="btn btn-primary btn-s sweet-14" />
+                      <input id = 'submit' style ="float:right;" type = "submit" value = "Submit" class="btn btn-primary btn-s sweet-14" />
                     </form>
                 </div>
             </div>
@@ -402,6 +402,29 @@ background-position: 90px 5px;
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- Page script -->
+<script>
+$('#submit').click(function(){
+  var cb1 = document.getElementById("checkboxgroup_g1").checked;
+  var cb2 = document.getElementById("checkboxgroup_g2").checked;
+  var cb3 = document.getElementById("checkboxgroup_g3").checked;
+  var cb4 = document.getElementById("checkboxgroup_g4").checked;
+  var cb5 = document.getElementById("checkboxgroup_g5").checked;
+  var cb6 = document.getElementById("checkboxgroup_g6").checked;
+
+
+if(cb1 == '' && cb2 == '' && cb3 == '' && cb4 == '' && cb5 == '' && cb6 == '' )
+{
+  alert('Required Field: Type of Request');
+  return false;
+}
+return true;
+})
+
+</script>
+
+
+
+
 <script>
    
   $(function () {
@@ -503,125 +526,125 @@ background-position: 90px 5px;
   })
 </script>
 <script type = "text/javascript">
-$(function() {
-  document.getElementById("site").disabled = true;
-  document.getElementById("purpose").disabled = true;
-  document.getElementById("purpose2").disabled = true; 
-  document.getElementById("softwares").disabled = true;
-  document.getElementById("changeaccount").disabled = true; 
-  document.getElementById("others1").disabled = true ; 
-  document.getElementById("others2").disabled = true; 
-  document.getElementById("others3").disabled = true; 
-  
-
-    enable_cb1();
-    enable_cb2();
-    enable_cb3();
-    enable_cb4();
-    enable_cb5();
-    enable_cb6();
-  $("#checkboxgroup_g1").click(enable_cb1);
-  $("#checkboxgroup_g2").click(enable_cb2);
-  $("#checkboxgroup_g3").click(enable_cb3);
-  $("#checkboxgroup_g4").click(enable_cb4);
-  $("#checkboxgroup_g5").click(enable_cb5);
-  $("#checkboxgroup_g6").click(enable_cb6);
-  
-});
-function enable_cb6() {
-  if (this.checked) {
-    $(".checkboxgroup_g6").removeAttr("disabled");
-  } else {
-    $(".checkboxgroup_g6").attr("disabled", true);
-  }
-}
-
-function enable_cb1() {
-  if (this.checked) {
-    $(".checkboxgroup_g1").removeAttr("disabled");
-  } else {
-    $(".checkboxgroup_g1").attr("disabled", true);
-  }
-}
-function enable_cb2() {
-  if (this.checked) {
-    $(".checkboxgroup_g2").removeAttr("disabled");
-    document.getElementById("site").disabled = false; 
-    document.getElementById("purpose").disabled = false; 
-    document.getElementById("purpose2").disabled = false; 
-
-
-  } else {
-    $(".checkboxgroup_g2").attr("disabled", true);
-    document.getElementById("site").disabled = true; 
-    document.getElementById("purpose").disabled = true; 
+  $(function() {
+    document.getElementById("site").disabled = true;
+    document.getElementById("purpose").disabled = true;
     document.getElementById("purpose2").disabled = true; 
-
-
-  }
-}
-function enable_cb3() {
-  if (this.checked) {
-    $(".checkboxgroup_g3").removeAttr("disabled");
-    document.getElementById("softwares").disabled = false; 
-
-  } else {
-    $(".checkboxgroup_g3").attr("disabled", true);
-    document.getElementById("softwares").disabled = true; 
-
-  }
-}
-function enable_cb4() {
-  if (this.checked) {
-    $(".checkboxgroup_g4").removeAttr("disabled");
-  } else {
-    $(".checkboxgroup_g4").attr("disabled", true);
-  }
-}
-function enable_cb5() {
-  if (this.checked) {
-    $(".checkboxgroup_g5").removeAttr("disabled");
-    document.getElementById("changeaccount").disabled = false; 
-
-  } else {
-    $(".checkboxgroup_g5").attr("disabled", true);
+    document.getElementById("softwares").disabled = true;
     document.getElementById("changeaccount").disabled = true; 
+    document.getElementById("others1").disabled = true ; 
+    document.getElementById("others2").disabled = true; 
+    document.getElementById("others3").disabled = true; 
     
 
+      enable_cb1();
+      enable_cb2();
+      enable_cb3();
+      enable_cb4();
+      enable_cb5();
+      enable_cb6();
+    $("#checkboxgroup_g1").click(enable_cb1);
+    $("#checkboxgroup_g2").click(enable_cb2);
+    $("#checkboxgroup_g3").click(enable_cb3);
+    $("#checkboxgroup_g4").click(enable_cb4);
+    $("#checkboxgroup_g5").click(enable_cb5);
+    $("#checkboxgroup_g6").click(enable_cb6);
+    
+  });
+  function enable_cb6() {
+    if (this.checked) {
+      $(".checkboxgroup_g6").removeAttr("disabled");
+    } else {
+      $(".checkboxgroup_g6").attr("disabled", true);
+    }
   }
-}
-$('.checkboxgroup_g1').on('change', function() {
-    $('.checkboxgroup_g1').not(this).prop('checked', false);  
-});
-$('.checkboxgroup_g2').on('change', function() {
-    $('.checkboxgroup_g2').not(this).prop('checked', false);  
-});
-$('.checkboxgroup_g3').on('change', function() {
-    $('.checkboxgroup_g3').not(this).prop('checked', false);  
-});
-$('.checkboxgroup_g4').on('change', function() {
-    $('.checkboxgroup_g4').not(this).prop('checked', false);  
-});
-$('.checkboxgroup_g5').on('change', function() {
-    $('.checkboxgroup_g5').not(this).prop('checked', false);  
-});
-$('.checkboxgroup_g6').on('change', function() {
-    $('.checkboxgroup_g6').not(this).prop('checked', false);  
-});
+
+  function enable_cb1() {
+    if (this.checked) {
+      $(".checkboxgroup_g1").removeAttr("disabled");
+    } else {
+      $(".checkboxgroup_g1").attr("disabled", true);
+    }
+  }
+  function enable_cb2() {
+    if (this.checked) {
+      $(".checkboxgroup_g2").removeAttr("disabled");
+      document.getElementById("site").disabled = false; 
+      document.getElementById("purpose").disabled = false; 
+      document.getElementById("purpose2").disabled = false; 
 
 
-$('.checkbox_group').on('change', function() {
-    $('.checkbox_group').not(this).prop('checked', false);  
-});
+    } else {
+      $(".checkboxgroup_g2").attr("disabled", true);
+      document.getElementById("site").disabled = true; 
+      document.getElementById("purpose").disabled = true; 
+      document.getElementById("purpose2").disabled = true; 
 
-// DATE PICKER
-$(function() {
-$( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-$( ".datePicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-$( ".datePicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
 
-    
-});
+    }
+  }
+  function enable_cb3() {
+    if (this.checked) {
+      $(".checkboxgroup_g3").removeAttr("disabled");
+      document.getElementById("softwares").disabled = false; 
+
+    } else {
+      $(".checkboxgroup_g3").attr("disabled", true);
+      document.getElementById("softwares").disabled = true; 
+
+    }
+  }
+  function enable_cb4() {
+    if (this.checked) {
+      $(".checkboxgroup_g4").removeAttr("disabled");
+    } else {
+      $(".checkboxgroup_g4").attr("disabled", true);
+    }
+  }
+  function enable_cb5() {
+    if (this.checked) {
+      $(".checkboxgroup_g5").removeAttr("disabled");
+      document.getElementById("changeaccount").disabled = false; 
+
+    } else {
+      $(".checkboxgroup_g5").attr("disabled", true);
+      document.getElementById("changeaccount").disabled = true; 
+      
+
+    }
+  }
+  $('.checkboxgroup_g1').on('change', function() {
+      $('.checkboxgroup_g1').not(this).prop('checked', false);  
+  });
+  $('.checkboxgroup_g2').on('change', function() {
+      $('.checkboxgroup_g2').not(this).prop('checked', false);  
+  });
+  $('.checkboxgroup_g3').on('change', function() {
+      $('.checkboxgroup_g3').not(this).prop('checked', false);  
+  });
+  $('.checkboxgroup_g4').on('change', function() {
+      $('.checkboxgroup_g4').not(this).prop('checked', false);  
+  });
+  $('.checkboxgroup_g5').on('change', function() {
+      $('.checkboxgroup_g5').not(this).prop('checked', false);  
+  });
+  $('.checkboxgroup_g6').on('change', function() {
+      $('.checkboxgroup_g6').not(this).prop('checked', false);  
+  });
+
+
+  $('.checkbox_group').on('change', function() {
+      $('.checkbox_group').not(this).prop('checked', false);  
+  });
+
+  // DATE PICKER
+  $(function() {
+  $( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+  $( ".datePicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+  $( ".datePicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+
+      
+  });
 </script>
 
 

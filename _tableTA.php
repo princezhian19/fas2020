@@ -42,7 +42,7 @@ include 'connection.php';
               {
                 ?>
                 <li class="btn btn-success">
-                  <a href="requestForm.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a>
+                  <a href="requestForm.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create Request</a>
                 </li>
                 <?php
               }else{
