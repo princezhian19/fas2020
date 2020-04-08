@@ -50,7 +50,7 @@
                     $po = $row["po"];
                     ?>
                     <tr>
-                        <td><a href="ViewPRv.php?id=<?php echo $id?>"><?php echo $pr_no;?></a></td>
+                        <td><a href="ViewPRv.php?id=<?php echo $id?>&username=<?php echo $_SESSION['username']?>"><?php echo $pr_no;?></a></td>
                         <td><?php echo $pr_date1;?></td>
                         <td><?php echo $pmo;?></td>
                         <?php if ($type == "1"): ?>

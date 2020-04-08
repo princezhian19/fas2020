@@ -1,6 +1,7 @@
 <?php
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
+$username = $_GET['username'];
 $select = mysqli_query($conn,"SELECT * FROM pr WHERE id = '$id' ");
 $row = mysqli_fetch_array($select);
 $pr_no = $row['pr_no'];
@@ -29,7 +30,11 @@ $submitted_date = $row['submitted_date'];
             <div class="box-body table-responsive no-padding">
                 <div class="box-body">
 
-           
+                    <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?>
+
+                    <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary">Update</a>
+                        
+                    <?php endif ?>
 
                     <?php if($submitted_date!=NULL):?>
                     <?php else:?>

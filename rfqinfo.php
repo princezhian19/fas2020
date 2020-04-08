@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
                 <div class="box-body">
 
                 
-                   <a href="ViewRFQdetails.php?id=<?php echo $pr_id; ?>" class="btn btn-primary">Update</a> | 
+                   <!-- <a href="ViewRFQdetails.php?id=<?php echo $pr_id; ?>" class="btn btn-primary">Update</a> |  -->
                    <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a> | 
                    <a href="ViewRFQ.php" class="btn btn-warning">Back</a>
                    <h4>Item(s)</h4>
