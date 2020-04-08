@@ -2,10 +2,10 @@
 $id = $_GET['id'];
 $username = $_GET['username'];
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$activate = mysqli_query($conn,"UPDATE tblemployee SET ACTIVATED = 'No' WHERE EMP_N = $id");
+$activate = mysqli_query($conn,"UPDATE tblemployee SET BLOCK = 'N' WHERE EMP_N = $id");
 if ($activate) {
    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Account Blocked!')
+    window.alert('Account UnBlocked!')
     window.location.href='Accounts.php';
     </SCRIPT>");
 }else{

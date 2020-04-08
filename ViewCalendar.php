@@ -47,6 +47,7 @@ $events = $req->fetchAll();
     padding:10px;
     margin: 0 auto;
     background-color:#fff;
+    border:1px solid skyblue;
 }
 
 .response {
@@ -60,62 +61,51 @@ $events = $req->fetchAll();
 }
   </style>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body >
 <div class="wrapper">
-  <?php include('sidebar.php');?>
+<?php 
+  if (
+    $username == 'charlesodi' ||
+    $username == 'mmmonteiro' ||  
+    $username == 'cvferrer' || 
+    $username == 'masacluti' || 
+    $username == 'magonzales' || 
+    $username == 'seolivar' || 
+    $username == 'jamonteiro' || 
+    $username == 'ctronquillo' || 
+    $username == 'rdmiranda')
+    {
+      include('sidebar.php');
+    }else{
+      include('sidebar2.php');
+    }
+ ?>
   <?php include('connection.php');?>
   
   <div class="content-wrapper">
     <section class="content-header">
-      <ol class="breadcrumb">
-        <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Events</li>
-      </ol>
-      <div class="response"></div>
-        <div class="well">
-          <div class="row">
-            <button class="pull-right btn btn-success" style = "margin-left:10px;">Add Events</button>
-            <button class="pull-right btn btn-success" id = "fml">Manage All Events</button>
+        <ol class="breadcrumb">
+          <li><a href="home.php"><i class=""></i> Home</a></li>
+          <li class="active">Events</li>
+        </ol>
+        <div class="response"></div>
+        <div class="row">
+          <div class="col-md-12">
+              <div class="box">
+                  <div class="panel panel-defasult">
+                      <div class="box-body"> 
+                          <div>
+                              <h1>Calendar of Events</h1><br>
+                          </div>
+                          <div class="well">
+                             <?php include 'calendar_view.php';?>
+                          </div>
+                          <div id='calendar'></div>
 
-            <div class="col-md-2" id = "selectMonth" >
-            </div>
-            <div class="col-md-2">
-              <select class="form-control " id="selectYear" style="width: 100%;">
-                <?php 
-                for($i= 2020; $i < 2031; $i++)
-                {
-                  echo '<option value='.$i.'>'.$i.'</option>';
-                }
-                ?>
-              </select>
-            </div>
-            <div class="col-md-2">
-                <?php 
-                $currentDate = '2020-04-06';
-                   require_once 'connection.php';
-                   echo '<select class="form-control " id="selectDivision" style="width: 100%;">';
-                       $sql = mysqli_query($conn, "SELECT DIVISION_N,DIVISION_M FROM `tblpersonneldivision` ORDER BY DIVISION_N ASC");
-                       if (mysqli_num_rows($sql)>0) {
-                           while($row = mysqli_fetch_assoc($sql) )
-                           {
-                            $selectedOpt = ($row['DIVISION_N'] == $_SESSION['division'])?'selected':''; 
-
-                               echo '<option text="text" value="'.$row["DIVISION_N"].'" '.$selectedOpt.' >'.$row["DIVISION_M"].'</option>';
-                           }
-                       }
-                   echo '</select>';
-                   
-                  
-                ?>
-            </div>
-            <div class="col-md-2">
-            <button class="btn btn-success" id = "fml"><a href="library/export_calendar.php?date=<?php echo $currentDate;?>&division=<?php echo $_SESSION['division'];?>" style = "decoration:none; color:#fff;"> Export</a></button>
-          </div>
+                  </div>
+              </div>
           </div>
         </div>
-<br>
-<br>
-    <div id='calendar'></div>
     </section>
   </div>
 </div>
@@ -188,15 +178,21 @@ $(document).ready(function() {
     }else{
       $end = $event['end'];
     }
+
+
+$enddate = str_replace('-', '/', $end);
+$realenddate = date('Y-m-d',strtotime($enddate . "+1 days"));
+
+
     if (TRUE) {
       ?>
       {
         id: '<?php echo $event['id']; ?>',
         title: '<?php echo $event['title']; ?>',
         start: '<?php echo $start; ?>',
-        end: '<?php echo $end; ?>',
+        end: '<?php echo $realenddate; ?>',
         color: '<?php echo $event['color']; ?>',
-        url: 'viewEvent.php?eventid=<?php echo $event['id']; ?>',
+        url: 'ViewEvent.php?eventid=<?php echo $event['id']; ?>',
 
       },
     <?php } endforeach; ?>

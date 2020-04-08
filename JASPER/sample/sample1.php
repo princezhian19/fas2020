@@ -166,7 +166,7 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                null,
                null,
                '$assisted_by',
-               '$name',
+               '',
                '',
                '',
                null,

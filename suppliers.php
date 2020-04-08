@@ -57,7 +57,7 @@
                 <textarea name="supplier_address" class="form-control"></textarea>
             </div> 
             <div class="form-group">
-                <label>Contact Details</label>
+                <label>Email</label>
                 <input type="text" name="contact_details" class="form-control">
             </div> 
             <div class="form-group">
