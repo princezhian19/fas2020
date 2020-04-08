@@ -251,7 +251,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
 <div class="col-md-12" >
     <div class="box box-primary">
         <div class="box-header with-border" align="left">
-            <h4>Abstract of Quotations</h4>
+            <h4>Suppliers Quotations</h4>
         </div>
         <div class="box-body table-responsive no-padding">
             <div class="box-body">
@@ -313,7 +313,9 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                 </div>
             </div>
         </div>
-    <?php else: ?>
+        <?php endif ?>
+<?php if ($supplier_title3 != '' AND $supplier_title4 == ''): ?>
+            
         <div class="box-body">
           <div class="row" id="boxed">
               <!-- S U P P L I E R      1 [PAGE TATLO ANG SUPPIER] -->
@@ -514,7 +516,7 @@ while($rowrfid14 = mysqli_fetch_assoc($sql_items4) ){
 </div>
 </div>
 </div>
-                <button class="btn btn-success" name="submit" style="width: 100px;">Save</button>
+                <button class="btn btn-success" name="submit" style="width: 1260px;">Save</button>
                 <br>
                 <br>
                 <br>
