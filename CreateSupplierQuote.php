@@ -37,7 +37,7 @@ $username = $_SESSION['username'];
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="ViewAcceptance.php"><i class=""></i> Home</a></li>
+        <li><a href="home.php"><i class=""></i> Home</a></li>
         <li class="active">Create Supplier Quote</li>
       </ol>
       <br>

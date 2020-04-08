@@ -15,9 +15,6 @@ $rfq_id = $_GET['rfq_id'];
 $select_rfq = mysqli_query($conn,"SELECT * FROM rfq WHERE id = $rfq_id");
 $rowR = mysqli_fetch_array($select_rfq);
 $rfq_no = $rowR['rfq_no'];
-$pr_no = $rowR['pr_no'];
-/* echo $pr_no; */
-
 function supplier($connect)
 { 
   $output = '';
@@ -59,7 +56,7 @@ function table(){
         echo $item_id;    
         echo '</textarea></td>';
         echo  '<td>
-        <input type="number" required name="ppu[]" class="form-control col-md-6">
+        <input type="text" required name="ppu[]" class="form-control col-md-6">
         </td>';
     }
     echo '</table>';
@@ -74,20 +71,14 @@ if (isset($_POST['submit'])) {
         $ppu = $_POST['ppu'][$count]; 
         $remarks = $_POST['remarks'][$count]; 
         $item_id = $_POST['item_id'][$count]; 
-    
-    
-    /* echo "UPDATE pr set aoq = 1 where  pr_no = $pr_no"; */
-    //exit();
+
 
     $INSERT = mysqli_query($conn,"INSERT INTO supplier_quote(supplier_id,rfq_item_id,ppu,remarks) VALUES('$supplier_id','$item_id','$ppu','$remarks')");
 
     if ($INSERT) {
-
-        $updatePR = mysqli_query($conn,"UPDATE pr set aoq = '1' where  pr_no = '$pr_no'");
-        
        
-        echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Supplier Quote Created!')
+            echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Supplier Qoute Created!')
         window.location.href='CreateSupplierQuote.php?rfq_id=$rfq_id';
         </SCRIPT>");
        
