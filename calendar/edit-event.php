@@ -7,7 +7,7 @@ $start  = date('Y-m-d',strtotime($_POST['startdatetxtbox']));
 $end    = date('Y-m-d',strtotime($_POST['enddatetxtbox']));
 $des    = $_POST['descriptiontxtbox'];
 $ven    = $_POST['venuetxtbox'];
-$tar    = $_POST['targetparticipants'];
+$tar    = $_POST['enp'];
 
 
 
@@ -22,5 +22,5 @@ WHERE id=" . $id;
 if (mysqli_query($conn, $sqlUpdate)) {
 } else {
 }
-echo $sqlUpdate;
+header('location:../EditEvent.php?eventid='.$id.'&flag=1');
 ?>

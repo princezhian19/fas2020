@@ -7,18 +7,6 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
 
-
-require_once 'calendar/sample/bdd.php';
-require_once 'calendar/sample/dbaseCon.php';
-require_once 'calendar/sample/sql_statements.php';
-
-$sql = "SELECT id, title, start, end, color, cancelflag FROM events where cancelflag = 0 and status = 1";
-
-$req = $bdd->prepare($sql);
-$req->execute();
-
-$events = $req->fetchAll();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,12 +22,17 @@ $events = $req->fetchAll();
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> </head>
+  <link rel="stylesheet" href="_includes/sweetalert.css">
+  
   <!-- CALENDAR -->
   <link rel="stylesheet" href="calendar/fullcalendar/fullcalendar.min.css" />
   <script src="calendar/fullcalendar/lib/jquery.min.js"></script>
   <script src="calendar/fullcalendar/lib/moment.min.js"></script>
   <script src="calendar/fullcalendar/fullcalendar.min.js"></script>
-<style> .response { height: 60px; } .success { background: #cdf3cd; padding: 10px 60px; border: #c3e6c3 1px solid; } </style>
+
+  <style> .response { height: 60px; } .success { background: #cdf3cd; padding: 10px 60px; border: #c3e6c3 1px solid;} </style>
+
+<body >
 <?php 
 function viewEvents()
 {
@@ -93,38 +86,36 @@ function viewEvents()
                                         </tr>
                     <tr>
                         <td class="col-md-2">Posted Date</td>
-                            <td class="col-md-5"><input readonly type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox" value = "<?php  echo date('F d, Y',strtotime($row['posteddate']));?>" /></td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox" value = "<?php  echo date('F d, Y',strtotime($row['posteddate']));?>" /></td>
                                 </tr>
                    
                     
                 </table>
                 <button style = "text-align:center;" class = "btn btn-success"><i class = "fa fa-arrow-left"></i>&nbsp;<a href= "ViewCalendar.php" style = "color:#fff;decoration:none;">Back</a></button>
-                <input type = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> 
+                <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> 
 
             </form>
         <?php
     }
 }
 ?>
-<body >
-<?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('sidebar.php'); }else{ include('sidebar2.php'); }
- ?>
   <?php include('connection.php');?>
-
-<div class="wrapper">
+  <?php include('sidebar.php');?>
+  
+  <div class="wrapper">
     <div class="content-wrapper">
         <section class="content-header">
             <ol class="breadcrumb">
                 <li><a href="home.php"><i class=""></i> Home</a></li>
                     <li class="active">Events</li>
                         </ol>
-        <div class="response"></div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="box">
                         <div class="panel panel-defasult">
                             <div class="box-body"> 
+                                <div class="response"></div>
+
                                 <div>
                                     <h1>Calendar of Activities:Modifying of Events</h1><br>
                                 </div>
@@ -138,6 +129,14 @@ function viewEvents()
         </section>
     </div>
 </div>
+<?php
+if($_GET['flag'] == 1)
+{
+    ?>
+    <script>$(document).ready(function(){displayMessage('Update Successfully!.');});</script>
+    <?php
+}
+?>
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -145,16 +144,24 @@ function viewEvents()
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
 <script src="dist/js/adminlte.min.js"></script>
-
-
-</body>
-</html>
+<script src="_includes/sweetalert.min.js"></script>
 <script>
+function displayMessage(message)
+ {
+  $(".response").html("<div class='alert alert-success' role='alert' style = 'background-color:#ef9a9a;'>"+message+"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+    setInterval(function() { $(".alert").fadeOut(); }, 3000);
+}
 $(document).ready(function(){
     $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
     $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
     $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+
+
 });
+   
+
+
 </script>
+</body>
+</html>
