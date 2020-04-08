@@ -297,5 +297,3 @@ include('db.class.php'); // call db.class.php
 </body>
 </html>
 
-
-

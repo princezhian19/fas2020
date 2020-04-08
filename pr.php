@@ -487,7 +487,7 @@ function confirmDelete(delUrl) {
                   <label>Office <label style="color: Red;" >*</label></label>
                 
                     <input type="text" class="form-control" style="width: 100%;" name="pmo" id="pmo" readonly value="FAD" >
-                 
+                
               </div>
 
               <div class="form-group">
