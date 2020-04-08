@@ -58,11 +58,11 @@ function viewEvents()
                     <tr>
                         <td class="col-md-2">End Date</td>
                             <td class="col-md-5">
-                                <input required type = "text" class = "form-control" name = "enddatetxtbox" placeholder = "End Date" id="datepicker2" value = "<?php  echo date('F d, Y',strtotime($row['end']));?>" /></td>
+                                <input  type = "text" class = "form-control" name = "enddatetxtbox" placeholder = "End Date" id="datepicker2" value = "<?php  echo date('F d, Y',strtotime($row['end']));?>" /></td>
                                     </tr>
                     <tr>
                         <td class="col-md-2">Description</td>
-                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "descriptiontxtbox" value = "<?php  echo $row['description'];?>" /></td>
+                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "descriptiontxtbox" value = "<?php  echo $row['description'];?>" /></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2"><span style = "color:red;">*</span>Venue</td>
