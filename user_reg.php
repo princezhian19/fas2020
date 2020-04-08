@@ -1,4 +1,5 @@
   <?php 
+  date_default_timezone_set('Asia/Manila');
   include "config.php";
   include "dbaseCon.php";
   $DBConn = dbConnect();
