@@ -45,7 +45,7 @@ $autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
 <?php
 if (isset($_POST['submit'])) {
 $abstract_no = $_POST['abstract_no'];
-$supplier_id = $_POST['supplier_id'];
+$supplier_id = $_POST['supplier_id1'];
 $date_opened = $_POST['date_opened'];
 $remarks = $_POST['remarks'];
 
@@ -263,24 +263,26 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                             <div class="col-xs-6">
                                 <table id="example1" class="  table-responsive" style="width:500px;background-color: white;" align="center">
                                     <thead>
-                                        <th width="" ><?php echo $supplier_title1;?></th>
+                                        <th style="float: right;" ><?php echo $supplier_title1;?></th>
                                     </thead>
                                 </table>
                                 <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
                                  <thead >
-                                    <th width="" >Procurement</th>
+                                    <th width="" >Items</th>
+                                    <th width="50" ></th>
                                     <th width="" >PPU</th>
-                                    <th width="" ></th>
                                 </thead>   
                                 <?php 
+                                $b = 1;
                                 while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
                                     $ppu11 = $rowrfid1['ppu'];
                                     $procurement = $rowrfid1['procurement'];
+                                    $b++;
                                     ?>
                                     <tr>
                                         <td><?php echo $procurement;?></td>
+                                        <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"><br></td>
                                         <td><?php echo $ppu11;?></td>
-                                        <td><input type="checkbox" name="supplier_id" value="<?php echo $sid1 ?>"><br></td>
                                     </tr>
                                 <?php } ?>
                             </table>
@@ -294,19 +296,19 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                         </table>
                         <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
                          <thead style="width:500px;">
-                            <th width="" >Procurement</th>
+                            <th width="50" ></th>
                             <th width="" >PPU</th>
-                            <th width="" ></th>
                         </thead>   
                         <?php 
+                         $b = 1;
                         while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
                             $ppu112 = $rowrfid12['ppu'];
                             $procurement2 = $rowrfid12['procurement'];
+                           $b++;
                             ?>
                             <tr>
-                                <td><?php echo $procurement2;?></td>
+                                <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>"><br></td>
                                 <td><?php echo $ppu112;?></td>
-                                <td><input type="checkbox" name="supplier_id" value="<?php echo $sid2 ?>"><br></td>
                             </tr>
                         <?php } ?>
                     </table>
@@ -339,7 +341,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                     <tr>
                         <td><?php echo $procurement;?></td>
                         <td><?php echo $ppu11;?></td>
-                        <td><input type="checkbox" name="supplier_id" value="<?php echo $sid1 ?>"><br></td>
+                        <td><input type="radio" name="supplier_id<?php echo $a;?>" value="<?php echo $sid1 ?>"><br></td>
                     </tr>
                 <?php } ?>
             </table>
@@ -366,7 +368,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
             <tr>
                 <td><?php echo $procurement2;?></td>
                 <td><?php echo $ppu112;?></td>
-                <td><input type="checkbox" name="supplier_id" value="<?php echo $sid2 ?>"><br></td>
+                <td><input type="radio" name="supplier_id<?php echo $a;?>" value="<?php echo $sid2 ?>"><br></td>
             </tr>
         <?php } ?>
     </table>
@@ -392,7 +394,7 @@ while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
     <tr>
         <td><?php echo $procurement3;?></td>
         <td><?php echo $ppu113;?></td>
-        <td><input type="checkbox" name="supplier_id" value="<?php echo $sid3 ?>"><br></td>
+        <td><input type="radio" name="supplier_id<?php echo $a;?>" value="<?php echo $sid3 ?>"><br></td>
     </tr>
 <?php } ?>
 </table>
@@ -426,7 +428,7 @@ while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
                 <tr>
                     <td><?php echo $procurement;?></td>
                     <td><?php echo $ppu11;?></td>
-                    <td><input type="checkbox" name="supplier_id" value="<?php echo $sid1 ?>"><br></td>
+                    <td><input type="radio" name="supplier_id<?php echo $a;?>" value="<?php echo $sid1 ?>"><br></td>
                 </tr>
             <?php } ?>
         </table>
@@ -453,7 +455,7 @@ while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
         <tr>
             <td><?php echo $procurement2;?></td>
             <td><?php echo $ppu112;?></td>
-            <td><input type="checkbox" name="supplier_id" value="<?php echo $sid2 ?>"><br></td>
+            <td><input type="radio" name="supplier_id<?php echo $a;?>" value="<?php echo $sid2 ?>"><br></td>
         </tr>
     <?php } ?>
 </table>
@@ -479,7 +481,7 @@ while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
     <tr>
         <td><?php echo $procurement3;?></td>
         <td><?php echo $ppu113;?></td>
-        <td><input type="checkbox" name="supplier_id" value="<?php echo $sid3 ?>"><br></td>
+        <td><input type="radio" name="supplier_id<?php echo $a;?>" value="<?php echo $sid3 ?>"><br></td>
     </tr>
 <?php } ?>
 </table>
@@ -498,14 +500,16 @@ while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
     <th width="" ></th>
 </thead>   
 <?php 
+$a = 1;
 while($rowrfid14 = mysqli_fetch_assoc($sql_items4) ){
     $ppu114 = $rowrfid14['ppu'];
     $procurement4 = $rowrfid14['procurement'];
+    $a++;
     ?>
     <tr>
         <td><?php echo $procurement4;?></td>
         <td><?php echo $ppu114;?></td>
-        <td><input type="checkbox" name="supplier_id" value="<?php echo $sid4 ?>"><br></td>
+        <td><input type="radio" name="supplier_id<?php echo $a;?>" value="<?php echo $sid4 ?>"><br></td>
     </tr>
 <?php } ?>
 </table>
