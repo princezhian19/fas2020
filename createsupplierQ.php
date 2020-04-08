@@ -1,4 +1,5 @@
 <?php session_start();
+date_default_timezone_set('Asia/Manila');
 if(!isset($_SESSION['username'])){
     header('location:index.php');
 }else{

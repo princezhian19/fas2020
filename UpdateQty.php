@@ -1,5 +1,6 @@
 <?php 
 $id = $_GET['id'];
+date_default_timezone_set('Asia/Manila');
 
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
