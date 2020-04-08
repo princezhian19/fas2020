@@ -275,7 +275,6 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
             <div class="box-body">
                 <form method="POST">
                     <!-- S U P P L I E R      1  [PAG DLWA LANG ANG SUPPLIER] -->
-                    <?php echo $WinSupply ?>
                     <?php if ($supplier_title3 == ''): ?>
                         <div class="box-body">
                           <div class="row" id="boxed">
