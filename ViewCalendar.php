@@ -192,7 +192,7 @@ $realenddate = date('Y-m-d',strtotime($enddate . "+1 days"));
         start: '<?php echo $start; ?>',
         end: '<?php echo $realenddate; ?>',
         color: '<?php echo $event['color']; ?>',
-        url: 'viewEvent.php?eventid=<?php echo $event['id']; ?>',
+        url: 'ViewEvent.php?eventid=<?php echo $event['id']; ?>',
 
       },
     <?php } endforeach; ?>

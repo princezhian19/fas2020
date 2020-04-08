@@ -7,10 +7,10 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $_SESSION['username'] = $username ;
 
-  $sqlUsername = mysqli_query($conn,"SELECT CODE,UNAME FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' LIMIT 1");
+  $sqlUsername = mysqli_query($conn,"SELECT CODE,EMP_N FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' LIMIT 1");
   $row = mysqli_fetch_array($sqlUsername);
   $salt       = $row['CODE'];
-  $_SESSION['currentuser'] = $row['UNAME']; 
+  $_SESSION['currentuser'] = $row['EMP_N']; 
   $password  = crypt($_POST['password'], '$2a$10$'.$salt.'$');
 
   // ===============================================
