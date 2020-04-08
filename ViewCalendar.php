@@ -63,7 +63,23 @@ $events = $req->fetchAll();
 
 <body >
 <div class="wrapper">
-  <?php include('sidebar.php');?>
+<?php 
+  if (
+    $username == 'charlesodi' ||
+    $username == 'mmmonteiro' ||  
+    $username == 'cvferrer' || 
+    $username == 'masacluti' || 
+    $username == 'magonzales' || 
+    $username == 'seolivar' || 
+    $username == 'jamonteiro' || 
+    $username == 'ctronquillo' || 
+    $username == 'rdmiranda')
+    {
+      include('sidebar.php');
+    }else{
+      include('sidebar2.php');
+    }
+ ?>
   <?php include('connection.php');?>
   
   <div class="content-wrapper">
@@ -162,13 +178,19 @@ $(document).ready(function() {
     }else{
       $end = $event['end'];
     }
+
+
+$enddate = str_replace('-', '/', $end);
+$realenddate = date('Y-m-d',strtotime($enddate . "+1 days"));
+
+
     if (TRUE) {
       ?>
       {
         id: '<?php echo $event['id']; ?>',
         title: '<?php echo $event['title']; ?>',
         start: '<?php echo $start; ?>',
-        end: '<?php echo $end; ?>',
+        end: '<?php echo $realenddate; ?>',
         color: '<?php echo $event['color']; ?>',
         url: 'viewEvent.php?eventid=<?php echo $event['id']; ?>',
 

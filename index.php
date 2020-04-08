@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $_SESSION['username'] = $username ;
 
-  $sqlUsername = mysqli_query($conn,"SELECT CODE FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' LIMIT 1");
+  $sqlUsername = mysqli_query($conn,"SELECT CODE,UNAME FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' LIMIT 1");
   $row = mysqli_fetch_array($sqlUsername);
   $salt       = $row['CODE'];
   $_SESSION['currentuser'] = $row['UNAME']; 
@@ -25,6 +25,7 @@ if (isset($_POST['submit'])) {
     $division2 = $row['DIVISION_C'];
     $_SESSION['division'] = $division;
     $_SESSION['complete_name'] = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
+
       if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
         
         echo ("<SCRIPT LANGUAGE='JavaScript'>

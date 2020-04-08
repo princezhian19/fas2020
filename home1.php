@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 $username = $_SESSION['username'];
 if(!isset($_SESSION['username'])){
@@ -43,7 +42,6 @@ header('location:index.php');
     }else{
       include('sidebar2.php');
     }
-
  ?>
 
       <div class="content-wrapper">
