@@ -49,75 +49,76 @@ function viewEvents()
     $eventArray = array();
     if ($row = mysqli_fetch_array($result)) {
         ?>
-            <!-- <form method = "POST" action = "calendar/editAll.php"> -->
-                <input type = "hidden" name = "eventid" value = "123">
-                <table class="table table-bordered" > 
+            <form method = "POST" action = "calendar/edit-event.php">
+                <input  type = "hidden" name = "eventid" value = "<?php echo $row['id'];?>">
+                <table class="table table-bordered"> 
                     <tr>
-                        <td class="col-md-2">Title</td>
-                            <td class="col-md-5"><input type = "text" class = "form-control" name = "titletxtbox" value = "<?php echo $row['title'];?>" disabled /></td>
+                        <td class="col-md-2"><span style = "color:red;">*</span>Title</td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" value = "<?php echo $row['title'];?>"  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Start Date</td>
-                            <td class="col-md-5"><input type = "text" class = "form-control" name = "startdatetxtbox" value = "<?php  echo date('F d, Y',strtotime($row['start']));?>" disabled /></td>
-                                </tr>
+                        <td class="col-md-2"><span style = "color:red;">*</span>Start Date</td>
+                            <td class="col-md-5">
+                                <input required type="text" class = "form-control" name = "startdatetxtbox" placeholder = "Start Date" id="datepicker1" value = "<?php  echo date('F d, Y',strtotime($row['start']));?>" placeholder="mm/dd/yyyy"  required autocomplete = off  >
+                                    </td>
+                                        </tr>
                     <tr>
                         <td class="col-md-2">End Date</td>
-                            <td class="col-md-5"><input type = "text" class = "form-control" name = "enddatetxtbox" value = "<?php  echo date('F d, Y',strtotime($row['end']));?>" disabled/></td>
-                                </tr>
+                            <td class="col-md-5">
+                                <input required type = "text" class = "form-control" name = "enddatetxtbox" placeholder = "End Date" id="datepicker2" value = "<?php  echo date('F d, Y',strtotime($row['end']));?>" /></td>
+                                    </tr>
                     <tr>
                         <td class="col-md-2">Description</td>
-                            <td class="col-md-5"><input type = "text" class = "form-control" name = "descriptiontxtbox" value = "<?php  echo $row['description'];?>" disabled/></td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "descriptiontxtbox" value = "<?php  echo $row['description'];?>" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Venue</td>
-                            <td class="col-md-5"><input type = "text" class = "form-control" name = "venuetxtbox" value = "<?php  echo $row['venue'];?>" disabled/></td>
+                        <td class="col-md-2"><span style = "color:red;">*</span>Venue</td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "venuetxtbox" value = "<?php  echo $row['venue'];?>" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Expected number of Participants</td>
-                            <td class="col-md-5"><input type = "number" min = "0" class = "form-control" value = "<?php  echo $row['enp'];?>" disabled /></td>
+                        <td class="col-md-2"><span style = "color:red;">*</span>Expected number of Participants</td>
+                            <td class="col-md-5"><input required type = "number" min = "0" name = "enp" class = "form-control" value = "<?php  echo $row['enp'];?>"  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Target Participants</td>  
+                        <td class="col-md-2"><span style = "color:red;">*</span>Target Participants</td>  
                             <td class="col-md-5">
-                            <input type = "text" class = "form-control" name = "descriptiontxtbox" value = "<?php  echo $row['remarks'];?>" disabled/>
+                            <input required type = "text" class = "form-control" name = "targetparticipants" value = "<?php  echo $row['remarks'];?>" />
                                 </td>
                                     </tr>
                     <tr>
                         <td class="col-md-2">Posted By</td>
                             <td class="col-md-5">                              
-                            <input type = "text"  class = "form-control" value = "<?php  echo $row['UNAME'];?>" disabled />
+                            <input readonly type = "text"  class = "form-control" value = "<?php  echo $row['UNAME'];?>"  />
                                     </td>
                                         </tr>
                     <tr>
                         <td class="col-md-2">Posted Date</td>
-                            <td class="col-md-5"><input type = "text" class = "form-control" name = "enddatetxtbox" value = "<?php  echo date('F d, Y',strtotime($row['posteddate']));?>" disabled/></td>
+                            <td class="col-md-5"><input readonly type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox" value = "<?php  echo date('F d, Y',strtotime($row['posteddate']));?>" /></td>
                                 </tr>
                    
                     
                 </table>
                 <button style = "text-align:center;" class = "btn btn-success"><i class = "fa fa-arrow-left"></i>&nbsp;<a href= "ViewCalendar.php" style = "color:#fff;decoration:none;">Back</a></button>
-                <button style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary"><i class = "fa fa-edit"></i>&nbsp;<a href="EditEvent.php?eventid=<?php echo $_GET['eventid'];?>" style="color:#fff;decoration:none;"> Modify</a> </button>
-                <button style = "text-align:center;" class = "pull-right btn btn-danger sweet-14"><i class = "fa fa-trash"></i>&nbsp;Delete </button>
+                <input type = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> 
 
-            <!-- </form> -->
+            </form>
         <?php
     }
 }
-
 ?>
 <body >
-<div class="wrapper">
 <?php 
   if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('sidebar.php'); }else{ include('sidebar2.php'); }
  ?>
   <?php include('connection.php');?>
-  
-  <div class="content-wrapper">
-    <section class="content-header">
-        <ol class="breadcrumb">
-          <li><a href="home.php"><i class=""></i> Home</a></li>
-          <li class="active">Events</li>
-        </ol>
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <ol class="breadcrumb">
+                <li><a href="home.php"><i class=""></i> Home</a></li>
+                    <li class="active">Events</li>
+                        </ol>
         <div class="response"></div>
             <div class="row">
                 <div class="col-md-12">
@@ -125,17 +126,17 @@ function viewEvents()
                         <div class="panel panel-defasult">
                             <div class="box-body"> 
                                 <div>
-                                    <h1>Calendar of Activities:Viewing of Events</h1><br>
-                                        </div>
-                                            <div class="well">
-                                                <?php echo viewEvents();?>
-                                            </div>
+                                    <h1>Calendar of Activities:Modifying of Events</h1><br>
+                                </div>
+                                <div class="well">
+                                    <?php echo viewEvents();?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-  </div>
+        </section>
+    </div>
 </div>
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -143,8 +144,17 @@ function viewEvents()
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
 <script src="dist/js/adminlte.min.js"></script>
 
 
 </body>
 </html>
+<script>
+$(document).ready(function(){
+    $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+});
+</script>
