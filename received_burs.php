@@ -9,9 +9,9 @@ $select = mysqli_query($conn,"SELECT burs_id FROM saroob WHERE id = '$id '");
 $row = mysqli_fetch_array($select);
 $burs_id = $row['burs_id'];
 
-$query = mysqli_query($conn,"UPDATE saroob SET datereceived = now() WHERE id = '$id'");
+$query = mysqli_query($conn,"UPDATE saroob SET datereceived = DATE_ADD(NOW(), INTERVAL 1 DAY) WHERE id = '$id'");
 if ($query) {
-$update = mysqli_query($conn,"UPDATE burs SET status = 2, date_received = now() WHERE id = '$burs_id'");
+$update = mysqli_query($conn,"UPDATE burs SET status = 2, date_received = DATE_ADD(NOW(), INTERVAL 1 DAY) WHERE id = '$burs_id'");
 if ($update) {
 	# code...
 	 echo ("<SCRIPT LANGUAGE='JavaScript'>
