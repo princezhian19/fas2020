@@ -5,6 +5,7 @@ header('location:index.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
+
 }
 
 
@@ -183,7 +184,7 @@ $(document).ready(function() {
 $enddate = str_replace('-', '/', $end);
 $realenddate = date('Y-m-d',strtotime($enddate . "+1 days"));
 
-
+if($_SESSION['planningofficer'] == 1){
     if (TRUE) {
       ?>
       {
@@ -195,7 +196,24 @@ $realenddate = date('Y-m-d',strtotime($enddate . "+1 days"));
         url: 'ViewEvent.php?eventid=<?php echo $event['id']; ?>',
 
       },
-    <?php } endforeach; ?>
+    <?php 
+    }
+  }else{
+
+    if (TRUE) {
+      ?>
+      {
+        id: '<?php echo $event['id']; ?>',
+        title: '<?php echo $event['title']; ?>',
+        start: '<?php echo $start; ?>',
+        end: '<?php echo $realenddate; ?>',
+        color: '<?php echo $event['color']; ?>',
+
+      },
+    <?php 
+    }
+  }
+  endforeach; ?>
     ]
   });
 
