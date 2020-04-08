@@ -1,6 +1,6 @@
 <div class="row">
                                   <button class="pull-right btn btn-success" style = "margin-left:10px;"><a style = "color:#fff;" href = "calAddEvents.php"> Add Events</a></button>
-                                  <button class="pull-right btn btn-success" id = "fml">Manage All Events</button>
+                                  <button class="pull-right btn btn-success"><a href ="ManageCalendar.php" style ="color:#fff;decoration:none;">Manage All Events</a></button>
                                   <div class="col-md-2" id = "selectMonth" >
                                   </div>
                                   <div class="col-md-2">
