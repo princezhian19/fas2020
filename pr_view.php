@@ -43,8 +43,12 @@ $submitted_date = $row['submitted_date'];
                     <?php endif?>
 
                    <a href="export_pr.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a>
-                   <a href="ViewPR.php" class="btn btn-warning">Back</a>
 
+                    <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?>
+                   <a href="ViewRFQ.php" class="btn btn-warning">Back</a>
+                   <?php else: ?>
+                   <a href="ViewPR.php" class="btn btn-warning">Back</a>
+                    <?php endif ?>
 
                    <h4>Item(s)</h4>
                    <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
