@@ -16,13 +16,14 @@ function supplier($connect)
 }
 return $output;
 }
-$select = mysqli_query($conn,"SELECT rfq.rfq_date,rfq.rfq_no,rfq.purpose,pr.pmo,rfq.pr_no,rfq.pr_received_date FROM rfq LEFT JOIN pr on pr.pr_no = rfq.pr_no WHERE rfq.id = '$id' ");
+$select = mysqli_query($conn,"SELECT rfq.rfq_date,rfq.rfq_no,rfq.purpose,pr.id,pr.pmo,rfq.pr_no,rfq.pr_received_date FROM rfq LEFT JOIN pr on pr.pr_no = rfq.pr_no WHERE rfq.id = '$id' ");
 $row = mysqli_fetch_array($select);
 $rfq_no = $row['rfq_no'];
 $rfq_date = $row['rfq_date'];
 $purpose = $row['purpose'];
 $pmo = $row['pmo'];
 $pr_no = $row['pr_no'];
+$pr_id = $row['id'];
 $pr_date = $row['pr_received_date'];
 ?>
 <?php
@@ -66,7 +67,8 @@ if (isset($_POST['submit'])) {
                 <div class="box-body">
 
                 
-                   <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a>
+                   <a href="ViewRFQdetails.php?id=<?php echo $pr_id; ?>" class="btn btn-primary">Update</a> | 
+                   <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a> | 
                    <a href="ViewRFQ.php" class="btn btn-warning">Back</a>
                    <h4>Item(s)</h4>
                    <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
