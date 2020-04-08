@@ -161,6 +161,7 @@ $username = $_SESSION['username'];
           </a>
           <ul class="treeview-menu" >
             <li><a href="ViewCalendar.php" style="color:black;text-decoration: none;"><i class="fa fa-calendar"></i>CALENDAR OF ACTIVITIES</a></li>
+            <li><a href="ManageCalendar.php" style="color:black;text-decoration: none;"><i class="fa fa-calendar"></i>MANAGE CALENDAR</a></li>
 
           </ul>
         </li>
