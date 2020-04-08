@@ -45,11 +45,9 @@ $autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
 <?php
 if (isset($_POST['submit'])) {
     $abstract_no = $_POST['abstract_no'];
-    $supplier_id = $_POST['supplier_id1'];
+    $supplier_id = $_POST['supplier_id2'];
     $date_opened = $_POST['date_opened'];
     $remarks = $_POST['remarks'];
-
-    echo $supplier_id; exit;
 
     $INSERT_aoq = mysqli_query($conn,"INSERT INTO aoq_data(aoq_no,action_officer,datetime_created,date,remarks) VALUES('$abstract_no',14,'$date_opened','$date_opened','$remarks')");
 
@@ -73,11 +71,11 @@ if (isset($_POST['submit'])) {
 
     $selectabsid = mysqli_query($conn,"SELECT id FROM abstract_of_quote ORDER BY id DESC");
     $rowabsid = mysqli_fetch_array($selectabsid);
-    $abstract_id = $rowabsid['id'];
+    $abstract_id = $rowabsid['id']+1;
 
     echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Successfuly Created!')
-        window.location.href='UpdateAoq.php?rfq_id=$rfq_id&abstract_id=$abstract_id';
+        window.location.href='ViewRFQ.php';
         </SCRIPT>");
 
 }

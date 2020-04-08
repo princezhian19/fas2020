@@ -302,13 +302,11 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                                         
 
                                         <?php if ($WinSupply == $supplier_title1): ?>
-                                          
 
-                                         <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"><br></td>
-                                         <td><?php echo $ppu11;?></td>
+
+                                         <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>">&nbsp&nbsp<?php echo $ppu11;?></td>
                                          <?php else: ?>
-                                             <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"><br></td>
-                                             <td><?php echo $ppu11;?></td>
+                                             <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>">&nbsp&nbsp<?php echo $ppu11;?></td>
                                          <?php endif ?>
 
                                      </tr>
@@ -324,7 +322,6 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                         </table>
                         <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
                            <thead style="width:500px;">
-                            <th width="50" ></th>
                             <th width="" >PPU</th>
                         </thead>   
                         <?php 
@@ -335,15 +332,10 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                             $b++;
                             ?>
                             <tr>
-                                <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>"><br></td>
-                                <td><?php echo $ppu112;?></td>
-
                                 <?php if ($WinSupply == $supplier_title2): ?>
-                                 <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>"><br></td>
-                                 <td><?php echo $ppu112;?></td>
+                                    <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp<?php echo $ppu112;?></td>
                                  <?php else: ?>
-                                     <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>"><br></td>
-                                     <td><?php echo $ppu112;?></td>
+                                     <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp<?php echo $ppu112;?></td>
                                  <?php endif ?>
 
                              </tr>
