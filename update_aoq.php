@@ -50,23 +50,27 @@ function supplier($connect)
 <?php
 if (isset($_POST['submit'])) {
     $abstract_no = $_POST['abstract_no'];
-    $supplier_id = $_POST['supplier_id'];
+    $supplier_id = $_POST['supplier_id2'];
     $date_opened = $_POST['date_opened'];
     $remarks = $_POST['remarks'];
-
-
     $UPDATE_0 = mysqli_query($conn,"UPDATE abstract_of_quote SET abstract_no = NULL WHERE supplier_id = $supplier_id1 AND rfq_id = $rfq_id ");
 
     $UPDATE_1 = mysqli_query($conn,"UPDATE abstract_of_quote SET abstract_no = $abstract_no1 WHERE supplier_id = $supplier_id AND rfq_id = $rfq_id ");
 
     $UPDATE_2 = mysqli_query($conn,"UPDATE aoq_data SET aoq_no = '$abstract_no', datetime_created = '$date_opened',remarks = '$remarks' WHERE id = $abstract_no1 ");
 
-    $INSERT_aoq = mysqli_query($conn,"INSERT INTO aoq_data(aoq_no,action_officer,datetime_created,date,remarks) VALUES('$abstract_no',14,'$date_opened','$date_opened','$remarks')");
+      $selectAOQ = mysqli_query($conn,"SELECT id FROM aoq_data WHERE aoq_no = '$abstract_no' ");
+    $rowAOQ = mysqli_fetch_array($selectAOQ);
+    $aoqID =$rowAOQ['id'];
+
+    $selectabsid = mysqli_query($conn,"SELECT id FROM abstract_of_quote WHERE abstract_no = $aoqID AND rfq_id = $rfq_id ORDER BY id DESC");
+    $rowabsid = mysqli_fetch_array($selectabsid);
+    $abstract_id15 = $rowabsid['id'];
 
 
     echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Successfuly Updated!')
-        window.location.href='UpdateAoq.php?rfq_id=$rfq_id&abstract_id=$abstract_id&supplier_id=$supplier_id1';
+        window.location.href='UpdateAoq.php?rfq_id=$rfq_id&abstract_id=$abstract_id15&supplier_id=$supplier_id1';
         </SCRIPT>");
 
 
@@ -287,7 +291,6 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                                 <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
                                    <thead >
                                     <th width="" >Items</th>
-                                    <th width="50" ></th>
                                     <th width="" >PPU</th>
                                 </thead>   
                                 <?php 

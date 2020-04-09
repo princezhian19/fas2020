@@ -69,13 +69,17 @@ if (isset($_POST['submit'])) {
 
     }
 
-    $selectabsid = mysqli_query($conn,"SELECT id FROM abstract_of_quote ORDER BY id DESC");
+    $selectAOQ = mysqli_query($conn,"SELECT id FROM aoq_data WHERE aoq_no = '$abstract_no' ");
+    $rowAOQ = mysqli_fetch_array($selectAOQ);
+    $aoqID =$rowAOQ['id'];
+
+    $selectabsid = mysqli_query($conn,"SELECT id FROM abstract_of_quote WHERE abstract_no = $aoqID AND rfq_id = $rfq_id ORDER BY id DESC");
     $rowabsid = mysqli_fetch_array($selectabsid);
-    $abstract_id = $rowabsid['id']+1;
+    $abstract_id = $rowabsid['id'];
 
     echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Successfuly Created!')
-        window.location.href='ViewRFQ.php';
+        window.location.href='UpdateAoq.php?rfq_id=$rfq_id&abstract_id=$abstract_id&supplier_id=$supplier_id';
         </SCRIPT>");
 
 }
