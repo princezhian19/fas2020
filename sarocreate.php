@@ -114,10 +114,9 @@ $username = $_SESSION['username'];
              <!-- ORS -->
             <div class="row">
                 <div class="col-md-6">
-                   
                     <label>Expense Class</label>
-                    <select  class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
-           
+                    <select  requried class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
+                    <option selected disabled> Please Select </option>
                     <option value = "PS">Personnel Service</option>
                     <option value = "MOOE">Maintenance and Other Operating Expenses</option>
                     <option value = "FE">Financial Expenses</option>

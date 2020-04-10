@@ -58,7 +58,7 @@ $username = $_SESSION['username'];
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,
-      'autoWidth'   : true
+      'autoWidth'   : false
     })
   })
 </script>
