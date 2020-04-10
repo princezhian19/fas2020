@@ -176,8 +176,7 @@ $username = $_SESSION['username'];
         </div>
         <br>
            <!--  <input type="button" name="save" class="btn btn-primary" value="Save" id="butsave"> -->
-              <input type="button" name="send" class="btn btn-primary" value="Add data" id="butsend">
-              <input type="button" name="save" class="btn btn-primary pull-right" value="Save Data" id="butsave">
+              <input type="button" name="send" class="btn btn-primary pull-right" value="Add Expense Class" id="butsend">
               <br>
               <br>
 
@@ -205,6 +204,8 @@ $username = $_SESSION['username'];
           <tr>
           </tbody>
           </table>
+              <input type="button" name="save" class="btn btn-success " value="Save Data" id="butsave">
+
           </div>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           
@@ -254,7 +255,7 @@ $username = $_SESSION['username'];
           <td width="100px" class="obligated'+newid+'">' + $("#obligated").val() + '</td>\n\
           <td width="100px" class="balance'+newid+'">' + $("#balance").val() + '</td>\n\
           <td width="100px" class="group'+newid+'">' + $("#group").val() + '</td>\n\
-          <td width="100px"><a href="javascript:void(0);" class="remCF">Remove</a></td>\n\ </tr>');
+          <td width="100px"><a href="javascript:void(0);" class="remCF btn btn-danger btn-xs"><i class"fa fa-fw fa-trash-o"></i>Remove</a></td>\n\ </tr>');
           }
 
           }

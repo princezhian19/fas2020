@@ -88,7 +88,7 @@ var action = '';
       "bFilter": true,
       "bInfo": false,
       "bAutoWidth": false,
-      // "dom": '<"top"lf>rt<"bottom"p><"clear">',
+
 
 
 

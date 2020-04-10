@@ -659,8 +659,6 @@ function confirmDelete(delUrl) {
                     <tbody id="result">
                     </tbody>
                   </table>
-                  <br>
-                  <br>
                   
                   <div hidden>
                     <input type="text" name="app_items" id="id" class="form-control"/>
@@ -670,7 +668,7 @@ function confirmDelete(delUrl) {
                     <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
                   </div>
                   <div class="form-group">
-                    <label>Description/Specification <label style="color: Red;" >*</label> </label>
+                    <label>Description/Specification </label>
                     <textarea class="form-control" rows="3" name="description" ></textarea>
                   </div>
                 </div>
@@ -716,11 +714,6 @@ function confirmDelete(delUrl) {
                     <tbody id="result">
                     </tbody>
                   </table>
-                  <br>
-                  
-                   
-                  
-                 
                   </div>
                   
                  
@@ -764,7 +757,6 @@ function confirmDelete(delUrl) {
          <tr>
           <?php 
           $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
-
           $pr_no = $_POST['pr_no'];
           $pmo = $_POST['pmo'];
           $pr_date = $_POST['pr_date'];
@@ -773,8 +765,6 @@ function confirmDelete(delUrl) {
             $pr_no = $_GET['pr_no'];
           }
           $sql_items = $conn->query("SELECT a.sn,pa.id,pa.qty,pa.items,pa.app_id,pa.pr_no,pa.description,pa.unit,pa.abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' AND pmo = '$pmo' ");
-
-        
           while ($row = $sql_items->fetch()) {
             $sn = $row['sn'];
             $id = $row['id'];
@@ -869,8 +859,6 @@ function confirmDelete(delUrl) {
             if ($unit1 == "22") {
               $unit1a = "pax";
             }
-
-            
             ?>
             
             <td id="tdvalue" hidden><?php echo $pr_no?> </td>

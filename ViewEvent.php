@@ -27,12 +27,14 @@ $events = $req->fetchAll();
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
   <link rel="shortcut icon" type="image/png" href="dilg.png">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="_includes/sweetalert.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> </head>
   <!-- CALENDAR -->
   <link rel="stylesheet" href="calendar/fullcalendar/fullcalendar.min.css" />
@@ -95,8 +97,8 @@ function viewEvents()
                    
                     
                 </table>
-                <button style = "text-align:center;" class = "btn btn-success"><i class = "fa fa-arrow-left"></i>&nbsp;Back </button>
-                <button style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary"><i class = "fa fa-edit"></i>&nbsp;<a href="EditEvent.php" style="color:#fff;decoration:none;"> Modify</a> </button>
+                <button style = "text-align:center;" class = "btn btn-success"><i class = "fa fa-arrow-left"></i>&nbsp;<a href= "ViewCalendar.php" style = "color:#fff;decoration:none;">Back</a></button>
+                <button style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary"><i class = "fa fa-edit"></i>&nbsp;<a href="EditEvent.php?eventid=<?php echo $_GET['eventid'];?>" style="color:#fff;decoration:none;"> Modify</a> </button>
                 <button style = "text-align:center;" class = "pull-right btn btn-danger sweet-14"><i class = "fa fa-trash"></i>&nbsp;Delete </button>
 
             <!-- </form> -->
@@ -144,7 +146,45 @@ function viewEvents()
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
+<script src="_includes/sweetalert.min.js"></script>
+<script>
 
+$(document).ready(function() {
+  $('.sweet-14').on('click', function()
+      {
+        swal({
+        title: "Are you sure?",
+        text: "Your will not be able to recover this event!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn btn-danger",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+        },
+function(){
+    swal("Deleted!", "Your event has been deleted.", "success");
+
+    $.ajax({
+              url:"calendar/delete-event.php",
+              method:"POST",
+              data:{
+                  id:<?php echo $_GET['eventid'];?>,
+              },
+              success:function(data)
+              {
+                  setTimeout(function () {
+                  window.location = "ViewCalendar.php";
+
+                  }, 2000);
+
+              }
+            });
+
+});
+  
+    });
+});
+</script>
 
 </body>
 </html>
