@@ -51,7 +51,8 @@
                 <th width="">DISBURSEMENT</th>
                 <th width="">BALANCE</th>
                 <th width="">GROUP</th>
-                <th width="300">ACTION</th>
+                <th width="">ACTION</th>
+                <th width=""></th>
               </thead>
               <?php
               $servername = "localhost";
@@ -93,8 +94,9 @@
                   <td><?php echo $balance?></td>
                   <td><?php echo $sarogroup?></td>
                   <td style="text-align:center" > 
-                    <a class="btn btn-primary btn-xs"href='saroupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i>Update</a> | 
-                    <!-- <a href='@Functions/sofexport.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa fa-fw fa-download'></i></a> -->
+                    <a class="btn btn-primary btn-xs"href='saroupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i>Update</a>
+                    <!-- <a href='@Functions/sofexport.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa fa-fw fa-download'></i></a> --></td>
+                    <td>
                     <a class="btn btn-info btn-xs" href='obtableViewMain.php?getsaroID=<?php echo $saronumber?>&getuacs=<?php echo $uacs?>'> <i class='fa'>&#xf06e;</i>View</a>
                   </td>
                 </tr>
