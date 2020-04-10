@@ -13,10 +13,11 @@ require_once 'calendar/sample/bdd.php';
 require_once 'calendar/sample/dbaseCon.php';
 require_once 'calendar/sample/sql_statements.php';
 
-$sql = "SELECT id, title, start, end, color, cancelflag FROM events where cancelflag = 0 and status = 1 ";
+$sql = "SELECT id, title, start, end, color, cancelflag,office FROM events where cancelflag = 0 and status = 1 ";
 $req = $bdd->prepare($sql);
 $req->execute();
 $events = $req->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -191,6 +192,7 @@ if($_SESSION['planningofficer'] == 1){
         start: '<?php echo $start; ?>',
         end: '<?php echo $realenddate; ?>',
         color: '<?php echo $event['color']; ?>',
+        office: '<?php echo $event['office']; ?>',
         url: 'ViewEvent.php?eventid=<?php echo $event['id']; ?>',
 
       },
@@ -206,14 +208,21 @@ if($_SESSION['planningofficer'] == 1){
         start: '<?php echo $start; ?>',
         end: '<?php echo $realenddate; ?>',
         color: '<?php echo $event['color']; ?>',
+        office: '<?php echo $event['office']; ?>',
 
       },
     <?php 
     }
   }
   endforeach; ?>
-    ]
+    ], 
+     eventRender: function eventRender( event, element, view ) {
+        return ['16', event.office].indexOf($('#selectDivision').val()) >= 0
+    }
   });
+  $('#selectDivision').on('change',function(){
+    $('#calendar').fullCalendar('rerenderEvents');
+})
 
 /*function edit(event){
   start = event.start.format('YYYY-MM-DD HH:mm:ss');
@@ -257,14 +266,6 @@ function displayMessage(message) {
 setInterval(function() { $(".success").fadeOut(); }, 1000);
 }
 
-$(document).ready(function(){
-    // 3rd step in division
-    $('.division_dropdown').on('change',function(){
-      //  getCalendar('calendar_div', $('.year_dropdown').val(), $('.month_dropdown').val(),$('.division_dropdown').val());
-      alert($('.division_dropdown').val());
-   });
-
-});
 </script>
 
 </body>
