@@ -24,7 +24,7 @@ $username = $_SESSION['username'];
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include('sidebar.php');?>
+  <?php include('sidebar2.php');?>
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
@@ -33,7 +33,7 @@ $username = $_SESSION['username'];
       </ol>
       <br>
       <br>
-        <?php include('@issuancetable.php');?>
+        <?php include('issuances_option.php');?>
     </section>
   </div>
 </div>
