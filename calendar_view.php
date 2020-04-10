@@ -19,7 +19,7 @@
                                       <?php 
                                       $currentDate = '2020-04-06';
                                       require_once 'connection.php';
-                                      echo '<select class="form-control " id="selectDivision" style="width: 100%;">';
+                                      echo '<select class="form-control division_dropdown " id="selectDivision" style="width: 100%;">';
                                           $sql = mysqli_query($conn, "SELECT DIVISION_N,DIVISION_M FROM `tblpersonneldivision` ORDER BY DIVISION_N ASC");
                                           if (mysqli_num_rows($sql)>0) {
                                               while($row = mysqli_fetch_assoc($sql) )

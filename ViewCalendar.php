@@ -13,13 +13,10 @@ require_once 'calendar/sample/bdd.php';
 require_once 'calendar/sample/dbaseCon.php';
 require_once 'calendar/sample/sql_statements.php';
 
-$sql = "SELECT id, title, start, end, color, cancelflag FROM events where cancelflag = 0 and status = 1";
-
+$sql = "SELECT id, title, start, end, color, cancelflag FROM events where cancelflag = 0 and status = 1 ";
 $req = $bdd->prepare($sql);
 $req->execute();
-
 $events = $req->fetchAll();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -145,15 +142,15 @@ $(document).ready(function() {
     eventLimit: true, // allow "more" link when too many events
     selectable: true,
     selectHelper: true,
-  select: function(start, end) {
+    select: function(start, end) {
     $('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
     $('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
     $('#ModalAdd').modal('show');
-  },
-  eventRender: function(event, element) {  
+    },
+    eventRender: function(event, element) {  
     element.find('.fc-time').hide();
-  },
-  eventDrop: function (event, delta) {
+    },
+    eventDrop: function (event, delta) {
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                     $.ajax({
@@ -182,7 +179,7 @@ $(document).ready(function() {
     }
 
 
-$enddate = str_replace('-', '/', $end);
+  $enddate = str_replace('-', '/', $end);
 $realenddate = date('Y-m-d',strtotime($enddate . "+1 days"));
 
 if($_SESSION['planningofficer'] == 1){
@@ -259,6 +256,15 @@ function displayMessage(message) {
   $(".response").html("<div class='success'>"+message+"</div>");
 setInterval(function() { $(".success").fadeOut(); }, 1000);
 }
+
+$(document).ready(function(){
+    // 3rd step in division
+    $('.division_dropdown').on('change',function(){
+      //  getCalendar('calendar_div', $('.year_dropdown').val(), $('.month_dropdown').val(),$('.division_dropdown').val());
+      alert($('.division_dropdown').val());
+   });
+
+});
 </script>
 
 </body>
