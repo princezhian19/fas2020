@@ -717,7 +717,7 @@ function confirmDelete(delUrl) {
                     <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
                   </div>
                   <div class="form-group">
-                    <label>Description/Specification <label style="color: Red;" >*</label> </label>
+                    <label>Description/Specification </label>
                     <textarea class="form-control" rows="3" name="description" ></textarea>
                   </div>
                 </div>
