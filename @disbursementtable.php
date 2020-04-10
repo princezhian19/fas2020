@@ -8,7 +8,7 @@
 
           <br>
           <br>
-          <div class=""  style="overflow-x:auto;">
+          <div class=""  >
             <div class="col-md-0" style="overflow-x:auto;">
            <!--   <li class="btn btn-success"><a href="@disbursementcreate.php" style="color:white;text-decoration: none;">Create</a></li> -->
             </div>

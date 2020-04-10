@@ -157,8 +157,8 @@ if (isset($_POST['submit'])) {
               </div>
                <div class="form-group">
                     <label>Unit </label>
-                    <select class="form-control select2" style="width: 100%;" name="unit" id="unit" >
-                      <option value="unit">Select Unit</option>
+                    <select required class="form-control select2" style="width: 100%;" name="unit" id="unit" >
+                      <option selected disabled>Select Unit</option>
                       <option value="book">book</option>
                       <option value="bottle">bottle</option>
                       <option value="box">box</option>

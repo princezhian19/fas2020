@@ -9,7 +9,7 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS Dashboard</title>
+<title>Issuances</title>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,16 +24,16 @@ $username = $_SESSION['username'];
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include('sidebar.php');?>
+  <?php include('sidebar2.php');?>
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">SARO</li>
+        <li class="active">Issuances</li>
       </ol>
       <br>
       <br>
-        <?php include('@sarotable.php');?>
+        <?php include('issuances_option.php');?>
     </section>
   </div>
 </div>
@@ -54,7 +54,7 @@ $username = $_SESSION['username'];
     $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': false,
+      'lengthChange': true,
       'searching'   : true,
       'ordering'    : false,
       'info'        : true,

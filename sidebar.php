@@ -133,6 +133,11 @@ $username = $_SESSION['username'];
         </li> -->
         
         <!-- ===================================================== -->
+        <!-- Issuances -->
+        <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ISSUANCES</a></li>
+        <!-- Issuances -->
+
+
         <li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
             <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>

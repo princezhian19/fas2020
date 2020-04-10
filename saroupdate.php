@@ -108,7 +108,9 @@ while ($row = mysqli_fetch_assoc($view_query)) {
             <div class="box-header with-border">
     
         <br>
-      <li class="btn btn-success"><a href="saro.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-primary"><a href="saro.php" style="color:white;text-decoration: none;">Back</a></li> | 
+      <a class="btn btn-success btn-s" href='@Functions/sofexport.php?getid=<?php echo $getid?>'> <i class='fa fa-fw fa-download'> </i>Export</a>
+
       <br>
       <br>
       <!-- Start form -->
