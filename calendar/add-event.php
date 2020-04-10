@@ -50,5 +50,6 @@ $result = mysqli_query($conn, $sql);
 if (! $result) {
     $result = mysqli_error($conn);
 }
-echo $sql;
+header('location:../calAddEvents.php?flag=1');
+
 ?>

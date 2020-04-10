@@ -46,11 +46,11 @@ function viewEvents()
                 <input  type = "hidden" name = "eventid" value = "<?php echo $row['id'];?>">
                 <table class="table table-bordered"> 
                     <tr>
-                        <td class="col-md-2"><span style = "color:red;">*</span>Title</td>
+                        <td class="col-md-2">Event Title/Activity<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" value = "<?php echo $row['title'];?>"  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2"><span style = "color:red;">*</span>Start Date</td>
+                        <td class="col-md-2">Start Date<span style = "color:red;">*</span></td>
                             <td class="col-md-5">
                                 <input required type="text" class = "form-control" name = "startdatetxtbox" placeholder = "Start Date" id="datepicker1" value = "<?php  echo date('F d, Y',strtotime($row['start']));?>" placeholder="mm/dd/yyyy"  required autocomplete = off  >
                                     </td>
@@ -65,15 +65,15 @@ function viewEvents()
                             <td class="col-md-5"><input  type = "text" class = "form-control" name = "descriptiontxtbox" value = "<?php  echo $row['description'];?>" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2"><span style = "color:red;">*</span>Venue</td>
+                        <td class="col-md-2">Venue<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "text" class = "form-control" name = "venuetxtbox" value = "<?php  echo $row['venue'];?>" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2"><span style = "color:red;">*</span>Expected number of Participants</td>
+                        <td class="col-md-2">Expected number of Participants<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "number" min = "0" name = "enp" class = "form-control" value = "<?php  echo $row['enp'];?>"  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2"><span style = "color:red;">*</span>Target Participants</td>  
+                        <td class="col-md-2">Target Participants<span style = "color:red;">*</span></td>  
                             <td class="col-md-5">
                             <input required type = "text" class = "form-control" name = "targetparticipants" value = "<?php  echo $row['remarks'];?>" />
                                 </td>
@@ -92,7 +92,7 @@ function viewEvents()
                     
                 </table>
                 <button style = "text-align:center;" class = "btn btn-success"><i class = "fa fa-arrow-left"></i>&nbsp;<a href= "ViewCalendar.php" style = "color:#fff;decoration:none;">Back</a></button>
-                <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> 
+                <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save"> 
 
             </form>
         <?php
@@ -117,7 +117,7 @@ function viewEvents()
                                 <div class="response"></div>
 
                                 <div>
-                                    <h1>Calendar of Activities:Modifying of Events</h1><br>
+                                    <h1>Edit Event/Activity</h1><br>
                                 </div>
                                 <div class="well">
                                     <?php echo viewEvents();?>
@@ -133,7 +133,11 @@ function viewEvents()
 if($_GET['flag'] == 1)
 {
     ?>
-    <script>$(document).ready(function(){displayMessage('Update Successfully!.');});</script>
+    <script>
+    $(document).ready(function(){
+        displayMessage('Data has been successfully updated.');
+        setInterval(function() { window.location="ViewEvent.php?eventid=<?php echo $_GET['eventid'];?>"; }, 2000);
+    });</script>
     <?php
 }
 ?>

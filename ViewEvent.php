@@ -55,7 +55,7 @@ function viewEvents()
                 <input type = "hidden" name = "eventid" value = "123">
                 <table class="table table-bordered" > 
                     <tr>
-                        <td class="col-md-2">Title</td>
+                        <td class="col-md-2">Event/Activity Title</td>
                             <td class="col-md-5"><input type = "text" class = "form-control" name = "titletxtbox" value = "<?php echo $row['title'];?>" disabled /></td>
                                 </tr>
                     <tr>
@@ -75,7 +75,7 @@ function viewEvents()
                             <td class="col-md-5"><input type = "text" class = "form-control" name = "venuetxtbox" value = "<?php  echo $row['venue'];?>" disabled/></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Expected number of Participants</td>
+                        <td class="col-md-2">Expected Number of Participants</td>
                             <td class="col-md-5"><input type = "number" min = "0" class = "form-control" value = "<?php  echo $row['enp'];?>" disabled /></td>
                                 </tr>
                     <tr>
@@ -98,8 +98,8 @@ function viewEvents()
                     
                 </table>
                 <button style = "text-align:center;" class = "btn btn-success"><i class = "fa fa-arrow-left"></i>&nbsp;<a href= "ViewCalendar.php" style = "color:#fff;decoration:none;">Back</a></button>
-                <button style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary"><i class = "fa fa-edit"></i>&nbsp;<a href="EditEvent.php?eventid=<?php echo $_GET['eventid'];?>" style="color:#fff;decoration:none;"> Modify</a> </button>
-                <button style = "text-align:center;" class = "pull-right btn btn-danger sweet-14"><i class = "fa fa-trash"></i>&nbsp;Delete </button>
+                <button style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-danger sweet-14"><i class = "fa fa-trash"></i>&nbsp;Delete </button>
+                <button style = "text-align:center;" class = "pull-right btn btn-primary"><i class = "fa fa-edit"></i>&nbsp;<a href="EditEvent.php?eventid=<?php echo $_GET['eventid'];?>" style="color:#fff;decoration:none;">Edit</a> </button>
 
             <!-- </form> -->
         <?php
@@ -127,7 +127,7 @@ function viewEvents()
                         <div class="panel panel-defasult">
                             <div class="box-body"> 
                                 <div>
-                                    <h1>Calendar of Activities:Viewing of Events</h1><br>
+                                    <h1>View Event/Activity</h1><br>
                                         </div>
                                             <div class="well">
                                                 <?php echo viewEvents();?>

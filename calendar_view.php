@@ -1,18 +1,20 @@
 <div class="row">
-                                  <button class="pull-right btn btn-success" style = "margin-left:10px;"><a style = "color:#fff;" href = "calAddEvents.php"> Add Events</a></button>
-                                  <button class="pull-right btn btn-success"><a href ="ManageCalendar.php" style ="color:#fff;decoration:none;">Manage All Events</a></button>
-                                  <div class="col-md-2" id = "selectMonth" >
-                                  </div>
-                                  <div class="col-md-2">
-                                      <select class="form-control " id="selectYear" style="width: 100%;">
-                                          <?php 
-                                          for($i= 2020; $i < 2031; $i++)
-                                          {
-                                          echo '<option value='.$i.'>'.$i.'</option>';
-                                          }
-                                          ?>
-                                      </select>
-                                  </div>
+<button class="pull-right btn btn-success" style = "margin-left:10px;"><a style = "color:#fff;" href = "calAddEvents.php" href="library/export_calendar.php?date=<?php echo $currentDate;?>&division=<?php echo $_SESSION['division'];?>" >Export</a></button>
+    <button class="pull-right btn btn-success" style = "margin-left:10px;"><a href ="ManageCalendar.php" style ="color:#fff;decoration:none;">Manage All Events</a></button>
+        <button class="pull-right btn btn-success"  ><a style = "color:#fff;" href = "calAddEvents.php"> Add Events</a></button>
+
+            <div class="col-md-2" id = "selectMonth" >
+                </div>
+                <div class="col-md-2">
+                    <select class="form-control " id="selectYear" style="width: 100%;">
+                        <?php 
+                        for($i= 2020; $i < 2031; $i++)
+                        {
+                        echo '<option value='.$i.'>'.$i.'</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
                                   <div class="col-md-2">
                                       <?php 
                                       $currentDate = '2020-04-06';
@@ -32,8 +34,6 @@
                                       
                                       ?>
                                   </div>
-                                  <div class="col-md-2">
-                                      <button class="btn btn-success" id = "fml"><a href="library/export_calendar.php?date=<?php echo $currentDate;?>&division=<?php echo $_SESSION['division'];?>" style = "decoration:none; color:#fff;"> Export</a></button>
-                                  </div>
+                                
                                   
                               </div>

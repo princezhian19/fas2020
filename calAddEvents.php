@@ -8,6 +8,67 @@ $username = $_SESSION['username'];
 }
 
 ?>
+<?php 
+function viewEvents()
+{
+        ?>
+            <form method = "POST" action = "calendar/add-event.php">
+                <input  type = "hidden" name = "eventid" value = "<?php echo $row['id'];?>">
+                <table class="table table-bordered"> 
+                    <tr>
+                        <td class="col-md-2">Event/Activity Title<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Start Date<span style = "color:red;">*</span></td>
+                            <td class="col-md-5">
+                                <input required type="text" class = "form-control" name = "startdatetxtbox" id="datepicker1" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2">End Date</td>
+                            <td class="col-md-5">
+                                <input  type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2">Description</td>
+                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "descriptiontxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Venue<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "venuetxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Expected Number of Participants<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "number" min = "0" name = "enptxtbox" class = "form-control" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Target Participants<span style = "color:red;">*</span></td>  
+                            <td class="col-md-5">
+                            <input required type = "text" class = "form-control" name = "remarks" value = "" />
+                                </td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2">Posted By</td>
+                            <td class="col-md-5">                              
+                            <input readonly type = "text"  class = "form-control" value = "<?php echo $_SESSION['username'];?>"  />
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2">Posted Date</td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
+                                </tr>
+                   
+                    
+                </table>
+                <button style = "text-align:center;" class = "btn btn-success"><i class = "fa fa-arrow-left"></i>&nbsp;<a href= "ViewCalendar.php" style = "color:#fff;decoration:none;">Back</a></button>
+                <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save"> 
+
+            </form>
+        <?php
+    
+}
+?>
 <!DOCTYPE html>
 <html>
 <title>FAS: Events Management Dashboard</title>
@@ -47,55 +108,28 @@ $username = $_SESSION['username'];
           <div class="col-md-12">
               <div class="box">
                   <div class="panel panel-defasult">
-                  <form method="POST" enctype="multipart/form-data" class="myformStyle" autocomplete="off" id = "submit"> 
-                  <div class = "response"></div>   
                       <div class="box-body"> 
-                          <div>
-                              <h1>Calendar of Activities: Adding Events</h1><br>
-                          </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label><span style = "color:red;">*</span>Title</label>
-                                        <input  autocomplete = "off"  id = "titletxtbox" class="form-control" name="titletxtbox" type="text"  >
-                                            </div>
-                                <div class="form-group">
-                                    <label><span style = "color:red;">*</span>Description</label>
-                                        <input required autocomplete = "off"  id="descriptiontxtbox" value="" class="form-control" name="descriptiontxtbox" type="text" >
-                                            </div>
-                                <div class="form-group">
-                                    <label><span style = "color:red;">*</span>Start Date</label>
-                                        <input required required type="text" id = "startdatetxtbox" name = "startdatetxtbox" placeholder = "Start Date" class="form-control datePicker1" value="" required placeholder="mm/dd/yyyy" >
-                                            </div>
-                                
-                                <div class="form-group">
-                                    <label><span style = "color:red;">*</span>End Date</label>
-                                        <input required required type="text" id = "enddatetxtbox" name = "enddatetxtbox" placeholder = "End Date" class="form-control datePicker1" value="" required placeholder="mm/dd/yyyy" >
-                                            </div>
-                            </div>
-                            <div class=" col-md-6">
-                                <div class="form-group">
-                                    <label><span style = "color:red;">*</span>Venue</label>
-                                        <input required  id = "venuetxtbox" autocomplete = "off" class="form-control" name="venuetxtbox" type="text" > 
-                                            </div>
-                                <div class="form-group">
-                                    <label><span style = "color:red;">*</span>No. of Participants</label>
-                                        <input required id = "enptxtbox" autocomplete = "off" class="form-control" name="enptxtbox" type="text" >
-                                            </div>
-                                <div class="form-group">
-                                    <label><span style = "color:red;">*</span>Target Participants</label>
-                                        <input required  id = "remarks" autocomplete = "off"  class="form-control" name="remarks" type="text" >
-                                            </div>
-                            </div>
+                        <div class = "response"></div>   
+                              <h1>Add Event/Activity</h1>
+                          <div class="well">
+                                    <?php echo viewEvents();?>
+                                </div>
                             </div>
                       </div>
-                      <button class="btn btn-success btn-lg pull-right  sweet-14" style="float: right;" type = "button">Save</button>
-                  </form>
               </div>
           </div>
         </div>
     </section>
   </div>
 </div>
+<?php
+if($_GET['flag'] == 1)
+{
+    ?>
+    <script>$(document).ready(function(){displayMessage('Data has been successfully added.');});</script>
+    <?php
+}
+?>
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -106,54 +140,19 @@ $username = $_SESSION['username'];
 <script src="dist/js/adminlte.min.js"></script>
 <script src="_includes/sweetalert.min.js"></script>
 <script>
-function displayMessage(message) {
-  $(".response").html("<div class='alert' role='alert' style = 'background-color:#ef9a9a;'>"+message+"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
-setInterval(function() { $(".alert").fadeOut(); }, 3000);
+function displayMessage(message)
+ {
+  $(".response").html("<div class='alert alert-success' role='alert' style = 'background-color:#ef9a9a;'>"+message+"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+    setInterval(function() { $(".alert").fadeOut(); }, 3000);
 }
-    $( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+$(document).ready(function(){
+    $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
 
-   $('.sweet-14').click(function()
-    {
-        var title = $('#titletxtbox').val();
-        var desc = $('#descriptiontxtbox').val();
-        var start = $('#startdatetxtbox').val();
-        var end = $('#enddatetxtbox').val();
-        var venue = $('#venuetxtbox').val();
-        var enp = $('#enptxtbox').val();
-        var participants = $('#remarks').val();
-        if(title== '' || desc == '' || start == '' || end == '' || venue == '' || enp == '' || participants == '')
-        {
-           displayMessage('Note: All fields with <b>(*)</b> are all required!');
-        }else{
-            swal({
-            title: "Are you sure you want to save?",
-            type: "info",
-            showCancelButton: true,
-            confirmButtonClass: 'btn-danger',
-            confirmButtonText: 'Yes',
-            closeOnConfirm: false,
-            showLoaderOnConfirm: true
-        }, function () {
-         var queryString = $('#submit').serialize();
-           $.ajax({
-           url:"calendar/add-event.php",
-           method:"POST",
-           data:$("#submit").serialize(),
-           success:function(data)
-           {
-               setTimeout(function () {
-               swal("Record saved successfully!");
-               }, 3000);
-               window.location = 'ViewCalendar.php';
-           }
-         });
-         
-         
-     });
-        }
-     
-   });
 
+});
+   
 
 
 </script>
