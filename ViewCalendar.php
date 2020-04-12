@@ -13,11 +13,9 @@ require_once 'calendar/sample/bdd.php';
 require_once 'calendar/sample/dbaseCon.php';
 require_once 'calendar/sample/sql_statements.php';
 
-$sql = "SELECT id, title, start, end, color, cancelflag FROM events where cancelflag = 0 and status = 1";
-
+$sql = "SELECT id, title, start, end, color, cancelflag,office FROM events where cancelflag = 0 and status = 1 ";
 $req = $bdd->prepare($sql);
 $req->execute();
-
 $events = $req->fetchAll();
 
 ?>
@@ -145,15 +143,15 @@ $(document).ready(function() {
     eventLimit: true, // allow "more" link when too many events
     selectable: true,
     selectHelper: true,
-  select: function(start, end) {
+    select: function(start, end) {
     $('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
     $('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
     $('#ModalAdd').modal('show');
-  },
-  eventRender: function(event, element) {  
+    },
+    eventRender: function(event, element) {  
     element.find('.fc-time').hide();
-  },
-  eventDrop: function (event, delta) {
+    },
+    eventDrop: function (event, delta) {
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                     $.ajax({
@@ -182,7 +180,7 @@ $(document).ready(function() {
     }
 
 
-$enddate = str_replace('-', '/', $end);
+  $enddate = str_replace('-', '/', $end);
 $realenddate = date('Y-m-d',strtotime($enddate . "+1 days"));
 
 if($_SESSION['planningofficer'] == 1){
@@ -194,6 +192,7 @@ if($_SESSION['planningofficer'] == 1){
         start: '<?php echo $start; ?>',
         end: '<?php echo $realenddate; ?>',
         color: '<?php echo $event['color']; ?>',
+        office: '<?php echo $event['office']; ?>',
         url: 'ViewEvent.php?eventid=<?php echo $event['id']; ?>',
 
       },
@@ -209,14 +208,21 @@ if($_SESSION['planningofficer'] == 1){
         start: '<?php echo $start; ?>',
         end: '<?php echo $realenddate; ?>',
         color: '<?php echo $event['color']; ?>',
+        office: '<?php echo $event['office']; ?>',
 
       },
     <?php 
     }
   }
   endforeach; ?>
-    ]
+    ], 
+     eventRender: function eventRender( event, element, view ) {
+        return ['16', event.office].indexOf($('#selectDivision').val()) >= 0
+    }
   });
+  $('#selectDivision').on('change',function(){
+    $('#calendar').fullCalendar('rerenderEvents');
+})
 
 /*function edit(event){
   start = event.start.format('YYYY-MM-DD HH:mm:ss');
@@ -259,6 +265,7 @@ function displayMessage(message) {
   $(".response").html("<div class='success'>"+message+"</div>");
 setInterval(function() { $(".success").fadeOut(); }, 1000);
 }
+
 </script>
 
 </body>

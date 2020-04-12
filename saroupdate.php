@@ -48,7 +48,6 @@ while ($row = mysqli_fetch_assoc($view_query)) {
   $obligated = $row["obligated"];
   $balance = $row["balance"];
   $group = $row["sarogroup"];
-
 }
 ?>
 
@@ -135,9 +134,12 @@ while ($row = mysqli_fetch_assoc($view_query)) {
                         <input type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="sarodate" value = "<?php echo $d1;?>">
                     </div>
                     <br>
-                    <label>Source</label>
+                    <label>Source No. <label style="color: Red;" >*</label></label>
                       <input  type="text" class="typeahead form-control" style="height: 35px;" id="saronumber" placeholder="Enter Source" name="saronumber" value = "<?php echo $saronumber;?>">
                       <br>
+                      <label>PPA</label>
+                    <input  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa" value = "<?php echo $ppa;?>">
+                    <br>
                     
                 </div>    
                 
@@ -149,26 +151,62 @@ while ($row = mysqli_fetch_assoc($view_query)) {
                     <label>Legal Basis</label>
                       <input  type="text" class="form-control" style="height: 35px;" id="legalbasis" placeholder="Enter Legal Basis" name="legalbasis" value = "<?php echo $legalbasis;?>">
                     <br>
+                  
+                    <label>Particulars</label>
+                    <input  type="text"   class="form-control" style="height: 35px;" id="particulars" placeholder="Enter Particulars" name="particulars" value = "<?php echo $particulars;?>">
+                    <br>
                      
                     
                 </div>
             </div>
         </div>
-        
+        <div class="well">
         <div class="class">
              <!-- ORS -->
             <div class="row">
                 <div class="col-md-6">
-                    <label>PPA</label>
-                    <input  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa" value = "<?php echo $ppa;?>"> 
-                    <br>
                     <label>Expense Class</label>
-                    <input  type="text"   class="form-control" style="height: 35px;" id="expenseclass" placeholder="Enter Expense Class" name="expenseclass" value = "<?php echo $expenseclass;?>"> 
+                    <?php if ($expenseclass == 'MOOE'): ?>
+                      <select  class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
+           
+                    <option value = "MOOE">Maintenance and Other Operating Expenses</option>
+                    <option value = "PS">Personnel Service</option>
+                    <option value = "FE">Financial Expenses</option>
+                    <option value = "CO">Capital Outlay</option>
+                    </select>
+                    <?php endif ?>
+                    <?php if ($expenseclass == 'PS'): ?>
+                      <select  class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
+           
+                    <option value = "PS">Personnel Service</option>
+                    <option value = "MOOE">Maintenance and Other Operating Expenses</option>
+                    <option value = "FE">Financial Expenses</option>
+                    <option value = "CO">Capital Outlay</option>
+                    </select>
+                    <?php endif ?>
+                    <?php if ($expenseclass == 'FE'): ?>
+                      <select  class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
+                    <option value = "FE">Financial Expenses</option>
+                    <option value = "PS">Personnel Service</option>
+                    <option value = "MOOE">Maintenance and Other Operating Expenses</option>
+                    <option value = "CO">Capital Outlay</option>
+                    </select>
+                    <?php endif ?>
+                    <?php if ($expenseclass == 'CO'): ?>
+                      <select  class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
+                    <option value = "CO">Capital Outlay</option>
+                    <option value = "FE">Financial Expenses</option>
+                    <option value = "PS">Personnel Service</option>
+                    <option value = "MOOE">Maintenance and Other Operating Expenses</option>
+                    </select>
+                    <?php endif ?>
+                    
+                    
+                  <!--   <input  type="text"   class="form-control" style="height: 35px;" id="expenseclass" placeholder="Enter Expense Class" name="expenseclass"> -->
+                    <br>
                 </div>
                 <div class="col-md-6">
-                <label>Particulars</label>
-                    <input  type="text"   class="form-control" style="height: 35px;" id="particulars" placeholder="Enter Particulars" name="particulars" value = "<?php echo $particulars;?>">
-                    <br>
+              
                     
                     <label>UACS</label>
                     <input  type="text"   class="form-control" style="height: 35px;" id="uacs" placeholder="Enter UACS" name="uacs" value = "<?php echo $uacs;?>">
@@ -185,39 +223,40 @@ while ($row = mysqli_fetch_assoc($view_query)) {
 
             <div class="col-md-3">
                     <label>Group</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="group" placeholder="Enter amount" name="group" value = "<?php echo $group;?>">
+                    <input  type="text"  class="form-control" style="height: 40px;" id="group" placeholder="" name="group" value = "<?php echo $group;?>">
                    
                 </div>
 
+
                 <div class="col-md-3">
-                    <label>Amount</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" name="amount" value = "<?php echo $amount;?>">
+                    <label>Amount <label style="color: Red;" >*</label></label>
+                    <input  type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" name="amount" value = "<?php echo $amount;?>">
                    
                 </div>
-             
-                
+
+              
                 <div class="col-md-3">
                     <label>Obligated</label>
-                    <input  type="text" readonly class="form-control" style="height: 40px;" id="obligated" placeholder="Enter Obligated" name="obligated" value = "<?php echo $obligated;?>">
+                    <input  type="text" readonly  class="form-control" style="height: 40px;" id="obligated" placeholder="" name="obligated" value = "<?php echo $obligated;?>">
                     
                 </div>
 
                 <div class="col-md-3">
                     <label>Balance</label>
-                    <input  type="text" readonly  class="form-control" style="height: 40px;" id="balance" placeholder="Balance is from original Amount - Obligated" name="balance" value = "<?php echo $balance;?>">
+                    <input  type="text" readonly  class="form-control" style="height: 40px;" id="balance" placeholder="0" name="balance" value = "<?php echo $balance;?>" >
                 </div>
 
             
-            </div>
+            </div>           
             <!-- END SARO -->
-            <br>
-            
+            <br> 
+        </div>
         </div>
         <!-- End Menu -->
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Submit</button>
+    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-primary">Update</button>
     <br>
     <br>
     </div>

@@ -68,6 +68,15 @@ function viewEvents()
         <?php
     
 }
+function getCurrentID()
+{
+    include 'connection.php';
+    $sqlQuery = "SELECT ID FROM `events`  ORDER BY ID DESC LIMIT 1";
+    $result = mysqli_query($conn, $sqlQuery);
+    if ($row = mysqli_fetch_array($result)) {
+        echo $row['ID'];
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -126,7 +135,11 @@ function viewEvents()
 if($_GET['flag'] == 1)
 {
     ?>
-    <script>$(document).ready(function(){displayMessage('Data has been successfully added.');});</script>
+    <script>
+    $(document).ready(function(){
+        displayMessage('Data has been successfully added.');
+        setInterval(function() { window.location="ViewEvent.php?eventid=<?php echo getCurrentID();?>"; }, 2000);
+    });</script>
     <?php
 }
 ?>
