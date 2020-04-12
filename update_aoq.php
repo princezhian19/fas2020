@@ -121,6 +121,8 @@ $sid4 = $rowS4['sid'];
 
 $sql_items = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid1 ");
 
+$sql_items1 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid1 ");
+
 $sql_items2 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid2 ");
 
 $sql_items3 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid3 ");
@@ -352,29 +354,46 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
 
         <div class="box-body">
           <div class="row" id="boxed">
-              <!-- S U P P L I E R      1 [PAGE TATLO ANG SUPPIER] -->
-              <div class="col-xs-4">
-                  <table id="example1" class="  table-responsive" style="width:400px;background-color: white;">
+                     <!-- S U P P L I E R S [PAGE TATLO ANG SUPPIER] -->
+                            <div class="col-xs-3">
+                                <table id="example1" class="  table-responsive" style="width:300px;background-color: white;" >
+                                    <thead>
+                                        <th>Item(s)</th>
+                                    </thead>
+                                </table>
+                                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;" >
+                                   <thead >
+                                    <th width="" >Procurement</th>
+                                </thead>   
+                                <?php 
+                                while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
+                                    $procurement = $rowrfid1['procurement'];
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $procurement;?></td>
+                                     </tr>
+                                 <?php } ?>
+                             </table>
+                         </div>
+
+              <!-- S U P P L I E R      1  -->
+              <div class="col-xs-3">
+                  <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
                     <thead>
-                        <th style="float: ;"><?php echo $supplier_title1;?></th>
+                        <th ><?php echo $supplier_title1;?></th>
                     </thead>
                 </table>
-                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:400px;background-color: white;">
+                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th width="" >Item</th>
                     <th width="" >PPU</th>
                 </thead>   
                 <?php 
                 $b = 1;
-                while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
+                while($rowrfid1 = mysqli_fetch_assoc($sql_items1) ){
                     $ppu11 = $rowrfid1['ppu'];
-                    $procurement = $rowrfid1['procurement'];
                     $b++;
                     ?>
                     <tr>
-                        <td><?php echo $procurement;?></td>
-                        
-
                         <?php if ($WinSupply == $supplier_title1): ?>
                             <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
                                 <?php echo $ppu11;?></td>
@@ -382,39 +401,34 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                                   <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
                                     <?php echo $ppu11;?></td>
                                 <?php endif ?>
-
-
                             </tr>
                         <?php } ?>
                     </table>
 
                 </div>
                 <!-- S U P P L I E R     2  -->
-                <div class="col-xs-4">
-                   <table id="example1" class="  table-responsive" style="width:400px;background-color: white;">
+                <div class="col-xs-3">
+                   <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
                     <thead>
                         <th  ><?php echo $supplier_title2;?></th>
                     </thead>
                 </table>
-                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:400px;background-color: white;">
+                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th align="center" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPPU</th>
+                    <th>PPU</th>
                 </thead>   
                 <?php 
                 $b = 1;
                 while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
                     $ppu112 = $rowrfid12['ppu'];
-                    $procurement2 = $rowrfid12['procurement'];
                     $b++;
                     ?>
                     <tr >
-
-
                       <?php if ($WinSupply == $supplier_title2): ?>
-                        <td >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input  type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
+                        <td ><input  type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
                             <?php echo $ppu112;?></td>
                             <?php else: ?>
-                                <td >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input  type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
+                                <td ><input  type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
                                     <?php echo $ppu112;?></td>
                                 <?php endif ?>
 
@@ -424,32 +438,30 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                     </table>
                 </div>
                 <!-- S U P P L I E R     3  -->
-                <div class="col-xs-4">
-                   <table id="example1" class="  table-responsive" style="width:400px;background-color: white;">
+                <div class="col-xs-3">
+                   <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
                     <thead>
                         <th width="" ><?php echo $supplier_title3;?></th>
                     </thead>
                 </table>
-                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:400px;background-color: white;">
+                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th width="" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPPU</th>
+                    <th width="" >PPU</th>
                 </thead>   
                 <?php 
                 $b = 1;
                 while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
                     $ppu113 = $rowrfid13['ppu'];
-                    $procurement3 = $rowrfid13['procurement'];
                     $b++;
                     ?>
                     <tr>
                         <?php if ($WinSupply == $supplier_title3): ?>
-                           <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
+                           <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
                             <?php echo $ppu113;?></td>
                             <?php else: ?>
-                               <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
+                               <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
                                 <?php echo $ppu113;?></td>
                             <?php endif ?>
-
                         </tr>
                     <?php } ?>
                 </table>

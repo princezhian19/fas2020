@@ -113,21 +113,9 @@ $countQ = $rowSQ['countQ'];
          <h1><p style="padding-left: 15px;">Encode Supplier Quote for RFQ No. <?php echo $rfq_no;?></p></h1> 
          <div class="panel-heading">
             <i class="fa fa-file-text"></i> Quotation(s)
-            <!-- <span style="margin-right: 10px"><button type="button" class="pull-right add_form_field btn btn-success btn-xs"><i class="fa fa-plus"></i>  Add Supplier Quote</button></span> -->
             <div class="clearfix"></div>
         </div>
         <div class="panel-body container-items"><!-- widgetContainer -->
-           <?php if (mysqli_num_rows($selectSupQ)>0): ?>
-            <legend class="panel-heading ">
-                <span class="panel-title-address">Quote <small>(<?php echo $countQ;?>) existing quote(s)</small></span>
-                   <!--  <button type="button" class="pull-right remove-item btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus"></i></button>
-                    <div class="clearfix"></div> -->
-                    <?php if (mysqli_num_rows($selectSupQ)>0): ?>
-                        <a href="ViewSupplierItems.php?rfq_id=<?php echo $rfq_items_idS;?>" class="btn btn-primary btn-xs">View Suppliers</a>
-                    <?php endif ?>
-                </legend>
-            <?php endif ?>
-
             <br>
             <br>
             <div class="well">

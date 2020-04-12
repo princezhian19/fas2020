@@ -642,9 +642,6 @@ function confirmDelete(delUrl) {
 
           ?> 
           <div class="panel panel-success" id="item_table">
-           <?php
-           $output = '';
-           ?>
            <div class="panel-heading">
             <i class="fa fa-list-alt"></i> <!-- Item(s) -->
             <div class="clearfix"></div>
