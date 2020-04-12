@@ -31,16 +31,14 @@ include('db.class.php'); // call db.class.php
                     <tr style="background-color: white;color:blue;">
                  
                   <th>CATEGORY</th>
-                  <th>ISSUANCES NO</th>
+                  <th>ISSUANCE NO</th>
                   <th>ISSUANCE DATE</th>
                   <th>TITLE/SUBJECT</th>
                   <th>ACTION</th>
                   
                 </tr>
-              </thead>
-
-
-              <?php
+                </thead>
+                <?php
             $servername = "localhost";
             $username = "fascalab_2020";
             $password = "w]zYV6X9{*BN";
@@ -50,71 +48,78 @@ include('db.class.php'); // call db.class.php
             $conn = new mysqli($servername, $username, $password,$database);
             $view_query = mysqli_query($conn, "SELECT issuances.date_issued,issuances.postedby,issuances.office_responsible,pdf_file,issuances.id, issuances.type, issuance_no, `status`, `subject`, summary, dateposted, `name`, issuances.type, url
             FROM issuances LEFT JOIN issuances_category ON issuances.category = issuances_category.id 
-            ORDER BY dateposted");
-
-             /* where md5(issuances.id) ='".md5($_GET['id'])."' */
+            where md5(issuances.id) ='".md5($_GET['id'])."' ORDER BY dateposted");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
-                  $id = $row["id"];
-
-                  $datenta1 = $row["datenta"];
-                  $datenta = date('F d, Y', strtotime($datenta1));
-
-                  $datereceived1 = $row["datereceived"];
-                  $datereceived = date('F d, Y', strtotime($datereceived1));
-
-                  $accountno = $row["accountno"];
-                  $ntano = $row["ntano"];
-                  $saronumber = $row["saronumber"];
-                  $particular = $row["particular"];
-
-                  $amount1 = $row["amount"];
-                  $amount = number_format( $amount1,2);
-
-                  $obligated1 = $row["obligated"];
-                  $obligated = number_format( $obligated1,2);
-
-                  $balance1 = $row["balance"];
-                  $balance = number_format( $balance1,2);
+                  $id = $row["id"]; 
                   
-                  //$sarogroup = $row["sarogroup"];
-                ?>
-                 <tr align = ''>
-                   
-                    <?php if ( $datenta1=="0000-00-00" ): ?>
-                    <td style="text-align:center" ></td>
-                    <?php else : ?>
-                    <td style="text-align:center" ><?php echo $datenta?></td>
-                    <?php endif ?>
+                  $accountno = $row["accountno"];
 
-                    <?php if ( $datereceived1=="0000-00-00" ): ?>
-                    <td style="text-align:center" ></td>
-                    <?php else : ?>
-                        <td style="text-align:center" ><?php echo $datereceived?></td>
-                    <?php endif ?>
+                  $date1 = $row["date"];
+                  $date = date('F d, Y', strtotime($date1));
 
-                   
-              
-                    <td style="text-align:center" ><?php echo $accountno?></td>
-                    <td style="text-align:center" ><?php echo $ntano?></td>
-                    <td style="text-align:center" ><?php echo $saronumber?></td>
-                    <td style="text-align:center" ><?php echo $particular?></td>
-                    <td style="text-align:center" ><?php echo $amount?></td>
-                    <td style="text-align:center" ><?php echo $obligated?></td>
-                    <td style="text-align:center" ><?php echo $balance?></td>
-                    
-                    <td style="text-align:center" > 
-                    
-                    <a href='ntaupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
-                    <a href='ntatableViewMain.php?getntano=<?php echo $ntano?>&getparticular=<?php echo $particular?>'> <i style='font-size:24px' class='fa'>&#xf06e;</i> </a>
-                    
-                    </td>
-                   
+                  $payee = $row["payee"];
+                  $particular = $row["particular"];
+                  $dvno = $row["dvno"];
+                  $lddap = $row["lddap"];
+                  $orsno = $row["orsno"];
+                  $ppa = $row["ppa"];
+                  $uacs = $row["uacs"];
 
-                    </tr>
+                  $gross1 = $row["gross"];
+                  $gross = number_format( $gross1,2);
 
+                  $totaldeduc = $row["totaldeduc"];
+                  $totaldeduc = number_format( $totaldeduc,2);
+
+                  $net1 = $row["net"];
+                  $net = number_format( $net1,2);
+
+                  $remarks = $row["remarks"];
+                  $status = $row["status"];
+
+               ?>
+
+                <tr align = ''>
+             
                 
-              <?php }?>
+                <td style="text-align:center" ><?php echo $accountno?></td>
+                <?php if ( $date1=="0000-00-00" ): ?>
+                <td style="text-align:center" ></td>
+                <?php else : ?>
+                <td style="text-align:center" ><?php echo $date?></td>
+                <?php endif ?>
+
+                <td style="text-align:center" ><?php echo $payee?></td>
+                <td style="text-align:center" ><?php echo $particular?></td>
+                <td style="text-align:center" ><?php echo $dvno?></td>
+                <td style="text-align:center" ><?php echo $lddap?></td>
+                <td style="text-align:center" ><?php echo $orsno?></td>
+                <td style="text-align:center" ><?php echo $ppa?></td>
+                <td style="text-align:center" ><?php echo $uacs?></td>
+                <td style="text-align:center" ><?php echo $gross?></td>
+                <td style="text-align:center" ><?php echo $totaldeduc?></td>
+                <td style="text-align:center" ><?php echo $net?></td>
+                <td style="text-align:center" ><?php echo $remarks?></td>
+                <td style="text-align:center" ><?php echo $status?></td>
+                
+                <td style="text-align:center" > 
+                
+                <a href='ntaobupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
+                
+                <!-- <a href='@Functions/sofexport.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa fa-fw fa-download'></i></a>
+                <a href='@obtableViewMain.php?getsaroID=<?php echo $saronumber?>&getuacs=<?php echo $uacs?>'> <i style='font-size:24px' class='fa'>&#xf06e;</i> </a> -->
+                </td>
+                
+               
+
+                </tr>
+
+            
+            <?php }?>
+
+
+
              
             </table>
                 
