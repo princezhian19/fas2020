@@ -17,7 +17,7 @@
                         <th>RECEIVE PR</th>
                         <th>RFQ NO</th>
                         <th>RFQ DATE</th>
-                        <th width="100">ABSTRACT</th>
+                        <th width="100">AWARDING</th>
                         <th>PURCHASE ORDER</th>
                       
                     </tr>

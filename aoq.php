@@ -263,7 +263,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
     <div class="box">
       <div class="box-header with-border" align="left">
         <div class="col-md-11">
-          <h1>RFQ No. &nbsp <?php echo $rfq_no;?></h1>
+          <h1>Awarding of RFQ No. &nbsp <?php echo $rfq_no;?></h1>
         </div>
       </div>
       <div class="box-body table-responsive no-padding">
