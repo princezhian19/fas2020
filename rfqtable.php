@@ -8,17 +8,17 @@
             <table id="example1" class="table table-striped table-bordered" >
                 <thead>
                     <tr style="background-color: white;color:blue;">
-                        <th>PR NO</th>
-                        <th>PR DATE</th>
-                        <th>OFFICE</th>
+                        <th width="100">PR NO</th>
+                        <th width="100">PR DATE</th>
+                        <th width="100">OFFICE</th>
                         <th width="100">TYPE</th>
                         <th width="200">PURPOSE</th>
-                        <th>TARGET DATE</th>
-                        <th>RECEIVE PR</th>
-                        <th>RFQ NO</th>
-                        <th>RFQ DATE</th>
+                        <th width="100">TARGET DATE</th>
+                        <th width="100">RECEIVE PR</th>
+                        <th width="100">RFQ NO</th>
+                        <th width="100">RFQ DATE</th>
                         <th width="100">AWARDING</th>
-                        <th>PURCHASE ORDER</th>
+                        <th width="100">PURCHASE ORDER</th>
                       
                     </tr>
                 </thead>
