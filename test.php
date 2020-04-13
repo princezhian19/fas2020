@@ -93,7 +93,7 @@ var action = '';
 
 
         "processing": true,
-        "serverSide": false,
+        // "serverSide": false,
         "ajax": "DATATABLE3/server_processing.php",
         "order": [[ 1, "asc" ]],
         // "aoColumnDefs":[{
