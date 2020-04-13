@@ -3,48 +3,150 @@
   <script src="calendar/fullcalendar/lib/moment.min.js"></script>
   <script src="calendar/fullcalendar/fullcalendar.min.js"></script>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-<script src="http://fullcalendar.io/js/fullcalendar-2.3.1/fullcalendar.min.js"></script>
-<link rel="stylesheet" href="http://fullcalendar.io/js/fullcalendar-2.3.1/fullcalendar.min.css" />
+<div id="calendar"></div>
 
-<select id="school_selector">
-  <option value="all">All</option>
-  <option value="1">School 1</option>
-  <option value="2">School 2</option>
-</select>
+<div class="userSearch">
+                <div class="searchBar">
+                  <input type="text" id="search-criteria" onkeyup="myFunction()" placeholder="Search" /> (user)First Filter:
+                  
+                 </div>
+                  
+                <div id ="userList">
+                <div> 
+                <input type="radio" name="user_selector" value="all" id="all" checked/>
+                  <label for="all"> All </label>
+                  <input type="radio" name="user_selector" value="Jack" id="Jack" />
+                  <label for="all"> Jack </label>
+                  <input type="radio" name="user_selector" value="Matt" id="Matt" />
+                  <label for="Matt"> Matt </label>
+                </div>
+                   <select style = "width:20%;" class="division_dropdown " id="selectDivision" style="width: 100%;">
+                   <option text="text" value="0"  ></option>
+                   <option text="text" value="all"  >All</option>
+                   <option text="text" value="Jack"  >Jack</option>
+                   <option text="text" value="3"  >ORD-Legal</option>
+                   </select>
+              
+                <style>
+                #calendar {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 10px;
+  }
+                </style>
+                <script>
+                $(document).ready(function() {
 
-<div id="mycalendar"></div>
-<script>
-$('#mycalendar').fullCalendar({
-    events: [
-        {
-            title: 'Event 1',
-            start: '2020-04-01',
-            school: '1'
-        },
-        {
-            title: 'Event 2',
-            start: '2020-04-02',
-            school: '2'
-        },
-        {
-            title: 'Event 3',
-            start: '2015-05-03',
-            school: '1'
-        },
-        {
-            title: 'Event 4',
-            start: '2015-05-04',
-            school: '2'
-        }
-    ],
-    eventRender: function eventRender( event, element, view ) {
-        return ['all', event.school].indexOf($('#school_selector').val()) >= 0
+$('#calendar').fullCalendar({
+  
+  header: {
+    left: 'prev,next today',
+    center: 'title',
+    right: 'month,basicWeek,basicDay'
+  },
+  defaultDate: '2018-03-12',
+  navLinks: true, // can click day/week names to navigate views
+  editable: true,
+  eventLimit: true, // allow "more" link when too many events
+
+  events: [
+    {
+      title: 'Jack-Petco',
+      start: '2018-03-01',
+      user: "Jack",
+      client: "Petco",
+    },
+    {
+      title: 'Jack-Petsmart',
+      start: '2018-03-07',
+      end: '2018-03-10',
+      user: "Jack",
+      client: "Petsmart",
+    },
+    {
+      id: 999,
+      title: 'Matt-Petco',
+      start: '2018-03-09T16:00:00',
+      user: "Matt",
+      client: "Petco",
+    },
+    {
+      id: 999,
+      title: 'Matt-Petco',
+      start: '2018-03-16T16:00:00',
+      user: "Matt",
+      client: "Petco",
+    },
+    {
+      title: 'Jack-petco',
+      start: '2018-03-11',
+      end: '2018-03-13',
+      user: "Jack",
+      client: "Petco",
+    },
+    {
+      title: 'Jack-Petsmart',
+      start: '2018-03-12T10:30:00',
+      end: '2018-03-12T12:30:00',
+      user: "Jack",
+      client: "Petsmart",
+    },
+    {
+      title: 'Jack-Petco',
+      start: '2018-03-12T12:00:00',
+      user: "Jack",
+      client: "Petco",
+    },
+    {
+      title: 'Jack-petco',
+      start: '2018-03-12T14:30:00',
+      user: "Jack",
+      client: "Petco",
+    },
+    {
+      title: 'Matt-Petsmart',
+      start: '2018-03-12T17:30:00',
+      user: "Matt",
+      client: "Petsmart",
+    },
+    {
+      title: 'Jack-petco',
+      start: '2018-03-12T20:00:00',
+      user: "Jack",
+      client: "Petco"
+    },
+    {
+      title: 'Matt-Petco',
+      start: '2018-03-13T07:00:00',
+      user: "Matt",
+      client: "Petco",
+    },
+    {
+      title: 'Jack-Petco',
+      url: 'http://google.com/',
+      start: '2018-03-28',
+      user: "Jack",
+      client: "Petco",
     }
+  ],
+    eventRender: function(event, element, view) {
+            return $('input[type=radio][name=user_selector]:checked').val() === 'all' || event.user.indexOf($("input[type=radio][name=user_selector]:checked").val()) >= 0;
+    },
+  
+
 });
 
-$('#school_selector').on('change',function(){
-    $('#mycalendar').fullCalendar('rerenderEvents');
-})
+
+$('input[type=radio][name=type_selector]').on('change', function() {
+           console.log("Event");
+           $('#calendar').fullCalendar('rerenderEvents');
+       });
+       
+       $('input[type=radio][name=user_selector]').on('change', function() {
+           console.log("Event");
+           $('#calendar').fullCalendar('rerenderEvents');
+       });
+
+});
+;
 </script>
