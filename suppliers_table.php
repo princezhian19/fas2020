@@ -27,7 +27,7 @@ th{
         <div class="panel panel-defasult">
           <div class="box-body"> 
             <div>
-                <h1>Monitoring for ICT Technical Assistance Request</h1><br>
+                <h1>Supplier</h1><br>
                 <?php 
                 ?>
             </div>
