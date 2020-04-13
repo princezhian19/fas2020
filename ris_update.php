@@ -27,7 +27,6 @@ ob_start();
           }
           ?>
         </div>
-        <form method="POST" id="">
           <div  class="col-xs-3">
             <label>PO No. : </label>
             <?php
@@ -37,7 +36,6 @@ ob_start();
             }
             ?>
           </div>
-          <form method="POST" id="">
             <div  class="col-xs-3">
               <label>RIS No. : </label>
               <?php
@@ -149,7 +147,7 @@ ob_start();
             <br>
             <br>
             <div > 
-          <input type="button" name="submit" class="btn btn-primary" value="Save" />
+          <button name="submit" type="submit" class="btn btn-success">Save</button>
             </div>
 <div class="box-header with-border">
         <div class="table-repsonsive">
@@ -201,6 +199,7 @@ ob_start();
 <?php
 if (isset($_POST['submit'])) 
 {
+  $conn = mysqli_connect("localhost", "fascalab_2020", "w]zYV6X9{*BN", "fascalab_2020");
   $division = $_POST['division'];
   $po_no = $_POST['po_no'];
   $remarks = $_POST['remarks'];
@@ -209,17 +208,18 @@ if (isset($_POST['submit']))
   $issued_by = $_POST['issued_by'];
   $recieved_by = $_POST['recieved_by'];
   $purpose = $_POST['purpose'];
+  $ris_no = $_POST['ris_no'];
   $id = $_GET['id'];
 
 
-  $update_qty_from_ris = mysqli_query($conn,"UPDATE `ris` SET `division`='$division',`po_no`='$po_no',`remarks`='$remarks',`request_by`='$request_by',`approved_by`='$approved_by',`issued_by`='$issued_by',`recieved_by`='$recieved_by',`purpose`='$purpose' WHERE id = '$id'");
+  $update_qty_from_ris = mysqli_query($conn,"UPDATE `ris` SET `ris_no`='$ris_no',`division`='$division',`po_no`='$po_no',`remarks`='$remarks',`request_by`='$request_by',`approved_by`='$approved_by',`issued_by`='$issued_by',`recieved_by`='$recieved_by',`purpose`='$purpose' WHERE id = '$id'");
   
   if (!empty($update_qty_from_ris))
   {
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('RIS Updated!')
-      </SCRIPT>");
-    header("Refresh:0");
+      echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Successfuly Updated!')
+    window.location.href = 'UpdateRIS.php?id=$id';
+    </SCRIPT>");
   } else {
    echo "Error: " ;
  }

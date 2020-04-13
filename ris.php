@@ -1,12 +1,23 @@
-<html>
-<head>
-  <title>Asset Management System</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+<?php
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+$idGet='';
+$getDate = date('Y');
+$m = date('m');
+$auto = mysqli_query($conn,"SELECT ris_no FROM ris order by ris_no desc limit 1");
+$rowqwe = mysqli_fetch_array($auto);
+$idGet1 = $rowqwe["ris_no"];
+$idGet  = str_replace('2020-0','', $idGet1)+1;
 
-</head>
+$ris_latest = $getDate.'-'.'0'.$idGet;
+
+
+
+?>
+
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
     function load_data(query)
@@ -57,16 +68,22 @@
       &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="ViewRIS.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
-      <div class="col-xs-6">
+      <div class="col-xs-4">
         <label>Search PO No. : </label>
         <input type="text" class="form-control" name="search_text" id="search_text" placeholder="Search Code" class="" />
-        <br>
-      </div>
-      <br>
-      <table class="table table-striped table-hover" id="main">
+        <table class="table table-striped table-hover" style="border:solid 1px;" id="main">
         <tbody id="result">
         </tbody>
       </table>
+        <br>
+      </div>
+      <br>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <div class="box-body">
         <div class="well">
           <div class="row">
@@ -94,7 +111,7 @@
                 </div>
                 <div class="col-xs-3">
                   <label>RIS No : </label>
-                  <input required type="text" class="form-control" style="height: 40px;" id="ris_no" placeholder="" name="ris_no">
+                  <input required type="text" value="<?php echo $ris_latest; ?>" class="form-control" style="height: 40px;" id="ris_no" placeholder="" name="ris_no">
                 </div>
                 <div  class="col-xs-3">
                   <label>Remarks : </label>
@@ -118,7 +135,7 @@
             </div>
 
             <div class="col-xs-3">
-              <label>Approve by : </label>
+              <label>Approved by : </label>
               <input type="text" readonly class="form-control" style="height: 40px;" id="approved_by" placeholder="" name="approved_by" value="NOEL R. BARTOLABAC, CESO V">
             </div>
 
@@ -128,7 +145,7 @@
             </div>
 
             <div  class="col-xs-3">
-              <label>Recieved by : </label>
+              <label>Received by : </label>
               <input type="text" class="form-control" id="recieved_by" placeholder="" name="recieved_by">
             </div>
             <p>&nbsp</p>
@@ -139,10 +156,10 @@
             </div>
           </div>
         </div>
-      </div>
+      <button style="float:;" type="submit" name="submit"  class="btn btn-success">Issue All</button>
+      <a style="float:right;" href="javascript:void(0);" class="btn btn-primary link" data-id="<=$data['id']?>">Issue to Many</a>
 
-      &nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Issue All</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-      <a href="javascript:void(0);" class="btn btn-primary link" data-id="<=$data['id']?>">Issue to Many</a><br><br>
+      </div>
     </div>
   </div>
 </body>
