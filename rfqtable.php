@@ -8,18 +8,17 @@
             <table id="example1" class="table table-striped table-bordered" >
                 <thead>
                     <tr style="background-color: white;color:blue;">
-                        <th>PR NO</th>
-                        <th>PR DATE</th>
-                        <th>OFFICE</th>
+                        <th width="100">PR NO</th>
+                        <th width="100">PR DATE</th>
+                        <th width="100">OFFICE</th>
                         <th width="100">TYPE</th>
                         <th width="200">PURPOSE</th>
-                        <th>TARGET DATE</th>
-                        <th>RECEIVE PR</th>
-                        <th>RFQ NO</th>
-                        <th>RFQ DATE</th>
-                        <th width="100">SUPPLIER QUOTE</th>
-                        <th>ABSTRACT</th>
-                        <th>PURCHASE ORDER</th>
+                        <th width="100">TARGET DATE</th>
+                        <th width="100">RECEIVE PR</th>
+                        <th width="100">RFQ NO</th>
+                        <th width="100">RFQ DATE</th>
+                        <th width="100">AWARDING</th>
+                        <th width="100">PURCHASE ORDER</th>
                       
                     </tr>
                 </thead>
@@ -124,54 +123,30 @@
                         $selectABS = mysqli_query($conn,"SELECT * FROM abstract_of_quote WHERE rfq_id = '$rfqid' and abstract_no is not NULL");
                         $rowABS = mysqli_fetch_array($selectABS);
                         $supplier_id = $rowABS['supplier_id'];
+                        $abstract_id = $rowABS['id'];
                         $select_sup = mysqli_query($conn,"SELECT supplier_title from supplier WHERE id = '$supplier_id'");
                         $rowSup = mysqli_fetch_array($select_sup);
                         $win_supplier = $rowSup['supplier_title'];
                         $query_3 = mysqli_query($conn,"SELECT * FROM supplier_quote WHERE rfq_item_id = '$rfq_items_id'");
                         ?>
                         <?php if (mysqli_num_rows($query_3) == 0): ?>
-                          <a class="btn btn-success btn-xs"  href='CreateSupplierQuote.php?rfq_id=<?php echo $rfqid; ?>' title="View"> Create </a>
+                         <a class="btn btn-success btn-xs" href='CreateAoq.php?rfq_id=<?php echo $rfqid; ?>&rfq_items=<?php echo $rfq_items_id; ?>' title="View"> Award</a>
                         <?php else : ?>
-                         <a class="btn btn-primary btn-xs" href='ViewSupplierItems.php?rfq_id=<?php echo $rfq_items_id; ?>' title="View"> View<!-- <?php echo $win_supplier; ?> --> </a>
+                            <?php if (mysqli_num_rows($selectABS) > 0): ?>
+                            <a class="btn btn-primary btn-xs" href='UpdateAoq.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>&abstract_id=<?php echo $abstract_id; ?>' title="View">View </a>
+                            <?php else: ?>
+                                 <a class="btn btn-success btn-xs" href='CreateAoq.php?rfq_id=<?php echo $rfqid; ?>&rfq_items=<?php echo $rfq_items_id; ?>' title="View"> Award</a>
+                            <?php endif ?>
                         <?php endif?>
                         <?php endif?>
                         <?php if ($stat == "0"): ?>
                           <?php endif?> 
                         </td>
-                        <td>
                         <!-- End Supplier Qoute -->
                         <!-- Abstract of quote -->
-                        <?php if ($stat == "1"): ?>
-                        <?php
-                        $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
-                        $rowrfq = mysqli_fetch_array($view_queryrfq);
-                        $rfqid = $rowrfq['id'];
-                        $query_2 = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfqid ");
-                        $row_2 = mysqli_fetch_array($query_2);
-                        $rfq_items_id = $row_2['id'];
-                        $query_3 = mysqli_query($conn,"SELECT * FROM  abstract_of_quote WHERE rfq_id = '$rfqid' and abstract_no is not NUll");
-                        $rowaoq = mysqli_fetch_array($query_3);
-                        $rowaoq_id = $rowaoq['abstract_no'];
-                        $supplier_id = $rowaoq['supplier_id'];
-                        $abstract_id = $rowaoq['id'];
-                        ?>
-                        <?php if (mysqli_num_rows($query_3) > 0): ?>
-                            <?php
-                            $query_aoq = mysqli_query($conn,"SELECT * FROM  aoq_data WHERE id = '$rowaoq_id'"); 
-                            $aoq = mysqli_fetch_array($query_aoq);
-                            $aoq_no =  $aoq['aoq_no'];
-                            ?>
-                            <a class="" href='UpdateAoq.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>&abstract_id=<?php echo $abstract_id; ?>' title="View"><?php echo $aoq_no ; ?> </a>
-                        <?php else : ?>
-                          <a class="btn btn-success btn-xs"  href='CreateAoq.php?rfq_id=<?php echo $rfqid; ?> ' title="View">Create </a>
-                        <?php endif?> 
-                        <?php endif?>
-                        <?php if ($stat == "0"): ?>
-                          <?php endif?>
-                        </td>
-                        <td>
                         <!-- End Abstract of quote -->
                         <!-- Purchase Order -->
+                        <td>
                         <?php if ($stat == "1"): ?>
                         <?php
                         $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
