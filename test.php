@@ -42,7 +42,7 @@ $division = $_SESSION['division'];
       </ol>
       <br>
       <br>
-        <?php include('suppliers_table.php');?>
+        <?php include('supp_datatable.php');?>
     </section>
   </div>
  
