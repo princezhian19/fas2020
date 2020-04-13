@@ -34,6 +34,25 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('@issuancetable.php');?>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <?php include 'footer.php';?>
+
     </section>
   </div>
 </div>

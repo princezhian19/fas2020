@@ -104,9 +104,12 @@ $events = $req->fetchAll();
                   </div>
               </div>
           </div>
+          <?php include 'footer.php';?>
         </div>
     </section>
+    
   </div>
+  
 </div>
 
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
