@@ -104,9 +104,12 @@ $events = $req->fetchAll();
                   </div>
               </div>
           </div>
+          <?php include 'footer.php';?>
         </div>
     </section>
+    
   </div>
+  
 </div>
 
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
@@ -217,12 +220,15 @@ if($_SESSION['planningofficer'] == 1){
   endforeach; ?>
     ], 
      eventRender: function eventRender( event, element, view ) {
-        return ['16', event.office].indexOf($('#selectDivision').val()) >= 0
+        return ['0', event.office].indexOf($('#selectDivision').val()) >= 0
     }
   });
   $('#selectDivision').on('change',function(){
     $('#calendar').fullCalendar('rerenderEvents');
 })
+
+
+
 
 /*function edit(event){
   start = event.start.format('YYYY-MM-DD HH:mm:ss');

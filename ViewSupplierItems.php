@@ -8,7 +8,7 @@ $username = $_SESSION['username'];
 }
 ?><!DOCTYPE html>
 <html>
-<title>FAS Dashboard</title>
+<title>Suppliers</title>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

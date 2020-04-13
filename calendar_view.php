@@ -14,7 +14,7 @@
                         }
                         ?>
                     </select>
-                </div>
+                </div>  
                                   <div class="col-md-2">
                                       <?php 
                                       $currentDate = '2020-04-06';
@@ -24,9 +24,9 @@
                                           if (mysqli_num_rows($sql)>0) {
                                               while($row = mysqli_fetch_assoc($sql) )
                                               {
-                                                  $selectedOpt = ($row['DIVISION_N'] == $_SESSION['division'])?'selected':''; 
+                                                  $selectedOpt = ($row['DIVISION_N'] == 0)?'selected':''; 
 
-                                                  echo '<option text="text" value="'.$row["DIVISION_N"].'" '.$selectedOpt.' >'.$row["DIVISION_M"].'</option>';
+                                                  echo '<option  value="'.$row["DIVISION_N"].'" '.$selectedOpt.' >'.$row["DIVISION_M"].'</option>';
                                               }
                                           }
                                       echo '</select>';

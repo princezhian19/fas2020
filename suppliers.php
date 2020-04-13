@@ -45,7 +45,7 @@
           <div class="col-md-6">
             <legend>Supplier Information</legend>
             <div class="form-group">
-                <label>Supplier Title</label>
+                <label>Supplier</label>
                 <input type="text" name="supplier_title" class="form-control">
             </div> 
             <div class="form-group">
@@ -78,7 +78,7 @@
                 <label>Remarks</label>
                 <textarea name="remarks" rows="10" class="form-control"></textarea>
             </div> 
-            <button class="btn btn-success btn-s" name="submit">Create</button>
+            <button class="btn btn-success btn-s" name="submit">Add</button>
         </div> 
         <div class="col-md-6">  
             <legend>Registration Details</legend>
@@ -92,12 +92,12 @@
                 <div class="row">
                     <div class="col-md-6">  
                         <label>FROM</label>
-                        <input type="date" name="registration_valid_from" class="form-control">
+                        <input type="text" name="registration_valid_from" class="datePicker1 form-control" placeholder = "mm/dd/yyyy">
                     </div>
 
                     <div class="col-md-6">  
                         <label>UNTIL</label>
-                        <input type="date" name="registration_valid_until" class="form-control">
+                        <input type="text" name="registration_valid_until" class="datePicker1 form-control" placeholder = "mm/dd/yyyy">
                     </div>
                 </div>
             </div>
@@ -106,12 +106,12 @@
                 <div class="row">
                     <div class="col-md-6">  
                         <label>FROM</label>
-                        <input type="date" name="bp_validity_from" class="form-control">
+                        <input type="text" name="bp_validity_from" class="datePicker1 form-control" placeholder = "mm/dd/yyyy">
                     </div>
 
                     <div class="col-md-6">  
                         <label>UNTIL</label>
-                        <input type="date" name="bp_validity_until" class="form-control">
+                        <input type="text" name="bp_validity_until" class="datePicker1 form-control" placeholder = "mm/dd/yyyy">
                     </div>
                 </div>
             </div>
@@ -120,11 +120,11 @@
                 <div class="row">
                  <div class="col-md-6">  
                     <label>FROM</label>
-                    <input type="date" name="tc_validity_from" class="form-control">
+                    <input type="text" name="tc_validity_from" class="datePicker1 form-control" placeholder = "mm/dd/yyyy">
                 </div>
                 <div class="col-md-6">  
                     <label>UNTIL</label>
-                    <input type="date" name="tc_validity_until" class="form-control">
+                    <input type="text" name="tc_validity_until" class="datePicker1 form-control" placeholder = "mm/dd/yyyy">
                 </div>
             </div>
         </div>
@@ -137,11 +137,11 @@
             <div class="row">
                 <div class="col-md-6">  
                     <label>FROM</label>
-                    <input type="date" name="prc_validity_from" class="form-control">
+                    <input type="text" name="prc_validity_from" class="datePicker1 form-control" placeholder = "mm/dd/yyyy">
                 </div>
                 <div class="col-md-6">  
                     <label>UNTIL</label>
-                    <input type="date" name="prc_validity_until" class="form-control">
+                    <input type="text" name="prc_validity_until" class="datePicker1 form-control" placeholder = "mm/dd/yyyy">
                 </div>
             </div>
             
@@ -149,9 +149,15 @@
         <legend>Latest Annual Income/Business Tax Return</legend>
         <div class="well">
            <label>Date of Receipt of the Annual ITR 2015 by the BIR</label>
-           <input type="date" name="itr_last_receipt_date" class="form-control">
+           <input type="text" name="itr_last_receipt_date" class="form-control">
        </div> 
    </div> 
 
 </form>
 </div>
+<script>
+$(document).ready(function(){
+    $( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+
+})
+</script>

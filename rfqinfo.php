@@ -174,6 +174,10 @@ if (isset($_POST['submit'])) {
                         <th width="150" >PR Date Received</th>
                         <td><?php echo $pr_date;?></td>
                     </tr>
+                    <tr>
+                        <th width="150" >ABC</th>
+                        <td><?php echo number_format($abc111,2);?></td>
+                    </tr>
                      <!-- <tr>
                         <?php 
                     $view_query1 = mysqli_query($conn, "SELECT  sum(abc*qty) as aa from pr_items WHERE pr_no = '$pr_no' ");

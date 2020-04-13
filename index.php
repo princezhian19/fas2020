@@ -12,6 +12,7 @@ if (isset($_POST['submit'])) {
   $salt       = $row['CODE'];
   $_SESSION['currentuser'] = $row['EMP_N']; 
   $_SESSION['planningofficer'] = $row['isPlanningOfficer']; 
+
   $password  = crypt($_POST['password'], '$2a$10$'.$salt.'$');
 
   // ===============================================
@@ -26,6 +27,8 @@ if (isset($_POST['submit'])) {
     $division2 = $row['DIVISION_C'];
     $_SESSION['division'] = $division;
     $_SESSION['complete_name'] = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
+    $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
+    $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
 
       if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
         

@@ -15,12 +15,12 @@
                         <th width="80">PO NO.</th>
                         <th width="80">DIVISION</th>
                         <th >PURPOSE</th>
-                        <th width="150">ACTION</th>
+                        <th width="200">ACTION</th>
                     </tr>
                 </thead>
                 <?php 
                 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-                $view_query = mysqli_query($conn, "SELECT * FROM ris order by id DESC  ");
+                $view_query = mysqli_query($conn, "SELECT * FROM ris order by ris_no DESC  ");
                 while ($row = mysqli_fetch_assoc($view_query)) {
                     $id = $row["id"];
                     $ris_no = $row["ris_no"];  
@@ -38,19 +38,18 @@
                     if ($request_by == 3 ) {
                       $request_by = "DR. CARINA S. CRUZ";
                     }
-                    echo "<tr align = ''>
-                    <td>$ris_no</td>
-                    <td>$po_no</td>
-                    <td>$division</td>
-                    <td>$purpose</td>
-                    <td>
-                    <a href='UpdateRIS.php?id=$id' class='btn btn-primary btn-xs'><i class='fa'>&#xf044;</i> Edit</a> | 
-                    <a href='export_ris.php?id=$id' class='btn btn-success btn-xs'><i class='fa fa-fw fa-download'></i> Export</a>
-                    </td>
-                    </tr>"; 
-                }
-                echo "</table>";
                 ?>
+                    <tr align = ''>
+                    <td> <?php echo $ris_no; ?></td>
+                    <td> <?php echo $po_no; ?></td>
+                    <td> <?php echo $division; ?></td>
+                    <td> <?php echo $purpose; ?></td>
+                    <td>
+                    <a href='UpdateRIS.php?id=<?php echo $id?>' class='btn btn-primary btn-xs'><i class='fa'>&#xf044;</i> Edit</a> | 
+                    <a href='export_ris.php?id=<?php echo $id?>' class='btn btn-success btn-xs'><i class='fa fa-fw fa-download'></i> Export</a> | <a href='deleteRIS.php?id=<?php echo $id?>' onclick="return confirm('Are you sure you want to Delete this?');" class='btn btn-danger btn-xs'><i class='fa fa-fw fa-trash'></i>Delete</a>
+                    </td>
+                    </tr>
+                <?php } ?>
             </table>
             <!-- <a href='deleteRIS.php?id=$id' ><i style='font-size:20px' class='fa fa-trash-o'></i> </a> -->
 

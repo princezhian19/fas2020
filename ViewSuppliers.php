@@ -18,9 +18,9 @@ $username = $_SESSION['username'];
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="_includes/sweetalert.css">
+
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css"> <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -45,18 +45,104 @@ $username = $_SESSION['username'];
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
 <script src="dist/js/demo.js"></script>
+<script src="_includes/sweetalert.min.js"></script>
+
 <script>
-  $(function () {
-    $('').DataTable()
-    $('#example1').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : true,
-      'ordering'    : false,
-      'info'        : false,
-      'autoWidth'   : true
-    })
-  })
+  $(document).ready(function() {
+        $.ajax({
+            url: "DATATABLE3/server_processing.php",
+            method: 'POST',
+            dataType: 'json',
+            success: function(data) {
+                $('#example1').dataTable({
+                    data: data,
+                    serverside: false,       
+                    columns: 
+                    [
+                      {"data":"id"},
+                      {"data":"supplier_title"},
+                      {"data":"supplier_address"},
+                      {"data":"contact_details"}
+                    ],
+                    "order": [[ 1, "asc" ]],
+                    'paging'      : true,
+                    'lengthChange': true,
+                    'searching'   : true,
+                    'ordering'    : false,
+                    'info'        : true,
+                    'autoWidth'   : true,   aLengthMenu: [ [10, 20, -1], [10, 20, "All"] ],
+                    "bPaginate": false,
+                    "bLengthChange": false,
+                    "bFilter": true,
+                    "bInfo": false,
+                    "bAutoWidth": false,
+                    "columnDefs": 
+                    [
+                      {
+                        "targets": 4,
+                        "data": "id",
+                        "render": function ( data, type, row, meta ) 
+                        {  
+                          return '<center><a href="UpdateSuppliers.php?id='+data+'" class = "btn btn-primary btn-xs"> <i class="fa">&#xf044;</i> Edit</a>&nbsp;<a id = "sweet-14" class = "btn btn-danger btn-xs"> <i class="fa fa-trash"></i> Delete</a></center>';
+                        }
+                      }
+                    ]
+
+
+
+                });
+            }
+        });
+ 
+   
+          $('#example1 tbody').on( 'click', '#sweet-14', function () {
+            var oTableApi = $('#example1').dataTable().api();
+        var tr = $(this).closest('tr');
+        td = tr.find("td:first")
+        var cell = oTableApi.cell(td);
+      
+         
+        swal({
+        title: "Are you sure?",
+        text: "Your will not be able to recover this data!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn btn-danger",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+        },
+function(){
+    swal("Deleted!", "Your event has been deleted.", "success");
+
+    $.ajax({
+              url:"delSupplier.php",
+              method:"POST",
+              data:{
+                  id:cell.data(),
+              },
+              success:function(data)
+              {
+                  setTimeout(function () {
+                  window.location = "ViewCalendar.php";
+
+                  }, 2000);
+
+              }
+            });
+
+});
+  
+  
+
+    });
+
+    });
+
+
+
+
+
+
 </script>
 </body>
 s</html>

@@ -10,9 +10,9 @@
             <tr style="background-color: white;color:blue;">
               <th width="150">OFFICE</th>
               <th width="150">USERNAME</th>
-              <th width="150">LAST NAME</th>
               <th width="150">FIRST NAME</th>
               <th width="150">MIDDLE NAME</th>
+              <th width="150">LAST NAME</th>
               <th width="300">ACTION</th>
             </tr>
           </thead>
@@ -31,9 +31,9 @@
             <tr>
               <td><?php echo $DIVISION_M;?></td>
               <td><?php echo $UNAME;?></td>
-              <td><?php echo $LAST_M;?></td>
               <td><?php echo $FIRST_M;?></td>
               <td><?php echo $MIDDLE_M;?></td>
+              <td><?php echo $LAST_M;?></td>
               <td>
                 <a href='UpdateAccount.php?id=<?php echo $id;?>&username=<?php echo $username;?>' title="edit" class = "btn btn-primary btn-xs" ><i class='fa fa-fw fa-edit'></i> Edit</a>  | <a href='hasrole.php?id=<?php echo $id;?>&username=<?php echo $username;?>' title="role" class = "btn btn-info btn-xs" > <i class='fa fa-fw fa-user-plus'></i> Has role</a> 
                 <?php if ($BLOCK == 'Y'): ?> 

@@ -47,7 +47,7 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('dash_board.php');?>
-
+        <?php include('footer.php'); ?>
     </section>
   </div>
  
@@ -104,17 +104,17 @@ $username = $_SESSION['username'];
   $(function () {
     $('').DataTable()
     $('#example3').DataTable({
-      'paging'      : false,
-      'lengthChange': true,
-      'searching'   : false,
-      'ordering'    : false,
-      'info'        : true,
-      'autoWidth'   : true,   aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
-      "bPaginate": false,
-      "bLengthChange": false,
-      "bFilter": true,
-      "bInfo": false,
-      "bAutoWidth": false
+        'paging'      : false,
+        'lengthChange': true,
+        'searching'   : false,
+        'ordering'    : false,
+        'info'        : true,
+        'autoWidth'   : true,   aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+        "bPaginate": false,
+        "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "bAutoWidth": false
     })
   })
 </script>
