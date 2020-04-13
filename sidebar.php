@@ -8,7 +8,16 @@ $username = $_SESSION['username'];
 
 }
 ?>
+<style>
+.active-url{
+background-color: lightgray;
+}
 
+
+</style>
+<?php 
+        $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .   $_SERVER['REQUEST_URI']; 
+        ?> 
 <header class="main-header" >
   <a href="" class="logo" style="text-decoration: none; background-color: #3c8dbc;">
   <span class="logo-lg" style="color:white;">FAS</span>
@@ -47,15 +56,16 @@ $username = $_SESSION['username'];
       <ul class="sidebar-menu" data-widget="tree" s>
         <li class="header" style="background-color: white;">MENU</li>
         <!-- DASHBOARD -->
+        
           <li>
-            <a style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>">
+            <a <?php if($link == 'http://localhost/fas/home.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>">
               <i class="fa fa-dashboard"></i> 
               <span>DASHBOARD</span>
             </a>
           </li>
         <!-- CALENDAR -->
-          <li class="treeview" style="background-color: lightgray;">
-            <a href="" style="color:black;text-decoration: none;">
+          <li class="treeview" >
+            <a <?php if($link == 'http://localhost/fas/ViewCalendar.php' || $link == 'http://localhost/fas/ManageCalendar.php'){ echo 'class = "active-url"';}?> href="" style="color:black;text-decoration: none;">
             <i class="fa fa-calendar"style="color:black;text-decoration: none;"></i> 
             <span style="color:black;text-decoration: none;">CALENDAR</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
@@ -73,7 +83,7 @@ $username = $_SESSION['username'];
           </li>
         <!-- RECORDS -->
           <li class = "treeview">
-            <a href="#" style="color:black;text-decoration: none;">
+            <a <?php if($link == 'http://localhost/fas/issuances.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> href="#" style="color:black;text-decoration: none;">
               <i class="fa fa-folder  "style="color:black;text-decoration: none;"></i> 
               <span style="color:black;text-decoration: none;">RECORDS</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
@@ -84,7 +94,18 @@ $username = $_SESSION['username'];
           </li>
         <!-- PROCUREMENT -->
           <li class="treeview" tyle="background-color: lightgray;">
-              <a href="" style="color:black;text-decoration: none;">
+              <a 
+              <?php 
+              if($link == 'http://localhost/fas/ViewApp.php?division='.$_SESSION['division'].'' || 
+                $link == 'http://localhost/fas/ViewPR.php?division='.$_SESSION['division'].'' || 
+                $link == 'http://localhost/fas/ViewRFQ.php?division='.$_SESSION['division'].'' ||
+                $link == 'http://localhost/fas/ViewSuppliers.php' )
+                {
+                   echo 'class = "active-url"';
+                }
+              ?>
+              
+              href="" style="color:black;text-decoration: none;">
                 <i class="fa fa-cart-arrow-down "style="color:black;text-decoration: none;"></i>
                 <span style="color:black;text-decoration: none;">PROCUREMENT</span>
                 <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>

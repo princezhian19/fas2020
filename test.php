@@ -1,152 +1,171 @@
-  <link rel="stylesheet" href="calendar/fullcalendar/fullcalendar.min.css" />
-  <script src="calendar/fullcalendar/lib/jquery.min.js"></script>
-  <script src="calendar/fullcalendar/lib/moment.min.js"></script>
-  <script src="calendar/fullcalendar/fullcalendar.min.js"></script>
+<?php 
+session_start();
+if(!isset($_SESSION['username'])){
+header('location:index.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+$division = $_SESSION['division'];
+}
+?>
+<!DOCTYPE html>
+<html>
 
-<div id="calendar"></div>
+<title>FAS Dashboard</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="_includes/sweetalert.css">
+  <link href="_includes/sweetalert2.min.css" rel="stylesheet"/>
+  <link href="_includes/fontawesome.css" rel="stylesheet"/>
+ 
 
-<div class="userSearch">
-                <div class="searchBar">
-                  <input type="text" id="search-criteria" onkeyup="myFunction()" placeholder="Search" /> (user)First Filter:
-                  
-                 </div>
-                  
-                <div id ="userList">
-                <div> 
-                <input type="radio" name="user_selector" value="all" id="all" checked/>
-                  <label for="all"> All </label>
-                  <input type="radio" name="user_selector" value="Jack" id="Jack" />
-                  <label for="all"> Jack </label>
-                  <input type="radio" name="user_selector" value="Matt" id="Matt" />
-                  <label for="Matt"> Matt </label>
-                </div>
-                   <select style = "width:20%;" class="division_dropdown " id="selectDivision" style="width: 100%;">
-                   <option text="text" value="0"  ></option>
-                   <option text="text" value="all"  >All</option>
-                   <option text="text" value="Jack"  >Jack</option>
-                   <option text="text" value="3"  >ORD-Legal</option>
-                   </select>
-              
-                <style>
-                #calendar {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 0 10px;
-  }
-                </style>
-                <script>
-                $(document).ready(function() {
-
-$('#calendar').fullCalendar({
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+<?php
+  include('sidebar.php'); 
+?>
   
-  header: {
-    left: 'prev,next today',
-    center: 'title',
-    right: 'month,basicWeek,basicDay'
-  },
-  defaultDate: '2018-03-12',
-  navLinks: true, // can click day/week names to navigate views
-  editable: true,
-  eventLimit: true, // allow "more" link when too many events
+  <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="home.php"><i class=""></i> Home</a></li>
+        <li class="active">Technical Assistance Request Form</li>
+      </ol>
+      <br>
+      <br>
+        <?php include('suppliers_table.php');?>
+    </section>
+  </div>
+ 
+</div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.j s"></script>
+<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="_includes/sweetalert.min.js"></script>
+<script>
 
-  events: [
-    {
-      title: 'Jack-Petco',
-      start: '2018-03-01',
-      user: "Jack",
-      client: "Petco",
-    },
-    {
-      title: 'Jack-Petsmart',
-      start: '2018-03-07',
-      end: '2018-03-10',
-      user: "Jack",
-      client: "Petsmart",
-    },
-    {
-      id: 999,
-      title: 'Matt-Petco',
-      start: '2018-03-09T16:00:00',
-      user: "Matt",
-      client: "Petco",
-    },
-    {
-      id: 999,
-      title: 'Matt-Petco',
-      start: '2018-03-16T16:00:00',
-      user: "Matt",
-      client: "Petco",
-    },
-    {
-      title: 'Jack-petco',
-      start: '2018-03-11',
-      end: '2018-03-13',
-      user: "Jack",
-      client: "Petco",
-    },
-    {
-      title: 'Jack-Petsmart',
-      start: '2018-03-12T10:30:00',
-      end: '2018-03-12T12:30:00',
-      user: "Jack",
-      client: "Petsmart",
-    },
-    {
-      title: 'Jack-Petco',
-      start: '2018-03-12T12:00:00',
-      user: "Jack",
-      client: "Petco",
-    },
-    {
-      title: 'Jack-petco',
-      start: '2018-03-12T14:30:00',
-      user: "Jack",
-      client: "Petco",
-    },
-    {
-      title: 'Matt-Petsmart',
-      start: '2018-03-12T17:30:00',
-      user: "Matt",
-      client: "Petsmart",
-    },
-    {
-      title: 'Jack-petco',
-      start: '2018-03-12T20:00:00',
-      user: "Jack",
-      client: "Petco"
-    },
-    {
-      title: 'Matt-Petco',
-      start: '2018-03-13T07:00:00',
-      user: "Matt",
-      client: "Petco",
-    },
-    {
-      title: 'Jack-Petco',
-      url: 'http://google.com/',
-      start: '2018-03-28',
-      user: "Jack",
-      client: "Petco",
-    }
-  ],
-    eventRender: function(event, element, view) {
-            return $('input[type=radio][name=user_selector]:checked').val() === 'all' || event.user.indexOf($("input[type=radio][name=user_selector]:checked").val()) >= 0;
-    },
+
+$(document).ready(function() {
+  $('.select2').on('change', function()
+      {
+        swal({
+          title: "Are you sure you want to save?",
+          text: "Control No:",
+          type: "info",
+          showCancelButton: true,
+          confirmButtonClass: 'btn-danger',
+          confirmButtonText: 'Yes',
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+        }, function () {
+        
+      });
+    });
+var action = '';
+    
+    var table = $('#example').DataTable( {
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : true,   aLengthMenu: [ [10, 10, 20, -1], [10, 10, 20, "All"] ],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false,
+
+
+
+
+
+        "processing": true,
+        "serverSide": false,
+        "ajax": "DATATABLE/server_processing3.php",
+        "order": [[ 1, "asc" ]],
+        // "aoColumnDefs":[{
+        //   "bVisible":false, 
+        //   "aTargets":[0]
+        // }],
+        "columnDefs": [ {
+          "data": "id",
+            "targets": 4,
+            "render": function ( data, type, row, meta ) {  
+              return '<a href="UpdateSuppliers.php?id='+row[0]+'" class = "btn btn-primary btn-xs"> <i class="fa">&#xf044;</i> Edit</a>&nbsp;<a id="sweet-14" class = "btn btn-danger btn-xs"> <i class="fa fa-trash"></i> Delete</a>';
+  
+            }
+        } ] 
+
+    } );
   
 
+  
+
+    $('#example tbody').on( 'click', '#sweet-14', function () {
+      var data = table.row( $(this).parents('tr') ).data();
+      var supp_id = data[0];
+        swal({
+        title: "Are you sure?",
+        text: "Your will not be able to recover this data!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn btn-danger",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+        },
+function(){
+    swal("Deleted!", "Your event has been deleted.", "success");
+
+    $.ajax({
+              url:"delSupplier.php",
+              method:"POST",
+              data:{
+                  id:supp_id,
+              },
+              success:function(data)
+              {
+                  setTimeout(function () {
+                  window.location = "ViewCalendar.php";
+
+                  }, 2000);
+
+              }
+            });
+
+});
+  
+  
+
+    });
+
+    $('#example tbody').on( 'click', '#view', function () {
+      var data = table.row( $(this).parents('tr') ).data();
+      window.location="JASPER/sample/viewTA.php?id="+data[0];
+    });
+    
+    $('#example tbody').on( 'click', '#sweet-15', function () {
+      var data = table.row( $(this).parents('tr') ).data();
+      window.location="rateService.php?division=<?php echo $_GET['division'];?>&id="+data[0];
+    });
+    
 });
 
 
-$('input[type=radio][name=type_selector]').on('change', function() {
-           console.log("Event");
-           $('#calendar').fullCalendar('rerenderEvents');
-       });
-       
-       $('input[type=radio][name=user_selector]').on('change', function() {
-           console.log("Event");
-           $('#calendar').fullCalendar('rerenderEvents');
-       });
-
-});
-;
 </script>
+
+
+</body>
+</html>
