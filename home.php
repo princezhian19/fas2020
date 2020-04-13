@@ -47,7 +47,7 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('dash_board.php');?>
-
+        <?php include('footer.php'); ?>
     </section>
   </div>
  
