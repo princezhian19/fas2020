@@ -94,7 +94,7 @@ var action = '';
 
         "processing": true,
         "serverSide": false,
-        "ajax": "DATATABLE/server_processing3.php",
+        "ajax": "DATATABLE3/server_processing.php",
         "order": [[ 1, "asc" ]],
         // "aoColumnDefs":[{
         //   "bVisible":false, 
