@@ -33,7 +33,7 @@ $username = $_SESSION['username'];
       </ol>
       <br>
       <br>
-        <?php include('@issuancetable.php');?>
+        <?php include('issuances_view.php');?>
     </section>
   </div>
 </div>
@@ -51,12 +51,13 @@ $username = $_SESSION['username'];
 
 <script>
   $(function () {
+    $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': false,
+      'lengthChange': true,
       'searching'   : true,
       'ordering'    : false,
-      'info'        : false,
+      'info'        : true,
       'autoWidth'   : true
     })
   })
