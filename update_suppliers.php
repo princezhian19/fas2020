@@ -67,7 +67,7 @@
           <div class="col-md-6">
             <legend>Supplier Information</legend>
             <div class="form-group">
-                <label>Supplier Title</label>
+                <label>Supplier</label>
                 <input type="text" name="supplier_title" class="form-control" value="<?php echo $supplier_title1?>">
             </div> 
             <div class="form-group">

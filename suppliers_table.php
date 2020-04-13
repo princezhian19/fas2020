@@ -30,6 +30,7 @@ th{
                 <h1>Supplier</h1><br>
                 <?php 
                 ?>
+                <a href = "CreateSuppliers.php" class=  "btn btn-success" style = "decoration:none;">Add</a>
             </div>
 
         
