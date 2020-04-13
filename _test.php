@@ -26,7 +26,7 @@ function fillTableInfo()
                <table  border = 1 class = "center-text" style = "width:100%;">
                             <tbody>
                                 <tr>
-                                    <td colspan = 4>ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
+                                    <td colspan = 4> ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
                                     <td class = "label-text left-text">Control<br>Number.</td>
                                     <td colspan = 2 style = "padding:5px 5px 5px 5px;background-color:#CFD8DC;">
                                     <?php echo countCN();?>

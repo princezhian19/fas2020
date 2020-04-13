@@ -7,17 +7,11 @@ $username = $_SESSION['username'];
 
 <!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
+<style>
+.label-text{
+  font-weight:bold;
 }
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
+</style>
 <title>FAS Dashboard</title>
 <head>
   <meta charset="utf-8">
@@ -52,7 +46,7 @@ if($_GET['division'] == 11 || $_GET['division'] == 12 || $_GET['division'] == 13
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Technical Assistance Request Form</li>
+        <li class="active">ICT Technical Assistance</li>
       </ol>
       <br>
       <br>
