@@ -50,7 +50,7 @@ $username = $_SESSION['username'];
 <script>
   $(document).ready(function() {
         $.ajax({
-            url: "DATATABLE3/server_processing.php",
+            url: "server_processing.php",
             method: 'POST',
             dataType: 'json',
             success: function(data) {
