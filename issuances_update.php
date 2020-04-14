@@ -14,20 +14,33 @@ $username = $_SESSION['username'];
 
 <html>
 <?php
-//$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
-/* function app($connect)
-{ 
-  $output = '';
-  $query = "SELECT sarogroup FROM `saro` Group BY sarogroup ASC";
-  $statement = $connect->prepare($query);
-  $statement->execute();
-  $result = $statement->fetchAll();
-  foreach($result as $row)
-  {
-    $output .= '<option text="text" value="'.$row["sarogroup"].'">'.$row["sarogroup"].'</option>';
-  }
-  return $output;
-} */
+
+
+$getid = $_GET['id'];
+$servername = "localhost";
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
+$database = "fascalab_2020";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password,$database);
+$view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'");
+
+    while ($row = mysqli_fetch_assoc($view_query)) {
+        
+
+        $id = $row['id'];
+        $category = $row['category'];
+        $issuances = $row['issuance_no'];
+        $dateissued = $row['date_issued'];
+        $title = $row['subject'];
+        $office = $row['office_responsible'];
+        $file = $row['pdf_file'];
+        $url = $row['url'];
+        $postedby = $row['postedby'];
+        $posteddate = $row['dateposted'];
+        
+    }
 
 
 
@@ -50,7 +63,7 @@ $username = $_SESSION['username'];
         <div class="box">
           <div class="box-body">
       
-            <h1 align="">Add Issuances</h1>
+            <h1 align="">Update Issuances</h1>
          
         <br>
       <li class="btn btn-success"><a href="issuances.php" style="color:white;text-decoration: none;">Back</a></li>
@@ -58,7 +71,11 @@ $username = $_SESSION['username'];
       <br>
 
         <div class="class" >
-        <form method="POST" action='@Functions/issuancescreate.php' enctype="multipart/form-data" >
+
+        <form method="POST" action='@Functions/issuancesupdate.php' enctype="multipart/form-data" >
+       
+        <input value="<?php echo $id;?>" hidden  type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
+
         <table class="table"> 
                     <tr>
                         <td class="col-md-2">Category<span style = "color:red;">*</span></td>
@@ -76,26 +93,26 @@ $username = $_SESSION['username'];
                     <tr>  
                         <td class="col-md-2">Issuance No<span style = "color:red;">*</span></td>
                             <td class="col-md-5">
-                            <input required  class="form-control" type="text" class="" style="height: 35px;" id="issuances" name="issuances" placeholder="" name="issuances" >
+                            <input value="<?php echo $issuances;?>" required  class="form-control" type="text" class="" style="height: 35px;" id="issuances" name="issuances" placeholder="" name="issuances" >
                                     </td>
                                         </tr>
                     <tr>
                         <td class="col-md-2">Issuance Date<span style = "color:red;">*</span></td>
                             <td class="col-md-5">
-                            <input type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" >
+                            <input value="<?php echo $dateissued;?>" type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" >
                                     </tr>
                     <tr>
                         <td class="col-md-2">Title/Subject<span style = "color:red;">*</span></td>
-                            <td class="col-md-5">  <input  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
+                            <td class="col-md-5">  <input value="<?php echo $title;?>"  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2">Concerned Office</td>
                             <td class="col-md-5"> 
-                              <input id="offices" name="office" autocomplete ="off" type="text" class="form-control" placeholder=""></td>
+                              <input id="offices" value="<?php echo $office;?>" name="office" autocomplete ="off" type="text" class="form-control" placeholder=""></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2"><label>Attached File</label> </td>
-                            <td class="col-md-5"> <input id="issuances_attachment" type="file" name="file"/>
+                            <td class="col-md-5"> <input value="<?php echo $file;?>" id="issuances_attachment" type="file" name="file"/>
                           <?php
 							if (!empty($_GET['option']) && $_GET['option']== 'edit') {
 							
@@ -131,7 +148,7 @@ $username = $_SESSION['username'];
                     <tr>
                         <td class="col-md-2">URL</td>  
                             <td class="col-md-5">
-                            <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder="">
+                            <input id="url" value="<?php echo $url;?>" name="url" autocomplete ="off" type="text" class="form-control" placeholder="">
                                 </td>
                                     </tr>
                     <tr>
@@ -164,7 +181,7 @@ $username = $_SESSION['username'];
                 
                   <br>
               <br>
-                <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save Data" id="butsave">
+                <input type="submit" name="submit" class="btn btn-primary pull-left" value="Update Data" id="butsave">
 
                 <br>
               <br>

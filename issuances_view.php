@@ -13,23 +13,49 @@ $username = $_SESSION['username'];
 <!DOCTYPE html>
 
 <html>
+
+            <script>
+            <style>
+              
+            </style>
+            </script>
 <?php
-//$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
-/* function app($connect)
-{ 
-  $output = '';
-  $query = "SELECT sarogroup FROM `saro` Group BY sarogroup ASC";
-  $statement = $connect->prepare($query);
-  $statement->execute();
-  $result = $statement->fetchAll();
-  foreach($result as $row)
-  {
-    $output .= '<option text="text" value="'.$row["sarogroup"].'">'.$row["sarogroup"].'</option>';
-  }
-  return $output;
-} */
 
 
+$getid = $_GET['id'];
+$servername = "localhost";
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
+$database = "fascalab_2020";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password,$database);
+$view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'");
+
+    while ($row = mysqli_fetch_assoc($view_query)) {
+        
+
+        $id = $row['id'];
+        $category = $row['category'];
+        $issuances = $row['issuance_no'];
+        $dateissued = $row['date_issued'];
+        $title = $row['subject'];
+        $office = $row['office_responsible'];
+        $file = $row['pdf_file'];
+        $url = $row['url'];
+        $postedby = $row['postedby'];
+        $posteddate = $row['dateposted'];
+        
+    }
+
+    $path = "files/".$file;
+
+    $view_query1 = mysqli_query($conn, "SELECT * from issuances_category where id = '$category'");
+    $row1 = mysqli_fetch_array($view_query1);
+    $cat =  $row1['name'];
+
+    //echo $cat;
+   
 
 ?>
 <!-- <style>
@@ -44,99 +70,53 @@ $username = $_SESSION['username'];
 }
 </style> -->
 
-
     
        
         <div class="box">
           <div class="box-body">
-      
-            <h1 align="">Add Issuances</h1>
-         
+        
+            <h1 align="">View Issuances</h1>
+
+            
         <br>
+    
+
       <li class="btn btn-success"><a href="issuances.php" style="color:white;text-decoration: none;">Back</a></li>
+    
+
       <br>
       <br>
 
-        <div class="class" >
-        <form method="POST" action='@Functions/issuancescreate.php' enctype="multipart/form-data" >
+        <div class="">
+
         <table class="table"> 
                     <tr>
-                        <td class="col-md-2">Category<span style = "color:red;">*</span></td>
+                        <td class="col-md-2">Category</td>
                     <td class="col-md-5">
-                      <select class="form-control " style="width: 100%;" name="category" id="category" > 
-                      <option value="11">Department Memorandum Circular</option>
-                      <option value="12">Department Order</option>
-                      <option value="14">Regional Memorandum Circular</option>
-                      <option value="15">Regional Order</option>
-                      <option value="20">Regional Office Order</option>
-                      <option value="17">Executive Order</option>
-                      <option value="18">Joint Memorandum Circular</option>
-                      </select></td>
-                                </tr>
+                        <?php echo $cat?>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-2">Date Posted</td>
+                            <td class="col-md-5"><?php echo $posteddate?></td>
+                  
+                    <tr>
+                        <td class="col-md-2">Date Issued</td>
+                            <td class="col-md-5">
+                           <?php echo $dateissued;?>
+                                    </tr>
+                    <tr>
+
+                    </tr>
                     <tr>  
                         <td class="col-md-2">Issuance No<span style = "color:red;">*</span></td>
                             <td class="col-md-5">
-                            <input required  class="form-control" type="text" class="" style="height: 35px;" id="issuances" name="issuances" placeholder="" name="issuances" >
+                           <?php echo $issuances;?>
                                     </td>
                                         </tr>
-                    <tr>
-                        <td class="col-md-2">Issuance Date<span style = "color:red;">*</span></td>
+                        <td class="col-md-2">Uploading Details<span style = "color:red;">*</span></td>
                             <td class="col-md-5">
-                            <input type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" >
-                                    </tr>
-                    <tr>
-                        <td class="col-md-2">Title/Subject<span style = "color:red;">*</span></td>
-                            <td class="col-md-5">  <input  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2">Concerned Office</td>
-                            <td class="col-md-5"> 
-                              <input id="offices" name="office" autocomplete ="off" type="text" class="form-control" placeholder=""></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2"><label>Attached File</label> </td>
-                            <td class="col-md-5"> <input id="issuances_attachment" type="file" name="file"/>
-                          <?php
-							if (!empty($_GET['option']) && $_GET['option']== 'edit') {
-							
-							if (!empty($file) && (file_exists($directory.$file)))		
-							{
-								if (fileExtensionType($file) && fileExtensionType($file) == 'document' )
-								{
-															  
-								  echo '<p class="form_details">          
-											  <label>&nbsp;</label>
-											  Current file: <a href="files/'.$file.'" target="_blank">'.$file.'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="deleteFile.php?id='.$id.'&i='.$file.'&d=files&t=issuances" title="Delete File">[x] Delete</a><br/>
-											  Allowed file: *.pdf
-											  <br>
-											  Max allowed size: 5mb
-										  </p>';				
-								}
-							}
-							} 
-							else
-							{
-								  echo '<p class="form_details">          
-											  <label>&nbsp;</label>
-											  Allowed file: *.pdf
-											    <br>
-											  Max allowed size: 5mb
-										  </p>';								
-							}
-							                         
-						  ?>
-                              
-                           <!--  <li class="btn btn-primary"><a href="issuances.php" style="color:white;text-decoration: none;">Choose File</a> --></li><!-- <li class="button btn-primary">Choose File</button> --> <!-- <label>&nbsp&nbspNo file Chosen</label><label class="pull-right"> Allowed file: *.pdf   Max allowed size: 5mb</label></td> -->
-                                </tr>
-                    <tr>
-                        <td class="col-md-2">URL</td>  
-                            <td class="col-md-5">
-                            <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder="">
-                                </td>
-                                    </tr>
-                    <tr>
-                        <td class="col-md-2">Posted By</td>
-                            <td class="col-md-5"> <?php
+                            <?php
 
                              $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                              $username = $_SESSION['username'];
@@ -150,21 +130,26 @@ $username = $_SESSION['username'];
                              $rowdiv1 = mysqli_fetch_array($select_office);
                              $DIVISION_M = $rowdiv1['DIVISION_M'];
                             
+                             $fullName =  $DIVISION_M.'-'.$username;
+                             //echo $fullName;
                             
-                            ?>                             
-                            <input readonly value="<?php echo $DIVISION_M;?>" id="postedby" name="postedby" autocomplete ="off" type="text" class="form-control" placeholder="">
-                                    </td>
-                                        </tr>
-                    <tr>
-                        <td class="col-md-2">Posted Date</td>
-                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" ></td>
+                            ?>     
+                            <?php echo $fullName;?></td>
                                 </tr>
+                    
+                  
                 </table>
+
+        <embed src = "<?php echo $path;?>" type="application/pdf" width="100%" height="1000px" />
+      
+
+        
+
 
                 
                   <br>
               <br>
-                <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save Data" id="butsave">
+                <!-- <input type="submit" name="submit" class="btn btn-primary pull-left" value="Update Data" id="butsave"> -->
 
                 <br>
               <br>

@@ -23,18 +23,18 @@ include('db.class.php'); // call db.class.php
           
               <br>
               <br>
-              <br>
+              
             </div>
 
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;">
                  
-                  <th>CATEGORY</th>
-                  <th>ISSUANCE NO</th>
-                  <th>ISSUANCE DATE</th>
-                  <th>TITLE/SUBJECT</th>
-                  <th>ACTION</th>
+                  <th width = '250'>CATEGORY</th>
+                  <th width = '200'>ISSUANCE NO</th>
+                  <th width = '200'>ISSUANCE DATE</th>
+                  <th width = '500'>TITLE/SUBJECT</th>
+                  <th width = '150'>ACTION</th>
                   
                 </tr>
                 </thead>
@@ -46,69 +46,35 @@ include('db.class.php'); // call db.class.php
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT issuances.date_issued,issuances.postedby,issuances.office_responsible,pdf_file,issuances.id, issuances.type, issuance_no, `status`, `subject`, summary, dateposted, `name`, issuances.type, url
-            FROM issuances LEFT JOIN issuances_category ON issuances.category = issuances_category.id 
-            where md5(issuances.id) ='".md5($_GET['id'])."' ORDER BY dateposted");
+            $view_query = mysqli_query($conn, "SELECT issuances.id,issuances.category, issuances.issuance_no, issuances.date_issued, issuances.subject, issuances_category.name from issuances left join issuances_category on issuances.category=issuances_category.id order by dateposted desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
-                  $id = $row["id"]; 
+                  $id = $row["id"];
                   
-                  $accountno = $row["accountno"];
+                  $name = $row["name"];
 
-                  $date1 = $row["date"];
-                  $date = date('F d, Y', strtotime($date1));
-
-                  $payee = $row["payee"];
-                  $particular = $row["particular"];
-                  $dvno = $row["dvno"];
-                  $lddap = $row["lddap"];
-                  $orsno = $row["orsno"];
-                  $ppa = $row["ppa"];
-                  $uacs = $row["uacs"];
-
-                  $gross1 = $row["gross"];
-                  $gross = number_format( $gross1,2);
-
-                  $totaldeduc = $row["totaldeduc"];
-                  $totaldeduc = number_format( $totaldeduc,2);
-
-                  $net1 = $row["net"];
-                  $net = number_format( $net1,2);
-
-                  $remarks = $row["remarks"];
-                  $status = $row["status"];
+                  $issuance_no  = $row["issuance_no"];
+                
+                  $date_issued  = $row["date_issued"];
+                   // $date_issued1 = date('F d, Y', strtotime($date1));
+                  $subject = $row["subject"];
+                 
 
                ?>
 
                 <tr align = ''>
-             
+            
                 
-                <td style="text-align:center" ><?php echo $accountno?></td>
-                <?php if ( $date1=="0000-00-00" ): ?>
-                <td style="text-align:center" ></td>
-                <?php else : ?>
-                <td style="text-align:center" ><?php echo $date?></td>
-                <?php endif ?>
+              
+                <td><?php echo $name?></td>
+                <td><?php echo $issuance_no?></td>
+                <td><?php echo $date_issued?></td>
+                <td><?php echo $subject?></td>
 
-                <td style="text-align:center" ><?php echo $payee?></td>
-                <td style="text-align:center" ><?php echo $particular?></td>
-                <td style="text-align:center" ><?php echo $dvno?></td>
-                <td style="text-align:center" ><?php echo $lddap?></td>
-                <td style="text-align:center" ><?php echo $orsno?></td>
-                <td style="text-align:center" ><?php echo $ppa?></td>
-                <td style="text-align:center" ><?php echo $uacs?></td>
-                <td style="text-align:center" ><?php echo $gross?></td>
-                <td style="text-align:center" ><?php echo $totaldeduc?></td>
-                <td style="text-align:center" ><?php echo $net?></td>
-                <td style="text-align:center" ><?php echo $remarks?></td>
-                <td style="text-align:center" ><?php echo $status?></td>
-                
-                <td style="text-align:center" > 
-                
-                <a href='ntaobupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
-                
-                <!-- <a href='@Functions/sofexport.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa fa-fw fa-download'></i></a>
-                <a href='@obtableViewMain.php?getsaroID=<?php echo $saronumber?>&getuacs=<?php echo $uacs?>'> <i style='font-size:24px' class='fa'>&#xf06e;</i> </a> -->
+                <td> 
+                <a  href='ViewIssuance.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
+                <a href='UpdateIssuances.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>
+             
                 </td>
                 
                
