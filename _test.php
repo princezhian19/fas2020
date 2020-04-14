@@ -185,7 +185,7 @@ background-position: 90px 5px;
             <div class="panel panel-default">
                 <div class="box-body">      
                     <div>
-                        <h1>Online ICT Technical Assistance Request Form</h1><br>
+                        <h1>ICT Technical Assistance</h1><br>
                     </div>
                     <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/sample/sample1.php" >    
                         <?php echo fillTableInfo(); ?>
