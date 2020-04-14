@@ -326,12 +326,12 @@ if (isset($_POST['add'])) {
       $qty_original = $rowPmo['qty_original'];
 
    
-  if ($qty_original == 0 )
-  {
-    echo "<div style='background-color:lightblue;color:red;'> <p>  <p> <div>";
-  }
-  else
-  {   
+  // if ($qty_original == 0 )
+  // {
+  //   echo "<div style='background-color:lightblue;color:red;'> <p>  <p> <div>";
+  // }
+  // else
+  // {   
 
   if ($app_items == '')
   {
@@ -363,7 +363,7 @@ if (isset($_POST['add'])) {
      }
    }
  }
-}
+// }
 }
 
 
