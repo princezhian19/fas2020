@@ -49,7 +49,7 @@ $username = $_SESSION['username'];
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
-<script>
+<!-- <script>
   $(function () {
     $('#example2').DataTable()
     $('#example1').DataTable({
@@ -61,6 +61,6 @@ $username = $_SESSION['username'];
       'autoWidth'   : true
     })
   })
-</script>
+</script> -->
 </body>
 </html>

@@ -1,7 +1,8 @@
 <?php
 
 function dbConnect() {
-	$DB = new mysqli('localhost','root','','loop');            //{^-LouqU_vpV
+    $DB = new mysqli('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');  
+    //{^-LouqU_vpV
 	if (mysqli_connect_errno()) {
 		echo 'Cannot connect to database: ' . mysqli_connect_error();
 		//mail("ber2x@yahoo.com", "URGENT ATTENTION: PCF Website Cannot Connect to the Database","Development Team, Please give attention! The PCF Website cannot connect to the database!".mysqli_connect_error(),"CC: phagemaster@gmail.com");
@@ -12,13 +13,13 @@ function dbConnect() {
 
 }
 
-    function getData($conn,$query){
+        function getData($conn,$query){
      
         $result = $conn->query($query);
 
-              $data = array();
+        $data = array();
         foreach ($result as $row ) {
-            $data[] = $row ;
+        $data[] = $row ;
         }
         return $data;
 
