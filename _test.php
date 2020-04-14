@@ -26,7 +26,7 @@ function fillTableInfo()
                <table  border = 1 class = "center-text" style = "width:100%;">
                             <tbody>
                                 <tr>
-                                    <td colspan = 4> ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
+                                    <td colspan = 4 class = "label-text"> ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
                                     <td class = "label-text left-text">Control<br>Number.</td>
                                     <td colspan = 2 style = "padding:5px 5px 5px 5px;background-color:#CFD8DC;">
                                     <?php echo countCN();?>
@@ -104,7 +104,7 @@ function countCN()
                                                   if($row = mysqli_fetch_array($result))
                                                   {
                                                     $count= $row['count']+1;
-                                                    echo '<input required style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-0'.$count.' />';
+                                                    echo '<input required style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-'.$count.' />';
 
                                                   }
 }
@@ -185,13 +185,13 @@ background-position: 90px 5px;
             <div class="panel panel-default">
                 <div class="box-body">      
                     <div>
-                        <h1>Online ICT Technical Assistance Request Form</h1><br>
+                        <h1>ICT Technical Assistance</h1><br>
                     </div>
                     <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/sample/sample1.php" >    
                         <?php echo fillTableInfo(); ?>
                      <input required type = "hidden" name = "division" value = "<?php echo $_GET['division'];?>" />
                         <br>
-                        <u style = "margin-top:20px;">TYPE OF REQUEST</u>
+                        <u style = "margin-top:20px;" class = "label-text">TYPE OF REQUEST</u>
                         <table style = "margin-top:20px;width:100%;" >
                           <tr>
                               <td>
@@ -265,36 +265,24 @@ background-position: 90px 5px;
                                                   <td colspan = 4 class = "center-text label-text">RICTU</td>
                                                   </tr>
                                                   <tr>
-                                                  <td colspan = 4>ISSUE/PROBLEM/ERROR DETAILS:</td>
-                                                  <td colspan = 4>FINDINGS AND RESOLUTION/RECOMMENDATION</td>
+                                                  <td colspan = 4 class = "label-text">ISSUE/PROBLEM/ERROR DETAILS:</td>
+                                                  <td colspan = 4 class = "label-text">FINDINGS AND RESOLUTION/RECOMMENDATION</td>
                                                   </tr>
 
-
+  
                                                   <tr>
-                                                  <td colspan = 4>
-                                                  <textarea rows="20" name = "issue" cols="56"  style ="resize:none;width:100%;text-align:left;" >
+                                                  <td colspan = 4 rowspan = 4>
+                                                  <textarea rows="27" name = "issue" cols="56"  style ="resize:none;width:100%;text-align:left;" >
 
                                                   </textarea>
                                                   </td>
                                                   <td colspan = 4>
-                                                  <textarea rows="20" cols="56" style ="resize:none;width:100%;text-align:left;background-color:#EEEEEE;" name = "status" class = "disabletxtarea">
+                                                  <textarea rows="22" cols="56" style ="resize:none;width:100%;text-align:left;background-color:#EEEEEE;" name = "status" class = "disabletxtarea">
 
                                                   </textarea>
                                                   </td>
                                                   </tr>
-                                                  <tr>
-                                                  <td style = "width:12.5%;"></td>
-                                                  <td style = "width:12.5%;">
-                                                  <input required type = "hidden" name = "timeliness" value="" />
-                                                                                                    <input required type = "hidden" name = "quality" value="" />
-
-                                                  <!-- <select class="form-control " style="width: 100%;" name="timeliness" >
-                                                  <option value = "YES">YES</option>
-                                                  <option value = "NO">NO</option>
-                                                  </select> -->
-                                                  </td>
-                                                  <td style = "width:12.5%;text-align:center;"></td>
-                                                  <td style = "width:12.5%;text-align:center;">
+                                                 
 
                                                   <!-- <select class="form-control " style="width: 100%;" name="quality" >
 
@@ -305,36 +293,38 @@ background-position: 90px 5px;
                                                   <option value = "1">Poor</option>
                                                   </select> -->
 
+                                                  
+                                                  <td colspan=2 class = "label-text"><input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Resolved</td>
+                                                  <td colspan=2 class = "label-text">
+                                                  <input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Defective(to be referred to GSS for repair)
                                                   </td>
-                                                  <td style = "width:12.5%;">Started Date:</td>
+                                                  
+                                                  </tr>
+                                                  <tr> 
+                                                
+                                                  <td style = "width:12.5%;" class = "label-text">Started Date:</td>
                                                   <td style = "width:12.5%;">
-                                                    <div class="input-group date">
+                                                  <div class="input-group date">
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
                                                       <input required disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
                                                     </div>
                                                   </td>
-                                                  <td style = "width:12.5%;">Completed Date:</td>
+                                                  <td style = "width:12.5%;" class = "label-text">Completed Date:</td>
                                                   <td style = "width:12.5%;">
-                                                  <div class="input-group date">
+                                                    <div class="input-group date">
                                                       <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                       </div>
-                                                      <input required disabled type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="" required>
+                                                      <input required disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
                                                     </div>
                                                   </td>
+                                                  
                                                   </tr>
-                                                  <tr> 
-                                                  <td colspan = 4>
-                                                  <!-- Assisted By:
-                                                  <select name="assisted_by" class="dropdown size250">
-                                                  <option value = "Charles Adrian T. Odi">Charles Adrian T. Odi</option>
-                                                  <option value = "Christian Paul V. Ferrer">Christian Paul V. Ferrer</option>
-                                                  <option value = "Mark Kim A. Sacluti">Mark Kim A. Sacluti</option>
-                                                  </select> -->
-                                                  </td>
-                                                  <td style = "width:12.5%;">Started Time:</td>
+                                                  <tr>
+                                                    
+                                                  <td style = "width:12.5%;" class = "label-text">Started Time:</td>
                                                   <td style = "width:12.5%;">
                                                     <div class="input-group date">
                                                       <div class="input-group-addon">
@@ -343,7 +333,7 @@ background-position: 90px 5px;
                                                       <input required disabled type="text" name = "started_time" placeholder = "Started Time"  value="" required>
                                                     </div>
                                                   </td>
-                                                  <td style = "width:12.5%;">Completed Time:</td>
+                                                  <td style = "width:12.5%;" class = "label-text">Completed Time:</td>
                                                   <td style = "width:12.5%;">
                                                     <div class="input-group date">
                                                       <div class="input-group-addon">

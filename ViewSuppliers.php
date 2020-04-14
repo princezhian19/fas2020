@@ -48,59 +48,32 @@ $username = $_SESSION['username'];
 <script src="_includes/sweetalert.min.js"></script>
 
 <script>
-  $(document).ready(function() {
-        $.ajax({
-            url: "DATATABLE3/server_processing.php",
-            method: 'POST',
-            dataType: 'json',
-            success: function(data) {
-                $('#example1').dataTable({
-                    data: data,
-                    serverside: false,       
-                    columns: 
-                    [
-                      {"data":"id"},
-                      {"data":"supplier_title"},
-                      {"data":"supplier_address"},
-                      {"data":"contact_details"}
-                    ],
-                    "order": [[ 1, "asc" ]],
-                    'paging'      : true,
-                    'lengthChange': true,
-                    'searching'   : true,
-                    'ordering'    : false,
-                    'info'        : true,
-                    'autoWidth'   : true,   aLengthMenu: [ [10, 20, -1], [10, 20, "All"] ],
-                    "bPaginate": false,
-                    "bLengthChange": false,
-                    "bFilter": true,
-                    "bInfo": false,
-                    "bAutoWidth": false,
-                    "columnDefs": 
-                    [
-                      {
-                        "targets": 4,
-                        "data": "id",
-                        "render": function ( data, type, row, meta ) 
-                        {  
-                          return '<center><a href="UpdateSuppliers.php?id='+data+'" class = "btn btn-primary btn-xs"> <i class="fa">&#xf044;</i> Edit</a>&nbsp;<a id = "sweet-14" class = "btn btn-danger btn-xs"> <i class="fa fa-trash"></i> Delete</a></center>';
-                        }
-                      }
-                    ]
-
-
-
-                });
-            }
-        });
- 
-   
-          $('#example1 tbody').on( 'click', '#sweet-14', function () {
+  $(document).ready(function(){
+            var dataTable=$('#example1').DataTable( {
+              'lengthChange': true,
+              'searching'   : true,
+              'ordering'    : true,
+              'info'        : true,
+              'autoWidth'   : true,
+              aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+              "bPaginate": true,
+              "bLengthChange": false,
+              // "bFilter": true,
+              // "bInfo": false,
+              // "bAutoWidth": false,
+                "processing": false,
+                "serverSide":true,
+                
+                "ajax":{
+                    url:"DATATABLE3/test/fetch.php",
+                    type:"post"
+                }
+            });
+            $('#example1 tbody').on( 'click', '#sweet-14', function () {
             var oTableApi = $('#example1').dataTable().api();
         var tr = $(this).closest('tr');
         td = tr.find("td:first")
         var cell = oTableApi.cell(td);
-      
          
         swal({
         title: "Are you sure?",
@@ -123,7 +96,7 @@ function(){
               success:function(data)
               {
                   setTimeout(function () {
-                  window.location = "ViewCalendar.php";
+                  window.location = "ViewSuppliers.php";
 
                   }, 2000);
 
@@ -135,8 +108,61 @@ function(){
   
 
     });
+        });
+ 
+//   $(document).ready(function() {
+//         $.ajax({
+//             url: "server_processing.php",
+//             method: 'POST',
+//             dataType: 'json',
+//             success: function(data) {
+//               console.log(data);
 
-    });
+//                 $('#example1').dataTable({
+//                     data: data,
+//                      processing: true,
+//                     serverside: false,       
+//                     columns: 
+//                     [
+//                       {"data":"id"},
+//                       {"data":"supplier_title"},
+//                       {"data":"supplier_address"},
+//                       {"data":"contact_details"}
+//                     ],
+//                     "order": [[ 1, "asc" ]],
+//                     'paging'      : true,
+//                     'lengthChange': true,
+//                     'searching'   : true,
+//                     'ordering'    : false,
+//                     'info'        : true,
+//                     'autoWidth'   : true,   aLengthMenu: [ [10, 20, -1], [10, 20, "All"] ],
+//                     "bPaginate": false,
+//                     "bLengthChange": false,
+//                     "bFilter": true,
+//                     "bInfo": false,
+//                     "bAutoWidth": false,
+//                     "columnDefs": 
+//                     [
+//                       {
+//                         "targets": 4,
+//                         "data": "id",
+//                         "render": function ( data, type, row, meta ) 
+//                         {  
+//                           return '<center><a href="UpdateSuppliers.php?id='+data+'" class = "btn btn-primary btn-xs"> <i class="fa">&#xf044;</i> Edit</a>&nbsp;<a id = "sweet-14" class = "btn btn-danger btn-xs"> <i class="fa fa-trash"></i> Delete</a></center>';
+//                         }
+//                       }
+//                     ]
+
+
+
+//                 });
+//             }
+//         });
+ 
+   
+   
+
+    // });
 
 
 
@@ -145,4 +171,4 @@ function(){
 
 </script>
 </body>
-s</html>
+</html>
