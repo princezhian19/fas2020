@@ -62,7 +62,6 @@ $username = $_SESSION['username'];
         var tr = $(this).closest('tr');
         td = tr.find("td:first")
         var cell = oTableApi.cell(td);
-      
          
         swal({
         title: "Are you sure?",
@@ -85,7 +84,7 @@ function(){
               success:function(data)
               {
                   setTimeout(function () {
-                  window.location = "ViewCalendar.php";
+                  window.location = "ViewSuppliers.php";
 
                   }, 2000);
 

@@ -41,9 +41,9 @@ while($row=mysqli_fetch_array($query)){
     $subdata[]=$row[0]; //id
     $subdata[]=$row[1]; //name
     $subdata[]=$row[2]; //salary
-    $subdata[]=$row[3]; //age           //create event on click in button edit in cell datatable for display modal dialog           $row[0] is id in table on database
-    $subdata[]='<a href="UpdateSuppliers.php?id='.$row[0].'" class = "btn btn-primary btn-xs"> <i class="fa">&#xf044;</i> Edit</a>
-    &nbsp;<a id = "sweet-14" class = "btn btn-danger btn-xs"> <i class="fa fa-trash"></i> Delete</a>';
+    $subdata[]=$row[4]; //age           //create event on click in button edit in cell datatable for display modal dialog           $row[0] is id in table on database
+    $subdata[]='<center><a href="UpdateSuppliers.php?id='.$row[0].'" class = "btn btn-primary btn-xs"> <i class="fa">&#xf044;</i> Edit</a>
+    &nbsp;<a id = "sweet-14" class = "btn btn-danger btn-xs"> <i class="fa fa-trash"></i> Delete</a></center>';
     $data[]=$subdata;
 }
 
