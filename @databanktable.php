@@ -6,7 +6,6 @@ include('db.class.php'); // call db.class.php
 <head>
   <title>FAS</title>
 
-
 </head>
 <body>
 <div class="box">
@@ -19,8 +18,7 @@ include('db.class.php'); // call db.class.php
           <div class=""  style="overflow-x:auto;">
          
             <li class="btn btn-success"><a href="#" style="color:white;text-decoration: none;">Create</a></li>
-        
-          
+         
               <br>
               <br>
               
