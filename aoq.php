@@ -94,18 +94,20 @@ $pr_date = $row['pr_received_date'];
 $idGet='';
 $getDate = date('Y');
 $m = date('m');
-$auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM abstract_of_quote order by id desc limit 1");
+$auto = mysqli_query($conn,"SELECT max(id)+2 as a FROM abstract_of_quote order by id desc limit 1");
 while ($row = mysqli_fetch_assoc($auto)) {
   $idGet = $row["a"];
 }
 $autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
+
 ?>
 <?php
 if (isset($_POST['submit'])) {
-  $abstract_no = $_POST['abstract_no_create'];
-  $supplier_id = $_POST['supplier_id2'];
-  $date_opened = $_POST['date_opened_create'];
-  $remarks = $_POST['remarks_create'];
+  $abstract_no = $_POST['abstract_no'];
+  $supplier_id = $_POST['supplier_id_create'];
+  $date_opened = $_POST['date_opened'];
+  $remarks = $_POST['remarks'];
+
 
   $INSERT_aoq = mysqli_query($conn,"INSERT INTO aoq_data(aoq_no,action_officer,datetime_created,date,remarks) VALUES('$abstract_no',14,'$date_opened','$date_opened','$remarks')");
 
@@ -114,6 +116,7 @@ if (isset($_POST['submit'])) {
   $aoq_id = $rowT['id'];
 
   $UPDATE = mysqli_query($conn,"UPDATE abstract_of_quote SET abstract_no = '$aoq_id' WHERE rfq_id = $rfq_id AND supplier_id = $supplier_id");
+
 
   $select_rid = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id");
   while ($rowRID = mysqli_fetch_assoc($select_rid)){
@@ -130,7 +133,7 @@ if (isset($_POST['submit'])) {
   $selectAOQ = mysqli_query($conn,"SELECT id FROM aoq_data WHERE aoq_no = '$abstract_no' ");
   $rowAOQ = mysqli_fetch_array($selectAOQ);
   $aoqID =$rowAOQ['id'];
-
+ 
   $selectabsid = mysqli_query($conn,"SELECT id FROM abstract_of_quote WHERE abstract_no = $aoqID AND rfq_id = $rfq_id ORDER BY id DESC");
   $rowabsid = mysqli_fetch_array($selectabsid);
   $abstract_id = $rowabsid['id'];
@@ -155,7 +158,6 @@ if (isset($_POST['insert_supplierQ'])) {
 
     $INSERT = mysqli_query($conn,"INSERT INTO supplier_quote(supplier_id,rfq_item_id,ppu,remarks) VALUES('$supplier_id_show','$item_id_sup','$ppu_sup','$remarks_sup')");
 
-
     if ($INSERT) {
 
       echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -172,6 +174,9 @@ if (isset($_POST['insert_supplierQ'])) {
    }
 
  }
+
+  $insertAOQ = mysqli_query($conn,"INSERT INTO abstract_of_quote(supplier_id,rfq_id) VALUES('$supplier_id_show','$rfq_id')");
+ 
 
 
 
@@ -525,7 +530,6 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                 <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
                  <thead >
                   <th width="" >Items</th>
-                  <th width="50" ></th>
                   <th width="" >PPU Total : <?php echo number_format($totsppu11,2)?></th>
                 </thead>   
                 <?php 
@@ -537,8 +541,13 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                   ?>
                   <tr>
                     <td><?php echo $procurement;?></td>
-                    <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"><br></td>
-                    <td><?php echo $ppu11;?></td>
+                      <?php if ($supplier_id_create == $sid1): ?>
+              <td><input checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
+                <?php echo $ppu11;?></td>
+                <?php else: ?>
+                  <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
+                    <?php echo $ppu11;?></td>
+                  <?php endif ?>
                   </tr>
                 <?php } ?>
               </table>
@@ -552,7 +561,6 @@ $rfq_id1 = $rowRFQ['rfq_id'];
             </table>
             <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
              <thead style="width:500px;">
-              <th width="50" ></th>
               <th width="" >PPU Total : <?php echo number_format($totsppu22,2)?></th>
             </thead>   
             <?php 
@@ -563,8 +571,13 @@ $rfq_id1 = $rowRFQ['rfq_id'];
               $b++;
               ?>
               <tr>
-                <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>"><br></td>
-                <td><?php echo $ppu112;?></td>
+                <?php if ($supplier_id_create == $sid2): ?>
+                <td ><input  checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
+                  <?php echo $ppu112;?></td>
+                  <?php else: ?>
+                    <td ><input  type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
+                      <?php echo $ppu112;?></td>
+                    <?php endif ?>
               </tr>
             <?php } ?>
           </table>
