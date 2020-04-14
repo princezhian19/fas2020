@@ -1,4 +1,5 @@
 <?php
+include('functions.php');
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
@@ -74,7 +75,7 @@ function table(){
     echo $item_id_sup;    
     echo '</textarea></td>';
     echo  '<td>
-    <input type="text" required id="ppu_sup" name="ppu_sup[]" class="form-control col-md-6">
+    <input type="text" required id="ppu_sup" name="ppu_sup[]" onKeyPress="return dec(event)" class="form-control col-md-6">
     </td>';
   }
   echo '</table>';
@@ -176,7 +177,7 @@ if (isset($_POST['insert_supplierQ'])) {
  }
 
   $insertAOQ = mysqli_query($conn,"INSERT INTO abstract_of_quote(supplier_id,rfq_id) VALUES('$supplier_id_show','$rfq_id')");
- 
+
 
 
 
@@ -543,10 +544,10 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                     <td><?php echo $procurement;?></td>
                       <?php if ($supplier_id_create == $sid1): ?>
               <td><input checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
-                <?php echo $ppu11;?></td>
+                <?php echo number_format($ppu11;,2)?></td>
                 <?php else: ?>
                   <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
-                    <?php echo $ppu11;?></td>
+                    <?php echo number_format($ppu11;,2)?></td>
                   <?php endif ?>
                   </tr>
                 <?php } ?>
@@ -573,10 +574,10 @@ $rfq_id1 = $rowRFQ['rfq_id'];
               <tr>
                 <?php if ($supplier_id_create == $sid2): ?>
                 <td ><input  checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
-                  <?php echo $ppu112;?></td>
+                  <?php echo number_format($ppu112,2);?></td>
                   <?php else: ?>
                     <td ><input  type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
-                      <?php echo $ppu112;?></td>
+                      <?php echo number_format($ppu112,2);?></td>
                     <?php endif ?>
               </tr>
             <?php } ?>
@@ -632,10 +633,10 @@ $rfq_id1 = $rowRFQ['rfq_id'];
           <tr>
             <?php if ($supplier_id_create == $sid1): ?>
               <td><input checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
-                <?php echo $ppu11;?></td>
+                <?php echo number_format($ppu11;,2)?></td>
                 <?php else: ?>
                   <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
-                    <?php echo $ppu11;?></td>
+                    <?php echo number_format($ppu11;,2)?></td>
                   <?php endif ?>
 
                 </tr>
@@ -664,10 +665,10 @@ $rfq_id1 = $rowRFQ['rfq_id'];
             <tr >
               <?php if ($supplier_id_create == $sid2): ?>
                 <td ><input  checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
-                  <?php echo $ppu112;?></td>
+                  <?php echo number_format($ppu112,2);?></td>
                   <?php else: ?>
                     <td ><input  type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
-                      <?php echo $ppu112;?></td>
+                      <?php echo number_format($ppu112,2);?></td>
                     <?php endif ?>
                   </tr>
                 <?php } ?>
@@ -694,10 +695,10 @@ $rfq_id1 = $rowRFQ['rfq_id'];
               <tr>
                 <?php if ($supplier_id_create == $sid3): ?>
                   <td><input checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
-                    <?php echo $ppu113;?></td>
+                    <?php echo number_format($ppu113,2);?></td>
                     <?php else: ?>
                      <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
-                      <?php echo $ppu113;?></td>
+                      <?php echo number_format($ppu113,2);?></td>
                     <?php endif ?>
                   </tr>
                 <?php } ?>
@@ -732,7 +733,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
               ?>
               <tr>
                 <td><?php echo $procurement;?></td>
-                <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>">&nbsp&nbsp<?php echo $ppu11;?></td>
+                <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>">&nbsp&nbsp<?php echo number_format($ppu11;,2)?></td>
               </tr>
             <?php } ?>
           </table>
@@ -757,7 +758,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
           $b++;
           ?>
           <tr>
-            <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp<?php echo $ppu112;?></td>
+            <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp<?php echo number_format($ppu112,2);?></td>
           </tr>
         <?php } ?>
       </table>
@@ -781,7 +782,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
       $b++;
       ?>
       <tr>
-        <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp<?php echo $ppu113;?></td>
+        <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp<?php echo number_format($ppu113,2);?></td>
       </tr>
     <?php } ?>
   </table>
@@ -805,7 +806,7 @@ while($rowrfid14 = mysqli_fetch_assoc($sql_items4) ){
   $b++;
   ?>
   <tr>
-    <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid4 ?>">&nbsp&nbsp<?php echo $ppu114;?></td>
+    <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid4 ?>">&nbsp&nbsp<?php echo number_format($ppu114,2);?></td>
   </tr>
 <?php } ?>
 </table>
