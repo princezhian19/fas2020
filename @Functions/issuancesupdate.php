@@ -1,5 +1,14 @@
-
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:index.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username1 = $_SESSION['username'];
+}
+?>
 <?php
+
 
 if(isset($_POST['submit'])){
 
@@ -31,7 +40,7 @@ $category = $_POST['category'];
 $issuances = $_POST['issuances'];
 $dateissued = $_POST['dateissued'];
 $title = $_POST['title'];
-$office = $_POST['office'];
+//$office = $_POST['office'];
 //$file = $_POST['file'];
 $url = $_POST['url'];
 $postedby = $_POST['postedby'];
@@ -64,7 +73,7 @@ $servername = "localhost";
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
 $database = "fascalab_2020";
-
+$username1 = $_SESSION['username'];
 $conn = new mysqli($servername, $username, $password,$database);
 
 // Check connection
@@ -73,7 +82,7 @@ if ($conn->connect_error) {
 }
 
 
- $query = mysqli_query($conn,"UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$office',pdf_file='$filename',dateposted='$posteddate',date_issued='$dateissued',postedby='$postedby',category='$category',url='$url' where id ='$id'");
+ $query = mysqli_query($conn,"UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$postedby',pdf_file='$filename',dateposted='$posteddate',date_issued='$dateissued',postedby='$username1',category='$category',url='$url' where id ='$id'");
 /* echo "UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$office',pdf_file='$file',dateposted='$posteddate',date_issued='$dateissued',postedby='$postedby',category='$category',url='$url' where id ='$id'";
 exit(); */
 

@@ -41,7 +41,46 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
         $posteddate = $row['dateposted'];
         
     }
-
+    $container = "";
+    //$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+    /* function app($connect)
+    { 
+      $output = '';
+      $query = "SELECT sarogroup FROM `saro` Group BY sarogroup ASC";
+      $statement = $connect->prepare($query);
+      $statement->execute();
+      $result = $statement->fetchAll();
+      foreach($result as $row)
+      {
+        $output .= '<option text="text" value="'.$row["sarogroup"].'">'.$row["sarogroup"].'</option>';
+      }
+      return $output;
+    } */
+    
+    
+    
+    $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+    
+      function getData($conn,$query){
+         
+        $result = $conn->query($query);
+    
+        $data = array();
+        foreach ($result as $row ) {
+        $data[] = $row ;
+        }
+        return $data;
+    
+        $result->close();
+        // $conn->close(); CTODI
+        exit();
+    }
+    
+      
+    
+    
+    
+    require_once('_includes/class.upload.php');
 
 
 ?>
@@ -108,8 +147,95 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                     <tr>
                         <td class="col-md-2">Concerned Office</td>
                             <td class="col-md-5"> 
-                              <input id="offices" value="<?php echo $office;?>" name="office" autocomplete ="off" type="text" class="form-control" placeholder=""></td>
-                                </tr>
+                              <!-- <input id="offices" value="<?php echo $office;?>" name="office" autocomplete ="off" type="text" class="form-control" placeholder=""></td> -->
+                              <div style="margin-bottom: 20px;" class="form-group offices-container">
+        <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control subtxt size400" placeholder="Click to Select">
+        <div class="office-responsible" style="position: absolute;display: none;width: 40%; background-color:lightgray">
+        
+                          <?php
+                          $counter = 0; 
+
+                          $get_issuance_no = "SELECT id,issuance_no from issuances";
+                          $issuance_no_issuances = getData($conn,$get_issuance_no);
+
+                 
+
+                          $query_responsible_office = "SELECT division_m,b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
+                        		  right join issuances_office_responsible b on a.issuance_no = b.issuance_id
+                                  left join tblpersonneldivision c on c.division_n =b.office_responsible";
+                          $queryoffices = "SELECT b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
+                        		  right join issuances_office_responsible b on a.issuance_no = b.issuance_id";	
+
+                          $get_division ="SELECT * from tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N";
+                                $get_groupings ="SELECT * from tbl_groupings";
+                          
+                          $getdata = getData($conn,$get_division);
+                          $getgroup = getData($conn,$get_groupings);
+                          $countgroup = count($getgroup);
+                          // print "<div>";
+                          for ($i=0; $i < $countgroup; $i++) 
+                       
+                          {
+                          $exploded= explode(' ', $getgroup[$i]['GROUP_M']);
+                          	?>
+                           <fieldset class="div">
+
+                           	<legend><?php echo $getgroup[$i]['GROUP_M'];?><input type="checkbox" name="divs" class="divs<?php echo $i;?>"></legend>
+                    <?php
+                    $get_options = "SELECT * FROM tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N WHERE a.GROUP_N=".$i."";
+                    $getoptions = getData($conn,$get_options);
+                    $getcount = count($getoptions);
+                    foreach ($getoptions as $k) {
+                    	
+                    
+                  if ( $counter % 3 ==0) { 
+                  print "<div class='rows3'>\n";
+                  print "</div>";
+
+                    	?>
+         
+                   <?php
+                    }
+                    $counter++;
+
+                    if (!empty($_GET['option']) && ($_GET['option'] == 'edit')) {
+                 
+
+                    	//we check if id is valid
+                    	if (empty($issuance_no_issuances)) {
+                    		//header("Location: http://www.loop.calabarzon.dilg.gov.ph/issuances_option.php");
+                    	}
+                    	 $query_responsible_office_division = "SELECT division_n,division_m,b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
+                        	 right join issuances_office_responsible b on a.issuance_no = b.issuance_id
+                             left join tblpersonneldivision c on c.division_n =b.office_responsible where b.issuance_id= '".$issuance_no_issuances[0]['issuance_no']."'";
+
+                          $result_responsible_office = getData($conn,$query_responsible_office_division);
+                          $rro = [];
+                          foreach ($result_responsible_office as $key) {
+                          		$rro[]= $key['division_n'];
+                          }
+                     ?>
+
+                   	
+          			<label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?> /><span><?php echo $k['DIVISION_M'];?></span></label>
+                    
+                    <?php }else{
+                    ?>
+                    <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> /><span><?php echo $k['DIVISION_M'];?></span></label>
+                    <?php }
+                		}
+
+                     ?>
+                           </fieldset>
+
+                         <?php  }
+                         // print "</div>";
+                          ?>
+
+</div>
+</div>    
+                            
+                            </tr>
                     <tr>
                         <td class="col-md-2"><label>Attached File</label> </td>
                             <td class="col-md-5"> <input value="<?php echo $file;?>" id="issuances_attachment" type="file" name="file"/>
@@ -211,12 +337,44 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
  
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-<script type="text/javascript">
+ <!-- TinyMCE -->
+ <script type="text/javascript" src="tiny_mce/tiny_mce.js"></script>
+   <!--  <script type="text/javascript">
+        // O2k7 skin (silver)
+        tinyMCE.init({
+            // General options
+            mode : "exact",
+            elements : "tinyeditor",
+            theme : "advanced",
+            skin : "o2k7",
+            skin_variant : "silver",
+            plugins : "lists,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,inlinepopups,autosave",
+    
+            // Theme options
+            theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+            theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,pagebreak,restoredraft",
+            theme_advanced_toolbar_location : "top",
+            theme_advanced_toolbar_align : "left",
+            theme_advanced_statusbar_location : "bottom",
+            theme_advanced_resizing : true
+        });
+    </script> -->
+    <!-- /TinyMCE -->
+
+<!-- 	<script type="text/javascript" src="js/zebra_datepicker.js"></script>    
+	<link rel="stylesheet" href="css/zebra_datepicker_metallic.css" type="text/css">      
+	<script type="text/javascript" src="source/jquery.fancybox.js?v=2.1.0"></script>
+	<link rel="stylesheet" type="text/css" href="source/jquery.fancybox.css?v=2.1.0" media="screen" /> -->
+        
+   	<script type="text/javascript">
 		$(document).ready(function() {
 
 			var x = 1;
-			$('#offices').click(function(e){
+			$('#office').click(function(e){
 			  if( x == 1 ){
 			    //console.log('even');
 			    $('.office-responsible').show();
@@ -235,7 +393,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
 		$("legend :checkbox").click(function(){
    	    var getcheckboxes = $(this).attr('class');
 	    var delimiter = ";";
-	    var text = $("input[name='po']");
+	    var text = $("input[name='todiv']");
 	    var str = "";
 
 	   $('.'+getcheckboxes).prop('checked',this.checked);
@@ -243,9 +401,9 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
 
 		});
 
-/*			$(":checkbox").click(function () {
+			$(":checkbox").click(function () {
 			    var delimiter = ";";
-			    var text = $("input[name='po']");
+			    var text = $("input[name='todiv']");
 			    var str = "";
 			    
 			    // for each checked checkbox, add the checkbox value and delimiter to the textbox
@@ -255,7 +413,8 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
 			    
 			    // set the value of the textbox
 			    text.val(str);
-			});*/
+          // echo (str);
+			});
 
 
 
@@ -272,38 +431,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
 			        });
 
 
-			$('input.date').Zebra_DatePicker({
-				offset:[6,216]
-			});	
-			$('input.dateposted').Zebra_DatePicker({
-				offset:[6,216]
-			});	
-			
-			$(".fileBrowser").fancybox({		
-				'maxWidth'			: 800,
-				'maxHeight'			: 600,
-				'fitToView'			: false,
-				'width'				: '70%',
-				'height'			: '70%',
-				'autoSize'			: false,			
-				'transitionIn'		: 'elastic',
-				'transitionOut'		: 'elastic',
-				'type'				: 'iframe'							
-			});	
-			
-			$(".popup").fancybox({		
-				'maxWidth'			: 800,
-				'maxHeight'			: 600,
-				'fitToView'			: false,
-				'width'				: '70%',
-				'height'			: '70%',
-				'autoSize'			: false,			
-				'transitionIn'		: 'elastic',
-				'transitionOut'		: 'elastic',
-				'type'				: 'iframe',
-				'afterClose'		: function() { location.reload();}								
-			});	
-			
+		
 			$(".page_link").change(function(){
 				var id=$(this).val();
 	            getProAge(id);		
@@ -329,28 +457,16 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
        function confirmDelete(id, rno) { 
         var msg = "Are you sure you want to delete record no. "+rno+" ?";
             if ( confirm(msg) ) {
-                window.location = "<?php echo $_SERVER['PHP_SELF']; ?>?option=del&id="+id;
+                // window.location = "<?php echo $_SERVER['PHP_SELF']; ?>?option=del&id="+id;
             }
         }	
 		function copyToClipboard(text) {
 		  window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);
 		}					
-    </script>  
-<script src="dist/js/demo.js">
-</script>
-<!-- <script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-</script> -->
+    </script>   
+
+
+
 
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -381,126 +497,6 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<!-- Page script -->
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
-    $('[data-mask]').inputmask()
-
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
-      },
-      function (start, end) {
-        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
-    )
-
-    //Date picker,
-    $('#datepicker1').datepicker({
-      autoclose: true
-    })
-
-    $('#datepicker2').datepicker({
-      autoclose: true
-    })
-    $('#datepicker3').datepicker({
-      autoclose: true
-    })
-    $('#datepicker4').datepicker({
-      autoclose: true
-    })
-
-    //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass   : 'iradio_minimal-blue'
-    })
-    //Red color scheme for iCheck
-    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass   : 'iradio_minimal-red'
-    })
-    //Flat red color scheme for iCheck
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass   : 'iradio_flat-green'
-    })
-
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
-
-    //Timepicker
-    $('.timepicker').timepicker({
-      showInputs: false
-    })
-  })
-</script>
-
-
-<script>
-$(document).ready(function(){
-  $("#result").click(function(){
-    $("#main").hide();
-  });
-});
-</script>
-
-<script>
-$(document).ready(function(){
-  $("#result1").click(function(){
-    $("#main1").hide();
-  });
-});
-</script>
-
-<script>
-$(document).ready(function(){
-  $("#result2").click(function(){
-    $("#main2").hide();
-  });
-});
-</script>
-
-<script>
-$(document).ready(function(){
-  $("#result3").click(function(){
-    $("#main3").hide();
-  });
-});
-</script>
-
-
-<script>
-$(document).ready(function(){
-  $("#result4").click(function(){
-    $("#main4").hide();
-  });
-});
-</script>
 
 
 </body>
