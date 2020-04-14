@@ -134,7 +134,7 @@ if (isset($_POST['submit'])) {
   $selectAOQ = mysqli_query($conn,"SELECT id FROM aoq_data WHERE aoq_no = '$abstract_no' ");
   $rowAOQ = mysqli_fetch_array($selectAOQ);
   $aoqID =$rowAOQ['id'];
- 
+  
   $selectabsid = mysqli_query($conn,"SELECT id FROM abstract_of_quote WHERE abstract_no = $aoqID AND rfq_id = $rfq_id ORDER BY id DESC");
   $rowabsid = mysqli_fetch_array($selectabsid);
   $abstract_id = $rowabsid['id'];
@@ -176,7 +176,7 @@ if (isset($_POST['insert_supplierQ'])) {
 
  }
 
-  $insertAOQ = mysqli_query($conn,"INSERT INTO abstract_of_quote(supplier_id,rfq_id) VALUES('$supplier_id_show','$rfq_id')");
+ $insertAOQ = mysqli_query($conn,"INSERT INTO abstract_of_quote(supplier_id,rfq_id) VALUES('$supplier_id_show','$rfq_id')");
 
 
 
@@ -491,7 +491,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
            <div class="col-md-3">
              <div class="form-group">
               <label>Date Opened</label>
-                <input required type="datetime-local" value="<?php echo $date;?>" name="date_opened" class="form-control">
+              <input required type="datetime-local" value="<?php echo $date;?>" name="date_opened" class="form-control">
             </div>
             <div class="form-group">
               <label>Remarks</label>
@@ -542,292 +542,308 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                   ?>
                   <tr>
                     <td><?php echo $procurement;?></td>
-                      <?php if ($supplier_id_create == $sid1): ?>
-              <td><input checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
-                <?php echo number_format($ppu11;,2)?></td>
-                <?php else: ?>
-                  <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
-                    <?php echo number_format($ppu11;,2)?></td>
+                    <?php if ($supplier_id_create == $sid1): ?>
+                      <td><input checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
+                        <?php echo number_format($ppu11,2);?></td>
+                        <?php else: ?>
+                          <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
+                            <?php echo number_format($ppu11,2);?></td>
+                          <?php endif ?>
+                        </tr>
+                      <?php } ?>
+                    </table>
+                  </div>
+                  <!-- S U P P L I E R      2  -->
+                  <div class="col-xs-6">
+                   <table id="example1" class="  table-responsive" style="width:500px;background-color: white;" align="center">
+                    <thead style="width:500px;">
+                      <th width="" ><?php echo $supplier_title2;?></th>
+                    </thead>
+                  </table>
+                  <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
+                   <thead style="width:500px;">
+                    <th width="" >PPU Total : <?php echo number_format($totsppu22,2)?></th>
+                  </thead>   
+                  <?php 
+                  $b = 1;
+                  while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
+                    $ppu112 = $rowrfid12['ppu'];
+                    $procurement2 = $rowrfid12['procurement'];
+                    $b++;
+                    ?>
+                    <tr>
+                      <?php if ($supplier_id_create == $sid2): ?>
+                        <td ><input  checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
+                          <?php echo number_format($ppu112,2);?></td>
+                          <?php else: ?>
+                            <td ><input  type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
+                              <?php echo number_format($ppu112,2);?></td>
+                            <?php endif ?>
+                          </tr>
+                        <?php } ?>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              <?php endif ?>
+              <?php if ($supplier_title3 != '' AND $supplier_title4 == ''): ?>
+
+                <div class="box-body">
+                  <div class="row" id="boxed">
+                    <!-- P R O C U R E M E N T [PAGE TATLO ANG SUPPIER] -->
+                    <div class="col-xs-3">
+                      <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
+                        <thead>
+                          <th style="float: ;">Item(s)</th>
+                        </thead>
+                      </table>
+                      <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                       <thead>
+                        <th width="" >Procurement</th>
+                      </thead>   
+                      <?php 
+                      while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
+                        $procurement = $rowrfid1['procurement'];
+                        ?>
+                        <tr>
+                          <td><?php echo $procurement;?></td>
+                        </tr>
+                      <?php } ?>
+                    </table>
+
+                  </div>
+
+                  <!-- S U P P L I E R    1-->
+                  <div class="col-xs-3">
+                    <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
+                      <thead>
+                        <th style="float: ;"><?php echo $supplier_title1;?></th>
+                      </thead>
+                    </table>
+                    <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                     <thead>
+                      <th width="" >PPU Total : <?php echo number_format($totsppu11,2)?></th>
+                    </thead>   
+                    <?php 
+                    $b = 1;
+                    while($rowrfid1 = mysqli_fetch_assoc($sql_items1) ){
+                      $ppu11 = $rowrfid1['ppu'];
+                      $b++;
+                      ?>
+                      <tr>
+                        <?php if ($supplier_id_create == $sid1): ?>
+                          <td><input checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
+                            <?php echo number_format($ppu11,2);?></td>
+                            <?php else: ?>
+                              <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
+                                <?php echo number_format($ppu11,2);?></td>
+                              <?php endif ?>
+
+                            </tr>
+                          <?php } ?>
+                        </table>
+
+                      </div>
+                      <!-- S U P P L I E R     2  -->
+                      <div class="col-xs-3">
+                       <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
+                        <thead>
+                          <th  ><?php echo $supplier_title2;?></th>
+                        </thead>
+                      </table>
+                      <table id="example1" class="table table-striped table-bordered table-responsive" style="width:400px;background-color: white;">
+                       <thead>
+                        <th  >PPU Total : <?php echo number_format($totsppu22,2)?></th>
+                      </thead>   
+                      <?php 
+                      $b = 1;
+                      while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
+                        $ppu112 = $rowrfid12['ppu'];
+                        $procurement2 = $rowrfid12['procurement'];
+                        $b++;
+                        ?>
+                        <tr >
+                          <?php if ($supplier_id_create == $sid2): ?>
+                            <td ><input  checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
+                              <?php echo number_format($ppu112,2);?></td>
+                              <?php else: ?>
+                                <td ><input  type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
+                                  <?php echo number_format($ppu112,2);?></td>
+                                <?php endif ?>
+                              </tr>
+                            <?php } ?>
+                          </table>
+                        </div>
+                        <!-- S U P P L I E R     3  -->
+                        <div class="col-xs-3">
+                         <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
+                          <thead>
+                            <th width="" ><?php echo $supplier_title3;?></th>
+                          </thead>
+                        </table>
+                        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                         <thead>
+                          <th width="" >PPU Total : <?php echo number_format($totsppu33,2)?></th>
+                        </thead>   
+                        <?php 
+                        $b = 1;
+                        while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
+                          $ppu113 = $rowrfid13['ppu'];
+                          $procurement3 = $rowrfid13['procurement'];
+                          $b++;
+                          ?>
+                          <tr>
+                            <?php if ($supplier_id_create == $sid3): ?>
+                              <td><input checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
+                                <?php echo number_format($ppu113,2);?></td>
+                                <?php else: ?>
+                                 <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
+                                  <?php echo number_format($ppu113,2);?></td>
+                                <?php endif ?>
+                              </tr>
+                            <?php } ?>
+                          </table>
+                        </div>
+
+                      </div>
+                    </div>
+
                   <?php endif ?>
-                  </tr>
-                <?php } ?>
-              </table>
+                  <?php if ($supplier_title4 !='' AND $supplier_title3 !=''): ?>
+                   <div class="box-body">
+                    <div class="row" id="boxed">
+                      <!-- S U P P L I E R      1 [PAG APAT ANG SUPPLIER] -->
+                      <div class="col-xs-3">
+                        <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
+                          <thead>
+                            <th width="" ><?php echo $supplier_title1;?></th>
+                          </thead>
+                        </table>
+                        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                         <thead>
+                          <th width="200" >Item</th>
+                          <th width="100" >PPU Total : <?php echo number_format($totsppu11,2)?></th>
+                        </thead>   
+                        <?php 
+                        $b = 1;
+                        while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
+                          $ppu11 = $rowrfid1['ppu'];
+                          $procurement = $rowrfid1['procurement'];
+                          $b++;
+                          ?>
+                          <tr>
+                            <td><?php echo $procurement;?></td>
+                            <?php if ($supplier_id_create == $sid1): ?>
+                              <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>">&nbsp&nbsp<?php echo $ppu11;?></td>
+                              <?php else: ?>
+                                <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>">&nbsp&nbsp<?php echo $ppu11;?></td>
+                              <?php endif ?>
+                            </tr>
+                          <?php } ?>
+                        </table>
+
+                      </div>
+                      <!-- S U P P L I E R     2  -->
+                      <div class="col-xs-3">
+                       <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
+                        <thead>
+                          <th width="" ><?php echo $supplier_title2;?></th>
+                        </thead>
+                      </table>
+                      <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                       <thead>
+                        <th width="" >PPU Total : <?php echo number_format($totsppu22,2)?></th>
+                      </thead>   
+                      <?php 
+                      $b = 1;
+                      while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
+                        $ppu112 = $rowrfid12['ppu'];
+                        $procurement2 = $rowrfid12['procurement'];
+                        $b++;
+                        ?>
+                        <tr>
+                          <?php if ($supplier_id_create == $sid2): ?>
+                            <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp<?php echo $ppu112;?></td>
+                            <?php else: ?>
+                              <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp<?php echo $ppu112;?></td>
+                            <?php endif ?>
+                          </tr>
+                        <?php } ?>
+                      </table>
+                    </div>
+                    <!-- S U P P L I E R     3  -->
+                    <div class="col-xs-3">
+                     <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
+                      <thead>
+                        <th width="" ><?php echo $supplier_title3;?></th>
+                      </thead>
+                    </table>
+                    <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                     <thead>
+                      <th width="" >PPU Total : <?php echo number_format($totsppu33,2)?></th>
+                    </thead>   
+                    <?php 
+                    $b = 1;
+                    while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
+                      $ppu113 = $rowrfid13['ppu'];
+                      $procurement3 = $rowrfid13['procurement'];
+                      $b++;
+                      ?>
+                      <tr>
+                        <?php if ($supplier_id_create == $sid3): ?>
+                          <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp<?php echo $ppu113;?></td>
+                          <?php else: ?>
+                            <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp<?php echo $ppu113;?></td>
+                          <?php endif ?>
+                        </tr>
+                      <?php } ?>
+                    </table>
+                  </div>
+                  <!-- S U P P L I E R     4  -->
+                  <div class="col-xs-3">
+                   <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
+                    <thead>
+                      <th width="" ><?php echo $supplier_title4;?></th>
+                    </thead>
+                  </table>
+                  <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                   <thead>
+                    <th width="" >PPU Total : <?php echo number_format($totsppu44,2)?></th>
+                  </thead>   
+                  <?php 
+                  $b = 1;
+                  while($rowrfid14 = mysqli_fetch_assoc($sql_items4) ){
+                    $ppu114 = $rowrfid14['ppu'];
+                    $procurement4 = $rowrfid14['procurement'];
+                    $b++;
+                    ?>
+                    <tr>
+                      <?php if ($supplier_id_create == $sid3): ?>
+                        <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid4 ?>">&nbsp&nbsp<?php echo $ppu114;?></td>
+                        <?php else: ?>
+                          <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid4 ?>">&nbsp&nbsp<?php echo $ppu114;?></td>
+                        <?php endif ?>
+                      </tr>
+                    <?php } ?>
+                  </table>
+                </div>
+              </div>
             </div>
-            <!-- S U P P L I E R      2  -->
-            <div class="col-xs-6">
-             <table id="example1" class="  table-responsive" style="width:500px;background-color: white;" align="center">
-              <thead style="width:500px;">
-                <th width="" ><?php echo $supplier_title2;?></th>
-              </thead>
-            </table>
-            <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
-             <thead style="width:500px;">
-              <th width="" >PPU Total : <?php echo number_format($totsppu22,2)?></th>
-            </thead>   
-            <?php 
-            $b = 1;
-            while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
-              $ppu112 = $rowrfid12['ppu'];
-              $procurement2 = $rowrfid12['procurement'];
-              $b++;
-              ?>
-              <tr>
-                <?php if ($supplier_id_create == $sid2): ?>
-                <td ><input  checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
-                  <?php echo number_format($ppu112,2);?></td>
-                  <?php else: ?>
-                    <td ><input  type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
-                      <?php echo number_format($ppu112,2);?></td>
-                    <?php endif ?>
-              </tr>
-            <?php } ?>
-          </table>
+          <?php endif ?>
         </div>
       </div>
     </div>
-  <?php endif ?>
-  <?php if ($supplier_title3 != '' AND $supplier_title4 == ''): ?>
-
-    <div class="box-body">
-      <div class="row" id="boxed">
-        <!-- P R O C U R E M E N T [PAGE TATLO ANG SUPPIER] -->
-        <div class="col-xs-3">
-          <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
-            <thead>
-              <th style="float: ;">Item(s)</th>
-            </thead>
-          </table>
-          <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
-           <thead>
-            <th width="" >Procurement</th>
-          </thead>   
-          <?php 
-          while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
-            $procurement = $rowrfid1['procurement'];
-            ?>
-            <tr>
-              <td><?php echo $procurement;?></td>
-            </tr>
-          <?php } ?>
-        </table>
-
-      </div>
-
-      <!-- S U P P L I E R    1-->
-      <div class="col-xs-3">
-        <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
-          <thead>
-            <th style="float: ;"><?php echo $supplier_title1;?></th>
-          </thead>
-        </table>
-        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
-         <thead>
-          <th width="" >PPU Total : <?php echo number_format($totsppu11,2)?></th>
-        </thead>   
-        <?php 
-        $b = 1;
-        while($rowrfid1 = mysqli_fetch_assoc($sql_items1) ){
-          $ppu11 = $rowrfid1['ppu'];
-          $b++;
-          ?>
-          <tr>
-            <?php if ($supplier_id_create == $sid1): ?>
-              <td><input checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
-                <?php echo number_format($ppu11;,2)?></td>
-                <?php else: ?>
-                  <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
-                    <?php echo number_format($ppu11;,2)?></td>
-                  <?php endif ?>
-
-                </tr>
-              <?php } ?>
-            </table>
-
-          </div>
-          <!-- S U P P L I E R     2  -->
-          <div class="col-xs-3">
-           <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
-            <thead>
-              <th  ><?php echo $supplier_title2;?></th>
-            </thead>
-          </table>
-          <table id="example1" class="table table-striped table-bordered table-responsive" style="width:400px;background-color: white;">
-           <thead>
-            <th  >PPU Total : <?php echo number_format($totsppu22,2)?></th>
-          </thead>   
-          <?php 
-          $b = 1;
-          while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
-            $ppu112 = $rowrfid12['ppu'];
-            $procurement2 = $rowrfid12['procurement'];
-            $b++;
-            ?>
-            <tr >
-              <?php if ($supplier_id_create == $sid2): ?>
-                <td ><input  checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
-                  <?php echo number_format($ppu112,2);?></td>
-                  <?php else: ?>
-                    <td ><input  type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
-                      <?php echo number_format($ppu112,2);?></td>
-                    <?php endif ?>
-                  </tr>
-                <?php } ?>
-              </table>
-            </div>
-            <!-- S U P P L I E R     3  -->
-            <div class="col-xs-3">
-             <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
-              <thead>
-                <th width="" ><?php echo $supplier_title3;?></th>
-              </thead>
-            </table>
-            <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
-             <thead>
-              <th width="" >PPU Total : <?php echo number_format($totsppu33,2)?></th>
-            </thead>   
-            <?php 
-            $b = 1;
-            while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
-              $ppu113 = $rowrfid13['ppu'];
-              $procurement3 = $rowrfid13['procurement'];
-              $b++;
-              ?>
-              <tr>
-                <?php if ($supplier_id_create == $sid3): ?>
-                  <td><input checked type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
-                    <?php echo number_format($ppu113,2);?></td>
-                    <?php else: ?>
-                     <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
-                      <?php echo number_format($ppu113,2);?></td>
-                    <?php endif ?>
-                  </tr>
-                <?php } ?>
-              </table>
-            </div>
-
-          </div>
-        </div>
-
-      <?php endif ?>
-      <?php if ($supplier_title4 !='' AND $supplier_title3 !=''): ?>
-       <div class="box-body">
-        <div class="row" id="boxed">
-          <!-- S U P P L I E R      1 [PAG APAT ANG SUPPLIER] -->
-          <div class="col-xs-3">
-            <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
-              <thead>
-                <th width="" ><?php echo $supplier_title1;?></th>
-              </thead>
-            </table>
-            <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
-             <thead>
-              <th width="200" >Item</th>
-              <th width="100" >PPU Total : <?php echo number_format($totsppu11,2)?></th>
-            </thead>   
-            <?php 
-            $b = 1;
-            while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
-              $ppu11 = $rowrfid1['ppu'];
-              $procurement = $rowrfid1['procurement'];
-              $b++;
-              ?>
-              <tr>
-                <td><?php echo $procurement;?></td>
-                <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>">&nbsp&nbsp<?php echo number_format($ppu11;,2)?></td>
-              </tr>
-            <?php } ?>
-          </table>
-
-        </div>
-        <!-- S U P P L I E R     2  -->
-        <div class="col-xs-3">
-         <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
-          <thead>
-            <th width="" ><?php echo $supplier_title2;?></th>
-          </thead>
-        </table>
-        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
-         <thead>
-          <th width="" >PPU Total : <?php echo number_format($totsppu22,2)?></th>
-        </thead>   
-        <?php 
-        $b = 1;
-        while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
-          $ppu112 = $rowrfid12['ppu'];
-          $procurement2 = $rowrfid12['procurement'];
-          $b++;
-          ?>
-          <tr>
-            <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp<?php echo number_format($ppu112,2);?></td>
-          </tr>
-        <?php } ?>
-      </table>
-    </div>
-    <!-- S U P P L I E R     3  -->
-    <div class="col-xs-3">
-     <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
-      <thead>
-        <th width="" ><?php echo $supplier_title3;?></th>
-      </thead>
-    </table>
-    <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
-     <thead>
-      <th width="" >PPU Total : <?php echo number_format($totsppu33,2)?></th>
-    </thead>   
-    <?php 
-    $b = 1;
-    while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
-      $ppu113 = $rowrfid13['ppu'];
-      $procurement3 = $rowrfid13['procurement'];
-      $b++;
-      ?>
-      <tr>
-        <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp<?php echo number_format($ppu113,2);?></td>
-      </tr>
-    <?php } ?>
-  </table>
-</div>
-<!-- S U P P L I E R     4  -->
-<div class="col-xs-3">
- <table id="example1" class="  table-responsive" style="width:200px;background-color: white;">
-  <thead>
-    <th width="" ><?php echo $supplier_title4;?></th>
-  </thead>
-</table>
-<table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
- <thead>
-  <th width="" >PPU Total : <?php echo number_format($totsppu44,2)?></th>
-</thead>   
-<?php 
-$b = 1;
-while($rowrfid14 = mysqli_fetch_assoc($sql_items4) ){
-  $ppu114 = $rowrfid14['ppu'];
-  $procurement4 = $rowrfid14['procurement'];
-  $b++;
-  ?>
-  <tr>
-    <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid4 ?>">&nbsp&nbsp<?php echo number_format($ppu114,2);?></td>
-  </tr>
-<?php } ?>
-</table>
-</div>
-</div>
-</div>
-<?php endif ?>
-</div>
-</div>
-</div>
-<button class="btn btn-success" name="submit" type="subtmit" >Award</button>
-<!-- <button class="btn btn-success" name="submit" type="subtmi" style="width: 1260px;">Award</button> -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-</form>
-<!-- end of div class row -->
+    <button class="btn btn-success" name="submit" type="subtmit" >Award</button>
+    <!-- <button class="btn btn-success" name="submit" type="subtmi" style="width: 1260px;">Award</button> -->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </form>
+  <!-- end of div class row -->
 </div>
 <!-- <script>
 $('#supplier_id_create').on('change', function() {
