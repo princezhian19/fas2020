@@ -49,7 +49,7 @@ $username = $_SESSION['username'];
 
 <script>
   $(document).ready(function(){
-            var dataTable=$('#example1').DataTable({
+            var dataTable=$('#example1').DataTable( {
               'lengthChange': true,
               'searching'   : true,
               'ordering'    : true,
