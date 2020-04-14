@@ -68,10 +68,10 @@ $events = $req->fetchAll();
                                 <th>NO.</th>
                                 <th>OFFICE</th>
                                 <th>TITLE</th>
-                                <th>START DATE</th>
-                                <th>END TIME</th>
+                                <th style = "width:10%;">START DATE</th>
+                                <th style = "width:10%;">END TIME</th>
                                 <th>VENUE</th>
-                                <th>POSTED BY</th>
+                                <th style = "width:10%;">POSTED BY</th>
                                 <th style = "text-align:center;width:16%;">ACTION</th>
                                 </thead>
                                 </table>
@@ -97,38 +97,46 @@ $events = $req->fetchAll();
 
 
 <script>
-$(document).ready(function(){
-    var table = $('#example').DataTable( {
-        'paging'      : true,
-        'lengthChange': true,
-        'searching'   : true,
-        'ordering'    : true,
-        'info'        : true,
-        'autoWidth'   : true,   aLengthMenu: [ [10, 10, 20, -1], [10, 10, 20, "All"] ],
-        "bPaginate": false,
-        "bLengthChange": false,
-        "bFilter": true,
-        "bInfo": false,
-        "bAutoWidth": false,
-        "processing": true,
-        "serverSide": false,
-        "ajax": "DATATABLE/server_processing2.php",
-        "order": [[ 0, "asc" ]],
-        "columnDefs": [ {
-            "targets": 7,
-            "render": function ( data, type, row, meta ) {  
-            if(<?php echo $_SESSION['planningofficer'];?> == 1)
-            {
-                $action = '<button class = "btn btn-success btn-md">View</button>&nbsp;<button class = "btn btn-primary btn-md">Edit</button>&nbsp;<button class = "btn btn-danger btn-md">Delete</button>';
-              return $action;
+     $(document).ready(function(){
+            var dataTable=$('#example').DataTable({
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : true,
+            "order": [[ 1, "asc" ]],
+            aLengthMenu: [ [5, 10, 20, -1], [5, 10, 20, "All"] ],
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            "processing": true,
+            "serverSide":true,
+            "ajax":{
+                url:"DATATABLE3/test/fetchCalendar.php",
+                type:"post"
             }
-        }
-        }]
-       
-
-    } );
-  
-});
+            });
+     });
+     $(document).on('click','#sweet-14',function(e){
+            e.preventDefault();
+            var per_id=$(this).data('id');
+            alert(per_id)
+            //alert(per_id);
+            $('#content-data').html('');
+            $.ajax({
+                url:'editdata.php',
+                type:'POST',
+                data:'id='+per_id,
+                dataType:'html'
+            }).done(function(data){
+                $('#content-data').html('');
+                $('#content-data').html(data);
+            }).fial(function(){
+                $('#content-data').html('<p>Error</p>');
+            });
+        });
 </script>
 
 </body>
