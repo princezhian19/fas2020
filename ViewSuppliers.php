@@ -50,8 +50,20 @@ $username = $_SESSION['username'];
 <script>
   $(document).ready(function(){
             var dataTable=$('#example1').DataTable({
-                "processing": true,
+              'lengthChange': true,
+              'searching'   : true,
+              'ordering'    : true,
+              'info'        : true,
+              'autoWidth'   : true,
+              aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
+              "bPaginate": true,
+              "bLengthChange": false,
+              // "bFilter": true,
+              // "bInfo": false,
+              // "bAutoWidth": false,
+                "processing": false,
                 "serverSide":true,
+                
                 "ajax":{
                     url:"DATATABLE3/test/fetch.php",
                     type:"post"
