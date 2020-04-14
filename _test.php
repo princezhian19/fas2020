@@ -26,14 +26,14 @@ function fillTableInfo()
                <table  border = 1 class = "center-text" style = "width:100%;">
                             <tbody>
                                 <tr>
-                                    <td colspan = 4> ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
-                                    <td class = "label-text left-text">Control<br>Number.</td>
+                                    <td colspan = 4 class = "label-text"> ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
+                                    <td class = "label-text left-text">Control<br>Number:<span style = "color:red;">*</span></td>
                                     <td colspan = 2 style = "padding:5px 5px 5px 5px;background-color:#CFD8DC;">
                                     <?php echo countCN();?>
                                       </td>
                                 </tr>
                                 <tr>
-                                    <td style = "width:15%;" class = "label-text left-text">Request Date:</td>
+                                    <td style = "width:15%;" class = "label-text left-text">Request Date:<span style = "color:red;">*</span></td>
                                     <td style = "width:15%;padding:5px 5px 5px 5px;">
                                     <div class="input-group date">
                                             <div class="input-group-addon">
@@ -42,7 +42,7 @@ function fillTableInfo()
                                             <input required type="text" name = "request_date" placeholder = "Request Date" class="datePicker1" value="" required placeholder="mm/dd/yyyy" >
                                         </div>
                                     </td>
-                                    <td style = "width:15%;"class = "label-text">Request Time:</td>
+                                    <td style = "width:15%;"class = "label-text">Request Time:<span style = "color:red;">*</span></td>
                                     <td style = "width:15%;  padding:5px 5px 5px 5px;">
                                     <input required style = "text-align:center;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
                                     </td>
@@ -51,40 +51,40 @@ function fillTableInfo()
                                 </tr>
                                 <tr>
                                     <td colspan = 4 class = "label-text">END-USER INFORMATION </td>
-                                    <td class = "label-text left-text">Equipment</td>
+                                    <td class = "label-text left-text">Equipment<span style = "color:red;">*</span></td>
                                     <td colspan = 3 class = "left-text " style = "padding:5px 5px 5px 5px;">
                                       <input required  required style ="width:100%;" placeholder = "Equipment Type" type = "text" name = "equipment_type" class = "alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
-                                    <td style = "width:15%;" class = "label-text left-text">Requested By:</td>
+                                    <td style = "width:15%;" class = "label-text left-text">Requested By:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;">
                                       <input required type = "hidden"  name="requested_by" value = "<?php $row['EMP_N'];?>" />
                                       <input required type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'].' ';?>" >
-                                    <td class = "label-text left-text">Brand Model:</td>
+                                    <td class = "label-text left-text">Brand Model:<span style = "color:red;">*</span></td>
                                     <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "Brand Model" type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
                                 <tr>
-                                    <td class = "label-text left-text">Office:</td>
+                                    <td class = "label-text left-text">Office:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "office" placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['DIVISION_M'];?>" /></td>
-                                    <td class = "label-text left-text">Property No.:</td>
+                                    <td class = "label-text left-text">Property No.:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "Property No." type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "" /> </td>
                                 </tr>
                                 <tr>
-                                    <td style = "width:15%;" class = "label-text left-text">Position/Designation:</td>
+                                    <td style = "width:15%;" class = "label-text left-text">Position/Designation:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "position"  placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION_M'];?>"  /></td>
                                     <td class = "label-text left-text">Serial No.:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "Serial No." type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
-                                    <td style = "width:15%;" class = "label-text left-text">Contact Number:</td>
+                                    <td style = "width:15%;" class = "label-text left-text">Contact Number:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "phone" placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MOBILEPHONE'];?>"  /></td>
-                                    <td class = "label-text left-text">IP Address:</td>
+                                    <td class = "label-text left-text">IP Address:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "IP Address" type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
-                                    <td style = "width:15%;" class = "label-text left-text">Email Address:</td>
+                                    <td style = "width:15%;" class = "label-text left-text">Email Address:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "email" placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['EMAIL'];?>"/></td>
-                                    <td class = "label-text left-text">MAC Address:</td>
+                                    <td class = "label-text left-text">MAC Address:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "MAC Address" type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
                             </tbody>
@@ -104,7 +104,7 @@ function countCN()
                                                   if($row = mysqli_fetch_array($result))
                                                   {
                                                     $count= $row['count']+1;
-                                                    echo '<input required style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-0'.$count.' />';
+                                                    echo '<input required style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-'.$count.' />';
 
                                                   }
 }
@@ -133,7 +133,7 @@ function showUser()
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Procurement</title>
+  <title></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -185,17 +185,17 @@ background-position: 90px 5px;
             <div class="panel panel-default">
                 <div class="box-body">      
                     <div>
-                        <h1>Online ICT Technical Assistance Request Form</h1><br>
+                        <h1>ICT Technical Assistance</h1><br>
                     </div>
                     <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/sample/sample1.php" >    
                         <?php echo fillTableInfo(); ?>
                      <input required type = "hidden" name = "division" value = "<?php echo $_GET['division'];?>" />
                         <br>
-                        <u style = "margin-top:20px;">TYPE OF REQUEST</u>
+                        <u style = "margin-top:20px;" class = "label-text">TYPE OF REQUEST</u>
                         <table style = "margin-top:20px;width:100%;" >
                           <tr>
                               <td>
-                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g1" class = "checkbox_group" value = "DESKTOP/LAPTOP"> <b>DESKTOP/LAPTOP</b><br>
+                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g1" class = "checkbox_group" value = "DESKTOP/LAPTOP"> <b>DESKTOP/LAPTOP<span style = "color:red;">*</span></b><br>
                                   <div style = "margin-left:30px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Hardware Error"> Hardware Error<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Software Error"> Software Error<br>
@@ -205,7 +205,7 @@ background-position: 90px 5px;
                                   </div>
                               </td> 
                               <td><br>
-                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
+                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY<span style = "color:red;">*</span></b><br>
                                   <div style = "margin-left:30px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
@@ -217,7 +217,7 @@ background-position: 90px 5px;
                                   </div>
                               </td>  
                               <td style = "width:35%;">
-                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
+                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM<span style = "color:red;">*</span></b><br>
                                   <div style = "margin-left:20px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
@@ -234,7 +234,7 @@ background-position: 90px 5px;
                           <tr>
                           <td>
                           <div style = "margin-left:30px;padding-top:10px;" >
-                          <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g4" class = "checkbox_group" value = "PRINTER/SCANNER"> <b>PRINTER/SCANNER</b><br>
+                          <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g4" class = "checkbox_group" value = "PRINTER/SCANNER"> <b>PRINTER/SCANNER<span style = "color:red;">*</span></b><br>
 
                           <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Installation"> Installation<br>
                           <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Troubleshooting"> Troubleshooting<br>
@@ -242,7 +242,7 @@ background-position: 90px 5px;
                           </div>
                           </td> 
                           <td>
-                            <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
+                            <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL<span style = "color:red;">*</span></b><br>
                             <div style = "margin-left:30px;padding-top:10px;">
                             <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
                             <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input required type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
@@ -250,7 +250,7 @@ background-position: 90px 5px;
                           </div>
                           </td> 
                           <td>
-                          <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "Others"><b>Others</b><br>
+                          <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "Others"><b>Others<span style = "color:red;">*</span></b><br>
                           <input  type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                           <input  type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                           <input  type = "text" name = "others3" id = "others3" class = "checkboxgroup_g6"value = "" style = "border:none;border-bottom:1px solid black;"/><br>
@@ -259,106 +259,86 @@ background-position: 90px 5px;
 
                           </tr>
                           </table>
-                        <table border = 1 style = "margin-top:20px;width:100%;">
-                                                  <tr>
-                                                  <td colspan = 4 class = "center-text label-text" style = "width:50%;">END-USER</td>
-                                                  <td colspan = 4 class = "center-text label-text">RICTU</td>
-                                                  </tr>
-                                                  <tr>
-                                                  <td colspan = 4>ISSUE/PROBLEM/ERROR DETAILS:</td>
-                                                  <td colspan = 4>FINDINGS AND RESOLUTION/RECOMMENDATION</td>
-                                                  </tr>
+                          <table border = 1 style = "margin-top:20px;width:100%;">
+                            <tr>
+                              <td colspan = 4 class = "center-text label-text" style = "width:50%;">END-USER</td>
+                                <td colspan = 4 class = "center-text label-text">RICTU</td>
+                                  </tr>
+                          <tr>
+                            <td colspan = 4 class = "label-text">ISSUE/PROBLEM/ERROR DETAILS:<span style = "color:red;">*</span></td>
+                              <td colspan = 4 class = "label-text">FINDINGS AND RESOLUTION/RECOMMENDATION</td>
+                                </tr>
+                          <tr>
+                              <td colspan = 4 >
+                                <textarea rows="22" name = "issue" cols="56"  style ="resize:none;width:100%;text-align:left;" >
+                                </textarea>
+                              </td>
 
+                              <td colspan = 4>
+                                <textarea rows="22" cols="56" style ="resize:none;width:100%;text-align:left;background-color:#EEEEEE;" name = "status" class = "disabletxtarea">
+                                </textarea>
+                              </td>
+                             
+                          </tr>
+                          
+                          <tr>
+                          <td colspan = 4 class = "label-text">ACCEPTANCE OF ICT TECHNICAL ASSISTANCE RENDERED:</td>
+                          <td colspan=2 class = "label-text"><input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Resolved</td>
+                          <td colspan=2 class = "label-text">
+                          <input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Defective(to be referred to GSS for repair)
+                          </td>
+              
+                          <tr> 
+                          <td colspan = 4 rowspan = 2 STYLE = "text-align:center;"><u><?php echo $_SESSION['complete_name'];?></u><br><span class = "label-text">Signature over Printed Name</span></td>
 
-                                                  <tr>
-                                                  <td colspan = 4>
-                                                  <textarea rows="20" name = "issue" cols="56"  style ="resize:none;width:100%;text-align:left;" >
+                          <td style = "width:12.5%;" class = "label-text">Started Date:</td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                          <input required disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
+                          </div>
+                          </td>
+                          <td style = "width:12.5%;" class = "label-text">Completed Date:</td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                          <input required disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
+                          </div>
+                          </td>
 
-                                                  </textarea>
-                                                  </td>
-                                                  <td colspan = 4>
-                                                  <textarea rows="20" cols="56" style ="resize:none;width:100%;text-align:left;background-color:#EEEEEE;" name = "status" class = "disabletxtarea">
+                          </tr>
+                          <tr>
 
-                                                  </textarea>
-                                                  </td>
-                                                  </tr>
-                                                  <tr>
-                                                  <td style = "width:12.5%;"></td>
-                                                  <td style = "width:12.5%;">
-                                                  <input required type = "hidden" name = "timeliness" value="" />
-                                                                                                    <input required type = "hidden" name = "quality" value="" />
-
-                                                  <!-- <select class="form-control " style="width: 100%;" name="timeliness" >
-                                                  <option value = "YES">YES</option>
-                                                  <option value = "NO">NO</option>
-                                                  </select> -->
-                                                  </td>
-                                                  <td style = "width:12.5%;text-align:center;"></td>
-                                                  <td style = "width:12.5%;text-align:center;">
-
-                                                  <!-- <select class="form-control " style="width: 100%;" name="quality" >
-
-                                                  <option value = "5">Outstanding</option>
-                                                  <option value = "4">Very-Satisfatory</option>
-                                                  <option value = "3">Satisfatory</option>
-                                                  <option value = "2">Unsatisfatory</option>
-                                                  <option value = "1">Poor</option>
-                                                  </select> -->
-
-                                                  </td>
-                                                  <td style = "width:12.5%;">Started Date:</td>
-                                                  <td style = "width:12.5%;">
-                                                    <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input required disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
-                                                    </div>
-                                                  </td>
-                                                  <td style = "width:12.5%;">Completed Date:</td>
-                                                  <td style = "width:12.5%;">
-                                                  <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input required disabled type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="" required>
-                                                    </div>
-                                                  </td>
-                                                  </tr>
-                                                  <tr> 
-                                                  <td colspan = 4>
-                                                  <!-- Assisted By:
-                                                  <select name="assisted_by" class="dropdown size250">
-                                                  <option value = "Charles Adrian T. Odi">Charles Adrian T. Odi</option>
-                                                  <option value = "Christian Paul V. Ferrer">Christian Paul V. Ferrer</option>
-                                                  <option value = "Mark Kim A. Sacluti">Mark Kim A. Sacluti</option>
-                                                  </select> -->
-                                                  </td>
-                                                  <td style = "width:12.5%;">Started Time:</td>
-                                                  <td style = "width:12.5%;">
-                                                    <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input required disabled type="text" name = "started_time" placeholder = "Started Time"  value="" required>
-                                                    </div>
-                                                  </td>
-                                                  <td style = "width:12.5%;">Completed Time:</td>
-                                                  <td style = "width:12.5%;">
-                                                    <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input required disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
-                                                    </div>
-                                                  </td>
-                                                  </tr>
+                          <td style = "width:12.5%;" class = "label-text">Started Time:</td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                          <input required disabled type="text" name = "started_time" placeholder = "Started Time"  value="" required>
+                          </div>
+                          </td>
+                          <td style = "width:12.5%;" class = "label-text">Completed Time:</td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                          <input required disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
+                          </div>
+                          </td>
+                          </tr>
 
 
 
 
 
-                        </table><br>
+
+                          </table><br>
 
                       <input id = 'submit' style ="float:right;" type = "submit" value = "Submit" class="btn btn-primary btn-s sweet-14" />
                     </form>
