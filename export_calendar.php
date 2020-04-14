@@ -1,8 +1,8 @@
+
 <?php
-date_default_timezone_set('Asia/Manila');
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
-require_once 'PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("export_calendar.xlsx");
+require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
+$objPHPExcel = PHPExcel_IOFactory::load("library/export_calendar.xlsx");
 
 $styleTop = array(
   'borders' => array(
@@ -27,22 +27,33 @@ $stylebottom = array(
     'bottom' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
   ),
 );
-$conn = mysqli_connect("localhost","calaba9_intra","{^-LouqU_vpV", "calaba9_intranetdb");
-$date1 = $_GET['date'];
+$styleArray = array(
+  'borders' => array(
+    'allborders' => array(
+      'style' => PHPExcel_Style_Border::BORDER_THIN
+    )
+  )
+);
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");$date1 = $_GET['date'];
 $division = $_GET['division'];
 $date = str_replace("-1","",$date1);
 // echo $date;
-$sql_items = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.venue,e.enp,e.remarks,te.UNAME FROM events e LEFT JOIN tblemployee te on te.EMP_N = e.postedby WHERE e.cancelflag = 0 AND e.status = 1 AND e.start LIKE '%$date%'");
 
-$row = 7;
-if (mysqli_num_rows($sql_items)>0) {
+
+
+$sql_items = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.venue,e.enp,e.remarks,te.UNAME FROM events e LEFT JOIN tblemployee te on te.EMP_N = e.postedby WHERE e.cancelflag = 0 ");
+    if (mysqli_num_rows($sql_items)>0) {
+    $row = 7;
+
+
+
 
   while($excelrow = mysqli_fetch_assoc($sql_items) ){
 
     $start1 = $excelrow['start'];
     $start = str_replace("00:00:00","",$start1);
     $end1 = $excelrow['end'];
-    $start = str_replace("00:00:00","",$end1);
+    $end = str_replace("00:00:00","",$end1);
 
 
     $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['title']);

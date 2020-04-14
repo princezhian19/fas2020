@@ -138,11 +138,11 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                     <tr>
                         <td class="col-md-2">Issuance Date<span style = "color:red;">*</span></td>
                             <td class="col-md-5">
-                            <input value="<?php echo $dateissued;?>" type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" >
+                            <input required value="<?php echo $dateissued;?>" type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" >
                                     </tr>
                     <tr>
                         <td class="col-md-2">Title/Subject<span style = "color:red;">*</span></td>
-                            <td class="col-md-5">  <input value="<?php echo $title;?>"  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
+                            <td class="col-md-5">  <input required value="<?php echo $title;?>"  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2">Concerned Office</td>
