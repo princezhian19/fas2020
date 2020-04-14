@@ -299,12 +299,12 @@ if (isset($_POST['add'])) {
       $rowPmo = mysqli_fetch_array($select_Aitems);
       $qty_original = $rowPmo['qty_original'];
 
-  if ($qty_original == 0 )
-  {
-    echo "<div style='background-color:lightblue;color:red;'> <p>  <p> <div>";
-  }
-  else
-  {   
+  // if ($qty_original == 0 )
+  // {
+  //   echo "<div style='background-color:lightblue;color:red;'> <p>  <p> <div>";
+  // }
+  // else
+  // {   
 
   if ($app_items == '')
   {
@@ -329,7 +329,7 @@ if (isset($_POST['add'])) {
      }
    }
  }
-}
+// }
 }
   // for($count = 0; $count < count($_POST["app_items"]); $count++)
   // {  

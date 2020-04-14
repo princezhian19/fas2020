@@ -49,65 +49,66 @@ $username = $_SESSION['username'];
 
 <script>
   $(document).ready(function(){
-            var dataTable=$('#example1').DataTable( {
-              'lengthChange': true,
-              'searching'   : true,
-              'ordering'    : true,
-              'info'        : true,
-              'autoWidth'   : true,
-              aLengthMenu: [ [3, 10, 20, -1], [3, 10, 20, "All"] ],
-              "bPaginate": true,
-              "bLengthChange": false,
-              // "bFilter": true,
-              // "bInfo": false,
-              // "bAutoWidth": false,
-                "processing": false,
-                "serverSide":true,
-                
-                "ajax":{
-                    url:"DATATABLE3/test/fetch.php",
-                    type:"post"
-                }
+            var dataTable=$('#example1').DataTable({
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : true,
+            "order": [[ 1, "asc" ]],
+            aLengthMenu: [ [5, 10, 20, -1], [5, 10, 20, "All"] ],
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false,
+            "processing": true,
+            "serverSide":true,
+            "ajax":{
+                url:"DATATABLE3/test/fetch.php",
+                type:"post"
+            }
             });
+            
             $('#example1 tbody').on( 'click', '#sweet-14', function () {
             var oTableApi = $('#example1').dataTable().api();
-        var tr = $(this).closest('tr');
-        td = tr.find("td:first")
-        var cell = oTableApi.cell(td);
-         
-        swal({
-        title: "Are you sure?",
-        text: "Your will not be able to recover this data!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonClass: "btn btn-danger",
-        confirmButtonText: "Yes, delete it!",
-        closeOnConfirm: false
-        },
-function(){
-    swal("Deleted!", "Your event has been deleted.", "success");
+            var tr = $(this).closest('tr');
+            td = tr.find("td:first")
+            var cell = oTableApi.cell(td);
 
-    $.ajax({
-              url:"delSupplier.php",
-              method:"POST",
-              data:{
-                  id:cell.data(),
-              },
-              success:function(data)
-              {
-                  setTimeout(function () {
-                  window.location = "ViewSuppliers.php";
+            swal({
+            title: "Are you sure?",
+            text: "Your will not be able to recover this data!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+            },
+            function(){
+            swal("Deleted!", "Your event has been deleted.", "success");
 
-                  }, 2000);
+            $.ajax({
+            url:"delSupplier.php",
+            method:"POST",
+            data:{
+            id:cell.data(),
+            },
+            success:function(data)
+            {
+            setTimeout(function () {
+            window.location = "ViewSuppliers.php";
 
-              }
+            }, 2000);
+
+            }
             });
 
-});
-  
-  
+            });
 
-    });
+
+
+            });
         });
  
 //   $(document).ready(function() {

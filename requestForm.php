@@ -51,6 +51,7 @@ if($_GET['division'] == 11 || $_GET['division'] == 12 || $_GET['division'] == 13
       <br>
       <br>
         <?php include('_test.php');?>
+        <?php include('footer.php');?>
 
     </section>
   </div>

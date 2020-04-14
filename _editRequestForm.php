@@ -26,7 +26,7 @@ function fillTableInfo()
                <input type = "hidden" value = "<?php echo $_GET['id'];?>" name = "control_no" id = "control_no" />
                             <tbody>
                                 <tr>
-                                    <td colspan = 4>ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
+                                    <td colspan = 4  class ="label-text">ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
                                     <td class = "label-text left-text">Control<br>Number.</td>
                                     <td colspan = 2 style = "padding:5px 5px 5px 5px;background-color:#CFD8DC;">
                                     <input type = "text" readonly name = "control_no" value = "<?php echo $_GET['id'];?>"
@@ -622,6 +622,7 @@ function setCompletedTime()
     td.label-text{
     background-color:#B0BEC5;
     padding:5px 5px 5px 5px;
+    font-weight:bold;
     }
     input[type=checkbox]
     {
@@ -653,7 +654,7 @@ function setCompletedTime()
             <div class="panel panel-default">
                 <div class="box-body">      
                     <div>
-                        <h1>Online ICT Technical Assistance Request Form</h1><br>
+                        <h1>ICT Technical Assistance</h1><br>
                     </div>
                     <form method="POST" enctype="multipart/form-data" class="myformStyle" autocomplete="off" id = "submit">    
                         <input type = "hidden" name = "curuser" value = "" id = "selectedUser" />
@@ -668,115 +669,92 @@ function setCompletedTime()
                           <?PHP echo fillCheckbox();?>
                         </table>
                         <table border = 1 style = "margin-top:20px;width:100%;">
-                                                  <tr>
-                                                  <td colspan = 4 class = "center-text label-text" style = "width:50%;">END-USER</td>
-                                                  <td colspan = 4 class = "center-text label-text">RICTU</td>
-                                                  </tr>
-                                                  <tr>
-                                                  <td colspan = 4 rowspan = 2>ISSUE/PROBLEM/ERROR DETAILS:</td>
-                                                  <td colspan = 4>FINDINGS AND RESOLUTION/RECOMMENDATION</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td colspan = 4>
-                                                    <div class="form-check">
-                                                      <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
-                                                      <label class="form-check-label" for="exampleCheck1">Resolved</label>
-                                                      
-                                                      <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
-                                                      <label class="form-check-label" for="exampleCheck1">Defectived (to be referred to GSS for repair)</label>
-                                                    </div>
-                                                    </td>
-                                                  </tr>
-                                                  
+                        <tr>
+                              <td colspan = 4 class = "center-text label-text" style = "width:50%;">END-USER</td>
+                                <td colspan = 4 class = "center-text label-text">RICTU</td>
+                                  </tr>
+                          <tr>
+                            <td colspan = 4 class = "label-text">ISSUE/PROBLEM/ERROR DETAILS:</td>
+                              <td colspan = 4 class = "label-text">FINDINGS AND RESOLUTION/RECOMMENDATION<span style = "color:red;">*</span></td>
+                                </tr>
+                          <tr>
+                              <td colspan = 4 >
+                              <textarea  class = "disabletxtarea" rows="22" name = "issue" cols="56"  style ="background-color:#EEEEEE;resize:none;width:100%;" >
+                              <?php echo showIssue(); ?>
+                              </textarea>
+                              </td>
 
-                                                  <tr>
-                                                  <td colspan = 4>
-                                                  <textarea  class = "disabletxtarea" rows="20" name = "issue" cols="56"  style ="background-color:#ECEFF1;resize:none;width:100%;" >
-                                                  <?php echo showIssue(); ?>
-                                                  </textarea>
-                                                  </td>
-
-                                                  <td colspan = 4>
-                                                  <textarea id ="diagnose" rows="20" cols="56" style ="resize:none;width:100%;align-content:left;" name = "STATUS_DESC">
-                                                  <?php  echo showDiagnose(); ?>
-                                                  </textarea>
-                                                  </td>
-                                                  </tr>
-                                                  <tr>
-                                                  <td style = "width:12.5%;"></td>
-                                                  <td style = "width:12.5%;">
-                                                  <!-- <input type = "hidden" name = "timeliness" value="" />
-                                                  <input type = "hidden" name = "quality" value="" /> -->
-                                
-                                                  <!-- <select class="form-control " style="width: 100%;" name="timeliness" >
-                                                  <option value = "YES">YES</option>
-                                                  <option value = "NO">NO</option>
-                                                  </select>  -->
-                                                  </td>
-                                                  <td style = "width:12.5%;text-align:center;"></td>
-                                                  <td style = "width:12.5%;text-align:center;">
-<!-- 
-                                                 <select class="form-control " style="width: 100%;" name="quality" >
-
-                                                  <option value = "5">Outstanding</option>
-                                                  <option value = "4">Very-Satisfatory</option>
-                                                  <option value = "3">Satisfatory</option>
-                                                  <option value = "2">Unsatisfatory</option>
-                                                  <option value = "1">Poor</option>
-                                                  </select> -->
-
-                                                  </td>
-                                                  <td style = "width:12.5%;">Started Date:</td>
-                                                  <td style = "width:12.5%;">
-                                                    <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input required type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="<?PHP echo setStartDate();?>" required>
-                                                    </div>
-                                                  </td>
-                                                  <td style = "width:12.5%;">Completed Date:</td>
-                                                  <td style = "width:12.5%;">
-                                                  <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="<?php echo setCompletedDate();?>" required>
-                                                    </div>
-                                                  </td>
-                                                  </tr>
-                                                  <tr> 
-                                                  <td colspan = 4>
-                                                  <!-- Assisted By:
-                                                  <select name="assisted_by" class="dropdown size250">
-                                                  <option value = "Charles Adrian T. Odi">Charles Adrian T. Odi</option>
-                                                  <option value = "Christian Paul V. Ferrer">Christian Paul V. Ferrer</option>
-                                                  <option value = "Mark Kim A. Sacluti">Mark Kim A. Sacluti</option>
-                                                  </select> -->
-                                                  </td>
-                                                  <td style = "width:12.5%;">Started Time:</td>
-                                                  <td style = "width:12.5%;">
-                                                    <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input id= "timepicker" type="text" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" required>
-                                                    </div>
-                                                  </td>
-                                                  <td style = "width:12.5%;">Completed Time:</td>
-                                                  <td style = "width:12.5%;">
-                                                    <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input id = "timepicker2" type="text" name = "completed_time" placeholder = "Completed Time"  value="<?php echo setCompletedTime();?>" required>
-                                                    </div>
-                                                  </td>
-                                                  </tr>
+                              <td colspan = 4>
+                              <textarea id ="diagnose" rows="22" cols="56" style ="resize:none;width:100%;align-content:left;" name = "STATUS_DESC">
+                              <?php  echo showDiagnose(); ?>
+                              </textarea>
+                              </td>
+                             
+                          </tr>
+                          
+                         
 
 
+                          <tr>
+                          <td colspan = 4 class = "label-text">ACCEPTANCE OF ICT TECHNICAL ASSISTANCE RENDERED:</td>
+                            <td colspan=2 class = "label-text">
+                              <div class="form-check">
+                                <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Resolved</label>
+                            </td>
+                            <td colspan = 2 class = "label-text">
+                              <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
+                              <label class="form-check-label" for="exampleCheck1">Defectived (to be referred to GSS for repair)</label>
+                              </div>
+                          </td>
+                    
+                          <tr> 
+                          <td colspan = 4 rowspan = 2 STYLE = "text-align:center;"><u><?php echo $_SESSION['complete_name'];?></u><br><label class = "label-text">Signature over Printed Name</label></td>
 
+                          <td style = "width:12.5%;" class = "label-text">Started Date:<span style = "color:red;">*</span></td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                          <input required type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="<?PHP echo setStartDate();?>" required>
 
+                          </div>
+                          </td>
+                          <td style = "width:12.5%;" class = "label-text">Completed Date:<span style = "color:red;">*</span></td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="<?php echo setCompletedDate();?>" required>
+                          </div>
+                          </td>
+
+                          </tr>
+                          <tr>
+
+                          <td style = "width:12.5%;" class = "label-text">Started Time:<span style = "color:red;">*</span></td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                          <input id= "timepicker" type="text" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" required>
+
+                          </div>
+                          </td>
+                          <td style = "width:12.5%;" class = "label-text">Completed Time: <span style = "color:red;">*</span></td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                        <input id = "timepicker2" type="text" name = "completed_time" placeholder = "Completed Time"  value="<?php echo setCompletedTime();?>" required>
+
+                        </div>
+                          </td>
+                          </tr>
 
                         </table><br>
 
@@ -831,12 +809,22 @@ $('document').ready(function()
             $(this).val($(this).val().trim());
         }
     );
+   
 });
 
    var c_n = $('#control_no').val();
  
     document.querySelector('.sweet-14').onclick = function(){
-  
+      var d = $('#diagnose').val();
+      var e = $('#datePicker1').val();
+      var f = $('#timepicker').val();
+      var g = $('#timepicker2').val();
+
+    if(d == '' || d == null)
+    {
+      alert('Required Field:All fields with * are required!.')
+      exit();
+    }
           swal({
               title: "Are you sure you want to save?",
               text: "Control No:"+c_n,
