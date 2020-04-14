@@ -135,11 +135,11 @@ require_once('_includes/class.upload.php');
                     <tr>
                         <td class="col-md-2">Issuance Date<span style = "color:red;">*</span></td>
                             <td class="col-md-5">
-                            <input type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" >
+                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" >
                                     </tr>
                     <tr>
                         <td class="col-md-2">Title/Subject<span style = "color:red;">*</span></td>
-                            <td class="col-md-5">  <input  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
+                            <td class="col-md-5">  <input required  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2">Concerned Office</td>
@@ -147,8 +147,8 @@ require_once('_includes/class.upload.php');
                               <!-- <input id="offices" name="office" autocomplete ="off" type="text" class="form-control" placeholder=""></td> -->
 
                               <div style="margin-bottom: 20px;" class="form-group offices-container">
-        <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control subtxt size400" placeholder="Click to Select">
-        <div class="office-responsible" style="position: absolute;display: none;width: 40%; background-color:lightgray">
+        <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
+        <div class="office-responsible" style="position: absolute;display: none;width: 30%; background-color:lightgray">
 
                           <?php
                           $counter = 0; 
@@ -400,7 +400,7 @@ require_once('_includes/class.upload.php');
 		$("legend :checkbox").click(function(){
    	    var getcheckboxes = $(this).attr('class');
 	    var delimiter = ";";
-	    var text = $("input[name='todiv']");
+	    var text = $("input[id='todiv']");
 	    var str = "";
 
 	   $('.'+getcheckboxes).prop('checked',this.checked);
@@ -419,6 +419,7 @@ require_once('_includes/class.upload.php');
 			    });
 			    
 			    // set the value of the textbox
+          
 			    text.val(str);
           // echo (str);
 			});
