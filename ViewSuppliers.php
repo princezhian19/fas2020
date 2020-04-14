@@ -48,95 +48,112 @@ $username = $_SESSION['username'];
 <script src="_includes/sweetalert.min.js"></script>
 
 <script>
-  $(document).ready(function() {
-        $.ajax({
-            url: "server_processing.php",
-            method: 'POST',
-            dataType: 'json',
-            success: function(data) {
-                $('#example1').dataTable({
-                    data: data,
-                    serverside: false,       
-                    columns: 
-                    [
-                      {"data":"id"},
-                      {"data":"supplier_title"},
-                      {"data":"supplier_address"},
-                      {"data":"contact_details"}
-                    ],
-                    "order": [[ 1, "asc" ]],
-                    'paging'      : true,
-                    'lengthChange': true,
-                    'searching'   : true,
-                    'ordering'    : false,
-                    'info'        : true,
-                    'autoWidth'   : true,   aLengthMenu: [ [10, 20, -1], [10, 20, "All"] ],
-                    "bPaginate": false,
-                    "bLengthChange": false,
-                    "bFilter": true,
-                    "bInfo": false,
-                    "bAutoWidth": false,
-                    "columnDefs": 
-                    [
-                      {
-                        "targets": 4,
-                        "data": "id",
-                        "render": function ( data, type, row, meta ) 
-                        {  
-                          return '<center><a href="UpdateSuppliers.php?id='+data+'" class = "btn btn-primary btn-xs"> <i class="fa">&#xf044;</i> Edit</a>&nbsp;<a id = "sweet-14" class = "btn btn-danger btn-xs"> <i class="fa fa-trash"></i> Delete</a></center>';
-                        }
-                      }
-                    ]
+$(document).ready(function() {
+    var table = $('#example1').DataTable( {
+        "processing": true,
+        "lengthMenu": [ [10], [10] ],
+        "ajax": "DATATABLE3/server_processing.php",
+        "columnDefs": [ {
+            "targets": -1,
+            "data": null,
+            "defaultContent": "<center><img id = 'view' src = '../images/search.png'>&nbsp;&nbsp;&nbsp;&nbsp;<img id = 'edit' src = '../images/edit.gif'></center>",
+            // <img id = 'delete' src = '../images/delete.gif'>
+        } ]
+    } );
+});
+ 
+//   $(document).ready(function() {
+//         $.ajax({
+//             url: "server_processing.php",
+//             method: 'POST',
+//             dataType: 'json',
+//             success: function(data) {
+//               console.log(data);
+
+//                 $('#example1').dataTable({
+//                     data: data,
+//                      processing: true,
+//                     serverside: false,       
+//                     columns: 
+//                     [
+//                       {"data":"id"},
+//                       {"data":"supplier_title"},
+//                       {"data":"supplier_address"},
+//                       {"data":"contact_details"}
+//                     ],
+//                     "order": [[ 1, "asc" ]],
+//                     'paging'      : true,
+//                     'lengthChange': true,
+//                     'searching'   : true,
+//                     'ordering'    : false,
+//                     'info'        : true,
+//                     'autoWidth'   : true,   aLengthMenu: [ [10, 20, -1], [10, 20, "All"] ],
+//                     "bPaginate": false,
+//                     "bLengthChange": false,
+//                     "bFilter": true,
+//                     "bInfo": false,
+//                     "bAutoWidth": false,
+//                     "columnDefs": 
+//                     [
+//                       {
+//                         "targets": 4,
+//                         "data": "id",
+//                         "render": function ( data, type, row, meta ) 
+//                         {  
+//                           return '<center><a href="UpdateSuppliers.php?id='+data+'" class = "btn btn-primary btn-xs"> <i class="fa">&#xf044;</i> Edit</a>&nbsp;<a id = "sweet-14" class = "btn btn-danger btn-xs"> <i class="fa fa-trash"></i> Delete</a></center>';
+//                         }
+//                       }
+//                     ]
 
 
 
-                });
-            }
-        });
+//                 });
+//             }
+//         });
  
    
-          $('#example1 tbody').on( 'click', '#sweet-14', function () {
-            var oTableApi = $('#example1').dataTable().api();
-        var tr = $(this).closest('tr');
-        td = tr.find("td:first")
-        var cell = oTableApi.cell(td);
+//           $('#example1 tbody').on( 'click', '#sweet-14', function () {
+//             var oTableApi = $('#example1').dataTable().api();
+//         var tr = $(this).closest('tr');
+//         td = tr.find("td:first")
+//         var cell = oTableApi.cell(td);
       
          
-        swal({
-        title: "Are you sure?",
-        text: "Your will not be able to recover this data!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonClass: "btn btn-danger",
-        confirmButtonText: "Yes, delete it!",
-        closeOnConfirm: false
-        },
-function(){
-    swal("Deleted!", "Your event has been deleted.", "success");
+//         swal({
+//         title: "Are you sure?",
+//         text: "Your will not be able to recover this data!",
+//         type: "warning",
+//         showCancelButton: true,
+//         confirmButtonClass: "btn btn-danger",
+//         confirmButtonText: "Yes, delete it!",
+//         closeOnConfirm: false
+//         },
+// function(){
+//     swal("Deleted!", "Your event has been deleted.", "success");
 
-    $.ajax({
-              url:"delSupplier.php",
-              method:"POST",
-              data:{
-                  id:cell.data(),
-              },
-              success:function(data)
-              {
-                  setTimeout(function () {
-                  window.location = "ViewCalendar.php";
+//     $.ajax({
+//               url:"delSupplier.php",
+//               method:"POST",
+//               data:{
+//                   id:cell.data(),
+//               },
+//               success:function(data)
+//               {
+//                   setTimeout(function () {
+//                   window.location = "ViewCalendar.php";
 
-                  }, 2000);
+//                   }, 2000);
 
-              }
-            });
+//               }
+//             });
 
-});
+// });
   
   
 
-    });
+//     });
 
-    });
+//     });
 
 
 
@@ -145,4 +162,4 @@ function(){
 
 </script>
 </body>
-s</html>
+</html>
