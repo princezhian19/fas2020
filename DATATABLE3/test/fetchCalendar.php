@@ -62,7 +62,7 @@ while($row=mysqli_fetch_array($query)){
             <a href="ViewEvent.php?eventid='.$row['id'].'" class = "btn btn-success btn-xs">
                 <i class="fa fa-eye"></i> View
             </a>&nbsp;
-            <a href="UpdateSuppliers.php?id='.$row['id'].'" class = "btn btn-primary btn-xs">
+            <a href="EditEvent.php?eventid='.$row['id'].'" class = "btn btn-primary btn-xs">
                 <i class="fa">&#xf044;</i> Edit
             </a>&nbsp;
             <a id = "sweet-14" class = "btn btn-danger btn-xs"> 
