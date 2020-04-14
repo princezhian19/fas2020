@@ -142,9 +142,9 @@ if (isset($_POST['submit'])) {
              <div class="form-group">
               <label>Stock No.</label>
               <?php if ($sn != ''): ?>
-                <input  autocomplete = "off" value="<?php echo 'S'.$idGet?>" class="form-control" name="sn" type="text" id="sn" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
+                <input  autocomplete = "off" value="<?php echo 'S'.$idGet?>" class="form-control" name="sn" type="text" id="sn"  >
                 <?php else:  ?>
-                  <input  autocomplete = "off" value="<?php echo 'S'.$idGet?>" class="form-control" name="sn" type="text" id="sn" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
+                  <input  autocomplete = "off" value="<?php echo 'S'.$idGet?>" class="form-control" name="sn" type="text" id="sn"  >
                 <?php endif ?>
               </div>
               <div class="form-group">
@@ -283,7 +283,7 @@ if (isset($_POST['submit'])) {
               <label>CO</label>
               <input autocomplete = "off" onKeyPress='return dec(event)' value="<?php echo isset($_POST['co']) ? $_POST['co'] : '' ?>" class="form-control" name="co" type="text" id="co" >
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
               <label>App Total Budget</label>
               <input autocomplete = "off" onKeyPress='return dec(event)' value="<?php echo isset($_POST['budget']) ? $_POST['budget'] : '' ?>" class="form-control" name="budget" type="text" id="budget" >
             </div>

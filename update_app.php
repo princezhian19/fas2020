@@ -99,7 +99,6 @@ if (isset($_POST['submit'])) {
   $budget1 = $_POST['budget'];
   $unit_id11 = $_POST['unit'];
   $year = 2020;
-
   if ($unit_id11 == 16) {
     $unit_id11 = "book";
   }
@@ -167,7 +166,7 @@ if (isset($_POST['submit'])) {
     $unit_id11 = "piece";
   }
 
-  $select_count = mysqli_query($conn,"SELECT * FROM app_items WHERE sn = '$sn1' ");
+  $select_count = mysqli_query($conn,"SELECT * FROM app_items WHERE sn = '$sn' ");
   $count_rows = mysqli_num_rows($select_count);
   for($count = 0; $count < count($_POST["pmo"]); $count++) {
    $pmo = $_POST["pmo"][$count];
@@ -177,15 +176,14 @@ if (isset($_POST['submit'])) {
    $count_pmo = count($_POST["pmo"]);
 
  }
+
  if ($count_pmo != $count_rows) {
    $delete_old_app = mysqli_query($conn,"DELETE FROM app WHERE sn = '$sn1'");
    $delete_old_app_items = mysqli_query($conn,"DELETE FROM app_items WHERE sn = '$sn1'");
    for($count = 0; $count < count($_POST["pmo"]); $count++) {
      $id1 = $_POST["id1"][$count];
-
      $insert_app_items = mysqli_query($conn,'INSERT INTO app_items(sn,code,new_entry,merge_code,procurement,source_of_funds_id,category_id,pmo_id,qty,qty_original,mode_of_proc_id,price,app_price,remarks,app_year)
       VALUES("'.$sn1.'","'.$code1.'",1,"'.$code1.'","'.$item1.'","'.$fund1.'","'.$category1.'","'.$_POST['pmo'][$count].'","'.$_POST['qty'][$count].'","'.$_POST['qty'][$count].'","'.$mode1.'","'.$price1.'","'.$app_price1.'","'.$remarks1.'","'.$year.'")');
-
    }
 
    
@@ -221,12 +219,12 @@ if (isset($_POST['submit'])) {
    $id1 = $_POST["id1"][$count];
    // $update_app = mysqli_query($conn,"UPDATE app SET pmo_id = '$pmo', qty='$qty'  WHERE id = $id1");
    $update_app = mysqli_query($conn,"UPDATE app SET  qty='$qty',pmo_id=$pmo  WHERE id = $id1");
-   $update_app2 = mysqli_query($conn,"UPDATE app_items SET  qty='$qty',pmo_id=$pmo  WHERE sn = '$sn1' ");
+   $update_app2 = mysqli_query($conn,"UPDATE app_items SET  qty='$qty',pmo_id=$pmo  WHERE sn = '$sn' ");
  }
 
  $app = mysqli_query($conn,"UPDATE app SET unit_id = '$unit_id11', sn = '$sn1' , code = '$code1' , procurement = '$item1', source_of_funds_id = $fund1, category_id = $category1, mode_of_proc_id = $mode1, price = '$price1',app_price = '$app_price1', remarks = '$remarks1' WHERE id = $id ");
 
- $uapp = mysqli_query($conn,"UPDATE app_items SET sn = '$sn1' WHERE sn = '$sn1'");
+ $uapp = mysqli_query($conn,"UPDATE app_items SET sn = '$sn1' WHERE sn = '$sn'");
 
  $update_budget = mysqli_query($conn,"UPDATE estimated_budget SET mooe = '$mooe1' , co = '$co1' , total_budget = '$budget1' WHERE app_id = $app_id ");
  echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -953,7 +951,7 @@ if (isset($_POST['submit'])) {
             <br>
             <br>
             <?php 
-            $sell = mysqli_query($conn,"SELECT id,pmo_id,qty from app_items where procurement = '$item' AND code = '$code' AND pmo_id IS NOT NULL"); 
+            $sell = mysqli_query($conn,"SELECT id,pmo_id,qty from app_items where procurement = '$item' AND code = '$code' AND sn = '$sn' AND pmo_id IS NOT NULL"); 
 
             while ($rowS = mysqli_fetch_assoc($sell)) {
 
