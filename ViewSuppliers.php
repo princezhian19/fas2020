@@ -48,19 +48,56 @@ $username = $_SESSION['username'];
 <script src="_includes/sweetalert.min.js"></script>
 
 <script>
-$(document).ready(function() {
-    var table = $('#example1').DataTable( {
-        "processing": true,
-        "lengthMenu": [ [10], [10] ],
-        "ajax": "DATATABLE3/server_processing.php",
-        "columnDefs": [ {
-            "targets": -1,
-            "data": null,
-            "defaultContent": "<center><img id = 'view' src = '../images/search.png'>&nbsp;&nbsp;&nbsp;&nbsp;<img id = 'edit' src = '../images/edit.gif'></center>",
-            // <img id = 'delete' src = '../images/delete.gif'>
-        } ]
-    } );
+  $(document).ready(function(){
+            var dataTable=$('#example1').DataTable({
+                "processing": true,
+                "serverSide":true,
+                "ajax":{
+                    url:"DATATABLE3/test/fetch.php",
+                    type:"post"
+                }
+            });
+            $('#example1 tbody').on( 'click', '#sweet-14', function () {
+            var oTableApi = $('#example1').dataTable().api();
+        var tr = $(this).closest('tr');
+        td = tr.find("td:first")
+        var cell = oTableApi.cell(td);
+      
+         
+        swal({
+        title: "Are you sure?",
+        text: "Your will not be able to recover this data!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn btn-danger",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+        },
+function(){
+    swal("Deleted!", "Your event has been deleted.", "success");
+
+    $.ajax({
+              url:"delSupplier.php",
+              method:"POST",
+              data:{
+                  id:cell.data(),
+              },
+              success:function(data)
+              {
+                  setTimeout(function () {
+                  window.location = "ViewCalendar.php";
+
+                  }, 2000);
+
+              }
+            });
+
 });
+  
+  
+
+    });
+        });
  
 //   $(document).ready(function() {
 //         $.ajax({
@@ -112,48 +149,9 @@ $(document).ready(function() {
 //         });
  
    
-//           $('#example1 tbody').on( 'click', '#sweet-14', function () {
-//             var oTableApi = $('#example1').dataTable().api();
-//         var tr = $(this).closest('tr');
-//         td = tr.find("td:first")
-//         var cell = oTableApi.cell(td);
-      
-         
-//         swal({
-//         title: "Are you sure?",
-//         text: "Your will not be able to recover this data!",
-//         type: "warning",
-//         showCancelButton: true,
-//         confirmButtonClass: "btn btn-danger",
-//         confirmButtonText: "Yes, delete it!",
-//         closeOnConfirm: false
-//         },
-// function(){
-//     swal("Deleted!", "Your event has been deleted.", "success");
+   
 
-//     $.ajax({
-//               url:"delSupplier.php",
-//               method:"POST",
-//               data:{
-//                   id:cell.data(),
-//               },
-//               success:function(data)
-//               {
-//                   setTimeout(function () {
-//                   window.location = "ViewCalendar.php";
-
-//                   }, 2000);
-
-//               }
-//             });
-
-// });
-  
-  
-
-//     });
-
-//     });
+    // });
 
 
 
