@@ -1,5 +1,5 @@
 <div class="row">
-<button class="pull-right btn btn-success" style = "margin-left:10px;"><a style = "color:#fff;" href = "calAddEvents.php" href="library/export_calendar.php?date=<?php echo $currentDate;?>&division=<?php echo $_SESSION['division'];?>" >Export</a></button>
+<button class="pull-right btn btn-success" style = "margin-left:10px;"><a style = "color:#fff;"  href="export_calendar.php?date=<?php echo date("Y-m-d");?>&division=<?php echo $_SESSION['division'];?>" >Export</a></button>
     <button class="pull-right btn btn-success" style = "margin-left:10px;"><a href ="ManageCalendar.php" style ="color:#fff;decoration:none;">Manage All Events</a></button>
         <button class="pull-right btn btn-success"  ><a style = "color:#fff;" href = "calAddEvents.php"> Add Events</a></button>
 
