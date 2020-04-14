@@ -1,7 +1,7 @@
 <?php
 include('functions.php');
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
-$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+$conn=mysqli_connect("localhost","fascalab_2020","s","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
 $rfq_items_id = $_GET['rfq_items'];
 $remarks = $_GET['remarks'];
@@ -134,7 +134,7 @@ if (isset($_POST['submit'])) {
   $selectAOQ = mysqli_query($conn,"SELECT id FROM aoq_data WHERE aoq_no = '$abstract_no' ");
   $rowAOQ = mysqli_fetch_array($selectAOQ);
   $aoqID =$rowAOQ['id'];
-  
+
   $selectabsid = mysqli_query($conn,"SELECT id FROM abstract_of_quote WHERE abstract_no = $aoqID AND rfq_id = $rfq_id ORDER BY id DESC");
   $rowabsid = mysqli_fetch_array($selectabsid);
   $abstract_id = $rowabsid['id'];
@@ -408,9 +408,9 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                         <!-- <th>RFQ No.</th> -->
                         <!-- <th>DATE</th> -->
                         <th width="50">Quote No.</th>
-                        <th width="250">Supplier</th>
+                        <th width="150">Supplier</th>
                         <!-- <th>Remarks</th> -->
-                        <th width="50">Action</th>
+                        <th width="120">Action</th>
                       </tr>
                     </thead>
 
