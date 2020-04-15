@@ -7,7 +7,17 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
+
+        $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .   $_SERVER['REQUEST_URI']; 
+        
 ?>
+<style>
+.active-url{
+background-color: lightgray;
+}
+
+
+</style>
 <?php 
 function showDivision()
 {
@@ -59,14 +69,17 @@ function showDivision()
         </div>
       </div>
       <ul class="sidebar-menu" data-widget="tree" s>
-        <li class="header" style="background-color: white;">MENUS</li>
-
-
-        <li><a style="color:black;text-decoration: none;" href="home1.php?division=<?php echo $_SESSION['division'];?>"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
-        <li><a href="ViewPr1.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PROCUREMENT</a></li>
+        <li class="header" style="background-color: white;">MENU</li>
+        <li>
+            <a <?php if($link == 'http://localhost/fas/home1.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> style="color:black;text-decoration: none;" href="home1.php?division=<?php echo $_SESSION['division'];?>">
+              <i class="fa fa-dashboard"></i> 
+              <span>DASHBOARD</span>
+            </a>
+          </li>
+        <li><a <?php if($link == 'http://localhost/fas/ViewPr1.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> href="ViewPr1.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-cart-arrow-down "></i>PROCUREMENT</a></li>
         <li class="treeview">
-          <a href="#" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"></i>
+          <a href="#" <?php if($link == 'http://localhost/fas/ViewDV.php' || $link == 'http://localhost/fas/ViewBURS.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?>  style="color:black;text-decoration: none;">
+          <i class="fa fa-money"></i>
             <span style="color:black;text-decoration: none;">FINANCIAL</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -80,7 +93,7 @@ function showDivision()
         <!-- =================================================== -->
         <li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
+          <i class="fa fa-users" style="color:black;text-decoration: none;"></i>
             <span style="color:black;text-decoration: none;">ICT TECHNICAL ASSISTANCE</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -89,6 +102,9 @@ function showDivision()
           </a>
           <ul class="treeview-menu" >
             <li>
+            <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>CREATE REQUEST</a>
+            <li><a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>MONITORING<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
+            
               <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;">
                 <i class="fa">&#xf0f6;</i>
                  COMPLETED REQUEST
@@ -96,19 +112,27 @@ function showDivision()
               </a>
             </li>
             <li>
-              <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;">
-                <i class="fa">&#xf0f6;</i>
-                  SUBMITTED
-                <span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b></b></span>
-              </a>
+             
 
           </ul>
         </li>
         <!-- =================================================== -->
     
   <span class="sr-only">unread messages</span></span></a></li>
-        <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
+  <li class="treeview" tyle="background-color: lightgray;">
+          <a href="" style="color:black;text-decoration: none;">
+            <i class="fa fa-cogs"style="color:black;text-decoration: none;"></i>
+            <span style="color:black;text-decoration: none;">SETTING</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" >
+            <li><a style="color:black;text-decoration: none;" href="Accounts.php"><i class = "fa fa-fw fa-user-md"></i>USER MANAGEMENT</li>
+            <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
 
+          </ul>
+        </li>
 
 <div hidden>
         <li class="treeview" tyle="background-color: lightgray;">
@@ -229,13 +253,8 @@ function showDivision()
             <!-- <li><a href="" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Purchase Order</a></li>
             <li><a href="" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Contract & MOA</a></li>
             <li><a href="" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Resolution </a></li> -->
-<<<<<<< HEAD
           <!-- </ul>
         </li> -->
-=======
-          </ul>
-        </li>
->>>>>>> bb35cdf11686ed27ae5c659547ed18ecff0b4cab
 
       </div>
 
