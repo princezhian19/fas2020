@@ -70,8 +70,8 @@ background-color: lightgray;
             <span style="color:black;text-decoration: none;">Calendar</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
-              <li><a href="ViewCalendar.php" style="color:black;text-decoration: none;"><i class="fa fa-calendar"></i>Calendar of Activities</a></li>
-              <li><a href="ManageCalendar.php" style="color:black;text-decoration: none;"><i class="fa fa-calendar"></i>Manage Calendar</a></li>
+                <li><a href="ViewCalendar.php" style="color:black;text-decoration: none;"><i class="fa fa-calendar"></i>Calendar of Activities</a></li>
+                <li><a href="ManageCalendar.php" style="color:black;text-decoration: none;"><i class="fa fa-calendar"></i>Manage Calendar</a></li>
             </ul>
           </li>
         <!-- DIRECTORY -->
@@ -157,6 +157,7 @@ background-color: lightgray;
                   <li><a href="saro.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> SARO/SUB-ARO</a></li>
                   <li><a href="obligation.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
             </ul>
+            </li>
           </li>
           <li class="treeview">
             <a href="#" style="color:black;text-decoration: none;">
