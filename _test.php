@@ -44,48 +44,48 @@ function fillTableInfo()
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Request Time:<span style = "color:red;">*</span></td>
                                     <td style = "width:15%;  padding:5px 5px 5px 5px;">
-                                    <input required style = "text-align:center;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
+                                    <input required style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
                                     </td>
                                     <!-- date("H:i A",strtotime(date("h:m A"))) -->
                                     <td colspan = 4 class = "label-text">HARDWARE INFORMATION</td>
                                 </tr>
                                 <tr>
                                     <td colspan = 4 class = "label-text">END-USER INFORMATION </td>
-                                    <td class = "label-text left-text">Equipment<span style = "color:red;">*</span></td>
+                                    <td class = "label-text left-text">Equipment</td>
                                     <td colspan = 3 class = "left-text " style = "padding:5px 5px 5px 5px;">
-                                      <input required  required style ="width:100%;" placeholder = "Equipment Type" type = "text" name = "equipment_type" class = "alphanum subtxt" /></td>
+                                      <input required  required style ="width:100%;" type = "text" name = "equipment_type" class = "alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;">
                                       <input required type = "hidden"  name="requested_by" value = "<?php $row['EMP_N'];?>" />
                                       <input required type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'].' ';?>" >
-                                    <td class = "label-text left-text">Brand Model:<span style = "color:red;">*</span></td>
-                                    <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "Brand Model" type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = ""/></td>
+                                    <td class = "label-text left-text">Brand Model:</td>
+                                    <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input required   type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
                                 <tr>
                                     <td class = "label-text left-text">Office:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "office" placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['DIVISION_M'];?>" /></td>
-                                    <td class = "label-text left-text">Property No.:<span style = "color:red;">*</span></td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "Property No." type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "" /> </td>
+                                    <td class = "label-text left-text">Property Number:</td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "" /> </td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Position/Designation:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "position"  placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION_M'];?>"  /></td>
-                                    <td class = "label-text left-text">Serial No.:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "Serial No." type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
+                                    <td class = "label-text left-text">Serial Number:</td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required   type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Contact Number:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "phone" placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MOBILEPHONE'];?>"  /></td>
-                                    <td class = "label-text left-text">IP Address:<span style = "color:red;">*</span></td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "IP Address" type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" /></td>
+                                    <td class = "label-text left-text">IP Address:</td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required   type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Email Address:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "email" placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['EMAIL'];?>"/></td>
-                                    <td class = "label-text left-text">MAC Address:<span style = "color:red;">*</span></td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required  placeholder = "MAC Address" type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = ""/></td>
+                                    <td class = "label-text left-text">MAC Address:</td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -104,7 +104,7 @@ function countCN()
                                                   if($row = mysqli_fetch_array($result))
                                                   {
                                                     $count= $row['count']+1;
-                                                    echo '<input required style = "text-align:center;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-'.$count.' />';
+                                                    echo '<input required style = "text-align:center;color:red;font-weight:bold;" type = "text"  readonly  placeholder = "Control No."  name = "control_no" class = "sizeMax alphanum subtxt" value=2020-'.$count.' />';
 
                                                   }
 }
@@ -261,8 +261,8 @@ background-position: 90px 5px;
                           </table>
                           <table border = 1 style = "margin-top:20px;width:100%;">
                             <tr>
-                              <td colspan = 4 class = "center-text label-text" style = "width:50%;">END-USER</td>
-                                <td colspan = 4 class = "center-text label-text">RICTU</td>
+                              <td colspan = 4 class = "center-text label-text" style = "width:50%;"><i>END-USER</i></td>
+                                <td colspan = 4 class = "center-text label-text"><i>RICTU</i></td>
                                   </tr>
                           <tr>
                             <td colspan = 4 class = "label-text">ISSUE/PROBLEM/ERROR DETAILS:<span style = "color:red;">*</span></td>
@@ -270,27 +270,34 @@ background-position: 90px 5px;
                                 </tr>
                           <tr>
                               <td colspan = 4 >
-                                <textarea rows="22" name = "issue" cols="56"  style ="resize:none;width:100%;text-align:left;" >
+                                <textarea rows="23" name = "issue" cols="56"  style ="border:1px solid white;resize:none;width:100%;text-align:left;" >
                                 </textarea>
                               </td>
 
-                              <td colspan = 4>
-                                <textarea rows="22" cols="56" style ="resize:none;width:100%;text-align:left;background-color:#EEEEEE;" name = "status" class = "disabletxtarea">
+                              <td colspan = 4 rowspan= 2>
+                                <textarea rows="25" cols="56" style ="border:1px solid white;resize:none;width:100%;text-align:left;background-color:#EEEEEE;" name = "status" class = "disabletxtarea">
                                 </textarea>
                               </td>
                              
                           </tr>
-                          
                           <tr>
                           <td colspan = 4 class = "label-text">ACCEPTANCE OF ICT TECHNICAL ASSISTANCE RENDERED:</td>
+                         
+                          </tr>
+                          <tr>
+                          <td colspan = 4 STYLE = "text-align:center;"><u><?php echo $_SESSION['complete_name'];?></u><br><span class = "label-text">Signature over Printed Name</span></td>
+
+                         
                           <td colspan=2 class = "label-text"><input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Resolved</td>
                           <td colspan=2 class = "label-text">
                           <input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Defective(to be referred to GSS for repair)
                           </td>
               
                           <tr> 
-                          <td colspan = 4 rowspan = 2 STYLE = "text-align:center;"><u><?php echo $_SESSION['complete_name'];?></u><br><span class = "label-text">Signature over Printed Name</span></td>
+                          <td colspan = 4 class = "label-text">DEAR END USER, YOUR FEEDBACK IS IMPORTANT TO US:</td>
 
+                   
+              
                           <td style = "width:12.5%;" class = "label-text">Started Date:</td>
                           <td style = "width:12.5%;">
                           <div class="input-group date">
@@ -312,7 +319,7 @@ background-position: 90px 5px;
 
                           </tr>
                           <tr>
-
+                          <td colspan = 4>
                           <td style = "width:12.5%;" class = "label-text">Started Time:</td>
                           <td style = "width:12.5%;">
                           <div class="input-group date">
@@ -330,6 +337,23 @@ background-position: 90px 5px;
                           </div>
                           <input required disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
                           </div>
+                          </td>
+                          </tr>
+                          <tr>
+                          <td colspan =4>
+                          <ol>
+                            <li class = "label-text">Timeliness
+                            <p style = "font-weight:normal;">Was the ICT Staff able to provide immediate assistance within three (3) hours or agreed timeline?(Yes/No) ___________________________ </p>
+                            </li>
+                            <li class = "label-text">Quality
+                            <p style = "font-weight:normal;">At a rating scale of 1 to 5, kindly rate the service rendered?<br>(5-Outstanding, 4- Very Satisfactory, 3 - Satisfactory, 2 - Unsatisfactory, 1 - Poor) ____________
+                            </li>
+                          </ol>
+                          </td>
+                          <td colspan = 4 style = "text-align:center;">
+                          _____________________________________________________
+                          <p class = "label-text">Signature over Printer Name</p>
+                          
                           </td>
                           </tr>
 

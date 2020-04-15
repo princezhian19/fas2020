@@ -27,9 +27,9 @@ function fillTableInfo()
                             <tbody>
                                 <tr>
                                     <td colspan = 4  class ="label-text">ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
-                                    <td class = "label-text left-text">Control<br>Number.</td>
-                                    <td colspan = 2 style = "padding:5px 5px 5px 5px;background-color:#CFD8DC;">
-                                    <input type = "text" readonly name = "control_no" value = "<?php echo $_GET['id'];?>"
+                                    <td class = "label-text left-text">Control<br>Number:</td>
+                                    <td colspan = 2 style = "padding:5px 5px 5px 5px;background-color:#CFD8DC;color:red;font-weight:bold;text-align:center;">
+                                    <input type = "text"  style = "text-align:center;"readonly name = "control_no" value = "<?php echo $_GET['id'];?>"
                                       </td>
                                 </tr>
                                 <tr>
@@ -43,7 +43,7 @@ function fillTableInfo()
                                         </div>
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Request Time:</td>
-                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input disabled style = "text-align:center;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A",strtotime($row['REQ_TIME']));?>"/></td>
+                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input disabled style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A",strtotime($row['REQ_TIME']));?>"/></td>
                                     <!-- date("H:i A",strtotime(date("h:m A"))) -->
                                     <td colspan = 4 class = "label-text">HARDWARE INFORMATION</td>
                                 </tr>
@@ -62,13 +62,13 @@ function fillTableInfo()
                                 <tr>
                                     <td class = "label-text left-text">Office:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "office" readonly placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['OFFICE'];?>" disabled/></td>
-                                    <td class = "label-text left-text">Property No.:</td>
+                                    <td class = "label-text left-text">Property Number:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Property No." type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['PROPERTY_NO'];?>" disabled /> </td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Position/Designation:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "position" disabled placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION'];?>"  /></td>
-                                    <td class = "label-text left-text">Serial No.:</td>
+                                    <td class = "label-text left-text">Serial Number:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled value  = "<?php echo $row['SERIAL_NO'];?>" placeholder = "Serial No." type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
@@ -669,9 +669,9 @@ function setCompletedTime()
                           <?PHP echo fillCheckbox();?>
                         </table>
                         <table border = 1 style = "margin-top:20px;width:100%;">
-                        <tr>
-                              <td colspan = 4 class = "center-text label-text" style = "width:50%;">END-USER</td>
-                                <td colspan = 4 class = "center-text label-text">RICTU</td>
+                            <tr>
+                              <td colspan = 4 class = "center-text label-text" style = "width:50%;"><i>END-USER</i></td>
+                                <td colspan = 4 class = "center-text label-text"><i>RICTU</i></td>
                                   </tr>
                           <tr>
                             <td colspan = 4 class = "label-text">ISSUE/PROBLEM/ERROR DETAILS:</td>
@@ -679,38 +679,36 @@ function setCompletedTime()
                                 </tr>
                           <tr>
                               <td colspan = 4 >
-                              <textarea  class = "disabletxtarea" rows="22" name = "issue" cols="56"  style ="background-color:#EEEEEE;resize:none;width:100%;" >
+                              <textarea  class = "disabletxtarea" rows="23" name = "issue" cols="56"  style ="background-color:#EEEEEE;resize:none;width:100%;" >
                               <?php echo showIssue(); ?>
                               </textarea>
                               </td>
 
-                              <td colspan = 4>
-                              <textarea id ="diagnose" rows="22" cols="56" style ="resize:none;width:100%;align-content:left;" name = "STATUS_DESC">
+                              <td colspan = 4 rowspan= 2>
+                              <textarea id ="diagnose" rows="25" cols="56" style ="resize:none;width:100%;align-content:left;" name = "STATUS_DESC">
                               <?php  echo showDiagnose(); ?>
                               </textarea>
                               </td>
                              
                           </tr>
-                          
-                         
-
-
                           <tr>
                           <td colspan = 4 class = "label-text">ACCEPTANCE OF ICT TECHNICAL ASSISTANCE RENDERED:</td>
-                            <td colspan=2 class = "label-text">
-                              <div class="form-check">
-                                <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Resolved</label>
-                            </td>
-                            <td colspan = 2 class = "label-text">
-                              <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
-                              <label class="form-check-label" for="exampleCheck1">Defectived (to be referred to GSS for repair)</label>
-                              </div>
-                          </td>
-                    
-                          <tr> 
-                          <td colspan = 4 rowspan = 2 STYLE = "text-align:center;"><u><?php echo $_SESSION['complete_name'];?></u><br><label class = "label-text">Signature over Printed Name</label></td>
+                         
+                          </tr>
+                          <tr>
+                          <td colspan = 4 STYLE = "text-align:center;"><u><?php echo $_SESSION['complete_name'];?></u><br><span class = "label-text">Signature over Printed Name</span></td>
 
+                         
+                          <td colspan=2 class = "label-text"><input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Resolved</td>
+                          <td colspan=2 class = "label-text">
+                          <input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Defective(to be referred to GSS for repair)
+                          </td>
+              
+                          <tr> 
+                          <td colspan = 4 class = "label-text">DEAR END USER, YOUR FEEDBACK IS IMPORTANT TO US:</td>
+
+                   
+              
                           <td style = "width:12.5%;" class = "label-text">Started Date:<span style = "color:red;">*</span></td>
                           <td style = "width:12.5%;">
                           <div class="input-group date">
@@ -733,7 +731,7 @@ function setCompletedTime()
 
                           </tr>
                           <tr>
-
+                          <td colspan = 4>
                           <td style = "width:12.5%;" class = "label-text">Started Time:<span style = "color:red;">*</span></td>
                           <td style = "width:12.5%;">
                           <div class="input-group date">
@@ -755,8 +753,30 @@ function setCompletedTime()
                         </div>
                           </td>
                           </tr>
+                          <tr>
+                          <td colspan =4>
+                          <ol>
+                            <li class = "label-text">Timeliness
+                            <p style = "font-weight:normal;">Was the ICT Staff able to provide immediate assistance within three (3) hours or agreed timeline?(Yes/No) ___________________________ </p>
+                            </li>
+                            <li class = "label-text">Quality
+                            <p style = "font-weight:normal;">At a rating scale of 1 to 5, kindly rate the service rendered?<br>(5-Outstanding, 4- Very Satisfactory, 3 - Satisfactory, 2 - Unsatisfactory, 1 - Poor) ____________
+                            </li>
+                          </ol>
+                          </td>
+                          <td colspan = 4 style = "text-align:center;">
+                          _____________________________________________________
+                          <p class = "label-text">Signature over Printer Name</p>
+                          
+                          </td>
+                          </tr>
 
-                        </table><br>
+
+
+
+
+
+                          </table><br>
 
                         <button class="btn btn-primary btn-s  sweet-14" style="float: right;" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Danger']); "id="finalizeButton" type="button" onclick="return confirm('Are you sure you want to save now?');">Save Changes</button>
                     </form>

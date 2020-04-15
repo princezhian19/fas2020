@@ -60,36 +60,36 @@ background-color: lightgray;
           <li>
             <a <?php if($link == 'http://localhost/fas/home.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>">
               <i class="fa fa-dashboard"></i> 
-              <span>DASHBOARD</span>
+              <span>Dashboard</span>
             </a>
           </li>
         <!-- CALENDAR -->
           <li class="treeview" >
             <a <?php if($link == 'http://localhost/fas/ViewCalendar.php' || $link == 'http://localhost/fas/ManageCalendar.php'){ echo 'class = "active-url"';}?> href="" style="color:black;text-decoration: none;">
             <i class="fa fa-calendar"style="color:black;text-decoration: none;"></i> 
-            <span style="color:black;text-decoration: none;">CALENDAR</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+            <span style="color:black;text-decoration: none;">Calendar</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
-              <li><a href="ViewCalendar.php" style="color:black;text-decoration: none;"><i class="fa fa-calendar"></i>CALENDAR OF ACTIVITIES</a></li>
-              <li><a href="ManageCalendar.php" style="color:black;text-decoration: none;"><i class="fa fa-calendar"></i>MANAGE CALENDAR</a></li>
+              <li><a href="ViewCalendar.php" style="color:black;text-decoration: none;"><i class="fa fa-calendar"></i>Calendar of Activities</a></li>
+              <li><a href="ManageCalendar.php" style="color:black;text-decoration: none;"><i class="fa fa-calendar"></i>Manage Calendar</a></li>
             </ul>
           </li>
         <!-- DIRECTORY -->
           <li>
             <a style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>">
               <i class="fa fa-sitemap "></i> 
-              <span>DIRECTORY</span>
+              <span>Directory</span>
             </a>
           </li>
         <!-- RECORDS -->
           <li class = "treeview">
             <a <?php if($link == 'http://localhost/fas/issuances.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> href="#" style="color:black;text-decoration: none;">
               <i class="fa fa-folder  "style="color:black;text-decoration: none;"></i> 
-              <span style="color:black;text-decoration: none;">RECORDS</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+              <span style="color:black;text-decoration: none;">Records</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
-              <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ISSUANCES</a></li>
-              <li><a href="#" style="color:black;text-decoration: none;"><i class="fa fa-archive"></i>DATABANK</a></li>
+              <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Issuances</a></li>
+              <li><a href="#" style="color:black;text-decoration: none;"><i class="fa fa-archive"></i>Databank</a></li>
             </ul>
           </li>
         <!-- PROCUREMENT -->
@@ -107,39 +107,39 @@ background-color: lightgray;
               
               href="" style="color:black;text-decoration: none;">
                 <i class="fa fa-cart-arrow-down "style="color:black;text-decoration: none;"></i>
-                <span style="color:black;text-decoration: none;">PROCUREMENT</span>
+                <span style="color:black;text-decoration: none;">Procurement</span>
                 <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
               </a>
             <ul class="treeview-menu" >
-              <li><a href="ViewApp.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>APP</a></li>
-              <li><a href="ViewPR.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> PURCHASE REQUEST</a></li>
-              <li><a href="ViewRFQ.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> REQUEST FOR QUOTATION</a></li>
-              <li><a style="color:black;text-decoration: none;" href="ViewSuppliers.php"><i class="fa">&#xf0f6;</i><span>SUPPLIER</span></a></li>
+              <li><a href="ViewApp.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>App</a></li>
+              <li><a href="ViewPR.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Purchase Request</a></li>
+              <li><a href="ViewRFQ.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Request for Quotation</a></li>
+              <li><a style="color:black;text-decoration: none;" href="ViewSuppliers.php"><i class="fa">&#xf0f6;</i><span>Supplier</span></a></li>
             </ul>
           </li>
         <!-- ASSET MANAGEMENT -->
           <li class="treeview" tyle="background-color: lightgray;">
             <a href="" style="color:black;text-decoration: none;">
               <i class="fa fa-briefcase "style="color:black;text-decoration: none;"></i>
-              <span style="color:black;text-decoration: none;">ASSET MANAGEMENT</span>
+              <span style="color:black;text-decoration: none;">Asset Management</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu" >
-              <li><a href="stocks.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> STOCK CARD</a></li>
-              <li><a href="@stockledger.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> SUPPLIES LEDGER CARD</a></li>
-              <li><a href="ViewIAR.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> IAR</a></li>
-              <li><a href="ViewRIS.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>RIS</a></li>
-              <li><a href="ViewRPCI.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ICS</a></li>
-              <li><a href="ViewRPCPPE.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAR</a></li>
+              <li><a href="stocks.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Stock Card</a></li>
+              <li><a href="@stockledger.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Supplies Ledger Card</a></li>
+              <li><a href="ViewIAR.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> iar</a></li>
+              <li><a href="ViewRIS.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ris</a></li>
+              <li><a href="ViewRPCI.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ics</a></li>
+              <li><a href="ViewRPCPPE.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>par</a></li>
             </ul>
           </li>
         <!-- FINANCIAL MANAGEMENT -->
           <li class="treeview" tyle="background-color: lightgray;">
             <a href="" style="color:black;text-decoration: none;">
               <i class="fa fa-money"style="color:black;text-decoration: none;"></i>
-              <span style="color:black;text-decoration: none;">FINANCIAL MANAGEMENT</span>
+              <span style="color:black;text-decoration: none;">Financial Management</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -189,20 +189,20 @@ background-color: lightgray;
           <li class="treeview" tyle="background-color: lightgray;">
             <a href="" style="color:black;text-decoration: none;">
                 <i class="fa fa-users"style="color:black;text-decoration: none;"></i>
-                <span style="color:black;text-decoration: none;">ICT TECHNICAL ASSISTANCE</span>
+                <span style="color:black;text-decoration: none;">ICT Technical Assistance</span>
                 <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
-              <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>CREATE REQUEST</a>
-              <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PROCESSING<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "on_going"><b>0</b></span></a></li>
-              <li><a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>MONITORING<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
+              <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Create Request</a>
+              <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Processing<span class="badge badge-light pull-right" style = "background-color:skyblue;color:blue;" id = "on_going"><b>0</b></span></a></li>
+              <li><a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Monitoring<span class="badge badge-light pull-right" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
             </ul>
           </li>
       <!-- SETTINGS -->
         <li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
             <i class="fa fa-cogs"style="color:black;text-decoration: none;"></i>
-            <span style="color:black;text-decoration: none;">SETTING</span>
+            <span style="color:black;text-decoration: none;">Setting</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -210,10 +210,11 @@ background-color: lightgray;
           <ul class="treeview-menu" >
             <li><a style="color:black;text-decoration: none;" href="Accounts.php"><i class = "fa fa-fw fa-user-md"></i>USER MANAGEMENT</li>
             <li><a style="color:black;text-decoration: none;" href="Approval.php"><i class = "fa fa-fw fa-check-square-o"></i>FOR APPROVAL</li>
-            <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>LOGOUT</li>
 
           </ul>
         </li>
+        <li><a style="color:black;text-decoration: none;" href="index.php"><i class = "fa fa-sign-out"></i>Logout</li>
+
     </section>
   </aside>
   
