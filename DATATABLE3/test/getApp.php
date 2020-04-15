@@ -11,7 +11,7 @@ $col =array(
     6   =>  'mode_of_proc_title',
     7   =>  'source_of_funds_title'
 );  //create column like table in database
-$sql ="SELECT DISTINCT app.id,app.sn,app.code,ic.item_category_title,app.procurement,mop.mode_of_proc_title,pmo.pmo_title,sof.source_of_funds_title 
+$sql ="SELECT DISTINCT app.id,app.sn,app.code,ic.item_category_title,app.procurement,pmo.pmo_title,mop.mode_of_proc_title,sof.source_of_funds_title 
 FROM app 
 LEFT JOIN item_category ic on ic.id = app.category_id 
 LEFT JOIN source_of_funds sof on sof.id = app.source_of_funds_id 
@@ -21,7 +21,7 @@ $query=mysqli_query($con,$sql);
 $totalData=mysqli_num_rows($query);
 $totalFilter=$totalData;
 //Search
-$sql ="SELECT DISTINCT app.id,app.sn,app.code,ic.item_category_title,app.procurement,mop.mode_of_proc_title,pmo.pmo_title,sof.source_of_funds_title 
+$sql ="SELECT DISTINCT app.id,app.sn,app.code,ic.item_category_title,app.procurement,pmo.pmo_title,mop.mode_of_proc_title,sof.source_of_funds_title 
 FROM app 
 LEFT JOIN item_category ic on ic.id = app.category_id 
 LEFT JOIN source_of_funds sof on sof.id = app.source_of_funds_id 
