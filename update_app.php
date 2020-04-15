@@ -200,13 +200,17 @@ if (isset($_POST['submit'])) {
    $price0 = $rowID['price'];
    $remarks0 = $rowID['remarks'];
 
-   $insert_app = mysqli_query($conn,"INSERT INTO app(sn,code,new_entry,merge_code,procurement,source_of_funds_id,category_id,pmo_id,qty,mode_of_proc_id,price,app_price,remarks,app_year) VALUES('$sn0','$code0',1,'$code0','$procurement0','$source_of_funds_id0','$category_id0','$pmo_id0','$qty0','$mode_of_proc_id0','$price0','$app_price1','$remarks0','2019' )");
+   $insert_app = mysqli_query($conn,"INSERT INTO app(sn,code,new_entry,merge_code,procurement,source_of_funds_id,category_id,pmo_id,qty,mode_of_proc_id,price,app_price,remarks,app_year) VALUES('$sn0','$code0',1,'$code0','$procurement0','$source_of_funds_id0','$category_id0','$pmo_id0','$qty0','$mode_of_proc_id0','$price0','$app_price1','$remarks0','2020' )");
    
-   $select_app2 = mysqli_query($conn,"SELECT id FROM app WHERE sn = '$sn1' ORDER BY id DESC LIMIT 1");
+   $select_app2 = mysqli_query($conn,"SELECT id FROM app ORDER BY id DESC LIMIT 1");
    $rowID = mysqli_fetch_array($select_app2);
    $app_id2 = $rowID['id'];
 
    $insert_budget2 = mysqli_query($conn,"INSERT INTO estimated_budget(app_id,mooe,co,total_budget) VALUES ('$app_id2','$mooe1','$co1','$budget1')");
+
+   $update_pr_items = mysqli_query($conn,"UPDATE pr_items SET items = $app_id2 WHERE items = $id");
+   $update_rfq_items = mysqli_query($conn,"UPDATE rfq_items SET app_id = $app_id2 WHERE app_id = $id");
+
    echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Successfuly Update!');
     window.location.href = 'ViewApp.php?';
