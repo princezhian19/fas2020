@@ -48,6 +48,7 @@ $username = $_SESSION['username'];
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
+
 <script>
   $(function () {
     $('#example2').DataTable()
@@ -61,6 +62,7 @@ $username = $_SESSION['username'];
     })
   })
 </script>
+
 
 </body>
 </html>
