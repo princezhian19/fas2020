@@ -1,7 +1,7 @@
 <?php
 include('functions.php');
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
-$conn=mysqli_connect("localhost","fascalab_2020","s","fascalab_2020");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
 $rfq_items_id = $_GET['rfq_items'];
 $remarks = $_GET['remarks'];
