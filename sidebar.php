@@ -129,10 +129,10 @@ background-color: lightgray;
             <ul class="treeview-menu" >
               <li><a href="stocks.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Stock Card</a></li>
               <li><a href="@stockledger.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Supplies Ledger Card</a></li>
-              <li><a href="ViewIAR.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> iar</a></li>
-              <li><a href="ViewRIS.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ris</a></li>
-              <li><a href="ViewRPCI.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ics</a></li>
-              <li><a href="ViewRPCPPE.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>par</a></li>
+              <li><a href="ViewIAR.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> IAR</a></li>
+              <li><a href="ViewRIS.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>RIS</a></li>
+              <li><a href="ViewRPCI.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ICS</a></li>
+              <li><a href="ViewRPCPPE.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAR</a></li>
             </ul>
           </li>
         <!-- FINANCIAL MANAGEMENT -->
