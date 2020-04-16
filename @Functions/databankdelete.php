@@ -10,9 +10,9 @@ $username1 = $_SESSION['username'];
 <?php
 
 
-if(isset($_POST['submit'])){
+/* if(isset($_POST['submit'])){ */
 
-
+/* 
     $filename = $_FILES['file']['name'];
     $tempname = $_FILES['file']['tmp_name'];
         
@@ -33,43 +33,19 @@ if(isset($_POST['submit'])){
             
             
     
-        }
+        } */
     
-$id = $_POST['getid'];
-$category = $_POST['category'];
+$id = $_GET['id'];
+/* $category = $_POST['category'];
 $issuances = $_POST['issuances'];
-$dateissued1 = $_POST['dateissued'];
-
-$dateissued = date('Y-m-d', strtotime($dateissued1));
+$dateissued = $_POST['dateissued'];
 $title = $_POST['title'];
-//$office = $_POST['office'];
-//$file = $_POST['file'];
+
 $url = $_POST['url'];
 $postedby = $_POST['postedby'];
 
-$posteddate = $_POST['posteddate'];
+$posteddate = $_POST['posteddate']; */
 
-/* echo $id; */
-
-/* echo $category;
-echo '<br>';
-echo $issuances;
-echo '<br>';
-echo $dateissued;
-echo '<br>';
-echo $title;
-echo '<br>';
-echo $offices;
-echo '<br>';
-echo $file;
-echo '<br>';
-echo $url;
-echo '<br>';
-echo $postedby;
-echo '<br>';
-echo $posteddate;
-exit();
- */
 
 $servername = "localhost";
 $username = "fascalab_2020";
@@ -84,7 +60,7 @@ if ($conn->connect_error) {
 }
 
 
- $query = mysqli_query($conn,"UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$postedby',pdf_file='$filename',dateposted='$posteddate',date_issued='$dateissued',postedby='$username1',category='$category',url='$url' where id ='$id'");
+ $query = mysqli_query($conn,"DELETE from downloads  where download_id ='$id'");
 /* echo "UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$office',pdf_file='$file',dateposted='$posteddate',date_issued='$dateissued',postedby='$postedby',category='$category',url='$url' where id ='$id'";
 exit(); */
 
@@ -92,16 +68,16 @@ mysqli_close($conn);
 
 if($query){
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Data Updated Successfully!')
-    window.location.href='../issuances.php';
+    window.alert('Data Deleted Successfully!')
+    window.location.href='../databank.php';
     </SCRIPT>"); 
 
 }
 else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Error!')
-    window.location.href='../issuances.php';
+    window.location.href='../databank.php';
     </SCRIPT>");
 }
-}
+// }
 ?>

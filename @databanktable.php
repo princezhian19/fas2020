@@ -17,7 +17,7 @@ include('db.class.php'); // call db.class.php
         
           <div class=""  style="overflow-x:auto;">
          
-            <li class="btn btn-success"><a href="#" style="color:white;text-decoration: none;">Create</a></li>
+            <li class="btn btn-success"><a href="CreateDatabank.php" style="color:white;text-decoration: none;">Add</a></li>
          
               <br>
               <br>
@@ -28,10 +28,10 @@ include('db.class.php'); // call db.class.php
                 <thead>
                     <tr style="background-color: white;color:blue;">
                  
-                  <th width = ''>CATEGORY</th>
-                  <th width = ''>TITLE</th>
-                  <th width = ''>POSTING DETAILS</th>
-                  <th width = ''>ACTION</th>
+                  <th width="200">CATEGORY</th>
+                  <th width="400">TITLE</th>
+                  <th width="150">POSTING DETAILS</th>
+                  <th width="80">ACTION</th>
                   
                 </tr>
                 </thead>
@@ -43,19 +43,21 @@ include('db.class.php'); // call db.class.php
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT downloads.download_id ,downloads.category, downloads.title, downloads.dateposted, downloads.postedby, downloads_category.name from downloads left join downloads_category on downloads.category=downloads_category.id order by dateposted desc");
+            $view_query = mysqli_query($conn, "SELECT downloads.file, downloads.download_id ,downloads.category, downloads.title, downloads.dateposted, downloads.postedby, downloads_category.name from downloads left join downloads_category on downloads.category=downloads_category.id order by dateposted desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
-                  $id = $row["id"];
+                  $id = $row["download_id"];
                   
                   $name = $row["name"];
+                  $file = $row["file"];
 
                   $title  = $row["title"];
                 
                   $dateposted  = $row["dateposted"];
                    // $date_issued1 = date('F d, Y', strtotime($date1));
                   $postedby = $row["postedby"];
-                 
+                 $location = "files/".$file;
+                 //echo $location;
 
                ?>
 
@@ -69,8 +71,9 @@ include('db.class.php'); // call db.class.php
                 
 
                 <td> 
-                <a  href='' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
-                <a href=''  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>
+                <a  href="<?php echo $location?>" title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
+                <a href="UpdateDatabank.php?id=<?php echo $id; ?>"  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
+                <a onclick="return confirm('Are you sure you want to Delete?');" name="del"  href="@Functions/databankdelete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
              
                 </td>
                 

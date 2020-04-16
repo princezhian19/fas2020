@@ -88,8 +88,8 @@ background-color: lightgray;
               <span style="color:black;text-decoration: none;">RECORDS</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
-              <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ISSUANCES</a></li>
-              <li><a href="#" style="color:black;text-decoration: none;"><i class="fa fa-archive"></i>DATABANK</a></li>
+              <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ISSUANCES<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li></a></li>
+              <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-archive"></i>DATABANK<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li></a></li>
             </ul>
           </li>
         <!-- PROCUREMENT -->

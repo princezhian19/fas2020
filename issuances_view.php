@@ -89,32 +89,57 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
 
         <div class="">
 
+       
+
+
+        <div class="col-md-6">
+
         <table class="table"> 
+                    <tr>  
+                    <td class="col-md-2"><b>Issuance No<span style = "color:red;"></span></b></td>
+                      <td class="col-md-5">
+                        <?php echo $issuances;?>
+                      </td>
+                    </tr>
+
                     <tr>
-                        <td class="col-md-2">Category</td>
+                        <td class="col-md-2"><h5><b>Title/Subject</b></h5></td>
+                    <td class="col-md-5">
+                        <b><h4><?php echo $title?><h4></b>
+                    </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-md-2"><b>Category<b></td>
                     <td class="col-md-5">
                         <?php echo $cat?>
                     </td>
                     </tr>
-                    <tr>
-                        <td class="col-md-2">Date Posted</td>
+
+               
+        </table>            
+
+        </div>
+
+        <div class="col-md-6">
+
+        <table class="table"> 
+
+
+        <tr>
+                        <td class="col-md-2"><b>Date Posted</b></td>
                             <td class="col-md-5"><?php echo $posteddate?></td>
                   
                     <tr>
-                        <td class="col-md-2">Date Issued</td>
+                        <td class="col-md-2"><b>Date Issued</b></td>
                             <td class="col-md-5">
                            <?php echo $dateissued;?>
                                     </tr>
                     <tr>
 
                     </tr>
-                    <tr>  
-                        <td class="col-md-2">Issuance No<span style = "color:red;">*</span></td>
-                            <td class="col-md-5">
-                           <?php echo $issuances;?>
-                                    </td>
-                                        </tr>
-                        <td class="col-md-2">Uploading Details<span style = "color:red;">*</span></td>
+                 
+                        <td class="col-md-2"><b>Uploading Details</b><span style = "color:red;"></span></td>
                             <td class="col-md-5">
                             <?php
 
@@ -136,9 +161,15 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                             ?>     
                             <?php echo $fullName;?></td>
                                 </tr>
-                    
+
+        </table>                       
+
+        </div>
+      
                   
-                </table>
+                  
+                    
+           
 
         <embed src = "<?php echo $path;?>" type="application/pdf" width="100%" height="1000px" />
       
