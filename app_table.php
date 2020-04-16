@@ -29,7 +29,7 @@
         LEFT JOIN source_of_funds sof on sof.id = app.source_of_funds_id 
         LEFT JOIN pmo on pmo.id = app.pmo_id 
         LEFT JOIN mode_of_proc mop on mop.id = app.mode_of_proc_id 
-        ORDER BY app.id DESC ");
+        ORDER BY app.procurement DESC ");
       while ($row = mysqli_fetch_assoc($view_query)) {
         $id = $row["id"];  
         $sn = $row["sn"];  
@@ -51,12 +51,26 @@
           <td width="150">
            <a  href='UpdateAPP.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit</a>
          </td>
-         <td><a  href='ViewApp_History.php?id=<?php echo $id; ?>' title="View" class="btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> History </a></td>
+         <td>
+          <?php 
+          $select = mysqli_query($conn,"SELECT items FROM pr_items WHERE items = $id");
+          ?>
+          <?php if (mysqli_num_rows($select)>0): ?>
+          <a  href='ViewApp_History.php?id=<?php echo $id; ?>' title="View" class="btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> History </a>
+            <?php else: ?>
+              <!-- do nothing -->
+          <?php endif ?>
+
+
+        </td>
        </tr>
      <?php } ?>
    </table>
  </div>
 </div>
+<?php include('footer.php');?>
+
 </div>
+
 </div>
 
