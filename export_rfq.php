@@ -60,7 +60,7 @@ while($rowA = mysqli_fetch_assoc($sql_items1) ){
 }
 
 
-$sql_items = mysqli_query($conn, "SELECT pr.id,item.item_unit_title,app.procurement,pr.unit,pr.qty,pr.abc FROM pr_items pr LEFT JOIN app on app.id = pr.items left join item_unit item on item.id = pr.unit WHERE pr_no = '$pr_no' ");
+$sql_items = mysqli_query($conn, "SELECT pr.description,pr.id,item.item_unit_title,app.procurement,pr.unit,pr.qty,pr.abc FROM pr_items pr LEFT JOIN app on app.id = pr.items left join item_unit item on item.id = pr.unit WHERE pr_no = '$pr_no' ");
 $row        = 50;
 $rowssDD    = 62;
 $rowssE     = 63;
@@ -82,7 +82,7 @@ while($rowE = mysqli_fetch_assoc($sql_items) ){
   $total_cost11 = number_format($total_cost,2);
 
   $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$unit);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$rowE['procurement'] ."\n".$row['description']);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$rowE['procurement'] ."\n".$rowE['description']);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$rowE['qty']);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,number_format($rowE['abc'],2));
 
