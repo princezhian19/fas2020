@@ -89,8 +89,13 @@ background-color: lightgray;
             </a>
             <ul class="treeview-menu" >
 <<<<<<< HEAD
+<<<<<<< HEAD
               <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ISSUANCES<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li></a></li>
               <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-archive"></i>DATABANK<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li></a></li>
+=======
+              <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Issuances</a></li>
+              <li><a href="#" style="color:black;text-decoration: none;"><i class="fa fa-archive"></i>Databank</a></li>
+>>>>>>> 34f1cfad10b3d09360488f41e13fc88bb14b578e
 =======
               <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Issuances</a></li>
               <li><a href="#" style="color:black;text-decoration: none;"><i class="fa fa-archive"></i>Databank</a></li>
