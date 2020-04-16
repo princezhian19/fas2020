@@ -32,7 +32,10 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
         $id = $row['id'];
         $category = $row['category'];
         $issuances = $row['issuance_no'];
-        $dateissued = $row['date_issued'];
+        $dateissued1 = $row['date_issued'];
+        $dateissued = date('m/d/Y', strtotime($dateissued1));
+
+        
         $title = $row['subject'];
         $office = $row['office_responsible'];
         $file = $row['pdf_file'];
@@ -102,7 +105,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
         <div class="box">
           <div class="box-body">
       
-            <h1 align="">Update Issuances</h1>
+            <h1 align="">Edit Issuances</h1>
          
         <br>
       <li class="btn btn-success"><a href="issuances.php" style="color:white;text-decoration: none;">Back</a></li>
@@ -117,7 +120,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
 
         <table class="table"> 
                     <tr>
-                        <td class="col-md-2">Category<span style = "color:red;">*</span></td>
+                        <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
                     <td class="col-md-5">
                       <select class="form-control " style="width: 100%;" name="category" id="category" > 
                       <option value="11">Department Memorandum Circular</option>
@@ -130,28 +133,31 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                       </select></td>
                                 </tr>
                     <tr>  
-                        <td class="col-md-2">Issuance No<span style = "color:red;">*</span></td>
+                        <td class="col-md-2"><b>Issuance No<span style = "color:red;">*</span></b></td>
                             <td class="col-md-5">
                             <input value="<?php echo $issuances;?>" required  class="form-control" type="text" class="" style="height: 35px;" id="issuances" name="issuances" placeholder="" name="issuances" >
                                     </td>
                                         </tr>
                     <tr>
-                        <td class="col-md-2">Issuance Date<span style = "color:red;">*</span></td>
+                        <td class="col-md-2"><b>Issuance Date<span style = "color:red;">*</span></b></td>
                             <td class="col-md-5">
-                            <input required value="<?php echo $dateissued;?>" type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" >
-                                    </tr>
+                            <!-- <input required value="<?php echo $dateissued;?>" type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" > -->
+                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = "<?php echo $dateissued ?>" >
+                           
+                          
+                          </tr>
                     <tr>
-                        <td class="col-md-2">Title/Subject<span style = "color:red;">*</span></td>
+                        <td class="col-md-2"><b>Title/Subject<span style = "color:red;">*</span></b></td>
                             <td class="col-md-5">  <input required value="<?php echo $title;?>"  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Concerned Office</td>
+                        <td class="col-md-2"><b>Concerned Office</b></td>
                             <td class="col-md-5"> 
                               <!-- <input id="offices" value="<?php echo $office;?>" name="office" autocomplete ="off" type="text" class="form-control" placeholder=""></td> -->
-                              <div style="margin-bottom: 20px;" class="form-group offices-container">
-        <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control subtxt size400" placeholder="Click to Select">
-        <div class="office-responsible" style="position: absolute;display: none;width: 40%; background-color:lightgray">
-        
+                              <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
+        <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
+        <div class="office-responsible well checkbox" style="position: absolute;display: none;max-width: 40%;  ">
+
                           <?php
                           $counter = 0; 
 
@@ -176,23 +182,38 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                           for ($i=0; $i < $countgroup; $i++) 
                        
                           {
-                          $exploded= explode(' ', $getgroup[$i]['GROUP_M']);
+                          $exploded= explode('', $getgroup[$i]['GROUP_M']);
                           	?>
-                           <fieldset class="div">
+                           <fieldset class="div ">
 
-                           	<legend><?php echo $getgroup[$i]['GROUP_M'];?><input type="checkbox" name="divs" class="divs<?php echo $i;?>"></legend>
-                    <?php
-                    $get_options = "SELECT * FROM tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N WHERE a.GROUP_N=".$i."";
-                    $getoptions = getData($conn,$get_options);
-                    $getcount = count($getoptions);
-                    foreach ($getoptions as $k) {
-                    	
+                             <legend><?php echo $getgroup[$i]['GROUP_M'];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="divs" class="divs<?php echo $i;?>"></legend>
                     
-                  if ( $counter % 3 ==0) { 
-                  print "<div class='rows3'>\n";
-                  print "</div>";
+                   
 
-                    	?>
+                      <?php
+
+                      $get_options = "SELECT * FROM tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N WHERE a.GROUP_N=".$i."";
+                      $getoptions = getData($conn,$get_options);
+                      $getcount = count($getoptions);
+                      foreach ($getoptions as $k) {
+
+
+                      if ( $counter==0) { 
+                      print "<div class='rows3 '>\n";
+                      print " <table>
+
+                      <tr>
+                        <td>
+                        
+                        </td>
+                      <tr>
+                              </table> ";
+
+                      print "</div>";
+
+                      ?>
+                    
+                 
          
                    <?php
                     }
@@ -217,11 +238,31 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                      ?>
 
                    	
-          			<label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?> /><span><?php echo $k['DIVISION_M'];?></span></label>
-                    
+                <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>">
+               
+                 <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}
+                 else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?>/>
+                 <span>
+                   <table>
+                      <tr>
+
+                      <td>
+                      <?php echo $k['DIVISION_M'];?>
+
+                      </td>
+                      </tr>
+
+                   </table>
+                
+                </span></label>
+               
                     <?php }else{
                     ?>
-                    <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> /><span><?php echo $k['DIVISION_M'];?></span></label>
+              <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
+              <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> />
+              <span>
+                <?php echo $k['DIVISION_M'];?>
+              </span></label>
                     <?php }
                 		}
 
@@ -231,9 +272,11 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                          <?php  }
                          // print "</div>";
                           ?>
+                         
+                          
 
 </div>
-</div>    
+</div>
                             
                             </tr>
                     <tr>
@@ -272,13 +315,13 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                            <!--  <li class="btn btn-primary"><a href="issuances.php" style="color:white;text-decoration: none;">Choose File</a> --></li><!-- <li class="button btn-primary">Choose File</button> --> <!-- <label>&nbsp&nbspNo file Chosen</label><label class="pull-right"> Allowed file: *.pdf   Max allowed size: 5mb</label></td> -->
                                 </tr>
                     <tr>
-                        <td class="col-md-2">URL</td>  
+                        <td class="col-md-2"><b>URL</b></td>  
                             <td class="col-md-5">
                             <input id="url" value="<?php echo $url;?>" name="url" autocomplete ="off" type="text" class="form-control" placeholder="">
                                 </td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2">Posted By</td>
+                        <td class="col-md-2"><b>Posted By</b></td>
                             <td class="col-md-5"> <?php
 
                              $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
@@ -299,7 +342,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                                     </td>
                                         </tr>
                     <tr>
-                        <td class="col-md-2">Posted Date</td>
+                        <td class="col-md-2"><b>Posted Date</b></td>
                             <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" ></td>
                                 </tr>
                 </table>
@@ -307,7 +350,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                 
                   <br>
               <br>
-                <input type="submit" name="submit" class="btn btn-primary pull-left" value="Update Data" id="butsave">
+                <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
 
                 <br>
               <br>
@@ -498,6 +541,84 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Date picker,
+    $('#datepicker1').datepicker({
+      autoclose: true
+    })
+
+    $('#datepicker2').datepicker({
+      autoclose: true
+    })
+    $('#datepicker3').datepicker({
+      autoclose: true
+    })
+    $('#datepicker4').datepicker({
+      autoclose: true
+    })
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass   : 'iradio_minimal-blue'
+    })
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass   : 'iradio_minimal-red'
+    })
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    })
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    //Timepicker
+    $('.timepicker').timepicker({
+      showInputs: false
+    })
+  })
+</script>
 
 </body>
 </html>

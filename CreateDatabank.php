@@ -9,7 +9,7 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>Databank</title>
+<title>Issuances</title>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,26 +33,7 @@ $username = $_SESSION['username'];
       </ol>
       <br>
       <br>
-        <?php include('@databanktable.php');?>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <?php include 'footer.php';?>
-
+        <?php include('databank_create.php');?>
     </section>
   </div>
 </div>
@@ -68,17 +49,18 @@ $username = $_SESSION['username'];
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
-<script>
+<!-- <script>
   $(function () {
+    $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': false,
+      'lengthChange': true,
       'searching'   : true,
       'ordering'    : false,
-      'info'        : false,
-      'autoWidth'   : false
+      'info'        : true,
+      'autoWidth'   : true
     })
   })
-</script>
+</script> -->
 </body>
 </html>

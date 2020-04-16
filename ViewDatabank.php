@@ -33,26 +33,7 @@ $username = $_SESSION['username'];
       </ol>
       <br>
       <br>
-        <?php include('@databanktable.php');?>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <?php include 'footer.php';?>
-
+        <?php include('databank_view.php');?>
     </section>
   </div>
 </div>
@@ -70,13 +51,14 @@ $username = $_SESSION['username'];
 
 <script>
   $(function () {
+    $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': false,
+      'lengthChange': true,
       'searching'   : true,
       'ordering'    : false,
-      'info'        : false,
-      'autoWidth'   : false
+      'info'        : true,
+      'autoWidth'   : true
     })
   })
 </script>
