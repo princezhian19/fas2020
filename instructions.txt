@@ -1,5 +1,0 @@
-1. import the 
-   midterm_zamora.sql
-   to your phpmyadmin
-
-2. run purchase3.php
