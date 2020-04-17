@@ -217,7 +217,7 @@ $username = $_SESSION['username'];
                 <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
-              <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa">&#xf0f6;</i>Create Request</a>
+              <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $_SESSION['username'];?>" ><i class="fa">&#xf0f6;</i>Create Request</a>
               <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" ><i class="fa">&#xf0f6;</i>Processing<span class="badge badge-light pull-right" style = "background-color:skyblue;color:blue;" id = "on_going"><b>0</b></span></a></li>
               <li><a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa">&#xf0f6;</i>Monitoring<span class="badge badge-light pull-right" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
             </ul>
@@ -239,7 +239,7 @@ $username = $_SESSION['username'];
       
         </li>
         <li>
-            <a href="home.php?division=<?php echo $_SESSION['division'];?>">
+            <a href="index.php">
               <i class="fa fa-sign-out "></i> 
               <span>Logout</span>
             </a>

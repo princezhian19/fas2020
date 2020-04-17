@@ -199,7 +199,7 @@ background-color: lightgray;
                 <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
-              <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Create Request</a>
+              <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $_SESSION['username'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Create Request</a>
               <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Processing<span class="badge badge-light pull-right" style = "background-color:skyblue;color:blue;" id = "on_going"><b>0</b></span></a></li>
               <li><a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Monitoring<span class="badge badge-light pull-right" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
             </ul>
