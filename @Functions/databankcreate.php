@@ -86,32 +86,13 @@ $issuances = $_POST['issuances'];
 $dateissued1 = $_POST['dateissued'];
 $dateissued = date('Y-m-d', strtotime($dateissued1));
 $title = $_POST['title'];
-//$office = $_POST['office'];
-//$file = $_POST['file'];
+
 $url = $_POST['url'];
 $postedby = $_POST['postedby'];
 
 $posteddate = $_POST['posteddate'];
 
-/* echo $category;
-echo '<br>';
-echo $issuances;
-echo '<br>';
-echo $dateissued;
-echo '<br>';
-echo $title;
-echo '<br>';
-echo $offices;
-echo '<br>';
-echo $file;
-echo '<br>';
-echo $url;
-echo '<br>';
-echo $postedby;
-echo '<br>';
-echo $posteddate;
-exit();
- */
+
 
 $servername = "localhost";
 $username = "fascalab_2020";
@@ -126,11 +107,14 @@ if ($conn->connect_error) {
 }
 
 
- $query = mysqli_query($conn,"INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
- VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')");
+ $query = mysqli_query($conn,"INSERT INTO downloads (title,file,category,dateposted,postedby,url) 
+ VALUES ('$title','$filename','$category','$posteddate','$username1','$url')");
 
  /* echo "INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
  VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')";
+ exit(); */
+
+/*  echo "INSERT INTO downloads (title,file,category,dateposted,postedby,url) VALUES ('$title','$filename','$category','$posteddate','$username1','$url')";
  exit(); */
 
 
@@ -139,14 +123,14 @@ mysqli_close($conn);
 if($query){
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Data Added Successfully!')
-    window.location.href='../issuances.php';
+    window.location.href='../databank.php';
     </SCRIPT>"); 
 
 }
 else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Error!')
-    window.location.href='../issuances.php';
+    window.location.href='../databank.php';
     </SCRIPT>");
 }
 

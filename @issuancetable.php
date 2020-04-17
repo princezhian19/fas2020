@@ -18,7 +18,7 @@
         
           <div class=""  style="overflow-x:auto;">
          
-            <li class="btn btn-success"><a href="CreateIssuances.php" style="color:white;text-decoration: none;">Create</a></li>
+            <li class="btn btn-success"><a href="CreateIssuances.php" style="color:white;text-decoration: none;">Add</a></li>
         
           
               <br>
@@ -34,7 +34,7 @@
                   <th width = '200'>ISSUANCE NO</th>
                   <th width = '200'>ISSUANCE DATE</th>
                   <th width = '500'>TITLE/SUBJECT</th>
-                  <th width = '150'>ACTION</th>
+                  <th width = '200'>ACTION</th>
                   
                 </tr>
                 </thead>
@@ -55,7 +55,8 @@
 
                   $issuance_no  = $row["issuance_no"];
                 
-                  $date_issued  = $row["date_issued"];
+                  $date_issued1  = $row["date_issued"];
+                  $date_issued = date('F d, Y', strtotime($date_issued1));
                    // $date_issued1 = date('F d, Y', strtotime($date1));
                   $subject = $row["subject"];
                  
@@ -72,9 +73,12 @@
                 <td><?php echo $subject?></td>
 
                 <td> 
+            
                 <a  href='ViewIssuance.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
-                <a href='UpdateIssuances.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>
-             
+                <a href='UpdateIssuances.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
+
+                <a onclick="return confirm('Are you sure you want to Delete?');" name="del"  href="@Functions/issuancesdelete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+
                 </td>
                 
                

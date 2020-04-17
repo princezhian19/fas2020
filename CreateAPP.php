@@ -15,6 +15,24 @@ $username = $_SESSION['username'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>FAS | Dashboard</title>
   <link rel="shortcut icon" type="image/png" href="dilg.png">
+<<<<<<< HEAD
+=======
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+ 
+  
+  <?php include('sidebar.php');?>
+>>>>>>> 1ba0becaf223a50adeb07bb6a3a7d5cfee420359
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -55,6 +73,7 @@ $username = $_SESSION['username'];
     <section class="content-header">
      <br>
       <ol class="breadcrumb">
+<<<<<<< HEAD
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
       </ol><br>
@@ -65,6 +84,37 @@ $username = $_SESSION['username'];
 
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
  <script>
+=======
+        <li><a href=""><i class=""></i> Home</a></li>
+        <li class="active">Encode Aoq</li>
+      </ol>
+      <br>
+      <br>
+        <?php include('app.php');?>
+
+    </section>
+  </div>
+ 
+</div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+<script src="dist/js/demo.js"></script>
+<script>
+>>>>>>> 1ba0becaf223a50adeb07bb6a3a7d5cfee420359
   $(function () {
     $('.select2').select2()
     $('#datepicker').datepicker({

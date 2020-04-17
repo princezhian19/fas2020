@@ -54,7 +54,6 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('app_table.php');?>
-        
     </section>
   </div>
   <footer class="main-footer">

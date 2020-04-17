@@ -165,7 +165,11 @@
                     ?>
                     <?php if (mysqli_num_rows($query_3) > 0): ?>
                       <?php if ($rowpo_id==NULL): ?>
+                        <?php if (mysqli_num_rows($selectABS) > 0): ?>
                          <a class="btn btn-success btn-xs"  href='CreatePO.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>' title="View"> Create </a>
+                         <?php else : ?>
+                          <a class="" href='ViewPO.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>' title="View"> <?php echo $po_no; ?></a>
+                      <?php endif?> 
                          <?php else : ?>
                           <?php
                           $query_4 = mysqli_query($conn,"SELECT * FROM  po WHERE id = '$rowpo_id'");
