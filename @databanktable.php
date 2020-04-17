@@ -31,7 +31,7 @@ include('db.class.php'); // call db.class.php
                   <th width="200">CATEGORY</th>
                   <th width="400">TITLE</th>
                   <th width="150">POSTING DETAILS</th>
-                  <th width="80">ACTION</th>
+                  <th width="300">ACTION</th>
                   
                 </tr>
                 </thead>
