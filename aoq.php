@@ -109,7 +109,12 @@ if (isset($_POST['submit'])) {
   $date_opened = $_POST['date_opened'];
   $remarks = $_POST['remarks'];
 
-
+  $ifExist = mysqli_query($conn,"SELECT aoq_no FROM aoq_data WHERE aoq_no = '$abstract_no'");
+  if (mysqli_num_rows($ifExist)>0) {
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Abstract No. is already Exist!')
+    </SCRIPT>");
+  }else{
   $INSERT_aoq = mysqli_query($conn,"INSERT INTO aoq_data(aoq_no,action_officer,datetime_created,date,remarks) VALUES('$abstract_no',14,'$date_opened','$date_opened','$remarks')");
 
   $selectT = mysqli_query($conn,"SELECT id FROM aoq_data ORDER BY id DESC LIMIT 1 ");
@@ -143,7 +148,7 @@ if (isset($_POST['submit'])) {
     window.alert('Successfuly Created!')
     window.location.href='UpdateAoq.php?rfq_id=$rfq_id&abstract_id=$abstract_id&supplier_id=$supplier_id';
     </SCRIPT>");
-
+  }
 }
  // insert suppliers quote 
 if (isset($_POST['insert_supplierQ'])) {

@@ -31,6 +31,12 @@ $noa_date1 = $_POST['noa_date'];
 $po_amount1 = $_POST['po_amount'];
 $remarks1 = $_POST['remarks'];
 
+$ifExist = mysqli_query($conn,"SELECT po_no FROM po WHERE po_no = '$po_no1'");
+if (mysqli_num_rows($ifExist)>0) {
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('PO No. is already Exist!')
+    </SCRIPT>");
+  }else{
 $insertPO = mysqli_query($conn,"INSERT INTO po(po_no,po_date,noa_date,ntp_date,po_amount,remarks) VALUES('$po_no1','$po_date1','$noa_date1','$ntp_date1','$po_amount1','$remarks1')");
 
 $select_aoqID = mysqli_query($conn,"SELECT abstract_no FROM abstract_of_quote WHERE rfq_id = $rfq_id and supplier_id = $supplier_id");
@@ -54,7 +60,7 @@ echo ("<SCRIPT LANGUAGE='JavaScript'>
 window.alert('Successful!');
 window.location.href='ViewPO.php?rfq_id=$rfq_id&supplier_id=$supplier_id';
 </SCRIPT>");
-
+}
 }
 
 $idGet='';
