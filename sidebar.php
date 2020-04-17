@@ -58,14 +58,14 @@ background-color: lightgray;
         <!-- DASHBOARD -->
         
           <li>
-            <a <?php if($link == 'http://localhost/fas/home.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>">
+            <a <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/home.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>">
               <i class="fa fa-dashboard"></i> 
               <span>Dashboard</span>
             </a>
           </li>
         <!-- CALENDAR -->
           <li class="treeview" >
-            <a <?php if($link == 'http://localhost/fas/ViewCalendar.php' || $link == 'http://localhost/fas/ManageCalendar.php'){ echo 'class = "active-url"';}?> href="" style="color:black;text-decoration: none;">
+            <a <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php' || $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php'){ echo 'class = "active-url"';}?> href="" style="color:black;text-decoration: none;">
             <i class="fa fa-calendar"style="color:black;text-decoration: none;"></i> 
             <span style="color:black;text-decoration: none;">Calendar</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
@@ -83,7 +83,7 @@ background-color: lightgray;
           </li>
         <!-- RECORDS -->
           <li class = "treeview">
-            <a <?php if($link == 'http://localhost/fas/issuances.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> href="#" style="color:black;text-decoration: none;">
+            <a <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> href="#" style="color:black;text-decoration: none;">
               <i class="fa fa-folder  "style="color:black;text-decoration: none;"></i> 
               <span style="color:black;text-decoration: none;">Records</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
@@ -96,10 +96,10 @@ background-color: lightgray;
           <li class="treeview" tyle="background-color: lightgray;">
               <a 
               <?php 
-              if($link == 'http://localhost/fas/ViewApp.php?division='.$_SESSION['division'].'' || 
-                $link == 'http://localhost/fas/ViewPR.php?division='.$_SESSION['division'].'' || 
-                $link == 'http://localhost/fas/ViewRFQ.php?division='.$_SESSION['division'].'' ||
-                $link == 'http://localhost/fas/ViewSuppliers.php' )
+              if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewApp.php?division='.$_SESSION['division'].'' || 
+                $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPR.php?division='.$_SESSION['division'].'' || 
+                $link == 'http://fas.calabarzon.dilg.gov.ph/ViewRFQ.php?division='.$_SESSION['division'].'' ||
+                $link == 'http://fas.calabarzon.dilg.gov.ph/ViewSuppliers.php' )
                 {
                    echo 'class = "active-url"';
                 }
@@ -236,13 +236,13 @@ background-color: lightgray;
         <li class="header" style="background-color: white;">MENU</li>
         <!-- DASHBOARD -->
         <li>
-          <a <?php if($link == 'http://localhost/fas/home.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>">
+          <a <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/home.php?division='.$_SESSION['division'].''){ echo 'class = "active-url"';}?> style="color:black;text-decoration: none;" href="home.php?division=<?php echo $_SESSION['division'];?>">
             <i class="fa fa-dashboard"></i> 
             <span>DASHBOARD</span>
           </a>
         </li>        
         <li class="treeview" >
-            <a <?php if($link == 'http://localhost/fas/ViewCalendar.php' || $link == 'http://localhost/fas/ManageCalendar.php'){ echo 'class = "active-url"';}?> href="" style="color:black;text-decoration: none;">
+            <a <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php' || $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php'){ echo 'class = "active-url"';}?> href="" style="color:black;text-decoration: none;">
             <i class="fa fa-calendar"style="color:black;text-decoration: none;"></i> 
             <span style="color:black;text-decoration: none;">CALENDAR</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
@@ -254,10 +254,10 @@ background-color: lightgray;
         <li class="treeview" tyle="background-color: lightgray;">
         <a 
               <?php 
-              if($link == 'http://localhost/fas/ViewApp.php?division='.$_SESSION['division'].'' || 
-                $link == 'http://localhost/fas/ViewPR.php?division='.$_SESSION['division'].'' || 
-                $link == 'http://localhost/fas/ViewRFQ.php?division='.$_SESSION['division'].'' ||
-                $link == 'http://localhost/fas/ViewSuppliers.php' )
+              if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewApp.php?division='.$_SESSION['division'].'' || 
+                $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPR.php?division='.$_SESSION['division'].'' || 
+                $link == 'http://fas.calabarzon.dilg.gov.ph/ViewRFQ.php?division='.$_SESSION['division'].'' ||
+                $link == 'http://fas.calabarzon.dilg.gov.ph/ViewSuppliers.php' )
                 {
                    echo 'class = "active-url"';
                 }

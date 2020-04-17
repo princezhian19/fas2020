@@ -1,10 +1,11 @@
-<footer class="main-footer">
+<footer class="main-footer"><BR>
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.13
+      <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-    reserved.
+    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+    
   </footer>
+  <BR>
 
 
   <!-- Add the sidebar's background. This div must be placed
@@ -54,6 +55,7 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
 <script>
   setInterval(function(){
 $('#ta_request').load('_countTA.php');

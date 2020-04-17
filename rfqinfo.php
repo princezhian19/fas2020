@@ -49,12 +49,6 @@ if (isset($_POST['submit'])) {
 
 
 ?>
-<html>
-<head>
-  <title>View PR</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
 <div class="row">
     <div class="col-md-8">
         <div class="box">
@@ -63,7 +57,7 @@ if (isset($_POST['submit'])) {
                     <h1>RFQ No. &nbsp <?php echo $rfq_no;?></h1>
                 </div>
             </div>
-            <div class="box-body table-responsive no-padding">
+            <div class="box-bodyno-padding">
                 <div class="box-body">
 
                 
@@ -107,7 +101,7 @@ if (isset($_POST['submit'])) {
                         </tr>"; 
                     }
                     ?>
-                </table>
+                    </table>
 
                 
                 <br>
@@ -132,14 +126,7 @@ if (isset($_POST['submit'])) {
 
 
                     ?>
-<!-- 
-                        <tr>
-                        <td  width="500"></td>
-                        <td  width="500"></td>
-                        <td  width="500"></td>
-                        <td  width="500"></td>
-                        <td  width="500"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $tot?></b></td>
-                    </tr> -->
+
                 </table>
             </div>
         </div>

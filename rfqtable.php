@@ -1,8 +1,11 @@
+<div class="row">
+  <div class="col-md-12">
     <div class="box">
       <div class="box-body">
-        <h1 align="">Request For Quotation</h1>
-        <div class="box-header">
-        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Request For Quotation</h1>    
+
         <br>
         <br>
         <table id="example1" class="table table-striped table-bordered" >
@@ -182,9 +185,8 @@
   <?php } ?>
 </table>
 </div>
-</div>
-<?php include('footer.php');?>
-
-</div>
-
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

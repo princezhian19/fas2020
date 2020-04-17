@@ -238,25 +238,22 @@ if (isset($_POST['submit'])) {
 }
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<body>
-  <div class="box box-default">
-    <div class="box-header with-border">
-     <h1 align="">&nbspUpdate Items(s)</h1>
-     <div class="box-header with-border">
-     </div>
 
+  <div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Update Annual Procurement Plan for FY 2020</h1>
+            &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="ViewApp.php" style="color:white;text-decoration: none;">Back</a></li>
+          
+            
      <br>
-     <h3> <p align="center">Update Annual Procurement Plan for FY 2020</p></h3>  
-     &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="ViewApp.php" style="color:white;text-decoration: none;">Back</a></li>
      <br>
      <br>
      <form method="POST" >
@@ -1116,30 +1113,19 @@ if (isset($_POST['submit'])) {
         </div>
 
       </div>
-    </div>  
+    
+    </form>
 
 
 
+            </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <br>
-</form>
-</div>  
-</div>  
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>  
-<br>
-</body>
+
 
 <script>
   $(document).ready(function() {
