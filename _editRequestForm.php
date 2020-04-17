@@ -552,7 +552,7 @@ function setStartDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $start_date = date('m/d/Y',strtotime($row['START_DATE']));
+        $start_date = date('F d, Y',strtotime($row['START_DATE']));
       }
       return $start_date;
 }
@@ -566,7 +566,7 @@ function setCompletedDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $completed_date = date('m/d/Y',strtotime($row['COMPLETED_DATE']));
+        $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
       }
       return $completed_date;
 }
@@ -808,7 +808,6 @@ function setCompletedTime()
 <!-- bootstrap color picker -->
 <script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
-<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- SlimScroll -->
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- iCheck 1.0.1 -->
@@ -816,12 +815,10 @@ function setCompletedTime()
 <!-- FastClick -->
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<!-- <script src="dist/js/adminlte.min.js"></script> -->
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<!-- <script src="dist/js/demo.js"></script> -->
 <!-- Page script -->
-<script src="_includes/sweetalert.min.js"></script>
-<link rel="stylesheet" href="_includes/sweetalert.css">
 <script>
 $('document').ready(function()
 {

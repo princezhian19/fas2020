@@ -1,4 +1,11 @@
 <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <h1>Calendar of Events</h1>
+             
 <button class="pull-right btn btn-success" style = "margin-left:10px;"><a style = "color:#fff;"  href="export_calendar.php?date=<?php echo date("Y-m-d");?>&division=<?php echo $_SESSION['division'];?>" >Export</a></button>
     <button class="pull-right btn btn-success" style = "margin-left:10px;"><a href ="ManageCalendar.php" style ="color:#fff;decoration:none;">Manage All Events</a></button>
         <button class="pull-right btn btn-success"  ><a style = "color:#fff;" href = "calAddEvents.php"> Add Events</a></button>
@@ -33,7 +40,9 @@
                                       
                                       
                                       ?>
+                                      
                                   </div>
                                 
                                   
                               </div>
+      <div id='calendar'></div>

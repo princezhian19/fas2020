@@ -1,14 +1,15 @@
-<div class="box">
-  <div class="box-body">
-        <div class=""> 
-          <div class="">
-            <h1 align="">Inspection Acceptance Report</h1>
-    <div class="box-header">
-    </div>
-     <li class="btn btn-success"><a href="CreateIAR.php" style="color:white;text-decoration: none;">Create</a></li>
-    <br>
-      <br>
-        <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Inspection Acceptance Report</h1>
+            <li class="btn btn-success"><a href="CreateIAR.php" style="color:white;text-decoration: none;">Create</a></li>
+            <br>
+            <br>
+            <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white; color:blue;">
                         <th>PO NUMBER</th>
@@ -50,18 +51,22 @@
                 echo "</table>";
                 ?>
             </table>
+            
+
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-</div>
-</body>
+
+
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('#example1').DataTable();
     } );
 </script>
-</div>
-</div>
 
     <!-- <div class="container">
   <h2>Inline form</h2>
@@ -98,12 +103,6 @@ if (isset($_POST['submit']))
 }
 }   
 ?>
-<div class="panel-footer"></div>
-</div>
-</div>
-
-</body>
-</html>
 
 
 

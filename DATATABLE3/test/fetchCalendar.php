@@ -4,12 +4,12 @@ $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 $request=$_REQUEST;
 $col =array(
-    0   =>  'id',
-    1   =>  'office',
-    2   =>  'title',
-    3   =>  'start',
-    4   =>  'end',
-    5   =>  'venue',
+    0   =>  'office',
+    1   =>  'title',
+    2   =>  'start',
+    3   =>  'end',
+    4   =>  'venue',
+    5   =>  'remarks',
     6   =>  'postedby'
  
 );  //create column like table in database
@@ -48,12 +48,12 @@ $data=array();
 $i = 1;
 while($row=mysqli_fetch_array($query)){
     $subdata=array();
-    $subdata[]=$i++; 
     $subdata[]=$row['DIVISION_M']; 
     $subdata[]=$row['title']; 
     $subdata[]=date('F d, Y',strtotime($row['start']));          
     $subdata[]=date('F d, Y',strtotime($row['end']));           
     $subdata[]=$row['venue'];           
+    $subdata[]=$row['remarks'];           
     $subdata[]=$row['UNAME'];         
     if($_SESSION['planningofficer'] == 1)
     {

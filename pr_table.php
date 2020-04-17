@@ -199,7 +199,6 @@ $username = $_SESSION['username'];
            </table>
          </div>
        </div>
-     <?php include('footer.php');?>
 
      </div>
 

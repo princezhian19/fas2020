@@ -26,7 +26,8 @@ if (isset($_POST['submit'])) {
     $division =$row['DIVISION_C'];
     $division2 = $row['DIVISION_C'];
     $_SESSION['division'] = $division;
-    $_SESSION['complete_name'] = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
+    $middle = $row['MIDDLE_M'];
+    $_SESSION['complete_name'] = $row['FIRST_M'].' '.$middle[0].'. '.$row['LAST_M'];
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
 

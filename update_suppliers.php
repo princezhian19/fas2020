@@ -12,6 +12,7 @@
  $registration_agency_id1 = $getrow['registration_agency_id'];
  $registration_valid_from1 = $getrow['registration_valid_from'];
  $registration_valid_until1 = $getrow['registration_valid_until'];
+
  $bp_validity_from1 = $getrow['bp_validity_from'];
  $bp_validity_until1 = $getrow['bp_validity_until'];
  $tc_validity_from1 = $getrow['tc_validity_from'];
@@ -59,8 +60,12 @@
 
 ?>
 
-<div class="box box-default">
-    <br />
+<div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
     <form method="POST">
       <div class="box-body" style="padding-bottom: 150px;">
         <div class="row">
@@ -146,12 +151,12 @@
                 <div class="row">
                     <div class="col-md-6">  
                         <label>FROM</label>
-                        <input type="date" name="registration_valid_from" class="form-control" value="<?php echo $registration_valid_from1?>">
+                        <input type="text" id = "datepicker1" name="registration_valid_from" class="form-control" value="<?php echo date('F d, Y', strtotime($registration_valid_from1));?>">
                     </div>
 
                     <div class="col-md-6">  
                         <label>UNTIL</label>
-                        <input type="date" name="registration_valid_until" class="form-control" value="<?php echo $registration_valid_until1?>">
+                        <input type="text"  id = "datepicker2"  name="registration_valid_until" class="form-control" value="<?php echo date('F d, Y',strtotime($registration_valid_until1));?>">
                     </div>
                 </div>
             </div>
@@ -160,12 +165,12 @@
                 <div class="row">
                     <div class="col-md-6">  
                         <label>FROM</label>
-                        <input type="date" name="bp_validity_from" class="form-control" value="<?php echo $bp_validity_from1?>">
+                        <input type="text"  id = "datepicker3"  name="bp_validity_from" class="form-control" value="<?php echo date('F d, Y',strtotime($bp_validity_from1));?>">
                     </div>
 
                     <div class="col-md-6">  
                         <label>UNTIL</label>
-                        <input type="date" name="bp_validity_until" class="form-control" value="<?php echo $bp_validity_until1?>">
+                        <input type="text"  id = "datepicker4"  name="bp_validity_until" class="form-control" value="<?php echo date('F d, Y',strtotime($bp_validity_until1));?>">
                     </div>
                 </div>
             </div>
@@ -174,11 +179,11 @@
                 <div class="row">
                    <div class="col-md-6">  
                     <label>FROM</label>
-                    <input type="date" name="tc_validity_from" class="form-control" value="<?php echo $tc_validity_from1?>">
+                    <input type="text"  id = "datepicker5"  name="tc_validity_from" class="form-control" value="<?php echo date('F d, Y',strtotime($tc_validity_from1));?>">
                 </div>
                 <div class="col-md-6">  
                     <label>UNTIL</label>
-                    <input type="date" name="tc_validity_until" class="form-control" value="<?php echo $tc_validity_until1?>">
+                    <input type="text"  id = "datepicker6"  name="tc_validity_until" class="form-control" value="<?php echo date('F d, Y',strtotime($tc_validity_until1));?>">
                 </div>
             </div>
         </div>
@@ -191,11 +196,11 @@
             <div class="row">
                 <div class="col-md-6">  
                     <label>FROM</label>
-                    <input type="date" name="prc_validity_from" class="form-control" value="<?php echo $prc_validity_from1?>">
+                    <input type="text"  id = "datepicker7"  name="prc_validity_from" class="form-control" value="<?php echo date('F d, Y',strtotime($prc_validity_from1));?>">
                 </div>
                 <div class="col-md-6">  
                     <label>UNTIL</label>
-                    <input type="date" name="prc_validity_until" class="form-control" value="<?php echo $prc_validity_until1?>">
+                    <input type="text"  id = "datepicker8"  name="prc_validity_until" class="form-control" value="<?php echo date('F d, Y',strtotime($prc_validity_until1));?>">
                 </div>
             </div>
             
@@ -203,9 +208,14 @@
         <legend>Latest Annual Income/Business Tax Return</legend>
         <div class="well">
          <label>Date of Receipt of the Annual ITR 2015 by the BIR</label>
-         <input type="date" name="itr_last_receipt_date" class="form-control" value="<?php echo $itr_last_receipt_date1?>">
+         <input type="text" id = "datepicker9" name="itr_last_receipt_date" class="form-control" value="<?php echo date('F d, Y',strtotime($itr_last_receipt_date1));?>">
      </div> 
  </div> 
 
 </form>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

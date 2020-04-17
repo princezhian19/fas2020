@@ -1,5 +1,5 @@
 <?php
-include('db.class.php'); // call db.class.php
+// include('db.class.php'); // call db.class.php
 ?>
 <!DOCTYPE html>
 <html>
@@ -130,7 +130,7 @@ include('db.class.php'); // call db.class.php
 <!-- FastClick -->
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<!-- <script src="dist/js/adminlte.min.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- Page script -->

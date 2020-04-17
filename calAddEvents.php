@@ -1,3 +1,5 @@
+
+
 <?php session_start();
 if(!isset($_SESSION['username'])){
 header('location:index.php');
@@ -6,7 +8,6 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
-
 ?>
 <?php 
 require_once 'calendar/sample/bdd.php';
@@ -86,39 +87,69 @@ function getCurrentID()
     }
 }
 ?>
-<!DOCTYPE html>
+  
+  <!DOCTYPE html>
 <html>
-<title>FAS: Events Management Dashboard</title>
-<head>
-<meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <head>
   <link rel="shortcut icon" type="image/png" href="dilg.png">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> </head>
-  <!-- CALENDAR -->
-  <link rel="stylesheet" href="calendar/fullcalendar/fullcalendar.min.css" />
-  <script src="calendar/fullcalendar/lib/jquery.min.js"></script>
-  <script src="calendar/fullcalendar/lib/moment.min.js"></script>
-  <script src="calendar/fullcalendar/fullcalendar.min.js"></script>
 
-  <style> .response { height: 60px; } .success { background: #cdf3cd; padding: 10px 60px; border: #c3e6c3 1px solid;} </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FAS | Events Management Dashboard</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+        folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="bower_components/morris.js/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="calendar/fullcalendar/fullcalendar.min.css" />
+    <script src="calendar/fullcalendar/lib/jquery.min.js"></script>
+    <script src="calendar/fullcalendar/lib/moment.min.js"></script>
+    <script src="calendar/fullcalendar/fullcalendar.min.js"></script>
+    <style>
 
-<body >
+  
+  .response {
+      height: 60px;
+  }
+  
+  .success {
+      background: #cdf3cd;
+      padding: 10px 60px;
+      border: #c3e6c3 1px solid;
+  }
+    </style>
+  </head>
+
 <div class="wrapper">
   <?php include('connection.php');?>
-  <?php include('sidebar.php');?>
+  <?php include('test1.php');?>
   
   <div class="content-wrapper">
     <section class="content-header">
         <ol class="breadcrumb">
-          <li><a href="home.php"><i class=""></i> Home</a></li>
+          <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
           <li class="active">Add Events</li>
-        </ol><br><br><br>
+        </ol><br><br>
         <div class="row">
           <div class="col-md-12">
               <div class="box">
@@ -126,11 +157,12 @@ function getCurrentID()
                       <div class="box-body"> 
                         <div class = "response"></div>   
                               <h1>Add Event/Activity</h1>
+                              <div class = "col-md-6" id='calendar'></div>
                           <div class="well col-md-6" >
                             
                                     <?php echo viewEvents();?>
                                 </div>
-                          <div class = "col-md-6" id='calendar'></div>
+                       
                               
                             </div>
                             
@@ -141,6 +173,13 @@ function getCurrentID()
         </div>
     </section>
   </div>
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 1.0
+    </div>
+    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> All rights
+    reserved.
+  </footer>
 </div>
 <?php
 if($_GET['flag'] == 1)
