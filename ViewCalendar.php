@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <?php session_start();
 if(!isset($_SESSION['username'])){
 header('location:index.php');
@@ -12,7 +6,6 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
-
 
 require_once 'calendar/sample/bdd.php';
 require_once 'calendar/sample/dbaseCon.php';

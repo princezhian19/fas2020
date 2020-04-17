@@ -84,7 +84,7 @@ $username = $_SESSION['username'];
                                 <div class="panel panel-defasult">
                                     <div class="box-body"> 
                                         <div>
-                                        <h1>Calendar of Activities:Manage All Events</h1><br>
+                                        <h1>Manage All Events</h1><br>
                                     </div>
                                 <div>
                                 <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;">
