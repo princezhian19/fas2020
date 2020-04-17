@@ -1,7 +1,7 @@
 <?php
 
 
-$username = $_SESSION['username'];
+$username = $_GET['username'];
 require_once('_includes/setting.php');
 require_once('_includes/dbaseCon.php');
 require_once('_includes/library.php');
@@ -15,7 +15,7 @@ function fillTableInfo()
     $query = "SELECT EMP_N,FIRST_M,MIDDLE_M, LAST_M, MOBILEPHONE, EMAIL,DIVISION_N, DIVISION_M , POSITION_M FROM tblpersonneldivision 
     INNER JOIN tblemployee on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C 
     INNER JOIN tbldilgposition on tblemployee.POSITION_C = tbldilgposition.POSITION_ID
-    where tblemployee.UNAME  = '".$_SESSION['username']."' ";
+    where tblemployee.UNAME  = '".$_GET['username']."' ";
     $result = mysqli_query($conn, $query);
     $val = array();
     if($row = mysqli_fetch_array($result))
@@ -117,7 +117,7 @@ function showUser()
   
   $query = "SELECT * FROM `tblpersonneldivision` 
   LEFT JOIN tblemployee ON tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C 
-  WHERE tblemployee.UNAME  = '".$_SESSION['username']."' ";
+  WHERE tblemployee.UNAME  = '".$_GET['username']."' ";
   $result = mysqli_query($link, $query);
   $val = array();
   while($row = mysqli_fetch_array($result))
