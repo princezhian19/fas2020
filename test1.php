@@ -82,7 +82,7 @@ $username = $_SESSION['username'];
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li <?php if($link == 'http://localhost/fas/test.php'){ echo 'class = "active"';}?>>
+        <li <?php if($link == 'http://localhost/fas/home.php?division='.$_SESSION['division'].''){ echo 'class = "active"';}?>>
           <a href="home.php?division=<?php echo $_SESSION['division']; ?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
