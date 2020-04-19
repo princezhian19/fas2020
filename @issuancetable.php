@@ -34,7 +34,7 @@
                   <th width = '200'>ISSUANCE NO</th>
                   <th width = '200'>ISSUANCE DATE</th>
                   <th width = '500'>TITLE/SUBJECT</th>
-                  <th width = '200'>ACTION</th>
+                  <th width = '300'>ACTION</th>
                   
                 </tr>
                 </thead>

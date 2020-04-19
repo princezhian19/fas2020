@@ -88,12 +88,8 @@ background-color: lightgray;
               <span style="color:black;text-decoration: none;">Records</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
-
-
-            
-
-              <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Issuances<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></a></li>
-              <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-archive"></i>Databank<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></a></li>
+              <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Issuances<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li>
+              <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa fa-archive"></i>Databank<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li>
 
             </ul>
           </li>

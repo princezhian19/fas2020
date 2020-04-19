@@ -160,14 +160,13 @@ require_once('_includes/class.upload.php');
 											    <br>
 											  Max allowed size: 5mb
 										  </p>';								
-							}
-							                         
+							}	                         
 						  ?>
                               
                            <!--  <li class="btn btn-primary"><a href="issuances.php" style="color:white;text-decoration: none;">Choose File</a> --></li><!-- <li class="button btn-primary">Choose File</button> --> <!-- <label>&nbsp&nbspNo file Chosen</label><label class="pull-right"> Allowed file: *.pdf   Max allowed size: 5mb</label></td> -->
                                 </tr>
                     <tr>
-                        <td class="col-md-2"><b>URL</b></td>  
+                        <td class="col-md-2"><b>URL</b></td> 
                             <td class="col-md-5">
                             <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder="">
                                 </td>
