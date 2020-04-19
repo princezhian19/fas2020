@@ -9,7 +9,7 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>Monitoring for DV</title>
+<title>FAS | Monitoring for DV</title>
 <head>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,7 +42,7 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
 </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+  <body class="hold-transition skin-red-light sidebar-mini">
   <div class="wrapper">
     <?php include('test1.php');?>
     
@@ -58,12 +58,16 @@ $username = $_SESSION['username'];
       </section>
     </div>
     <footer class="main-footer">
+    <br>
+
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
       </div>
       <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> All rights
       reserved.
     </footer>
+    <br>
+
   </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -15,7 +15,7 @@
                         <th width="80">PO NO.</th>
                         <th width="80">DIVISION</th>
                         <th >PURPOSE</th>
-                        <th width="200">ACTION</th>
+                        <th width="210">ACTION</th>
                     </tr>
                 </thead>
                 <?php 

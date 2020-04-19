@@ -13,6 +13,15 @@ $username = $_SESSION['username'];
 ?>
 
     </style>
+    <style>
+  th{
+    color:#a9242d;
+    text-align:center;
+  }
+  td{
+    text-align:center;
+  }
+  </style>
 <body class=" hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
   <header class="main-header">
@@ -65,7 +74,7 @@ $username = $_SESSION['username'];
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar"  style = "background-color:#f5bfc3;">
+  <aside class="main-sidebar"  style = "background-color:#f6cdd0;">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
@@ -118,7 +127,7 @@ $username = $_SESSION['username'];
             </a>
             <ul class="treeview-menu" >
               <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;</i>Issuances</a></li>
-              <li><a href="#"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Databank</a></li>
+              <li><a href="databank.php"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Databank</a></li>
             </ul>
         </li>
         <li class="treeview" <?php 
@@ -186,7 +195,7 @@ $username = $_SESSION['username'];
           <li class="treeview">
             <a href="#" >
               <i class="fa fa-folder-open-o" style = "color:#black;"></i>
-              <span >ACCOUNTING</span>
+              <span >Accounting</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -199,7 +208,7 @@ $username = $_SESSION['username'];
           <li class="treeview">
             <a href="#" >
               <i class="fa fa-folder-open-o" style = "color:#black;"></i>
-              <span >CASH</span>
+              <span >Cash</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

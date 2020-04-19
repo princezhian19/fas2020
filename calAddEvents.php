@@ -174,12 +174,16 @@ function getCurrentID()
     </section>
   </div>
   <footer class="main-footer">
+    <br>
+
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
     <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> All rights
     reserved.
   </footer>
+  <br>
+
 </div>
 <?php
 if($_GET['flag'] == 1)

@@ -11,8 +11,8 @@ $username = $_SESSION['username'];
 <html>
 <title>FAS | Add Issuances</title>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
 
     <!-- Tell the browser to be responsive to screen width -->
@@ -40,7 +40,15 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-
+    <style>
+  th{
+    color:#a9242d;
+    text-align:center;
+  }
+  td{
+    text-align:center;
+  }
+  </style>
 </head>
 
 <?php include 'test1.php';?>

@@ -56,6 +56,13 @@ $events = $req->fetchAll();
 <link rel="stylesheet" href="calendar/fullcalendar/fullcalendar.min.css" />
 <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
+
+
+
+<script src="_includes/sweetalert.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="_includes/sweetalert.css">
+<link href="_includes/sweetalert2.min.css" rel="stylesheet"/>
+<script src="_includes/sweetalert2.min.js" type="text/javascript"></script>
 <script src="calendar/fullcalendar/lib/jquery.min.js"></script>
 <script src="calendar/fullcalendar/lib/moment.min.js"></script>
 <script src="calendar/fullcalendar/fullcalendar.min.js"></script>
@@ -163,12 +170,16 @@ function viewEvents()
     </section>
   </div>
   <footer class="main-footer">
+    <br>
+
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
     <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> All rights
     reserved.
   </footer>
+  <br>
+
 </div>
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

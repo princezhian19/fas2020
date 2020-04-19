@@ -38,9 +38,17 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-
+<style>
+  th{
+    color:#a9242d;
+    text-align:center;
+  }
+  td{
+    text-align:center;
+  }
+  </style>
       </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
   <?php include('test1.php');?>
   
@@ -57,12 +65,15 @@ $username = $_SESSION['username'];
 
   </div>
   <footer class="main-footer">
+    <br>
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
       </div>
       <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> All rights
       reserved.
+      
     </footer>
+    <br>
   
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
