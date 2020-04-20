@@ -65,11 +65,24 @@ while($row=mysqli_fetch_array($query)){
             <a href="EditEvent.php?eventid='.$row['id'].'" class = "btn btn-primary btn-xs">
                 <i class="fa">&#xf044;</i> Edit
             </a>&nbsp;
-            <a id = "sweet-14" class = "btn btn-danger btn-xs"> 
+            <a id = "sweet-14" data-id = '.$row['id'].' class = "btn btn-danger btn-xs"> 
                 <i class="fa fa-trash"></i> Delete
             </a>
         </center>';
         $data[]=$subdata;
+    }else if($row['DIVISION_C'] == $_SESSION['division']){
+        $subdata[]='
+        <center>s
+            <a href="ViewEvent.php?eventid='.$row['id'].'" class = "btn btn-success btn-xs">
+                <i class="fa fa-eye"></i> View
+            </a>&nbsp;
+            <a href="EditEvent.php?eventid='.$row['id'].'" class = "btn btn-primary btn-xs">
+                <i class="fa">&#xf044;</i> Edit
+            </a>&nbsp;
+            <a id = "sweet-14" data-id = '.$row['id'].' class = "btn btn-danger btn-xs"> 
+                <i class="fa fa-trash"></i> Delete
+            </a>
+        </center>';
     }
 
     //create event on click in button edit in cell datatable for display modal dialog           $row[0] is id in table on database

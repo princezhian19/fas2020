@@ -54,7 +54,7 @@ $events = $req->fetchAll();
 <script src="calendar/fullcalendar/lib/jquery.min.js"></script>
 <script src="calendar/fullcalendar/lib/moment.min.js"></script>
 <script src="calendar/fullcalendar/fullcalendar.min.js"></script>
-    <style> .response { height: 60px; } .success { background: #cdf3cd; padding: 10px 60px; border: #c3e6c3 1px solid;} </style>
+    <style> .response {  } .success { background: #cdf3cd; padding: 10px 60px; border: #c3e6c3 1px solid;} </style>
 
   </head>
 
@@ -138,15 +138,24 @@ function viewEvents()
                     <li class="active">Events</li>
                         </ol><br><br>
                         <div class="row">
+
           <div class="col-md-12">
+          <div class = "response"></div>   
+
               <div class="box">
                   <div class="panel panel-defasult">
                       <div class="box-body"> 
-                        <div class = "response"></div>   
-                              <h1>Edit Event/Activity</h1>
+                      <div class="col-md-6">
+                      <h1>Calendar</h1>
+                      </div>
+                      <div class="col-md-6">
+                      <h1>Edit Event/Activity</h1>
+
+                      </div>
                               <div class = "col-md-6" id='calendar'></div>
+
                           <div class="well col-md-6" >
-                            
+                        
                                     <?php echo viewEvents();?>
                                 </div>
                        
@@ -165,8 +174,7 @@ function viewEvents()
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> All rights
-    reserved.
+    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
   </footer>
   <br>
 

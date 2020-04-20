@@ -9,8 +9,14 @@ $username = $_SESSION['username'];
 }
 
         $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .   $_SERVER['REQUEST_URI']; 
-
-?>
+        function getDivision()
+        {
+        include 'connection.php';
+        $sqlUsername = mysqli_query($conn,"SELECT * FROM tblpersonneldivision where DIVISION_N =".$_SESSION['division']."");
+        $row = mysqli_fetch_array($sqlUsername);
+        echo  $row['DIVISION_M']; 
+        }
+        ?>
 
     </style>
     <style>
@@ -53,9 +59,9 @@ $username = $_SESSION['username'];
               <li class="user-header">
                 <img src="dilg.png" class="img-circle" alt="User Image">
 
-                <p>
-                <?php echo $_SESSION['complete_name'];?>
-                  <small>Position</small>
+                <p><b>
+                <?php echo $_SESSION['complete_name'];?></b>
+                  <small><?php echo getDivision();?></small>
                 </p>
               </li>
              
@@ -64,7 +70,7 @@ $username = $_SESSION['username'];
                   <a href="UpdateAccount.php?id=<?php echo  $_SESSION['currentuser'];?>&username=<?php echo  $_SESSION['username'];?>" class="btn btn-default btn-flat"><i class = "fa fa-cogs"></i>Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="index.php" class="btn btn-default btn-flat"><i class = "fa fa-sign-out"></i> Sign out</a>
+                  <a href="index.php" class="btn btn-default btn-flat"><i class = "fa fa-sign-out"></i> Log out</a>
                 </div>
               </li>
             </ul>
@@ -83,7 +89,7 @@ $username = $_SESSION['username'];
           <img src="dilg.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php echo $_SESSION['complete_name'];?></p>
+          <p><?php echo $_SESSION['username'];?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -235,7 +241,7 @@ $username = $_SESSION['username'];
         <li class="treeview" tyle="background-color: lightgray;">
           <a href="" >
             <i class="fa fa-cogs" style = "color:#black;"></i>
-            <span  style = "color:#black;font-weight:normal;">Setting</span>
+            <span  style = "color:#black;font-weight:normal;">Settings</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -250,7 +256,7 @@ $username = $_SESSION['username'];
         <li>
             <a href="index.php">
               <i class="fa fa-sign-out " style = "color:#black;"></i> 
-              <span  style = "color:#black;font-weight:normal;">Logout</span>
+              <span  style = "color:#black;font-weight:normal;">Log out</span>
             </a>
         </li>        
         
@@ -259,3 +265,10 @@ $username = $_SESSION['username'];
     </section>
     <!-- /.sidebar -->
   </aside>
+  
+<script>
+  setInterval(function(){
+$('#ta_request').load('_countTA.php');
+$('#on_going').load('_countOngoing.php');
+}, 100); /* time in milliseconds (ie 2 se  conds)*/
+  </script>

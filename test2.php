@@ -56,11 +56,5 @@
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 
-<script>
-  setInterval(function(){
-$('#ta_request').load('_countTA.php');
-$('#on_going').load('_countOngoing.php');
-}, 100); /* time in milliseconds (ie 2 se  conds)*/
-  </script>
 </body>
 </html>
