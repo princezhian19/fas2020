@@ -101,7 +101,22 @@
 
     <script type="text/javascript">
     $(document).ready(function() {
-        $('#example1').DataTable();
+        var dataTable=$('#example1').DataTable({
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : true,
+            "order": [[ 1, "asc" ]],
+            aLengthMenu: [ [10, 20, -1], [ 10, 20, "All"] ],
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false
+           
+            });
+        
     } );
 </script>
 
