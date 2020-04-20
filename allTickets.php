@@ -105,7 +105,7 @@ function filldataTable()
 
                                                                 ?>
                                                                 <button id ="sweet-16" data-id ="<?php echo $row['CONTROL_NO'];?>" class = " pull-right sweet-14 btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
-
+                                                                <br>
                                                                 <?php
                                                             }else{
                                                                 ?>
@@ -169,7 +169,7 @@ function filldataTable()
                                                         <div class="col-md-2 bg-success"  style = "padding-top:10px;">
                                                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['REQ_BY'];?>">
                                                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Requested by</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-44.8px;font-size:12px;">
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-60px;font-size:12px;">
                                                             <?php
                                                             $uname  = $row['REQ_BY'];
                                                             $uname = trim($uname);
