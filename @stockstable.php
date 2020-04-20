@@ -3,34 +3,27 @@ include('db.class.php'); // call db.class.php
 
 ?>
 
-<body>
-<div class="box">
-  <div class="box-body">
-        <div class=""> 
-          <div class="">
-       
-            
-            <h1 align="">Stocks</h1>
+<div class="row">
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Stocks</h1> 
 
-             <div class="box-header ">
-    </div>
-    <br>
-          
+        <div class="class-responsive">
+          <div class="col-md-2">
+            <li class="btn btn-success"><a href="CreateStocks.php" style="color:white;text-decoration: none;">Update Stocks</a></li>
+              </div>
 
-    <div class="class-responsive">
-          
-         <div class="col-md-2">
-         <li class="btn btn-success"><a href="CreateStocks.php" style="color:white;text-decoration: none;">Update Stocks</a></li>
-          </div>
-
-         <div class="col-md-5">
-         <div class="input-group date">
-            <form method = "POST" action = "@stocksearch.php">
-            <input  type="text" class="form-control" style="height: 35px; width: 400px" id="form-control" placeholder="Enter Stock Number" name="stocksearch" > &nbsp
-            &nbsp<button type="submit" name="submit"  class="btn btn-success  ">Search</button>
-          </form>
-         </div>
-         </div>
+        <div class="col-md-5">
+        <div class="input-group date">
+        <form method = "POST" action = "@stocksearch.php">
+        <input  type="text" class="form-control" style="height: 35px; width: 400px" id="form-control" placeholder="Enter Stock Number" name="stocksearch" > &nbsp
+        &nbsp<button type="submit" name="submit"  class="btn btn-success  ">Search</button>
+        </form>
+        </div>
+        </div>
         <div class="col-md-5">
         <form method = "POST" action = "@Functions/stocksdateexport.php">
                     <!-- <div class="input-group date">
@@ -63,7 +56,7 @@ include('db.class.php'); // call db.class.php
       <br>
                 <!-- table here -->
 
-            <table id="xample1" class="table table-striped table-bordered" style="background-color: white;">
+<table id="xample1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;">
                         
@@ -137,26 +130,10 @@ include('db.class.php'); // call db.class.php
                 echo "</table>";
             ?>       
                 
-            </table>
-            <div class="row">
+</table>
 
-                  <div class="col-md-1">
 
-                  </div>
-                  <div class="col-md-5">
-
-                  </div>
-                    <div class="col-md-5">
-
-                  </div>
-
-            </div>
-         
-      </div>
-    </div>
     
-</div>
-</div>
 
 </body>
 <script type="text/javascript">

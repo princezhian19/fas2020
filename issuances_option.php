@@ -260,12 +260,12 @@ require_once('_includes/class.upload.php');
                     </tr>
                 </table>
                   <br>
-              <br>
-                <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
+                  <br>
+                    <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
 
-                <br>
-              <br>
-                </div>
+                    <br>
+                  <br>
+                    </div>
               </form>
           </div>
         </div>
