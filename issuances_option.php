@@ -127,14 +127,20 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
+if(empty($_FILES['file']['name'])){
 
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
+
+
+}
+else{
  $query = mysqli_query($conn,"INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
  VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')");
 
  /* echo "INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
  VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')";
  exit(); */
-
+}
 
 mysqli_close($conn);
 
@@ -424,7 +430,7 @@ require_once('_includes/class.upload.php');
         
                                 </tr>
                     <tr>
-                        <td class="col-md-2"><label>Attached File</label> </td>
+                        <td class="col-md-2"><label>Attached File <span style = "color:red;">*</span></label> </td>
                             <td class="col-md-5"> <input id="issuances_attachment" type="file" name="file"/>
                           <?php
 							if (!empty($_GET['option']) && $_GET['option']== 'edit') {

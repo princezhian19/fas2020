@@ -92,7 +92,7 @@ $url = $_POST['url'];
 $postedby = $_POST['postedby'];
 
 $posteddate = $_POST['posteddate'];
-
+$office = $_POST['office'];
 
 
 $servername = "localhost";
@@ -107,9 +107,20 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
+if(empty($_FILES['file']['name'])){
 
- $query = mysqli_query($conn,"INSERT INTO downloads (title,file,category,dateposted,postedby,url) 
- VALUES ('$title','$filename','$category','$posteddate','$username1','$url')");
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
+
+
+}
+else{
+  $query = mysqli_query($conn,"INSERT INTO downloads (title,file,category,dateposted,postedby,url,office) 
+  VALUES ('$title','$filename','$category','$posteddate','$username1','$url','$office')");
+
+  
+ 
+
+}
 
  /* echo "INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
  VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')";
@@ -310,7 +321,7 @@ require_once('_includes/class.upload.php');
                                 </td>
                                     </tr>
                                     <tr>
-                        <td class="col-md-2"><b>OFFICE</b></td>
+                        <td class="col-md-2"><b>Office</b></td>
                             <td class="col-md-5">
                             <!-- <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder=""> -->
                             <?php
@@ -329,7 +340,7 @@ require_once('_includes/class.upload.php');
 
 
                             ?>    
-                            <input readonly value="<?php echo $DIVISION_M;?>" id="" name="" autocomplete ="off" type="text" class="form-control" placeholder="">
+                            <input readonly value="<?php echo $DIVISION_M;?>" id="office" name="office" autocomplete ="off" type="text" class="form-control" placeholder="">
                                 </td>
                                     </tr>
 

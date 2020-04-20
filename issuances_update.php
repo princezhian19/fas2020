@@ -53,6 +53,7 @@ $url = $_POST['url'];
 $postedby = $_POST['postedby'];
 
 $posteddate = $_POST['posteddate'];
+$office = $_POST['office'];
 
 /* echo $id; */
 
@@ -88,10 +89,21 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
+if(empty($_FILES['file']['name'])){
+
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
+
+
+}
+else
+{
+
+
 
  $query = mysqli_query($conn,"UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$postedby',pdf_file='$filename',dateposted='$posteddate',date_issued='$dateissued',postedby='$username1',category='$category',url='$url' where id ='$id'");
 /* echo "UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$office',pdf_file='$file',dateposted='$posteddate',date_issued='$dateissued',postedby='$postedby',category='$category',url='$url' where id ='$id'";
 exit(); */
+}
 
 mysqli_close($conn);
 
@@ -377,7 +389,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                                                                     
                                                     </tr>
                                             <tr>
-                                                <td class="col-md-2"><label>Attached File</label> </td>
+                                                <td class="col-md-2"><label>Attached File<span style = "color:red;">*</span></label> </td>
                                                     <td class="col-md-5"> <input value="<?php echo $file;?>" id="issuances_attachment" type="file" name="file"/>
                                                   <?php
                                       if (!empty($_GET['option']) && $_GET['option']== 'edit') {
