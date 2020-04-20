@@ -114,7 +114,6 @@
             "bFilter": true,
             "bInfo": false,
             "bAutoWidth": false
-           
             });
         
     } );
