@@ -26,6 +26,7 @@ $select_uapp = mysqli_query($conn,"SELECT * FROM app WHERE id = $id ORDER BY id 
 $rowA = mysqli_fetch_array($select_uapp);
 $snid = $rowA['id'];
 $sn = $rowA['sn'];
+$pmo_id = $rowA['pmo_id'];
 $code = $rowA['code'];
 $item = $rowA['procurement'];
 $fund3 = $rowA['source_of_funds_id'];
@@ -218,17 +219,17 @@ if (isset($_POST['submit'])) {
 
  }else{
   for($count = 0; $count < count($_POST["pmo"]); $count++) {
-   $pmo = $_POST["pmo"][$count];
+   $pmo2 = $_POST["pmo"][$count];
    $qty = $_POST["qty"][$count];
    $id1 = $_POST["id1"][$count];
-   // $update_app = mysqli_query($conn,"UPDATE app SET pmo_id = '$pmo', qty='$qty'  WHERE id = $id1");
-   $update_app = mysqli_query($conn,"UPDATE app SET  qty='$qty',pmo_id=$pmo  WHERE id = $id1");
-   $update_app2 = mysqli_query($conn,"UPDATE app_items SET  qty='$qty',pmo_id=$pmo  WHERE sn = '$sn' ");
+
+   // $update_app = mysqli_query($conn,"UPDATE app SET  qty='$qty',pmo_id=$pmo2  WHERE id = $id1");
+   $update_app2 = mysqli_query($conn,"UPDATE app_items SET  qty='$qty',pmo_id=$pmo2  WHERE id = $id1");
  }
 
  $app = mysqli_query($conn,"UPDATE app SET unit_id = '$unit_id11', sn = '$sn1' , code = '$code1' , procurement = '$item1', source_of_funds_id = $fund1, category_id = $category1, mode_of_proc_id = $mode1, price = '$price1',app_price = '$app_price1', remarks = '$remarks1' WHERE id = $id ");
 
- $uapp = mysqli_query($conn,"UPDATE app_items SET sn = '$sn1' WHERE sn = '$sn'");
+ $uapp = mysqli_query($conn,"UPDATE app_items SET sn = '$sn1' WHERE sn = '$sn' AND pmo_id = $pmo_id");
 
  $update_budget = mysqli_query($conn,"UPDATE estimated_budget SET mooe = '$mooe1' , co = '$co1' , total_budget = '$budget1' WHERE app_id = $app_id ");
  echo ("<SCRIPT LANGUAGE='JavaScript'>
