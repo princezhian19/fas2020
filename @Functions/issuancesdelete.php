@@ -67,15 +67,17 @@ exit(); */
 mysqli_close($conn);
 
 if($query){
+    //echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Data has been successfully deleted. </p> </div></div>  '; 
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Data Deleted Successfully!')
+    window.alert(' Data has been successfully deleted.')
     window.location.href='../issuances.php';
     </SCRIPT>"); 
 
 }
 else{
+    // echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Error!')
+    window.alert('Error.')
     window.location.href='../issuances.php';
     </SCRIPT>");
 }

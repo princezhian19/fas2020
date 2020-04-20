@@ -137,17 +137,19 @@ if ($conn->connect_error) {
 mysqli_close($conn);
 
 if($query){
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
+
+    echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
+   /*  echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Data Added Successfully!')
-    window.location.href='../issuances.php';
-    </SCRIPT>"); 
+    window.location.href='../CreateIssuances.php';
+    </SCRIPT>");  */
 
 }
 else{
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
+    /* echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Error!')
-    window.location.href='../issuances.php';
-    </SCRIPT>");
+    window.location.href='../CreateIssuances.php';
+    </SCRIPT>"); */
 }
 
 }

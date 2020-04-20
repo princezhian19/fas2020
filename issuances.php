@@ -66,6 +66,14 @@ $username = $_SESSION['username'];
       padding: 10px 60px;
       border: #c3e6c3 1px solid;
   }
+
+  th{
+   
+    text-align:center;
+  }
+  td{
+    text-align:center;
+  }
     </style>
   </head>
 <body >

@@ -12,6 +12,8 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +36,8 @@ $username = $_SESSION['username'];
               <br>
               
             </div>
+
+            <form method="POST" action='' enctype="multipart/form-data" >
 
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
@@ -94,11 +98,11 @@ $username = $_SESSION['username'];
                             
                 ?>
 
-              <?php if ($DIVISION_C == 15 || $DIVISION_C == 54 ):?>
+                <?php if ($DIVISION_C == 15 || $DIVISION_C == 54 || $DIVISION_C == 16 ):?>
                             
                 <a  href="<?php echo $location?>" title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
                 <a href="UpdateDatabank.php?id=<?php echo $id; ?>"  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
-                <a onclick="return confirm('Are you sure you want to Delete?');" name="del"  href="@Functions/databankdelete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/databankdelete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
               <?php else :?>
                 <a  href="<?php echo $location?>" title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
                  <?php endif?>
@@ -115,6 +119,7 @@ $username = $_SESSION['username'];
 
              
             </table>
+              </form>
                 
                 </div>
             </div>

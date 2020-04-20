@@ -91,17 +91,21 @@ exit(); */
 mysqli_close($conn);
 
 if($query){
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
+
+    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
+    /* echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Data Updated Successfully!')
     window.location.href='../issuances.php';
-    </SCRIPT>"); 
+    </SCRIPT>");  */
 
 }
 else{
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
+
+    echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
+    /* echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Error!')
     window.location.href='../issuances.php';
-    </SCRIPT>");
+    </SCRIPT>"); */
 }
 }
 ?>
