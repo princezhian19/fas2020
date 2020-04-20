@@ -22,11 +22,8 @@ $username = $_SESSION['username'];
     <style>
   th{
     color:#a9242d;
-    text-align:center;
   }
-  td{
-    text-align:center;
-  }
+  
   </style>
 <body class=" hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
@@ -116,7 +113,7 @@ $username = $_SESSION['username'];
           </a>
           <ul class="treeview-menu">
             <li><a href="ViewCalendar.php"  style = "color:#black;font-weight:normal;"><i class="fa fa-circle-o" style = "color:#black;"></i>Calendar of Activities</a></li>
-            <li><a href="ManageCalendar.php" s style = "color:#black;font-weight:normal;"><i class="fa fa-circle-o" style = "color:#black;"></i>Manage Calendar</a></li>
+            <li><a href="ManageCalendar.php?division=<?php echo $_SESSION['division'];?>" s style = "color:#black;font-weight:normal;"><i class="fa fa-circle-o" style = "color:#black;"></i>Manage Calendar</a></li>
       
           </ul>
         </li>

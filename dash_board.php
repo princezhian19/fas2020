@@ -8,21 +8,21 @@
                   <strong>Monitoring of PRs</strong>
                   <p style="float:right;"><a href="MonitoringPr.php" class="btn btn-success btn-s">See All</a></p>
                   <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
-                <thead>
-                    <tr style="background-color: white;color:blue;">
-                        <th>PR NO</th>
-                        <th>PR DATE</th>
-                        <th>OFFICE</th>
-                        <th width="300">PURPOSE</th>
-                        <th width="100">TARGET DATE</th>
-                        <th>RFQ NO</th>
-                        <th>RFQ DATE</th>
-                        <th width="100">WINNING SUPPLIER</th>
-                        <th>PO NO</th>
-                        <th>PO DATE</th>
-                    </tr>
-                </thead>
-                <?php
+                    <thead>
+                        <tr style="background-color: white;color:blue;">
+                            <th>PR NO</th>
+                            <th>PR DATE</th>
+                            <th>OFFICE</th>
+                            <th width="300">PURPOSE</th>
+                            <th width="100">TARGET DATE</th>
+                            <th>RFQ NO</th>
+                            <th>RFQ DATE</th>
+                            <th width="100">WINNING SUPPLIER</th>
+                            <th>PO NO</th>
+                            <th>PO DATE</th>
+                        </tr>
+                    </thead>
+                    <?php
 
                 $user_id = ""; 
                 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");

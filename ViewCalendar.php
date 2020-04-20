@@ -74,6 +74,8 @@ $events = $req->fetchAll();
   }
     </style>
 <?php include 'test1.php';?>
+<?php include 'connection.php';?>
+
   <div class="content-wrapper">
     <section class="content-header">
     <br>
@@ -82,6 +84,8 @@ $events = $req->fetchAll();
       <li class="active">Calendar of Events</li>
       </ol><br>
     <?php include 'calendar_view.php';?>
+    <div id='calendar'></div>
+
     </section>
   </div>
 

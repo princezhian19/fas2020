@@ -112,7 +112,8 @@ $username = $_SESSION['username'];
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> 
+    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> All rights
+    reserved.
   </footer>
   <br>
 </div>
@@ -151,7 +152,7 @@ $username = $_SESSION['username'];
             "processing": true,
             "serverSide":true,
             "ajax":{
-                url:"DATATABLE3/test/fetchCalendar.php",
+                url:"DATATABLE3/test/fetchCalendar.php?division=<?php echo $_SESSION['division'];?>",
                 type:"post"
             }
             });
