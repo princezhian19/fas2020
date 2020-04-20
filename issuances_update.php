@@ -213,7 +213,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
               <li class="btn btn-success"><a href="issuances.php" style="color:white;text-decoration: none;">Back</a></li>
                 <br><br>
                  <div class="class" >
-                  <form method="POST" action='@Functions/issuancesupdate.php' enctype="multipart/form-data" >
+                  <form method="POST" action='' enctype="multipart/form-data" >
                         <input value="<?php echo $id;?>" hidden  type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
                         <table class="table"> 
                                             <tr>
