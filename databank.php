@@ -46,7 +46,7 @@ $username = $_SESSION['username'];
     text-align:center;
   }
   td{
-    text-align:center;
+    /* text-align:center; */
   }
   </style>
 </head>

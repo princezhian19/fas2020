@@ -108,13 +108,7 @@ include 'connection.php';
 
 
                 </table>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </body>
+      
 
 
       <!-- jQuery 3 -->

@@ -53,11 +53,7 @@
             </table>
             <!-- <a href='deleteRIS.php?id=$id' ><i style='font-size:20px' class='fa fa-trash-o'></i> </a> -->
 
-        </div>
-    </div>
-    
-</div>
-</div>
+
 
 </body>
 <script type="text/javascript">

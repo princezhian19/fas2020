@@ -62,11 +62,7 @@
                 </tr>
             <?php } ?>
         </table>
-    </div>
-</div>
 
-</div>
-</div>
 
 </body>
 <script type="text/javascript">
