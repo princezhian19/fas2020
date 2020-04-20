@@ -1,6 +1,17 @@
 <?php
 include('db.class.php'); // call db.class.php
 ?>
+
+
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:index.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +37,7 @@ include('db.class.php'); // call db.class.php
 
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
-                    <tr style="background-color: white;color:blue;">
+                    <tr style="background-color: white;color:blue; text-align:center ">
                  
                   <th width="200">CATEGORY</th>
                   <th width="400">TITLE</th>
@@ -61,7 +72,7 @@ include('db.class.php'); // call db.class.php
 
                ?>
 
-                <tr align = ''>
+                <tr align = 'center'>
             
                 
               
@@ -70,11 +81,27 @@ include('db.class.php'); // call db.class.php
                 <td><?php echo $dateposted."-".$postedby?></td>
                 
 
-                <td> 
+                <td>
+                <?php   
+                            $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                            $username = $_SESSION['username'];
+
+                            //echo $username;
+                            $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                            $rowdiv = mysqli_fetch_array($select_user);
+                            $DIVISION_C = $rowdiv['DIVISION_C'];
+                            //echo $DIVISION_C;
+                            
+                ?>
+
+              <?php if ($DIVISION_C == 15 || $DIVISION_C == 54 ):?>
+                            
                 <a  href="<?php echo $location?>" title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
                 <a href="UpdateDatabank.php?id=<?php echo $id; ?>"  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                 <a onclick="return confirm('Are you sure you want to Delete?');" name="del"  href="@Functions/databankdelete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
-             
+              <?php else :?>
+                <a  href="<?php echo $location?>" title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
+                 <?php endif?>
                 </td>
                 
                

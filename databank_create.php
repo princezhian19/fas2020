@@ -132,7 +132,7 @@ require_once('_includes/class.upload.php');
                  
                        
                     <tr>
-                        <td class="col-md-2"><label>Attached File</label> </td>
+                        <td class="col-md-2"><label>Attached File<span style = "color:red;">*</span></label> </td>
                             <td class="col-md-5"> <input id="issuances_attachment" type="file" name="file"/>
                           <?php
 							if (!empty($_GET['option']) && $_GET['option']== 'edit') {
@@ -165,6 +165,31 @@ require_once('_includes/class.upload.php');
                               
                            <!--  <li class="btn btn-primary"><a href="issuances.php" style="color:white;text-decoration: none;">Choose File</a> --></li><!-- <li class="button btn-primary">Choose File</button> --> <!-- <label>&nbsp&nbspNo file Chosen</label><label class="pull-right"> Allowed file: *.pdf   Max allowed size: 5mb</label></td> -->
                                 </tr>
+
+
+                                <tr>
+                        <td class="col-md-2"><b>OFFICE</b></td>
+                            <td class="col-md-5">
+                            <!-- <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder=""> -->
+                            <?php
+
+                            $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                            $username = $_SESSION['username'];
+
+                            //echo $username;
+                            $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                            $rowdiv = mysqli_fetch_array($select_user);
+                            $DIVISION_C = $rowdiv['DIVISION_C'];
+
+                            $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                            $rowdiv1 = mysqli_fetch_array($select_office);
+                            $DIVISION_M = $rowdiv1['DIVISION_M'];
+
+
+                            ?>    
+                            <input readonly value="<?php echo $DIVISION_M;?>" id="" name="" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                </td>
+                                    </tr>
                     <tr>
                         <td class="col-md-2"><b>URL</b></td> 
                             <td class="col-md-5">
