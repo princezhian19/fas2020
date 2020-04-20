@@ -176,12 +176,7 @@ include('db.class.php'); // call db.class.php
                               </tr> 
                             <?php } ?>
                           </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </body>
+            
 
                 <script type="text/javascript">
     $(document).ready(function() {

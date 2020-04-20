@@ -68,7 +68,15 @@ if($_GET['division'] == 11 || $_GET['division'] == 12 || $_GET['division'] == 13
 
     </section>
   </div>
- 
+  <footer class="main-footer">
+    <br>
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0
+      </div>
+      <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+      
+    </footer>
+    <br>
 </div>
 
 <script src="_includes/sweetalert.min.js"></script>

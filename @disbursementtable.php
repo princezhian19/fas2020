@@ -162,21 +162,14 @@
                                     </tr>
                                   <?php } ?>    
                                 </table>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </body>
-                      <script type="text/javascript">
+               
+
+        
+                <script type="text/javascript">
                         $(document).ready(function() {
                           $('#example1').DataTable();
                         } );
                       </script>
-                    </div>
-                  </div>
-                </div>
-
-        
 <script>
   $(function () {
     //Initialize Select2 Elements

@@ -285,7 +285,15 @@ while ($row = mysqli_fetch_assoc($view_query)) {
   </form>
     <!--End Submit -->
   </div>
-
+  <footer class="main-footer">
+    <br>
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0
+      </div>
+      <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+      
+    </footer>
+    <br>
     </section>
   </div>
  

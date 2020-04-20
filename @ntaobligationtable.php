@@ -200,13 +200,7 @@
 
             </table>
        
-      </div>
-    </div>
-    
-</div>
-</div>
-
-</body>
+ 
 <script type="text/javascript">
     $(document).ready(function() {
         $('#example1').DataTable();

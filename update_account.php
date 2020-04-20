@@ -405,8 +405,7 @@
     </div>
   </div>
 </form>
-</div>  
-</div>  
+ 
 <script>
   $('#mySelect2').on('change', function() {
     var value = $(this).val();
