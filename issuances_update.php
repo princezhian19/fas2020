@@ -208,281 +208,252 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
        
         <div class="box">
           <div class="box-body">
-      
             <h1 align="">Edit Issuances</h1>
-         
-        <br>
-      <li class="btn btn-success"><a href="issuances.php" style="color:white;text-decoration: none;">Back</a></li>
-      <br>
-      <br>
+             <br>
+              <li class="btn btn-success"><a href="issuances.php" style="color:white;text-decoration: none;">Back</a></li>
+                <br><br>
+                 <div class="class" >
+                  <form method="POST" action='@Functions/issuancesupdate.php' enctype="multipart/form-data" >
+                        <input value="<?php echo $id;?>" hidden  type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
+                        <table class="table"> 
+                                            <tr>
+                                                <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
+                                            <td class="col-md-5">
+                                              <select class="form-control " style="width: 100%;" name="category" id="category" > 
+                                              <option value="11">Department Memorandum Circular</option>
+                                              <option value="12">Department Order</option>
+                                              <option value="14">Regional Memorandum Circular</option>
+                                              <option value="15">Regional Order</option>
+                                              <option value="20">Regional Office Order</option>
+                                              <option value="17">Executive Order</option>
+                                              <option value="18">Joint Memorandum Circular</option>
+                                              </select></td>
+                                                        </tr>
+                                            <tr>  
+                                                <td class="col-md-2"><b>Issuance No<span style = "color:red;">*</span></b></td>
+                                                    <td class="col-md-5">
+                                                    <input value="<?php echo $issuances;?>" required  class="form-control" type="text" class="" style="height: 35px;" id="issuances" name="issuances" placeholder="" name="issuances" >
+                                                            </td>
+                                                                </tr>
+                                            <tr>
+                                                <td class="col-md-2"><b>Issuance Date<span style = "color:red;">*</span></b></td>
+                                                    <td class="col-md-5">
+                                                    <!-- <input required value="<?php echo $dateissued;?>" type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" > -->
+                                                    <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = "<?php echo $dateissued ?>" >
+                                                  
+                                                  
+                                                  </tr>
+                                            <tr>
+                                                <td class="col-md-2"><b>Title/Subject<span style = "color:red;">*</span></b></td>
+                                                    <td class="col-md-5">  <input required value="<?php echo $title;?>"  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
+                                                        </tr>
+                                            <tr>
+                                                <td class="col-md-2"><b>Concerned Office</b></td>
+                                                    <td class="col-md-5"> 
+                                                      <!-- <input id="offices" value="<?php echo $office;?>" name="office" autocomplete ="off" type="text" class="form-control" placeholder=""></td> -->
+                                                      <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
+                                <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
+                                <div class="office-responsible well checkbox" style="position: absolute;display: none;max-width: 40%;  ">
 
-        <div class="class" >
+                                                  <?php
+                                                  $counter = 0; 
 
-        <form method="POST" action='' enctype="multipart/form-data" >
+                                                  $get_issuance_no = "SELECT id,issuance_no from issuances";
+                                                  $issuance_no_issuances = getData($conn,$get_issuance_no);
+
+                                        
+
+                                                  $query_responsible_office = "SELECT division_m,b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
+                                                      right join issuances_office_responsible b on a.issuance_no = b.issuance_id
+                                                          left join tblpersonneldivision c on c.division_n =b.office_responsible";
+                                                  $queryoffices = "SELECT b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
+                                                      right join issuances_office_responsible b on a.issuance_no = b.issuance_id";	
+
+                                                  $get_division ="SELECT * from tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N";
+                                                        $get_groupings ="SELECT * from tbl_groupings";
+                                                  
+                                                  $getdata = getData($conn,$get_division);
+                                                  $getgroup = getData($conn,$get_groupings);
+                                                  $countgroup = count($getgroup);
+                                                  // print "<div>";
+                                                  for ($i=0; $i < $countgroup; $i++) 
+                                              
+                                                  {
+                                                  $exploded= explode('', $getgroup[$i]['GROUP_M']);
+                                                    ?>
+                                                  <fieldset class="div ">
+
+                                                    <legend><?php echo $getgroup[$i]['GROUP_M'];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="divs" class="divs<?php echo $i;?>"></legend>
+                                            
+                                          
+
+                                              <?php
+
+                                              $get_options = "SELECT * FROM tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N WHERE a.GROUP_N=".$i."";
+                                              $getoptions = getData($conn,$get_options);
+                                              $getcount = count($getoptions);
+                                              foreach ($getoptions as $k) {
+
+
+                                              if ( $counter==0) { 
+                                              print "<div class='rows3 '>\n";
+                                              print " <table>
+
+                                              <tr>
+                                                <td>
+                                                
+                                                </td>
+                                              <tr>
+                                                      </table> ";
+
+                                              print "</div>";
+
+                                              ?>
+                                            
+                                        
+                                
+                                          <?php
+                                            }
+                                            $counter++;
+
+                                            if (!empty($_GET['option']) && ($_GET['option'] == 'edit')) {
+                                        
+
+                                              //we check if id is valid
+                                              if (empty($issuance_no_issuances)) {
+                                                //header("Location: http://www.loop.calabarzon.dilg.gov.ph/issuances_option.php");
+                                              }
+                                              $query_responsible_office_division = "SELECT division_n,division_m,b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
+                                                  right join issuances_office_responsible b on a.issuance_no = b.issuance_id
+                                                    left join tblpersonneldivision c on c.division_n =b.office_responsible where b.issuance_id= '".$issuance_no_issuances[0]['issuance_no']."'";
+
+                                                  $result_responsible_office = getData($conn,$query_responsible_office_division);
+                                                  $rro = [];
+                                                  foreach ($result_responsible_office as $key) {
+                                                      $rro[]= $key['division_n'];
+                                                  }
+                                            ?>
+
+                                            
+                                        <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>">
+                                      
+                                        <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}
+                                        else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?>/>
+                                        <span>
+                                          <table>
+                                              <tr>
+
+                                              <td>
+                                              <?php echo $k['DIVISION_M'];?>
+
+                                              </td>
+                                              </tr>
+
+                                          </table>
+                                        
+                                        </span></label>
+                                      
+                                            <?php }else{
+                                            ?>
+                                      <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
+                                      <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> />
+                                      <span>
+                                        <?php echo $k['DIVISION_M'];?>
+                                      </span></label>
+                                            <?php }
+                                            }
+
+                                            ?>
+                                                  </fieldset>
+
+                                                <?php  }
+                                                // print "</div>";
+                                                  ?>
+                                                
+                                                                  
+
+                                        </div>
+                                        </div>
+                                                                    
+                                                    </tr>
+                                            <tr>
+                                                <td class="col-md-2"><label>Attached File</label> </td>
+                                                    <td class="col-md-5"> <input value="<?php echo $file;?>" id="issuances_attachment" type="file" name="file"/>
+                                                  <?php
+                                      if (!empty($_GET['option']) && $_GET['option']== 'edit') {
+                                      
+                                      if (!empty($file) && (file_exists($directory.$file)))		
+                                      {
+                                        if (fileExtensionType($file) && fileExtensionType($file) == 'document' )
+                                        {
+                                                        
+                                          echo '<p class="form_details">          
+                                                <label>&nbsp;</label>
+                                                Current file: <a href="files/'.$file.'" target="_blank">'.$file.'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="deleteFile.php?id='.$id.'&i='.$file.'&d=files&t=issuances" title="Delete File">[x] Delete</a><br/>
+                                                Allowed file: *.pdf
+                                                <br>
+                                                Max allowed size: 5mb
+                                              </p>';				
+                                        }
+                                      }
+                                      } 
+                                      else
+                                      {
+                                          echo '<p class="form_details">          
+                                                <label>&nbsp;</label>
+                                                Allowed file: *.pdf
+                                                  <br>
+                                                Max allowed size: 5mb
+                                              </p>';								
+                                      }
+                                                              
+                                      ?>
+                                                      
+                                                  <!--  <li class="btn btn-primary"><a href="issuances.php" style="color:white;text-decoration: none;">Choose File</a> --></li><!-- <li class="button btn-primary">Choose File</button> --> <!-- <label>&nbsp&nbspNo file Chosen</label><label class="pull-right"> Allowed file: *.pdf   Max allowed size: 5mb</label></td> -->
+                                                        </tr>
+                                            <tr>
+                                                <td class="col-md-2"><b>URL</b></td>  
+                                                    <td class="col-md-5">
+                                                    <input id="url" value="<?php echo $url;?>" name="url" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                                        </td>
+                                                            </tr>
+                                            <tr>
+                                                <td class="col-md-2"><b>Posted By</b></td>
+                                                    <td class="col-md-5"> <?php
+
+                                                    $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                                                    $username = $_SESSION['username'];
+                                      
+                                                    //echo $username;
+                                                    $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                                                    $rowdiv = mysqli_fetch_array($select_user);
+                                                    $DIVISION_C = $rowdiv['DIVISION_C'];
+                                                    
+                                                    $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                                                    $rowdiv1 = mysqli_fetch_array($select_office);
+                                                    $DIVISION_M = $rowdiv1['DIVISION_M'];
+                                                    
+                                                    
+                                                    ?>                             
+                                                    <input readonly value="<?php echo $DIVISION_M;?>" id="postedby" name="postedby" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                                            </td>
+                                                                </tr>
+                                            <tr>
+                                                <td class="col-md-2"><b>Posted Date</b></td>
+                                                    <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" ></td>
+                                                        </tr>
+                        </table>
+                        <br>
+                        <br>
+                          <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
+                          <br>
+                        <br>
+                          </div>
+                  </form>
+                  </div>
+                  </div>
+                
        
-        <input value="<?php echo $id;?>" hidden  type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
-
-        <table class="table"> 
-                    <tr>
-                        <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
-                    <td class="col-md-5">
-                      <select class="form-control " style="width: 100%;" name="category" id="category" > 
-                      <option value="11">Department Memorandum Circular</option>
-                      <option value="12">Department Order</option>
-                      <option value="14">Regional Memorandum Circular</option>
-                      <option value="15">Regional Order</option>
-                      <option value="20">Regional Office Order</option>
-                      <option value="17">Executive Order</option>
-                      <option value="18">Joint Memorandum Circular</option>
-                      </select></td>
-                                </tr>
-                    <tr>  
-                        <td class="col-md-2"><b>Issuance No<span style = "color:red;">*</span></b></td>
-                            <td class="col-md-5">
-                            <input value="<?php echo $issuances;?>" required  class="form-control" type="text" class="" style="height: 35px;" id="issuances" name="issuances" placeholder="" name="issuances" >
-                                    </td>
-                                        </tr>
-                    <tr>
-                        <td class="col-md-2"><b>Issuance Date<span style = "color:red;">*</span></b></td>
-                            <td class="col-md-5">
-                            <!-- <input required value="<?php echo $dateissued;?>" type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" > -->
-                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = "<?php echo $dateissued ?>" >
-                           
-                          
-                          </tr>
-                    <tr>
-                        <td class="col-md-2"><b>Title/Subject<span style = "color:red;">*</span></b></td>
-                            <td class="col-md-5">  <input required value="<?php echo $title;?>"  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2"><b>Concerned Office</b></td>
-                            <td class="col-md-5"> 
-                              <!-- <input id="offices" value="<?php echo $office;?>" name="office" autocomplete ="off" type="text" class="form-control" placeholder=""></td> -->
-                              <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
-        <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
-        <div class="office-responsible well checkbox" style="position: absolute;display: none;max-width: 40%;  ">
-
-                          <?php
-                          $counter = 0; 
-
-                          $get_issuance_no = "SELECT id,issuance_no from issuances";
-                          $issuance_no_issuances = getData($conn,$get_issuance_no);
-
-                 
-
-                          $query_responsible_office = "SELECT division_m,b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
-                        		  right join issuances_office_responsible b on a.issuance_no = b.issuance_id
-                                  left join tblpersonneldivision c on c.division_n =b.office_responsible";
-                          $queryoffices = "SELECT b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
-                        		  right join issuances_office_responsible b on a.issuance_no = b.issuance_id";	
-
-                          $get_division ="SELECT * from tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N";
-                                $get_groupings ="SELECT * from tbl_groupings";
-                          
-                          $getdata = getData($conn,$get_division);
-                          $getgroup = getData($conn,$get_groupings);
-                          $countgroup = count($getgroup);
-                          // print "<div>";
-                          for ($i=0; $i < $countgroup; $i++) 
-                       
-                          {
-                          $exploded= explode('', $getgroup[$i]['GROUP_M']);
-                          	?>
-                           <fieldset class="div ">
-
-                             <legend><?php echo $getgroup[$i]['GROUP_M'];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="divs" class="divs<?php echo $i;?>"></legend>
-                    
-                   
-
-                      <?php
-
-                      $get_options = "SELECT * FROM tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N WHERE a.GROUP_N=".$i."";
-                      $getoptions = getData($conn,$get_options);
-                      $getcount = count($getoptions);
-                      foreach ($getoptions as $k) {
-
-
-                      if ( $counter==0) { 
-                      print "<div class='rows3 '>\n";
-                      print " <table>
-
-                      <tr>
-                        <td>
-                        
-                        </td>
-                      <tr>
-                              </table> ";
-
-                      print "</div>";
-
-                      ?>
-                    
-                 
-         
-                   <?php
-                    }
-                    $counter++;
-
-                    if (!empty($_GET['option']) && ($_GET['option'] == 'edit')) {
-                 
-
-                    	//we check if id is valid
-                    	if (empty($issuance_no_issuances)) {
-                    		//header("Location: http://www.loop.calabarzon.dilg.gov.ph/issuances_option.php");
-                    	}
-                    	 $query_responsible_office_division = "SELECT division_n,division_m,b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
-                        	 right join issuances_office_responsible b on a.issuance_no = b.issuance_id
-                             left join tblpersonneldivision c on c.division_n =b.office_responsible where b.issuance_id= '".$issuance_no_issuances[0]['issuance_no']."'";
-
-                          $result_responsible_office = getData($conn,$query_responsible_office_division);
-                          $rro = [];
-                          foreach ($result_responsible_office as $key) {
-                          		$rro[]= $key['division_n'];
-                          }
-                     ?>
-
-                   	
-                <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>">
-               
-                 <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}
-                 else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?>/>
-                 <span>
-                   <table>
-                      <tr>
-
-                      <td>
-                      <?php echo $k['DIVISION_M'];?>
-
-                      </td>
-                      </tr>
-
-                   </table>
-                
-                </span></label>
-               
-                    <?php }else{
-                    ?>
-              <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
-              <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> />
-              <span>
-                <?php echo $k['DIVISION_M'];?>
-              </span></label>
-                    <?php }
-                		}
-
-                     ?>
-                           </fieldset>
-
-                         <?php  }
-                         // print "</div>";
-                          ?>
-                         
-                          
-
-</div>
-</div>
-                            
-                            </tr>
-                    <tr>
-                        <td class="col-md-2"><label>Attached File<span style = "color:red;">*</span></label> </td>
-                            <td class="col-md-5"> <input value="<?php echo $file;?>" id="issuances_attachment" type="file" name="file"/>
-                          <?php
-							if (!empty($_GET['option']) && $_GET['option']== 'edit') {
-							
-							if (!empty($file) && (file_exists($directory.$file)))		
-							{
-								if (fileExtensionType($file) && fileExtensionType($file) == 'document' )
-								{
-															  
-								  echo '<p class="form_details">          
-											  <label>&nbsp;</label>
-											  Current file: <a href="files/'.$file.'" target="_blank">'.$file.'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="deleteFile.php?id='.$id.'&i='.$file.'&d=files&t=issuances" title="Delete File">[x] Delete</a><br/>
-											  Allowed file: *.pdf
-											  <br>
-											  Max allowed size: 5mb
-										  </p>';				
-								}
-							}
-							} 
-							else
-							{
-								  echo '<p class="form_details">          
-											  <label>&nbsp;</label>
-											  Allowed file: *.pdf
-											    <br>
-											  Max allowed size: 5mb
-										  </p>';								
-							}
-							                         
-						  ?>
-                              
-                           <!--  <li class="btn btn-primary"><a href="issuances.php" style="color:white;text-decoration: none;">Choose File</a> --></li><!-- <li class="button btn-primary">Choose File</button> --> <!-- <label>&nbsp&nbspNo file Chosen</label><label class="pull-right"> Allowed file: *.pdf   Max allowed size: 5mb</label></td> -->
-                                </tr>
-                    <tr>
-                        <td class="col-md-2"><b>URL</b></td>  
-                            <td class="col-md-5">
-                            <input id="url" value="<?php echo $url;?>" name="url" autocomplete ="off" type="text" class="form-control" placeholder="">
-                                </td>
-                                    </tr>
-                    <tr>
-                        <td class="col-md-2"><b>Posted By</b></td>
-                            <td class="col-md-5"> <?php
-
-                             $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-                             $username = $_SESSION['username'];
-              
-                             //echo $username;
-                             $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
-                             $rowdiv = mysqli_fetch_array($select_user);
-                             $DIVISION_C = $rowdiv['DIVISION_C'];
-                            
-                             $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
-                             $rowdiv1 = mysqli_fetch_array($select_office);
-                             $DIVISION_M = $rowdiv1['DIVISION_M'];
-                            
-                            
-                            ?>                             
-                            <input readonly value="<?php echo $DIVISION_M;?>" id="postedby" name="postedby" autocomplete ="off" type="text" class="form-control" placeholder="">
-                                    </td>
-                                        </tr>
-                    <tr>
-                        <td class="col-md-2"><b>Posted Date</b></td>
-                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" ></td>
-                                </tr>
-                </table>
-
-                
-                  <br>
-              <br>
-                <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
-
-                <br>
-              <br>
-                </div>
-              </form>
-                
-          </div>
-        </div>
-
-      
-    
-    </div>
-
-  
-    <br>
-    <br>
-
-    
-    </div>
-    
-  </form>
-   
-  </div>
-
-    </section>
-  </div>
- 
-</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 

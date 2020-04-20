@@ -230,8 +230,14 @@ $username = $_SESSION['username'];
             </a>
             <ul class="treeview-menu" >
               <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Create Request</a>
-              <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Processing<span class="badge badge-light pull-right" style = "background-color:skyblue;color:blue;" id = "on_going"><b>0</b></span></a></li>
-              <li><a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Monitoring<span class="badge badge-light pull-right" style = "background-color:skyblue;color:blue;" id = "ta_request"><b>0</b></span></a>
+              <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Processing<span>
+              <small class="label  bg-blue" id = "on_going"></small>
+            </span></a></li>
+              <li>
+              <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Monitoring 
+              <span>
+              <small class="label  bg-blue" id = "ta_request"></small>
+            </span></a>
             </ul>
         </li>
       
@@ -264,8 +270,9 @@ $username = $_SESSION['username'];
   </aside>
   
 <script>
+
   setInterval(function(){
 $('#ta_request').load('_countTA.php');
 $('#on_going').load('_countOngoing.php');
-}, 100); /* time in milliseconds (ie 2 se  conds)*/
+}, 1000); /* time in milliseconds (ie 2 se  conds)*/
   </script>
