@@ -88,8 +88,10 @@ function filldataTable()
                                                     <?php
                                                     if($row['STATUS_REQUEST'] == 'For action')
                                                     {
+                                                       
+
                                                         ?>
-                                                        <button disabled class = "pull-right sweet-14 btn btn-primary"><?php echo $row['ASSIST_BY'];?></button>
+                                                        <button class = "sweet-16 pull-right sweet-14 btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
 
                                                         <?php
                                                     }else{
@@ -112,61 +114,109 @@ function filldataTable()
                                                         <h5 class="card-title">Issue/Problem</h5>
                                                         <p class="card-text"><?php echo $row['ISSUE_PROBLEM'];?></p>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                <?php
-                                                if($row['ASSIST_BY'] == '' || $row['ASSIST_BY'] == null)
-                                                {
-                                                    ?>
-                                                    <span style="font-size:10px;vertical-align:top;line-height:10px;"></span>
-                                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-59.8px;font-size:12px;">-</span>
-                                                    <?php
-                                                }else{
-                                                    ?>
-                                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY'];?>">
-                                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Assignee</span>
-                                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-40.8px;font-size:12px;">
-                                                    <?php 
-                                                    $uname  = $row['ASSIST_BY'];
-                                                    $uname = trim($uname);
-                                                    if(strpos($uname, " ") !== false){
-                                                        $u = explode(" ", $uname);
-                                                        echo $u[0].' '.$u[1]; // piece1
-                                                    }
-                                                    ?></span>
-                                                    <?php
-                                                }
-                                                ?>
-                        
                                                     
-                                                </div> 
-                                                <div class="col-md-3 bg-success"  style = "padding-top:10px;">
-                                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['REQ_BY'];?>">
-                                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Request by</span>
-                                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-44.8px;font-size:12px;">
-                                                    <?php
-                                                $uname  = $row['REQ_BY'];
-                                                $uname = trim($uname);
-                                                
-                                                if(strpos($uname, " ") !== false){
-                                                
-                                                    $u = explode(" ", $uname);
-                                                    echo $u[0]; // piece1
-                                                
-                                                }
+                                                </div>
+                                                <?php
+                                                    if($row['STATUS_REQUEST'] == 'For action')
+                                                    {
+                                                       ?>
+                                                      
+                                                        
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['REQ_BY'];?>">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Requested by</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-60.8px;font-size:12px;">
+                                                            <?php
+                                                            $uname  = $row['REQ_BY'];
+                                                            $uname = trim($uname);
+                                                            
+                                                            if(strpos($uname, " ") !== false){
+                                                            
+                                                                $u = explode(" ", $uname);
+                                                                echo $u[0]; // piece1
+                                                            
+                                                            }
+                                                            ?>
+                                                            </span>
+                                                        </div>           
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Office</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-42.8px;font-size:12px;"><?php echo $row['OFFICE'];?></span>
+                                                        </div>
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Requested</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-70.8px;font-size:12px;"><?php echo date('F d, Y', strtotime($row['REQ_DATE'])).' '.$row['REQ_TIME'];?></span>
+                                                        </div>     
+                                                         <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Received</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;"><?PHP echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];?></span>
+                                                        </div>
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Completed</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;"><?PHP echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];?></span>
+                                                        </div>                                  
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Category</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-42.8px;font-size:12px;"><?php echo $row['TYPE_REQ'];?></span>
+                                                        </div> 
+                                                       
+                                                       <?php 
+                                                    }else{
+                                                        ?>
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                                <?php
+                                                                if($row['ASSIST_BY'] == '' || $row['ASSIST_BY'] == null)
+                                                                {
+                                                                    ?>
+                                                                    <span style="font-size:10px;vertical-align:top;line-height:10px;"></span>
+                                                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-59.8px;font-size:12px;">-</span>
+                                                                    <?php
+                                                                }else{
+                                                                    ?>
+                                                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY'];?>">
+                                                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Assignee</span>
+                                                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-40.8px;font-size:12px;">
+                                                                    <?php 
+                                                                    $uname  = $row['ASSIST_BY'];
+                                                                    $uname = trim($uname);
+                                                                    if(strpos($uname, " ") !== false){
+                                                                        $u = explode(" ", $uname);
+                                                                        echo $u[0].' '.$u[1]; // piece1
+                                                                    }
+                                                                    ?></span>
+                                                                    <?php
+                                                                }
+                                                            ?>
+                                                        </div> 
+                                                        <div class="col-md-3 bg-success"  style = "padding-top:10px;">
+                                                            <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['REQ_BY'];?>">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Request by</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-44.8px;font-size:12px;">
+                                                            <?php
+                                                            $uname  = $row['REQ_BY'];
+                                                            $uname = trim($uname);
+                                                            
+                                                            if(strpos($uname, " ") !== false){
+                                                            
+                                                                $u = explode(" ", $uname);
+                                                                echo $u[0]; // piece1
+                                                            
+                                                            }
+                                                            ?>
+                                                            </span>
+                                                        </div>                                                
+                                                        <div class="col-md-3 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Category</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-42.8px;font-size:12px;"><?php echo $row['TYPE_REQ'];?></span>
+                                                        </div> 
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Request Date</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;"><?PHP echo date('F d, Y',strtotime($row['REQ_DATE']));?></span>
+                                                        </div>   
+                                                        <?php
+                                                    }
                                                 ?>
-                                                    </span>
-                                                </div>                                                
                                                 
-                                                
-                                                <div class="col-md-3 bg-success"  style = "padding-top:10px;">
-                                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Category</span>
-                                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-42.8px;font-size:12px;"><?php echo $row['TYPE_REQ'];?></span>
-                                                </div> 
-                                                <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Request Date</span>
-                                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;"><?PHP echo date('F d, Y',strtotime($row['REQ_DATE']));?></span>
-                                                </div>   
                                                 
                                     
                                             </div>
@@ -302,7 +352,7 @@ function currentServing($assignee)
             <div class = "row">
             <div class = "col-md-3">
                 <div class="card" style="width: 100%;margin-top:40px;">
-            <button class = "btn btn-success btn-md">Create Request </button>
+            <button class = "btn btn-success btn-md"><a href = "requestForm.php?division=<?php echo $_SESSION['division'];?>" style = "decoration:none;color:#fff;">Create Request</a> </button>
 
                 <p class="font-weight-bold"><h3>ICT Staff Work Load</h3></p>
 
@@ -341,11 +391,11 @@ function currentServing($assignee)
                         </li>
                     </ul>
                 </div>
-                <div class="card" style="width: 100%;margin-top:40px;">
+                <!-- <div class="card" style="width: 100%;margin-top:40px;">
                 <p class="font-weight-bold"><h3></h3></p>
                     <h3>On-going</h3>
                     <?php echo submittedReq();?>
-                </div>
+                </div> -->
             </div>
             <div class = "col-md-9">
                 <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
