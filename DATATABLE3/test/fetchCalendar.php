@@ -55,39 +55,94 @@ while($row=mysqli_fetch_array($query)){
     $subdata[]=$row['venue'];           
     $subdata[]=$row['remarks'];           
     $subdata[]=$row['UNAME'];         
+    $office_n = $row['DIVISION_C'];
     if($_SESSION['planningofficer'] == 1)
     {
-        $subdata[]='
-        <center>
-            <a href="ViewEvent.php?eventid='.$row['id'].'" class = "btn btn-success btn-xs">
-                <i class="fa fa-eye"></i> View
-            </a>&nbsp;
-            <a href="EditEvent.php?eventid='.$row['id'].'" class = "btn btn-primary btn-xs">
-                <i class="fa">&#xf044;</i> Edit
-            </a>&nbsp;
-            <a id = "sweet-14" data-id = '.$row['id'].' class = "btn btn-danger btn-xs"> 
-                <i class="fa fa-trash"></i> Delete
-            </a>
-        </center>';
-        $data[]=$subdata;
-    }else if($row['DIVISION_C'] == $_SESSION['division']){
-        $subdata[]='
-        <center>s
-            <a href="ViewEvent.php?eventid='.$row['id'].'" class = "btn btn-success btn-xs">
-                <i class="fa fa-eye"></i> View
-            </a>&nbsp;
-            <a href="EditEvent.php?eventid='.$row['id'].'" class = "btn btn-primary btn-xs">
-                <i class="fa">&#xf044;</i> Edit
-            </a>&nbsp;
-            <a id = "sweet-14" data-id = '.$row['id'].' class = "btn btn-danger btn-xs"> 
-                <i class="fa fa-trash"></i> Delete
-            </a>
-        </center>';
+        if($_GET['division'] == $row['DIVISION_C'])
+        {
+            $subdata[]='
+                <center>
+                    <a href="ViewEvent.php?eventid='.$row['id'].'" class = "btn btn-success btn-xs">
+                        <i class="fa fa-eye"></i> View
+                    </a>&nbsp;
+                    <a href="EditEvent.php?eventid='.$row['id'].'" class = "btn btn-primary btn-xs">
+                        <i class="fa">&#xf044;</i> Edit
+                    </a>&nbsp;
+                    <a id = "sweet-14" id = '.$row['id'].' class = "btn btn-danger btn-xs"> 
+                        <i class="fa fa-trash"></i> Delete
+                    </a>
+                </center>';  
+                $data[]=$subdata;
+        }else if($_SESSION['username'] == $row['postedby'])
+        {
+            $subdata[]='
+            <center>
+                <a href="ViewEvent.php?eventid='.$row['id'].'" class = "btn btn-success btn-xs">
+                    <i class="fa fa-eye"></i> View
+                </a>&nbsp;
+                <a href="EditEvent.php?eventid='.$row['id'].'" class = "btn btn-primary btn-xs">
+                    <i class="fa">&#xf044;</i> Edit
+                </a>&nbsp;
+                <a id = "sweet-14" id = '.$row['id'].' class = "btn btn-danger btn-xs"> 
+                    <i class="fa fa-trash"></i> Delete
+                </a>
+            </center>';  
+            $data[]=$subdata; 
+        }else{
+            $subdata[]='
+                <center>
+                    <a href="ViewEvent.php?eventid='.$row['id'].'" class = "btn btn-success btn-xs">
+                        <i class="fa fa-eye"></i> View
+                    </a>&nbsp;
+                
+                </center>';  
+                $data[]=$subdata;
+            }
+    
+        
+    }else{
+        if($_SESSION['currentuser'] == $row['postedby'])
+        {
+            $subdata[]='
+            <center>
+                    <a href="ViewEvent.php?eventid='.$row['id'].'" class = "btn btn-success btn-xs">
+                        <i class="fa fa-eye"></i> View
+                    </a>&nbsp;
+                    <a href="EditEvent.php?eventid='.$row['id'].'" class = "btn btn-primary btn-xs">
+                        <i class="fa">&#xf044;</i> Edit
+                    </a>&nbsp;
+                    <a id = "sweet-14" id = '.$row['id'].' class = "btn btn-danger btn-xs"> 
+                        <i class="fa fa-trash"></i> Delete
+                    </a>
+                </center>';   
+            $data[]=$subdata;
+        }else if($_GET['division'] == $row['DIVISION_C']){
+            $subdata[]='
+                <center>
+                    <a href="ViewEvent.php?eventid='.$row['id'].'" class = "btn btn-success btn-xs">
+                        <i class="fa fa-eye"></i> View
+                    </a>&nbsp;
+                    <a href="EditEvent.php?eventid='.$row['id'].'" class = "btn btn-primary btn-xs">
+                        <i class="fa">&#xf044;</i> Edit
+                    </a>&nbsp;
+                    <a id = "sweet-14" id = '.$row['id'].' class = "btn btn-danger btn-xs"> 
+                        <i class="fa fa-trash"></i> Delete
+                    </a>
+                </center>';  
+                $data[]=$subdata;
+        
+        }else{
+                $subdata[]='
+            <center>
+                <a href="ViewEvent.php?eventid='.$row['id'].'" class = "btn btn-success btn-xs">
+                    <i class="fa fa-eye"></i> View
+                </a>&nbsp;
+            
+            </center>';  
+            $data[]=$subdata;
+        }
     }
-
-    //create event on click in button edit in cell datatable for display modal dialog           $row[0] is id in table on database
-   
-}
+    }
 
 $json_data=array(
     "draw"              =>  intval($request['draw']),

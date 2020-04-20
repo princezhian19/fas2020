@@ -26,14 +26,14 @@ function fillTableInfo()
                <table  border = 1 class = "center-text" style = "width:100%;">
                             <tbody>
                                 <tr>
-                                    <td colspan = 4 class = "label-text"> ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
+                                    <td colspan = 4 class = "label-text"> <h2><b>ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</b></h2></span></td>
                                     <td class = "label-text left-text">Control<br>Number:<span style = "color:red;">*</span></td>
                                     <td colspan = 2 style = "padding:5px 5px 5px 5px;background-color:#CFD8DC;">
                                     <?php echo countCN();?>
                                       </td>
                                 </tr>
                                 <tr>
-                                    <td style = "width:15%;" class = "label-text left-text">Request Date:<span style = "color:red;">*</span></td>
+                                    <td style = "width:15%;" class = "label-text left-text">Requested Date:<span style = "color:red;">*</span></td>
                                     <td style = "width:15%;padding:5px 5px 5px 5px;">
                                     <div class="input-group date">
                                             <div class="input-group-addon">
@@ -42,12 +42,12 @@ function fillTableInfo()
                                             <input required type="text" name = "request_date" placeholder = "Request Date" class="datePicker1" value="" required placeholder="mm/dd/yyyy" >
                                         </div>
                                     </td>
-                                    <td style = "width:15%;"class = "label-text">Request Time:<span style = "color:red;">*</span></td>
+                                    <td style = "width:15%;"class = "label-text">Requested Time:<span style = "color:red;">*</span></td>
                                     <td style = "width:15%;  padding:5px 5px 5px 5px;">
                                     <input required style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
                                     </td>
                                     <!-- date("H:i A",strtotime(date("h:m A"))) -->
-                                    <td colspan = 4 class = "label-text">HARDWARE INFORMATION</td>
+                                    <td colspan = 4 class = "label-text">HARDWARE INFORMATION (if applicable)</td>
                                 </tr>
                                 <tr>
                                     <td colspan = 4 class = "label-text">END-USER INFORMATION </td>
@@ -59,7 +59,7 @@ function fillTableInfo()
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;">
                                       <input required type = "hidden"  name="requested_by" value = "<?php $row['EMP_N'];?>" />
-                                      <input required type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'].' ';?>" >
+                                      <input required type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $row['FIRST_M'].' '.$row['MIDDLE_M'][0].'. '.$row['LAST_M'].' ';?>" >
                                     <td class = "label-text left-text">Brand Model:</td>
                                     <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input required   type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
@@ -136,7 +136,15 @@ function showUser()
   <title></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
+<style>
+  th{
+    color:#a9242d;
+    text-align:center;
+  }
+  td{
+    text-align:left;
+  }
+  </style>
 <style>
   
     .center-text{
@@ -191,11 +199,11 @@ background-position: 90px 5px;
                         <?php echo fillTableInfo(); ?>
                      <input required type = "hidden" name = "division" value = "<?php echo $_GET['division'];?>" />
                         <br>
-                        <u style = "margin-top:20px;" class = "label-text">TYPE OF REQUEST</u>
+                        <u style = "margin-top:20px;" class = "label-text">TYPE OF REQUEST<span style = "color:red;">*</span></u>
                         <table style = "margin-top:20px;width:100%;" >
                           <tr>
                               <td>
-                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g1" class = "checkbox_group" value = "DESKTOP/LAPTOP"> <b>DESKTOP/LAPTOP<span style = "color:red;">*</span></b><br>
+                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g1" class = "checkbox_group" value = "DESKTOP/LAPTOP"> <b>DESKTOP/LAPTOP</b><br>
                                   <div style = "margin-left:30px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Hardware Error"> Hardware Error<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Software Error"> Software Error<br>
@@ -205,19 +213,19 @@ background-position: 90px 5px;
                                   </div>
                               </td> 
                               <td><br>
-                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY<span style = "color:red;">*</span></b><br>
+                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
                                   <div style = "margin-left:30px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                       <input  type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                      Purpose:<input  type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <i>Purpose</i>:<input  type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                      Purpose:<input  type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <i>urpose</i>:<input  type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td>  
                               <td style = "width:35%;">
-                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM<span style = "color:red;">*</span></b><br>
+                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
                                   <div style = "margin-left:20px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
@@ -234,7 +242,7 @@ background-position: 90px 5px;
                           <tr>
                           <td>
                           <div style = "margin-left:30px;padding-top:10px;" >
-                          <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g4" class = "checkbox_group" value = "PRINTER/SCANNER"> <b>PRINTER/SCANNER<span style = "color:red;">*</span></b><br>
+                          <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g4" class = "checkbox_group" value = "PRINTER/SCANNER"> <b>PRINTER/SCANNER</b><br>
 
                           <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Installation"> Installation<br>
                           <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Troubleshooting"> Troubleshooting<br>
@@ -242,7 +250,7 @@ background-position: 90px 5px;
                           </div>
                           </td> 
                           <td>
-                            <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL<span style = "color:red;">*</span></b><br>
+                            <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
                             <div style = "margin-left:30px;padding-top:10px;">
                             <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
                             <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input required type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
@@ -250,7 +258,7 @@ background-position: 90px 5px;
                           </div>
                           </td> 
                           <td>
-                          <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "Others"><b>Others<span style = "color:red;">*</span></b><br>
+                          <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "Others"><b>Others (please specify)</b><br>
                           <input  type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                           <input  type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                           <input  type = "text" name = "others3" id = "others3" class = "checkboxgroup_g6"value = "" style = "border:none;border-bottom:1px solid black;"/><br>
@@ -285,7 +293,7 @@ background-position: 90px 5px;
                          
                           </tr>
                           <tr>
-                          <td colspan = 4 STYLE = "text-align:center;"><u><?php echo $_SESSION['complete_name'];?></u><br><span class = "label-text">Signature over Printed Name</span></td>
+                          <td colspan = 4 STYLE = "text-align:center;background-color:#EEEEEE;"><u><?php echo $_SESSION['complete_name'];?></u><br><span class = "label-text">Signature over Printed Name</span></td>
 
                          
                           <td colspan=2 class = "label-text"><input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Resolved</td>
@@ -294,12 +302,12 @@ background-position: 90px 5px;
                           </td>
               
                           <tr> 
-                          <td colspan = 4 class = "label-text">DEAR END USER, YOUR FEEDBACK IS IMPORTANT TO US:</td>
+                          <td colspan = 4 class = "label-text" style = "background-color:#EEEEEE;">DEAR END USER, YOUR FEEDBACK IS IMPORTANT TO US:</td>
 
                    
-              
+            
                           <td style = "width:12.5%;" class = "label-text">Started Date:</td>
-                          <td style = "width:12.5%;">
+                          <td style = "width:12.5%;" >
                           <div class="input-group date">
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
@@ -340,7 +348,7 @@ background-position: 90px 5px;
                           </td>
                           </tr>
                           <tr>
-                          <td colspan =4>
+                          <td colspan =4 style = "background-color:#EEEEEE;">
                           <ol>
                             <li class = "label-text">Timeliness
                             <p style = "font-weight:normal;">Was the ICT Staff able to provide immediate assistance within three (3) hours or agreed timeline?(Yes/No) ___________________________ </p>
@@ -350,7 +358,7 @@ background-position: 90px 5px;
                             </li>
                           </ol>
                           </td>
-                          <td colspan = 4 style = "text-align:center;">
+                          <td colspan = 4 style = "text-align:center;background-color:#EEEEEE;">
                           _____________________________________________________
                           <p class = "label-text">Signature over Printer Name</p>
                           

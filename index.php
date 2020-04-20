@@ -76,11 +76,11 @@ if (isset($_POST['submit'])) {
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <b>DILG IV-A FAS
+      <!-- <b>DILG IV-A FAS -->
       </div>
       <!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p ><img src="images/login.png" style="width: 100%; height: auto;"></p>
 
         <form method="POST">
           <div class="form-group has-feedback">

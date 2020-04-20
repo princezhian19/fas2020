@@ -13,10 +13,12 @@ $mydb = new db(); // create a new object, class db()
 <style>
 th{
   color:blue;
+  text-align:center;
 }
 /* .dataTables_wrapper .dataTables_paginate {
     float: left;
 } */
+
 </style>
 </head>
 
@@ -27,7 +29,7 @@ th{
         <div class="panel panel-defasult">
           <div class="box-body"> 
             <div>
-                <h1>Monitoring for ICT Technical Assistance Request</h1><br>
+                <h1>Monitoring of ICT Technical Assistance Request</h1><br>
                 <?php 
                 ?>
             </div>
@@ -51,20 +53,7 @@ include 'connection.php';
                   <div class="well">
                     <div class="row">
                         <div class="col-md-2">
-                              <select class="form-control " id = "selectMonth" style="width: 100%;">
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                              </select>
+                              <?php include 'current_month.php';?>
                         </div>
                         <div class="col-md-2">
                               <select class="form-control " id="selectYear" style="width: 100%;">

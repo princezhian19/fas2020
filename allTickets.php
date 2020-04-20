@@ -88,6 +88,10 @@ function filldataTable()
                                                     <?php
                                                     if($row['STATUS_REQUEST'] == 'For action')
                                                     {
+                                                        ?>
+                                                        <button disabled class = "pull-right sweet-14 btn btn-primary"><?php echo $row['ASSIST_BY'];?></button>
+
+                                                        <?php
                                                     }else{
                                                         ?>
                                                         <button class = "pull-right sweet-14 btn btn-primary">Assign</button>
@@ -279,7 +283,11 @@ function currentServing($assignee)
 
 ?>
 
-  
+
+ 
+
+
+
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
@@ -289,12 +297,14 @@ function currentServing($assignee)
       <br>
       <br>
         <!-- ====== TICKETING STARTS HERE -->
-           
+           <h1><b>ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM </h1>
 
             <div class = "row">
             <div class = "col-md-3">
                 <div class="card" style="width: 100%;margin-top:40px;">
-                <p class="font-weight-bold"><h3>ICT Staff work load</h3></p>
+            <button class = "btn btn-success btn-md">Create Request </button>
+
+                <p class="font-weight-bold"><h3>ICT Staff Work Load</h3></p>
 
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
