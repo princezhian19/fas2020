@@ -302,7 +302,14 @@ require_once('_includes/class.upload.php');
                                 </tr>
 
 
-                                <tr>
+                              
+                    <tr>
+                        <td class="col-md-2"><b>URL</b></td> 
+                            <td class="col-md-5">
+                            <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                </td>
+                                    </tr>
+                                    <tr>
                         <td class="col-md-2"><b>OFFICE</b></td>
                             <td class="col-md-5">
                             <!-- <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder=""> -->
@@ -323,12 +330,6 @@ require_once('_includes/class.upload.php');
 
                             ?>    
                             <input readonly value="<?php echo $DIVISION_M;?>" id="" name="" autocomplete ="off" type="text" class="form-control" placeholder="">
-                                </td>
-                                    </tr>
-                    <tr>
-                        <td class="col-md-2"><b>URL</b></td> 
-                            <td class="col-md-5">
-                            <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder="">
                                 </td>
                                     </tr>
 
