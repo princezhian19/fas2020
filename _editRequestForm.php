@@ -26,7 +26,7 @@ function fillTableInfo()
                <input type = "hidden" value = "<?php echo $_GET['id'];?>" name = "control_no" id = "control_no" />
                             <tbody>
                                 <tr>
-                                    <td colspan = 4  class ="label-text">ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
+                                    <td colspan = 4  class ="label-text"><h2><b>ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</b></h2></span></td>
                                     <td class = "label-text left-text">Control<br>Number:</td>
                                     <td colspan = 2 style = "padding:5px 5px 5px 5px;background-color:#CFD8DC;color:red;font-weight:bold;text-align:center;">
                                     <input type = "text"  style = "text-align:center;"readonly name = "control_no" value = "<?php echo $_GET['id'];?>"
