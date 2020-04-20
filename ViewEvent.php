@@ -66,7 +66,7 @@ $events = $req->fetchAll();
 <script src="calendar/fullcalendar/lib/jquery.min.js"></script>
 <script src="calendar/fullcalendar/lib/moment.min.js"></script>
 <script src="calendar/fullcalendar/fullcalendar.min.js"></script>
-<style> .response { height: 60px; } .success { background: #cdf3cd; padding: 10px 60px; border: #c3e6c3 1px solid; } </style>
+<style> .response { } .success { background: #cdf3cd; padding: 10px 60px; border: #c3e6c3 1px solid; } </style>
 <?php 
 function viewEvents()
 {
@@ -145,14 +145,22 @@ function viewEvents()
           <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
           <li class="active">Events</li>
         </ol>
-        <div class="response"></div>
+        <br>
+        <br>
         <div class="row">
           <div class="col-md-12">
+        <div class="response"></div>
+
               <div class="box">
                   <div class="panel panel-defasult">
                       <div class="box-body"> 
                         <div class = "response"></div>   
-                              <h1>View Event/Activity</h1>
+                        <div class="col-md-6">
+                      <h1>Calendar</h1>
+                      </div>
+                      <div class="col-md-6">
+                      <h1>View Event/Activity</h1>
+                      </div>
                               <div class = "col-md-6" id='calendar'></div>
                           <div class="well col-md-6" >
                             

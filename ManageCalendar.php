@@ -112,8 +112,7 @@ $username = $_SESSION['username'];
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> All rights
-    reserved.
+    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> 
   </footer>
   <br>
 </div>
@@ -126,7 +125,12 @@ $username = $_SESSION['username'];
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
-<script src="_includes/sweetalert.min.js"></script>
+
+
+<script src="_includes/sweetalert.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="_includes/sweetalert.css">
+<!-- <link href="_includes/sweetalert2.min.css" rel="stylesheet"/> -->
+<!-- <script src="_includes/sweetalert2.min.js" type="text/javascript"></script> -->
 
 
 <script>
@@ -152,24 +156,41 @@ $username = $_SESSION['username'];
             }
             });
      });
-     $(document).on('click','#sweet-14',function(e){
-            e.preventDefault();
-            var per_id=$(this).data('id');
-            alert(per_id)
-            //alert(per_id);
-            $('#content-data').html('');
+    $(document).on('click','#sweet-14',function(e){
+    e.preventDefault();
+    var per_id=$(this).data('id');
+        swal({
+        title: "Are you sure?",
+        text: "Your will not be able to recover this event!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn btn-danger",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+        },
+        function(){
+        swal("Deleted!", "Your event has been deleted.", "success");
             $.ajax({
-                url:'editdata.php',
-                type:'POST',
-                data:'id='+per_id,
-                dataType:'html'
-            }).done(function(data){
-                $('#content-data').html('');
-                $('#content-data').html(data);
-            }).fial(function(){
-                $('#content-data').html('<p>Error</p>');
+                url:"calendar/delete-event.php",
+                method:"POST",
+                data:{
+                id:per_id,
+            },
+            success:function(data)
+            {
+         
+                  setTimeout(function () {
+                  window.location = "ManageCalendar.php";
+
+                  }, 2000);
+
+              
+            }
             });
+
         });
+
+    });
 </script>
 
 </body>
