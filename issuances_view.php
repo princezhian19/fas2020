@@ -188,27 +188,11 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
               </form>
                 
           </div>
-        </div>
-
       
     
-    </div>
-
-  
-    <br>
-    <br>
-
-    
-    </div>
-    
   </form>
-   
-  </div>
 
-    </section>
-  </div>
- 
-</div>
+
 
 
 <script type="text/javascript">
