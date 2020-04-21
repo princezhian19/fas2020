@@ -240,7 +240,46 @@ require_once('_includes/class.upload.php');
 //require_once('_includes/dbaseCon.php');
 
 
+
+
+
+
 ?>
+
+
+<style>
+  
+  /* #calendar {
+      width: 100%;
+      padding:10px;
+      margin: 0 auto;
+      background-color:#fff;
+      border:1px solid skyblue;
+  }
+  
+  .response {
+      height: 60px;
+  }
+  
+  .success {
+      background: #cdf3cd;
+      padding: 10px 60px;
+      border: #c3e6c3 1px solid;
+  }
+ */
+  .office-responsible{
+   
+    text-align:left;
+  }
+
+  #checkboxP{
+   
+   text-align:left;
+ }
+
+  
+  
+    </style>
 
 
 <!-- <style>
@@ -306,7 +345,7 @@ require_once('_includes/class.upload.php');
                               
                               <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
         <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
-        <div class="office-responsible well checkbox" style="position: absolute;display: none;max-width: 40%;  ">
+        <div class="office-responsible well checkbox" style="position: absolute;display: none;max-width: 80%;  ">
 
                           <?php
                           $counter = 0; 
@@ -388,7 +427,7 @@ require_once('_includes/class.upload.php');
                      ?>
 
                    	
-                <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>">
+                <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>"  id="checkboxP" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>">
                
                  <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}
                  else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?>/>
