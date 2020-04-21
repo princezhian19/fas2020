@@ -369,7 +369,7 @@ function currentServing($assignee)
 function showWorkload($ICT)
 {
     include 'connection.php';
-    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%' and `STATUS_REQUEST` = 'Completed'";
+    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%' and `STATUS_REQUEST` = 'For action'";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
