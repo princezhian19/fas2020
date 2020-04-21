@@ -55,15 +55,17 @@ $username = $_SESSION['username'];
       </ol><br>
       <?php include 'issuances_option.php';?>
     </section>
-  </div>
-  <footer class="main-footer">
+    <footer class="main-footer">
+    <br>
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
       </div>
       <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> All rights
       reserved.
     </footer>
-    
+    <br>
+  </div>
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
