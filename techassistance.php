@@ -132,7 +132,7 @@ var action = '';
         "order": [[ 0, "desc" ]],
         "columnDefs": [ {
             "targets": 11,
-            "render": function ( data, type, row, meta ) {  
+            "render": function ( data, type, row, meta ) {  v
             if(row[3] == 'Jan 01, 1970' || row[0] == '0000-00-00')
             {
               $dateFormat = '';
