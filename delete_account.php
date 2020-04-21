@@ -6,7 +6,6 @@ $activate = mysqli_query($conn,"DELETE FROM tblemployee WHERE EMP_N = $id");
 
 if ($activate) {
    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Account Blocked!')
     window.location.href='Accounts.php';
     </SCRIPT>");
 }else{
