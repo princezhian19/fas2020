@@ -106,7 +106,7 @@ function filldataTable()
                                                             if($_SESSION['complete_name'] == $row['ASSIST_BY'])
                                                                 {
                                                                     ?><br>
-                                                                    <button id ="sweet-16" data-id ="<?php echo $row['CONTROL_NO'];?>" class = " pull-right sweet-14 btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
+                                                                    <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = " pull-right  btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
                                                               
                                                                     <?php
                                                                 }else{
@@ -163,11 +163,34 @@ function filldataTable()
                                                         </div>     
                                                          <div class="col-md-2 bg-success"  style = "padding-top:10px;">
                                                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Received</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;"><?PHP echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];?></span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
+                                                                <?PHP 
+                                                                 if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
+                                                                 {
+                                                                    echo '<a data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-info btn-xs" > <i class="fa fa-check-circle"></i>Receive</a>';
+
+                                                                 }else{
+                                                                    echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];
+                                                                    
+                                                                 }
+                                                                ?>
+                                                            </span>
                                                         </div>
                                                         <div class="col-md-2 bg-success"  style = "padding-top:10px;">
                                                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Completed</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;"><?PHP echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];?></span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
+                                                            <?PHP 
+                                                                  if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
+                                                                  {
+                                                                    echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
+
+                                                                   
+                                                                  }else{
+                                                                    echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];
+
+                                                                  }
+                                                                ?>
+                                                        </span>
                                                         </div>                                  
                                                        
                                                        
@@ -204,7 +227,7 @@ function filldataTable()
                                                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Received</span>
                                                             <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
                                                                 <?PHP 
-                                                                if($row['START_DATE'] == '' || $row['START_DATE'] == NULL)
+                                                                if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
                                                                 {
                                                                     echo '<a data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-info btn-xs" > <i class="fa fa-check-circle"></i>Receive</a>';
                                                                 }else{
@@ -216,7 +239,19 @@ function filldataTable()
                                                         </div>
                                                         <div class="col-md-2 bg-success"  style = "padding-top:10px;">
                                                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Completed</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;"><?PHP echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];?></span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
+                                                                <?PHP 
+                                                                  if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
+                                                                  {
+                                                                    echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
+
+                                                                   
+                                                                  }else{
+                                                                    echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];
+
+                                                                  }
+                                                                ?>
+                                                            </span>
                                                         </div>                                  
                                                           
                                                         <?php
@@ -331,15 +366,26 @@ function currentServing($assignee)
     }
 }
 
-function showWorkload()
+function showWorkload($ICT)
 {
     include 'connection.php';
-    $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' and `ASSIST_BY` like  '%$assignee%' order by `REQ_DATE` DESC, `REQ_TIME` LIMIT 1 ";
+    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%'";
     $result = mysqli_query($conn, $query);
-
     while($row = mysqli_fetch_array($result))
     {
-        
+        ?>
+            <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                <h3 class="timeline-header"><a href="#"><?php echo $row['REQ_BY'];?></a> sent you a request</h3>
+                    <div class="timeline-body">
+                    <?php echo $row['ISSUE_PROBLEM'];?>
+                    </div>
+                    <div class="timeline-footer">
+                    <a class="btn btn-primary btn-xs">Resolve</a>
+                    <a class="btn btn-danger btn-xs">Delete</a>
+                    </div>
+            </div><br><br>
+        <?PHP
     } 
 }
 ?>
@@ -450,310 +496,56 @@ function showWorkload()
                                     Work Load
                                 </span>
                             </li>
-                            <!-- /.timeline-label -->
-                            <!-- timeline item -->
                             <li>
-                            <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="Shiela Mei">
-                                <div class="timeline-item">
-                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                    <h3 class="timeline-header"><a href="#">End-user</a> sent you a request</h3>
-
-                                    <div class="timeline-body">
-                                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                    quora plaxo ideeli hulu weebly balihoo...
-                                    </div>
-                                    <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Resolve</a>
-                                    <a class="btn btn-danger btn-xs">Delete</a>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="timeline-item">
-                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                    <h3 class="timeline-header"><a href="#">End-user</a> sent you a request</h3>
-
-                                    <div class="timeline-body">
-                                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                    quora plaxo ideeli hulu weebly balihoo...
-                                    </div>
-                                    <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Resolve</a>
-                                    <a class="btn btn-danger btn-xs">Delete</a>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="timeline-item">
-                                    <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                    <h3 class="timeline-header"><a href="#">End-user</a> sent you a request</h3>
-
-                                    <div class="timeline-body">
-                                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                    quora plaxo ideeli hulu weebly balihoo...
-                                    </div>
-                                    <div class="timeline-footer">
-                                    <a class="btn btn-primary btn-xs">Resolve</a>
-                                    <a class="btn btn-danger btn-xs">Delete</a>
-                                    </div>
-                                </div>
+                                <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="Shiela Mei">
+                                <?php echo showWorkload('Mark');?>
                             </li>
-                            <!-- END timeline item -->
-                            <!-- timeline item -->
-                            <li>
-                        
-                         
-                           
                         </ul>
                     </div>
 
                     <div class="tab-pane" id="third">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputName" placeholder="Name">
-                        </div>
-                        </div>
-                        <div class="form-group">
-                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                        </div>
-                        </div>
-                        <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputName" placeholder="Name">
-                        </div>
-                        </div>
-                        <div class="form-group">
-                        <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                        <div class="col-sm-10">
-                            <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                        </div>
-                        </div>
-                        <div class="form-group">
-                        <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                        </div>
-                        </div>
-                        <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                            </label>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-danger">Submit</button>
-                        </div>
-                        </div>
-                    </form>
-                    </div>
-                    <!-- /.tab-pane -->
-                    <div class="tab-pane" id="fouth">
-                    <!-- The timeline -->
-                    <ul class="timeline timeline-inverse">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                10 Feb. 2014
-                            </span>
-                        </li>
-                        <!-- /.timeline-label -->
-                        <!-- timeline item -->
-                        <li>
-                        <i class="fa fa-envelope bg-blue"></i>
-
-                        <div class="timeline-item">
-                            <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                            <h3 class="timeline-header"><a href="#">Support Team</a> sent you a request</h3>
-
-                            <div class="timeline-body">
-                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                            quora plaxo ideeli hulu weebly balihoo...
-                            </div>
-                            <div class="timeline-footer">
-                            <a class="btn btn-primary btn-xs">Read more</a>
-                            <a class="btn btn-danger btn-xs">Delete</a>
-                            </div>
-                        </div>
-                        </li>
-                        <!-- END timeline item -->
-                        <!-- timeline item -->
-                        <li>
-                        <i class="fa fa-user bg-aqua"></i>
-
-                        <div class="timeline-item">
-                            <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                            <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request
-                            </h3>
-                        </div>
-                        </li>
-                        <!-- END timeline item -->
-                        <!-- timeline item -->
-                        <li>
-                        <i class="fa fa-comments bg-yellow"></i>
-
-                        <div class="timeline-item">
-                            <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                            <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                            <div class="timeline-body">
-                            Take me to your leader!
-                            Switzerland is small and neutral!
-                            We are more like Germany, ambitious and misunderstood!
-                            </div>
-                            <div class="timeline-footer">
-                            <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                            </div>
-                        </div>
-                        </li>
-                        <!-- END timeline item -->
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-green">
-                                3 Jan. 2014
-                            </span>
-                        </li>
-                        <!-- /.timeline-label -->
-                        <!-- timeline item -->
-                        <li>
-                        <i class="fa fa-camera bg-purple"></i>
-
-                        <div class="timeline-item">
-                            <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                            <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                            <div class="timeline-body">
-                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                            </div>
-                        </div>
-                        </li>
-                        <!-- END timeline item -->
-                        <li>
-                        <i class="fa fa-clock-o bg-gray"></i>
-                        </li>
-                    </ul>
-                    </div>
-                    <div class="tab-pane" id="fifth">
-                        <!-- The timeline -->
                         <ul class="timeline timeline-inverse">
                             <!-- timeline time label -->
                             <li class="time-label">
                                 <span class="bg-red">
-                                    10 Feb. 2014
+                                    Work Load
                                 </span>
                             </li>
-                            <!-- /.timeline-label -->
-                            <!-- timeline item -->
                             <li>
-                            <i class="fa fa-envelope bg-blue"></i>
-
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                <h3 class="timeline-header"><a href="#">Support Team</a> sent you a request</h3>
-
-                                <div class="timeline-body">
-                                Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                quora plaxo ideeli hulu weebly balihoo...
-                                </div>
-                                <div class="timeline-footer">
-                                <a class="btn btn-primary btn-xs">Read more</a>
-                                <a class="btn btn-danger btn-xs">Delete</a>
-                                </div>
-                            </div>
+                                <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="Shiela Mei">
+                                <?php echo showWorkload('Christian');?>
                             </li>
-                            <!-- END timeline item -->
-                            <!-- timeline item -->
                             <li>
-                            <i class="fa fa-user bg-aqua"></i>
-
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                                <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request
-                                </h3>
-                            </div>
-                            </li>
-                            <!-- END timeline item -->
-                            <!-- timeline item -->
-                            <li>
-                            <i class="fa fa-comments bg-yellow"></i>
-
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                                <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                                <div class="timeline-body">
-                                Take me to your leader!
-                                Switzerland is small and neutral!
-                                We are more like Germany, ambitious and misunderstood!
-                                </div>
-                                <div class="timeline-footer">
-                                <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                                </div>
-                            </div>
-                            </li>
-                            <!-- END timeline item -->
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="fourth">
+                        <ul class="timeline timeline-inverse">
                             <!-- timeline time label -->
                             <li class="time-label">
-                                <span class="bg-green">
-                                    3 Jan. 2014
+                                <span class="bg-red">
+                                    Work Load
                                 </span>
                             </li>
-                            <!-- /.timeline-label -->
-                            <!-- timeline item -->
                             <li>
-                            <i class="fa fa-camera bg-purple"></i>
-
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                                <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                                <div class="timeline-body">
-                                <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                </div>
-                            </div>
+                                <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="Shiela Mei">
+                                <?php echo showWorkload('Charles');?>
                             </li>
-                            <!-- END timeline item -->
                             <li>
-                            <i class="fa fa-clock-o bg-gray"></i>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" id="fifth">
+                        <ul class="timeline timeline-inverse">
+                            <!-- timeline time label -->
+                            <li class="time-label">
+                                <span class="bg-red">
+                                    Work Load
+                                </span>
                             </li>
+                            <li>
+                                <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="Shiela Mei">
+                                <?php echo showWorkload('Shiela');?>
+                            </li>
+                            <li>
                         </ul>
                     </div>
 
@@ -885,7 +677,6 @@ $('.sweet-14').click(function()
 //     });
 // =====================================================================
 $(document).on('click','.sweet-17',function(e){
-    alert('a');
     e.preventDefault();
     var ids=$(this).data('id');
       swal("Control No: "+ids, "You already received this request", "success")
