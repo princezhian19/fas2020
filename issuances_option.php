@@ -127,14 +127,20 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
+if(empty($_FILES['file']['name'])){
 
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
+
+
+}
+else{
  $query = mysqli_query($conn,"INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
  VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')");
 
  /* echo "INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
  VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')";
  exit(); */
-
+}
 
 mysqli_close($conn);
 
@@ -234,7 +240,46 @@ require_once('_includes/class.upload.php');
 //require_once('_includes/dbaseCon.php');
 
 
+
+
+
+
 ?>
+
+
+<style>
+  
+  /* #calendar {
+      width: 100%;
+      padding:10px;
+      margin: 0 auto;
+      background-color:#fff;
+      border:1px solid skyblue;
+  }
+  
+  .response {
+      height: 60px;
+  }
+  
+  .success {
+      background: #cdf3cd;
+      padding: 10px 60px;
+      border: #c3e6c3 1px solid;
+  }
+ */
+  .office-responsible{
+   
+    text-align:left;
+  }
+
+  #checkboxP{
+   
+   text-align:left;
+ }
+
+  
+  
+    </style>
 
 
 <!-- <style>
@@ -300,7 +345,7 @@ require_once('_includes/class.upload.php');
                               
                               <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
         <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
-        <div class="office-responsible well checkbox" style="position: absolute;display: none;max-width: 40%;  ">
+        <div class="office-responsible well checkbox" style="position: absolute;display: none;max-width: 80%;  ">
 
                           <?php
                           $counter = 0; 
@@ -382,7 +427,7 @@ require_once('_includes/class.upload.php');
                      ?>
 
                    	
-                <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>">
+                <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>"  id="checkboxP" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>">
                
                  <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}
                  else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?>/>
@@ -424,7 +469,7 @@ require_once('_includes/class.upload.php');
         
                                 </tr>
                     <tr>
-                        <td class="col-md-2"><label>Attached File</label> </td>
+                        <td class="col-md-2"><label>Attached File <span style = "color:red;">*</span></label> </td>
                             <td class="col-md-5"> <input id="issuances_attachment" type="file" name="file"/>
                           <?php
 							if (!empty($_GET['option']) && $_GET['option']== 'edit') {
@@ -508,21 +553,11 @@ require_once('_includes/class.upload.php');
     
     </div>
 
-  
-    <br>
-    <br>
 
-    
-    </div>
     
   </form>
    
-  </div>
 
-    </section>
-  </div>
- 
-</div>
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
@@ -653,38 +688,6 @@ require_once('_includes/class.upload.php');
 		}					
     </script>   
 
-
-
-
-<!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Select2 -->
-<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="plugins/input-mask/jquery.inputmask.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="bower_components/moment/min/moment.min.js"></script>
-<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- bootstrap color picker -->
-<script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- SlimScroll -->
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="plugins/iCheck/icheck.min.js"></script>
-<!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
 
 
 

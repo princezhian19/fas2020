@@ -84,6 +84,9 @@ $events = $req->fetchAll();
       <li class="active">Calendar of Events</li>
       </ol><br>
     <?php include 'calendar_view.php';?>
+ &nbsp;
+ &nbsp;
+    <br>
     <div id='calendar'></div>
 
     </section>

@@ -36,7 +36,8 @@
               <br>
               <br>
             </div>
-            <table id="example1" class="table table-striped table-bordered " style="background-color: white; overflow-x:auto;" >
+           
+            <table id="example1" class="table table-striped table-bordered" style="background-color: white;" >
               <thead>
                 <tr style="background-color: white;color:blue;">
                   <th style="text-align:center" width="">DVs No.</th>
@@ -164,12 +165,8 @@
                                 </table>
                
 
-        
-                <script type="text/javascript">
-                        $(document).ready(function() {
-                          $('#example1').DataTable();
-                        } );
-                      </script>
+     
+          
 <script>
   $(function () {
     //Initialize Select2 Elements

@@ -45,6 +45,7 @@ $username = $_SESSION['username'];
                  
                   <th width="200">CATEGORY</th>
                   <th width="400">TITLE</th>
+                  <th width="100">OFFICE</th>
                   <th width="150">POSTING DETAILS</th>
                   <th width="200">ACTION</th>
                   
@@ -58,7 +59,7 @@ $username = $_SESSION['username'];
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT downloads.file, downloads.download_id ,downloads.category, downloads.title, downloads.dateposted, downloads.postedby, downloads_category.name from downloads left join downloads_category on downloads.category=downloads_category.id order by dateposted desc");
+            $view_query = mysqli_query($conn, "SELECT downloads.office,downloads.file, downloads.download_id ,downloads.category, downloads.title, downloads.dateposted, downloads.postedby, downloads_category.name from downloads left join downloads_category on downloads.category=downloads_category.id order by dateposted desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
                   $id = $row["download_id"];
@@ -67,6 +68,7 @@ $username = $_SESSION['username'];
                   $file = $row["file"];
 
                   $title  = $row["title"];
+                  $office  = $row["office"];
                 
                   $dateposted  = $row["dateposted"];
                    // $date_issued1 = date('F d, Y', strtotime($date1));
@@ -82,6 +84,7 @@ $username = $_SESSION['username'];
               
                 <td><?php echo $name?></td>
                 <td><?php echo $title?></td>
+                <td><?php echo $office?></td>
                 <td><?php echo $dateposted."-".$postedby?></td>
                 
 
@@ -98,14 +101,12 @@ $username = $_SESSION['username'];
                             
                 ?>
 
-                <?php if ($DIVISION_C == 15 || $DIVISION_C == 54 || $DIVISION_C == 16 ):?>
+         
                             
                 <a  href="<?php echo $location?>" title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
                 <a href="UpdateDatabank.php?id=<?php echo $id; ?>"  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                 <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/databankdelete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
-              <?php else :?>
-                <a  href="<?php echo $location?>" title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
-                 <?php endif?>
+         
                 </td>
                 
                

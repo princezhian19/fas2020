@@ -55,7 +55,7 @@ $postedby = $_POST['postedby'];
 
 $posteddate = $_POST['posteddate'];
 
-
+$office = $_POST['office'];
 
 $servername = "localhost";
 $username = "fascalab_2020";
@@ -71,9 +71,16 @@ if ($conn->connect_error) {
 
 
 
+if(empty($_FILES['file']['name'])){
 
- $query = mysqli_query($conn,"UPDATE downloads set title='$title',file='$filename',category='$category',dateposted='$posteddate',postedby='$username1',url='$url' where download_id ='$id'");
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
 
+
+}
+else
+{
+ $query = mysqli_query($conn,"UPDATE downloads set title='$title',file='$filename',category='$category',dateposted='$posteddate',postedby='$username1',url='$url',office='$office' where download_id ='$id'");
+}
 
 // echo "UPDATE downloads set title='$title',file='$filename',category='$category',dateposted='$posteddate',postedby='$username1',url='$url' where download_id ='$id'";
 // exit();
@@ -126,7 +133,7 @@ $view_query = mysqli_query($conn, "SELECT * from downloads where download_id = '
 
         
         $title = $row['title'];
-        $office = $row['office_responsible'];
+       
         //$file = $row['pdf_file'];
         $url = $row['url'];
         $postedby = $row['postedby'];
@@ -287,7 +294,7 @@ $posteddate = $row['posteddate'];
                                     </tr>
 
                                     <tr>
-                        <td class="col-md-2"><b>OFFICE</b></td>
+                        <td class="col-md-2"><b>Office</b></td>
                             <td class="col-md-5">
                             <!-- <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder=""> -->
                             <?php
@@ -306,7 +313,7 @@ $posteddate = $row['posteddate'];
 
 
                             ?>    
-                            <input readonly value="<?php echo $DIVISION_M;?>" id="" name="" autocomplete ="off" type="text" class="form-control" placeholder="">
+                            <input readonly value="<?php echo $DIVISION_M;?>" id="office" name="office" autocomplete ="off" type="text" class="form-control" placeholder="">
                                 </td>
                                     </tr>
                     <tr>
