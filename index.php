@@ -31,7 +31,8 @@ if (isset($_POST['submit'])) {
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
 
-      if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
+      // if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
+      if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
         
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Succesfully Login!')
@@ -80,7 +81,7 @@ if (isset($_POST['submit'])) {
       </div>
       <!-- /.login-logo -->
       <div class="login-box-body">
-        <p ><img src="images/login.png" style="width: 100%; height: auto;"></p>
+        <p ><img src="images/logoin.jpg" style="width: 100%; height: auto;"></p>
 
         <form method="POST">
           <div class="form-group has-feedback">
