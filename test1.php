@@ -103,19 +103,13 @@ $username = $_SESSION['username'];
           </a>
        
         </li>
-        <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php' || $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php?division='.$_SESSION['division'].''){ echo 'class = "treeview active"';}else{echo 'class = "treeview"';}?>>
-          <a href="#">
+        <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_SESSION['division'].'' || $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php?division='.$_SESSION['division'].''){ echo 'class = "active"';}else{echo 'class = ""';}?>>
+          <a href="ViewCalendar.php?divsion=<?php echo $_SESSION['division'];?>">
             <i class="fa fa-calendar" style = "color:#black;"></i>
             <span  style = "color:#black;font-weight:normal;">Calendar</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            
           </a>
-          <ul class="treeview-menu">
-            <li><a href="ViewCalendar.php"  style = "color:#black;font-weight:normal;"><i class="fa fa-circle-o" style = "color:#black;"></i>Calendar of Activities</a></li>
-            <li><a href="ManageCalendar.php?division=<?php echo $_SESSION['division'];?>" s style = "color:#black;font-weight:normal;"><i class="fa fa-circle-o" style = "color:#black;"></i>Manage Calendar</a></li>
-      
-          </ul>
+         
         </li>
         <li>
             <a href="#">

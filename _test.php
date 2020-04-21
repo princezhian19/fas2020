@@ -20,6 +20,13 @@ function fillTableInfo()
     $val = array();
     if($row = mysqli_fetch_array($result))
       {
+        $f = $row['FIRST_M'];
+        $m = $row['MIDDLE_M'][0];
+        $l= $row['LAST_M'];
+        $firstname = ucfirst($f);
+
+        $lname = ucfirst($l);             // HELLO WORLD!
+        $lastname = ucfirst(strtolower($lname));
           ?>
                                   <input required type = "hidden" name = "curuser" value = "<?php echo $row['EMP_N'];?>" id = "selectedUser" />
 
@@ -47,45 +54,45 @@ function fillTableInfo()
                                     <input required style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
                                     </td>
                                     <!-- date("H:i A",strtotime(date("h:m A"))) -->
-                                    <td colspan = 4 class = "label-text">HARDWARE INFORMATION (if applicable)</td>
+                                    <td colspan = 4 class = "label-text" style = "text-align:center;">HARDWARE INFORMATION (if applicable)</td>
                                 </tr>
                                 <tr>
                                     <td colspan = 4 class = "label-text">END-USER INFORMATION </td>
                                     <td class = "label-text left-text">Equipment</td>
                                     <td colspan = 3 class = "left-text " style = "padding:5px 5px 5px 5px;">
-                                      <input required  required style ="width:100%;" type = "text" name = "equipment_type" class = "alphanum subtxt" /></td>
+                                      <input style ="width:100%;" type = "text" name = "equipment_type" class = "alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;">
                                       <input required type = "hidden"  name="requested_by" value = "<?php $row['EMP_N'];?>" />
-                                      <input required type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $row['FIRST_M'].' '.$row['MIDDLE_M'][0].'. '.$row['LAST_M'].' ';?>" >
+                                      <input required type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $firstname.' '.$row['MIDDLE_M'][0].'. '.$lastname.' ';?>" >
                                     <td class = "label-text left-text">Brand Model:</td>
-                                    <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input required   type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = ""/></td>
+                                    <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input  type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
                                 <tr>
                                     <td class = "label-text left-text">Office:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "office" placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['DIVISION_M'];?>" /></td>
                                     <td class = "label-text left-text">Property Number:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "" /> </td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "" /> </td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Position/Designation:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "position"  placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION_M'];?>"  /></td>
                                     <td class = "label-text left-text">Serial Number:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required   type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Contact Number:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "phone" placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MOBILEPHONE'];?>"  /></td>
                                     <td class = "label-text left-text">IP Address:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required   type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input    type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Email Address:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "email" placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['EMAIL'];?>"/></td>
                                     <td class = "label-text left-text">MAC Address:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = ""/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -216,12 +223,12 @@ background-position: 90px 5px;
                                   <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
                                   <div style = "margin-left:30px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
-                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet(Cross or Exclamation)"> No Internet (Cross or Exclamation)<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                       <input  type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                      <i>Purpose</i>:<input  type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <i style = "margin-left:5%;">Purpose</i>:<input  type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                      <i>urpose</i>:<input  type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <i style = "margin-left:5%;">Purpose</i>:<input  type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td>  
                               <td style = "width:35%;">
@@ -278,7 +285,7 @@ background-position: 90px 5px;
                                 </tr>
                           <tr>
                               <td colspan = 4 >
-                                <textarea rows="23" name = "issue" cols="56"  style ="border:1px solid white;resize:none;width:100%;text-align:left;" >
+                                <textarea required rows="23" name = "issue" cols="56"  style ="border:1px solid white;resize:none;width:100%;text-align:left;" >
                                 </textarea>
                               </td>
 
@@ -425,7 +432,7 @@ $('#submit').click(function(){
 
 if(cb1 == '' && cb2 == '' && cb3 == '' && cb4 == '' && cb5 == '' && cb6 == '' )
 {
-  alert('Required Field:Choose atleast one on Type of Request');
+  alert('Required Field:Choose at least one on type of request');
   return false;
 }
 return true;

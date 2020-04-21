@@ -112,8 +112,7 @@ $username = $_SESSION['username'];
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> All rights
-    reserved.
+    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> 
   </footer>
   <br>
 </div>
@@ -142,7 +141,7 @@ $username = $_SESSION['username'];
             'ordering'    : true,
             'info'        : true,
             'autoWidth'   : true,
-            "order": [[ 1, "asc" ]],
+            "order": [[ 2, "desc" ]],
             aLengthMenu: [ [10, 20, -1], [ 10, 20, "All"] ],
             "bPaginate": true,
             "bLengthChange": false,
