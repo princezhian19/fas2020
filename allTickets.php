@@ -425,7 +425,7 @@ function showWorkload($ICT)
                                         <span style="font-size:10px;vertical-align:top;line-height:10px;">Web Programmer</span>
                                         <span style="font-size:10px;line-height:40px;50px;margin-left:-73.8px;font-size:12px;">Mark Kim A. Saluti</span>
                                         <button onclick="$('#second_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
-                                            <span class="badge badge-light" ><?php echo showICTload('Mark Kim Sacluti');?></span>
+                                            <span class="badge badge-light" ><?php echo showICTload('Mark Kim A. Sacluti');?></span>
                                         </button>
                                         
                                     </li>
@@ -434,7 +434,7 @@ function showWorkload($ICT)
                                         <span style="font-size:10px;vertical-align:top;line-height:10px;">Network Administrator</span>
                                         <span style="font-size:10px;line-height:40px;50px;margin-left:-94.8px;font-size:12px;">Christian Paul Ferrer</span>
                                         <button onclick="$('#third_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
-                                            <span class="badge badge-light"><?php echo showICTload('Christian Paul Ferrer');?></span>
+                                            <span class="badge badge-light"><?php echo showICTload('Christian Paul V.Ferrer');?></span>
                                         </button>
                                     </li>
                                     <li class="list-group-item">
@@ -443,7 +443,7 @@ function showWorkload($ICT)
                                         <span style="font-size:10px;line-height:40px;50px;margin-left:-100.8px;font-size:12px;">Charles Adrian Odi</span>
                                         <button onclick="$('#fourth_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right" >
                                       
-                                            <span class="badge badge-light"><?php echo showICTload('Charles Adrian Odi');?></span>
+                                            <span class="badge badge-light"><?php echo showICTload('Charles Adrian T. Odi');?></span>
 
                                         </button>
                                     </li>
@@ -452,7 +452,7 @@ function showWorkload($ICT)
                                         <span style="font-size:10px;vertical-align:top;line-height:10px;">Data Analyst</span>
                                         <span style="font-size:10px;line-height:40px;50px;margin-left:-55.8px;font-size:12px;">Shiela Mei Olivar</span>
                                         <button  onclick="$('#fifth_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
-                                            <span class="badge badge-light"><?php echo showICTload('Shiela Mei Olivar');?></span>
+                                            <span class="badge badge-light"><?php echo showICTload('Shiela Mei E. Olivar');?></span>
                                         </button>
                                     </li>
                     </ul>

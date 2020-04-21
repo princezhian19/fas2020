@@ -103,7 +103,7 @@ $username = $_SESSION['username'];
           </a>
        
         </li>
-        <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_SESSION['division'].'' || $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php?division='.$_SESSION['division'].''){ echo 'class = "active"';}else{echo 'class = ""';}?>>
+        <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_GET['division'].'' || $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php?division='.$_GET['division'].''){ echo 'class = "active"';}else{echo 'class = ""';}?>>
           <a href="ViewCalendar.php?divsion=<?php echo $_SESSION['division'];?>">
             <i class="fa fa-calendar" style = "color:#black;"></i>
             <span  style = "color:#black;font-weight:normal;">Calendar</span>
@@ -295,8 +295,8 @@ $username = $_SESSION['username'];
           $link == 'http://fas.calabarzon.dilg.gov.ph/Accounts.php' ||
           $link == 'http://fas.calabarzon.dilg.gov.ph/_editRequestTA.php?division='.$_GET['division'].'&id='.$_GET['id'].'' ||
           $link == 'http://fas.calabarzon.dilg.gov.ph/Approval.php' ||
-          $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateAccount.php?id='.$_GET['id'].'&username='.$_SESSION['username'].'' ||
-          $link == 'http://fas.calabarzon.dilg.gov.ph/allTickets.php?division='.$_GET['division'].'&ticket_id=' 
+          $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateAccount.php?id='.$_GET['id'].'&username='.$_SESSION['username'].'' 
+          
         ){
           echo 'active';
         }
