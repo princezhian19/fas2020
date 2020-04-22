@@ -536,7 +536,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                 <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
                  <thead >
                   <th width="" >Items</th>
-                  <th width="" >PPU Total : <?php echo number_format($totsppu11,2)?></th>
+                  <th width="" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
                 </thead>   
                 <?php 
                 $b = 1;
@@ -567,7 +567,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                   </table>
                   <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
                    <thead style="width:500px;">
-                    <th width="" >PPU Total : <?php echo number_format($totsppu22,2)?></th>
+                    <th width="" >PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
                   </thead>   
                   <?php 
                   $b = 1;
@@ -627,7 +627,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                     </table>
                     <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
                      <thead>
-                      <th width="" >PPU Total : <?php echo number_format($totsppu11,2)?></th>
+                      <th width="" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
                     </thead>   
                     <?php 
                     $b = 1;
@@ -658,7 +658,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                       </table>
                       <table id="example1" class="table table-striped table-bordered table-responsive" style="width:400px;background-color: white;">
                        <thead>
-                        <th  >PPU Total : <?php echo number_format($totsppu22,2)?></th>
+                        <th  >PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
                       </thead>   
                       <?php 
                       $b = 1;
@@ -688,7 +688,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                         </table>
                         <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
                          <thead>
-                          <th width="" >PPU Total : <?php echo number_format($totsppu33,2)?></th>
+                          <th width="" >PPU Total Quote: <?php echo number_format($totsppu33,2)?></th>
                         </thead>   
                         <?php 
                         $b = 1;
@@ -727,7 +727,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                         <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
                          <thead>
                           <th width="200" >Item</th>
-                          <th width="100" >PPU Total : <?php echo number_format($totsppu11,2)?></th>
+                          <th width="100" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
                         </thead>   
                         <?php 
                         $b = 1;
@@ -757,7 +757,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                       </table>
                       <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
                        <thead>
-                        <th width="" >PPU Total : <?php echo number_format($totsppu22,2)?></th>
+                        <th width="" >PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
                       </thead>   
                       <?php 
                       $b = 1;
@@ -785,7 +785,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                     </table>
                     <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
                      <thead>
-                      <th width="" >PPU Total : <?php echo number_format($totsppu33,2)?></th>
+                      <th width="" >PPU Total Quote: <?php echo number_format($totsppu33,2)?></th>
                     </thead>   
                     <?php 
                     $b = 1;
@@ -813,7 +813,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                   </table>
                   <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
                    <thead>
-                    <th width="" >PPU Total : <?php echo number_format($totsppu44,2)?></th>
+                    <th width="" >PPU Total Quote: <?php echo number_format($totsppu44,2)?></th>
                   </thead>   
                   <?php 
                   $b = 1;
