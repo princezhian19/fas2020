@@ -180,7 +180,7 @@ function filldataTable()
                                                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Completed</span>
                                                             <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
                                                             <?PHP 
-                                                                  if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
+                                                                  if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
                                                                   {
                                                                     echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
 
