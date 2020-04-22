@@ -87,7 +87,6 @@ $events = $req->fetchAll();
  &nbsp;
  &nbsp;
     <br>
-    <div id='calendar'></div>
 
     </section>
   </div>
