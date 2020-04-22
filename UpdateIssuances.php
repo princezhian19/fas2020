@@ -102,7 +102,7 @@ $username = $_SESSION['username'];
 
 $(document).ready(function(){
 
-    $("#datepicker1").datepicker().datepicker("setDate", new Date());
+    $("#datepicker1").datepicker().datepicker();
 
 });
 </script>
