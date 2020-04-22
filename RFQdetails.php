@@ -46,7 +46,7 @@ $username = $_SESSION['username'];
 
     
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
   <?php include('test1.php');?>
   <div class="content-wrapper">

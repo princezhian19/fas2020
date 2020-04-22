@@ -140,7 +140,7 @@
                        <a class="btn btn-success btn-xs" href='CreateAoq.php?rfq_id=<?php echo $rfqid; ?>&rfq_items=<?php echo $rfq_items_id; ?>' title="View"> Award</a>
                        <?php else : ?>
                         <?php if (mysqli_num_rows($selectABS) > 0): ?>
-                            <a  href='UpdateAoq.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>&abstract_id=<?php echo $abstract_id; ?>' title="View"><?php echo $aoq_no?> </a>
+                            <a  href='UpdateAoq.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>&abstract_id=<?php echo $abstract_id; ?>' title="View"><?php echo $win_supplier?> </a>
                             <?php else: ?>
                                <a class="btn btn-success btn-xs" href='CreateAoq.php?rfq_id=<?php echo $rfqid; ?>&rfq_items=<?php echo $rfq_items_id; ?>' title="View"> Award</a>
                            <?php endif ?>

@@ -11,7 +11,7 @@
          <div class="col-md-1">
           <li class="btn btn-success"><a href="sarocreate.php" style="color:white;text-decoration: none;">Create</a></li>
         </div>
-        <div class="col-md-8 pull-right">
+        <div class="col-md-8 pull-right" style="padding-left: 55px;">
           <form method = "POST" action = "@Functions/sarodateexport.php">
             <div class="input-group date">
               <div class="input-group-addon">
@@ -24,7 +24,7 @@
                   TO <i class="fa fa-calendar"></i>
                 </div>
                 <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                <button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button> | 
+                &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button> | 
 
                 <li class="btn btn-success"><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none;">Export All</a></li>
               </div>                            
