@@ -199,36 +199,6 @@ else{
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<div class="container">
-  <h2>Form control: inline checkbox</h2>
-  <p>The form below contains three inline checkboxes:</p>
-  <form>
-    <label class="checkbox-inline">
-      <input type="checkbox" value="">Option 1
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" value="">Option 2
-    </label>
-    <label class="checkbox-inline">
-      <input type="checkbox" value="">Option 3
-    </label>
-  </form>
-</div>
-
-</body>
-</html>
 
 
 <?php
@@ -381,7 +351,7 @@ require_once('_includes/class.upload.php');
                               
                               <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
         <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
-        <div class="office-responsible well checkbox-inline" style="position: absolute;display: none;max-width: 80%;  ">
+        <div class="office-responsible well  " style="position: absolute;display: none;max-width: 80%;    ">
 
                           <?php
                           $counter = 0; 
@@ -437,8 +407,6 @@ require_once('_includes/class.upload.php');
                       print "</div>";
 
                       ?>
-                    
-                 
          
                    <?php
                     }
@@ -483,7 +451,7 @@ require_once('_includes/class.upload.php');
                
                     <?php }else{
                     ?>
-              <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
+              <label><input type="checkbox" style=" vertical-align: middle; position: relative;bottom: 1px; " class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
               <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> />
               <span>
                 <?php echo $k['DIVISION_M'];?>

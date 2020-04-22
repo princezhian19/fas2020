@@ -40,5 +40,9 @@
 
                 ?>
             </div>
+            <br>
+            <br>    
+    <div id='calendar'></div>
+
 </div>
 <br>
