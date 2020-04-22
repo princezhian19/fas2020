@@ -62,7 +62,7 @@ $division = $_SESSION['division'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Technical Assistance Request Form</li>
+        <li class="active">Monitoring of ICT TA Request</li>
       </ol>
       <br>
       <br>
@@ -141,7 +141,7 @@ var action = '';
             if(row[10] == '<span style = "background-color:red;">Submitted</span>')
             {
               
-              if(<?php echo $division?> == 16)
+              if(<?php echo $division?> == 10)
               {
                 action = '';          
               
@@ -159,7 +159,7 @@ var action = '';
             }
             else if(row[10] == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
             {
-              if(<?php echo $division?> == 16)
+              if(<?php echo $division?> == 10)
               {
                 action = '<a class = "btn btn-primary btn-xs"  id = "edit" style = "width:100%;"> <i class="fa">&#xf044;</i> Edit</a>';          
 
@@ -172,7 +172,7 @@ var action = '';
             }
             else if (row[10] == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
             { 
-              if(<?php echo $division?> == 16)
+              if(<?php echo $division?> == 10)
               {
               action = '<a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a>';          
               }else{

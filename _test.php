@@ -6,7 +6,6 @@ require_once('_includes/setting.php');
 require_once('_includes/dbaseCon.php');
 require_once('_includes/library.php');
 require_once('_includes/sql_statements.php');
-// require_once('_includes/secure.php');
 
 function fillTableInfo()
 {
@@ -136,78 +135,21 @@ function showUser()
   }
 
 ?>
- 
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-  th{
-    color:#a9242d;
-    text-align:center;
-  }
-  td{
-    text-align:left;
-  }
-  </style>
-<style>
-  
-    .center-text{
-        text-align:center;
-    }
-    .left-text{
-        text-align:left;
-    }
-    .borderless{
-         border: none;
-    }
-    .sizeMax{
-        width:100%;
-    }
-    td.label-text{
-        background-color:#B0BEC5;
-        padding:5px 5px 5px 5px;
-    }
-    input[type=checkbox]
-{
-  /* Double-sized Checkboxes */
-  -ms-transform: scale(1); /* IE */
-  -moz-transform: scale(1); /* FF */
-  -webkit-transform: scale(1); /* Safari and Chrome */
-  -o-transform: scale(1); /* Opera */
-  transform: scale(1);
-  padding: 10px;
-}
-.setDateIcon{
-background-image:url(images/cal.gif); 
-background-repeat: no-repeat; 
-background-position: 90px 5px;
-}
-.disabletxtarea{
-  pointer-events: none;
-
-}
-</style>
-</head>
-
-<body>        
-<!-- <button class="btn btn-lg btn-danger sweet-14" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Danger']);">Danger</button> -->
+<style> th{ color:#a9242d; text-align:center; } td{ text-align:left; } .center-text{ text-align:center; } .left-text{ text-align:left; } .borderless{ border: none; } .sizeMax{ width:100%; } td.label-text{ background-color:#B0BEC5; padding:5px 5px 5px 5px; } input[type=checkbox] { /* Double-sized Checkboxes */ -ms-transform: scale(1); /* IE */ -moz-transform: scale(1); /* FF */ -webkit-transform: scale(1); /* Safari and Chrome */ -o-transform: scale(1); /* Opera */ transform: scale(1); padding: 10px; } .setDateIcon{ background-image:url(images/cal.gif); background-repeat: no-repeat; background-position: 90px 5px; } .disabletxtarea{ pointer-events: none; } </style>    
 <div class="row">
     <div class="col-md-12">
         <div class="box">
             <div class="panel panel-default">
                 <div class="box-body">      
-                    <div>
-                        <h1>ICT Technical Assistance</h1><br>
-                    </div>
+                    <div> <h1>ICT Technical Assistance</h1><br> </div>
                     <form method="POST" enctype="multipart/form-data" class="myformStyle" action = "JASPER/sample/sample1.php" >    
                         <?php echo fillTableInfo(); ?>
-                     <input required type = "hidden" name = "division" value = "<?php echo $_GET['division'];?>" />
+                        <input required type = "hidden" name = "division" value = "<?php echo $_GET['division'];?>" />
                         <br>
                         <u style = "margin-top:20px;" class = "label-text">TYPE OF REQUEST<span style = "color:red;">*</span></u>
-                        <table style = "margin-top:20px;width:100%;" >
+                        
+                        <table style = "margin-top:20px;width:100%;">
                           <tr>
                               <td>
                                   <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g1" class = "checkbox_group" value = "DESKTOP/LAPTOP"> <b>DESKTOP/LAPTOP</b><br>
@@ -220,8 +162,8 @@ background-position: 90px 5px;
                                   </div>
                               </td> 
                               <td><br>
-                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
-                                  <div style = "margin-left:30px;padding-top:10px;" >
+                                  <input style = "margin-left:150px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
+                                  <div style = "margin-left:180px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet(Cross or Exclamation)"> No Internet (Cross or Exclamation)<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
@@ -231,9 +173,9 @@ background-position: 90px 5px;
                                       <i style = "margin-left:5%;">Purpose</i>:<input  type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td>  
-                              <td style = "width:35%;">
-                                  <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
-                                  <div style = "margin-left:20px;padding-top:10px;" >
+                              <td style = "width:35%;"><br>
+                                  <input  style = "margin-left:60px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
+                                  <div style = "margin-left:90px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
@@ -244,12 +186,13 @@ background-position: 90px 5px;
                               </td> 
                           </tr>
                           <tr>
-                          <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                           </tr>
                           <tr>
                           <td>
-                          <div style = "margin-left:30px;padding-top:10px;" >
                           <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g4" class = "checkbox_group" value = "PRINTER/SCANNER"> <b>PRINTER/SCANNER</b><br>
+
+                          <div style = "margin-left:30px;padding-top:10px;" >
 
                           <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Installation"> Installation<br>
                           <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Troubleshooting"> Troubleshooting<br>
@@ -257,20 +200,21 @@ background-position: 90px 5px;
                           </div>
                           </td> 
                           <td>
-                            <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
-                            <div style = "margin-left:30px;padding-top:10px;">
+                            <input  style = "margin-left:150px;"  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
+                            <div style = "margin-left:180px;padding-top:10px;">
                             <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
                             <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to <input required type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
                             <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
                           </div>
                           </td> 
                           <td>
-                          <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "Others"><b>Others (please specify)</b><br>
+                          <input  style = "margin-left:60px;"   type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "Others"><b>Others (please specify)</b><br>
+                          <div style = "margin-left:90px; padding-top:10px;">
                           <input  type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                           <input  type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                           <input  type = "text" name = "others3" id = "others3" class = "checkboxgroup_g6"value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-
-                          </td> 
+                        </div>                          
+                      </td> 
 
                           </tr>
                           </table>

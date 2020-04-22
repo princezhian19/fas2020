@@ -9,7 +9,7 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>Annual Procurement Plan</title>
+<title>FAS | Annual Procurement Plan</title>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">

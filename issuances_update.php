@@ -153,8 +153,9 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
         $category = $row['category'];
         $issuances = $row['issuance_no'];
         $dateissued1 = $row['date_issued'];
+       
         $dateissued = date('m/d/Y', strtotime($dateissued1));
-
+        //echo $dateissued;
         
         $title = $row['subject'];
         $office = $row['office_responsible'];
@@ -291,8 +292,8 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                                             <tr>
                                                 <td class="col-md-2"><b>Issuance Date<span style = "color:red;">*</span></b></td>
                                                     <td class="col-md-5">
-                                                    <!-- <input required value="<?php echo $dateissued;?>" type="text" class="form-control" style="height: 35px;" name="dateissued" id="dateissued" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" > -->
-                                                    <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = "<?php echo $dateissued ?>" >
+                                                   
+                                                    <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = "<?php echo $dateissued;?>" >
                                                   
                                                   
                                                   </tr>
@@ -507,7 +508,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
  <!-- TinyMCE -->
- <script type="text/javascript" src="tiny_mce/tiny_mce.js"></script>
+ <!-- <script type="text/javascript" src="tiny_mce/tiny_mce.js"></script> -->
    <!--  <script type="text/javascript">
         // O2k7 skin (silver)
         tinyMCE.init({

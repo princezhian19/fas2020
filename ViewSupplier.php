@@ -28,7 +28,7 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="ViewIAR.php"><i class=""></i> Home</a></li>
-        <li class="active">Purchase Request</li>
+        <li class="active">Suppliers</li>
       </ol>
       <br>
       <br>

@@ -26,17 +26,9 @@ $update = mysqli_query($conn,"UPDATE ris_stock SET qty = '$qty' WHERE id = '$id'
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
   <div class="box box-default">
     <div class="box-header with-border">
-      <h1 align="">&nbspUpdate RIS <?php echo $ris_no;?></h1>
+      <h1 align="">&nbsp;Update RIS <?php echo $ris_no;?></h1>
       <div class="box-header with-border">
       </div>
       <br>

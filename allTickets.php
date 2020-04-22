@@ -186,7 +186,7 @@ function filldataTable()
 
                                                                    
                                                                   }else{
-                                                                    echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];
+                                                                    echo date('F d, Y',strtotime($row['COMPLETED_DATE'])).' '.$row['COMPLETED_TIME'];
 
                                                                   }
                                                                 ?>
@@ -241,13 +241,13 @@ function filldataTable()
                                                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Completed</span>
                                                             <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
                                                                 <?PHP 
-                                                                  if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
+                                                                  if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
                                                                   {
                                                                     echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
 
                                                                    
                                                                   }else{
-                                                                    echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];
+                                                                    echo date('F d, Y',strtotime($row['COMPLETED_DATE'])).' '.$row['COMPLETED_TIME'];
 
                                                                   }
                                                                 ?>
@@ -371,22 +371,38 @@ function showWorkload($ICT)
     include 'connection.php';
     $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%' and `STATUS_REQUEST` = 'For action'";
     $result = mysqli_query($conn, $query);
+    if ($result->num_rows > 0) {
     while($row = mysqli_fetch_array($result))
     {
         ?>
+             <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY'];?>">
             <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                <span class="time"><i class="fa fa-clock-o"></i>&nbsp;<?PHP echo date('g:m A',strtotime($row['REQ_TIME']));?></span>
                 <h3 class="timeline-header"><a href="#"><?php echo $row['REQ_BY'];?></a> sent you a request</h3>
                     <div class="timeline-body">
-                    <?php echo $row['ISSUE_PROBLEM'];?>
+                    <?php echo $row['TYPE_REQ'];?>
+                    <P><?php echo $row['ISSUE_PROBLEM'];?></P>
+                    
                     </div>
                     <div class="timeline-footer">
                     <a class="btn btn-primary btn-xs">Resolve</a>
-                    <a class="btn btn-danger btn-xs">Delete</a>
+                    <!-- <a class="btn btn-danger btn-xs">Delete</a> -->
                     </div>
             </div><br><br>
         <?PHP
     } 
+}else{
+    ?>
+   <div class="timeline-item">
+       <span class="time"></span>
+       <h3 class="timeline-header">There is no request on your list.</h3>
+           <div class="timeline-body">
+          
+           </div>
+         
+   </div><br><br>
+<?PHP
+}
 }
 ?>
 <body class="hold-transition skin-red-light sidebar-mini">
@@ -394,172 +410,175 @@ function showWorkload($ICT)
 <?php include('test1.php'); ?>
   <div class="content-wrapper">
   <section class="content-header">
-  <h1><b>ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM </b></h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Online ICT Technical Assistance System</a></li>
         <li class="active">Processing</li>
       </ol>
-    </section>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="panel panel-default">
+                    <div class="box-body">      
+                    <div> <h1>Processing</h1><br> </div>
+                <button class = "btn btn-success btn-md"><a href = "requestForm.php?division=<?php echo $_SESSION['division'];?>" style = "decoration:none;color:#fff;">Create Request</a> </button>
 
-    
- 
-
-
+                    </div>
+             
+               
   <section class="content">
 
-    <div class="row">
-        <div class="col-md-3">
-            <div class="box box-primary">
-                <div class="box-body box-profile">
+<div class="row">
+    <div class="col-md-3">
+        <div class="box box-primary">
+            <div class="box-body box-profile">
 
-                    <h3 class="profile-username text-center">ICT Staff Work Load</h3>
+                <h3 class="profile-username text-center">ICT Staff Work Load</h3>
 
-                    <p class="text-muted text-center">FAD-RICTU</p>
-                    <center>
-                    <button class = "btn btn-success btn-md"><a href = "requestForm.php?division=<?php echo $_SESSION['division'];?>" style = "decoration:none;color:#fff;">Create Request</a> </button>
-                    </center>
-                    <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Mark Kim">
-                                        <span style="font-size:10px;vertical-align:top;line-height:10px;">Web Programmer</span>
-                                        <span style="font-size:10px;line-height:40px;50px;margin-left:-73.8px;font-size:12px;">Mark Kim A. Saluti</span>
-                                        <button onclick="$('#second_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
-                                            <span class="badge badge-light" ><?php echo showICTload('Mark Kim A. Sacluti');?></span>
-                                        </button>
-                                        
-                                    </li>
-                                    <li class="list-group-item">
-                                        <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Christian Paul">
-                                        <span style="font-size:10px;vertical-align:top;line-height:10px;">Network Administrator</span>
-                                        <span style="font-size:10px;line-height:40px;50px;margin-left:-94.8px;font-size:12px;">Christian Paul Ferrer</span>
-                                        <button onclick="$('#third_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
-                                            <span class="badge badge-light"><?php echo showICTload('Christian Paul V.Ferrer');?></span>
-                                        </button>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Charles Adrian">
-                                        <span style="font-size:10px;vertical-align:top;line-height:10px;">Database Administrator</span>
-                                        <span style="font-size:10px;line-height:40px;50px;margin-left:-100.8px;font-size:12px;">Charles Adrian Odi</span>
-                                        <button onclick="$('#fourth_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right" >
-                                      
-                                            <span class="badge badge-light"><?php echo showICTload('Charles Adrian T. Odi');?></span>
+                <p class="text-muted text-center">FAD-RICTU</p>
+             
+                <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Mark Kim">
+                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Web Programmer</span>
+                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-73.8px;font-size:12px;">Mark Kim A. Saluti</span>
+                                    <button onclick="$('#second_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
+                                        <span class="badge badge-light" ><?php echo showICTload('Mark Kim A. Sacluti');?></span>
+                                    </button>
+                                    
+                                </li>
+                                <li class="list-group-item">
+                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Christian Paul">
+                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Network Administrator</span>
+                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-94.8px;font-size:12px;">Christian Paul Ferrer</span>
+                                    <button onclick="$('#third_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
+                                        <span class="badge badge-light"><?php echo showICTload('Christian Paul V.Ferrer');?></span>
+                                    </button>
+                                </li>
+                                <li class="list-group-item">
+                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Charles Adrian">
+                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Database Administrator</span>
+                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-100.8px;font-size:12px;">Charles Adrian Odi</span>
+                                    <button onclick="$('#fourth_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right" >
+                                  
+                                        <span class="badge badge-light"><?php echo showICTload('Charles Adrian T. Odi');?></span>
 
-                                        </button>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Shiela Mei">
-                                        <span style="font-size:10px;vertical-align:top;line-height:10px;">Data Analyst</span>
-                                        <span style="font-size:10px;line-height:40px;50px;margin-left:-55.8px;font-size:12px;">Shiela Mei Olivar</span>
-                                        <button  onclick="$('#fifth_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
-                                            <span class="badge badge-light"><?php echo showICTload('Shiela Mei E. Olivar');?></span>
-                                        </button>
-                                    </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs" style="text-align: left;">
-                    <li class="active"><a href="#first" data-toggle="tab" id="first_tab">Processing</a></li>
-                    <li><a href="#second" data-toggle="tab" id="second_tab">Mark Kim A. Sacluti</a></li>
-                    <li><a href="#third" data-toggle="tab" id="third_tab">Christian Paul Ferrer</a></li>
-                    <li><a href="#fourth" data-toggle="tab" id="fourth_tab">Charles Adrian Odi</a></li>
-                    <li><a href="#fifth" data-toggle="tab" id="fifth_tab">Shiela Mei Olivar</a></li>
+                                    </button>
+                                </li>
+                                <li class="list-group-item">
+                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Shiela Mei">
+                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Data Analyst</span>
+                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-55.8px;font-size:12px;">Shiela Mei Olivar</span>
+                                    <button  onclick="$('#fifth_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
+                                        <span class="badge badge-light"><?php echo showICTload('Shiela Mei E. Olivar');?></span>
+                                    </button>
+                                </li>
                 </ul>
 
-                <div class="tab-content">
-                    <div class="active tab-pane" id="first">
-                        <div class="post">
-                            <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
-                            <thead>
-                                <th></th>
-                            </thead>
-                            <tbody>
-                            <?php echo filldataTable();?>
-                            </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-
-
-
-
-                    <div class="tab-pane" id="second">
-                        <ul class="timeline timeline-inverse">
-                            <!-- timeline time label -->
-                            <li class="time-label">
-                                <span class="bg-red">
-                                    Work Load
-                                </span>
-                            </li>
-                            <li>
-                                <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="Shiela Mei">
-                                <?php echo showWorkload('Mark');?>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="tab-pane" id="third">
-                        <ul class="timeline timeline-inverse">
-                            <!-- timeline time label -->
-                            <li class="time-label">
-                                <span class="bg-red">
-                                    Work Load
-                                </span>
-                            </li>
-                            <li>
-                                <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="Shiela Mei">
-                                <?php echo showWorkload('Christian');?>
-                            </li>
-                            <li>
-                        </ul>
-                    </div>
-                    <div class="tab-pane" id="fourth">
-                        <ul class="timeline timeline-inverse">
-                            <!-- timeline time label -->
-                            <li class="time-label">
-                                <span class="bg-red">
-                                    Work Load
-                                </span>
-                            </li>
-                            <li>
-                                <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="Shiela Mei">
-                                <?php echo showWorkload('Charles');?>
-                            </li>
-                            <li>
-                        </ul>
-                    </div>
-                    <div class="tab-pane" id="fifth">
-                        <ul class="timeline timeline-inverse">
-                            <!-- timeline time label -->
-                            <li class="time-label">
-                                <span class="bg-red">
-                                    Work Load
-                                </span>
-                            </li>
-                            <li>
-                                <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="Shiela Mei">
-                                <?php echo showWorkload('Shiela');?>
-                            </li>
-                            <li>
-                        </ul>
-                    </div>
-
-                </div>
-            <!-- /.tab-content -->
             </div>
         </div>
+    </div>
+    <div class="col-md-9" >
+        <div class="nav-tabs-custom" style = "background:pink;color:#fff;" >
+            <ul class="nav nav-tabs" style="text-align: left;">
+                <li class="active"><a href="#first" data-toggle="tab" id="first_tab">Processing</a></li>
+                <li><a href="#second" data-toggle="tab" id="second_tab">Mark Kim A. Sacluti</a></li>
+                <li><a href="#third" data-toggle="tab" id="third_tab">Christian Paul Ferrer</a></li>
+                <li><a href="#fourth" data-toggle="tab" id="fourth_tab">Charles Adrian Odi</a></li>
+                <li><a href="#fifth" data-toggle="tab" id="fifth_tab">Shiela Mei Olivar</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="active tab-pane" id="first">
+                    <div class="post">
+                        <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
+                        <thead>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                        <?php echo filldataTable();?>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="tab-pane" id="second">
+                    <ul class="timeline timeline-inverse">
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                            <span class="bg-red">
+                                Work Load
+                            </span>
+                        </li>
+                        <li>
+                            <?php echo showWorkload('Mark');?>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-pane" id="third">
+                    <ul class="timeline timeline-inverse">
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                            <span class="bg-red">
+                                Work Load
+                            </span>
+                        </li>
+                        <li>
+                            <?php echo showWorkload('Christian');?>
+                        </li>
+                        <li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="fourth">
+                    <ul class="timeline timeline-inverse">
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                            <span class="bg-red">
+                                Work Load
+                            </span>
+                        </li>
+                        <li>
+                            <?php echo showWorkload('Charles');?>
+                        </li>
+                        <li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="fifth">
+                    <ul class="timeline timeline-inverse">
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                            <span class="bg-red">
+                                Work Load
+                            </span>
+                        </li>
+                        <li>
+                            <?php echo showWorkload('Shiela');?>
+                        </li>
+                        <li>
+                    </ul>
+                </div>
+
+            </div>
+        <!-- /.tab-content -->
+        </div>
+    </div>
 </div>
 </section>
-    <section class="content-header">
-      
-       
+<section class="content-header">
+  
+   
+                </div>
+            </div>
+        </div>
     </section>
-  </div>
+</div>
   <footer class="main-footer">
     <br>
       <div class="pull-right hidden-xs">

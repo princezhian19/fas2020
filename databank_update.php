@@ -144,17 +144,7 @@ $view_query = mysqli_query($conn, "SELECT * from downloads where download_id = '
         $postedby = $row['postedby'];
         $posteddate = $row['dateposted'];
 
-        
-$category = $row['category'];
-$issuances = $row['issuances'];
-$dateissued1 = $row['dateissued'];
-$dateissued = date('Y-m-d', strtotime($dateissued1));
-$title = $row['title'];
 
-$url = $row['url'];
-$postedby = $row['postedby'];
-
-$posteddate = $row['posteddate'];
 
 
 
@@ -313,7 +303,7 @@ $posteddate = $row['posteddate'];
 
                     <tr>
                         <td class="col-md-2"><b>Posted Date</b></td>
-                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" ></td>
+                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php echo $posteddate; ?>" ></td>
                                 </tr>
 
 

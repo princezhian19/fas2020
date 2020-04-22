@@ -9,7 +9,7 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS | SARO</title>
+<title>FAS | SARO/SUB-ARO</title>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,7 +48,7 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">SARO</li>
+        <li class="active">SARO/SUB-ARO</li>
       </ol>
       <br>
       <br>
