@@ -75,7 +75,7 @@ function table(){
     echo $item_id_sup;    
     echo '</textarea></td>';
     echo  '<td>
-    <input type="text" required id="ppu_sup" name="ppu_sup[]" onKeyPress="return dec(event)" class="form-control col-md-6">
+    <input type="text" required id="ppu_sup" name="ppu_sup[]" onKeyPress="return dec(event)" class="form-control col-md-6" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false">
     </td>';
   }
   echo '</table>';
@@ -511,11 +511,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
       </div>
     </div>
   </div>
-</div>  
-</div>  
-</div>  
-</div>  
-</div>  
+ 
 <div class="col-md-12" >
   <div class="box box-primary">
     <div class="box-header with-border" align="left">
