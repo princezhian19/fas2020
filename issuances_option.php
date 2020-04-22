@@ -195,6 +195,12 @@ else{
 <!DOCTYPE html>
 
 <html>
+
+
+
+
+
+
 <?php
 
 $container = "";
@@ -345,7 +351,7 @@ require_once('_includes/class.upload.php');
                               
                               <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
         <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
-        <div class="office-responsible well checkbox" style="position: absolute;display: none;max-width: 80%;  ">
+        <div class="office-responsible well checkbox-inline" style="position: absolute;display: none;max-width: 80%;  ">
 
                           <?php
                           $counter = 0; 

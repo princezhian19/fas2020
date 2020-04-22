@@ -11,8 +11,8 @@
           <tbody>
           <thead>
             <tr style="background-color: white;color:blue;">
-              <th>ID</th>
               <th>SUPPLIER</th>
+              <th>CONTACT PERSON</th>
               <th>ADDRESS</th>
               <th>CONTACT</th>
               <th style=  "width:13%;text-align:Center;">ACTION</th>

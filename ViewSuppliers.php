@@ -89,7 +89,7 @@ $username = $_SESSION['username'];
             'info'        : true,
             'autoWidth'   : true,
             "order": [[ 1, "asc" ]],
-            aLengthMenu: [ [5, 10, 20, -1], [5, 10, 20, "All"] ],
+            aLengthMenu: [ [10, 10, 20, -1], [10, 10, 20, "All"] ],
             "bPaginate": true,
             "bLengthChange": false,
             "bFilter": true,

@@ -221,7 +221,7 @@ background-color: lightgray;
   </aside>
   
 <?php else: ?>
-  <?php if ($username == 'masaclutii' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' ): ?>
+  <?php if ($username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial' ): ?>
 <aside class="main-sidebar">
     <section class="sidebar"  style="background-color: white;height: 1000px;">
       <div class="user-panel">

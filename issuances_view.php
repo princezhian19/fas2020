@@ -47,7 +47,8 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
         $posteddate = $row['dateposted'];
         
     }
-
+    $fullName = $office.'-'.$postedby;
+    //echo $fullName;
     $path = "files/".$file;
 
     $view_query1 = mysqli_query($conn, "SELECT * from issuances_category where id = '$category'");
@@ -141,25 +142,9 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                  
                         <td class="col-md-2"><b>Uploading Details</b><span style = "color:red;"></span></td>
                             <td class="col-md-5">
-                            <?php
-
-                             $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-                             $username = $_SESSION['username'];
-              
-                             //echo $username;
-                             $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
-                             $rowdiv = mysqli_fetch_array($select_user);
-                             $DIVISION_C = $rowdiv['DIVISION_C'];
-                            
-                             $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
-                             $rowdiv1 = mysqli_fetch_array($select_office);
-                             $DIVISION_M = $rowdiv1['DIVISION_M'];
-                            
-                             $fullName =  $DIVISION_M.'-'.$username;
-                             //echo $fullName;
-                            
-                            ?>     
-                            <?php echo $fullName;?></td>
+                              
+                            <?php echo $fullName;?>
+                            </td>
                                 </tr>
 
         </table>                       
