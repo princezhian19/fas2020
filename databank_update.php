@@ -57,6 +57,9 @@ $posteddate = $_POST['posteddate'];
 
 $office = $_POST['office'];
 
+$getfile = $_POST['getfile'];
+//echo $getfile;
+
 $servername = "localhost";
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
@@ -73,9 +76,9 @@ if ($conn->connect_error) {
 
 if(empty($_FILES['file']['name'])){
 
-  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
+  //echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
 
-
+  $query = mysqli_query($conn,"UPDATE downloads set title='$title',file='$getfile',category='$category',dateposted='$posteddate',postedby='$username1',url='$url',office='$office' where download_id ='$id'");
 }
 else
 {
@@ -114,6 +117,8 @@ echo '<div class=""><div class="panel-heading " style = "background-color:Red"> 
 
 
 $getid = $_GET['id'];
+$option = $_GET['option'];
+//echo $option;
 $servername = "localhost";
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
@@ -134,7 +139,7 @@ $view_query = mysqli_query($conn, "SELECT * from downloads where download_id = '
         
         $title = $row['title'];
        
-        //$file = $row['pdf_file'];
+        $file = $row['file'];
         $url = $row['url'];
         $postedby = $row['postedby'];
         $posteddate = $row['dateposted'];
@@ -250,39 +255,27 @@ $posteddate = $row['posteddate'];
                     <tr>
                         <td class="col-md-2"><label>Attached File</label> </td>
                             <td class="col-md-5"> <input value="<?php echo $file;?>" id="issuances_attachment" type="file" name="file"/>
-                          <?php
-							if (!empty($_GET['option']) && $_GET['option']== 'edit') {
-							
-							if (!empty($file) && (file_exists($directory.$file)))		
-							{
-								if (fileExtensionType($file) && fileExtensionType($file) == 'document' )
-								{
-															  
-								  echo '<p class="form_details">          
-											  <label>&nbsp;</label>
-											  Current file: <a href="files/'.$file.'" target="_blank">'.$file.'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="deleteFile.php?id='.$id.'&i='.$file.'&d=files&t=issuances" title="Delete File">[x] Delete</a><br/>
-											  Allowed file: *.pdf, *.doc,*.docx,*.docm,*.xls,*.xlsx,*.ppt,*.pptx,*.rar,*.zip,*.txt
-											  <br>
-											  Max allowed size: 5mb
-										  </p>';				
-								}
-							}
-              } 
-              
+                            <?php
+                                              
+                                              // /echo "Current File: ".$file;
+                                              //echo $option;
+                                              if (!empty($option) && $option == 'edit') {
+                                                echo  'Current file: <a name="getfile" href="files/'. $file.'" target="_blank">'.$file.'</a> <input hidden id="" type="Text" value="'.$file.'" name="getfile"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/> Allowed file: *.pdf
+                                                <br>
+                                                Max allowed size: 5mb';
+                                           
+                                              } 
+                                              else
+                                              {
+                                              echo '<p class="form_details">          
+                                              <label>&nbsp;</label>
+                                              Allowed file: *.pdf
+                                              <br>
+                                              Max allowed size: 5mb
+                                              </p>';								
+                                              }
 
-
-
-							else
-							{
-								  echo '<p class="form_details">          
-											  <label>&nbsp;</label>
-											  Allowed file: *.pdf, *.doc,*.docx,*.docm,*.xls,*.xlsx,*.ppt,*.pptx,*.rar,*.zip,*.txt
-											    <br>
-											  Max allowed size: 5mb
-										  </p>';								
-							}
-							                         
-						  ?>
+                                              ?>
                               
                            <!--  <li class="btn btn-primary"><a href="issuances.php" style="color:white;text-decoration: none;">Choose File</a> --></li><!-- <li class="button btn-primary">Choose File</button> --> <!-- <label>&nbsp&nbspNo file Chosen</label><label class="pull-right"> Allowed file: *.pdf   Max allowed size: 5mb</label></td> -->
                                 </tr>

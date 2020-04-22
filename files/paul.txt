@@ -1,0 +1,36 @@
+//pinaka importanteng umpisahan dyan is pano ka mag lagay ng ID
+// lagyan mo nalang prefix ex.    [input-1, input-2, input-3]
+
+//CountAllInputsInsideThisContainer(); hanapin mo nalang sa net pano mag count ng child nodes ng container na inputs
+// or lagay kana fixed value during onload ex. may 3 rows kana agad meaning ang pinaka last na id is "input-3"
+// so declare kanalang ng 
+// var numberOfInputs = 3;
+// second way yang baba mas mahirap
+// var numberOfInputs = document.getElementById('sanMoGustoIlagay').CountAllInputsInsideThisContainer();
+
+// //+ 1 ka,  bakit may + 1? kung may 3 inputs kana so ang dapat na sunod na id is 4
+// numberOfInputs += 1;
+
+// function createNewSet(inputID) {
+//    var div = document.createElement("div");
+//    div.setAttribute('class', 'set-container');
+//    var input = document.createElement("div");
+//    input.setAttribute('type', 'text');
+//    // bale pag kuha mo ng id dapat by ID lagi
+//    // si kung maraming inputs count mo gamit javascript kung ilang inputs ang meron
+//    // para sa pag kuha ng data by loop
+//    input.setAttribute('id', 'input-' + inputID);           
+//    div.appendChild(input);
+//    // para ma display mo dun sa pinaka container sa creen
+//    document.getElementById('sanMoGustoIlagay').appendChild(div);
+// }
+// // call mo lang yung function para mag karoon kana ng bagong inputs
+// createNewSet(numberOfInputs);
+
+// // pag tapos kana at gusto mo na kunin data ng lahat ng inputs
+// // gamit ka na ng loop
+// // ex.
+// for(var i = 0; i < numberOfInputs; i++) {
+//    var item = document.getElementById('input-' + i);
+//    // then gawin mo na ano gusto mo gawin
+// }

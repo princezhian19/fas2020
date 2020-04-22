@@ -48,7 +48,9 @@ $dateissued1 = $_POST['dateissued'];
 $dateissued = date('Y-m-d', strtotime($dateissued1));
 $title = $_POST['title'];
 //$office = $_POST['office'];
-//$file = $_POST['file'];
+$getfile = $_POST['getfile'];
+//echo $getfile;
+//exit();
 $url = $_POST['url'];
 $postedby = $_POST['postedby'];
 
@@ -91,8 +93,8 @@ if ($conn->connect_error) {
 
 if(empty($_FILES['file']['name'])){
 
-  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
-
+  //echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
+  $query = mysqli_query($conn,"UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$postedby',pdf_file='$getfile',dateposted='$posteddate',date_issued='$dateissued',postedby='$username1',category='$category',url='$url' where id ='$id'");
 
 }
 else
@@ -133,6 +135,8 @@ else{
 
 
 $getid = $_GET['id'];
+$option = $_GET['option'];
+//echo $option;
 $servername = "localhost";
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
@@ -297,166 +301,162 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                                                     <td class="col-md-5">  <input required value="<?php echo $title;?>"  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
                                                         </tr>
                                             <tr>
-                                                <td class="col-md-2"><b>Concerned Office</b></td>
-                                                    <td class="col-md-5"> 
-                                                      <!-- <input id="offices" value="<?php echo $office;?>" name="office" autocomplete ="off" type="text" class="form-control" placeholder=""></td> -->
-                                                      <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
-                                <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
-                                <div class="office-responsible well checkbox" style="position: absolute;display: none;max-width: 80%;  ">
+                                               
+                                            <td class="col-md-2"><b>Concerned Office</b></td>
+                            <td class="col-md-5"> 
+                              <!-- <input id="offices" name="office" autocomplete ="off" type="text" class="form-control" placeholder=""></td> -->
+                              
+                              <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
+        <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
+        <div class="office-responsible well  " style="position: absolute;display: none;max-width: 80%;    ">
 
-                                                  <?php
-                                                  $counter = 0; 
+                          <?php
+                          $counter = 0; 
 
-                                                  $get_issuance_no = "SELECT id,issuance_no from issuances";
-                                                  $issuance_no_issuances = getData($conn,$get_issuance_no);
+                          $get_issuance_no = "SELECT id,issuance_no from issuances";
+                          $issuance_no_issuances = getData($conn,$get_issuance_no);
 
-                                        
+                 
 
-                                                  $query_responsible_office = "SELECT division_m,b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
-                                                      right join issuances_office_responsible b on a.issuance_no = b.issuance_id
-                                                          left join tblpersonneldivision c on c.division_n =b.office_responsible";
-                                                  $queryoffices = "SELECT b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
-                                                      right join issuances_office_responsible b on a.issuance_no = b.issuance_id";	
+                          $query_responsible_office = "SELECT division_m,b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
+                        		  right join issuances_office_responsible b on a.issuance_no = b.issuance_id
+                                  left join tblpersonneldivision c on c.division_n =b.office_responsible";
+                          $queryoffices = "SELECT b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
+                        		  right join issuances_office_responsible b on a.issuance_no = b.issuance_id";	
 
-                                                  $get_division ="SELECT * from tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N";
-                                                        $get_groupings ="SELECT * from tbl_groupings";
-                                                  
-                                                  $getdata = getData($conn,$get_division);
-                                                  $getgroup = getData($conn,$get_groupings);
-                                                  $countgroup = count($getgroup);
-                                                  // print "<div>";
-                                                  for ($i=0; $i < $countgroup; $i++) 
-                                              
-                                                  {
-                                                  $exploded= explode('', $getgroup[$i]['GROUP_M']);
-                                                    ?>
-                                                  <fieldset class="div ">
+                          $get_division ="SELECT * from tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N";
+                                $get_groupings ="SELECT * from tbl_groupings";
+                          
+                          $getdata = getData($conn,$get_division);
+                          $getgroup = getData($conn,$get_groupings);
+                          $countgroup = count($getgroup);
+                          // print "<div>";
+                          for ($i=0; $i < $countgroup; $i++) 
+                       
+                          {
+                          $exploded= explode('', $getgroup[$i]['GROUP_M']);
+                          	?>
+                           <fieldset class="div ">
 
-                                                    <legend><?php echo $getgroup[$i]['GROUP_M'];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="divs" class="divs<?php echo $i;?>"></legend>
-                                            
-                                          
+                             <legend><?php echo $getgroup[$i]['GROUP_M'];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="divs" class="divs<?php echo $i;?>"></legend>
+                    
+                   
 
-                                              <?php
+                      <?php
 
-                                              $get_options = "SELECT * FROM tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N WHERE a.GROUP_N=".$i."";
-                                              $getoptions = getData($conn,$get_options);
-                                              $getcount = count($getoptions);
-                                              foreach ($getoptions as $k) {
+                      $get_options = "SELECT * FROM tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N WHERE a.GROUP_N=".$i."";
+                      $getoptions = getData($conn,$get_options);
+                      $getcount = count($getoptions);
+                      foreach ($getoptions as $k) {
 
 
-                                              if ( $counter==0) { 
-                                              print "<div class='rows3 '>\n";
-                                              print " <table>
+                      if ( $counter==0) { 
+                      print "<div class='rows3 '>\n";
+                      print " <table>
 
-                                              <tr>
-                                                <td>
-                                                
-                                                </td>
-                                              <tr>
-                                                      </table> ";
+                      <tr>
+                        <td>
+                        
+                        </td>
+                      <tr>
+                              </table> ";
 
-                                              print "</div>";
+                      print "</div>";
 
-                                              ?>
-                                            
-                                        
-                                
-                                          <?php
-                                            }
-                                            $counter++;
+                      ?>
+         
+                   <?php
+                    }
+                    $counter++;
 
-                                            if (!empty($_GET['option']) && ($_GET['option'] == 'edit')) {
-                                        
+                    if (!empty($_GET['option']) && ($_GET['option'] == '')) {
+                 
 
-                                              //we check if id is valid
-                                              if (empty($issuance_no_issuances)) {
-                                                //header("Location: http://www.loop.calabarzon.dilg.gov.ph/issuances_option.php");
-                                              }
-                                              $query_responsible_office_division = "SELECT division_n,division_m,b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
-                                                  right join issuances_office_responsible b on a.issuance_no = b.issuance_id
-                                                    left join tblpersonneldivision c on c.division_n =b.office_responsible where b.issuance_id= '".$issuance_no_issuances[0]['issuance_no']."'";
+                    	//we check if id is valid
+                    	if (empty($issuance_no_issuances)) {
+                    		//header("Location: http://www.loop.calabarzon.dilg.gov.ph/issuances_option.php");
+                    	}
+                    	 $query_responsible_office_division = "SELECT division_n,division_m,b.issuance_id, issuance_no, `status`, `subject`, summary, keywords, b.office_responsible, pdf_file, dateposted, postedby, type, category FROM issuances a
+                        	 right join issuances_office_responsible b on a.issuance_no = b.issuance_id
+                             left join tblpersonneldivision c on c.division_n =b.office_responsible where b.issuance_id= '".$issuance_no_issuances[0]['issuance_no']."'";
 
-                                                  $result_responsible_office = getData($conn,$query_responsible_office_division);
-                                                  $rro = [];
-                                                  foreach ($result_responsible_office as $key) {
-                                                      $rro[]= $key['division_n'];
-                                                  }
-                                            ?>
+                          $result_responsible_office = getData($conn,$query_responsible_office_division);
+                          $rro = [];
+                          foreach ($result_responsible_office as $key) {
+                          		$rro[]= $key['division_n'];
+                          }
+                     ?>
 
-                                            
-                                        <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" id="checkboxP" value="<?php echo $k['DIVISION_M'];?>">
-                                      
-                                        <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}
-                                        else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?>/>
-                                        <span>
-                                          <table>
-                                              <tr>
+                   	
+                <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>"  id="checkboxP" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>">
+               
+                 <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}
+                 else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?>/>
+                 <span>
+                   <table>
+                      <tr>
 
-                                              <td>
-                                              <?php echo $k['DIVISION_M'];?>
+                      <td>
+                      <?php echo $k['DIVISION_M'];?>
 
-                                              </td>
-                                              </tr>
+                      </td>
+                      </tr>
 
-                                          </table>
-                                        
-                                        </span></label>
-                                      
-                                            <?php }else{
-                                            ?>
-                                      <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
-                                      <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> />
-                                      <span>
-                                        <?php echo $k['DIVISION_M'];?>
-                                      </span></label>
-                                            <?php }
-                                            }
+                   </table>
+                
+                </span></label>
+               
+                    <?php }else{
+                    ?>
+              <label><input type="checkbox" style=" vertical-align: middle; position: relative;bottom: 1px; " class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
+              <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> />
+              <span>
+                <?php echo $k['DIVISION_M'];?>
+              </span></label>
+                    <?php }
+                		}
 
-                                            ?>
-                                                  </fieldset>
+                     ?>
+                           </fieldset>
 
-                                                <?php  }
-                                                // print "</div>";
-                                                  ?>
-                                                
-                                                                  
+                         <?php  }
+                         // print "</div>";
+                          ?>
+                         
+                          
 
-                                        </div>
-                                        </div>
+</div>
+</div>
+
+
                                                                     
-                                                    </tr>
+                                              </tr>
                                             <tr>
+
+
                                                 <td class="col-md-2"><label>Attached File<span style = "color:red;">*</span></label> </td>
-                                                    <td class="col-md-5"> <input value="<?php echo $file;?>" id="issuances_attachment" type="file" name="file"/>
+                                                    <td class="col-md-5"> <input id="issuances_attachment" type="file" name="file"/>
                                                   <?php
-                                      if (!empty($_GET['option']) && $_GET['option'] == 'edit') {
-                                      
-                                      if (!empty($file) && (file_exists($directory.$file)))		
-                                      {
-                                        if (fileExtensionType($file) && fileExtensionType($file) == 'document' )
-                                        {
-                                                        
-                                          echo '<p class="form_details">          
-                                                <label>&nbsp;</label>
-                                                Current file: <a href="files/'.$file.'" target="_blank">'.$file.'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="deleteFile.php?id='.$id.'&i='.$file.'&d=files&t=issuances" title="Delete File">[x] Delete</a><br/>
-                                                Allowed file: *.pdf
-                                                <br>
-                                                Max allowed size: 5mb
-                                              </p>';				
-                                        }
-                                      }
-                                      } 
-                                      else
-                                      {
-                                          echo '<p class="form_details">          
-                                                <label>&nbsp;</label>
-                                                Allowed file: *.pdf
+                                              
+                                                  // /echo "Current File: ".$file;
+                                                  //echo $option;
+                                                  if (!empty($option) && $option == 'edit') {
+                                                    echo  'Current file: <a name="getfile" href="files/'. $file.'" target="_blank">'.$file.'</a> <input hidden id="" type="Text" value="'.$file.'" name="getfile"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/> Allowed file: *.pdf
+                                                    <br>
+                                                    Max allowed size: 5mb';
+                                               
+                                                  } 
+                                                  else
+                                                  {
+                                                  echo '<p class="form_details">          
+                                                  <label>&nbsp;</label>
+                                                  Allowed file: *.pdf
                                                   <br>
-                                                Max allowed size: 5mb
-                                              </p>';								
-                                      }
-                                                              
-                                      ?>
+                                                  Max allowed size: 5mb
+                                                  </p>';								
+                                                  }
+
+                                                  ?>
                                                       
                                                   <!--  <li class="btn btn-primary"><a href="issuances.php" style="color:white;text-decoration: none;">Choose File</a> --></li><!-- <li class="button btn-primary">Choose File</button> --> <!-- <label>&nbsp&nbspNo file Chosen</label><label class="pull-right"> Allowed file: *.pdf   Max allowed size: 5mb</label></td> -->
                                                         </tr>

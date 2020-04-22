@@ -134,7 +134,7 @@ $username = $_SESSION['username'];
                           <?php if ($office ==  $DIVISION_M ):?>
                           
                           <a  href="<?php echo $location?>" title="View" download="<?php $file?>" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Download</a> |
-                          <a href="UpdateDatabank.php?id=<?php echo $id; ?>"  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
+                          <a href="UpdateDatabank.php?id=<?php echo $id; ?>&option=edit"  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                           <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/databankdelete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                           
                           <?php else :?>
