@@ -9,7 +9,7 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS | SARO</title>
+<title>FAS | SARO/SUB-ARO</title>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">

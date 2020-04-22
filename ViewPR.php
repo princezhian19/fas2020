@@ -8,7 +8,6 @@ $username = $_SESSION['username'];
 }
 ?><!DOCTYPE html>
 <html>
-<title>Purchase Request</title>
 <head>
  
 <meta charset="utf-8">

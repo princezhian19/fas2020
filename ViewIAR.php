@@ -8,7 +8,7 @@ $username = $_SESSION['username'];
 }
 ?><!DOCTYPE html>
 <html>
-<title>Inspection Acceptance Report</title>
+<title>FAS | Inspection Acceptance Report</title>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">

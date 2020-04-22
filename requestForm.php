@@ -69,8 +69,7 @@ if($_GET['division'] == 10 || $_GET['division'] == 11 || $_GET['division'] == 12
       </ol>
       <br>
       <br>
-      <br>
-      <br>
+
         <?php include('_test.php');?>
 
     </section>

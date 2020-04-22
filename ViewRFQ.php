@@ -8,7 +8,7 @@ $username = $_SESSION['username'];
 }
 ?><!DOCTYPE html>
 <html>
-<title>FAS |Request For Quotation</title>
+<title>FAS | Request For Quotation</title>
 <head>
   
 

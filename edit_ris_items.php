@@ -28,7 +28,7 @@ $update = mysqli_query($conn,"UPDATE ris_stock SET qty = '$qty' WHERE id = '$id'
 
   <div class="box box-default">
     <div class="box-header with-border">
-      <h1 align="">&nbspUpdate RIS <?php echo $ris_no;?></h1>
+      <h1 align="">&nbsp;Update RIS <?php echo $ris_no;?></h1>
       <div class="box-header with-border">
       </div>
       <br>
