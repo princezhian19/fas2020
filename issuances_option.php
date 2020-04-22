@@ -351,7 +351,7 @@ require_once('_includes/class.upload.php');
                               
                               <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
         <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
-        <div class="office-responsible well checkbox-inline" style="position: absolute;display: none;max-width: 80%;  ">
+        <div class="office-responsible well  " style="position: absolute;display: none;max-width: 80%;    ">
 
                           <?php
                           $counter = 0; 
@@ -407,8 +407,6 @@ require_once('_includes/class.upload.php');
                       print "</div>";
 
                       ?>
-                    
-                 
          
                    <?php
                     }
@@ -453,7 +451,7 @@ require_once('_includes/class.upload.php');
                
                     <?php }else{
                     ?>
-              <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
+              <label><input type="checkbox" style=" vertical-align: middle; position: relative;bottom: 1px; " class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
               <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> />
               <span>
                 <?php echo $k['DIVISION_M'];?>
