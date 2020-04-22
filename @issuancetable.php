@@ -1,5 +1,33 @@
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:index.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
+  //echo $username;
+
+  $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+  $username = $_SESSION['username'];
+
+  //echo $username;
+  $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+  $rowdiv = mysqli_fetch_array($select_user);
+  $DIVISION_C = $rowdiv['DIVISION_C'];
+ 
+  $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+  $rowdiv1 = mysqli_fetch_array($select_office);
+  $DIVISION_M = $rowdiv1['DIVISION_M'];
+
+  //echo $DIVISION_M;
+?>
+
+
+
 <?php
 // include('db.class.php'); // call db.class.php
+$edit="edit";
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +74,7 @@
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT issuances.id,issuances.category, issuances.issuance_no, issuances.date_issued, issuances.subject, issuances_category.name from issuances left join issuances_category on issuances.category=issuances_category.id order by dateposted desc");
+            $view_query = mysqli_query($conn, "SELECT issuances.office_responsible,issuances.id,issuances.category, issuances.issuance_no, issuances.date_issued, issuances.subject, issuances_category.name from issuances left join issuances_category on issuances.category=issuances_category.id order by dateposted desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
                   $id = $row["id"];
@@ -59,6 +87,9 @@
                   $date_issued = date('F d, Y', strtotime($date_issued1));
                    // $date_issued1 = date('F d, Y', strtotime($date1));
                   $subject = $row["subject"];
+
+                  $office = $row["office_responsible"];
+                  //echo $office;
                  
 
                ?>
@@ -73,10 +104,33 @@
                 <td><?php echo $subject?></td>
 
                 <td>
-                <a  href='ViewIssuance.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
-                <a href='UpdateIssuances.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
+                  <?php
+                  
+                    $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                    $username = $_SESSION['username'];
 
-                <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/issuancesdelete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                    //echo $username;
+                    $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                    $rowdiv = mysqli_fetch_array($select_user);
+                    $DIVISION_C = $rowdiv['DIVISION_C'];
+
+                    $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                    $rowdiv1 = mysqli_fetch_array($select_office);
+                    $DIVISION_M = $rowdiv1['DIVISION_M'];
+                  ?>
+
+                          <?php if ($office ==  $DIVISION_M ):?>
+                          <a  href='ViewIssuance.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
+                          <a href='UpdateIssuances.php?id=<?php echo $id;?>&option =<?php  echo $edit?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
+
+                          <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/issuancesdelete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                            <?php else :?>
+                                          
+                            <a  href='ViewIssuance.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
+                             <?php endif?>
+                
+                       
+            
 
               
 

@@ -160,6 +160,8 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
         $posteddate = $row['dateposted'];
         
     }
+
+    //echo $file;
     $container = "";
     //$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
     /* function app($connect)
@@ -427,7 +429,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                                                 <td class="col-md-2"><label>Attached File<span style = "color:red;">*</span></label> </td>
                                                     <td class="col-md-5"> <input value="<?php echo $file;?>" id="issuances_attachment" type="file" name="file"/>
                                                   <?php
-                                      if (!empty($_GET['option']) && $_GET['option']== 'edit') {
+                                      if (!empty($_GET['option']) && $_GET['option'] == 'edit') {
                                       
                                       if (!empty($file) && (file_exists($directory.$file)))		
                                       {

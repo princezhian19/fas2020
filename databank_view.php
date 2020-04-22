@@ -47,7 +47,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
         $posteddate = $row['dateposted'];
         
     }
-
+    $fullName = $office.'-'.$postedby;
     $path = "files/".$file;
 
     $view_query1 = mysqli_query($conn, "SELECT * from issuances_category where id = '$category'");
@@ -155,7 +155,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
                              $rowdiv1 = mysqli_fetch_array($select_office);
                              $DIVISION_M = $rowdiv1['DIVISION_M'];
                             
-                             $fullName =  $DIVISION_M.'-'.$username;
+                             $fullName =  $office.'-'.$postedby;
                              //echo $fullName;
                             
                             ?>     
