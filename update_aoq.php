@@ -430,6 +430,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                 <label>Remarks</label>
                 <textarea class="form-control" name="remarks" rows="8"><?php echo $remarks?></textarea>
               </div>
+            <div class="pull-right"><a href="export_abstract.php?rfq_id=<?php echo $rfq_id; ?>&abstract_no=<?php echo $abstract_no1?>" class="btn btn-success">Export</a> </div>
             </div>
 
       </div>
