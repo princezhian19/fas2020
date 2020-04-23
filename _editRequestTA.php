@@ -1,5 +1,12 @@
-
-
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:index.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
+?>
 <!DOCTYPE html>
 <html>
 <style>
@@ -46,7 +53,7 @@
 <div class="wrapper">
 <?php
 
-if($_GET['division'] == 11 || $_GET['division'] == 12 || $_GET['division'] == 13 || $_GET['division'] == 14 || $_GET['division'] == 16)
+if($_GET['division'] == 10 || $_GET['division'] == 11 || $_GET['division'] == 12 || $_GET['division'] == 13 || $_GET['division'] == 14 || $_GET['division'] == 16)
 {
   include('test1.php');
 }else{
@@ -62,8 +69,7 @@ if($_GET['division'] == 11 || $_GET['division'] == 12 || $_GET['division'] == 13
       </ol>
       <br>
       <br>
-      <br>
-      <br>
+    
         <?php include('_editRequestForm.php');?>
 
     </section>

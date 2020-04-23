@@ -20,7 +20,7 @@ $username = $_SESSION['username'];
   color: blue;
 }
 </style> -->
-<title>FAS | NTA Payment</title>
+<title>FAS | Payment</title>
 <head>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

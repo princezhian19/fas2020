@@ -999,6 +999,22 @@ $(document).ready(function(){
 <script src="dist/js/demo.js"></script>
 <!-- Page script -->
 <script>
+  $(document).ready(function(){
+        //Date picker,
+        $('#datepicker1').datepicker({
+      autoclose: true
+    })
+
+    $('#datepicker2').datepicker({
+      autoclose: true
+    })
+    $('#datepicker3').datepicker({
+      autoclose: true
+    })
+    $('#datepicker4').datepicker({
+      autoclose: true
+    })
+  })
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
@@ -1033,20 +1049,7 @@ $(document).ready(function(){
       }
     )
 
-    //Date picker,
-    $('#datepicker1').datepicker({
-      autoclose: true
-    })
 
-    $('#datepicker2').datepicker({
-      autoclose: true
-    })
-    $('#datepicker3').datepicker({
-      autoclose: true
-    })
-    $('#datepicker4').datepicker({
-      autoclose: true
-    })
 
     //iCheck for checkbox and radio inputs
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
