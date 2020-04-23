@@ -11,7 +11,7 @@ require_once 'calendar/sample/bdd.php';
 require_once 'calendar/sample/dbaseCon.php';
 require_once 'calendar/sample/sql_statements.php';
 
-$sql = "SELECT id, title, start, end, color, cancelflag,office FROM events where cancelflag = 0 and status = 1 ";
+$sql = "SELECT id, title, start, end, tblpersonneldivision.DIVISION_COLOR as 'color', cancelflag, office FROM events inner join tblpersonneldivision on events.office = tblpersonneldivision.DIVISION_N where cancelflag = 0 and status = 1 ";
 $req = $bdd->prepare($sql);
 $req->execute();
 $events = $req->fetchAll();
