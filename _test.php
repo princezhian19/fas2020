@@ -22,7 +22,7 @@ function fillTableInfo()
         $f = $row['FIRST_M'];
         $m = $row['MIDDLE_M'][0];
         $l= $row['LAST_M'];
-        $firstname = ucfirst($f);
+        $firstname = ucwords(strtolower($f));
 
         $lname = ucfirst($l);             // HELLO WORLD!
         $lastname = ucfirst(strtolower($lname));
