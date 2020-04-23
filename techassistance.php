@@ -326,8 +326,6 @@ $division = $_SESSION['division'];
                       else if (row[10] == '<span class="badge badge-pill" style = "background-color:orange;">Received</span>')
                       {
                         // action = 'ON GOING';
-                        
-                    
                       }
                       else if(row[10] == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
                       {
@@ -344,7 +342,7 @@ $division = $_SESSION['division'];
                       }
                       else if (row[10] == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
                       { 
-                        if(<?php echo $division?> == 10)
+                        if(<?php echo $division?> == 10 || <?php echo $division?> == 11 || <?php echo $division?> == 12 || <?php echo $division?> == 13 || <?php echo $division?> == 14 || <?php echo $division?> == 16 )
                         {
                         action = '<a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a>';          
                         }else{
