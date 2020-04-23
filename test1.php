@@ -104,7 +104,7 @@ $username = $_SESSION['username'];
        
         </li>
         <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_GET['division'].'' || $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php?division='.$_GET['division'].''){ echo 'class = "active"';}else{echo 'class = ""';}?>>
-          <a href="ViewCalendar.php?divsion=<?php echo $_SESSION['division'];?>">
+          <a href="ViewCalendar.php?division=<?php echo $_SESSION['division'];?>">
             <i class="fa fa-calendar" style = "color:#black;"></i>
             <span  style = "color:#black;font-weight:normal;">Calendar</span>
             
