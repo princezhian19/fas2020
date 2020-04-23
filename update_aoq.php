@@ -222,11 +222,28 @@ $sql_items = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descrip
 
 $sql_items1 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid1 ");
 
+$sql_items11 = mysqli_query($conn, "SELECT sum(sq.ppu) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid1 ");
+$rowtots11 = mysqli_fetch_array($sql_items11);
+$totsppu11 = $rowtots11['totalppu'];
+
 $sql_items2 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid2 ");
+
+$sql_items22 = mysqli_query($conn, "SELECT sum(sq.ppu) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid2 ");
+$rowtots22 = mysqli_fetch_array($sql_items22);
+$totsppu22 = $rowtots22['totalppu'];
+
 
 $sql_items3 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid3 ");
 
+$sql_items33 = mysqli_query($conn, "SELECT sum(sq.ppu) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid3 ");
+$rowtots33 = mysqli_fetch_array($sql_items33);
+$totsppu33 = $rowtots33['totalppu'];
+
 $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid4 ");
+
+$sql_items44 = mysqli_query($conn, "SELECT sum(sq.ppu) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid4 ");
+$rowtots44 = mysqli_fetch_array($sql_items44);
+$totsppu44 = $rowtots44['totalppu'];
 
 ?>
 <html>
@@ -430,6 +447,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                 <label>Remarks</label>
                 <textarea class="form-control" name="remarks" rows="8"><?php echo $remarks?></textarea>
               </div>
+            <div class="pull-right"><a href="export_abstract.php?rfq_id=<?php echo $rfq_id; ?>&abstract_no=<?php echo $abstract_no1?>" class="btn btn-success">Export</a> </div>
             </div>
 
       </div>
@@ -457,7 +475,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                                 <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
                                    <thead >
                                     <th width="" >Items</th>
-                                    <th width="" >PPU</th>
+                                    <th width="" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
                                 </thead>   
                                 <?php 
                                 $b = 1;
@@ -491,7 +509,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                         </table>
                         <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
                            <thead style="width:500px;">
-                            <th width="" >PPU</th>
+                            <th width="" >PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
                         </thead>   
                         <?php 
                         $b = 1;
@@ -549,7 +567,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                 </table>
                 <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th width="" >PPU</th>
+                    <th width="" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
                 </thead>   
                 <?php 
                 $b = 1;
@@ -579,7 +597,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                 </table>
                 <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th>PPU</th>
+                    <th>PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
                 </thead>   
                 <?php 
                 $b = 1;
@@ -610,7 +628,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
                 </table>
                 <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th width="" >PPU</th>
+                    <th width="" >PPU Total Quote: <?php echo number_format($totsppu33,2)?></th>
                 </thead>   
                 <?php 
                 $b = 1;
@@ -648,7 +666,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
         <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
            <thead>
             <th width="200" >Item</th>
-            <th width="100" >PPU</th>
+            <th width="100" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
         </thead>   
         <?php 
         $b = 1;
@@ -678,7 +696,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
     </table>
     <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
        <thead>
-        <th width="" >PPU</th>
+        <th width="" >PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
     </thead>   
     <?php 
     $b = 1;
@@ -707,7 +725,7 @@ $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descri
 </table>
 <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
    <thead>
-    <th width="" >PPU</th>
+    <th width="" >PPU Total Quote: <?php echo number_format($totsppu33,2)?></th>
 </thead>   
 <?php 
 $b = 1;
@@ -737,7 +755,7 @@ while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
 </table>
 <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
    <thead>
-    <th width="" >PPU</th>
+    <th width="" >PPU Total Quote: <?php echo number_format($totsppu44,2)?></th>
 </thead>   
 <?php 
 $b = 1;
