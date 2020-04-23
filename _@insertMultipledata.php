@@ -23,8 +23,8 @@ if(isset($_POST['submit'])){
     $username1 = $_SESSION['username'];
     
    
-$filename = $_FILES['file']['name'];
-$tempname = $_FILES['file']['tmp_name'];
+    $filename = $_FILES['file']['name'];
+    $tempname = $_FILES['file']['tmp_name'];
     
 
     if(isset($filename)){
@@ -49,6 +49,13 @@ $tempname = $_FILES['file']['tmp_name'];
     }
 
    
+$str="";
+//get checkboxes
+$todiv = $_POST['todiv11'];
+
+echo  var_dump( $todiv);
+echo "<br>";
+
 
 $category = $_POST['category'];
 $issuances = $_POST['issuances'];
@@ -56,12 +63,17 @@ $dateissued1 = $_POST['dateissued'];
 $dateissued = date('Y-m-d', strtotime($dateissued1));
 $title = $_POST['title'];
 //$office = $_POST['office'];
-//$file = $_POST['file'];
+
 $url = $_POST['url'];
 $postedby = $_POST['postedby'];
 
 $posteddate = $_POST['posteddate'];
 
+
+$office_responsible = mysqli_query($conn,"SELECT DIVISION_N from tblpersonneldivision where DIVISION_M = '$postedby' ");
+$rowget = mysqli_fetch_array($office_responsible);
+$DIVISION_N = $rowget['DIVISION_N'];
+//echo $DIVISION_N;
 
 
 $servername = "localhost";
@@ -76,19 +88,73 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
-if(empty($_FILES['file']['name'])){
+if(empty($todiv)){
 
-  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
+echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;">Concerned office cannot be empty. </p> </div></div>  '; 
 
 
 }
 else{
- $query = mysqli_query($conn,"INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
- VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')");
+        $str =  "ORD,FAD,LGCDD,MBRTG";
+    
+   
+        echo "<br>"; 
+        print_r (explode(",",$str));
+  
+       
+         echo "<br>"; 
+         
+       
+        echo $array;
+        
+        echo "<br>"; 
+        $count = count($todiv);
+        var_dump($count);
 
- /* echo "INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
- VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')";
- exit(); */
+    
+/* 
+        for($i=0;$i<$count;$i++){
+        
+
+            $getIssuance = $_POST['issuances'][$i];
+
+            $query1 = "INSERT INTO issuances_office_responsible (issuance_id) 
+            VALUES ('$getIssuance')";
+
+            $statement = $conn->prepare($query1);
+    
+            $statement->execute();
+
+           
+        } */
+       exit();
+        $array = explode(",", $_POST["todiv11"]);
+
+        $email_array = array_unique($array);
+        $offices = "'".implode("'),('", $email_array)."'";
+
+        
+        $query = "
+        INSERT INTO issuances_office_responsible 
+        (office_responsible ) 
+        VALUES ($offices)
+        ";
+      
+
+        $statement = $conn->prepare($query);
+
+        $statement->execute();
+       /*  $array =  explode(",",$str);
+        $query = mysqli_query($conn,"INSERT INTO issuances_office_responsible (issuance_id ,office_responsible) 
+        VALUES ('$issuances','".implode("'),('", $array)."')"); */
+    
+        //VALUES ('$issuances','".implode("'),('", $array)."')");
+   // }
+
+   //  exit();
+   
+
+
 }
 
 mysqli_close($conn);
@@ -96,20 +162,14 @@ mysqli_close($conn);
 if($query){
 
     echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
-   /*  echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Data Added Successfully!')
-    window.location.href='../CreateIssuances.php';
-    </SCRIPT>");  */
+   
 
 }
 else{
 
   
   echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
-   /*  echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Error!')
-    window.location.href='../CreateIssuances.php';
-    </SCRIPT>"); */
+  
 }
 
 }
@@ -231,13 +291,13 @@ require_once('_includes/class.upload.php');
                             
                               
                               <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
-                              <input id="office" name="todiv" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
-                              <div class="office-responsible well  " style="text-align:linear ;position: absolute;display: none;max-width: 80%;    ">
+                              <input id="office" name="todiv11" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
+                              <div class="office-responsible well  " style="position: absolute;display: none;max-width: 80%;">
 
                           <?php
                          
 
-                          $get_division ="SELECT * from tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N";
+                                $get_division ="SELECT * from tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N";
                                 $get_groupings ="SELECT * from tbl_groupings";
                           
                           $getdata = getData($conn,$get_division);
@@ -247,7 +307,7 @@ require_once('_includes/class.upload.php');
                           for ($i=0; $i < $countgroup; $i++) 
                        
                           {
-                          $exploded= explode('', $getgroup[$i]['GROUP_M']);
+                             $exploded= explode('', $getgroup[$i]['GROUP_M']);
                           	?>
                            <fieldset class="div ">
 
@@ -282,7 +342,7 @@ require_once('_includes/class.upload.php');
                      ?>
 
                    	
-                <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>"  id="checkboxP" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>">
+                <label><input type="checkbox" class=" divs<?php echo $i;?>"  id="" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>">
                
                  <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}
                  else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?>/>
@@ -302,7 +362,7 @@ require_once('_includes/class.upload.php');
                
                     <?php }else{
                     ?>
-              <label><input type="checkbox" style=" text-align:linear; " class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
+              <label><input type="checkbox" style=" vertical-align: middle; position: relative;bottom: 1px; " class=" divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
               <?php if(!empty($_POST['todiv'])) {if (in_array($k[''], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> />
               <span>
                 <?php echo $k['DIVISION_M'];?>
@@ -429,7 +489,7 @@ require_once('_includes/class.upload.php');
 			    //console.log('odd');
 			    $('.office-responsible').hide();
 			        $(this).attr('placeholder','Click to Select');
-
+                    //$("input[name='todiv']").val(str);
 			    x = 1;
 			  }
 			  e.preventDefault();
@@ -438,7 +498,7 @@ require_once('_includes/class.upload.php');
 		$("legend :checkbox").click(function(){
    	    var getcheckboxes = $(this).attr('class');
 	    var delimiter = ",";
-	    var text = $("input[id='todiv']");
+	    var text = $("input[id='todiv11']");
 	    var str = "";
 
 	   $('.'+getcheckboxes).prop('checked',this.checked);
@@ -448,7 +508,7 @@ require_once('_includes/class.upload.php');
 
 			$(":checkbox").click(function () {
 			    var delimiter = ",";
-			    var text = $("input[name='todiv']");
+			    var text = $("input[name='todiv11']");
 			    var str = "";
 			    
 			    // for each checked checkbox, add the checkbox value and delimiter to the textbox
