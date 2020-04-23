@@ -50,7 +50,7 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Suppliers</li>
+        <li class="active">Purchase Request</li>
       </ol>
       <br>
       <br>
@@ -65,7 +65,8 @@ $username = $_SESSION['username'];
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
       </div>
-      <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+      <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong> All rights
+      reserved.
     </footer>
   <br>
 
