@@ -421,10 +421,7 @@ require_once('_includes/class.upload.php');
               </form>
                 
           </div>
-        </div>
-
-    
-    </div>
+       
     
   </form>
    

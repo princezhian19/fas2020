@@ -22,12 +22,27 @@ $username = $_SESSION['username'];
 
   //echo $DIVISION_M;
 ?>
+ <?php
+                 
+                  $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                  $username = $_SESSION['username'];
 
+                  //echo $username;
+                  $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                  $rowdiv = mysqli_fetch_array($select_user);
+                  $DIVISION_C = $rowdiv['DIVISION_C'];
+
+                  $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                  $rowdiv1 = mysqli_fetch_array($select_office);
+                  $DIVISION_M = $rowdiv1['DIVISION_M'];
+                  //echo $DIVISION_M;
+                ?>
 
 
 <?php
 // include('db.class.php'); // call db.class.php
 $edit="edit";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +61,8 @@ $edit="edit";
         
           <div class=""  style="overflow-x:auto;">
          
-            <li class="btn btn-success"><a href="CreateIssuances.php" style="color:white;text-decoration: none;">Add</a></li>
+            <!-- <li class="btn btn-success"><a href="CreateIssuances.php" style="color:white;text-decoration: none;">Add</a></li> -->
+        <li class="btn btn-success"><a href="issuances.php" style="color:white;text-decoration: none;">Back</a></li>
         
           
               <br>
@@ -57,12 +73,13 @@ $edit="edit";
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
-                   <!-- <th width = '10'></th>  -->
+
+
                   <th width = '250'>CATEGORY</th>
                   <th width = '200'>ISSUANCE NO</th>
                   <th width = '200'>ISSUANCE DATE</th>
                   <th width = '500'>TITLE/SUBJECT</th>
-                  <th width = '250'>ACTION</th>
+                  <th width = '100'>ACTION</th>
                   
                 </tr>
                 </thead>
@@ -74,7 +91,7 @@ $edit="edit";
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT issuances.office_responsible,issuances.id,issuances.category, issuances.issuance_no, issuances.date_issued, issuances.subject, issuances_category.name from issuances left join issuances_category on issuances.category=issuances_category.id order by date_issued desc");
+            $view_query = mysqli_query($conn, "SELECT issuances.office_responsible,issuances.id,issuances.category, issuances.issuance_no, issuances.date_issued, issuances.subject, issuances_category.name from issuances left join issuances_category on issuances.category=issuances_category.id where issuances.office_responsible = '$DIVISION_M' order by date_issued desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
                   $id = $row["id"];
@@ -98,11 +115,7 @@ $edit="edit";
 
 
                 
-            <!--     <?php if ($office ==  $DIVISION_M ):?>
-                <td style="background-color:green"></td>
-                <?php else :?>
-                <td style="background-color:white"></td>
-                <?php endif?> -->
+              
                 
                
                 <td><?php echo $name?></td>
@@ -111,35 +124,10 @@ $edit="edit";
                 <td><?php echo $subject?></td>
 
                 <td>
-                  <?php
-                  
-                    $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-                    $username = $_SESSION['username'];
+                 
 
-                    //echo $username;
-                    $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
-                    $rowdiv = mysqli_fetch_array($select_user);
-                    $DIVISION_C = $rowdiv['DIVISION_C'];
-
-                    $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
-                    $rowdiv1 = mysqli_fetch_array($select_office);
-                    $DIVISION_M = $rowdiv1['DIVISION_M'];
-                  ?>
-
-                          <?php if ($office ==  $DIVISION_M ):?>
-                          <a  href='ViewIssuance.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
-                          <a href='UpdateIssuances.php?id=<?php echo $id;?>&option=edit&issuance=<?php echo $issuance_no?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
-
-                          <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/issuancesdelete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
-                            <?php else :?>
+                          <a  href='ViewIssuances.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
                                           
-                            <a  href='ViewIssuance.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
-                             <?php endif?>
-                
-                       
-            
-
-              
 
                 </td>
                 
@@ -157,8 +145,7 @@ $edit="edit";
                 
                 </div>
             </div>
-                 
-      
+ 
     <script type="text/javascript">
     $(document).ready(function() {
         var dataTable=$('#example1').DataTable({

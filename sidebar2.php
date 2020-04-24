@@ -133,6 +133,85 @@ $username = $_SESSION['username'];
           </ul>
         </li>
           
+
+
+            <!-- Records -->
+
+            <li  class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
+            <a  href="#" >
+              <i class="fa fa-folder" style = "color:#black;"></i> 
+              <span  style = "color:#black;font-weight:normal;">Records</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+            </a>
+            <ul class="treeview-menu" >
+            <li   class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
+            <a >
+              <i class="fa fa-folder" style = "color:#black;"></i> 
+              <span  style = "color:#black;font-weight:normal;">Issuances</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+            </a>
+            <ul class="treeview-menu" >
+
+            <li>
+                <a href="CreateIssuances.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;</i>Create<span href="ViewIssuancesTag.php"  class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""></span></a>
+          
+            </li>
+
+
+            <li>
+                <a href="issuances.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;</i>All Issuances<span href="ViewIssuancesTag.php"  class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""></span></a>
+          
+            </li>
+
+
+
+
+              <li>
+                <a href="ViewIssuancesTags.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;
+              
+              </i>View Tags
+              
+            
+              <span href="ViewIssuancesTag.php"  class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = "">
+              <b> 
+                
+                <?php
+                  
+                  $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                  $username = $_SESSION['username'];
+
+                  //echo $username;
+                  $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                  $rowdiv = mysqli_fetch_array($select_user);
+                  $DIVISION_C = $rowdiv['DIVISION_C'];
+
+                  $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                  $rowdiv1 = mysqli_fetch_array($select_office);
+                  $DIVISION_M = $rowdiv1['DIVISION_M'];
+
+                  $countissuances = mysqli_query($conn, "SELECT count(id) as a from issuances_office_responsible where office_responsible = '$DIVISION_M'");
+                  $rowc = mysqli_fetch_array($countissuances);
+                  $countissuancesspan = $rowc['a'];
+                  
+                ?>
+                
+                <?php echo $countissuancesspan  ;?>
+                  
+                  
+                  </b>
+              
+              </span>
+                
+            
+            
+            </a>
+          
+          </li>
+            </ul>
+        </li>
+          <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Databank<span class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li>
+            </ul>
+        </li>
+        <!-- Records -->
+
         <li class="treeview
         <?PHP 
         if(
@@ -144,6 +223,8 @@ $username = $_SESSION['username'];
         }
         ?>"
         >
+
+        
             <a href="" >
                 <i class="fa fa-users" style = "color:#black;"></i>
                 <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>

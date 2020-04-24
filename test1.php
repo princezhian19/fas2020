@@ -127,10 +127,37 @@ $username = $_SESSION['username'];
               <span  style = "color:#black;font-weight:normal;">Records</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
-              <li><a href="issuances.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;
+            <li   class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
+            <a >
+              <i class="fa fa-folder" style = "color:#black;"></i> 
+              <span  style = "color:#black;font-weight:normal;">Issuances</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+            </a>
+            <ul class="treeview-menu" >
+
+            <li>
+                <a href="CreateIssuances.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;</i>Create<span href="ViewIssuancesTag.php"  class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""></span></a>
+          
+            </li>
+
+
+            <li>
+                <a href="issuances.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;</i>All Issuances<span href="ViewIssuancesTag.php"  class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""></span></a>
+          
+            </li>
+
+
+
+
+              <li>
+                <a href="ViewIssuancesTags.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;
               
-              </i>Issuances<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = "">
-              <b> <?php
+              </i>View Tags
+              
+            
+              <span href="ViewIssuancesTag.php" class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = "">
+              <b> 
+                
+                <?php
                   
                   $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                   $username = $_SESSION['username'];
@@ -150,10 +177,21 @@ $username = $_SESSION['username'];
                   
                 ?>
                 
-                  <?php echo $countissuancesspan;?></b>
+                <?php echo $countissuancesspan  ;?>
+                  
+                  
+                  </b>
               
-              </span></a></li>
-              <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Databank<span class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li>
+              </span>
+                
+            
+            
+            </a>
+          
+          </li>
+            </ul>
+        </li>
+          <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Databank<span class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li>
             </ul>
         </li>
         <li  class = "treeview <?php 
@@ -308,9 +346,11 @@ $username = $_SESSION['username'];
             </a>
             <ul class="treeview-menu" >
               <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Create Request</a>
-              <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Processing<span>
+              <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Processing
+              <span>
               <small class="label  bg-blue" id = "on_going"></small>
-            </span></a></li>
+            </span>
+          </a></li>
               <li>
               <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Monitoring 
               <span>

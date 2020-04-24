@@ -50,9 +50,13 @@ $username = $_SESSION['username'];
   }
   </style>
 </head>
+<?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('test1.php'); }else{ include('sidebar2.php'); }
+ ?>
+
 <body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
-  <?php include('test1.php');?>
+  
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">

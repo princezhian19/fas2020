@@ -9,10 +9,10 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>Issuances</title>
+<title>FAS | Issuances</title>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
 
     <!-- Tell the browser to be responsive to screen width -->
@@ -40,15 +40,23 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-</head>
-
+    <style>
+  th{
+    color:#a9242d;
+    text-align:center;
+  }
+  td{
+    /* text-align:center; */
+  }
+  </style>
 </head>
 <?php 
   if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('test1.php'); }else{ include('sidebar2.php'); }
  ?>
+
 <body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
- 
+  
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
@@ -57,10 +65,18 @@ $username = $_SESSION['username'];
       </ol>
       <br>
       <br>
-        <?php include('databank_update.php');?>
-        
+        <?php include('@issuancetable1.php');?>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
     </section>
-  
   </div>
   <footer class="main-footer">
   <br>
@@ -70,14 +86,7 @@ $username = $_SESSION['username'];
     <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
   </footer>
   <br>
-
-
-
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
 </div>
- 
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -90,26 +99,15 @@ $username = $_SESSION['username'];
 
 <script>
   $(function () {
-    $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : true,
       'ordering'    : false,
-      'info'        : true,
-      'autoWidth'   : true
+      'info'        : false,
+      'autoWidth'   : false
     })
   })
-</script>
-
-
-<script>
-
-$(document).ready(function(){
-
-    $("#datepicker1").datepicker().datepicker();
-
-});
 </script>
 </body>
 </html>
