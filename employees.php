@@ -40,7 +40,7 @@
               $MOBILEPHONE = $row["MOBILEPHONE"];
               $EMAIL = $row["EMAIL"];
               $BIRTH_D = $row["BIRTH_D"];
-              $BIRTH = date('F d, Y',strtotime($BIRTH_D));
+              $BIRTH = date('F d',strtotime($BIRTH_D));
               ?>
               <tr>
                 <td width="1000"><?php echo $FIRST_M;?></td>
