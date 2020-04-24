@@ -4,7 +4,7 @@
       <div class="box-body table-responsive"> 
         <h1 align="">Directory of DILG-IV-A Employees</h1>
         <br>
-        <li class="btn btn-success"><a href="CreateSuppliers.php" style="color:white;text-decoration: none;">Add</a></li>
+        <li class="btn btn-success"><a href="CreateEmployee.php" style="color:white;text-decoration: none;">Add</a></li>
         <br>
         <br>
         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
@@ -59,7 +59,7 @@
                 <td width="150">
                  <a  href='UpdateAccount.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit</a>
                </td>
-               <td><a onclick="return confirm('Are you sure you want to Delete this Account now?');" href='delete_account.php?id=<?php echo $id;?>' title="delete" class = "btn btn-danger btn-xs" > <i class='fa fa-fw fa-trash'></i> Delete</a> </td>
+               <td><a onclick="return confirm('Are you sure you want to Delete this Account now?');" href='delete_account2.php?id=<?php echo $id;?>' title="delete" class = "btn btn-danger btn-xs" > <i class='fa fa-fw fa-trash'></i> Delete</a> </td>
                <?php else: ?>
                 <td></td>
                 <td></td>
