@@ -57,7 +57,7 @@ $edit="edit";
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
-                   <!-- <th width = '10'></th>  -->
+                   <th width = '10'>TAG</th> 
                   <th width = '250'>CATEGORY</th>
                   <th width = '200'>ISSUANCE NO</th>
                   <th width = '200'>ISSUANCE DATE</th>
@@ -98,11 +98,11 @@ $edit="edit";
 
 
                 
-            <!--     <?php if ($office ==  $DIVISION_M ):?>
-                <td style="background-color:green"></td>
+                 <?php if ($office ==  $DIVISION_M ):?>
+                <td style="background-color:green">YES</td>
                 <?php else :?>
                 <td style="background-color:white"></td>
-                <?php endif?> -->
+                <?php endif?>
                 
                
                 <td><?php echo $name?></td>

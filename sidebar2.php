@@ -137,37 +137,18 @@ $username = $_SESSION['username'];
 
             <!-- Records -->
 
-            <li  class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
+           
+        <li  class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
             <a  href="#" >
               <i class="fa fa-folder" style = "color:#black;"></i> 
               <span  style = "color:#black;font-weight:normal;">Records</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
+
             <ul class="treeview-menu" >
-            <li   class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
-            <a >
-              <i class="fa fa-folder" style = "color:#black;"></i> 
-              <span  style = "color:#black;font-weight:normal;">Issuances</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
-            </a>
-            <ul class="treeview-menu" >
-
-            <li>
-                <a href="CreateIssuances.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;</i>Create<span href="ViewIssuancesTag.php"  class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""></span></a>
-          
-            </li>
-
-
-            <li>
-                <a href="issuances.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;</i>All Issuances<span href="ViewIssuancesTag.php"  class="badge badge-light" style = "background-color:skyblue;color:blue;" id = ""></span></a>
-          
-            </li>
-
-
-
-
-              <li>
-                <a href="ViewIssuancesTags.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;
+           <li>
+                <a href="issuances.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;
               
-              </i>View Tags
+              </i>Issuances
               
             
               <span href="ViewIssuancesTag.php"  class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = "">
@@ -205,8 +186,14 @@ $username = $_SESSION['username'];
             </a>
           
           </li>
-            </ul>
+
+
+
+
         </li>
+
+        
+        
           <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Databank<span class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li>
             </ul>
         </li>

@@ -53,9 +53,26 @@ $username = $_SESSION['username'];
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Issuances</li>
-      </ol><br>
+      </ol>
+
+      <br>
+         
       <?php include 'issuances_option.php';?>
-    </section>
+        
+        <br>
+      
+
+     
+      </section>
+
+        
+      <br>
+        
+      <br>
+        
+      <br>
+        
+      <br>
     <footer class="main-footer">
     <br>
       <div class="pull-right hidden-xs">
