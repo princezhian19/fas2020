@@ -4,6 +4,8 @@
       <div class="box-body"> 
         <h3 align="">User Management</h3>
         <br>
+        <li class="btn btn-success"><a href="CreateUser.php" style="color:white;text-decoration: none;">Add</a></li>
+        <br>
         <br>
         <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
           <thead>

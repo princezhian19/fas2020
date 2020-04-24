@@ -4,6 +4,7 @@
   $DBConn = dbConnect();
   $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
   $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+  $admin = $_SESSION['username'];
   function tblpersonnel($connect)
   { 
     $output = '';
@@ -177,13 +178,13 @@
           POSITION_C, DESIGNATION, 
           MOBILEPHONE, EMAIL, ALTER_EMAIL, AGENCY_EMP_NO, 
           CODE, UNAME, PSWORD, DATE_CREATED,
-          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE)
+          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE,ACTIVATED,APPROVEDBY)
           VALUES (    ?, ?, ?, ?, ?, 
           ?, ?, ?, ?, 
           ?, ?, 
           ?, ?, ?, ?, 
           ?, ?, ?, ?,
-          ?, ?, ?, ?, '".$access."', 'user',?)";
+          ?, ?, ?, ?, '".$access."', 'user',? ,'Yes','".$admin."')";
 
 
           if ($insertSQL = $DBConn->prepare($sql_insert_query)) 
@@ -230,8 +231,8 @@
            $connect->prepare($sql1)->execute([$employee_number]);
 
            echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('Please Contact Your Administrator For Account Activation')
-            window.location.href = 'ViewEmployees.php';
+            window.alert('Account successfuly registered!')
+            window.location.href = 'Accounts.php';
             </SCRIPT>");
 
          }else{
@@ -456,8 +457,8 @@
             <div class="col-xs-4">
               <label>Province</label>
               <input type="text" name="province" hidden>
-                <select  disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
-                  <option value="<?php echo $province1;?>"><?php echo $province11;?></option>
+                <select disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
+                  <option disabled selected></option>
                   <option value="10">Batangas</option>
                   <option value="21">Cavite</option>
                   <option value="34">Laguna</option>
@@ -485,6 +486,7 @@
               <option value="<?php echo $municipality11;?>"><?php echo $municipality11;?></option>
               <option value="0"></option>
             </select>
+
         </div>
         <div class="col-xs-4">
           <label>Middle Name<font style="color:red;">*</font></label>
