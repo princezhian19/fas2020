@@ -15,8 +15,6 @@ $username = $_SESSION['username'];
 <?php
 
 
-
-
 if(isset($_POST['submit'])){
     $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
@@ -76,19 +74,39 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
-if(empty($_FILES['file']['name'])){
+if(empty($_FILES['file']['name'])  ){
 
-  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached File cannot be empty. </p> </div></div>  '; 
 
 
 }
 else{
+
+  if(empty($_POST['todiv'])){
+
+    echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Concerned office cannot be empty. </p> </div></div> '; 
+  }else{
+
+    $counted = count($_POST['todiv']);
+    
+    for ($i=0; $i < $counted ; $i++)
+    { 
+  
+        
+        $insertofficerespo = "INSERT INTO issuances_office_responsible (issuance_id,office_responsible) values ( ?,?)";
+        $insertofficeresponsible = $conn->prepare($insertofficerespo);
+        $insertofficeresponsible->bind_param("ss",$issuances,$_POST['todiv'][$i]);
+        $insertofficeresponsible->execute();
+    
+  
+    }
+
  $query = mysqli_query($conn,"INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
  VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')");
 
- /* echo "INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
- VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')";
- exit(); */
+ 
+
+  }
 }
 
 mysqli_close($conn);
@@ -403,10 +421,7 @@ require_once('_includes/class.upload.php');
               </form>
                 
           </div>
-        </div>
-
-    
-    </div>
+       
     
   </form>
    

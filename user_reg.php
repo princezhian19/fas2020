@@ -360,16 +360,16 @@
           <div class="row">
             <div class="col-xs-4">
               <label>Username<font style="color:red;">*</font> </label>
-              <input required type="text" name="username" id="username" class="form-control demoInputBox" placeholder="Username"onBlur="checkUsernameAvailability()"><span id="user-username-availability-status"></span>
+              <input autocomplete="new-password" required type="text" name="username" id="username" class="form-control demoInputBox" placeholder="Username"onBlur="checkUsernameAvailability()"><span id="user-username-availability-status"></span>
 
             </div>
             <div class="col-xs-4">
               <label>Password<font style="color:red;">*</font> </label>
-              <input required type="password" name="password" class="form-control" placeholder="Password">
+              <input autocomplete="new-password" required type="password" name="password" class="form-control" placeholder="Password">
             </div>
             <div class="col-xs-4">
               <label>Re-type Password<font style="color:red;">*</font></label>
-              <input required type="password" name="repassword" class="form-control" placeholder="Re-type Password">
+              <input autocomplete="new-password" required type="password" name="repassword" class="form-control" placeholder="Re-type Password">
             </div>
 
           </div>

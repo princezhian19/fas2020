@@ -41,43 +41,25 @@ if(isset($_POST['submit'])){
         }
     
 $id = $_POST['getid'];
+$issuance = $_POST['issuance'];
+
+
 $category = $_POST['category'];
 $issuances = $_POST['issuances'];
 $dateissued1 = $_POST['dateissued'];
 
 $dateissued = date('Y-m-d', strtotime($dateissued1));
 $title = $_POST['title'];
-//$office = $_POST['office'];
+
 $getfile = $_POST['getfile'];
-//echo $getfile;
-//exit();
+
 $url = $_POST['url'];
 $postedby = $_POST['postedby'];
 
 $posteddate = $_POST['posteddate'];
 $office = $_POST['office'];
 
-/* echo $id; */
 
-/* echo $category;
-echo '<br>';
-echo $issuances;
-echo '<br>';
-echo $dateissued;
-echo '<br>';
-echo $title;
-echo '<br>';
-echo $offices;
-echo '<br>';
-echo $file;
-echo '<br>';
-echo $url;
-echo '<br>';
-echo $postedby;
-echo '<br>';
-echo $posteddate;
-exit();
- */
 
 $servername = "localhost";
 $username = "fascalab_2020";
@@ -93,18 +75,80 @@ if ($conn->connect_error) {
 
 if(empty($_FILES['file']['name'])){
 
-  //echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
+if(empty($_POST['todiv'])){
+
+ 
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Concerned office cannot be empty. </p> </div></div> '; 
+
+
+}else
+{
+
+  //getting issuance no.
+  
+  $query22 = mysqli_query($conn,"DELETE from issuances_office_responsible  where issuance_id ='$issuance'");
+
+
+
+
+  $counted = count($_POST['todiv']);
+  
+  for ($i=0; $i < $counted ; $i++)
+  { 
+
+      
+      $insertofficerespo = "INSERT INTO issuances_office_responsible (issuance_id,office_responsible) values ( ?,?)";
+      $insertofficeresponsible = $conn->prepare($insertofficerespo);
+      $insertofficeresponsible->bind_param("ss",$issuances,$_POST['todiv'][$i]);
+      $insertofficeresponsible->execute();
+  
+
+  }
+
   $query = mysqli_query($conn,"UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$postedby',pdf_file='$getfile',dateposted='$posteddate',date_issued='$dateissued',postedby='$username1',category='$category',url='$url' where id ='$id'");
+  
+
+}
+
 
 }
 else
 {
+  if(empty($_POST['todiv'])){
 
+ 
+    echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Concerned office cannot be empty. </p> </div></div> '; 
+  
+  
+  }else
+  {
+  
+    //getting issuance no.
+    
+    $query22 = mysqli_query($conn,"DELETE from issuances_office_responsible  where issuance_id ='$issuance'");
+  
+  
+  
+  
+    $counted = count($_POST['todiv']);
+    
+    for ($i=0; $i < $counted ; $i++)
+    { 
+  
+        
+        $insertofficerespo = "INSERT INTO issuances_office_responsible (issuance_id,office_responsible) values ( ?,?)";
+        $insertofficeresponsible = $conn->prepare($insertofficerespo);
+        $insertofficeresponsible->bind_param("ss",$issuances,$_POST['todiv'][$i]);
+        $insertofficeresponsible->execute();
+    
+  
+    }
+    $query = mysqli_query($conn,"UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$postedby',pdf_file='$filename',dateposted='$posteddate',date_issued='$dateissued',postedby='$username1',category='$category',url='$url' where id ='$id'");
+  
+    
+  
+  }
 
-
- $query = mysqli_query($conn,"UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$postedby',pdf_file='$filename',dateposted='$posteddate',date_issued='$dateissued',postedby='$username1',category='$category',url='$url' where id ='$id'");
-/* echo "UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$office',pdf_file='$file',dateposted='$posteddate',date_issued='$dateissued',postedby='$postedby',category='$category',url='$url' where id ='$id'";
-exit(); */
 }
 
 mysqli_close($conn);
@@ -112,19 +156,12 @@ mysqli_close($conn);
 if($query){
 
     echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully updated. </p> </div></div>  '; 
-    /* echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Data Updated Successfully!')
-    window.location.href='../issuances.php';
-    </SCRIPT>");  */
-
+   
 }
 else{
 
     echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
-    /* echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Error!')
-    window.location.href='../issuances.php';
-    </SCRIPT>"); */
+    
 }
 }
 ?>
@@ -136,7 +173,9 @@ else{
 
 $getid = $_GET['id'];
 $option = $_GET['option'];
-//echo $option;
+
+$issuance = $_GET['issuance'];
+
 $servername = "localhost";
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
@@ -155,7 +194,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
         $dateissued1 = $row['date_issued'];
        
         $dateissued = date('m/d/Y', strtotime($dateissued1));
-        //echo $dateissued;
+        
         
         $title = $row['subject'];
         $office = $row['office_responsible'];
@@ -166,24 +205,9 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
         
     }
 
-    //echo $file;
+    
     $container = "";
-    //$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
-    /* function app($connect)
-    { 
-      $output = '';
-      $query = "SELECT sarogroup FROM `saro` Group BY sarogroup ASC";
-      $statement = $connect->prepare($query);
-      $statement->execute();
-      $result = $statement->fetchAll();
-      foreach($result as $row)
-      {
-        $output .= '<option text="text" value="'.$row["sarogroup"].'">'.$row["sarogroup"].'</option>';
-      }
-      return $output;
-    } */
-    
-    
+  
     
     $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
     
@@ -214,24 +238,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
 
 <style>
   
-  /* #calendar {
-      width: 100%;
-      padding:10px;
-      margin: 0 auto;
-      background-color:#fff;
-      border:1px solid skyblue;
-  }
   
-  .response {
-      height: 60px;
-  }
-  
-  .success {
-      background: #cdf3cd;
-      padding: 10px 60px;
-      border: #c3e6c3 1px solid;
-  }
- */
   .office-responsible{
    
     text-align:left;
@@ -245,17 +252,6 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
   
   
     </style>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
 
 
     
@@ -263,11 +259,15 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
         <div class="box">
           <div class="box-body">
             <h1 align="">Edit Issuances</h1>
+
+
              <br>
               <li class="btn btn-success"><a href="issuances.php" style="color:white;text-decoration: none;">Back</a></li>
                 <br><br>
                  <div class="class" >
                   <form method="POST" action='' enctype="multipart/form-data" >
+
+                      <input value="<?php echo $issuance;?>" hidden  type="text"  class="" style="height: 35px;" id="issuance" placeholder="" name="issuance">
                         <input value="<?php echo $id;?>" hidden  type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
                         <table class="table"> 
                                             <tr>

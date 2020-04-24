@@ -51,12 +51,7 @@ if(isset($_POST['submit'])){
    
 $str="";
 //get checkboxes
-$todiv = $_POST['todiv11'];
-
-echo  var_dump( $todiv);
-echo "<br>";
-
-
+$todiv = $_POST['todiv'];
 $category = $_POST['category'];
 $issuances = $_POST['issuances'];
 $dateissued1 = $_POST['dateissued'];
@@ -95,71 +90,27 @@ echo '<div class=""><div class="panel-heading " style = "background-color:Red"> 
 
 }
 else{
-        $str =  "ORD,FAD,LGCDD,MBRTG";
-    
-   
-        echo "<br>"; 
-        print_r (explode(",",$str));
-  
        
-         echo "<br>"; 
+
+            $counted = count($_POST['todiv']);
+            var_dump($counted) ;
+            for ($i=0; $i < $counted ; $i++)
+            { 
          
-       
-        echo $array;
-        
-        echo "<br>"; 
-        $count = count($todiv);
-        var_dump($count);
+                
+                $insertofficerespo = "INSERT INTO issuances_office_responsible (issuance_id,office_responsible) values ( ?,?)";
+                $insertofficeresponsible = $conn->prepare($insertofficerespo);
+                $insertofficeresponsible->bind_param("ss",$issuances,$_POST['todiv'][$i]);
+                $insertofficeresponsible->execute();
+            
 
-    
-/* 
-        for($i=0;$i<$count;$i++){
-        
-
-            $getIssuance = $_POST['issuances'][$i];
-
-            $query1 = "INSERT INTO issuances_office_responsible (issuance_id) 
-            VALUES ('$getIssuance')";
-
-            $statement = $conn->prepare($query1);
-    
-            $statement->execute();
-
-           
-        } */
-       exit();
-        $array = explode(",", $_POST["todiv11"]);
-
-        $email_array = array_unique($array);
-        $offices = "'".implode("'),('", $email_array)."'";
-
-        
-        $query = "
-        INSERT INTO issuances_office_responsible 
-        (office_responsible ) 
-        VALUES ($offices)
-        ";
-      
-
-        $statement = $conn->prepare($query);
-
-        $statement->execute();
-       /*  $array =  explode(",",$str);
-        $query = mysqli_query($conn,"INSERT INTO issuances_office_responsible (issuance_id ,office_responsible) 
-        VALUES ('$issuances','".implode("'),('", $array)."')"); */
-    
-        //VALUES ('$issuances','".implode("'),('", $array)."')");
-   // }
-
-   //  exit();
-   
-
+            }
 
 }
 
 mysqli_close($conn);
 
-if($query){
+if($insertofficerespo){
 
     echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
    
@@ -497,7 +448,7 @@ require_once('_includes/class.upload.php');
 
 		$("legend :checkbox").click(function(){
    	    var getcheckboxes = $(this).attr('class');
-	    var delimiter = ",";
+	    var delimiter = ";";
 	    var text = $("input[id='todiv11']");
 	    var str = "";
 
@@ -507,7 +458,7 @@ require_once('_includes/class.upload.php');
 		});
 
 			$(":checkbox").click(function () {
-			    var delimiter = ",";
+			    var delimiter = ";";
 			    var text = $("input[name='todiv11']");
 			    var str = "";
 			    

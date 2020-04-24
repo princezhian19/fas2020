@@ -42,17 +42,37 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
  
 </head>
+</head>
+<?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('test1.php'); }else{ include('sidebar2.php'); }
+ ?>
 
-<?php include 'test1.php';?>
   <div class="content-wrapper">
     <section class="content-header">
      <br>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Issuances</li>
-      </ol><br>
+      </ol>
+
+      <br>
+         
       <?php include 'issuances_option.php';?>
-    </section>
+        
+        <br>
+      
+
+     
+      </section>
+
+        
+      <br>
+        
+      <br>
+        
+      <br>
+        
+      <br>
     <footer class="main-footer">
     <br>
       <div class="pull-right hidden-xs">

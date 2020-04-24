@@ -10,42 +10,10 @@ $username1 = $_SESSION['username'];
 <?php
 
 
-/* if(isset($_POST['submit'])){ */
-
-/* 
-    $filename = $_FILES['file']['name'];
-    $tempname = $_FILES['file']['tmp_name'];
-        
-    
-        if(isset($filename)){
-            if(!empty($filename)){
-    
-                $location = "../files/";
-                if(move_uploaded_file($tempname, $location.$filename)){
-    
-                   
-    
-                        //echo 'File Uploaded!';
-                    
-                }
-               
-            }
-            
-            
-    
-        } */
     
 $id = $_GET['id'];
-/* $category = $_POST['category'];
-$issuances = $_POST['issuances'];
-$dateissued = $_POST['dateissued'];
-$title = $_POST['title'];
 
-$url = $_POST['url'];
-$postedby = $_POST['postedby'];
-
-$posteddate = $_POST['posteddate']; */
-
+$issuance = $_GET['issuance'];
 
 $servername = "localhost";
 $username = "fascalab_2020";
@@ -59,15 +27,17 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
+$query = mysqli_query($conn,"DELETE from issuances  where id ='$id'");
 
- $query = mysqli_query($conn,"DELETE from issuances  where id ='$id'");
-/* echo "UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$office',pdf_file='$file',dateposted='$posteddate',date_issued='$dateissued',postedby='$postedby',category='$category',url='$url' where id ='$id'";
-exit(); */
+
+$query1 = mysqli_query($conn,"DELETE from issuances_office_responsible  where issuance_id ='$issuance'");
 
 mysqli_close($conn);
 
 if($query){
-    //echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Data has been successfully deleted. </p> </div></div>  '; 
+
+    
+   
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert(' Data has been successfully deleted.')
     window.location.href='../issuances.php';
@@ -75,11 +45,11 @@ if($query){
 
 }
 else{
-    // echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
+   
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Error.')
     window.location.href='../issuances.php';
     </SCRIPT>");
 }
-// }
+
 ?>
