@@ -133,7 +133,7 @@ $(document).ready(function() {
           eventRender: function(calEvent, element, view) {
             if (calEvent.office == "0") {
               // element.css('background-color', '#99FF99');
-            } if (calEvent.office == "1" ) {
+            } if (calEvent.office == "1" || calEvent.office == "5" ) {
               // element.css('background-color', '#99FF99');
             }
             if (calEvent.office == "16") {

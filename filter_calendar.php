@@ -134,7 +134,7 @@ $(document).ready(function() {
       $('#calendar').fullCalendar({
         eventRender: function(calEvent, element, view) {
           if (calEvent.office == "1") {
-            // element.css('background-color', '#99FF99');
+            element.css('background-color', 'red');
           }
           if (calEvent.office == "16") {
             // element.css('background-color', '#415eec');
