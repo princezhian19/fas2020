@@ -12,7 +12,7 @@ $username = $_SESSION['username'];
 <html>
 <head>
   
-  <title>FAS | Add App</title>
+  <title>FAS | Add Directory</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
@@ -57,11 +57,11 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="index.php" style="font-family: cambria; "><i class=""></i> Home</a></li>
-        <li class="active" style="font-family: cambria;">Add App</li>
+        <li class="active" style="font-family: cambria;">Add Directory</li>
       </ol>
       <br>
       <br>
-        <?php include('app.php');?>
+        <?php include('create_directory.php');?>
     </section>
   </div>
   <footer class="main-footer">
@@ -70,13 +70,11 @@ $username = $_SESSION['username'];
         <b>Version</b> 1.0
       </div>
       <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
-      
     </footer>
     <br>
 </div>
 </body>
 </html>
-
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -86,7 +84,6 @@ $username = $_SESSION['username'];
 <script src="dist/js/adminlte.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-
 <script>
   $(function () {
     //Initialize Select2 Elements

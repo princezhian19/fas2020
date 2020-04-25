@@ -6,6 +6,10 @@
         <div class="row">
           <div class="col-md-12">
             <h1>Annual Procurement Plan</h1>
+    <br>
+    <li class="btn btn-success"><a href="CreateAPP.php" style="color:white;text-decoration: none;">Add Item</a></li>
+    <br>
+    <br>
     <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
       <thead>
         <tr style="background-color: white;color:blue;">

@@ -113,6 +113,9 @@
     $repassword      = $_POST["repassword"];  
     $cluster         = "";       
     $access         = "";       
+    $publish         = "";       
+    $usetype         = "";       
+    $activated         = "Yes";       
     $cellphone       = $_POST["cellphone"];
     $target_dir = "images/profile/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
@@ -164,96 +167,37 @@
     }
   }
 
-    $sqlUsername =  "SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
-    $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeeinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
-    if (!ifRecordExist($sqlEMP_N)){
-      if (!ifRecordExist($sqlUsername)){
-        if ($password == $repassword){
+  $add = "";
+  if($password!=''){
+    $add = ", PSWORD=? , CODE=? ";
+  }
 
-          $sql_insert_query     = "INSERT INTO tblemployeeinfo (
-          EMP_NUMBER,
-          LAST_M, FIRST_M, MIDDLE_M, BIRTH_D, SEX_C,
-          REGION_C, PROVINCE_C, CITYMUN_C,
-          POSITION_C, DESIGNATION, 
-          MOBILEPHONE, EMAIL, ALTER_EMAIL, AGENCY_EMP_NO, 
-          CODE, UNAME, PSWORD, DATE_CREATED,
-          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE)
-          VALUES (    ?, ?, ?, ?, ?, 
-          ?, ?, ?, ?, 
-          ?, ?, 
-          ?, ?, ?, ?, 
-          ?, ?, ?, ?,
-          ?, ?, ?, ?, '".$access."', 'user',?)";
+  $query = "UPDATE $sqltable SET LAST_M=?, FIRST_M=?, MIDDLE_M=?, BIRTH_D=?, SEX_C=?,
+  REGION_C=?, PROVINCE_C=?, CITYMUN_C=?,
+  POSITION_C=?,
+  MOBILEPHONE=?, EMAIL=?, AGENCY_EMP_NO=?,
+  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$activated."', UNAME=?$add WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
 
+  if ($updateSQL = $DBConn->prepare($query)) 
+  {
+    if($password==''){
+      $updateSQL->bind_param("ssssssssssssssssssssss", $lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username);
+    }else{
+      $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
+      $password   = crypt($password, '$2a$10$'.$code.'$');
 
-          if ($insertSQL = $DBConn->prepare($sql_insert_query)) 
-          { 
-
-           $date_created   = date("Y-m-j H:i:s");
-           $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
-           $password   = crypt($password, '$2a$10$'.$code.'$');
-           $insertSQL->bind_param("ssssssddddssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $designation, $cellphone, $email, $alter_email, $employee_number, $code, $username, $password, $date_created, $cluster, $contact, $office, $division,$target_file);
-           /* execute query */
-           $insertSQL->execute();
-
-           $sql1 ="INSERT INTO `hris_son_daugther`(`ID`, `EMP_ID`, `FULL_NAME`, `FIRST_NAME`, `MIDDLE_NAME`, `LAST_NAME`, `DATE_OF_BIRTH`) 
-           VALUES (NULL,$employee_number,'-',null,null,null,'0000-00-00')";
-           $connect->prepare($sql1)->execute([$employee_number]); 
-
-           $sql2 = mysqli_query($conn,"INSERT INTO `hris_personnal_information`(
-             `ID`, 
-             `EMP_ID`,
-             `SEX`, 
-             `DOB`, 
-             `POB`, 
-             `HEIGHT`, 
-             `WEIGHT`, 
-             `BLOOD_TYPE`,
-             `CIVIL_STATUS`, 
-             `MOB_NO`, 
-             `TEL_NO`, 
-             `EMAIL`, 
-             `GSIS_NO`, 
-             `PAGIBIG_NO`, 
-             `PHILHEALTH_NO`, 
-             `SSS_NO`, 
-             `TIN_NO`, 
-             `DILG_NO`, 
-             `HOUSE_NO`, 
-             `STREET`, 
-             `SUBDIVISION`, 
-             `BARANGAY`, 
-             `MUNICIPALITY`, 
-             `PROVINCE`,
-             `ZIP_CODE`) 
-             VALUES (null,'$employee_number','-','0000-00-00','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-')");
-           $connect->prepare($sql1)->execute([$employee_number]);
-
-           echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('Successfuly Added')
-            window.location.href = 'ViewEmployees.php';
-            </SCRIPT>");
-
-         }else{
-           echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('Error Occured Uppon Saving!');
-            </SCRIPT>");
-         }
-       }else{
-         echo ("<SCRIPT LANGUAGE='JavaScript'>
-          window.alert('Password Does Not Match!');
-          </SCRIPT>");
-       }
-     }else{
-       echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Username Already Exist!');
-        </SCRIPT>");
-     }
-   }else{
-     echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Employee Number Already Exist!');
+      $updateSQL->bind_param("ssssssssssssssssssssssss", $lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position,  $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division, $access, $username,  $password, $code);
+    }
+    $updateSQL->execute();
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Successfuly Updated!')
+      window.location.href = 'ViewEmployees.php?';
       </SCRIPT>");
-   }
+  }else{
+                //echo mysqli_connect_error();
+  } 
+
+
 }
 
 ?>
@@ -417,15 +361,35 @@
             <div class="col-xs-4">
               <label>Office Station<font style="color:red;">*</font></label>
               <select required id="mySelect2" class="form-control" name="office">
-                  <option disabled selected></option>
+                <?php if ($office1 == 1): ?>
                   <option value="1">Regional Office</option>
                   <option value="2">Provincial Office</option>
                   <option value="3">Cluster Office</option>
                   <option value="4">City Municipality Office</option>
+                <?php endif ?>
+                <?php if ($office1 == 2): ?>
+                  <option value="2">Provincial Office</option>
+                  <option value="1">Regional Office</option>
+                  <option value="3">Cluster Office</option>
+                  <option value="4">City Municipality Office</option>
+                <?php endif ?>
+                <?php if ($office1 == 3): ?>
+                  <option value="3">Cluster Office</option>
+                  <option value="1">Regional Office</option>
+                  <option value="2">Provincial Office</option>
+                  <option value="4">City Municipality Office</option>
+                <?php endif ?>
+                <?php if ($office1 == 4): ?>
+                  <option value="4">City Municipality Office</option>
+                  <option value="1">Regional Office</option>
+                  <option value="2">Provincial Office</option>
+                  <option value="3">Cluster Office</option>
+                <?php endif ?>
+
               </select>
               <div hidden>
                 <select  class="form-control select2" style="width: 100%;" id="mySelect2"   placeholder="Office Station" hidden >
-                  <option disabled selected>Select</option>
+                  <option disabled selected>Select Office Stations</option>
                   <option value="1">Regional Office</option>
                   <option value="2">Provincial Office</option>
                   <option value="3">Cluster Office</option>
@@ -456,7 +420,18 @@
             <div class="col-xs-4">
               <label>Province</label>
               <input type="text" name="province" hidden>
-                <select  disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
+              <?php if ($office1 == 1): ?>
+                <select disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
+                  <option disabled selected></option>
+                  <option value="10">Batangas</option>
+                  <option value="21">Cavite</option>
+                  <option value="34">Laguna</option>
+                  <option value="56">Quezon</option>
+                  <option value="58">Rizal</option>
+                </select>
+              <?php endif ?>
+              <?php if ($office1 != 1): ?>
+                <select  class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
                   <option value="<?php echo $province1;?>"><?php echo $province11;?></option>
                   <option value="10">Batangas</option>
                   <option value="21">Cavite</option>
@@ -464,6 +439,8 @@
                   <option value="56">Quezon</option>
                   <option value="58">Rizal</option>
                 </select>
+              <?php endif ?>
+
               <div class="clear"></div>
             </div>
             <div class="col-xs-4">
@@ -481,10 +458,18 @@
             <div class="col-xs-4">
               <label>City/Municipality</label>
               <input type="text" name="municipality" hidden>
-             <select disabled id="sel_user" name="municipality" class="form-control select2">
+              <?php if ($office1 == 1): ?>
+               <select disabled id="sel_user" name="municipality" class="form-control select2">
+                <option value="0"></option>
+              </select>
+            <?php endif ?>
+            <?php if ($office1 != 1): ?>
+             <select id="sel_user" name="municipality" class="form-control select2">
               <option value="<?php echo $municipality11;?>"><?php echo $municipality11;?></option>
               <option value="0"></option>
             </select>
+          <?php endif ?>
+
         </div>
         <div class="col-xs-4">
           <label>Middle Name<font style="color:red;">*</font></label>
@@ -529,16 +514,16 @@
       <div class="row">
         <div class="col-xs-4">
           <label>Username<font style="color:red;">*</font> </label>
-          <input autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
+          <input readonly value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
 
         </div>
         <div class="col-xs-4">
           <label>Password<font style="color:red;">*</font> </label>
-          <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
+          <input  type="password" name="password" class="form-control" placeholder="Password">
         </div>
-        <div class="col-xs-4" >
+        <div class="col-xs-4" hidden>
           <label>Re-type Password<font style="color:red;">*</font></label>
-          <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
+          <input  type="password" name="repassword" class="form-control" placeholder="Re-type Password">
         </div>
 
       </div>
