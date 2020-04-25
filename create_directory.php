@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
   <div class="box-body">
     <h1 align="">&nbspAdd Phone Directory</h1>
     <br>
-    &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="ViewPR.php" style="color:white;text-decoration: none;">Back</a></li>
+    &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="Directory.php" style="color:white;text-decoration: none;">Back</a></li>
     <br>
     <br>
     <form method="POST" >
