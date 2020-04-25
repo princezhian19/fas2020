@@ -118,7 +118,7 @@ $username = $_SESSION['username'];
             </a>
             <ul class="treeview-menu" >
               <li><a href="ViewEmployees.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Employees</a></li>
-              <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Phone Directory</a></li>
+              <li><a href="Directory.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Phone Directory</a></li>
             </ul>
         </li>
        
