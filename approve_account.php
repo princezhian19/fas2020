@@ -9,6 +9,7 @@
           <thead >
             <tr style="background-color: white;color:blue;">
               <th width="150">OFFICE</th>
+              <th width="150">USERNAME</th>
               <th width="150">FIRST NAME</th>
               <th width="150">MIDDLE NAME</th>
               <th width="150">LAST NAME</th>
@@ -28,6 +29,7 @@
             ?>
             <tr>
               <td><?php echo $DIVISION_M;?></td>
+              <td><?php echo $UNAME;?></td>
               <td><?php echo $FIRST_M;?></td>
               <td><?php echo $MIDDLE_M;?></td>
               <td><?php echo $LAST_M;?></td>
