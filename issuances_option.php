@@ -267,7 +267,7 @@ require_once('_includes/class.upload.php');
                           {
                           $exploded= explode('', $getgroup[$i]['GROUP_M']);
                           	?>
-                           <fieldset class="div ">
+                           <fieldset class="div " style="margin-top:20px">
 
                              <legend><?php echo $getgroup[$i]['GROUP_M'];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="divs" class="divs<?php echo $i;?>"></legend>
                     
@@ -325,7 +325,7 @@ require_once('_includes/class.upload.php');
               <span>
                 <?php echo $k['DIVISION_M'];?>
               </span></label>
-              <br>
+              
                     <?php }
                 		}
 

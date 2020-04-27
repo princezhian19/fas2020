@@ -21,6 +21,10 @@ $username = $_SESSION['username'];
   $DIVISION_M = $rowdiv1['DIVISION_M'];
 
   //echo $DIVISION_M;
+
+
+
+
 ?>
 
 
@@ -96,15 +100,34 @@ $edit="edit";
 
                 <tr align = ''>
 
+                <?php
 
+                $select_office_responsible = mysqli_query($conn, "SELECT office_responsible from  issuances_office_responsible where office_responsible = '$DIVISION_M' and issuance_id = '$issuance_no'");
+                  
+                while ($row111 = mysqli_fetch_assoc($select_office_responsible)) {
+
+                  $DIVISION_R= $row111['office_responsible'];
+                  //echo $DIVISION_R;
+
+
+
+                }
                 
-                 <?php if ($office ==  $DIVISION_M ):?>
-                <td style="background-color:green">YES</td>
-                <?php else :?>
-                <td style="background-color:white"></td>
-                <?php endif?>
-                
+
+
                
+                //echo $DIVISION_R; 	
+                ?>
+                
+              
+                
+                    <?php if ($office ==  $DIVISION_R ):?>
+                    <td style="background-color:green">YES</td>
+                    <?php else :?>
+                    <td style="background-color:white"></td>
+                    <?php endif?>
+
+
                 <td><?php echo $name?></td>
                 <td><?php echo $issuance_no?></td>
                 <td><?php echo $date_issued?></td>
@@ -124,6 +147,9 @@ $edit="edit";
                     $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
                     $rowdiv1 = mysqli_fetch_array($select_office);
                     $DIVISION_M = $rowdiv1['DIVISION_M'];
+ 
+
+
                   ?>
 
                           <?php if ($office ==  $DIVISION_M ):?>
