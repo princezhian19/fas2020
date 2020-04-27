@@ -84,6 +84,65 @@ function getCurrentID()
         echo $row['ID'];
     }
 }
+
+function viewEvents2()
+{
+  ?>
+
+    <form method = "POST" action = "calendar/add-event.php">
+                <input  type = "hidden" name = "eventid" value = "<?php echo $row['id'];?>">
+                <table class="table table-bordered" style = "width:100%;"> 
+                    <tr>
+                        <td class="col-md-2">Event/Activity Title<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Start Date<span style = "color:red;">*</span></td>
+                            <td class="col-md-5">
+                                <input required type="text" class = "form-control datepicker1" name = "startdatetxtbox"  value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2">End Date</td>
+                            <td class="col-md-5">
+                                <input  type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2">Description</td>
+                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "descriptiontxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Venue<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "venuetxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Expected Number of Participants<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "number" min = "0" name = "enptxtbox" class = "form-control" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Target Participants<span style = "color:red;">*</span></td>  
+                            <td class="col-md-5">
+                            <input required type = "text" class = "form-control" name = "remarks" value = "" />
+                                </td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2">Posted By</td>
+                            <td class="col-md-5">                              
+                            <input readonly type = "text"  class = "form-control" value = "<?php echo $_SESSION['username'];?>"  />
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2">Posted Date</td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
+                                </tr>
+                   
+                    
+                </table>
+                <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save"> 
+
+            </form>
+  <?php
+}
 ?>
   
   <!DOCTYPE html>
@@ -156,27 +215,40 @@ function getCurrentID()
     <?php include 'calendar_view.php';?>
  &nbsp;
  &nbsp;
- <div class="modal fade" id="myModal">
-      <div class="modal-dialog">
-      <div class="modal-content">
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Event/Activity</h4>
+          <button type="button" class="close" data-dismiss="modal">&times; 
+          </button>
+        </div>
+        <div class="modal-body">
+          <?php echo viewEvents();?>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+  </div>
+</div>
 
-      <!-- Modal Header -->
+<div class="modal fade" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Add Event/Activity</h4>
           <button type="button" class="close" data-dismiss="modal">&times; 
           </button>
         </div>
-
-
-      <!-- Modal body -->
         <div class="modal-body">
-          <?php echo viewEvents();?>
+          <?php echo viewEvents2();?>
         </div>
-
-         <!-- Modal footer -->
         <div class="modal-footer">
-
         </div>
+    </div>
+  </div>
+</div>
+
 
         
     <br>
@@ -209,18 +281,21 @@ function getCurrentID()
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
-<!-- <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script> -->
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 <script>
   $('#modal').click(function(){
-    $('#myModal').modal('show');   
-
+    $('#myModal2').modal('show');   
   })
+  
   $(document).ready(function(){
+  
+    
+    $( ".datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
     $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
     $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
     $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $("#datepicker1").datepicker().datepicker("setDate", new Date());
+    $(".datepicker1").datepicker().datepicker("setDate", new Date());
 
 
   })

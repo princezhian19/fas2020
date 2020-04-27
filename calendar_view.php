@@ -4,7 +4,7 @@
             <div class="box-body">
               <div class="row">
                 <div class="col-md-4">
-                <h1>Calendar of Events</h1>
+                <h1>Calendar of Activities</h1>
                 <div class = "col-lg-12">
                     <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-12">
                     <input type = "text" class = "form-control" placeholder=  "Search Events"/>
@@ -55,7 +55,7 @@
                                 </tr>
                                 <tr>
                                     <td style="background-color: #D5D911; color:white;">
-                                        <input class='calFilter' type="checkbox" value="1" ><label style = "margin-left:15%;">ORD</label>
+                                        <input class='calFilter' type="checkbox" value="1" id = "ord" ><label style = "margin-left:15%;">ORD</label>
                                     </td>
                                 </tr>
                                 <tr>
