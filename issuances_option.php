@@ -236,7 +236,7 @@ require_once('_includes/class.upload.php');
                                         </tr>
                     <tr>
                         <td class="col-md-2"><b>Issuance Date<span style = "color:red;">*</span></b></td>
-                            <td class="col-md-5">
+                            <td class="col-md-5"> 
                             <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = "<?php echo date('m/d/Y') ?>" >
                                     </tr>
                     <tr>
