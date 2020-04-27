@@ -67,7 +67,7 @@ $username = $_SESSION['username'];
                   <a href="UpdateAccount.php?id=<?php echo  $_SESSION['currentuser'];?>&username=<?php echo  $_SESSION['username'];?>" class="btn btn-default btn-flat"><i class = "fa fa-cogs"></i>Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="index.php" class="btn btn-default btn-flat"><i class = "fa fa-sign-out"></i> Log out</a>
+                  <a href="logout.php" class="btn btn-default btn-flat"><i class = "fa fa-sign-out"></i> Log out</a>
                 </div>
               </li>
             </ul>
@@ -395,7 +395,7 @@ $username = $_SESSION['username'];
       
         </li>
         <li>
-            <a href="index.php">
+            <a href="logout.php">
               <i class="fa fa-sign-out " style = "color:#black;"></i> 
               <span  style = "color:#black;font-weight:normal;">Log out</span>
             </a>
