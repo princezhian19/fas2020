@@ -197,6 +197,20 @@ $username = $_SESSION['username'];
           <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Databank<span class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li>
             </ul>
         </li>
+
+    <!-- Pesonnel -->
+  <li  class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
+            <a  href="#" >
+              <i class="fa fa-users" style = "color:#black;"></i> 
+              <span  style = "color:#black;font-weight:normal;">Personnel</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+            </a>
+            <ul class="treeview-menu" >
+              <li><a href="#"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Official Business</a></li>
+              <li><a href="#"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Travel Order</a></li>
+            </ul>
+        </li>
+         <!-- Pesonnel -->
+
         <!-- Records -->
 
         <li class="treeview

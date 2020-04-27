@@ -11,11 +11,11 @@
             <thead>
               <tr style="background-color: white;color:blue;">
                 <th width="150">GROUP</th>
-                <th>AGENCY</th>
-                <th>HEAD/DIRECTOR</th>
+                <th>AGENCY/OFFICE</th>
+                <th>CONTACT PERSON</th>
                 <th>CONTACT NO.</th>
-                <th>EMAIL</th>
-                <th>ADDRESS</th>
+                <th>EMAIL ADDRESS</th>
+                <th>OFFICE ADDRESS</th>
                 <th width="150">ACTION</th>
               </tr>
             </thead>

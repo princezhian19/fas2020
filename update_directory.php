@@ -52,10 +52,10 @@ if (isset($_POST['submit'])) {
                   <select class="form-control select2"  name="group" >
                   <option value="<?php echo $group_get?>"><?php echo $group_get?></option>
                   <option value="Local Government Units">Local Government Units</option>
-                  <option value="League of Mayors">League of Mayors</option>
+                  <option value="DILG Central">DILG Central</option>
+                  <option value="DILG Region">DILG Region</option>
                   <option value="Private Sector Representatives">Private Sector Representatives</option>
                   <option value="Regional Line Agencies">Regional Line Agencies</option>
-                  <option value="NON-VOTING RLAs">NON-VOTING RLAs</option>
                   <option value="States, Universities and Colleges">States, Universities and Colleges </option>
                   <option value="REGULAR GUESTS">REGULAR GUESTS </option>
                 </select>
