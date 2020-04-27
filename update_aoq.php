@@ -109,7 +109,7 @@ $view_query_sup = mysqli_query($conn, "SELECT sq.rfq_item_id,sq.supplier_id,rq.r
 <?php
 if (isset($_POST['submit'])) {
     $abstract_no = $_POST['abstract_no'];
-    $supplier_id = $_POST['supplier_id2'];
+    $supplier_id = $_POST['supplier_id_orig'];
     $date_opened = $_POST['date_opened'];
     $remarks = $_POST['remarks'];
     $UPDATE_0 = mysqli_query($conn,"UPDATE abstract_of_quote SET abstract_no = NULL WHERE supplier_id = $supplier_id1 AND rfq_id = $rfq_id ");
@@ -129,9 +129,8 @@ if (isset($_POST['submit'])) {
 
     echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Successfuly Updated!')
-        window.location.href='UpdateAoq.php?rfq_id=$rfq_id&abstract_id=$abstract_id15&supplier_id=$supplier_id1';
+        window.location.href='UpdateAoq.php?rfq_id=$rfq_id&abstract_id=$abstract_id15&supplier_id=$supplier_id1&rfq_items=$rfq_items_id';
         </SCRIPT>");
-
 
 
 }
@@ -175,6 +174,7 @@ if (isset($_POST['insert_supplierQ'])) {
 
 
 }
+
 // S U P P L I E R S     Q U O T E      Q U E R Y
 
 
@@ -425,10 +425,11 @@ $totsppu44 = $rowtots44['totalppu'];
 
                </div>
              </div>
+          <form method="POST">
                <div class="col-md-3">
                 <div class="form-group">
                   <label>Select Supplier</label>
-                  <select  class="form-control select2" style="width: 100%;" autocomplete="off"  >
+                  <select  class="form-control select2" style="width: 100%;" autocomplete="off" name="supplier_id_orig" >
                            <option value="<?php echo $supplier_id1;?>" selected><?php echo $supplier_title;?></option>
                            <?php echo supplier($connect); ?>
                        </select> 
@@ -447,7 +448,10 @@ $totsppu44 = $rowtots44['totalppu'];
                 <label>Remarks</label>
                 <textarea class="form-control" name="remarks" rows="8"><?php echo $remarks?></textarea>
               </div>
-            <div class="pull-right"><a href="export_abstract.php?rfq_id=<?php echo $rfq_id; ?>&abstract_no=<?php echo $abstract_no1?>" class="btn btn-success">Export</a> </div>
+           <a href="export_abstract.php?rfq_id=<?php echo $rfq_id; ?>&abstract_no=<?php echo $abstract_no1?>" class="btn btn-success">Export</a>
+            <button class="btn btn-primary pull-right" type="submit" name="submit">Award</button>
+
+
             </div>
 
       </div>
@@ -780,7 +784,7 @@ while($rowrfid14 = mysqli_fetch_assoc($sql_items4) ){
 </div>
 </div>
 </div>
-<button class="btn btn-primary" name="submit" style="width: 1260px;">Update</button>
+<button class="btn btn-primary" name="submit" >Save</button>
 <br>
 <br>
 <br>
