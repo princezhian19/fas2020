@@ -176,8 +176,7 @@ $select_ifwin2 = mysqli_query($conn,"SELECT abstract_no FROM abstract_of_quote W
 $rowWin2 = mysqli_fetch_array($select_ifwin2);
 $rowabsno2 = $rowWin2['abstract_no'];
 
-echo $rowabsno2;
-echo '<br>';
+
 
 if ($rowabsno2 != NULL) {
   $objPHPExcel->getActiveSheet()->getStyle('K14')->applyFromArray($SelectedStyle);
@@ -197,8 +196,7 @@ $rowWin3 = mysqli_fetch_array($select_ifwin3);
 $rowabsno3 = $rowWin3['abstract_no'];
 
 
-echo $rowabsno3;
-echo '<br>';
+
 if ($rowabsno3 != NULL) {
   $objPHPExcel->getActiveSheet()->getStyle('M14')->applyFromArray($SelectedStyle);
   $objPHPExcel->getActiveSheet()->getStyle('M15')->applyFromArray($SelectedStyle);
