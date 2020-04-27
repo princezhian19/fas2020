@@ -11,10 +11,138 @@ require_once 'calendar/sample/bdd.php';
 require_once 'calendar/sample/dbaseCon.php';
 require_once 'calendar/sample/sql_statements.php';
 
-$sql = "SELECT id, title, start, end, tblpersonneldivision.DIVISION_COLOR as 'color', cancelflag, office FROM events inner join tblpersonneldivision on events.office = tblpersonneldivision.DIVISION_N where cancelflag = 0 and status = 1 ";
+$sql = "SELECT id, title, start, end, description,venue, tblpersonneldivision.DIVISION_COLOR as 'color', cancelflag, office,enp,remarks FROM events inner join tblpersonneldivision on events.office = tblpersonneldivision.DIVISION_N where cancelflag = 0 and status = 1 ";
 $req = $bdd->prepare($sql);
 $req->execute();
 $events = $req->fetchAll();
+
+function viewEvents()
+{
+        ?>
+            <form method = "POST" action = "calendar/add-event.php">
+                <input  type = "hidden" name = "eventid" value = "<?php echo $row['id'];?>">
+                <table class="table table-bordered" style = "width:100%;"> 
+                    <tr>
+                        <td class="col-md-2">Event/Activity Title<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox"  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Start Date<span style = "color:red;">*</span></td>
+                            <td class="col-md-5">
+                                <input required type="text" class = "form-control" name = "startdatetxtbox" id="datepicker1" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2">End Date</td>
+                            <td class="col-md-5">
+                                <input  type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2">Description</td>
+                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Venue<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "venuetxtbox" id= "venuetxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Expected Number of Participants<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "number" min = "0" name = "enptxtbox" id= "enptxtbox" class = "form-control" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Target Participants<span style = "color:red;">*</span></td>  
+                            <td class="col-md-5">
+                            <input required type = "text" class = "form-control" name = "remarks" id= "remarks" value = "" />
+                                </td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2">Posted By</td>
+                            <td class="col-md-5">                              
+                            <input readonly type = "text"  class = "form-control" value = "<?php echo $_SESSION['username'];?>"  />
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2">Posted Date</td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
+                                </tr>
+                   
+                    
+                </table>
+                <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save"> 
+
+            </form>
+        <?php
+    
+}
+
+function getCurrentID()
+{
+    include 'connection.php';
+    $sqlQuery = "SELECT ID FROM `events`  ORDER BY ID DESC LIMIT 1";
+    $result = mysqli_query($conn, $sqlQuery);
+    if ($row = mysqli_fetch_array($result)) {
+        echo $row['ID'];
+    }
+}
+
+function viewEvents2()
+{
+  ?>
+
+    <form method = "POST" action = "calendar/add-event.php">
+                <input  type = "hidden" name = "eventid" value = "<?php echo $row['id'];?>">
+                <table class="table table-bordered" style = "width:100%;"> 
+                    <tr>
+                        <td class="col-md-2">Event/Activity Title<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Start Date<span style = "color:red;">*</span></td>
+                            <td class="col-md-5">
+                                <input required type="text" class = "form-control datepicker1" name = "startdatetxtbox"  value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2">End Date</td>
+                            <td class="col-md-5">
+                                <input  type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2">Description</td>
+                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "descriptiontxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Venue<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "venuetxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Expected Number of Participants<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "number" min = "0" name = "enptxtbox" class = "form-control" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Target Participants<span style = "color:red;">*</span></td>  
+                            <td class="col-md-5">
+                            <input required type = "text" class = "form-control" name = "remarks" value = "" />
+                                </td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2">Posted By</td>
+                            <td class="col-md-5">                              
+                            <input readonly type = "text"  class = "form-control" value = "<?php echo $_SESSION['username'];?>"  />
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2">Posted Date</td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
+                                </tr>
+                   
+                    
+                </table>
+                <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save"> 
+
+            </form>
+  <?php
+}
 ?>
   
   <!DOCTYPE html>
@@ -81,12 +209,48 @@ $events = $req->fetchAll();
     <br>
       <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Calendar of Events</li>
+      <li class="active">Calendar of Activities</li>
       </ol><br>
    
     <?php include 'calendar_view.php';?>
  &nbsp;
  &nbsp;
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Event/Activity</h4>
+          <button type="button" class="close" data-dismiss="modal">&times; 
+          </button>
+        </div>
+        <div class="modal-body">
+          <?php echo viewEvents();?>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Event/Activity</h4>
+          <button type="button" class="close" data-dismiss="modal">&times; 
+          </button>
+        </div>
+        <div class="modal-body">
+          <?php echo viewEvents2();?>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+  </div>
+</div>
+
+
+        
     <br>
 
     </section>
@@ -117,7 +281,24 @@ $events = $req->fetchAll();
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
 <script>
+  $('#modal').click(function(){
+    $('#myModal2').modal('show');   
+  })
+  
+  $(document).ready(function(){
+  
+    
+    $( ".datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $(".datepicker1").datepicker().datepicker("setDate", new Date());
+
+
+  })
 $(document).ready(function() {
   
       $('#calendar').fullCalendar({
@@ -130,27 +311,23 @@ $(document).ready(function() {
           eventLimit: true, // allow "more" link when too many events
           selectable: true,
           selectHelper: true,
+
+        select: function (start, end, allDay) {
+          $('#myModal').modal('show');   
+        },
+        eventClick: function(event, element) {
+                // Display the modal and set the values to the event values.
+                $('#myModal').modal('show');
+                $('#myModal').find('#titletxtbox').val(event.title);
+                $('#myModal').find('#startdatetxtbox').val(event.start);
+                $('#myModal').find('#descriptiontxtbox').val(event.description);
+                $('#myModal').find('#venuetxtbox').val(event.venue);
+                $('#myModal').find('#enptxtbox').val(event.enp);
+                // $('#myModal').find('#ends-at').val(event.end);
+
+            },
           eventRender: function(calEvent, element, view) {
-            if (calEvent.office == "0") {
-              // element.css('background-color', '#99FF99');
-            } if (calEvent.office == "1" || calEvent.office == "5" ) {
-              // element.css('background-color', '#99FF99');
-            }
-            if (calEvent.office == "16") {
-              // element.css('background-color', '#415eec');
-            }
-            if (calEvent.office == "17") {
-              // element.css('background-color', '#D7CDD5');
-            }
-            if (calEvent.office == "7") {
-              // element.css('background-color', '#D7CDD5');
-            }
-            if (calEvent.office == "18") {
-              // element.css('background-color', '#D7CDD5');
-            }
-            if (calEvent.office == "9") {
-              // element.css('background-color', '#D7CDD5');
-            }
+      
             if($('input[id=all]').is(':checked')){
               return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0  
 
@@ -159,6 +336,7 @@ $(document).ready(function() {
 
             }
           },
+         
   
           events: [
                   <?php foreach($events as $event): 
@@ -188,9 +366,12 @@ $(document).ready(function() {
                         title: '<?php echo $event['title']; ?>',
                         start: '<?php echo $start; ?>',
                         end: '<?php echo $realenddate; ?>',
+                        description: '<?php echo $event['description']; ?>',
+                        venue: '<?php echo $event['venue']; ?>',
                         color: '<?php echo $event['color']; ?>',
                         office: '<?php echo $event['office']; ?>',
-                        url: 'ViewEvent.php?eventid=<?php echo $event['id']; ?>'
+                        enp: '<?php echo $event['enp']; ?>',
+                    
 
                       },
                     <?php 
@@ -204,8 +385,14 @@ $(document).ready(function() {
                         title: '<?php echo $event['title']; ?>',
                         start: '<?php echo $start; ?>',
                         end: '<?php echo $realenddate; ?>',
+                        description: '<?php echo $event['description']; ?>',
+                        venue: '<?php echo $event['venue']; ?>',
                         color: '<?php echo $event['color']; ?>',
-                        office: '<?php echo $event['office']; ?>'
+                        office: '<?php echo $event['office']; ?>',
+                        enp: '<?php echo $event['enp']; ?>',
+                        
+
+                    
 
                       },
                     <?php 
@@ -283,6 +470,7 @@ switch(month)
       var vals = [];
       $('input:checkbox.calFilter:checked').each(function() {
         vals.push($(this).val());
+        // alert($(this).val());
       });
       return vals.indexOf(calEvent.office) !== -1;
     }
