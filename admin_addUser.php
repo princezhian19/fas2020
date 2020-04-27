@@ -4,6 +4,7 @@
   $DBConn = dbConnect();
   $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
   $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+  $admin = $_SESSION['username'];
   function tblpersonnel($connect)
   { 
     $output = '';
@@ -46,7 +47,7 @@
     return $output;
   }
 
-  $sqltable   = "tblemployeeinfo";
+  $sqltable   = "tblemployee";
 
   $checkQuery = "SELECT * FROM $sqltable a LEFT JOIN tblpersonneldivision b on b.DIVISION_N = a.DIVISION_C LEFT JOIN tbldesignation c on c.DESIGNATION_ID = a.DESIGNATION LEFT JOIN tbldilgposition d on d.POSITION_ID = a.POSITION_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1";
 
@@ -123,7 +124,7 @@
     {
       if(!empty($_FILES["image"]["name"]))
       {
-        $update_image = mysqli_query($conn,"UPDATE tblemployeeinfo SET PROFILE = '$target_file' WHERE EMP_N = '".$_GET['id']."' ");
+        $update_image = mysqli_query($conn,"UPDATE tblemployee SET PROFILE = '$target_file' WHERE EMP_N = '".$_GET['id']."' ");
             // Check if file already exists
         if (file_exists($target_file)) 
         {
@@ -164,26 +165,26 @@
     }
   }
 
-    $sqlUsername =  "SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
-    $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeeinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
+    $sqlUsername =  "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
+    $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployee WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
     if (!ifRecordExist($sqlEMP_N)){
       if (!ifRecordExist($sqlUsername)){
         if ($password == $repassword){
 
-          $sql_insert_query     = "INSERT INTO tblemployeeinfo (
+          $sql_insert_query     = "INSERT INTO tblemployee (
           EMP_NUMBER,
           LAST_M, FIRST_M, MIDDLE_M, BIRTH_D, SEX_C,
           REGION_C, PROVINCE_C, CITYMUN_C,
           POSITION_C, DESIGNATION, 
           MOBILEPHONE, EMAIL, ALTER_EMAIL, AGENCY_EMP_NO, 
           CODE, UNAME, PSWORD, DATE_CREATED,
-          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE)
+          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE,ACTIVATED,APPROVEDBY)
           VALUES (    ?, ?, ?, ?, ?, 
           ?, ?, ?, ?, 
           ?, ?, 
           ?, ?, ?, ?, 
           ?, ?, ?, ?,
-          ?, ?, ?, ?, '".$access."', 'user',?)";
+          ?, ?, ?, ?, '".$access."', 'user',? ,'Yes','".$admin."')";
 
 
           if ($insertSQL = $DBConn->prepare($sql_insert_query)) 
@@ -230,8 +231,8 @@
            $connect->prepare($sql1)->execute([$employee_number]);
 
            echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('Successfuly Added')
-            window.location.href = 'ViewEmployees.php';
+            window.alert('Account successfuly registered!')
+            window.location.href = 'Accounts.php';
             </SCRIPT>");
 
          }else{
@@ -456,8 +457,8 @@
             <div class="col-xs-4">
               <label>Province</label>
               <input type="text" name="province" hidden>
-                <select  disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
-                  <option value="<?php echo $province1;?>"><?php echo $province11;?></option>
+                <select disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
+                  <option disabled selected></option>
                   <option value="10">Batangas</option>
                   <option value="21">Cavite</option>
                   <option value="34">Laguna</option>
@@ -485,6 +486,7 @@
               <option value="<?php echo $municipality11;?>"><?php echo $municipality11;?></option>
               <option value="0"></option>
             </select>
+
         </div>
         <div class="col-xs-4">
           <label>Middle Name<font style="color:red;">*</font></label>
@@ -521,7 +523,7 @@
     </div>
     <!-- username and pw -->
   </div>
-  <div class="well" hidden>
+  <div class="well">
     <div class="box-header with-border">
       <h3 class="box-title">Username and Password</h3>
     </div>
@@ -529,12 +531,12 @@
       <div class="row">
         <div class="col-xs-4">
           <label>Username<font style="color:red;">*</font> </label>
-          <input autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
+          <input autocomplete="new-password" required value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
 
         </div>
         <div class="col-xs-4">
           <label>Password<font style="color:red;">*</font> </label>
-          <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
+          <input autocomplete="new-password" required type="password" name="password" class="form-control" placeholder="Password">
         </div>
         <div class="col-xs-4" >
           <label>Re-type Password<font style="color:red;">*</font></label>

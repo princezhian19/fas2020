@@ -12,7 +12,7 @@ $username = $_SESSION['username'];
 <html>
 <head>
   
-  <title>FAS | Add App</title>
+  <title>FAS | Add Employee</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
@@ -57,11 +57,11 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="index.php" style="font-family: cambria; "><i class=""></i> Home</a></li>
-        <li class="active" style="font-family: cambria;">Add App</li>
+        <li class="active" style="font-family: cambria;">Add Employee</li>
       </ol>
       <br>
       <br>
-        <?php include('app.php');?>
+        <?php include('admin_addUser.php');?>
     </section>
   </div>
   <footer class="main-footer">
