@@ -93,8 +93,12 @@ function viewEvents2()
 
     <form method = "POST" action = "calendar/edit-event.php">
     <input  type = "hidden" name = "eventid" id = "eventid">
+<?php 
 
-                <table class="table table-bordered" style = "width:100%;"> 
+if($_SESSION['planningofficer'] == 1)
+{
+  ?>
+  <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
                         <td class="col-md-2">Event/Activity Title<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox" value = ""  /></td>
@@ -141,7 +145,62 @@ function viewEvents2()
                    
                     
                 </table>
-                <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save"> 
+  <?php
+
+}else{
+?>
+  <table class="table table-bordered" style = "width:100%;"> 
+                    <tr>
+                        <td class="col-md-2">Event/Activitdy Title<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Start Date<span style = "color:red;">*</span></td>
+                            <td class="col-md-5">
+                                <input disabled type="text" class = "form-control datepicker1" name = "startdatetxtbox" id = "datepicker1" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2">End Date</td>
+                            <td class="col-md-5">
+                                <input disabled type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2">Description</td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Venue<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "venuetxtbox" id = "venuetxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Expected Number of Participants<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input disabled type = "number" min = "0" name = "enptxtbox" id = "enptxtbox" class = "form-control" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2">Target Participants<span style = "color:red;">*</span></td>  
+                            <td class="col-md-5">
+                            <input disabled type = "text" class = "form-control" name = "remarks" id = "remarks" value = "" />
+                                </td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2">Posted By</td>
+                            <td class="col-md-5">                              
+                            <input disabled type = "text"  class = "form-control" value = "<?php echo $_SESSION['username'];?>"  />
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2">Posted Date</td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
+                                </tr>
+                   
+                    
+                </table>
+<?php
+}
+?>
+              
+                <!-- <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save">  -->
 
             </form>
   <?php
@@ -234,7 +293,16 @@ if($_GET['flag'] == 1)
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Edit Event/Activity</h4>
+          <h4 class="modal-title">
+          <?php 
+          if($_SESSION['planningofficer'] == 1)
+          {
+            echo  ' Edit Event/Activity';
+          }else{
+            echo ' View Event/Activity';
+          }
+          ?>  
+         </h4>
           <button type="button" class="close" data-dismiss="modal">&times; 
           </button>
         </div>
