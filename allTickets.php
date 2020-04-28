@@ -177,12 +177,20 @@ function filldataTable()
                                                             </span>
                                                         </div>
                                                         <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Completed</span>
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">
+                                                            Completed</span>
                                                             <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
                                                             <?PHP 
                                                                   if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
                                                                   {
-                                                                    echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
+                                                         
+                                                                    if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+                                                                    {
+                                                                        echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
+                                                                    }else{
+                                                                        echo '<a  data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" disabled > <i class="fa fa-star"></i>Completed</a>';
+
+                                                                    }
 
                                                                    
                                                                   }else{
@@ -243,6 +251,7 @@ function filldataTable()
                                                                 <?PHP 
                                                                   if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
                                                                   {
+                                                                      
                                                                     echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
 
                                                                    
@@ -385,7 +394,9 @@ function showWorkload($ICT)
                     
                     </div>
                     <div class="timeline-footer">
-                    <a class="btn btn-primary btn-xs">Resolve</a>
+                    <a class="btn btn-primary btn-xs" href = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id=<?php echo $row['CONTROL_NO'];?>">
+                        Resolve
+                    </a>
                     <!-- <a class="btn btn-danger btn-xs">Delete</a> -->
                     </div>
             </div><br><br>
@@ -413,7 +424,7 @@ function showWorkload($ICT)
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Online ICT Technical Assistance System</a></li>
-        <li class="active">Processing</li>
+        <li class="active">Processing of ICT Technical Assistance</li>
       </ol>
       <br>
       <br>
@@ -422,7 +433,7 @@ function showWorkload($ICT)
             <div class="box">
                 <div class="panel panel-default">
                     <div class="box-body">      
-                    <div> <h1>Processing</h1><br> </div>
+                    <div> <h1>Processing of ICT Technical Assistance</h1><br> </div>
                 <button class = "btn btn-success btn-md"><a href = "requestForm.php?division=<?php echo $_SESSION['division'];?>" style = "decoration:none;color:#fff;">Create Request</a> </button>
 
                     </div>

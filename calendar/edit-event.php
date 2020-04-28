@@ -1,4 +1,14 @@
 <?php
+session_start();
+date_default_timezone_set('Asia/Manila');
+
+if(!isset($_SESSION['username'])){
+header('location:index.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+}
 require_once "db.php";
 
 $id     = $_POST['eventid'];
@@ -22,5 +32,5 @@ WHERE id=" . $id;
 if (mysqli_query($conn, $sqlUpdate)) {
 } else {
 }
-header('location:../EditEvent.php?eventid='.$id.'&flag=1');
+header('location:../ViewCalendar.php?division='.$_SESSION['division'].'&flag=1');
 ?>

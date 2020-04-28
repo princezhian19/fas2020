@@ -120,7 +120,16 @@ $columns = array(
 	array('db' => 'REQ_BY', 'dt' => 5),
 	array('db' => 'OFFICE', 'dt' => 6),
 	array('db' => 'ISSUE_PROBLEM', 'dt' => 7),
-	array('db' => 'TYPE_REQ_DESC', 'dt' => 8),
+	array('db' => 'TYPE_REQ', 'dt' => 8,
+'formatter' => function($d,$row){
+	if($row['TYPE_REQ'] == 'Others' || $row['TYPE_REQ'] == 'OTHERS')
+	{
+	return $row['TYPE_REQ'].'<BR>'.'('.$row['TEXT6'].','.$row['TEXT7'].')';
+	}
+	
+	return $row['TYPE_REQ'].'<BR>'.'('.$row['TYPE_REQ_DESC'].')';
+}
+),
     array('db' => 'ASSIST_BY', 'dt' => 9),
     array(
 		'db' => 'STATUS_REQUEST', 

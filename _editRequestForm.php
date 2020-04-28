@@ -802,6 +802,20 @@ function setCompletedTime()
       }
       return $completed_time;
 }
+function setSig()
+{
+  include 'connection.php';
+
+  $assist_by = '';
+   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+   $query = "SELECT ASSIST_BY FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+   $result = mysqli_query($conn, $query);
+   if($row = mysqli_fetch_array($result))
+     {
+       $assist_by = $row['ASSIST_BY'];
+     }
+     return $assist_by;
+}
 ?>
  
 <!DOCTYPE html>
@@ -900,7 +914,7 @@ function setCompletedTime()
                          
                           </tr>
                           <tr>
-                          <td colspan = 4 style ="background-color:#EEEEEE;text-align:center;"><u><?php echo $_SESSION['complete_name'];?></u><br><span class = "label-text">Signature over Printed Name</span></td>
+                          <td colspan = 4 style ="background-color:#EEEEEE;text-align:center;"><u><?php echo setSig();?></u><br><span class = "label-text">Signature over Printed Name</span></td>
 
                          
                           <td colspan=2 class = "label-text"><input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Resolved</td>
