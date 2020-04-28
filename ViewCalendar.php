@@ -308,7 +308,7 @@ $(document).ready(function() {
           right: 'month,basicWeek,basicDay'
           },
           editable: false,
-          eventLimit: true, // allow "more" link when too many events
+          eventLimit: true,
           selectable: true,
           selectHelper: true,
 
@@ -316,15 +316,13 @@ $(document).ready(function() {
           $('#myModal').modal('show');   
         },
         eventClick: function(event, element) {
-                // Display the modal and set the values to the event values.
                 $('#myModal').modal('show');
                 $('#myModal').find('#titletxtbox').val(event.title);
                 $('#myModal').find('#startdatetxtbox').val(event.start);
+                alert(event.start);
                 $('#myModal').find('#descriptiontxtbox').val(event.description);
                 $('#myModal').find('#venuetxtbox').val(event.venue);
                 $('#myModal').find('#enptxtbox').val(event.enp);
-                // $('#myModal').find('#ends-at').val(event.end);
-
             },
           eventRender: function(calEvent, element, view) {
       
