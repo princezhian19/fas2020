@@ -7,7 +7,8 @@
                 <h1>Calendar of Activities</h1>
                 <div class = "col-lg-12">
                     <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-12">
-                    <input type = "text" class = "form-control" placeholder=  "Search Events"/>
+                    <input type = "text" class = "form-control filter"  id="type_filter" placeholder=  "Search Events"/>
+                    
                     </div><br><br><br>
 
                         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-6" id = "selectMonth" >  
@@ -170,6 +171,8 @@
                    
                     <br>
                     <br>    
+                    <div class = "response"></div>   
+
                     <div id='calendar'></div>
 
                 </div>

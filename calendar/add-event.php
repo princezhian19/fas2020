@@ -50,6 +50,6 @@ $result = mysqli_query($conn, $sql);
 if (! $result) {
     $result = mysqli_error($conn);
 }
-header('location:../calAddEvents.php?flag=1');
+header('location:../ViewCalendar.php?division='.$_SESSION['division'].'&flag=1');
 
 ?>

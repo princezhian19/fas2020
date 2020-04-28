@@ -214,8 +214,7 @@ function viewEvents2()
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li class="active">Calendar of Activities</li>
       </ol><br>
-      <div class = "response"></div>   
-
+    
       <?php
 if($_GET['flag'] == 1)
 {
@@ -350,6 +349,23 @@ $(document).ready(function() {
                 $('#myModal').find('#enptxtbox').val(event.enp);
             },
           eventRender: function(calEvent, element, view) {
+            
+       
+   
+           var show_username, show_type = true, show_calendar = true;
+
+var types = $('#type_filter').val();
+
+if (types && types.length > 0) {
+    if (types[0] == "all") {
+        show_type = true;
+    } else {
+        show_type = types.indexOf(calEvent.title) >= 0;
+    }
+}
+
+
+return show_type ;
       
             if($('input[id=all]').is(':checked')){
               return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0  
@@ -359,6 +375,7 @@ $(document).ready(function() {
 
             }
           },
+          
          
   
           events: [
@@ -429,6 +446,10 @@ $(document).ready(function() {
                   endforeach; ?>
                 ]
       });
+      // ==================================================
+      $( ".filter" ).keyup(function() {
+       $('#calendar').fullCalendar('rerenderEvents');
+   });
       // ===================================================
       $('#selectDivision').hide();
       
