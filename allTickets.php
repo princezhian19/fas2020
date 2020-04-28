@@ -177,12 +177,20 @@ function filldataTable()
                                                             </span>
                                                         </div>
                                                         <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Completed</span>
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">
+                                                            Completed</span>
                                                             <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
                                                             <?PHP 
                                                                   if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
                                                                   {
-                                                                    echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
+                                                         
+                                                                    if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+                                                                    {
+                                                                        echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
+                                                                    }else{
+                                                                        echo '<a  data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" disabled > <i class="fa fa-star"></i>Completed</a>';
+
+                                                                    }
 
                                                                    
                                                                   }else{
@@ -243,6 +251,7 @@ function filldataTable()
                                                                 <?PHP 
                                                                   if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
                                                                   {
+                                                                      
                                                                     echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
 
                                                                    

@@ -124,6 +124,7 @@ $division = $_SESSION['division'];
               });
               var action = '';
               var table = $('#example').DataTable( {
+                'scrollX'     : true,
                 'paging'      : true,
                 'lengthChange': true,
                 'searching'   : true,
