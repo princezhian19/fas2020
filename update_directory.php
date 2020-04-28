@@ -17,12 +17,15 @@ if (isset($_POST['submit'])) {
   $contact =$_POST['contact'];
   $email =$_POST['email'];
   $address =$_POST['address'];
+  $posted_by =$_POST['posted_by'];
+  $posted_date1 =$_POST['posted_date'];
+  $posted_date =date('Y-m-d',strtotime($posted_date1));
 
-  $INSERT = mysqli_query($conn,"INSERT INTO `phone_directory`(`group`, `agency`, `head_director`, `contact_no`, `email`, `address`) VALUES ('$group','$agency','$head_director','$contact','$email','$address')");
+  $INSERT = mysqli_query($conn,"UPDATE `phone_directory` SET `group`='$group',`agency`='$agency',`head_director`='$head_director',`contact_no`='$contact',`email`='$email',`address`='$address' WHERE id = $id");
 
   if ($INSERT) {
       echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Successfuly Added!')
+        window.alert('Successfuly Edited!')
         window.location.href='Directory.php';
         </SCRIPT>");
   }else{
@@ -37,7 +40,7 @@ if (isset($_POST['submit'])) {
 ?>
 <div class="box">
   <div class="box-body">
-    <h1 align="">&nbspUpdate Phone Directory</h1>
+    <h1 align="">&nbspEdit Contact</h1>
     <br>
     &nbsp &nbsp  <li class="btn btn-success"><a href="Directory.php" style="color:white;text-decoration: none;">Back</a></li>
     <br>
@@ -51,24 +54,28 @@ if (isset($_POST['submit'])) {
                 <label>Group <label style="color: Red;" >*</label></label>
                   <select class="form-control select2"  name="group" >
                   <option value="<?php echo $group_get?>"><?php echo $group_get?></option>
-                  <option value="Local Government Units">Local Government Units</option>
-                  <option value="DILG Central">DILG Central</option>
+                   <option value="DILG Central">DILG Central</option>
                   <option value="DILG Region">DILG Region</option>
+                  <option value="Local Government Units">Local Government Units</option>
                   <option value="Private Sector Representatives">Private Sector Representatives</option>
                   <option value="Regional Line Agencies">Regional Line Agencies</option>
-                  <option value="States, Universities and Colleges">States, Universities and Colleges </option>
                   <option value="REGULAR GUESTS">REGULAR GUESTS </option>
+                  <option value="States, Universities and Colleges">States, Universities and Colleges </option>
                 </select>
 
                 
               </div>
               <div class="form-group">
-                <label>Agency <label style="color: Red;" >*</label></label>
+                <label>Agency/Office <label style="color: Red;" >*</label></label>
                 <input value="<?php echo $agency_get ;?>" type="text" class="form-control"  name="agency"  >
               </div>
               <div class="form-group">
-                <label>Head/Director <label style="color: Red;" >*</label></label>
+                <label>Contact/Person <label style="color: Red;" >*</label></label>
                 <input value="<?php echo $head_director_get ;?>"  class="form-control" name="head_director" type="text" >
+              </div>
+              <div class="form-group">
+                <label>Posted by <label style="color: Red;" >*</label></label>
+                <input readonly required class="form-control" name="posted_by" type="text" value="<?php echo $posted_by?>">
               </div>
             </div>
             <div class="col-md-6">
@@ -77,13 +84,17 @@ if (isset($_POST['submit'])) {
               <input value="<?php echo $contact_get ;?>"  class="form-control" name="contact" type="text" >
             </div>
             <div class="form-group">
-              <label>Email <label style="color: Red;" >*</label></label>
+              <label>Email Address <label style="color: Red;" >*</label></label>
               <input value="<?php echo $email_get ;?>"  class="form-control" name="email" type="text" >
             </div>
             <div class="form-group">
-              <label>Address <label style="color: Red;" >*</label></label>
+              <label>Office Address <label style="color: Red;" >*</label></label>
               <input value="<?php echo $address_get ;?>"  class="form-control" name="address" type="text" >
             </div>
+             <div class="form-group">
+                <label>Posted Date <label style="color: Red;" >*</label></label>
+                <input readonly required class="form-control" name="posted_date" type="date" value="<?php echo $posted_date?>">
+              </div>
           </div>
         </div>
       </div>

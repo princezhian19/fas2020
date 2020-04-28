@@ -111,7 +111,7 @@ $username = $_SESSION['username'];
           </a>
          
         </li>
-       <li  class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
+       <!-- <li  class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
             <a  href="#" >
               <i class="fa fa-sitemap" style = "color:#black;"></i> 
               <span  style = "color:#black;font-weight:normal;">Directory</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
@@ -120,7 +120,7 @@ $username = $_SESSION['username'];
               <li><a href="ViewEmployees.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Employees</a></li>
               <li><a href="Directory.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Phone Directory</a></li>
             </ul>
-        </li>
+        </li> -->
        
     
 
@@ -132,6 +132,7 @@ $username = $_SESSION['username'];
               <span  style = "color:#black;font-weight:normal;">Personnel</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
+              <li><a href="ViewEmployees.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Employees</a></li>
               <li><a href="ob.php"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Official Business</a></li>
               <li><a href="#"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Travel Order</a></li>
             </ul>
@@ -197,7 +198,10 @@ $username = $_SESSION['username'];
         
         
           <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Databank<span class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li>
+              <li><a href="Directory.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Phone Directory</a></li>
+          
             </ul>
+
         </li>
 
   <!-- Records -->

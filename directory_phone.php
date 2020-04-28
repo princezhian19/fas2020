@@ -40,7 +40,7 @@
                 <td ><?php echo $email;?></td>
                 <td ><?php echo $address;?></td>
                 <td >
-                 <a  href='UpdateDirectory.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit</a> | <a onclick="return confirm('Are you sure you want to Delete this Account now?');" href='delete_directory.php?id=<?php echo $id;?>' title="delete" class = "btn btn-danger btn-xs" > <i class='fa fa-fw fa-trash'></i> Delete</a> </td>
+                 <a  href='UpdateDirectory.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit</a> | <a onclick="return confirm('Are you sure you want to Delete this Contact now?');" href='delete_directory.php?id=<?php echo $id;?>' title="delete" class = "btn btn-danger btn-xs" > <i class='fa fa-fw fa-trash'></i> Delete</a> </td>
              </tr>
            <?php } ?>
        </table>
