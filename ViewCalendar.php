@@ -1,4 +1,6 @@
 <?php session_start();
+date_default_timezone_set('Asia/Manila');
+
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }else{
@@ -11,7 +13,7 @@ require_once 'calendar/sample/bdd.php';
 require_once 'calendar/sample/dbaseCon.php';
 require_once 'calendar/sample/sql_statements.php';
 
-$sql = "SELECT id, title, start, end, description,venue, tblpersonneldivision.DIVISION_COLOR as 'color', cancelflag, office,enp,remarks FROM events inner join tblpersonneldivision on events.office = tblpersonneldivision.DIVISION_N where cancelflag = 0 and status = 1 ";
+$sql = "SELECT id, title, start, end, description,venue, tblpersonneldivision.DIVISION_COLOR as 'color', cancelflag, office,enp,posteddate, remarks FROM events inner join tblpersonneldivision on events.office = tblpersonneldivision.DIVISION_N where cancelflag = 0 and status = 1 ";
 $req = $bdd->prepare($sql);
 $req->execute();
 $events = $req->fetchAll();
@@ -313,13 +315,14 @@ $(document).ready(function() {
           selectHelper: true,
 
         select: function (start, end, allDay) {
-          $('#myModal').modal('show');   
+          $('#myModal').modal('show');
         },
         eventClick: function(event, element) {
                 $('#myModal').modal('show');
                 $('#myModal').find('#titletxtbox').val(event.title);
-                $('#myModal').find('#startdatetxtbox').val(event.start);
-                alert(event.start);
+                $('#myModal').find('#datepicker1').val(moment(event.start).format('MM/DD/YYYY'));
+                $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
+                $('#myModal').find('#datepicker3').val(moment(event.posteddate).format('MM/DD/YYYY'));
                 $('#myModal').find('#descriptiontxtbox').val(event.description);
                 $('#myModal').find('#venuetxtbox').val(event.venue);
                 $('#myModal').find('#enptxtbox').val(event.enp);
@@ -368,6 +371,7 @@ $(document).ready(function() {
                         venue: '<?php echo $event['venue']; ?>',
                         color: '<?php echo $event['color']; ?>',
                         office: '<?php echo $event['office']; ?>',
+                        posteddate: '<?php echo $event['posteddate']; ?>',
                         enp: '<?php echo $event['enp']; ?>',
                     
 
@@ -387,6 +391,7 @@ $(document).ready(function() {
                         venue: '<?php echo $event['venue']; ?>',
                         color: '<?php echo $event['color']; ?>',
                         office: '<?php echo $event['office']; ?>',
+                        posteddate: '<?php echo $event['posteddate']; ?>',
                         enp: '<?php echo $event['enp']; ?>',
                         
 
