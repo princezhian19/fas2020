@@ -44,13 +44,13 @@ if (isset($_POST['submit'])) {
                 <label>Group <label style="color: Red;" >*</label></label>
                 <select required class="form-control select2"  name="group" >
                   <option disabled selected></option>
-                  <option value="Local Government Units">Local Government Units</option>
                   <option value="DILG Central">DILG Central</option>
                   <option value="DILG Region">DILG Region</option>
+                  <option value="Local Government Units">Local Government Units</option>
                   <option value="Private Sector Representatives">Private Sector Representatives</option>
                   <option value="Regional Line Agencies">Regional Line Agencies</option>
-                  <option value="States, Universities and Colleges">States, Universities and Colleges </option>
                   <option value="REGULAR GUESTS">REGULAR GUESTS </option>
+                  <option value="States, Universities and Colleges">States, Universities and Colleges </option>
                 </select>
               </div>
               <div class="form-group">
@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
               </div>
               <div class="form-group">
                 <label>Posted by <label style="color: Red;" >*</label></label>
-                <input required class="form-control" name="posted_by" type="text" >
+                <input readonly required class="form-control" name="posted_by" type="text" value="<?php echo $username?>">
               </div>
             </div>
             <div class="col-md-6">
@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-group">
                 <label>Posted Date <label style="color: Red;" >*</label></label>
-                <input required class="form-control" name="posted_date" type="date" >
+                <input readonly required class="form-control" name="posted_date" type="date" value="<?php echo date('Y-m-d')?>">
               </div>
           </div>
         </div>

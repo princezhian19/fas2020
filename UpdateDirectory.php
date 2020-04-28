@@ -57,7 +57,9 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="index.php" style="font-family: cambria; "><i class=""></i> Home</a></li>
-        <li class="active" style="font-family: cambria;">Update Directory</li>
+        <li class="active" style="font-family: cambria;">Records</li>
+        <li class="active" style="font-family: cambria;">Directory</li>
+        <li class="active" style="font-family: cambria;">Edit Contact</li>
       </ol>
       <br>
       <br>
