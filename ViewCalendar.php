@@ -309,6 +309,7 @@ if($_GET['flag'] == 1)
   })
   
   $(document).ready(function(){
+    $( "#all" ).prop( "checked", true );
   
     
     $( ".datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
@@ -363,15 +364,18 @@ if($('input[id=all]').is(':checked')){
 if (types && types.length > 0) {
     if (types[0] == "all") {
         show_type = true;
+
         return show_type;
 
     } else {
         show_type = types.indexOf(calEvent.title) >= 0;
+
         return show_type;
     }
     return show_type;
 
 }
+$( "#all" ).prop( "checked", true );
 
 return  filter(calEvent) ;
 // return show_type &&  filter(calEvent) ;
@@ -452,6 +456,8 @@ return  filter(calEvent) ;
       });
       // ==================================================
       $( ".filter" ).keyup(function() {
+    $( "#all" ).prop( "checked", false );
+
        $('#calendar').fullCalendar('rerenderEvents');
    });
       // ===================================================

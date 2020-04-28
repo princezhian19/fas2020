@@ -50,7 +50,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                    <input  class='calFilter' type="checkbox" value="0" checked id = "all"></label>
+                                    <input  class='calFilter' type="checkbox" value="0"  id = "all"></label>
                                         Show all
                                     </td>
                                 </tr>
