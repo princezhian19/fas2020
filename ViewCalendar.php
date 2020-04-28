@@ -350,37 +350,47 @@ $(document).ready(function() {
                 $('#myModal').find('#enptxtbox').val(event.enp);
             },
           eventRender: function(calEvent, element, view) {
-            
-       
-   
            var show_username, show_type = true, show_calendar = true;
+          //  ===================
+          if($('#type_filter').val() == '')
+          {
+            $( "#all" ).prop( "checked", true );
+          }
 
+          // ====================
+          if($('input[id=ord]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=fad]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=lgcdd]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=mbrtg]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=lgmed]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=pdmu]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }
 
-if($('input[id=all]').is(':checked')){
-              return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0  
-}else{
-  var types = $('#type_filter').val();
+          if($('input[id=all]').is(':checked')){
+            return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0  
+          }else{      
+            var types = $('#type_filter').val();    
+            if (types && types.length > 0) 
+            {
+                if (types[0] == "all") 
+                {
+                    show_type = true;
 
-if (types && types.length > 0) {
-    if (types[0] == "all") {
-        show_type = true;
-
-        return show_type;
-
-    } else {
-        show_type = types.indexOf(calEvent.title) >= 0;
-
-        return show_type;
-    }
-    return show_type;
-
-}
-$( "#all" ).prop( "checked", true );
-
-return  filter(calEvent) ;
-// return show_type &&  filter(calEvent) ;
-
-}
+                    return show_type;
+                } else {
+                    show_type = types.indexOf(calEvent.title) >= 0;
+                    return show_type;
+                }
+                return show_type;
+            }
+            return  filter(calEvent) ;
+            }
       
           },
           

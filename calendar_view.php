@@ -61,33 +61,33 @@
                                 </tr>
                                 <tr>
                                 <td style="background-color: #E60785; color:white;">
-                                <input class='calFilter' type="checkbox" value="16"><label style = "margin-left:15%;">FAD</label>
+                                <input class='calFilter' type="checkbox" value="16" id = "fad"><label style = "margin-left:15%;">FAD</label>
                                     
                                 </td>
                                 
                                 </tr>
                                 <tr>
                                     <td style="background-color: #48BD0D; color:white;">
-                                    <input class='calFilter' type="checkbox" value="17" ><label style = "margin-left:15%;">LGCDD</label>
+                                    <input class='calFilter' type="checkbox" value="17" id = "lgcdd"><label style = "margin-left:15%;">LGCDD</label>
 
                                     </td>
                                 </tr>
                                 <tr>
                                 <td style="background-color: #E6680E; color:white;">
-                                    <input class='calFilter' type="checkbox" value="7"><label style = "margin-left:15%;">MBRTG</label>
+                                    <input class='calFilter' type="checkbox" value="7" id = "mbrtg"><label style = "margin-left:15%;">MBRTG</label>
                                 </td>
                                 
                                 </tr>
                                 <tr>
                                 <td style="background-color: #0071c5; color:white;">
-                                <input class='calFilter' type="checkbox" value="18"><label style = "margin-left:15%;">LGMED</label>
+                                <input class='calFilter' type="checkbox" value="18" id = "lgmed"><label style = "margin-left:15%;">LGMED</label>
 
                                     </td>
                                 
                                 </tr>
                                 <tr>
                                 <td style="background-color: #8F0CC7; color:white;">
-                                <input class='calFilter' type="checkbox" value="9"><label style = "margin-left:15%;">PDMU</label>
+                                <input class='calFilter' type="checkbox" value="9" id = "pdmu"><label style = "margin-left:15%;">PDMU</label>
 
                                     </td>
                                 </tr>
