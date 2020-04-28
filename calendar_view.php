@@ -7,7 +7,7 @@
                 <h1>Calendar of Activities</h1>
                 <div class = "col-lg-12">
                     <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-12">
-                    <input type = "text" class = "form-control filter"  id="type_filter" placeholder=  "Search Events"/>
+                    <input type = "text" class = "form-control filter"  id="type_filter" placeholder=  "Search Activities"/>
                     
                     </div><br><br><br>
 
@@ -108,32 +108,32 @@
                                 </tr>
                                 <tr>
                                     <td style="background-color: #D5D911; color:#fff;padding:9px;">
-                                        <input class='calFilter' type="checkbox" value="19" ><label style = "margin-left:15%;">Batangas</label>
+                                        <input class='calFilter' type="checkbox" value="19" id = "batangas"><label style = "margin-left:15%;">Batangas</label>
                                 </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #0071c5; color:white;;padding:9px;">
-                                    <input class='calFilter' type="checkbox" value="20" ><label style = "margin-left:15%;">Cavite</label>
+                                    <input class='calFilter' type="checkbox" value="20" id = "cavite"><label style = "margin-left:15%;">Cavite</label>
                                </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #48BD0D; color:white;;padding:9px;">                                   
-                                     <input class='calFilter' type="checkbox" value="21" ><label style = "margin-left:15%;">Laguna</label>
+                                     <input class='calFilter' type="checkbox" value="21" id = "laguna" ><label style = "margin-left:15%;">Laguna</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #8F0CC7; color:white;;padding:9px;">
-                                    <input class='calFilter' type="checkbox" value="23" ><label style = "margin-left:15%;">Rizal</label>
+                                    <input class='calFilter' type="checkbox" value="23" id = "rizal"><label style = "margin-left:15%;">Rizal</label>
                                 </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #E6680E; color:white;;padding:9px;">
-                                    <input class='calFilter' type="checkbox" value="22" ><label style = "margin-left:15%;">Quezon</label>
+                                    <input class='calFilter' type="checkbox" value="22" id = "quezon"><label style = "margin-left:15%;">Quezon</label>
                                 </td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: #E60785; color:white;;padding:9px;">
-                                    <input class='calFilter' type="checkbox" value="24" ><label style = "margin-left:15%;">Lucena</label>
+                                    <input class='calFilter' type="checkbox" value="24"id = "lucena"><label style = "margin-left:15%;">Lucena</label>
                                 
                                     </td>
                                 </tr>

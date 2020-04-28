@@ -385,9 +385,7 @@ if($_GET['flag'] == 1)
   })
   
   $(document).ready(function(){
-    $( "#all" ).prop( "checked", true );
-  
-    
+ 
     $( ".datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
     $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
     $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
@@ -397,6 +395,23 @@ if($_GET['flag'] == 1)
 
   })
 $(document).ready(function() {
+  $("#all").click(function(){
+    $('#ord').not(this).prop('checked', this.checked);
+    $('#fad').not(this).prop('checked', this.checked);
+    $('#lgcdd').not(this).prop('checked', this.checked);
+    $('#mbrtg').not(this).prop('checked', this.checked);
+    $('#lgmed').not(this).prop('checked', this.checked);
+    $('#pdmu').not(this).prop('checked', this.checked);
+});  
+$("#addll").click(function(){
+    $('#cavite').not(this).prop('checked', this.checked);
+    $('#laguna').not(this).prop('checked', this.checked);
+    $('#batangas').not(this).prop('checked', this.checked);
+    $('#quezon').not(this).prop('checked', this.checked);
+    $('#rizal').not(this).prop('checked', this.checked);
+    $('#lucena').not(this).prop('checked', this.checked);
+});  
+    
   
       $('#calendar').fullCalendar({
           header: {
@@ -430,25 +445,26 @@ $(document).ready(function() {
           //  ===================
           if($('#type_filter').val() == '')
           {
-            $( "#all" ).prop( "checked", true );
+            // $( "#all" ).prop( "checked", true );
           }
 
           // ====================
-          if($('input[id=ord]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }else if($('input[id=fad]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }else if($('input[id=lgcdd]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }else if($('input[id=mbrtg]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }else if($('input[id=lgmed]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }else if($('input[id=pdmu]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }
+          // if($('input[id=ord]').is(':checked')){
+          //   $( "#all" ).prop( "checked", false );
+          // }else if($('input[id=fad]').is(':checked')){
+          //   $( "#all" ).prop( "checked", false );
+          // }else if($('input[id=lgcdd]').is(':checked')){
+          //   $( "#all" ).prop( "checked", false );
+          // }else if($('input[id=mbrtg]').is(':checked')){
+          //   $( "#all" ).prop( "checked", false );
+          // }else if($('input[id=lgmed]').is(':checked')){
+          //   $( "#all" ).prop( "checked", false );
+          // }else if($('input[id=pdmu]').is(':checked')){
+          //   $( "#all" ).prop( "checked", false );
+          // }
 
           if($('input[id=all]').is(':checked')){
+
             return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0  
           }else{      
             var types = $('#type_filter').val();    
