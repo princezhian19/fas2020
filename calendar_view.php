@@ -140,7 +140,7 @@
                         </div>
                             
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-12" >
-                    <button class=" pull-right btn btn-success" id = "modal" ><i class = "fa fa-plus"></i><a style = "color:#fff;" > Add Activity</a></button>
+                    <button class="col-lg-12 pull-right btn btn-success" id = "modal" ><i class = "fa fa-plus"></i><a style = "color:#fff;" > Add Activity</a></button>
                     <br><br>
                     </div>
                     <br>

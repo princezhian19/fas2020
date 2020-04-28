@@ -324,6 +324,7 @@ $(document).ready(function() {
                 $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
                 $('#myModal').find('#datepicker3').val(moment(event.posteddate).format('MM/DD/YYYY'));
                 $('#myModal').find('#descriptiontxtbox').val(event.description);
+                $('#myModal').find('#remarks').val(event.title);
                 $('#myModal').find('#venuetxtbox').val(event.venue);
                 $('#myModal').find('#enptxtbox').val(event.enp);
             },
@@ -372,6 +373,7 @@ $(document).ready(function() {
                         color: '<?php echo $event['color']; ?>',
                         office: '<?php echo $event['office']; ?>',
                         posteddate: '<?php echo $event['posteddate']; ?>',
+                        remarks: '<?php echo preg_replace('/[^\w]/', '',$event['remarks']); ?>',
                         enp: '<?php echo $event['enp']; ?>',
                     
 
@@ -392,6 +394,8 @@ $(document).ready(function() {
                         color: '<?php echo $event['color']; ?>',
                         office: '<?php echo $event['office']; ?>',
                         posteddate: '<?php echo $event['posteddate']; ?>',
+                        remarks: '<?php echo preg_replace('/[^\w]/', '',$event['remarks']); ?>',
+
                         enp: '<?php echo $event['enp']; ?>',
                         
 
