@@ -394,7 +394,9 @@ function showWorkload($ICT)
                     
                     </div>
                     <div class="timeline-footer">
-                    <a class="btn btn-primary btn-xs">Resolve</a>
+                    <a class="btn btn-primary btn-xs" href = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id=<?php echo $row['CONTROL_NO'];?>">
+                        Resolve
+                    </a>
                     <!-- <a class="btn btn-danger btn-xs">Delete</a> -->
                     </div>
             </div><br><br>
