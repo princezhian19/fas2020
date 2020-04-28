@@ -545,7 +545,7 @@ switch($req_type_subcategory)
     }
 
 
-$PHPJasperXML->load_xml_file("report1.jrxml");
+$PHPJasperXML->load_xml_file("tmp/report1.jrxml");
 $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
 $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
 
