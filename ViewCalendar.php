@@ -363,17 +363,13 @@ if (types && types.length > 0) {
         show_type = types.indexOf(calEvent.title) >= 0;
     }
 }
-
-
-return show_type ;
-      
-            if($('input[id=all]').is(':checked')){
+if($('input[id=all]').is(':checked')){
               return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0  
+}else{
+return show_type &&  filter(calEvent) ;
 
-            }else{
-              return filter(calEvent); // Only show if appropriate checkbox is checked
-
-            }
+}
+      
           },
           
          
