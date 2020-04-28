@@ -200,7 +200,15 @@ if($_SESSION['planningofficer'] == 1)
 }
 ?>
               
-                <!-- <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save">  -->
+               <?php 
+               
+if($_SESSION['planningofficer'] == 1)
+               {
+              echo ' <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save"> ';
+               }else{
+
+               }
+               ?>
 
             </form>
   <?php
