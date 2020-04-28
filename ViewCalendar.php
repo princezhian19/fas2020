@@ -37,7 +37,7 @@ function viewEvents()
                     <tr>
                         <td class="col-md-2">End Date</td>
                             <td class="col-md-5">
-                                <input  type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
+                                <input  type = "text" placeholder="mm/dd/yyyy" class = "form-control enddate" id = "datepicker2" name = "enddatetxtbox" value = "" /></td>
                                     </tr>
                     <tr>
                         <td class="col-md-2">Description</td>
@@ -388,9 +388,14 @@ if($_GET['flag'] == 1)
  
     $( ".datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
     $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
     $(".datepicker1").datepicker().datepicker("setDate", new Date());
+
+
+    $( ".enddate" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $(".enddate").datepicker().datepicker("setDate", new Date());
+
+    $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
 
 
   })

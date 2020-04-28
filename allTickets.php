@@ -413,7 +413,7 @@ function showWorkload($ICT)
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Online ICT Technical Assistance System</a></li>
-        <li class="active">Processing</li>
+        <li class="active">Processing of ICT Technical Assistance</li>
       </ol>
       <br>
       <br>
@@ -422,7 +422,7 @@ function showWorkload($ICT)
             <div class="box">
                 <div class="panel panel-default">
                     <div class="box-body">      
-                    <div> <h1>Processing</h1><br> </div>
+                    <div> <h1>Processing of ICT Technical Assistance</h1><br> </div>
                 <button class = "btn btn-success btn-md"><a href = "requestForm.php?division=<?php echo $_SESSION['division'];?>" style = "decoration:none;color:#fff;">Create Request</a> </button>
 
                     </div>

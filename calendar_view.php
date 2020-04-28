@@ -133,7 +133,7 @@
                                 </tr>
                                 <tr>
                                     <td style="background-color: #E60785; color:white;;padding:9px;">
-                                    <input class='calFilter' type="checkbox" value="24"id = "lucena"><label style = "margin-left:15%;">Lucena</label>
+                                    <input class='calFilter' type="checkbox" value="24"id = "lucena"><label style = "margin-left:15%;">Lucena City</label>
                                 
                                     </td>
                                 </tr>
