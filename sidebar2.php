@@ -268,7 +268,7 @@ $username = $_SESSION['username'];
       
         </li>
         <li>
-            <a href="index.php">
+            <a href="logout.php">
               <i class="fa fa-sign-out " style = "color:#black;"></i> 
               <span  style = "color:#black;font-weight:normal;">Log out</span>
             </a>

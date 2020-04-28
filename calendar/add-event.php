@@ -33,6 +33,55 @@ $cancelflag =       0;
 $office     =       $_SESSION['division'];
 $currentuser=       $_SESSION['currentuser'];
 // date('Y-m-d',strtotime('04/30/2020' . ' +1 day'));
+if($office == 2 || $office == 3 || $office == 5 || $office == 25 )
+{
+    $office = 1;//ord
+}
+
+if($office == 7)
+{
+    $office = 7;//mbrtg
+}
+if($office == 9)
+{
+    $office = 9;//pdmu
+}
+if($$office == 10 || $office == 11 || $office == 12 || $office == 13 || $office == 14 || $office == 15 || $office == 16 ||$office == 26 ||  $office == 54 )
+{
+    $office = 10;//fad
+}
+if($office == 17 || $office == 8)
+{
+    $office = 17;//lgcdd
+}
+if($office == 18)
+{
+    $office = 18;//lgmed
+}
+if($office == 20 || $office == 34 || $office == 35 || $office == 36 || $office == 45)
+{
+    $office = 20;//cavite
+}
+if($office == 21 || $office == 40 || $office == 41 || $office == 42 || $office== 47 || $office == 51 || $office==52 )
+{
+    $office = 21;//laguna
+}
+if($office == 19 || $office == 28 || $office == 29 || $office == 30 || $office == 44)
+{
+    $office = 19;//batangas
+}
+if($office == 23 || $office == 37 || $office == 38 || $office == 39 || $office == 46 || $office == 50)
+{
+    $office = 23;//rizal
+}
+if($office == 22 || $office == 31 || $office == 32 || $office == 33 || $office == 48 || $office == 49 || $office == 53)
+{
+    $office = 22;//Quezon
+}
+if($office == 24)
+{
+    $office = 24;   
+}
 
 $sql = "INSERT INTO events 
 (office,title, 
@@ -50,6 +99,6 @@ $result = mysqli_query($conn, $sql);
 if (! $result) {
     $result = mysqli_error($conn);
 }
-header('location:../calAddEvents.php?flag=1');
+header('location:../ViewCalendar.php?division='.$_SESSION['division'].'&flag=1');
 
 ?>

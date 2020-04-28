@@ -22,6 +22,7 @@ $username = $_SESSION['username'];
     <style>
   th{
     color:blue;
+    text-align:center;
   }
   
   </style>
