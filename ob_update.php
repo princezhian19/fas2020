@@ -62,11 +62,11 @@ $view_query = mysqli_query($conn, "SELECT * from ob where id = '$id'");
       $obdate = date('m/d/Y', strtotime($obdate1));
       
       $timefrom1 = $row['timefrom'];
-      $timefrom=  date("h:i:s A",$timefrom1);
+      $timefrom=  date("h:i",$timefrom1);
 
 
       $timeto1 = $row['timeto'];
-      $timeto=  date("h:i:s A",$timeto1);
+      $timeto=  date("h:i",$timeto1);
 
 
       $uc = $row['uc'];
@@ -81,8 +81,104 @@ $view_query = mysqli_query($conn, "SELECT * from ob where id = '$id'");
 
 ?>
 
+<!-- Upadte Queries -->
 
-       
+
+<?php
+
+
+if(isset($_POST['submit'])){
+
+
+      $checked = $_POST['check'];
+     // echo $checked;
+
+
+      $id = $_POST['getid'];
+      //echo $id;
+
+      $obno = $_POST['obno'];
+     
+      $date1 = $_POST['date'];
+      $date = date('Y-m-d', strtotime($date1));
+      $office = $_POST['office'];
+      $name = $_POST['name'];
+      $purpose = $_POST['purpose'];
+      $place = $_POST['place'];
+      $obdate1 = $_POST['obdate'];
+      $obdate = date('Y-m-d', strtotime($obdate1));
+      
+      $timefrom1 = $_POST['timefrom'];
+      $timefrom=  date("h:i A",$timefrom1);
+
+
+      $timeto1 = $_POST['timeto'];
+      $timeto=  date("h:i A",$timeto1);
+
+
+      $uc = $row['uc'];
+
+      $submitteddate1 = $_POST['submitteddate'];
+      $submitteddate = date('Y-m-d', strtotime($submitteddate1));
+
+
+      $receiveddate = $_POST['receiveddate'];
+      $receiveddate = date('Y-m-d', strtotime($receiveddate1));
+
+
+
+$servername = "localhost";
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
+$database = "fascalab_2020";
+$username1 = $_SESSION['username'];
+$conn = new mysqli($servername, $username, $password,$database);
+
+// Check connection
+if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+}
+
+
+if($checked=="checked"){
+
+  
+  
+  $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',obdate='$obdate',timefrom='$timefrom1',uc='1' where id = '$id'");
+ 
+  /* echo "UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',obdate='$obdate',timefrom='$timefrom',uc='1' where id = '$id'";
+  exit(); */
+
+
+}
+
+else
+{
+  $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1' where id = '$id'");
+  
+  
+}
+
+mysqli_close($conn);
+
+if($query){
+
+    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully updated. </p> </div></div>  '; 
+   
+}
+else{
+
+    echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
+    
+}
+}
+
+?>
+
+
+
+
+<!-- Upadte Queries -->
 <div class="box">
           <div class="box-body">
       
@@ -102,10 +198,12 @@ $view_query = mysqli_query($conn, "SELECT * from ob where id = '$id'");
               
                 <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
 
+                <input value="<?php echo $id;?>" hidden  type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
+
                     <tr>  
                     
                             <td class="col-md-5">
-                            <input value="<?php echo $obno;?>" required  class="form-control" type="text" class="" style="height: 35px;" id="obno" name="obno" placeholder="obno" >
+                            <input readonly value="<?php echo $obno;?>" required  class="form-control" type="text" class="" style="height: 35px;" id="obno" name="obno" placeholder="obno" >
                                     </td>
                     </tr>
                     <tr>

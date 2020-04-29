@@ -62,7 +62,7 @@ $username = $_SESSION['username'];
                   <th width="400">TITLE</th>
                   <th width="100">OFFICE</th>
                   <th width="150">POSTING DETAILS</th>
-                  <th width="200">ACTION</th>
+                  <th width="250">ACTION</th>
                   
                 </tr>
                 </thead>
