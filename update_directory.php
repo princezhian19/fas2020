@@ -11,8 +11,11 @@ $email_get =$row['email'];
 $address_get =$row['address'];
 $posted_by =$row['posted_by'];
 $posted_date1 =$row['posted_date'];
+if ($posted_date1 == NULL) {
+$posted_date ='';
+}else{
 $posted_date =date('Y-m-d',strtotime($posted_date1));
-
+}
 if (isset($_POST['submit'])) {
   $group =$_POST['group'];
   $agency =$_POST['agency'];
