@@ -9,7 +9,13 @@ $head_director_get =$row['head_director'];
 $contact_get =$row['contact_no'];
 $email_get =$row['email'];
 $address_get =$row['address'];
-
+$posted_by =$row['posted_by'];
+$posted_date1 =$row['posted_date'];
+if ($posted_date1 == NULL) {
+$posted_date ='';
+}else{
+$posted_date =date('Y-m-d',strtotime($posted_date1));
+}
 if (isset($_POST['submit'])) {
   $group =$_POST['group'];
   $agency =$_POST['agency'];
@@ -17,9 +23,6 @@ if (isset($_POST['submit'])) {
   $contact =$_POST['contact'];
   $email =$_POST['email'];
   $address =$_POST['address'];
-  $posted_by =$_POST['posted_by'];
-  $posted_date1 =$_POST['posted_date'];
-  $posted_date =date('Y-m-d',strtotime($posted_date1));
 
   $INSERT = mysqli_query($conn,"UPDATE `phone_directory` SET `group`='$group',`agency`='$agency',`head_director`='$head_director',`contact_no`='$contact',`email`='$email',`address`='$address' WHERE id = $id");
 
@@ -93,7 +96,12 @@ if (isset($_POST['submit'])) {
             </div>
              <div class="form-group">
                 <label>Posted Date <label style="color: Red;" >*</label></label>
-                <input readonly required class="form-control" name="posted_date" type="date" value="<?php echo $posted_date?>">
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input readonly value="<?php echo $posted_date?>" type="text" class="form-control pull-right" name="posted_date" id="datepicker"  required placeholder="mm/dd/yyyy">
+                    </div>
               </div>
           </div>
         </div>
