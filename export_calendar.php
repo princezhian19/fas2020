@@ -34,27 +34,24 @@ $styleArray = array(
     )
   )
 );
-$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");$date1 = $_GET['date'];
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+  $date1 = $_GET['date'];
 $division = $_GET['division'];
 $date = str_replace("-1","",$date1);
 // echo $date;
 
-
-
-$sql_items = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.venue,e.enp,e.remarks,te.UNAME FROM events e LEFT JOIN tblemployee te on te.EMP_N = e.postedby WHERE e.cancelflag = 0 ");
-    if (mysqli_num_rows($sql_items)>0) {
-    $row = 7;
-
-
-
-
-  while($excelrow = mysqli_fetch_assoc($sql_items) ){
+$query = "SELECT e.title,e.start,e.end,e.venue,e.enp,e.remarks,te.UNAME FROM events e LEFT JOIN tblemployee te on te.EMP_N = e.postedby WHERE e.cancelflag = 0";
+$result = mysqli_query($conn, $query);
+if ($result->num_rows > 0) {
+  $row = 7;
+    while($excelrow = mysqli_fetch_array($result))
+    
+{
 
     $start1 = $excelrow['start'];
     $start = str_replace("00:00:00","",$start1);
     $end1 = $excelrow['end'];
     $end = str_replace("00:00:00","",$end1);
-
 
     $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['title']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$start);
@@ -104,6 +101,7 @@ $sql_items = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.venue,e.enp,e.r
   }
 
 }
+
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));

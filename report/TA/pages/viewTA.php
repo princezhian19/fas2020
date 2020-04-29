@@ -14,13 +14,13 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
              $cn = $_GET['id'];
 
 
-              $query = "SELECT * FROM `tbltechnical_assistance` WHERE `CONTROL_NO` = '$cn'";
-              $name = '';
-              $result = mysqli_query($conn, $query);
-              $val = array();
-              while($row = mysqli_fetch_array($result))
-              {
-                $name = $row['REQ_BY'];
+                $query = "SELECT * FROM `tbltechnical_assistance` WHERE `CONTROL_NO` = '$cn'";
+                $name = '';
+                $result = mysqli_query($conn, $query);
+                $val = array();
+                while($row = mysqli_fetch_array($result))
+                {
+                $name = strtoupper($row['REQ_BY']);
                 
                 
                 $request_date = date('M d, Y',strtotime($row['REQ_DATE']));
