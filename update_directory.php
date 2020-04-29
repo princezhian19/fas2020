@@ -93,7 +93,12 @@ if (isset($_POST['submit'])) {
             </div>
              <div class="form-group">
                 <label>Posted Date <label style="color: Red;" >*</label></label>
-                <input readonly required class="form-control" name="posted_date" type="date" value="<?php echo $posted_date?>">
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input readonly value="<?php echo $posted_date?>" type="text" class="form-control pull-right" name="posted_date" id="datepicker"  required placeholder="mm/dd/yyyy">
+                    </div>
               </div>
           </div>
         </div>

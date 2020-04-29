@@ -57,7 +57,7 @@
 
                 <?php if ($username == 'magonzales' || $username == 'hpsolis' || $username == 'jbaco' || $username == 'gpvillanueva' || $username == 'rmsaturno' || $username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ): ?>
                 <td width="150">
-                 <a  href='UpdateEmployee.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit</a>
+                 <a href='UpdateEmployee.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit</a>
                </td>
                <td><a onclick="return confirm('Are you sure you want to Delete this Account now?');" href='delete_account2.php?id=<?php echo $id;?>' title="delete" class = "btn btn-danger btn-xs" > <i class='fa fa-fw fa-trash'></i> Delete</a> </td>
                <?php else: ?>
