@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label>Group <label style="color: Red;" >*</label></label>
+                <label>Group <font style="color: Red;" >*</font></label>
                 <select required class="form-control select2"  name="group" >
                   <option disabled selected></option>
                   <option value="DILG Central">DILG Central</option>
@@ -54,21 +54,21 @@ if (isset($_POST['submit'])) {
                 </select>
               </div>
               <div class="form-group">
-                <label>Agency/Office <label style="color: Red;" >*</label></label>
+                <label>Agency/Office <font style="color: Red;" >*</font></label>
                 <input required type="text" class="form-control"  name="agency"  >
               </div>
               <div class="form-group">
-                <label>Contact/Person <label style="color: Red;" >*</label></label>
+                <label>Contact/Person <font style="color: Red;" >*</font></label>
                 <input required class="form-control" name="head_director" type="text" >
               </div>
               <div class="form-group">
-                <label>Posted by <label style="color: Red;" >*</label></label>
+                <label>Posted by <font style="color: Red;" >*</font></label>
                 <input readonly required class="form-control" name="posted_by" type="text" value="<?php echo $username?>">
               </div>
             </div>
             <div class="col-md-6">
              <div class="form-group">
-              <label>Contact No. <label style="color: Red;" >*</label></label>
+              <label>Contact No. <font style="color: Red;" >*</font></label>
               <input required class="form-control" name="contact" type="text" >
             </div>
             <div class="form-group">
@@ -79,14 +79,19 @@ if (isset($_POST['submit'])) {
               <label>Office Address</label>
               <input  class="form-control" name="address" type="text" >
             </div>
-            <div class="form-group">
-                <label>Posted Date <label style="color: Red;" >*</label></label>
-                <input readonly required class="form-control" name="posted_date" type="date" value="<?php echo date('Y-m-d')?>">
-              </div>
+              <div class="form-group">
+                  <label>Posted Date <font style="color: Red;" >*</font></label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input readonly value="<?php echo date("m/d/Y");?>" type="text" class="form-control pull-right" name="posted_date" id="datepicker"  required placeholder="mm/dd/yyyy">
+                    </div>
+                  </div>
           </div>
         </div>
       </div>
             <button class="btn btn-success" name="submit">Save</button>
     </form>
-  </body>
+
 

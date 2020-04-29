@@ -50,7 +50,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                    <input  class='calFilter' type="checkbox" value="0"  id = "all"></label>
+                                    <input  class='calFilter' type="checkbox" value="0"  id = "all" ></label>
                                         Show all
                                     </td>
                                 </tr>
@@ -61,7 +61,7 @@
                                 </tr>
                                 <tr>
                                 <td style="background-color: #E60785; color:white;">
-                                <input class='calFilter' type="checkbox" value="16" id = "fad"><label style = "margin-left:15%;">FAD</label>
+                                <input class='calFilter' type="checkbox" value="10" id = "fad"><label style = "margin-left:15%;">FAD</label>
                                     
                                 </td>
                                 
@@ -102,7 +102,7 @@
                                 </tr>
                                 <tr>
                                 <td>
-                                    <input  class='calFilter' type="checkbox" value="0"  id = "addll"></label>
+                                    <input  class='calFilter' type="checkbox" value="0  "  id = "addll"></label>
                                         Show all
                                     </td>
                                 </tr>
@@ -154,7 +154,7 @@
                     <br>
                     <br>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-12">
-                    <button class="col-lg-12 pull-right btn btn-success" style = "margin-left:10px;"><a style = "color:#fff;"  href="export_calendar.php?date=<?php echo date("Y-m-d");?>&division=<?php echo $_SESSION['division'];?>" >Export</a></button>
+                    <button class="col-lg-12 pull-right btn btn-success " style = "margin-left:10px;"><a style = "color:#fff;"  href="export_calendar.php?date=<?php echo date("Y-m-d");?>&division=<?php echo $_GET['division'];?>" >Export</a></button>
                     <br><br>
                     
                     </div>

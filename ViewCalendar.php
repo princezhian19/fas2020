@@ -13,7 +13,7 @@ require_once 'calendar/sample/bdd.php';
 require_once 'calendar/sample/dbaseCon.php';
 require_once 'calendar/sample/sql_statements.php';
 
-$sql = "SELECT id, title, start, end, description,venue, tblpersonneldivision.DIVISION_COLOR as 'color', cancelflag, office,enp,posteddate, remarks FROM events inner join tblpersonneldivision on events.office = tblpersonneldivision.DIVISION_N where cancelflag = 0 and status = 1 ";
+$sql = "SELECT DIVISION_M, id, title, start, end, description,venue, tblpersonneldivision.DIVISION_COLOR as 'color', cancelflag, office,enp,posteddate, remarks FROM events inner join tblpersonneldivision on events.office = tblpersonneldivision.DIVISION_N where cancelflag = 0 and status = 1 ";
 $req = $bdd->prepare($sql);
 $req->execute();
 $events = $req->fetchAll();
@@ -385,6 +385,20 @@ if($_GET['flag'] == 1)
   })
   
   $(document).ready(function(){
+    $( "#all" ).prop( "checked", true );
+            $( "#ord" ).prop( "checked", true );
+            $( "#fad" ).prop( "checked", true );
+            $( "#lgcdd" ).prop( "checked", true );
+            $( "#lgmed" ).prop( "checked", true );
+            $( "#mbrtg" ).prop( "checked", true );
+            $( "#pdmu" ).prop( "checked", true );
+            $( "#addll" ).prop( "checked", true );
+            $( "#cavite" ).prop( "checked", true );
+            $( "#laguna" ).prop( "checked", true );
+            $( "#batangas" ).prop( "checked", true );
+            $( "#quezon" ).prop( "checked", true );
+            $( "#rizal" ).prop( "checked", true );
+            $( "#lucena" ).prop( "checked", true );
  
     $( ".datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
     $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
@@ -401,6 +415,7 @@ if($_GET['flag'] == 1)
   })
 $(document).ready(function() {
   $("#all").click(function(){
+    $('#all').not(this).prop('checked', this.checked);
     $('#ord').not(this).prop('checked', this.checked);
     $('#fad').not(this).prop('checked', this.checked);
     $('#lgcdd').not(this).prop('checked', this.checked);
@@ -446,29 +461,58 @@ $("#addll").click(function(){
                 $('#myModal').find('#enptxtbox').val(event.enp);
             },
           eventRender: function(calEvent, element, view) {
+            
            var show_username, show_type = true, show_calendar = true;
           //  ===================
-          if($('#type_filter').val() == '')
-          {
-            // $( "#all" ).prop( "checked", true );
+       
+      
+          if($('input[id=ord]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=fad]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=lgcdd]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=mbrtg]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=lgmed]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=pdmu]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
           }
+          if($('input[id=ord]').is(':checked') && 
+            $('input[id=fad]').is(':checked') && 
+            $('input[id=lgcdd]').is(':checked') &&
+            $('input[id=mbrtg]').is(':checked')&&
+            $('input[id=lgmed]').is(':checked')&&
+            $('input[id=pdmu]').is(':checked')){
+            $( "#all" ).prop( "checked", true );
+            }
+// ===========================================================
+if($('input[id=cavite]').is(':checked')){
+  $( "#addll" ).prop( "checked", false );
+}else if($('input[id=laguna]').is(':checked')){
+  $( "#addll" ).prop( "checked", false );
+}else if($('input[id=batangas]').is(':checked')){
+  $( "#addll" ).prop( "checked", false );
+}else if($('input[id=quezon]').is(':checked')){
+  $( "#addll" ).prop( "checked", false );
+}else  if($('input[id=rizal]').is(':checked')){
+  $( "#addll" ).prop( "checked", false );
+}else  if($('input[id=lucena]').is(':checked')){
+  $( "#addll" ).prop( "checked", false );
+}
 
-          // ====================
-          // if($('input[id=ord]').is(':checked')){
-          //   $( "#all" ).prop( "checked", false );
-          // }else if($('input[id=fad]').is(':checked')){
-          //   $( "#all" ).prop( "checked", false );
-          // }else if($('input[id=lgcdd]').is(':checked')){
-          //   $( "#all" ).prop( "checked", false );
-          // }else if($('input[id=mbrtg]').is(':checked')){
-          //   $( "#all" ).prop( "checked", false );
-          // }else if($('input[id=lgmed]').is(':checked')){
-          //   $( "#all" ).prop( "checked", false );
-          // }else if($('input[id=pdmu]').is(':checked')){
-          //   $( "#all" ).prop( "checked", false );
-          // }
+if($('input[id=cavite]').is(':checked') && 
+            $('input[id=laguna]').is(':checked') && 
+            $('input[id=batangas]').is(':checked') &&
+            $('input[id=quezon]').is(':checked')&&
+            $('input[id=rizal]').is(':checked')&&
+            $('input[id=lucena]').is(':checked')){
+            $( "#addll" ).prop( "checked", true );
+            }
+      
 
-          if($('input[id=all]').is(':checked')){
+          if($('input[id=all]').is(':checked') ){
 
             return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0  
           }else{      
@@ -488,6 +532,10 @@ $("#addll").click(function(){
             }
             return  filter(calEvent) ;
             }
+
+
+            // ============================
+            
       
           },
           
@@ -561,9 +609,47 @@ $("#addll").click(function(){
                   endforeach; ?>
                 ]
       });
+
+      $('.export').click(function(){
+    var month = $('.select_month').val();
+
+        // window.location ="export_calendar.php?month=&division=<?php echo $_GET['division'];?>"
+      })
       // ==================================================
       $( ".filter" ).keyup(function() {
-    $( "#all" ).prop( "checked", false );
+        if($('#type_filter').val() == '')
+          {
+            $( "#all" ).prop( "checked", true );
+            $( "#ord" ).prop( "checked", true );
+            $( "#fad" ).prop( "checked", true );
+            $( "#lgcdd" ).prop( "checked", true );
+            $( "#lgmed" ).prop( "checked", true );
+            $( "#mbrtg" ).prop( "checked", true );
+            $( "#pdmu" ).prop( "checked", true );
+            $( "#addll" ).prop( "checked", true );
+            $( "#cavite" ).prop( "checked", true );
+            $( "#laguna" ).prop( "checked", true );
+            $( "#batangas" ).prop( "checked", true );
+            $( "#quezon" ).prop( "checked", true );
+            $( "#rizal" ).prop( "checked", true );
+            $( "#lucena" ).prop( "checked", true );
+          }else{
+            $( "#all" ).prop( "checked", false );
+            $( "#ord" ).prop( "checked", false );
+            $( "#fad" ).prop( "checked", false );
+            $( "#lgcdd" ).prop( "checked", false );
+            $( "#lgmed" ).prop( "checked", false );
+            $( "#mbrtg" ).prop( "checked", false );
+            $( "#pdmu" ).prop( "checked", false );
+            $( "#addll" ).prop( "checked", false );
+            $( "#cavite" ).prop( "checked", false );
+            $( "#laguna" ).prop( "checked", false );
+            $( "#batangas" ).prop( "checked", false );
+            $( "#quezon" ).prop( "checked", false );
+            $( "#rizal" ).prop( "checked", false );
+            $( "#lucena" ).prop( "checked", false );
+            
+          }
 
        $('#calendar').fullCalendar('rerenderEvents');
    });

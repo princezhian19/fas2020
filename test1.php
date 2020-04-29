@@ -26,7 +26,7 @@ $username = $_SESSION['username'];
   }
   
   </style>
-<body class=" hold-transition skin-red-light sidebar-mini">
+<body class=" hold-transition skin-red-light sidebar-mini" >
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
@@ -133,7 +133,7 @@ $username = $_SESSION['username'];
               <span  style = "color:#black;font-weight:normal;">Personnel</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
-              <li><a href="ViewEmployees.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Employees</a></li>
+              <li><a href="ViewEmployees.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Employees Directory</a></li>
               <li><a href="ob.php"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Official Business</a></li>
               <li><a href="#"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Travel Order</a></li>
             </ul>
