@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5be4a1da-05bd-4f9e-8b3b-66b0111942f6">
-	<property name="ireport.zoom" value="1.6105100000000667"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="817"/>
+	<property name="ireport.zoom" value="2.3579476910000987"/>
+	<property name="ireport.x" value="397"/>
+	<property name="ireport.y" value="1118"/>
 	<parameter name="currentuser" class="java.lang.String"/>
 	<parameter name="requested_date" class="java.lang.String"/>
+	<parameter name="started_date" class="java.lang.String"/>
+	<parameter name="start_time" class="java.lang.String"/>
+	<parameter name="completed_date" class="java.lang.String"/>
+	<parameter name="completed_time" class="java.lang.String"/>
 	<parameter name="requested_time" class="java.lang.String"/>
 	<parameter name="office" class="java.lang.String"/>
 	<parameter name="position" class="java.lang.String"/>
@@ -1535,6 +1539,34 @@
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{issue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="436" width="65" height="15" uuid="6b21c5b7-fc93-4a11-adb1-85a06a741126"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{started_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="436" width="65" height="15" uuid="e655e20c-95c4-4ecf-ae24-6959c26f0f1d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{start_time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="746" width="65" height="15" uuid="7d9ef26d-2e9a-4faa-a3a9-84c4c9793400"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{completed_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="746" width="65" height="15" uuid="929506cb-cafa-4b25-95db-12c2f0d03ce3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{completed_time}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

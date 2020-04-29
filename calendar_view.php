@@ -154,7 +154,7 @@
                     <br>
                     <br>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-12">
-                    <button class="col-lg-12 pull-right btn btn-success" style = "margin-left:10px;"><a style = "color:#fff;"  href="export_calendar.php?date=<?php echo date("Y-m-d");?>&division=<?php echo $_SESSION['division'];?>" >Export</a></button>
+                    <button class="col-lg-12 pull-right btn btn-success " style = "margin-left:10px;"><a style = "color:#fff;"  href="export_calendar.php?date=<?php echo date("Y-m-d");?>&division=<?php echo $_GET['division'];?>" >Export</a></button>
                     <br><br>
                     
                     </div>

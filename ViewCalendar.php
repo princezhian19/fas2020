@@ -561,6 +561,12 @@ $("#addll").click(function(){
                   endforeach; ?>
                 ]
       });
+
+      $('.export').click(function(){
+    var month = $('.select_month').val();
+
+        // window.location ="export_calendar.php?month=&division=<?php echo $_GET['division'];?>"
+      })
       // ==================================================
       $( ".filter" ).keyup(function() {
     $( "#all" ).prop( "checked", false );
