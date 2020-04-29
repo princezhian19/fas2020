@@ -40,7 +40,7 @@ include 'connection.php';
             $result = mysqli_query($conn,$query);
             if($row = mysqli_fetch_array($result))
             {
-              if($row['DIVISION_C'] != '16')
+              if($_GET['division'] != '10')
               {
                 ?>
                 <li class="btn btn-success">

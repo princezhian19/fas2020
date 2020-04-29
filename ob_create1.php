@@ -164,68 +164,41 @@ else{
               
                 <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
 
-                    <tr>  
-                    
-                            <td class="col-md-5">
-                            <input required value="<?php echo $obcount; ?>" readonly  class="form-control" type="text" class="" style="height: 35px;" id="obno" name="obno" placeholder="obno" >
-                                    </td>
-                    </tr>
-                    <tr>
-                    
-                            <td class="col-md-5">
-                            <input readonly required type="text" class="form-control" style="height: 35px;" name="date" id="" value = "<?php echo date('m/d/Y') ?>" >
-                    </tr>
-                    <tr>
-                      
-                            <td class="col-md-5">  <input readonly required  type="text"  class="form-control" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>"></td>
-                    </tr>
-                    <tr>
-                     
-                            <td class="col-md-5">
-                            <input readonly id="name" name="name" autocomplete ="off" type="text" class="form-control" placeholder="name" value = "<?php echo $f.' '.$row['MIDDLE_M'].' '.$l.'';?>">
-                            </td>
-                    </tr>
+                    <div class="div">
+                    <div class="row">
 
-                    
-                    <tr>
-                     
-                            <td class="col-md-5">
-                            <input id="purpose" name="purpose" autocomplete ="off" type="text" class="form-control" placeholder="purpose">
-                            </td>
-                    </tr>
+                        <div class="col-md-4">
 
-                    
-                    <tr>
-                     
-                            <td class="col-md-5">
-                            <input id="place" name="place" autocomplete ="off" type="text" class="form-control" placeholder="place">
-                            </td>
-                    </tr>
+                        </div>
+
+                        <div class="col-md-8">
+                        Republic of the Philippines
+                        <br>
+                        <b>DEPARTMENT OF THE INTERIOR AND LOCAL GOVERNMENT
+                        <br>
+                        Region IV-A (CALABARZON)
+                        <br>
+                        </b>
+                        Andenson Building 1, National Highway, Brgy. Parian
+                        <br>
+                        City of Calamba, Laguna
+                        <br>
+                        Tel: (049)8274755/(049)8274587/(049)8274560 •  Fax: (049) 8274745
+                        Email: dilgcalabarzon@yahoo.com   •  Website: www.calabarzon.dilg.gov.ph
+
+                        </div>
+
+                    </div>
+
+
+
                 
-                    <tr>
 
-                          <td class="col-md-5">
-                          <input required type="text" class="form-control" style="height: 35px;" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
-                          </td>
-                            <!-- <td class="col-md-5"><input  type="text" class="form-control" style="height: 35px;" name="obdate" id="datepicker2" value = "<?php echo date('m/d/Y') ?>" ></td> -->
-                    </tr>
 
-                    <tr>
-                       
-                       <td class="col-md-5"><input  type="time" class="form-control" style="height: 35px;" name="timefrom" id="timefrom"></td>
-                    </tr>
 
-                    
-                    <tr>
-                       
-                       <td class="col-md-5"><input  type="time" class="form-control" style="height: 35px;" style="display:block" name="timeto" id="timeto"></td>
-                    </tr>
 
-                    <tr>
 
-                       <!-- <input  style = "margin-bottom:10px;" type = "checkbox" name = "uc" class = "checkboxgroup_g1" id = "uc" value ="1"> <br> -->
-                       <td class="col-md-5"><input onclick="myFunction()"  type="checkbox" class="checkboxgroup_g1" value="1" style="height: 35px;" name="uc" id="uc" ><label> Upon Completion<label></td>
-                    </tr>
+                    </div>
 
 
                     

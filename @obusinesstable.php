@@ -61,7 +61,7 @@ $edit="edit";
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
-                   <th width =''>OB NO</th> 
+                  <th width =''>OB NO</th> 
                   <th width = ''>OB DATE</th>
                   <th width = ''>OFFICE</th>
                   <th width = ''>NAME</th>
@@ -71,7 +71,7 @@ $edit="edit";
                   <th width = ''>TIME</th>
                   <th width = ''>SUBMITTED DATE</th>
                   <th width = ''>RECEIVED DATE</th>
-                  <th width = ''>ACTION</th>
+                  <th width = '200'>ACTION</th>
                   
                 </tr>
                 </thead>
@@ -83,7 +83,7 @@ $edit="edit";
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT * from ob where office ='$DIVISION_M' order by date desc");
+            $view_query = mysqli_query($conn, "SELECT * from ob where office ='$DIVISION_M' and status='' order by date desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
 
@@ -99,11 +99,14 @@ $edit="edit";
                   $obdate = date('F d, Y', strtotime($obdate1));
                   
                   $timefrom1 = $row['timefrom'];
-                  $timefrom=  date("h:i:s A",$timefrom1);
-
+                  $timefrom=  date("h:i:s a",$timefrom1);
+                
 
                   $timeto1 = $row['timeto'];
-                  $timeto=  date("h:i:s A",$timeto1);
+                  $timeto=  date("h:i:s a",$timeto1);
+
+                 
+                  
 
 
                   $uc = $row['uc'];
@@ -112,12 +115,13 @@ $edit="edit";
                   $submitteddate = date('F d, Y', strtotime($submitteddate1));
 
 
-                  $receiveddate = $row['receiveddate'];
+                  $receiveddate1 = $row['receiveddate'];
                   $receiveddate = date('F d, Y', strtotime($receiveddate1));
                 
                   
                   //echo $office;
-                 
+                /*   echo $timefrom.' to '.$timeto;
+                  echo '<br>'; */
 
                ?>
 
@@ -129,27 +133,35 @@ $edit="edit";
                 <td><?php echo  $office?></td>
                 <td><?php echo  $name?></td>
                 <td><?php echo  $purpose?></td>
-                <td><?php echo $place?></td>
+                <td><?php echo  $place?></td>
                 <td><?php echo  $obdate?></td>
                
 
                 <?php if($uc==1):?>
-                <td><?php echo $timefrom.' to '.'UC'?></td>
+                <td><?php echo $timefrom1.' to '.'UC'?></td>
                 <?php else:?>
-                <td><?php echo $timefrom.' to '.$timefrom?></td>
+                <td><?php echo $timefrom1.' to '.$timeto1?></td>
                 <?php endif?>
 
-                <?php if ($submitteddate1 == 0000-00-00): ?>
-                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='#'title="Submit">Submit</a></td>
+                <?php if ($submitteddate1 == '0000-00-00'): ?>
+                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='ob_submit.php?id=<?php echo $id;?>'title="Submit">Submit</a></td>
                 <?php else: ?>
                 <td><?php echo $submitteddate?></td>
                 <?php endif ?>
 
 
-                <?php if ($submitteddate1 != 0000-00-00 ): ?>
-                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='#'title="Submit">Receive</a></td>
+                <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
+                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='ob_receive.php?id=<?php echo $id;?>'title="Submit">Receive</a></td>
                 <?php else: ?>
-                <td><?php echo $receiveddate1?></td>
+                        <td>
+                          
+                        <?php if ($receiveddate1 == '0000-00-00'): ?>
+                      <!-- //no dates -->
+                        <?php else: ?>
+                        <?php echo $receiveddate?>
+                        <?php endif ?>
+
+                        </td>
                 <?php endif ?>
                 
 
@@ -164,11 +176,11 @@ $edit="edit";
 
                           <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
                           <a href='OfficialBusinessUpdate.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
-                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='#' title="block" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='ob_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php else: ?>
                           <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
-                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='#' title="block" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='ob_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php endif ?>
                         
