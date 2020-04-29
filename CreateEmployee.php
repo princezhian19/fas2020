@@ -20,29 +20,31 @@ $username = $_SESSION['username'];
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-        folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-    <!-- Morris chart -->
-    <link rel="stylesheet" href="bower_components/morris.js/morris.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/iCheck/all.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+  <!-- Select2 -->
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 </head>
 <style>
@@ -57,6 +59,7 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="index.php" style="font-family: cambria; "><i class=""></i> Home</a></li>
+        <li class="active" style="font-family: cambria;">Personnel</li>
         <li class="active" style="font-family: cambria;">Add Employee</li>
       </ol>
       <br>
@@ -70,23 +73,40 @@ $username = $_SESSION['username'];
         <b>Version</b> 1.0
       </div>
       <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
-      
     </footer>
     <br>
 </div>
 </body>
 </html>
-
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
-<script src="dist/js/adminlte.min.js"></script>
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Select2 -->
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-
+<!-- InputMask -->
+<script src="plugins/input-mask/jquery.inputmask.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- bootstrap color picker -->
+<script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- SlimScroll -->
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- Page script -->
 <script>
   $(function () {
     //Initialize Select2 Elements
