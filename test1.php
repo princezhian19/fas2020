@@ -26,7 +26,7 @@ $username = $_SESSION['username'];
   }
   
   </style>
-<body class=" hold-transition skin-red-light sidebar-mini">
+<body class=" hold-transition skin-red-light sidebar-mini" >
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
