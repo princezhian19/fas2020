@@ -566,7 +566,7 @@ if($('input[id=cavite]').is(':checked') &&
                       ?>
                       {
                         id: '<?php echo $event['id']; ?>',
-                        title: '<?php echo $event['DIVISION_M']; ?>',
+                        title: '<?php echo $event['title']; ?>',
                         start: '<?php echo $start; ?>',
                         end: '<?php echo $realenddate; ?>',
                         description: '<?php echo $event['description']; ?>',
@@ -587,7 +587,7 @@ if($('input[id=cavite]').is(':checked') &&
                       ?>
                       {
                         id: '<?php echo $event['id']; ?>',
-                        title: '<?php echo $event['DIVISION_M']; ?>',
+                        title: '<?php echo $event['title']; ?>',
                         start: '<?php echo $start; ?>',
                         end: '<?php echo $realenddate; ?>',
                         description: '<?php echo $event['description']; ?>',
