@@ -9,6 +9,9 @@ $head_director_get =$row['head_director'];
 $contact_get =$row['contact_no'];
 $email_get =$row['email'];
 $address_get =$row['address'];
+$posted_by =$row['posted_by'];
+$posted_date1 =$row['posted_date'];
+$posted_date =date('Y-m-d',strtotime($posted_date1));
 
 if (isset($_POST['submit'])) {
   $group =$_POST['group'];
@@ -17,9 +20,6 @@ if (isset($_POST['submit'])) {
   $contact =$_POST['contact'];
   $email =$_POST['email'];
   $address =$_POST['address'];
-  $posted_by =$_POST['posted_by'];
-  $posted_date1 =$_POST['posted_date'];
-  $posted_date =date('Y-m-d',strtotime($posted_date1));
 
   $INSERT = mysqli_query($conn,"UPDATE `phone_directory` SET `group`='$group',`agency`='$agency',`head_director`='$head_director',`contact_no`='$contact',`email`='$email',`address`='$address' WHERE id = $id");
 
