@@ -30,7 +30,8 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
-        <li class="active">PR Update</li>
+        <li class="active">Procurement</li>
+        <li class="active">Edit PR</li>
       </ol>
       <br>
       <br>

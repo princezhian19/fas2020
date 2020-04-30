@@ -49,7 +49,8 @@ $username = $_SESSION['username'];
      <br>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Issuances</li>
+        <li class="active">Procurement</li>
+        <li class="active">Create PR</li>
       </ol><br>
       <?php include('pr.php');?>
 

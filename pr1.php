@@ -427,11 +427,11 @@ function confirmDelete(delUrl) {
 -->
 <div class="box">
   <div class="box-body">
-    <h1 align="">&nbspCreate Purchase Request</h1>
+    <h1 align="">&nbsp<b>Create Purchase Request</b></h1>
     <div class="">
     </div>
     <br>
-    &nbsp&nbsp&nbsp<li class="btn btn-success"><a href="ViewPR1.php" style="color:white;text-decoration: none;">Back</a></li>
+    &nbsp&nbsp&nbsp<li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="ViewPR1.php" style="color:white;text-decoration: none;">Back</a></li>
     <!-- <a href="javascript:void(0);"  class="btn btn-primary link" data-id="<=$data['id']?>">View Items</a><br><br> -->
 
     <br>
@@ -540,10 +540,10 @@ function confirmDelete(delUrl) {
                     <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
-                      <option value="3">Repair and Maintenance</option>
-                      <option value="4">Supplies, Materials and Devices</option>
                       <option value="5">Other Services</option>
+                      <option value="3">Repair and Maintenance</option>
                       <option value="6">Reimbursement and Petty Cash</option>
+                      <option value="4">Supplies, Materials and Devices</option>
                       
                     
                     </select>
@@ -608,10 +608,10 @@ function confirmDelete(delUrl) {
                     <!--   <option value="5">------------------------SELECT TYPE------------------------</option> -->
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
-                      <option value="3">Repair and Maintenance</option>
-                      <option value="4">Supplies, Materials and Devices</option>
                       <option value="5">Other Services</option>
+                      <option value="3">Repair and Maintenance</option>
                       <option value="6">Reimbursement and Petty Cash</option>
+                      <option value="4">Supplies, Materials and Devices</option>
                     </select>
                   <?php endif ?>
                  
@@ -693,32 +693,30 @@ function confirmDelete(delUrl) {
            $output = '';
            ?>
            <div class="panel-heading">
-            <i class="fa fa-list-alt"></i> <!-- Item(s) -->
+            <i class="fa fa-list-alt"></i>&nbsp&nbsp&nbspPR Items<!-- Item(s) -->
             <div class="clearfix"></div>
           </div>
           <div class="panel-body container-items">
             <div class=""><!-- widgetBody -->
               <div class="row">
                 <div class="col-md-6" style="padding-left: 30px;padding-top:10px;">
-                <label>Item/s <label style="color: Red;" >*</label> </label>
+                  <label>Item/s <font style="color: Red;" >*</font> </label>
                   <input  type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
                   <table class="table table-striped table-hover" id="main">
                     <tbody id="result">
                     </tbody>
                   </table>
-                  <br>
-                  <br>
                   
                   <div hidden>
                     <input type="text" name="app_items" id="id" class="form-control"/>
                   </div>
                   <div class="form-group">
-                    <label>Stock/Property No.  <label style="color: Red;" >*</label> </label>
+                    <label>Stock/Property No.  <font style="color: Red;" >*</font> </label>
                     <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
                   </div>
                   <div class="form-group">
                     <label>Description/Specification </label>
-                    <textarea class="form-control" rows="3" name="description" ></textarea>
+                    <input type="text" name="description" class="form-control">
                   </div>
                 </div>
 
@@ -731,7 +729,7 @@ function confirmDelete(delUrl) {
                     <input class="form-control" type="number" readonly id="two" name="two">
                   </div>
                   <div class="form-group">
-                    <label>Unit <label style="color: Red;" >*</label></label>
+                    <label>Unit <font style="color: Red;" >*</font></label>
                     <input type="text" name="unit" id="unit"  class="form-control" readonly>
                    <!--  <select class="form-control select2" style="width: 100%;" name="unit" id="unit" >
                       <option value="5">------------------------------SELECT UNIT------------------------------</option>
@@ -745,12 +743,12 @@ function confirmDelete(delUrl) {
                       <option value="18">dozen</option>
                       <option value="20">gallon</option>
                       <option value="13">jar</option>
-                       <option value="22">liter</option>
-
+                      
                       <option value="4">lot</option>
                       <option value="7">pack</option>
                       <option value="15">pad</option>
                       <option value="19">pair</option>
+                      <option value="22">pax</option>
                       <option value="1">piece</option>
                       <option value="17">pouch</option>
                       <option value="3">ream</option>
@@ -763,19 +761,15 @@ function confirmDelete(delUrl) {
                     <tbody id="result">
                     </tbody>
                   </table>
-                  <br>
-                      
-                  
-                 
                   </div>
                   
                  
                   <div class="form-group">
-                    <label>Quantity <label style="color: Red;" >*</label></label>
+                    <label>Quantity <font style="color: Red;" >*</font></label>
                     <input class="form-control" type="number" id="qty" name="qty" >
                   </div>
                   <div class="form-group">
-                    <label>Unit Cost <label style="color: Red;" >*</label></label>
+                    <label>Unit Cost <font style="color: Red;" >*</font></label>
                     <input class="form-control" type="text" id="abc"  name="abc" readonly>
                   </div>
 
@@ -793,7 +787,7 @@ function confirmDelete(delUrl) {
         <br>
          
         <div class="form-group">
-        <label>Added Item/s.</label>
+        <label>Added PR Item/s.</label>
         <div>
         <div class="panel-body container-items">
          <table style="background-color: white;border-width: medium;" class="table " id="item_table" >

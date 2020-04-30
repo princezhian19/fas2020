@@ -206,20 +206,13 @@ function checkAvailability() {
       <h1 align="">&nbspCreate RFQ</h1>
       <div class="box-header with-border">
       </div>
-      <br>
+        <br>
       &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="ViewRFQ.php" style="color:white;text-decoration: none;">Back</a></li>
-      <br>
+        <br>
+        <br>
       <form method="POST">
         <div class="form-group" style="float: right;width:300px;padding-right: 20px;">
-          <!-- <label>Action Officer </label>
-          <select class="form-control select2" style="width: 100%;" name="action_officer">
-            <option value="14">JORGE ALVIN MONTEIRO</option>
-            <option value="12">CAMILLE T. RONQUILLO</option>
-          </select> -->
         </div>
-        <br>
-        <br>
-        <br>
         <div class="box-body">
           <div class="well">
             <div class="row">
@@ -399,7 +392,7 @@ function checkAvailability() {
           $note_id = $row["id"];
           $note_desc = $row["note"];
           ?>
-          <input type="checkbox" checked name="note_id[]" value="<?php echo $note_id; ?>">&nbsp<b><?php echo $note_desc;?></b></input>
+          <input type="checkbox" checked name="note_id[]" value="<?php echo $note_id; ?>">&nbsp<b>**<?php echo $note_desc;?></b></input>
           <br>
 
         <?php } ?>

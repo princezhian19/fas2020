@@ -363,24 +363,24 @@
               <select required id="mySelect2" class="form-control" name="office">
                 <?php if ($office1 == 1): ?>
                   <option value="1">Regional Office</option>
-                  <option value="2">Provincial Office</option>
+                  <option value="2">Provincial/HUC Office</option>
                   <option value="3">Cluster Office</option>
-                  <option value="4">City Municipality Office</option>
+                  <option value="4">City/Municipal Office</option>
                 <?php endif ?>
                 <?php if ($office1 == 2): ?>
-                  <option value="2">Provincial Office</option>
+                  <option value="2">Provincial/HUC Office</option>
                   <option value="1">Regional Office</option>
                   <option value="3">Cluster Office</option>
-                  <option value="4">City Municipality Office</option>
+                  <option value="4">City/Municipal Office</option>
                 <?php endif ?>
                 <?php if ($office1 == 3): ?>
                   <option value="3">Cluster Office</option>
                   <option value="1">Regional Office</option>
-                  <option value="2">Provincial Office</option>
-                  <option value="4">City Municipality Office</option>
+                  <option value="2">Provincial/HUC Office</option>
+                  <option value="4">City/Municipal Office</option>
                 <?php endif ?>
                 <?php if ($office1 == 4): ?>
-                  <option value="4">City Municipality Office</option>
+                  <option value="4">City/Municipal Office</option>
                   <option value="1">Regional Office</option>
                   <option value="2">Provincial Office</option>
                   <option value="3">Cluster Office</option>

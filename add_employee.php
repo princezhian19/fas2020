@@ -410,9 +410,9 @@
             <select required id="mySelect2" class="form-control" name="office">
               <option disabled selected></option>
               <option value="1">Regional Office</option>
-              <option value="2">Provincial Office</option>
+              <option value="2">Provincial/HUC Office</option>
               <option value="3">Cluster Office</option>
-              <option value="4">City Municipality Office</option>
+              <option value="4">City/Municipal Office</option>
             </select>
             <div hidden>
               <select  class="form-control select2" style="width: 100%;" id="mySelect2"   placeholder="Office Station" hidden >

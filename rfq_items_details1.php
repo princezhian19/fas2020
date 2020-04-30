@@ -75,11 +75,11 @@ if ($update) {
 <body>
   <div class="box box-default">
     <div class="box-header with-border">
-      <h1 align="">&nbspUpdate Purchase Request</h1>
+      <h1 align="">&nbsp<b>Edit Purchase Request</b></h1>
       <div class="box-header with-border">
       </div>
       <br>
-      &nbsp &nbsp   <li class="btn btn-success"><?php echo '<a href="ViewPR1.php?id='.$id.'" style="color:white;text-decoration: none;">Back</a>' ?> </li>
+      &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><?php echo '<a href="ViewPR1.php?id='.$id.'" style="color:white;text-decoration: none;">Back</a>' ?> </li>
       <br>
       <br>
       <form method="POST">
@@ -326,7 +326,7 @@ if ($update) {
            <th width="100">Quantity</th>
            <th width="100">Unit Cost</th>
           <th width="150">Total Cost </th>
-           <th width="100">Option</th>
+           <th width="150">Option</th>
            </tr>
            <tr>
             <?php 
@@ -464,9 +464,7 @@ $sql_items = $conn->query("SELECT pr.id,pr.pr_no,a.procurement,a.sn,pr.descripti
               <td><?php  $ans = $abc1*$qty;  echo number_format($ans,2); ?></td>
 
               <td>
-               <?php echo '<a href="ViewUpdateRFQ1.php?id2='.$_GET['id'].'&id='.$id.'&id='.$id.' "  class = "btn btn-primary btn-xs" ><i  class="fa">&#xf044;</i> Edit</a>' ?>
-
-           <!--  <a onclick="return confirm('Are you sure you want to Delete?');" href="delete_rfq_items1.php?id2=<?php echo $id2; ?>&id=<?php echo $id; ?> "><i style="font-size:24px" class="fa fa-trash-o"></i></a>' -->
+               <?php echo '<a href="ViewUpdateRFQ1.php?id2='.$_GET['id'].'&id='.$id.'&id='.$id.' "  class = "btn btn-primary btn-xs" ><i  class="fa">&#xf044;</i> Edit</a>' ?> | <a class="btn btn-danger btn-xs"onclick="return confirm('Are you sure you want to Delete?');" href="delete_rfq_items1.php?id2=<?php echo $id2; ?>&id=<?php echo $id; ?> "><i class="fa fa-fw fa-trash"></i>Delete</a>'
              </td>
            </tr>
          <?php } ?>
@@ -474,7 +472,7 @@ $sql_items = $conn->query("SELECT pr.id,pr.pr_no,a.procurement,a.sn,pr.descripti
      </div>
    </div> 
    <br>
-       <input type="submit" name="submit" value="Update" class="btn btn-primary" onclick="return confirm('Are you sure you want to update now?');">
+       <input type="submit" name="submit" value="Edit" class="btn btn-primary" onclick="return confirm('Are you sure you want to update now?');">
 
    <br>
    <br>

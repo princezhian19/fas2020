@@ -53,19 +53,16 @@ if (isset($_POST['submit'])) {
     <div class="col-md-8">
         <div class="box">
             <div class="box-header with-border" align="left">
-                <div class="col-md-11">
                     <h1>RFQ No. &nbsp <?php echo $rfq_no;?></h1>
-                </div>
             </div>
             <div class="box-bodyno-padding">
                 <div class="box-body">
 
                 
                    <!-- <a href="ViewRFQdetails.php?id=<?php echo $pr_id; ?>" class="btn btn-primary">Update</a> |  -->
-                   <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a> | 
-                   <a href="ViewRFQ.php" class="btn btn-warning">Back</a>
+                   <a href="ViewRFQ.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
                    <h4>Item(s)</h4>
-                   <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
+                   <table id="" class="table table-striped table-bordered" style="background-color: white;">
                     <thead>
                         <tr style="background-color: white;color:blue;">
                             <th width="500">Item</th>
@@ -106,7 +103,7 @@ if (isset($_POST['submit'])) {
                 
                 <br>
 
-                <table id="example1" class="" style="background-color: white;">
+                <table id="" class="" style="background-color: white;">
                     <thead>
                         <tr style="background-color: white;color:blue;">
                             <th width="500"></th>
@@ -128,6 +125,7 @@ if (isset($_POST['submit'])) {
                     ?>
 
                 </table>
+                   <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-fw fa-download"></i>Export</a> 
             </div>
         </div>
     </div>
@@ -135,34 +133,34 @@ if (isset($_POST['submit'])) {
 <div class="col-md-4">
     <div class="box box-success">
         <div class="box-header with-border" align="left">
-            <h4>RFQ Details</h4>
+            <h4><strong>RFQ Details</strong></h4>
         </div>
         <div class="box-body table-responsive no-padding">
             <div class="box-body">
                 <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                     <tr>
-                        <th width="100">RFQ Date</th>
-                        <td><?php echo $rfq_date;?></td>
+                        <th class="pull-left" >RFQ Date</th>
+                        <td width="200"><?php echo date('F d, Y',strtotime($rfq_date));?></td>
                     </tr>
                     <tr>
-                        <th>Purpose</th>
+                        <th class="pull-left">Purpose</th>
                         <td><?php echo $purpose;?></td>
                     </tr>
                     <tr>
-                        <th>Office</th>
+                        <th class="pull-left">Office</th>
                         <td><?php echo $pmo;?></td>
                     </tr>
 
                     <tr>
-                        <th>PR No.</th>
+                        <th class="pull-left">PR No.</th>
                         <td><?php echo $pr_no;?></td>
                     </tr>
                     <tr>
-                        <th width="150" >PR Date Received</th>
-                        <td><?php echo $pr_date;?></td>
+                        <th class="pull-left" >PR Date Received</th>
+                        <td><?php echo date('F d, Y',strtotime($pr_date));?></td>
                     </tr>
                     <tr>
-                        <th width="150" >ABC</th>
+                        <th class="pull-left"  >ABC</th>
                         <td><?php echo number_format($abc111,2);?></td>
                     </tr>
                      <!-- <tr>
@@ -183,7 +181,7 @@ if (isset($_POST['submit'])) {
 <div class="col-md-4" style="float: right;">
     <div class="box box-primary">
         <div class="box-header with-border" align="left">
-            <h4>Proof of Sending</h4>
+            <h4><strong>Proof of Sending</strong></h4>
         </div>
         <div class="box-body table-responsive no-padding">
             <div class="box-body">
