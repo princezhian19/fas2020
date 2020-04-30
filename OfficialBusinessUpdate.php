@@ -67,8 +67,20 @@ $username = $_SESSION['username'];
         <?php include('ob_update.php');?>
 
     </section>
-  </div>
-   <footer class="main-footer">
+  
+    <br>
+    <br>
+    <br>
+     <br>
+
+
+
+   
+    <br>
+</div>
+
+
+<footer class="main-footer">
     <br>
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
@@ -76,9 +88,6 @@ $username = $_SESSION['username'];
       <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
       
     </footer>
-    <br>
-</div>
-
 <script src="_includes/sweetalert.min.js"></script>
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
