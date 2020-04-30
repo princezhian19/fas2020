@@ -23,22 +23,20 @@ $submitted_date = $row['submitted_date'];
     <div class="col-md-8">
         <div class="box">
             <div class="box-header with-border" align="left">
-                <div class="col-md-11">
                     <h1>Purchase Request No. &nbsp <?php echo $pr_no;?></h1>
-                </div>
             </div>
             <div class="box-body table-responsive no-padding">
                 <div class="box-body">
 
                     <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?>
 
-                    <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary">Update</a>
+                    <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary">Edit</a>
                         
                     <?php endif ?>
 
                     <?php if($submitted_date!=NULL):?>
                     <?php else:?>
-                    <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary">Update</a>
+                    <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary">Edit</a>
                     
                     <?php endif?>
 
@@ -49,7 +47,8 @@ $submitted_date = $row['submitted_date'];
                    <?php else: ?>
                    <a href="ViewPR.php" class="btn btn-warning">Back</a>
                     <?php endif ?>
-
+                    <br>
+                    <br>
                    <h4>Item(s)</h4>
                    <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                     <thead>
@@ -162,24 +161,24 @@ $submitted_date = $row['submitted_date'];
             <div class="box-body">
                 <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                     <tr>
-                        <th>Office:</th>
+                        <th class="pull-left">Office:</th>
                         <td><?php echo $pmo;?></td>
                     </tr>
                     <tr>
-                        <th>PR No:</th>
+                        <th class="pull-left">PR No:</th>
                         <td><?php echo $pr_no;?></td>
                     </tr>
                     <tr>
-                        <th>PR Date:</th>
+                        <th class="pull-left">PR Date:</th>
                         <td><?php echo $pr_date;?></td>
                     </tr>
 
                     <tr>
-                        <th>Target Date:</th>
+                        <th class="pull-left" width="100">Target Date:</th>
                         <td><?php echo $target_date;?></td>
                     </tr>
                     <tr>
-                        <th>Type:</th>
+                        <th class="pull-left">Type:</th>
                         <?php if ($type == "1"): ?>
                           <td><?php echo "Catering Services";?></td>
                         <?php endif?>
@@ -197,7 +196,7 @@ $submitted_date = $row['submitted_date'];
                         <?php endif?>
                     </tr>
                     <tr>
-                        <th>Purpose:</th>
+                        <th class="pull-left">Purpose:</th>
                         <td><?php echo $purpose;?></td>
                     </tr>
                      <tr>
@@ -207,7 +206,7 @@ $submitted_date = $row['submitted_date'];
                         $abc1 = $row["aa"];
                                 }
                         ?>
-                        <th>ABC:</th>
+                        <th class="pull-left">ABC:</th>
                         <td><?php echo number_format($abc1,2);?></td>
                     </tr>
                 </table>

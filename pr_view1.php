@@ -21,9 +21,7 @@ $submitted_date = $row['submitted_date'];
     <div class="col-md-8">
         <div class="box">
             <div class="box-header with-border" align="left">
-                <div class="col-md-11">
                     <h1>Purchase Request No. &nbsp <?php echo $pr_no;?></h1>
-                </div>
             </div>
             <div class="box-body table-responsive no-padding">
                 <div class="box-body">
@@ -35,7 +33,8 @@ $submitted_date = $row['submitted_date'];
                    
                    <a href="export_pr1.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a>
                    <a href="ViewPR1.php" class="btn btn-warning">Back</a>
-
+                   <br>
+                   <br>
 
                    <h4>Item(s)</h4>
                    <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
@@ -141,12 +140,12 @@ $submitted_date = $row['submitted_date'];
                     </tr>
                     <tr>
                         <th>PR Date:</th>
-                        <td><?php echo $pr_date;?></td>
+                        <td><?php echo date('F d, Y',strtotime($pr_date));?></td>
                     </tr>
 
                     <tr>
                         <th>Target Date:</th>
-                        <td><?php echo $target_date;?></td>
+                        <td><?php echo date('F d, Y',strtotime($target_date));?></td>
                     </tr>
                     <tr>
                         <th>Type:</th>

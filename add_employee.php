@@ -104,71 +104,32 @@
     $division        = $_POST["division"];
     $office          = $_POST["office"];
     $birthdate1      = $_POST["birthdate"];               
-    $birthdate      = date('Y-m-j H:i:s',strtotime($birthdate1));               
+    $birthdate       = date('Y-m-j H:i:s',strtotime($birthdate1));               
     $email           = $_POST["email"]; 
-    $alter_email     = "";           
+    $alter_email     = $_POST["alter_email"];       
+    $suffix          = $_POST["suffix"];       
+    $status          = $_POST["status"];       
     $contact         = $_POST["contact"]; 
     $username        = $_POST["username"];  
     $password        = $_POST["password"];  
+    $office_address  = $_POST["office_address"];  
+    $office_contact  = $_POST["office_contact"];  
     $repassword      = $_POST["repassword"];  
     $cluster         = "";       
-    $access         = "";       
+    $access          = "";       
     $cellphone       = $_POST["cellphone"];
-    $target_dir = "images/profile/";
-    $target_file = $target_dir . basename($_FILES["image"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $target_dir      = "images/profile/";
+    $target_file     = $target_dir . basename($_FILES["image"]["name"]);
+    $uploadOk        = 1;
+    $imageFileType   = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-    if(!empty(basename($_FILES["image"]["name"])))
-    {
-      if(!empty($_FILES["image"]["name"]))
-      {
-        $update_image = mysqli_query($conn,"UPDATE tblemployeeinfo SET PROFILE = '$target_file' WHERE EMP_N = '".$_GET['id']."' ");
-            // Check if file already exists
-        if (file_exists($target_file)) 
-        {
-                // echo "Sorry, file already exists.";
-          $uploadOk = 0;
-        }
-            // Check file size
-        if ($_FILES["image"]["size"] > 9000000)
-        {
-                // echo "Sorry, your file is too large.";
-          $uploadOk = 0;
-        }
-            // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
-        {
-                // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-          $uploadOk = 0;
-        }
-            // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) 
-        {
-            // if everything is ok, try to upload file
-        } 
-        else 
-        {
-         if(!empty($_FILES["image"]["tmp_name"]))
-         {
-          if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) 
-          {
-            echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
-          } else 
-          {
-            echo "Sorry, there was an error uploading your file.";
-          }
-        }
-      }
 
-    }
-  }
 
     $sqlUsername =  "SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
     $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeeinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
     if (!ifRecordExist($sqlEMP_N)){
       if (!ifRecordExist($sqlUsername)){
-        if ($password == $repassword){
+          $insertinf = mysqli_query($conn,"INSERT INTO tblempdetails(EMP_N,office_contact,office_address) VALUES('$employee_number','$office_contact','$office_address')");
 
           $sql_insert_query     = "INSERT INTO tblemployeeinfo (
           EMP_NUMBER,
@@ -177,13 +138,13 @@
           POSITION_C, DESIGNATION, 
           MOBILEPHONE, EMAIL, ALTER_EMAIL, AGENCY_EMP_NO, 
           CODE, UNAME, PSWORD, DATE_CREATED,
-          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE)
+          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE,SUFFIX,CIVIL_STATUS)
           VALUES (    ?, ?, ?, ?, ?, 
           ?, ?, ?, ?, 
           ?, ?, 
           ?, ?, ?, ?, 
           ?, ?, ?, ?,
-          ?, ?, ?, ?, '".$access."', 'user',?)";
+          ?, ?, ?, ?, '".$access."', 'user',?,?,?)";
 
 
           if ($insertSQL = $DBConn->prepare($sql_insert_query)) 
@@ -192,68 +153,109 @@
            $date_created   = date("Y-m-j H:i:s");
            $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
            $password   = crypt($password, '$2a$10$'.$code.'$');
-           $insertSQL->bind_param("ssssssddddssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $designation, $cellphone, $email, $alter_email, $employee_number, $code, $username, $password, $date_created, $cluster, $contact, $office, $division,$target_file);
+           $insertSQL->bind_param("ssssssddddssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $designation, $cellphone, $email, $alter_email, $employee_number, $code, $username, $password, $date_created, $cluster, $contact, $office, $division,$target_file,$suffix,$status);
            /* execute query */
            $insertSQL->execute();
 
-           $sql1 ="INSERT INTO `hris_son_daugther`(`ID`, `EMP_ID`, `FULL_NAME`, `FIRST_NAME`, `MIDDLE_NAME`, `LAST_NAME`, `DATE_OF_BIRTH`) 
-           VALUES (NULL,$employee_number,'-',null,null,null,'0000-00-00')";
-           $connect->prepare($sql1)->execute([$employee_number]); 
+           if(!empty(basename($_FILES["image"]["name"])))
+           {
+            if(!empty($_FILES["image"]["name"]))
+            {
+              $update_image = mysqli_query($conn,"UPDATE tblemployeeinfo SET PROFILE = '$target_file' WHERE EMP_N = '".$_GET['id']."' ");
+            // Check if file already exists
+              if (file_exists($target_file)) 
+              {
+                // echo "Sorry, file already exists.";
+                $uploadOk = 0;
+              }
+            // Check file size
+              if ($_FILES["image"]["size"] > 9000000)
+              {
+                // echo "Sorry, your file is too large.";
+                $uploadOk = 0;
+              }
+            // Allow certain file formats
+              if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
+              {
+                // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                $uploadOk = 0;
+              }
+            // Check if $uploadOk is set to 0 by an error
+              if ($uploadOk == 0) 
+              {
+            // if everything is ok, try to upload file
+              } 
+              else 
+              {
+               if(!empty($_FILES["image"]["tmp_name"]))
+               {
+                if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) 
+                {
+                  echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+                } else 
+                {
+                  echo "Sorry, there was an error uploading your file.";
+                }
+              }
+            }
 
-           $sql2 = mysqli_query($conn,"INSERT INTO `hris_personnal_information`(
-             `ID`, 
-             `EMP_ID`,
-             `SEX`, 
-             `DOB`, 
-             `POB`, 
-             `HEIGHT`, 
-             `WEIGHT`, 
-             `BLOOD_TYPE`,
-             `CIVIL_STATUS`, 
-             `MOB_NO`, 
-             `TEL_NO`, 
-             `EMAIL`, 
-             `GSIS_NO`, 
-             `PAGIBIG_NO`, 
-             `PHILHEALTH_NO`, 
-             `SSS_NO`, 
-             `TIN_NO`, 
-             `DILG_NO`, 
-             `HOUSE_NO`, 
-             `STREET`, 
-             `SUBDIVISION`, 
-             `BARANGAY`, 
-             `MUNICIPALITY`, 
-             `PROVINCE`,
-             `ZIP_CODE`) 
-             VALUES (null,'$employee_number','-','0000-00-00','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-')");
-           $connect->prepare($sql1)->execute([$employee_number]);
+          }
+        }
 
-           echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('Successfuly Added')
-            window.location.href = 'ViewEmployees.php';
-            </SCRIPT>");
+        $sql1 ="INSERT INTO `hris_son_daugther`(`ID`, `EMP_ID`, `FULL_NAME`, `FIRST_NAME`, `MIDDLE_NAME`, `LAST_NAME`, `DATE_OF_BIRTH`) 
+        VALUES (NULL,$employee_number,'-',null,null,null,'0000-00-00')";
+        $connect->prepare($sql1)->execute([$employee_number]); 
 
-         }else{
-           echo ("<SCRIPT LANGUAGE='JavaScript'>
-            window.alert('Error Occured Uppon Saving!');
-            </SCRIPT>");
-         }
-       }else{
-         echo ("<SCRIPT LANGUAGE='JavaScript'>
-          window.alert('Password Does Not Match!');
+        $sql2 = mysqli_query($conn,"INSERT INTO `hris_personnal_information`(
+         `ID`, 
+         `EMP_ID`,
+         `SEX`, 
+         `DOB`, 
+         `POB`, 
+         `HEIGHT`, 
+         `WEIGHT`, 
+         `BLOOD_TYPE`,
+         `CIVIL_STATUS`, 
+         `MOB_NO`, 
+         `TEL_NO`, 
+         `EMAIL`, 
+         `GSIS_NO`, 
+         `PAGIBIG_NO`, 
+         `PHILHEALTH_NO`, 
+         `SSS_NO`, 
+         `TIN_NO`, 
+         `DILG_NO`, 
+         `HOUSE_NO`, 
+         `STREET`, 
+         `SUBDIVISION`, 
+         `BARANGAY`, 
+         `MUNICIPALITY`, 
+         `PROVINCE`,
+         `ZIP_CODE`) 
+         VALUES (null,'$employee_number','-','0000-00-00','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-')");
+        $connect->prepare($sql1)->execute([$employee_number]);
+
+        echo ("<SCRIPT LANGUAGE='JavaScript'>
+          window.alert('Successfuly Added')
+          window.location.href = 'ViewEmployees.php';
           </SCRIPT>");
-       }
-     }else{
+
+      }else{
        echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Username Already Exist!');
+        window.alert('Error Occured Uppon Saving!');
         </SCRIPT>");
      }
-   }else{
-     echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Employee Number Already Exist!');
-      </SCRIPT>");
-   }
+
+ }else{
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Username Already Exist!');
+    </SCRIPT>");
+ }
+}else{
+ echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.alert('Employee Number Already Exist!');
+  </SCRIPT>");
+}
 }
 
 ?>
@@ -392,6 +394,117 @@
             <input value="<?php echo $EMP_NUMBER1;?>" type="text" class="form-control" placeholder="Employee No." name="employee_number" id="employee_number">
           </div>
           <div class="col-xs-4">
+            <label>First Name<font style="color:red;">*</font></label>
+            <input required value="<?php echo $fname1;?>" type="text" name="fname" class="form-control" placeholder="First Name">
+          </div>
+          <div class="col-xs-4">
+            <label>Mobile <font style="color:red;">*</font></label>
+            <input required value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="col-xs-4">
+            <label>Office Station<font style="color:red;">*</font></label>
+            <select required id="mySelect2" class="form-control" name="office">
+              <option disabled selected></option>
+              <option value="1">Regional Office</option>
+              <option value="2">Provincial/HUC Office</option>
+              <option value="3">Cluster Office</option>
+              <option value="4">City/Municipal Office</option>
+            </select>
+            <div hidden>
+              <select  class="form-control select2" style="width: 100%;" id="mySelect2"   placeholder="Office Station" hidden >
+                <option disabled selected>Select</option>
+                <option value="1">Regional Office</option>
+                <option value="2">Provincial Office</option>
+                <option value="3">Cluster Office</option>
+                <option value="4">City Municipality Office</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <label>Middle Name<font style="color:red;">*</font></label>
+            <input required value="<?php echo $mname1;?>" type="text" name="mname" class="form-control" placeholder="Middle Name">
+          </div>
+          <div class="col-xs-4">
+            <label>Personal Email Address <font style="color:red;">*</font></label>
+            <input required value="<?php echo $cellphone1;?>" type="text" name="email" class="form-control" placeholder="">
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="col-xs-4">
+            <label>Province</label>
+            <input type="text" name="province" hidden>
+            <select  disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
+              <option value="<?php echo $province1;?>"><?php echo $province11;?></option>
+              <option value="10">Batangas</option>
+              <option value="21">Cavite</option>
+              <option value="34">Laguna</option>
+              <option value="56">Quezon</option>
+              <option value="58">Rizal</option>
+            </select>
+            <div class="clear"></div>
+          </div>
+          <div class="col-xs-4">
+            <label>Last Name<font style="color:red;">*</font></label>
+            <input required type="text" value="<?php echo $lname1;?>" name="lname" class="form-control" placeholder="Last Name">
+          </div>
+          <div class="col-xs-4">
+            <label>Office Contact No</label>
+            <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control" placeholder="">
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="col-xs-4">
+            <label>City/Municipality</label>
+            <input type="text" name="municipality" hidden>
+            <select disabled id="sel_user" name="municipality" class="form-control select2">
+              <option value="<?php echo $municipality11;?>"><?php echo $municipality11;?></option>
+              <option value="0"></option>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <label>Extension Name<font style="color:red;">*</font></label>
+            <input required value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
+          </div>
+          <div class="col-xs-4">
+            <label>Office Email Address <font style="color:red;">*</font></label>
+            <input required value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="col-xs-4">
+            <label>Office/Division<font style="color:red;">*</font></label>
+            <select required class="form-control select2" style="width: 100%;" name="division" id="" >
+              <option value="<?php echo $division1;?>" selected><?php echo $division11;?></option>
+              <?php echo tblpersonnel($connect)?>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <label>Sex<font style="color:red;">*</font></label>
+            <select class="form-control select2" name="gender">
+              <option disabled selected></option>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <label>Office Address</label>
+            <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="col-xs-4">
             <label>Designation<font style="color:red;">*</font></label>
             <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
               <option value="<?php echo $designation1;?>" selected><?php echo $designation1;?></option>
@@ -399,157 +512,71 @@
             </select>
           </div>
           <div class="col-xs-4">
-            <label>Sex<font style="color:red;">*</font></label>
-            <select class="form-control select2" name="gender">
-              <?php if ($gender1 == 'Male'): ?>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <?php else: ?>
-                  <option value="2">Female</option>
-                  <option value="1">Male</option>
-                <?php endif ?>
-              </select>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="col-xs-4">
-              <label>Office Station<font style="color:red;">*</font></label>
-              <select required id="mySelect2" class="form-control" name="office">
-                  <option disabled selected></option>
-                  <option value="1">Regional Office</option>
-                  <option value="2">Provincial Office</option>
-                  <option value="3">Cluster Office</option>
-                  <option value="4">City Municipality Office</option>
-              </select>
-              <div hidden>
-                <select  class="form-control select2" style="width: 100%;" id="mySelect2"   placeholder="Office Station" hidden >
-                  <option disabled selected>Select</option>
-                  <option value="1">Regional Office</option>
-                  <option value="2">Provincial Office</option>
-                  <option value="3">Cluster Office</option>
-                  <option value="4">City Municipality Office</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-xs-4">
-              <label>Position<font style="color:red;">*</font></label>
-              <select required class="form-control select2" style="width: 100%;" name="position" id="" >
-                <option value="<?php echo $position11;?>" selected><?php echo $position1;?></option>
-                <?php echo tbldilgposition($connect)?>
-              </select>
-            </div>
-            <div class="col-xs-4">
-              <label>Birth Date<font style="color:red;">*</font></label>
-              <div class="input-group date">
-                <div class="input-group-addon">
-                  <i class="fa fa-calendar"></i>
-                </div>
-                <input required type="text" value="<?php echo $bday1;?>" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="Birth Date">
-              </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="col-xs-4">
-              <label>Province</label>
-              <input type="text" name="province" hidden>
-                <select  disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
-                  <option value="<?php echo $province1;?>"><?php echo $province11;?></option>
-                  <option value="10">Batangas</option>
-                  <option value="21">Cavite</option>
-                  <option value="34">Laguna</option>
-                  <option value="56">Quezon</option>
-                  <option value="58">Rizal</option>
-                </select>
-              <div class="clear"></div>
-            </div>
-            <div class="col-xs-4">
-              <label>First Name<font style="color:red;">*</font></label>
-              <input required value="<?php echo $fname1;?>" type="text" name="fname" class="form-control" placeholder="First Name">
-            </div>
-            <div class="col-xs-4">
-              <label>Email</label>
-              <input value="<?php echo $email1;?>" type="text" name="email" class="form-control" placeholder="ex. charlesodi1324@gmail.com (optional)">
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="col-xs-4">
-              <label>City/Municipality</label>
-              <input type="text" name="municipality" hidden>
-             <select disabled id="sel_user" name="municipality" class="form-control select2">
-              <option value="<?php echo $municipality11;?>"><?php echo $municipality11;?></option>
-              <option value="0"></option>
+            <label>Civil Status<font style="color:red;">*</font></label>
+            <select class="form-control select2" name="status">
+              <option disabled selected></option>
+              <option value="Single">Single</option>
+              <option value="Maried">Maried</option>
             </select>
-        </div>
-        <div class="col-xs-4">
-          <label>Middle Name<font style="color:red;">*</font></label>
-          <input required value="<?php echo $mname1;?>" type="text" name="mname" class="form-control" placeholder="Middle Name">
-        </div>
-        <div class="col-xs-4">
-          <label>Mobile <font style="color:red;">*</font></label>
-          <input required value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="col-xs-4">
-          <label>Office/Division<font style="color:red;">*</font></label>
-          <select required class="form-control select2" style="width: 100%;" name="division" id="" >
-            <option value="<?php echo $division1;?>" selected><?php echo $division11;?></option>
-            <?php echo tblpersonnel($connect)?>
-          </select>
-        </div>
-        <div class="col-xs-4">
-          <label>Last Name<font style="color:red;">*</font></label>
-          <input required type="text" value="<?php echo $lname1;?>" name="lname" class="form-control" placeholder="Last Name">
-        </div>
-        <div class="col-xs-4">
-          <label>Landline</label>
-          <input value="<?php echo $contact1;?>" type="text" name="contact" class="form-control" placeholder="ex. 501-0842 (optional)">
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-      </div>
-    </div>
-    <!-- username and pw -->
-  </div>
-  <div class="well" hidden>
-    <div class="box-header with-border">
-      <h3 class="box-title">Username and Password</h3>
-    </div>
-    <div class="box-body">
-      <div class="row">
-        <div class="col-xs-4">
-          <label>Username<font style="color:red;">*</font> </label>
-          <input autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
+          </div>
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="col-xs-4">
+            <label>Position<font style="color:red;">*</font></label>
+            <select required class="form-control select2" style="width: 100%;" name="position" id="" >
+              <option value="<?php echo $position11;?>" selected><?php echo $position1;?></option>
+              <?php echo tbldilgposition($connect)?>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <label>Birth Date<font style="color:red;">*</font></label>
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input autocomplete="new-password" required type="text" value="<?php echo $bday1;?>" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="Birth Date">
+            </div>
+          </div>
+
+
+
 
         </div>
-        <div class="col-xs-4">
-          <label>Password<font style="color:red;">*</font> </label>
-          <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
-        </div>
-        <div class="col-xs-4" >
-          <label>Re-type Password<font style="color:red;">*</font></label>
-          <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
-        </div>
+      </div>
+      <!-- username and pw -->
+    </div>
+    <div class="well" hidden>
+      <div class="box-header with-border">
+        <h3 class="box-title">Username and Password</h3>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          <div class="col-xs-4">
+            <label>Username<font style="color:red;">*</font> </label>
+            <input autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
 
+          </div>
+          <div class="col-xs-4">
+            <label>Password<font style="color:red;">*</font> </label>
+            <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
+          </div>
+          <div class="col-xs-4" >
+            <label>Re-type Password<font style="color:red;">*</font></label>
+            <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
+          </div>
+
+        </div>
+      </div>
+    </div>  
+    <div class="row">
+      <div class="col-xs-2" align="center" >
+        <button class="btn btn-block btn-primary" name="submit" type="submit" id="submit"><font size="">Save</font></button>
       </div>
     </div>
-  </div>  
-  <div class="row">
-    <div class="col-xs-2" align="center" >
-      <button class="btn btn-block btn-primary" name="submit" type="submit" id="submit"><font size="">Save</font></button>
-    </div>
   </div>
-</div>
 </form>
 
 <script>

@@ -165,7 +165,7 @@ $mydb = new db(); // create a new object, class db()
                         
                         <td>
                           <?php if ($submitted_date == NULL): ?>
-                          <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Submit this item?');" href='submit_pr1.php?id=<?php echo $id; ?>'title="Submit">Submit</a>
+                          <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Submit this PR?');" href='submit_pr1.php?id=<?php echo $id; ?>'title="Submit">Submit</a>
                             <?php else: ?>
                             <?php echo $submitted_date1?>
                             <?php endif ?>

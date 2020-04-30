@@ -140,25 +140,19 @@
                             </table>
                         </div>
                             
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-12" >
-                    <button class="col-lg-12 pull-right btn btn-success" id = "modal" ><i class = "fa fa-plus"></i><a style = "color:#fff;" > Add Activity</a></button>
-                    <br><br>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-6" >
+                        <button class="col-lg-12 pull-right btn btn-success" id = "modal" ><i class = "fa fa-plus"></i><a style = "color:#fff;" > Add Activity</a></button>
+                        <br>
+                        <br>
+                        <button class="col-lg-12 pull-right btn btn-success" style = "margin-left:10px;"><i class = "fa fa-edit"></i><a href ="ManageCalendar.php" style ="color:#fff;decoration:none;">Manage All</a></button>
+                        <br>
+                        <br>
+                        
+                        <button class="col-lg-12 pull-right btn btn-success " style = "margin-left:10px;"><a style = "color:#fff;"  href="export_calendar.php?date=<?php echo date("Y-m-d");?>&division=<?php echo $_GET['division'];?>" >Export</a></button>
+                        
                     </div>
-                    <br>
-                    <br>
-                    
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-12">
-                    <button class="col-lg-12 pull-right btn btn-success" style = "margin-left:10px;"><i class = "fa fa-edit"></i><a href ="ManageCalendar.php" style ="color:#fff;decoration:none;">Manage All Activities</a></button>
-                    <br><br>        
-                    </div>
-                    <br>
-                    <br>
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-12">
-                    <button class="col-lg-12 pull-right btn btn-success " style = "margin-left:10px;"><a style = "color:#fff;"  href="export_calendar.php?date=<?php echo date("Y-m-d");?>&division=<?php echo $_GET['division'];?>" >Export</a></button>
-                    <br><br>
-                    
-                    </div>
-
+                
+                  
                     
                 
                 </div>
