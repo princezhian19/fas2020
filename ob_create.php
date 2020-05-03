@@ -268,7 +268,7 @@ else{
 
                 <div class="col-md-8" style = "text-align:center" style="overflow-x:auto;">
                 Permission is requested by Mr./Ms.<input required style="height: 25px;width: 150px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "">
-                to leave the office for the following purpose (s).<input style="height: 25px;width: 185px;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
+                to leave the office for the following purpose (s).<input style="height: 25px;width: 150px;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
                 </div>
 
                 <div class="col-md-2" style = "text-align:center">
@@ -295,7 +295,7 @@ else{
               <br>
               <br>
              
-              Date:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              Date:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <input required type="text" class="" style="height: 25px;width: 150px;" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
 
               </div>
@@ -346,7 +346,7 @@ else{
 
 
               <div class="col-md-4" style = "text-align:center">
-              &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               Signature of Requesting Employee (s).
               <br>
               <br>
