@@ -384,14 +384,16 @@ if($_GET['flag'] == 1)
     $('#myModal2').modal('show');   
   })
   
-  $(document).ready(function(){
-    $( "#all" ).prop( "checked", true );
+$(document).ready(function()
+{
+            $( "#all" ).prop( "checked", true );
             $( "#ord" ).prop( "checked", true );
             $( "#fad" ).prop( "checked", true );
             $( "#lgcdd" ).prop( "checked", true );
             $( "#lgmed" ).prop( "checked", true );
             $( "#mbrtg" ).prop( "checked", true );
             $( "#pdmu" ).prop( "checked", true );
+
             $( "#addll" ).prop( "checked", true );
             $( "#cavite" ).prop( "checked", true );
             $( "#laguna" ).prop( "checked", true );
@@ -399,22 +401,20 @@ if($_GET['flag'] == 1)
             $( "#quezon" ).prop( "checked", true );
             $( "#rizal" ).prop( "checked", true );
             $( "#lucena" ).prop( "checked", true );
+      
  
-    $( ".datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $(".datepicker1").datepicker().datepicker("setDate", new Date());
+            $( ".datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $(".datepicker1").datepicker().datepicker("setDate", new Date());
+            $( ".enddate" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $(".enddate").datepicker().datepicker("setDate", new Date());
+            $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
 
 
-    $( ".enddate" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $(".enddate").datepicker().datepicker("setDate", new Date());
-
-    $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-
-
-  })
+})
 $(document).ready(function() {
-  $("#all").click(function(){
+$("#all").click(function(){
     $('#all').not(this).prop('checked', this.checked);
     $('#ord').not(this).prop('checked', this.checked);
     $('#fad').not(this).prop('checked', this.checked);
@@ -722,9 +722,12 @@ switch(month)
       var vals = [];
       $('input:checkbox.calFilter:checked').each(function() {
         vals.push($(this).val());
-        // alert($(this).val());
+        // alert(vals.push($(this).val()));
       });
-      return vals.indexOf(calEvent.office) !== -1;
+     
+        return vals.indexOf(calEvent.office) !== -1;
+
+      
     }
 
 </script>
