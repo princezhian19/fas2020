@@ -112,7 +112,7 @@
             <div class="box-header">
               <?php 
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$BDAY = mysqli_query($conn,"SELECT concat(FIRST_M,' ',MIDDLE_M,' ',LAST_M) as name,BIRTH_D,PROFILE FROM tblemployee WHERE MONTH(BIRTH_D) =MONTH(NOW()) ");
+$BDAY = mysqli_query($conn,"SELECT concat(FIRST_M,' ',MIDDLE_M,' ',LAST_M) as name,BIRTH_D,PROFILE FROM tblemployee WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
 while ($row = mysqli_fetch_assoc($BDAY)) {
   $name = $row['name'];
   $BIRTH_D = $row['BIRTH_D'];
