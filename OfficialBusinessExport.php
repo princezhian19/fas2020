@@ -111,6 +111,7 @@ while ($row = mysqli_fetch_assoc($sql)) {
   $receiveddate = date('F d, Y', strtotime($receiveddate1));
 
 
+ 
 }
 
 
@@ -291,7 +292,23 @@ else{
   $objDrawing->setWorksheet($objPHPExcel->getActiveSheet()); 
 
 
-
+    //Set Password
+    $objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
+  
+    $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
+  
+  
+    $objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
+  
+    $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
+   
+ 
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
