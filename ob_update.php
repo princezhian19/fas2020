@@ -331,7 +331,8 @@ else{
                         <br>
                         <br>
 
-                        Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Date:
+                        &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <input required type="text" class="" style="height: 25px;width: 150px;" value="<?php echo$obdate ; ?>" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
 
                         </div>
@@ -342,7 +343,6 @@ else{
                         Time of Departure:<input required value="<?php echo$timefrom1 ; ?>"  type="time" class="pull-right" style="height: 25px;width: 150px;" name="timefrom" id="timefrom">
                         <br>
                         <br>
-
                         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
                         Time of Return:
                         <input  type="time" value="<?php echo$timeto1 ; ?>" class="pull-right" style="height: 25px;width: 150px;" name="timeto" id="timeto" style="display:block">
@@ -352,9 +352,6 @@ else{
                         &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
                         <input onclick="myFunction()"  type="checkbox" class="checkboxgroup_g1" value="1" style="height: 25px;" name="uc" id="uc" ><label> Upon Completion<label>
                         </div>
-
-
-
 
                         <div class="col-md-2" >
 
