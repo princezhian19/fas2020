@@ -358,10 +358,6 @@ if($_GET['flag'] == 1)
   </footer>
   <br>
 
-
-
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 
@@ -377,7 +373,7 @@ if($_GET['flag'] == 1)
 <script>
   function displayMessage(message)
  {
-  $(".response").html("<div class='alert alert-success' role='alert' style = 'background-color:#ef9a9a;'>"+message+"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+    $(".response").html("<div class='alert alert-success' role='alert' style = 'background-color:#ef9a9a;'>"+message+"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
     setInterval(function() { $(".alert").fadeOut(); }, 3000);
 }
   $('#modal').click(function(){
@@ -422,8 +418,6 @@ $("#all").click(function(){
     $('#mbrtg').not(this).prop('checked', this.checked);
     $('#lgmed').not(this).prop('checked', this.checked);
     $('#pdmu').not(this).prop('checked', this.checked);
-});  
-$("#addll").click(function(){
     $('#cavite').not(this).prop('checked', this.checked);
     $('#laguna').not(this).prop('checked', this.checked);
     $('#batangas').not(this).prop('checked', this.checked);
@@ -431,6 +425,7 @@ $("#addll").click(function(){
     $('#rizal').not(this).prop('checked', this.checked);
     $('#lucena').not(this).prop('checked', this.checked);
 });  
+
     
   
       $('#calendar').fullCalendar({
@@ -484,37 +479,27 @@ $("#addll").click(function(){
             $('input[id=lgcdd]').is(':checked') &&
             $('input[id=mbrtg]').is(':checked')&&
             $('input[id=lgmed]').is(':checked')&&
-            $('input[id=pdmu]').is(':checked')){
+            $('input[id=pdmu]').is(':checked')&&
+            $('input[id=cavite]').is(':checked')&&
+            $('input[id=batangas]').is(':checked')&&
+            $('input[id=laguna]').is(':checked')&&
+            $('input[id=rizal]').is(':checked')&&
+            $('input[id=quezon]').is(':checked')&&
+            $('input[id=lucena]').is(':checked')
+            )
+            
+            {
             $( "#all" ).prop( "checked", true );
             }
 // ===========================================================
-if($('input[id=cavite]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}else if($('input[id=laguna]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}else if($('input[id=batangas]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}else if($('input[id=quezon]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}else  if($('input[id=rizal]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}else  if($('input[id=lucena]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}
 
-if($('input[id=cavite]').is(':checked') && 
-            $('input[id=laguna]').is(':checked') && 
-            $('input[id=batangas]').is(':checked') &&
-            $('input[id=quezon]').is(':checked')&&
-            $('input[id=rizal]').is(':checked')&&
-            $('input[id=lucena]').is(':checked')){
-            $( "#addll" ).prop( "checked", true );
-            }
+
+
       
 
           if($('input[id=all]').is(':checked') ){
 
-            return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0  
+            return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0 
           }else{      
             var types = $('#type_filter').val();    
             if (types && types.length > 0) 
