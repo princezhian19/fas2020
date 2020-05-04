@@ -1,11 +1,4 @@
-<?php 
-$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-$BDAY = mysqli_query($conn,"SELECT FIRST_M, LAST_M, MIDDLE_M FROM tblemployee WHERE BIRTHDAY = '' ");
-
-
-
-?>
 <div class="row">
     <div class="col-md-3">
         <div class="box">
