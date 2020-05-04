@@ -1,5 +1,4 @@
 <?php session_start();
-date_default_timezone_set('Asia/Manila');
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }else{
@@ -7,13 +6,14 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
-<title>FAS | Encode PR</title>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FAS | Encode PR</title>
   <link rel="shortcut icon" type="image/png" href="dilg.png">
 
     <!-- Tell the browser to be responsive to screen width -->
@@ -43,27 +43,33 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
 </head>
-
-<?php include 'test1.php';?>
+<body class="hold-transition skin-red-light sidebar-mini">
+<div class="wrapper">
+  <?php include('test1.php');?>
   <div class="content-wrapper">
     <section class="content-header">
-     <br>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="ViewPR.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Procurement</li>
-        <li class="active">Create PR</li>
-      </ol><br>
-      <?php include('pr.php');?>
-
+        <li class="active">View PR</li>
+      </ol>
+      <br>
+      <br>
+        <?php include('asd.php');?>
     </section>
-  </div>
-  <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0
-      </div>
-      <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
-    </footer>
     
+  </div>
+  
+  <footer class="main-footer">
+    <br>
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 1.0
+    </div>
+    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+  </footer>
+  <br>
+
+</div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -71,20 +77,14 @@ $username = $_SESSION['username'];
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
-
 <script>
-
-$(document).ready(function(){
-  $('#datepicker1').datepicker({
+  $(function () {
+    $('.select2').select2()
+    $('#datepicker').datepicker({
       autoclose: true
     })
-    $('#datepicker2').datepicker({
-      autoclose: true
-    })
-});
-</script>
    
-  
-  
+  })
+</script>
+</body>
+</html>

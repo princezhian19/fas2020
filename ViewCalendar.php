@@ -25,46 +25,46 @@ function viewEvents()
                 <input  type = "hidden" name = "eventid" id = "eventid">
                 <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
-                        <td class="col-md-2">Event/Activity Title<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox"  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Start Date<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Start Date<span style = "color:red;">*</span></td>
                             <td class="col-md-5">
                                 <input required type="text" class = "form-control datepicker1" name = "startdatetxtbox" id="datepicker1" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
                                     </td>
                                         </tr>
                     <tr>
-                        <td class="col-md-2">End Date</td>
+                        <td class="col-md-2" style ="font-weight:bold">End Date</td>
                             <td class="col-md-5">
                                 <input  type = "text" placeholder="mm/dd/yyyy" class = "form-control enddate" id = "datepicker2" name = "enddatetxtbox" value = "" /></td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2">Description</td>
+                        <td class="col-md-2" style ="font-weight:bold">Description</td>
                             <td class="col-md-5"><input  type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Venue<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "text" class = "form-control" name = "venuetxtbox" id= "venuetxtbox" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Expected Number of Participants<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Expected Number of Participants<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "number" min = "0" name = "enptxtbox" id= "enptxtbox" class = "form-control" value = ""  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Target Participants<span style = "color:red;">*</span></td>  
+                        <td class="col-md-2" style ="font-weight:bold">Target Participants<span style = "color:red;">*</span></td>  
                             <td class="col-md-5">
                             <input required type = "text" class = "form-control" name = "remarks" id= "remarks" value = "" />
                                 </td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2">Posted By</td>
+                        <td class="col-md-2" style ="font-weight:bold">Posted By</td>
                             <td class="col-md-5">                              
                             <input readonly type = "text"  class = "form-control" value = "<?php echo $_SESSION['username'];?>"  />
                                     </td>
                                         </tr>
                     <tr>
-                        <td class="col-md-2">Posted Date</td>
+                        <td class="col-md-2" style ="font-weight:bold">Posted Date</td>
                             <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
                                 </tr>
                    
@@ -100,46 +100,46 @@ if($_SESSION['planningofficer'] == 1)
   ?>
   <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
-                        <td class="col-md-2">Event/Activity Title<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox" value = ""  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Start Date<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Start Date<span style = "color:red;">*</span></td>
                             <td class="col-md-5">
                                 <input required type="text" class = "form-control datepicker1" name = "startdatetxtbox" id = "datepicker1" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
                                     </td>
                                         </tr>
                     <tr>
-                        <td class="col-md-2">End Date</td>
+                        <td class="col-md-2" style ="font-weight:bold">End Date</td>
                             <td class="col-md-5">
                                 <input  type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2">Description</td>
+                        <td class="col-md-2" style ="font-weight:bold">Description</td>
                             <td class="col-md-5"><input  type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Venue<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "text" class = "form-control" name = "venuetxtbox" id = "venuetxtbox" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Expected Number of Participants<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Expected Number of Participants<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "number" min = "0" name = "enptxtbox" id = "enptxtbox" class = "form-control" value = ""  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Target Participants<span style = "color:red;">*</span></td>  
+                        <td class="col-md-2" style ="font-weight:bold">Target Participants<span style = "color:red;">*</span></td>  
                             <td class="col-md-5">
                             <input required type = "text" class = "form-control" name = "remarks" id = "remarks" value = "" />
                                 </td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2">Posted By</td>
+                        <td class="col-md-2" style ="font-weight:bold">Posted By</td>
                             <td class="col-md-5">                              
                             <input readonly type = "text"  class = "form-control" value = "<?php echo $_SESSION['username'];?>"  />
                                     </td>
                                         </tr>
                     <tr>
-                        <td class="col-md-2">Posted Date</td>
+                        <td class="col-md-2" style ="font-weight:bold">Posted Date</td>
                             <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
                                 </tr>
                    
@@ -151,46 +151,46 @@ if($_SESSION['planningofficer'] == 1)
 ?>
   <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
-                        <td class="col-md-2">Event/Activitdy Title<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox" value = ""  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Start Date<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Start Date<span style = "color:red;">*</span></td>
                             <td class="col-md-5">
                                 <input disabled type="text" class = "form-control datepicker1" name = "startdatetxtbox" id = "datepicker1" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
                                     </td>
                                         </tr>
                     <tr>
-                        <td class="col-md-2">End Date</td>
+                        <td class="col-md-2" style ="font-weight:bold">End Date</td>
                             <td class="col-md-5">
                                 <input disabled type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2">Description</td>
+                        <td class="col-md-2" style ="font-weight:bold">Description</td>
                             <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Venue<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "venuetxtbox" id = "venuetxtbox" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Expected Number of Participants<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Expected Number of Participants<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input disabled type = "number" min = "0" name = "enptxtbox" id = "enptxtbox" class = "form-control" value = ""  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2">Target Participants<span style = "color:red;">*</span></td>  
+                        <td class="col-md-2" style ="font-weight:bold">Target Participants<span style = "color:red;">*</span></td>  
                             <td class="col-md-5">
                             <input disabled type = "text" class = "form-control" name = "remarks" id = "remarks" value = "" />
                                 </td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2">Posted By</td>
+                        <td class="col-md-2" style ="font-weight:bold">Posted By</td>
                             <td class="col-md-5">                              
                             <input disabled type = "text"  class = "form-control" value = "<?php echo $_SESSION['username'];?>"  />
                                     </td>
                                         </tr>
                     <tr>
-                        <td class="col-md-2">Posted Date</td>
+                        <td class="col-md-2" style ="font-weight:bold">Posted Date</td>
                             <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
                                 </tr>
                    
@@ -204,7 +204,7 @@ if($_SESSION['planningofficer'] == 1)
                
 if($_SESSION['planningofficer'] == 1)
                {
-              echo ' <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save"> ';
+              echo ' <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary" value = "Edit"> ';
                }else{
 
                }
@@ -252,6 +252,7 @@ if($_SESSION['planningofficer'] == 1)
     <script src="calendar/fullcalendar/lib/jquery.min.js"></script>
     <script src="calendar/fullcalendar/lib/moment.min.js"></script>
     <script src="calendar/fullcalendar/fullcalendar.min.js"></script>
+   
     <style>
   
   #calendar {
@@ -294,6 +295,14 @@ if($_GET['flag'] == 1)
     <?php
 }
 ?>
+  
+<div id="openviewWeather">
+      <a class="weatherwidget-io" href="https://forecast7.com/en/12d88121d77/philippines/" data-label_1="Philippines" data-label_2="Weather" data-font="Roboto" data-icons="Climacons Animated" data-theme="original" data-accent="rgba(1, 1, 1, 0.0)"></a>
+  </div>
+  
+  <script>
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+  </script>
     <?php include 'calendar_view.php';?>
  &nbsp;
  &nbsp;
@@ -358,10 +367,6 @@ if($_GET['flag'] == 1)
   </footer>
   <br>
 
-
-
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 
@@ -377,21 +382,23 @@ if($_GET['flag'] == 1)
 <script>
   function displayMessage(message)
  {
-  $(".response").html("<div class='alert alert-success' role='alert' style = 'background-color:#ef9a9a;'>"+message+"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+    $(".response").html("<div class='alert alert-success' role='alert' style = 'background-color:#ef9a9a;'>"+message+"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
     setInterval(function() { $(".alert").fadeOut(); }, 3000);
 }
   $('#modal').click(function(){
     $('#myModal2').modal('show');   
   })
   
-  $(document).ready(function(){
-    $( "#all" ).prop( "checked", true );
+$(document).ready(function()
+{
+            $( "#all" ).prop( "checked", true );
             $( "#ord" ).prop( "checked", true );
             $( "#fad" ).prop( "checked", true );
             $( "#lgcdd" ).prop( "checked", true );
             $( "#lgmed" ).prop( "checked", true );
             $( "#mbrtg" ).prop( "checked", true );
             $( "#pdmu" ).prop( "checked", true );
+
             $( "#addll" ).prop( "checked", true );
             $( "#cavite" ).prop( "checked", true );
             $( "#laguna" ).prop( "checked", true );
@@ -399,22 +406,20 @@ if($_GET['flag'] == 1)
             $( "#quezon" ).prop( "checked", true );
             $( "#rizal" ).prop( "checked", true );
             $( "#lucena" ).prop( "checked", true );
+      
  
-    $( ".datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $(".datepicker1").datepicker().datepicker("setDate", new Date());
+            $( ".datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $(".datepicker1").datepicker().datepicker("setDate", new Date());
+            $( ".enddate" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $(".enddate").datepicker().datepicker("setDate", new Date());
+            $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
 
 
-    $( ".enddate" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $(".enddate").datepicker().datepicker("setDate", new Date());
-
-    $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-
-
-  })
+})
 $(document).ready(function() {
-  $("#all").click(function(){
+$("#all").click(function(){
     $('#all').not(this).prop('checked', this.checked);
     $('#ord').not(this).prop('checked', this.checked);
     $('#fad').not(this).prop('checked', this.checked);
@@ -422,8 +427,6 @@ $(document).ready(function() {
     $('#mbrtg').not(this).prop('checked', this.checked);
     $('#lgmed').not(this).prop('checked', this.checked);
     $('#pdmu').not(this).prop('checked', this.checked);
-});  
-$("#addll").click(function(){
     $('#cavite').not(this).prop('checked', this.checked);
     $('#laguna').not(this).prop('checked', this.checked);
     $('#batangas').not(this).prop('checked', this.checked);
@@ -431,6 +434,7 @@ $("#addll").click(function(){
     $('#rizal').not(this).prop('checked', this.checked);
     $('#lucena').not(this).prop('checked', this.checked);
 });  
+
     
   
       $('#calendar').fullCalendar({
@@ -484,37 +488,27 @@ $("#addll").click(function(){
             $('input[id=lgcdd]').is(':checked') &&
             $('input[id=mbrtg]').is(':checked')&&
             $('input[id=lgmed]').is(':checked')&&
-            $('input[id=pdmu]').is(':checked')){
+            $('input[id=pdmu]').is(':checked')&&
+            $('input[id=cavite]').is(':checked')&&
+            $('input[id=batangas]').is(':checked')&&
+            $('input[id=laguna]').is(':checked')&&
+            $('input[id=rizal]').is(':checked')&&
+            $('input[id=quezon]').is(':checked')&&
+            $('input[id=lucena]').is(':checked')
+            )
+            
+            {
             $( "#all" ).prop( "checked", true );
             }
 // ===========================================================
-if($('input[id=cavite]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}else if($('input[id=laguna]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}else if($('input[id=batangas]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}else if($('input[id=quezon]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}else  if($('input[id=rizal]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}else  if($('input[id=lucena]').is(':checked')){
-  $( "#addll" ).prop( "checked", false );
-}
 
-if($('input[id=cavite]').is(':checked') && 
-            $('input[id=laguna]').is(':checked') && 
-            $('input[id=batangas]').is(':checked') &&
-            $('input[id=quezon]').is(':checked')&&
-            $('input[id=rizal]').is(':checked')&&
-            $('input[id=lucena]').is(':checked')){
-            $( "#addll" ).prop( "checked", true );
-            }
+
+
       
 
           if($('input[id=all]').is(':checked') ){
 
-            return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0  
+            return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0 
           }else{      
             var types = $('#type_filter').val();    
             if (types && types.length > 0) 
@@ -718,16 +712,100 @@ switch(month)
       $("#selectMonth").append('<select class="select_month form-control"><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12" selected>December</option></select>');
     break;
 }
+
+
+  $('#export').click(function(){
+  var getmonth = $(".select_month").val();
+  var getYear = $("#selectYear").val();
+
+    window.location = "export_calendar.php?month="+getmonth+"&&year="+getYear+"&date=<?php echo date("Y-m-d");?>&division=<?php echo $_GET['division'];?>"
+  });
+
+  
+
     function filter(calEvent) {
       var vals = [];
       $('input:checkbox.calFilter:checked').each(function() {
         vals.push($(this).val());
-        // alert($(this).val());
+        // alert(vals.push($(this).val()));
       });
-      return vals.indexOf(calEvent.office) !== -1;
+     
+        return vals.indexOf(calEvent.office) !== -1;
+
+      
     }
 
 </script>
+<script>
+var newEvent;
+var editEvent;
 
+$(document).ready(function() {
+    
+
+  
+  //WEATHER GRAMATICALLY
+  
+  function retira_acentos(str) {
+    var com_acento = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝRÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿr";
+    var sem_acento = "AAAAAAACEEEEIIIIDNOOOOOOUUUUYRsBaaaaaaaceeeeiiiionoooooouuuuybyr";
+    var novastr="";
+    for(i=0; i<str.length; i++) {
+      troca=false;
+      for (a=0; a<com_acento.length; a++) {
+        if (str.substr(i,1)==com_acento.substr(a,1)) {
+          novastr+=sem_acento.substr(a,1);
+          troca=true;
+          break;
+        }
+      }
+      if (troca==false) {
+        novastr+=str.substr(i,1);
+      }
+    }
+    return novastr.toLowerCase().replace( /\s/g, '-' );
+  }
+  
+  //WEATHER THEMES
+  
+  document.getElementById('switchWeatherTheme').addEventListener('change', function(){
+    
+    var valueTheme = $(this).val();
+    var widget = document.querySelector('.weatherwidget-io');
+    widget.setAttribute('data-theme', valueTheme);
+    __weatherwidget_init();
+    
+  });
+  
+  //WEATHER LOCATION
+  var input = document.getElementById('searchTextField');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  
+  google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    var place = autocomplete.getPlace();
+    var latitude = place.geometry.location.lat();
+    var longitude = place.geometry.location.lng();
+    var newPlace = retira_acentos(place.name);
+    
+    var urlDataWeather = 'https://forecast7.com/en/'+ latitude.toFixed(2).replace(/\./g,'d').replace(/\-/g,'n') + longitude.toFixed(2).replace(/\./g,'d').replace(/\-/g,'n') + '/'+ newPlace +'/';
+    
+    alert(urlDataWeather);
+    
+    var weatherWidget = document.querySelector('.weatherwidget-io');
+    weatherWidget.href = urlDataWeather;
+    weatherWidget.dataset.label_1 = place.name;
+    __weatherwidget_init();
+    
+    //document.getElementById('city2').value = place.name;
+    //document.getElementById('cityLat').value = place.geometry.location.lat();
+    //document.getElementById('cityLng').value = place.geometry.location.lng();
+    //alert("This function is working!");
+    //alert(place.name);
+    // alert(place.address_components[0].long_name);
+
+  });
+  
+});
+</script>
 </body>
 </html>
