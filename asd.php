@@ -1,11 +1,4 @@
-<?php 
-$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-$BDAY = mysqli_query($conn,"SELECT FIRST_M, LAST_M, MIDDLE_M FROM tblemployee WHERE BIRTHDAY = '' ");
-
-
-
-?>
 <div class="row">
     <div class="col-md-3">
         <div class="box">
@@ -348,7 +341,7 @@ $BDAY = mysqli_query($conn,"SELECT FIRST_M, LAST_M, MIDDLE_M FROM tblemployee WH
                     <a  class="pull-right btn btn-success btn-xs">View All</a>
                     <div class="clearfix"></div>
                 </div>
-                <table id="" class="table table-striped table-bordered" style="width:;background-color: white;">
+                <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                     <thead>
                         <tr style="background-color: white;color:blue;">
                             <th>PR NO</th>
@@ -445,7 +438,7 @@ $BDAY = mysqli_query($conn,"SELECT FIRST_M, LAST_M, MIDDLE_M FROM tblemployee WH
                 <a href="MonitoringOrs.php" class="pull-right btn btn-success btn-xs">View All </a>
                 <div class="clearfix"></div>
             </div>
-            <table id="" class="table table-striped table-bordered" style="width:;background-color: white;">
+            <table id="example2" class="table table-striped table-bordered" style="width:;background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;">
 
@@ -519,7 +512,7 @@ $BDAY = mysqli_query($conn,"SELECT FIRST_M, LAST_M, MIDDLE_M FROM tblemployee WH
             <a href="MonitoringDv.php" class="pull-right btn btn-success btn-xs">View All </a>
             <div class="clearfix"></div>
         </div>
-        <table id="" class="table table-striped table-bordered" style="background-color: white;">
+        <table id="example3" class="table table-striped table-bordered" style="background-color: white;">
             <thead>
                 <tr style="background-color: white; color:blue;">
                   <th width="200">DV NO</th>
@@ -596,7 +589,7 @@ $BDAY = mysqli_query($conn,"SELECT FIRST_M, LAST_M, MIDDLE_M FROM tblemployee WH
                 <a href="MonitoringPayment.php" class="pull-right btn btn-success btn-xs">View All </a>
                 <div class="clearfix"></div>
             </div>
-            <table id="" class="table table-striped table-bordered " style="background-color: white; overflow-x:auto;" >
+            <table id="example4" class="table table-striped table-bordered " style="background-color: white; overflow-x:auto;" >
                 <thead>
                     <tr style="background-color: white;color:blue;">
                         <th style="text-align:center" width="200">DV NO</th>
