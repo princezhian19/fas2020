@@ -53,6 +53,7 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="ViewAcceptance.php"><i class=""></i> Home</a></li>
+        <li class="active">Procurement</li>
         <li class="active">Create PR</li>
       </ol>
       <br>

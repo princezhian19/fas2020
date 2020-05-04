@@ -144,7 +144,7 @@ if($checked=="checked"){
 
   
   
-  $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',obdate='$obdate',timefrom='$timefrom1',uc='1' where id = '$id'");
+  $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',obdate='$obdate',timefrom='$timefrom1',timeto='0000-00-00',uc='1' where id = '$id'");
  
   /* echo "UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',obdate='$obdate',timefrom='$timefrom',uc='1' where id = '$id'";
   exit(); */
@@ -154,7 +154,7 @@ if($checked=="checked"){
 
 else
 {
-  $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1' where id = '$id'");
+  $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='0' where id = '$id'");
   
   
 }
@@ -200,68 +200,285 @@ else{
 
                 <input value="<?php echo $id;?>" hidden  type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
 
-                    <tr>  
-                    
-                            <td class="col-md-5">
-                            <input readonly value="<?php echo $obno;?>" required  class="form-control" type="text" class="" style="height: 35px;" id="obno" name="obno" placeholder="obno" >
-                                    </td>
-                    </tr>
-                    <tr>
-                    
-                            <td class="col-md-5">
-                            <input readonly required type="text" class="form-control" style="height: 35px;" name="date" id="" value = "<?php echo date('m/d/Y') ?>" >
-                    </tr>
-                    <tr>
-                      
-                            <td class="col-md-5">  <input readonly required  type="text"  class="form-control" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>"></td>
-                    </tr>
-                    <tr>
-                     
-                            <td class="col-md-5">
-                            <input readonly id="name" name="name" autocomplete ="off" type="text" class="form-control" placeholder="name" value = "<?php echo $f.' '.$row['MIDDLE_M'].' '.$l.'';?>">
-                            </td>
-                    </tr>
+                 
+                        <div class="div" style="border:1px solid black;">
 
-                    
-                    <tr>
-                     
-                            <td class="col-md-5">
-                            <input value="<?php echo $purpose;?>" id="purpose" name="purpose" autocomplete ="off" type="text" class="form-control" placeholder="purpose">
-                            </td>
-                    </tr>
 
-                    
-                    <tr>
-                     
-                            <td class="col-md-5">
-                            <input  value="<?php echo $place;?>" id="place" name="place" autocomplete ="off" type="text" class="form-control" placeholder="place">
-                            </td>
-                    </tr>
-                
-                    <tr>
+                        <!-- Header -->
+                        <div class="row" >
 
-                          <td class="col-md-5">
-                          <input value="<?php echo $obdate;?>" required type="text" class="form-control" style="height: 35px;" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
-                          </td>
-                            <!-- <td class="col-md-5"><input  type="text" class="form-control" style="height: 35px;" name="obdate" id="datepicker2" value = "<?php echo date('m/d/Y') ?>" ></td> -->
-                    </tr>
+                            <div class="col-md-2 " >
+                            </div>
 
-                    <tr>
-                       
-                       <td class="col-md-5"><input  value="<?php echo $timefrom1;?>" type="time" class="form-control" style="height: 35px;" name="timefrom" id="timefrom"></td>
-                    </tr>
+                        
 
-                    
-                    <tr>
-                       
-                       <td class="col-md-5"><input value="<?php echo $timeto1;?>"  type="time" class="form-control" style="height: 35px;" style="display:block" name="timeto" id="timeto"></td>
-                    </tr>
+                            <div class="col-md-8"style="overflow-x:auto;" >
 
-                    <tr>
+                            <img id="img" class="pull-left"  style="margin-top:20px; width:100;height:180px;" src="images/logo.png" title = "" />
 
-                       <!-- <input  style = "margin-bottom:10px;" type = "checkbox" name = "uc" class = "checkboxgroup_g1" id = "uc" value ="1"> <br> -->
-                       <td class="col-md-5"><input onclick="myFunction()"  type="checkbox" class="checkboxgroup_g1" value="1" style="height: 35px;" name="uc" id="uc" ><label> Upon Completion<label></td>
-                    </tr>
+
+
+                            <div class="div" style ="text-align:center">
+
+                            <br>
+                            Republic of the Philippines
+                            <br>
+                            <h4><b>DEPARTMENT OF THE INTERIOR AND LOCAL GOVERNMENT
+                            <br>
+                            Region IV-A (CALABARZON)
+                            <br></h4>
+                            </b>
+                            Andenson Building 1, National Highway, Brgy. Parian
+                            <br>
+                            City of Calamba, Laguna
+                            <br>
+                            Tel: (049)8274755/(049)8274587/(049)8274560 •  Fax: (049) 8274745
+
+                            <br>
+                            Email: dilgcalabarzon@yahoo.com   •  Website: www.calabarzon.dilg.gov.ph
+                        
+                            </div>
+                        
+
+                            </div>
+                            <div class="col-md-2 " >
+                            </div>
+
+                        
+
+                        </div>
+                        <!-- Header -->
+
+                        <br> 
+                        <br>
+
+                        <!-- Permit Row -->
+                        <div class="row">
+
+                            <div class="col-md-22" style = "text-align:center" style="overflow-x:auto;">
+                            <h3>PERMIT TO LEAVE THE OFFICE</h3>
+                        </div>
+
+
+                        </div>
+                        <!-- Permit Row -->
+
+
+                        <!-- No and date -->
+                        <div class="row" style="overflow-x:auto;">
+
+                        <div class="col-md-2" style = "text-align:center">
+
+                        </div>
+                        <div class="col-md-4" style = "text-align:center">
+
+                        </div>
+
+                        <div class="col-md-4" style="overflow-x:auto;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label style="height:20px">No.</label>&nbsp;&nbsp;&nbsp;&nbsp; <input required value="<?php echo$obno ; ?>" readonly  class="pull-right" type="text" class="" style="height: 25px; width: 150px;" id="obno" name="obno" placeholder="obno" >
+                        <br>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label style="height:20px">Date</label>&nbsp;&nbsp;&nbsp;<input readonly required type="text" class="pull-right" style="height: 25px; width: 150px;" name="date" id="" value = "<?php echo date('m/d/Y') ?>" >
+                        <br>
+                        </div>
+
+                        <div class="col-md-2" style = "text-align:center">
+
+                        </div>
+
+
+                        </div>
+                        <!-- No and date -->
+
+                        <br> 
+                        <br>
+
+                        <!--Body -->
+                        <div class="row">
+
+                        <div class="col-md-2" style = "text-align:center">
+
+                        </div>
+                        <input hidden readonly required  type="text"  class="" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>">
+
+                        <div class="col-md-8" style = "text-align:center" style="overflow-x:auto;">
+                        Permission is requested by Mr./Ms.<input required style="height: 25px;width: 150px;" value="<?php echo$name ; ?>"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "">
+                        to leave the office for the following purpose (s).<input style="height: 25px;width: 150px;" value="<?php echo$purpose; ?>" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
+                        </div>
+
+                        <div class="col-md-2" style = "text-align:center">
+                        <br>
+
+                        </div>
+
+
+                        </div>
+                        <!--Body -->
+
+                        <br> 
+                        <br>
+
+                        <!--Body 2nd -->
+                        <div class="row">
+
+                        <div class="col-md-2" >
+
+                        </div>
+
+                        <div class="col-md-4 pull-left" >
+                        Place to be visited:  &nbsp;&nbsp;&nbsp;  <input style="height: 25px;width: 150px;" value="<?php echo$place ; ?>" id="place" name="place" autocomplete ="off" type="text" class="" placeholder="Place">
+                        <br>
+                        <br>
+
+                        Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input required type="text" class="" style="height: 25px;width: 150px;" value="<?php echo$obdate ; ?>" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+
+                        </div>
+
+
+                        <div class="col-md-4" >
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                        Time of Departure:<input required value="<?php echo$timefrom1 ; ?>"  type="time" class="pull-right" style="height: 25px;width: 150px;" name="timefrom" id="timefrom">
+                        <br>
+                        <br>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                        Time of Return:
+                        <input  type="time" value="<?php echo$timeto1 ; ?>" class="pull-right" style="height: 25px;width: 150px;" name="timeto" id="timeto" style="display:block">
+
+
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                        <input onclick="myFunction()"  type="checkbox" class="checkboxgroup_g1" value="1" style="height: 25px;" name="uc" id="uc" ><label> Upon Completion<label>
+                        </div>
+
+
+
+
+                        <div class="col-md-2" >
+
+
+                        </div>
+
+
+                        </div>
+                        <!--Body 2nd -->
+                        <br> 
+                        <br>
+
+
+                        <!--Signature -->
+                        <div class="row">
+
+                        <div class="col-md-2" style = "text-align:center">
+
+                        </div>
+
+
+                        <div class="col-md-4" style = "text-align:center">
+
+                        </div>
+
+
+                        <div class="col-md-4" style = "text-align:center">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Signature of Requesting Employee (s).
+                        <br>
+                        <br>
+                        <input style="height: 25px;width: 220px;" value="<?php echo$name ; ?>" required id="" name="" autocomplete ="off" type="text" class="pull-right" placeholder="Name" value = "">
+                        </div>
+
+                        <div class="col-md-2" style = "text-align:center">
+
+
+                        </div>
+
+
+                        </div>
+                        <!--Signature -->
+                        <br> 
+
+
+
+                        <!--Note -->
+                        <div class="row">
+
+                        <div class="col-md-2" style = "text-align:center">
+
+                        </div>
+
+
+                        <div class="col-md-4" style = "text-align:left">
+
+
+                        <b>Employee(s) to perform official function and claim for 
+                        Travelling expenses is hereby authorized.</b>
+                        <!--  <br>
+                        <br>
+                        <input type="checkbox" name="" id="">YES &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  <input type="checkbox" name="" id="">NO -->
+
+
+
+                        </div>
+
+
+                        <div class="col-md-4" style = "text-align:center">
+
+                        </div>
+
+                        <div class="col-md-2" style = "text-align:center">
+
+
+                        </div>
+
+
+                        </div>
+                        <!--Note -->
+
+                        <br> 
+                        <br>
+
+
+                        <!--Approved -->
+                        <div class="row">
+
+                        <div class="col-md-2" style = "text-align:center">
+
+                        </div>
+
+
+                        <div class="col-md-4" style = "text-align:left">
+
+                        </div>
+
+
+                        <div class="col-md-4" style = "text-align:center">
+                        <!--  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                        <b>Approved:</b> -->
+                        </div>
+
+                        <div class="col-md-2" style = "text-align:center">
+
+
+                        </div>
+
+
+                        </div>
+                        <!--Approved -->
+
+
+
+
+                        <!-- End -->
+                        </div>
+                        <!-- End -->
+
+
+
+
+
                 </table>
 
                 
@@ -278,14 +495,32 @@ else{
        
     
   </form>
-   
-
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
+ <script>
+function myFunction() {
+  var checkBox = document.getElementById("uc");
+  var text = document.getElementById("timeto");
+  var check = $("input[name='check']");
+  //var str = $("input[name='timeto']");
+  if (checkBox.checked == true){
+    text.readOnly = true ;
+    text.style = "background-color:gray; height: 25px;width: 150px;";
 
+    check.val('checked');
+    
+  } else {
+    text.readOnly = false;
+    text.style = "background-color:white; height: 25px;width: 150px;";
+    check.val('');
+  }
+
+
+}
+</script>
  
-<script>
+<!-- <script>
 
 
 $(document).ready(function(){
@@ -316,7 +551,7 @@ function myFunction() {
 
 
 }
-</script>
+</script> -->
  
 
 

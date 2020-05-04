@@ -168,7 +168,7 @@ $username = $_SESSION['username'];
                   <td><?php echo $target_date11;?></td>
                   <td>
                           <?php if ($submitted_date == NULL): ?>
-                          <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Submit this item?');" href='submit_pr.php?id=<?php echo $id; ?>'title="Submit">Submit</a>
+                          <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Submit this PR?');" href='submit_pr.php?id=<?php echo $id; ?>'title="Submit">Submit</a>
                             <?php else: ?>
                             <?php echo $submitted_date1?>
                             <?php endif ?>

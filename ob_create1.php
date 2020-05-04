@@ -165,42 +165,275 @@ else{
                 <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
 
                     <div class="div">
+
+
+                    <!-- Header -->
                     <div class="row">
 
-                        <div class="col-md-4">
-
+                        <div class="col-md-2 " >
                         </div>
 
-                        <div class="col-md-8">
+                     
+
+                        <div class="col-md-8" >
+
+                        <img id="img" class="pull-left"  style="width:100;height:180px;" src="images/logo.png" title = "" />
+
+
+
+                        <div class="div" style ="text-align:center">
+
+                        <br>
                         Republic of the Philippines
                         <br>
-                        <b>DEPARTMENT OF THE INTERIOR AND LOCAL GOVERNMENT
+                        <h4><b>DEPARTMENT OF THE INTERIOR AND LOCAL GOVERNMENT
                         <br>
                         Region IV-A (CALABARZON)
-                        <br>
+                        <br></h4>
                         </b>
                         Andenson Building 1, National Highway, Brgy. Parian
                         <br>
                         City of Calamba, Laguna
                         <br>
                         Tel: (049)8274755/(049)8274587/(049)8274560 •  Fax: (049) 8274745
+
+                        <br>
                         Email: dilgcalabarzon@yahoo.com   •  Website: www.calabarzon.dilg.gov.ph
+                      
+                        </div>
+                       
 
                         </div>
+                        <div class="col-md-2 " >
+                        </div>
+
+                      
 
                     </div>
+                     <!-- Header -->
+
+                    <br> 
+                    <br>
+                    
+                    <!-- Permit Row -->
+                    <div class="row">
+
+                        <div class="col-md-12" style = "text-align:center">
+                        <h3>PERMIT TO LEAVE THE OFFICE</h3>
+                      </div>
 
 
+                    </div>
+                <!-- Permit Row -->
 
+
+                  <!-- No and date -->
+                  <div class="row">
+
+                  <div class="col-md-2" style = "text-align:center">
                 
+                  </div>
+                  <div class="col-md-4" style = "text-align:center">
+                 
+                  </div>
+
+                  <div class="col-md-4" >
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                  <label style="height:20px">No.</label>&nbsp;&nbsp;&nbsp;&nbsp; <input required value="<?php echo $obcount; ?>" readonly  class="pull-right" type="text" class="" style="height: 25px; width: 150px;" id="obno" name="obno" placeholder="obno" >
+                  <br>
+                  
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                  <label style="height:20px">Date</label>&nbsp;&nbsp;&nbsp;<input readonly required type="text" class="pull-right" style="height: 25px; width: 150px;" name="date" id="" value = "<?php echo date('m/d/Y') ?>" >
+                  <br>
+                  </div>
+
+                  <div class="col-md-2" style = "text-align:center">
+                
+                  </div>
+
+
+                  </div>
+                <!-- No and date -->
+
+                    <br> 
+                    <br>
+
+                 <!--Body -->
+                 <div class="row">
+
+                <div class="col-md-2" style = "text-align:center">
+
+                </div>
+                 <input hidden readonly required  type="text"  class="" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>">
+
+                <div class="col-md-8" style = "text-align:center">
+                Permission is requested by Mr./Ms. &nbsp;&nbsp;&nbsp;<input required style="height: 25px;width: 150px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "">&nbsp;&nbsp;&nbsp;
+                to leave the office for the following purpose (s).&nbsp;&nbsp;&nbsp;<input style="height: 25px;width: 270px;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
+                </div>
+
+                <div class="col-md-2" style = "text-align:center">
+                <br>
+
+                </div>
+
+
+                </div>
+                <!--Body -->
+                
+                <br> 
+                <br>
+
+              <!--Body 2nd -->
+              <div class="row">
+
+              <div class="col-md-2" >
+
+              </div>
+
+              <div class="col-md-4 pull-left" >
+              Place to be visited:  &nbsp;&nbsp;&nbsp;  <input style="height: 25px;width: 150px;" id="place" name="place" autocomplete ="off" type="text" class="" placeholder="Place">
+              <br>
+              <br>
+             
+              Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input required type="text" class="" style="height: 25px;width: 150px;" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+
+              </div>
+
+
+              <div class="col-md-4" >
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+              Time of Departure:<input  type="time" class="pull-right" style="height: 25px;width: 150px;" name="timefrom" id="timefrom">
+              <br>
+              <br>
+
+              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+              Time of Return:
+              <input  type="time" class="pull-right" style="height: 25px;width: 150px;" name="timeto" id="timefrom">
+              </div>
 
 
 
 
+              <div class="col-md-2" >
+            
 
+              </div>
+
+
+              </div>
+              <!--Body 2nd -->
+              <br> 
+              <br>
+
+
+               <!--Signature -->
+               <div class="row">
+
+              <div class="col-md-2" style = "text-align:center">
+
+              </div>
+
+
+              <div class="col-md-4" style = "text-align:center">
+              
+              </div>
+
+
+              <div class="col-md-4" style = "text-align:center">
+              &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+              Signature of Requesting Employee (s).
+              <br>
+              <br>
+              <input style="height: 25px;width: 220px;"  required id="" name="" autocomplete ="off" type="text" class="pull-right" placeholder="Name" value = "">
+              </div>
+             
+              <div class="col-md-2" style = "text-align:center">
+             
+
+              </div>
+
+
+              </div>
+              <!--Signature -->
+              <br> 
+            
+
+              
+               <!--Note -->
+               <div class="row">
+
+              <div class="col-md-2" style = "text-align:center">
+
+              </div>
+
+
+              <div class="col-md-4" style = "text-align:left">
+              
+
+              <b>Employee(s) to perform official function and claim for 
+              Travelling expenses is hereby authorized.</b>
+             <!--  <br>
+              <br>
+              <input type="checkbox" name="" id="">YES &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  <input type="checkbox" name="" id="">NO -->
+              
+              
+
+              </div>
+
+
+              <div class="col-md-4" style = "text-align:center">
+             
+              </div>
+             
+              <div class="col-md-2" style = "text-align:center">
+             
+
+              </div>
+
+
+              </div>
+              <!--Note -->
+
+              <br> 
+              <br>
+
+
+            <!--Approved -->
+            <div class="row">
+
+            <div class="col-md-2" style = "text-align:center">
+
+            </div>
+
+
+            <div class="col-md-4" style = "text-align:left">
+
+            </div>
+
+
+            <div class="col-md-4" style = "text-align:center">
+           <!--  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+            <b>Approved:</b> -->
+            </div>
+
+            <div class="col-md-2" style = "text-align:center">
+
+
+            </div>
+
+
+            </div>
+            <!--Approved -->
+
+
+
+
+                  <!-- End -->
                     </div>
+                  <!-- End -->
 
-
+                 <!--  <?php echo $f.' '.$row['MIDDLE_M'].' '.$l.'';?> -->
                     
 
                

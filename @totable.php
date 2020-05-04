@@ -50,7 +50,7 @@ $edit="edit";
         
           <div class=""  style="overflow-x:auto;">
          
-            <li class="btn btn-success"><a href="OfficialBusinessCreate.php" style="color:white;text-decoration: none;">Add</a></li>
+            <li class="btn btn-success"><a href="TravelOrderCreate.php" style="color:white;text-decoration: none;">Add</a></li>
         
           
               <br>
@@ -61,8 +61,8 @@ $edit="edit";
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
-                  <th width =''>OB NO</th> 
-                  <th width = ''>OB DATE</th>
+                  <th width =''>TO NO</th> 
+                  <th width = ''>TO DATE</th>
                   <th width = ''>OFFICE</th>
                   <th width = ''>NAME</th>
                   <th width = ''>PURPOSE</th>
@@ -83,13 +83,13 @@ $edit="edit";
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT * from ob where office ='$DIVISION_M' and status='' order by date desc");
+            $view_query = mysqli_query($conn, "SELECT * from travel_order where office ='$DIVISION_M' and status='' order by date desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
 
                   $id=$row['id'];
-                  $obno = $row['obno'];
-                  $date1 = $row['date'];
+                  $obno = $row['tono'];
+                  $date1 = $row['todate'];
                   $date = date('F d, Y', strtotime($date1));
                   $office = $row['office'];
                   $name = $row['name'];
@@ -144,14 +144,14 @@ $edit="edit";
                 <?php endif?>
 
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
-                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='ob_submit.php?id=<?php echo $id;?>'title="Submit">Submit</a></td>
+                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='to_submit.php?id=<?php echo $id;?>'title="Submit">Submit</a></td>
                 <?php else: ?>
                 <td><?php echo $submitteddate?></td>
                 <?php endif ?>
 
 
                         <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
-                        <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='ob_receive.php?id=<?php echo $id;?>'title="Submit">Receive</a></td>
+                        <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='to_receive.php?id=<?php echo $id;?>'title="Submit">Receive</a></td>
                          <?php else: ?>
                         <td>
                             
@@ -174,12 +174,12 @@ $edit="edit";
                         <?php if ($submitteddate1 == 0000-00-00): ?>
                           <!-- OfficialBusinessExport.php?id=<?php echo $id?> -->
                           <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
-                          <a href='OfficialBusinessUpdate.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
-                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='ob_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                          <a href='TravelOrderUpdate.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
+                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php else: ?>
                           <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
-                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='ob_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php endif ?>
                         

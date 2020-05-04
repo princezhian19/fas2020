@@ -55,7 +55,7 @@
                 <td width="1000"><?php echo $EMAIL;?></td>
                 <td width="1000"><?php echo $BIRTH;?></td>
 
-                <?php if ($username == 'magonzales' || $username == 'hpsolis' || $username == 'jbaco' || $username == 'gpvillanueva' || $username == 'rmsaturno'  ): ?>
+                <?php if ($username == 'magonzales' ||$username == 'charlesodi' || $username == 'hpsolis' || $username == 'jbaco' || $username == 'gpvillanueva' || $username == 'rmsaturno'  ): ?>
                 <td width="150">
                  <a href='UpdateEmployee.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit</a>
                </td>
