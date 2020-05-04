@@ -2,8 +2,6 @@
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
 $objPHPExcel = PHPExcel_IOFactory::load("library/export_calendar.xlsx");
-
-
 $styleTop = array(
   'borders' => array(
     'top' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
@@ -42,7 +40,7 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
 $month = $_GET['month'];
 $year = $_GET['year'];
 
-$sql_q10 = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.venue,e.enp,e.remarks,te.UNAME FROM events e LEFT JOIN tblemployee te on te.EMP_N = e.postedby WHERE e.cancelflag = 0");
+$sql_q10 = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.venue,e.enp,e.remarks,te.UNAME FROM events e LEFT JOIN tblemployee te on te.EMP_N = e.postedby WHERE e.cancelflag = 0 and MONTH(start) = '".$_GET['month']."' and YEAR(start) = '".$_GET['year']."'");
     if (mysqli_num_rows($sql_q10)>0) {
     $row = 7;
     while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
@@ -53,6 +51,7 @@ $sql_q10 = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.venue,e.enp,e.rem
         $end1 = $excelrow['end'];
         $end = str_replace("00:00:00","",$end1);
     
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('A2',"Month of ".date("F",strtotime($_GET['year']."-".$_GET['month']."-01")));
         $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['title']);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$start);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$end);
