@@ -178,31 +178,31 @@ else{
 
 /* Employees copy */
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('J50',$obno);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('J51',$date);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('J49',$obno);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('J50',$date);
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('F54',$name);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C55',$purpose);
-
-
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D57',$place);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D59',$obdate);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('F53',$name);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('C54',$purpose);
 
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('K57',$timefrom1);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D56',$place);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D58',$obdate);
+
+
+$objPHPExcel->setActiveSheetIndex()->setCellValue('K56',$timefrom1);
 if($uc==1){
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('K59','UC');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('K58','UC');
 
 }
 else{
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('K59',$timeto1);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('K58',$timeto1);
 
 }
 
 
 
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('I64',$name);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('I63',$name);
 
 if($DIVISION_C==1){
 
@@ -212,25 +212,25 @@ if($DIVISION_C==1){
 
 else if($DIVISION_C==18){
 
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','Gilberto L. Tumamac');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('I72','OIC - LGMED Chief');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('I70','Gilberto L. Tumamac');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','OIC - LGMED Chief');
 }
 
 else if($DIVISION_C==17){
 
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','Jay-ar T. Beltran');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('I72','OIC - LGCDD Chief');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('I70','Jay-ar T. Beltran');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','OIC - LGCDD Chief');
 }
 
 else if($DIVISION_C==10){
 
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','Dr. Carina S. Cruz');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('I72','CAO/FAD-Chief');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('I70','Dr. Carina S. Cruz');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','CAO/FAD-Chief');
 }
 else{
 
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('I70','');
   $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('I72','');
 }
 
 

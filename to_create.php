@@ -141,7 +141,7 @@ else{
 
         <div class="class" >
         <form method="POST" action='' enctype="multipart/form-data" >
-                <table class="table"> 
+               <!--  <table class="table"> 
               
                 <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
 
@@ -188,7 +188,7 @@ else{
                           <td class="col-md-5">
                           <input required type="text" class="form-control" style="height: 35px;" name="todate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
                           </td>
-                            <!-- <td class="col-md-5"><input  type="text" class="form-control" style="height: 35px;" name="obdate" id="datepicker2" value = "<?php echo date('m/d/Y') ?>" ></td> -->
+                           
                     </tr>
 
                     <tr>
@@ -204,14 +204,31 @@ else{
 
                     <tr>
 
-                       <!-- <input  style = "margin-bottom:10px;" type = "checkbox" name = "uc" class = "checkboxgroup_g1" id = "uc" value ="1"> <br> -->
-                       <!-- <td class="col-md-5"><input onclick="myFunction()"  type="checkbox" class="checkboxgroup_g1" value="1" style="height: 35px;" name="uc" id="uc" ><label> Upon Completion<label></td> -->
+                      
                     </tr>    
-                </table>
+                </table> -->
 
-                
-                  <br>
-                  <br>
+                <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+        <br>
+      
                     <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
 
                     <br>
@@ -225,6 +242,10 @@ else{
   </form>
    
   
+
+
+
+ 
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
