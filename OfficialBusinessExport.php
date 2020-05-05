@@ -38,7 +38,9 @@ $id = $_GET['id'];
 <?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("library/ob.xlsx");
+$objPHPExcel = PHPExcel_IOFactory::load("library/ob.xls");
+
+
 
 $styleTop = array(
   'borders' => array(
