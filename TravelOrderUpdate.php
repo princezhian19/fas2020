@@ -65,7 +65,7 @@ $username = $_SESSION['username'];
       </ol>
       <br>
       <br>
-        <?php include('to_update1.php');?>
+        <?php include('to_update.php');?>
       
         </div>
 
@@ -73,16 +73,16 @@ $username = $_SESSION['username'];
   
 
   <br>
+       <!--  <br>
         <br>
         <br>
         <br>
         <br>
         <br>
         <br>
-        <br>
-        <br>
+        <br> -->
  
-</div>
+<!-- </div>
 
 <footer class="main-footer">
   <br>
@@ -91,7 +91,7 @@ $username = $_SESSION['username'];
     </div>
     <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
   </footer>
-  <br>
+  <br> -->
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -65,7 +65,7 @@ $username = $_SESSION['username'];
       </ol>
       <br>
       <br>
-        <?php include('@totable.php');?>
+        <?php include('');?>
         <br>
         <br>
         <br>
