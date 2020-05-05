@@ -268,7 +268,7 @@ else{
   $objDrawing->setName('test_img');
   $objDrawing->setDescription('test_img');
   $objDrawing->setPath('_includes/check.jpg');
-  $objDrawing->setCoordinates('B68');                      
+  $objDrawing->setCoordinates('B67');                      
 //setOffsetX works properly
   $objDrawing->setOffsetX(15); 
   $objDrawing->setOffsetY(0);                
@@ -282,7 +282,7 @@ else{
   $objDrawing->setName('test_img');
   $objDrawing->setDescription('test_img');
   $objDrawing->setPath('_includes/check.jpg');
-  $objDrawing->setCoordinates('D68');                      
+  $objDrawing->setCoordinates('D67');                      
 //setOffsetX works properly
   $objDrawing->setOffsetX(15); 
   $objDrawing->setOffsetY(0);                
