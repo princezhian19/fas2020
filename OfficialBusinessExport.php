@@ -1,4 +1,12 @@
 <?php 
+
+define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
+$objPHPExcel = PHPExcel_IOFactory::load("library/OfficialBusinessExport.xlsx");
+
+?>
+
+<?php 
 session_start();
 /* if(!isset($_SESSION['username'])){
 header('location:index.php');
@@ -28,10 +36,10 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
 <?php
 
-define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
+/* define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
 $objPHPExcel = PHPExcel_IOFactory::load("library/OfficialBusinessExport.xlsx");
-
+ */
 $styleTop = array(
 'borders' => array(
 'top' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
