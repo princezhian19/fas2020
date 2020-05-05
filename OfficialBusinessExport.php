@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+
 session_start();
 if(!isset($_SESSION['username'])){
 header('location:index.php');
@@ -8,13 +10,9 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
 
-$servername ="localhost";
-$username = "fascalab_2020";
-$password = "w]zYV6X9{*BN";
-$database = "fascalab_2020";
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-// Create connection
-$conn = new mysqli($servername, $username, $password,$database);
+echo $conn;
 
 //Get Office
 $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
