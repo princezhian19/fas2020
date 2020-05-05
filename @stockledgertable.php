@@ -135,43 +135,12 @@ include('db.class.php'); // call db.class.php
             ?>       
                 
             </table>
-            <div class="row">
-
-                  <div class="col-md-1">
-
-                  </div>
-                  <div class="col-md-5">
-
-                  </div>
-                    <div class="col-md-5">
-
-                
-
-
-                  </div>
-
-            </div>
-         
-      </div>
-    </div>
-    
-</div>
-</div>
-
-</body>
+           
 <script type="text/javascript">
     $(document).ready(function() {
         $('#example1').DataTable();
     } );
 </script>
-</div>
-</div>
-
-   
-<div class="panel-footer"></div>
-</div>
-</div>
-
 
 <!-- Page script -->
 <script>

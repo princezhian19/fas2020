@@ -79,7 +79,7 @@ if($_GET['division'] == 10 || $_GET['division'] == 11 || $_GET['division'] == 12
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
       </div>
-      <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+      <strong>DILG IV-A Regional Information and Communications Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
       
     </footer>
     <br>

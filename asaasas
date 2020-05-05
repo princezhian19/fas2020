@@ -4,7 +4,7 @@
 <?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("library/OfficialBusinessExport.xlsx");
+$objPHPExcel = PHPExcel_IOFactory::load("library/export_calendar.xlsx");
 $styleTop = array(
   'borders' => array(
     'top' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
@@ -241,6 +241,6 @@ $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
   $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-  header('location: OfficialBusinessExport.xlsx');
+  header('location: export_calendar.xlsx');
 
 ?>
