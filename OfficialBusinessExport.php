@@ -8,8 +8,8 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 
 }
-$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 //Get Office
 $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
 $rowdiv = mysqli_fetch_array($select_user);
@@ -28,7 +28,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("library/ob.xlsx");
+$objPHPExcel = PHPExcel_IOFactory::load("library/OfficialBusinessExport.xlsx");
 
 $styleTop = array(
 'borders' => array(
