@@ -40,9 +40,11 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
 $month = $_GET['month'];
 $year = $_GET['year'];
 
-$sql_q10 = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.venue,e.enp,e.remarks,te.UNAME FROM events e LEFT JOIN tblemployee te on te.EMP_N = e.postedby WHERE e.cancelflag = 0 and MONTH(start) = '".$_GET['month']."' and YEAR(start) = '".$_GET['year']."'");
+$sql_q10 = mysqli_query($conn, "SELECT e.title,e.start,e.end,DIVISION_M, e.venue,e.enp,e.remarks,te.UNAME FROM events e 
+LEFT JOIN tblemployee te on te.EMP_N = e.postedby
+LEFT JOIN tblpersonneldivision on e.office = tblpersonneldivision.DIVISION_N WHERE e.cancelflag = 0 and MONTH(start) = '".$_GET['month']."' and YEAR(start) = '".$_GET['year']."'");
     if (mysqli_num_rows($sql_q10)>0) {
-    $row = 7;
+    $row = 10;
     while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
     {
 
@@ -50,15 +52,21 @@ $sql_q10 = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.venue,e.enp,e.rem
         $start = str_replace("00:00:00","",$start1);
         $end1 = $excelrow['end'];
         $end = str_replace("00:00:00","",$end1);
+
+        
+
+        $objPHPExcel->getActiveSheet()->getRowDimension(70)->setRowHeight(70);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setWrapText(true);
     
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('A2',"Month of ".date("F",strtotime($_GET['year']."-".$_GET['month']."-01")));
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('A6',"Events for the month of ".date("F",strtotime($_GET['year']."-".$_GET['month']."-01")));
         $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['title']);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$start);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$end);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$excelrow['venue']);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$excelrow['enp']);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$excelrow['remarks']);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$excelrow['UNAME']);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$excelrow['DIVISION_M']);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$excelrow['venue']);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$excelrow['enp']);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$excelrow['remarks']);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,$excelrow['UNAME']);
     
         
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
@@ -95,6 +103,12 @@ $sql_q10 = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.venue,e.enp,e.rem
         $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleTop);
         $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleLeft);
         $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleRight);
+
+        
+        $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($stylebottom);
+        $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleTop);
+        $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleLeft);
+        $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleRight);
           $row++;
     }
   }
