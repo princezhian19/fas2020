@@ -2,7 +2,7 @@
   <div class="col-md-3">
     <div class="box">
       <div class="panel-heading bg-blue">
-       <img class="direct-chat-img" src="images/logo.png" alt="message user image">
+       <img class="direct-chat-img" src="images/LOGO.png" alt="message user image">
        PHILIPPINES STANDARD TIME <!-- Item(s) -->
        <img class="direct-chat-img pull-right" src="images/ph.png" alt="message user image">
        <div class="clearfix"></div>
@@ -365,7 +365,7 @@
       <div class="clearfix"></div>
     </div>
     <div class="box-header">
-      <img class="direct-chat-img" src="images/logo.png" alt="message user image">
+      <img class="direct-chat-img" src="images/LOGO.png" alt="message user image">
       <b><a href="">&nbsp&nbsp&nbspDILG Official Website</a></b> <br>
       <font class="pull-left">&nbsp&nbsp&nbspVisit the official website of Department of Interior...</font>
       <br>
