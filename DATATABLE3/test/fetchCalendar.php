@@ -28,12 +28,12 @@ $sql ="SELECT * FROM events left join tblemployee te ON events.postedby = te.emp
 left join tblpersonneldivision tp on tp.DIVISION_N = events.office WHERE 1=1";
 if(!empty($request['search']['value'])){
     $sql.=" AND (id Like '".$request['search']['value']."%' ";
+    $sql.=" OR postedby Like '".$request['search']['value']."%' )";
     $sql.=" OR DIVISION_M Like '".$request['search']['value']."%' ";
     $sql.=" OR title Like '".$request['search']['value']."%' ";
     $sql.=" OR start Like '".$request['search']['value']."%' ";
     $sql.=" OR end Like '".$request['search']['value']."%' ";
     $sql.=" OR venue Like '".$request['search']['value']."%' ";
-    $sql.=" OR postedby Like '".$request['search']['value']."%' )";
 }
 $query=mysqli_query($con,$sql);
 $totalData=mysqli_num_rows($query);
@@ -58,6 +58,7 @@ while($row=mysqli_fetch_array($query)){
     $office_n = $row['DIVISION_C'];
     if($_SESSION['planningofficer'] == 1)
     {
+        
         if($_GET['division'] == $row['DIVISION_C'])
         {
             $subdata[]='

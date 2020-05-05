@@ -6,10 +6,11 @@
                 <div class="col-md-4">
                 <h1>Calendar of Activities</h1>
                 <div class = "col-lg-12">
+                
                     <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-12">
-                    <input type = "text" class = "form-control filter"  id="type_filter" placeholder=  "Search Activities"/>
+                    <!-- <input type = "text" class = "form-control filter"  id="type_filter" placeholder=  "Search Activities"/> -->
                     
-                    </div><br><br><br>
+                    </div><br><br><br><br><br>
                     <div class="col-md-12">
                         <div class="box box-widget widget-user-12" style = "background-color:#ECEFF1;" >
                             <div style = "background-color:#AED581;color:#fff;">
@@ -49,10 +50,10 @@
                                             </tr>
                                         
                                             <tr>
-                                                <td style="background-color: #D5D911; color:white;">
+                                                <td style="background-color: #D5D911; color:white;WIDTH:50%;">
                                                     <input class='calFilter' type="checkbox" value="1" id = "ord" ><label style = "margin-left:15%;">ORD</label>
                                                 </td>
-                                                <td style="background-color: #D5D911; color:#fff;padding:9px;">
+                                                <td style="background-color: #D5D911; color:#fff;padding:9px;WIDTH:50%;">
                                                     <input class='calFilter' type="checkbox" value="19" id = "batangas"><label style = "margin-left:15%;">Batangas</label>
                                                 </td>
                                             </tr>
@@ -101,7 +102,7 @@
                                     
                             
                                     </table>
-                                <button class="btn btn-success pull-right"><a style = "color:#fff;"  href="export_calendar.php?date=<?php echo date("Y-m-d");?>&division=<?php echo $_GET['division'];?>" >Export</a></button>
+                                <button class="btn btn-success pull-right"><a style = "color:#fff;"  id = "export"  >Export</a></button>
 
                                 </div>
                               
@@ -122,12 +123,23 @@
 
 
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-12" >
-                        <div class = "col-lg-6">
-                            <button class="pull-right btn btn-success" id = "modal" ><i class = "fa fa-plus"></i><a style = "color:#fff;" > Add Activity</a></button>
-                        </div>
-                        <div class = "col-lg-6">
-                            <button class=" pull-right btn btn-success" style = "margin-left:10px;"><i class = "fa fa-edit"></i><a href ="ManageCalendar.php" style ="color:#fff;decoration:none;">Manage All</a></button>
-                        </div>
+                     <div class = "col-lg-4">
+                     </div>
+                     <div class = "col-lg-4">
+                     <center>
+                        <button class="pull-right btn btn-success" id = "modal" ><i class = "fa fa-plus"></i><a style = "color:#fff;" > Add Activity</a></button>
+                        <br>
+                        <br>
+
+                        
+                        <button class=" pull-right btn btn-success" style = "margin-left:10px;"><i class = "fa fa-edit"></i><a href ="ManageCalendar.php" style ="color:#fff;decoration:none;">Manage All</a></button>
+                    </center>
+                     </div>
+                     <div class = "col-lg-4">
+                     </div>
+                           
+                    
+                        
                     </div>
 
 
@@ -143,6 +155,7 @@
                    
                     <br>
                     <br>    
+                    
                     <div class = "response"></div>   
 
                     <div id='calendar'></div>

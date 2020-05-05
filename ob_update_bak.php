@@ -241,7 +241,7 @@ else{
                     <tr>
 
                           <td class="col-md-5">
-                          <input value="<?php echo $obdate;?>" required type="text" class="form-control" style="height: 35px;" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+                          <input value="<?php echo $obdate;?>" required type="text" class="form-control" style="height: 35px;" name="obdate" id="datepicker2"  placeholder="mm/dd/yyyy">
                           </td>
                             <!-- <td class="col-md-5"><input  type="text" class="form-control" style="height: 35px;" name="obdate" id="datepicker2" value = "<?php echo date('m/d/Y') ?>" ></td> -->
                     </tr>

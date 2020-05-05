@@ -44,7 +44,7 @@ $edit="edit";
 <div class="box">
   <div class="box-body">
           
-          <h1 align="">Official Business</h1>
+          <h1 align="">Travel Order</h1>
           
           <br>
         
@@ -61,7 +61,7 @@ $edit="edit";
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
-                  <th width =''>TO NO</th> 
+                  <th width ='90'>TO NO</th> 
                   <th width = ''>TO DATE</th>
                   <th width = ''>OFFICE</th>
                   <th width = ''>NAME</th>
@@ -71,7 +71,7 @@ $edit="edit";
                   <th width = ''>TIME</th>
                   <th width = ''>SUBMITTED DATE</th>
                   <th width = ''>RECEIVED DATE</th>
-                  <th width = '200'>ACTION</th>
+                  <th width = '250'>ACTION</th>
                   
                 </tr>
                 </thead>
@@ -89,14 +89,14 @@ $edit="edit";
 
                   $id=$row['id'];
                   $obno = $row['tono'];
-                  $date1 = $row['todate'];
+                  $date1 = $row['date'];
                   $date = date('F d, Y', strtotime($date1));
                   $office = $row['office'];
                   $name = $row['name'];
                   $purpose = $row['purpose'];
                   $place = $row['place'];
-                  $obdate1 = $row['obdate'];
-                  $obdate = date('F d, Y', strtotime($obdate1));
+                  $todate1 = $row['todate'];
+                  $todate = date('F d, Y', strtotime($todate1));
                   
                   $timefrom1 = $row['timefrom'];
                   $timefrom=  date("h:i:s a",$timefrom1);
@@ -129,12 +129,29 @@ $edit="edit";
 
              
                 <td><?php echo  $obno;?></td>
-                <td><?php echo  $date?></td>
+
+                 
+                <?php if ($date1 == '0000-00-00'): ?>
+                <td></td>
+                <?php else: ?>
+                  <td><?php echo  $date?></td>
+                <?php endif ?>
+
+               
+
+
                 <td><?php echo  $office?></td>
                 <td><?php echo  $name?></td>
                 <td><?php echo  $purpose?></td>
                 <td><?php echo  $place?></td>
-                <td><?php echo  $obdate?></td>
+
+                
+                <?php if ($todate1 == '0000-00-00'): ?>
+                <td></td>
+                <?php else: ?>
+               <td><?php echo  $todate?></td>
+                <?php endif ?>
+                
                
 
                 <?php if($uc==1):?>
@@ -173,12 +190,12 @@ $edit="edit";
 
                         <?php if ($submitteddate1 == 0000-00-00): ?>
                           <!-- OfficialBusinessExport.php?id=<?php echo $id?> -->
-                          <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
+                          <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                           <a href='TravelOrderUpdate.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                           <a onclick="return confirm('Are you sure you want to cancel this record?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php else: ?>
-                          <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
+                          <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                           <a onclick="return confirm('Are you sure you want to cancel this record?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php endif ?>

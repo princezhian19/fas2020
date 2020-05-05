@@ -52,7 +52,6 @@ $edit="edit";
          
             <li class="btn btn-success"><a href="OfficialBusinessCreate.php" style="color:white;text-decoration: none;">Add</a></li>
         
-          
               <br>
               <br>
               
@@ -71,7 +70,7 @@ $edit="edit";
                   <th width = ''>TIME</th>
                   <th width = ''>SUBMITTED DATE</th>
                   <th width = ''>RECEIVED DATE</th>
-                  <th width = '200'>ACTION</th>
+                  <th width = '250'>ACTION</th>
                   
                 </tr>
                 </thead>
@@ -119,9 +118,7 @@ $edit="edit";
                   $receiveddate = date('F d, Y', strtotime($receiveddate1));
                 
                   
-                  //echo $office;
-                /*   echo $timefrom.' to '.$timeto;
-                  echo '<br>'; */
+                
 
                ?>
 
@@ -129,12 +126,26 @@ $edit="edit";
 
              
                 <td><?php echo  $obno;?></td>
-                <td><?php echo  $date?></td>
+             
+
+                <?php if ($date1 == '0000-00-00'): ?>
+                <td></td>
+                <?php else: ?>
+                  <td><?php echo  $date?></td>
+                <?php endif ?>
+
+                
                 <td><?php echo  $office?></td>
                 <td><?php echo  $name?></td>
                 <td><?php echo  $purpose?></td>
                 <td><?php echo  $place?></td>
+
+                <?php if ($obdate1 == '0000-00-00'): ?>
+                <td></td>
+                <?php else: ?>
                 <td><?php echo  $obdate?></td>
+                <?php endif ?>
+               
                
 
                 <?php if($uc==1):?>
@@ -173,12 +184,12 @@ $edit="edit";
 
                         <?php if ($submitteddate1 == 0000-00-00): ?>
                           <!-- OfficialBusinessExport.php?id=<?php echo $id?> -->
-                          <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
+                          <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                           <a href='OfficialBusinessUpdate.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                           <a onclick="return confirm('Are you sure you want to cancel this record?');" href='ob_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php else: ?>
-                          <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
+                          <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                           <a onclick="return confirm('Are you sure you want to cancel this record?');" href='ob_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php endif ?>
