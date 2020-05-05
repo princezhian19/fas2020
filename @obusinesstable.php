@@ -183,13 +183,13 @@ $edit="edit";
                           <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/issuancesdelete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a> -->
 
                         <?php if ($submitteddate1 == 0000-00-00): ?>
-                          <!-- OfficialBusinessExport.php?id=<?php echo $id?> -->
-                          <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                          <!--  -->
+                          <a  href='OfficialBusinessExport.php?id=<?php echo $id?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                           <a href='OfficialBusinessUpdate.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                           <a onclick="return confirm('Are you sure you want to cancel this record?');" href='ob_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php else: ?>
-                          <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                          <a  href='OfficialBusinessExport.php?id=<?php echo $id?>  ' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                           <a onclick="return confirm('Are you sure you want to cancel this record?');" href='ob_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php endif ?>
