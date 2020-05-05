@@ -389,21 +389,12 @@ require_once('_includes/class.upload.php');
     
     </div>
 
-  
-    <br>
-    <br>
-
     
     </div>
     
   </form>
-   
-  </div>
 
-    </section>
-  </div>
- 
-</div>
+  
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 

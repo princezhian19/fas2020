@@ -71,6 +71,7 @@ $rowssH     = 67;
 $rowssI     = 68;
 $rowssJ     = 69;
 $rowssK     = 70;
+$countn     = 1;
 while($rowE = mysqli_fetch_assoc($sql_items) ){
 
   $items = $rowE["procurement"];  
@@ -81,6 +82,8 @@ while($rowE = mysqli_fetch_assoc($sql_items) ){
   $total_cost = $qty * $abc1;
   $total_cost11 = number_format($total_cost,2);
 
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$countn);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$unit);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$rowE['procurement'] ."\n".$rowE['description']);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$rowE['qty']);
@@ -149,6 +152,7 @@ while($rowE = mysqli_fetch_assoc($sql_items) ){
 
 
 
+  $countn++;
   $row++;
   $rowssDD++;
   $rowssE++;
@@ -171,7 +175,8 @@ $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getFont()->setItalic(true);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 
 
-$select_notes = mysqli_query($conn,"SELECT * FROM rfq_notes rn LEFT JOIN notes n on n.id = rn.note_id WHERE rn.rfq_id = $id ");
+$select_notes = mysqli_query($conn,"SELECT n.note FROM rfq_notes rn LEFT JOIN notes n on n.id = rn.note_id WHERE rn.rfq_id = $id ");
+// echo "SELECT * FROM rfq_notes rn LEFT JOIN notes n on n.id = rn.note_id WHERE rn.rfq_id = $id AND n.id != 1 AND n.id != 6 AND n.id !=7";exit;
 
 while ($rowN = mysqli_fetch_assoc($select_notes)){
   $notes_group = $rowN['note'];
