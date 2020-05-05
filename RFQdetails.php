@@ -60,7 +60,7 @@ $username = $_SESSION['username'];
       <ol class="breadcrumb">
         <li><a href="index.php" style="font-family: cambria; "><i class=""></i> Home</a></li>
         <li class="active">Procurement</li>
-        <li class="active">Purchase Request</li>
+        <li class="active">View RFQ</li>
       </ol>
       <br>
       <br>

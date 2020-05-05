@@ -61,6 +61,9 @@ if (isset($_POST['submit'])) {
                 
                    <!-- <a href="ViewRFQdetails.php?id=<?php echo $pr_id; ?>" class="btn btn-primary">Update</a> |  -->
                    <a href="ViewRFQ.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
+                   <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success pull-right"><i class="fa fa-fw fa-download"></i>Export</a> 
+                   <br>
+                   <br>
                    <h4>Item(s)</h4>
                    <table id="" class="table table-striped table-bordered" style="background-color: white;">
                     <thead>
@@ -125,7 +128,6 @@ if (isset($_POST['submit'])) {
                     ?>
 
                 </table>
-                   <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-fw fa-download"></i>Export</a> 
             </div>
         </div>
     </div>
