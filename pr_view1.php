@@ -26,13 +26,18 @@ $submitted_date = $row['submitted_date'];
             <div class="box-body table-responsive no-padding">
                 <div class="box-body">
                     
-                    <?php if($submitted_date!=NULL):?>
-                    <?php else:?>
-                    <a href="ViewRFQdetails1.php?id=<?php echo $id; ?>" class="btn btn-primary">Update</a>
-                    <?php endif?>
+                    
                    
-                   <a href="export_pr1.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a>
-                   <a href="ViewPR1.php" class="btn btn-warning">Back</a>
+                   <a href="ViewPR1.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
+                   <div style="float: right;padding:5px;">
+                   <a href="export_pr1.php?id=<?php echo $id; ?>" class="btn btn-success pull-right"><i class="fa fa-fw fa-download"></i>Export</a>
+                   </div>
+                   <?php if($submitted_date!=NULL):?>
+                    <?php else:?>
+                   <div style="float: right;padding:5px;">
+                    <a href="ViewRFQdetails1.php?id=<?php echo $id; ?>" class="btn btn-primary"><i class='fa'>&#xf044;</i>Update</a>
+                   </div>
+                    <?php endif?>
                    <br>
                    <br>
 

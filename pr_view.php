@@ -28,20 +28,27 @@ $submitted_date = $row['submitted_date'];
             <div class="box-body table-responsive no-padding">
                 <div class="box-body">
 
+                   
+
+                   <a href="ViewRFQ.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
+                   <div style="float: right;padding:5px;">
+                   <a href="export_pr.php?id=<?php echo $id; ?>" class="btn btn-success" ><i class="fa fa-fw fa-download"></i>Export</a>
+                   </div>
                     <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?>
 
+                   <div style="float: right;padding:5px;">
                     <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary"><i class='fa'>&#xf044;</i>Edit</a>
+                   </div>
                         
                     <?php endif ?>
 
                     <?php if($submitted_date!=NULL):?>
                     <?php else:?>
+                    <div style="float: right;padding:5px;">
                     <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary"><i class='fa'>&#xf044;</i>Edit</a>
+                   </div>
                     
                     <?php endif?>
-
-                   <a href="ViewRFQ.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
-                   <a href="export_pr.php?id=<?php echo $id; ?>" class="btn btn-success pull-right"><i class="fa fa-fw fa-download"></i>Export</a>
 
                     <!-- <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?> -->
                    <!-- <?php else: ?> -->
@@ -159,13 +166,13 @@ $submitted_date = $row['submitted_date'];
         </div>
         <div class="box-body table-responsive no-padding">
             <div class="box-body">
-                <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
+                <table id="example1" class="table table-striped " style="background-color: white;">
                     <tr>
-                        <th class="pull-left">Office:</th>
-                        <td><?php echo $pmo;?></td>
+                        <th class="pull-left" >Office:</th>
+                        <td width="250"><?php echo $pmo;?></td>
                     </tr>
                     <tr>
-                        <th class="pull-left">PR No:</th>
+                        <th class="pull-left" >PR No:</th>
                         <td><?php echo $pr_no;?></td>
                     </tr>
                     <tr>
@@ -174,7 +181,7 @@ $submitted_date = $row['submitted_date'];
                     </tr>
 
                     <tr>
-                        <th class="pull-left" width="100">Target Date:</th>
+                        <th class="pull-left" >Target Date:</th>
                         <td><?php echo date('F d, Y',strtotime($target_date));?></td>
                     </tr>
                     <tr>
