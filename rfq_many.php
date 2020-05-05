@@ -53,6 +53,7 @@ if (isset($_POST['submit'])) {
   $mode = $_POST['mode'];
   $action_officer = $_POST['action_officer'];
   $note_id = $_POST['note_id'];
+  // $note_id2 = $_POST['note_id2'];
 
   $selectRfqID = mysqli_query($conn,"SELECT * FROM rfq WHERE rfq_no = '$rfq_no'");
   // $rowID = mysqli_fetch_array($selectRfqID);
@@ -135,6 +136,11 @@ if (isset($_POST['submit'])) {
 
       $insert_notes = mysqli_query($conn,"INSERT INTO rfq_notes(rfq_id,note_id) VALUES ('$rfq_idd','$note_idd')");
     }
+
+    // foreach ($note_id2 as $note_idd2) { 
+
+    //   $insert_notes = mysqli_query($conn,"INSERT INTO rfq_notes(rfq_id,note_id) VALUES ('$rfq_idd','$note_idd2')");
+    // }
     // for($count = 0; $count < count($_POST["pr_no"]); $count++){
 
       $select_pmo = mysqli_query($conn,'SELECT pmo FROM pr WHERE pr_no = "'.$pr_no.'"');
@@ -203,11 +209,11 @@ function checkAvailability() {
 <body>
   <div class="box box-default">
     <div class="box-header with-border">
-      <h1 align="">&nbspCreate RFQ</h1>
+      <h1 align="">&nbsp <b>Create RFQ</b></h1>
       <div class="box-header with-border">
       </div>
         <br>
-      &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="ViewRFQ.php" style="color:white;text-decoration: none;">Back</a></li>
+      &nbsp &nbsp &nbsp   <li class="btn btn-warning"><a href="ViewRFQ.php" style="color:white;text-decoration: none;"><i class="fa fa-fw fa-arrow-left"></i>Back</a></li>
         <br>
         <br>
       <form method="POST">
@@ -380,7 +386,7 @@ function checkAvailability() {
 
         </div>
       </div>
-      <div style="font-size: 13px;" class="well" >
+      <div style="font-size: 13px;" class="well" hidden>
         <label>Note(s)</label>
         <br>
         <?php
@@ -393,6 +399,23 @@ function checkAvailability() {
           $note_desc = $row["note"];
           ?>
           <input type="checkbox" checked name="note_id[]" value="<?php echo $note_id; ?>">&nbsp<b>**<?php echo $note_desc;?></b></input>
+          <br>
+
+        <?php } ?>
+      </div>
+       <div style="font-size: 13px;" class="well" >
+        <label>Note(s)</label>
+        <br>
+        <?php
+
+        $selectNotes = mysqli_query($conn,"SELECT  * FROM notes WHERE id != 1 AND id != 6 AND id !=7");
+
+        while ($row = mysqli_fetch_assoc($selectNotes)) {
+
+          $note_id = $row["id"];
+          $note_desc = $row["note"];
+          ?>
+          <input type="checkbox" checked name="note_id2[]" value="<?php echo $note_id; ?>">&nbsp<b>**<?php echo $note_desc;?></b></input>
           <br>
 
         <?php } ?>

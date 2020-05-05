@@ -267,8 +267,8 @@ else{
                  <input hidden readonly required  type="text"  class="" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>">
 
                 <div class="col-md-8" style = "text-align:center" style="overflow-x:auto;">
-                Permission is requested by Mr./Ms.<input required style="height: 25px;width: 150px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "">
-                to leave the office for the following purpose (s).<input style="height: 25px;width: 150px;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
+                Permission is requested by Mr./Ms.  &nbsp;&nbsp;<input required style="height: 25px;width: 130px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "">
+                to leave the office for the following purpose (s). &nbsp;&nbsp;<input style="height: 25px;width: 150px;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
                 </div>
 
                 <div class="col-md-2" style = "text-align:center">

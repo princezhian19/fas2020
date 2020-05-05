@@ -144,13 +144,24 @@ while ($row = mysqli_fetch_assoc($BDAY)) {
             <strong style="font-size: 25px;" class="pull-right">COS</strong>
             </div>
             <br>
+            <?php 
+            $select_gender = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeeinfo WHERE SEX_C = 'Female' AND STATUS = 0 ");
+            $rowG = mysqli_fetch_array($select_gender);
+            $female = $rowG['female'];
+
+            $select_genderB = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeeinfo WHERE SEX_C = 'Male' AND STATUS = 0 ");
+            $rowGB = mysqli_fetch_array($select_genderB);
+            $male = $rowGB['male'];
+
+            $reg = $female + $male;
+            ?>
             <div style="font-size: 25px;">
-            <i class="fa fa-fw fa-female">154</i>
-            <i class="fa fa-fw fa-female" style="float: right;padding-right: 70px;">154</i><br>
-            <i class="fa fa-fw fa-male">154</i>
-            <i class="fa fa-fw fa-male" style="float: right;padding-right: 70px;">154</i><br><br>
-            <i class="fa fa-fw fa-group">154</i>
-            <i class="fa fa-fw fa-group" style="float: right;padding-right: 70px;">154</i><br>
+            <i class="fa fa-fw fa-female"><?php echo $female?></i>
+            <i class="fa fa-fw fa-female" style="float: right;padding-right: 70px;">0</i><br>
+            <i class="fa fa-fw fa-male"><?php echo $male?></i>
+            <i class="fa fa-fw fa-male" style="float: right;padding-right: 70px;">0</i><br><br>
+            <i class="fa fa-fw fa-group"><?php echo $reg;?></i>
+            <i class="fa fa-fw fa-group" style="float: right;padding-right: 70px;">0</i><br>
             <!-- /.chart-responsive -->
             </div>
         </div>
@@ -303,13 +314,17 @@ while ($row = mysqli_fetch_assoc($BDAY)) {
                      <div class="clearfix"></div>
                  </div>
                  <div style="padding-left: 10px;padding-right: 10px;">
-                    <b>RO-2020-198</b>
-                    <p>Appendium to RO 2020 192 Covid 19</p>
-                    <hr><b>RO-2020-198</b>
-                    <p>Appendium to RO 2020 192 Covid 19</p>
-                    <hr><b>RO-2020-198</b>
-                    <p>Appendium to RO 2020 192 Covid 19</p>
-
+                  <?php 
+                  $get_issuances = mysqli_query($conn,"SELECT id,issuance_no,subject FROM issuances ORDER BY id DESC LIMIT 3");
+                  while ($rowI = mysqli_fetch_array($get_issuances)) {
+                    $idI = $rowI['id'];
+                    $issuance_no = $rowI['issuance_no'];
+                    $subject = $rowI['subject'];
+                  ?>
+                    <b><a href="ViewIssuances.php?id=<?php echo $idI;?>"><?php echo $issuance_no;?></a></b>
+                    <p><?php echo $subject;?></p>
+                    <hr>
+                  <?php } ?>
                 </div>
             </div>
         </div>   

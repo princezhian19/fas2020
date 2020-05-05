@@ -30,23 +30,23 @@ $submitted_date = $row['submitted_date'];
 
                     <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?>
 
-                    <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary">Edit</a>
+                    <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary"><i class='fa'>&#xf044;</i>Edit</a>
                         
                     <?php endif ?>
 
                     <?php if($submitted_date!=NULL):?>
                     <?php else:?>
-                    <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary">Edit</a>
+                    <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary"><i class='fa'>&#xf044;</i>Edit</a>
                     
                     <?php endif?>
 
-                   <a href="export_pr.php?id=<?php echo $id; ?>" class="btn btn-success">Export</a>
+                   <a href="ViewRFQ.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
+                   <a href="export_pr.php?id=<?php echo $id; ?>" class="btn btn-success pull-right"><i class="fa fa-fw fa-download"></i>Export</a>
 
-                    <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?>
-                   <a href="ViewRFQ.php" class="btn btn-warning">Back</a>
-                   <?php else: ?>
-                   <a href="ViewPR.php" class="btn btn-warning">Back</a>
-                    <?php endif ?>
+                    <!-- <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?> -->
+                   <!-- <?php else: ?> -->
+                   <!-- <a href="ViewPR.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a> -->
+                    <!-- <?php endif ?> -->
                     <br>
                     <br>
                    <h4>Item(s)</h4>
@@ -170,12 +170,12 @@ $submitted_date = $row['submitted_date'];
                     </tr>
                     <tr>
                         <th class="pull-left">PR Date:</th>
-                        <td><?php echo $pr_date;?></td>
+                        <td><?php echo date('F d, Y',strtotime($pr_date));?></td>
                     </tr>
 
                     <tr>
                         <th class="pull-left" width="100">Target Date:</th>
-                        <td><?php echo $target_date;?></td>
+                        <td><?php echo date('F d, Y',strtotime($target_date));?></td>
                     </tr>
                     <tr>
                         <th class="pull-left">Type:</th>
