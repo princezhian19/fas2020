@@ -26,35 +26,7 @@ define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
 $objPHPExcel = PHPExcel_IOFactory::load("library/OfficialBusinessExport.xlsx");
 
-$styleTop = array(
-'borders' => array(
-'top' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
-),
-);
 
-$styleLeft = array(
-'borders' => array(
-'left' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
-),
-);
-
-$styleRight = array(
-'borders' => array(
-'right' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
-),
-);
-
-$stylebottom = array(
-'borders' => array(
-'bottom' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
-),
-);
-
-$styleHeader = array('font'=> array('bold'=> true, 'size'=> 11, 'name'=> 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
-
-$styleLabel = array('font'=> array('size'=> 11, 'name'=> 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
-
-//conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
 $sql = mysqli_query($conn, "SELECT * FROM ob WHERE id = '$id' ");
 
@@ -71,18 +43,14 @@ $place = $row['place'];
 $obdate1 = $row['obdate'];
 $obdate = date('F d, Y', strtotime($obdate1));
 $timefrom1 = $row['timefrom'];
-$timefrom=date("H:i",$timefrom1);
+//$timefrom=date("H:i",$timefrom1);
 $timeto1 = $row['timeto'];
-$timeto=date("H:i",$timeto1);
+//$timeto=date("H:i",$timeto1);
 $uc = $row['uc'];
 
 $submitteddate = date('F d, Y', strtotime($submitteddate1));
 $receiveddate1 = $row['receiveddate'];
 $receiveddate = date('F d, Y', strtotime($receiveddate1));
-
-
- 
-
 
 /* Personnel copy */
 $objPHPExcel->setActiveSheetIndex()->setCellValue('J12',$obno);
@@ -196,7 +164,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','');
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('test_img');
 $objDrawing->setDescription('test_img');
-$objDrawing->setPath('images/male-user.png');
+$objDrawing->setPath('_includes/check.jpg');
 $objDrawing->setCoordinates('B30');
 //setOffsetX works properly
 $objDrawing->setOffsetX(15); 
@@ -211,7 +179,7 @@ $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('test_img');
 $objDrawing->setDescription('test_img');
-$objDrawing->setPath('images/male-user.png');
+$objDrawing->setPath('_includes/check.jpg');
 $objDrawing->setCoordinates('D30');
 //setOffsetX works properly
 $objDrawing->setOffsetX(15); 
@@ -223,7 +191,7 @@ $objDrawing->setHeight(30.5);$objDrawing->setWorksheet($objPHPExcel->getActiveSh
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('test_img');
 $objDrawing->setDescription('test_img');
-$objDrawing->setPath('images/male-user.png');
+$objDrawing->setPath('_includes/check.jpg');
 $objDrawing->setCoordinates('B67');
 //setOffsetX works properly
 $objDrawing->setOffsetX(15); 
@@ -235,7 +203,7 @@ $objDrawing->setHeight(30.5);$objDrawing->setWorksheet($objPHPExcel->getActiveSh
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('test_img');
 $objDrawing->setDescription('test_img');
-$objDrawing->setPath('images/male-user.png');
+$objDrawing->setPath('_includes/check.jpg');
 $objDrawing->setCoordinates('D67');
 //setOffsetX works properly
 $objDrawing->setOffsetX(15); 
