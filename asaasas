@@ -1,60 +1,45 @@
 
 
-<?php
-$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-session_start();
-$username = $_SESSION['username'];
-
-
-//Get Office
-$select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
-$rowdiv = mysqli_fetch_array($select_user);
-$DIVISION_C = $rowdiv['DIVISION_C'];
-//echo $DIVISION_C;
-
-$select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
-$rowdiv1 = mysqli_fetch_array($select_office);
-$DIVISION_M = $rowdiv1['DIVISION_M'];
-
-
-
-?>
 
 <?php
-
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("library/OfficialBusinessExport.xlsx");
-
+$objPHPExcel = PHPExcel_IOFactory::load("library/export_calendar.xlsx");
 $styleTop = array(
-'borders' => array(
-'top' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
-),
+  'borders' => array(
+    'top' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
+  ),
 );
 
 $styleLeft = array(
-'borders' => array(
-'left' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
-),
+  'borders' => array(
+    'left' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
+  ),
 );
 
 $styleRight = array(
-'borders' => array(
-'right' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
-),
+  'borders' => array(
+    'right' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
+  ),
 );
 
 $stylebottom = array(
-'borders' => array(
-'bottom' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
-),
+  'borders' => array(
+    'bottom' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
+  ),
+);
+$styleArray = array(
+  'borders' => array(
+    'allborders' => array(
+      'style' => PHPExcel_Style_Border::BORDER_THIN
+    )
+  )
 );
 
-$styleHeader = array('font'=> array('bold'=> true, 'size'=> 11, 'name'=> 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 
-$styleLabel = array('font'=> array('size'=> 11, 'name'=> 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
-//conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
 $sql = mysqli_query($conn, "SELECT * FROM ob WHERE id = '$id' ");
 
@@ -75,14 +60,13 @@ $timefrom=date("H:i",$timefrom1);
 $timeto1 = $row['timeto'];
 $timeto=date("H:i",$timeto1);
 $uc = $row['uc'];
-
 $submitteddate = date('F d, Y', strtotime($submitteddate1));
 $receiveddate1 = $row['receiveddate'];
 $receiveddate = date('F d, Y', strtotime($receiveddate1));
 
 
  
-
+}
 
 /* Personnel copy */
 $objPHPExcel->setActiveSheetIndex()->setCellValue('J12',$obno);
@@ -190,8 +174,6 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','');
 }
 
 
-}
-
 
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('test_img');
@@ -254,11 +236,11 @@ $objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
 $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
 
 
- 
 
 
-$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-header('location: OfficialBusinessExport.xlsx');
+
+  $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+  $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
+  header('location: export_calendar.xlsx');
 
 ?>

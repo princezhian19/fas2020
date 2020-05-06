@@ -56,6 +56,7 @@ class PHPExcel_IOFactory
      * @static
      */
     private static $autoResolveClasses = array(
+        'Excel2016',
         'Excel2007',
         'Excel5',
         'Excel2003XML',
@@ -233,6 +234,7 @@ class PHPExcel_IOFactory
                 case 'xltm':            //    Excel (OfficeOpenXML) Macro Template (macros will be discarded)
                     $extensionType = 'Excel2007';
                     break;
+                case 'xlsx':
                 case 'xls':                //    Excel (BIFF) Spreadsheet
                 case 'xlt':                //    Excel (BIFF) Template
                     $extensionType = 'Excel5';
