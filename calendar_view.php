@@ -132,7 +132,7 @@
                         <br>
 
                         
-                        <button class=" pull-right btn btn-success" style = "margin-left:10px;"><i class = "fa fa-edit"></i><a href ="ManageCalendar.php" style ="color:#fff;decoration:none;">Manage All</a></button>
+                        <button class=" pull-right btn btn-success" style = "margin-left:10px;"><i class = "fa fa-edit"></i><a href ="ManageCalendar.php?division=<?php echo $_GET['division'];?>" style ="color:#fff;decoration:none;">Manage All</a></button>
                     </center>
                      </div>
                      <div class = "col-lg-4">
