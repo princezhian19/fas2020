@@ -54,10 +54,17 @@ LEFT JOIN tblpersonneldivision on e.office = tblpersonneldivision.DIVISION_N WHE
         $end = str_replace("00:00:00","",$end1);
 
         
+        if(strlen($excelrow['title']) > 20)
+        {
+        $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(83);
 
-        $objPHPExcel->getActiveSheet()->getRowDimension(70)->setRowHeight(70);
+        }else{
+        $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(40);
+
+        }
+
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setWrapText(true);
-    
+
         $objPHPExcel->setActiveSheetIndex()->setCellValue('A6',"Events for the month of ".date("F",strtotime($_GET['year']."-".$_GET['month']."-01")));
         $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['title']);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$start);

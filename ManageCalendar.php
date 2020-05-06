@@ -96,7 +96,7 @@ $username = $_SESSION['username'];
                                 <th style = "text-align:center;">VENUE</th>
                                 <th style = "text-align:center;">TARGET PAX</th>
                                 <th style = "text-align:center;width:10%;">POSTED BY</th>
-                                <th style = "text-align:center;width:16%;">ACTION</th>
+                                <th style = "text-align:center;width:19%;">ACTION</th>
                                 </thead>
                                 </table>
                             </div>
@@ -151,8 +151,9 @@ $username = $_SESSION['username'];
             "processing": true,
             "serverSide":true,
             "ajax":{
-                url:"DATATABLE3/test/fetchCalendar.php?division=<?php echo $_SESSION['division'];?>",
+                url:"DATATABLE3/test/fetchCalendar.php?PO=<?php echo $_SESSION['planningofficer'];?>&currentuser=<?PHP echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>",
                 type:"post"
+                
             }
             });
      });
