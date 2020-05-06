@@ -15,7 +15,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 <?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("library/OfficialBusinessExport.xlsx");
+$objPHPExcel = PHPExcel_IOFactory::load("library/ob_export.xlsx");
 $id = $_GET['id'];
 $sql = mysqli_query($conn, "SELECT obno,date,name,purpose,place,obdate,timefrom,timeto,uc  FROM ob WHERE id = '$id' ");
 while ($excelrow = mysqli_fetch_assoc($sql))
