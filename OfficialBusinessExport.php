@@ -196,7 +196,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','');
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('test_img');
 $objDrawing->setDescription('test_img');
-$objDrawing->setPath('_includes/check.jpg');
+$objDrawing->setPath('images/male-user.png');
 $objDrawing->setCoordinates('B30');
 //setOffsetX works properly
 $objDrawing->setOffsetX(15); 
@@ -211,7 +211,7 @@ $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('test_img');
 $objDrawing->setDescription('test_img');
-$objDrawing->setPath('_includes/check.jpg');
+$objDrawing->setPath('images/male-user.png');
 $objDrawing->setCoordinates('D30');
 //setOffsetX works properly
 $objDrawing->setOffsetX(15); 
@@ -223,7 +223,7 @@ $objDrawing->setHeight(30.5);$objDrawing->setWorksheet($objPHPExcel->getActiveSh
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('test_img');
 $objDrawing->setDescription('test_img');
-$objDrawing->setPath('_includes/check.jpg');
+$objDrawing->setPath('images/male-user.png');
 $objDrawing->setCoordinates('B67');
 //setOffsetX works properly
 $objDrawing->setOffsetX(15); 
@@ -235,7 +235,7 @@ $objDrawing->setHeight(30.5);$objDrawing->setWorksheet($objPHPExcel->getActiveSh
 $objDrawing = new PHPExcel_Worksheet_Drawing();
 $objDrawing->setName('test_img');
 $objDrawing->setDescription('test_img');
-$objDrawing->setPath('_includes/check.jpg');
+$objDrawing->setPath('images/male-user.png');
 $objDrawing->setCoordinates('D67');
 //setOffsetX works properly
 $objDrawing->setOffsetX(15); 
