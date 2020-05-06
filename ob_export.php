@@ -1,6 +1,5 @@
 
 <?php
-
 session_start();
 $username = $_SESSION['username'];
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
@@ -211,6 +210,6 @@ $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-header('location: OfficialBusinessExport.xlsx');
+header('location: ob_export.xlsx');
 
 ?>
