@@ -18,10 +18,7 @@ require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
 $objPHPExcel = PHPExcel_IOFactory::load("library/ob_export.xlsx");
 $id = $_GET['id'];
 $sql = mysqli_query($conn, "SELECT obno,date,name,purpose,place,obdate,timefrom,timeto,uc  FROM ob WHERE id = '$id' ");
-while ($excelrow = mysqli_fetch_assoc($sql))
-{
-
-
+$excelrow = mysqli_fetch_array($sql);
 $obno = $excelrow['obno'];
 $date1 = $excelrow['date'];
 $date = date('F d, Y', strtotime($date1));
@@ -141,7 +138,6 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','');
 }
 
 
-}
 
 
 $objDrawing = new PHPExcel_Worksheet_Drawing();
