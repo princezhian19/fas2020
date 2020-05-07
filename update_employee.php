@@ -83,6 +83,7 @@
       $division11              = $row["DIVISION_M"];
       $office1                 = $row["OFFICE_STATION"];
       $profile                 = $row['PROFILE'];
+      $ACTIVATED                 = $row['ACTIVATED'];
       $alter_email  = $row["ALTER_EMAIL"];  
       $suffix  = $row["SUFFIX"];  
       $status          = $row["CIVIL_STATUS"]; 
@@ -125,6 +126,7 @@
     $office_contact  = $_POST["office_contact"]; 
     $suffix          = $_POST["suffix"];       
     $status          = $_POST["status"]; 
+    $e_stats          = $_POST["e_stats"]; 
     $target_dir      = "images/profile/";
     $target_file     = $target_dir . basename($_FILES["image"]["name"]);
     $uploadOk        = 1;
@@ -184,7 +186,7 @@
   REGION_C=?, PROVINCE_C=?, CITYMUN_C=?,
   POSITION_C=?,
   MOBILEPHONE=?, EMAIL=?, AGENCY_EMP_NO=?,
-  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$activated."', UNAME=?$add WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
+  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$e_stats."', UNAME=?$add WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
 
   if ($updateSQL = $DBConn->prepare($query)) 
   {
@@ -360,7 +362,7 @@
           <br>
           <div class="col-xs-4">
               <label>Office Station<font style="color:red;">*</font></label>
-              <select required id="mySelect2" class="form-control" name="office">
+              <select required id="" class="form-control" name="office">
                 <?php if ($office1 == 1): ?>
                   <option value="1">Regional Office</option>
                   <option value="2">Provincial/HUC Office</option>
@@ -387,15 +389,6 @@
                 <?php endif ?>
 
               </select>
-              <div hidden>
-                <select  class="form-control select2" style="width: 100%;" id="mySelect2"   placeholder="Office Station" hidden >
-                  <option disabled selected>Select Office Stations</option>
-                  <option value="1">Regional Office</option>
-                  <option value="2">Provincial Office</option>
-                  <option value="3">Cluster Office</option>
-                  <option value="4">City Municipality Office</option>
-                </select>
-              </div>
             </div>
           <div class="col-xs-4">
             <label>Middle Name<font style="color:red;">*</font></label>
@@ -412,7 +405,7 @@
           <div class="col-xs-4">
             <label>Province</label>
             <input type="text" name="province" hidden>
-            <select  disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
+            <select   class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
               <option value="<?php echo $province1;?>"><?php echo $province11;?></option>
               <option value="10">Batangas</option>
               <option value="21">Cavite</option>
@@ -441,18 +434,18 @@
           <div class="col-xs-4">
             <label>City/Municipality</label>
             <input type="text" name="municipality" hidden>
-            <select disabled id="sel_user" name="municipality" class="form-control select2">
+            <select  id="sel_user" name="municipality" class="form-control select2">
               <option value="<?php echo $municipality11;?>"><?php echo $municipality11;?></option>
               <option value="0"></option>
             </select>
           </div>
           <div class="col-xs-4">
             <label>Extension Name<font style="color:red;">*</font></label>
-            <input required value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
+            <input  value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
           </div>
           <div class="col-xs-4">
             <label>Office Email Address <font style="color:red;">*</font></label>
-            <input required value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
+            <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
           </div>
           <br>
           <br>
@@ -506,6 +499,21 @@
             </select>
             <?php endif ?>
            
+          </div>
+          <div class="col-xs-4">
+            <label>Employement Status<font style="color:red;">*</font></label>
+            <?php if ($ACTIVATED == 'Yes'): ?>
+               <select class="form-control select2" name="e_stats">
+              <option value="Yes">Regular</option>
+              <option value="No">Cos</option>
+            </select>
+            <?php else: ?>
+               <select class="form-control select2" name="e_stats">
+              <option value="No">Cos</option>
+              <option value="Yes">Regular</option>
+            </select>
+            <?php endif ?>
+              
           </div>
 
           <br>

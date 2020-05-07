@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
 
       // if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
-      if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
+      if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales' | $username == 'ctronquillo') {
         
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Succesfully Login!')
