@@ -98,11 +98,11 @@ $edit="edit";
                   $obdate = date('F d, Y', strtotime($obdate1));
                   
                   $timefrom1 = $row['timefrom'];
-                  $timefrom=  date("h:i:s a",$timefrom1);
+                  $timefrom=  date("g:h A",strtotime($timefrom1));
                 
 
                   $timeto1 = $row['timeto'];
-                  $timeto=  date("h:i:s a",$timeto1);
+                  $timeto=  date("g:h A",strtotime($timeto1));
 
                  
                   
@@ -148,11 +148,8 @@ $edit="edit";
                
                
 
-                <?php if($uc==1):?>
-                <td><?php echo $timefrom1.' to '.'UC'?></td>
-                <?php else:?>
-                <td><?php echo $timefrom1.' to '.$timeto1?></td>
-                <?php endif?>
+                <td><?php echo $timefrom.' to '.$timeto?></td>
+              
 
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
                 <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='ob_submit.php?id=<?php echo $id;?>'title="Submit">Submit</a></td>
