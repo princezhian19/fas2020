@@ -31,7 +31,7 @@ $username = $_SESSION['username'];
     <!-- Logo -->
     <a href="home.php?division=<?php echo $_SESSION['division'];?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><img src = "images/logo.png"/></span>
+      <span class="logo-mini"><img src = "images/logo2.png"/></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b><img src = "images/logo1.png"/></b></span>
     </a>
