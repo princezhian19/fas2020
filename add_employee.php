@@ -129,7 +129,6 @@
     $sqlUsername =  "SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
     $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeeinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
     if (!ifRecordExist($sqlEMP_N)){
-      if (!ifRecordExist($sqlUsername)){
           $insertinf = mysqli_query($conn,"INSERT INTO tblempdetails(EMP_N,office_contact,office_address) VALUES('$employee_number','$office_contact','$office_address')");
 
           $sql_insert_query     = "INSERT INTO tblemployeeinfo (
@@ -247,11 +246,7 @@
         </SCRIPT>");
      }
 
- }else{
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Username Already Exist!');
-    </SCRIPT>");
- }
+
 }else{
  echo ("<SCRIPT LANGUAGE='JavaScript'>
   window.alert('Employee Number Already Exist!');
@@ -440,7 +435,7 @@
           <div class="col-xs-4">
             <label>Province</label>
             <input type="text" name="province" hidden>
-            <select  disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
+            <select   class="form-control select2" style="width: 100%;" name="province" id="" >
               <option value="<?php echo $province1;?>"><?php echo $province11;?></option>
               <option value="10">Batangas</option>
               <option value="21">Cavite</option>
@@ -465,7 +460,7 @@
           <div class="col-xs-4">
             <label>City/Municipality</label>
             <input type="text" name="municipality" hidden>
-            <select disabled id="sel_user" name="municipality" class="form-control select2">
+            <select  id="" name="municipality" class="form-control select2">
               <option value="<?php echo $municipality11;?>"><?php echo $municipality11;?></option>
               <option value="0"></option>
             </select>
