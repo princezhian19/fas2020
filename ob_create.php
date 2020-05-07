@@ -285,7 +285,7 @@ else{
               Permission is requested by Mr./Ms.  &nbsp;&nbsp;<input required readonly style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 480px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "<?php echo $f.' '.$row['MIDDLE_M'].' '.$l.'';?>">
               to leave the office for the following purpose(s):
                 <br>
-                <input style="border:none;border-bottom:1px solid black; height: 25px;width: 975px; font-weight:bold;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
+                <input required style="border:none;border-bottom:1px solid black; height: 25px;width: 975px; font-weight:bold;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
                 <input style="border:none;border-bottom:1px solid black; height: 25px;width: 972px; font-weight:bold;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="Purpose">.
                 <br>
               </td>
@@ -312,7 +312,7 @@ else{
               <br>
               Place to be visited:
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input style=" font-weight:bold;border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place" name="place" autocomplete ="off" type="text" class="" placeholder="Place">
+              <input required style=" font-weight:bold;border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place" name="place" autocomplete ="off" type="text" class="" placeholder="Place">
               <br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
