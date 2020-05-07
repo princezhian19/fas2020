@@ -32,12 +32,7 @@ if (isset($_POST['submit'])) {
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
 
-<<<<<<< HEAD
       if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-=======
-      // if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
-      if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales' | $username == 'ctronquillo') {
->>>>>>> cc354f735cb1bbc5dd891c94ca8ad15734337bb1
         
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Succesfully Login!')
