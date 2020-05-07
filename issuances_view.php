@@ -82,7 +82,7 @@ $view_query = mysqli_query($conn, "SELECT * from issuances where id = '$getid'")
         <br>
     
 
-      <li class="btn btn-success"><a href="issuances.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-success"><a href="issuances.php?division=<?php echo $_SESSION['division'];?>" style="color:white;text-decoration: none;">Back</a></li>
     
 
       <br>

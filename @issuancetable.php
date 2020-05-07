@@ -50,7 +50,7 @@ $edit="edit";
         
           <div class=""  style="overflow-x:auto;">
          
-            <li class="btn btn-success"><a href="CreateIssuances.php" style="color:white;text-decoration: none;">Add</a></li>
+            <li class="btn btn-success"><a href="CreateIssuances.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Add</a></li>
         
           
               <br>
@@ -153,13 +153,13 @@ $edit="edit";
                   ?>
 
                           <?php if ($office ==  $DIVISION_M ):?>
-                          <a  href='ViewIssuance.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
+                          <a  href='ViewIssuance.php?division=<?php echo $_SESSION['division'];?>&id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
                           <a href='UpdateIssuances.php?id=<?php echo $id;?>&option=edit&issuance=<?php echo $issuance_no?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
 
                           <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/issuancesdelete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                             <?php else :?>
                                           
-                            <a  href='ViewIssuance.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
+                            <a  href="ViewIssuance.php?division=<?php echo $_SESSION['division'];?>&id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
                              <?php endif?>
                 
                        

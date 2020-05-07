@@ -208,7 +208,7 @@ require_once('_includes/class.upload.php');
             <h1 align="">Add Issuances</h1>
          
         <br>
-      <li class="btn btn-success"><a href="issuances.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-success"><a href="issuances.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
 
