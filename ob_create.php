@@ -462,8 +462,10 @@ else{
               <br>
               ________________________
               <br>
+              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
               <b><?php echo $approved;?></b>
               <br>
+              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
               <b><?php echo $pos;?></b>
              
           
@@ -477,8 +479,32 @@ else{
               </tr>
               <!-- Approved -->
               
+              <!-- copy -->
+              <tr>
 
+           
+            <td class="col-md-1" style="padding:5px 5px 5px 5px;"></td>
               
+
+
+            <td colspan = 2 class="" style = " font-family:Sylfaen; font-style: italic;">
+            Copy for Personnel Section, FAD
+
+            </td>
+
+            <td colspan = 1 class="" style = " font-family:Sylfaen;">
+           
+
+            </td>
+
+
+
+            <td class="col-md-1"></td> 
+
+
+            </tr>
+            <!-- copy -->
+            
               </table>
                 
                     <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
