@@ -199,7 +199,7 @@ else{
                     
                 <td class="col-md-5" style ="text-align:center; border:1px solid black;" >
                     <br>
-                    <img id="img" class="pull-left"  style="margin-top:0px; margin-bottom:20px; width:100;height:100px;" src="images/logo.png" title = "" />
+                    <img id="img" class="pull-left"  style="margin-top:0px; margin-bottom:20px; width:100;height:100px;" src='images/male-user.png' title = "" />
                     DILG – Rehiyon 4A
                     <br>
                     

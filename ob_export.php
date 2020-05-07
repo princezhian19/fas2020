@@ -1,6 +1,5 @@
 
 <?php
-
 session_start();
 $username = $_SESSION['username'];
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
@@ -16,13 +15,10 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 <?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("library/OfficialBusinessExport.xlsx");
+$objPHPExcel = PHPExcel_IOFactory::load("library/ob_export.xlsx");
 $id = $_GET['id'];
 $sql = mysqli_query($conn, "SELECT obno,date,name,purpose,place,obdate,timefrom,timeto,uc  FROM ob WHERE id = '$id' ");
-while ($excelrow = mysqli_fetch_assoc($sql))
-{
-
-
+$excelrow = mysqli_fetch_array($sql);
 $obno = $excelrow['obno'];
 $date1 = $excelrow['date'];
 $date = date('F d, Y', strtotime($date1));
@@ -142,7 +138,6 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','');
 }
 
 
-}
 
 
 $objDrawing = new PHPExcel_Worksheet_Drawing();
@@ -211,6 +206,6 @@ $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-header('location: OfficialBusinessExport.xlsx');
+header('location: ob_export.xlsx');
 
 ?>
