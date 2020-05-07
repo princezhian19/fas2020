@@ -1,5 +1,4 @@
-<?php 
-
+<?php session_start();
 include 'connection.php';
 if(!isset($_SESSION['username'])){
 // header('location:index.php');
@@ -94,7 +93,7 @@ if (isset($_POST['submit'])) {
   }
 }else{
   echo ("<SCRIPT LANGUAGE='JavaScript'>
-  window.alert('Error Occured in Login!');
+  window.alert('Wrong Password Or Username!');
   window.location.href='index.php';
   </SCRIPT>");
 }
