@@ -1,11 +1,6 @@
-<?php session_start();
-if(!isset($_SESSION['username'])){
-header('location:index.php');
-}else{
-  error_reporting(0);
-ini_set('display_errors', 0);
+<?php 
 $username = $_SESSION['username'];
-}
+echo $username.'userasdasd';
 ?>
 <div class="row">
   <div class="col-md-12">
