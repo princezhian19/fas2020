@@ -165,8 +165,8 @@ else{
         <div class="class" >
         <form method="POST" action='' enctype="multipart/form-data" >
 
-
-            <table class="table"> 
+          <div class="" style="border-style: ridge;">
+            <table class="table" > 
 
               <input  hidden  type="text"  class="" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>">
               <!-- Header -->
@@ -175,7 +175,7 @@ else{
                   
               <td class="col-md-2" >
 
-              <img id="img" class="pull-left"  style="margin-top:20px; width:100;height:130px;" src="images/logo.png" title = "" />
+              <img id="img" class="pull-left"  style="margin-top:20px; width:100;height:120px;" src="images/logo.png" title = "" />
                  
               </td>
 
@@ -202,7 +202,7 @@ else{
              
 
               <td class="col-md-2" >
-              <img id="img" class=""  style="margin-top:20px; width:100;height:130px;" src="images/calabarzon.png" title = "" />
+              <img id="img" class=""  style="margin-top:20px; width:100;height:120px;" src="images/calabarzon.png" title = "" />
               </td>
 
               <td class="col-md-1"></td> 
@@ -261,9 +261,9 @@ else{
 
               <td class="col-md-4" >
               
-              <b><label style="height:20px">No	:</label></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input required value="<?php echo $obcount; ?>" readonly  class="" type="text" class="" style="border:none;border-bottom:1px solid black; font:bold; color:red; height: 25px; width: 120px;" id="obno" name="obno" placeholder="obno" >
+              <b><label style="height:20px">No	:</label></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input required value="<?php echo $obcount; ?>" readonly  class="" type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; font:bold; color:red; height: 25px; width: 120px;" id="obno" name="obno" placeholder="obno" >
               <br>
-              <label style="height:20px">Date :</label>&nbsp;&nbsp;&nbsp;<input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font:bold; height: 25px; width: 120px;" name="date" id="" value = "<?php echo date('F d, Y') ?>" >
+              <label style="height:20px">Date :</label>&nbsp;&nbsp;&nbsp;<input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 25px; width: 120px;" name="date" id="" value = "<?php echo date('F d, Y') ?>" >
               </td>
 
               <td class="col-md-1"></td> 
@@ -506,6 +506,12 @@ else{
             <!-- copy -->
             
               </table>
+              
+
+                </div> 
+
+                <br>
+              <br>
                 
                     <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
 
