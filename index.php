@@ -17,29 +17,29 @@ $username = $_SESSION['username'];
   $val = array();
   // $numrows= mysqli_num_rows($query);
   if ($result->num_rows > 0) {
-    while($row = mysqli_fetch_array($result))
-  {
-    $division =$row['DIVISION_C'];
-    $division2 = $row['DIVISION_C'];
-    $_SESSION['division'] = $division;
-    $middle = $row['MIDDLE_M'];
-    $_SESSION['complete_name'] = ucwords(strtolower($row['FIRST_M'])).' '.$middle[0].'. '.ucwords(strtolower($row['LAST_M']));
-    $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
-    $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
+              while($row = mysqli_fetch_array($result))
+            {
+              $division =$row['DIVISION_C'];
+              $division2 = $row['DIVISION_C'];
+              $_SESSION['division'] = $division;
+              $middle = $row['MIDDLE_M'];
+              $_SESSION['complete_name'] = ucwords(strtolower($row['FIRST_M'])).' '.$middle[0].'. '.ucwords(strtolower($row['LAST_M']));
+              $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
+              $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
 
-      // if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
-      if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
-        
-        echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.location.href='home.php?division=".$division."';
-        </SCRIPT>");
-      }else{
-        
-       echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.location.href='home1.php?division=".$division."';
-        </SCRIPT>");
-       } 
-}
+                // if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
+                if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
+                  
+                  echo ("<SCRIPT LANGUAGE='JavaScript'>
+                  window.location.href='home.php?division=".$division."';
+                  </SCRIPT>");
+                }else{
+                  
+                echo ("<SCRIPT LANGUAGE='JavaScript'>
+                  window.location.href='home1.php?division=".$division."';
+                  </SCRIPT>");
+                } 
+          }
 
 }
 
