@@ -92,6 +92,7 @@
   
   $checkQuery1 = mysqli_query($conn,"SELECT b.city_id,b.city_title FROM $sqltable a LEFT JOIN tblmunicipality b on b.city_id = a.CITYMUN_C WHERE b.province = $province1 AND a.EMP_N = '".$_GET['id']."' LIMIT 1");
   $row1 = mysqli_fetch_array($checkQuery1);
+  $city_id           = $row1["city_id"];
   $municipality11           = $row1["city_title"];
 
   if (isset($_POST['submit'])) {
@@ -186,7 +187,7 @@
   REGION_C=?, PROVINCE_C=?, CITYMUN_C=?,
   POSITION_C=?,
   MOBILEPHONE=?, EMAIL=?, AGENCY_EMP_NO=?,
-  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$e_stats."', UNAME=?$add WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
+  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$e_stats."', UNAME=?$add,DESIGNATION=? WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
 
   if ($updateSQL = $DBConn->prepare($query)) 
   {
@@ -194,7 +195,7 @@
 
           $updatedetails = mysqli_query($conn,"UPDATE `tblempdetails` SET `EMP_N`='$employee_number',`office_contact`='$office_contact',`office_address`='$office_address' WHERE EMP_N = '$employee_number'");
 
-      $updateSQL->bind_param("sssssssssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username);
+      $updateSQL->bind_param("ssssssssssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username, $designation);
     }else{
       $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
       $password   = crypt($password, '$2a$10$'.$code.'$');
@@ -354,7 +355,7 @@
           </div>
           <div class="col-xs-4">
             <label>Mobile <font style="color:red;">*</font></label>
-            <input required value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
+            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
           </div>
           <br>
           <br>
@@ -384,7 +385,7 @@
                 <?php if ($office1 == 4): ?>
                   <option value="4">City/Municipal Office</option>
                   <option value="1">Regional Office</option>
-                  <option value="2">Provincial Office</option>
+                  <option value="2">Provincial/HUC Office</option>
                   <option value="3">Cluster Office</option>
                 <?php endif ?>
 
@@ -396,7 +397,7 @@
           </div>
           <div class="col-xs-4">
             <label>Personal Email Address <font style="color:red;">*</font></label>
-            <input required value="<?php echo $email1;?>" type="text" name="email" class="form-control" placeholder="">
+            <input value="<?php echo $email1;?>" type="text" name="email" class="form-control" placeholder="">
           </div>
           <br>
           <br>
@@ -435,7 +436,7 @@
             <label>City/Municipality</label>
             <input type="text" name="municipality" hidden>
             <select  id="sel_user" name="municipality" class="form-control select2">
-              <option value="<?php echo $municipality11;?>"><?php echo $municipality11;?></option>
+              <option value="<?php echo $city_id;?>"><?php echo $municipality11;?></option>
               <option value="0"></option>
             </select>
           </div>
@@ -481,7 +482,7 @@
           <div class="col-xs-4">
             <label>Designation<font style="color:red;">*</font></label>
             <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
-              <option value="<?php echo $designation1;?>" selected><?php echo $designation1;?></option>
+              <option value="<?php echo $designation11;?>" selected><?php echo $designation1;?></option>
               <?php echo tbldesignation($connect)?>
             </select>
           </div>

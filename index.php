@@ -1,6 +1,51 @@
-<?php 
-$_SESSION['username'] = '';
+<?php session_start();
 include 'connection.php';
+if(!isset($_SESSION['username'])){
+// header('location:index.php');
+}else{
+$username = $_SESSION['username'];
+    $sqlUsername = mysqli_query($conn,"SELECT CODE,EMP_N,isPlanningOfficer FROM tblemployee WHERE md5(UNAME) = '".md5($username)."' LIMIT 1");
+  $row = mysqli_fetch_array($sqlUsername);
+  $salt       = $row['CODE'];
+  $_SESSION['currentuser'] = $row['EMP_N']; 
+  $_SESSION['planningofficer'] = $row['isPlanningOfficer']; 
+
+
+  // ===============================================
+  $query = "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($username)."' LIMIT 1 ";
+  $result = mysqli_query($conn, $query);
+  $val = array();
+  // $numrows= mysqli_num_rows($query);
+  if ($result->num_rows > 0) {
+    while($row = mysqli_fetch_array($result))
+  {
+    $division =$row['DIVISION_C'];
+    $division2 = $row['DIVISION_C'];
+    $_SESSION['division'] = $division;
+    $middle = $row['MIDDLE_M'];
+    $_SESSION['complete_name'] = ucwords(strtolower($row['FIRST_M'])).' '.$middle[0].'. '.ucwords(strtolower($row['LAST_M']));
+    $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
+    $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
+
+      // if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
+      if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
+        
+        echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.location.href='home.php?division=".$division."';
+        </SCRIPT>");
+      }else{
+        
+       echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.location.href='home1.php?division=".$division."';
+        </SCRIPT>");
+       } 
+}
+
+}
+
+}
+
+$_SESSION['username'] = '';
 if (isset($_POST['submit'])) {
   session_start();
   $username = $_POST['username'];
@@ -48,7 +93,7 @@ if (isset($_POST['submit'])) {
   }
 }else{
   echo ("<SCRIPT LANGUAGE='JavaScript'>
-  window.alert('Error Occured in Login!');
+  window.alert('Wrong Password Or Username!');
   window.location.href='index.php';
   </SCRIPT>");
 }
