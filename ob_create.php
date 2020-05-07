@@ -223,7 +223,7 @@ else{
                  
               </td>
 
-              <td class="col-md-6" style = "text-align:center; ">
+              <td class="col-md-6" style = "text-align:center; color:gray;">
 
               <h3>PERMIT TO LEAVE THE OFFICE</h3>
 
@@ -689,7 +689,7 @@ function myFunction() {
   })
 </script>
 
-<script>alert
+<script>
 $(document).ready(function(){
 
 
