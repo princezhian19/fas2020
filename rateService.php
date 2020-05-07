@@ -42,23 +42,12 @@ $username = $_SESSION['username'];
 </head>
 <body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
- <?php 
-  if (
-    $username == 'charlesodi' ||
-    $username == 'mmmonteiro' ||  
-    $username == 'cvferrer' || 
-    $username == 'masacluti' || 
-    $username == 'magonzales' || 
-    $username == 'seolivar' || 
-    $username == 'jamonteiro' || 
-    $username == 'ctronquillo' || 
-    $username == 'rdmiranda')
-    {
-      include('sidebar.php');
+<?php 
+  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+      include('test1.php');
     }else{
       include('sidebar2.php');
     }
-
  ?>
 
   <div class="content-wrapper">

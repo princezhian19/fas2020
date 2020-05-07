@@ -55,17 +55,7 @@ $division = $_GET['division'];
 <body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
 <?php 
-  if (
-    $username == 'charlesodi' ||
-    $username == 'mmmonteiro' ||  
-    $username == 'cvferrer' || 
-    $username == 'masacluti' || 
-    $username == 'magonzales' || 
-    $username == 'seolivar' || 
-    $username == 'jamonteiro' || 
-    $username == 'ctronquillo' || 
-    $username == 'rdmiranda')
-    {
+  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
       include('test1.php');
     }else{
       include('sidebar2.php');
@@ -102,8 +92,9 @@ $division = $_GET['division'];
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="_includes/sweetalert.min.js"></script>
 <script src="_includes/sweetalert2.min.js"></script>
+
 <?php 
-  if ( $username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') {
+  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
       ?>
       <script>
           $(document).ready(function() {
@@ -348,7 +339,7 @@ $division = $_GET['division'];
                         {
                         action = '<a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a>';          
                         }else{
-                        action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Sdwdervice</a>';          
+                        action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a>';          
 
                           // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>
                         }

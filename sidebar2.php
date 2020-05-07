@@ -103,6 +103,14 @@ $username = $_SESSION['username'];
           </a>
        
       </li>
+      <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_GET['division'].'' || $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php?division='.$_GET['division'].''){ echo 'class = "active"';}else{echo 'class = ""';}?>>
+          <a href="ViewCalendar.php?division=<?php echo $_SESSION['division'];?>">
+            <i class="fa fa-calendar" style = "color:#black;"></i>
+            <span  style = "color:#black;font-weight:normal;">Calendar</span>
+            
+          </a>
+         
+        </li>
       
         <li  <?php 
               if( $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPR1.php'.$_GET['division'].'' )
@@ -242,31 +250,7 @@ $username = $_SESSION['username'];
             </ul>
         </li>
       
-        <li class="treeview <?PHP 
-        if(
-          $link == 'http://fas.calabarzon.dilg.gov.ph/Accounts.php' ||
-          $link == 'http://fas.calabarzon.dilg.gov.ph/_editRequestTA.php?division='.$_GET['division'].'&id='.$_GET['id'].'' ||
-          $link == 'http://fas.calabarzon.dilg.gov.ph/Approval.php' ||
-          $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateAccount.php?id='.$_GET['id'].'&username='.$_SESSION['username'].'' 
-          
-        ){
-          echo 'active';
-        }
-        ?>" tyle="background-color: lightgray;">
-          <a href="" >
-            <i class="fa fa-cogs" style = "color:#black;"></i>
-            <span  style = "color:#black;font-weight:normal;">Settings</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu" >
-            <li><a  href="Accounts.php"><i class = "fa fa-fw fa-user-md" style = "color:#black;"></i>User Management</li>
-            <li><a  href="Approval.php"><i class = "fa fa-fw fa-check-square-o" style = "color:#black;"></i>For Approval</li>
-
-          </ul>
-      
-        </li>
+     
         <li>
             <a href="logout.php">
               <i class="fa fa-sign-out " style = "color:#black;"></i> 

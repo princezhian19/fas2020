@@ -343,7 +343,8 @@ $username = $_SESSION['username'];
           </li>
           </ul>
         </li>
-        <li class="treeview
+        <!-- <a href="techassistance.php?division=" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Monitoring  -->
+        <li 
         <?PHP 
         if(
           $link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
@@ -354,24 +355,11 @@ $username = $_SESSION['username'];
         }
         ?>"
         >
-            <a href="" >
+            <a href="processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
                 <i class="fa fa-users" style = "color:#black;"></i>
                 <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
-                <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
-            <ul class="treeview-menu" >
-              <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Create Request</a>
-              <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Processing
-              <span>
-              <small class="label  bg-blue" id = "on_going"></small>
-            </span>
-          </a></li>
-              <li>
-              <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Monitoring 
-              <span>
-              <small class="label  bg-blue" id = "ta_request"></small>
-            </span></a>
-            </ul>
+           
         </li>
       
         <li class="treeview <?PHP 

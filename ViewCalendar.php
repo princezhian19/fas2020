@@ -8,7 +8,7 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
-
+$division = $_GET['division'];
 require_once 'calendar/sample/bdd.php';
 require_once 'calendar/sample/dbaseCon.php';
 require_once 'calendar/sample/sql_statements.php';
@@ -272,7 +272,13 @@ if($_SESSION['planningofficer'] == 1)
       border: #c3e6c3 1px solid;
   }
     </style>
-<?php include 'test1.php';?>
+  <?php 
+  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+      include('test1.php');
+    }else{
+      include('sidebar2.php');
+    }
+ ?>
 <?php include 'connection.php';?>
 
   <div class="content-wrapper">
