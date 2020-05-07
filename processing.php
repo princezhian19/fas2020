@@ -386,6 +386,17 @@ function showWorkload($ICT)
     while($row = mysqli_fetch_array($result))
     {
         ?>
+         <tr>
+            <td>
+            <ul class="timeline timeline-inverse" >
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                            <span class="bg-red">
+                                Work Load
+                            </span>
+                        </li>
+                        <li>
+         
              <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY'];?>">
             <div class="timeline-item" >
                 <span class="time"><i class="fa fa-clock-o"></i>&nbsp;<?PHP echo date('g:m A',strtotime($row['REQ_TIME']));?></span>
@@ -428,6 +439,11 @@ function showWorkload($ICT)
             </div>
             
     </div><br><br>
+                         
+                         </li>
+                     </ul>
+             </td>
+             </tr>
     <?PHP
     }
 }
@@ -451,6 +467,8 @@ function showWorkload($ICT)
                     <div class="box-body">      
                     <div> <h1>Processing of ICT Technical Assistance</h1><br> </div>
                 <button class = "btn btn-success btn-md"><a href = "requestForm.php?division=<?php echo $_SESSION['division'];?>" style = "decoration:none;color:#fff;">Create Request</a> </button>
+                <button class = "btn btn-success btn-md"><a href = "techassistance.php?division=<?php echo $_GET['division'];?>" style = "decoration:none;color:#fff;">Monitoring</a> </button>
+
 
                     </div>
              
@@ -536,60 +554,46 @@ function showWorkload($ICT)
 
 
                 <div class="tab-pane" id="second" >
-                    <ul class="timeline timeline-inverse" >
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                Work Load
-                            </span>
-                        </li>
-                        <li>
+                    
+                    <table id="example2" class="table table-striped table-bordered" >
+                        <thead>
+                            <th></th>
+                        </thead>
+                        <tbody>
                             <?php echo showWorkload('Mark');?>
-                        </li>
-                    </ul>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="tab-pane" id="third">
-                    <ul class="timeline timeline-inverse">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                Work Load
-                            </span>
-                        </li>
-                        <li>
+                <table id="example3" class="table table-striped table-bordered" >
+                        <thead>
+                            <th></th>
+                        </thead>
+                        <tbody>
                             <?php echo showWorkload('Christian');?>
-                        </li>
-                        <li>
-                    </ul>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="tab-pane" id="fourth">
-                    <ul class="timeline timeline-inverse">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                Work Load
-                            </span>
-                        </li>
-                        <li>
+                <table id="example4" class="table table-striped table-bordered" >
+                        <thead>
+                            <th></th>
+                        </thead>
+                        <tbody>
                             <?php echo showWorkload('Charles');?>
-                        </li>
-                        <li>
-                    </ul>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="tab-pane" id="fifth">
-                    <ul class="timeline timeline-inverse">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                Work Load
-                            </span>
-                        </li>
-                        <li>
+                <table id="example5" class="table table-striped table-bordered" >
+                        <thead>
+                            <th></th>
+                        </thead>
+                        <tbody>
                             <?php echo showWorkload('Shiela');?>
-                        </li>
-                        <li>
-                    </ul>
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
@@ -805,6 +809,70 @@ $(document).on('click','#sweet-16',function(e){
 //         "search": {
 //     "search": "<?php echo $_GET['ticket_id'];?>"
 //   },
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example2').DataTable({
+    "search": "",
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example3').DataTable({
+    "search": "",
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example4').DataTable({
+    "search": "",
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example5').DataTable({
+    "search": "",
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

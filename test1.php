@@ -343,7 +343,6 @@ $username = $_SESSION['username'];
           </li>
           </ul>
         </li>
-        <!-- <a href="techassistance.php?division=" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Monitoring  -->
         <li 
         <?PHP 
         if(
