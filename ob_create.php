@@ -23,7 +23,7 @@ $row = mysqli_fetch_array($query);
 // echo '<br>';
 
 //Get Office
-$select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+$select_user = mysqli_query($conn,"SELECT DIVISION_C, FROM tblemployee WHERE UNAME = '$username'");
 $rowdiv = mysqli_fetch_array($select_user);
 $DIVISION_C = $rowdiv['DIVISION_C'];
 
@@ -96,7 +96,7 @@ $obdate = date('Y-m-d', strtotime($obdate1));
 
 $timefrom = $_POST['timefrom'];
 $timeto = $_POST['timeto'];
-$timefrom = $_POST['timefrom'];
+
 
 $servername = "localhost";
 $username = "fascalab_2020";
@@ -282,11 +282,11 @@ else{
 
               <td colspan = 11 class="" style = " font-family:Sylfaen;">
               <br>
-              Permission is requested by Mr./Ms.  &nbsp;&nbsp;<input required style="border:none;border-bottom:1px solid black; height: 25px;width: 480px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "">
+              Permission is requested by Mr./Ms.  &nbsp;&nbsp;<input required readonly style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 480px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "<?php echo $f.' '.$row['MIDDLE_M'].' '.$l.'';?>">
               to leave the office for the following purpose(s):
                 <br>
-                <input style="border:none;border-bottom:1px solid black; height: 25px;width: 975px;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
-                <input style="border:none;border-bottom:1px solid black; height: 25px;width: 972px;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="Purpose">.
+                <input style="border:none;border-bottom:1px solid black; height: 25px;width: 975px; font-weight:bold;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
+                <input style="border:none;border-bottom:1px solid black; height: 25px;width: 972px; font-weight:bold;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="Purpose">.
                 <br>
               </td>
 
@@ -312,14 +312,14 @@ else{
               <br>
               Place to be visited:
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input style="border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place" name="place" autocomplete ="off" type="text" class="" placeholder="Place">
+              <input style=" font-weight:bold;border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place" name="place" autocomplete ="off" type="text" class="" placeholder="Place">
               <br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input style="border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="Place">
+              <input style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="Place">
              
               <br>
               Date:
@@ -328,7 +328,7 @@ else{
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;
               
-              <input required type="text" class="" style="border:none;border-bottom:1px solid black; height: 25px;width: 200px;" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+              <input required type="text" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
               </td>
 
               <td colspan = 1 class="" style = " font-family:Sylfaen;">
@@ -336,11 +336,11 @@ else{
             <br>
           
             Time of Departure:
-            <input required  type="time" class="" style="border:none;border-bottom:1px solid black; height: 25px;width: 60px;" name="timefrom" id="timefrom">
+            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timefrom" id="timefrom">
             <br>
             Time of Return:
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <input  type="time" class="" style="border:none;border-bottom:1px solid black; height: 25px;width: 60px;" name="timeto" id="timeto" style="display:block">
+            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timeto" id="timeto" style="display:block">
 
            
             <br>
@@ -375,9 +375,9 @@ else{
               <br>
               <br>
               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-              <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Yes"> <b>Yes</b>
+              <input  style = "margin-bottom:10px;" type = "checkbox" name = "checkbox" class = "checkboxgroup_g1" value ="Yes"> <b>Yes</b>
               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-              <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="No"><b>No</b>
+              <input  style = "margin-bottom:10px;" type = "checkbox" name = "checkbox" class = "checkboxgroup_g2" value ="No"><b>No</b>
               </td>
 
               <td colspan = 1 class="" style = " font-family:Sylfaen;">
@@ -689,6 +689,20 @@ function myFunction() {
   })
 </script>
 
+<script>alert
+$(document).ready(function(){
 
+
+  $('.checkboxgroup_g1').on('change', function() {
+      $('.checkboxgroup_g2').not(this).prop('checked', false);  
+  });
+
+  
+  $('.checkboxgroup_g2').on('change', function() {
+      $('.checkboxgroup_g1').not(this).prop('checked', false);  
+  });
+
+});
+</script>
 </body>
 </html>
