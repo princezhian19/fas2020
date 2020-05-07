@@ -5,6 +5,7 @@ header('location:index.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
+$division = $_GET['division'];
 }
 ?>
 <!DOCTYPE html>
@@ -44,7 +45,11 @@ $username = $_SESSION['username'];
 </head>
 </head>
 <?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('test1.php'); }else{ include('sidebar2.php'); }
+  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+      include('test1.php');
+    }else{
+      include('sidebar2.php');
+    }
  ?>
 
   <div class="content-wrapper">

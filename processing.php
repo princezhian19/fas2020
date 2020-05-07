@@ -98,7 +98,9 @@ function filldataTable()
                                                         <p class="card-text"><?php echo $row['ISSUE_PROBLEM'];?></p>
                                                     </div>
                                                     <div class="col-lg-6">
+                                                    
                                                     <?php
+                                      
                                                             if($row['STATUS_REQUEST'] == 'For action')
                                                             {
 
@@ -378,14 +380,25 @@ function currentServing($assignee)
 function showWorkload($ICT)
 {
     include 'connection.php';
-    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%' and `STATUS_REQUEST` = 'For action'";
+    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%' and `STATUS_REQUEST` = 'For action' or `STATUS_REQUEST` = 'Completed' order by `STATUS_REQUEST` desc  ";
     $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
     while($row = mysqli_fetch_array($result))
     {
         ?>
+         <tr>
+            <td>
+            <ul class="timeline timeline-inverse" >
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                            <span class="bg-red">
+                                Work Load
+                            </span>
+                        </li>
+                        <li>
+         
              <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY'];?>">
-            <div class="timeline-item">
+            <div class="timeline-item" >
                 <span class="time"><i class="fa fa-clock-o"></i>&nbsp;<?PHP echo date('g:m A',strtotime($row['REQ_TIME']));?></span>
                 <h3 class="timeline-header"><a href="#"><?php echo $row['REQ_BY'];?></a> sent you a request</h3>
                     <div class="timeline-body">
@@ -394,26 +407,45 @@ function showWorkload($ICT)
                     
                     </div>
                     <div class="timeline-footer">
-                    <a class="btn btn-primary btn-xs" href = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id=<?php echo $row['CONTROL_NO'];?>">
+                    <?php 
+                    if($row['STATUS_REQUEST'] == 'Completed')
+                    {
+                        ?>
+                        <a class="btn btn-success btn-md" href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO'];?>">
+                        View
+                    </a>
+                        <?php
+                    }else{
+                        ?>
+        <a class="btn btn-primary btn-md" href = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id=<?php echo $row['CONTROL_NO'];?>">
                         Resolve
                     </a>
+                        <?php
+                    }
+                    ?>
+                
                     <!-- <a class="btn btn-danger btn-xs">Delete</a> -->
                     </div>
             </div><br><br>
         <?PHP
     } 
-}else{
-    ?>
-   <div class="timeline-item">
-       <span class="time"></span>
-       <h3 class="timeline-header">There is no request on your list.</h3>
-           <div class="timeline-body">
-          
-           </div>
-         
-   </div><br><br>
-<?PHP
-}
+    }else{
+        ?>
+    <div class="timeline-item">
+        <span class="time"></span>
+        <h3 class="timeline-header">There is no request on your list.</h3>
+            <div class="timeline-body">
+            
+            </div>
+            
+    </div><br><br>
+                         
+                         </li>
+                     </ul>
+             </td>
+             </tr>
+    <?PHP
+    }
 }
 ?>
 <body class="hold-transition skin-red-light sidebar-mini">
@@ -435,6 +467,8 @@ function showWorkload($ICT)
                     <div class="box-body">      
                     <div> <h1>Processing of ICT Technical Assistance</h1><br> </div>
                 <button class = "btn btn-success btn-md"><a href = "requestForm.php?division=<?php echo $_SESSION['division'];?>" style = "decoration:none;color:#fff;">Create Request</a> </button>
+                <button class = "btn btn-success btn-md"><a href = "techassistance.php?division=<?php echo $_GET['division'];?>" style = "decoration:none;color:#fff;">Monitoring</a> </button>
+
 
                     </div>
              
@@ -519,61 +553,47 @@ function showWorkload($ICT)
 
 
 
-                <div class="tab-pane" id="second">
-                    <ul class="timeline timeline-inverse">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                Work Load
-                            </span>
-                        </li>
-                        <li>
+                <div class="tab-pane" id="second" >
+                    
+                    <table id="example2" class="table table-striped table-bordered" >
+                        <thead>
+                            <th></th>
+                        </thead>
+                        <tbody>
                             <?php echo showWorkload('Mark');?>
-                        </li>
-                    </ul>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="tab-pane" id="third">
-                    <ul class="timeline timeline-inverse">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                Work Load
-                            </span>
-                        </li>
-                        <li>
+                <table id="example3" class="table table-striped table-bordered" >
+                        <thead>
+                            <th></th>
+                        </thead>
+                        <tbody>
                             <?php echo showWorkload('Christian');?>
-                        </li>
-                        <li>
-                    </ul>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="tab-pane" id="fourth">
-                    <ul class="timeline timeline-inverse">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                Work Load
-                            </span>
-                        </li>
-                        <li>
+                <table id="example4" class="table table-striped table-bordered" >
+                        <thead>
+                            <th></th>
+                        </thead>
+                        <tbody>
                             <?php echo showWorkload('Charles');?>
-                        </li>
-                        <li>
-                    </ul>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="tab-pane" id="fifth">
-                    <ul class="timeline timeline-inverse">
-                        <!-- timeline time label -->
-                        <li class="time-label">
-                            <span class="bg-red">
-                                Work Load
-                            </span>
-                        </li>
-                        <li>
+                <table id="example5" class="table table-striped table-bordered" >
+                        <thead>
+                            <th></th>
+                        </thead>
+                        <tbody>
                             <?php echo showWorkload('Shiela');?>
-                        </li>
-                        <li>
-                    </ul>
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
@@ -668,7 +688,7 @@ $('.sweet-14').click(function()
                   setTimeout(function () {
                   swal("Ticket No.already assigned!");
                   }, 3000);
-                  window.location = 'allTickets.php?division=<?php echo $_GET['division'];?>&ticket_id='+data[0];
+                  window.location = 'processing.php?division=<?php echo $_GET['division'];?>&ticket_id='+data[0];
               }
             });
         });
@@ -733,7 +753,7 @@ $(document).on('click','.sweet-17',function(e){
                   setTimeout(function () {
                   swal("Record saved successfully!");
                   }, 3000);
-                  window.location = "allTickets.php?division=<?php echo $_GET['division'];?>&ticket_id=";
+                  window.location = "processing.php?division=<?php echo $_GET['division'];?>&ticket_id=";
               }
             });
         });
@@ -789,6 +809,70 @@ $(document).on('click','#sweet-16',function(e){
 //         "search": {
 //     "search": "<?php echo $_GET['ticket_id'];?>"
 //   },
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example2').DataTable({
+    "search": "",
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example3').DataTable({
+    "search": "",
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example4').DataTable({
+    "search": "",
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example5').DataTable({
+    "search": "",
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,

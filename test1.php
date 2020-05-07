@@ -127,7 +127,13 @@ $username = $_SESSION['username'];
 
         </li>
    <!-- Pesonnel -->
-       <li  class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
+       <li class ="treeview 
+       <?php 
+       if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewEmployees.php?division='.$_GET['division'].'&username='.$_GET['username'].''||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/ob.php?division='.$_GET['division'].'' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/TravelOrder.php?division='.$_GET['division'].'')
+          { echo 'active"';}?>"
+        >
             <a  href="#" >
               <i class="fa fa-users" style = "color:#black;"></i> 
               <span  style = "color:#black;font-weight:normal;">Personnel</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
@@ -343,35 +349,22 @@ $username = $_SESSION['username'];
           </li>
           </ul>
         </li>
-        <li class="treeview
+        <li 
         <?PHP 
         if(
           $link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
           $link == 'http://fas.calabarzon.dilg.gov.ph/techassistance.php?division='.$_GET['division'].'' ||
-          $link == 'http://fas.calabarzon.dilg.gov.ph/allTickets.php?division='.$_GET['division'].'&ticket_id=' 
+          $link == 'http://fas.calabarzon.dilg.gov.ph/processing.php?division='.$_GET['division'].'&ticket_id=' 
         ){
-          echo 'active';
+          echo 'class = "active" ';
         }
         ?>"
         >
-            <a href="" >
+            <a href="processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
                 <i class="fa fa-users" style = "color:#black;"></i>
                 <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
-                <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
-            <ul class="treeview-menu" >
-              <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Create Request</a>
-              <li><a href="allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Processing
-              <span>
-              <small class="label  bg-blue" id = "on_going"></small>
-            </span>
-          </a></li>
-              <li>
-              <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Monitoring 
-              <span>
-              <small class="label  bg-blue" id = "ta_request"></small>
-            </span></a>
-            </ul>
+           
         </li>
       
         <li class="treeview <?PHP 
