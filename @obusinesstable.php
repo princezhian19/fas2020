@@ -148,11 +148,8 @@ $edit="edit";
                
                
 
-                <?php if($uc==1):?>
-                <td><?php echo $timefrom1.' to '.'UC'?></td>
-                <?php else:?>
                 <td><?php echo $timefrom1.' to '.$timeto1?></td>
-                <?php endif?>
+              
 
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
                 <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='ob_submit.php?id=<?php echo $id;?>'title="Submit">Submit</a></td>
