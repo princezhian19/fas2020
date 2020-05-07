@@ -175,7 +175,7 @@ else{
                   
               <td class="col-md-2" >
 
-              <img id="img" class="pull-left"  style="margin-top:20px; width:100;height:120px;" src="images/logo.png" title = "" />
+              <img id="img" class="pull-left"  style="margin-top:20px; width:100;height:120px;" src="images/male-user.png" title = "" />
                  
               </td>
 
