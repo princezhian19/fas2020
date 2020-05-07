@@ -98,11 +98,11 @@ $edit="edit";
                   $obdate = date('F d, Y', strtotime($obdate1));
                   
                   $timefrom1 = $row['timefrom'];
-                  $timefrom=  date("h:i:s a",$timefrom1);
+                  $timefrom=  date("g:h A",strtotime($timefrom1));
                 
 
                   $timeto1 = $row['timeto'];
-                  $timeto=  date("h:i:s a",$timeto1);
+                  $timeto=  date("g:h A",strtotime($timeto1));
 
                  
                   
@@ -148,7 +148,7 @@ $edit="edit";
                
                
 
-                <td><?php echo $timefrom1.' to '.$timeto1?></td>
+                <td><?php echo $timefrom.' to '.$timeto?></td>
               
 
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
