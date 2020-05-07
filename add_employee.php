@@ -400,7 +400,7 @@
           </div>
           <div class="col-xs-4">
             <label>Mobile <font style="color:red;">*</font></label>
-            <input required value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
+            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
           </div>
           <br>
           <br>
@@ -431,7 +431,7 @@
           </div>
           <div class="col-xs-4">
             <label>Personal Email Address <font style="color:red;">*</font></label>
-            <input required value="<?php echo $cellphone1;?>" type="text" name="email" class="form-control" placeholder="">
+            <input  value="<?php echo $cellphone1;?>" type="text" name="email" class="form-control" placeholder="">
           </div>
           <br>
           <br>
@@ -472,11 +472,11 @@
           </div>
           <div class="col-xs-4">
             <label>Extension Name<font style="color:red;">*</font></label>
-            <input required value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
+            <input  value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
           </div>
           <div class="col-xs-4">
             <label>Office Email Address <font style="color:red;">*</font></label>
-            <input required value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
+            <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
           </div>
           <br>
           <br>

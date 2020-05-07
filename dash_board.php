@@ -178,23 +178,33 @@
                 </div>
                 <br>
                 <?php 
-                $select_gender = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeeinfo WHERE SEX_C = 'Female' AND STATUS = 0 ");
+                $select_gender = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeeinfo WHERE SEX_C = 'Female' AND ACTIVATED = 'Yes' ");
                 $rowG = mysqli_fetch_array($select_gender);
                 $female = $rowG['female'];
 
-                $select_genderB = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeeinfo WHERE SEX_C = 'Male' AND STATUS = 0 ");
+                $select_genderB = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeeinfo WHERE SEX_C = 'Male' AND ACTIVATED = 'Yes' ");
                 $rowGB = mysqli_fetch_array($select_genderB);
                 $male = $rowGB['male'];
 
                 $reg = $female + $male;
+
+                $select_gender2 = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeeinfo WHERE SEX_C = 'Female' AND ACTIVATED = 'No' ");
+                $rowG2 = mysqli_fetch_array($select_gender2);
+                $female2 = $rowG2['female'];
+
+                $select_genderB2 = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeeinfo WHERE SEX_C = 'Male' AND ACTIVATED = 'No' ");
+                $rowGB2 = mysqli_fetch_array($select_genderB2);
+                $male2 = $rowGB2['male'];
+
+                $reg2 = $female2 + $male2;
                 ?>
                 <div style="font-size: 25px;">
                   <i class="fa fa-fw fa-female"><?php echo $female?></i>
-                  <i class="fa fa-fw fa-female" style="float: right;padding-right: 70px;">0</i><br>
+                  <i class="fa fa-fw fa-female" style="float: right;padding-right: 70px;"><?php echo $female2?></i><br>
                   <i class="fa fa-fw fa-male"><?php echo $male?></i>
-                  <i class="fa fa-fw fa-male" style="float: right;padding-right: 70px;">0</i><br><br>
+                  <i class="fa fa-fw fa-male" style="float: right;padding-right: 70px;"><?php echo $male2?></i><br><br>
                   <i class="fa fa-fw fa-group"><?php echo $reg;?></i>
-                  <i class="fa fa-fw fa-group" style="float: right;padding-right: 70px;">0</i><br>
+                  <i class="fa fa-fw fa-group" style="float: right;padding-right: 70px;"><?php echo $reg2;?></i><br>
                   <!-- /.chart-responsive -->
                 </div>
               </div>
