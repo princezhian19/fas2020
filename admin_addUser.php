@@ -494,7 +494,7 @@
         </div>
         <div class="col-xs-4">
           <label>Mobile <font style="color:red;">*</font></label>
-          <input required value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
+          <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
         </div>
         <br>
         <br>
