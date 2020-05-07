@@ -1,7 +1,6 @@
 <?php 
 $username = $_SESSION['username'];
 echo $username.'userasdasd';
-}
 ?>
 <div class="row">
   <div class="col-md-12">
