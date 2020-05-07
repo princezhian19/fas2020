@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
   $_SESSION['username'] = $username ;
-
+  $username = $_SESSION['username'];
   $sqlUsername = mysqli_query($conn,"SELECT CODE,EMP_N,isPlanningOfficer FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' LIMIT 1");
   
   $row = mysqli_fetch_array($sqlUsername);
@@ -81,13 +81,13 @@ if (isset($_POST['submit'])) {
         
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Succesfully Login!')
-        window.location.href='home.php?division=".$division."';
+        window.location.href='home.php?division=".$division."&username=".$username."';
         </SCRIPT>");
       }else{
         
        echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Succesfully Login!')
-        window.location.href='home1.php?division=".$division."';
+        window.location.href='home1.php?division=".$division."&username=".$username."';
         </SCRIPT>");
        }  
   }
