@@ -81,7 +81,16 @@ $date = date('Y-m-d', strtotime($date1));
 $office = $_POST['office'];
 $name = $_POST['name'];
 $purpose = $_POST['purpose'];
+$purpose1 = $_POST['purpose1'];
+
+$purposes = $purpose.' '.$purpose1;
+
+
 $place = $_POST['place'];
+$place1= $_POST['place1'];
+
+$places = $place.' '.$place1;
+
 $obdate1 = $_POST['obdate'];
 $obdate = date('Y-m-d', strtotime($obdate1));
 
@@ -101,29 +110,24 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
-if($checked=="checked"){
+/* if($checked=="checked"){
 
-  //echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached File cannot be empty. </p> </div></div>  '; 
+ 
 
   $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,uc) 
   VALUES ('$obno','$date','$office','$name','$purpose','$place','$obdate','$timefrom','1')");
  
- /*  echo "INSERT INTO ob (obno ,date,office,name,purpose,place,obdate,timefrom,timeto,uc) 
-  VALUES ('$obno','$date','$office','$name','$purpose','$place','$obdate','$timefrom','1')";
-  exit(); */
  
 
 }
-else{
+else{ */
 
   $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto) 
-  VALUES ('$obno','$date','$office','$name','$purpose','$place','$obdate','$timefrom','$timeto')");
+  VALUES ('$obno','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto')");
  
-  /* echo "INSERT INTO ob (obno ,date,office,name,purpose,place,obdate,timefrom,timeto) 
-  VALUES ('$obno','$date','$office','$name','$purpose','$place','$obdate','$timefrom','$timeto')";
-  exit(); */
+
  
-  }
+  // }
 
 
 mysqli_close($conn);
@@ -151,7 +155,7 @@ else{
 <div class="box">
           <div class="box-body">
       
-            <h1 align="">Add Official Business</h1>
+            <h1 align="">Official Business</h1>
          
         <br>
       <li class="btn btn-success"><a href="ob.php" style="color:white;text-decoration: none;">Back</a></li>
@@ -160,291 +164,322 @@ else{
 
         <div class="class" >
         <form method="POST" action='' enctype="multipart/form-data" >
-                <table class="table"> 
-              
-                <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
-
-                    <div class="div" style="border:1px solid black;" >
 
 
-                    <!-- Header -->
-                    <div class="row" >
+            <table class="table"> 
 
-                        <div class="col-md-2 " >
-                        </div>
-
-                     
-
-                        <div class="col-md-8"style="overflow-x:auto;" >
-
-                        <img id="img" class="pull-left"  style="margin-top:20px; width:100;height:180px;" src="images/logo.png" title = "" />
-
-
-
-                        <div class="div" style ="text-align:center">
-
-                        <br>
-                        Republic of the Philippines
-                        <br>
-                        <h4><b>DEPARTMENT OF THE INTERIOR AND LOCAL GOVERNMENT
-                        <br>
-                        Region IV-A (CALABARZON)
-                        <br></h4>
-                        </b>
-                        Andenson Building 1, National Highway, Brgy. Parian
-                        <br>
-                        City of Calamba, Laguna
-                        <br>
-                        Tel: (049)8274755/(049)8274587/(049)8274560 •  Fax: (049) 8274745
-
-                        <br>
-                        Email: dilgcalabarzon@yahoo.com   •  Website: www.calabarzon.dilg.gov.ph
-                      
-                        </div>
-                       
-
-                        </div>
-                        <div class="col-md-2 " >
-                        </div>
-
-                      
-
-                    </div>
-                     <!-- Header -->
-
-                    <br> 
-                    <br>
-                    
-                    <!-- Permit Row -->
-                    <div class="row">
-
-                        <div class="col-md-22" style = "text-align:center" style="overflow-x:auto;">
-                        <h3>PERMIT TO LEAVE THE OFFICE</h3>
-                      </div>
-
-
-                    </div>
-                <!-- Permit Row -->
-
-
-                  <!-- No and date -->
-                  <div class="row" style="overflow-x:auto;">
-
-                  <div class="col-md-2" style = "text-align:center">
-                
-                  </div>
-                  <div class="col-md-4" style = "text-align:center">
-                 
-                  </div>
-
-                  <div class="col-md-4" style="overflow-x:auto;">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <label style="height:20px">No.</label>&nbsp;&nbsp;&nbsp;&nbsp; <input required value="<?php echo $obcount; ?>" readonly  class="pull-right" type="text" class="" style="height: 25px; width: 150px;" id="obno" name="obno" placeholder="obno" >
-                  <br>
+              <input  hidden  type="text"  class="" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>">
+              <!-- Header -->
+              <tr>
+              <td class="col-md-1"></td>
                   
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <label style="height:20px">Date</label>&nbsp;&nbsp;&nbsp;<input readonly required type="text" class="pull-right" style="height: 25px; width: 150px;" name="date" id="" value = "<?php echo date('m/d/Y') ?>" >
-                  <br>
-                  </div>
+              <td class="col-md-2" >
 
-                  <div class="col-md-2" style = "text-align:center">
-                
-                  </div>
+              <img id="img" class="pull-left"  style="margin-top:20px; width:100;height:130px;" src="images/logo.png" title = "" />
+                 
+              </td>
 
+              <td class="col-md-6" style = "text-align:center;">
 
-                  </div>
-                <!-- No and date -->
-
-                    <br> 
-                    <br>
-
-                 <!--Body -->
-                 <div class="row">
-
-                <div class="col-md-2" style = "text-align:center">
-
-                </div>
-                 <input hidden readonly required  type="text"  class="" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>">
-
-                <div class="col-md-8" style = "text-align:center" style="overflow-x:auto;">
-                Permission is requested by Mr./Ms.  &nbsp;&nbsp;<input required style="height: 25px;width: 130px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "">
-                to leave the office for the following purpose (s). &nbsp;&nbsp;<input style="height: 25px;width: 150px;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
-                </div>
-
-                <div class="col-md-2" style = "text-align:center">
                 <br>
-
-                </div>
-
-
-                </div>
-                <!--Body -->
-                
-                <br> 
+                Republic of the Philippines
                 <br>
+                <h4><b>DEPARTMENT OF THE INTERIOR AND LOCAL GOVERNMENT
+                <br>
+                Region IV-A (CALABARZON)
+                <br></h4>
+                </b>
+                3/F Andenson Bldg. 1, National Highway, Brgy. Parian, City of Calamba, Laguna 4027
+                
+                <br>
+                827-4745; 827-4560; 827-4587; 827-3143 ; 827-4745
 
-              <!--Body 2nd -->
-              <div class="row">
+                <br>
+                dilg4a.calabarzon@gmail.com www.calabarzon.dilg.gov.ph
 
-              <div class="col-md-2" >
+              </td>
 
-              </div>
-
-              <div class="col-md-4 pull-left" >
-              Place to be visited:  &nbsp;&nbsp;&nbsp;  <input style="height: 25px;width: 150px;" id="place" name="place" autocomplete ="off" type="text" class="" placeholder="Place">
-              <br>
-              <br>
              
-              Date:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input required type="text" class="" style="height: 25px;width: 150px;" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
 
-              </div>
+              <td class="col-md-2" >
+              <img id="img" class=""  style="margin-top:20px; width:100;height:130px;" src="images/calabarzon.png" title = "" />
+              </td>
 
-
-              <div class="col-md-4" >
-              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-              Time of Departure:<input required  type="time" class="pull-right" style="height: 25px;width: 150px;" name="timefrom" id="timefrom">
-              <br>
-              <br>
-
-              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-              Time of Return:
-              <input  type="time" class="pull-right" style="height: 25px;width: 150px;" name="timeto" id="timeto" style="display:block">
-
+              <td class="col-md-1"></td> 
               
+             
+              </tr>
+              <!-- Header -->
+
+
+
+              <!-- Permit -->
+              <tr>
+              <td class="col-md-1"></td>
+                  
+              <td class="col-md-2" >
+
+             
+                 
+              </td>
+
+              <td class="col-md-6" style = "text-align:center; ">
+
+              <h3>PERMIT TO LEAVE THE OFFICE</h3>
+
+              </td>
+
+             
+
+              <td class="col-md-2" >
+              
+              </td>
+
+              <td class="col-md-1"></td> 
+              
+             
+              </tr>
+              <!-- Permit -->
+
+                <!-- No -->
+                <tr>
+              <td class="col-md-1"></td>
+                  
+              <td class="col-md-2" >
+
+             
+                 
+              </td>
+
+              <td class="col-md-4" style = "text-align:center; font-family:Sylfaen;">
+
+           
+
+              </td>
+
+             
+
+              <td class="col-md-4" >
+              
+              <b><label style="height:20px">No	:</label></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input required value="<?php echo $obcount; ?>" readonly  class="" type="text" class="" style="border:none;border-bottom:1px solid black; font:bold; color:red; height: 25px; width: 120px;" id="obno" name="obno" placeholder="obno" >
               <br>
-               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-              <input onclick="myFunction()"  type="checkbox" class="checkboxgroup_g1" value="1" style="height: 25px;" name="uc" id="uc" ><label> Upon Completion<label>
-              </div>
+              <label style="height:20px">Date :</label>&nbsp;&nbsp;&nbsp;<input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font:bold; height: 25px; width: 120px;" name="date" id="" value = "<?php echo date('F d, Y') ?>" >
+              </td>
+
+              <td class="col-md-1"></td> 
+              
+             
+              </tr>
+              <!-- No -->
+
+
+              <br>
+              <!-- Body -->
+              <tr>
+              <td class="col-md-1"></td>
+                  
+           
+
+              <td colspan = 11 class="" style = " font-family:Sylfaen;">
+              <br>
+              Permission is requested by Mr./Ms.  &nbsp;&nbsp;<input required style="border:none;border-bottom:1px solid black; height: 25px;width: 480px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "">
+              to leave the office for the following purpose(s):
+                <br>
+                <input style="border:none;border-bottom:1px solid black; height: 25px;width: 975px;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
+                <input style="border:none;border-bottom:1px solid black; height: 25px;width: 972px;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="Purpose">.
+                <br>
+              </td>
+
+             
+
+
+              <td class="col-md-1"></td> 
+              
+             
+              </tr>
+              <!-- Body -->
 
 
 
+              <!-- place -->
+              <tr>
+              <td class="col-md-1"></td>
+                  
+           
 
-              <div class="col-md-2" >
+              <td colspan = 2 class="" style = " font-family:Sylfaen;">
             
-
-              </div>
-
-
-              </div>
-              <!--Body 2nd -->
-              <br> 
               <br>
-
-
-               <!--Signature -->
-               <div class="row">
-
-              <div class="col-md-2" style = "text-align:center">
-
-              </div>
-
-
-              <div class="col-md-4" style = "text-align:center">
+              Place to be visited:
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input style="border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place" name="place" autocomplete ="off" type="text" class="" placeholder="Place">
+              <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;
+              <input style="border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="Place">
+             
+              <br>
+              Date:
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;
               
-              </div>
+              <input required type="text" class="" style="border:none;border-bottom:1px solid black; height: 25px;width: 200px;" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+              </td>
 
-
-              <div class="col-md-4" style = "text-align:center">
-            &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              Signature of Requesting Employee (s).
-              <br>
-              <br>
-              <input style="height: 25px;width: 220px;"  required id="" name="" autocomplete ="off" type="text" class="pull-right" placeholder="Name" value = "">
-              </div>
-             
-              <div class="col-md-2" style = "text-align:center">
-             
-
-              </div>
-
-
-              </div>
-              <!--Signature -->
-              <br> 
+              <td colspan = 1 class="" style = " font-family:Sylfaen;">
             
+            <br>
+          
+            Time of Departure:
+            <input required  type="time" class="" style="border:none;border-bottom:1px solid black; height: 25px;width: 60px;" name="timefrom" id="timefrom">
+            <br>
+            Time of Return:
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input  type="time" class="" style="border:none;border-bottom:1px solid black; height: 25px;width: 60px;" name="timeto" id="timeto" style="display:block">
 
+           
+            <br>
+    
+            
+          
+            </td>
+        
+
+      
+              <td class="col-md-1"></td> 
               
-               <!--Note -->
-               <div class="row">
+             
+              </tr>
+              <!-- place -->
+             
 
-              <div class="col-md-2" style = "text-align:center">
+                <!-- signature -->
+                <tr>
+              <td class="col-md-1" style="padding:5px 5px 5px 5px;"></td>
+                  
+           
 
-              </div>
-
-
-              <div class="col-md-4" style = "text-align:left">
-              
-
-              <b>Employee(s) to perform official function and claim for 
-              Travelling expenses is hereby authorized.</b>
-             <!--  <br>
+              <td colspan = 2 class="" style = " font-family:Sylfaen;">
+             
+              <b>
               <br>
-              <input type="checkbox" name="" id="">YES &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  <input type="checkbox" name="" id="">NO -->
-              
-              
+              Employee(s) to perform official function and claim for
+              <br>    	           	 	
+              <b>
+              travelling expenses is hereby authorized.
 
-              </div>
+              </td>
 
-
-              <div class="col-md-4" style = "text-align:center">
-             
-              </div>
-             
-              <div class="col-md-2" style = "text-align:center">
-             
-
-              </div>
-
-
-              </div>
-              <!--Note -->
-
-              <br> 
+              <td colspan = 1 class="" style = " font-family:Sylfaen;">
               <br>
+              Signature of Requesting
+              <br>
+              Employee (s)
+              <br>
+              <br>
+              ________________________
+          
+            </td>
+        
 
+      
+              <td class="col-md-1"></td> 
+              
+             
+              </tr>
+              <!-- signature -->
 
-            <!--Approved -->
-            <div class="row">
+                <!-- Approved -->
+                <tr>
 
-            <div class="col-md-2" style = "text-align:center">
+                <?php
+                session_start();
+                $username = $_SESSION['username'];
+                $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                //Get Office
+                $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                $rowdiv = mysqli_fetch_array($select_user);
+                $DIVISION_C = $rowdiv['DIVISION_C'];
+                //echo $DIVISION_C;
+                $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                $rowdiv1 = mysqli_fetch_array($select_office);
+                $DIVISION_M = $rowdiv1['DIVISION_M'];
+                //GET Chief    
+               /*  $select_office = mysqli_query($conn, "SELECT pmo_contact_person from pmo where id = '$DIVISION_C'");
+                $rowdiv1 = mysqli_fetch_array($select_office);
+                $DIVISION_M = $rowdiv1['DIVISION_M']; */
+                $approved="";
+                $pos="";
+                if($DIVISION_M=='ORD'){
+                  $approved="Noel R. Bartolabac";
+                  $pos="ASST. REGIONAL DIRECTOR";
+                  }
+                  else if($DIVISION_M=='LGMED'){
 
-            </div>
+                  $approved="Gilberto L. Tumamac";
+                  $pos="OIC - LGMED Chief";
 
+                
+                  }
+                  
+                  else if($DIVISION_M=='LGCDD'){
 
-            <div class="col-md-4" style = "text-align:left">
+                  $approved="Jay-ar T. Beltran";
+                  $pos="OIC - LGCDD Chief";
+                  
+                  }
+                  
+                  else if($DIVISION_M=='FAD'){
 
-            </div>
+                  $approved="Dr. Carina S. Cruz";
+                  $pos="Chief, FAD";
+                 
+                  }
+                  else{
+                  
+                    $approved="";
+                    $pos="";
+                  }
+                ?>
+              <td class="col-md-1" style="padding:5px 5px 5px 5px;"></td>
+                  
+           
 
+              <td colspan = 2 class="" style = " font-family:Sylfaen;">
+             
+          
+              </td>
 
-            <div class="col-md-4" style = "text-align:center">
-           <!--  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-            <b>Approved:</b> -->
-            </div>
+              <td colspan = 1 class="" style = " font-family:Sylfaen;">
+              <br>
+              <b>Approved:</b>
+              <br>
+              <br>
+              ________________________
+              <br>
+              <b><?php echo $approved;?></b>
+              <br>
+              <b><?php echo $pos;?></b>
+             
+          
+            </td>
+        
 
-            <div class="col-md-2" style = "text-align:center">
+      
+              <td class="col-md-1"></td> 
+              
+             
+              </tr>
+              <!-- Approved -->
+              
 
-
-            </div>
-
-
-            </div>
-            <!--Approved -->
-
-
-
-
-                  <!-- End -->
-                    </div>
-                  <!-- End -->
-
-                  <br> 
-                  <br>
-                    
-
-               
-                </table>
-
+              
+              </table>
                 
                     <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
 
