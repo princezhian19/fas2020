@@ -1,6 +1,5 @@
 <?php 
-$username = $_SESSION['username'];
-echo $username.'userasdasd';
+$username = $_GET['username'];
 ?>
 <div class="row">
   <div class="col-md-12">
