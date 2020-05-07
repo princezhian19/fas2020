@@ -115,6 +115,7 @@
     $office_address  = $_POST["office_address"];  
     $office_contact  = $_POST["office_contact"];  
     $repassword      = $_POST["repassword"];  
+    $e_stats      = $_POST["e_stats"];  
     $cluster         = "";       
     $access          = "";       
     $cellphone       = $_POST["cellphone"];
@@ -138,13 +139,13 @@
           POSITION_C, DESIGNATION, 
           MOBILEPHONE, EMAIL, ALTER_EMAIL, AGENCY_EMP_NO, 
           CODE, UNAME, PSWORD, DATE_CREATED,
-          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE,SUFFIX,CIVIL_STATUS)
+          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE,SUFFIX,CIVIL_STATUS,ACTIVATED)
           VALUES (    ?, ?, ?, ?, ?, 
           ?, ?, ?, ?, 
           ?, ?, 
           ?, ?, ?, ?, 
           ?, ?, ?, ?,
-          ?, ?, ?, ?, '".$access."', 'user',?,?,?)";
+          ?, ?, ?, ?, '".$access."', 'user',?,?,?,?)";
 
 
           if ($insertSQL = $DBConn->prepare($sql_insert_query)) 
@@ -153,7 +154,7 @@
            $date_created   = date("Y-m-j H:i:s");
            $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
            $password   = crypt($password, '$2a$10$'.$code.'$');
-           $insertSQL->bind_param("ssssssddddssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $designation, $cellphone, $email, $alter_email, $employee_number, $code, $username, $password, $date_created, $cluster, $contact, $office, $division,$target_file,$suffix,$status);
+           $insertSQL->bind_param("ssssssddddsssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $designation, $cellphone, $email, $alter_email, $employee_number, $code, $username, $password, $date_created, $cluster, $contact, $office, $division,$target_file,$suffix,$status,$e_stats);
            /* execute query */
            $insertSQL->execute();
 
@@ -399,7 +400,7 @@
           </div>
           <div class="col-xs-4">
             <label>Mobile <font style="color:red;">*</font></label>
-            <input required value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
+            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
           </div>
           <br>
           <br>
@@ -430,7 +431,7 @@
           </div>
           <div class="col-xs-4">
             <label>Personal Email Address <font style="color:red;">*</font></label>
-            <input required value="<?php echo $cellphone1;?>" type="text" name="email" class="form-control" placeholder="">
+            <input  value="<?php echo $cellphone1;?>" type="text" name="email" class="form-control" placeholder="">
           </div>
           <br>
           <br>
@@ -471,11 +472,11 @@
           </div>
           <div class="col-xs-4">
             <label>Extension Name<font style="color:red;">*</font></label>
-            <input required value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
+            <input  value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
           </div>
           <div class="col-xs-4">
             <label>Office Email Address <font style="color:red;">*</font></label>
-            <input required value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
+            <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
           </div>
           <br>
           <br>
@@ -519,6 +520,15 @@
               <option value="Maried">Maried</option>
             </select>
           </div>
+          <div class="col-xs-4">
+            <label>Employement Status<font style="color:red;">*</font></label>
+               <select class="form-control select2" name="e_stats">
+              <option disabled selected></option>
+              <option value="Yes">Regular</option>
+              <option value="No">Cos</option>
+            </select>
+          </div>
+
 
           <br>
           <br>
