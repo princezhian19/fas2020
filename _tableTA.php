@@ -75,7 +75,6 @@ include 'connection.php';
                         <div class = "col-md-2" style = "float:right;margin-right:-30px;">
                           <li class="btn btn-success">
                           <a href="requestForm.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create Request</a>
-                          
                           </li>
 
                         </div>
@@ -101,7 +100,7 @@ include 'connection.php';
                         <th>TYPE OF REQUEST</th>
                         <th>Assigned Person</th>
                         <th>STATUS</th>
-                        <th style = "text-align:center;">ACTION</th>
+                        <th style = "text-align:center;max-width:20%;">ACTION</th>
                     </thead>
                         
                         

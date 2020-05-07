@@ -75,7 +75,7 @@ function filldataTable()
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="row no-gutters">
-                                                <div class="col-md-2" style = "background-color:#9FA8DA;height:112px;text-align:center;padding-top:3%;font-size:20px;height:115px;">
+                                                <div class="col-md-2" style = "background-color:#9FA8DA;height:112px;text-align:center;padding-top:3%;font-size:20px;height:140px;">
                                                 <?php echo '<b>'.$row['CONTROL_NO'].'</b>';?>
                                                 <?php 
                                                 if($row['STATUS_REQUEST'] == 'Submitted')
@@ -89,6 +89,8 @@ function filldataTable()
                                                     echo '<label style = "color:darkblue;">'.$row['STATUS_REQUEST'].'</label>';
                                                 }
                                                 ?>
+                                                <button class = "btn btn-md btn-success"><a style= "color:#fff" href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO'];?>">Export</a></button>
+
                                                     
                                                 </div>
                                                 <div class="col-md-10" style = "background-color:#CFD8DC;">
@@ -99,38 +101,40 @@ function filldataTable()
                                                     </div>
                                                     <div class="col-lg-6">
                                                     
-                                                    <?php
-                                      
-                                                            if($row['STATUS_REQUEST'] == 'For action')
-                                                            {
-
-                                                            
-                                                            if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+                                                        <?php
+                                        
+                                                                if($row['STATUS_REQUEST'] == 'For action')
                                                                 {
-                                                                    ?><br>
-                                                                    <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = " pull-right  btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
-                                                              
-                                                                    <?php
+
+                                                                
+                                                                if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+                                                                    {
+                                                                        ?><br>
+                                                                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = " pull-right  btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
+                                                                
+                                                                        <?php
+                                                                    }else{
+                                                                        ?><br>
+                                                                        <button disabled id ="sweet-16" data-id ="<?php echo $row['CONTROL_NO'];?>" class = " pull-right sweet-14 btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
+                                                        
+                                                                        <?php
+                                                                    }
+
                                                                 }else{
                                                                     ?><br>
-                                                                    <button disabled id ="sweet-16" data-id ="<?php echo $row['CONTROL_NO'];?>" class = " pull-right sweet-14 btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
-                                                      
+                                                                    <button data-id ="<?php echo $row['CONTROL_NO'];?>" class = "pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
+
                                                                     <?php
                                                                 }
-
-                                                            }else{
-                                                                ?><br>
-                                                                <button data-id ="<?php echo $row['CONTROL_NO'];?>" class = "pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
-
-                                                                <?php
-                                                            }
-                                                        ?>
+                                                            ?>
                                                          <div   style = "padding-top:10px;">
                                                             <span style="font-size:10px;vertical-align:top;line-height:10px;">Category</span>
                                                             <span style="font-size:10px;line-height:40px;50px;margin-left:-42.8px;font-size:12px;"><?php echo $row['TYPE_REQ'];?></span>
                                                         </div> 
                                                     </div>
-                                                    
+                                                </div>
+                                                <div class="col-md-10" style = "background-color:#CFD8DC;">
+                                                   &nbsp;
                                                 </div>
                                                 <?php
                                                     if($row['STATUS_REQUEST'] == 'For action')
@@ -201,7 +205,8 @@ function filldataTable()
                                                                   }
                                                                 ?>
                                                         </span>
-                                                        </div>                                  
+                                                   
+                                                                                
                                                        
                                                        
                                                        <?php 
@@ -466,9 +471,34 @@ function showWorkload($ICT)
                 <div class="panel panel-default">
                     <div class="box-body">      
                     <div> <h1>Processing of ICT Technical Assistance</h1><br> </div>
-                <button class = "btn btn-success btn-md"><a href = "requestForm.php?division=<?php echo $_SESSION['division'];?>" style = "decoration:none;color:#fff;">Create Request</a> </button>
-                <button class = "btn btn-success btn-md"><a href = "techassistance.php?division=<?php echo $_GET['division'];?>" style = "decoration:none;color:#fff;">Monitoring</a> </button>
+                
+                  <div class="well">
+                    <div class="row">
+                        <div class="col-md-2">
+                              <?php include 'current_month.php';?>
+                        </div>
+                        <div class="col-md-2">
+                              <select class="form-control " id="selectYear" style="width: 100%;">
+                                <?php 
+                                for($i= 2020; $i < 2021; $i++)
+                                {
+                                  echo '<option value='.$i.'>'.$i.'</option>';
+                                }
+                                ?>
+                              </select>
+                        </div>
+                        <div class="col-md-4">
+                          <button class="btn btn-success" id = "fml"> Export PML Report</button>
+                         <a class = "btn btn-md btn-success" href="#" style="color:white;text-decoration: none;" id = "psl">Export PSL Report</a>
+                        </div>
+                        <div class="col-md-4">
+                          <button class="btn btn-success" style = "margin-left:50%;"><a style = "color:#fff;decoration:none;" href="requestForm.php?division=<?php echo $_GET['division'];?>">Create Request</a></button>
+                         <a class = "btn btn-md btn-success" style="color:white;text-decoration: none;"  href = "techassistance.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Monitoring</a>
+                        </div>
 
+               
+                    </div>
+                  </div>
 
                     </div>
              
