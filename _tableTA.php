@@ -1,6 +1,56 @@
 <?php
+session_start();
 include('db.class.php'); // call db.class.php
 $mydb = new db(); // create a new object, class db()
+
+function countSubmitted()
+{
+  include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
+  $query = "SELECT count(*) as 'count_sub' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'Submitted' and `REQ_BY` = '".$a."' ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_sub'];
+  }
+}
+function countReceived()
+{
+  include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
+  $query = "SELECT count(*) as 'count_rec' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'Received' and `REQ_BY` = '".$a."' ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_rec'];
+  }
+}
+function countForAction()
+{
+  include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
+  $query = "SELECT count(*) as 'count_fa' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'For action' and `REQ_BY` = '".$a."' ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_fa'];
+  }
+}
+function countCompleted()
+{
+  include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
+  $query = "SELECT count(*) as 'count_com' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'Completed' and `REQ_BY` = '".$a."' ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_com'];
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,11 +78,16 @@ th{
       <div class="box">
         <div class="panel panel-defasult">
           <div class="box-body"> 
+          
             <div>
                 <h1>Monitoring of ICT Technical Assistance Request</h1><br>
                 <?php 
                 ?>
+                
             </div>
+            
+     
+            
             <?php
 include 'connection.php';
             $name = $_SESSION['username'];
@@ -43,6 +98,78 @@ include 'connection.php';
               if($_GET['division'] != '10')
               {
                 ?>
+                 <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-primary">
+            <div class="inner">
+              <h3><?php echo countForAction();?></h3>
+
+              <p>For Action</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="fa fa-shopping-cart"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3><?php echo countCompleted();?></h3>
+
+              <p>COMPLETED</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="ion ion-stats-bars"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3><?php echo countReceived();?></h3>
+
+              <p>RECIEVED</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="ion ion-person-add"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3><?php echo countSubmitted();?></h3>
+
+              <p>SUBMITTED</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="ion ion-pie-graph"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
                 <li class="btn btn-success">
                   <a href="requestForm.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create Request</a>
                 </li>
@@ -98,7 +225,7 @@ include 'connection.php';
                         <th>OFFICE</th>
                         <th>ISSUE/CONCERN</th>
                         <th>TYPE OF REQUEST</th>
-                        <th>Assigned Person</th>
+                        <th>ASSIGNED PERSON</th>
                         <th>STATUS</th>
                         <th style = "text-align:center;max-width:20%;">ACTION</th>
                     </thead>

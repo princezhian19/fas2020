@@ -24,11 +24,44 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                 
                 
                 $request_date = date('M d, Y',strtotime($row['REQ_DATE']));
-                $started_date = date('M d, Y',strtotime($row['START_DATE']));
+
+
+                if($row['START_DATE'] == '' || $row['START_DATE'] == null)
+                {
+                    $started_date = '';
+
+
+                }else{
+                    $started_date = date('M d, Y',strtotime($row['START_DATE']));
+
+                }
+                if($row['START_TIME'] == '' || $row['START_TIME'] == null)
+                {
+                $started_time ='';
+
+                }else{
                 $started_time = date('g:i A',strtotime($row['START_TIME']));
 
-                $completed_date = date('M d, Y',strtotime($row['COMPLETED_DATE']));
+                }
+
+
+
+
+                    if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == null)
+                    {
+                    $completed_date = '';
+                    }else{
+                    $completed_date = date('M d, Y',strtotime($row['COMPLETED_DATE']));
+                    }
+
+
+                    if($row['COMPLETED_TIME'] == '' || $row['COMPLETED_TIME'] == null)
+                    {
+                    $completed_time = '';
+                    }else{
                 $completed_time = date('g:i A',strtotime($row['COMPLETED_TIME']));
+                        
+                    }
                   // $req_date_format = date("Y-m-d",strtotime($request_date));
                 $control_no = $row['CONTROL_NO'];
                 $request_time = date('g:i A',strtotime($row['REQ_TIME']));
@@ -53,6 +86,7 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                       // $others2 = $row['others2'];
                       // $others3 = $row['others3'];
                       $issue = $row['ISSUE_PROBLEM'];
+                      $status_desc = $row['STATUS_DESC'];
                       $timeliness = $row['TIMELINESS'];
                       $quality = $row['QUALITY'];
                       $assisted_by =strtoupper($row['ASSIST_BY']);
@@ -79,7 +113,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory1"=>'correct.png',
                                     "currentuser"=>$name,
@@ -102,7 +136,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory2"=>'correct.png',
                                     "currentuser"=>$name,
@@ -125,7 +159,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory3"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -148,7 +182,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory4"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -171,7 +205,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory5"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -195,7 +229,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category2"=>'correct.png',
                                     "req_type_subcategory6"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -218,7 +252,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category2"=>'correct.png',
                                     "req_type_subcategory7"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -241,7 +275,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "site"=>$site,
                                     "purpose"=>$purpose,
                                     "req_type_category2"=>'correct.png',
@@ -266,7 +300,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "purpose2"=>$purpose2,
                                     "req_type_category2"=>'correct.png',
                                     "req_type_subcategory9"=>'correct.png',
@@ -291,7 +325,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category3"=>'correct.png',
                                     "req_type_subcategory10"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -314,7 +348,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category3"=>'correct.png',
                                     "req_type_subcategory11"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -338,7 +372,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category3"=>'correct.png',
                                     "req_type_subcategory12"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -362,7 +396,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category3"=>'correct.png',
                                     "req_type_subcategory13"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -386,7 +420,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "softwares"=>$softwares,    
                                     "req_type_category3"=>'correct.png',
                                     "req_type_subcategory14"=>'correct.png',
@@ -411,7 +445,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category4"=>'correct.png',
                                     "req_type_subcategory15"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -435,7 +469,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeli[ness"=>$timeliness,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category4"=>'correct.png',
                                     "req_type_subcategory16"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -459,7 +493,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category4"=>'correct.png',
                                     "req_type_subcategory17"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -483,7 +517,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category5"=>'correct.png',
                                     "req_type_subcategory18"=>'correct.png',
                                     "currentuser"=>$name,                                     
@@ -506,7 +540,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "changeaccount"=>$changeaccount,
                                     "req_type_category5"=>'correct.png',
                                     "req_type_subcategory19"=>'correct.png',
@@ -530,7 +564,7 @@ switch($req_type_subcategory)
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
-                                    "issue"=>$issue,"completed_time"=>$completed_time,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category5"=>'correct.png',
                                     "req_type_subcategory20"=>'correct.png',
                                     "currentuser"=>$name,                                     

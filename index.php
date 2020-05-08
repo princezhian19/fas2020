@@ -75,7 +75,7 @@ if (isset($_POST['submit'])) {
     $middle = $row['MIDDLE_M'];
     $_SESSION['complete_name'] = $row['FIRST_M'].' '.$middle[0].'. '.$row['LAST_M'];
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
-    $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
+    $_SESSION['complete_name3'] = $row['FIRST_M'].' '.$middle.' '.$row['LAST_M'];
 
       if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
         

@@ -19,6 +19,7 @@ $division  = $_SESSION['division'];
 $complete_name = $_SESSION['complete_name'];
 // ===============================================================================
 $query = "SELECT * from tblemployee where UNAME = '$name'";
+
 $result = mysqli_query($con,$query);
 if($row = mysqli_fetch_array($result))
 {
