@@ -26,9 +26,22 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                 $request_date = date('M d, Y',strtotime($row['REQ_DATE']));
                 $started_date = date('M d, Y',strtotime($row['START_DATE']));
                 $started_time = date('g:i A',strtotime($row['START_TIME']));
+                    if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == null)
+                    {
+                    $completed_date = '';
+                    }else{
+                    $completed_date = date('M d, Y',strtotime($row['COMPLETED_DATE']));
+                    }
 
-                $completed_date = date('M d, Y',strtotime($row['COMPLETED_DATE']));
+
+                    if($row['COMPLETED_TIME'] == '' || $row['COMPLETED_TIME'] == null)
+                    {
+                        $completed_time = '';
+
+                    }else{
                 $completed_time = date('g:i A',strtotime($row['COMPLETED_TIME']));
+                        
+                    }
                   // $req_date_format = date("Y-m-d",strtotime($request_date));
                 $control_no = $row['CONTROL_NO'];
                 $request_time = date('g:i A',strtotime($row['REQ_TIME']));
