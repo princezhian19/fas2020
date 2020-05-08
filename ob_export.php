@@ -12,10 +12,14 @@ $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivisio
 $rowdiv1 = mysqli_fetch_array($select_office);
 $DIVISION_M = $rowdiv1['DIVISION_M'];
 ?>
+
+
 <?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
 $objPHPExcel = PHPExcel_IOFactory::load("library/ob_export.xlsx");
+
+
 $id = $_GET['id'];
 $sql = mysqli_query($conn, "SELECT obno,date,name,purpose,place,obdate,timefrom,timeto,uc  FROM ob WHERE id = '$id' ");
 $excelrow = mysqli_fetch_array($sql);
@@ -29,28 +33,28 @@ $place = $excelrow['place'];
 $obdate1 = $excelrow['obdate'];
 $obdate = date('F d, Y', strtotime($obdate1));
 $timefrom1 = $excelrow['timefrom'];
+$timefrom=  date("g:h A",strtotime($timefrom1));
+
+
+
+
 $timeto1 = $excelrow['timeto'];
+$timeto=  date("g:h A",strtotime($timeto1));
 $uc = $excelrow['uc'];
 
 /* Personnel copy */
 $objPHPExcel->setActiveSheetIndex()->setCellValue('J12',$obno);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('J13',$date);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('F16',$name);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C17',$purpose);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E16',$name);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B17',$purpose);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D19',$place);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D21',$obdate);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('K19',$timefrom1);
-
-if($uc==1){
-$objPHPExcel->setActiveSheetIndex()->setCellValue('K21','UC');
-}
-else{
-$objPHPExcel->setActiveSheetIndex()->setCellValue('K21',$timeto1);
-
-}
+$objPHPExcel->setActiveSheetIndex()->setCellValue('K19',$timefrom);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('K21',$timeto);
 
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('I26',$name);
+
+//$objPHPExcel->setActiveSheetIndex()->setCellValue('I26',$name);
 
 if($DIVISION_C==1){
 
@@ -88,25 +92,21 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('I34','');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('J49',$obno);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('J50',$date);
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('F53',$name);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C54',$purpose);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E53',$name);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B54',$purpose);
 
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D56',$place);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D58',$obdate);
 
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('K56',$timefrom1);
-if($uc==1){
-$objPHPExcel->setActiveSheetIndex()->setCellValue('K58','UC');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('K56',$timefrom);
 
-}
-else{
-$objPHPExcel->setActiveSheetIndex()->setCellValue('K58',$timeto1);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('K58',$timeto);
 
-}
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('I63',$name);
+
+//$objPHPExcel->setActiveSheetIndex()->setCellValue('I63',$name);
 
 if($DIVISION_C==1){
 
