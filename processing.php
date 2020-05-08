@@ -488,25 +488,8 @@ function showWorkload($ICT)
                 
                   <div class="well">
                     <div class="row">
-                        <div class="col-md-2">
-                              <?php include 'current_month.php';?>
-                        </div>
-                        <div class="col-md-2">
-                              <select class="form-control " id="selectYear" style="width: 100%;">
-                                <?php 
-                                for($i= 2020; $i < 2021; $i++)
-                                {
-                                  echo '<option value='.$i.'>'.$i.'</option>';
-                                }
-                                ?>
-                              </select>
-                        </div>
                         <div class="col-md-4">
-                          <button class="btn btn-success" id = "fml"> Export PML Report</button>
-                         <a class = "btn btn-md btn-success" href="#" style="color:white;text-decoration: none;" id = "psl">Export PSL Report</a>
-                        </div>
-                        <div class="col-md-4">
-                          <button class="btn btn-success" style = "margin-left:50%;"><a style = "color:#fff;decoration:none;" href="requestForm.php?division=<?php echo $_GET['division'];?>">Create Request</a></button>
+                          <button class="btn btn-success"><a style = "color:#fff;decoration:none;" href="requestForm.php?division=<?php echo $_GET['division'];?>"><i class = "fa fa-plus"></i>&nbsp;Create Request</a></button>
                          <a class = "btn btn-md btn-success" style="color:white;text-decoration: none;"  href = "techassistance.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Monitoring</a>
                         </div>
 

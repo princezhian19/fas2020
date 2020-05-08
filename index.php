@@ -126,7 +126,7 @@ if (isset($_POST['submit'])) {
       </div>
       <!-- /.login-logo -->
       <div class="login-box-body">
-        <p ><img src="images/login.png" style="width: 100%; height: auto;"></p>
+        <p ><img src="images/logoin.jpg" style="width: 100%; height: auto;"></p>
 
         <form method="POST">
           <div class="form-group has-feedback">
