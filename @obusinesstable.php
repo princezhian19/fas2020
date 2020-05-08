@@ -4,7 +4,7 @@ header('location:index.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
-$username = $_SESSION['username'];
+$username1 = $_SESSION['username'];
 
 
 
@@ -13,7 +13,7 @@ $username = $_SESSION['username'];
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
   //Get Office
-$select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+$select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username1'");
 $rowdiv = mysqli_fetch_array($select_user);
 $DIVISION_C = $rowdiv['DIVISION_C'];
 
@@ -181,7 +181,7 @@ $edit="edit";
 
                         <?php if ($submitteddate1 == 0000-00-00): ?>
                           <!--  -->
-                          <a  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                          <a  href='ob_export.php?id=<?php echo $id;?>&user=<?php echo $username1;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                           <a href='OfficialBusinessUpdate.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                           <a onclick="return confirm('Are you sure you want to cancel this record?');" href='ob_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 

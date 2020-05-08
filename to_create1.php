@@ -347,7 +347,7 @@ else{
 
                     &nbsp;&nbsp;&nbsp;
 
-                    <input  type="time" class="" style="height: 35px; width:300px;" name="timefrom" id="timefrom"></td>
+                    <input required  type="time" class="" style="height: 35px; width:300px;" name="timefrom" id="timefrom"></td>
                 </td>
                
 
@@ -375,7 +375,7 @@ else{
 
                     &nbsp;&nbsp;&nbsp;
 
-                    <input  type="time" class="" style="height: 35px; width:300px;" name="timeto" id="timeto"></td>
+                    <input required  type="time" class="" style="height: 35px; width:300px;" name="timeto" id="timeto"></td>
                                     
                 </td>
                
@@ -398,7 +398,7 @@ else{
                     <label>Layunin ng Paglalakbay:</label>
                     &nbsp;&nbsp;&nbsp;
 
-                    <input id="purpose" name="purpose" autocomplete ="off" style="height: 35px; width:300px;" type="text" class="" placeholder="purpose">
+                    <input required id="purpose" name="purpose" autocomplete ="off" style="height: 35px; width:300px;" type="text" class="" placeholder="purpose">
                   
                 </td>
 
@@ -407,7 +407,7 @@ else{
                     <label>Uri ng Sasakyan:</label>
                     &nbsp;&nbsp;&nbsp;
 
-                    <input id="vehicle" name="vehicle" autocomplete ="off" style="height: 35px; width:300px;" type="text" class="" placeholder="vehicle">
+                    <input required id="vehicle" name="vehicle" autocomplete ="off" style="height: 35px; width:300px;" type="text" class="" placeholder="vehicle">
                 </td>
               
 

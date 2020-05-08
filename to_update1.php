@@ -383,7 +383,7 @@ else{
 
                     &nbsp;&nbsp;&nbsp;
 
-                    <input  type="time" class="" style="height: 35px; width:300px;" name="timefrom" id="timefrom" value="<?php echo $timefrom1;?>"></td>
+                    <input required  type="time" class="" style="height: 35px; width:300px;" name="timefrom" id="timefrom" value="<?php echo $timefrom1;?>"></td>
                 </td>
                
 
@@ -411,7 +411,7 @@ else{
 
                     &nbsp;&nbsp;&nbsp;
 
-                    <input  type="time" class="" style="height: 35px; width:300px;" name="timeto" id="timeto" value="<?php echo $timeto1;?>"></td>
+                    <input required  type="time" class="" style="height: 35px; width:300px;" name="timeto" id="timeto" value="<?php echo $timeto1;?>"></td>
                                     
                 </td>
                
@@ -434,7 +434,7 @@ else{
                     <label>Layunin ng Paglalakbay:</label>
                     &nbsp;&nbsp;&nbsp;
 
-                    <input id="purpose" name="purpose" autocomplete ="off" style="height: 35px; width:300px;" type="text" class="" value="<?php echo $purpose;?>" placeholder="purpose">
+                    <input required id="purpose" name="purpose" autocomplete ="off" style="height: 35px; width:300px;" type="text" class="" value="<?php echo $purpose;?>" placeholder="purpose">
                   
                 </td>
 
@@ -443,7 +443,7 @@ else{
                     <label>Uri ng Sasakyan:</label>
                     &nbsp;&nbsp;&nbsp;
 
-                    <input id="vehicle" name="vehicle" autocomplete ="off" style="height: 35px; width:300px;" type="text" class=""  value="<?php echo $vehicle;?>" placeholder="vehicle">
+                    <input required id="vehicle" name="vehicle" autocomplete ="off" style="height: 35px; width:300px;" type="text" class=""  value="<?php echo $vehicle;?>" placeholder="vehicle">
                 </td>
               
 
