@@ -1,13 +1,20 @@
 
 <?php
-session_start();
-$username = $_SESSION['username'];
+/* session_start();
+$username = $_SESSION['username']; */
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+
 //Get Office
-$select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+
+/* echo $_GET['user']; */
+$select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '".$_GET['user']."'");
+/* echo "SELECT DIVISION_C FROM tblemployee WHERE UNAME = '".$_GET['user']."'"; */
+
 $rowdiv = mysqli_fetch_array($select_user);
 $DIVISION_C = $rowdiv['DIVISION_C'];
-//echo $DIVISION_C;
+/* echo $DIVISION_C; */
+/* exit(); */
 $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
 $rowdiv1 = mysqli_fetch_array($select_office);
 $DIVISION_M = $rowdiv1['DIVISION_M'];
@@ -21,7 +28,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/ob_export.xlsx");
 
 
 $id = $_GET['id'];
-$sql = mysqli_query($conn, "SELECT obno,date,name,purpose,place,obdate,timefrom,timeto,uc  FROM ob WHERE id = '$id' ");
+$sql = mysqli_query($conn, "SELECT obno,date,name,purpose,place,obdate,timefrom,timeto,uc  FROM ob WHERE id = ".$_GET['id']." ");
 $excelrow = mysqli_fetch_array($sql);
 $obno = $excelrow['obno'];
 $date1 = $excelrow['date'];
@@ -77,7 +84,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('I34','OIC - LGCDD Chief');
 else if($DIVISION_C==10){
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('I33','Dr. Carina S. Cruz');
-$objPHPExcel->setActiveSheetIndex()->setCellValue('I34','CAO/FAD-Chief');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('I34','Chief, FAD');
 }
 else{
 
@@ -129,7 +136,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('I71','OIC - LGCDD Chief');
 else if($DIVISION_C==10){
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('I70','Dr. Carina S. Cruz');
-$objPHPExcel->setActiveSheetIndex()->setCellValue('I71','CAO/FAD-Chief');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('I71','Chief, FAD');
 }
 else{
 
