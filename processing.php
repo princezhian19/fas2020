@@ -466,6 +466,51 @@ function showWorkload($ICT)
     <?PHP
     }
 }
+function countSubmitted()
+{
+  include 'connection.php';
+  $query = "SELECT count(*) as 'count_sub' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'Submitted'  ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_sub'];
+  }
+}
+function countReceived()
+{
+  include 'connection.php';
+  $query = "SELECT count(*) as 'count_rec' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'Received'  ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_rec'];
+  }
+}
+function countForAction()
+{
+  include 'connection.php';
+  $query = "SELECT count(*) as 'count_fa' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'For action'  ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_fa'];
+  }
+}
+function countCompleted()
+{
+  include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
+  $query = "SELECT count(*) as 'count_com' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'Completed' ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_com'];
+  }
+}
 ?>
 <body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
@@ -485,7 +530,78 @@ function showWorkload($ICT)
                 <div class="panel panel-default">
                     <div class="box-body">      
                     <div> <h1>Processing of ICT Technical Assistance</h1><br> </div>
-                
+                   <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-primary">
+            <div class="inner">
+              <h3><?php echo countForAction();?></h3>
+
+              <p>FOR ACTION</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="fa fa-shopping-cart"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3><?php echo countCompleted();?></h3>
+
+              <p>COMPLETED</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="ion ion-stats-bars"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3><?php echo countReceived();?></h3>
+
+              <p>RECIEVED</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="ion ion-person-add"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3><?php echo countSubmitted();?></h3>
+
+              <p>SUBMITTED</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="ion ion-pie-graph"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
                   <div class="well">
                     <div class="row">
                         <div class="col-md-4">

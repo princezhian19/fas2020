@@ -6,8 +6,9 @@ $mydb = new db(); // create a new object, class db()
 function countSubmitted()
 {
   include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
   $query = "SELECT count(*) as 'count_sub' FROM tbltechnical_assistance 
-  where `STATUS_REQUEST` = 'Submitted' and `REQ_BY` = '".$_SESSION['complete_name3']."' ";
+  where `STATUS_REQUEST` = 'Submitted' and `REQ_BY` = '".$a."' ";
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
@@ -17,8 +18,9 @@ function countSubmitted()
 function countReceived()
 {
   include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
   $query = "SELECT count(*) as 'count_rec' FROM tbltechnical_assistance 
-  where `STATUS_REQUEST` = 'Received' and `REQ_BY` = '".$_SESSION['complete_name3']."' ";
+  where `STATUS_REQUEST` = 'Received' and `REQ_BY` = '".$a."' ";
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
@@ -28,8 +30,9 @@ function countReceived()
 function countForAction()
 {
   include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
   $query = "SELECT count(*) as 'count_fa' FROM tbltechnical_assistance 
-  where `STATUS_REQUEST` = 'For action' and `REQ_BY` = '".$_SESSION['complete_name3']."' ";
+  where `STATUS_REQUEST` = 'For action' and `REQ_BY` = '".$a."' ";
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
