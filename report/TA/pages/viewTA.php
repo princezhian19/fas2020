@@ -24,8 +24,29 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                 
                 
                 $request_date = date('M d, Y',strtotime($row['REQ_DATE']));
-                $started_date = date('M d, Y',strtotime($row['START_DATE']));
+
+
+                if($row['START_DATE'] == '' || $row['START_DATE'] == null)
+                {
+                    $started_date = '';
+
+
+                }else{
+                    $started_date = date('M d, Y',strtotime($row['START_DATE']));
+
+                }
+                if($row['START_TIME'] == '' || $row['START_TIME'] == null)
+                {
+                $started_time =''
+
+                }else{
                 $started_time = date('g:i A',strtotime($row['START_TIME']));
+
+                }
+
+
+
+
                     if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == null)
                     {
                     $completed_date = '';
@@ -36,8 +57,7 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
 
                     if($row['COMPLETED_TIME'] == '' || $row['COMPLETED_TIME'] == null)
                     {
-                        $completed_time = '';
-
+                    $completed_time = '';
                     }else{
                 $completed_time = date('g:i A',strtotime($row['COMPLETED_TIME']));
                         
