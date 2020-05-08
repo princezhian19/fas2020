@@ -396,9 +396,23 @@ function showWorkload($ICT)
             <ul class="timeline timeline-inverse" >
                         <!-- timeline time label -->
                         <li class="time-label">
-                            <span class="bg-red">
+                        <?php 
+                             if($row['STATUS_REQUEST'] == 'Completed')
+                             {
+                                 ?>
+                                <span class="bg-green">
+                                Request Completed
+                            </span>
+                                 <?php
+                             }else{
+                                ?>
+                                <span class="bg-red">
                                 Work Load
                             </span>
+                                <?php
+                             }
+                        ?>
+                            
                         </li>
                         <li>
          
