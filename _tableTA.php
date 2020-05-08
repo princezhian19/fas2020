@@ -86,7 +86,19 @@ th{
                 
             </div>
             
-      <!-- Small boxes (Stat box) -->
+     
+            
+            <?php
+include 'connection.php';
+            $name = $_SESSION['username'];
+            $query = "SELECT * from tblemployee where UNAME = '$name'";
+            $result = mysqli_query($conn,$query);
+            if($row = mysqli_fetch_array($result))
+            {
+              if($_GET['division'] != '10')
+              {
+                ?>
+                 <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
@@ -158,18 +170,6 @@ th{
         <!-- ./col -->
       </div>
       <!-- /.row -->
-            
-            <?php
-include 'connection.php';
-            $name = $_SESSION['username'];
-            $query = "SELECT * from tblemployee where UNAME = '$name'";
-            $result = mysqli_query($conn,$query);
-            if($row = mysqli_fetch_array($result))
-            {
-              if($_GET['division'] != '10')
-              {
-                ?>
-                
                 <li class="btn btn-success">
                   <a href="requestForm.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create Request</a>
                 </li>
