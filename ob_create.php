@@ -6,10 +6,13 @@ header('location:index.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
+
+
 }
  
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $query = mysqli_query($conn, "SELECT FIRST_M,MIDDLE_M, LAST_M, DIVISION_C FROM tblemployee where UNAME  = '$username'");
+
 
 $row = mysqli_fetch_array($query);
 
@@ -24,13 +27,21 @@ $row = mysqli_fetch_array($query);
 // echo '<br>';
 
 //Get Office
-$select_user = mysqli_query($conn,"SELECT DIVISION_C, FROM tblemployee WHERE UNAME = '$username'");
+$select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+
+
 $rowdiv = mysqli_fetch_array($select_user);
+
+
 $DIVISION_C = $rowdiv['DIVISION_C'];
+
+
 
 $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
 $rowdiv1 = mysqli_fetch_array($select_office);
 $DIVISION_M = $rowdiv1['DIVISION_M'];
+
+
 
 $checked = "";
 
@@ -80,6 +91,8 @@ $obno = $_POST['obno'];
 $date1 = $_POST['date'];
 $date = date('Y-m-d', strtotime($date1));
 $office = $_POST['office'];
+/* echo $office;
+exit(); */
 $name = $_POST['name'];
 $purpose = $_POST['purpose'];
 $purpose1 = $_POST['purpose1'];
