@@ -50,7 +50,7 @@ $edit="edit";
         
           <div class=""  style="overflow-x:auto;">
          
-            <li class="btn btn-success"><a href="OfficialBusinessCreate.php" style="color:white;text-decoration: none;">Add</a></li>
+            <li class="btn btn-success"><a href="OfficialBusinessCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Add</a></li>
         
               <br>
               <br>
