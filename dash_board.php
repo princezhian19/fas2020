@@ -463,7 +463,7 @@
       <div class="box">
         <div class="panel-heading bg-blue">
           Procurement <!-- Item(s) -->
-          <a  class="pull-right btn btn-success btn-xs">View All</a>
+          <a  class="pull-right btn btn-success btn-xs" href="MonitoringPr.php">View All</a>
           <div class="clearfix"></div>
         </div>
         <table id="" class="table table-striped table-bordered" style="width:;background-color: white;">
