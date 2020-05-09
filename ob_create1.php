@@ -33,6 +33,9 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
 $checked = "";
 
+echo $DIVISION_M;
+
+
 
 
 
@@ -79,6 +82,7 @@ $obno = $_POST['obno'];
 $date1 = $_POST['date'];
 $date = date('Y-m-d', strtotime($date1));
 $office = $_POST['office'];
+
 $name = $_POST['name'];
 $purpose = $_POST['purpose'];
 $place = $_POST['place'];

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5be4a1da-05bd-4f9e-8b3b-66b0111942f6">
 	<property name="ireport.zoom" value="2.3579476910000987"/>
-	<property name="ireport.x" value="397"/>
-	<property name="ireport.y" value="1118"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1022"/>
 	<parameter name="currentuser" class="java.lang.String"/>
 	<parameter name="requested_date" class="java.lang.String"/>
 	<parameter name="started_date" class="java.lang.String"/>
@@ -49,6 +49,7 @@
 	<parameter name="others2" class="java.lang.String"/>
 	<parameter name="others3" class="java.lang.String"/>
 	<parameter name="issue" class="java.lang.String"/>
+	<parameter name="status_desc" class="java.lang.String"/>
 	<parameter name="timeliness" class="java.lang.String"/>
 	<parameter name="quality" class="java.lang.String"/>
 	<parameter name="equipment_type" class="java.lang.String"/>
@@ -1538,7 +1539,7 @@
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{issue}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{status_desc}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="356" y="436" width="65" height="15" uuid="6b21c5b7-fc93-4a11-adb1-85a06a741126"/>

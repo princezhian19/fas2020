@@ -152,8 +152,6 @@ $edit="edit";
                <td><?php echo  $todate?></td>
                 <?php endif ?>
                 
-               
-
                 <?php if($uc==1):?>
                 <td><?php echo $timefrom1.' to '.'UC'?></td>
                 <?php else:?>
@@ -161,15 +159,15 @@ $edit="edit";
                 <?php endif?>
 
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
-                 <!--  to_submit.php?id=<?php echo $id;?> -->
-                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href=''title="Submit">Submit</a></td>
+                 <!--   -->
+                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='to_submit.php?id=<?php echo $id;?>'title="Submit">Submit</a></td>
                 <?php else: ?>
                 <td><?php echo $submitteddate?></td>
                 <?php endif ?>
 
                         <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
-                          <!-- to_receive.php?id=<?php echo $id;?> -->
-                        <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href=''title="Submit">Receive</a></td>
+                          <!--  -->
+                        <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='to_receive.php?id=<?php echo $id;?>'title="Submit">Receive</a></td>
                          <?php else: ?>
                         <td>
                             
@@ -198,8 +196,8 @@ $edit="edit";
 
                         <?php else: ?>
                           <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
-                          <!-- to_cancel.php?id=<?php echo $id;?> -->
-                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                          <!--  -->
+                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php endif ?>
                      

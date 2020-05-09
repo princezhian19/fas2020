@@ -313,7 +313,9 @@ $division = $_GET['division'];
                           action = '';          
                         
                         }else{
-                          action = '';
+                          action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a>';          
+
+                          // action = '';
                         }
                       }
                       else if (row[10] == '<span class="badge badge-pill" style = "background-color:orange;">Received</span>')
@@ -354,8 +356,15 @@ $division = $_GET['division'];
                       "render": function ( data, type, row, meta ) { 
                     if(row[3] == '')
                       {
+
+                        if(<?php echo $division?> == 10)
+                        {
                         $action2 = '<a class = "btn btn-info btn-xs"   id = "sweet-14"> <i class="fa fa-check-circle"></i>Receive</a>';
                         return $action2;
+                        }else{
+                          $action2 = '';
+                        return $action2;
+                        }
                       
                     
                       }else{
