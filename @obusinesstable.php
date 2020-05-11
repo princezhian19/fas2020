@@ -67,19 +67,17 @@ $edit="edit";
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
                   <th width =''>OB NO</th> 
-                  <th width = ''>OB DATE</th>
+                  <th width = '100'>OB DATE</th>
                   <th width = ''>OFFICE</th>
                   <th width = ''>NAME</th>
                   <th width = ''>PURPOSE</th>
                   <th width = ''>PLACE</th>
-                  <th width = ''>DATE</th>
+                  <th width = '100'>DATE</th>
                   <th width = ''>TIME</th>
-                  <th width = ''>SUBMITTED DATE</th>
-                  <?php if ($username1== 'charlesodi' || $username1 == 'mmmonteiro' || $username1 == 'cvferrer' || $username1 == 'masacluti' || $username1 == 'magonzales' || $username1 == 'seolivar' || $username1 == 'jamonteiro' || $username1 == 'ctronquillo' || $username1 == 'rdmiranda'):?>
-                  <th width = ''>RECEIVED DATE</th>
-                  <?php else: ?>
-                    <th width = '0'></th>
-                  <?php endif ?>
+                  <th width = '100'>SUBMITTED DATE</th>
+                  
+                  <th width = '100'>RECEIVED DATE</th>
+                
                   <th width = '250'>ACTION</th>
                   
                 </tr>

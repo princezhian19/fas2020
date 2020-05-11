@@ -17,7 +17,7 @@ $row = mysqli_fetch_array($query);
     $m = $row['MIDDLE_M'];
     $l= $row['LAST_M'];
    
-
+  $fullname = $f.' '.$m.' '.$l;
 
 // echo '<div class=""><div class="panel-heading " style = "background-color:orange"> <p style = "color:white;font-size:16px;"> This module is under development </p> </div></div>  '; 
 // echo '<br>';
@@ -148,7 +148,7 @@ else{
 <div class="box">
           <div class="box-body">
       
-            <h1 align="">Add Travel Order</h1>
+            <h1 align="">ATAS-LAKBAY</h1>
          
         <br>
       <li class="btn btn-success"><a href="TravelOrder.php" style="color:white;text-decoration: none;">Back</a></li>
@@ -199,17 +199,20 @@ else{
                 <tr>
                 <td class="col-md-1"></td>
                     
-                <td class="col-md-5" style ="text-align:center; border:1px solid black;" >
+                <td colspan="1" style =" border:1px solid black;" >
                     <br>
-                    <img id="img" class="pull-left"  style="margin-top:0px; margin-bottom:20px; width:100;height:100px;" src='images/male-user.png' title = "" />
+                    
+                    <img id="img" class="pull-left"  style="margin-top:0px; margin-bottom:0px; margin-right:40px; margin-left:50px; width:100;height:80px;" src='images/male-user.png' title = "" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     DILG – Rehiyon 4A
                     <br>
                     
-                    Andenson Building 1, National 
+                    3rd Floor Andenson Building I,
                     <br>
-                    Highway, Brgy. Parian, City of
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    National Highway, Brgy.
                     <br>
-                    Calamba, Laguna
+                    Parian, City of Calamba, Laguna
 
                     <br>
                     <br>
@@ -219,7 +222,7 @@ else{
                 <br>
                 <label>Petsa:</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input readonly required type="text" class="" style="height: 40px; width:300px;" name="date" id="" value = "<?php echo date('m/d/Y') ?>" >
+                <input readonly required type="text" class="" style=" border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:300px;" name="date" id="" value = "<?php echo date('F d, Y') ?>" >
                 
                 <br>
                 <br>
@@ -227,7 +230,7 @@ else{
                 
 
                 &nbsp;&nbsp;&nbsp;
-                <input readonly required type="text" class="" style="height: 40px; width:300px;" name="tono" id="" value = "<?php echo $tocount;?>" >
+                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; color:red; height: 40px; width:300px;" name="tono" id="" value = "<?php echo $tocount;?>" >
                 <br>
                 </td>
 
@@ -246,23 +249,23 @@ else{
                 <td class="col-md-1"></td>
                     
                 <td class="col-md-5" style =" border:1px solid black;" >
-                    <br>
+                    
                     <label>Pangalan:</label>
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input readonly required type="text" class="" style="height: 40px; width:300px;" name="name" id="" value = "<?php echo $f.' '.$row['MIDDLE_M'].' '.$l.'';?>" >
+                    <br>
+                   
+                    <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:500px;" name="name" id="" value = "<?php echo $fullname;?>" >
                   
                 </td>
 
                 <td class="col-md-5 " style =" border:1px solid black;">
               
-                <br>
-                <label>Katungkulan:</label>
+               
+                <label>Katungkulan: &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Taunang Kita:</label>
                 
-                &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                <input readonly required type="text" class="" style="height: 40px; width:150px;" name="" id="" value = "<?php echo $POSITION_M;?>" >
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                
-                <label>Taunang Kita:</label>
+               <br>
+                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:150px;" name="" id="" value = "<?php echo $POSITION_M;?>" >
+              
+              
                 <br>
                
                 
@@ -281,19 +284,17 @@ else{
                 <td class="col-md-1"></td>
                     
                 <td class="col-md-5" style =" border:1px solid black;" >
-                    <br>
                     <label>Pinagmulan:</label>
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input  required type="text" class="" style="height: 40px; width:300px;" name="fromplace" id="fromplace" value = "" >
+                  <br>
+                    <input  required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:500px;" name="fromplace" id="fromplace" value = "" >
                   
                 </td>
 
                 <td class="col-md-5" style =" border:1px solid black;">
               
-                <br>
                 <label>Patutunguhan:</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input  required type="text" class="" style="height: 40px; width:300px;" name="place" id="" value = "" >
+               <br>
+                    <input  required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:500px;" name="place" id="" value = "" >
                 </td>
 
                 
@@ -304,24 +305,17 @@ else{
                 </tr>
                  <!-- Destination -->
 
-               
-                </table>
 
-                
-                </table>
-                
-                <table class="table">
-
-                <!-- Contact Person -->
-                <tr>
+                 <!-- Contact Person -->
+                 <tr>
                 <td class="col-md-1"></td>
 
-                <td class="col-md-10" style =" border:1px solid black;" >
+                <td colspan="2" class="" style =" border:1px solid black;" >
                 <br>
                 <label>Makikipagkita kay:</label>
 
-                &nbsp;&nbsp;&nbsp;
-                <input  required type="text" class="" style="height: 40px; width:300px;" name="contact" id="contact" value = "" >
+               <br>
+                <input  required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:1020px;" name="contact" id="contact" value = "" >
 
                 </td>
 
@@ -330,54 +324,43 @@ else{
                 </tr>
                 <!-- Contact Person -->
 
-                </table>
-
-                </table>
-                
-                <table class="table">
-
-                  <!-- Time out -->
-                  <tr>
+                    <!-- Time out -->
+                    <tr>
                 <td class="col-md-1"></td>
                     
-                <td class="col-md-10" style =" border:1px solid black;" >
+                <td colspan ="2" class="" style =" border:1px solid black;" >
                     <br>
                     <label>Oras at Petsang Pag-alis:</label>
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
 
-                    <input required type="text" class="" style="height: 35px; width:300px;" name="todate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+                    <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="todate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
 
                     &nbsp;&nbsp;&nbsp;
 
-                    <input required  type="time" class="" style="height: 35px; width:300px;" name="timefrom" id="timefrom"></td>
+                    <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="timefrom" id="timefrom"></td>
                 </td>
                
 
 
                 <td class="col-md-1"></td> 
                 </tr>
-                 <!-- Time out -->
+                 <!-- Time out --> 
 
-                </table>
-
-                </table>
-                
-                <table class="table">
-
+                 
                  <!-- Time in -->
                  <tr>
                 <td class="col-md-1"></td>
                     
-                <td class="col-md-10" style =" border:1px solid black;" >
+                <td colspan="2" class="" style =" border:1px solid black;" >
                     <br>
                     <label>Oras at Petsang Pagbabalik:</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <input required type="text" class="" style="height: 35px; width:300px;" name="todate" id="datepicker3" value = "" placeholder="mm/dd/yyyy">
+                    <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:400px;" name="todate" id="datepicker3" value = "" placeholder="mm/dd/yyyy">
 
                     &nbsp;&nbsp;&nbsp;
 
-                    <input required  type="time" class="" style="height: 35px; width:300px;" name="timeto" id="timeto"></td>
+                    <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="timeto" id="timeto"></td>
                                     
                 </td>
                
@@ -387,36 +370,60 @@ else{
                 </tr>
                  <!-- Time in -->
 
-                </table>
-
-                <table class="table">
-
-                   <!-- Purpose -->
-                   <tr>
+                <!-- Purpose -->
+                <tr>
                 <td class="col-md-1"></td>
                     
-                <td class="col-md-5" style =" border:1px solid black;" >
-                    <br>
+                <td colspan="2" class="" style =" border:1px solid black;" >
+                    
                     <label>Layunin ng Paglalakbay:</label>
-                    &nbsp;&nbsp;&nbsp;
-
-                    <input required id="purpose" name="purpose" autocomplete ="off" style="height: 35px; width:300px;" type="text" class="" placeholder="purpose">
+                   <br>
+                    <input required id="purpose" name="purpose" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:1020px;" type="text" class="" placeholder="purpose">
                   
                 </td>
-
-                <td class="col-md-5" style =" border:1px solid black;" >
-                    <br>
-                    <label>Uri ng Sasakyan:</label>
-                    &nbsp;&nbsp;&nbsp;
-
-                    <input required id="vehicle" name="vehicle" autocomplete ="off" style="height: 35px; width:300px;" type="text" class="" placeholder="vehicle">
-                </td>
-              
-
 
                 <td class="col-md-1"></td> 
                 </tr>
                  <!-- Purpose -->
+
+                 
+                <!-- vehicle -->
+                <tr>
+                <td class="col-md-1"></td>
+                    
+                <td  class="col-md-5" style =" border:1px solid black;" >
+                    
+                    <label>Uri ng Sasakyan:</label>
+                    <br>
+                    <input required id="vehicle" name="vehicle" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder="vehicle">
+                  
+                </td>
+
+                <td  class="col-md-5" style =" border:1px solid black;" >
+
+                <label>Paunang-bayad Nilikida:</label>
+                <br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder="">
+                <br>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+                <label> Punong Tagatuos</label>
+               
+                  
+                </td>
+
+                <td class="col-md-1"></td> 
+                </tr>
+                 <!-- vehicle -->
+
+              
+                 
+                    
+                </td>
+               
+               
+                  
 
                 </table>
 

@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 
 
 
-$query = mysqli_query($conn, "UPDATE Travel_order set status='cancelled' where id = '$id'");
+$query = mysqli_query($conn, "UPDATE travel_order set status='cancelled' where id = '$id'");
 
  mysqli_close($conn);
 
