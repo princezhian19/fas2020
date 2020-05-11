@@ -11,7 +11,7 @@ $username = $_SESSION['username'];
 }
  
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$query = mysqli_query($conn, "SELECT FIRST_M,MIDDLE_M, LAST_M, DIVISION_C FROM tblemployee where UNAME  = '$username'");
+$query = mysqli_query($conn, "SELECT FIRST_M,MIDDLE_M,LAST_M, DIVISION_C FROM tblemployee where UNAME  = '$username'");
 
 
 $row = mysqli_fetch_array($query);
@@ -21,7 +21,8 @@ $row = mysqli_fetch_array($query);
     $m = $row['MIDDLE_M'];
     $l= $row['LAST_M'];
    
-
+    $fullname = $f.' '.$m.' '.$l;
+    //echo $fullname;
 
 // echo '<div class=""><div class="panel-heading " style = "background-color:orange"> <p style = "color:white;font-size:16px;"> This module is under development </p> </div></div>  '; 
 // echo '<br>';
@@ -296,7 +297,7 @@ else{
 
               <td colspan = 11 class="" style = " font-family:Sylfaen;">
               <br>
-              Permission is requested by Mr./Ms.  &nbsp;&nbsp;<input required readonly style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 480px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "<?php echo $f.' '.$row['MIDDLE_M'].' '.$l.'';?>">
+              Permission is requested by Mr./Ms.  &nbsp;&nbsp;<input required readonly style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 480px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "<?php echo $fullname;?>">
               to leave the office for the following purpose(s):
                 <br>
                 <input required style="border:none;border-bottom:1px solid black; height: 25px;width: 975px; font-weight:bold;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
