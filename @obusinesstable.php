@@ -67,16 +67,16 @@ $edit="edit";
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
                   <th width =''>OB NO</th> 
-                  <th width = ''>OB DATE</th>
+                  <th width = '100'>OB DATE</th>
                   <th width = ''>OFFICE</th>
                   <th width = ''>NAME</th>
                   <th width = ''>PURPOSE</th>
                   <th width = ''>PLACE</th>
-                  <th width = ''>DATE</th>
+                  <th width = '100'>DATE</th>
                   <th width = ''>TIME</th>
-                  <th width = ''>SUBMITTED DATE</th>
+                  <th width = '100'>SUBMITTED DATE</th>
                   
-                  <th width = ''>RECEIVED DATE</th>
+                  <th width = '100'>RECEIVED DATE</th>
                 
                   <th width = '250'>ACTION</th>
                   

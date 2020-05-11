@@ -62,15 +62,15 @@ $edit="edit";
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
                   <th width ='90'>TO NO</th> 
-                  <th width = ''>TO DATE</th>
+                  <th width = '100'>TO DATE</th>
                   <th width = ''>OFFICE</th>
                   <th width = ''>NAME</th>
                   <th width = ''>PURPOSE</th>
                   <th width = ''>PLACE</th>
-                  <th width = ''>DATE</th>
+                  <th width = '100'>DATE</th>
                   <th width = ''>TIME</th>
-                  <th width = ''>SUBMITTED DATE</th>
-                  <th width = ''>RECEIVED DATE</th>
+                  <th width = '100'>SUBMITTED DATE</th>
+                  <th width = '100'>RECEIVED DATE</th>
                   <th width = '250'>ACTION</th>
                   
                 </tr>
@@ -192,7 +192,7 @@ $edit="edit";
                           <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                           <a href='TravelOrderUpdate.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                           <!-- to_cancel.php?id=<?php echo $id;?> -->
-                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                          <a onclick="return confirm('Are you sure you want to cancel this record?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                         <?php else: ?>
                           <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
