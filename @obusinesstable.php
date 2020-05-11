@@ -21,7 +21,7 @@ $m = $rowdiv['MIDDLE_M'];
 $l= $rowdiv['LAST_M'];
 
 $fullname = $f.' '.$m.' '.$l;
-echo $fullname;
+//echo $fullname;
 
 $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
 $rowdiv1 = mysqli_fetch_array($select_office);
@@ -92,7 +92,7 @@ $edit="edit";
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT * from ob where office ='$DIVISION_M' order by date desc");
+            $view_query = mysqli_query($conn, "SELECT * from ob where office ='$DIVISION_M' and name = '$fullname' order by date desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
 
@@ -157,7 +157,6 @@ $edit="edit";
                 <?php endif ?>
                
                
-
                 <td><?php echo $timefrom.' to '.$timeto?></td>
               
 
