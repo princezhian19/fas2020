@@ -40,7 +40,7 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
 $month = $_GET['month'];
 $year = $_GET['year'];
 
-$sql_q10 = mysqli_query($conn, "SELECT e.title,e.start,e.end,DIVISION_M, e.venue,e.enp,e.remarks,te.UNAME FROM events e 
+$sql_q10 = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.posteddate,DIVISION_M, e.venue,e.enp,e.remarks,te.UNAME FROM events e 
 LEFT JOIN tblemployee te on te.EMP_N = e.postedby
 LEFT JOIN tblpersonneldivision on e.office = tblpersonneldivision.DIVISION_N WHERE e.cancelflag = 0 and MONTH(start) = '".$_GET['month']."' and YEAR(start) = '".$_GET['year']."'");
     if (mysqli_num_rows($sql_q10)>0) {
@@ -56,7 +56,7 @@ LEFT JOIN tblpersonneldivision on e.office = tblpersonneldivision.DIVISION_N WHE
         
         if(strlen($excelrow['title']) > 20)
         {
-        $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(83);
+        $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(93);
 
         }else{
         $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(40);
@@ -64,16 +64,19 @@ LEFT JOIN tblpersonneldivision on e.office = tblpersonneldivision.DIVISION_N WHE
         }
 
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setWrapText(true);
+        $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->getAlignment()->setWrapText(true);
+        $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->getAlignment()->setWrapText(true);
 
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('A6',"Events for the month of ".date("F",strtotime($_GET['year']."-".$_GET['month']."-01")));
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('A6',"Activites for  ".date("F",strtotime($_GET['year']."-".$_GET['month']."-01"))." ".$_GET['year']);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['title']);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$start);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$end);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,date("m/d/y",strtotime($start)));
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,date("m/d/y",strtotime($end)));
         $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$excelrow['DIVISION_M']);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$excelrow['venue']);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$excelrow['enp']);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$excelrow['remarks']);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,$excelrow['UNAME']);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$row,date("m/d/y",strtotime($excelrow['posteddate'])));
     
         
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
@@ -116,6 +119,11 @@ LEFT JOIN tblpersonneldivision on e.office = tblpersonneldivision.DIVISION_N WHE
         $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleTop);
         $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleLeft);
         $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleRight);
+
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($stylebottom);
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleTop);
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleLeft);
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleRight);
           $row++;
     }
   }

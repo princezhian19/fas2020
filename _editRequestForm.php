@@ -175,9 +175,9 @@ function fillCheckbox()
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                       <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                      Purpose:<input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                      Purpose:<input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                     </td>
                     <td>
@@ -214,7 +214,7 @@ function fillCheckbox()
                         </div>
                       </td> 
                       <td>
-                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "Others"><b>Others</b><br>
+                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
                         <input style = "margin-left:90px;" type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                         <input style = "margin-left:90px;"  type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                         <input style = "margin-left:90px;"  type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
@@ -247,9 +247,9 @@ function fillCheckbox()
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                         <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                        Purpose:<input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                        Purpose:<input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     </div>
                                 <?php
                         break;
@@ -260,9 +260,9 @@ function fillCheckbox()
                                         <input checked style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                         <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                        Purpose:<input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                        Purpose:<input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     </div>
                                 <?php
                         break;
@@ -273,9 +273,9 @@ function fillCheckbox()
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                         <input checked style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                         <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                        Purpose:<input value = "<?php echo $row['TEXT1'];?>" type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "<?php echo $row['TEXT1'];?>" type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                        Purpose:<input value = "<?php echo $row['TEXT2'];?>" type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "<?php echo $row['TEXT2'];?>" type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     </div>
                                 <?php
                         break;
@@ -286,9 +286,9 @@ function fillCheckbox()
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                         <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                        Purpose:<input value = "" type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "" type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                         <input checked style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                        Purpose:<input value = "<?php echo $row['TEXT3'];?>" type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "<?php echo $row['TEXT3'];?>" type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     </div>
                                 <?php
                         break;
@@ -328,7 +328,7 @@ function fillCheckbox()
                         </div>
                       </td> 
                       <td>
-                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "Others"><b>Others</b><br>
+                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
                         <input style = "margin-left:90px;" type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                         <input style = "margin-left:90px;" type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                         <input style = "margin-left:90px;" type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
@@ -355,9 +355,9 @@ function fillCheckbox()
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                         <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                        Purpose:<input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                        Purpose:<input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     </div>
                 </td>
                 <td>
@@ -451,7 +451,7 @@ function fillCheckbox()
                         </div>
                       </td> 
                       <td>
-                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "Others"><b>Others</b><br>
+                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
                         <input style = "margin-left:90px;"  type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                         <input style = "margin-left:90px;"  type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                         <input style = "margin-left:90px;" type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
@@ -479,9 +479,9 @@ function fillCheckbox()
                   <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                   <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                   <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                  Purpose:<input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                  <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                   <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                  Purpose:<input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                  <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                   </div>
                 </td>
                 <td style = "width:35%;">
@@ -543,7 +543,7 @@ function fillCheckbox()
                         </div>
                       </td> 
                       <td>
-                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "Others"><b>Others</b><br>
+                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
                         <input style = "margin-left:90px;"  type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                         <input style = "margin-left:90px;"  type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                         <input style = "margin-left:90px;" type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
@@ -571,9 +571,9 @@ function fillCheckbox()
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                 <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                Purpose:<input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                Purpose:<input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                             </div>
               </td>
               <td>
@@ -637,7 +637,7 @@ function fillCheckbox()
                   ?> 
                 </td> 
                 <td>
-                  <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "Others"><b>Others</b><br>
+                  <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
                   <input style = "margin-left:60px; type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                   <input style = "margin-left:60px; type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                   <input style = "margin-left:60px; type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
@@ -645,7 +645,7 @@ function fillCheckbox()
               </tr>
               <?php
             break;
-            case 'Others':
+            case 'OTHERS':
               ?>
               <tr>
               <td>
@@ -664,9 +664,9 @@ function fillCheckbox()
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                 <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                Purpose:<input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                Purpose:<input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                             </div>
               </td>
               <td>
@@ -703,7 +703,7 @@ function fillCheckbox()
                   </div>
                 </td> 
                 <td>
-                  <input checked disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "Others"><b>Others</b><br>
+                  <input checked disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
                   <input style = "margin-left:60px;" type = "text" name = "others1" id = "others1" value = "<?php echo $row['TEXT6'];?>" style = "border:none;border-bottom:1px solid black;"/><br>
                   <input  style = "margin-left:60px;" type = "text" name = "others2" id = "others2" value = "<?php echo $row['TEXT7'];?>" style = "border:none;border-bottom:1px solid black;"/><br>
                   <input  style = "margin-left:60px;" type = "text" name = "others3" id = "others3" value = "<?php echo $row['TEXT8'];?>" style = "border:none;border-bottom:1px solid black;"/><br>

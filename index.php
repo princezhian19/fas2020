@@ -45,7 +45,6 @@ $username = $_SESSION['username'];
 
 }
 
-$_SESSION['username'] = '';
 if (isset($_POST['submit'])) {
   session_start();
   $username = $_POST['username'];
