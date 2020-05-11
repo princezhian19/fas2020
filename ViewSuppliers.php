@@ -130,7 +130,7 @@ $username = $_SESSION['username'];
             success:function(data)
             {
             setTimeout(function () {
-            window.location = "ViewSuppliers.php";
+            // window.location = "ViewSuppliers.php";
 
             }, 2000);
 

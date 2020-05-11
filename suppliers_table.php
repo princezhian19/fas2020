@@ -11,6 +11,7 @@
           <tbody>
           <thead>
             <tr style="background-color: white;color:blue;">
+              <th>ID</th>
               <th>SUPPLIER</th>
               <th>CONTACT PERSON</th>
               <th>ADDRESS</th>

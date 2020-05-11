@@ -39,6 +39,7 @@ $data=array();
 
 while($row=mysqli_fetch_array($query)){
     $subdata=array();
+    $subdata[]=$row[0]; //name
     $subdata[]=$row[1]; //name
     $subdata[]=$row[2]; //salary
     $subdata[]=$row[4]; //salary
