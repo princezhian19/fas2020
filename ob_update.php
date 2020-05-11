@@ -11,7 +11,6 @@ $username = $_SESSION['username'];
   
   $row = mysqli_fetch_array($query);
   
-  
       $f = $row['FIRST_M'];
       $m = $row['MIDDLE_M'];
       $l= $row['LAST_M'];

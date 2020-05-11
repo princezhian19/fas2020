@@ -75,11 +75,9 @@ $edit="edit";
                   <th width = ''>DATE</th>
                   <th width = ''>TIME</th>
                   <th width = ''>SUBMITTED DATE</th>
-                  <?php if ($username1== 'charlesodi' || $username1 == 'mmmonteiro' || $username1 == 'cvferrer' || $username1 == 'masacluti' || $username1 == 'magonzales' || $username1 == 'seolivar' || $username1 == 'jamonteiro' || $username1 == 'ctronquillo' || $username1 == 'rdmiranda'):?>
+                  
                   <th width = ''>RECEIVED DATE</th>
-                  <?php else: ?>
-                    <th width = '0'></th>
-                  <?php endif ?>
+                
                   <th width = '250'>ACTION</th>
                   
                 </tr>
