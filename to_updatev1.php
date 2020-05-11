@@ -6,22 +6,22 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
- 
-$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$query = mysqli_query($conn, "SELECT FIRST_M,MIDDLE_M, LAST_M, DIVISION_C FROM tblemployee where UNAME  = '$username'");
-
-$row = mysqli_fetch_array($query);
-
-
-    $f = $row['FIRST_M'];
-    $m = $row['MIDDLE_M'];
-    $l= $row['LAST_M'];
-   
-  $fullname = $f.' '.$m.' '.$l;
-
-// echo '<div class=""><div class="panel-heading " style = "background-color:orange"> <p style = "color:white;font-size:16px;"> This module is under development </p> </div></div>  '; 
-// echo '<br>';
-
+  $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+  $query = mysqli_query($conn, "SELECT FIRST_M,MIDDLE_M, LAST_M, DIVISION_C FROM tblemployee where UNAME  = '$username'");
+  
+  $row = mysqli_fetch_array($query);
+  
+  
+      $f = $row['FIRST_M'];
+      $m = $row['MIDDLE_M'];
+      $l= $row['LAST_M'];
+     
+  
+  
+  // echo '<div class=""><div class="panel-heading " style = "background-color:orange"> <p style = "color:white;font-size:16px;"> This module is under development </p> </div></div>  '; 
+  // echo '<br>';
+  
+  
 //Get Office
 $select_user = mysqli_query($conn,"SELECT DIVISION_C, DESIGNATION FROM tblemployee WHERE UNAME = '$username'");
 $rowdiv = mysqli_fetch_array($select_user);
@@ -35,41 +35,72 @@ $select_position = mysqli_query($conn,"SELECT  POSITION_M FROM tblposition WHERE
 $rowdiv1 = mysqli_fetch_array($select_position);
 $POSITION_M = $rowdiv1['POSITION_M'];
 //echo $POSITION_M;
+  
+  $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+  $rowdiv1 = mysqli_fetch_array($select_office);
+  $DIVISION_M = $rowdiv1['DIVISION_M'];
+  
+  $checked = "";
 
+// echo '<div class=""><div class="panel-heading " style = "background-color:orange"> <p style = "color:white;font-size:16px;"> This module is under development </p> </div></div>  '; 
+// echo '<br>';
+?>
 
-$select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
-$rowdiv1 = mysqli_fetch_array($select_office);
-$DIVISION_M = $rowdiv1['DIVISION_M'];
+<?php
 
-$checked = "";
+$id=$_GET['id'];
+//echo $id;
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-
-
-
-
-//count ob
-$idGet='';
-$getDate = date('Y');
-$m = date('m');
-$auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM travel_order order by id desc limit 1");
-while ($row = mysqli_fetch_assoc($auto)) {
-
-  $idGet = $row["a"];
-}
-
-$tocount = 'TO '.$getDate.'-'.'00'.$idGet;
+$view_query = mysqli_query($conn, "SELECT * from travel_order where id = '$id'");
 
 
 
+    while ($row = mysqli_fetch_assoc($view_query)) {
+
+      $id=$row['id'];
+
+      $tono = $row['tono'];
+     
+      $date1 = $row['date'];
+      $date = date('m/d/Y', strtotime($date1));
+      $office = $row['office'];
+      $name = $row['name'];
+      $purpose = $row['purpose'];
+      $place = $row['place'];
+      $todate1 = $row['todate'];
+      $todate = date('m/d/Y', strtotime($todate1));
+
+      //echo $todate;
+      
+      $timefrom1 = $row['timefrom'];
+      $timefrom=  date("h:i",$timefrom1);
+
+
+      $timeto1 = $row['timeto'];
+      $timeto=  date("h:i",$timeto1);
+
+
+      $uc = $row['uc'];
+
+      $submitteddate1 = $row['submitteddate'];
+      $submitteddate = date('m/d/Y', strtotime($submitteddate1));
+
+
+      $receiveddate = $row['receiveddate'];
+      $receiveddate = date('m/d/Y', strtotime($receiveddate1));
+
+
+
+      $fromplace = $row['fromplace'];
+      $contact = $row['contact'];
+      $vehicle = $row['vehicle'];
+    }
 
 ?>
 
+<!-- Upadte Queries -->
 
-<!-- 
-
-value ="<?php echo date("h:i:s A");?>" -->
-
-<!-- Insert Query -->
 
 <?php
 
@@ -77,92 +108,96 @@ value ="<?php echo date("h:i:s A");?>" -->
 if(isset($_POST['submit'])){
 
 
-
-$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-
-$username1 = $_SESSION['username'];
- 
-$checked = $_POST['check'];
-//echo $checked;
-
-$tono = $_POST['tono'];
-$date1 = $_POST['date'];
-$date = date('Y-m-d', strtotime($date1));
-$office = $_POST['office'];
-
-$name = $_POST['name'];
-$purpose = $_POST['purpose'];
-$place = $_POST['place'];
-$todate1 = $_POST['todate'];
-$todate = date('Y-m-d', strtotime($todate1));
-
-$timefrom = $_POST['timefrom'];
-$timeto = $_POST['timeto'];
-$timefrom = $_POST['timefrom'];
+      $checked = $_POST['check'];
+     // echo $checked;
 
 
-$fromplace = $_POST['fromplace'];
-$contact = $_POST['contact'];
-$vehicle = $_POST['vehicle'];
+      $id = $_POST['getid'];
+      //echo $id;
+
+      $tono = $_POST['tono'];
+     
+      $date1 = $_POST['date'];
+      $date = date('Y-m-d', strtotime($date1));
+      $office = $_POST['office'];
+      $name = $_POST['name'];
+      $purpose = $_POST['purpose'];
+      $place = $_POST['place'];
+      $todate1 = $_POST['todate'];
+      $todate = date('Y-m-d', strtotime($todate1));
+      
+      $timefrom1 = $_POST['timefrom'];
+      $timefrom=  date("h:i A",$timefrom1);
+
+
+      $timeto1 = $_POST['timeto'];
+      $timeto=  date("h:i A",$timeto1);
+
+
+      $uc = $row['uc'];
+
+      $submitteddate1 = $_POST['submitteddate'];
+      $submitteddate = date('Y-m-d', strtotime($submitteddate1));
+
+
+      $receiveddate = $_POST['receiveddate'];
+      $receiveddate = date('Y-m-d', strtotime($receiveddate1));
+
+      $fromplace = $_POST['fromplace'];
+      $contact = $_POST['contact'];
+      $vehicle = $_POST['vehicle'];
 
 $servername = "localhost";
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
 $database = "fascalab_2020";
-
+$username1 = $_SESSION['username'];
 $conn = new mysqli($servername, $username, $password,$database);
 
 // Check connection
 if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
-
-
-  $query = mysqli_query($conn,"INSERT INTO travel_order (tono,date,office,name,purpose,place,todate,timefrom,timeto,fromplace,contact,vehicle) 
-  VALUES ('$tono','$date','$office','$name','$purpose','$place','$todate','$timefrom','$timeto','$fromplace','$contact','$vehicle')");
-
-
-
+$query = mysqli_query($conn,"UPDATE  travel_order set tono='$tono',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',todate='$todate',timefrom='$timefrom1',timeto='$timeto1',uc='0',fromplace='$fromplace',contact='$contact',vehicle='$vehicle'  where id = '$id'");
+  
+ 
 mysqli_close($conn);
 
 if($query){
 
-    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
- 
-
+    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully updated. </p> </div></div>  '; 
+   
 }
 else{
 
-  
-  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
-   
+    echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
+    
 }
-
 }
-
 
 ?>
-<!-- Insert Query -->
-       
+
+
+
+
+<!-- Upadte Queries -->
 <div class="box">
           <div class="box-body">
       
-            <h1 align="">ATAS-LAKBAY</h1>
+            <h1 align="">Edit ATAS-LAKBAY</h1>
          
         <br>
       <li class="btn btn-success"><a href="TravelOrder.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
-
-
       <div class="class" >
         <form method="POST" action='' enctype="multipart/form-data" >
                 <table class="table"> 
-              
+                <input value="<?php echo $id;?>" hidden  type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
                 <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
                 <input  hidden  type="text"  class="" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>">
-            <!-- Code -->
-            <tr>
+              <!-- Code -->
+              <tr>
                 <td class="col-md-1"></td>
                     
                 <td class="col-md-5" >
@@ -229,7 +264,7 @@ else{
                 
 
                 &nbsp;&nbsp;&nbsp;
-                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; color:red; height: 40px; width:300px;" name="tono" id="" value = "<?php echo $tocount;?>" >
+                <input value = "<?php echo $tono;?>" readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; color:red; height: 40px; width:300px;" name="tono" id="" >
                 <br>
                 </td>
 
@@ -252,7 +287,7 @@ else{
                     <label>Pangalan:</label>
                     <br>
                    
-                    <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:500px;" name="name" id="" value = "<?php echo $fullname;?>" >
+                    <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:500px;" name="name" id="" value = "<?php echo $name;?>" >
                   
                 </td>
 
@@ -285,7 +320,7 @@ else{
                 <td class="col-md-5" style =" border:1px solid black;" >
                     <label>Pinagmulan:</label>
                   <br>
-                    <input  required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:500px;" name="fromplace" id="fromplace" value = "" >
+                    <input value = "<?php echo $fromplace;?>"  required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:500px;" name="fromplace" id="fromplace" value = "" >
                   
                 </td>
 
@@ -293,12 +328,9 @@ else{
               
                 <label>Patutunguhan:</label>
                <br>
-                    <input  required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:500px;" name="place" id="" value = "" >
+                    <input value = "<?php echo $place;?>"  required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:500px;" name="place" id="" value = "" >
                 </td>
 
-                
-
-               
 
                 <td class="col-md-1"></td> 
                 </tr>
@@ -310,13 +342,13 @@ else{
                 <td class="col-md-1"></td>
 
                 <td colspan="2" class="" style =" border:1px solid black;" >
-                <br>
+                
                 <label>Makikipagkita kay:</label>
-                <input  required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:1020px;" name="contact" id="contact" value = "" >
+
+               <br>
+                <input value = "<?php echo $contact;?>"  required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:1020px;" name="contact" id="contact" value = "" >
 
                 </td>
-
-
                 <td class="col-md-1"></td> 
                 </tr>
                 <!-- Contact Person -->
@@ -330,11 +362,10 @@ else{
                     <label>Oras at Petsang Pag-alis:</label>
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
 
-                    <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="todate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
-
+                    <input value = "<?php echo $todate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="todate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
                     &nbsp;&nbsp;&nbsp;
 
-                    <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="timefrom" id="timefrom"></td>
+                    <input value = "<?php echo $timefrom1;?>" required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="timefrom" id="timefrom"></td>
                 </td>
                
 
@@ -353,11 +384,11 @@ else{
                     <label>Oras at Petsang Pagbabalik:</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:400px;" name="todate" id="datepicker3" value = "" placeholder="mm/dd/yyyy">
+                    <input value = "<?php echo $todate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:400px;" name="todate" id="datepicker3" value = "" placeholder="mm/dd/yyyy">
 
                     &nbsp;&nbsp;&nbsp;
 
-                    <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="timeto" id="timeto"></td>
+                    <input value = "<?php echo $timeto1;?>" required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="timeto" id="timeto"></td>
                                     
                 </td>
                
@@ -375,7 +406,7 @@ else{
                     
                     <label>Layunin ng Paglalakbay:</label>
                    <br>
-                    <input required id="purpose" name="purpose" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:1020px;" type="text" class="" placeholder="purpose">
+                    <input value = "<?php echo $purpose;?>" required id="purpose" name="purpose" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:1020px;" type="text" class="" placeholder="purpose">
                   
                 </td>
 
@@ -392,7 +423,7 @@ else{
                     
                     <label>Uri ng Sasakyan:</label>
                     <br>
-                    <input required id="vehicle" name="vehicle" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder="vehicle">
+                    <input value = "<?php echo $vehicle;?>" required id="vehicle" name="vehicle" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder="vehicle">
                   
                 </td>
 
@@ -636,12 +667,6 @@ else{
                 </tr>
                 <!-- footer -->
 
-
-
-
-               
-                  
-
                 </table>
 
                 <br>
@@ -663,62 +688,52 @@ else{
                 
           </div>
 
-      
-   
-  
-
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-<!--  <div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker3'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker3').datetimepicker({
-                    format: 'LT'
-                });
-            });
-        </script>
-    </div>
-</div>
-
-
- -->
-
-
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
- 
- <script>
-function myFunction() {
-  var date = document.getElementById("datepicker1");
-  var text = document.getElementById("datepicker2");
-  
-
- 
-  if (date==""){
-   
-
-    text.val('');
+        
+       
     
-  } else {
+  
    
 
-    check.val(date);
-  }
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+ 
+<script>
+
+
+$(document).ready(function(){
+  $('#checkbox').checkBox({
+      
+
+    
+
+    })
+});
+
+
+function myFunction() {
+ var checkBox = document.getElementById("uc");
+ var text = document.getElementById("timeto");
+ var check = $("input[name='check']");
+ //var str = $("input[name='timeto']");
+ if (checkBox.checked == true){
+   text.readOnly = true ;
+
+   check.val('checked');
+   
+ } else {
+   text.readOnly = false;
+
+   check.val('');
+ }
 
 
 }
 </script>
+ 
+
+
 
 <script>
   $(function () {
@@ -792,12 +807,8 @@ function myFunction() {
     $('.my-colorpicker2').colorpicker()
 
     //Timepicker
-    $('.timepicker1').timepicker({
-      showInputs: true
-    })
-
-    $('.timepicker2').timepicker({
-      showInputs: true
+    $('.timepicker').timepicker({
+      showInputs: false
     })
   })
 </script>

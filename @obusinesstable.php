@@ -66,19 +66,19 @@ $edit="edit";
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
-                  <th width =''>OB NO</th> 
-                  <th width = '100'>OB DATE</th>
+                  <th width ='100'>OB NO</th> 
+                  <th width = '200'>OB DATE</th>
                   <th width = ''>OFFICE</th>
-                  <th width = ''>NAME</th>
-                  <th width = ''>PURPOSE</th>
-                  <th width = ''>PLACE</th>
-                  <th width = '100'>DATE</th>
-                  <th width = ''>TIME</th>
+                  <th width = '250'>NAME</th>
+                  <th width = '200'>PURPOSE</th>
+                  <th width = '150'>PLACE</th>
+                  <th width = '150'>DATE</th>
+                  <th width = '100'>TIME</th>
                   <th width = '100'>SUBMITTED DATE</th>
                   
-                  <th width = '100'>RECEIVED DATE</th>
+                  <th width = '200'>RECEIVED DATE</th>
                 
-                  <th width = '250'>ACTION</th>
+                  <th width = '400'>ACTION</th>
                   
                 </tr>
                 </thead>
@@ -106,11 +106,11 @@ $edit="edit";
                   $obdate = date('F d, Y', strtotime($obdate1));
                   
                   $timefrom1 = $row['timefrom'];
-                  $timefrom=  date("g:h A",strtotime($timefrom1));
+                  $timefrom=  date("g A",strtotime($timefrom1));
                 
 
                   $timeto1 = $row['timeto'];
-                  $timeto=  date("g:h A",strtotime($timeto1));
+                  $timeto=  date("g A",strtotime($timeto1));
 
                  
                   
@@ -189,7 +189,7 @@ $edit="edit";
                           <?php echo $receiveddate?>
                           <?php endif ?>
 
-                          </td>
+                        </td>
                          
                           <?php endif ?>
                 <td>
