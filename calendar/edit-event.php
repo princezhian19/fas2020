@@ -17,7 +17,7 @@ $start  = date('Y-m-d',strtotime($_POST['startdatetxtbox']));
 $end    = date('Y-m-d',strtotime($_POST['enddatetxtbox']));
 $des    = $_POST['descriptiontxtbox'];
 $ven    = $_POST['venuetxtbox'];
-$tar    = $_POST['enp'];
+$tar    = $_POST['enptxtbox'];
 
 
 

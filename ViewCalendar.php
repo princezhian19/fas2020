@@ -91,7 +91,7 @@ function viewEvents2()
 {
   ?>
 
-    <form method = "POST" action = "calendar/edit-event.php">
+    <form method = "POST" action = "calendar/edit-event.php" id = "edit_act">
     <input  type = "hidden" name = "eventid" id = "eventid">
 <?php 
 
@@ -101,35 +101,35 @@ if($_SESSION['planningofficer'] == 1)
   <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox" value = ""  /></td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox" value = ""  /></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Start Date<span style = "color:red;">*</span></td>
                             <td class="col-md-5">
-                                <input required type="text" class = "form-control datepicker1" name = "startdatetxtbox" id = "datepicker1" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
+                                <input disabled type="text" class = "form-control datepicker1" name = "startdatetxtbox" id = "datepicker1" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
                                     </td>
                                         </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">End Date</td>
                             <td class="col-md-5">
-                                <input  type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
+                                <input  disabled type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
                                     </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Description</td>
-                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
+                            <td class="col-md-5"><input disabled  type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "venuetxtbox" id = "venuetxtbox" value = "" /></td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "venuetxtbox" id = "venuetxtbox" value = "" /></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Expected Number of Participants<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input required type = "number" min = "0" name = "enptxtbox" id = "enptxtbox" class = "form-control" value = ""  /></td>
+                            <td class="col-md-5"><input disabled type = "number" min = "0" name = "enptxtbox" id = "enptxtbox" class = "form-control" value = ""  /></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Target Participants<span style = "color:red;">*</span></td>  
                             <td class="col-md-5">
-                            <input required type = "text" class = "form-control" name = "remarks" id = "remarks" value = "" />
+                            <input disabled type = "text" class = "form-control" name = "remarks" id = "remarks" value = "" />
                                 </td>
                                     </tr>
                     <tr>
@@ -204,8 +204,9 @@ if($_SESSION['planningofficer'] == 1)
                
 if($_SESSION['planningofficer'] == 1)
                {
-              echo ' <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary" value = "Edit"> ';
-               }else{
+              echo ' <input id = "edit"   style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary" value = "Edit"> ';
+              echo ' <input id = "save"  type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> ';
+            }else{
 
                }
                ?>
@@ -386,6 +387,22 @@ if($_GET['flag'] == 1)
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 <script>
+$('#save').hide();
+$("#edit").click(function(){
+$('#save').show();
+$('#edit').hide();
+
+
+
+$('#titletxtbox').prop("disabled", false); 
+$('#datepicker1').prop("disabled", false); 
+$('#datepicker2').prop("disabled", false); 
+$('#descriptiontxtbox').prop("disabled", false); 
+$('#venuetxtbox').prop("disabled", false); 
+$('#enptxtbox').prop("disabled", false); 
+$('#remarks').prop("disabled", false); 
+
+});
   function displayMessage(message)
  {
     $(".response").html("<div class='alert alert-success' role='alert' style = 'background-color:#ef9a9a;'>"+message+"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
@@ -397,6 +414,8 @@ if($_GET['flag'] == 1)
   
 $(document).ready(function()
 {
+
+  
             $( "#all" ).prop( "checked", true );
             $( "#ord" ).prop( "checked", true );
             $( "#fad" ).prop( "checked", true );

@@ -3,6 +3,9 @@ include 'connection.php';
 if(!isset($_SESSION['username'])){
 // header('location:index.php');
 }else{
+
+
+  
 $username = $_SESSION['username'];
     $sqlUsername = mysqli_query($conn,"SELECT CODE,EMP_N,isPlanningOfficer FROM tblemployee WHERE md5(UNAME) = '".md5($username)."' LIMIT 1");
   $row = mysqli_fetch_array($sqlUsername);
