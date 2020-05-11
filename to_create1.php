@@ -89,6 +89,8 @@ $tono = $_POST['tono'];
 $date1 = $_POST['date'];
 $date = date('Y-m-d', strtotime($date1));
 $office = $_POST['office'];
+echo $office;
+exit();
 $name = $_POST['name'];
 $purpose = $_POST['purpose'];
 $place = $_POST['place'];

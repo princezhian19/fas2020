@@ -441,7 +441,7 @@
             </select>
           </div>
           <div class="col-xs-4">
-            <label>Extension Name<font style="color:red;">*</font></label>
+            <label>Extension Name<font style="color:red;"></font></label>
             <input  value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
           </div>
           <div class="col-xs-4">
