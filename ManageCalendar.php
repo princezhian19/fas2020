@@ -90,7 +90,7 @@ $division = $_GET['division'];
                                 <div class="panel panel-defasult">
                                     <div class="box-body"> 
                                         <div>
-                                        <h1>Manage All Events</h1><br>
+                                        <h1>Manage All Activities</h1><br>
                                     </div>
                                 <div>
                                 <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;">
@@ -165,10 +165,15 @@ $division = $_GET['division'];
      });
     $(document).on('click','#sweet-14',function(e){
     e.preventDefault();
-    var per_id=$(this).data('id');
+    var oTableApi = $('#example').dataTable().api();
+            var tr = $(this).closest('tr');
+            td = tr.find("td:eq(1)");
+
+            var cell = oTableApi.cell(td);
+            var per_id = cell.data();
         swal({
         title: "Are you sure?",
-        text: "Your will not be able to recover this event!",
+        text: "Your will not be able to recover this activity!",
         type: "warning",
         showCancelButton: true,
         confirmButtonClass: "btn btn-danger",
@@ -176,12 +181,12 @@ $division = $_GET['division'];
         closeOnConfirm: false
         },
         function(){
-        swal("Deleted!", "Your event has been deleted.", "success");
+        swal("Deleted!", "Your activity has been deleted.", "success");
             $.ajax({
                 url:"calendar/delete-event.php",
                 method:"POST",
                 data:{
-                id:per_id,
+                title:per_id,
             },
             success:function(data)
             {

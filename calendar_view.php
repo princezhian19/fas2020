@@ -12,9 +12,17 @@
                     
                     </div><br><br><br><br><br>
                     <div class="col-md-12">
+                        <button class="pull-right btn btn-success" id = "modal"  style = "margin-left:5%;"><i class = "fa fa-plus"></i><a style = "color:#fff;" > Add Activity</a></button>                        
+                       <button class="pull-right btn btn-success"><i class = "fa fa-edit"></i><a href ="ManageCalendar.php?division=<?php echo $_GET['division'];?>" style ="color:#fff;decoration:none;">Manage All</a></button>
+                    </div>
+                    <div class="col-md-12">
+
+                        
+
                         <div class="box box-widget widget-user-12" style = "background-color:#ECEFF1;" >
+                        
                             <div style = "background-color:#AED581;color:#fff;">
-                                <h3 style = "margin-left:20px;" class="widget-user-username">Filter</h3>
+                                <h4 style = "margin-left:20px;" class="widget-user-username">Filter</h4>
                             </div>
                             <div  style = "background-color:#ECEFF1;" >
                                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-6" id = "selectMonth"  style = "margin-top:5px;">  
@@ -119,28 +127,7 @@
                     
       
                    
-                        
-
-
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-12" >
-                     <div class = "col-lg-4">
-                     </div>
-                     <div class = "col-lg-4">
-                     <center>
-                        <button class="pull-right btn btn-success" id = "modal" ><i class = "fa fa-plus"></i><a style = "color:#fff;" > Add Activity</a></button>
-                        <br>
-                        <br>
-
-                        
-                        <button class=" pull-right btn btn-success" style = "margin-left:10px;"><i class = "fa fa-edit"></i><a href ="ManageCalendar.php?division=<?php echo $_GET['division'];?>" style ="color:#fff;decoration:none;">Manage All</a></button>
-                    </center>
-                     </div>
-                     <div class = "col-lg-4">
-                     </div>
-                           
-                    
-                        
-                    </div>
+               
 
 
                     

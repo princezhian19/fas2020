@@ -244,9 +244,7 @@ $username = $_SESSION['username'];
              
               <li>
               <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Monitoring 
-              <span>
-              <small class="label  bg-blue" id = "ta_request"></small>
-            </span></a>
+             </a>
             </ul>
         </li>
       
@@ -264,9 +262,3 @@ $username = $_SESSION['username'];
     <!-- /.sidebar -->
   </aside>
   
-<script>
-  setInterval(function(){
-$('#ta_request').load('_countTA.php');
-$('#on_going').load('_countOngoing.php');
-}, 1000); /* time in milliseconds (ie 2 se  conds)*/
-  </script>

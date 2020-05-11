@@ -1,8 +1,9 @@
 <?php
 require_once "db.php";
 
-$id = $_POST['id'];
-$sqlDelete = "DELETE from events WHERE id=".$id;
+$id = $_POST['title'];
+$sqlDelete = "DELETE from events WHERE title='".$id."'";
+echo $sqlDelete;
 
 mysqli_query($conn, $sqlDelete);
 
