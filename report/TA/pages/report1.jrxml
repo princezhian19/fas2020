@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5be4a1da-05bd-4f9e-8b3b-66b0111942f6">
-	<property name="ireport.zoom" value="2.3579476910000987"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1022"/>
+	<property name="ireport.zoom" value="3.7974983358325707"/>
+	<property name="ireport.x" value="577"/>
+	<property name="ireport.y" value="1499"/>
 	<parameter name="currentuser" class="java.lang.String"/>
 	<parameter name="requested_date" class="java.lang.String"/>
 	<parameter name="started_date" class="java.lang.String"/>
@@ -13,6 +13,7 @@
 	<parameter name="office" class="java.lang.String"/>
 	<parameter name="position" class="java.lang.String"/>
 	<parameter name="contact_no" class="java.lang.String"/>
+	<parameter name="resolve" class="java.lang.String"/>
 	<parameter name="email" class="java.lang.String"/>
 	<parameter name="check" class="java.lang.String"/>
 	<parameter name="req_type_category1" class="java.lang.String"/>
@@ -1569,6 +1570,10 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{completed_time}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="289" y="453" width="8" height="8" uuid="c8c20e59-a42b-4602-b4c3-09f4355d55bf"/>
+				<imageExpression><![CDATA[$P{resolve}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 </jasperReport>

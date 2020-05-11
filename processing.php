@@ -427,12 +427,15 @@ function showWorkload($ICT)
                     </div>
                     <div class="timeline-footer">
                     <?php 
-                    if($row['STATUS_REQUEST'] == 'Completed')
+                    if($row['STATUS_REQUEST'] == 'Completed' || $row['COMPLETED_DATE'] == '')
                     {
                         ?>
                         <a class="btn btn-success btn-md" href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO'];?>">
-                        View
-                    </a>
+                        <i class = "fa fa-eye"></i>&nbsp;View
+                         </a>
+                         <a class="btn btn-primary btn-md" href = "_editRequestTA.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>">
+                         <i class = "fa fa-edit"></i>&nbsp;Edit
+                         </a>
                         <?php
                     }else{
                         ?>
