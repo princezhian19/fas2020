@@ -5,6 +5,8 @@
   $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
   $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
   $get_id = $_GET['id'];
+  $division777 = $_GET['division'];
+  $username777 = $_GET['username'];
   function tblpersonnel($connect)
   { 
     $output = '';
@@ -94,6 +96,7 @@
   $row1 = mysqli_fetch_array($checkQuery1);
   $city_id           = $row1["city_id"];
   $municipality11           = $row1["city_title"];
+  $cid = $_GET['id'];
 
   if (isset($_POST['submit'])) {
     $region          = '04';
@@ -123,10 +126,10 @@
     $usetype         = "";       
     $activated       = "Yes";       
     $cellphone       = $_POST["cellphone"];
-    $office_address  = $_POST["office_address"];  
-    $office_contact  = $_POST["office_contact"]; 
-    $suffix          = $_POST["suffix"];       
-    $status          = $_POST["status"]; 
+    $office_address  = $_POST["office_address"];  //eto
+    $office_contact  = $_POST["office_contact"]; // eto 
+    $suffix          = $_POST["suffix"]; //eto      
+    $status          = $_POST["status"];  // eto
     $e_stats          = $_POST["e_stats"]; 
     $target_dir      = "images/profile/";
     $target_file     = $target_dir . basename($_FILES["image"]["name"]);
@@ -187,15 +190,18 @@
   REGION_C=?, PROVINCE_C=?, CITYMUN_C=?,
   POSITION_C=?,
   MOBILEPHONE=?, EMAIL=?, AGENCY_EMP_NO=?,
-  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$e_stats."', UNAME=?$add,DESIGNATION=? WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
-
+  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$e_stats."', UNAME=?$add,DESIGNATION=?,SUFFIX=?,SEX_C=? WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
   if ($updateSQL = $DBConn->prepare($query)) 
   {
     if($password==''){
-
+          $selectif = mysqli_query($conn,"SELECT * FROM tblempdetails WHERE EMP_N = '$employee_number'");
+          if (mysqli_num_rows($selectif)>0) {
           $updatedetails = mysqli_query($conn,"UPDATE `tblempdetails` SET `EMP_N`='$employee_number',`office_contact`='$office_contact',`office_address`='$office_address' WHERE EMP_N = '$employee_number'");
-
-      $updateSQL->bind_param("ssssssssssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username, $designation);
+          }else{
+            $insertdetails = mysqli_query($conn,"INSERT INTO `tblempdetails`(`EMP_N`, `office_contact`, `office_address`) VALUES ('$employee_number','$office_contact','$office_address')");
+          }
+      $updateSQL->bind_param("ssssssssssssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username, $designation,$suffix,$status);
+          $update_stat = mysqli_query($conn,"UPDATE tblemployeeinfo SET CIVIL_STATUS = '$status' WHERE EMP_N = $cid");
     }else{
       $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
       $password   = crypt($password, '$2a$10$'.$code.'$');
@@ -205,7 +211,7 @@
     $updateSQL->execute();
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Updated!')
-      window.location.href = 'ViewEmployees.php?';
+      window.location.href = 'ViewEmployees.php?division=$division777&username=$username777';
       </SCRIPT>");
   }else{
                 //echo mysqli_connect_error();
@@ -495,8 +501,8 @@
             </select>
             <?php else: ?>
               <select class="form-control select2" name="status">
-              <option value="Single">Single</option>
               <option value="Maried">Maried</option>
+              <option value="Single">Single</option>
             </select>
             <?php endif ?>
            
@@ -506,11 +512,11 @@
             <?php if ($ACTIVATED == 'Yes'): ?>
                <select class="form-control select2" name="e_stats">
               <option value="Yes">Regular</option>
-              <option value="No">Cos</option>
+              <option value="No">COS</option>
             </select>
             <?php else: ?>
                <select class="form-control select2" name="e_stats">
-              <option value="No">Cos</option>
+              <option value="No">COS</option>
               <option value="Yes">Regular</option>
             </select>
             <?php endif ?>
