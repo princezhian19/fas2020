@@ -30,10 +30,9 @@ if (isset($_POST['update'])) {
   $content = $_POST['content'];
   $posted_by = $_POST['posted_by'];
   $date = $_POST['date'];
-  $id_1 = $_POST['id'];
+  $idC = $_POST['idC'];
 
-echo "UPDATE announcementt SET title = '$title' , content = '$content' WHERE id = id_1 ";exit;
-  $update = mysql_query($conn,"UPDATE announcementt SET title = '$title' , content = '$content' WHERE id = id_1 ");
+  $update = mysqli_query($conn,"UPDATE announcementt SET title = '$title' , content = '$content' WHERE id = $idC ");
   if ($update) {
       echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Successfuly Updated!')
@@ -517,7 +516,6 @@ echo "UPDATE announcementt SET title = '$title' , content = '$content' WHERE id 
                   </b><br><?php echo $intent;?></td>
                 </tr>
                 
-                <form method="POST" >
               <div class="modal modal-default fade" id="modal-info_<?php echo $row['id']; ?>">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -527,22 +525,23 @@ echo "UPDATE announcementt SET title = '$title' , content = '$content' WHERE id 
                       <h4 class="modal-title">Edit Announcement</h4>
                     </div>
                     <div class="modal-body">
+                <form method="POST" >
                      <label style="padding-right: 20px;">Title <font style="color:red;">*</font></font>&nbsp&nbsp<i><font style="color:red;">should not exceed 50 characters</i></font></label><input value="<?php echo $title?>" class="form-control" type="text" name="title"><br>
-                     <input type="text" name="id" hidden value="<?php echo $id?>">
+                     <input type="text" name="idC" hidden  value="<?php echo $id?>">
                         <label style="padding-right: 20px;">Content <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 500 characters</font></i></label><textarea  class="form-control" type="text" name="content"><?php echo $intent?></textarea><br>
                         <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $posted_by?>"><br>
                         <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo $date?>"><br>
                     </div>
                     <div class="modal-footer">
                       <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button> -->
-                        <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
+                        <button type="submit" class="btn btn-primary" name="update">Save changes</button>
                     </div>
                   </div>
+               </form>
                   <!-- /.modal-content -->
                 </div>
                 <!-- /.modal-dialog -->
               </div>
-            </form>
               <?php } ?>
             </table>
             
