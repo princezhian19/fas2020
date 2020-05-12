@@ -161,7 +161,7 @@ $edit="edit";
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
                     <?php if($fullname==$name):?>  
                           <?php if ($status!='cancelled'):?> 
-                          <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='ob_submit.php?id=<?php echo $id;?>'title="Submit">Submit</a></td>
+                          <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Official Business?');" href='ob_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>'title="Submit">Submit</a></td>
                           <?php else: ?>
                           <td></td>  
                           <?php endif ?>
@@ -179,7 +179,7 @@ $edit="edit";
                               <?php if ($status=='cancelled'):?>
                               <td></td>
                               <?php else: ?>
-                                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='ob_receive.php?id=<?php echo $id;?>'title="Receive">Receive</a></td>
+                                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to receive this Official Business?');" href='ob_receive.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>'title="Receive">Receive</a></td>
                               <?php endif ?>
                           <?php else: ?>
                           <td></td>
@@ -217,17 +217,14 @@ $edit="edit";
                                   <td></td>
                                   <?php endif ?>
                               <?php else: ?>
-                              Cancelled | 
-
-                              <a disabled  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
+                              Cancelled | <a disabled  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
                               <?php endif ?>
                         
                         <?php else: ?>
 
 
                               <?php if ($status=='cancelled'):?>
-                                Cancelled
-                                <a disabled  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
+                                Cancelled | <a disabled  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
                               <?php else: ?>
                               <?php if($fullname==$name):?>
                                   <a  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |

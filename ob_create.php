@@ -47,9 +47,6 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 $checked = "";
 
 
-
-
-
 //count ob
 $idGet='';
 $getDate = date('Y');
@@ -74,9 +71,6 @@ $obcount = $getDate.'-'.$idGet;
 }
 
 
-
-
-
 ?>
 
 
@@ -91,13 +85,13 @@ value ="<?php echo date("h:i:s A");?>" -->
 
 if(isset($_POST['submit'])){
 
-
-
+ 
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 $username1 = $_SESSION['username'];
  
 $checked = $_POST['check'];
+
 //echo $checked;
 
 $obno = $_POST['obno'];
@@ -137,40 +131,38 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
-/* if($checked=="checked"){
+if($checked==""){
 
- 
-
-  $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,uc) 
-  VALUES ('$obno','$date','$office','$name','$purpose','$place','$obdate','$timefrom','1')");
- 
- 
-
-}
-else{ */
-
-  $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto) 
-  VALUES ('$obno','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto')");
- 
-
- 
-  // }
-
-
-mysqli_close($conn);
-
-if($query){
-
-    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
- 
-
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. - check the YES/NO field. </p> </div></div>  '; 
+   
 }
 else{
 
-  
+  if($checked=="yes"){
+    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto,uc) 
+    VALUES ('$obno','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','yes')");
+  }
+  else if($checked=="no"){
+
+    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto,uc) 
+    VALUES ('$obno','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','no')");
+  }
+ 
+
+  if($query){
+
+    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
+ 
+}
+else{
   echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
    
 }
+
+ }
+
+
+mysqli_close($conn);
 
 }
 
@@ -401,10 +393,12 @@ else{
               travelling expenses is hereby authorized.
               <br>
               <br>
+              <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
+
               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-              <input  style = "margin-bottom:10px;" type = "checkbox" name = "checkbox" class = "checkboxgroup_g1" value ="Yes"> <b>Yes</b>
+              <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxyes" name = "checkboxyes" class = "checkboxgroup_g1" value ="Yes"> <b>Yes</b>
               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-              <input  style = "margin-bottom:10px;" type = "checkbox" name = "checkbox" class = "checkboxgroup_g2" value ="No"><b>No</b>
+              <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxno" name = "checkboxno" class = "checkboxgroup_g2" value ="No"><b>No</b>
               </td>
 
               <td colspan = 1 class="" style = " font-family:Sylfaen;">
@@ -590,49 +584,10 @@ else{
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
  
- <script>
-function myFunction() {
-  var checkBox = document.getElementById("uc");
-  var text = document.getElementById("timeto");
-  var check = $("input[name='check']");
-  //var str = $("input[name='timeto']");
-  if (checkBox.checked == true){
-    text.readOnly = true ;
-    text.style = "background-color:gray; height: 25px;width: 150px;";
 
-    check.val('checked');
-    
-  } else {
-    text.readOnly = false;
-    text.style = "background-color:white; height: 25px;width: 150px;";
-    check.val('');
-  }
-
-
-}
-</script>
 
  
-<!--  <script>
-function myFunction() {
-  var checkBox = document.getElementById("uc");
-  var text = document.getElementById("timeto");
-  var check = $("input[name='check']");
-  //var str = $("input[name='timeto']");
-  if (checkBox.checked == true){
-    text.readOnly = true ;
 
-    check.val('checked');
-    
-  } else {
-    text.readOnly = false;
-
-    check.val('');
-  }
-
-
-}
-</script> -->
 
 <script>
   $(function () {
@@ -716,6 +671,30 @@ function myFunction() {
   })
 </script>
 
+
+<script>
+function myFunction() {
+  var checkboxyes = document.getElementById("checkboxyes");
+  var checkboxno = document.getElementById("checkboxno");
+  
+  var check = $("input[name='check']");
+  
+  if (checkboxyes.checked == true)
+  {
+    check.val('yes');
+  
+  }
+
+  if (checkboxno.checked == true)
+  {
+    
+    check.val('no');
+    
+  }
+}
+
+</script>
+
 <script>
 $(document).ready(function(){
 
@@ -731,5 +710,6 @@ $(document).ready(function(){
 
 });
 </script>
+
 </body>
 </html>

@@ -148,36 +148,39 @@ if ($conn->connect_error) {
 }
 
 
-/* if($checked=="checked"){
+if($checked==""){
 
-  
-  
-  $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',obdate='$obdate',timefrom='$timefrom1',timeto='0000-00-00',uc='1' where id = '$id'");
- 
-  
-
-
-}
-
-else
-{ */
-  $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$places',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1' where id = '$id'");
-  
-  
-//}
-
-mysqli_close($conn);
-
-if($query){
-
-    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully updated. </p> </div></div>  '; 
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. - check the YES/NO field. </p> </div></div>  '; 
    
 }
 else{
 
-    echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
-    
+  if($checked=="yes"){
+    $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$places',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='yes' where id = '$id'");
+  }
+  else if($checked=="no"){
+
+    $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$places',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='no' where id = '$id'");
+  }
+ 
+
+  if($query){
+
+    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
+ 
 }
+else{
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
+   
+}
+
+ }
+
+ 
+
+mysqli_close($conn);
+
+
 }
 
 ?>
@@ -414,10 +417,11 @@ else{
                       travelling expenses is hereby authorized.
                       <br>
                       <br>
+                      <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
                       &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "checkbox" class = "checkboxgroup_g1" value ="Yes"> <b>Yes</b>
+                      <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxyes" name = "checkboxyes" class = "checkboxgroup_g1" value ="Yes"> <b>Yes</b>
                       &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "checkbox" class = "checkboxgroup_g2" value ="No"><b>No</b>
+                      <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxno" name = "checkboxno" class = "checkboxgroup_g2" value ="No"><b>No</b>
                       </td>
 
                       <td colspan = 1 class="" style = " font-family:Sylfaen;">
@@ -731,4 +735,27 @@ $(document).ready(function(){
   });
 
 });
+</script>
+
+<script>
+function myFunction() {
+  var checkboxyes = document.getElementById("checkboxyes");
+  var checkboxno = document.getElementById("checkboxno");
+  
+  var check = $("input[name='check']");
+  
+  if (checkboxyes.checked == true)
+  {
+    check.val('yes');
+  
+  }
+
+  if (checkboxno.checked == true)
+  {
+    
+    check.val('no');
+    
+  }
+}
+
 </script>

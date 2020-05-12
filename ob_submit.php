@@ -2,6 +2,9 @@
 
 
 $id=$_GET['id'];
+$date1=$_GET['now'];
+$date = date('Y-m-d', strtotime($date1));
+
 //echo $id;
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
@@ -12,7 +15,7 @@ if ($conn->connect_error) {
 
 
 
-$query = mysqli_query($conn, "UPDATE ob set submitteddate =now() where id = '$id'");
+$query = mysqli_query($conn, "UPDATE ob set submitteddate ='$date' where id = '$id'");
 
  mysqli_close($conn);
 
