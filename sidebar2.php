@@ -95,7 +95,7 @@ $username = $_SESSION['username'];
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/home1.php?division='.$_SESSION['division'].''){ echo 'class = "active"';}?>>
+        <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/home.php?division='.$_SESSION['division'].''){ echo 'class = "active"';}?>>
           <a href="home1.php?division=<?php echo $_GET['division']; ?>" >
             <i class="fa fa-dashboard" style = "color:#black;"></i> <span style = "color:#black;font-weight:normal;">Dashboard</span>
             <span class="pull-right-container">
@@ -103,7 +103,7 @@ $username = $_SESSION['username'];
           </a>
        
       </li>
-      <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_GET['division'].'' { echo 'class = "active"';}else{echo 'class = "active"';}?>>
+      <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_GET['division'].'' || $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php?division='.$_GET['division'].''){ echo 'class = "active"';}else{echo 'class = ""';}?>>
           <a href="ViewCalendar.php?division=<?php echo $_SESSION['division'];?>">
             <i class="fa fa-calendar" style = "color:#black;"></i>
             <span  style = "color:#black;font-weight:normal;">Calendar</span>
@@ -119,7 +119,7 @@ $username = $_SESSION['username'];
                 }
               ?>
               ">
-              <a  href="ViewPR1.php?division=<?php echo $_SESSION['division'];?>">
+              <a  href="ViewPr1.php?division=<?php echo $_SESSION['division'];?>">
               <i class="fa fa-cart-arrow-down " style = "color:#black;"></i>
                 <span  style = "color:#black;font-weight:normal;">Procurement</span>
                 <span class="pull-right-container"></span>
