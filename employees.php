@@ -46,17 +46,17 @@ $username = $_GET['username'];
               $BIRTH = date('F d',strtotime($BIRTH_D));
               ?>
               <tr>
-                <td width="1000"><?php echo $FIRST_M;?></td>
-                <td width="1000"><?php echo $MIDDLE_M;?></td>
-                <td width="1000"><?php echo $LAST_M;?></td>
-                <td width="2000"><?php echo $DIVISION_M;?></td>
-                <td width="150"><?php echo $POSITION_M;?></td>
-                <td width="1000"><?php echo $DESIGNATION_M;?></td>
-                <td width="1000"><?php echo $MOBILEPHONE;?></td>
-                <td width="1000"><?php echo $EMAIL;?></td>
-                <td width="1000"><?php echo $MOBILEPHONE;?></td>
-                <td width="1000"><?php echo $EMAIL;?></td>
-                <td width="1000"><?php echo $BIRTH;?></td>
+                <td width=""><?php echo $FIRST_M;?></td>
+                <td width=""><?php echo $MIDDLE_M;?></td>
+                <td width=""><?php echo $LAST_M;?></td>
+                <td width=""><?php echo $DIVISION_M;?></td>
+                <td width=""><?php echo $POSITION_M;?></td>
+                <td width=""><?php echo $DESIGNATION_M;?></td>
+                <td width=""><?php echo $MOBILEPHONE;?></td>
+                <td width=""><?php echo $EMAIL;?></td>
+                <td width=""><?php echo $MOBILEPHONE;?></td>
+                <td width=""><?php echo $EMAIL;?></td>
+                <td width=""><?php echo $BIRTH;?></td>
 
                 <?php if ($username == 'magonzales' ||$username == 'charlesodi' || $username == 'hpsolis' || $username == 'jbaco' || $username == 'gpvillanueva' || $username == 'rmsaturno'  ): ?>
                 <td width="150">
@@ -64,7 +64,9 @@ $username = $_GET['username'];
                </td>
                <td><a onclick="return confirm('Are you sure you want to Delete this Account now?');" href='delete_account2.php?id=<?php echo $id;?>' title="delete" class = "btn btn-danger btn-xs" > <i class='fa fa-fw fa-trash'></i> Delete</a> </td>
                <?php else: ?>
-                <td></td>
+                <td>
+                 <a href='UpdateEmployee.php?id=<?php echo $id; ?>&view=1' title="View" class="btn btn-info btn-xs">View</a>
+                </td>
                 <td></td>
                 <?php endif ?>
 

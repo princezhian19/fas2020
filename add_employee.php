@@ -7,7 +7,7 @@
   function tblpersonnel($connect)
   { 
     $output = '';
-    $query = "SELECT DIVISION_N,DIVISION_M FROM `tblpersonneldivision` WHERE DIVISION_M IS NOT NULL ORDER BY DIVISION_M ASC ";
+    $query = "SELECT DIVISION_N,DIVISION_M FROM `tblpersonneldivision` WHERE DIVISION_N = 1 || DIVISION_N = 10 || DIVISION_N = 18 || DIVISION_N = 17 || DIVISION_N = 9 || DIVISION_N = 7 || DIVISION_N = 19 || DIVISION_N = 20 || DIVISION_N = 21 || DIVISION_N = 22 || DIVISION_N = 23 || DIVISION_N = 24 AND DIVISION_M IS NOT NULL ORDER BY DIVISION_M ASC ";
     $statement = $connect->prepare($query);
     $statement->execute();
     $result = $statement->fetchAll();
@@ -395,7 +395,7 @@
           </div>
           <div class="col-xs-4">
             <label>Mobile <font style="color:red;">*</font></label>
-            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
+            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. 0995-2647-434">
           </div>
           <br>
           <br>
@@ -435,7 +435,7 @@
           <div class="col-xs-4">
             <label>Province</label>
             <input type="text" name="province" hidden>
-            <select   class="form-control select2" style="width: 100%;" name="province" id="" >
+            <select  disabled  class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
               <option value="<?php echo $province1;?>"><?php echo $province11;?></option>
               <option value="10">Batangas</option>
               <option value="21">Cavite</option>
@@ -460,7 +460,7 @@
           <div class="col-xs-4">
             <label>City/Municipality</label>
             <input type="text" name="municipality" hidden>
-            <select  id="" name="municipality" class="form-control select2">
+            <select  disabled id="sel_user" name="municipality" class="form-control select2">
               <option value="<?php echo $municipality11;?>"><?php echo $municipality11;?></option>
               <option value="0"></option>
             </select>
@@ -501,10 +501,10 @@
           <br>
           <br>
           <div class="col-xs-4">
-            <label>Designation<font style="color:red;">*</font></label>
-            <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
-              <option value="<?php echo $designation1;?>" selected><?php echo $designation1;?></option>
-              <?php echo tbldesignation($connect)?>
+            <label>Position<font style="color:red;">*</font></label>
+            <select required class="form-control select2" style="width: 100%;" name="position" id="" >
+              <option value="<?php echo $position11;?>" selected><?php echo $position1;?></option>
+              <?php echo tbldilgposition($connect)?>
             </select>
           </div>
           <div class="col-xs-4">
@@ -520,7 +520,7 @@
                <select class="form-control select2" name="e_stats">
               <option disabled selected></option>
               <option value="Yes">Regular</option>
-              <option value="No">Cos</option>
+              <option value="No">COS</option>
             </select>
           </div>
 
@@ -529,11 +529,12 @@
           <br>
           <br>
           <br>
+          
           <div class="col-xs-4">
-            <label>Position<font style="color:red;">*</font></label>
-            <select required class="form-control select2" style="width: 100%;" name="position" id="" >
-              <option value="<?php echo $position11;?>" selected><?php echo $position1;?></option>
-              <?php echo tbldilgposition($connect)?>
+            <label>Designation<font style="color:red;">*</font></label>
+            <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
+              <option value="<?php echo $designation1;?>" selected><?php echo $designation1;?></option>
+              <?php echo tbldesignation($connect)?>
             </select>
           </div>
           <div class="col-xs-4">

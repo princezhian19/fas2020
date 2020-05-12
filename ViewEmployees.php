@@ -49,7 +49,8 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Employees</li>
+        <li class="active">Personnel</li>
+        <li class="active">Employee Directory</li>
       </ol>
       <br>
       <br>
@@ -82,7 +83,7 @@ $username = $_SESSION['username'];
       'searching'   : true,
       'ordering'    : true,
       'info'        : false,
-      'autoWidth'   : false
+      'autoWidth'   : true
     })
   })
 </script>
