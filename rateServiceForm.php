@@ -26,10 +26,10 @@ function fillTableInfo()
                <input type = "hidden" value = "<?php echo $_GET['id'];?>" name = "control_no" id = "control_no" />
                             <tbody>
                                 <tr>
-                                    <td colspan = 4>ICT TECHNICAL ASSISTANCE REQUEST FORM</span></td>
-                                    <td class = "label-text left-text">Control<br>Number.</td>
-                                    <td colspan = 2 style = "padding:5px 5px 5px 5px;background-color:#CFD8DC;">
-                                    <input type = "text" readonly name = "control_no" value = "<?php echo $_GET['id'];?>"
+                                    <td colspan = 4  class ="label-text"><h2><b>ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</b></h2></span></td>
+                                    <td class = "label-text left-text">Control<br>Number:</td>
+                                    <td colspan = 2 style = "padding:5px 5px 5px 5px;background-color:#CFD8DC;color:red;font-weight:bold;text-align:center;">
+                                    <input type = "text"  style = "text-align:center;"readonly name = "control_no" value = "<?php echo $_GET['id'];?>"
                                       </td>
                                 </tr>
                                 <tr>
@@ -43,7 +43,7 @@ function fillTableInfo()
                                         </div>
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Request Time:</td>
-                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input disabled style = "text-align:center;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A",strtotime($row['REQ_TIME']));?>"/></td>
+                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input disabled style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A",strtotime($row['REQ_TIME']));?>"/></td>
                                     <!-- date("H:i A",strtotime(date("h:m A"))) -->
                                     <td colspan = 4 class = "label-text">HARDWARE INFORMATION</td>
                                 </tr>
@@ -62,13 +62,13 @@ function fillTableInfo()
                                 <tr>
                                     <td class = "label-text left-text">Office:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "office" readonly placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['OFFICE'];?>" disabled/></td>
-                                    <td class = "label-text left-text">Property No.:</td>
+                                    <td class = "label-text left-text">Property Number:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Property No." type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['PROPERTY_NO'];?>" disabled /> </td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Position/Designation:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "position" disabled placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION'];?>"  /></td>
-                                    <td class = "label-text left-text">Serial No.:</td>
+                                    <td class = "label-text left-text">Serial Number:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled value  = "<?php echo $row['SERIAL_NO'];?>" placeholder = "Serial No." type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
@@ -175,9 +175,9 @@ function fillCheckbox()
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                       <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                      <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                      <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                     </td>
                     <td>
@@ -247,9 +247,9 @@ function fillCheckbox()
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                         <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                        <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                        <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     </div>
                                 <?php
                         break;
@@ -260,9 +260,9 @@ function fillCheckbox()
                                         <input checked style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                         <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                        <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                        <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     </div>
                                 <?php
                         break;
@@ -273,9 +273,9 @@ function fillCheckbox()
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                         <input checked style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                         <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                        <i style = "margin-left:5%;">Purpose</i><input value = "<?php echo $row['TEXT1'];?>" type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "<?php echo $row['TEXT1'];?>" type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                        <i style = "margin-left:5%;">Purpose</i><input value = "<?php echo $row['TEXT2'];?>" type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "<?php echo $row['TEXT2'];?>" type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     </div>
                                 <?php
                         break;
@@ -286,9 +286,9 @@ function fillCheckbox()
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                         <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                        <i style = "margin-left:5%;">Purpose</i><input value = "" type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "" type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                         <input checked style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                        <i style = "margin-left:5%;">Purpose</i><input value = "<?php echo $row['TEXT3'];?>" type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "<?php echo $row['TEXT3'];?>" type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     </div>
                                 <?php
                         break;
@@ -355,9 +355,9 @@ function fillCheckbox()
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                         <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                        <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                        <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     </div>
                 </td>
                 <td>
@@ -479,9 +479,9 @@ function fillCheckbox()
                   <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                   <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                   <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                  <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                  <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                   <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                  <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                  <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                   </div>
                 </td>
                 <td style = "width:35%;">
@@ -571,9 +571,9 @@ function fillCheckbox()
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                 <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                             </div>
               </td>
               <td>
@@ -664,9 +664,9 @@ function fillCheckbox()
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                 <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                <i style = "margin-left:5%;">Purpose</i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                             </div>
               </td>
               <td>
@@ -756,7 +756,7 @@ function setStartDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $start_date = date('m/d/Y',strtotime($row['START_DATE']));
+        $start_date = date('F d, Y',strtotime($row['START_DATE']));
       }
       return $start_date;
 }
@@ -770,7 +770,7 @@ function setCompletedDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $completed_date = date('m/d/Y',strtotime($row['COMPLETED_DATE']));
+        $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
       }
       return $completed_date;
 }
@@ -802,7 +802,34 @@ function setCompletedTime()
       }
       return $completed_time;
 }
+function setSig()
+{
+  include 'connection.php';
 
+  $assist_by = '';
+   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+   $query = "SELECT REQ_BY FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+   $result = mysqli_query($conn, $query);
+   if($row = mysqli_fetch_array($result))
+     {
+       $assist_by = '<b>'.$row['REQ_BY'].'</b>';
+     }
+     return $assist_by;
+}
+function setSigICT()
+{
+  include 'connection.php';
+
+  $assist_by = '';
+   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+   $query = "SELECT ASSIST_BY FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+   $result = mysqli_query($conn, $query);
+   if($row = mysqli_fetch_array($result))
+     {
+       $assist_by = '<b>'.$row['ASSIST_BY'].'</b>';
+     }
+     return $assist_by;
+}
 function setTimeliness()
 {
     include 'connection.php';
@@ -816,14 +843,14 @@ function setTimeliness()
         if($row['TIMELINESS'] == 'YES')
         {
             ?>
-            <select class="form-control " style="width: 100%;" name="timeliness" >
+            <select class="form-control " style="width: 50%;" name="timeliness" >
             <option value = "YES" selected>YES</option>
             <option value = "NO">NO</option>
             </select> 
             <?php
         }else{
             ?>
-            <select class="form-control " style="width: 100%;" name="timeliness" >
+            <select class="form-control " style="width: 20%;" name="timeliness" >
             <option value = "YES" >YES</option>
             <option value = "NO" selected>NO</option>
             </select> 
@@ -846,7 +873,7 @@ function setQuality()
         if($row['STATUS'] == '5')
         {
             ?>
-            <select class="form-control " style="width: 100%;" name="quality" >
+            <select class="form-control " style="width: 22%;" name="quality" >
             <option value = "5" selected>Outstanding</option>
             <option value = "4">Very-Satisfatory</option>
             <option value = "3">Satisfatory</option>
@@ -856,7 +883,7 @@ function setQuality()
             <?php
         }else if($row['STATUS'] == '4'){
             ?>
-            <select class="form-control " style="width: 100%;" name="quality" >
+            <select class="form-control " style="width: 22%;" name="quality" >
             <option value = "5" >Outstanding</option>
             <option value = "4" selected>Very-Satisfatory</option>
             <option value = "3">Satisfatory</option>
@@ -866,7 +893,7 @@ function setQuality()
             <?php
         }else if($row['STATUS'] == '3'){
             ?>
-            <select class="form-control " style="width: 100%;" name="quality" >
+            <select class="form-control " style="width: 22%;" name="quality" >
             <option value = "5" >Outstanding</option>
             <option value = "4" >Very-Satisfatory</option>
             <option value = "3" selected>Satisfatory</option>
@@ -876,7 +903,7 @@ function setQuality()
             <?php
         }else if($row['STATUS'] == '2'){
             ?>
-            <select class="form-control " style="width: 100%;" name="quality" >
+            <select class="form-control " style="width: 22%;" name="quality" >
             <option value = "5" >Outstanding</option>
             <option value = "4" >Very-Satisfatory</option>
             <option value = "3" >Satisfatory</option>
@@ -886,7 +913,7 @@ function setQuality()
             <?php
         }else if($row['STATUS'] == '1'){
             ?>
-            <select class="form-control " style="width: 100%;" name="quality" >
+            <select class="form-control " style="width: 22%;" name="quality" >
             <option value = "5" >Outstanding</option>
             <option value = "4" >Very-Satisfatory</option>
             <option value = "3" >Satisfatory</option>
@@ -896,7 +923,7 @@ function setQuality()
             <?php
         }else{
             ?>
-            <select class="form-control " style="width: 100%;" name="quality" >
+            <select class="form-control " style="width: 22%;" name="quality" >
             <option value = "5" >Outstanding</option>
             <option value = "4" >Very-Satisfatory</option>
             <option value = "3" >Satisfatory</option>
@@ -916,7 +943,45 @@ function setQuality()
 <head>
   <title>Procurement</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style> .center-text{ text-align:center; } .left-text{ text-align:left; } .borderless{ border: none; } .sizeMax{ width:100%; } td.label-text{ background-color:#B0BEC5; padding:5px 5px 5px 5px; } input[type=checkbox] { /* Double-sized Checkboxes */ -ms-transform: scale(1); /* IE */ -moz-transform: scale(1); /* FF */ -webkit-transform: scale(1); /* Safari and Chrome */ -o-transform: scale(1); /* Opera */ transform: scale(1); padding: 10px; } .setDateIcon{ background-image:url(images/cal.gif); background-repeat: no-repeat; background-position: 90px 5px; } .disabletxtarea{ pointer-events: none; } </style>
+<style>
+  
+    .center-text{
+    text-align:center;
+    }
+    .left-text{
+    text-align:left;
+    }
+    .borderless{
+    border: none;
+    }
+    .sizeMax{
+    width:100%;
+    }
+    td.label-text{
+    background-color:#B0BEC5;
+    padding:5px 5px 5px 5px;
+    font-weight:bold;
+    }
+    input[type=checkbox]
+    {
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(1); /* IE */
+    -moz-transform: scale(1); /* FF */
+    -webkit-transform: scale(1); /* Safari and Chrome */
+    -o-transform: scale(1); /* Opera */
+    transform: scale(1);
+    padding: 10px;
+    }
+    .setDateIcon{
+    background-image:url(images/cal.gif); 
+    background-repeat: no-repeat; 
+    background-position: 90px 5px;
+    }
+    .disabletxtarea{
+    pointer-events: none;
+
+    }
+</style>
 </head>
 
 <body>        
@@ -927,9 +992,10 @@ function setQuality()
             <div class="panel panel-default">
                 <div class="box-body">      
                     <div>
-                        <h1>Online ICT Technical Assistance Request Form</h1><br>
+                        <h1>ICT Technical Assistance</h1><br>
                     </div>
                     <form method="POST" enctype="multipart/form-data" class="myformStyle" autocomplete="off" id = "submit">    
+                    
                         <input type = "hidden" name = "curuser" value = "" id = "selectedUser" />
                         <?php echo fillTableInfo();?>
                      <br>
@@ -938,110 +1004,117 @@ function setQuality()
 
                         <!-- START OF TYPE OF REQUEST -->
                         <u style = "margin-top:20px;">TYPE OF REQUEST</u>
-                        <table style = "margin-top:20px;width:100%;">
+                        <table style = "margin-top:20px;width:100%;"   >
                           <?PHP echo fillCheckbox();?>
                         </table>
                         <table border = 1 style = "margin-top:20px;width:100%;">
-                                                  <tr>
-                                                  <td colspan = 4 class = "center-text label-text" style = "width:50%;">END-USER</td>
-                                                  <td colspan = 4 class = "center-text label-text">RICTU</td>
-                                                  </tr>
-                                                  <tr>
-                                                  <td colspan = 4 rowspan = 2>ISSUE/PROBLEM/ERROR DETAILS:</td>
-                                                  <td colspan = 4>FINDINGS AND RESOLUTION/RECOMMENDATION</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td colspan = 4>
-                                                    <div class="form-check">
-                      <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Resolved</label>
-                          <input name = "cb1" type="checkbox" class="checkboxgroup form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Defectived (to be referred to GSS for repair)</label>
-                              </div>
-                                                    </td>
-                                                  </tr>
-                                                  
+                            <tr>
+                              <td colspan = 4 class = "center-text label-text" style = "width:50%;"><i>END-USER</i></td>
+                                <td colspan = 4 class = "center-text label-text"><i>RICTU</i></td>
+                                  </tr>
+                          <tr>
+                            <td colspan = 4 class = "label-text">ISSUE/PROBLEM/ERROR DETAILS:</td>
+                              <td colspan = 4 class = "label-text">FINDINGS AND RESOLUTION/RECOMMENDATION<span style = "color:red;">*</span></td>
+                                </tr>
+                          <tr>
+                              <td colspan = 4 >
+                              <textarea  class = "disabletxtarea" rows="23" name = "issue" cols="56"  style ="background-color:#EEEEEE;resize:none;width:100%;" >
+                              <?php echo showIssue(); ?>
+                              </textarea>
+                              </td>
 
-                                                  <tr>
-                                                  <td colspan = 4>
-                                                  <textarea  class = "disabletxtarea" rows="20" name = "issue" cols="56"  style ="resize:none;width:100%;" >
-                                                  <?php echo showIssue(); ?>
-                                                  </textarea>
-                                                  </td>
+                              <td colspan = 4 rowspan= 2>
+                              <textarea  class = "disabletxtarea" rows="25" name = "issue" cols="56"  style ="background-color:#EEEEEE;resize:none;width:100%;" >
 
-                                                  <td colspan = 4>
-                                                  <textarea class= "disabletxtarea" rows="20" cols="56" style ="resize:none;width:100%;text-align:left;" name = "STATUS_DESC">
-                                                  <?php  echo showDiagnose(); ?>
-                                                  </textarea>
-                                                  </td>
-                                                  </tr>
-                                                  <tr>
-                                                  <td style = "width:12.5%;">Timeliness</td>
-                                                  <td style = "width:12.5%;">
-                                                  <!-- <input type = "hidden" name = "timeliness" value="" />
-                                                  <input type = "hidden" name = "quality" value="" /> -->
-                                
-                                                  <?php echo setTimeliness();?>
-                                                  </td>
-                                                  <td style = "width:12.5%;text-align:center;">Quality</td>
-                                                  <td style = "width:12.5%;text-align:center;">
+                              <?php  echo showDiagnose(); ?>
+                              </textarea>
+                              </td>
+                             
+                          </tr>
+                          <tr>
+                          <td colspan = 4 class = "label-text">ACCEPTANCE OF ICT TECHNICAL ASSISTANCE RENDERED:</td>
+                         
+                          </tr>
+                          <tr>
+                          <td colspan = 4 style ="background-color:#EEEEEE;text-align:center;"><u><?php echo setSig();?></u><br><span class = "label-text">Signature over Printed Name</span></td>
 
-                                                <?php echo setQuality();?>
+                         
+                          <td colspan=2 class = "label-text"><input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Resolved</td>
+                          <td colspan=2 class = "label-text">
+                          <input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Defective(to be referred to GSS for repair)
+                          </td>
+              
+                          <tr> 
+                          <td colspan = 4 class = "label-text">DEAR END USER, YOUR FEEDBACK IS IMPORTANT TO US:</td>
 
-                                                  </td>
-                                                  <td style = "width:12.5%;">Started Date:</td>
-                                                  <td style = "width:12.5%;">
-                                                    <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input disabled  type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="<?PHP echo setStartDate();?>" >
-                                                    </div>
-                                                  </td>
-                                                  <td style = "width:12.5%;">Completed Date:</td>
-                                                  <td style = "width:12.5%;">
-                                                  <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input disabled type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="<?php echo setCompletedDate();?>" >
-                                                    </div>
-                                                  </td>
-                                                  </tr>
-                                                  <tr> 
-                                                  <td colspan = 4>
-                                                  <!-- Assisted By:
-                                                  <select name="assisted_by" class="dropdown size250">
-                                                  <option value = "Charles Adrian T. Odi">Charles Adrian T. Odi</option>
-                                                  <option value = "Christian Paul V. Ferrer">Christian Paul V. Ferrer</option>
-                                                  <option value = "Mark Kim A. Sacluti">Mark Kim A. Sacluti</option>
-                                                  </select> -->
-                                                  </td>
-                                                  <td style = "width:12.5%;">Started Time:</td>
-                                                  <td style = "width:12.5%;">
-                                                    <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input disabled id= "timepicker" type="text" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" >
-                                                    </div>
-                                                  </td>
-                                                  <td style = "width:12.5%;">Completed Time:</td>
-                                                  <td style = "width:12.5%;">
-                                                    <div class="input-group date">
-                                                      <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                      </div>
-                                                      <input disabled id = "timepicker2" type="text" name = "completed_time" placeholder = "Completed Time"  value="<?php echo setCompletedTime();?>" >
-                                                    </div>
-                                                  </td>
-                                                  </tr>
+                   
+              
+                          <td style = "width:12.5%;" class = "label-text">Started Date:<span style = "color:red;">*</span></td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                          <input disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="<?PHP echo setStartDate();?>" required>
+
+                          </div>
+                          </td>
+                          <td style = "width:12.5%;" class = "label-text">Completed Date:<span style = "color:red;">*</span></td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                          <input disabled type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="<?php echo setCompletedDate();?>" required>
+                          </div>
+                          </td>
+
+                          </tr>
+                          <tr>
+                          <td colspan = 4>
+                          <td style = "width:12.5%;" class = "label-text">Started Time:<span style = "color:red;">*</span></td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                          <input disabled id= "timepicker" type="text" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" required>
+
+                          </div>
+                          </td>
+                          <td style = "width:12.5%;" class = "label-text">Completed Time: <span style = "color:red;">*</span></td>
+                          <td style = "width:12.5%;">
+                          <div class="input-group date">
+                          <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                          </div>
+                        <input disabled id = "timepicker2" type="text" name = "completed_time" placeholder = "Completed Time"  value="<?php echo setCompletedTime();?>" required>
+
+                        </div>
+                          </td>
+                          </tr>
+                          <tr>
+                          <td colspan =4 style ="background-color:#EEEEEE;border:5px solid red;">
+                          <ol>
+                            <li class = "label-text">Timeliness
+                            <label style = "font-weight:normal;">Was the ICT Staff able to provide immediate assistance within three (3) hours or agreed timeline?(Yes/No) </label><?php echo setTimeliness();?>
+                            </li>
+                            <li class = "label-text">Quality
+                            <p style = "font-weight:normal;">At a rating scale of 1 to 5, kindly rate the service rendered?<br>(5-Outstanding, 4- Very Satisfactory, 3 - Satisfactory, 2 - Unsatisfactory, 1 - Poor) 
+                            <?php echo setQuality();?>
+                            </li>
+                          </ol>
+                          </td>
+                          <td colspan = 4 style ="background-color:#EEEEEE;text-align:center;"><u><?php echo setSigICT();?></u><br><span class = "label-text">Signature over Printed Name</span></td>
+
+                          </tr>
 
 
 
 
 
-                        </table><br>
+
+                          </table><br>
 
                         <button class="btn btn-primary btn-s  sweet-14" style="float: right;" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Danger']); "id="finalizeButton" type="button" onclick="return confirm('Are you sure you want to save now?');">Save Changes</button>
                     </form>
@@ -1058,11 +1131,48 @@ function setQuality()
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="plugins/input-mask/jquery.inputmask.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- bootstrap color picker -->
+<script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- bootstrap time picker -->
+<!-- SlimScroll -->
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+
+
+<!-- jQuery 3 -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
 
 <script src="_includes/sweetalert.min.js"></script>
 <link rel="stylesheet" href="_includes/sweetalert.css">
 <script>
-   var c_n = $('#control_no').val();
+$('document').ready(function()
+{
+    $('textarea').each(function(){
+            $(this).val($(this).val().trim());
+        }
+    );
+   
+});
+
+  
+    
+var c_n = $('#control_no').val();
     document.querySelector('.sweet-14').onclick = function(){
           swal({
               title: "Are you sure you want to save?",
@@ -1195,9 +1305,9 @@ $(function() {
   document.getElementById("purpose2").disabled = true; 
   document.getElementById("softwares").disabled = true;
   document.getElementById("changeaccount").disabled = true; 
-  document.getElementById("others1").disabled = false ; 
-  document.getElementById("others2").disabled = false; 
-  document.getElementById("others3").disabled = false; 
+  document.getElementById("others1").disabled = true ; 
+  document.getElementById("others2").disabled = true; 
+  document.getElementById("others3").disabled = true; 
   
 
     enable_cb1();
@@ -1212,7 +1322,9 @@ $(function() {
   $("#checkboxgroup_g5").click(enable_cb5);
   
 });
-
+$('.checkboxgroup').on('change', function() {
+      $('.checkboxgroup').not(this).prop('checked', false);  
+  });
 function enable_cb1() {
   if (this.checked) {
     $(".checkboxgroup_g1").removeAttr("disabled");
