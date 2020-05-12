@@ -193,7 +193,6 @@ $division = $_GET['division'];
          
                   setTimeout(function () {
                   window.location = "ManageCalendar.php";
-
                   }, 2000);
 
               

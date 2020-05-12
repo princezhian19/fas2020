@@ -1,3 +1,22 @@
+<?php
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+if (isset($_POST['submit'])) {
+  $title = $_POST['title'];
+  $content = $_POST['content'];
+  $posted_by = $_POST['posted_by'];
+  $date = $_POST['date'];
+
+  $insert = mysqli_query($conn,"INSERT INTO announcementt(posted_by, title, content, date) VALUES('$posted_by','$title','$content','$date')");
+  if ($insert) {
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Successfuly Saved!')
+    </SCRIPT>");
+   header("Refresh:0");
+ }
+
+}
+
+?>
 <div class="row">
   <div class="col-md-3">
     <div class="box">
@@ -145,7 +164,7 @@
       <div class="box-header">
         <?php 
         $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-        $BDAY = mysqli_query($conn,"SELECT concat(FIRST_M,' ',MIDDLE_M,' ',LAST_M) as name,BIRTH_D,PROFILE FROM tblemployee WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
+        $BDAY = mysqli_query($conn,"SELECT concat(FIRST_M,' ',MIDDLE_M,' ',LAST_M) as name,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
         while ($row = mysqli_fetch_assoc($BDAY)) {
           $name = $row['name'];
           $BIRTH_D = $row['BIRTH_D'];
@@ -154,8 +173,8 @@
 
           ?>  
           <img class="direct-chat-img" src="<?php echo $PROFILE; ?>" alt="message user image">
-          <b><?php echo $name;?></b> <br>
-          <font><?php echo $b_day?></font>
+          <b style="font-size: 12px;"><?php echo $name;?></b>
+          <font style="font-size: 10px;" class="pull-right"><?php echo $b_day?></font>
           <br>
           <br>
           <br>
@@ -418,15 +437,93 @@
         <div class="col-md-12">
           <div class="box" >
             <div class="panel-heading" style="background-color:#964B00;">
-             <font style="color:white;"> ANNOUNCEMENT </font><!-- Item(s) -->
-             <div class="clearfix"></div>
-           </div>
-           <div style="padding-left: 10px;padding-right: 10px;background:#ee5;">
-             <img class="direct-chat-img" src="images/LOGO.png" alt="message user image"><a href="">Charles Adrian T. Odi</a>
+             <font style="color:white;"> ANNOUNCEMENT </font> <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-warning btn-xs pull-right">Add</button><!-- Item(s) -->
+             <form method="POST">
+               <div class="modal fade" id="modal-default">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Default Modal</h4>
+                      </div>
+                      <div class="modal-body">
+                        <label style="padding-right: 20px;">Title <font style="color:red;">*</font></label><input required class="form-control" type="text" name="title"><br>
+                        <label style="padding-right: 20px;">Content <font style="color:red;">*</font></label><textarea maxlength="500" required class="form-control" type="text" name="content"></textarea><br>
+                        <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $username?>"><br>
+                        <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo date('Y-m-d')?>"><br>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+              </form>
+            </div>
+            <div style="padding-left: 10px;padding-right: 10px;background:#ee5;">
+
+             <table id="example15" class="table " style="background-color:#ee5;">
+              <thead>
+                <tr style="background-color:#ee5;">
+                  <th></th>
+                </tr>
+              </thead>
+              <?php 
+              $view_query = mysqli_query($conn,"SELECT a.date,a.id,a.posted_by,a.content,a.title,concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) as fname  FROM announcementt a LEFT JOIN tblemployee te on te.UNAME = a.posted_by ORDER BY id DESC");
+              while ($row = mysqli_fetch_assoc($view_query)) {
+                $id = $row["id"];  
+                $fname = $row["fname"];  
+                $posted_by = $row["posted_by"];  
+                $intent = $row["content"];  
+                $title = $row["title"];  
+                $date1 = $row["date"];  
+                $date = date('Y-m-d',strtotime($date1));  
+                ?>
+                <tr>
+                  <td width="1000"><img class="direct-chat-img" src="images/LOGO.png" alt="message user image"><b><?php echo $fname;?></b><br><br><br><b><?php echo $title;?><br>
+                    <?php if ($username == $posted_by): ?>
+                      <a data-toggle="modal" data-target="#modal-info_<?php echo $row['id']; ?>" class="btn btn-success btn-xs"><i class="fa fa-edit"></i>Edit</a> | <a href="delete_announcement.php?id=<?php echo $id?>&username=<?php echo $username?>" class="btn btn-danger btn-xs "><i class="fa fa-trash"></i> Delete</a>
+                    <?php endif ?>
+                  </b><br><?php echo $intent;?></td>
+                </tr>
+                
+                <form method="POST">
+              <div class="modal modal-default fade" id="modal-info_<?php echo $row['id']; ?>">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Edit Announcement</h4>
+                    </div>
+                    <div class="modal-body">
+                     <label style="padding-right: 20px;">Title <font style="color:red;">*</font></label><input value="<?php echo $title?>" class="form-control" type="text" name="title"><br>
+                        <label style="padding-right: 20px;">Content <font style="color:red;">*</font></label><textarea  class="form-control" type="text" name="content"><?php echo $intent?></textarea><br>
+                        <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $posted_by?>"><br>
+                        <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo $date?>"><br>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-outline" name="edit">Save changes</button>
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+            </form>
+              <?php } ?>
+            </table>
+            
+             <!-- <img class="direct-chat-img" src="images/LOGO.png" alt="message user image"><a href="">Charles Adrian T. Odi</a>
              <p></p>
 
              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-             </p>
+             </p> -->
 
            </div>
          </div>
@@ -463,7 +560,7 @@
       <div class="box">
         <div class="panel-heading bg-blue">
           Procurement <!-- Item(s) -->
-          <a  class="pull-right btn btn-success btn-xs">View All</a>
+          <a  class="pull-right btn btn-success btn-xs" href="MonitoringPr.php">View All</a>
           <div class="clearfix"></div>
         </div>
         <table id="" class="table table-striped table-bordered" style="width:;background-color: white;">
@@ -690,7 +787,14 @@
           <tr>
 
            <td><?php echo $dv;?></td>
-           <td><?php echo $particular;?></td>
+           <td><?php 
+           $str = wordwrap($particular, 50);
+           $str = explode("\n", $str);
+           $str = $str[0] . '...';
+           echo $str;
+
+
+           ?></td>
            <?php if ($status =='Pending'): ?>
             <td style='background-color:red'><b>Pending</b></td>
             <?php else: ?>

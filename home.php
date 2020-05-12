@@ -44,7 +44,9 @@ $username = $_SESSION['username'];
       <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
   </head>
+<style type="text/css">
 
+</style>
 
 
 
@@ -61,3 +63,36 @@ $username = $_SESSION['username'];
     </section>
   </div>
  <?php require 'test2.php';?>
+
+ <script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+
+
+
+
+<script>
+  $(function () {
+    $('#example15').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : false,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      aLengthMenu: [ [1, 10, 20, -1], [1, 10, 20, "All"] ],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+  })
+</script>
+
