@@ -60,7 +60,7 @@ $username = $_GET['username'];
 
                 <?php if ($username == 'magonzales' ||$username == 'charlesodi' || $username == 'hpsolis' || $username == 'jbaco' || $username == 'gpvillanueva' || $username == 'rmsaturno'  ): ?>
                 <td width="150">
-                 <a href='UpdateEmployee.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit</a>
+                 <a href='UpdateEmployee.php?id=<?php echo $id; ?>&division=<?php echo $_GET['division']; ?>&username=<?php echo $_GET['username']; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit</a>
                </td>
                <td><a onclick="return confirm('Are you sure you want to Delete this Account now?');" href='delete_account2.php?id=<?php echo $id;?>' title="delete" class = "btn btn-danger btn-xs" > <i class='fa fa-fw fa-trash'></i> Delete</a> </td>
                <?php else: ?>
