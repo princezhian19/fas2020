@@ -66,18 +66,16 @@ $edit="edit";
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
-                  <th width ='100'>OB NO</th> 
+                  <th width ='150'>OB NO</th> 
                   <th width = '200'>OB DATE</th>
                   <th width = ''>OFFICE</th>
                   <th width = '200'>NAME</th>
-                  <th width = '500'>PURPOSE</th>
-                  <th width = '400'>PLACE</th>
+                  <th width = '700'>PURPOSE</th>
+                  <th width = '500'>PLACE</th>
                   <th width = '200'>DATE</th>
                   <th width = '100'>TIME</th>
                   <th width = '100'>SUBMITTED DATE</th>
-                  
                   <th width = '200'>RECEIVED DATE</th>
-                
                   <th width = '800'>ACTION</th>
                   
                 </tr>
