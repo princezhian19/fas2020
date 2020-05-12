@@ -4,16 +4,28 @@
           <div class="box-header"style="overflow-x:auto;">
           </div>
           <br>
-          <br>
-
-          <br>
-          <br>
+          
           <div class=""  >
             <div class="col-md-0" style="overflow-x:auto;">
-           <!--   <li class="btn btn-success"><a href="@disbursementcreate.php" style="color:white;text-decoration: none;">Create</a></li> -->
-            </div>
-            <div class="col-md-12" style="overflow-x:auto;">
-            <form method = "POST" action = "@Functions/ddateexport1.php">
+
+
+                  <table class="table" > 
+
+                <!-- Header -->
+                  <tr>
+                  <td class="col-md-1">
+                  
+                  </td>
+                      
+                  <td class="col-md-2" >
+
+                    
+                  </td>
+
+                  <td class="col-md-9" style = "text-align:center;">
+
+                  
+                  <form method = "POST" action = "@Functions/ddateexport1.php">
                 <div class="input-group date" style="overflow-x:auto;">
                   <div class="input-group-addon" style="overflow-x:auto;">
                     FROM   <i class="fa fa-calendar"></i>
@@ -23,20 +35,27 @@
                     <div class="input-group-addon" style="overflow-x:auto;">
                       TO <i class="fa fa-calendar"></i>
                     </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                    <button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
-                    &nbsp  <button type="Summary" name="Summary"  class="btn btn-success ">Export Summary</button>
+                    <button type="submit" name="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;&nbsp;Filter/Export Data&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    
+                    &nbsp  <button type="Summary" name="Summary"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export Summary&nbsp;&nbsp;&nbsp;</button>
                   </div>                 
                 </form>
+                  
+
+                  </td>
+
+
+
+                  </tr>
+                  <!-- Header -->
+                  <table>    
+
+           <!--   <li class="btn btn-success"><a href="@disbursementcreate.php" style="color:white;text-decoration: none;">Create</a></li> -->
             </div>
-            <div class="col-md-1" style="overflow-x:auto;">
-            </div>
+          
             <div class="col-md-0" style="overflow-x:auto;">
-              </div>
-              <br>
-              <br>
-            </div>
-           
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;" >
               <thead>
                 <tr style="background-color: white;color:blue;">
@@ -157,14 +176,14 @@
                                         <?php endif ?>
                                       <?php endif ?>
                                       <td>
-                                        <a href='disbursementupdate.php?getid=<?php echo $id;?>' class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>
+                                        <a  class = "btn btn-primary btn-xs" href='disbursementupdate.php?getid=<?php echo $id;?>' > <i class='fa'>&#xf044;</i> Edit</a>
                                         <!-- <a href='@Functions/ddeletefunction.php?getid=<?php echo $id;?>'> <i style='font-size:24px'> <i class='fa fa-trash-o'></i></i> </a> -->
                                       </td>
                                     </tr>
                                   <?php } ?>    
                                 </table>
                
-
+                          </div>
      
           
 <script>
