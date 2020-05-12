@@ -11,8 +11,8 @@ if ($conn->connect_error) {
      
 
 
-
-$query = mysqli_query($conn, "UPDATE ob set receiveddate =now() where id = '$id'");
+$date = $_GET['now'];
+$query = mysqli_query($conn, "UPDATE ob set receiveddate ='$date' where id = '$id'");
 
  mysqli_close($conn);
 

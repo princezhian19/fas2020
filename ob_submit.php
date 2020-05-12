@@ -10,9 +10,9 @@ if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);}
      
 
+$date = $_GET['now'];
 
-
-$query = mysqli_query($conn, "UPDATE ob set submitteddate =now() where id = '$id'");
+$query = mysqli_query($conn, "UPDATE ob set submitteddate ='$date' where id = '$id'");
 
  mysqli_close($conn);
 
