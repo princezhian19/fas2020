@@ -449,7 +449,7 @@ if (isset($_POST['submit'])) {
                       </div>
                       <div class="modal-body">
                         <label style="padding-right: 20px;">Title <font style="color:red;">*</font></label><input required class="form-control" type="text" name="title"><br>
-                        <label style="padding-right: 20px;">Content <font style="color:red;">*</font></label><textarea  required class="form-control" type="text" name="content"></textarea><br>
+                        <label style="padding-right: 20px;">Content <font style="color:red;">*</font></label><textarea maxlength="500" required class="form-control" type="text" name="content"></textarea><br>
                         <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $username?>"><br>
                         <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo date('Y-m-d')?>"><br>
                       </div>
