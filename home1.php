@@ -1,5 +1,4 @@
 <?php session_start();
-date_default_timezone_set('Asia/Manila');
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }else{
@@ -12,12 +11,11 @@ $username = $_SESSION['username'];
 <html>
 <title>FAS | Dashboard</title>
 <head>
-<meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
 
     <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-wid, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -41,9 +39,10 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
 </head>
 <body class="hold-transition skin-red-light sidebar-mini">
-  <div class="wrapper">
+<div class="wrapper">
   <?php 
   if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
       include('test1.php');
@@ -51,25 +50,23 @@ $username = $_SESSION['username'];
       include('sidebar2.php');
     }
  ?>
-
-      <div class="content-wrapper">
-        <section class="content-header">
-          <ol class="breadcrumb">
-            <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
-            <li class="active"><i class = "fa fa-dashboard"></i> Dashboard</li>
-          </ol>
+  <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
       <br>
       <br>
         <?php include('dash_board1.php');?>
-
     </section>
   </div>
   <footer class="main-footer">
-    <br>
+  <br>
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
       </div>
-      <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+      <strong>DILG IV-A Regional Information and Communications Technology Unit (RICTU) © 2019 All Right Reserved .</strong> 
     </footer>
     <br>
 </div>
