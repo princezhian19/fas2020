@@ -355,11 +355,11 @@ mysqli_close($conn);
             <br>
           
             Time of Departure:
-            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timefrom" id="timefrom">
+            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timefrom" id="timefrom">
             <br>
             Time of Return:
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timeto" id="timeto" style="display:block">
+            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timeto" id="timeto" style="display:block">
 
            
             <br>
@@ -396,9 +396,9 @@ mysqli_close($conn);
               <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
 
               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-              <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxyes" name = "checkboxyes" class = "checkboxgroup_g1" value ="Yes"> <b>Yes</b>
+              <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxyes" name = "checkboxyes" class = "checkboxgroup_g1" value ="Yes"> <b>Yes <label style="color:red">*</label></b>
               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-              <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxno" name = "checkboxno" class = "checkboxgroup_g2" value ="No"><b>No</b>
+              <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxno" name = "checkboxno" class = "checkboxgroup_g2" value ="No"><b>No <label style="color:red">*</label> </b>
               </td>
 
               <td colspan = 1 class="" style = " font-family:Sylfaen;">
