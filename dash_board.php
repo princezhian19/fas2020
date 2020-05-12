@@ -6,7 +6,16 @@ if (isset($_POST['submit'])) {
   $posted_by = $_POST['posted_by'];
   $date = $_POST['date'];
 
-  $insert = mysqli_query($conn,"INSERT INTO announcementt(posted_by, title, content, date) VALUES('$posted_by','$title','$content','$date')");
+  $get_dv = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$posted_by'");
+  $rowdv = mysqli_fetch_array($get_dv);
+  $rDIVISION_C = $rowdv['DIVISION_C'];
+
+  $div = mysqli_query($conn,"SELECT DIVISION_M FROM tblpersonneldivision WHERE DIVISION_N = '$rDIVISION_C'");
+  $rowdiv = mysqli_fetch_array($div);
+  $rDIVISION_M = $rowdiv['DIVISION_M'];
+
+
+  $insert = mysqli_query($conn,"INSERT INTO announcementt(posted_by, division, title, content, date) VALUES('$posted_by','$rDIVISION_M','$title','$content','$date')");
   if ($insert) {
    echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Successfuly Saved!')
@@ -16,13 +25,30 @@ if (isset($_POST['submit'])) {
 
 }
 
+if (isset($_POST['update'])) {
+  $title = $_POST['title'];
+  $content = $_POST['content'];
+  $posted_by = $_POST['posted_by'];
+  $date = $_POST['date'];
+  $id_1 = $_POST['id'];
+
+echo "UPDATE announcementt SET title = '$title' , content = '$content' WHERE id = id_1 ";exit;
+  $update = mysql_query($conn,"UPDATE announcementt SET title = '$title' , content = '$content' WHERE id = id_1 ");
+  if ($update) {
+      echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Successfuly Updated!')
+    </SCRIPT>");
+   header("Refresh:0");  }
+
+}
+
 ?>
 <div class="row">
   <div class="col-md-3">
     <div class="box">
       <div class="panel-heading bg-blue">
        <img class="direct-chat-img" src="images/LOGO.png" alt="message user image">
-       PHILIPPINES STANDARD TIME <!-- Item(s) -->
+       <font class="text-center">PHILIPPINES STANDARD TIME </font><!-- Item(s) -->
        <img class="direct-chat-img pull-right" src="images/ph.png" alt="message user image">
        <div class="clearfix"></div>
      </div>
@@ -448,14 +474,14 @@ if (isset($_POST['submit'])) {
                         <h4 class="modal-title">Default Modal</h4>
                       </div>
                       <div class="modal-body">
-                        <label style="padding-right: 20px;">Title <font style="color:red;">*</font></label><input required class="form-control" type="text" name="title"><br>
-                        <label style="padding-right: 20px;">Content <font style="color:red;">*</font></label><textarea maxlength="500" required class="form-control" type="text" name="content"></textarea><br>
+                        <label style="padding-right: 20px;">Title <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 50 characters</i></font></label><input maxlength="50"  required class="form-control" type="text" name="title"><br>
+                        <label style="padding-right: 20px;">Content <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 500 characters</font></i></label><textarea maxlength="500" required class="form-control" type="text" name="content"></textarea><br>
                         <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $username?>"><br>
                         <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo date('Y-m-d')?>"><br>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
+                        <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> -->
+                        <button type="submit" class="btn btn-primary" name="submit">Save</button>
                       </div>
                     </div>
                     <!-- /.modal-content -->
@@ -473,7 +499,7 @@ if (isset($_POST['submit'])) {
                 </tr>
               </thead>
               <?php 
-              $view_query = mysqli_query($conn,"SELECT a.date,a.id,a.posted_by,a.content,a.title,concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) as fname  FROM announcementt a LEFT JOIN tblemployee te on te.UNAME = a.posted_by ORDER BY id DESC");
+              $view_query = mysqli_query($conn,"SELECT a.date,a.id,a.posted_by,a.content,a.title,concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) as fname  FROM announcementt a LEFT JOIN tblemployee te on te.UNAME = a.posted_by  ORDER BY id DESC");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["id"];  
                 $fname = $row["fname"];  
@@ -484,14 +510,14 @@ if (isset($_POST['submit'])) {
                 $date = date('Y-m-d',strtotime($date1));  
                 ?>
                 <tr>
-                  <td width="1000"><img class="direct-chat-img" src="images/LOGO.png" alt="message user image"><b><?php echo $fname;?></b><br><br><br><b><?php echo $title;?><br>
+                  <td width="1000"><img class="direct-chat-img" src="images/LOGO.png" alt="message user image"><b style="font-size: 10px;"><?php echo $fname;?></b><br><font style="font-size: 10px;"><?php echo 'FAD';?></font><br><br><b><?php echo $title;?><br>
                     <?php if ($username == $posted_by): ?>
                       <a data-toggle="modal" data-target="#modal-info_<?php echo $row['id']; ?>" class="btn btn-success btn-xs"><i class="fa fa-edit"></i>Edit</a> | <a href="delete_announcement.php?id=<?php echo $id?>&username=<?php echo $username?>" class="btn btn-danger btn-xs "><i class="fa fa-trash"></i> Delete</a>
                     <?php endif ?>
                   </b><br><?php echo $intent;?></td>
                 </tr>
                 
-                <form method="POST">
+                <form method="POST" >
               <div class="modal modal-default fade" id="modal-info_<?php echo $row['id']; ?>">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -501,14 +527,15 @@ if (isset($_POST['submit'])) {
                       <h4 class="modal-title">Edit Announcement</h4>
                     </div>
                     <div class="modal-body">
-                     <label style="padding-right: 20px;">Title <font style="color:red;">*</font></label><input value="<?php echo $title?>" class="form-control" type="text" name="title"><br>
-                        <label style="padding-right: 20px;">Content <font style="color:red;">*</font></label><textarea  class="form-control" type="text" name="content"><?php echo $intent?></textarea><br>
+                     <label style="padding-right: 20px;">Title <font style="color:red;">*</font></font>&nbsp&nbsp<i><font style="color:red;">should not exceed 50 characters</i></font></label><input value="<?php echo $title?>" class="form-control" type="text" name="title"><br>
+                     <input type="text" name="id" hidden value="<?php echo $id?>">
+                        <label style="padding-right: 20px;">Content <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 500 characters</font></i></label><textarea  class="form-control" type="text" name="content"><?php echo $intent?></textarea><br>
                         <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $posted_by?>"><br>
                         <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo $date?>"><br>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-outline" name="edit">Save changes</button>
+                      <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button> -->
+                        <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
                     </div>
                   </div>
                   <!-- /.modal-content -->
