@@ -379,11 +379,11 @@ mysqli_close($conn);
                       <br>
 
                       Time of Departure:
-                      <input value="<?php echo $timefrom1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 90px;" name="timefrom" id="timefrom">
+                      <input value="<?php echo $timefrom1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timefrom" id="timefrom">
                       <br>
                       Time of Return:
                       &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input value="<?php echo $timeto1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 90px;" name="timeto" id="timeto" style="display:block">
+                      <input value="<?php echo $timeto1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timeto" id="timeto" style="display:block">
 
 
                       <br>
