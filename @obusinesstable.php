@@ -73,7 +73,7 @@ $edit="edit";
                   <th width = '700'>PURPOSE</th>
                   <th width = '500'>PLACE</th>
                   <th width = '200'>DATE</th>
-                  <th width = '100'>TIME</th>
+                  <th width = '300'>TIME</th>
                   <th width = '100'>SUBMITTED DATE</th>
                   <th width = '200'>RECEIVED DATE</th>
                   <th width = '800'>ACTION</th>
@@ -104,11 +104,11 @@ $edit="edit";
                   $obdate = date('F d, Y', strtotime($obdate1));
                   
                   $timefrom1 = $row['timefrom'];
-                  $timefrom=  date("g A",strtotime($timefrom1));
+                  $timefrom=  date("g:i A",strtotime($timefrom1));
                 
 
                   $timeto1 = $row['timeto'];
-                  $timeto=  date("g A",strtotime($timeto1));
+                  $timeto=  date("g:i A",strtotime($timeto1));
 
                  
                   
@@ -157,15 +157,13 @@ $edit="edit";
               
 
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
-                    <?php if($fullname==$name):?>  
+                  
                           <?php if ($status!='cancelled'):?> 
                           <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Official Business?');" href='ob_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>'title="Submit">Submit</a></td>
                           <?php else: ?>
                           <td></td>  
                           <?php endif ?>
 
-                    <?php else: ?>
-                    <?php endif ?>
                 
                 <?php else: ?>
                 <td><?php echo $submitteddate?></td>
@@ -173,7 +171,7 @@ $edit="edit";
 
 
                         <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
-                          <?php if ($username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
+                          <?php if ($username1 == '' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
                               <?php if ($status=='cancelled'):?>
                               <td></td>
                               <?php else: ?>
@@ -207,13 +205,11 @@ $edit="edit";
                         <?php if ($submitteddate1 == 0000-00-00): ?>
                           <!--  -->
                               <?php if ($status!='cancelled'):?>
-                                  <?php if($fullname==$name):?>
+                                
                                   <a  href='ob_export.php?id=<?php echo $id;?>&user=<?php echo $username1;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                   <a href='OfficialBusinessUpdate.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                                   <a onclick="return confirm('Are you sure you want to cancel this record?');" href='ob_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
-                                  <?php else: ?>
-                                  <td></td>
-                                  <?php endif ?>
+                               
                               <?php else: ?>
                               Cancelled | <a disabled  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
                               <?php endif ?>
@@ -223,13 +219,11 @@ $edit="edit";
 
                               <?php if ($status=='cancelled'):?>
                                 Cancelled | <a disabled  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
-                              <?php else: ?>
-                              <?php if($fullname==$name):?>
+                               <?php else: ?>
+                             
                                   <a  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                   <a onclick="return confirm('Are you sure you want to cancel this record?');" href='ob_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
-                                  <?php else: ?>
-                                    
-                                  <?php endif ?>
+                              
                               <?php endif ?>
                           <?php endif ?>
                         
