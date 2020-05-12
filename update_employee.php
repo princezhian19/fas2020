@@ -8,7 +8,7 @@
   function tblpersonnel($connect)
   { 
     $output = '';
-    $query = "SELECT DIVISION_N,DIVISION_M FROM `tblpersonneldivision` WHERE DIVISION_M IS NOT NULL ORDER BY DIVISION_M ASC ";
+    $query = "SELECT DIVISION_N,DIVISION_M FROM `tblpersonneldivision` WHERE DIVISION_N = 1 || DIVISION_N = 10 || DIVISION_N = 18 || DIVISION_N = 17 || DIVISION_N = 9 || DIVISION_N = 7 || DIVISION_N = 19 || DIVISION_N = 20 || DIVISION_N = 21 || DIVISION_N = 22 || DIVISION_N = 23 || DIVISION_N = 24 AND DIVISION_M IS NOT NULL ORDER BY DIVISION_M ASC  ";
     $statement = $connect->prepare($query);
     $statement->execute();
     $result = $statement->fetchAll();
@@ -479,11 +479,11 @@
           <br>
           <br>
           <br>
-          <div class="col-xs-4">
-            <label>Designation<font style="color:red;">*</font></label>
-            <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
-              <option value="<?php echo $designation11;?>" selected><?php echo $designation1;?></option>
-              <?php echo tbldesignation($connect)?>
+           <div class="col-xs-4">
+            <label>Position<font style="color:red;">*</font></label>
+            <select required class="form-control select2" style="width: 100%;" name="position" id="" >
+              <option value="<?php echo $position11;?>" selected><?php echo $position1;?></option>
+              <?php echo tbldilgposition($connect)?>
             </select>
           </div>
           <div class="col-xs-4">
@@ -521,11 +521,12 @@
           <br>
           <br>
           <br>
-          <div class="col-xs-4">
-            <label>Position<font style="color:red;">*</font></label>
-            <select required class="form-control select2" style="width: 100%;" name="position" id="" >
-              <option value="<?php echo $position11;?>" selected><?php echo $position1;?></option>
-              <?php echo tbldilgposition($connect)?>
+        
+           <div class="col-xs-4">
+            <label>Designation<font style="color:red;">*</font></label>
+            <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
+              <option value="<?php echo $designation11;?>" selected><?php echo $designation1;?></option>
+              <?php echo tbldesignation($connect)?>
             </select>
           </div>
           <div class="col-xs-4">
@@ -568,11 +569,16 @@
         </div>
       </div>
     </div>  
-    <div class="row">
+    <?php if ($_GET['view'] == 1): ?>
+
+      <?php else: ?>
+      <div class="row">
       <div class="col-xs-2" align="center" >
         <button class="btn btn-block btn-primary" name="submit" type="submit" id="submit"><font size="">Save</font></button>
       </div>
     </div>
+    <?php endif ?>
+    
   </div>
 </form>
 
