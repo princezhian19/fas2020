@@ -355,11 +355,11 @@ mysqli_close($conn);
             <br>
           
             Time of Departure:
-            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timefrom" id="timefrom">
+            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 90px;" name="timefrom" id="timefrom">
             <br>
             Time of Return:
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timeto" id="timeto" style="display:block">
+            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 90px;" name="timeto" id="timeto" style="display:block">
 
            
             <br>

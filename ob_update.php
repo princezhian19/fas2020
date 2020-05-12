@@ -379,11 +379,11 @@ mysqli_close($conn);
                       <br>
 
                       Time of Departure:
-                      <input value="<?php echo $timefrom1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timefrom" id="timefrom">
+                      <input value="<?php echo $timefrom1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 90px;" name="timefrom" id="timefrom">
                       <br>
                       Time of Return:
                       &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input value="<?php echo $timeto1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timeto" id="timeto" style="display:block">
+                      <input value="<?php echo $timeto1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 90px;" name="timeto" id="timeto" style="display:block">
 
 
                       <br>
@@ -447,54 +447,54 @@ mysqli_close($conn);
                       <tr>
 
                       <?php
-                      session_start();
-                      $username = $_SESSION['username'];
-                      $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-                      //Get Office
-                      $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
-                      $rowdiv = mysqli_fetch_array($select_user);
-                      $DIVISION_C = $rowdiv['DIVISION_C'];
-                      //echo $DIVISION_C;
-                      $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
-                      $rowdiv1 = mysqli_fetch_array($select_office);
-                      $DIVISION_M = $rowdiv1['DIVISION_M'];
-                      //GET Chief    
-                      /*  $select_office = mysqli_query($conn, "SELECT pmo_contact_person from pmo where id = '$DIVISION_C'");
-                      $rowdiv1 = mysqli_fetch_array($select_office);
-                      $DIVISION_M = $rowdiv1['DIVISION_M']; */
-                      $approved="";
-                      $pos="";
-                      if($DIVISION_M=='ORD'){
-                      $approved="Noel R. Bartolabac";
-                      $pos="ASST. REGIONAL DIRECTOR";
-                      }
-                      else if($DIVISION_M=='LGMED'){
+                session_start();
+                $username = $_SESSION['username'];
+                $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                //Get Office
+                $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                $rowdiv = mysqli_fetch_array($select_user);
+                $DIVISION_C = $rowdiv['DIVISION_C'];
+                //echo $DIVISION_C;
+                $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                $rowdiv1 = mysqli_fetch_array($select_office);
+                $DIVISION_M = $rowdiv1['DIVISION_M'];
+                //GET Chief    
+               /*  $select_office = mysqli_query($conn, "SELECT pmo_contact_person from pmo where id = '$DIVISION_C'");
+                $rowdiv1 = mysqli_fetch_array($select_office);
+                $DIVISION_M = $rowdiv1['DIVISION_M']; */
+                $approved="";
+                $pos="";
+                if($DIVISION_M=='ORD'){
+                  $approved="NOEL R. BARTOLABAC";
+                  $pos="ASST. REGIONAL DIRECTOR";
+                  }
+                  else if($DIVISION_M=='LGMED'){
 
-                      $approved="Gilberto L. Tumamac";
-                      $pos="OIC - LGMED Chief";
+                  $approved="GILBERTO L. TUMAMAC";
+                  $pos="OIC - LGMED Chief";
 
+                
+                  }
+                  
+                  else if($DIVISION_M=='LGCDD'){
 
-                      }
+                  $approved="JAY-AR T. BELTRAN";
+                  $pos="OIC - LGCDD Chief";
+                  
+                  }
+                  
+                  else if($DIVISION_M=='FAD'){
 
-                      else if($DIVISION_M=='LGCDD'){
-
-                      $approved="Jay-ar T. Beltran";
-                      $pos="OIC - LGCDD Chief";
-
-                      }
-
-                      else if($DIVISION_M=='FAD'){
-
-                      $approved="Dr. Carina S. Cruz";
-                      $pos="Chief, FAD";
-
-                      }
-                      else{
-
-                        $approved="";
-                        $pos="";
-                      }
-                      ?>
+                  $approved="DR. CARINA S. CRUZ";
+                  $pos="Chief, FAD";
+                 
+                  }
+                  else{
+                  
+                    $approved="";
+                    $pos="";
+                  }
+                ?>
                       <td class="col-md-1" style="padding:5px 5px 5px 5px;"></td>
 
 
