@@ -30,42 +30,53 @@ $username = $_SESSION['username'];
   
   
     <div class="class"  style="overflow-x:auto;">
-          
-         <div class="col-md-1">
-         <li class="btn btn-success"><a href="ntacreate.php" style="color:white;text-decoration: none;">Create</a></li>
 
 
-          </div>
-          <div class="col-md-9">
-        
+                <table class="table" > 
 
-          <form method = "POST" action = "@Functions/ntadateexport.php">
-                    <div class="input-group date">
-                        <div class="input-group-addon">
-                        FROM   <i class="fa fa-calendar"></i>
-                    </div>
-                        <input type="text" class="form-control" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
+             <!-- Header -->
+                <tr>
+                <td class="col-md-1">
+                <li class="btn btn-success"><a href="ntacreate.php" style="color:white;text-decoration: none;">Create</a></li>
+
+
+                
+                </td>
                     
-                    <div class="input-group date">
-                        <div class="input-group-addon">
-                        TO <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Export Data</button>
+                <td class="col-md-4" >
 
-                          <!-- &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none;">Export All</a></li> -->
-                    </div>                        
-                      
-          </form>
+                  
+                </td>
+
+                <td class="col-md-7" style = "text-align:center;">
+                <form method = "POST" action = "@Functions/ntadateexport.php">
+              
+              <div class="input-group date">
+                  <div class="input-group-addon">
+                  FROM   <i class="fa fa-calendar"></i>
+              </div>
+                  <input type="text" class="form-control" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
+              
+              <div class="input-group date">
+                  <div class="input-group-addon">
+                  TO <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
+                  &nbsp<button type="submit" name="submit"  class="btn btn-success pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export Data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
+                    <!-- &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none;">Export All</a></li> -->
+              </div>                        
+                
+                  </form>
+               
+
+                </td>
 
 
 
-        </div>
-
-
-        <br>
-      <br>
-
+                </tr>
+                <!-- Header -->
+                <table>
 
       </div>
 
@@ -97,7 +108,7 @@ $username = $_SESSION['username'];
                         <th style="text-align:center" width="">ACCOUNT NO</th>
                         <th style="text-align:center" width="">NTA NO</th>
                         <th style="text-align:center" width="">SARO</th>
-                        <th style="text-align:center" width="500">PARTICULAR</th>
+                        <th style="text-align:center" width="300">PARTICULAR</th>
                         <th style="text-align:center" width="">AMOUNT</th>
                         <th style="text-align:center" width="">DISBURSEMENT</th>
 
@@ -107,7 +118,7 @@ $username = $_SESSION['username'];
                         <th style="text-align:center" width="800">OBLIGATED</th>
                         <th style="text-align:center" width="800">BALANCE</th>
                         <th style="text-align:center" width="800">GROUP</th> -->
-                        <th style="text-align:center" width="">ACTION</th>
+                        <th style="text-align:center" width="150">ACTION</th>
                        
 
                     <!-- </tr> -->
@@ -156,31 +167,35 @@ $username = $_SESSION['username'];
                  <tr align = ''>
                    
                     <?php if ( $datenta1=="0000-00-00" ): ?>
-                    <td style="text-align:center" ></td>
+                    <td  ></td>
                     <?php else : ?>
-                    <td style="text-align:center" ><?php echo $datenta?></td>
+                    <td  ><?php echo $datenta?></td>
                     <?php endif ?>
 
                     <?php if ( $datereceived1=="0000-00-00" ): ?>
-                    <td style="text-align:center" ></td>
+                    <td  ></td>
                     <?php else : ?>
-                        <td style="text-align:center" ><?php echo $datereceived?></td>
+                        <td  ><?php echo $datereceived?></td>
                     <?php endif ?>
 
                    
               
-                    <td style="text-align:center" ><?php echo $accountno?></td>
-                    <td style="text-align:center" ><?php echo $ntano?></td>
-                    <td style="text-align:center" ><?php echo $saronumber?></td>
-                    <td style="text-align:center" ><?php echo $particular?></td>
-                    <td style="text-align:center" ><?php echo $amount?></td>
-                    <td style="text-align:center" ><?php echo $obligated?></td>
-                    <td style="text-align:center" ><?php echo $balance?></td>
+                    <td  ><?php echo $accountno?></td>
+                    <td  ><?php echo $ntano?></td>
+                    <td  ><?php echo $saronumber?></td>
+                    <td  ><?php echo $particular?></td>
+                    <td  ><?php echo $amount?></td>
+                    <td  ><?php echo $obligated?></td>
+                    <td  ><?php echo $balance?></td>
                     
-                    <td style="text-align:center" > 
+                    <td  > 
                     
-                    <a href='ntaupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
-                    <a href='ntatableViewMain.php?getntano=<?php echo $ntano?>&getparticular=<?php echo $particular?>'> <i style='font-size:24px' class='fa'>&#xf06e;</i> </a>
+
+                   
+                    
+                    <a  class = "btn btn-info btn-xs"  href='ntatableViewMain.php?getntano=<?php echo $ntano?>&getparticular=<?php echo $particular?>'><i class='fa'>&#xf06e;</i> Export</a> | 
+                    <a  class = "btn btn-primary btn-xs"  href='ntaupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a>
+                
                     
                     </td>
                    

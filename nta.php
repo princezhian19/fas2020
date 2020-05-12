@@ -51,13 +51,7 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <style>
-  th{
-    color:#a9242d;
-    text-align:center;
-  }
-  td{
-    text-align:center;
-  }
+  
   </style>
 </head>
 <body class="hold-transition skin-red-light sidebar-mini">
@@ -116,11 +110,11 @@ $username = $_SESSION['username'];
     $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : true,
       'ordering'    : false,
-      'info'        : true,
-      'autoWidth'   : true
+      'info'        : false,
+      'autoWidth'   : false
     })
   })
 </script>

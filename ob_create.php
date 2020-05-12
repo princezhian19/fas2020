@@ -60,7 +60,19 @@ while ($row = mysqli_fetch_assoc($auto)) {
   $idGet = $row["a"];
 }
 
+if($idGet<9){
 $obcount = $getDate.'-'.'00'.$idGet;
+
+}
+else if($idGet<99){
+
+$obcount = $getDate.'-'.'0'.$idGet;
+
+}
+else{
+$obcount = $getDate.'-'.$idGet;
+}
+
 
 
 
@@ -278,7 +290,7 @@ else{
               
               <b><label style="height:20px">No	:</label></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input required value="<?php echo $obcount; ?>" readonly  class="" type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; font:bold; color:red; height: 25px; width: 120px;" id="obno" name="obno" placeholder="obno" >
               <br>
-              <label style="height:20px">Date :</label>&nbsp;&nbsp;&nbsp;<input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 25px; width: 120px;" name="date" id="" value = "<?php echo date('F d, Y') ?>" >
+              <label style="height:20px">Date :</label>&nbsp;&nbsp;&nbsp;<input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 25px; width: 120px;" name="date" id="" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" >
               </td>
 
               <td class="col-md-1"></td> 
@@ -301,7 +313,7 @@ else{
               to leave the office for the following purpose(s):
                 <br>
                 <input required style="border:none;border-bottom:1px solid black; height: 25px;width: 975px; font-weight:bold;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
-                <input style="border:none;border-bottom:1px solid black; height: 25px;width: 972px; font-weight:bold;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="Purpose">.
+                <input hidden style="border:none;border-bottom:1px solid black; height: 25px;width: 972px; font-weight:bold;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="Purpose">.
                 <br>
               </td>
 
@@ -334,7 +346,7 @@ else{
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="Place">
+              <input hidden style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="Place">
              
               <br>
               Date:
@@ -436,12 +448,12 @@ else{
                 $approved="";
                 $pos="";
                 if($DIVISION_M=='ORD'){
-                  $approved="Noel R. Bartolabac";
+                  $approved="NOEL R. BARTOLABAC";
                   $pos="ASST. REGIONAL DIRECTOR";
                   }
                   else if($DIVISION_M=='LGMED'){
 
-                  $approved="Gilberto L. Tumamac";
+                  $approved="GILBERTO L. TUMAMAC";
                   $pos="OIC - LGMED Chief";
 
                 
@@ -449,14 +461,14 @@ else{
                   
                   else if($DIVISION_M=='LGCDD'){
 
-                  $approved="Jay-ar T. Beltran";
+                  $approved="JAY-AR T. BELTRAN";
                   $pos="OIC - LGCDD Chief";
                   
                   }
                   
                   else if($DIVISION_M=='FAD'){
 
-                  $approved="Dr. Carina S. Cruz";
+                  $approved="DR. CARINA S. CRUZ";
                   $pos="Chief, FAD";
                  
                   }
