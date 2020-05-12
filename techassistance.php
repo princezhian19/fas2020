@@ -160,15 +160,11 @@ $division = $_GET['division'];
                       }
                       else if(row[10] == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
                       {
-                        if(<?php echo $division?> == 10)
-                        {
-                          action = '<a class = "btn btn-primary btn-xs"  id = "edit" style = "width:100%;"> <i class="fa">&#xf044;</i> Edit</a>';          
-
-                        }else{
+                     
                           action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a>';          
 
 
-                        }
+                        
                       
                       }
                       else if (row[10] == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')

@@ -221,7 +221,7 @@ $username = $_SESSION['username'];
 
         <!-- Records -->
 
-        <li class="treeview
+        <li class="
         <?PHP 
         if(
           $link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
@@ -234,18 +234,11 @@ $username = $_SESSION['username'];
         >
 
         
-            <a href="" >
+            <a href="techassistance.php?division=<?php echo $_GET['division'];?>" >
                 <i class="fa fa-users" style = "color:#black;"></i>
                 <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
-                <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
-            <ul class="treeview-menu" >
-              <li><a href="requestForm.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Create Request</a>
-             
-              <li>
-              <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Monitoring 
-             </a>
-            </ul>
+           
         </li>
       
      
