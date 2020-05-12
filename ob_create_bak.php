@@ -73,7 +73,8 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 $username1 = $_SESSION['username'];
  
 $checked = $_POST['check'];
-//echo $checked;
+echo $checked;
+exit();
 
 $obno = $_POST['obno'];
 $date1 = $_POST['date'];
