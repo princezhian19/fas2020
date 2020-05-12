@@ -189,7 +189,7 @@ $edit="edit";
                         <td>
                             
                           <?php if ($receiveddate1 == '0000-00-00'): ?>
-                          <!-- //no dates --> <td></td>
+                          <!-- //no dates -->
                           <?php else: ?>
                           <?php echo $receiveddate?>
                           <?php endif ?>
