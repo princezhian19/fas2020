@@ -104,11 +104,11 @@ $edit="edit";
                   $obdate = date('F d, Y', strtotime($obdate1));
                   
                   $timefrom1 = $row['timefrom'];
-                  $timefrom=  date("g A",strtotime($timefrom1));
+                  $timefrom=  date("g:i A",strtotime($timefrom1));
                 
 
                   $timeto1 = $row['timeto'];
-                  $timeto=  date("g A",strtotime($timeto1));
+                  $timeto=  date("g:i A",strtotime($timeto1));
 
                  
                   
