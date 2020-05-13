@@ -119,7 +119,7 @@ $username = $_SESSION['username'];
                 }
               ?>
               ">
-              <a  href="ViewPr1.php?division=<?php echo $_SESSION['division'];?>">
+              <a  href="ViewPR1.php?division=<?php echo $_SESSION['division'];?>">
               <i class="fa fa-cart-arrow-down " style = "color:#black;"></i>
                 <span  style = "color:#black;font-weight:normal;">Procurement</span>
                 <span class="pull-right-container"></span>
