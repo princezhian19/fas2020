@@ -41,7 +41,7 @@ function viewEvents()
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">End Date</td>
                             <td class="col-md-5">
-                                <input  type = "text"  class = "form-control datepicker2" id = "datepicker2" name = "enddatetxtbox"  placeholder="mm/dd/yyyy"  required autocomplete = off /></td>
+                                <input  type = "text"  class = "form-control datepicker2" id = "datepicker2" name = "enddatetxtbox"  placeholder="mm/dd/yyyy"   autocomplete = off /></td>
                                     </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Description</td>
