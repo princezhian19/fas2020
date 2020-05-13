@@ -29,7 +29,7 @@ function viewEvents()
                 <input  type = "hidden" name = "eventid" id = "eventid">
                 <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Activitdy Title<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox"  /></td>
                                 </tr>
                     <tr>
@@ -64,12 +64,12 @@ function viewEvents()
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Posted By</td>
                             <td class="col-md-5">                              
-                            <input readonly type = "text"  class = "form-control" id= "postedby"  />
+                            <input readonly type = "text"  class = "form-control" id= "postedby"  value="<?php echo $_SESSION['username'];?>"/>
                                     </td>
                                         </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Posted Date</td>
-                            <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control datepicker3" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
                                 </tr>
                    
                     
@@ -152,6 +152,7 @@ if($_SESSION['planningofficer'] == 1)
   <?php
 
 }else{
+
 ?>
   <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
@@ -190,7 +191,7 @@ if($_SESSION['planningofficer'] == 1)
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Posted By</td>
                             <td class="col-md-5">                              
-                            <input disabled type = "text"  class = "form-control" id = "postedby" />
+                            <input disabled type = "text"  class = "form-control" id = "postedby" value = "" />
                                     </td>
                                         </tr>
                     <tr>
@@ -203,16 +204,15 @@ if($_SESSION['planningofficer'] == 1)
 <?php
 }
 ?>
+
               
                <?php 
-               
-if($_SESSION['planningofficer'] == 1)
-               {
-              echo ' <a id = "edit"  style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary"> Edit</a>';
-              echo ' <input id = "save"  type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> ';
-            }else{
+                
+             
+                  echo ' <a id = "edit"  style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary"> Edit</a>';
+                  echo ' <input id = "save"  type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> ';
+                
 
-               }
                ?>
 
             </form>
@@ -325,7 +325,9 @@ if($_GET['flag'] == 1)
           <?php 
           if($_SESSION['planningofficer'] == 1)
           {
-            echo  '<label id ="title">View Event/Activity</label>';
+            echo  '<label id ="title">View Activity</label>';
+          }else{
+            echo  '<label id ="title">View Activity</label>';
           }
           ?>  
          </h4>
@@ -345,7 +347,7 @@ if($_GET['flag'] == 1)
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Add Event/Activity</h4>
+          <h4 class="modal-title">Add Activity</h4>
           <button type="button" class="close" data-dismiss="modal">&times; 
           </button>
         </div>
@@ -390,8 +392,11 @@ if($_GET['flag'] == 1)
 
 <script>
 $('#save').hide();
+function test(){
+$('#edit').show();
+}
 $("#edit").click(function(){
-$('#save').show();
+  $('#save').show();
 $('#edit').hide();
 
 
@@ -443,6 +448,8 @@ $(document).ready(function()
             $(".datepicker2").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
 
             $("#datepicker3").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $(".datepicker3").datepicker().datepicker("setDate", new Date());
+
 
 
 })
@@ -480,7 +487,13 @@ $("#all").click(function(){
           $('#myModal').modal('show');
         },
         eventClick: function(event, element) {
-          
+          if(event.office == <?php echo $_GET['division'];?>)
+          {
+          test();
+          }else{
+            $('#save').hide();
+            $('#edit').hide();
+          }
                 $('#myModal').modal('show');
                 $('#myModal').find('#eventid').val(event.id);
                 $('#myModal').find('#titletxtbox').val(event.title);
