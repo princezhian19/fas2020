@@ -498,7 +498,13 @@ $("#all").click(function(){
                 $('#myModal').find('#eventid').val(event.id);
                 $('#myModal').find('#titletxtbox').val(event.title);
                 $('#myModal').find('#datepicker1').val(moment(event.start).format('MM/DD/YYYY'));
-                $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
+if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970-01-01 00:00:00')
+{  
+  $('#myModal').find('#datepicker2').val('');
+}else{
+  $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
+}    
+                // $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
                 $('#myModal').find('#datepicker3').val(moment(event.posteddate).format('MM/DD/YYYY'));
                 $('#myModal').find('#descriptiontxtbox').val(event.description);
                 $('#myModal').find('#remarks').val(event.remarks);
