@@ -212,14 +212,15 @@ $edit="edit";
                                
                               <?php else: ?>
                               <label style="color:red">Cancelled</label> | 
-                              <a   href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
+                              <a  disabled href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
                               <?php endif ?>
                         
                         <?php else: ?>
 
 
                               <?php if ($status=='cancelled'):?>
-                                <label style="color:red">Cancelled</label> | <a   href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
+                                <label style="color:red">Cancelled</label> | 
+                                <a disabled  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
                                <?php else: ?>
                              
                                   <a  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
