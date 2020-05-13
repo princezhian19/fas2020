@@ -16,7 +16,7 @@ $col =array(
 
 $sql ="SELECT * FROM events 
 left join tblemployee te ON events.postedby = te.emp_n  
-left join tblpersonneldivision tp on tp.DIVISION_N = events.office";
+left join tblpersonneldivision tp on tp.DIVISION_N = events.office  WHERE office = ".$_GET['division']."";
 $query=mysqli_query($con,$sql);
 
 $totalData=mysqli_num_rows($query);
@@ -25,7 +25,7 @@ $totalFilter=$totalData;
 
 //Search
 $sql ="SELECT * FROM events left join tblemployee te ON events.postedby = te.emp_n  
-left join tblpersonneldivision tp on tp.DIVISION_N = events.office WHERE 1=1";
+left join tblpersonneldivision tp on tp.DIVISION_N = events.office WHERE office = ".$_GET['division']."";
 if(!empty($request['search']['value'])){
     $sql.=" AND (id Like '%".$request['search']['value']."%' ";
     $sql.=" OR UNAME Like '%".$request['search']['value']."%' )";
@@ -53,7 +53,7 @@ while($row=mysqli_fetch_array($query)){
     $subdata[]=$row['DIVISION_M']; 
     $subdata[]=$row['title']; 
     $subdata[]=date('F d, Y',strtotime($row['start']));      
-    if($row['end'] == '0000-00-00 00:00:00')
+    if($row['end'] == '0000-00-00 00:00:00' || 'January 01, 1970')
     {
         $row['end'] == null;
         $subdata[]=$row['end'];   
