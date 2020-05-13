@@ -76,9 +76,6 @@ $username = $_SESSION['username'];
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 
-
-
-
 <script>
   $(function () {
     $('#example15').DataTable({
@@ -93,7 +90,14 @@ $username = $_SESSION['username'];
       "bLengthChange": false,
       "bFilter": true,
       "bInfo": false,
-      "bAutoWidth": false
+      "bAutoWidth": false,
+      "pagingType": "simple",
+      "language": {
+      "paginate": {
+      "previous": "<",
+      "next":">"
+}
+}
     })
   })
 </script>
