@@ -82,7 +82,7 @@ $division = $_GET['division'];
 <div class="wrapper">
     <div class="content-wrapper">
         <section class="content-header">
-            <ol class="breadcrumb"> <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li> <li class="active">Events</li> </ol>
+            <ol class="breadcrumb"> <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li> <li class="active">Calendar</li> <li class="active">Manage All Activities</li> </ol>
                 <div class="response"></div>
                     <div class="row">
                         <div class="col-md-12">
