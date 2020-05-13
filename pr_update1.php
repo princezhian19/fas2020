@@ -225,9 +225,11 @@ if ($app_items == "------------------------------SELECT ITEM--------------------
     function load_data(query)
     {
       $.ajax({
-        url:"fetch_pr1.php",
-        method:"POST",
-        data:{query:query},
+          url:"fetch_pr1.php",
+          method:"POST",
+          data:{query:query,
+          name: $('#pmo').val()
+          },
         success:function(data)
         {
           $('#result').html(data);
