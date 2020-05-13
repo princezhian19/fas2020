@@ -235,7 +235,8 @@ mysqli_close($conn);
                       3/F Andenson Bldg. 1, National Highway, Brgy. Parian, City of Calamba, Laguna 4027
 
                       <br>
-                      827-4745; 827-4560; 827-4587; 827-3143 ; 827-4745
+                     <!--  827-4745; 827-4560; 827-4587; 827-3143 ; 827-4745 -->
+                     (049) 827-4587; (049) 827-4560; (049) 827-3143
 
                       <br>
                       dilg4a.calabarzon@gmail.com www.calabarzon.dilg.gov.ph
