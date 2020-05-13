@@ -75,6 +75,7 @@ $edit="edit";
   <?php if ($username1 == 'cvferrer' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
   <b>Month</b>
   <select class="" name="month" style="width: 150px; Height:30px;">
+  <!-- <option value="">Month</option> -->
     <option value="January">January</option>
     <option value="February">February</option>
     <option value="March">March</option>
@@ -91,6 +92,7 @@ $edit="edit";
   
   <b>Year</b>
   <select class="" name="year" style="width: 150px; Height:30px;">
+    <!-- <option value="">Year</option> -->
     <option value="2020">2020</option>
     <option value="2021">2021</option>
     <option value="2022">2022</option>
@@ -107,6 +109,7 @@ $edit="edit";
 
   <b>Office</b>
   <select class="" name="office" style="width: 150px; Height:30px;">
+    <!-- <option value="" style="color:gray">Office</option> -->
     <option value="ORD">ORD</option>
     <option value="FAD">FAD</option>
     <option value="LGCDD">LGCDD</option>

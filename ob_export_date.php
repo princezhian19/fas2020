@@ -45,16 +45,22 @@ $year = $_POST['year'];
 
 $office = $_POST['office'];
 
-echo $month;
+/* echo $month;
 echo '<br>';
 echo $year;
 echo '<br>';
-echo $office;
+echo $office; */
+
+
 
 
 $sql_q10 = mysqli_query($conn, "SELECT * FROM ob WHERE date like  '%".$year."-".$month."%' and office = '$office' order by date asc" );
 /* echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month."%' and office = '$office' order by date asc";
 exit(); */
+
+
+
+    if (mysqli_num_rows($sql_q10)>0) {
 
     $row = 8;
     while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
@@ -157,6 +163,14 @@ exit(); */
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleLeft);
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleRight); */
           $row++;
+    }
+    }
+    else{
+
+      
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('A9','*********No Entry after this.*********');
+        $objPHPExcel->setActiveSheetIndex()->mergeCells("A9:I9");
+       
     }
   
 
