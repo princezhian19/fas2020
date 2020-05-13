@@ -154,8 +154,12 @@ else{
 
   if($query){
 
-    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
- 
+   // echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  ';
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+   window.alert(' Official Business has been successfully added.')
+   window.location.href='ob.php';
+   </SCRIPT>");
+    
 }
 else{
   echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
