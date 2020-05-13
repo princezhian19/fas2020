@@ -231,6 +231,7 @@ if ($app_items == "------------------------------SELECT ITEM--------------------
         success:function(data)
         {
           $('#result').html(data);
+           console.log( $('#pmo').val());
         }
       });
     }
