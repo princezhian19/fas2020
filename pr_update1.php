@@ -225,7 +225,7 @@ if ($app_items == "------------------------------SELECT ITEM--------------------
     function load_data(query)
     {
       $.ajax({
-        url:"fetch_pr.php",
+        url:"fetch_pr1.php",
         method:"POST",
         data:{query:query},
         success:function(data)
