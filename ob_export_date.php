@@ -105,6 +105,7 @@ exit(); */
         $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$place);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$timefrom);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,$timeto);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$row,$status);
        
 
        
