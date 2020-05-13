@@ -13,7 +13,11 @@ require_once 'calendar/sample/bdd.php';
 require_once 'calendar/sample/dbaseCon.php';
 require_once 'calendar/sample/sql_statements.php';
 
-$sql = "SELECT DIVISION_M, id, title, start, end, description,venue, tblpersonneldivision.DIVISION_COLOR as 'color', cancelflag, office,enp,posteddate, remarks FROM events inner join tblpersonneldivision on events.office = tblpersonneldivision.DIVISION_N where cancelflag = 0 and status = 1 ";
+$sql = "SELECT DIVISION_M, id, title, start, end, description,venue, tblpersonneldivision.DIVISION_COLOR as 'color', cancelflag, office,enp,posteddate, remarks,UNAME 
+FROM events 
+inner join tblpersonneldivision on events.office = tblpersonneldivision.DIVISION_N
+inner join tblemployee on events.postedby = tblemployee.EMP_N
+where cancelflag = 0 and events.status = 1 ";
 $req = $bdd->prepare($sql);
 $req->execute();
 $events = $req->fetchAll();
@@ -37,7 +41,7 @@ function viewEvents()
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">End Date</td>
                             <td class="col-md-5">
-                                <input  type = "text" placeholder="mm/dd/yyyy" class = "form-control enddate" id = "datepicker2" name = "enddatetxtbox" value = "" /></td>
+                                <input  type = "text"  class = "form-control datepicker2" id = "datepicker2" name = "enddatetxtbox"  placeholder="mm/dd/yyyy"  required autocomplete = off /></td>
                                     </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Description</td>
@@ -60,7 +64,7 @@ function viewEvents()
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Posted By</td>
                             <td class="col-md-5">                              
-                            <input readonly type = "text"  class = "form-control" value = "<?php echo $_SESSION['username'];?>"  />
+                            <input readonly type = "text"  class = "form-control" id= "postedby"  />
                                     </td>
                                         </tr>
                     <tr>
@@ -112,7 +116,7 @@ if($_SESSION['planningofficer'] == 1)
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">End Date</td>
                             <td class="col-md-5">
-                                <input  disabled type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
+                                <input autocomplete ="off" disabled type = "text"  class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
                                     </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Description</td>
@@ -135,7 +139,7 @@ if($_SESSION['planningofficer'] == 1)
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Posted By</td>
                             <td class="col-md-5">                              
-                            <input readonly type = "text"  class = "form-control" value = "<?php echo $_SESSION['username'];?>"  />
+                            <input readonly type = "text"  class = "form-control"  id = "postedby"/>
                                     </td>
                                         </tr>
                     <tr>
@@ -186,7 +190,7 @@ if($_SESSION['planningofficer'] == 1)
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Posted By</td>
                             <td class="col-md-5">                              
-                            <input disabled type = "text"  class = "form-control" value = "<?php echo $_SESSION['username'];?>"  />
+                            <input disabled type = "text"  class = "form-control" id = "postedby" />
                                     </td>
                                         </tr>
                     <tr>
@@ -204,7 +208,7 @@ if($_SESSION['planningofficer'] == 1)
                
 if($_SESSION['planningofficer'] == 1)
                {
-              echo ' <input id = "edit"   style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary" value = "Edit"> ';
+              echo ' <a id = "edit"  style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary"> Edit</a>';
               echo ' <input id = "save"  type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> ';
             }else{
 
@@ -321,9 +325,7 @@ if($_GET['flag'] == 1)
           <?php 
           if($_SESSION['planningofficer'] == 1)
           {
-            echo  ' Edit Event/Activity';
-          }else{
-            echo ' View Event/Activity';
+            echo  '<label id ="title">View Event/Activity</label>';
           }
           ?>  
          </h4>
@@ -394,6 +396,7 @@ $('#edit').hide();
 
 
 
+$('#title').html("Edit Event/Activity");
 $('#titletxtbox').prop("disabled", false); 
 $('#datepicker1').prop("disabled", false); 
 $('#datepicker2').prop("disabled", false); 
@@ -433,13 +436,13 @@ $(document).ready(function()
             $( "#lucena" ).prop( "checked", true );
       
  
-            $( ".datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-            $( "#datepicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $(".datepicker1").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $("#datepicker1").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
             $(".datepicker1").datepicker().datepicker("setDate", new Date());
-            $( ".enddate" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-            $( "#datepicker2" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-            $(".enddate").datepicker().datepicker("setDate", new Date());
-            $( "#datepicker3" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $("#datepicker2").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+            $(".datepicker2").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+
+            $("#datepicker3").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
 
 
 })
@@ -485,7 +488,8 @@ $("#all").click(function(){
                 $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
                 $('#myModal').find('#datepicker3').val(moment(event.posteddate).format('MM/DD/YYYY'));
                 $('#myModal').find('#descriptiontxtbox').val(event.description);
-                $('#myModal').find('#remarks').val(event.title);
+                $('#myModal').find('#remarks').val(event.remarks);
+                $('#myModal').find('#postedby').val(event.postedby);
                 $('#myModal').find('#venuetxtbox').val(event.venue);
                 $('#myModal').find('#enptxtbox').val(event.enp);
             },
@@ -593,7 +597,8 @@ $("#all").click(function(){
                         color: '<?php echo $event['color']; ?>',
                         office: '<?php echo $event['office']; ?>',
                         posteddate: '<?php echo $event['posteddate']; ?>',
-                        remarks: '<?php echo preg_replace('/[^\w]/', '',$event['remarks']); ?>',
+                        remarks: '<?php echo preg_replace('/[^\w]/', ' ',$event['remarks']); ?>',
+                        postedby:'<?php echo $event['UNAME'];?>',
                         enp: '<?php echo $event['enp']; ?>',
                     
 
@@ -614,8 +619,8 @@ $("#all").click(function(){
                         color: '<?php echo $event['color']; ?>',
                         office: '<?php echo $event['office']; ?>',
                         posteddate: '<?php echo $event['posteddate']; ?>',
-                        remarks: '<?php echo preg_replace('/[^\w]/', '',$event['remarks']); ?>',
-
+                        remarks: '<?php echo preg_replace('/[^\w]/', ' ',$event['remarks']); ?>',
+                        postedby:'<?php echo $event['UNAME'];?>',
                         enp: '<?php echo $event['enp']; ?>',
                         
 

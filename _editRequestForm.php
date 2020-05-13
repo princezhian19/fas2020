@@ -903,7 +903,7 @@ function setSig()
                               </td>
 
                               <td colspan = 4 rowspan= 2>
-                              <textarea id ="diagnose" rows="25" cols="56" style ="resize:none;width:100%;align-content:left;" name = "STATUS_DESC">
+                              <textarea id ="diagnose" rows="25" cols="56" style ="border:5px solid red;resize:none;width:100%;align-content:left;" name = "STATUS_DESC">
                               <?php  echo showDiagnose(); ?>
                               </textarea>
                               </td>
