@@ -22,7 +22,7 @@ if($query){
     
    
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert(' Data has been successfully received.')
+    window.alert(' Official Business has been successfully received.')
     window.location.href='ob.php';
     </SCRIPT>"); 
 

@@ -133,8 +133,11 @@ if ($conn->connect_error) {
 
 if($checked==""){
 
-  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. - check the YES/NO field. </p> </div></div>  '; 
-   
+  // echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. - check the YES/NO field. </p> </div></div>  '; 
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.alert('Please check Yes or No for travelling claim.');
+  
+  </SCRIPT>");   
 }
 else{
 
@@ -211,7 +214,8 @@ mysqli_close($conn);
                 3/F Andenson Bldg. 1, National Highway, Brgy. Parian, City of Calamba, Laguna 4027
                 
                 <br>
-                827-4745; 827-4560; 827-4587; 827-3143 ; 827-4745
+               <!--  827-4745; 827-4560; 827-4587; 827-3143 ; 827-4745 -->
+               (049) 827-4587; (049) 827-4560; (049) 827-3143
 
                 <br>
                 dilg4a.calabarzon@gmail.com www.calabarzon.dilg.gov.ph
@@ -304,8 +308,8 @@ mysqli_close($conn);
               Permission is requested by Mr./Ms.  &nbsp;&nbsp;<input required readonly style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 480px;"   id="name" name="name" autocomplete ="off" type="text" class="" placeholder="Name" value = "<?php echo $fullname;?>">
               to leave the office for the following purpose(s):
                 <br>
-                <input required style="border:none;border-bottom:1px solid black; height: 25px;width: 975px; font-weight:bold;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
-                <input  style="border:none;border-bottom:1px solid black; height: 25px;width: 972px; font-weight:bold;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="">.
+                <input value="<?php echo isset($_POST['purpose']) ? htmlspecialchars($_POST['purpose'], ENT_QUOTES) : ''; ?>" required style="border:none;border-bottom:1px solid black; height: 25px;width: 975px; font-weight:bold;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
+                <input  value="<?php echo isset($_POST['purpose1']) ? htmlspecialchars($_POST['purpose1'], ENT_QUOTES) : ''; ?>"  style="border:none;border-bottom:1px solid black; height: 25px;width: 972px; font-weight:bold;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="">.
                 <br>
               </td>
 
@@ -331,14 +335,14 @@ mysqli_close($conn);
               <br>
               Place to be visited:
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input required style=" font-weight:bold;border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place" name="place" autocomplete ="off" type="text" class="" placeholder="Place">
+              <input  value="<?php echo isset($_POST['place']) ? htmlspecialchars($_POST['place'], ENT_QUOTES) : ''; ?>" required style=" font-weight:bold;border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place" name="place" autocomplete ="off" type="text" class="" placeholder="Place">
               <br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input  style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="">
+              <input  value="<?php echo isset($_POST['place1']) ? htmlspecialchars($_POST['place1'], ENT_QUOTES) : ''; ?>"  style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="">
              
               <br>
               Date:
@@ -347,7 +351,7 @@ mysqli_close($conn);
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;
               
-              <input required type="text" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+              <input  value="<?php echo isset($_POST['obdate']) ? htmlspecialchars($_POST['obdate'], ENT_QUOTES) : ''; ?>" required type="text" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" name="obdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy" autocomplete="off">
               </td>
 
               <td colspan = 1 class="" style = " font-family:Sylfaen;">
@@ -355,11 +359,11 @@ mysqli_close($conn);
             <br>
           
             Time of Departure:
-            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timefrom" id="timefrom">
+            <input  value="<?php echo isset($_POST['timefrom']) ? htmlspecialchars($_POST['timefrom'], ENT_QUOTES) : ''; ?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timefrom" id="timefrom">
             <br>
             Time of Return:
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timeto" id="timeto" style="display:block">
+            <input  value="<?php echo isset($_POST['timeto']) ? htmlspecialchars($_POST['timeto'], ENT_QUOTES) : ''; ?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timeto" id="timeto" style="display:block">
 
            
             <br>
@@ -712,4 +716,9 @@ $(document).ready(function(){
 </script>
 
 </body>
+
+
+
+
 </html>
+

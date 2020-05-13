@@ -150,8 +150,12 @@ if ($conn->connect_error) {
 
 if($checked==""){
 
-  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. - check the YES/NO field. </p> </div></div>  '; 
+  // echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. - check the YES/NO field. </p> </div></div>  '; 
    
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.alert('Please check Yes or No for travelling claim.');
+  
+  </SCRIPT>");   
 }
 else{
 
@@ -235,7 +239,8 @@ mysqli_close($conn);
                       3/F Andenson Bldg. 1, National Highway, Brgy. Parian, City of Calamba, Laguna 4027
 
                       <br>
-                      827-4745; 827-4560; 827-4587; 827-3143 ; 827-4745
+                     <!--  827-4745; 827-4560; 827-4587; 827-3143 ; 827-4745 -->
+                     (049) 827-4587; (049) 827-4560; (049) 827-3143
 
                       <br>
                       dilg4a.calabarzon@gmail.com www.calabarzon.dilg.gov.ph
@@ -417,12 +422,20 @@ mysqli_close($conn);
                       travelling expenses is hereby authorized.
                       <br>
                       <br>
-                      <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
-                      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxyes" name = "checkboxyes" class = "checkboxgroup_g1" value ="Yes"> <b>Yes <label style="color:red">*</label></b>
-                      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxno" name = "checkboxno" class = "checkboxgroup_g2" value ="No"><b>No <label style="color:red">*</label></b>
-                      </td>
+                      <input value="<?php echo $uc;?>" hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
+                      <?php if($uc=='yes'):?>
+                          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                          <input <?php echo "checked='checked'"; ?> onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxyes" name = "checkboxyes" class = "checkboxgroup_g1" value ="Yes"> <b>Yes <label style="color:red">*</label></b>
+                          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                          <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxno" name = "checkboxno" class = "checkboxgroup_g2" value ="No"><b>No <label style="color:red">*</label></b>
+                      <?php else:?>
+                          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                          <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxyes" name = "checkboxyes" class = "checkboxgroup_g1" value ="Yes"> <b>Yes <label style="color:red">*</label></b>
+                          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                          <input  <?php echo "checked='checked'"; ?>  onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxno" name = "checkboxno" class = "checkboxgroup_g2" value ="No"><b>No <label style="color:red">*</label></b>
+                      <?php endif?>
+                    
+                    </td>
 
                       <td colspan = 1 class="" style = " font-family:Sylfaen;">
                       <br>
