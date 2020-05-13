@@ -76,7 +76,7 @@ $edit="edit";
                   <th width = '300'>TIME</th>
                   <th width = '100'>SUBMITTED DATE</th>
                   <th width = '200'>RECEIVED DATE</th>
-                  <th width = '800'>ACTION</th>
+                  <th width = '900'>ACTION</th>
                   
                 </tr>
                 </thead>
