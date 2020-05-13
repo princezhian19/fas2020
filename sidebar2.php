@@ -95,7 +95,7 @@ $username = $_SESSION['username'];
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/home1.php?division='.$_SESSION['division'].''){ echo 'class = "active"';}?>>
+        <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/home.php?division='.$_SESSION['division'].''){ echo 'class = "active"';}?>>
           <a href="home1.php?division=<?php echo $_GET['division']; ?>" >
             <i class="fa fa-dashboard" style = "color:#black;"></i> <span style = "color:#black;font-weight:normal;">Dashboard</span>
             <span class="pull-right-container">
@@ -112,36 +112,27 @@ $username = $_SESSION['username'];
          
         </li>
       
-        <li  class = "
-        <?php 
-              if( $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPR1.php?division='.$_GET['division'].'' )
+        <li  <?php 
+              if( $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPR1.php'.$_GET['division'].'' )
                 {
                    echo 'active';
-                }else{
-                    
                 }
               ?>
               ">
-              <a  href="ViewPR1.php?division=<?php echo $_GET['division'];?>">
+              <a  href="ViewPr1.php?division=<?php echo $_SESSION['division'];?>">
               <i class="fa fa-cart-arrow-down " style = "color:#black;"></i>
                 <span  style = "color:#black;font-weight:normal;">Procurement</span>
                 <span class="pull-right-container"></span>
               </a>
         </li>
      
-        <li class="
-        <?php
-        if( 
-          $link == 'http://fas.calabarzon.dilg.gov.ph/ViewDV.php' || 
+        <li class="treeview">
+          <a href="#" 
+          <?php
+           if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewDV.php' || 
           $link == 'http://fas.calabarzon.dilg.gov.ph/ViewBURS.php?division='.$_GET['division'].'')
-          {
-              echo 'treeview active';
-          }
-        ?>
-        "
-        >
-        
-          <a href="#" >
+          { echo 'class = "active"';}?> 
+           >
           <i class="fa fa-money"></i>
           <span  style = "color:#black;font-weight:normal;">Financial</span>
 
@@ -154,15 +145,14 @@ $username = $_SESSION['username'];
         <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
           </ul>
         </li>
+        
+
+
+
+        
           
     <!-- Pesonnel -->
-    <li  class = " 
-    <?php 
-    if(
-    $link == 'http://fas.calabarzon.dilg.gov.ph/ob.php?division='.$_SESSION['division'].''||
-    $link == 'http://fas.calabarzon.dilg.gov.ph/TravelOrder.php?division='.$_SESSION['division'].'')
-    
-    { echo 'treeview active"';}?>">
+    <li  class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
             <a  href="#" >
               <i class="fa fa-users" style = "color:#black;"></i> 
               <span  style = "color:#black;font-weight:normal;">Personnel</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
