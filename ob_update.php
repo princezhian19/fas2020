@@ -150,8 +150,12 @@ if ($conn->connect_error) {
 
 if($checked==""){
 
-  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. - check the YES/NO field. </p> </div></div>  '; 
+  // echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. - check the YES/NO field. </p> </div></div>  '; 
    
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.alert('Please check Yes or No for travelling claim.');
+  
+  </SCRIPT>");   
 }
 else{
 
