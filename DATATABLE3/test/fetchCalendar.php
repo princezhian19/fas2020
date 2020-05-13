@@ -53,9 +53,10 @@ while($row=mysqli_fetch_array($query)){
     $subdata[]=$row['DIVISION_M']; 
     $subdata[]=$row['title']; 
     $subdata[]=date('F d, Y',strtotime($row['start']));      
-    if($row['end'] == '0000-00-00 00:00:00' || 'January 01, 1970')
+    if($row['end'] == '0000-00-00 00:00:00' || $row['end'] == null || $row['end'] == '1970-01-01 00:00:00')
     {
-        $row['end'] == null;
+       $a ='-';
+       $row['end'] = $a;
         $subdata[]=$row['end'];   
     }else{
         $subdata[]=date('F d, Y',strtotime($row['end']));   
