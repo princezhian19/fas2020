@@ -46,7 +46,7 @@ $username = $_SESSION['username'];
     text-align:center;
   }
   td{
-    text-align:center;
+    text-align:;
   }
   </style>
 </head>
@@ -103,8 +103,8 @@ $username = $_SESSION['username'];
 
   })
   $(function () {
-    $('#example2').DataTable()
-    $('#example1').DataTable({
+    $('#').DataTable()
+    $('#').DataTable({
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
@@ -112,6 +112,19 @@ $username = $_SESSION['username'];
       'info'        : true,
       'autoWidth'   : true,
       "scrollX": true
+    })
+  })
+</script>
+
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : false,
+      'autoWidth'   : false
     })
   })
 </script>

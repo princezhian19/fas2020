@@ -221,7 +221,7 @@ else{
                 <br>
                 <label>Petsa:</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input readonly required type="text" class="" style=" border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:300px;" name="date" id="" value = "<?php echo date('F d, Y') ?>" >
+                <input readonly required type="text" class="" style=" border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:300px;" name="date" id="" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" >
                 
                 <br>
                 <br>
@@ -469,12 +469,12 @@ else{
                 $approved="";
                 $pos="";
                 if($DIVISION_M=='ORD'){
-                  $approved="Noel R. Bartolabac";
+                  $approved="NOEL R. BARTOLABAC";
                   $pos="ASST. REGIONAL DIRECTOR";
                   }
                   else if($DIVISION_M=='LGMED'){
 
-                  $approved="Gilberto L. Tumamac";
+                  $approved="GILBERTO L. TUMAMAC";
                   $pos="OIC - LGMED Chief";
 
                 
@@ -482,14 +482,14 @@ else{
                   
                   else if($DIVISION_M=='LGCDD'){
 
-                  $approved="Jay-ar T. Beltran";
+                  $approved="JAY-AR T. BELTRAN";
                   $pos="OIC - LGCDD Chief";
                   
                   }
                   
                   else if($DIVISION_M=='FAD'){
 
-                  $approved="Dr. Carina S. Cruz";
+                  $approved="DR. CARINA S. CRUZ";
                   $pos="Chief, FAD";
                  
                   }

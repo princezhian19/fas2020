@@ -148,36 +148,39 @@ if ($conn->connect_error) {
 }
 
 
-/* if($checked=="checked"){
+if($checked==""){
 
-  
-  
-  $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',obdate='$obdate',timefrom='$timefrom1',timeto='0000-00-00',uc='1' where id = '$id'");
- 
-  
-
-
-}
-
-else
-{ */
-  $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$places',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1' where id = '$id'");
-  
-  
-//}
-
-mysqli_close($conn);
-
-if($query){
-
-    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully updated. </p> </div></div>  '; 
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. - check the YES/NO field. </p> </div></div>  '; 
    
 }
 else{
 
-    echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
-    
+  if($checked=="yes"){
+    $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$places',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='yes' where id = '$id'");
+  }
+  else if($checked=="no"){
+
+    $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$places',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='no' where id = '$id'");
+  }
+ 
+
+  if($query){
+
+    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
+ 
 }
+else{
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
+   
+}
+
+ }
+
+ 
+
+mysqli_close($conn);
+
+
 }
 
 ?>
@@ -326,7 +329,7 @@ else{
                       to leave the office for the following purpose(s):
                       <br>
                       <input value="<?php echo $purpose?>" required style="border:none;border-bottom:1px solid black; height: 25px;width: 975px; font-weight:bold;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
-                      <input style="border:none;border-bottom:1px solid black; height: 25px;width: 972px; font-weight:bold;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="Purpose">.
+                      <input  style="border:none;border-bottom:1px solid black; height: 25px;width: 972px; font-weight:bold;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="">.
                       <br>
                       </td>
 
@@ -359,7 +362,7 @@ else{
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       &nbsp;&nbsp;
-                      <input style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="Place">
+                      <input  style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="">
 
                       <br>
                       Date:
@@ -376,11 +379,11 @@ else{
                       <br>
 
                       Time of Departure:
-                      <input value="<?php echo $timefrom1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timefrom" id="timefrom">
+                      <input value="<?php echo $timefrom1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timefrom" id="timefrom">
                       <br>
                       Time of Return:
                       &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input value="<?php echo $timeto1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timeto" id="timeto" style="display:block">
+                      <input value="<?php echo $timeto1?>" required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timeto" id="timeto" style="display:block">
 
 
                       <br>
@@ -414,10 +417,11 @@ else{
                       travelling expenses is hereby authorized.
                       <br>
                       <br>
+                      <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
                       &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "checkbox" class = "checkboxgroup_g1" value ="Yes"> <b>Yes</b>
+                      <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxyes" name = "checkboxyes" class = "checkboxgroup_g1" value ="Yes"> <b>Yes <label style="color:red">*</label></b>
                       &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "checkbox" class = "checkboxgroup_g2" value ="No"><b>No</b>
+                      <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxno" name = "checkboxno" class = "checkboxgroup_g2" value ="No"><b>No <label style="color:red">*</label></b>
                       </td>
 
                       <td colspan = 1 class="" style = " font-family:Sylfaen;">
@@ -443,54 +447,54 @@ else{
                       <tr>
 
                       <?php
-                      session_start();
-                      $username = $_SESSION['username'];
-                      $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-                      //Get Office
-                      $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
-                      $rowdiv = mysqli_fetch_array($select_user);
-                      $DIVISION_C = $rowdiv['DIVISION_C'];
-                      //echo $DIVISION_C;
-                      $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
-                      $rowdiv1 = mysqli_fetch_array($select_office);
-                      $DIVISION_M = $rowdiv1['DIVISION_M'];
-                      //GET Chief    
-                      /*  $select_office = mysqli_query($conn, "SELECT pmo_contact_person from pmo where id = '$DIVISION_C'");
-                      $rowdiv1 = mysqli_fetch_array($select_office);
-                      $DIVISION_M = $rowdiv1['DIVISION_M']; */
-                      $approved="";
-                      $pos="";
-                      if($DIVISION_M=='ORD'){
-                      $approved="Noel R. Bartolabac";
-                      $pos="ASST. REGIONAL DIRECTOR";
-                      }
-                      else if($DIVISION_M=='LGMED'){
+                session_start();
+                $username = $_SESSION['username'];
+                $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                //Get Office
+                $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                $rowdiv = mysqli_fetch_array($select_user);
+                $DIVISION_C = $rowdiv['DIVISION_C'];
+                //echo $DIVISION_C;
+                $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                $rowdiv1 = mysqli_fetch_array($select_office);
+                $DIVISION_M = $rowdiv1['DIVISION_M'];
+                //GET Chief    
+               /*  $select_office = mysqli_query($conn, "SELECT pmo_contact_person from pmo where id = '$DIVISION_C'");
+                $rowdiv1 = mysqli_fetch_array($select_office);
+                $DIVISION_M = $rowdiv1['DIVISION_M']; */
+                $approved="";
+                $pos="";
+                if($DIVISION_M=='ORD'){
+                  $approved="NOEL R. BARTOLABAC";
+                  $pos="ASST. REGIONAL DIRECTOR";
+                  }
+                  else if($DIVISION_M=='LGMED'){
 
-                      $approved="Gilberto L. Tumamac";
-                      $pos="OIC - LGMED Chief";
+                  $approved="GILBERTO L. TUMAMAC";
+                  $pos="OIC - LGMED Chief";
 
+                
+                  }
+                  
+                  else if($DIVISION_M=='LGCDD'){
 
-                      }
+                  $approved="JAY-AR T. BELTRAN";
+                  $pos="OIC - LGCDD Chief";
+                  
+                  }
+                  
+                  else if($DIVISION_M=='FAD'){
 
-                      else if($DIVISION_M=='LGCDD'){
-
-                      $approved="Jay-ar T. Beltran";
-                      $pos="OIC - LGCDD Chief";
-
-                      }
-
-                      else if($DIVISION_M=='FAD'){
-
-                      $approved="Dr. Carina S. Cruz";
-                      $pos="Chief, FAD";
-
-                      }
-                      else{
-
-                        $approved="";
-                        $pos="";
-                      }
-                      ?>
+                  $approved="DR. CARINA S. CRUZ";
+                  $pos="Chief, FAD";
+                 
+                  }
+                  else{
+                  
+                    $approved="";
+                    $pos="";
+                  }
+                ?>
                       <td class="col-md-1" style="padding:5px 5px 5px 5px;"></td>
 
 
@@ -731,4 +735,27 @@ $(document).ready(function(){
   });
 
 });
+</script>
+
+<script>
+function myFunction() {
+  var checkboxyes = document.getElementById("checkboxyes");
+  var checkboxno = document.getElementById("checkboxno");
+  
+  var check = $("input[name='check']");
+  
+  if (checkboxyes.checked == true)
+  {
+    check.val('yes');
+  
+  }
+
+  if (checkboxno.checked == true)
+  {
+    
+    check.val('no');
+    
+  }
+}
+
 </script>

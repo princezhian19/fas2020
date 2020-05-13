@@ -47,9 +47,6 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 $checked = "";
 
 
-
-
-
 //count ob
 $idGet='';
 $getDate = date('Y');
@@ -60,9 +57,18 @@ while ($row = mysqli_fetch_assoc($auto)) {
   $idGet = $row["a"];
 }
 
+if($idGet<9){
 $obcount = $getDate.'-'.'00'.$idGet;
 
+}
+else if($idGet<99){
 
+$obcount = $getDate.'-'.'0'.$idGet;
+
+}
+else{
+$obcount = $getDate.'-'.$idGet;
+}
 
 
 ?>
@@ -79,13 +85,13 @@ value ="<?php echo date("h:i:s A");?>" -->
 
 if(isset($_POST['submit'])){
 
-
-
+ 
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 $username1 = $_SESSION['username'];
  
 $checked = $_POST['check'];
+
 //echo $checked;
 
 $obno = $_POST['obno'];
@@ -125,40 +131,38 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
-/* if($checked=="checked"){
+if($checked==""){
 
- 
-
-  $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,uc) 
-  VALUES ('$obno','$date','$office','$name','$purpose','$place','$obdate','$timefrom','1')");
- 
- 
-
-}
-else{ */
-
-  $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto) 
-  VALUES ('$obno','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto')");
- 
-
- 
-  // }
-
-
-mysqli_close($conn);
-
-if($query){
-
-    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
- 
-
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. - check the YES/NO field. </p> </div></div>  '; 
+   
 }
 else{
 
-  
+  if($checked=="yes"){
+    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto,uc) 
+    VALUES ('$obno','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','yes')");
+  }
+  else if($checked=="no"){
+
+    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto,uc) 
+    VALUES ('$obno','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','no')");
+  }
+ 
+
+  if($query){
+
+    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
+ 
+}
+else{
   echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
    
 }
+
+ }
+
+
+mysqli_close($conn);
 
 }
 
@@ -278,7 +282,7 @@ else{
               
               <b><label style="height:20px">No	:</label></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input required value="<?php echo $obcount; ?>" readonly  class="" type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; font:bold; color:red; height: 25px; width: 120px;" id="obno" name="obno" placeholder="obno" >
               <br>
-              <label style="height:20px">Date :</label>&nbsp;&nbsp;&nbsp;<input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 25px; width: 120px;" name="date" id="" value = "<?php echo date('F d, Y') ?>" >
+              <label style="height:20px">Date :</label>&nbsp;&nbsp;&nbsp;<input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 25px; width: 120px;" name="date" id="" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" >
               </td>
 
               <td class="col-md-1"></td> 
@@ -301,7 +305,7 @@ else{
               to leave the office for the following purpose(s):
                 <br>
                 <input required style="border:none;border-bottom:1px solid black; height: 25px;width: 975px; font-weight:bold;" id="purpose" name="purpose" autocomplete ="off" type="text" class="" placeholder="Purpose">
-                <input style="border:none;border-bottom:1px solid black; height: 25px;width: 972px; font-weight:bold;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="Purpose">.
+                <input  style="border:none;border-bottom:1px solid black; height: 25px;width: 972px; font-weight:bold;" id="purpose1" name="purpose1" autocomplete ="off" type="text" class="" placeholder="">.
                 <br>
               </td>
 
@@ -334,7 +338,7 @@ else{
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="Place">
+              <input  style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="">
              
               <br>
               Date:
@@ -351,11 +355,11 @@ else{
             <br>
           
             Time of Departure:
-            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timefrom" id="timefrom">
+            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timefrom" id="timefrom">
             <br>
             Time of Return:
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 75px;" name="timeto" id="timeto" style="display:block">
+            <input required  type="time" class="" style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 100px;" name="timeto" id="timeto" style="display:block">
 
            
             <br>
@@ -389,10 +393,12 @@ else{
               travelling expenses is hereby authorized.
               <br>
               <br>
+              <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
+
               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-              <input  style = "margin-bottom:10px;" type = "checkbox" name = "checkbox" class = "checkboxgroup_g1" value ="Yes"> <b>Yes</b>
+              <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxyes" name = "checkboxyes" class = "checkboxgroup_g1" value ="Yes"> <b>Yes <label style="color:red">*</label></b>
               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-              <input  style = "margin-bottom:10px;" type = "checkbox" name = "checkbox" class = "checkboxgroup_g2" value ="No"><b>No</b>
+              <input onclick="myFunction()"  style = "margin-bottom:10px;" type = "checkbox" id= "checkboxno" name = "checkboxno" class = "checkboxgroup_g2" value ="No"><b>No <label style="color:red">*</label> </b>
               </td>
 
               <td colspan = 1 class="" style = " font-family:Sylfaen;">
@@ -436,12 +442,12 @@ else{
                 $approved="";
                 $pos="";
                 if($DIVISION_M=='ORD'){
-                  $approved="Noel R. Bartolabac";
+                  $approved="NOEL R. BARTOLABAC";
                   $pos="ASST. REGIONAL DIRECTOR";
                   }
                   else if($DIVISION_M=='LGMED'){
 
-                  $approved="Gilberto L. Tumamac";
+                  $approved="GILBERTO L. TUMAMAC";
                   $pos="OIC - LGMED Chief";
 
                 
@@ -449,14 +455,14 @@ else{
                   
                   else if($DIVISION_M=='LGCDD'){
 
-                  $approved="Jay-ar T. Beltran";
+                  $approved="JAY-AR T. BELTRAN";
                   $pos="OIC - LGCDD Chief";
                   
                   }
                   
                   else if($DIVISION_M=='FAD'){
 
-                  $approved="Dr. Carina S. Cruz";
+                  $approved="DR. CARINA S. CRUZ";
                   $pos="Chief, FAD";
                  
                   }
@@ -578,49 +584,10 @@ else{
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
  
- <script>
-function myFunction() {
-  var checkBox = document.getElementById("uc");
-  var text = document.getElementById("timeto");
-  var check = $("input[name='check']");
-  //var str = $("input[name='timeto']");
-  if (checkBox.checked == true){
-    text.readOnly = true ;
-    text.style = "background-color:gray; height: 25px;width: 150px;";
 
-    check.val('checked');
-    
-  } else {
-    text.readOnly = false;
-    text.style = "background-color:white; height: 25px;width: 150px;";
-    check.val('');
-  }
-
-
-}
-</script>
 
  
-<!--  <script>
-function myFunction() {
-  var checkBox = document.getElementById("uc");
-  var text = document.getElementById("timeto");
-  var check = $("input[name='check']");
-  //var str = $("input[name='timeto']");
-  if (checkBox.checked == true){
-    text.readOnly = true ;
 
-    check.val('checked');
-    
-  } else {
-    text.readOnly = false;
-
-    check.val('');
-  }
-
-
-}
-</script> -->
 
 <script>
   $(function () {
@@ -704,6 +671,30 @@ function myFunction() {
   })
 </script>
 
+
+<script>
+function myFunction() {
+  var checkboxyes = document.getElementById("checkboxyes");
+  var checkboxno = document.getElementById("checkboxno");
+  
+  var check = $("input[name='check']");
+  
+  if (checkboxyes.checked == true)
+  {
+    check.val('yes');
+  
+  }
+
+  if (checkboxno.checked == true)
+  {
+    
+    check.val('no');
+    
+  }
+}
+
+</script>
+
 <script>
 $(document).ready(function(){
 
@@ -719,5 +710,6 @@ $(document).ready(function(){
 
 });
 </script>
+
 </body>
 </html>

@@ -15,7 +15,7 @@
         <div class=""style="overflow-x:auto;"> 
           <div class=""style="overflow-x:auto;">
 
-            <h1 align="">&nbspNTA Payment</h1>
+            <h1 align=""><!-- &nbspNTA Payment --></h1>
              <div class="box-header "style="overflow-x:auto;">
             </div>
 
@@ -38,9 +38,7 @@
           </form> -->
          <!--  <input type="text" class="form-control" style="height: 35px; width: 400px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" > -->       
          <br>
-         <br>
-         <br>
-         <br>
+       
           </div>
           <div class="col-md-2" style="overflow-x:auto;">
          
