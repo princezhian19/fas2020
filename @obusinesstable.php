@@ -54,12 +54,92 @@ $edit="edit";
           
           <br>
         
+
+<table class="table" > 
+
+<!-- Header -->
+  <tr>
+  <td class="col-md-2">
+  <li class="btn btn-success"><a href="OfficialBusinessCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Add</a></li>
+  </td>
+      
+  <td class="col-md-3" >
+
+    
+  </td>
+
+  <td class="col-md-7" style = "text-align:center;">
+
+  
+  <form method = "POST" action = "ob_export_date.php">
+  <?php if ($username1 == 'cvferrer' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
+  <b>Month</b>
+  <select class="" name="month" style="width: 150px; Height:30px;">
+    <option value="January">January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+  </select>
+  
+  <b>Year</b>
+  <select class="" name="year" style="width: 150px; Height:30px;">
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+    <option value="2025">2025</option>
+    <option value="2026">2026</option>
+    <option value="2027">2027</option>
+    <option value="2028">2028</option>
+    <option value="2029">2029</option>
+    <option value="2030">2030</option>
+    
+  </select>
+
+  <b>Office</b>
+  <select class="" name="office" style="width: 150px; Height:30px;">
+    <option value="ORD">ORD</option>
+    <option value="FAD">FAD</option>
+    <option value="LGCDD">LGCDD</option>
+    <option value="MBRTG">MBRTG</option>
+    <option value="LGMED">LGMED</option>
+    <option value="PDMU">PDMU</option>
+    <option value="Batangas">Batangas</option>
+    <option value="Cavite">Cavite</option>
+    <option value="Laguna">Laguna</option>
+    <option value="Rizal">Rizal</option>
+    <option value="Quezon">Quezon</option>
+    <option value="Lucena City">Lucena City</option>
+    
+  </select>
+  &nbsp;&nbsp;&nbsp;
+  <button style="  Height:30px;" type="submit" name="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
+                 
+  </form>
+  
+
+  </td>
+
+  <?php else:?>
+
+  <?php endif?>
+
+  </tr>
+  <!-- Header -->
+  <table>  
+
           <div class=""  style="overflow-x:auto;">
          
-            <li class="btn btn-success"><a href="OfficialBusinessCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Add</a></li>
-        
-              <br>
-              <br>
+         <br>
               
             </div>
 
