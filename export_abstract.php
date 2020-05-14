@@ -246,7 +246,7 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   $objPHPExcel->getActiveSheet()->getStyle('G'.$rowOne)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->getActiveSheet()->getStyle('H'.$rowOne)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('H'.$rowOne)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowOne,number_format($excelrow['abc']));
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowOne,number_format($excelrow['abc'],2));
 
   $rowOne++;
   $rowA++;
@@ -279,10 +279,10 @@ while ($rowrfid1 = mysqli_fetch_assoc($select_rfid1)) {
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($border);
   $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($styleContent);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$rowFirst,number_format($ppu1));
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$rowFirst,number_format($ppu1,2));
   $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowFirst,number_format($price_per_item1));
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowFirst,number_format($price_per_item1,2));
   $rowFirst++;
 
 
@@ -298,7 +298,7 @@ $totalABCperItem = $tots_sup['totalABCperItem'];
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowFirst,number_format($totalABCperItem));
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowFirst,number_format($totalABCperItem,2));
   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($border);
 
 
@@ -326,9 +326,9 @@ while ($rowrfid2 = mysqli_fetch_assoc($select_rfid2)) {
   $objPHPExcel->getActiveSheet()->getStyle('K'.$rowsecond)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('L'.$rowsecond)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('K'.$rowsecond)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('K'.$rowsecond,number_format($ppu2));
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('K'.$rowsecond,number_format($ppu2,2));
   $objPHPExcel->getActiveSheet()->getStyle('L'.$rowsecond)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowsecond,number_format($price_per_item2));
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowsecond,number_format($price_per_item2,2));
   $rowsecond++;
 
 }
@@ -340,7 +340,7 @@ $totalABCperItem2 = $tots_sup2['totalABCperItem'];
   $objPHPExcel->getActiveSheet()->getStyle('K'.$rowsecond)->applyFromArray($border);
   $objPHPExcel->getActiveSheet()->getStyle('L'.$rowsecond)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('L'.$rowsecond)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowsecond,number_format($totalABCperItem2));
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowsecond,number_format($totalABCperItem2,2));
   $objPHPExcel->getActiveSheet()->getStyle('L'.$rowsecond)->applyFromArray($border);
 
 if ($rowabsno2 != NULL) {
@@ -367,9 +367,9 @@ while ($rowrfid3 = mysqli_fetch_assoc($select_rfid3)) {
   $objPHPExcel->getActiveSheet()->getStyle('M'.$rowthird)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('N'.$rowthird)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('M'.$rowthird)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('M'.$rowthird,number_format($ppu3));
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('M'.$rowthird,number_format($ppu3,2));
   $objPHPExcel->getActiveSheet()->getStyle('N'.$rowthird)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('N'.$rowthird,number_format($price_per_item3));
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('N'.$rowthird,number_format($price_per_item3,2));
   $rowthird++;
 
 }
@@ -389,7 +389,7 @@ if ($rowabsno3 != NULL) {
   $objPHPExcel->getActiveSheet()->getStyle('M'.$rowthird)->applyFromArray($border);
   $objPHPExcel->getActiveSheet()->getStyle('N'.$rowthird)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('N'.$rowthird)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('N'.$rowthird,number_format($totalABCperItem3));
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('N'.$rowthird,number_format($totalABCperItem3,2));
   $objPHPExcel->getActiveSheet()->getStyle('N'.$rowthird)->applyFromArray($border);
 
    $objPHPExcel->getActiveSheet()->getStyle('A'.$rowA)->getFont()->setItalic( true );
