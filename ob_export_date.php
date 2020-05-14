@@ -44,17 +44,34 @@ $month = date('m', strtotime($month1));
 $year = $_POST['year'];
 
 $office = $_POST['office'];
+//echo $office;
 
-/* echo $month;
+
+/* echo $month1;
 echo '<br>';
 echo $year;
 echo '<br>';
-echo $office; */
+echo $office;
+exit(); */
 
 
+if($office=='ALL'){
+  $sql_q10 = mysqli_query($conn, "SELECT * FROM ob WHERE date like  '%".$year."-".$month1."%'  order by date asc" );
+
+ /*  echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month1."%'  order by date asc";
+  exit(); */
+
+ /*  echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month."%'  order by date asc";
+  exit(); */
+}
+else{
+  $sql_q10 = mysqli_query($conn, "SELECT * FROM ob WHERE date like  '%".$year."-".$month1."%' and office = '$office' order by date asc" );
+
+   /* echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month1."%' and office = '$office' order by date asc";
+  exit(); */
+}
 
 
-$sql_q10 = mysqli_query($conn, "SELECT * FROM ob WHERE date like  '%".$year."-".$month."%' and office = '$office' order by date asc" );
 /* echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month."%' and office = '$office' order by date asc";
 exit(); */
 
