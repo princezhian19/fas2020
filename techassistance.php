@@ -139,7 +139,7 @@ $division = $_GET['division'];
                         $dateFormat = '';
                         // return $dateFormat;
                       }
-                      if(row[10] == '<span style = "background-color:red;">Submitted</span>')
+                      if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
                       {
                         
                         if(<?php echo $division?> == 10)
@@ -176,8 +176,13 @@ $division = $_GET['division'];
                       { 
                         if(<?php echo $division?> == 10)
                         {
+                          if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
+                          {
+                            action = '';
+                          }else{
                         action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a><a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';    
-                              
+
+                          }
                         }else{
                         action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';          
 
