@@ -55,6 +55,7 @@ $username = $_SESSION['username'];
               <!-- User image -->
               <li class="user-header">
                 <img src="dilg.png" class="img-circle" alt="User Image">
+
                 <p><b>
                 <?php echo $_SESSION['complete_name'];?></b>
                   <small><?php echo getDivision();?></small>

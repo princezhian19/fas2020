@@ -37,7 +37,6 @@ function settoZero()
 {
   $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
        $update ="UPDATE `tbltechnical_assistance` SET `CONTROL_NO`='' where `REQ_DATE` != '0000-00-00' ";
-       echo $update.'<br>';
        if (mysqli_query($conn, $update))
         {
         }
