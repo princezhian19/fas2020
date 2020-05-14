@@ -88,7 +88,7 @@ exit(); */
         $obno = $excelrow['obno'];
         $date1 = $excelrow['date'];
         $date = date('F d, Y', strtotime($date1));
-        $office = $rexcelroww['office'];
+        $office = $excelrow['office'];
         $name = $excelrow['name'];
         $purpose = $excelrow['purpose'];
         $place = $excelrow['place'];
@@ -115,6 +115,7 @@ exit(); */
         $receiveddate = date('F d, Y', strtotime($receiveddate1));
       
         $status=$excelrow['status'];
+     
 
         
       
@@ -123,12 +124,13 @@ exit(); */
         $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$obno);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$date);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$obdate);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$name);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$purpose);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$place);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$timefrom);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,$timeto);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$row,$status);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$timefrom);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$timeto);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$office);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$name);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,$purpose);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$row,$place);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$row,$status);
        
 
        
@@ -180,6 +182,8 @@ exit(); */
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleLeft);
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleRight); */
           $row++;
+         
+          
     }
     }
     else{
