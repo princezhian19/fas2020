@@ -44,17 +44,34 @@ $month = date('m', strtotime($month1));
 $year = $_POST['year'];
 
 $office = $_POST['office'];
+//echo $office;
 
-/* echo $month;
+
+/* echo $month1;
 echo '<br>';
 echo $year;
 echo '<br>';
-echo $office; */
+echo $office;
+exit(); */
 
 
+if($office=='ALL'){
+  $sql_q10 = mysqli_query($conn, "SELECT * FROM ob WHERE date like  '%".$year."-".$month1."%'  order by date asc" );
+
+ /*  echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month1."%'  order by date asc";
+  exit(); */
+
+ /*  echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month."%'  order by date asc";
+  exit(); */
+}
+else{
+  $sql_q10 = mysqli_query($conn, "SELECT * FROM ob WHERE date like  '%".$year."-".$month1."%' and office = '$office' order by date asc" );
+
+   /* echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month1."%' and office = '$office' order by date asc";
+  exit(); */
+}
 
 
-$sql_q10 = mysqli_query($conn, "SELECT * FROM ob WHERE date like  '%".$year."-".$month."%' and office = '$office' order by date asc" );
 /* echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month."%' and office = '$office' order by date asc";
 exit(); */
 
@@ -71,7 +88,7 @@ exit(); */
         $obno = $excelrow['obno'];
         $date1 = $excelrow['date'];
         $date = date('F d, Y', strtotime($date1));
-        $office = $rexcelroww['office'];
+        $office = $excelrow['office'];
         $name = $excelrow['name'];
         $purpose = $excelrow['purpose'];
         $place = $excelrow['place'];
@@ -98,6 +115,7 @@ exit(); */
         $receiveddate = date('F d, Y', strtotime($receiveddate1));
       
         $status=$excelrow['status'];
+     
 
         
       
@@ -106,12 +124,13 @@ exit(); */
         $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$obno);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$date);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$obdate);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$name);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$purpose);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$place);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$timefrom);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,$timeto);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$row,$status);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$timefrom);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$timeto);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$office);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$name);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,$purpose);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$row,$place);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$row,$status);
        
 
        
@@ -163,6 +182,8 @@ exit(); */
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleLeft);
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleRight); */
           $row++;
+         
+          
     }
     }
     else{

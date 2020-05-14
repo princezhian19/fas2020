@@ -5,6 +5,8 @@ $id=$_GET['id'];
 $date1=$_GET['now'];
 $date = date('Y-m-d', strtotime($date1));
 //echo $id;
+
+$user =$_GET['user'];
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 
@@ -13,7 +15,7 @@ if ($conn->connect_error) {
      
 
 
-$query = mysqli_query($conn, "UPDATE ob set receiveddate ='$date' where id = '$id'");
+$query = mysqli_query($conn, "UPDATE ob set receiveddate ='$date',receivedby='$user' where id = '$id'");
 
  mysqli_close($conn);
 
