@@ -287,7 +287,7 @@ include 'connection.php';
     });
 
 
-  });
+    });
 
         $(function () {
     //Initialize Select2 Elements

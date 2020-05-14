@@ -188,76 +188,62 @@ if ($app_items == "------------------------------SELECT ITEM--------------------
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
-<?php $user = $_SESSION['username']; $QQ = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$user'");
-                $rowUser=mysqli_fetch_array($QQ);$user_id=$rowUser['pmo_id'];?>
-                <?php
-                if($user_id == 1)
-                {
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }else if($user_id == 3){
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }else if($user_id == 4){
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }else if($user_id == 5){
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }else if($user_id == 6){
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }else if($user_id == 7){
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }
+<?php $get_pmo = $_GET['pmo']; ?>
 
-                ?>
+<input type="text" name="pmo" id="pmo" value="<?php echo $get_pmo?>" hidden>
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    function load_data(query)
-    {
-      $.ajax({
-        url:"fetch_pr.php",
-        method:"POST",
-        data:{query:query},
-        success:function(data)
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  <script type="text/javascript">
+    $(document).ready(function(){
+      function load_data(query)
+      {
+        $.ajax({
+        
+
+          url:"fetch_pr1.php",
+          method:"POST",
+          data:{query:query,
+          name: $('#pmo').val()
+          },
+          success:function(data)
+          {
+            $('#result').html(data);
+            console.log( $('#pmo').val());
+          }
+        });
+      }
+      $('#app_items').keyup(function(){
+        var search = $(this).val();
+        if(search != '')
         {
-          $('#result').html(data);
+          load_data(search);
+        }
+        else
+        {
+          
+          load_data();
+          /* document.getElementById("code").value = ""; */
+          document.getElementById("stocknumber").value = "";
+          document.getElementById("abc").value="";
+          document.getElementById("unit").value="";
+          $("#main").show();
         }
       });
-    }
-    $('#app_items').keyup(function(){
-      var search = $(this).val();
-      if(search != '')
-      {
-        load_data(search);
-      }
-      else
-      {
-
-      }
     });
-  });
-  function showRow(row)
-  {
-    // var x=row.cells;
-    // document.getElementById("id").value = x[0].innerHTML;
-    // document.getElementById("current_price").value = x[1].innerHTML;
-    // document.getElementById("unit").value = x[2].innerHTML;
-    // document.getElementById("two").value = x[3].innerHTML;
-    // document.getElementById("app_items").value = x[4].innerHTML;
-    // document.getElementById("app_id").value = x[5].innerHTML;
-  }
-</script>
-
+    function showRow(row)
+    {
+      var x=row.cells;
+      document.getElementById("id").value = x[0].innerHTML;
+      document.getElementById("abc").value = x[1].innerHTML;
+      document.getElementById("stocknumber").value = x[2].innerHTML;
+      document.getElementById("abc").value = x[3].innerHTML;
+      document.getElementById("app_items").value = x[4].innerHTML;
+      document.getElementById("unit").value = x[5].innerHTML;
+      //document.getElementById("abc").value = x[6].innerHTML;
+    }
+  </script>
+  
 <body>
 <!-- <script>
 function confirmDelete(delUrl) {
