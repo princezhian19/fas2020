@@ -51,7 +51,7 @@ function settoZero()
         while($row= mysqli_fetch_assoc($sql)) 
         {
 
-         $insert ="UPDATE `tbltechnical_assistance` SET `CONTROL_NO`='2020-".$i++."' WHERE `ID` = '".$row['ID']."' ";
+         $insert ="UPDATE `tbltechnical_assistance` SET `CONTROL_NO`='2020-00".$i++."' WHERE `ID` = '".$row['ID']."' ";
  
          if (mysqli_query($conn, $insert))
           {
