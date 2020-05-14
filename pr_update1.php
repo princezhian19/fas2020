@@ -188,39 +188,13 @@ if ($app_items == "------------------------------SELECT ITEM--------------------
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
-<?php $user = $_SESSION['username']; $QQ = mysqli_query($conn,"SELECT * FROM end_users WHERE username = '$user'");
-                $rowUser=mysqli_fetch_array($QQ);$user_id=$rowUser['pmo_id'];?>
-                <?php
-                if($user_id == 1)
-                {
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }else if($user_id == 3){
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }else if($user_id == 4){
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }else if($user_id == 5){
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }else if($user_id == 6){
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }else if($user_id == 7){
-                  ?>
-                  <input type = "hidden" value = "<?php echo $user_id; ?>" id = "pmo" />
-                  <?php
-                }
+<?php $get_pmo = $_GET['pmo']; ?>
 
-                ?>
+<input type="text" name="pmo" id="pmo" value="<?php echo $get_pmo?>" hidden>
 
-<script type="text/javascript">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  <script type="text/javascript">
     $(document).ready(function(){
       function load_data(query)
       {
