@@ -167,8 +167,8 @@ exit(); */
     }
     else{
 
-      
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('A9','*********No Entry after this.*********');
+
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('A9','*********No official business data.*********');
         $objPHPExcel->setActiveSheetIndex()->mergeCells("A9:I9");
        
     }

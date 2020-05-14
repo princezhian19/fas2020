@@ -148,7 +148,7 @@ $edit="edit";
 
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
-                    <tr style="background-color: white;color:blue; text-align:center">
+                  <tr style="background-color: white;color:blue; text-align:center">
                   <th width ='150'>OB NO</th> 
                   <th width = '200'>OB DATE</th>
                   <th width = ''>OFFICE</th>
@@ -171,7 +171,16 @@ $edit="edit";
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT * from ob where office ='$DIVISION_M' order by id desc");
+
+            if ($username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno')
+            {
+              $view_query = mysqli_query($conn, "SELECT * from ob order by id desc");
+            }
+            else{
+              $view_query = mysqli_query($conn, "SELECT * from ob where office ='$DIVISION_M' order by id desc");
+
+            }
+         
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
 

@@ -18,11 +18,15 @@ $row = mysqli_fetch_array($query);
 
 
     $f = $row['FIRST_M'];
-    $m = $row['MIDDLE_M'];
+    $mi = $row['MIDDLE_M'];
+    $m = substr($mi, 0, 1);
     $l= $row['LAST_M'];
    
     $fullname = $f.' '.$m.' '.$l;
-    //echo $fullname;
+
+    //echo substr($m, 0, 2);  // abcd
+    //exit();
+   // echo $mi;
 
 // echo '<div class=""><div class="panel-heading " style = "background-color:orange"> <p style = "color:white;font-size:16px;"> This module is under development </p> </div></div>  '; 
 // echo '<br>';
