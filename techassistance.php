@@ -90,14 +90,17 @@ $division = $_GET['division'];
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
-<script src="_includes/sweetalert.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="_includes/sweetalert.css">
+<!-- <script src="_includes/sweetalert.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="_includes/sweetalert.css"> -->
+<script src="_includes/sweetalert.min.js"></script>
+<script src="_includes/sweetalert2.min.js"></script>
 
 <?php 
   if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
       ?>
       <script>
           $(document).ready(function() {
+            
             $('.select2').on('change', function()
                 {
                   swal({
@@ -115,6 +118,7 @@ $division = $_GET['division'];
               });
               var action = '';
               var table = $('#example').DataTable( {
+        
                 'scrollX'     : true,
                 'paging'      : true,
                 'lengthChange': true,
@@ -133,7 +137,8 @@ $division = $_GET['division'];
                   "order": [[ 0, "desc" ]],
                   "columnDefs": [ {
                       "targets": 11,
-                      "render": function ( data, type, row, meta ) {  
+                      "render": function (data, type, row, meta ) {  
+
                       if(row[3] == 'Jan 01, 1970' || row[0] == '0000-00-00')
                       {
                         $dateFormat = '';
@@ -141,7 +146,8 @@ $division = $_GET['division'];
                       }
                       if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
                       {
-                        
+
+
                         if(<?php echo $division?> == 10)
                         {
                           action = '';  
@@ -213,6 +219,8 @@ $division = $_GET['division'];
 
               } );
             
+      
+
 
               $('#example tbody').on( 'click', '#edit', function () {
                 var data = table.row( $(this).parents('tr') ).data();
