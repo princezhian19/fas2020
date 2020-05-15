@@ -470,11 +470,9 @@ $edit="edit";
                
 
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
-                    <?php if($fullname==$name):?>  
+                   
                     <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Travel Order?');" href='to_submit.php?id=<?php echo $id;?>'title="Submit">Submit</a></td>
-                    <?php else: ?>
-                      <td></td>
-                    <?php endif ?>
+                    
                 
                   <?php else: ?>
                   <td><?php echo $submitteddate?></td>
