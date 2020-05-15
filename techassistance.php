@@ -230,48 +230,35 @@ $division = $_GET['division'];
               $('#example tbody').on( 'click', '#delete', function () {
                 var data = table.row( $(this).parents('tr') ).data();
                 var control_no = data[0];
-         
 
-        swal({
-        title: "Are you sure?",
-        text: "Your will not be able to recover this request!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonClass: "btn btn-danger",
-        confirmButtonText: "Yes, delete it!",
-        closeOnConfirm: false
-        },
-        function(){
-        swal("Deleted!", "Your activity has been deleted.", "success");
-            $.ajax({
+                swal({
+                  title: "Are you sure?",
+                  text: "You will not be able to recover this imaginary file!",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonClass: "btn-danger",
+                  confirmButtonText: "Yes, delete it!",
+                  cancelButtonText: "No, cancel plx!",
+                  closeOnConfirm: false,
+                  closeOnCancel: false
+                }).then(function (){
+                  , "Your imaginary file has been deleted.", "success");
+                $.ajax({
                 url:"deleteRequest.php",
                 method:"POST",
                 data:{
                 control_no:control_no,
-            },
-            success:function(data)
-            {
-         
-                  setTimeout(function () {
-                  window.location = "techassistance.php?division=<?php echo $_GET['division'];?>";
-                  }, 1000);
-
-              
-            }
-            });
-
-  
+                },
+                success:function(data)
+                {
+                setTimeout(function () {
+                window.location = "techassistance.php?division=<?php echo $_GET['division'];?>";
+                }, 1000);
+                }
+                });
+                });
 
 
-
-
-
-
-
-
-
-                // 
-              });
               });
 
               $('#example tbody').on( 'click', '#sweet-14', function () {
