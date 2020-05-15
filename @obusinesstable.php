@@ -332,12 +332,12 @@ $edit="edit";
 
   </tr>
   <!-- Header -->
-  <table>  
+  </table>  
 
           <div class=""  style="overflow-x:auto;">
          
          <br>
-              
+            <br>  
             </div>
 
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">

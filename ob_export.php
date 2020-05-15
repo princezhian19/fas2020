@@ -117,8 +117,8 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('K58',$timeto);
 
 if($DIVISION_C==1){
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('I71','Noel R. Bartolabac');
-$objPHPExcel->setActiveSheetIndex()->setCellValue('I72','ASST. REGIONAL DIRECTOR');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('I70','Noel R. Bartolabac');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('I71','ASST. REGIONAL DIRECTOR');
 }
 
 else if($DIVISION_C==18){

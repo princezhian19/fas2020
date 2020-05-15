@@ -21,7 +21,7 @@ if($query){
     
    
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert(' Data has been successfully cancelled.')
+    window.alert(' Travel Order has been successfully cancelled.')
     window.location.href='TravelOrder.php';
     </SCRIPT>"); 
 

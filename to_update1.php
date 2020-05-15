@@ -165,8 +165,11 @@ mysqli_close($conn);
 
 if($query){
 
-    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully updated. </p> </div></div>  '; 
-   
+    // echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully updated. </p> </div></div>  '; 
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert(' Travel Order has been successfully added.')
+    window.location.href='TravelOrder.php';
+    </SCRIPT>");
 }
 else{
 
@@ -283,7 +286,7 @@ else{
                     <br>
                     <label>Pangalan:</label>
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input readonly required type="text" class="" style="height: 40px; width:300px;" name="name" id="" value = "<?php echo $f.' '.$row['MIDDLE_M'].' '.$l.'';?>" >
+                    <input readonly required type="text" class="" style="height: 40px; width:300px;" name="name" id="" value = "<?php echo $name;?>" >
                   
                 </td>
 
