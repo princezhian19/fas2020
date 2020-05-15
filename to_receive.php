@@ -21,7 +21,7 @@ if($query){
     
    
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert(' Data has been successfully received.')
+    window.alert(' Travel Order has been successfully received.')
     window.location.href='TravelOrder.php';
     </SCRIPT>"); 
 
