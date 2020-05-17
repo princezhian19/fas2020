@@ -61,7 +61,15 @@ $username = $_SESSION['username'];
       </ol>
       <br>
       <br>
-        <?php include('update_account.php');?>
+     <!-- include('update_account.php'); -->
+     <div class="mydivs">
+    <div>div 1</div>
+    <div>div 2</div>
+    <div>div 3</div>
+    <div>div 4</div>
+</div>
+<button name="prev">go to previous div</button>
+<button name="next">go to next div</button>
     </section>
   </div>
   <footer class="main-footer">
@@ -88,6 +96,23 @@ $username = $_SESSION['username'];
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
 
 <script>
+$(document).ready(function () {
+    var divs = $('.mydivs>div');
+    var now = 0; // currently shown div
+    divs.hide().first().show();
+    $("button[name=next]").click(function (e) {
+        divs.eq(now).hide();
+        now = (now + 1 < divs.length) ? now + 1 : 0;
+        divs.eq(now).show(); // show next
+    });
+    $("button[name=prev]").click(function (e) {
+        divs.eq(now).hide();
+        now = (now > 0) ? now - 1 : divs.length - 1;
+        divs.eq(now).show(); // or .css('display','block');
+        //console.log(divs.length, now);
+    });
+});
+// ====================================================================================================================
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()

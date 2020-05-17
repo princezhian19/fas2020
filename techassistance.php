@@ -90,6 +90,8 @@ $division = $_GET['division'];
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
+<!-- <script src="_includes/sweetalert.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="_includes/sweetalert.css"> -->
 <script src="_includes/sweetalert.min.js"></script>
 <script src="_includes/sweetalert2.min.js"></script>
 
@@ -98,6 +100,7 @@ $division = $_GET['division'];
       ?>
       <script>
           $(document).ready(function() {
+            
             $('.select2').on('change', function()
                 {
                   swal({
@@ -115,6 +118,7 @@ $division = $_GET['division'];
               });
               var action = '';
               var table = $('#example').DataTable( {
+        
                 'scrollX'     : true,
                 'paging'      : true,
                 'lengthChange': true,
@@ -133,35 +137,42 @@ $division = $_GET['division'];
                   "order": [[ 0, "desc" ]],
                   "columnDefs": [ {
                       "targets": 11,
-                      "render": function ( data, type, row, meta ) {  
+                      "render": function (data, type, row, meta ) {  
+
                       if(row[3] == 'Jan 01, 1970' || row[0] == '0000-00-00')
                       {
                         $dateFormat = '';
                         // return $dateFormat;
                       }
-                      if(row[10] == '<span style = "background-color:red;">Submitted</span>')
+                      if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
                       {
-                        
+
+
                         if(<?php echo $division?> == 10)
                         {
-                          action = '';          
+                          action = '';  
+                          action = '<a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';    
+
                         
                         }else{
                           action = '';
+                          action = '<a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';    
+
                         }
                       }
                       else if (row[10] == '<span class="badge badge-pill" style = "background-color:orange;">Received</span>')
                       {
                         // action = 'ON GOING';
                         
-                        action = '<a href = "allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" class = "btn btn-info btn-xs"   style = "width:100%;">Assign</a>';          
+                        action = '<a href = "allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" class = "btn btn-info btn-xs"   style = "width:100%;">Assign</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';          
+
 
 
                       }
                       else if(row[10] == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
                       {
                      
-                          action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a>';          
+                          action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';          
 
 
                         
@@ -171,16 +182,21 @@ $division = $_GET['division'];
                       { 
                         if(<?php echo $division?> == 10)
                         {
-                        action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a><a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a>';    
-                              
+                          if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
+                          {
+                            action = '';
+                          }else{
+                        action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a><a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';    
+
+                          }
                         }else{
-                        action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a>';          
+                        action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';          
 
                           // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>
                         }
 
                       }
-                      
+                    
                     return action;
                   }
                   },
@@ -203,26 +219,65 @@ $division = $_GET['division'];
 
               } );
             
+      
+
 
               $('#example tbody').on( 'click', '#edit', function () {
                 var data = table.row( $(this).parents('tr') ).data();
                 window.location="_editRequestTA.php?division=<?php echo $_GET['division'];?>&id="+data[0];
               } );
 
+              $('#example tbody').on( 'click', '#delete', function () {
+                var data = table.row( $(this).parents('tr') ).data();
+                var control_no = data[0];
+         
+
+        swal({
+        title: "Are you sure?",
+        text: "Your will not be able to recover this request!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn btn-danger",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+        },
+        function(){
+        swal("Deleted!", "Your activity has been deleted.", "success");
+            $.ajax({
+                url:"deleteRequest.php",
+                method:"POST",
+                data:{
+                control_no:control_no,
+            },
+            success:function(data)
+            {
+         
+                  setTimeout(function () {
+                  window.location = "techassistance.php?division=<?php echo $_GET['division'];?>";
+                  }, 1000);
+
+              
+            }
+            });
+
+  
+
+
+
+
+
+
+
+
+
+                // 
+              });
+              });
+
               $('#example tbody').on( 'click', '#sweet-14', function () {
                 var data = table.row( $(this).parents('tr') ).data();
                 var a = data[0];
                 swal("Control No: "+data[0], "You already received this request", "success")
-                  // swal({
-                  //     title: "Are you sure you want to recieved this request?",
-                  //     text: "Control No:"+data[0],
-                  //     type: "info",
-                  //     showCancelButton: true,
-                  //     showCancelButton: true,
-                  //     confirmButtonText: 'Yes',
-                  //     closeOnConfirm: false,
-                  //     showLoaderOnConfirm: true
-                  // })
                   .then(function () {
                       $.ajax({
                         url:"_ticketReleased.php",
@@ -383,16 +438,7 @@ $division = $_GET['division'];
                 var data = table.row( $(this).parents('tr') ).data();
                 var a = data[0];
                 swal("Control No: "+data[0], "You already received this request", "success")
-                  // swal({
-                  //     title: "Are you sure you want to recieved this request?",
-                  //     text: "Control No:"+data[0],
-                  //     type: "info",
-                  //     showCancelButton: true,
-                  //     showCancelButton: true,
-                  //     confirmButtonText: 'Yes',
-                  //     closeOnConfirm: false,
-                  //     showLoaderOnConfirm: true
-                  // })
+                  
                   .then(function () {
                       $.ajax({
                         url:"_ticketReleased.php",

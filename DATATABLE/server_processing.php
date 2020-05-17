@@ -149,6 +149,7 @@ $columns = array(
 			{
 				$d = '<span class="badge badge-pill" style = "background-color:orange;">'.$d.'</span>';
 			}
+			
 			return $d;
 	})
 

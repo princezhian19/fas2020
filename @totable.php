@@ -67,32 +67,317 @@ $edit="edit";
           <h1 align="">Travel Order</h1>
           
           <br>
-        
-          <div class=""  style="overflow-x:auto;">
+          <table class="table" > 
+
+<!-- Header -->
+  <tr>
+  <td class="col-md-2">
+  <!-- <li class="btn btn-success"><a href="OfficialBusinessCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Add</a></li> -->
+  <li class="btn btn-success"><a href="TravelOrderCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Add</a></li>  
+</td>
+      
+  <td class="col-md-3" >
+
+    
+  </td>
+
+  <td class="col-md-7" style = "text-align:center;">
+
+  
+  <form method = "POST" action = "ob_export_date.php">
+  <?php if ($username1 == 'cvferrer' ):?>
+  
+ 
+
+      <b>Month</b>
+<!--      
+  <select class="" id = "selectMonth" name="month" style="width: 150px; Height:30px;">
+    <option value="January">January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+  </select> -->
+  <select class="" name="month" id = "selectMonth" style="width: 150px; Height:30px;">
+                              <?php 
+                                $current_month =  date('F');
+                              switch($current_month){
+                                case 'January':
+                                  echo '
+                                  <option value="01" selected>January</option>
+                                  <option value="02">February</option>
+                                  <option value="03">March</option>
+                                  <option value="04">April</option>
+                                  <option value="05">May</option>
+                                  <option value="06">June</option>
+                                  <option value="07">July</option>
+                                  <option value="08">August</option>
+                                  <option value="09">September</option>
+                                  <option value="10">October</option>
+                                  <option value="11">November</option>
+                                  <option value="12">December</option>';
+                                break;
+                                case 'February':
+                                  echo '
+                                  <option value="01">January</option>
+                                  <option value="02" selected>February</option>
+                                  <option value="03">March</option>
+                                  <option value="04">April</option>
+                                  <option value="05">May</option>
+                                  <option value="06">June</option>
+                                  <option value="07">July</option>
+                                  <option value="08">August</option>
+                                  <option value="09">September</option>
+                                  <option value="10">October</option>
+                                  <option value="11">November</option>
+                                  <option value="12">December</option>';
+                                break;
+                                case 'March':
+                                  echo '
+                                  <option value="01">January</option>
+                                  <option value="02">February</option>
+                                  <option value="03" selected>March</option>
+                                  <option value="04">April</option>
+                                  <option value="05">May</option>
+                                  <option value="06">June</option>
+                                  <option value="07">July</option>
+                                  <option value="08">August</option>
+                                  <option value="09">September</option>
+                                  <option value="10">October</option>
+                                  <option value="11">November</option>
+                                  <option value="12">December</option>';
+                                break;
+                                case 'April':
+                                  echo '
+                                  <option value="01">January</option>
+                                  <option value="02">February</option>
+                                  <option value="03">March</option>
+                                  <option value="04" selected>April</option>
+                                  <option value="05">May</option>
+                                  <option value="06">June</option>
+                                  <option value="07">July</option>
+                                  <option value="08">August</option>
+                                  <option value="09">September</option>
+                                  <option value="10">October</option>
+                                  <option value="11">November</option>
+                                  <option value="12">December</option>';
+                                break;
+                                case 'May':
+                                  echo '
+                                  <option value="01">January</option>
+                                  <option value="02">February</option>
+                                  <option value="03">March</option>
+                                  <option value="04">April</option>
+                                  <option value="05" selected>May</option>
+                                  <option value="06">June</option>
+                                  <option value="07">July</option>
+                                  <option value="08">August</option>
+                                  <option value="09">September</option>
+                                  <option value="10">October</option>
+                                  <option value="11">November</option>
+                                  <option value="12">December</option>';
+                                break;
+                                case 'June':
+                                  echo '
+                                  <option value="01">January</option>
+                                  <option value="02">February</option>
+                                  <option value="03">March</option>
+                                  <option value="04">April</option>
+                                  <option value="05">May</option>
+                                  <option value="06" selected>June</option>
+                                  <option value="07">July</option>
+                                  <option value="08">August</option>
+                                  <option value="09">September</option>
+                                  <option value="10">October</option>
+                                  <option value="11">November</option>
+                                  <option value="12">December</option>';
+                                break;
+                                case 'July':
+                                  echo '
+                                  <option value="01">January</option>
+                                  <option value="02">February</option>
+                                  <option value="03">March</option>
+                                  <option value="04">April</option>
+                                  <option value="05">May</option>
+                                  <option value="06">June</option>
+                                  <option value="07" selected>July</option>
+                                  <option value="08">August</option>
+                                  <option value="09">September</option>
+                                  <option value="10">October</option>
+                                  <option value="11">November</option>
+                                  <option value="12">December</option>';
+                                break;
+                                case 'August':
+                                  echo '
+                                  <option value="01">January</option>
+                                  <option value="02">February</option>
+                                  <option value="03">March</option>
+                                  <option value="04">April</option>
+                                  <option value="05">May</option>
+                                  <option value="06">June</option>
+                                  <option value="07">July</option>
+                                  <option value="08" selected>August</option>
+                                  <option value="09">September</option>
+                                  <option value="10">October</option>
+                                  <option value="11">November</option>
+                                  <option value="12">December</option>';
+                                break;
+                                case 'September':
+                                  echo '
+                                  <option value="01">January</option>
+                                  <option value="02">February</option>
+                                  <option value="03">March</option>
+                                  <option value="04">April</option>
+                                  <option value="05">May</option>
+                                  <option value="06">June</option>
+                                  <option value="07">July</option>
+                                  <option value="08">August</option>
+                                  <option value="09" selected>September</option>
+                                  <option value="10">October</option>
+                                  <option value="11">November</option>
+                                  <option value="12">December</option>';
+                                break;
+                                case 'October':
+                                  echo '
+                                  <option value="01">January</option>
+                                  <option value="02">February</option>
+                                  <option value="03">March</option>
+                                  <option value="04">April</option>
+                                  <option value="05">May</option>
+                                  <option value="06">June</option>
+                                  <option value="07">July</option>
+                                  <option value="08">August</option>
+                                  <option value="09">September</option>
+                                  <option value="10" selected>October</option>
+                                  <option value="11">November</option>
+                                  <option value="12">December</option>';
+                                break;
+                                case 'November':
+                                  echo '
+                                  <option value="01">January</option>
+                                  <option value="02">February</option>
+                                  <option value="03">March</option>
+                                  <option value="04">April</option>
+                                  <option value="05">May</option>
+                                  <option value="06">June</option>
+                                  <option value="07">July</option>
+                                  <option value="08">August</option>
+                                  <option value="09">September</option>
+                                  <option value="10">October</option>
+                                  <option value="11" selected>November</option>
+                                  <option value="12">December</option>';
+                                break;
+                                case 'December':
+                                  echo '
+                                  <option value="01">January</option>
+                                  <option value="02">February</option>
+                                  <option value="03">March</option>
+                                  <option value="04">April</option>
+                                  <option value="05">May</option>
+                                  <option value="06">June</option>
+                                  <option value="07">July</option>
+                                  <option value="08">August</option>
+                                  <option value="09">September</option>
+                                  <option value="10">October</option>
+                                  <option value="11">November</option>
+                                  <option value="12" selected>December</option>';
+                                break;
+                              }
+                              ?>
+                                
+                              </select>
+
+  
+  
+  <b>Year</b>
+  <select class="" id="year" name="year" style="width: 150px; Height:30px;">
+    <!-- <option value="">Year</option> -->
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+    <option value="2025">2025</option>
+    <option value="2026">2026</option>
+    <option value="2027">2027</option>
+    <option value="2028">2028</option>
+    <option value="2029">2029</option>
+    <option value="2030">2030</option>
+    
+  </select>
+
+  <b>Office</b>
+  <select class="" id="office" name="office" style="width: 150px; Height:30px;">
+    <!-- <option value="" style="color:gray">Office</option> -->
+    <option value="ALL">ALL</option>
+    <option value="ORD">ORD</option>
+    <option value="FAD">FAD</option>
+    <option value="LGCDD">LGCDD</option>
+    <option value="MBRTG">MBRTG</option>
+    <option value="LGMED">LGMED</option>
+    <option value="PDMU">PDMU</option>
+    <option value="Batangas">Batangas</option>
+    <option value="Cavite">Cavite</option>
+    <option value="Laguna">Laguna</option>
+    <option value="Rizal">Rizal</option>
+    <option value="Quezon">Quezon</option>
+    <option value="Lucena City">Lucena City</option>
+    
+  </select>
+  &nbsp;&nbsp;&nbsp;
+  <button style="  Height:30px;"  id="export" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
+                 
+  </form>
+  
+
+  </td>
+
+  <?php else:?>
+
+  <?php endif?>
+
+  </tr>
+  <!-- Header -->
+  </table>  
          
-            <li class="btn btn-success"><a href="TravelOrderCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Add</a></li>
-        
-          
-              <br>
-              <br>
-              
-            </div>
+         <br>
 
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
-                  <th width ='100'>TO NO</th> 
+
+                  <th width ='150'>TO NO</th> 
+                  <th width = '200'>TO DATE</th>
+                  <th width = ''>OFFICE</th>
+                  <th width = '200'>NAME</th>
+                  <th width = '700'>PURPOSE</th>
+                  <th width = '700'>PLACE</th>
+                  <th width = '200'>DATE</th>
+                  <th width = '300'>TIME</th>
+                  <th width = '100'>SUBMITTED DATE</th>
+                  <th width = '200'>RECEIVED DATE</th>
+                  <th width = '1000'>ACTION</th>
+
+
+                 <!--  <th width ='100'>TO NO</th> 
                   <th width = '150'>TO DATE</th>
                   <th width = ''>OFFICE</th>
                   <th width = '150'>NAME</th>
-                  <th width = '150'>PURPOSE</th>
+                  <th width = ''>PURPOSE</th>
                   <th width = '100'>PLACE</th>
                   <th width = '150'>DATE</th>
                   <th width = '100'>TIME</th>
                   <th width = '100'>SUBMITTED DATE</th>
                   <th width = '100'>RECEIVED DATE</th>
                   <th width = '300'>ACTION</th>
-                  
+                   -->
                 </tr>
                 </thead>
                 <?php
@@ -126,11 +411,11 @@ $edit="edit";
                   $timeto=  date("h:i:s a",$timeto1); */
 
                   $timefrom1 = $row['timefrom'];
-                  $timefrom=  date("g A",strtotime($timefrom1));
+                  $timefrom=  date("g:i A",strtotime($timefrom1));
                 
 
                   $timeto1 = $row['timeto'];
-                  $timeto=  date("g A",strtotime($timeto1));
+                  $timeto=  date("g:i A",strtotime($timeto1));
 
 
                  
@@ -185,11 +470,9 @@ $edit="edit";
                
 
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
-                    <?php if($fullname==$name):?>  
-                    <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='to_submit.php?id=<?php echo $id;?>'title="Submit">Submit</a></td>
-                    <?php else: ?>
-                      <td></td>
-                    <?php endif ?>
+                   
+                    <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Travel Order?');" href='to_submit.php?id=<?php echo $id;?>'title="Submit">Submit</a></td>
+                    
                 
                   <?php else: ?>
                   <td><?php echo $submitteddate?></td>
@@ -200,10 +483,10 @@ $edit="edit";
                               <?php if ($status=='cancelled'):?>
                               <td></td>
                               <?php else: ?>
-                                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this data?');" href='to_receive.php?id=<?php echo $id;?>'title="Submit">Receive</a></td>
+                                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to receive this Travel Order?');" href='to_receive.php?id=<?php echo $id;?>'title="Submit">Receive</a></td>
                               <?php endif ?>
                           <?php else: ?>
-                          <td></td>
+                          <td ></td>
                           <?php endif ?> 
                         <?php else: ?>
                          
@@ -223,31 +506,31 @@ $edit="edit";
                       <?php if ($submitteddate1 == 0000-00-00): ?>
                           <!--  -->
                               <?php if ($status!='cancelled'):?>
-                                  <?php if($fullname==$name):?>
+                                
                                     <!-- to_export.php?<?php echo $id;?>&pos=<?php echo $POSITION_M;?> -->
                                   <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                   <a href='TravelOrderUpdate.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
-                                  <a onclick="return confirm('Are you sure you want to cancel this record?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
-                                  <?php else: ?>
-                                  <td></td>
-                                  <?php endif ?>
+                                  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                                 
                               <?php else: ?>
-                              Cancelled
+                                <label style="color:red">Cancelled</label> | 
+                                <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
                               <?php endif ?>
                         
                         <?php else: ?>
 
 
                               <?php if ($status=='cancelled'):?>
-                                Cancelled
+                                <label style="color:red">Cancelled</label> | 
+
+                                <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
+
                               <?php else: ?>
-                              <?php if($fullname==$name):?>
+                            
                                 <!-- to_export.php?<?php echo $id;?>&pos=<?php echo $POSITION_M;?> -->
                                   <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
-                                  <a onclick="return confirm('Are you sure you want to cancel this record?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
-                                  <?php else: ?>
-                                    
-                                  <?php endif ?>
+                                  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                                
                               <?php endif ?>
                           <?php endif ?>
                         
@@ -290,7 +573,6 @@ $edit="edit";
         
     } );
 </script>
-
 
 
 

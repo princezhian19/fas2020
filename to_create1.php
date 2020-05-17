@@ -14,7 +14,8 @@ $row = mysqli_fetch_array($query);
 
 
     $f = $row['FIRST_M'];
-    $m = $row['MIDDLE_M'];
+    $mi = $row['MIDDLE_M'];
+    $m = substr($mi, 0, 1);
     $l= $row['LAST_M'];
    
   $fullname = $f.' '.$m.' '.$l;
@@ -55,11 +56,23 @@ $auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM travel_order order by id 
 while ($row = mysqli_fetch_assoc($auto)) {
 
   $idGet = $row["a"];
+  //$idGet = '100';
 }
 
-$tocount = 'TO '.$getDate.'-'.'00'.$idGet;
+//$tocount = 'TO '.$getDate.'-'.'00'.$idGet;
 
-
+if($idGet<9){
+  $tocount ='TO '.$getDate.'-'.'00'.$idGet;
+  
+  }
+  else if($idGet<99){
+  
+  $tocount ='TO '.$getDate.'-'.'0'.$idGet;
+  
+  }
+  else{
+  $tocount ='TO '.$getDate.'-'.$idGet;
+  }
 
 
 ?>
@@ -127,8 +140,11 @@ mysqli_close($conn);
 
 if($query){
 
-    echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
- 
+    // echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert(' Travel Order has been successfully added.')
+    window.location.href='TravelOrder.php';
+    </SCRIPT>");
 
 }
 else{
