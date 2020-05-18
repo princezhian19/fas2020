@@ -12,12 +12,11 @@ $username = $_SESSION['username'];
         function getDivision()
         {
         include 'connection.php';
-        $sqlUsername = mysqli_query($conn,"SELECT * FROM tblpersonneldivision where DIVISION_N =".$_SESSION['division']."");
+        $sqlUsername = mysqli_query($conn,"SELECT * FROM  tblemployeeinfo INNER JOIN tblpersonneldivision ON tblemployeeinfo.DIVISION_C = tblpersonneldivision.DIVISION_N where  UNAME ='".$_SESSION['division']."'");
         $row = mysqli_fetch_array($sqlUsername);
         echo  $row['DIVISION_M']; 
         }
         ?>
-
     </style>
     <style>
   th{
