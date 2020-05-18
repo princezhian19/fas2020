@@ -216,7 +216,7 @@ function viewEvents()
 <script>
 
 $(document).on('click','#modalbtn',function(e){
-  var id =$(this).attr("data-id");
+  var id =$(this).attr("data-value");
   $(function() {
   $.ajax({ 
     url: 'fetchActivities.php', 
