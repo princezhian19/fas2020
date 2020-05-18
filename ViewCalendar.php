@@ -391,6 +391,7 @@ if($_GET['flag'] == 1)
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 <script>
+
 $('#save').hide();
 function test(){
 $('#edit').show();
@@ -490,10 +491,19 @@ $("#all").click(function(){
           if(event.office == <?php echo $_GET['division'];?>)
           {
           test();
+          
           }else{
             $('#save').hide();
             $('#edit').hide();
           }
+          $('#titletxtbox').prop("disabled", true); 
+          $('#datepicker1').prop("disabled", true); 
+          $('#datepicker2').prop("disabled", true); 
+          $('#descriptiontxtbox').prop("disabled", true); 
+          $('#venuetxtbox').prop("disabled", true); 
+          $('#enptxtbox').prop("disabled", true); 
+          $('#remarks').prop("disabled", true); 
+
                 $('#myModal').modal('show');
                 $('#myModal').find('#eventid').val(event.id);
                 $('#myModal').find('#titletxtbox').val(event.title);
@@ -512,6 +522,8 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
                 $('#myModal').find('#postedby').val(event.postedby);
                 $('#myModal').find('#venuetxtbox').val(event.venue);
                 $('#myModal').find('#enptxtbox').val(event.enp);
+                
+     
             },
           eventRender: function(calEvent, element, view) {
             
@@ -858,6 +870,8 @@ $(document).ready(function() {
   });
   
 });
+
+
 </script>
 </body>
 </html>
