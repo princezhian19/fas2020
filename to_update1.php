@@ -199,7 +199,22 @@ else{
                 <input value="<?php echo $id;?>" hidden  type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
                 <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
                 <input  hidden  type="text"  class="" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>">
-            <!-- Code -->
+            
+             <!-- ATAS-LAKBAY -->
+             <tr>
+                <td class="col-md-1"></td>
+                    
+                <td colspan="2" style="text-align:center">
+                <h1>ATAS-LAKBAY</h1>
+                </td>
+             
+                <td class="col-md-1"></td> 
+                
+               
+                </tr>
+                <!-- ATAS-LAKBAY -->
+            
+                <!-- Code -->
             <tr>
                 <td class="col-md-1"></td>
                     
