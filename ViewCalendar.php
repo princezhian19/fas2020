@@ -502,7 +502,8 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
 {  
   $('#myModal').find('#datepicker2').val('');
 }else{
-  $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
+  $('#myModal').find('#datepicker2').val(moment(event.end).subtract(1, "days").format('MM/DD/YYYY'));
+
 }    
                 // $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
                 $('#myModal').find('#datepicker3').val(moment(event.posteddate).format('MM/DD/YYYY'));
@@ -594,7 +595,9 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
                       $start = $event['start'];
                     }
                     if($end[1] == '00:00:00'){
-                      $end = $end[0];
+                      $end =  date('Y-m-d', strtotime("+1 day", strtotime($end[0])));
+
+
                     }else{
                       $end = $event['end'];
                     }

@@ -227,9 +227,10 @@ if (isset($_POST['submit'])) {
    $update_app2 = mysqli_query($conn,"UPDATE app_items SET  qty='$qty',pmo_id=$pmo2  WHERE id = $id1");
  }
 
+ $uapp = mysqli_query($conn,"UPDATE app_items SET sn = '$sn1', code = '$code1', procurement = '$item1' WHERE sn = '$sn' AND pmo_id = $pmo_id AND procurement ='$item1' AND code = '$code1' ");
+
  $app = mysqli_query($conn,"UPDATE app SET unit_id = '$unit_id11', sn = '$sn1' , code = '$code1' , procurement = '$item1', source_of_funds_id = $fund1, category_id = $category1, mode_of_proc_id = $mode1, price = '$price1',app_price = '$app_price1', remarks = '$remarks1' WHERE id = $id ");
 
- $uapp = mysqli_query($conn,"UPDATE app_items SET sn = '$sn1' WHERE sn = '$sn' AND pmo_id = $pmo_id");
 
  $update_budget = mysqli_query($conn,"UPDATE estimated_budget SET mooe = '$mooe1' , co = '$co1' , total_budget = '$budget1' WHERE app_id = $app_id ");
  echo ("<SCRIPT LANGUAGE='JavaScript'>

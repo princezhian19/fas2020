@@ -47,7 +47,6 @@ $username = $_SESSION['username'];
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
 
 </head>
-<body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
   <?php include('test1.php');?>
   <div class="content-wrapper">
