@@ -29,7 +29,7 @@ function viewEvents()
                 <input  type = "hidden" name = "eventid" id = "eventid">
                 <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Activitdy Title<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox"  /></td>
                                 </tr>
                     <tr>
