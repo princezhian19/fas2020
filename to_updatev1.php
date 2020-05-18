@@ -73,6 +73,10 @@ $view_query = mysqli_query($conn, "SELECT * from travel_order where id = '$id'")
       $name = $row['name'];
       $purpose = $row['purpose'];
       $place = $row['place'];
+
+      $fromdate1 = $row['fromdate'];
+      $fromdate = date('m/d/Y', strtotime($fromdate1));
+
       $todate1 = $row['todate'];
       $todate = date('m/d/Y', strtotime($todate1));
 
@@ -100,6 +104,8 @@ $view_query = mysqli_query($conn, "SELECT * from travel_order where id = '$id'")
       $fromplace = $row['fromplace'];
       $contact = $row['contact'];
       $vehicle = $row['vehicle'];
+
+      
     }
 
 ?>
@@ -152,6 +158,20 @@ if(isset($_POST['submit'])){
       $contact = $_POST['contact'];
       $vehicle = $_POST['vehicle'];
 
+      $kita = $_POST['kita'];
+
+
+      $lastdate1 = $_POST['lastdate'];
+      if($lastdate1==''){
+        $lastdate = '0000-00-00';
+      }else{
+
+      $lastdate = date('Y-m-d', strtotime($lastdate1));
+      }
+      
+      $fromdate = $_POST['fromdate'];
+
+
 $servername = "localhost";
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
@@ -163,7 +183,7 @@ $conn = new mysqli($servername, $username, $password,$database);
 if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
-$query = mysqli_query($conn,"UPDATE  travel_order set tono='$tono',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',todate='$todate',timefrom='$timefrom1',timeto='$timeto1',uc='0',fromplace='$fromplace',contact='$contact',vehicle='$vehicle'  where id = '$id'");
+$query = mysqli_query($conn,"UPDATE  travel_order set tono='$tono',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',todate='$todate',timefrom='$timefrom1',timeto='$timeto1',uc='0',fromplace='$fromplace',contact='$contact',vehicle='$vehicle', kita='$kita', lastdate='$lastdate',fromdate='$fromdate'  where id = '$id'");
   
  
 mysqli_close($conn);
@@ -453,7 +473,8 @@ else{
                 <label>Paunang-bayad Nilikida:</label>
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder="">
+                <!-- <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder=""> -->
+                <br>
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
@@ -474,7 +495,7 @@ else{
                     
                     <label>Petsang Huling Paglalakbay:</label>
                     <br>
-                    <input type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" name="lastdate" id="datepicker3" value = "<?php echo $lastdate?>" placeholder="mm/dd/yyyy">
+                    <input type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" name="lastdate" id="datepicker3" value = "<?php if($lastdate1=='0000-00-00'){echo "";}else{echo  $lastdate;} ?>" placeholder="mm/dd/yyyy">
                     <br>
                   
                   
@@ -485,7 +506,8 @@ else{
                 <label>Nagbigay-ulat sa Huling Paglalakbay:</label>
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder="">
+               <!--  <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder=""> -->
+                <br>
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
@@ -593,17 +615,29 @@ else{
                 <tr>
                 <td class="col-md-1" ></td>
                     
-                <td colspan="2" class="" style =" text-align:center; border:1px solid black;" >
-                    
-                    <label>PATUNAY NG PAKIKIPAGKITA</label>
+                <td colspan="2" class="" style ="  border:1px solid black;" >
+                    <div class="div" style =" text-align:center; ">
+
+                    <b><u>PATUNAY NG PAKIKIPAGKITA</u></b>
+                    <br>
+                    </div>
+
+                    <div class="div" style =" text-align:left; ">
+
+                    <br>
+                   Ito ay pagpapatunay na ang tauhang nasasaad ay nagsadya sa akin tungkol sa kadahilanang 
                    <br>
-                   Ito ay pagpapatunay na ang tauhang nasasaad ay nagsadya sa akin tungkol sa kadahilanang nabanggit at mga araw na inilahad.
+                   nabanggit at mga araw na inilahad.
                   
+                    </div>
+                    
+                 
                 </td>
 
                 <td class="col-md-1"></td> 
                 </tr>
                  <!-- Patunay -->
+
 
                    <!-- Mula -->
                 <tr>

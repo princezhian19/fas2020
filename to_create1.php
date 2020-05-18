@@ -104,7 +104,12 @@ $date = date('Y-m-d', strtotime($date1));
 
 
 $lastdate1 = $_POST['lastdate'];
+if($lastdate1==''){
+  $lastdate = '0000-00-00';
+}else{
+
 $lastdate = date('Y-m-d', strtotime($lastdate1));
+}
 
 $kita = $_POST['kita'];
 
