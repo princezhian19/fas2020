@@ -361,7 +361,7 @@
           </div>
           <div class="col-xs-4">
             <label>Mobile <font style="color:red;">*</font></label>
-            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. +63995-2647-434">
+            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. 0995-2647-434">
           </div>
           <br>
           <br>
@@ -369,7 +369,7 @@
           <br>
           <div class="col-xs-4">
               <label>Office Station<font style="color:red;">*</font></label>
-              <select required id="" class="form-control" name="office">
+              <select required id="mySelect2" class="form-control" name="office">
                 <?php if ($office1 == 1): ?>
                   <option value="1">Regional Office</option>
                   <option value="2">Provincial/HUC Office</option>
@@ -432,7 +432,7 @@
                   $data = mysqli_fetch_array($getThis);
                   $office_address = $data['office_address'];
                   $office_contact = $data['office_contact'];?>
-            <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control" placeholder="">
+            <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control" placeholder="ex. 0995-2647-434">
           </div>
           <br>
           <br>
