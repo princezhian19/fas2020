@@ -26,7 +26,7 @@ $username = $_SESSION['username'];
   }
   
   </style>
-<body class=" hold-transition skin-red-light sidebar-mini" >
+<body class=" hold-transition fixed skin-red-light sidebar-mini" >
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
@@ -37,7 +37,7 @@ $username = $_SESSION['username'];
       <span class="logo-lg"><b><img src = "images/logo1.png"/></b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
+    <nav class="navbar navbar-static-top ">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
