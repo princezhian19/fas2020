@@ -344,13 +344,18 @@ $edit="edit";
                 <thead>
                   <tr style="background-color: white;color:blue; text-align:center">
                   <th width ='150'>OB NO</th> 
-                  <th width = '200'>OB DATE</th>
+                  <th width = '300'>OB DATE</th>
+
+                  <th width = '300'>DATE OF OB</th>
+
+                  <th width = '300'>TIME</th>
+
                   <th width = ''>OFFICE</th>
                   <th width = '200'>NAME</th>
                   <th width = '700'>PURPOSE</th>
                   <th width = '500'>PLACE</th>
-                  <th width = '200'>DATE</th>
-                  <th width = '300'>TIME</th>
+                  
+                 
                   <th width = '100'>SUBMITTED DATE</th>
                   <th width = '200'>RECEIVED DATE</th>
                   <th width = '1000'>ACTION</th>
@@ -430,6 +435,18 @@ $edit="edit";
                 <?php else: ?>
                   <td><?php echo  $date?></td>
                 <?php endif ?>
+                
+
+
+                <?php if ($obdate1 == '0000-00-00'): ?>
+                <td></td>
+                <?php else: ?>
+                <td><?php echo  $obdate?></td>
+                <?php endif ?>
+
+
+                <td><?php echo $timefrom.' to '.$timeto?></td>
+              
 
                 
                 <td><?php echo  $office?></td>
@@ -437,15 +454,10 @@ $edit="edit";
                 <td><?php echo  $purpose?></td>
                 <td><?php echo  $place?></td>
 
-                <?php if ($obdate1 == '0000-00-00'): ?>
-                <td></td>
-                <?php else: ?>
-                <td><?php echo  $obdate?></td>
-                <?php endif ?>
+                
                
                
-                <td><?php echo $timefrom.' to '.$timeto?></td>
-              
+             
 
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
                   
@@ -457,7 +469,7 @@ $edit="edit";
 
                 
                 <?php else: ?>
-                <td><?php echo $submitteddate .'<br> <b> '.$submittedby.'</b>  '?></td>
+                <td><?php echo $submitteddate .'<br>'.$submittedby.''?></td>
                 <?php endif ?>
 
 
@@ -478,7 +490,7 @@ $edit="edit";
                           <?php if ($receiveddate1 == '0000-00-00'): ?>
                           <!-- //no dates -->
                           <?php else: ?>
-                            <?php echo $receiveddate .'<br> <b> '.$receivedby.'</b>  '?>
+                            <?php echo $receiveddate .'<br>'.$receivedby.''?>
                           <?php endif ?>
 
                         </td>
@@ -512,7 +524,7 @@ $edit="edit";
                               <?php if ($status=='cancelled'):?>
                                
                                 <a disabled  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
-                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$username1.'<b>' ?>
+                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$username1.'' ?>
                                 <?php else: ?>
                              
                                   <a  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
