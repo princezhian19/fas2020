@@ -327,10 +327,11 @@ if($_GET['flag'] == 1)
           {
             echo  '<label id ="title">View Activity</label>';
           }else{
-            echo  '<label id ="title">View Activity</label>';
+            echo  '<label id ="title" >View Activity</label>';
           }
           ?>  
          </h4>
+         
           <button type="button" class="close" data-dismiss="modal">&times; 
           </button>
         </div>
@@ -402,7 +403,7 @@ $('#edit').hide();
 
 
 
-$('#title').html("Edit Event/Activity");
+$('#title').html("Edit Activity");
 $('#titletxtbox').prop("disabled", false); 
 $('#datepicker1').prop("disabled", false); 
 $('#datepicker2').prop("disabled", false); 

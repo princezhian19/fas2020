@@ -136,10 +136,10 @@ while($row=mysqli_fetch_array($query)){
         }else{
                 $subdata[]='
             <center>
-                <a href="ViewEvent.php?eventid='.$row['id'].'" class = "btn btn-success btn-xs">
+                <a data-toggle="modal"  data-target="#orderModal" data-id='.$row['id'].'  id= "modalbtn" class = "btn btn-success btn-xs">
+                
                     <i class="fa fa-eye"></i> View
                 </a>&nbsp;
-            
             </center>';  
             $data[]=$subdata;
         }
