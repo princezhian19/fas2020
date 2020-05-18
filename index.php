@@ -1,5 +1,6 @@
 <?php session_start();
 include 'connection.php';
+error_reporting(0);
 if(!isset($_SESSION['username'])){
 // header('location:index.php');
 }else{
@@ -15,7 +16,7 @@ $username = $_SESSION['username'];
 
 
   // ===============================================
-  $query = "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($username)."' LIMIT 1 ";
+  $query = "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1 ";
   $result = mysqli_query($conn, $query);
   $val = array();
   // $numrows= mysqli_num_rows($query);
@@ -95,7 +96,7 @@ if (isset($_POST['submit'])) {
   }
 }else{
   echo ("<SCRIPT LANGUAGE='JavaScript'>
-  window.alert('Wrong Password Or Username!');
+  window.alert('Wrong username or password!');
   window.location.href='index.php';
   </SCRIPT>");
 }

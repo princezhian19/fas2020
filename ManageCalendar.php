@@ -7,6 +7,138 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 $division = $_GET['division'];
 }
+$id = '';
+function viewEvents()
+{
+        ?>
+            <form method = "POST" action = "calendar/add-event.php">
+                <input  type = "hidden" name = "eventid" id = "eventid">
+                <table class="table table-bordered" style = "width:100%;"> 
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox" value = "<?php echo $id;?>" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Start Date<span style = "color:red;">*</span></td>
+                            <td class="col-md-5">
+                                <input disabled type="text" class = "form-control datepicker1" name = "startdatetxtbox" id="datepicker1" value = "" placeholder="mm/dd/yyyy"  disabled autocomplete = off  >
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">End Date</td>
+                            <td class="col-md-5">
+                                <input disabled type = "text"  class = "form-control datepicker2" id = "datepicker2" name = "enddatetxtbox"  placeholder="mm/dd/yyyy"   autocomplete = off /></td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Description</td>
+                            <td class="col-md-5"><input disabled  type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "venuetxtbox" id= "venuetxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Expected Number of Participants<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input disabled type = "number" min = "0" name = "enptxtbox" id= "enptxtbox" class = "form-control" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Target Participants<span style = "color:red;">*</span></td>  
+                            <td class="col-md-5">
+                            <input disabled type = "text" class = "form-control" name = "remarks" id= "remarks" value = "" />
+                                </td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Posted By</td>
+                            <td class="col-md-5">                              
+                            <input readonly type = "text"  class = "form-control" id= "postedby"  value="<?php echo $_SESSION['username'];?>"/>
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Posted Date</td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control datepicker3" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
+                                </tr>
+                   
+                    
+                </table>
+
+            </form>
+        <?php
+    
+}
+// edit  function
+function viewEvents2()
+{
+  ?>
+
+    <form method = "POST" action = "calendar/edit-event.php" id = "edit_act">
+    <input  type = "hidden" name = "eventid" id = "eventid2">
+    <input  type = "hidden" name = "flag" value="1">
+
+    <table class="table table-bordered" style = "width:100%;"> 
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "title" id = "edit" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Start Date<span style = "color:red;">*</span></td>
+                            <td class="col-md-5">
+                                <input required type="text" class = "form-control start" name = "start" id = "start" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">End Date</td>
+                            <td class="col-md-5">
+                                <input autocomplete ="off"  type = "text"  class = "form-control end" name = "end"  id="end" value = "" /></td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Description</td>
+                            <td class="col-md-5"><input   type = "text" class = "form-control" name = "desc" id = "desc" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "venue" id = "venue" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Expected Number of Participants<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input required type = "number" min = "0" name = "enp" id = "enp" class = "form-control" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Target Participants<span style = "color:red;">*</span></td>  
+                            <td class="col-md-5">
+                            <input required type = "text" class = "form-control" name = "remarks2" id = "remarks2" value = "" />
+                                </td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Posted By</td>
+                            <td class="col-md-5">                              
+                            <input readonly type = "text"  class = "form-control"  id = "posted"/>
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Posted Date</td>
+                            <td class="col-md-5"><input readonly required type = "text" class = "form-control" placeholder = "Posted Date" id="dateposted" name = "enddatetxtbox"  /></td>
+                                </tr>
+                   
+                    
+                </table>
+  <?php
+
+
+?>
+
+              
+               <?php 
+                
+             
+                  echo ' <input id = "save"  type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> ';
+                
+
+               ?>
+
+            </form>
+  <?php
+}
+
 ?>
   
   <!DOCTYPE html>
@@ -44,10 +176,13 @@ $division = $_GET['division'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="calendar/fullcalendar/fullcalendar.min.css" />
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
     <script src="calendar/fullcalendar/lib/jquery.min.js"></script>
     <script src="calendar/fullcalendar/lib/moment.min.js"></script>
     <script src="calendar/fullcalendar/fullcalendar.min.js"></script>
+    <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
     <style>
   
   #calendar {
@@ -122,9 +257,43 @@ $division = $_GET['division'];
   </footer>
   <br>
 </div>
+<!-- View -->
+<div class="modal fade" id="orderModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">View Activity</h4>
+          <button type="button" class="close" data-dismiss="modal">&times; 
+          </button>
+        </div>
+        <div class="modal-body">
+    <?php echo viewEvents();?>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+  </div>
+</div>
+<!-- Edit -->
 
+<div class="modal fade" id="editModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Activity</h4>
+          <button type="button" class="close" data-dismiss="modal">&times; 
+          </button>
+        </div>
+        <div class="modal-body">
+    <?php echo viewEvents2();?>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+  </div>
+</div>
 
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -140,6 +309,74 @@ $division = $_GET['division'];
 
 
 <script>
+
+
+
+$(document).on('click','#modalbtn',function(e){
+  var id =$(this).attr("data-id");
+  $(function() {
+  $.ajax({ 
+    url: 'fetchActivities.php', 
+    data:{id: id},
+    dataType: 'JSON',
+
+    type:"post",
+    success: function (data) 
+    {
+      var len = data.length;
+
+      for(var i=0; i<len; i++){
+      $("#titletxtbox").val(data[i].title); 
+      $("#datepicker1").val(data[i].start); 
+      $("#datepicker2").val(data[i].end); 
+      $("#descriptiontxtbox").val(data[i].description); 
+      $("#venuetxtbox").val(data[i].venue); 
+      $("#enptxtbox").val(data[i].enp); 
+      $("#remarks").val(data[i].remarks); 
+      $("#postedby").val(data[i].postedby); 
+      $("#datepicker3").val(data[i].posteddate); 
+      }
+    }
+  });
+});
+});
+
+// edit
+$(document).on('click','#editbtn',function(e){
+
+  var id =$(this).attr("data-id");
+
+  $(function() {
+  $.ajax({ 
+    url: 'fetchActivities.php', 
+    data:{id: id},
+    dataType: 'JSON',
+
+    type:"post",
+    success: function (data) 
+    {
+ 
+      $('#eventid2').val(id);
+
+      var len = data.length;
+      for(var i=0; i<len; i++){
+
+      $("#edit").val(data[i].title); 
+      $("#start").val(data[i].start); 
+      $("#end").val(data[i].end); 
+      $("#desc").val(data[i].description); 
+      $("#venue").val(data[i].venue); 
+      $("#enp").val(data[i].enp); 
+      $("#remarks2").val(data[i].remarks); 
+      $("#posted").val(data[i].postedby); 
+      $("#dateposted").val(data[i].posteddate); 
+      }
+    }
+  });
+});
+});
+
+
      $(document).ready(function(){
             var dataTable=$('#example').DataTable({
             'lengthChange': true,
@@ -162,6 +399,14 @@ $division = $_GET['division'];
                 
             }
             });
+            $(".start").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+$("#start").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+$("#end").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+$(".end").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+
+
+
+
      });
     $(document).on('click','#sweet-14',function(e){
     e.preventDefault();
