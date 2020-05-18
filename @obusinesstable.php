@@ -52,6 +52,7 @@ $edit="edit";
           
           <h1 align="">Official Business</h1>
           
+          
           <br>
         
 
@@ -358,7 +359,7 @@ $edit="edit";
                  
                   <th width = '100'>SUBMITTED DATE</th>
                   <th width = '200'>RECEIVED DATE</th>
-                  <th width = '1000'>ACTION</th>
+                  <th width = '1500'>ACTION</th>
                   
                 </tr>
                 </thead>
@@ -421,6 +422,8 @@ $edit="edit";
                   $cancelleddate1 = $row['cancelleddate'];
 
                   $cancelleddate = date('F d, Y', strtotime($cancelleddate1));
+
+                  $reason = $row['reason'];
 
                ?>
 
@@ -511,11 +514,15 @@ $edit="edit";
                                 
                                   <a  href='ob_export.php?id=<?php echo $id;?>&user=<?php echo $username1;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                   <a href='OfficialBusinessUpdate.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
-                                  <a onclick="return confirm('Are you sure you want to cancel this Official Business?');" href='ob_cancel.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
-                               
-                              <?php else: ?>
-                              <label style="color:red">Cancelled</label> | 
-                              <a  disabled href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
+                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                                  
+                                  <!-- <input  onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" type="button" name="Cancel" value="" id="Cancel" class="btn btn-warning btn-xs view_data" /> -->
+                              
+                              
+                                  <?php else: ?>
+                             
+                              <a  disabled href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                              <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$username1.'<br>'.'Reason: '.$reason ?>
                               <?php endif ?>
                         
                         <?php else: ?>
@@ -524,13 +531,16 @@ $edit="edit";
                               <?php if ($status=='cancelled'):?>
                                
                                 <a disabled  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
-                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$username1.'' ?>
+                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$username1.'<br>'.'Reason: '.$reason ?>
                                 <?php else: ?>
                              
                                   <a  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
-                                  <a onclick="return confirm('Are you sure you want to cancel this Official Business?');" href='ob_cancel.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a>
+                                  
+                             
                               
-                              <?php endif ?>
+                              
+                                <?php endif ?>
                           <?php endif ?>
                         
 
@@ -551,9 +561,91 @@ $edit="edit";
                 
                 </div>
             </div>
-                 
+
+
+
+
+            <!-- modals -->
+
+          <div id="add_data_Modal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Official Business</h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="insert_form" action="ob_cancel.php">
+              
+              <label>Reason</label>
+              <input required type="text" name="reason" id="reason" class="form-control" />
+                                  
+              <br>
+              
+              
+              <button type="submit" name="submit" class="btn btn-warning">Cancel</button>
+
+
+              <input hidden type="text" name="id1" id="id1" value="" class=""/>
+              <br>
+              <input hidden type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
+              <br>
+              <input hidden type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+             
+             
+              <br />
+
+              <!-- <input type="submit" name="submit" id="submit" value="Cancel" class="btn btn-warning" /> -->
+
+             
+          
+              
+              </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+          </div>
+          </div>
+
+          <div id="dataModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Official Business</h4>
+            </div>
+            <div class="modal-body" id="employee_detail">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+              
+            </div>
+            </div>
+          </div>
+          </div>
+        <!-- modals -->
+        
+        <!-- //Setting ID -->
+        <script>
+        function myFunction(idget) {
+
+          var idtomodal = idget.getAttribute("data-idtomodal");
+          var id1 = $("input[name='id1']");
+          id1.val(idtomodal);
+
+         
+       
+        }
+        </script>
+          <!-- //Setting ID -->
       
-    <script type="text/javascript">
+
+      
+    <script type="">
     $(document).ready(function() {
         var dataTable=$('#example1').DataTable({
             'lengthChange': true,
@@ -574,7 +666,16 @@ $edit="edit";
 </script>
 
 
+
+
+
 </body>
+
+
+
+
+
+
 </html>
 
 <script>
@@ -587,9 +688,7 @@ $('#export').on('click', function()
   var month = $('#selectMonth').val();
   var year = $('#year').val();
   var office = $('#office').val();
- /*  window.alert(month);
-  window.alert(year);
-  window.alert(office); */
+ 
   window.location = "ob_export_date.php?month="+month+"&&year="+year+"&&office="+office;
 });
 

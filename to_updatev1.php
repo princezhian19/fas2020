@@ -60,6 +60,11 @@ $view_query = mysqli_query($conn, "SELECT * from travel_order where id = '$id'")
 
       $id=$row['id'];
 
+      $kita=$row['kita'];
+
+      $lastdate1=$row['lastdate'];
+      $lastdate = date('m/d/Y', strtotime($lastdate1));
+
       $tono = $row['tono'];
      
       $date1 = $row['date'];
@@ -68,6 +73,10 @@ $view_query = mysqli_query($conn, "SELECT * from travel_order where id = '$id'")
       $name = $row['name'];
       $purpose = $row['purpose'];
       $place = $row['place'];
+
+      $fromdate1 = $row['fromdate'];
+      $fromdate = date('m/d/Y', strtotime($fromdate1));
+
       $todate1 = $row['todate'];
       $todate = date('m/d/Y', strtotime($todate1));
 
@@ -95,6 +104,8 @@ $view_query = mysqli_query($conn, "SELECT * from travel_order where id = '$id'")
       $fromplace = $row['fromplace'];
       $contact = $row['contact'];
       $vehicle = $row['vehicle'];
+
+      
     }
 
 ?>
@@ -147,6 +158,20 @@ if(isset($_POST['submit'])){
       $contact = $_POST['contact'];
       $vehicle = $_POST['vehicle'];
 
+      $kita = $_POST['kita'];
+
+
+      $lastdate1 = $_POST['lastdate'];
+      if($lastdate1==''){
+        $lastdate = '0000-00-00';
+      }else{
+
+      $lastdate = date('Y-m-d', strtotime($lastdate1));
+      }
+      
+      $fromdate = $_POST['fromdate'];
+
+
 $servername = "localhost";
 $username = "fascalab_2020";
 $password = "w]zYV6X9{*BN";
@@ -158,7 +183,7 @@ $conn = new mysqli($servername, $username, $password,$database);
 if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
-$query = mysqli_query($conn,"UPDATE  travel_order set tono='$tono',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',todate='$todate',timefrom='$timefrom1',timeto='$timeto1',uc='0',fromplace='$fromplace',contact='$contact',vehicle='$vehicle'  where id = '$id'");
+$query = mysqli_query($conn,"UPDATE  travel_order set tono='$tono',date='$date',office='$office',name='$name',purpose='$purpose',place='$place',todate='$todate',timefrom='$timefrom1',timeto='$timeto1',uc='0',fromplace='$fromplace',contact='$contact',vehicle='$vehicle', kita='$kita', lastdate='$lastdate',fromdate='$fromdate'  where id = '$id'");
   
  
 mysqli_close($conn);
@@ -179,10 +204,6 @@ else{
 }
 
 ?>
-
-
-
-
 <!-- Upadte Queries -->
 <div class="box">
           <div class="box-body">
@@ -312,11 +333,13 @@ else{
                 <td class="col-md-5 " style =" border:1px solid black;">
               
                
-                <label>Katungkulan: &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Taunang Kita:</label>
+                <label>Katungkulan:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Taunang Kita:</label>
                 
                <br>
-                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:150px;" name="" id="" value = "<?php echo $POSITION_M;?>" >
-              
+                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:320px;" name="" id="" value = "<?php echo $POSITION_M;?>" >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input   type="number" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:120px;" name="kita" id="kita" value = "<?php echo $kita;?>">
+                <br>
               
                 <br>
                
@@ -380,7 +403,7 @@ else{
                     <label>Oras at Petsang Pag-alis:</label>
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
 
-                    <input value = "<?php echo $todate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="todate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+                    <input value = "<?php echo $fromdate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="fromdate" id="datepicker1" value = "" placeholder="mm/dd/yyyy">
                     &nbsp;&nbsp;&nbsp;
 
                     <input value = "<?php echo $timefrom1;?>" required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="timefrom" id="timefrom"></td>
@@ -402,7 +425,7 @@ else{
                     <label>Oras at Petsang Pagbabalik:</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <input value = "<?php echo $todate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:400px;" name="todate" id="datepicker3" value = "" placeholder="mm/dd/yyyy">
+                    <input value = "<?php echo $todate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:400px;" name="todate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
 
                     &nbsp;&nbsp;&nbsp;
 
@@ -449,8 +472,11 @@ else{
 
                 <label>Paunang-bayad Nilikida:</label>
                 <br>
+                <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder="">
+                <!-- <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder=""> -->
+                __________________________________________________
+                
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
@@ -471,6 +497,8 @@ else{
                     
                     <label>Petsang Huling Paglalakbay:</label>
                     <br>
+                    <input type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" name="lastdate" id="datepicker3" value = "<?php if($lastdate1=='0000-00-00'){echo "";}else{echo  $lastdate;} ?>" placeholder="mm/dd/yyyy">
+                    <br>
                   
                   
                 </td>
@@ -479,8 +507,11 @@ else{
 
                 <label>Nagbigay-ulat sa Huling Paglalakbay:</label>
                 <br>
+                <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder="">
+               <!--  <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder=""> -->
+               __________________________________________________
+              
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
@@ -498,7 +529,6 @@ else{
                 <td class="col-md-1"></td>
                     
                 <td  class="col-md-5" style =" border:1px solid black;" >
-
                 <?php
                 session_start();
                 $username = $_SESSION['username'];
@@ -518,12 +548,12 @@ else{
                 $approved="";
                 $pos="";
                 if($DIVISION_M=='ORD'){
-                  $approved="Noel R. Bartolabac";
+                  $approved="NOEL R. BARTOLABAC";
                   $pos="ASST. REGIONAL DIRECTOR";
                   }
                   else if($DIVISION_M=='LGMED'){
 
-                  $approved="Gilberto L. Tumamac";
+                  $approved="GILBERTO L. TUMAMAC";
                   $pos="OIC - LGMED Chief";
 
                 
@@ -531,14 +561,14 @@ else{
                   
                   else if($DIVISION_M=='LGCDD'){
 
-                  $approved="Jay-ar T. Beltran";
+                  $approved="JAY-AR T. BELTRAN";
                   $pos="OIC - LGCDD Chief";
                   
                   }
                   
                   else if($DIVISION_M=='FAD'){
 
-                  $approved="Dr. Carina S. Cruz";
+                  $approved="DR. CARINA S. CRUZ";
                   $pos="Chief, FAD";
                  
                   }
@@ -589,17 +619,29 @@ else{
                 <tr>
                 <td class="col-md-1" ></td>
                     
-                <td colspan="2" class="" style =" text-align:center; border:1px solid black;" >
-                    
-                    <label>PATUNAY NG PAKIKIPAGKITA</label>
+                <td colspan="2" class="" style ="  border:1px solid black;" >
+                    <div class="div" style =" text-align:center; ">
+
+                    <b><u>PATUNAY NG PAKIKIPAGKITA</u></b>
+                    <br>
+                    </div>
+
+                    <div class="div" style =" text-align:left; ">
+
+                    <br>
+                   Ito ay pagpapatunay na ang tauhang nasasaad ay nagsadya sa akin tungkol sa kadahilanang 
                    <br>
-                   Ito ay pagpapatunay na ang tauhang nasasaad ay nagsadya sa akin tungkol sa kadahilanang nabanggit at mga araw na inilahad.
+                   nabanggit at mga araw na inilahad.
                   
+                    </div>
+                    
+                 
                 </td>
 
                 <td class="col-md-1"></td> 
                 </tr>
                  <!-- Patunay -->
+
 
                    <!-- Mula -->
                 <tr>

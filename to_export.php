@@ -84,8 +84,13 @@ exit(); */
         $purpose = $excelrow['purpose'];
         $place = $excelrow['place'];
         $fromplace = $excelrow['fromplace'];
+
         $todate1 = $excelrow['todate'];
         $todate = date('F d, Y', strtotime($todate1));
+
+
+        $fromdate1= $excelrow['fromdate'];
+        $fromdate = date('F d, Y', strtotime($fromdate1));
     
         $timefrom1 = $excelrow['timefrom'];
         $timefrom=  date("g A",strtotime($timefrom1));
@@ -114,7 +119,7 @@ exit(); */
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B17',$fromplace);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('E17',$place);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B20',$contact);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('D22',$todate.'  '.$timefrom);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('D22',$fromdate.'  '.$timefrom);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('D23',$todate.'  '.$timeto);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B28',$vehicle);
         

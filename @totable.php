@@ -388,7 +388,7 @@ $edit="edit";
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT * from travel_order where office ='$DIVISION_M' order by date desc");
+            $view_query = mysqli_query($conn, "SELECT * from travel_order where office ='$DIVISION_M' order by id desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
 
