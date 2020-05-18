@@ -60,8 +60,15 @@ while($row=mysqli_fetch_array($query)){
     $subdata=array();
     $subdata[]=$row['DIVISION_M']; 
     $subdata[]=$row['title']; 
-    $subdata[]=date('F d, Y',strtotime($row['start']));          
-    $subdata[]=date('F d, Y',strtotime($row['end']));           
+    $subdata[]=date('F d, Y',strtotime($row['start']));    
+    if($row['end'] == '0000-00-00 00:00:00' || $row['end'] == null || $row['end'] == '1970-01-01 00:00:00')
+    {
+       $a ='-';
+       $row['end'] = $a;
+        $subdata[]=$row['end'];   
+    }else{
+        $subdata[]=date('F d, Y',strtotime($row['end']));   
+    }       
     $subdata[]=$row['venue'];           
     $subdata[]=$row['remarks'];           
     $subdata[]=$row['UNAME'];         
