@@ -1,5 +1,6 @@
 <?php
 $id = $_GET['id'];
+$view = $_GET['view'];
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $GET_DATA = mysqli_query($conn,"SELECT * FROM phone_directory WHERE id = $id");
 $row = mysqli_fetch_array($GET_DATA);
@@ -106,7 +107,10 @@ if (isset($_POST['submit'])) {
           </div>
         </div>
       </div>
+      <?php if ($view == 1): ?>
+        <?php else: ?>
             <button class="btn btn-success" name="submit">Save</button>
+      <?php endif ?>
     </form>
   </body>
 

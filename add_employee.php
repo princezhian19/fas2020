@@ -451,7 +451,7 @@
           </div>
           <div class="col-xs-4">
             <label>Office Contact No</label>
-            <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control" placeholder="">
+            <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control" placeholder="ex. 0995-2647-434">
           </div>
           <br>
           <br>
