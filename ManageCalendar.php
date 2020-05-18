@@ -242,6 +242,8 @@ $(document).on('click','#modalbtn',function(e){
     }
   });
 });
+// data-toggle="modal"  data-target="#orderModal"
+$('#orderModal').modal('show');
 });
 
 
