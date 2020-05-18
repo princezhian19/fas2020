@@ -7,6 +7,64 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 $division = $_GET['division'];
 }
+$id = '';
+function viewEvents()
+{
+        ?>
+            <form method = "POST" action = "calendar/add-event.php">
+                <input  type = "hidden" name = "eventid" id = "eventid">
+                <table class="table table-bordered" style = "width:100%;"> 
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox" value = "<?php echo $id;?>" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Start Date<span style = "color:red;">*</span></td>
+                            <td class="col-md-5">
+                                <input disabled type="text" class = "form-control datepicker1" name = "startdatetxtbox" id="datepicker1" value = "" placeholder="mm/dd/yyyy"  disabled autocomplete = off  >
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">End Date</td>
+                            <td class="col-md-5">
+                                <input disabled type = "text"  class = "form-control datepicker2" id = "datepicker2" name = "enddatetxtbox"  placeholder="mm/dd/yyyy"   autocomplete = off /></td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Description</td>
+                            <td class="col-md-5"><input disabled  type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "venuetxtbox" id= "venuetxtbox" value = "" /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Expected Number of Participants<span style = "color:red;">*</span></td>
+                            <td class="col-md-5"><input disabled type = "number" min = "0" name = "enptxtbox" id= "enptxtbox" class = "form-control" value = ""  /></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Target Participants<span style = "color:red;">*</span></td>  
+                            <td class="col-md-5">
+                            <input disabled type = "text" class = "form-control" name = "remarks" id= "remarks" value = "" />
+                                </td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Posted By</td>
+                            <td class="col-md-5">                              
+                            <input readonly type = "text"  class = "form-control" id= "postedby"  value="<?php echo $_SESSION['username'];?>"/>
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Posted Date</td>
+                            <td class="col-md-5"><input disabled type = "text" class = "form-control datepicker3" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
+                                </tr>
+                   
+                    
+                </table>
+
+            </form>
+        <?php
+    
+}
 ?>
   
   <!DOCTYPE html>
@@ -123,6 +181,22 @@ $division = $_GET['division'];
   <br>
 </div>
 
+<div class="modal fade" id="orderModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">View Activity</h4>
+          <button type="button" class="close" data-dismiss="modal">&times; 
+          </button>
+        </div>
+        <div class="modal-body">
+    <?php echo viewEvents();?>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+  </div>
+</div>
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -140,6 +214,39 @@ $division = $_GET['division'];
 
 
 <script>
+
+$(document).on('click','#modalbtn',function(e){
+  var id =$(this).attr("data-value");
+  $(function() {
+  $.ajax({ 
+    url: 'fetchActivities.php', 
+    data:{id: id},
+    dataType: 'JSON',
+
+    type:"post",
+    success: function (data) 
+    {
+      var len = data.length;
+
+      for(var i=0; i<len; i++){
+      $("#titletxtbox").val(data[i].title); 
+      $("#datepicker1").val(data[i].start); 
+      $("#datepicker2").val(data[i].end); 
+      $("#descriptiontxtbox").val(data[i].description); 
+      $("#venuetxtbox").val(data[i].venue); 
+      $("#enptxtbox").val(data[i].enp); 
+      $("#remarks").val(data[i].remarks); 
+      $("#postedby").val(data[i].postedby); 
+      $("#datepicker3").val(data[i].posteddate); 
+      }
+    }
+  });
+});
+// data-toggle="modal"  data-target="#orderModal"
+$('#orderModal').modal('show');
+});
+
+
      $(document).ready(function(){
             var dataTable=$('#example').DataTable({
             'lengthChange': true,

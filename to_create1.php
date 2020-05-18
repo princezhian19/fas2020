@@ -101,6 +101,13 @@ $checked = $_POST['check'];
 $tono = $_POST['tono'];
 $date1 = $_POST['date'];
 $date = date('Y-m-d', strtotime($date1));
+
+
+$lastdate1 = $_POST['lastdate'];
+$lastdate = date('Y-m-d', strtotime($lastdate1));
+
+$kita = $_POST['kita'];
+
 $office = $_POST['office'];
 
 $name = $_POST['name'];
@@ -131,8 +138,8 @@ if ($conn->connect_error) {
 }
 
 
-  $query = mysqli_query($conn,"INSERT INTO travel_order (tono,date,office,name,purpose,place,todate,timefrom,timeto,fromplace,contact,vehicle) 
-  VALUES ('$tono','$date','$office','$name','$purpose','$place','$todate','$timefrom','$timeto','$fromplace','$contact','$vehicle')");
+  $query = mysqli_query($conn,"INSERT INTO travel_order (tono,date,office,name,purpose,place,todate,timefrom,timeto,fromplace,contact,vehicle,kita,lastdate) 
+  VALUES ('$tono','$date','$office','$name','$purpose','$place','$todate','$timefrom','$timeto','$fromplace','$contact','$vehicle','$kita','$lastdate')");
 
 
 
@@ -163,12 +170,12 @@ else{
 <div class="box">
           <div class="box-body">
       
-            <h1 align="">ATAS-LAKBAY</h1>
+            <h1 align="">Travel Order</h1>
          
         <br>
       <li class="btn btn-success"><a href="TravelOrder.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
-      <br>
+      
 
 
       <div class="class" >
@@ -177,7 +184,23 @@ else{
               
                 <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
                 <input  hidden  type="text"  class="" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>">
-            <!-- Code -->
+            
+             <!-- ATAS-LAKBAY -->
+             <tr>
+                <td class="col-md-1"></td>
+                    
+                <td colspan="2" style="text-align:center">
+                <h1>ATAS-LAKBAY</h1>
+                </td>
+             
+                <td class="col-md-1"></td> 
+                
+               
+                </tr>
+                <!-- ATAS-LAKBAY -->
+            
+            
+                <!-- Code -->
             <tr>
                 <td class="col-md-1"></td>
                     
@@ -275,12 +298,15 @@ else{
                 <td class="col-md-5 " style =" border:1px solid black;">
               
                
-                <label>Katungkulan: &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Taunang Kita:</label>
+                <label>Katungkulan: &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Taunang Kita:</label>
                 
                <br>
-                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:150px;" name="" id="" value = "<?php echo $POSITION_M;?>" >
-              
-              
+                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:320px;" name="" id="" value = "<?php echo $POSITION_M;?>"  >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input   type="number" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:120px;" name="kita" id="kita" value = ""
                 <br>
                
                 
@@ -326,7 +352,7 @@ else{
                 <td class="col-md-1"></td>
 
                 <td colspan="2" class="" style =" border:1px solid black;" >
-                <br>
+                
                 <label>Makikipagkita kay:</label>
                 <input  required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:1020px;" name="contact" id="contact" value = "" >
 
@@ -417,7 +443,8 @@ else{
                 <label>Paunang-bayad Nilikida:</label>
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder="">
+                <!-- <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder=""> -->
+                <br>
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
@@ -438,6 +465,8 @@ else{
                     
                     <label>Petsang Huling Paglalakbay:</label>
                     <br>
+                    <input type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" name="lastdate" id="datepicker3" value = "" placeholder="mm/dd/yyyy">
+                    <br>
                   
                   
                 </td>
@@ -447,7 +476,8 @@ else{
                 <label>Nagbigay-ulat sa Huling Paglalakbay:</label>
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder="">
+              <!--   <input readonly required id="" name="" autocomplete ="off" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" type="text" class="" placeholder=""> -->
+                <br>
                 <br>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
@@ -552,16 +582,30 @@ else{
                 </tr>
                  <!-- Pagtibayin -->
               
+
+
+                 
                   <!-- Patunay -->
                 <tr>
                 <td class="col-md-1" ></td>
                     
-                <td colspan="2" class="" style =" text-align:center; border:1px solid black;" >
-                    
-                    <label>PATUNAY NG PAKIKIPAGKITA</label>
+                <td colspan="2" class="" style ="  border:1px solid black;" >
+                    <div class="div" style =" text-align:center; ">
+
+                    <b><u>PATUNAY NG PAKIKIPAGKITA</u></b>
+                    <br>
+                    </div>
+
+                    <div class="div" style =" text-align:left; ">
+
+                    <br>
+                   Ito ay pagpapatunay na ang tauhang nasasaad ay nagsadya sa akin tungkol sa kadahilanang 
                    <br>
-                   Ito ay pagpapatunay na ang tauhang nasasaad ay nagsadya sa akin tungkol sa kadahilanang nabanggit at mga araw na inilahad.
+                   nabanggit at mga araw na inilahad.
                   
+                    </div>
+                    
+                 
                 </td>
 
                 <td class="col-md-1"></td> 

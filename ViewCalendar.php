@@ -29,7 +29,7 @@ function viewEvents()
                 <input  type = "hidden" name = "eventid" id = "eventid">
                 <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Activitdy Title<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
                             <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox"  /></td>
                                 </tr>
                     <tr>
@@ -327,10 +327,11 @@ if($_GET['flag'] == 1)
           {
             echo  '<label id ="title">View Activity</label>';
           }else{
-            echo  '<label id ="title">View Activity</label>';
+            echo  '<label id ="title" >View Activity</label>';
           }
           ?>  
          </h4>
+         
           <button type="button" class="close" data-dismiss="modal">&times; 
           </button>
         </div>
@@ -391,6 +392,7 @@ if($_GET['flag'] == 1)
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 <script>
+
 $('#save').hide();
 function test(){
 $('#edit').show();
@@ -401,7 +403,7 @@ $('#edit').hide();
 
 
 
-$('#title').html("Edit Event/Activity");
+$('#title').html("Edit Activity");
 $('#titletxtbox').prop("disabled", false); 
 $('#datepicker1').prop("disabled", false); 
 $('#datepicker2').prop("disabled", false); 
@@ -490,10 +492,19 @@ $("#all").click(function(){
           if(event.office == <?php echo $_GET['division'];?>)
           {
           test();
+          
           }else{
             $('#save').hide();
             $('#edit').hide();
           }
+          $('#titletxtbox').prop("disabled", true); 
+          $('#datepicker1').prop("disabled", true); 
+          $('#datepicker2').prop("disabled", true); 
+          $('#descriptiontxtbox').prop("disabled", true); 
+          $('#venuetxtbox').prop("disabled", true); 
+          $('#enptxtbox').prop("disabled", true); 
+          $('#remarks').prop("disabled", true); 
+
                 $('#myModal').modal('show');
                 $('#myModal').find('#eventid').val(event.id);
                 $('#myModal').find('#titletxtbox').val(event.title);
@@ -502,7 +513,8 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
 {  
   $('#myModal').find('#datepicker2').val('');
 }else{
-  $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
+  $('#myModal').find('#datepicker2').val(moment(event.end).subtract(1, "days").format('MM/DD/YYYY'));
+
 }    
                 // $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
                 $('#myModal').find('#datepicker3').val(moment(event.posteddate).format('MM/DD/YYYY'));
@@ -511,6 +523,8 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
                 $('#myModal').find('#postedby').val(event.postedby);
                 $('#myModal').find('#venuetxtbox').val(event.venue);
                 $('#myModal').find('#enptxtbox').val(event.enp);
+                
+     
             },
           eventRender: function(calEvent, element, view) {
             
@@ -594,7 +608,9 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
                       $start = $event['start'];
                     }
                     if($end[1] == '00:00:00'){
-                      $end = $end[0];
+                      $end =  date('Y-m-d', strtotime("+1 day", strtotime($end[0])));
+
+
                     }else{
                       $end = $event['end'];
                     }
@@ -855,6 +871,8 @@ $(document).ready(function() {
   });
   
 });
+
+
 </script>
 </body>
 </html>
