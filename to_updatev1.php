@@ -60,6 +60,11 @@ $view_query = mysqli_query($conn, "SELECT * from travel_order where id = '$id'")
 
       $id=$row['id'];
 
+      $kita=$row['kita'];
+
+      $lastdate1=$row['lastdate'];
+      $lastdate = date('m/d/Y', strtotime($lastdate1));
+
       $tono = $row['tono'];
      
       $date1 = $row['date'];
@@ -179,10 +184,6 @@ else{
 }
 
 ?>
-
-
-
-
 <!-- Upadte Queries -->
 <div class="box">
           <div class="box-body">
@@ -312,11 +313,13 @@ else{
                 <td class="col-md-5 " style =" border:1px solid black;">
               
                
-                <label>Katungkulan: &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Taunang Kita:</label>
+                <label>Katungkulan:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Taunang Kita:</label>
                 
                <br>
-                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:150px;" name="" id="" value = "<?php echo $POSITION_M;?>" >
-              
+                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:320px;" name="" id="" value = "<?php echo $POSITION_M;?>" >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input   type="number" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:120px;" name="kita" id="kita" value = "<?php echo $kita;?>">
+                <br>
               
                 <br>
                
@@ -380,7 +383,7 @@ else{
                     <label>Oras at Petsang Pag-alis:</label>
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
 
-                    <input value = "<?php echo $todate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="todate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+                    <input value = "<?php echo $fromdate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="fromdate" id="datepicker1" value = "" placeholder="mm/dd/yyyy">
                     &nbsp;&nbsp;&nbsp;
 
                     <input value = "<?php echo $timefrom1;?>" required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="timefrom" id="timefrom"></td>
@@ -402,7 +405,7 @@ else{
                     <label>Oras at Petsang Pagbabalik:</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <input value = "<?php echo $todate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:400px;" name="todate" id="datepicker3" value = "" placeholder="mm/dd/yyyy">
+                    <input value = "<?php echo $todate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:400px;" name="todate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
 
                     &nbsp;&nbsp;&nbsp;
 
@@ -471,6 +474,8 @@ else{
                     
                     <label>Petsang Huling Paglalakbay:</label>
                     <br>
+                    <input type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:300px;" name="lastdate" id="datepicker3" value = "<?php echo $lastdate?>" placeholder="mm/dd/yyyy">
+                    <br>
                   
                   
                 </td>
@@ -498,7 +503,6 @@ else{
                 <td class="col-md-1"></td>
                     
                 <td  class="col-md-5" style =" border:1px solid black;" >
-
                 <?php
                 session_start();
                 $username = $_SESSION['username'];
@@ -518,12 +522,12 @@ else{
                 $approved="";
                 $pos="";
                 if($DIVISION_M=='ORD'){
-                  $approved="Noel R. Bartolabac";
+                  $approved="NOEL R. BARTOLABAC";
                   $pos="ASST. REGIONAL DIRECTOR";
                   }
                   else if($DIVISION_M=='LGMED'){
 
-                  $approved="Gilberto L. Tumamac";
+                  $approved="GILBERTO L. TUMAMAC";
                   $pos="OIC - LGMED Chief";
 
                 
@@ -531,14 +535,14 @@ else{
                   
                   else if($DIVISION_M=='LGCDD'){
 
-                  $approved="Jay-ar T. Beltran";
+                  $approved="JAY-AR T. BELTRAN";
                   $pos="OIC - LGCDD Chief";
                   
                   }
                   
                   else if($DIVISION_M=='FAD'){
 
-                  $approved="Dr. Carina S. Cruz";
+                  $approved="DR. CARINA S. CRUZ";
                   $pos="Chief, FAD";
                  
                   }

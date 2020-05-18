@@ -1,25 +1,40 @@
 <?php
 
 
-$id=$_GET['id'];
-//echo $id;
 
-$date1=$_GET['now'];
-$user =$_GET['user'];
+if (isset($_POST['submit'])){
+ 
+$id=$_POST["id1"];
+$now1=$_POST["now"];
+$user=$_POST["user"];
+$reason=$_POST["reason"];
 
-$date = date('Y-m-d', strtotime($date1));
+$date = date('Y-m-d', strtotime($now1));
+
+
+echo $id.'<br>';
+echo $now1.'<br>';
+echo $user.'<br>';
+echo $reason.'<br>';
+echo $date.'<br>';
+
+
 
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$user =$_GET['user'];
 
 if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);}
+        die("Connection failed: " . $conn->connect_error);
+}
      
 
 
 
-$query = mysqli_query($conn, "UPDATE ob set status='cancelled', cancelledby='$user', cancelleddate='$date' where id = '$id'");
 
+$query = mysqli_query($conn, "UPDATE ob set status='cancelled', cancelledby='$user', cancelleddate='$date', reason ='$reason' where id = '$id'");
+
+/* echo "UPDATE ob set status='cancelled', cancelledby='$user', cancelleddate='$date', reason ='$reason' where id = '$id'";
+exit();
+ */
  mysqli_close($conn);
 
 if($query){
@@ -40,7 +55,7 @@ else{
     </SCRIPT>");
 }
 
-
+}
 
 
 ?>

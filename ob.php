@@ -42,6 +42,9 @@ $division = $_GET['division'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <style>
+
+
+      
   th{
     color:#a9242d;
     text-align:center;
@@ -67,6 +70,7 @@ $division = $_GET['division'];
       </ol>
       <br>
       <br>
+ 
         <?php include('@obusinesstable.php');?>
         <br>
         <br>
@@ -99,6 +103,10 @@ $division = $_GET['division'];
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+
+
+
 
 <script>
   $(function () {

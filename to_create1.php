@@ -62,16 +62,16 @@ while ($row = mysqli_fetch_assoc($auto)) {
 //$tocount = 'TO '.$getDate.'-'.'00'.$idGet;
 
 if($idGet<9){
-  $tocount ='TO '.$getDate.'-'.'00'.$idGet;
+  $tocount =$getDate.'-'.'00'.$idGet;
   
   }
   else if($idGet<99){
   
-  $tocount ='TO '.$getDate.'-'.'0'.$idGet;
+  $tocount =$getDate.'-'.'0'.$idGet;
   
   }
   else{
-  $tocount ='TO '.$getDate.'-'.$idGet;
+  $tocount =$getDate.'-'.$idGet;
   }
 
 
@@ -113,8 +113,13 @@ $office = $_POST['office'];
 $name = $_POST['name'];
 $purpose = $_POST['purpose'];
 $place = $_POST['place'];
+
+
 $todate1 = $_POST['todate'];
 $todate = date('Y-m-d', strtotime($todate1));
+
+$fromdate1 = $_POST['fromdate'];
+$fromdate = date('Y-m-d', strtotime($fromdate1));
 
 $timefrom = $_POST['timefrom'];
 $timeto = $_POST['timeto'];
@@ -138,8 +143,8 @@ if ($conn->connect_error) {
 }
 
 
-  $query = mysqli_query($conn,"INSERT INTO travel_order (tono,date,office,name,purpose,place,todate,timefrom,timeto,fromplace,contact,vehicle,kita,lastdate) 
-  VALUES ('$tono','$date','$office','$name','$purpose','$place','$todate','$timefrom','$timeto','$fromplace','$contact','$vehicle','$kita','$lastdate')");
+  $query = mysqli_query($conn,"INSERT INTO travel_order (tono,date,office,name,purpose,place,todate,timefrom,timeto,fromplace,contact,vehicle,kita,lastdate,fromdate) 
+  VALUES ('$tono','$date','$office','$name','$purpose','$place','$todate','$timefrom','$timeto','$fromplace','$contact','$vehicle','$kita','$lastdate','$fromdate')");
 
 
 
@@ -306,7 +311,7 @@ else{
                <br>
                 <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:320px;" name="" id="" value = "<?php echo $POSITION_M;?>"  >
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input   type="number" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:120px;" name="kita" id="kita" value = ""
+                <input   type="number" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:120px;" name="kita" id="kita" value = "">
                 <br>
                
                 
@@ -372,7 +377,7 @@ else{
                     <label>Oras at Petsang Pag-alis:</label>
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
 
-                    <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="todate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+                    <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="fromdate" id="datepicker1" value = "" placeholder="mm/dd/yyyy">
 
                     &nbsp;&nbsp;&nbsp;
 
@@ -395,7 +400,7 @@ else{
                     <label>Oras at Petsang Pagbabalik:</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:400px;" name="todate" id="datepicker3" value = "" placeholder="mm/dd/yyyy">
+                    <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:400px;" name="todate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
 
                     &nbsp;&nbsp;&nbsp;
 
