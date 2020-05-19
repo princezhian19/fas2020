@@ -169,7 +169,9 @@ if(isset($_POST['submit'])){
       $lastdate = date('Y-m-d', strtotime($lastdate1));
       }
       
-      $fromdate = $_POST['fromdate'];
+      $fromdate1 = $_POST['fromdate'];
+      $fromdate = date('Y-m-d', strtotime($fromdate1));
+
 
 
 $servername = "localhost";
@@ -295,7 +297,7 @@ else{
                 <br>
                 <label>Petsa:</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input readonly required type="text" class="" style=" border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:300px;" name="date" id="" value = "<?php echo date('F d, Y') ?>" >
+                <input readonly required type="text" class="" style=" border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:300px;" name="date" id="" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" >
                 
                 <br>
                 <br>
