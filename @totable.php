@@ -395,7 +395,7 @@ $edit="edit";
 
 
             
-            if ($username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno')
+            if ($username1 == 'cvferrer' || $username1 == 'itdummy1'|| $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno')
             {
               $view_query = mysqli_query($conn, "SELECT * from travel_order order by id desc");
             }
@@ -545,7 +545,7 @@ $edit="edit";
                               <?php if ($status!='cancelled'):?>
                                 
                                     <!-- to_export.php?<?php echo $id;?>&pos=<?php echo $POSITION_M;?> -->
-                                  <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                                  <a  href='to_export.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                   <a href='TravelOrderUpdate.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                                  <!--  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a>  -->
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
@@ -567,7 +567,7 @@ $edit="edit";
                               <?php else: ?>
                             
                                 <!-- to_export.php?<?php echo $id;?>&pos=<?php echo $POSITION_M;?> -->
-                                  <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                                  <a  href='to_export.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                  <!--  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a>  -->
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php endif ?>
