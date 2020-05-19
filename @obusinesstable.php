@@ -530,7 +530,7 @@ $edit="edit";
 
                               <?php if ($status=='cancelled'):?>
                                
-                                <a disabled  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
+                                <a disabled  href='ob_export.php?id=<?php echo $id;?>&user=<?php echo $username1;?>'' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
                                 <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$username1.'<br>'.'Reason: '.$reason ?>
                                 <?php else: ?>
                              
