@@ -147,12 +147,12 @@ else{
 
   if($checked=="yes"){
     $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto,uc) 
-    VALUES ('$obno','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','yes')");
+    VALUES ('$obcount','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','yes')");
   }
   else if($checked=="no"){
 
     $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto,uc) 
-    VALUES ('$obno','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','no')");
+    VALUES ('$obcount','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','no')");
   }
  
 
