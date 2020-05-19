@@ -780,11 +780,38 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
 
 
   $('#export').click(function(){
+    var ord = $("input[id='ord']:checked").val();
+    var fad = $("input[id='fad']:checked").val();
+    var lgcdd = $("input[id='lgcdd']:checked").val();
+    var mbrtg = $("input[id='mbrtg']:checked").val();
+    var lgmed = $("input[id='lgmed']:checked").val();
+    var pdmu = $("input[id='pdmu']:checked").val();
+
+    var cavite = $("input[id='cavite']:checked").val();
+    var laguna = $("input[id='laguna']:checked").val();
+    var batangas = $("input[id='batangas']:checked").val();
+    var rizal = $("input[id='rizal']:checked").val();
+    var quezon = $("input[id='quezon']:checked").val();
+    var lucena = $("input[id='lucena']:checked").val();
+
+    if(ord != '' || fad != '' || 
+      lgcdd != ''  || mbrtg != ''  ||
+      lgmed || pdmu || 
+      cavite != ''  || laguna != ''  || 
+      batangas != ''  || rizal != ''  || 
+      quezon != ''  || lucena != '' 
+      )
+      {
+        alert('test message');
+      }else{
+        alert('no');
+      }
   var getmonth = $(".select_month").val();
   var getYear = $("#selectYear").val();
 
-    window.location = "export_calendar.php?month="+getmonth+"&&year="+getYear+"&date=<?php echo date("Y-m-d");?>&division=<?php echo $_GET['division'];?>"
+    // window.location = "export_calendar.php?month="+getmonth+"&&year="+getYear+"&date=<?php echo date("Y-m-d");?>&division=<?php echo $_GET['division'];?>"
   });
+  
 
   
 

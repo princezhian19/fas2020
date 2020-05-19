@@ -103,7 +103,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="background-color: #8F0CC7; color:white;">
-                                                    <input class='calFilter' type="checkbox" value="9" id = "pdmu"><label style = "margin-left:15%;">PDMU</label>
+                                                    <input class='calFilter' data-id = "9" type="checkbox" value="9" id = "pdmu" ><label style = "margin-left:15%;">PDMU</label>
                                                 </td>
                                                 <td style="background-color: #E60785; color:white;;padding:9px;">
                                         <input class='calFilter' type="checkbox" value="24"id = "lucena"><label style = "margin-left:15%;">Lucena City</label>
