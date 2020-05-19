@@ -84,7 +84,7 @@ $edit="edit";
   <td class="col-md-7" style = "text-align:center;">
 
  <!--  to_export_date.php -->
-  <form method = "POST" action = "#">
+  <form method = "POST" action = "to_export_date.php">
   <?php if ($username1 == 'cvferrer' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
   
  
