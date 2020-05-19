@@ -77,8 +77,7 @@ exit(); */
         $tono = $excelrow['tono'];
         $date1 = $excelrow['date'];
         $date = date('F d, Y', strtotime($date1));
-       /*  echo $date;
-        exit(); */
+     
         $office = $excelrow['office'];
         $name = $excelrow['name'];
         $purpose = $excelrow['purpose'];
