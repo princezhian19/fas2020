@@ -501,7 +501,7 @@ $edit="edit";
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
                   
                   <?php if ($status!='cancelled'):?> 
-                  <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Official Business?');" href='ob_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
+                  <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Travel Order?');" href='to_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
                   <?php else: ?>
                   <td></td>
                   <?php endif ?>

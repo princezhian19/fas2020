@@ -123,7 +123,10 @@ $place = $_POST['place'];
 $todate1 = $_POST['todate'];
 $todate = date('Y-m-d', strtotime($todate1));
 
+
 $fromdate1 = $_POST['fromdate'];
+
+
 $fromdate = date('Y-m-d', strtotime($fromdate1));
 
 $timefrom = $_POST['timefrom'];
