@@ -82,7 +82,7 @@ while($row=mysqli_fetch_array($query)){
                     <a data-toggle="modal"  data-target="#orderModal" data-id='.$row['id'].'  id= "modalbtn"  class = "btn btn-success btn-xs">
                         <i class="fa fa-eye"></i> View
                     </a>&nbsp;
-                    <a href="EditEvent.php?eventid='.$row['id'].'" class = "btn btn-primary btn-xs">
+                    <a data-toggle="modal"  data-target="#editModal" data-id='.$row['id'].' id= "editbtn"  class = "btn btn-primary btn-xs">
                         <i class="fa">&#xf044;</i> Edit
                     </a>&nbsp;
                     <a id = "sweet-14" id = '.$row['id'].' class = "btn btn-danger btn-xs"> 
@@ -97,7 +97,7 @@ while($row=mysqli_fetch_array($query)){
                 <a data-toggle="modal"  data-target="#orderModal" data-id='.$row['id'].'  id= "modalbtn"  class = "btn btn-success btn-xs">
                     <i class="fa fa-eye"></i> View
                 </a>&nbsp;
-                <a href="EditEvent.php?eventid='.$row['id'].'" class = "btn btn-primary btn-xs">
+                <adata-toggle="modal"  data-target="#editModal" data-id='.$row['id'].' id= "editbtn"  class = "btn btn-primary btn-xs">
                     <i class="fa">&#xf044;</i> Edit
                 </a>&nbsp;
                 <a id = "sweet-14" id = '.$row['id'].' class = "btn btn-danger btn-xs"> 
