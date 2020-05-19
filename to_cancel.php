@@ -11,11 +11,11 @@ if (isset($_POST['submit'])){
     $date = date('Y-m-d', strtotime($now1));
     
     
-    echo $id.'<br>';
+  /*   echo $id.'<br>';
     echo $now1.'<br>';
     echo $user.'<br>';
     echo $reason.'<br>';
-    echo $date.'<br>';
+    echo $date.'<br>'; */
 
 
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");

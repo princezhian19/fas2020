@@ -83,9 +83,9 @@ $edit="edit";
 
   <td class="col-md-7" style = "text-align:center;">
 
-  
-  <form method = "POST" action = "ob_export_date.php">
-  <?php if ($username1 == 'cvferrer' ):?>
+ <!--  to_export_date.php -->
+  <form method = "POST" action = "#">
+  <?php if ($username1 == 'cvferrer' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
   
  
 
@@ -358,7 +358,7 @@ $edit="edit";
                   <th width = '200'>DATE OF TO</th>
 
                   <th width = '300'>TIME</th>
-                  
+
                   <th width = ''>OFFICE</th>
                   <th width = '200'>NAME</th>
                   <th width = '700'>PURPOSE</th>
@@ -497,14 +497,23 @@ $edit="edit";
              
                
 
+              
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
-                   
-                    <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Travel Order?');" href='to_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
-                    
-                
+                  
+                  <?php if ($status!='cancelled'):?> 
+                  <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Official Business?');" href='ob_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
                   <?php else: ?>
-                    <td><?php echo $submitteddate .'<br>'.$submittedby.''?></td>
-                <?php endif ?>
+                  <td></td>
+                  <?php endif ?>
+
+        
+                  <?php else: ?>
+                  <td><?php echo $submitteddate .'<br>'.$submittedby.''?></td>
+                  <?php endif ?>
+
+
+
+
 
                 <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
                   <?php if ($username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
