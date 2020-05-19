@@ -1,8 +1,23 @@
 <?php
 
 
-$id=$_GET['id'];
-//echo $id;
+if (isset($_POST['submit'])){
+ 
+    $id=$_POST["id1"];
+    $now1=$_POST["now"];
+    $user=$_POST["user"];
+    $reason=$_POST["reason"];
+    
+    $date = date('Y-m-d', strtotime($now1));
+    
+    
+    echo $id.'<br>';
+    echo $now1.'<br>';
+    echo $user.'<br>';
+    echo $reason.'<br>';
+    echo $date.'<br>';
+
+
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 
@@ -12,7 +27,7 @@ if ($conn->connect_error) {
 
 
 
-$query = mysqli_query($conn, "UPDATE travel_order set status='cancelled' where id = '$id'");
+$query = mysqli_query($conn, "UPDATE travel_order set status='cancelled', cancelledby='$user', cancelleddate='$date', reason ='$reason' where id = '$id'");
 
  mysqli_close($conn);
 
@@ -35,6 +50,6 @@ else{
 }
 
 
-
+}
 
 ?>

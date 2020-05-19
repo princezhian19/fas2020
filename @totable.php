@@ -355,16 +355,20 @@ $edit="edit";
 
                   <th width ='150'>TO NO</th> 
                   <th width = '200'>TO DATE</th>
+                  <th width = '200'>DATE OF TO</th>
+
+                  <th width = '300'>TIME</th>
+                  
                   <th width = ''>OFFICE</th>
                   <th width = '200'>NAME</th>
                   <th width = '700'>PURPOSE</th>
-                  <th width = '700'>PLACE</th>
-                  <th width = '200'>DATE</th>
-                  <th width = '300'>TIME</th>
+                  <th width = '500'>PLACE</th>
+                  
+                 
                   <th width = '100'>SUBMITTED DATE</th>
                   <th width = '200'>RECEIVED DATE</th>
-                  <th width = '1000'>ACTION</th>
-
+                  <th width = '1500'>ACTION</th>
+                  
 
                  <!--  <th width ='100'>TO NO</th> 
                   <th width = '150'>TO DATE</th>
@@ -388,7 +392,18 @@ $edit="edit";
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT * from travel_order where office ='$DIVISION_M' order by id desc");
+
+
+            
+            if ($username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno')
+            {
+              $view_query = mysqli_query($conn, "SELECT * from travel_order order by id desc");
+            }
+            else{
+              $view_query = mysqli_query($conn, "SELECT * from travel_order where office ='$DIVISION_M' order by id desc");
+
+            }
+          
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
 
@@ -432,9 +447,20 @@ $edit="edit";
                   $receiveddate = date('F d, Y', strtotime($receiveddate1));
                 
                   $status=$row['status'];
-                  //echo $office;
-                /*   echo $timefrom.' to '.$timeto;
-                  echo '<br>'; */
+
+                  $fromdate1=$row['fromdate'];
+                  $fromdate = date('F d, Y', strtotime($fromdate1));
+                  
+
+                  $submittedby = $row['submittedby'];
+                  $receivedby = $row['receivedby'];
+                  $cancelledby = $row['cancelledby'];
+                  $cancelleddate1 = $row['cancelleddate'];
+
+                  $cancelleddate = date('F d, Y', strtotime($cancelleddate1));
+
+                  $reason = $row['reason'];
+               
 
                ?>
 
@@ -451,39 +477,41 @@ $edit="edit";
                 <?php endif ?>
 
                
+   
+                <?php if ($todate1 == '0000-00-00' || $fromdate=='0000-00-00'): ?>
+                <td></td>
+                <?php else: ?>
+               <td><?php echo  $fromdate.' to '.$todate?></td>
+                <?php endif ?>
 
+                <td><?php echo $timefrom.' to '.$timeto?></td>
 
                 <td><?php echo  $office?></td>
                 <td><?php echo  $name?></td>
                 <td><?php echo  $purpose?></td>
                 <td><?php echo  $place?></td>
 
-                
-                <?php if ($todate1 == '0000-00-00'): ?>
-                <td></td>
-                <?php else: ?>
-               <td><?php echo  $todate?></td>
-                <?php endif ?>
+             
                 
                
-                <td><?php echo $timefrom.' to '.$timeto?></td>
+             
                
 
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
                    
-                    <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Travel Order?');" href='to_submit.php?id=<?php echo $id;?>'title="Submit">Submit</a></td>
+                    <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Travel Order?');" href='to_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
                     
                 
                   <?php else: ?>
-                  <td><?php echo $submitteddate?></td>
+                    <td><?php echo $submitteddate .'<br>'.$submittedby.''?></td>
                 <?php endif ?>
 
                 <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
-                          <?php if ($username1 == 'charlesodi' || $username1 == 'mmmonteiro' || $username1 == 'cvferrer' || $username1 == 'masacluti' || $username1 == 'magonzales' || $username1 == 'seolivar' || $username1 == 'jamonteiro' || $username1 == 'ctronquillo' || $username1 == 'rdmiranda'):?>
+                  <?php if ($username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
                               <?php if ($status=='cancelled'):?>
                               <td></td>
                               <?php else: ?>
-                                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to receive this Travel Order?');" href='to_receive.php?id=<?php echo $id;?>'title="Submit">Receive</a></td>
+                                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to receive this Travel Order?');" href='to_receive.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Receive</a></td>
                               <?php endif ?>
                           <?php else: ?>
                           <td ></td>
@@ -495,7 +523,7 @@ $edit="edit";
                           <?php if ($receiveddate1 == '0000-00-00'): ?>
                           <!-- //no dates -->
                           <?php else: ?>
-                          <?php echo $receiveddate?>
+                            <?php echo $receiveddate .'<br>'.$receivedby.''?>
                           <?php endif ?>
 
                         </td>
@@ -510,27 +538,29 @@ $edit="edit";
                                     <!-- to_export.php?<?php echo $id;?>&pos=<?php echo $POSITION_M;?> -->
                                   <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                   <a href='TravelOrderUpdate.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
-                                  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
-                                 
+                                 <!--  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a>  -->
+                                 <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php else: ?>
-                                <label style="color:red">Cancelled</label> | 
-                                <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
+                               
+                                <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
+                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$username1.'<br>'.'Reason: '.$reason ?>
                               <?php endif ?>
                         
                         <?php else: ?>
 
 
                               <?php if ($status=='cancelled'):?>
-                                <label style="color:red">Cancelled</label> | 
+                               
 
-                                <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
+                                <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
+                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$username1.'<br>'.'Reason: '.$reason ?>
 
                               <?php else: ?>
                             
                                 <!-- to_export.php?<?php echo $id;?>&pos=<?php echo $POSITION_M;?> -->
                                   <a  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
-                                  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
-                                
+                                 <!--  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a>  -->
+                                 <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php endif ?>
                           <?php endif ?>
                         
@@ -553,6 +583,84 @@ $edit="edit";
                 </div>
             </div>
                  
+
+              <!-- modals -->
+
+          <div id="add_data_Modal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Travel Order</h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="insert_form" action="to_cancel.php">
+              
+              <label>Reason</label>
+              <input required type="text" name="reason" id="reason" class="form-control" />
+                                  
+              <br>
+              
+              
+              <button type="submit" name="submit" class="btn btn-warning">Cancel</button>
+
+
+              <input hidden type="text" name="id1" id="id1" value="" class=""/>
+              <br>
+              <input hidden type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
+              <br>
+              <input hidden type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+             
+             
+              <br />
+
+              <!-- <input type="submit" name="submit" id="submit" value="Cancel" class="btn btn-warning" /> -->
+
+             
+          
+              
+              </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+          </div>
+          </div>
+
+          <div id="dataModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Travel Order</h4>
+            </div>
+            <div class="modal-body" id="employee_detail">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+              
+            </div>
+            </div>
+          </div>
+          </div>
+        <!-- modals -->
+        
+        <!-- //Setting ID -->
+        <script>
+        function myFunction(idget) {
+
+          var idtomodal = idget.getAttribute("data-idtomodal");
+          var id1 = $("input[name='id1']");
+          id1.val(idtomodal);
+
+         
+       
+        }
+        </script>
+          <!-- //Setting ID -->
       
     <script type="text/javascript">
     $(document).ready(function() {
