@@ -169,7 +169,9 @@ if(isset($_POST['submit'])){
       $lastdate = date('Y-m-d', strtotime($lastdate1));
       }
       
-      $fromdate = $_POST['fromdate'];
+      $fromdate1 = $_POST['fromdate'];
+      $fromdate = date('Y-m-d', strtotime($fromdate1));
+
 
 
 $servername = "localhost";
