@@ -8,15 +8,15 @@ if(!isset($_SESSION['username'])){
 
   
 $username = $_SESSION['username'];
+$pas1 = $_SESSION['pass'];
     $sqlUsername = mysqli_query($conn,"SELECT CODE,EMP_N,isPlanningOfficer FROM tblemployee WHERE md5(UNAME) = '".md5($username)."' LIMIT 1");
   $row = mysqli_fetch_array($sqlUsername);
   $salt       = $row['CODE'];
   $_SESSION['currentuser'] = $row['EMP_N']; 
   $_SESSION['planningofficer'] = $row['isPlanningOfficer']; 
 
-
   // ===============================================
-  $query = "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1 ";
+  $query = "SELECT * FROM tblemployee WHERE UNAME = '".$username."' AND PSWORD = '".$pas1."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1 ";
   $result = mysqli_query($conn, $query);
   $val = array();
   // $numrows= mysqli_num_rows($query);
@@ -31,16 +31,16 @@ $username = $_SESSION['username'];
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
 
-      // if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
-      if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
+      if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
+      // if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
         
         echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.location.href='home.php?division=".$division."';
+        window.location.href='home.php?division=".$division."'&username=".$username.";
         </SCRIPT>");
       }else{
         
        echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.location.href='home1.php?division=".$division."';
+        window.location.href='home1.php?division=".$division."&username=".$username."';
         </SCRIPT>");
        } 
 }
@@ -63,6 +63,7 @@ if (isset($_POST['submit'])) {
   $_SESSION['planningofficer'] = $row['isPlanningOfficer']; 
 
   $password  = crypt($_POST['password'], '$2a$10$'.$salt.'$');
+  $_SESSION['pass'] = $password;
 
   // ===============================================
   $query = "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1 ";
