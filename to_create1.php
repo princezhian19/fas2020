@@ -123,7 +123,10 @@ $place = $_POST['place'];
 $todate1 = $_POST['todate'];
 $todate = date('Y-m-d', strtotime($todate1));
 
+
 $fromdate1 = $_POST['fromdate'];
+
+
 $fromdate = date('Y-m-d', strtotime($fromdate1));
 
 $timefrom = $_POST['timefrom'];
@@ -149,7 +152,7 @@ if ($conn->connect_error) {
 
 
   $query = mysqli_query($conn,"INSERT INTO travel_order (tono,date,office,name,purpose,place,todate,timefrom,timeto,fromplace,contact,vehicle,kita,lastdate,fromdate) 
-  VALUES ('$tono','$date','$office','$name','$purpose','$place','$todate','$timefrom','$timeto','$fromplace','$contact','$vehicle','$kita','$lastdate','$fromdate')");
+  VALUES ('$tocount','$date','$office','$name','$purpose','$place','$todate','$timefrom','$timeto','$fromplace','$contact','$vehicle','$kita','$lastdate','$fromdate')");
 
 
 

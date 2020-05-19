@@ -1,8 +1,7 @@
 <?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("library/export_calendar.xlsx");
-
+$objPHPExcel = PHPExcel_IOFactory::load("library/to_export_date.xlsx");
 $styleTop = array(
   'borders' => array(
     'top' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
@@ -35,60 +34,112 @@ $styleArray = array(
 );
 
 
-
+if (isset($_POST['submit'])) 
+{
 
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$month = $_GET['month'];
-$year = $_GET['year'];
-$office = $_GET['office_id'];
+    
+$month1 = $_POST['month'];
+$month = date('m', strtotime($month1));
+$year = $_POST['year'];
 
-$sql_q10 = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.posteddate,DIVISION_M, e.venue,e.enp,e.remarks,te.UNAME FROM events e 
-LEFT JOIN tblemployee te on te.EMP_N = e.postedby
-LEFT JOIN tblpersonneldivision on e.office = tblpersonneldivision.DIVISION_N
-WHERE office IN(".$office.") and e.cancelflag = 0 and MONTH(start) = '".$_GET['month']."' and YEAR(start) = '".$_GET['year']."'");
+$office = $_POST['office'];
+//echo $office;
+
+
+/* echo $month1;
+echo '<br>';
+echo $year;
+echo '<br>';
+echo $office;
+exit(); */
+
+
+if($office=='ALL'){
+  $sql_q10 = mysqli_query($conn, "SELECT * FROM travel_order WHERE date like  '%".$year."-".$month1."%'  order by date asc" );
+
+ /*  echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month1."%'  order by date asc";
+  exit(); */
+
+ /*  echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month."%'  order by date asc";
+  exit(); */
+}
+else{
+  $sql_q10 = mysqli_query($conn, "SELECT * FROM travel_order WHERE date like  '%".$year."-".$month1."%' and office = '$office' order by date asc" );
+
+   /* echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month1."%' and office = '$office' order by date asc";
+  exit(); */
+}
+
+
+/* echo "SELECT * FROM ob WHERE date like  '%".$year."-".$month."%' and office = '$office' order by date asc";
+exit(); */
+
+
+
     if (mysqli_num_rows($sql_q10)>0) {
+
     $row = 8;
     while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
     {
 
-        $start1 = $excelrow['start'];
-        $start = str_replace("00:00:00","",$start1);
-        if($excelrow['end'] == '' || $excelrow['end'] == null || $excelrow['end'] == '0000-00-00 00:00:00')
-        {
-          $realenddate = '';
-        }else{
-          $end1 = $excelrow['end'];
-          $end = str_replace("00:00:00","",$end1);
-          $realenddate = date("F d, Y",strtotime($end));
-        }
-       
+
+        $id=$excelrow['id'];
+        $tono = $excelrow['tono'];
+        $date1 = $excelrow['date'];
+        $date = date('F d, Y', strtotime($date1));
+        $office = $excelrow['office'];
+        $name = $excelrow['name'];
+        $purpose = $excelrow['purpose'];
+        $place = $excelrow['place'];
+
+        $todate1 = $excelrow['todate'];
+        $todate = date('F d, Y', strtotime($todate1));
+
+        $fromdate1 = $excelrow['fromdate'];
+        $fromdate = date('F d, Y', strtotime($fromdate1));
         
-        if(strlen($excelrow['title']) > 20)
-        {
-        $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(100);
+        $timefrom1 = $excelrow['timefrom'];
+        $timefrom=  date("g:i A",strtotime($timefrom1));
+      
 
-        }else{
-        $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(50);
+        $timeto1 = $excelrow['timeto'];
+        $timeto=  date("g:i A",strtotime($timeto1));
 
-        }
+    
 
-        $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setWrapText(true);
-        $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->getAlignment()->setWrapText(true);
-        $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->getAlignment()->setWrapText(true);
+        $uc = $excelrow['uc'];
 
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('A4',"Activites for  ".date("F",strtotime($_GET['year']."-".$_GET['month']."-01"))." ".$_GET['year']);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['title']);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,date("F d, Y",strtotime($start)));
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$realenddate);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$excelrow['DIVISION_M']);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$excelrow['venue']);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$excelrow['enp']);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$excelrow['remarks']);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,$excelrow['UNAME']);
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$row,date("F d, Y",strtotime($excelrow['posteddate'])));
+        $submitteddate1 = $excelrow['submitteddate'];
+        $submitteddate = date('F d, Y', strtotime($submitteddate1));
+
+
+        $receiveddate1 = $excelrow['receiveddate'];
+        $receiveddate = date('F d, Y', strtotime($receiveddate1));
+      
+        $status=$excelrow['status'];
+     
+
+        
+      
+
+      
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$obno);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$date);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$todate.' to '.$fromdate);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$timefrom);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$timeto);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$office);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$name);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,$purpose);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$row,$place);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$row,$status);
+       
+
+       
     
         
-        $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
+     /*    $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleTop);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLeft);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleRight);
@@ -132,17 +183,34 @@ WHERE office IN(".$office.") and e.cancelflag = 0 and MONTH(start) = '".$_GET['m
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($stylebottom);
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleTop);
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleLeft);
-        $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleRight);
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleRight); */
           $row++;
+         
+          
     }
-  }
+    }
+    else{
+      $style = array(
+        'alignment' => array(
+            'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+        )
+    );
+
+       
+
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('A9','*********No Travel Order data.*********');
+        $objPHPExcel->setActiveSheetIndex()->mergeCells("A9:J9");
+
+        $objPHPExcel->setActiveSheetIndex()->getStyle("A9:J9")->applyFromArray($style);
+    }
+  
 
 
-
+}
 
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
   $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-  header('location: export_calendar.xlsx');
+  header('location: to_export_date.xlsx');
 
 ?>

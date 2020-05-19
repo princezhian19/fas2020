@@ -77,8 +77,7 @@ exit(); */
         $tono = $excelrow['tono'];
         $date1 = $excelrow['date'];
         $date = date('F d, Y', strtotime($date1));
-       /*  echo $date;
-        exit(); */
+     
         $office = $excelrow['office'];
         $name = $excelrow['name'];
         $purpose = $excelrow['purpose'];
@@ -106,19 +105,55 @@ exit(); */
         $receiveddate1 = $excelrow['receiveddate'];
         $receiveddate = date('F d, Y', strtotime($receiveddate1));
       
-        $status=$row['status'];
+        $status=$excelrow['status'];
         $contact=$excelrow['contact'];
         $vehicle=$excelrow['vehicle'];
 
+        $fromdate1=$excelrow['fromdate'];
 
+        $fromdate = date('F d, Y', strtotime($fromdate1));
+       
+
+
+        $lastdate1=$excelrow['lastdate'];
+
+        $lastdate = date('F d, Y', strtotime($lastdate1));
+
+      
+       
+        
+
+        $submittedby = $excelrow['submittedby'];
+        $receivedby = $excelrow['receivedby'];
+        $cancelledby = $excelrow['cancelledby'];
+
+
+        $cancelleddate1 = $excelrow['cancelleddate'];
+
+        $cancelleddate = date('F d, Y', strtotime($cancelleddate1));
+
+        $reason = $excelrow['reason'];
+        $kita = $excelrow['kita'];
+
+        /* echo $fromdate;
+        echo $lastdate;
+        echo $kita;
+        exit(); */
        
         $objPHPExcel->setActiveSheetIndex()->setCellValue('G9',$date);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('G11',$tono);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('G14',$kita);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B14',$name);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('E14',$pos);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B17',$fromplace);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('E17',$place);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B20',$contact);
+        if($lastdate1=='0000-00-00'){
+          $objPHPExcel->setActiveSheetIndex()->setCellValue('B33',"");
+        }else{
+          $objPHPExcel->setActiveSheetIndex()->setCellValue('B33',$lastdate);
+        }
+       
         $objPHPExcel->setActiveSheetIndex()->setCellValue('D22',$fromdate.'  '.$timefrom);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('D23',$todate.'  '.$timeto);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B28',$vehicle);
