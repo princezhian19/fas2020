@@ -43,7 +43,7 @@ if($query){
    
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Official Business has been successfully cancelled.')
-   
+    window.location.href='ob.php';
     </SCRIPT>"); 
 
 }
@@ -51,7 +51,7 @@ else{
    
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Error.')
-   
+    window.location.href='ob.php';
     </SCRIPT>");
 }
 
