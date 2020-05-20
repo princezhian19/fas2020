@@ -1,25 +1,4 @@
 <?php
-session_start();
-$username = $_SESSION['username'];
-$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-
-
-//Get Office
-
-/* echo $_GET['user']; */
-$select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
-/* echo "SELECT DIVISION_C FROM tblemployee WHERE UNAME = '".$_GET['user']."'"; */
-
-$rowdiv = mysqli_fetch_array($select_user);
-$DIVISION_C = $rowdiv['DIVISION_C'];
-/* echo $DIVISION_C; */
-/* exit(); */
-$select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
-$rowdiv1 = mysqli_fetch_array($select_office);
-$DIVISION_M = $rowdiv1['DIVISION_M'];
-?>
-
-<?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
 $objPHPExcel = PHPExcel_IOFactory::load("library/to.xlsx");
@@ -59,6 +38,9 @@ $styleArray = array(
 
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
+$user = $_GET['user'];
+$division = $_GET['division'];
+  
 
 $pos = $_GET['pos'];
 /* echo $pos;
@@ -162,25 +144,25 @@ exit(); */
         //Person Incharge
         /* code to follow */
 
-        if($DIVISION_C==1){
+        if($division==1){
 
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B41','Noel R. Bartolabac');
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B42','ASST. REGIONAL DIRECTOR');
             }
             
-            else if($DIVISION_C==18){
+            else if($division==18){
             
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B41','Gilberto L. Tumamac');
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B42','OIC - LGMED Chief');
             }
             
-            else if($DIVISION_C==17){
+            else if($division==17){
             
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B41','Jay-ar T. Beltran');
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B42','OIC - LGCDD Chief');
             }
             
-            else if($DIVISION_C==10){
+            else if($division==10){
             
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B41','Dr. Carina S. Cruz');
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B42','Chief, FAD');
