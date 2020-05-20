@@ -5,7 +5,7 @@ header('location:index.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username1 = $_SESSION['username'];
-
+$division = $_SESSION['division'];
 
 
 
@@ -85,7 +85,7 @@ $edit="edit";
 
  <!--  to_export_date.php -->
   <form method = "POST" action = "to_export_date.php">
-  <?php if ($username1 == 'cvferrer' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
+  <?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
   
  
 
@@ -332,7 +332,7 @@ $edit="edit";
     
   </select>
   &nbsp;&nbsp;&nbsp;
-  <button style="  Height:30px;"  id="export" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
+  <button style="  Height:30px;"  id="" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
                  
   </form>
   
@@ -516,7 +516,7 @@ $edit="edit";
 
 
                 <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
-                  <?php if ($username1 == 'cvferrer' ||$username1 == 'itdummy1' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
+                  <?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
                               <?php if ($status=='cancelled'):?>
                               <td></td>
                               <?php else: ?>
@@ -544,15 +544,15 @@ $edit="edit";
                           <!--  -->
                               <?php if ($status!='cancelled'):?>
                                 
-                                    <!-- to_export.php?<?php echo $id;?>&pos=<?php echo $POSITION_M;?> -->
-                                  <a  href='to_export.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                                   
+                                  <a  href='to_export.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                   <a href='TravelOrderUpdate.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
-                                 <!--  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a>  -->
+                                
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php else: ?>
                                
                                 <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
-                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$username1.'<br>'.'Reason: '.$reason ?>
+                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
                               <?php endif ?>
                         
                         <?php else: ?>
@@ -562,13 +562,13 @@ $edit="edit";
                                
 
                                 <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
-                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$username1.'<br>'.'Reason: '.$reason ?>
+                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
 
                               <?php else: ?>
                             
-                                <!-- to_export.php?<?php echo $id;?>&pos=<?php echo $POSITION_M;?> -->
-                                  <a  href='to_export.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
-                                 <!--  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a>  -->
+                             
+                                  <a  href='to_export.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                               
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php endif ?>
                           <?php endif ?>
@@ -593,69 +593,7 @@ $edit="edit";
             </div>
                  
 
-              <!-- modals -->
-
-          <div id="add_data_Modal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Cancel Travel Order</h4>
-            </div>
-            <div class="modal-body">
-              <form method="POST" id="insert_form" action="to_cancel.php">
-              
-              <label>Reason</label>
-              <input required type="text" name="reason" id="reason" class="form-control" />
-                                  
-              <br>
-              
-              
-              <button type="submit" name="submit" class="btn btn-warning">Cancel</button>
-
-
-              <input hidden type="text" name="id1" id="id1" value="" class=""/>
-              <br>
-              <input hidden type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
-              <br>
-              <input hidden type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
-             
-             
-              <br />
-
-              <!-- <input type="submit" name="submit" id="submit" value="Cancel" class="btn btn-warning" /> -->
-
-             
-          
-              
-              </form>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-          </div>
-          </div>
-
-          <div id="dataModal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Cancel Travel Order</h4>
-            </div>
-            <div class="modal-body" id="employee_detail">
-              
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
-              
-            </div>
-            </div>
-          </div>
-          </div>
-        <!-- modals -->
+           
         
         <!-- //Setting ID -->
         <script>
@@ -699,3 +637,66 @@ $edit="edit";
 
 
 
+   <!-- modals -->
+
+   <div id="add_data_Modal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Travel Order</h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="insert_form" action="to_cancel.php">
+              
+              <label>Reason</label>
+              <input required type="text" name="reason" id="reason" class="form-control" />
+                                  
+              <br>
+              
+              
+              <button type="submit" name="cancel" class="btn btn-warning pull-right">Cancel</button>
+
+
+              <input hidden type="text" name="id1" id="id1" value="" class=""/>
+              <br>
+              <input hidden type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
+              <br>
+              <input hidden type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+             
+             
+              <br />
+
+              <!-- <input type="submit" name="submit" id="submit" value="Cancel" class="btn btn-warning" /> -->
+
+             
+          
+              
+              </form>
+            </div>
+            <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+            </div>
+            </div>
+          </div>
+          </div>
+
+          <div id="dataModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Travel Order</h4>
+            </div>
+            <div class="modal-body" id="employee_detail">
+              
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+
+              
+            </div>
+            </div>
+          </div>
+          </div>
+        <!-- modals -->
