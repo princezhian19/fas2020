@@ -2,7 +2,7 @@
 
 
 
-if (isset($_POST['submit'])){
+if (isset($_POST['cancel'])){
  
 $id=$_POST["id1"];
 $now1=$_POST["now"];
