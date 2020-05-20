@@ -63,7 +63,7 @@
                                                 <td style="background-color: #D5D911; color:white;WIDTH:50%;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="1" id = "ord" ><label style = "margin-left:15%;">ORD</label>
                                                 </td>
-                                                <td style="background-color: #D5D911; color:#fff;padding:9px;WIDTH:50%;">
+                                                <td style="background-color: #1B5E20; color:#fff;padding:9px;WIDTH:50%;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="19" id = "batangas"><label style = "margin-left:15%;">Batangas</label>
                                                 </td>
                                             </tr>
@@ -71,7 +71,7 @@
                                                 <td style="background-color: #E60785; color:white;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="10" id = "fad"><label style = "margin-left:15%;">FAD</label>
                                                 </td>
-                                                <td style="background-color: #0071c5; color:white;;padding:9px;">
+                                                <td style="background-color: #00C853; color:white;;padding:9px;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="20" id = "cavite"><label style = "margin-left:15%;">Cavite</label>
                                                 </td>
                                             </tr>
@@ -79,7 +79,7 @@
                                                 <td style="background-color: #48BD0D; color:white;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="17" id = "lgcdd"><label style = "margin-left:15%;">LGCDD</label>
                                                 </td>
-                                                <td style="background-color: #48BD0D; color:white;;padding:9px;">                                   
+                                                <td style="background-color: #795548; color:white;;padding:9px;">                                   
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="21" id = "laguna" ><label style = "margin-left:15%;">Laguna</label>
                                                 </td>
                                             </tr>
@@ -87,7 +87,7 @@
                                                 <td style="background-color: #E6680E; color:white;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="7" id = "mbrtg"><label style = "margin-left:15%;">MBRTG</label>
                                                 </td>
-                                                <td style="background-color: #8F0CC7; color:white;;padding:9px;">
+                                                <td style="background-color: #DD2C00; color:white;;padding:9px;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="23" id = "rizal"><label style = "margin-left:15%;">Rizal</label>
                                                 </td>
                                             
@@ -96,7 +96,7 @@
                                                 <td style="background-color: #0071c5; color:white;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="18" id = "lgmed"><label style = "margin-left:15%;">LGMED</label>
                                                 </td>
-                                                <td style="background-color: #E6680E; color:white;;padding:9px;">
+                                                <td style="background-color:#D500F9; color:white;;padding:9px;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="22" id = "quezon"><label style = "margin-left:15%;">Quezon</label>
                                                 </td>
                                             
@@ -105,7 +105,7 @@
                                                 <td style="background-color: #8F0CC7; color:white;">
                                                     <input class='calFilter' data-id = "9" type="checkbox" name = "offices[]" value="9" id = "pdmu" ><label style = "margin-left:15%;">PDMU</label>
                                                 </td>
-                                                <td style="background-color: #E60785; color:white;;padding:9px;">
+                                                <td style="background-color: #212121; color:white;;padding:9px;">
                                         <input class='calFilter' type="checkbox" name = "offices[]" value="24"id = "lucena"><label style = "margin-left:15%;">Lucena City</label>
                                     </td>
                                             </tr>
