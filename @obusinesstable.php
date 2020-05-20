@@ -320,7 +320,7 @@ $edit="edit";
     
   </select>
   &nbsp;&nbsp;&nbsp;
-  <button style="  Height:30px;"  id="export" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
+  <button style="  Height:30px;"  id="" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
                  
   </form>
   
@@ -678,7 +678,7 @@ $edit="edit";
 
 </html>
 
-<script>
+<!-- <script>
 
 $(function () {
 
@@ -695,6 +695,6 @@ $('#export').on('click', function()
 
 
 });
-</script>
+</script> -->
 
 
