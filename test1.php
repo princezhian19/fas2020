@@ -59,7 +59,7 @@ $username = $_SESSION['username'];
                   $slect = mysqli_query($conn,"SELECT PROFILE FROM tblemployeeinfo WHERE UNAME = '$username'");
                   $rowP = mysqli_fetch_array($slect);
                   $profile                 = $rowP['PROFILE'];
-   $extension = pathinfo($profile, PATHINFO_EXTENSION);
+                  $extension = pathinfo($profile, PATHINFO_EXTENSION);
               ?>
               <li class="user-header">
                 <img  src="
@@ -321,7 +321,7 @@ $username = $_SESSION['username'];
                 <span class="pull-right-container"><i class="fa fa-angle-left pull-right" style = "color:#black;"></i></span>
               </a>
             <ul class="treeview-menu" >
-              <li><a href="ViewApp.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>App</a></li>
+              <li><a href="ViewApp.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> APP</a></li>
               <li><a href="ViewPR.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> Purchase Request</a></li>
               <li><a href="ViewRFQ.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> Request for Quotation</a></li>
               <li><a href="ViewSuppliers.php"><i class="fa" style = "color:#black;">&#xf0f6;</i><span>Supplier</span></a></li>

@@ -45,11 +45,11 @@ $submitted_date = $row['submitted_date'];
                    <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                     <thead>
                         <tr style="background-color: white;color:blue;">
-                            <th width="500">Item</th>
-                            <th width="500">Quantity</th>
-                            <th width="500">Unit</th>
-                            <th width="500">Unit Cost</th>
-                            <th width="500">Total Cost</th>
+                            <th width="250">Item</th>
+                            <th width="50">Quantity</th>
+                            <th width="50">Unit</th>
+                            <th width="100">Unit Cost</th>
+                            <th width="100">Total Cost</th>
                         </tr>
                     </thead>
                     <?php 
@@ -108,7 +108,7 @@ $submitted_date = $row['submitted_date'];
                         <td  width="500"></td>
                         <td  width="500"></td>
                         <td  width="500"></td>
-                        <td  width="500"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $tot?></b></td>
+                        <td  width="500"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $tot?></b></td>
                         
                         
                         
