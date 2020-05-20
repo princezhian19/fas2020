@@ -593,9 +593,53 @@ $edit="edit";
             </div>
                  
 
-              <!-- modals -->
+           
+        
+        <!-- //Setting ID -->
+        <script>
+        function myFunction(idget) {
 
-          <div id="add_data_Modal" class="modal fade">
+          var idtomodal = idget.getAttribute("data-idtomodal");
+          var id1 = $("input[name='id1']");
+          id1.val(idtomodal);
+
+         
+       
+        }
+        </script>
+          <!-- //Setting ID -->
+      
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var dataTable=$('#example1').DataTable({
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : false,
+            'info'        : false,
+            'autoWidth'   : true,
+            "order": [[ 1, "asc" ]],
+            aLengthMenu: [ [10, 20, -1], [ 10, 20, "All"] ],
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false
+            });
+        
+    } );
+</script>
+
+
+
+
+</body>
+</html>
+
+
+
+   <!-- modals -->
+
+   <div id="add_data_Modal" class="modal fade">
           <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
@@ -656,46 +700,3 @@ $edit="edit";
           </div>
           </div>
         <!-- modals -->
-        
-        <!-- //Setting ID -->
-        <script>
-        function myFunction(idget) {
-
-          var idtomodal = idget.getAttribute("data-idtomodal");
-          var id1 = $("input[name='id1']");
-          id1.val(idtomodal);
-
-         
-       
-        }
-        </script>
-          <!-- //Setting ID -->
-      
-    <script type="text/javascript">
-    $(document).ready(function() {
-        var dataTable=$('#example1').DataTable({
-            'lengthChange': true,
-            'searching'   : true,
-            'ordering'    : false,
-            'info'        : false,
-            'autoWidth'   : true,
-            "order": [[ 1, "asc" ]],
-            aLengthMenu: [ [10, 20, -1], [ 10, 20, "All"] ],
-            "bPaginate": true,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false
-            });
-        
-    } );
-</script>
-
-
-
-
-</body>
-</html>
-
-
-
