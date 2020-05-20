@@ -544,10 +544,10 @@ $edit="edit";
                           <!--  -->
                               <?php if ($status!='cancelled'):?>
                                 
-                                    <!-- to_export.php?<?php echo $id;?>&pos=<?php echo $POSITION_M;?> -->
+                                   
                                   <a  href='to_export.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                   <a href='TravelOrderUpdate.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
-                                 <!--  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a>  -->
+                                
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php else: ?>
                                
@@ -566,9 +566,9 @@ $edit="edit";
 
                               <?php else: ?>
                             
-                                <!-- to_export.php?<?php echo $id;?>&pos=<?php echo $POSITION_M;?> -->
+                             
                                   <a  href='to_export.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
-                                 <!--  <a onclick="return confirm('Are you sure you want to cancel this Travel Order?');" href='to_cancel.php?id=<?php echo $id;?>' title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a>  -->
+                               
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php endif ?>
                           <?php endif ?>
@@ -655,7 +655,7 @@ $edit="edit";
               <br>
               
               
-              <button type="submit" name="submit" class="btn btn-warning pull-right">Cancel</button>
+              <button type="submit" name="cancel" class="btn btn-warning pull-right">Cancel</button>
 
 
               <input hidden type="text" name="id1" id="id1" value="" class=""/>
