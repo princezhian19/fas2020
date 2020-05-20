@@ -284,9 +284,9 @@ if (mysqli_num_rows($sql_items)<10) {
 
 // }
 
-$select_purpsoe = mysqli_query($conn,"SELECT pr.purpose,pr.pmo,pmo.pmo_contact_person,pmo.designation FROM pr left join pmo on pmo.pmo_title = pr.pmo WHERE pr.id = '$id' ");
+$select_purpsoe = mysqli_query($conn,"SELECT pr.purpose,pr.pmo,pmo.pmo_contact_person,pmo.designation FROM pr left join pmo on pmo.pmo_title = pr.pmo WHERE pr.id = $id ");
 $rowP = mysqli_fetch_array($select_purpsoe);
-$purpose = $rowP['purpose'];
+// $purpose = $rowP['purpose'];
 $pmo_contact_person = $rowP['pmo_contact_person'];
 $pmo_contact_person;
 $designation = $rowP['designation'];
