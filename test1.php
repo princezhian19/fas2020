@@ -54,8 +54,85 @@ $username = $_SESSION['username'];
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
+              <?php 
+                  $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                  $slect = mysqli_query($conn,"SELECT PROFILE FROM tblemployeeinfo WHERE UNAME = '$username'");
+                  $rowP = mysqli_fetch_array($slect);
+                  $profile                 = $rowP['PROFILE'];
+   $extension = pathinfo($profile, PATHINFO_EXTENSION);
+              ?>
               <li class="user-header">
-                <img src="dilg.png" class="img-circle" alt="User Image">
+                <img  src="
+            <?php 
+            if(file_exists($profile))
+            {
+              switch($extension)
+              {
+                case 'jpg':
+                if($profile == '')
+                {
+                  echo 'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                case 'JPG':
+                if($profile == '')
+                {
+                  echo 'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                case 'jpeg':
+                if($profile == '')
+                {
+                  echo 'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                case 'png':
+                if($profile == '')
+                {
+                  echo'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                default:
+                echo'images/male-user.png';
+                break;
+              }
+              }else{
+               echo'images/male-user.png';
+             }
+
+             ?>" class="img-circle" alt="User Image">
 
                 <p><b>
                 <?php echo $_SESSION['complete_name'];?></b>
