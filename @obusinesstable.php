@@ -565,9 +565,54 @@ $edit="edit";
 
 
 
+        
+        <!-- //Setting ID -->
+        <script>
+        function myFunction(idget) {
+
+          var idtomodal = idget.getAttribute("data-idtomodal");
+          var id1 = $("input[name='id1']");
+          id1.val(idtomodal);
+
+         
+       
+        }
+        </script>
+          <!-- //Setting ID -->
+      
+
+      
+    <script type="">
+    $(document).ready(function() {
+        var dataTable=$('#example1').DataTable({
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : false,
+            'info'        : false,
+            'autoWidth'   : true,
+            "order": [[ 1, "asc" ]],
+            aLengthMenu: [ [10, 20, -1], [ 10, 20, "All"] ],
+            "bPaginate": true,
+            "bLengthChange": false,
+            "bFilter": true,
+            "bInfo": false,
+            "bAutoWidth": false
+            });
+        
+    } );
+</script>
+
+
+</body>
+
+
+</html>
+
+
+
             <!-- modals -->
 
-          <div id="add_data_Modal" class="modal fade">
+            <div id="add_data_Modal" class="modal fade">
           <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
@@ -609,92 +654,9 @@ $edit="edit";
           </div>
           </div>
 
-          <div id="dataModal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Cancel Official Business</h4>
-            </div>
-            <div class="modal-body" id="employee_detail">
-              
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
-              
-            </div>
-            </div>
-          </div>
-          </div>
+      
         <!-- modals -->
-        
-        <!-- //Setting ID -->
-        <script>
-        function myFunction(idget) {
-
-          var idtomodal = idget.getAttribute("data-idtomodal");
-          var id1 = $("input[name='id1']");
-          id1.val(idtomodal);
-
-         
-       
-        }
-        </script>
-          <!-- //Setting ID -->
-      
-
-      
-    <script type="">
-    $(document).ready(function() {
-        var dataTable=$('#example1').DataTable({
-            'lengthChange': true,
-            'searching'   : true,
-            'ordering'    : false,
-            'info'        : false,
-            'autoWidth'   : true,
-            "order": [[ 1, "asc" ]],
-            aLengthMenu: [ [10, 20, -1], [ 10, 20, "All"] ],
-            "bPaginate": true,
-            "bLengthChange": false,
-            "bFilter": true,
-            "bInfo": false,
-            "bAutoWidth": false
-            });
-        
-    } );
-</script>
 
 
-
-
-
-</body>
-
-
-
-
-
-
-</html>
-
-<!-- <script>
-
-$(function () {
-
-  
-$('#export').on('click', function()
-{
-  var month = $('#selectMonth').val();
-  var year = $('#year').val();
-  var office = $('#office').val();
- 
-  window.location = "ob_export_date.php?month="+month+"&&year="+year+"&&office="+office;
-});
-
-
-
-});
-</script> -->
 
 
