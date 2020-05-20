@@ -69,7 +69,7 @@ $edit="edit";
 
   
   <form method = "POST" action = "ob_export_date.php">
-  <?php if ($username1 == 'cvferrer' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
+  <?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
   
  
 
@@ -368,7 +368,7 @@ $edit="edit";
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
 
-            if ($username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno')
+            if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno')
             {
               $view_query = mysqli_query($conn, "SELECT * from ob order by id desc");
             }
@@ -473,7 +473,7 @@ $edit="edit";
 
 
                         <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
-                          <?php if ($username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
+                          <?php if ($username1 == 'itdummy1' || $username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
                               <?php if ($status=='cancelled'):?>
                               <td></td>
                               <?php else: ?>
