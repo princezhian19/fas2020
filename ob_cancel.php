@@ -2,7 +2,7 @@
 
 
 
-if (isset($_POST['submit'])){
+if (isset($_POST['cancel'])){
  
 $id=$_POST["id1"];
 $now1=$_POST["now"];
@@ -12,11 +12,7 @@ $reason=$_POST["reason"];
 $date = date('Y-m-d', strtotime($now1));
 
 
-echo $id.'<br>';
-echo $now1.'<br>';
-echo $user.'<br>';
-echo $reason.'<br>';
-echo $date.'<br>';
+
 
 
 

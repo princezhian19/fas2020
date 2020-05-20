@@ -5,14 +5,14 @@ header('location:index.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username1 = $_SESSION['username'];
-
+$division = $_SESSION['division'];
 
 
 
 }
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-  //Get Office
+//Get Office
 $select_user = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,DIVISION_C FROM tblemployee WHERE UNAME = '$username1'");
 $rowdiv = mysqli_fetch_array($select_user);
 $DIVISION_C = $rowdiv['DIVISION_C'];
@@ -27,16 +27,12 @@ $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivisio
 $rowdiv1 = mysqli_fetch_array($select_office);
 $DIVISION_M = $rowdiv1['DIVISION_M'];
 
-//echo $DIVISION_M;
-
-// echo '<div class=""><div class="panel-heading " style = "background-color:orange"> <p style = "color:white;font-size:16px;"> This module is under development </p> </div></div>  '; 
-// echo '<br>';
 ?>
 
 
 
 <?php
-// include('db.class.php'); // call db.class.php
+
 $edit="edit";
 ?>
 <!DOCTYPE html>
@@ -286,7 +282,7 @@ $edit="edit";
   
   <b>Year</b>
   <select class="" id="year" name="year" style="width: 150px; Height:30px;">
-    <!-- <option value="">Year</option> -->
+  
     <option value="2020">2020</option>
     <option value="2021">2021</option>
     <option value="2022">2022</option>
@@ -303,7 +299,7 @@ $edit="edit";
 
   <b>Office</b>
   <select class="" id="office" name="office" style="width: 150px; Height:30px;">
-    <!-- <option value="" style="color:gray">Office</option> -->
+    
     <option value="ALL">ALL</option>
     <option value="ORD">ORD</option>
     <option value="FAD">FAD</option>
@@ -320,7 +316,7 @@ $edit="edit";
     
   </select>
   &nbsp;&nbsp;&nbsp;
-  <button style="  Height:30px;"  id="export" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
+  <button style="  Height:30px;"  id="" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
                  
   </form>
   
@@ -501,28 +497,25 @@ $edit="edit";
                           <?php endif ?>
                         <td>
                
-                          <!-- <a  href='ViewIssuance.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
-                          <a href='UpdateIssuances.php?id=<?php echo $id;?>&option=edit&issuance=<?php echo $issuance_no?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
-
-                          <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/issuancesdelete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a> -->
+                      
                          
 
 
                         <?php if ($submitteddate1 == 0000-00-00): ?>
-                          <!--  -->
+                        
                               <?php if ($status!='cancelled'):?>
                                 
-                                  <a  href='ob_export.php?id=<?php echo $id;?>&user=<?php echo $username1;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                                  <a  href='ob_export.php?id=<?php echo $id;?>&user=<?php echo $username1;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                   <a href='OfficialBusinessUpdate.php?id=<?php echo $id;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                                   <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                                   
-                                  <!-- <input  onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" type="button" name="Cancel" value="" id="Cancel" class="btn btn-warning btn-xs view_data" /> -->
+                             
                               
                               
                                   <?php else: ?>
                              
-                              <a  disabled href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
-                              <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$username1.'<br>'.'Reason: '.$reason ?>
+                              <a  disabled href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                              <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
                               <?php endif ?>
                         
                         <?php else: ?>
@@ -530,11 +523,11 @@ $edit="edit";
 
                               <?php if ($status=='cancelled'):?>
                                
-                                <a disabled  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
-                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$username1.'<br>'.'Reason: '.$reason ?>
+                                <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
+                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
                                 <?php else: ?>
                              
-                                  <a  href='ob_export.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                                  <a href='ob_export.php?id=<?php echo $id;?>&user=<?php echo $username1;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                   <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a>
                                   
                              
@@ -565,69 +558,6 @@ $edit="edit";
 
 
 
-            <!-- modals -->
-
-          <div id="add_data_Modal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Cancel Official Business</h4>
-            </div>
-            <div class="modal-body">
-              <form method="POST" id="insert_form" action="ob_cancel.php">
-              
-              <label>Reason</label>
-              <input required type="text" name="reason" id="reason" class="form-control" />
-                                  
-              <br>
-              
-              
-              <button type="submit" name="submit" class="btn btn-warning">Cancel</button>
-
-
-              <input hidden type="text" name="id1" id="id1" value="" class=""/>
-              <br>
-              <input hidden type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
-              <br>
-              <input hidden type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
-             
-             
-              <br />
-
-              <!-- <input type="submit" name="submit" id="submit" value="Cancel" class="btn btn-warning" /> -->
-
-             
-          
-              
-              </form>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-            </div>
-          </div>
-          </div>
-
-          <div id="dataModal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Cancel Official Business</h4>
-            </div>
-            <div class="modal-body" id="employee_detail">
-              
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-
-              
-            </div>
-            </div>
-          </div>
-          </div>
-        <!-- modals -->
         
         <!-- //Setting ID -->
         <script>
@@ -666,35 +596,60 @@ $edit="edit";
 </script>
 
 
-
-
-
 </body>
-
-
-
-
 
 
 </html>
 
-<script>
-
-$(function () {
-
-  
-$('#export').on('click', function()
-{
-  var month = $('#selectMonth').val();
-  var year = $('#year').val();
-  var office = $('#office').val();
- 
-  window.location = "ob_export_date.php?month="+month+"&&year="+year+"&&office="+office;
-});
 
 
+            <!-- modals -->
 
-});
-</script>
+            <div id="add_data_Modal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Official Business</h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="insert_form" action="ob_cancel.php">
+              
+              <label>Reason</label>
+              <input required type="text" name="reason" id="reason" class="form-control" />
+                                  
+              <br>
+              
+              
+              <button type="submit" name="cancel" class="btn btn-warning pull-right ">Cancel</button>
+
+
+              <input hidden type="text" name="id1" id="id1" value="" class=""/>
+              <br>
+              <input hidden type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
+              <br>
+              <input hidden type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+             
+             
+              <br />
+
+             
+
+             
+          
+              
+              </form>
+            </div>
+            <div class="modal-footer">
+          
+            </div>
+            </div>
+          </div>
+          </div>
+
+      
+        <!-- modals -->
+
+
 
 

@@ -1,25 +1,4 @@
 <?php
-session_start();
-$username = $_SESSION['username'];
-$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-
-
-//Get Office
-
-/* echo $_GET['user']; */
-$select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
-/* echo "SELECT DIVISION_C FROM tblemployee WHERE UNAME = '".$_GET['user']."'"; */
-
-$rowdiv = mysqli_fetch_array($select_user);
-$DIVISION_C = $rowdiv['DIVISION_C'];
-/* echo $DIVISION_C; */
-/* exit(); */
-$select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
-$rowdiv1 = mysqli_fetch_array($select_office);
-$DIVISION_M = $rowdiv1['DIVISION_M'];
-?>
-
-<?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
 $objPHPExcel = PHPExcel_IOFactory::load("library/to.xlsx");
@@ -59,6 +38,9 @@ $styleArray = array(
 
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
+$user = $_GET['user'];
+$division = $_GET['division'];
+  
 
 $pos = $_GET['pos'];
 /* echo $pos;
@@ -77,8 +59,7 @@ exit(); */
         $tono = $excelrow['tono'];
         $date1 = $excelrow['date'];
         $date = date('F d, Y', strtotime($date1));
-       /*  echo $date;
-        exit(); */
+     
         $office = $excelrow['office'];
         $name = $excelrow['name'];
         $purpose = $excelrow['purpose'];
@@ -106,19 +87,56 @@ exit(); */
         $receiveddate1 = $excelrow['receiveddate'];
         $receiveddate = date('F d, Y', strtotime($receiveddate1));
       
-        $status=$row['status'];
+        $status=$excelrow['status'];
         $contact=$excelrow['contact'];
         $vehicle=$excelrow['vehicle'];
 
+        $fromdate1=$excelrow['fromdate'];
 
+        $fromdate = date('F d, Y', strtotime($fromdate1));
+       
+
+        $lastdate1=$excelrow['lastdate'];
+        $lastdate = "";
+        if($lastdate1=='0000-00-00'){
+          $lastdate = "";
+        }else{
+          $lastdate = date('F d, Y', strtotime($lastdate1));
+        }
+      
+
+      
+       
+        
+
+        $submittedby = $excelrow['submittedby'];
+        $receivedby = $excelrow['receivedby'];
+        $cancelledby = $excelrow['cancelledby'];
+
+
+        $cancelleddate1 = $excelrow['cancelleddate'];
+
+        $cancelleddate = date('F d, Y', strtotime($cancelleddate1));
+
+        $reason = $excelrow['reason'];
+        $kita = $excelrow['kita'];
+
+        /* echo $fromdate;
+        echo $lastdate;
+        echo $kita;
+        exit(); */
        
         $objPHPExcel->setActiveSheetIndex()->setCellValue('G9',$date);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('G11',$tono);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('G14',$kita);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B14',$name);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('E14',$pos);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B17',$fromplace);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('E17',$place);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B20',$contact);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('B33',$lastdate);
+       
+       
         $objPHPExcel->setActiveSheetIndex()->setCellValue('D22',$fromdate.'  '.$timefrom);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('D23',$todate.'  '.$timeto);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B28',$vehicle);
@@ -127,25 +145,25 @@ exit(); */
         //Person Incharge
         /* code to follow */
 
-        if($DIVISION_C==1){
+        if($division==1){
 
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B41','Noel R. Bartolabac');
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B42','ASST. REGIONAL DIRECTOR');
             }
             
-            else if($DIVISION_C==18){
+            else if($division==18){
             
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B41','Gilberto L. Tumamac');
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B42','OIC - LGMED Chief');
             }
             
-            else if($DIVISION_C==17){
+            else if($division==17){
             
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B41','Jay-ar T. Beltran');
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B42','OIC - LGCDD Chief');
             }
             
-            else if($DIVISION_C==10){
+            else if($division==10){
             
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B41','Dr. Carina S. Cruz');
             $objPHPExcel->setActiveSheetIndex()->setCellValue('B42','Chief, FAD');
@@ -161,7 +179,13 @@ exit(); */
   }
 
 
+//Set Password
+$objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
+$objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
+$objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
+$objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
 
+$objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
 
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
