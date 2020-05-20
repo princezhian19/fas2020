@@ -96,10 +96,14 @@ exit(); */
         $fromdate = date('F d, Y', strtotime($fromdate1));
        
 
-
         $lastdate1=$excelrow['lastdate'];
-
-        $lastdate = date('F d, Y', strtotime($lastdate1));
+        $lastdate = "";
+        if($lastdate1=='0000-00-00'){
+          $lastdate = "";
+        }else{
+          $lastdate = date('F d, Y', strtotime($lastdate1));
+        }
+      
 
       
        
@@ -130,11 +134,8 @@ exit(); */
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B17',$fromplace);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('E17',$place);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B20',$contact);
-        if($lastdate1=='0000-00-00'){
-          $objPHPExcel->setActiveSheetIndex()->setCellValue('B33',"");
-        }else{
-          $objPHPExcel->setActiveSheetIndex()->setCellValue('B33',$lastdate);
-        }
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('B33',$lastdate);
+       
        
         $objPHPExcel->setActiveSheetIndex()->setCellValue('D22',$fromdate.'  '.$timefrom);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('D23',$todate.'  '.$timeto);
