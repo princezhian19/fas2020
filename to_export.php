@@ -179,7 +179,13 @@ exit(); */
   }
 
 
+//Set Password
+$objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
+$objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
+$objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
+$objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
 
+$objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
 
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
