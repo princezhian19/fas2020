@@ -611,7 +611,7 @@ $edit="edit";
               <br>
               
               
-              <button type="submit" name="submit" class="btn btn-warning">Cancel</button>
+              <button type="submit" name="submit" class="btn btn-warning pull-right">Cancel</button>
 
 
               <input hidden type="text" name="id1" id="id1" value="" class=""/>
@@ -631,7 +631,7 @@ $edit="edit";
               </form>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
             </div>
             </div>
           </div>
@@ -648,7 +648,7 @@ $edit="edit";
               
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
 
               
             </div>
