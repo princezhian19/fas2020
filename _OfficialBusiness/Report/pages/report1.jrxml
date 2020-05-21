@@ -146,7 +146,7 @@ Region IV-A (CALABARZON)
 				<textFieldExpression><![CDATA[$P{obno}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="31" y="3" width="85" height="67" uuid="ef21869e-b0bc-488c-b466-c36ea5658e78"/>
+				<reportElement x="20" y="3" width="85" height="67" uuid="ef21869e-b0bc-488c-b466-c36ea5658e78"/>
 				<imageExpression><![CDATA["l.png"]]></imageExpression>
 			</image>
 		</band>
