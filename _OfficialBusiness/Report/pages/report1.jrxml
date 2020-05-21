@@ -122,7 +122,7 @@ Region IV-A (CALABARZON)
 			</staticText>
 			<image>
 				<reportElement x="406" y="3" width="115" height="66" uuid="86a1161c-c67c-40ee-ac09-e5b19d1524c5"/>
-				<imageExpression><![CDATA["C:\\Users\\Prince Zhian Ferrer\\Music\\lo.png"]]></imageExpression>
+				<imageExpression><![CDATA["lo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="178" y="89" width="178" height="20" uuid="810c785d-9041-4308-b148-ba034cc2de4f"/>
@@ -147,7 +147,7 @@ Region IV-A (CALABARZON)
 			</textField>
 			<image>
 				<reportElement x="31" y="3" width="85" height="67" uuid="ef21869e-b0bc-488c-b466-c36ea5658e78"/>
-				<imageExpression><![CDATA["C:\\Users\\Prince Zhian Ferrer\\Music\\l.png"]]></imageExpression>
+				<imageExpression><![CDATA["l.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -366,7 +366,7 @@ Region IV-A (CALABARZON)
 			</rectangle>
 			<image>
 				<reportElement x="20" y="227" width="85" height="67" uuid="5e4b7d1b-a1a6-4399-b969-469cd71a043c"/>
-				<imageExpression><![CDATA["C:\\Users\\Prince Zhian Ferrer\\Music\\l.png"]]></imageExpression>
+				<imageExpression><![CDATA["l.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="27" y="427" width="92" height="20" uuid="b287a1f5-a379-4a6b-b626-4d47ba8e0445"/>
@@ -411,7 +411,7 @@ Region IV-A (CALABARZON)
 			</staticText>
 			<image>
 				<reportElement x="406" y="235" width="115" height="59" uuid="ed2e754d-290b-4104-bd12-9a846a74b3bf"/>
-				<imageExpression><![CDATA["C:\\Users\\Prince Zhian Ferrer\\Music\\lo.png"]]></imageExpression>
+				<imageExpression><![CDATA["lo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="346" y="528" width="59" height="23" uuid="c488b601-ecba-42fe-b890-3bec07dcc8da"/>
