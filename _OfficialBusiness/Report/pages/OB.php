@@ -24,27 +24,27 @@ $divpos="";
 
 if($division==1){
 
-$divchief = 'Noel R. Bartolabac ';
+$divchief = 'NOEL R. BARTOLABAC';
 $divpos="ASST. REGIONAL DIRECTOR";
    
 }
 
 else if($division==18){
 
-$divchief = 'Gilberto L. Tumamac';
+$divchief = 'GILBERTO L. TUMAMAC';
 $divpos="OIC - LGMED Chief";
 }
 
 else if($division==17){
 
-$divchief = 'Jay-ar T. Beltran';
+$divchief = 'JAY-AR T. BELTRAN';
 $divpos="OIC - LGCDD Chief";
 
 }
 
 else if($division==10){
 
-$divchief = 'Dr. Carina S. Cruz';
+$divchief = 'DR. CARINA S. CRUZ';
 $divpos="Chief, FAD";
 }
 else{

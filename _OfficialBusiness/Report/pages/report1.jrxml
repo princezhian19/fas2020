@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
 	<property name="ireport.zoom" value="1.331000000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="45"/>
+	<property name="ireport.y" value="93"/>
 	<parameter name="obno" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$F{obno}]]></defaultValueExpression>
 	</parameter>
@@ -145,7 +145,7 @@ Region IV-A (CALABARZON)
 			<textField>
 				<reportElement x="441" y="106" width="80" height="20" forecolor="#FF0000" uuid="99682a3b-c625-48ff-ab40-7bfa635e424e"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="Sylfaen" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{obno}]]></textFieldExpression>
 			</textField>
@@ -170,21 +170,21 @@ Region IV-A (CALABARZON)
 			<textField>
 				<reportElement x="439" y="13" width="82" height="20" uuid="a7a291a8-0b2d-4af1-9df5-db53152aa326"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="Sylfaen" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="180" y="40" width="139" height="20" uuid="ef96b339-e94a-4085-a4b7-c202a82d2fbb"/>
 				<textElement>
-					<font isBold="true" isUnderline="true"/>
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="29" y="59" width="492" height="20" uuid="39e6dc90-1d4f-4b2b-b184-72d3566ee1dd"/>
+				<reportElement x="25" y="59" width="492" height="20" uuid="39e6dc90-1d4f-4b2b-b184-72d3566ee1dd"/>
 				<textElement>
-					<font isBold="true" isUnderline="true"/>
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{purpose}]]></textFieldExpression>
 			</textField>
@@ -357,7 +357,7 @@ Region IV-A (CALABARZON)
 			<textField>
 				<reportElement x="431" y="335" width="80" height="20" forecolor="#FF0000" uuid="a45b39f0-9ed3-444a-8d30-275116064a14"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="Sylfaen" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{obno}]]></textFieldExpression>
 			</textField>
@@ -410,7 +410,7 @@ Region IV-A (CALABARZON)
 				<text><![CDATA[Employee's Copy]]></text>
 			</staticText>
 			<image>
-				<reportElement x="406" y="235" width="115" height="66" uuid="ed2e754d-290b-4104-bd12-9a846a74b3bf"/>
+				<reportElement x="406" y="235" width="115" height="59" uuid="ed2e754d-290b-4104-bd12-9a846a74b3bf"/>
 				<imageExpression><![CDATA["C:\\Users\\Prince Zhian Ferrer\\Music\\lo.png"]]></imageExpression>
 			</image>
 			<staticText>
@@ -430,7 +430,7 @@ Region IV-A (CALABARZON)
 			<textField>
 				<reportElement x="180" y="376" width="139" height="20" uuid="6128b54f-e538-4461-a73c-9ff5c0d76dc1"/>
 				<textElement>
-					<font isBold="true" isUnderline="true"/>
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
 			</textField>
@@ -444,7 +444,7 @@ Region IV-A (CALABARZON)
 			<textField>
 				<reportElement x="431" y="355" width="82" height="20" uuid="fbe84bea-cae3-4c4d-939b-31fd1f510ef5"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="Sylfaen" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
 			</textField>
@@ -470,95 +470,95 @@ Region IV-A (CALABARZON)
 				<text><![CDATA[Signature of Requesting Employee (s)]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="31" y="394" width="492" height="20" uuid="ccd68e1e-45ff-45a6-94f6-0c4f20885c9a"/>
+				<reportElement x="25" y="394" width="492" height="20" uuid="ccd68e1e-45ff-45a6-94f6-0c4f20885c9a"/>
 				<textElement>
-					<font isBold="true" isUnderline="true"/>
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{purpose}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="135" y="429" width="100" height="20" uuid="aa4c5f10-a955-4dea-8127-cfb1a45c90d8"/>
-				<textElement>
-					<font isBold="true" isUnderline="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{place}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="139" y="18" width="100" height="20" uuid="fb7c2f20-a505-4c11-980a-ca19ccc3ef7f"/>
-				<textElement>
-					<font isBold="true" isUnderline="true"/>
+				<reportElement x="135" y="429" width="179" height="35" uuid="aa4c5f10-a955-4dea-8127-cfb1a45c90d8"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{place}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="139" y="53" width="100" height="20" uuid="18305b19-6e6c-415a-9b96-db8dd924358a"/>
 				<textElement>
-					<font isBold="true" isUnderline="true"/>
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{obdate}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="136" y="465" width="100" height="20" uuid="96a4c2ae-a2a5-4ddb-9589-163856d55b91"/>
 				<textElement>
-					<font isBold="true" isUnderline="true"/>
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{obdate}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="344" y="162" width="175" height="21" uuid="c36d3051-4511-4a0e-b5c3-b95c5e803d8e"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font fontName="Sylfaen" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{field}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="344" y="181" width="176" height="20" uuid="f6876cd9-0da8-4c65-8980-4bb1d3d1b042"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font fontName="Sylfaen" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{divpos}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="343" y="592" width="176" height="20" uuid="be5cdedf-cda5-43db-b4be-32c3a239ca97"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font fontName="Sylfaen" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{divpos}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="343" y="573" width="175" height="21" uuid="e67c827c-0a30-413c-a31c-6541896c7282"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font fontName="Sylfaen" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{field}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="467" y="19" width="61" height="20" uuid="d3583b3f-0726-4280-b796-4d76dcadf635"/>
 				<textElement>
-					<font isBold="true" isUnderline="true"/>
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{timefrom}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="462" y="429" width="56" height="20" uuid="d3aa50d6-193e-4c3a-b638-31c9d3e6c416"/>
 				<textElement>
-					<font isBold="true" isUnderline="true"/>
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{timefrom}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="466" y="39" width="59" height="20" uuid="2c7ca39b-076f-4104-84ea-f5487c528fd4"/>
 				<textElement>
-					<font isBold="true" isUnderline="true"/>
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{timeto}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="460" y="446" width="59" height="20" uuid="a405589b-06dd-490d-8927-1a7179e7004e"/>
 				<textElement>
-					<font isBold="true" isUnderline="true"/>
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{timeto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="17" width="179" height="35" uuid="622bce3e-0fa8-46b8-b40c-41308a981586"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Sylfaen" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{place}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
