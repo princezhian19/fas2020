@@ -1,0 +1,106 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+include_once("../PHPJasperXML.inc.php");
+
+
+
+$conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
+
+
+if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+$id = $_GET['id'];
+$division = $_GET['division'];
+
+/* echo $id;
+echo '<br>';
+echo $division;
+exit(); */
+
+$divchief="";
+$divpos="";
+
+if($division==1){
+
+$divchief = 'Noel R. Bartolabac ';
+$divpos="ASST. REGIONAL DIRECTOR";
+   
+}
+
+else if($division==18){
+
+$divchief = 'Gilberto L. Tumamac';
+$divpos="OIC - LGMED Chief";
+}
+
+else if($division==17){
+
+$divchief = 'Jay-ar T. Beltran';
+$divpos="OIC - LGCDD Chief";
+
+}
+
+else if($division==10){
+
+$divchief = 'Dr. Carina S. Cruz';
+$divpos="Chief, FAD";
+}
+else{
+
+$divchief = '';
+
+}
+    
+
+$view_query = mysqli_query($conn, "SELECT * from ob where id = '$id'");
+
+
+while ($row = mysqli_fetch_assoc($view_query)) {
+
+$id=$row['id'];
+
+$obno = $row['obno'];
+
+
+$date = date('M d, Y',strtotime($row['date']));
+$office = $row['office'];
+$name = $row['name'];
+$purpose = $row['purpose'];
+$place = $row['place'];
+$obdate = date('M d, Y',strtotime($row['obdate']));
+
+
+$timefrom = date('g:i A',strtotime($row['timefrom']));
+
+$timeto = date('g:i A',strtotime($row['timeto']));
+
+
+
+$uc = $row['uc'];
+
+
+
+
+$PHPJasperXML = new PHPJasperXML(); 
+
+
+$PHPJasperXML->arrayParameter=array(
+"obno"=>$obno,"date"=>$date,
+"name"=>$name,"purpose"=>$purpose,
+"place"=>$place,"obdate"=>$obdate,
+"timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos);
+
+
+
+    
+}
+
+$PHPJasperXML->load_xml_file("report1.jrxml");
+$PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
+$PHPJasperXML->outpage("I");
+//page output method I:standard output  D:Download file
+
+
+?>

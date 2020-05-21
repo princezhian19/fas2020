@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
+	<property name="ireport.zoom" value="1.331000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="45"/>
+	<parameter name="obno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{obno}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="purpose" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="place" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{place}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="obdate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{obdate}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="field" class="java.lang.String"/>
+	<parameter name="divpos" class="java.lang.String"/>
+	<parameter name="timefrom" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{timefrom}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="timeto" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{timeto}]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT * from ob]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="office" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="purpose" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="place" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obdate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="timefrom" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="timeto" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="submitteddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="receiveddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="uc" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="submittedby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="receivedby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cancelledby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cancelleddate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reason" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<staticText>
+				<reportElement x="209" y="3" width="104" height="20" uuid="f0fd3eb2-44cc-4364-b0a2-ba88b9715047"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="9"/>
+				</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="18" width="389" height="32" uuid="54399e2c-27b6-4c89-a06a-d865353551b4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTMENT OF THE INTERIOR AND LOCAL GOVERNMENT
+Region IV-A (CALABARZON)
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="61" y="45" width="389" height="41" uuid="42d37ff3-971f-41ed-801f-1c46db59eef7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="8"/>
+				</textElement>
+				<text><![CDATA[3/F Andenson Bldg. 1, National Highway, Brgy. Parian, City of Calamba, Laguna 4027
+(049) 827-4587; (049) 827-4560; (049) 827-3143
+ dilg4a.calabarzon@gmail.com www.calabarzon.dilg.gov.ph
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="18" y="1" width="85" height="67" uuid="ef21869e-b0bc-488c-b466-c36ea5658e78"/>
+				<imageExpression><![CDATA["C:\\Users\\Prince Zhian Ferrer\\Music\\l.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="406" y="3" width="115" height="66" uuid="86a1161c-c67c-40ee-ac09-e5b19d1524c5"/>
+				<imageExpression><![CDATA["C:\\Users\\Prince Zhian Ferrer\\Music\\lo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="178" y="89" width="178" height="20" uuid="810c785d-9041-4308-b148-ba034cc2de4f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERMIT TO LEAVE THE OFFICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="105" width="73" height="20" uuid="3117c57d-82a7-4179-bc05-731f8af688fe"/>
+				<textElement>
+					<font fontName="Sylfaen" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No          : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="441" y="106" width="80" height="20" forecolor="#FF0000" uuid="99682a3b-c625-48ff-ab40-7bfa635e424e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{obno}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="375" y="13" width="73" height="20" uuid="4466a0b6-7fe7-4636-8b11-2a5852645414"/>
+				<textElement>
+					<font fontName="Sylfaen" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date        : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="41" width="208" height="20" uuid="b61805c7-4f85-4cea-869e-e2e6e2ff0431"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[to leave the office for the following purpose(s):]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="439" y="13" width="82" height="20" uuid="a7a291a8-0b2d-4af1-9df5-db53152aa326"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="40" width="139" height="20" uuid="ef96b339-e94a-4085-a4b7-c202a82d2fbb"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="29" y="59" width="492" height="20" uuid="39e6dc90-1d4f-4b2b-b184-72d3566ee1dd"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{purpose}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="618" splitType="Stretch">
+			<staticText>
+				<reportElement x="21" y="-33" width="159" height="20" uuid="40ff9ace-2d8c-4551-9451-8ca9e20fdaf0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[Permission is requested by Mr./Ms.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="18" width="92" height="20" uuid="0678bebe-4832-4401-ba7c-4f839280ae1f"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[Place to be visited:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="52" width="92" height="20" uuid="8710e1ba-65ee-4e96-a240-dfaea2e2c353"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="18" width="92" height="20" uuid="151b68fa-9181-4d19-876c-4a6cfe04ed50"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[Time of Departure: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="38" width="92" height="20" uuid="33c12927-e46d-4139-9d7b-473763b1952d"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[Time of Return     : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="87" width="247" height="29" uuid="8bcb0f62-19c7-4683-9bc3-9b4543e00924"/>
+				<textElement>
+					<font fontName="Sylfaen" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee(s) to perform official function and claim for travelling expenses is hereby authorized.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="72" width="175" height="23" uuid="6efcbec4-c0a3-4aea-b9df-8f398822c685"/>
+				<textElement>
+					<font fontName="Sylfaen" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Signature of Requesting Employee (s)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="95" width="175" height="23" uuid="aa000c2d-99b0-421c-b060-4ff9b68774d8"/>
+				<textElement>
+					<font fontName="Sylfaen" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[___________________________________]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="60" y="117" width="25" height="10" uuid="1a9ffea9-5f8b-45b2-a0e9-718f9839754e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="138" y="117" width="25" height="10" uuid="fa4eb68c-0cbc-4d1a-9c84-1d4017116a11"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="91" y="115" width="31" height="18" uuid="29565e48-e0b7-4ffe-aada-8f4a5dd5c391"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Yes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="115" width="31" height="18" uuid="97e2dc37-8b40-4ed9-9b57-991ef15859c8"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="115" width="59" height="23" uuid="e7205dd7-ad85-4ed2-add1-7cb8280c68fd"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Approved:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="139" width="175" height="23" uuid="9e39a42e-78a9-4530-949d-ae6eaed73189"/>
+				<textElement>
+					<font fontName="Sylfaen" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[___________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="183" width="173" height="20" uuid="45b10c67-4b71-4267-8311-11755481852a"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Copy for Personnel Section, FAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="355" width="73" height="20" uuid="3c8066b2-da8a-4b40-a2fa-82bd0a917c17"/>
+				<textElement>
+					<font fontName="Sylfaen" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date        : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="375" width="159" height="20" uuid="d4ed34e7-168f-40bb-bab2-f5ea4f31246c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[Permission is requested by Mr./Ms.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="529" width="31" height="18" uuid="a282f39c-898d-46da-8bc5-59f00fc3d071"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="552" width="175" height="23" uuid="f52521c7-731b-488e-80fc-4bf1cb1ccd9e"/>
+				<textElement>
+					<font fontName="Sylfaen" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[___________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="499" width="247" height="29" uuid="fde61875-d8dd-437b-ada8-426877b49ca7"/>
+				<textElement>
+					<font fontName="Sylfaen" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee(s) to perform official function and claim for travelling expenses is hereby authorized.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="505" width="175" height="23" uuid="bbae71be-e149-43ce-893d-a4571ae01b35"/>
+				<textElement>
+					<font fontName="Sylfaen" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[___________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="375" width="208" height="20" uuid="dda006f3-efad-4818-8019-66c845d29e58"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[to leave the office for the following purpose(s):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="445" width="92" height="20" uuid="df9aec47-2e80-40bc-8769-2bcad2afef5a"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[Time of Return     : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="241" width="389" height="32" uuid="9f2f2026-5064-4b06-b950-792d04fea9d4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTMENT OF THE INTERIOR AND LOCAL GOVERNMENT
+Region IV-A (CALABARZON)
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="431" y="335" width="80" height="20" forecolor="#FF0000" uuid="a45b39f0-9ed3-444a-8d30-275116064a14"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{obno}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="54" y="531" width="25" height="10" uuid="5aabf5c8-207b-422a-b682-5259b20bc28b"/>
+			</rectangle>
+			<image>
+				<reportElement x="20" y="227" width="85" height="67" uuid="5e4b7d1b-a1a6-4399-b969-469cd71a043c"/>
+				<imageExpression><![CDATA["C:\\Users\\Prince Zhian Ferrer\\Music\\l.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="27" y="427" width="92" height="20" uuid="b287a1f5-a379-4a6b-b626-4d47ba8e0445"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[Place to be visited:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="226" width="104" height="20" uuid="98534280-ae7d-4515-ad46-56b38e0fd61e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="9"/>
+				</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="131" y="533" width="25" height="10" uuid="54780092-fc1e-4ee4-a24d-0dec099e2ede"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="60" y="268" width="389" height="41" uuid="8dc29b72-fd78-493a-bb5c-b3bea0ca5312"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="8"/>
+				</textElement>
+				<text><![CDATA[3/F Andenson Bldg. 1, National Highway, Brgy. Parian, City of Calamba, Laguna 4027
+(049) 827-4587; (049) 827-4560; (049) 827-3143
+ dilg4a.calabarzon@gmail.com www.calabarzon.dilg.gov.ph
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="529" width="31" height="18" uuid="2119ab5d-7184-46b6-a784-cc6eaea98f0a"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Yes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="584" width="173" height="20" uuid="93fb442b-7262-4778-bc6e-9ab7c7bbc114"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Employee's Copy]]></text>
+			</staticText>
+			<image>
+				<reportElement x="406" y="235" width="115" height="66" uuid="ed2e754d-290b-4104-bd12-9a846a74b3bf"/>
+				<imageExpression><![CDATA["C:\\Users\\Prince Zhian Ferrer\\Music\\lo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="346" y="528" width="59" height="23" uuid="c488b601-ecba-42fe-b890-3bec07dcc8da"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Approved:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="336" width="73" height="20" uuid="fb7e576d-41d9-4da4-be2d-959c6d8f479b"/>
+				<textElement>
+					<font fontName="Sylfaen" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No          : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="376" width="139" height="20" uuid="6128b54f-e538-4461-a73c-9ff5c0d76dc1"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="27" y="464" width="92" height="20" uuid="da47e61b-06ba-4f0b-9bb4-4fc63e01c972"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="431" y="355" width="82" height="20" uuid="fbe84bea-cae3-4c4d-939b-31fd1f510ef5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="177" y="316" width="178" height="20" uuid="3c001245-d280-40be-9ab4-0f86fb5593ff"/>
+				<textElement textAlignment="Center">
+					<font fontName="Sylfaen" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERMIT TO LEAVE THE OFFICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="427" width="92" height="20" uuid="1cc11728-76af-4ca2-ad72-eb6f9ed6811d"/>
+				<textElement>
+					<font fontName="Sylfaen" size="10"/>
+				</textElement>
+				<text><![CDATA[Time of Departure: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="476" width="175" height="23" uuid="11119d42-5f17-4960-a21f-909ba3212f91"/>
+				<textElement>
+					<font fontName="Sylfaen" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Signature of Requesting Employee (s)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="31" y="394" width="492" height="20" uuid="ccd68e1e-45ff-45a6-94f6-0c4f20885c9a"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{purpose}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="135" y="429" width="100" height="20" uuid="aa4c5f10-a955-4dea-8127-cfb1a45c90d8"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{place}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="18" width="100" height="20" uuid="fb7c2f20-a505-4c11-980a-ca19ccc3ef7f"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{place}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="53" width="100" height="20" uuid="18305b19-6e6c-415a-9b96-db8dd924358a"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{obdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="465" width="100" height="20" uuid="96a4c2ae-a2a5-4ddb-9589-163856d55b91"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{obdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="344" y="162" width="175" height="21" uuid="c36d3051-4511-4a0e-b5c3-b95c5e803d8e"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="344" y="181" width="176" height="20" uuid="f6876cd9-0da8-4c65-8980-4bb1d3d1b042"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{divpos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="592" width="176" height="20" uuid="be5cdedf-cda5-43db-b4be-32c3a239ca97"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{divpos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="573" width="175" height="21" uuid="e67c827c-0a30-413c-a31c-6541896c7282"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="19" width="61" height="20" uuid="d3583b3f-0726-4280-b796-4d76dcadf635"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{timefrom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="462" y="429" width="56" height="20" uuid="d3aa50d6-193e-4c3a-b638-31c9d3e6c416"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{timefrom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="466" y="39" width="59" height="20" uuid="2c7ca39b-076f-4104-84ea-f5487c528fd4"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{timeto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="446" width="59" height="20" uuid="a405589b-06dd-490d-8927-1a7179e7004e"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{timeto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
