@@ -315,6 +315,7 @@ $username = $_SESSION['username'];
         <li  class = "treeview <?php 
               if(
                 $link == 'http://fas.calabarzon.dilg.gov.ph/ViewApp.php' ||  
+                $link == 'http://fas.calabarzon.dilg.gov.ph/CreateSuppliers.php' || 
                 $link == 'http://fas.calabarzon.dilg.gov.ph/CreateAPP.php' || 
                 $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPR.php' || 
                 $link == 'http://fas.calabarzon.dilg.gov.ph/CreatePR.php' || 

@@ -155,9 +155,3 @@
 
 </form>
 </div>
-<script>
-$(document).ready(function(){
-    $( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-
-})
-</script>
