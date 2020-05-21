@@ -181,7 +181,10 @@ $username = $_SESSION['username'];
           </a>
        
         </li>
-        <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_GET['division'].'' || $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php?division='.$_GET['division'].''){ echo 'class = "active"';}else{echo 'class = ""';}?>>
+        <li <?php if(
+          $link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_GET['division'].'' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_GET['division'].'&flag='.$_GET['flag'].'' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php?division='.$_GET['division'].''){ echo 'class = "active"';}else{echo 'class = ""';}?>>
           <a href="ViewCalendar.php?division=<?php echo $_SESSION['division'];?>">
             <i class="fa fa-calendar" style = "color:#black;"></i>
             <span  style = "color:#black;font-weight:normal;">Calendar</span>
@@ -208,7 +211,9 @@ $username = $_SESSION['username'];
        <?php 
        if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewEmployees.php?division='.$_GET['division'].'&username='.$_GET['username'].''||
           $link == 'http://fas.calabarzon.dilg.gov.ph/ob.php?division='.$_GET['division'].'' ||
-          $link == 'http://fas.calabarzon.dilg.gov.ph/TravelOrder.php?division='.$_GET['division'].'')
+          $link == 'http://fas.calabarzon.dilg.gov.ph/TravelOrder.php?division='.$_GET['division'].'' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateEmployee.php?id='.$_GET['id'].'&view='.$_GET['view'].''
+          )
           { echo 'active"';}?>"
         >
             <a  href="#" >
