@@ -72,7 +72,7 @@
                                             <td style="background-color: #E60785; color:white;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="10" id = "fad"><label style = "margin-left:15%;">FAD</label>
                                                 </td>
-                                                <td style="background-color:#EC7063 ; color:white;;padding:9px;">
+                                                <td style="background-color:#FF9800 ; color:white;;padding:9px;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="20" id = "cavite"><label style = "margin-left:15%;">Cavite</label>
                                                 </td>
                                             </tr>
@@ -88,7 +88,7 @@
                                             <td style="background-color: #E6680E; color:white;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="7" id = "mbrtg"><label style = "margin-left:15%;">MBRTG</label>
                                                 </td>
-                                                <td style="background-color:#3E2723; color:white;;padding:9px;">
+                                                <td style="background-color:#81D4FA; color:white;;padding:9px;">
                                                     <input class='calFilter' type="checkbox" name = "offices[]" value="23" id = "rizal"><label style = "margin-left:15%;">Rizal</label>
                                                 </td>
                                             
@@ -106,7 +106,7 @@
                                             <td style="background-color: #8F0CC7; color:white;">
                                                     <input class='calFilter' data-id = "9" type="checkbox" name = "offices[]" value="9" id = "pdmu" ><label style = "margin-left:15%;">PDMU</label>
                                                 </td>
-                                                <td style="background-color: #8BC34A; color:white;;padding:9px;">
+                                                <td style="background-color: #FFEB3B; color:white;;padding:9px;">
                                         <input class='calFilter' type="checkbox" name = "offices[]" value="24"id = "lucena"><label style = "margin-left:15%;">Lucena City</label>
                                     </td>
                                             </tr>
