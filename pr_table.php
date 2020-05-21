@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
   $reason = $_POST['reason'];
   $idC = $_POST['idC'];
 
-  $update = mysqli_query($conn,"UPDATE pr SET canceled = '$reason' WHERE id = $idC ");
+  $update = mysqli_query($conn,"UPDATE pr SET canceled = '$reason', canceled_date = now() WHERE id = $idC ");
   if ($update) {
       echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('PR Successfuly Canceled!')

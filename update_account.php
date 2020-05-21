@@ -48,7 +48,7 @@
 
   $sqltable   = "tblemployee";
 
-  $checkQuery = "SELECT * FROM $sqltable a LEFT JOIN tblpersonneldivision b on b.DIVISION_N = a.DIVISION_C LEFT JOIN tbldesignation c on c.DESIGNATION_ID = a.DESIGNATION LEFT JOIN tbldilgposition d on d.POSITION_ID = a.POSITION_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1";
+  $checkQuery = "SELECT * FROM tblemployee a LEFT JOIN tblpersonneldivision b on b.DIVISION_N = a.DIVISION_C LEFT JOIN tbldesignation c on c.DESIGNATION_ID = a.DESIGNATION LEFT JOIN tbldilgposition d on d.POSITION_ID = a.POSITION_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1";
 
   $checkQuery1 = mysqli_query($conn,"SELECT c.province_id,c.province_title FROM $sqltable a LEFT JOIN tblprovinse c on c.province_id = a.PROVINCE_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1");
   $row1 = mysqli_fetch_array($checkQuery1);
@@ -84,6 +84,8 @@
       $profile                 = $row['PROFILE'];
     }
   }
+
+
   
   $checkQuery1 = mysqli_query($conn,"SELECT b.city_id,b.city_title FROM $sqltable a LEFT JOIN tblmunicipality b on b.city_id = a.CITYMUN_C WHERE b.province = $province1 AND a.EMP_N = '".$_GET['id']."' LIMIT 1");
   $row1 = mysqli_fetch_array($checkQuery1);
@@ -176,12 +178,12 @@
   REGION_C=?, PROVINCE_C=?, CITYMUN_C=?,
   POSITION_C=?,
   MOBILEPHONE=?, EMAIL=?, AGENCY_EMP_NO=?,
-  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$activated."', UNAME=?$add WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
+  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$activated."', UNAME=?$add,DESIGNATION=? WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
 
   if ($updateSQL = $DBConn->prepare($query)) 
   {
     if($password==''){
-      $updateSQL->bind_param("ssssssssssssssssssssss", $lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username);
+      $updateSQL->bind_param("sssssssssssssssssssssss", $lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username,$designation);
     }else{
       $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
       $password   = crypt($password, '$2a$10$'.$code.'$');
@@ -338,7 +340,7 @@
           <div class="col-xs-4">
             <label>Designation<font style="color:red;">*</font></label>
             <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
-              <option value="<?php echo $designation1;?>" selected><?php echo $designation1;?></option>
+              <option value="<?php echo $designation11;?>" selected><?php echo $designation1;?></option>
               <?php echo tbldesignation($connect)?>
             </select>
           </div>
@@ -486,7 +488,7 @@
         <div class="col-xs-4">
           <label>Office/Division<font style="color:red;">*</font></label>
           <select required class="form-control select2" style="width: 100%;" name="division" id="" >
-            <option value="<?php echo $division1;?>" selected><?php echo $division11;?></option>
+            <option value="<?php echo $division1;?>"><?php echo $division11;?></option>
             <?php echo tblpersonnel($connect)?>
           </select>
         </div>
