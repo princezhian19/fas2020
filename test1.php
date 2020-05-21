@@ -235,8 +235,15 @@ $username = $_SESSION['username'];
        
         <li  class = "treeview <?php if(
           $link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].'' || 
-          $link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].'' || 
-          $link == 'http://fas.calabarzon.dilg.gov.ph/CreateIssuances.php?division='.$_GET['division'].'' 
+          $link == 'http://fas.calabarzon.dilg.gov.ph/databank.php' || 
+          $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateDatabank.php?id='.$_GET['id'].'&option='.$_GET['option'].'' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].'' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/ViewIssuance.php?division='.$_GET['division'].'&id='.$_GET['id'].'' 
+          $link == 'http://fas.calabarzon.dilg.gov.ph/CreateIssuances.php?division='.$_GET['division'].'' || 
+          $link == 'http://fas.calabarzon.dilg.gov.ph/CreateDatabank.php' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/Directory.php?division='.$_GET['division'].'' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/CreateDirectory.php' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateDirectory.php?id='.$_GET['id'].''
           )
           { echo 'active"';}?>">
             <a  href="#" >
