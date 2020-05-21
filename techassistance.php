@@ -52,7 +52,7 @@ $division = $_GET['division'];
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
 </head>
-<body class="hold-transition skin-red-light sidebar-mini">
+<body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
 <?php 
   if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
@@ -164,7 +164,7 @@ $division = $_GET['division'];
                       {
                         // action = 'ON GOING';
                         
-                        action = '<a href = "allTickets.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" class = "btn btn-info btn-xs"   style = "width:100%;">Assign</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';          
+                        action = '<a href = "processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" class = "btn btn-info btn-xs"   style = "width:100%;">Assign</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';          
 
 
 
@@ -242,7 +242,7 @@ $division = $_GET['division'];
                   closeOnConfirm: false,
                   closeOnCancel: false
                 }).then(function (){
-                  , "Your imaginary file has been deleted.", "success");
+                  swal("Your imaginary file has been deleted.", "success");
                 $.ajax({
                 url:"deleteRequest.php",
                 method:"POST",

@@ -489,6 +489,9 @@ $("#all").click(function(){
           $('#myModal').modal('show');
         },
         eventClick: function(event, element) {
+
+
+
           if(event.office == <?php echo $_GET['division'];?>)
           {
           test();
@@ -617,7 +620,7 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
 
 
                   $enddate = str_replace('-', '/', $end);
-                  $realenddate = date('Y-m-d',strtotime($enddate . "+1 days"));
+                  $realenddate = date('Y-m-d',strtotime($enddate));
 
                   if($_SESSION['planningofficer'] == 1){
                     if (TRUE) {
@@ -646,7 +649,7 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
                       ?>
                       {
                         id: '<?php echo $event['id']; ?>',
-                        title: '<?php echo $event['title']; ?>',
+                        title: '<?php echo ''.$event['title']; ?>',
                         start: '<?php echo $start; ?>',
                         end: '<?php echo $realenddate; ?>',
                         description: '<?php echo $event['description']; ?>',

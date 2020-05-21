@@ -49,7 +49,7 @@ $username = $_SESSION['username'];
       <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
 </head>
-<body class="hold-transition skin-red-light sidebar-mini">
+<body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
 <?php
 

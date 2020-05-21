@@ -702,6 +702,7 @@ function confirmDelete(delUrl) {
                 <div class="col-md-6" style="padding-left: 30px;padding-top:10px;">
                   <label>Item/s <font style="color: Red;" >*</font> </label>
                   <input  type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
+                  <font id="p" hidden>&nbsp</font>
                   <table class="table table-striped table-hover" id="main">
                     <tbody id="result">
                     </tbody>
@@ -764,7 +765,7 @@ function confirmDelete(delUrl) {
                   </div>
                   
                  
-                  <div class="form-group">
+                  <div class="form-group" >
                     <label>Quantity <font style="color: Red;" >*</font></label>
                     <input class="form-control" type="number" id="qty" name="qty" >
                   </div>
@@ -958,6 +959,7 @@ function confirmDelete(delUrl) {
 $(document).ready(function(){
   $("#result").click(function(){
     $("#main").hide();
+    $("#p").show();
   });
 });
 </script>

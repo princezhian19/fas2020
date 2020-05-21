@@ -44,7 +44,7 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 </head>
-<body class="hold-transition skin-red-light sidebar-mini">
+<body class="hold-transition skin-red-light fixed  sidebar-mini">
 <div class="wrapper">
 
   <?php include('test1.php');?>

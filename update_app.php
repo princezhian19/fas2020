@@ -167,7 +167,7 @@ if (isset($_POST['submit'])) {
     $unit_id11 = "piece";
   }
 
-  $select_count = mysqli_query($conn,"SELECT * FROM app_items WHERE sn = '$sn' ");
+  $select_count = mysqli_query($conn,"SELECT * FROM app_items WHERE sn = '$sn' AND code = '$code' AND pmo_id = '$pmo_id' ");
   $count_rows = mysqli_num_rows($select_count);
   for($count = 0; $count < count($_POST["pmo"]); $count++) {
    $pmo = $_POST["pmo"][$count];
@@ -218,6 +218,7 @@ if (isset($_POST['submit'])) {
     </SCRIPT>");
 
  }else{
+
   for($count = 0; $count < count($_POST["pmo"]); $count++) {
    $pmo2 = $_POST["pmo"][$count];
    $qty = $_POST["qty"][$count];

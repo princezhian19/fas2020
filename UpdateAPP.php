@@ -51,7 +51,7 @@ $username = $_SESSION['username'];
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
 
 </head>
-<body class="hold-transition skin-red-light sidebar-mini">
+<body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
     <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' ): ?>
   <?php include('test1.php');?>

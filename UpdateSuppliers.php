@@ -45,7 +45,7 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="_includes/sweetalert.css">
 
 </head>
-<body class="hold-transition skin-red-light sidebar-mini">
+<body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
 
   <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda'): ?>

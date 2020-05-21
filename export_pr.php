@@ -218,7 +218,19 @@ if ($unit == "22") {
     $rowE++;
   }
 
-if (mysqli_num_rows($sql_items)<10) {
+  $select_purpsoe = mysqli_query($conn,"SELECT pr.purpose,pr.pmo,pmo.pmo_contact_person,pmo.designation FROM pr left join pmo on pmo.pmo_title = pr.pmo WHERE pr.id = $id ");
+$rowP = mysqli_fetch_array($select_purpsoe);
+// $purpose = $rowP['purpose'];
+$pmo_contact_person = $rowP['pmo_contact_person'];
+$pmo_contact_person;
+$designation = $rowP['designation'];
+
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B37',$purpose);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B43',strtoupper($pmo_contact_person));
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B44',$designation);
+
+
+// if (mysqli_num_rows($sql_items)<10) {
 
 //  $counter++;
  
@@ -284,21 +296,6 @@ if (mysqli_num_rows($sql_items)<10) {
 
 // }
 
-$select_purpsoe = mysqli_query($conn,"SELECT pr.purpose,pr.pmo,pmo.pmo_contact_person,pmo.designation FROM pr left join pmo on pmo.pmo_title = pr.pmo WHERE pr.id = '$id' ");
-$rowP = mysqli_fetch_array($select_purpsoe);
-$purpose = $rowP['purpose'];
-$pmo_contact_person = $rowP['pmo_contact_person'];
-$pmo_contact_person;
-$designation = $rowP['designation'];
-
-/* echo $pmo_contact_person;
-echo $designation; exit(); */
-
-
-
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B37',$purpose);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B43',strtoupper($pmo_contact_person));
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B44',$designation);
 
 
 
@@ -369,7 +366,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('B44',$designation);
   
 
 
-}
+// }
     // $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowA,$excelrow['purpose']);
 
 

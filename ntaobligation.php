@@ -61,7 +61,7 @@ $username = $_SESSION['username'];
   }
   </style>
 </head>
-<body class="hold-transition skin-red-light sidebar-mini">
+<body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
   <?php include('test1.php');?>
   

@@ -123,15 +123,13 @@ if (isset($_POST['submit'])) {
 <body>
   <div class="box box-default">
     <div class="box-header with-border">
-     <h1 align="">&nbspAdd Items(s)</h1>
-     <div class="box-header with-border">
-     </div>
-
+     <h1 align="">&nbspAdd Item</h1>
      <br>
-     <h3> <p align="center"> Annual Procurement Plan for FY 2020</p></h3>  
+     <!-- <h3> <p align="center"> Annual Procurement Plan for FY 2020</p></h3>   -->
      <br>
-     &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="ViewApp.php" style="color:white;text-decoration: none;">Back</a></li>
+     &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="ViewApp.php" style="color:white;text-decoration: none;">Back</a></li>
      <!-- <a href="javascript:void(0);"  class="btn btn-primary link" data-id="<=$data['id']?>">View Items</a><br><br> -->
+     <br>
      <br>
      <br>
      <form method="POST" >
@@ -140,7 +138,7 @@ if (isset($_POST['submit'])) {
           <div class="row">
             <div class="col-md-6">
              <div class="form-group">
-              <label>Stock No.</label>
+              <label>Stock No.</label><font style="color:red;">*</font>
               <?php if ($sn != ''): ?>
                 <input required autocomplete = "off" value="<?php echo 'S'.$idGet?>" class="form-control" name="sn" type="text" id="sn"  >
                 <?php else:  ?>
@@ -148,15 +146,15 @@ if (isset($_POST['submit'])) {
                 <?php endif ?>
               </div>
               <div class="form-group">
-                <label>Code (PPAP)</label>
+                <label>Code (PPAP)</label><font style="color:red;">*</font>
                 <input required autocomplete = "off" value="<?php echo isset($_POST['code']) ? $_POST['code'] : '' ?>" class="form-control" name="code" type="text" id="code" >
               </div>
               <div class="form-group">
-                <label>Item</label>
+                <label>Item</label><font style="color:red;">*</font>
                 <input required autocomplete = "off" value="<?php echo isset($_POST['item']) ? $_POST['item'] : '' ?>" class="form-control" name="item" type="text" id="item" >
               </div>
                <div class="form-group">
-                    <label>Unit </label>
+                    <label>Unit </label><font style="color:red;">*</font>
                     <select required class="form-control select2" style="width: 100%;" name="unit" id="unit" >
                       <option selected disabled>Select Unit</option>
                       <option value="book">book</option>
@@ -184,7 +182,7 @@ if (isset($_POST['submit'])) {
                     </select>
                   </div>
               <div class="form-group">
-                <label>Source of Fund</label>
+                <label>Source of Fund</label><font style="color:red;">*</font>
                 <select required class="form-control select2" style="width: 100%;" name="fund" id="fund" >
                   <option selected disabled>Select</option>
                   <option value="3">Regular, Local and Trust Fund</option>
@@ -201,7 +199,7 @@ if (isset($_POST['submit'])) {
             <div class="col-md-6">
 
              <div class="form-group">
-              <label>Category</label>
+              <label>Category</label><font style="color:red;">*</font>
               <select required class="form-control select2" style="width: 100%;" name="category" id="category" >
                 <option>Select Category</option>
                   <option selected disabled>Select</option>
@@ -215,7 +213,7 @@ if (isset($_POST['submit'])) {
               </button>
               <br>
               <div class="form-group">
-                <label>Office </label>
+                <label>Office </label><font style="color:red;">*</font>
                 <?php if ($pmo == 'Please Select'): ?>
                   <select required class="form-control select2" style="width: 100%;" name="pmo[]" id="pmo[]" >
                     <option selected disabled>Select</option>
@@ -242,14 +240,14 @@ if (isset($_POST['submit'])) {
               </div>
 
               <div class="form-group">
-                <label>Quantity</label>
+                <label>Quantity</label><font style="color:red;">*</font>
                 <input required autocomplete = "off" onKeyPress='return dec(event)' value="<?php echo isset($_POST['qty[]']) ? $_POST['qty[]'] : '' ?>" class="form-control" name="qty[]" type="text" id="qty[]" >
 
               </div>
             </div>
 
             <div class="form-group">
-              <label>Mode of Procurement</label>
+              <label>Mode of Procurement</label><font style="color:red;">*</font>
               <select required class="form-control select2" style="width: 100%;" name="mode">
                 <option selected disabled>Select</option>
                 <option value="1">Small Value Procurement</option>
@@ -263,13 +261,13 @@ if (isset($_POST['submit'])) {
             </div>
 
             <div class="form-group">
-              <label>App Price</label>
+              <label>App Price</label><font style="color:red;">*</font>
               <input required autocomplete = "off" onKeyPress='return dec(event)' value="<?php echo isset($_POST['app_price']) ? $_POST['app_price'] : '' ?>" class="form-control" name="app_price" type="text" id="price" >
 
             </div>
 
              <div class="form-group">
-              <label>Market Price</label>
+              <label>Market Price</label><font style="color:red;">*</font>
               <input required autocomplete = "off" onKeyPress='return dec(event)' value="<?php echo isset($_POST['price']) ? $_POST['price'] : '' ?>" class="form-control" name="price" type="text" id="price" >
 
             </div>
@@ -290,7 +288,7 @@ if (isset($_POST['submit'])) {
               <input required autocomplete = "off" onKeyPress='return dec(event)' value="<?php echo isset($_POST['budget']) ? $_POST['budget'] : '' ?>" class="form-control" name="budget" type="text" id="budget" >
             </div>
             <br>
-            <button class="btn btn-success" style="float: right;" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
+            <button class="btn btn-info" style="float: right;" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Save</button>
 
 
             <!-- /.box-body -->
@@ -365,7 +363,7 @@ if (isset($_POST['submit'])) {
       e.preventDefault();
       if (x < max_fields) {
         x++;
-            $(wrapper).append('<div><a href="#" class="delete btn btn-danger">Delete</a> <div class="form-group "><label>PMO/End User </label><select required class="form-control  select2" style="width: 100%;" name="pmo[]" id="pmo[]" ><option selected disabled >Select PMO/End User</option><option value="1">ORD</option><option value="2">LGMED</option><option value="3">LGCDD</option><option value="4">FAD</option><option value="5">LGMED-PDMU</option><option value="6">LGCDD-MBRTG</option></select></div><div class="form-group"><label>Quantity</label> <input required autocomplete = "off" onkeypress="return CheckNumeric()" onkeyup="FormatCurrency(this)" value="<?php echo isset($_POST['qty[]']) ? $_POST['qty[]'] : '' ?>" class="form-control" name="qty[]" type="text" id="qty[]" > </div></div>'); //add input box
+            $(wrapper).append('<div><a href="#" class="delete btn btn-danger">Delete</a> <div class="form-group "><label>PMO/End User </label><font style="color:red;">*</font><select required class="form-control  select2" style="width: 100%;" name="pmo[]" id="pmo[]" ><option selected disabled >Select PMO/End User</option><option value="1">ORD</option><option value="2">LGMED</option><option value="3">LGCDD</option><option value="4">FAD</option><option value="5">LGMED-PDMU</option><option value="6">LGCDD-MBRTG</option></select></div><div class="form-group"><label>Quantity</label> <font style="color:red;">*</font><input required autocomplete = "off" onkeypress="return CheckNumeric()" onkeyup="FormatCurrency(this)" value="<?php echo isset($_POST['qty[]']) ? $_POST['qty[]'] : '' ?>" class="form-control" name="qty[]" type="text" id="qty[]" > </div></div>'); //add input box
           } else {
             alert('You Reached the limits')
           }

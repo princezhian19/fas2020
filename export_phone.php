@@ -26,21 +26,22 @@ $stylebottom = array(
   ),
 );
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$office = $_GET['office'];
-$e_date = $_GET['e_date'];
+// $office = $_GET['office'];
+// $e_date = $_GET['e_date'];
 
-$mont = date('M',strtotime($e_date));
-$year = date('Y',strtotime($e_date));
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B7',$office);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B8',$mont);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('E8',$year);
+// $mont = date('M',strtotime($e_date));
+// $year = date('Y',strtotime($e_date));
+// $objPHPExcel->setActiveSheetIndex()->setCellValue('B7',$office);
+// $objPHPExcel->setActiveSheetIndex()->setCellValue('B8',$mont);
+// $objPHPExcel->setActiveSheetIndex()->setCellValue('E8',$year);
 
-if ($office == 'All') {
-  $sql_items = mysqli_query($conn,"SELECT *  FROM `phone_directory` WHERE `posted_date` LIKE '%$e_date%'");
-}else{
-  $sql_items = mysqli_query($conn,"SELECT *  FROM `phone_directory` WHERE `group` = '$office' AND `posted_date` LIKE '%$e_date%'");
+// if ($office == 'All') {
+//   $sql_items = mysqli_query($conn,"SELECT *  FROM `phone_directory` WHERE `posted_date` LIKE '%$e_date%'");
+// }else{
+//   $sql_items = mysqli_query($conn,"SELECT *  FROM `phone_directory` WHERE `group` = '$office' AND `posted_date` LIKE '%$e_date%'");
   
-}
+// }
+  $sql_items = mysqli_query($conn,"SELECT *  FROM `phone_directory`");
 
 $row = 11;
 

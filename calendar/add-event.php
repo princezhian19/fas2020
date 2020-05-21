@@ -21,6 +21,7 @@ $startdatetime =    $startdate . "\n" . $starttime;
 $postedby   =       $name;
 $posteddate =       $today;
 $realenddate=       $enddate . "\n" . $endtime;
+
 $dateplusone=       new DateTime($realenddate);
 $dateplusone->modify('+12');
 $enddatetime=       $dateplusone->format('Y-m-d h:i:s');

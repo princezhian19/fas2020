@@ -652,6 +652,7 @@ function confirmDelete(delUrl) {
                 <div class="col-md-6" style="padding-left: 30px;padding-top:10px;">
                   <label>Item/s <font style="color: Red;" >*</font> </label>
                   <input  type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
+                  <font id="p" hidden>&nbsp</font>
                   <table class="table table-striped table-hover" id="main">
                     <tbody id="result">
                     </tbody>
@@ -680,7 +681,7 @@ function confirmDelete(delUrl) {
                   </div>
                   <div class="form-group">
                     <label>Unit <font style="color: Red;" >*</font></label>
-                    <input type="text" name="unit" id="unit"  class="form-control" readonly>
+                    <input required type="text" name="unit" id="unit"  class="form-control" readonly>
                    <!--  <select class="form-control select2" style="width: 100%;" name="unit" id="unit" >
                       <option value="5">------------------------------SELECT UNIT------------------------------</option>
                       <option value="16">book</option>
@@ -707,20 +708,16 @@ function confirmDelete(delUrl) {
                       <option value="8">tube</option>
                       <option value="5">unit</option>
                     </select> -->
-                    <table class="table table-striped table-hover" id="main">
-                    <tbody id="result">
-                    </tbody>
-                  </table>
-                  </div>
                   
-                 
-                  <div class="form-group">
-                    <label>Quantity <font style="color: Red;" >*</font></label>
-                    <input class="form-control" type="number" id="qty" name="qty" >
+                  </div>
+                  <font id="p" hidden>&nbspasd</font>
+                  <div class="form-group" style="padding-top: 5px;" >
+                    <label >Quantity <font style="color: Red;" >*</font></label>
+                    <input required class="form-control" type="number" id="qty" name="qty" >
                   </div>
                   <div class="form-group">
                     <label>Unit Cost <font style="color: Red;" >*</font></label>
-                    <input class="form-control" type="text" id="abc"  name="abc" readonly>
+                    <input required class="form-control" type="text" id="abc"  name="abc" readonly>
                   </div>
 
                   <!-- /.box-body -->
@@ -907,6 +904,7 @@ function confirmDelete(delUrl) {
 $(document).ready(function(){
   $("#result").click(function(){
     $("#main").hide();
+    $("#p").show();
   });
 });
 </script>

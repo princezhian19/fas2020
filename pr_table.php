@@ -6,6 +6,20 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
+
+
+if (isset($_POST['submit'])) {
+  $reason = $_POST['reason'];
+  $idC = $_POST['idC'];
+
+  $update = mysqli_query($conn,"UPDATE pr SET canceled = '$reason', canceled_date = now() WHERE id = $idC ");
+  if ($update) {
+      echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('PR Successfuly Canceled!')
+    </SCRIPT>");
+   header("Refresh:0");  }
+
+}
 ?>
 
 
@@ -40,7 +54,7 @@ $username = $_SESSION['username'];
                     <th width="150">TARGET DATE</th>
                     <th width="150">SUBMITTED DATE</th>
                     <th width="150">RECEIVED DATE</th>
-                    <th width="180">ACTION</th>
+                    <th width="350">ACTION</th>
             </tr>
           </thead>
           
@@ -116,6 +130,7 @@ $username = $_SESSION['username'];
               $id = $row["id"];
               $pr_no = $row["pr_no"];  
               $pmo = $row["pmo"];
+              $canceled = $row["canceled"];
               $submitted_date = $row["submitted_date"];
               $submitted_date1 = date('F d, Y', strtotime($submitted_date));
 
@@ -184,9 +199,21 @@ $username = $_SESSION['username'];
                         <?php if ($submitted_date == NULL): ?>
                           
                           <a  href='ViewPRv.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
-                          <a href='ViewRFQdetails.php?id=<?php echo $getID;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>
+                          <a href='ViewRFQdetails.php?id=<?php echo $getID;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>  
+                          <?php if ($canceled == NULL): ?>
+                           | <a data-toggle="modal"  data-target="#modal-info_<?php echo $row['id']; ?>"   class = "btn btn-warning btn-xs">Cancel</a>  
+                           <?php else: ?>
+                           | <font style="color:red;">Canceled </font><?php echo $canceled;?>
+
+                          <?php endif ?>
                           <?php else: ?>
-                          <a  href='ViewPRv.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>  
+                          <a  href='ViewPRv.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> 
+                           <?php if ($canceled == NULL): ?>
+                           | <a data-toggle="modal"  data-target="#modal-info_<?php echo $row['id']; ?>"   class = "btn btn-warning btn-xs">Cancel</a>  
+                           <?php else: ?>
+                           | <font style="color:red;">Canceled </font><?php echo $canceled;?>
+
+                          <?php endif ?> 
                           <?php endif ?>
                        
                        </td>
@@ -195,6 +222,29 @@ $username = $_SESSION['username'];
                    <a href='ViewPRv.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
                  </td> -->
                </tr>
+                <div class="modal modal-default fade" id="modal-info_<?php echo $row['id']; ?>">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Cancel Purchase Request</h4>
+                    </div>
+                    <div class="modal-body">
+                <form method="POST" >
+                     <label style="padding-right: 20px;">Reason <!-- <font style="color:red;">*</font></font>&nbsp&nbsp<i><font style="color:red;">should not exceed 50 characters</i> </font>--></label><input  class="form-control" type="text" name="reason"><br>
+                     <input type="text" name="idC" hidden  value="<?php echo $getID?>">
+                    </div>
+                    <div class="modal-footer">
+                      <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button> -->
+                        <button type="submit" class="btn btn-warning" name="submit">Cancel</button>
+                    </div>
+                  </div>
+               </form>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
              <?php } ?>
            </table>
          </div>
