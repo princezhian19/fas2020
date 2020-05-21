@@ -110,8 +110,6 @@
                                         <input class='calFilter' type="checkbox" name = "offices[]" value="24"id = "lucena"><label style = "margin-left:15%;">Lucena City</label>
                                     </td>
                                             </tr>
-                                    
-                            
                                     </table>
                                 <button class="btn btn-success pull-right"><a style = "color:#fff;"  id = "export"  >Export</a></button>
 

@@ -620,7 +620,7 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
 
 
                   $enddate = str_replace('-', '/', $end);
-                  $realenddate = date('Y-m-d',strtotime($enddate . "+1 days"));
+                  $realenddate = date('Y-m-d',strtotime($enddate));
 
                   if($_SESSION['planningofficer'] == 1){
                     if (TRUE) {
