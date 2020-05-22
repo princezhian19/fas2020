@@ -470,7 +470,7 @@ Region IV-A (CALABARZON)
 			</staticText>
 			<textField>
 				<reportElement x="130" y="432" width="179" height="20" uuid="aa4c5f10-a955-4dea-8127-cfb1a45c90d8"/>
-				<textElement textAlignment="Justified">
+				<textElement>
 					<font fontName="Sylfaen" isBold="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{place}]]></textFieldExpression>
@@ -547,7 +547,7 @@ Region IV-A (CALABARZON)
 			</textField>
 			<textField>
 				<reportElement x="131" y="27" width="179" height="22" uuid="622bce3e-0fa8-46b8-b40c-41308a981586"/>
-				<textElement textAlignment="Justified">
+				<textElement>
 					<font fontName="Sylfaen" isBold="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{place}]]></textFieldExpression>
