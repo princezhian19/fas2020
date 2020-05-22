@@ -79,18 +79,36 @@ $timeto = date('g:i A',strtotime($row['timeto']));
 
 
 $uc = $row['uc'];
+$place1 = $row['place1'];
 
 
 
 
 $PHPJasperXML = new PHPJasperXML(); 
 
+if($uc=='yes'){
+    $PHPJasperXML->arrayParameter=array(
+        "obno"=>$obno,"date"=>$date,
+        "name"=>$name,"purpose"=>$purpose,
+        "place"=>$place,"obdate"=>$obdate,
+        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'correct.png',"no"=>'check.jpg');
+}
+else if ($uc=='no'){
+    $PHPJasperXML->arrayParameter=array(
+        "obno"=>$obno,"date"=>$date,
+        "name"=>$name,"purpose"=>$purpose,
+        "place"=>$place,"obdate"=>$obdate,
+        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'check.jpg',"no"=>'correct.png');
+}
+else{
 
-$PHPJasperXML->arrayParameter=array(
-"obno"=>$obno,"date"=>$date,
-"name"=>$name,"purpose"=>$purpose,
-"place"=>$place,"obdate"=>$obdate,
-"timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos);
+    $PHPJasperXML->arrayParameter=array(
+        "obno"=>$obno,"date"=>$date,
+        "name"=>$name,"purpose"=>$purpose,
+        "place"=>$place,"obdate"=>$obdate,
+        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'correct.png',"no"=>'check.jpg');
+}
+
 
 
 
