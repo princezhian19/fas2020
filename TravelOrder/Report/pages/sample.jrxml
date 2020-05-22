@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="sample" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5e09c643-dc1b-49f8-8f59-28ab935615cf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="131"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbltechnical_assistance.`ID` AS tbltechnical_assistance_ID,
+     tbltechnical_assistance.`CONTROL_NO`,
+     tbltechnical_assistance.`REQ_TIME` AS tbltechnical_assistance_REQ_TIME,
+     tbltechnical_assistance.`REQ_BY` AS tbltechnical_assistance_REQ_BY,
+     tbltechnical_assistance.`OFFICE` AS tbltechnical_assistance_OFFICE,
+     tbltechnical_assistance.`POSITION` AS tbltechnical_assistance_POSITION,
+     tbltechnical_assistance.`CONTACT_NO` AS tbltechnical_assistance_CONTACT_NO,
+     tbltechnical_assistance.`EMAIL_ADD` AS tbltechnical_assistance_EMAIL_ADD,
+     tbltechnical_assistance.`EQUIPMENT_TYPE` AS tbltechnical_assistance_EQUIPMENT_TYPE,
+     tbltechnical_assistance.`BRAND_MODEL` AS tbltechnical_assistance_BRAND_MODEL,
+     tbltechnical_assistance.`PROPERTY_NO` AS tbltechnical_assistance_PROPERTY_NO,
+     tbltechnical_assistance.`SERIAL_NO` AS tbltechnical_assistance_SERIAL_NO,
+     tbltechnical_assistance.`IP_ADDRESS` AS tbltechnical_assistance_IP_ADDRESS,
+     tbltechnical_assistance.`MAC_ADDRESS` AS tbltechnical_assistance_MAC_ADDRESS,
+     tbltechnical_assistance.`TYPE_REQ` AS tbltechnical_assistance_TYPE_REQ,
+     tbltechnical_assistance.`TYPE_REQ_DESC` AS tbltechnical_assistance_TYPE_REQ_DESC,
+     tbltechnical_assistance.`ISSUE_PROBLEM` AS tbltechnical_assistance_ISSUE_PROBLEM,
+     tbltechnical_assistance.`START_TIME` AS tbltechnical_assistance_START_TIME,
+     tbltechnical_assistance.`STATUS_DESC` AS tbltechnical_assistance_STATUS_DESC,
+     tbltechnical_assistance.`COMPLETED_TIME` AS tbltechnical_assistance_COMPLETED_TIME,
+     tbltechnical_assistance.`ASSIST_BY` AS tbltechnical_assistance_ASSIST_BY,
+     tbltechnical_assistance.`PERSON_ASSISTED` AS tbltechnical_assistance_PERSON_ASSISTED,
+     tbltechnical_assistance.`TIMELINESS` AS tbltechnical_assistance_TIMELINESS,
+     tbltechnical_assistance.`QUALITY` AS tbltechnical_assistance_QUALITY,
+     tbltechnical_assistance.`STATUS` AS tbltechnical_assistance_STATUS
+FROM
+     `tbltechnical_assistance` tbltechnical_assistance]]>
+	</queryString>
+	<field name="tbltechnical_assistance_ID" class="java.lang.Integer"/>
+	<field name="CONTROL_NO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tbltechnical_assistance_REQ_TIME" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_REQ_BY" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_OFFICE" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_POSITION" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_CONTACT_NO" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_EMAIL_ADD" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_EQUIPMENT_TYPE" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_BRAND_MODEL" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_PROPERTY_NO" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_SERIAL_NO" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_IP_ADDRESS" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_MAC_ADDRESS" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_TYPE_REQ" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_TYPE_REQ_DESC" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_ISSUE_PROBLEM" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_START_TIME" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_STATUS_DESC" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_COMPLETED_TIME" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_ASSIST_BY" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_PERSON_ASSISTED" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_TIMELINESS" class="java.lang.String"/>
+	<field name="tbltechnical_assistance_QUALITY" class="java.lang.Integer"/>
+	<field name="tbltechnical_assistance_STATUS" class="java.lang.String"/>
+	<filterExpression><![CDATA[$F{CONTROL_NO}]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
