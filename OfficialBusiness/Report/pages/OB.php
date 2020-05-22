@@ -91,7 +91,7 @@ if($uc=='yes'){
         "obno"=>$obno,"date"=>$date,
         "name"=>$name,"purpose"=>$purpose,
         "place"=>$place,"obdate"=>$obdate,
-        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'correct.png',"no"=>'check.jpg');
+        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'correct.png',"no"=>'check.png');
 }
 else if ($uc=='no'){
     $PHPJasperXML->arrayParameter=array(
@@ -106,7 +106,7 @@ else{
         "obno"=>$obno,"date"=>$date,
         "name"=>$name,"purpose"=>$purpose,
         "place"=>$place,"obdate"=>$obdate,
-        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'correct.png',"no"=>'check.jpg');
+        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'correct.png',"no"=>'check.png');
 }
 
 
