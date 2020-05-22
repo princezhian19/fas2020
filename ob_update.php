@@ -113,6 +113,9 @@ if(isset($_POST['submit'])){
       $place1= $_POST['place1'];
       
       $places = $place.' '.$place1;
+
+ /*    echo $purposes;
+    exit(); */
       $obdate1 = $_POST['obdate'];
       $obdate = date('Y-m-d', strtotime($obdate1));
       
@@ -161,25 +164,52 @@ else{
 
   if($checked=="yes"){
     $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$places',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='yes' where id = '$id'");
-  }
+ 
+    
+          if($query){
+
+            // echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
+            echo ("<SCRIPT LANGUAGE='JavaScript'>
+            window.alert(' Official Business has been successfully updated.')
+            window.location.href='ob.php';
+            </SCRIPT>");
+        }
+        else{
+          echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
+            
+        }
+          }
   else if($checked=="no"){
 
     $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$places',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='no' where id = '$id'");
+
+        
+          if($query){
+
+            // echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
+            echo ("<SCRIPT LANGUAGE='JavaScript'>
+            window.alert(' Official Business has been successfully updated.')
+            window.location.href='ob.php';
+            </SCRIPT>");
+        }
+        else{
+          echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
+            
+        }
+  }
+  else{
+
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Please check Yes or No for travelling claim.');
+    
+    </SCRIPT>");   
+
   }
  
+ /*  echo "UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$places',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='no' where id = '$id'";
+  exit(); */
 
-  if($query){
 
-   // echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-   window.alert(' Official Business has been successfully updated.')
-   window.location.href='ob.php';
-   </SCRIPT>");
-}
-else{
-  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
-   
-}
 
  }
 
