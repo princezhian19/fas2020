@@ -285,7 +285,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-group" hidden>
               <label>App Total Budget</label>
-              <input required autocomplete = "off" onKeyPress='return dec(event)' value="<?php echo isset($_POST['budget']) ? $_POST['budget'] : '' ?>" class="form-control" name="budget" type="text" id="budget" >
+              <input  autocomplete = "off" onKeyPress='return dec(event)' value="<?php echo isset($_POST['budget']) ? $_POST['budget'] : '' ?>" class="form-control" name="budget" type="text" id="budget" >
             </div>
             <br>
             <button class="btn btn-info" style="float: right;" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Save</button>
