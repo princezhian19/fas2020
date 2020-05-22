@@ -26,7 +26,10 @@
 	<parameter name="timeto" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$F{timeto}]]></defaultValueExpression>
 	</parameter>
-	<queryString language="SQL">
+	<parameter name="place1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{place1}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
 		<![CDATA[SELECT * from ob]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
@@ -84,6 +87,9 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="reason" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="place1" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<group name="id">
@@ -610,6 +616,20 @@ Region IV-A (CALABARZON)
 			<line>
 				<reportElement x="130" y="485" width="186" height="1" uuid="d2550df4-4d3f-4856-a476-1dbe58ca7a1e"/>
 			</line>
+			<textField>
+				<reportElement x="131" y="47" width="100" height="20" uuid="87d15448-b3ed-4c9d-87e4-76c51a9ece4e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{place1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="129" y="452" width="100" height="20" uuid="e8229025-7ab6-40c5-bddd-4737a2463ebe"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{place1}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>

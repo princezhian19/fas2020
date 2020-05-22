@@ -64,12 +64,12 @@ $id=$row['id'];
 $obno = $row['obno'];
 
 
-$date = date('M d, Y',strtotime($row['date']));
+$date = date('F d, Y',strtotime($row['date']));
 $office = $row['office'];
 $name = $row['name'];
 $purpose = $row['purpose'];
 $place = $row['place'];
-$obdate = date('M d, Y',strtotime($row['obdate']));
+$obdate = date('F d, Y',strtotime($row['obdate']));
 
 
 $timefrom = date('g:i A',strtotime($row['timefrom']));
