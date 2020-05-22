@@ -9,13 +9,132 @@ $username = $_SESSION['username'];
 }
 
         $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .   $_SERVER['REQUEST_URI']; 
-        function getDivision()
-        {
-        include 'connection.php';
-        $sqlUsername = mysqli_query($conn,"SELECT * FROM tblpersonneldivision where DIVISION_N =".$_SESSION['division']."");
-        $row = mysqli_fetch_array($sqlUsername);
-        echo  $row['DIVISION_M']; 
-        }
+
+
+
+function getDivision()
+{
+  include 'connection.php';
+  $sqlUsername = mysqli_query($conn,"SELECT * FROM tblpersonneldivision where DIVISION_N =".$_SESSION['division']."");
+  $row = mysqli_fetch_array($sqlUsername);
+  echo  $row['DIVISION_M']; 
+}
+
+function notification()
+{
+  include 'connection.php';
+
+  $query = "SELECT count(*) as 'count' from tbltechnical_assistance where `STATUS_REQUEST` = 'Submitted'  ";
+  $result = mysqli_query($conn, $query);
+  $val = array();
+  while($row = mysqli_fetch_array($result))
+  {
+   echo $row['count'];
+  }
+}
+function showRequest()
+{
+  include 'connection.php';
+
+  $query = "SELECT * from tbltechnical_assistance where `STATUS_REQUEST` = 'Submitted'  ";
+  $result = mysqli_query($conn, $query);
+  $val = array();
+  while($row = mysqli_fetch_array($result))
+  {
+  ?>
+  <li>
+    <a href="processing.php?division=<?php echo $_GET['division']?>&ticket_id=<?php echo $row['CONTROL_NO'];?>">
+      <div class="pull-left">
+        <img src="images/male-user.png" class="img-circle" alt="User Image">
+      </div>
+        <h4>
+        <?php echo $row['REQ_BY'];?>
+      </h4>
+      <p><?PHP echo $row['ISSUE_PROBLEM'];?></p>
+    </a>
+  </li>
+  <?php
+  }
+}
+function getImage()
+{
+
+                  $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                  $slect = mysqli_query($conn,"SELECT PROFILE FROM tblemployeeinfo WHERE UNAME = '$username'");
+                  $rowP = mysqli_fetch_array($slect);
+                  $profile                 = $rowP['PROFILE'];
+                  $extension = pathinfo($profile, PATHINFO_EXTENSION);
+            
+          
+            if(file_exists($profile))
+            {
+              switch($extension)
+              {
+                case 'jpg':
+                if($profile == '')
+                {
+                  echo 'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                case 'JPG':
+                if($profile == '')
+                {
+                  echo 'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                case 'jpeg':
+                if($profile == '')
+                {
+                  echo 'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                case 'png':
+                if($profile == '')
+                {
+                  echo'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                default:
+                echo'images/male-user.png';
+                break;
+              }
+              }else{
+               echo'images/male-user.png';
+             }
+            
+}
         ?>
 
     </style>
@@ -26,7 +145,7 @@ $username = $_SESSION['username'];
   }
   
   </style>
-<body class=" hold-transition fixed skin-red-light sidebar-mini" >
+<body class=" hold-transition  skin-red-light sidebar-mini" >
 <div class="wrapper">
   <header class="main-header">
     <!-- Logo -->
@@ -46,10 +165,27 @@ $username = $_SESSION['username'];
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell"></i>
+              <span class="label label-success"><?php echo notification();?></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have <?php echo notification();?> technical assistance request</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  
+                <?php echo showRequest();?>
+                </ul>
+              </li>
+              <li class="footer"><a href="processing.php?division=<?php echo $_GET['division'];?>&ticket_id=">See All Request</a></li>
+            </ul>
+          </li>
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-              <img src="dilg.png" class="user-image" alt="User Image">
+              <img src="<?php echo getImage();?>" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $_SESSION['complete_name'];?></span>
             </a>
             <ul class="dropdown-menu">
@@ -504,9 +640,3 @@ $username = $_SESSION['username'];
     <!-- /.sidebar -->
   </aside>
   
-<script>
-  setInterval(function(){
-$('#ta_request').load('_countTA.php');
-$('#on_going').load('_countOngoing.php');
-}, 1000); /* time in milliseconds (ie 2 se  conds)*/
-  </script>
