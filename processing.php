@@ -952,9 +952,19 @@ $(document).on('click','#sweet-16',function(e){
 
 
     $('#example1').DataTable({
-//         "search": {
-//     "search": "<?php echo $_GET['ticket_id'];?>"
-//   },
+        <?php 
+if($_GET['ticket_id'] == '')
+{
+
+}else{
+  
+    echo ' "search": {
+        "search": "'.$_GET['ticket_id'].'"
+      },';
+}
+
+?>
+       
       'paging'      : true,
       'lengthChange': true,
       'searching'   : true,
