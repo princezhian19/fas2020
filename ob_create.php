@@ -17,12 +17,18 @@ $query = mysqli_query($conn, "SELECT FIRST_M,MIDDLE_M,LAST_M, DIVISION_C FROM tb
 $row = mysqli_fetch_array($query);
 
 
-    $f = $row['FIRST_M'];
-    $mi = $row['MIDDLE_M'];
-    $m = substr($mi, 0, 1);
-    $l= $row['LAST_M'];
-   
-    $fullname = $f.' '.$m.' '.$l;
+    
+$f = $row['FIRST_M'];
+$mi = $row['MIDDLE_M'];
+$m = substr($mi, 0, 1);
+$l= $row['LAST_M'];
+
+$firstname = ucwords(strtolower($f));
+
+$lname = ucfirst($l);             // HELLO WORLD!
+$lastname = ucfirst(strtolower($l));
+
+$fullname = $firstname.' '.$m.' '.$lastname;
 
     //echo substr($m, 0, 2);  // abcd
     //exit();

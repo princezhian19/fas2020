@@ -18,7 +18,12 @@ $row = mysqli_fetch_array($query);
     $m = substr($mi, 0, 1);
     $l= $row['LAST_M'];
    
-  $fullname = $f.' '.$m.' '.$l;
+    $firstname = ucwords(strtolower($f));
+
+    $lname = ucfirst($l);             // HELLO WORLD!
+    $lastname = ucfirst(strtolower($l));
+
+  $fullname = $firstname.' '.$m.' '.$lastname;
 
 // echo '<div class=""><div class="panel-heading " style = "background-color:orange"> <p style = "color:white;font-size:16px;"> This module is under development </p> </div></div>  '; 
 // echo '<br>';
@@ -32,9 +37,9 @@ $DESIGNATION = $rowdiv['DESIGNATION'];
 
 
 //Get Position
-$select_position = mysqli_query($conn,"SELECT  POSITION_M FROM tblposition WHERE POSITION_C = '$DESIGNATION'");
+$select_position = mysqli_query($conn,"SELECT  POSITION_ACRONYM FROM tblposition WHERE POSITION_C = '$DESIGNATION'");
 $rowdiv1 = mysqli_fetch_array($select_position);
-$POSITION_M = $rowdiv1['POSITION_M'];
+$POSITION_M = $rowdiv1['POSITION_ACRONYM'];
 //echo $POSITION_M;
 
 
