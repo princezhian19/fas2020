@@ -194,14 +194,14 @@
   if ($updateSQL = $DBConn->prepare($query)) 
   {
     if($password==''){
-          $selectif = mysqli_query($conn,"SELECT * FROM tblempdetails WHERE EMP_N = '$employee_number'");
-          if (mysqli_num_rows($selectif)>0) {
-          $updatedetails = mysqli_query($conn,"UPDATE `tblempdetails` SET `EMP_N`='$employee_number',`office_contact`='$office_contact',`office_address`='$office_address' WHERE EMP_N = '$employee_number'");
-          }else{
-            $insertdetails = mysqli_query($conn,"INSERT INTO `tblempdetails`(`EMP_N`, `office_contact`, `office_address`) VALUES ('$employee_number','$office_contact','$office_address')");
-          }
+      $selectif = mysqli_query($conn,"SELECT * FROM tblempdetails WHERE EMP_N = '$employee_number'");
+      if (mysqli_num_rows($selectif)>0) {
+        $updatedetails = mysqli_query($conn,"UPDATE `tblempdetails` SET `EMP_N`='$get_id',`office_contact`='$office_contact',`office_address`='$office_address' WHERE EMP_N = '$employee_number'");
+      }else{
+        $insertdetails = mysqli_query($conn,"INSERT INTO `tblempdetails`(`EMP_N`, `office_contact`, `office_address`) VALUES ('$get_id','$office_contact','$office_address')");
+      }
       $updateSQL->bind_param("ssssssssssssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username, $designation,$suffix,$status);
-          $update_stat = mysqli_query($conn,"UPDATE tblemployeeinfo SET CIVIL_STATUS = '$status' WHERE EMP_N = $cid");
+      $update_stat = mysqli_query($conn,"UPDATE tblemployeeinfo SET CIVIL_STATUS = '$status' WHERE EMP_N = $cid");
     }else{
       $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
       $password   = crypt($password, '$2a$10$'.$code.'$');
@@ -226,6 +226,8 @@
 <script src="jquery-1.12.0.min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
 
@@ -368,35 +370,35 @@
           <br>
           <br>
           <div class="col-xs-4">
-              <label>Office Station<font style="color:red;">*</font></label>
-              <select required id="mySelect2" class="form-control" name="office">
-                <?php if ($office1 == 1): ?>
-                  <option value="1">Regional Office</option>
-                  <option value="2">Provincial/HUC Office</option>
-                  <option value="3">Cluster Office</option>
-                  <option value="4">City/Municipal Office</option>
-                <?php endif ?>
-                <?php if ($office1 == 2): ?>
-                  <option value="2">Provincial/HUC Office</option>
-                  <option value="1">Regional Office</option>
-                  <option value="3">Cluster Office</option>
-                  <option value="4">City/Municipal Office</option>
-                <?php endif ?>
-                <?php if ($office1 == 3): ?>
-                  <option value="3">Cluster Office</option>
-                  <option value="1">Regional Office</option>
-                  <option value="2">Provincial/HUC Office</option>
-                  <option value="4">City/Municipal Office</option>
-                <?php endif ?>
-                <?php if ($office1 == 4): ?>
-                  <option value="4">City/Municipal Office</option>
-                  <option value="1">Regional Office</option>
-                  <option value="2">Provincial/HUC Office</option>
-                  <option value="3">Cluster Office</option>
-                <?php endif ?>
+            <label>Office Station<font style="color:red;">*</font></label>
+            <select required id="mySelect2" class="form-control" name="office">
+              <?php if ($office1 == 1): ?>
+                <option value="1">Regional Office</option>
+                <option value="2">Provincial/HUC Office</option>
+                <option value="3">Cluster Office</option>
+                <option value="4">City/Municipal Office</option>
+              <?php endif ?>
+              <?php if ($office1 == 2): ?>
+                <option value="2">Provincial/HUC Office</option>
+                <option value="1">Regional Office</option>
+                <option value="3">Cluster Office</option>
+                <option value="4">City/Municipal Office</option>
+              <?php endif ?>
+              <?php if ($office1 == 3): ?>
+                <option value="3">Cluster Office</option>
+                <option value="1">Regional Office</option>
+                <option value="2">Provincial/HUC Office</option>
+                <option value="4">City/Municipal Office</option>
+              <?php endif ?>
+              <?php if ($office1 == 4): ?>
+                <option value="4">City/Municipal Office</option>
+                <option value="1">Regional Office</option>
+                <option value="2">Provincial/HUC Office</option>
+                <option value="3">Cluster Office</option>
+              <?php endif ?>
 
-              </select>
-            </div>
+            </select>
+          </div>
           <div class="col-xs-4">
             <label>Middle Name<font style="color:red;">*</font></label>
             <input required value="<?php echo $mname1;?>" type="text" name="mname" class="form-control" placeholder="Middle Name">
@@ -412,14 +414,26 @@
           <div class="col-xs-4">
             <label>Province</label>
             <input type="text" name="province" hidden>
-            <select   class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
-              <option value="<?php echo $province1;?>"><?php echo $province11;?></option>
+            <?php if ($office1 == 1 ): ?>
+             <select  disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
+              <option disabled selected></option>
               <option value="10">Batangas</option>
               <option value="21">Cavite</option>
               <option value="34">Laguna</option>
               <option value="56">Quezon</option>
               <option value="58">Rizal</option>
             </select>
+            <?php else: ?>
+              <select   class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
+                <option value="<?php echo $province1;?>"><?php echo $province11;?></option>
+                <option value="10">Batangas</option>
+                <option value="21">Cavite</option>
+                <option value="34">Laguna</option>
+                <option value="56">Quezon</option>
+                <option value="58">Rizal</option>
+              </select>
+            <?php endif ?>
+            
             <div class="clear"></div>
           </div>
           <div class="col-xs-4">
@@ -429,10 +443,10 @@
           <div class="col-xs-4">
             <label>Office Contact No</label>
             <?php $getThis = mysqli_query($conn,"SELECT * FROM tblempdetails WHERE EMP_N = '$EMP_NUMBER1'");
-                  $data = mysqli_fetch_array($getThis);
-                  $office_address = $data['office_address'];
-                  $office_contact = $data['office_contact'];?>
-            <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control" placeholder="ex. 0995-2647-434">
+            $data = mysqli_fetch_array($getThis);
+            $office_address = $data['office_address'];
+            $office_contact = $data['office_contact'];?>
+            <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-2647-434">
           </div>
           <br>
           <br>
@@ -441,42 +455,51 @@
           <div class="col-xs-4">
             <label>City/Municipality</label>
             <input type="text" name="municipality" hidden>
-            <select  id="sel_user" name="municipality" class="form-control select2">
+            <?php if ($office1 == 1): ?>
+             <select disabled id="sel_user" name="municipality" class="form-control select2">
+              <option disabled selected></option>
+              <option value="0"></option>
+            </select>
+
+            <?php else: ?>
+             <select  id="sel_user" name="municipality" class="form-control select2">
               <option value="<?php echo $city_id;?>"><?php echo $municipality11;?></option>
               <option value="0"></option>
             </select>
-          </div>
-          <div class="col-xs-4">
-            <label>Extension Name<font style="color:red;"></font></label>
-            <input  value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
-          </div>
-          <div class="col-xs-4">
-            <label>Office Email Address <font style="color:red;">*</font></label>
-            <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
-          </div>
-          <br>
-          <br>
-          <br>
-          <br>
-          <div class="col-xs-4">
-            <label>Office/Division<font style="color:red;">*</font></label>
-            <select required class="form-control select2" style="width: 100%;" name="division" id="" >
-              <option value="<?php echo $division1;?>" selected><?php echo $division11;?></option>
-              <?php echo tblpersonnel($connect)?>
+          <?php endif ?>
+          
+        </div>
+        <div class="col-xs-4">
+          <label>Extension Name<font style="color:red;"></font></label>
+          <input  value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
+        </div>
+        <div class="col-xs-4">
+          <label>Office Email Address <font style="color:red;">*</font></label>
+          <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="col-xs-4">
+          <label>Office/Division<font style="color:red;">*</font></label>
+          <select required class="form-control select2" style="width: 100%;" name="division" id="" >
+            <option value="<?php echo $division1;?>" selected><?php echo $division11;?></option>
+            <?php echo tblpersonnel($connect)?>
+          </select>
+        </div>
+        <div class="col-xs-4">
+          <label>Sex<font style="color:red;">*</font></label>
+          <select class="form-control select2" name="gender">
+            <?php if ($gender1 == 'Male'): ?>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+              <?php else: ?>
+                <option value="2">Female</option>
+                <option value="1">Male</option>
+              <?php endif ?>
             </select>
           </div>
-          <div class="col-xs-4">
-            <label>Sex<font style="color:red;">*</font></label>
-            <select class="form-control select2" name="gender">
-              <?php if ($gender1 == 'Male'): ?>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <?php else: ?>
-                  <option value="2">Female</option>
-                  <option value="1">Male</option>
-                <?php endif ?>
-              </select>
-            </div>
           <div class="col-xs-4">
             <label>Office Address</label>
             <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
@@ -485,7 +508,7 @@
           <br>
           <br>
           <br>
-           <div class="col-xs-4">
+          <div class="col-xs-4">
             <label>Position<font style="color:red;">*</font></label>
             <select required class="form-control select2" style="width: 100%;" name="position" id="" >
               <option value="<?php echo $position11;?>" selected><?php echo $position1;?></option>
@@ -495,94 +518,94 @@
           <div class="col-xs-4">
             <label>Civil Status<font style="color:red;">*</font></label>
             <?php if ($status == 'Single'): ?>
-               <select class="form-control select2" name="status">
+             <select class="form-control select2" name="status">
               <option value="Single">Single</option>
               <option value="Maried">Maried</option>
             </select>
             <?php else: ?>
               <select class="form-control select2" name="status">
-              <option value="Maried">Maried</option>
-              <option value="Single">Single</option>
-            </select>
+                <option value="Maried">Maried</option>
+                <option value="Single">Single</option>
+              </select>
             <?php endif ?>
-           
+            
           </div>
           <div class="col-xs-4">
             <label>Employement Status<font style="color:red;">*</font></label>
             <?php if ($ACTIVATED == 'Yes'): ?>
-               <select class="form-control select2" name="e_stats">
+             <select class="form-control select2" name="e_stats">
               <option value="Yes">Regular</option>
               <option value="No">COS</option>
             </select>
             <?php else: ?>
-               <select class="form-control select2" name="e_stats">
+             <select class="form-control select2" name="e_stats">
               <option value="No">COS</option>
               <option value="Yes">Regular</option>
             </select>
-            <?php endif ?>
-              
-          </div>
+          <?php endif ?>
+          
+        </div>
 
-          <br>
-          <br>
-          <br>
-          <br>
+        <br>
+        <br>
+        <br>
+        <br>
         
-           <div class="col-xs-4">
-            <label>Designation<font style="color:red;">*</font></label>
-            <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
-              <option value="<?php echo $designation11;?>" selected><?php echo $designation1;?></option>
-              <?php echo tbldesignation($connect)?>
-            </select>
-          </div>
-          <div class="col-xs-4">
-            <label>Birth Date<font style="color:red;">*</font></label>
-            <div class="input-group date">
-              <div class="input-group-addon">
-                <i class="fa fa-calendar"></i>
-              </div>
-              <input autocomplete="new-password" required type="text" value="<?php echo $bday1;?>" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="Birth Date">
+        <div class="col-xs-4">
+          <label>Designation<font style="color:red;">*</font></label>
+          <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
+            <option value="<?php echo $designation11;?>" selected><?php echo $designation1;?></option>
+            <?php echo tbldesignation($connect)?>
+          </select>
+        </div>
+        <div class="col-xs-4">
+          <label>Birth Date<font style="color:red;">*</font></label>
+          <div class="input-group date">
+            <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
             </div>
+            <input autocomplete="new-password" required type="text" value="<?php echo $bday1;?>" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="Birth Date">
           </div>
-
-
-
-
         </div>
+
+
+
+
       </div>
-      <!-- username and pw -->
     </div>
-    <div class="well" hidden>
-      <div class="box-header with-border">
-        <h3 class="box-title">Username and Password</h3>
-      </div>
-      <div class="box-body">
-        <div class="row">
-          <div class="col-xs-4">
-            <label>Username<font style="color:red;">*</font> </label>
-            <input autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
-
-          </div>
-          <div class="col-xs-4">
-            <label>Password<font style="color:red;">*</font> </label>
-            <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
-          </div>
-          <div class="col-xs-4" >
-            <label>Re-type Password<font style="color:red;">*</font></label>
-            <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
-          </div>
-
-        </div>
-      </div>
-    </div>  
-    <?php if ($_GET['view'] == 1): ?>
-
-      <?php else: ?>
+    <!-- username and pw -->
+  </div>
+  <div class="well" hidden>
+    <div class="box-header with-border">
+      <h3 class="box-title">Username and Password</h3>
+    </div>
+    <div class="box-body">
       <div class="row">
-      <div class="col-xs-2" align="center" >
-        <button class="btn btn-block btn-primary" name="submit" type="submit" id="submit"><font size="">Save</font></button>
+        <div class="col-xs-4">
+          <label>Username<font style="color:red;">*</font> </label>
+          <input autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
+
+        </div>
+        <div class="col-xs-4">
+          <label>Password<font style="color:red;">*</font> </label>
+          <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
+        </div>
+        <div class="col-xs-4" >
+          <label>Re-type Password<font style="color:red;">*</font></label>
+          <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
+        </div>
+
       </div>
     </div>
+  </div>  
+  <?php if ($_GET['view'] == 1): ?>
+
+    <?php else: ?>
+      <div class="row">
+        <div class="col-xs-2" align="center" >
+          <button class="btn btn-block btn-primary" name="submit" type="submit" id="submit"><font size="">Save</font></button>
+        </div>
+      </div>
     <?php endif ?>
     
   </div>
@@ -606,6 +629,18 @@
 
 </script>
 <script>
+
+  $(window).load(function()
+  {
+   var phones = [{ "mask": "####-###-####"}, { "mask": "####-###-####"}];
+   $('.cp').inputmask({ 
+    mask: phones, 
+    greedy: false, 
+    definitions: { '#': { validator: "[0-9]", cardinality: 1}} });
+ });
+
+
+
   function readURL(input) {
     var url = input.value;
     var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
