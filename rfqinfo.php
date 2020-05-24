@@ -49,30 +49,32 @@ if (isset($_POST['submit'])) {
 
 
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="row">
     <div class="col-md-8">
         <div class="box">
             <div class="box-header with-border" align="left">
-                    <h1>RFQ No. &nbsp <?php echo $rfq_no;?></h1>
+                <h1>RFQ No. &nbsp <?php echo $rfq_no;?></h1>
             </div>
             <div class="box-bodyno-padding">
                 <div class="box-body">
 
-                
-                   <!-- <a href="ViewRFQdetails.php?id=<?php echo $pr_id; ?>" class="btn btn-primary">Update</a> |  -->
-                   <a href="ViewRFQ.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
-                   <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success pull-right"><i class="fa fa-fw fa-download"></i>Export</a> 
-                   <br>
-                   <br>
-                   <h4>Item(s)</h4>
-                   <table id="" class="table table-striped table-bordered" style="background-color: white;">
+
+                 <!-- <a href="ViewRFQdetails.php?id=<?php echo $pr_id; ?>" class="btn btn-primary">Update</a> |  -->
+                 <a href="ViewRFQ.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
+                 <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success pull-right"><i class="fa fa-fw fa-download"></i>Export</a> 
+                 <br>
+                 <br>
+                 <h4>Item(s)</h4>
+                 <table id="" class="table table-striped table-bordered" style="background-color: white;">
                     <thead>
                         <tr style="background-color: white;color:blue;">
-                            <th width="500">Item</th>
-                            <th width="500">Quantity</th>
-                            <th width="500">Unit</th>
-                            <th width="500">Unit Cost</th>
-                            <th width="500">Total Cost</th>
+                            <th width="">Item</th>
+                            <th width="50">Quantity</th>
+                            <th width="50">Unit</th>
+                            <th width="100">Unit Cost</th>
+                            <th width="100">Total Cost</th>
                         </tr>
                     </thead>
                     <?php 
@@ -101,7 +103,7 @@ if (isset($_POST['submit'])) {
                         </tr>"; 
                     }
                     ?>
-                    </table>
+                </table>
 
                 
                 <br>
@@ -122,10 +124,20 @@ if (isset($_POST['submit'])) {
                     $view_query1 = mysqli_query($conn, "SELECT  sum(abc*qty) as aa from pr_items WHERE pr_no = '$pr_no' ");
                     $row = mysqli_fetch_array($view_query1);
                     $abc12 = $row["aa"];
-                    $tot = number_format($abc12,2);
+                    $tot = number_format($abc111,2);
 
 
                     ?>
+                    <tr>
+                        <td  width="500"></td>
+                        <td  width="500"></td>
+                        <td  width="500"></td>
+                        <td  width="500"></td>
+                        <td  width="500"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $tot?></b></td>
+
+
+
+                    </tr>
 
                 </table>
             </div>
@@ -188,17 +200,23 @@ if (isset($_POST['submit'])) {
         <div class="box-body table-responsive no-padding">
             <div class="box-body">
                 <form method="POST">
-                 <div class="form-group">
+                   <div class="form-group">
                     <label>Select Supplier</label>
                     <select class="form-control select2" style="width: 100%;" autocomplete="off" id="supplier_id" name="supplier_id" >
-                     <option value="" disabled selected>Select your Supplier</option>
-                     <?php echo supplier($connect); ?>
-                 </select> 
-             </div>
-             <button class="btn btn-primary" name="submit">Submit</button>
-         </form>
-     </div>
- </div>
+                       <option value="" disabled selected>Select your Supplier</option>
+                       <?php echo supplier($connect); ?>
+                   </select> 
+               </div>
+               <div hidden>
+                <input type="text" id="rfq_no" value="<?php echo $rfq_no?>">
+                <input type="text" id="pmo" value="<?php echo $pmo?>">
+                <input type="text" id="purpose" value="<?php echo $purpose?>">
+                <input type="text" id="pr_no" value="<?php echo $pr_no?>">
+            </div>
+            <a style="float:right;" href="javascript:void(0);" class="btn btn-primary link" data-id="<=$data['id']?>">Generate</a>
+        </form>
+    </div>
+</div>
 </div>
 </div>
 </div>
@@ -209,6 +227,25 @@ if (isset($_POST['submit'])) {
     </div>
 </div>
 </body>
+<script>
+  $(document).ready(function(){
+
+    $('.link').click(function(){
+
+      var f = $(this);
+      var id = f.data('id');
+
+      var supplier_id = $('#supplier_id').val();
+      var rfq_no = $('#rfq_no').val();
+      var pmo = $('#pmo').val();
+      var purpose = $('#purpose').val();
+      var pr_no = $('#pr_no').val();
+
+      window.location = 
+      'export_pos.php?data='+id+'&supplier_id='+supplier_id+'&rfq_no='+rfq_no+'&pmo='+pmo+'&purpose='+purpose+'&pr_no='+pr_no;
+  });
+}) ;
+</script>
 </html>
 
 

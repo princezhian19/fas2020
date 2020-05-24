@@ -12,7 +12,7 @@ $username = $_SESSION['username'];
 <html>
 <head>
   
-    <title>FAS | Purchase Request</title>
+    <title>FAS | Request for Quotation</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">

@@ -34,26 +34,35 @@ $styleHeader = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  =>
 $styleLabel = array('font'  => array('size'  => 11, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
 
-$id = $_GET['id'];
-$supName = $_GET['supName'];
-$supContact = $_GET['supContact'];
-$supAddress = $_GET['supAddress'];
 $rfq_no = $_GET['rfq_no'];
 $purpose = $_GET['purpose'];
-$totalABC = $_GET['totalABC'];
 $pmo = $_GET['pmo'];
+$pr_no = $_GET['pr_no'];
+$supplier_id = $_GET['supplier_id'];
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A13',$supName);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A14',$supContact);
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+$sql_items1 = mysqli_query($conn, "SELECT sum(pr.qty*pr.abc) as totalABC,pr.id,item.item_unit_title,app.procurement,pr.unit,pr.qty,pr.abc FROM pr_items pr LEFT JOIN app on app.id = pr.items left join item_unit item on item.id = pr.unit WHERE pr_no = '$pr_no' ");
+$rowA = mysqli_fetch_array($sql_items1);
+$totalABC = $rowA["totalABC"];
+
+$select_supp = mysqli_query($conn,"SELECT * FROM supplier WHERE id = $supplier_id");
+$rowSup = mysqli_fetch_array($select_supp);
+$supName = $rowSup['supplier_title'];
+$supContact = $rowSup['contact_person'];
+$supAddress = $rowSup['supplier_address'];
+
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A13',$supContact);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A14',$supName);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A15',$supAddress);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D23',$rfq_no);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D24',number_format($totalABC),2);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D25',$purpose);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D29',$pmo);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D22',$rfq_no);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D23',number_format($totalABC),2);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D24',$purpose);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D28',$pmo);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B43',$supName);
 
 
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-        header('location: export_pos.xlsx');
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
+header('location: export_pos.xlsx');
 
-        ?>
+?>

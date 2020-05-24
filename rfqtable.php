@@ -27,12 +27,13 @@
               </thead>
               <?php
               $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-              $view_query = mysqli_query($conn, "SELECT a.submitted_date,a.canceled,a.canceled_date,a.received_date,a.id,a.pr_no,a.pmo,a.purpose,a.pr_date,a.type,a.target_date,a.stat,b.rfq_no,b.rfq_date FROM pr as a left join rfq as b ON a.pr_no=b.pr_no Order by a.id DESC");
+              $view_query = mysqli_query($conn, "SELECT a.submitted_date,a.received_by,a.canceled,a.canceled_date,a.received_date,a.id,a.pr_no,a.pmo,a.purpose,a.pr_date,a.type,a.target_date,a.stat,b.rfq_no,b.rfq_date FROM pr as a left join rfq as b ON a.pr_no=b.pr_no Order by a.id DESC");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["id"];
                 $pr_no = $row["pr_no"];  
                 $pmo = $row["pmo"];
                 $canceled_date = $row["canceled_date"];
+                $received_by1 = $row["received_by"];
                 $canceled = $row["canceled"];
                 $submitted_date = $row["submitted_date"];
                 $received_date1 = $row["received_date"];
@@ -90,7 +91,7 @@
                             <td><font style="color:red;">Canceled </font><?php echo $canceled;?></td>
                             <?php else: ?>
                              <td>
-                              <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Received this item?');" href='received_pr.php?id=<?php echo $id; ?>  ' title="Submit"> 
+                              <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Received this item?');" href='received_pr.php?id=<?php echo $id; ?>&username=<?php echo $username;?>  ' title="Submit"> 
                               Receive </a>    
                             </td>
                           <?php endif ?>
@@ -99,7 +100,12 @@
                             <?php if ($canceled != NULL): ?>
                               <td><font style="color:red;">Canceled </font><?php echo $canceled;?></td>
                               <?php else: ?>
-                                <td><?php echo $received_date?></td>
+                                <td><?php echo $received_date?><br>
+                                <strong><i><?php echo $received_by1?></i></strong>
+
+                                  
+
+                                </td>
                               <?php endif ?>
                             <?php endif ?>
                           <?php endif ?>
