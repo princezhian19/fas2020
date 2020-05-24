@@ -540,13 +540,13 @@ $edit="edit";
                               <?php if ($status!='cancelled'):?>
                                 
                                    
-                                  <a  href='/TravelOrder/Report/pages/TO.php?id=<?php echo $id;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                                  <a  href='/TravelOrder/Report/pages/TO.php?id=<?php echo $id;?>&division=<?php echo $division?>&pos=<?php echo $POSITION_M;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                   <a href='TravelOrderUpdate.php?id=<?php echo $id;?>&pos=<?php echo $POSITION_M;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
                                 
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php else: ?>
                                
-                                <a disabled  href='/TravelOrder/Report/pages/TO.php?id=<?php echo $id;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
+                                <a disabled  href='/TravelOrder/Report/pages/TO.php?id=<?php echo $id;?>&division=<?php echo $division?>&pos=<?php echo $POSITION_M;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
                                 <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
                               <?php endif ?>
                         
@@ -556,13 +556,13 @@ $edit="edit";
                               <?php if ($status=='cancelled'):?>
                                
 
-                                <a disabled  href='/TravelOrder/Report/pages/TO.php?id=<?php echo $id;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
+                                <a disabled  href='/TravelOrder/Report/pages/TO.php?id=<?php echo $id;?>&division=<?php echo $division?>&pos=<?php echo $POSITION_M;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
                                 <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
 
                               <?php else: ?>
                             
                              
-                                  <a  href='/TravelOrder/Report/pages/TO.php?id=<?php echo $id;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                                  <a  href='/TravelOrder/Report/pages/TO.php?id=<?php echo $id;?>&division=<?php echo $division?>&pos=<?php echo $POSITION_M;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                                
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php endif ?>
