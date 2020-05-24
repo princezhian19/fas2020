@@ -357,7 +357,7 @@ $edit="edit";
                   <th width = '200'>TO DATE</th>
                   <th width = '200'>DATE OF TO</th>
 
-                  <th width = '300'>TIME</th>
+                  <th width = '300'>TIME OF TO</th>
 
                   <th width = ''>OFFICE</th>
                   <th width = '200'>NAME</th>
@@ -481,7 +481,7 @@ $edit="edit";
                 <?php if ($todate1 == '0000-00-00' || $fromdate=='0000-00-00'): ?>
                 <td></td>
                 <?php else: ?>
-               <td><?php echo  $fromdate.' to '.$todate?></td>
+               <td><?php echo  $fromdate?></td>
                 <?php endif ?>
 
                 <td><?php echo $timefrom.' to '.$timeto?></td>
@@ -546,7 +546,7 @@ $edit="edit";
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php else: ?>
                                
-                                <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
+                                <a disabled  href='/TravelOrder/Report/pages/TO.php?id=<?php echo $id;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
                                 <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
                               <?php endif ?>
                         
@@ -556,7 +556,7 @@ $edit="edit";
                               <?php if ($status=='cancelled'):?>
                                
 
-                                <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
+                                <a disabled  href='/TravelOrder/Report/pages/TO.php?id=<?php echo $id;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
                                 <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
 
                               <?php else: ?>

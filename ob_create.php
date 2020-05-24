@@ -420,7 +420,7 @@ mysqli_close($conn);
               Employee (s)
               <br>
               <br>
-              ________________________
+              ______________________________
           
             </td>
         
@@ -498,12 +498,12 @@ mysqli_close($conn);
               <b>Approved:</b>
               <br>
               <br>
-              ________________________
+              ______________________________
               <br>
-              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <b><?php echo $approved;?></b>
               <br>
-              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <b><?php echo $pos;?></b>
              
           

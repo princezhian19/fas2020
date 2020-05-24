@@ -345,7 +345,7 @@ $edit="edit";
 
                   <th width = '300'>DATE OF OB</th>
 
-                  <th width = '300'>TIME</th>
+                  <th width = '300'>TIME OF OB</th>
 
                   <th width = ''>OFFICE</th>
                   <th width = '200'>NAME</th>
@@ -514,7 +514,7 @@ $edit="edit";
                               
                                   <?php else: ?>
                              
-                              <a  disabled href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
+                              <a  disabled href='/OfficialBusiness/Report/pages/OB.php?id=<?php echo $id;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> |
                               <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
                               <?php endif ?>
                         
@@ -523,7 +523,7 @@ $edit="edit";
 
                               <?php if ($status=='cancelled'):?>
                                
-                                <a disabled  href='#' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
+                                <a disabled  href='/OfficialBusiness/Report/pages/OB.php?id=<?php echo $id;?>&division=<?php echo $division?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a> | 
                                 <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
                                 <?php else: ?>
                              

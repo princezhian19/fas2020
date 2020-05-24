@@ -381,7 +381,7 @@ else{
                 <td class="col-md-1"></td>
                     
                 <td colspan ="2" class="" style =" border:1px solid black;" >
-                    <br>
+                    
                     <label>Oras at Petsang Pag-alis:</label>
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
 
@@ -404,7 +404,7 @@ else{
                 <td class="col-md-1"></td>
                     
                 <td colspan="2" class="" style =" border:1px solid black;" >
-                    <br>
+                    
                     <label>Oras at Petsang Pagbabalik:</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
 

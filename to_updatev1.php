@@ -401,13 +401,13 @@ else{
                 <td class="col-md-1"></td>
                     
                 <td colspan ="2" class="" style =" border:1px solid black;" >
-                    <br>
+                    
                     <label>Oras at Petsang Pag-alis:</label>
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
 
                     <input value = "<?php echo $fromdate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="fromdate" id="datepicker1" value = "" placeholder="mm/dd/yyyy">
                     &nbsp;&nbsp;&nbsp;
-
+                    
                     <input value = "<?php echo $timefrom1;?>" required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="timefrom" id="timefrom"></td>
                 </td>
                
@@ -423,7 +423,7 @@ else{
                 <td class="col-md-1"></td>
                     
                 <td colspan="2" class="" style =" border:1px solid black;" >
-                    <br>
+                    
                     <label>Oras at Petsang Pagbabalik:</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
 
