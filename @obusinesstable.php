@@ -621,7 +621,6 @@ $edit="edit";
               <br>
               
               
-              <button type="submit" name="cancel" class="btn btn-warning pull-right ">Cancel</button>
 
 
               <input hidden type="text" name="id1" id="id1" value="" class=""/>
@@ -637,6 +636,7 @@ $edit="edit";
 
              
           
+              <button type="submit" name="cancel" class="btn btn-warning pull-right ">Cancel</button>
               
               </form>
             </div>
