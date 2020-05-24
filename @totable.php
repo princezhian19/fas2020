@@ -478,7 +478,7 @@ $edit="edit";
 
                
    
-                <?php if ($fromdate=='0000-00-00'): ?>
+                <?php if ($fromdate1=='0000-00-00'): ?>
                 <td></td>
                 <?php else: ?>
                <td><?php echo  $fromdate?></td>
