@@ -13,6 +13,8 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
 if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 $id = $_GET['id'];
 $division = $_GET['division'];
+//$name = $_GET['pos'];
+
 
 /* echo $id;
 echo '<br>';
@@ -54,22 +56,37 @@ $divchief = '';
 }
     
 
-/* $view_query = mysqli_query($conn, "SELECT * from ob where id = '$id'");
+$view_query = mysqli_query($conn, "SELECT * from travel_order where id = '$id'");
+
 
 
 while ($row = mysqli_fetch_assoc($view_query)) {
 
 $id=$row['id'];
 
-$obno = $row['obno'];
+$kita=$row['kita'];
 
 
-$date = date('M d, Y',strtotime($row['date']));
+
+
+$lastdate = date('F d, Y',strtotime($row['lastdate']));
+$tono = $row['tono'];
+
+
+$date = date('F d, Y',strtotime($row['date']));
+
 $office = $row['office'];
 $name = $row['name'];
 $purpose = $row['purpose'];
 $place = $row['place'];
-$obdate = date('M d, Y',strtotime($row['obdate']));
+
+
+
+$fromdate = date('F d, Y',strtotime($row['fromdate']));
+
+
+$todate = date('F d, Y',strtotime($row['todate']));
+
 
 
 $timefrom = date('g:i A',strtotime($row['timefrom']));
@@ -77,26 +94,32 @@ $timefrom = date('g:i A',strtotime($row['timefrom']));
 $timeto = date('g:i A',strtotime($row['timeto']));
 
 
-
 $uc = $row['uc'];
 
+$fromplace = $row['fromplace'];
+$contact = $row['contact'];
+$vehicle = $row['vehicle'];
+$pos = $row['pos'];
+
+}
 
 
 
 $PHPJasperXML = new PHPJasperXML(); 
 
+    $PHPJasperXML->arrayParameter=array(
+        "date"=>$date,"tono"=>$tono,"name"=>$name,"position"=>$pos,"kita"=>$kita,"place"=>$fromplace,"toplace"=>$place,
+        "contact"=>$contact,"fromdate"=>$fromdate,"timefrom"=>$timefrom,"timeto"=>$timeto,"purpose"=>$purpose,
+        "vehicle"=>$vehicle,"lastdate"=>$lastdate,"divchief"=>$divchief,"divpos"=>$divpos);
 
-$PHPJasperXML->arrayParameter=array(
-"obno"=>$obno,"date"=>$date,
-"name"=>$name,"purpose"=>$purpose,
-"place"=>$place,"obdate"=>$obdate,
-"timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos);
 
- */
+
+
+
 
     
-//}
-$PHPJasperXML = new PHPJasperXML(); 
+
+
 $PHPJasperXML->load_xml_file("report3.jrxml");
 $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
 $PHPJasperXML->outpage("I");

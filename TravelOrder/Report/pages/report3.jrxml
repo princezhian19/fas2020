@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="595" pageHeight="842" columnWidth="451" leftMargin="72" rightMargin="72" topMargin="72" bottomMargin="72" uuid="30dd5ff4-71e5-473c-8d86-008bd800a8c8">
+	<property name="ireport.zoom" value="1.464100000000001"/>
+	<property name="ireport.x" value="2"/>
+	<property name="ireport.y" value="508"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="tono" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="position" class="java.lang.String"/>
+	<parameter name="kita" class="java.lang.String"/>
+	<parameter name="place" class="java.lang.String"/>
+	<parameter name="toplace" class="java.lang.String"/>
+	<parameter name="contact" class="java.lang.String"/>
+	<parameter name="fromdate" class="java.lang.String"/>
+	<parameter name="timefrom" class="java.lang.String"/>
+	<parameter name="timeto" class="java.lang.String"/>
+	<parameter name="purpose" class="java.lang.String"/>
+	<parameter name="vehicle" class="java.lang.String"/>
+	<parameter name="lastdate" class="java.lang.String"/>
+	<parameter name="divchief" class="java.lang.String"/>
+	<parameter name="divpos" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select * from travel_order]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="office" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="purpose" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="place" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="todate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="timefrom" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="timeto" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="submitteddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="receiveddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="uc" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fromplace" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contact" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="vehicle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kita" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lastdate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fromdate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="submittedby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="receivedby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cancelledby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cancelleddate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reason" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="733" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="451" height="26" uuid="83c3f61d-5ab7-4a11-a456-7729f5c36820"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ATAS-LAKBAY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="26" width="451" height="34" uuid="4d259d14-dd71-4e40-b20e-1bf5623fff72"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Binago Ika-22
+Ng Marso 1984
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="340" width="224" height="51" uuid="69611f7b-2f05-4e6a-83f1-1edfa8b511ab"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="447" width="224" height="89" uuid="c43dbcab-b07a-40ba-bcff-0453d197d9c4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="225" y="340" width="225" height="51" uuid="d5201e25-b51e-4b01-af89-cd537a1b7364"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="574" width="224" height="38" uuid="48313b55-f021-432b-b82f-d827c1c1de50"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="391" width="224" height="56" uuid="ade65d4f-784d-4f31-ac64-961aa70f92c5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="225" y="136" width="165" height="39" uuid="c356f26e-f7ce-47cc-acf4-b5e98fb724ba"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="225" y="574" width="225" height="38" uuid="3b792ec1-091b-4b5f-8258-b25dc0cc5035"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="225" y="447" width="225" height="89" uuid="a915eb9e-17df-429c-b6d8-c160271cf910"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="225" y="175" width="225" height="38" uuid="91f6cc31-6070-4ff9-99de-57c7e179ebf2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="250" width="449" height="25" uuid="33717aa9-7b0a-42c8-90aa-b851745c6ee5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="302" width="449" height="38" uuid="92171ff0-cf01-45fb-9336-83fedcc0be0d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="175" width="224" height="38" uuid="4c45db89-a478-4c2e-b36b-5f3b28371303"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="536" width="449" height="38" uuid="ed5770d9-ef44-4e0b-a386-e9e5f6dbb9f9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="60" width="224" height="76" uuid="69b49552-9acc-4dcf-b27b-804880d1a500"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="225" y="391" width="225" height="56" uuid="5a95bf92-835f-4023-b96d-b7f874765eb2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="136" width="224" height="39" uuid="b8406139-cd6c-4c4b-a1d1-418ba868beff"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="225" y="60" width="225" height="76" uuid="a0747724-d17a-42cf-b24a-6dcb5963a118"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="275" width="449" height="27" uuid="f2caf74e-fe5c-4cab-b661-6886dc6008c8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="390" y="136" width="60" height="39" uuid="aedfd8af-d70e-4a67-9946-3cb9e3e5fe76"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="621" width="79" height="20" uuid="4ccaea52-6759-4e0a-a73c-8c87b48f1097"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<text><![CDATA[Patunay Blg. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="641" width="79" height="20" uuid="1127905a-a76b-44f2-ac24-cf8c01baae91"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<text><![CDATA[Tala Blg.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="661" width="79" height="20" uuid="d3c52793-ad91-49ec-8eb4-c7d14cc4cc74"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<text><![CDATA[Pahina Blg.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="681" width="79" height="20" uuid="1e3ca700-6c57-4870-8420-dc51ece6f16b"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<text><![CDATA[Aklat Talaan Blg.   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="701" width="79" height="20" uuid="f527dcdd-8e3e-450f-bd54-a5af9b80a764"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<text><![CDATA[Seryeng                       ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="621" width="164" height="20" uuid="71008865-1a6b-4fe2-b609-1557b69751bc"/>
+				<text><![CDATA[___________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="701" width="164" height="20" uuid="5ba15396-d9e1-4e77-a24d-8f6f3373c8ad"/>
+				<text><![CDATA[___________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="641" width="164" height="20" uuid="574989c5-7405-4eb1-966a-c1982c3ab452"/>
+				<text><![CDATA[___________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="661" width="164" height="20" uuid="354ccee3-2a65-452e-a3d0-cf8ffe7f32ee"/>
+				<text><![CDATA[___________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="681" width="164" height="20" uuid="f7f33f96-f5be-4236-a525-1b95b7780a18"/>
+				<text><![CDATA[___________________]]></text>
+			</staticText>
+			<image hAlign="Center">
+				<reportElement x="9" y="64" width="65" height="65" isRemoveLineWhenBlank="true" uuid="92dfb9ee-cb9c-419d-b1a2-481102d97b49"/>
+				<imageExpression><![CDATA["dilg.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="78" y="66" width="125" height="20" uuid="d5d03d28-2df4-47f5-acda-d80364277d1d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[DILG – Rehiyon 4A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="78" y="79" width="137" height="20" uuid="dac35f9c-357f-4f86-a61b-e301dd2bf36f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[3rd Floor Andenson Building I,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="94" width="137" height="20" uuid="d4401d1e-8f8e-4a6d-9a74-1981c96c1b79"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[National Highway, Brgy.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="107" width="151" height="20" uuid="84deb6b7-9f28-49d8-99a8-3a02dbbf48e5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Parian, City of Calamba, Laguna]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="66" width="52" height="20" uuid="22096ff3-f3b2-4a16-8323-7b60faf50888"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Petsa :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="94" width="52" height="20" uuid="0a34a349-76c5-4360-9887-8304b816926b"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[A.L. Blg.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="299" y="94" width="100" height="20" forecolor="#FF0000" uuid="3fdd1a0e-2a80-4fa2-8474-e1ddc83d2edb"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="299" y="66" width="100" height="20" uuid="ee2efd21-caf5-4258-b521-cf7662b516c2"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="139" width="65" height="20" uuid="14549b52-38bc-40f9-8985-698f2053b741"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Pangalan :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="9" y="158" width="213" height="20" uuid="20c83aad-41f2-4990-94c3-47c362bb3316"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="229" y="139" width="87" height="20" uuid="2760c3b3-24d2-4960-9a9d-4fb6899d5a09"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Katungkulan :]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="229" y="158" width="156" height="25" uuid="1219cdd7-9c73-43ae-99b4-2b9943ce5295"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{position}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="393" y="136" width="47" height="36" uuid="fbdbaa4a-a95b-459d-89b2-929f9423cac9"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Taunang
+Kita:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="392" y="161" width="74" height="20" uuid="fe17e19c-c1eb-4a0f-a448-981623d5ccae"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kita}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="178" width="87" height="20" uuid="77e59b0a-09ae-4d76-a671-b01e54a398fd"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Pinagmulan :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="9" y="193" width="213" height="20" uuid="d638c0e3-17d8-4367-9fd9-258e089197ab"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{place}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="229" y="178" width="87" height="20" uuid="2db2a661-9e9f-4403-9301-e57abe221e7e"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Patutunguhan :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="229" y="193" width="221" height="20" uuid="06072321-cd1d-4b49-8e12-f266b2607f7e"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{toplace}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="1" y="213" width="449" height="38" uuid="928c6767-7554-4771-bf74-c6edaf31cb2c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="9" y="217" width="104" height="20" uuid="d39b2de3-27d0-4e0d-8ebd-59f721794b46"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Makikipagkita kay :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="9" y="234" width="441" height="20" uuid="687a161d-09c4-4377-b080-6ee2e1ca3873"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{contact}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="255" width="149" height="20" uuid="c7ad2485-0528-4b29-a3d0-35b76d33669f"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Oras at Petsang Pag-alis:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="280" width="149" height="20" uuid="077ab8b4-18f1-4281-a2fe-38de4fa3358a"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Oras at Petsang Pagbabalik:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="158" y="255" width="106" height="20" uuid="eab5ed36-6aa7-4704-bd2d-039a8f731a48"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fromdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="280" width="106" height="20" uuid="4a6919c1-61c2-4cad-87be-175465861f1c"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fromdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="255" width="100" height="20" uuid="d277a1b9-c6c3-4b2d-b4fa-51a78b228302"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{timefrom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="280" width="100" height="20" uuid="563a53cd-569f-4be8-815a-9a8b2ffc54dc"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{timeto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="306" width="149" height="20" uuid="69dfe3df-579a-4058-b902-99e630418033"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Layunin ng Paglalakbay:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="9" y="321" width="441" height="20" uuid="89bcb7a2-9a13-4858-bc4e-aad48ff73978"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{purpose}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="343" width="149" height="20" uuid="c84002a8-15b1-455a-8d61-e2bfaa500ed6"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Uri ng Sasakyan :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="9" y="360" width="206" height="20" uuid="4ed8ad4c-f3cb-4037-b6f3-15fb51498c64"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vehicle}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="229" y="343" width="149" height="20" uuid="35ae56b8-4920-4480-bccd-20807771b579"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Paunang-bayad Nilikida :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="274" y="368" width="164" height="20" uuid="e0ffff95-b948-4b5b-9e62-e0352a99f24f"/>
+				<text><![CDATA[_______________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="378" width="102" height="20" uuid="c99787d9-ce23-4d5d-889d-7959c30f451a"/>
+				<text><![CDATA[Punong Tagatuos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="394" width="149" height="20" uuid="e35c680e-04d9-4025-ba64-7ceca64607b6"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Petsang Huling Paglalakbay :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="9" y="411" width="202" height="20" uuid="b271d279-23dd-42b3-b08f-35c7fc148757"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lastdate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="274" y="425" width="164" height="20" uuid="bcfded28-d9c0-4a74-bb55-f69bfb4090c4"/>
+				<text><![CDATA[_______________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="435" width="102" height="20" uuid="8c2eef1a-cd4d-43da-bdaf-d5c583020313"/>
+				<text><![CDATA[Lagda ng Naglakbay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="395" width="209" height="20" uuid="a242f10c-ad9d-43ac-8e5e-2972721f95a4"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Nagbigay-ulat sa Huling Paglalakbay :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="452" width="149" height="20" uuid="59f33c72-a667-4e4d-aab5-92034b3eb7fd"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Mungkahing Pagtibayin :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="-1" y="497" width="226" height="20" uuid="3ddcf154-e7cc-43fd-a0fc-5ecb5340c716"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{divchief}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="511" width="224" height="20" uuid="af739b37-59f8-445b-b407-789ac7a9bee8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{divpos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="229" y="452" width="149" height="20" uuid="71dc9b5f-40ab-45a7-9ec5-ea7b6cabc3d6"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[P I N A G T I B A Y :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="497" width="225" height="20" uuid="8b61ebc1-2ebe-4afc-8aee-c829c73af2ec"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOEL R. BARTOLABAC, CESO V]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="511" width="225" height="20" uuid="6f75ac93-4ae5-425d-b217-20f6a3766b52"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[OIC-Regional Director]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="536" width="449" height="14" uuid="6c0d3ff0-5863-4602-b401-20493fff7379"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="11" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[PATUNAY NG PAKIKIPAGKITA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="550" width="441" height="14" uuid="06fe4037-f344-4c76-8608-1282d8d712ef"/>
+				<textElement>
+					<font fontName="Cambria" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Ito ay pagpapatunay na ang tauhang nasasaad ay nagsadya sa akin tungkol sa kadahilanang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="562" width="441" height="14" uuid="eff8d024-1fb0-4368-90b5-b418bf634d63"/>
+				<textElement>
+					<font fontName="Cambria" size="11" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[nabanggit at mga araw na inilahad.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="579" width="41" height="20" uuid="9744d6e5-7120-4f49-be5e-1789a0b4085b"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Mula :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="579" width="61" height="20" uuid="3a0a9d68-949a-47ab-ac1f-51a82c2385c7"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Hanggang :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="579" width="41" height="20" uuid="b5fc9745-1594-431f-997b-ab0c3303bc02"/>
+				<textElement>
+					<font fontName="Cambria" size="11"/>
+				</textElement>
+				<text><![CDATA[Lugar :]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

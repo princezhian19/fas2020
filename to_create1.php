@@ -18,7 +18,12 @@ $row = mysqli_fetch_array($query);
     $m = substr($mi, 0, 1);
     $l= $row['LAST_M'];
    
-  $fullname = $f.' '.$m.' '.$l;
+    $firstname = ucwords(strtolower($f));
+
+    $lname = ucfirst($l);             // HELLO WORLD!
+    $lastname = ucfirst(strtolower($l));
+
+  $fullname = $firstname.' '.$m.' '.$lastname;
 
 // echo '<div class=""><div class="panel-heading " style = "background-color:orange"> <p style = "color:white;font-size:16px;"> This module is under development </p> </div></div>  '; 
 // echo '<br>';
@@ -32,9 +37,9 @@ $DESIGNATION = $rowdiv['DESIGNATION'];
 
 
 //Get Position
-$select_position = mysqli_query($conn,"SELECT  POSITION_M FROM tblposition WHERE POSITION_C = '$DESIGNATION'");
+$select_position = mysqli_query($conn,"SELECT  POSITION_ACRONYM FROM tblposition WHERE POSITION_C = '$DESIGNATION'");
 $rowdiv1 = mysqli_fetch_array($select_position);
-$POSITION_M = $rowdiv1['POSITION_M'];
+$POSITION_M = $rowdiv1['POSITION_ACRONYM'];
 //echo $POSITION_M;
 
 
@@ -96,6 +101,8 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 $username1 = $_SESSION['username'];
  
 $checked = $_POST['check'];
+
+$pos = $_POST['pos'];
 //echo $checked;
 
 $tono = $_POST['tono'];
@@ -151,8 +158,8 @@ if ($conn->connect_error) {
 }
 
 
-  $query = mysqli_query($conn,"INSERT INTO travel_order (tono,date,office,name,purpose,place,todate,timefrom,timeto,fromplace,contact,vehicle,kita,lastdate,fromdate) 
-  VALUES ('$tocount','$date','$office','$name','$purpose','$place','$todate','$timefrom','$timeto','$fromplace','$contact','$vehicle','$kita','$lastdate','$fromdate')");
+  $query = mysqli_query($conn,"INSERT INTO travel_order (tono,date,office,name,purpose,place,todate,timefrom,timeto,fromplace,contact,vehicle,kita,lastdate,fromdate,pos) 
+  VALUES ('$tocount','$date','$office','$name','$purpose','$place','$todate','$timefrom','$timeto','$fromplace','$contact','$vehicle','$kita','$lastdate','$fromdate','$pos')");
 
 
 
@@ -317,7 +324,7 @@ else{
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Taunang Kita:</label>
                 
                <br>
-                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:320px;" name="" id="" value = "<?php echo $POSITION_M;?>"  >
+                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:320px;" name="pos" id="pos" value = "<?php echo $POSITION_M;?>"  >
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input   type="number" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:120px;" name="kita" id="kita" value = "">
                 <br>
@@ -381,7 +388,7 @@ else{
                 <td class="col-md-1"></td>
                     
                 <td colspan ="2" class="" style =" border:1px solid black;" >
-                    <br>
+                    
                     <label>Oras at Petsang Pag-alis:</label>
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
 
@@ -404,7 +411,7 @@ else{
                 <td class="col-md-1"></td>
                     
                 <td colspan="2" class="" style =" border:1px solid black;" >
-                    <br>
+                    
                     <label>Oras at Petsang Pagbabalik:</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;
 

@@ -57,6 +57,7 @@ $view_query = mysqli_query($conn, "SELECT * from ob where id = '$id'");
       $name = $row['name'];
       $purpose = $row['purpose'];
       $place = $row['place'];
+      $place1 = $row['place1'];
       $obdate1 = $row['obdate'];
       $obdate = date('m/d/Y', strtotime($obdate1));
       
@@ -163,7 +164,7 @@ if($checked==""){
 else{
 
   if($checked=="yes"){
-    $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$places',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='yes' where id = '$id'");
+    $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$place',place1='$place1',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='yes' where id = '$id'");
  
     
           if($query){
@@ -181,7 +182,7 @@ else{
           }
   else if($checked=="no"){
 
-    $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$places',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='no' where id = '$id'");
+    $query = mysqli_query($conn,"UPDATE  ob set obno='$obno',date='$date',office='$office',name='$name',purpose='$purposes',place='$place',place1='$place1',obdate='$obdate',timefrom='$timefrom1',timeto='$timeto1',uc='no' where id = '$id'");
 
         
           if($query){
@@ -400,7 +401,7 @@ mysqli_close($conn);
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       &nbsp;&nbsp;
-                      <input  style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="">
+                      <input value="<?php echo $place1?>"   style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="">
 
                       <br>
                       Date:
@@ -477,7 +478,7 @@ mysqli_close($conn);
                       Employee (s)
                       <br>
                       <br>
-                      ________________________
+                      ______________________________
 
                       </td>
 
@@ -555,7 +556,7 @@ mysqli_close($conn);
                       <b>Approved:</b>
                       <br>
                       <br>
-                      ________________________
+                      ______________________________
                       <br>
                       &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                       <b><?php echo $approved;?></b>

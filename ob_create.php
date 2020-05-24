@@ -17,12 +17,18 @@ $query = mysqli_query($conn, "SELECT FIRST_M,MIDDLE_M,LAST_M, DIVISION_C FROM tb
 $row = mysqli_fetch_array($query);
 
 
-    $f = $row['FIRST_M'];
-    $mi = $row['MIDDLE_M'];
-    $m = substr($mi, 0, 1);
-    $l= $row['LAST_M'];
-   
-    $fullname = $f.' '.$m.' '.$l;
+    
+$f = $row['FIRST_M'];
+$mi = $row['MIDDLE_M'];
+$m = substr($mi, 0, 1);
+$l= $row['LAST_M'];
+
+$firstname = ucwords(strtolower($f));
+
+$lname = ucfirst($l);             // HELLO WORLD!
+$lastname = ucfirst(strtolower($l));
+
+$fullname = $firstname.' '.$m.' '.$lastname;
 
     //echo substr($m, 0, 2);  // abcd
     //exit();
@@ -146,13 +152,13 @@ if($checked==""){
 else{
 
   if($checked=="yes"){
-    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto,uc) 
-    VALUES ('$obcount','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','yes')");
+    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,place1,obdate,timefrom,timeto,uc) 
+    VALUES ('$obcount','$date','$office','$name','$purposes','$place','$place1','$obdate','$timefrom','$timeto','yes')");
   }
   else if($checked=="no"){
 
-    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto,uc) 
-    VALUES ('$obcount','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','no')");
+    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,place1,obdate,timefrom,timeto,uc) 
+    VALUES ('$obcount','$date','$office','$name','$purposes','$place','$place1','$obdate','$timefrom','$timeto','no')");
   }
  
 
@@ -350,7 +356,7 @@ mysqli_close($conn);
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input  value="<?php echo isset($_POST['place1']) ? htmlspecialchars($_POST['place1'], ENT_QUOTES) : ''; ?>"  style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="">
+              <input  value="<?php echo isset($_POST['place1']) ? htmlspecialchars($_POST['place1'], ENT_QUOTES) : ''; ?>" required  style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="Address">
              
               <br>
               Date:
@@ -420,7 +426,7 @@ mysqli_close($conn);
               Employee (s)
               <br>
               <br>
-              ________________________
+              ______________________________
           
             </td>
         
@@ -498,12 +504,12 @@ mysqli_close($conn);
               <b>Approved:</b>
               <br>
               <br>
-              ________________________
+              ______________________________
               <br>
-              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <b><?php echo $approved;?></b>
               <br>
-              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <b><?php echo $pos;?></b>
              
           

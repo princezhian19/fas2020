@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
 	<property name="ireport.zoom" value="1.331000000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="421"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="obno" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$F{obno}]]></defaultValueExpression>
 	</parameter>
@@ -466,7 +466,7 @@ Region IV-A (CALABARZON)
 				<text><![CDATA[Signature of Requesting Employee (s)]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="130" y="432" width="179" height="20" uuid="aa4c5f10-a955-4dea-8127-cfb1a45c90d8"/>
+				<reportElement x="130" y="432" width="184" height="20" uuid="aa4c5f10-a955-4dea-8127-cfb1a45c90d8"/>
 				<textElement>
 					<font fontName="Sylfaen" isBold="true" isUnderline="false"/>
 				</textElement>
@@ -543,7 +543,7 @@ Region IV-A (CALABARZON)
 				<textFieldExpression><![CDATA[$P{timeto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="131" y="27" width="179" height="22" uuid="622bce3e-0fa8-46b8-b40c-41308a981586"/>
+				<reportElement x="131" y="27" width="182" height="22" uuid="622bce3e-0fa8-46b8-b40c-41308a981586"/>
 				<textElement>
 					<font fontName="Sylfaen" isBold="true" isUnderline="false"/>
 				</textElement>
@@ -608,14 +608,14 @@ Region IV-A (CALABARZON)
 				<reportElement x="130" y="485" width="186" height="1" uuid="d2550df4-4d3f-4856-a476-1dbe58ca7a1e"/>
 			</line>
 			<textField>
-				<reportElement x="130" y="47" width="100" height="20" uuid="501343d5-88e8-4119-b81e-2066c88f27e4"/>
+				<reportElement x="130" y="47" width="183" height="20" uuid="501343d5-88e8-4119-b81e-2066c88f27e4"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{place1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="129" y="452" width="100" height="20" uuid="c06fe602-9768-4320-bf74-57179fef90d7"/>
+				<reportElement x="129" y="452" width="187" height="20" uuid="c06fe602-9768-4320-bf74-57179fef90d7"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>

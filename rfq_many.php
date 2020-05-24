@@ -322,7 +322,7 @@ function checkAvailability() {
                <div class="form-group">
                 <label>RFQ No.</label>
                 <!-- <input class="form-control" type="text" name="rfq_no"> -->
-                 <input class="form-control" name="rfq_no" type="text" id="rfq_no" value="<?php echo $getDate.'-'.'00'.$idGet?>">
+                 <input class="form-control" name="rfq_no" type="text" id="rfq_no" value="<?php echo $getDate.'-'.$idGet?>">
                  <!-- <input class="form-control" name="rfq_no" type="text" id="rfq_no" class="demoInputBox" onBlur="checkAvailability()" value="<?php echo $getDate.'-'.'00'.$idGet?>"><span id="user-availability-status"></span> -->
               </div>
 
@@ -404,7 +404,7 @@ function checkAvailability() {
         <?php } ?>
       </div>
        <div style="font-size: 13px;" class="well" >
-        <label>Note(s)</label>
+        <input type="checkbox" id="select-all" onClick="toggle(this)" ><label>Note(s)</label>
         <br>
         <?php
 
@@ -415,7 +415,7 @@ function checkAvailability() {
           $note_id = $row["id"];
           $note_desc = $row["note"];
           ?>
-          <input type="checkbox" checked name="note_id2[]" value="<?php echo $note_id; ?>">&nbsp<b>**<?php echo $note_desc;?></b></input>
+          <input type="checkbox"  name="note_id2[]" value="<?php echo $note_id; ?>">&nbsp<b>**<?php echo $note_desc;?></b></input>
           <br>
 
         <?php } ?>
@@ -426,6 +426,20 @@ function checkAvailability() {
   </div>  
 </div>  
 </body>
+<script>
+$('#select-all').click(function(event) {   
+    if(this.checked) {
+        // Iterate each checkbox
+        $(':checkbox').each(function() {
+            this.checked = true;                        
+        });
+    } else {
+        $(':checkbox').each(function() {
+            this.checked = false;                       
+        });
+    }
+});
+</script>
 
 <script>
   $(document).ready(function(){

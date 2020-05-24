@@ -5,8 +5,9 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 
 
 $id = $_GET['id'];
+$username = $_GET['username'];
 
-$query = mysqli_query($conn,"UPDATE pr SET submitted_date = now() WHERE id = $id ");
+$query = mysqli_query($conn,"UPDATE pr SET submitted_date = DATE_ADD(NOW(), INTERVAL 1 DAY),submitted_by = '$username' WHERE id = $id ");
 
 if ($query) {
 echo ("<SCRIPT LANGUAGE='JavaScript'>
