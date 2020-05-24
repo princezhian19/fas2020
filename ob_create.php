@@ -146,13 +146,13 @@ if($checked==""){
 else{
 
   if($checked=="yes"){
-    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto,uc) 
-    VALUES ('$obcount','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','yes')");
+    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,place1,obdate,timefrom,timeto,uc) 
+    VALUES ('$obcount','$date','$office','$name','$purposes','$place','$place1','$obdate','$timefrom','$timeto','yes')");
   }
   else if($checked=="no"){
 
-    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,obdate,timefrom,timeto,uc) 
-    VALUES ('$obcount','$date','$office','$name','$purposes','$places','$obdate','$timefrom','$timeto','no')");
+    $query = mysqli_query($conn,"INSERT INTO ob (obno,date,office,name,purpose,place,place1,obdate,timefrom,timeto,uc) 
+    VALUES ('$obcount','$date','$office','$name','$purposes','$place','$place1','$obdate','$timefrom','$timeto','no')");
   }
  
 
@@ -350,7 +350,7 @@ mysqli_close($conn);
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               &nbsp;&nbsp;
-              <input  value="<?php echo isset($_POST['place1']) ? htmlspecialchars($_POST['place1'], ENT_QUOTES) : ''; ?>"  style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="">
+              <input  value="<?php echo isset($_POST['place1']) ? htmlspecialchars($_POST['place1'], ENT_QUOTES) : ''; ?>" required  style="font-weight:bold; border:none;border-bottom:1px solid black; height: 25px;width: 200px;" id="place1" name="place1" autocomplete ="off" type="text" class="" placeholder="Address">
              
               <br>
               Date:
@@ -500,10 +500,10 @@ mysqli_close($conn);
               <br>
               ______________________________
               <br>
-              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <b><?php echo $approved;?></b>
               <br>
-              &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <b><?php echo $pos;?></b>
              
           

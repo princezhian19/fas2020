@@ -388,6 +388,7 @@ $edit="edit";
                   $name = $row['name'];
                   $purpose = $row['purpose'];
                   $place = $row['place'];
+                  $place1 = $row['place1'];
                   $obdate1 = $row['obdate'];
                   $obdate = date('F d, Y', strtotime($obdate1));
                   
@@ -451,7 +452,7 @@ $edit="edit";
                 <td><?php echo  $office?></td>
                 <td><?php echo  $name?></td>
                 <td><?php echo  $purpose?></td>
-                <td><?php echo  $place?></td>
+                <td><?php echo  $place.' '.$place1?></td>
 
                 
                
