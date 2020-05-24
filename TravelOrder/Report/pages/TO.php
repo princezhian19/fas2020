@@ -13,7 +13,8 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
 if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 $id = $_GET['id'];
 $division = $_GET['division'];
-$pos = $_GET['pos'];
+//$name = $_GET['pos'];
+
 
 /* echo $id;
 echo '<br>';
@@ -98,7 +99,7 @@ $uc = $row['uc'];
 $fromplace = $row['fromplace'];
 $contact = $row['contact'];
 $vehicle = $row['vehicle'];
-
+$pos = $row['pos'];
 
 }
 

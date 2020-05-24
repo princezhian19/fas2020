@@ -104,6 +104,7 @@ $view_query = mysqli_query($conn, "SELECT * from travel_order where id = '$id'")
       $fromplace = $row['fromplace'];
       $contact = $row['contact'];
       $vehicle = $row['vehicle'];
+      $pos = $row['pos'];
 
       
     }
@@ -143,7 +144,7 @@ if(isset($_POST['submit'])){
 
       $timeto1 = $_POST['timeto'];
       $timeto=  date("h:i A",$timeto1);
-
+      
 
       $uc = $row['uc'];
 
@@ -171,7 +172,7 @@ if(isset($_POST['submit'])){
       
       $fromdate1 = $_POST['fromdate'];
       $fromdate = date('Y-m-d', strtotime($fromdate1));
-
+      $pos = $row['pos'];
 
 
 $servername = "localhost";
@@ -338,7 +339,7 @@ else{
                 <label>Katungkulan:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Taunang Kita:</label>
                 
                <br>
-                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:320px;" name="" id="" value = "<?php echo $POSITION_M;?>" >
+                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:320px;" name="pos" id="pos" value = "<?php echo $pos;?>" >
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input   type="number" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:120px;" name="kita" id="kita" value = "<?php echo $kita;?>">
                 <br>
@@ -407,7 +408,7 @@ else{
 
                     <input value = "<?php echo $fromdate;?>" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="fromdate" id="datepicker1" value = "" placeholder="mm/dd/yyyy">
                     &nbsp;&nbsp;&nbsp;
-                    
+
                     <input value = "<?php echo $timefrom1;?>" required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:410px;" name="timefrom" id="timefrom"></td>
                 </td>
                
