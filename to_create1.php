@@ -29,17 +29,17 @@ $row = mysqli_fetch_array($query);
 // echo '<br>';
 
 //Get Office
-$select_user = mysqli_query($conn,"SELECT DIVISION_C, DESIGNATION FROM tblemployee WHERE UNAME = '$username'");
+$select_user = mysqli_query($conn,"SELECT POSITION_C, DESIGNATION FROM tblemployee WHERE UNAME = '$username'");
 $rowdiv = mysqli_fetch_array($select_user);
-$DIVISION_C = $rowdiv['DIVISION_C'];
+$POSITION_C = $rowdiv['POSITION_C'];
 $DESIGNATION = $rowdiv['DESIGNATION'];
 //echo $DESIGNATION;
 
 
 //Get Position
-$select_position = mysqli_query($conn,"SELECT  POSITION_ACRONYM FROM tblposition WHERE POSITION_C = '$DESIGNATION'");
+$select_position = mysqli_query($conn,"SELECT  POSITION_M FROM tbldilgposition WHERE POSITION_ID = '$POSITION_C'");
 $rowdiv1 = mysqli_fetch_array($select_position);
-$POSITION_M = $rowdiv1['POSITION_ACRONYM'];
+$POSITION_M = $rowdiv1['POSITION_M'];
 //echo $POSITION_M;
 
 
