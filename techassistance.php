@@ -12,7 +12,7 @@ $division = $_GET['division'];
 <!DOCTYPE html>
 <html>
 
-<title>FAS | Monitoring Request</title>
+<title>FAS | Processing Request</title>
 <head>
 
   <link rel="stylesheet" href="_includes/sweetalert.css">
@@ -66,7 +66,7 @@ $division = $_GET['division'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Monitoring of ICT TA Request</li>
+        <li class="active">Processing of ICT TA Request</li>
       </ol>
       <br>
       <br>
