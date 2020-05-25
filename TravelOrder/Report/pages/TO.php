@@ -67,9 +67,14 @@ $id=$row['id'];
 $kita=$row['kita'];
 
 
-
-
+$lastdate1 = $_POST['lastdate'];
+if($lastdate1=='0000-00-00'){
+  $lastdate = '';
+}else{
 $lastdate = date('F d, Y',strtotime($row['lastdate']));
+}
+
+//$lastdate = date('F d, Y',strtotime($row['lastdate']));
 $tono = $row['tono'];
 
 
