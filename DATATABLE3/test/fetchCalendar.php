@@ -88,10 +88,10 @@ while($row=mysqli_fetch_array($query)){
         $subdata[]=date('F d, Y',strtotime($row['end']));   
     } 
     $subdata[]=$row['venue'];           
-    $subdata[]=$row['enp'];           
+    $subdata[]=' <center>'.$row['enp'].' </center>';           
     $subdata[]=$row['remarks'];           
     $subdata[]=$row['UNAME'];         
-    $subdata[]=$row['posteddate'];         
+    $subdata[]=date("F d, Y",strtotime($row['posteddate']));         
     $office_n = $row['DIVISION_C'];
     if($_SESSION['planningofficer'] == 1)
     {
