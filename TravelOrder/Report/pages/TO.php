@@ -67,7 +67,7 @@ $id=$row['id'];
 $kita=$row['kita'];
 
 
-$lastdate1 = $_POST['lastdate'];
+$lastdate1 = $row['lastdate'];
 if($lastdate1=='0000-00-00'){
   $lastdate = '';
 }else{
