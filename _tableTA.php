@@ -80,7 +80,7 @@ th{
           <div class="box-body"> 
           
             <div>
-                <h1>Monitoring of ICT Technical Assistance Request</h1><br>
+                <h1>Processing of ICT Technical Assistance Request</h1><br>
                 <?php 
                 ?>
                 
