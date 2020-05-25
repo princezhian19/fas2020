@@ -36,18 +36,41 @@ $styleLabel = array('font'  => array('size'  => 11, 'name'  => 'Calibri'),'align
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
 
-$sql = mysqli_query($conn, "SELECT rfq.rfq_date,rfq.rfq_no,rfq.purpose,pr.pmo,rfq.pr_no,rfq.pr_received_date FROM rfq LEFT JOIN pr on pr.pr_no = rfq.pr_no WHERE rfq.id = '$id' ");
+$sql = mysqli_query($conn, "SELECT rfq.rfq_mode_id,rfq.rfq_date,rfq.rfq_no,rfq.purpose,pr.pmo,rfq.pr_no,rfq.pr_received_date FROM rfq LEFT JOIN pr on pr.pr_no = rfq.pr_no WHERE rfq.id = '$id' ");
 $row = mysqli_fetch_array($sql);
 $pr_no = $row['pr_no'];
 $pmo = $row['pmo'];
 $rfq_no = $row['rfq_no'];
+$rfq_mode_id = $row['rfq_mode_id'];
 $rfq_date = $row['rfq_date'];
 $purpose = $row['purpose'];
 $pr_date = $row['pr_received_date'];
 
+if ($rfq_mode_id == 1) {
+  $rfq_mode_id = "Small Value Procurement";
+}
+if ($rfq_mode_id == 2) {
+  $rfq_mode_id = "Shopping";
+}
+if ($rfq_mode_id == 4) {
+  $rfq_mode_id = "NP Lease of Venue";
+}
+if ($rfq_mode_id == 5) {
+  $rfq_mode_id = "Direct Contracting";
+}
+if ($rfq_mode_id == 6) {
+  $rfq_mode_id = "Agency to Agency";
+}
+if ($rfq_mode_id == 7) {
+  $rfq_mode_id = "Public Bidding";
+}
+if ($rfq_mode_id == 8) {
+  $rfq_mode_id = "Not Applicable N/A";
+}
 
+$objPHPExcel->setActiveSheetIndex()->setCellValue('F13',$rfq_mode_id);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('L12',$rfq_no);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('L13',date('F d,   Y',strtotime($rfq_date)));
+$objPHPExcel->setActiveSheetIndex()->setCellValue('L13',date('F d, Y',strtotime($rfq_date)));
 $objPHPExcel->setActiveSheetIndex()->setCellValue('E15',$pmo);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('E16',$purpose);
 
@@ -171,7 +194,7 @@ $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleContent
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$rowssDD)->applyFromArray($styleRight);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$rowssDD)->applyFromArray($styleLeft);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getFont()->setBold(true);
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getFont()->setItalic(true);
+// $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getFont()->setItalic(true);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 
 

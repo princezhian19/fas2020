@@ -88,8 +88,10 @@ while($row=mysqli_fetch_array($query)){
         $subdata[]=date('F d, Y',strtotime($row['end']));   
     } 
     $subdata[]=$row['venue'];           
+    $subdata[]=' <center>'.$row['enp'].' </center>';           
     $subdata[]=$row['remarks'];           
     $subdata[]=$row['UNAME'];         
+    $subdata[]=date("F d, Y",strtotime($row['posteddate']));         
     $office_n = $row['DIVISION_C'];
     if($_SESSION['planningofficer'] == 1)
     {
@@ -97,9 +99,6 @@ while($row=mysqli_fetch_array($query)){
         {
             $subdata[]='
                 <center>
-                    <a data-toggle="modal"  data-target="#orderModal" data-id='.$row['id'].'  id= "modalbtn" class = "btn btn-success btn-xs">
-                        <i class="fa fa-eye"></i> View
-                    </a>&nbsp;
                     <a data-toggle="modal"  data-target="#editModal" data-id='.$row['id'].' id= "editbtn"   class = "btn btn-primary btn-xs">
                         <i class="fa">&#xf044;</i> Edit
                     </a>&nbsp;
@@ -112,9 +111,7 @@ while($row=mysqli_fetch_array($query)){
         {
             $subdata[]='
             <center>
-                <a data-toggle="modal"  data-target="#orderModal" data-id='.$row['id'].'  id= "modalbtn" class = "btn btn-success btn-xs">
-                    <i class="fa fa-eye"></i> View
-                </a>&nbsp;
+                
                 <a data-toggle="modal"  data-target="#editModal" data-id='.$row['id'].' id= "editbtn"   class = "btn btn-primary btn-xs">
                     <i class="fa">&#xf044;</i> Edit
                 </a>&nbsp;
@@ -126,9 +123,7 @@ while($row=mysqli_fetch_array($query)){
         }else{
             $subdata[]='
                 <center>
-                    <a data-toggle="modal"  data-target="#orderModal" data-id='.$row['id'].'  id= "modalbtn" class = "btn btn-success btn-xs">
-                        <i class="fa fa-eye"></i> View
-                    </a>&nbsp;
+                    
                 
                 </center>';  
                 $data[]=$subdata;
@@ -139,9 +134,7 @@ while($row=mysqli_fetch_array($query)){
        if($_GET['division'] == $row['DIVISION_N']){
             $subdata[]='
                 <center>
-                    <a data-toggle="modal"  data-target="#orderModal" data-id='.$row['id'].'  id= "modalbtn" class = "btn btn-success btn-xs">
-                        <i class="fa fa-eye"></i> View
-                    </a>&nbsp;
+                   
                     <a data-toggle="modal"  data-target="#editModal" data-id='.$row['id'].' id= "editbtn"   class = "btn btn-primary btn-xs">
                         <i class="fa">&#xf044;</i> Edit
                     </a>&nbsp;
@@ -154,16 +147,16 @@ while($row=mysqli_fetch_array($query)){
         }else{
                 $subdata[]='
             <center>
-                <a data-toggle="modal"  data-target="#orderModal" data-id='.$row['id'].'  id= "modalbtn" class = "btn btn-success btn-xs">
-                    <i class="fa fa-eye"></i> View
-                </a>&nbsp;
+                
             
             </center>';  
             $data[]=$subdata;
         }
     
     }
-
+//     <a data-toggle="modal"  data-target="#orderModal" data-id='.$row['id'].'  id= "modalbtn" class = "btn btn-success btn-xs">
+//     <i class="fa fa-eye"></i> View
+// </a>&nbsp;
 $json_data=array(
     "draw"              =>  intval($request['draw']),
     "recordsTotal"      =>  intval($totalData),

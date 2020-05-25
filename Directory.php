@@ -42,7 +42,7 @@ $username = $_SESSION['username'];
 </head>
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
-  <?php include('test1.php');?>
+  <?php include('sidebar2.php');?>
   
   <div class="content-wrapper">
     <section class="content-header">

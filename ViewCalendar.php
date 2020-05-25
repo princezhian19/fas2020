@@ -264,7 +264,7 @@ if($_SESSION['planningofficer'] == 1)
       width: 100%;
       padding:10px;
       margin: 0 auto;
-      background-color:#fff;
+      background-color:#ECEFF1;
   }
   
   .response {
