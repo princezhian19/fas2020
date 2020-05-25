@@ -76,7 +76,7 @@ WHERE office IN(".$office.") and e.cancelflag = 0 and MONTH(start) = '".$_GET['m
         $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->getAlignment()->setWrapText(true);
         $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->getAlignment()->setWrapText(true);
 
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('A4',"Activites for  ".date("F",strtotime($_GET['year']."-".$_GET['month']."-01"))." ".$_GET['year']);
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('A4',date("F",strtotime($_GET['year']."-".$_GET['month']."-01"))." ".$_GET['year']);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['title']);
         $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,date("F d, Y",strtotime($start)));
         $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$realenddate);
