@@ -231,13 +231,15 @@ function viewEvents2()
                                 <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;">
                                 <thead>
                                 <th style = "text-align:center;">OFFICE</th>
-                                <th style = "text-align:center;">TITLE</th>
+                                <th style = "text-align:center;">ACTIVITY TITLE</th>
                                 <th style = "text-align:center;width:10%;">START DATE</th>
                                 <th style = "text-align:center;width:10%;">END DATE</th>
                                 <th style = "text-align:center;">VENUE</th>
+                                <th style = "text-align:center;width:15%;">NO. OF PAX</th>
                                 <th style = "text-align:center;">TARGET PAX</th>
                                 <th style = "text-align:center;width:10%;">POSTED BY</th>
-                                <th style = "text-align:center;width:19%;">ACTION</th>
+                                <th style = "text-align:center;width:10%;">POSTED DATE</th>
+                                <th style = "text-align:center;width:18%;">ACTION</th>
                                 </thead>
                                 </table>
                             </div>
