@@ -75,212 +75,94 @@ function filldataTable()
                             <div class="box-body"> 
                                 <div class = "col-md-12">
                                 
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row no-gutters">
-                                                <div class="col-md-2" style = "background-color:#9FA8DA;height:112px;text-align:center;padding-top:3%;font-size:20px;height:140px;">
-                                                <?php echo '<b>'.$row['CONTROL_NO'].'</b>';?>
-                                                <?php 
-                                                if($row['STATUS_REQUEST'] == 'Submitted')
-                                                {
-                                                    echo '<label style = "color:red;">'.$row['STATUS_REQUEST'].'</label>';
-                                                }else if($row['STATUS_REQUEST'] == 'Received')
-                                                {
-                                                    echo '<label style = "color:orange;">'.$row['STATUS_REQUEST'].'</label>';
-                                                }else if ($row['STATUS_REQUEST'] == 'For action')
-                                                {
-                                                    echo '<label style = "color:darkblue;">'.$row['STATUS_REQUEST'].'</label>';
-                                                }
-                                                ?>
-                                                <button class = "btn btn-md btn-success" disabled>Export</button>
-                                                <!-- <a style= "color:#fff" href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO'];?>"> -->
-                                                    
+                                <div class="col-lg-12 col-sm-12 col-xs-12" >
+                                        <div class="info-box bg-gray">
+                                            <span class="info-box-icon info-box-text">
+                                            <?php echo '<a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" ><span style = "font-size: 20px;"><b>'.$row['CONTROL_NO'].'</b></span></a>';?><br>
+                                            </span>
+                                            </span>
+                                                <div class="info-box-content" >
+                                                    <span class="info-box-text"><?php echo $row['TYPE_REQ'].' ('.$row['REQ_DATE'].')';?>
+                                                        <span class = "pull-right" <?PHP if($row['STATUS_REQUEST'] == 'Submitted') { echo 'style = "color:red;"'; }else if($row['STATUS_REQUEST'] == 'Received') { echo ' style = "color:orange;"'; }else if ($row['STATUS_REQUEST'] == 'For action') { echo 'style = "color:darkblue;"'; } ?>><b><?php echo $row['STATUS_REQUEST'];?></b></span>
+                                                    </span>
+                                                    <span class="info-box-number"><?php echo $row['ISSUE_PROBLEM'];?></span>
+                                                <div class="progress">
+                                                    <div class="progress-bar" style="width: 100%"></div>
                                                 </div>
-                                                <div class="col-md-10" style = "background-color:#CFD8DC;">
-                                                    <div class="card-body col-lg-6" id="<?php echo $row['CONTROL_NO']; ?>">
-                                                        
-                                                        <h5 class="card-title">Issue/Problem</h5>
-                                                        <p class="card-text"><?php echo $row['ISSUE_PROBLEM'];?></p>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                    
-                                                        <?php
-                                        
-                                                                if($row['STATUS_REQUEST'] == 'For action')
-                                                                {
+                                                <div class = "col-lg-3">
+                                                    <span class="progress-description">
+                                                    REQUEST BY
+                                                    </span>
+                                                    <span class="progress-description">
 
-                                                                
-                                                                if($_SESSION['complete_name'] == $row['ASSIST_BY'])
-                                                                    {
-                                                                        ?><br>
-                                                                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = " pull-right  btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
-                                                                
-                                                                        <?php
-                                                                    }else{
-                                                                        ?><br>
-                                                                        <button disabled id ="sweet-16" data-id ="<?php echo $row['CONTROL_NO'];?>" class = " pull-right sweet-14 btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
-                                                        
-                                                                        <?php
-                                                                    }
-
-                                                                }else{
-                                                                    ?><br>
-                                                                    <button disabled  data-id ="<?php echo $row['CONTROL_NO'];?>" class = "pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
-
-                                                                    <?php
-                                                                }
+                                                    <?php
+                                                            $uname  = $row['REQ_BY'];
+                                                            $uname = trim($uname);
+                                                            
+                                                            if(strpos($uname, " ") !== false){
+                                                            
+                                                                $u = explode(" ", $uname);
+                                                                echo $u[0]; // piece1
+                                                            
+                                                            }
                                                             ?>
-                                                         <div   style = "padding-top:10px;">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Category</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-42.8px;font-size:12px;"><?php echo $row['TYPE_REQ'];?></span>
-                                                        </div> 
-                                                    </div>
+                                                    </span>
                                                 </div>
-                                                <div class="col-md-10" style = "background-color:#CFD8DC;">
-                                                   &nbsp;
+                                                <div class = "col-lg-3">
+                                                    <span class="progress-description">
+                                                    OFFICE
+                                                    </span>
+                                                    <span class="progress-description">
+                                                    <?php echo $row['OFFICE'];?>
+
+                                                    </span>
                                                 </div>
-                                                <?php
-                                                    if($row['STATUS_REQUEST'] == 'For action')
+                                                <div class = "col-lg-3">
+                                                    <span class="progress-description">
+                                                    RECEIVED DATE
+                                                    </span>
+                                                    <span class="progress-description">
+                                                    <?php 
+                                                    if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
                                                     {
-                                                       ?>
-                                                      
-                                                        
-                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['REQ_BY'];?>">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Requested by</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-60.8px;font-size:12px;">
-                                                            <?php
-                                                            $uname  = $row['REQ_BY'];
-                                                            $uname = trim($uname);
-                                                            
-                                                            if(strpos($uname, " ") !== false){
-                                                            
-                                                                $u = explode(" ", $uname);
-                                                                echo $u[0]; // piece1
-                                                            
-                                                            }
-                                                            ?>
-                                                            </span>
-                                                        </div>           
-                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Office</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-42.8px;font-size:12px;"><?php echo $row['OFFICE'];?></span>
-                                                        </div>
-                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Requested</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-70.8px;font-size:12px;"><?php echo date('F d, Y', strtotime($row['REQ_DATE'])).' '.$row['REQ_TIME'];?></span>
-                                                        </div>     
-                                                         <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Received</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
-                                                                <?PHP 
-                                                                 if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
-                                                                 {
-                                                                    echo '<a data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-info btn-xs" disabled > <i class="fa fa-check-circle"></i>Receive</a>';
-
-                                                                 }else{
-                                                                    echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];
-                                                                    
-                                                                 }
-                                                                ?>
-                                                            </span>
-                                                        </div>
-                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">
-                                                            Completed</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
-                                                            <?PHP 
-                                                                  if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
-                                                                  {
-                                                         
-                                                                    if($_SESSION['complete_name'] == $row['ASSIST_BY'])
-                                                                    {
-                                                                        echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
-                                                                    }else{
-                                                                        echo '<a  data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" disabled > <i class="fa fa-star"></i>Completed</a>';
-
-                                                                    }
-
-                                                                   
-                                                                  }else{
-                                                                    echo date('F d, Y',strtotime($row['COMPLETED_DATE'])).' '.$row['COMPLETED_TIME'];
-
-                                                                  }
-                                                                ?>
-                                                        </span>
-                                                   
-                                                                                
-                                                       
-                                                       
-                                                       <?php 
+                                                        echo '-';
                                                     }else{
-                                                        ?>
-                                                        
-                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['REQ_BY'];?>">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Requested by</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-60px;font-size:12px;">
-                                                            <?php
-                                                            $uname  = $row['REQ_BY'];
-                                                            $uname = trim($uname);
-                                                            
-                                                            if(strpos($uname, " ") !== false){
-                                                            
-                                                                $u = explode(" ", $uname);
-                                                                echo $u[0]; // piece1
-                                                            
-                                                            }
-                                                            ?>
-                                                            </span>
-                                                        </div>  
-                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Office</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-42.8px;font-size:12px;"><?php echo $row['OFFICE'];?></span>
-                                                        </div>                                              
-                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Requested</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-70.8px;font-size:12px;"><?php echo date('F d, Y', strtotime($row['REQ_DATE'])).' '.$row['REQ_TIME'];?></span>
-                                                        </div>     
-                                                         <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Received</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
-                                                                <?PHP 
-                                                                if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
-                                                                {
-                                                                  // class sweet-17
-                                                                    echo '<a disabled data-id = '.$row['CONTROL_NO'].' class = " btn btn-info btn-xs" > <i class="fa fa-check-circle"></i>Receive</a>';
-                                                                }else{
-                                                                    echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];
+                                                        echo date('F d, Y', strtotime($row['REQ_DATE']));
 
-                                                                }
-                                                                ?>
-                                                            </span>
-                                                        </div>
-                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
-                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Completed</span>
-                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
-                                                                <?PHP 
-                                                                  if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
-                                                                  {
-                                                                    // id ="sweet-16
-                                                                    echo '<a disabled data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
-
-                                                                   
-                                                                  }else{
-                                                                    echo date('F d, Y',strtotime($row['COMPLETED_DATE'])).' '.$row['COMPLETED_TIME'];
-
-                                                                  }
-                                                                ?>
-                                                            </span>
-                                                        </div>                                  
-                                                          
-                                                        <?php
                                                     }
-                                                ?>
-                                                
-                                                
-                                    
-                                            </div>
+                                                    ?>
+
+                                                    
+
+                                                    </span>
+                                                </div>
+                                                <div class = "col-lg-3">
+                                                    <span class="progress-description">
+                                                    COMPLETED DATE
+                                                    </span>
+                                                    <span class="progress-description">
+                                                        <?php
+                                                        if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+                                                        {
+
+                                                        if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+                                                        {
+                                                        echo '-';
+                                                        }else{
+                                                        echo '-';
+
+                                                        }
+
+
+                                                        }else{
+                                                        echo date('F d, Y',strtotime($row['COMPLETED_DATE']));
+
+                                                        }
+                                                        ?>
+
+                                                    </span>
+                                                </div>
+                                             </div>
                                         </div>
                                     </div>
                                 </div>
