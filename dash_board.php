@@ -87,96 +87,110 @@ if (isset($_POST['update'])) {
 
     </div>
   </div>
-  <div class="col-md-3">
-    <div class="box">
-      <div class="info-box">
-        <?php 
-        $select_event1 = mysqli_query($conn,"SELECT e.id,e.start,e.end,e.title,e.venue,tp.DIVISION_M FROM events e LEFT JOIN tblpersonneldivision tp on tp.DIVISION_N = e.office ORDER BY e.id DESC LIMIT 1");
-        $rowE1 = mysqli_fetch_array($select_event1);
-        $id = $rowE1['id'];
-        $start = $rowE1['start'];
-        $start = $rowE1['start'];
-        $end = $rowE1['end'];
-        $title = $rowE1['title'];
-        $venue = $rowE1['venue'];
-        $DIVISION_M = $rowE1['DIVISION_M'];
-        ?>
-        <span class="info-box-icon bg-aqua"><i class="fa fa-fw fa-calendar-check-o"></i></span>
+    
+  <div class="col-md-3 col-sm-6 col-xs-12">
+            <?php 
+                  $select_event1 = mysqli_query($conn,"SELECT e.id,e.start,e.end,e.title,e.venue,tp.DIVISION_M FROM events e LEFT JOIN tblpersonneldivision tp on tp.DIVISION_N = e.office ORDER BY e.id DESC LIMIT 1");
+                  $rowE1 = mysqli_fetch_array($select_event1);
+                  $id = $rowE1['id'];
+                  $start = $rowE1['start'];
+                  $start = $rowE1['start'];
+                  $end = $rowE1['end'];
+                  $title = $rowE1['title'];
+                  $venue = $rowE1['venue'];
+                  $DIVISION_M = $rowE1['DIVISION_M'];
+                ?>
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon info-box-text"><?php echo '<h3>'.date('M',strtotime($start)).'<br>'.date('d',strtotime($start)).'</h3>';?></span>
+            <div class="info-box-content">
+           
 
+            <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
 
-        </span>
-        <div class="info-box-content">
-          <span class=""><?php echo $title;?> on <?php echo date('F d, Y',strtotime($start));?></span><br><br>
-          <div style="font-size: 10px">
-            <p><b>Venue : </b> <?php echo $venue?></p>
-            <p><b>Office : </b> <?php echo $DIVISION_M;?></p>
-            <!-- <p><b>Date : </b> <?php echo date('F d, Y',strtotime($start));?></p> -->
+              <span class="info-box-number"></span>
+
+              <div class="progress">
+              </div>
+                  <span class="progress-description">
+                  <b>Venue : </b> <?php echo $venue?>
+                  </span>
+                  <b>Office : </b> <?php echo $DIVISION_M?>
+
+                  
+            </div>
+            <!-- /.info-box-content -->
           </div>
+          <!-- /.info-box -->
         </div>
-        <!-- /.info-box-content -->
-      </div>
+        <!-- 2nd -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <?php 
+                $select_event1 = mysqli_query($conn,"SELECT e.id,e.start,e.end,e.title,e.venue,tp.DIVISION_M FROM events e LEFT JOIN tblpersonneldivision tp on tp.DIVISION_N = e.office WHERE e.id != $id ORDER BY e.id DESC LIMIT 1");
+                $rowE1 = mysqli_fetch_array($select_event1);
+                $id2 = $rowE1['id'];
+                $start = $rowE1['start'];
+                $start = $rowE1['start'];
+                $end = $rowE1['end'];
+                $title = $rowE1['title'];
+                $venue = $rowE1['venue'];
+                $DIVISION_M = $rowE1['DIVISION_M'];
+              ?>
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon info-box-text "><?php echo '<h3>'.date('M',strtotime($start)).'<br>'.date('d',strtotime($start)).'</h3>';?></span>
+            <div class="info-box-content">
+            
 
+            <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
 
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="box">
-      <div class="info-box">
-        <span class="info-box-icon bg-aqua"><i class="fa fa-fw fa-calendar-check-o"></i></span>
-        <?php 
-        $select_event2 = mysqli_query($conn,"SELECT e.id,e.start,e.end,e.title,e.venue,tp.DIVISION_M FROM events e LEFT JOIN tblpersonneldivision tp on tp.DIVISION_N = e.office WHERE e.id != $id ORDER BY e.id DESC LIMIT 1");
-        $rowE2 = mysqli_fetch_array($select_event2);
-        $id2 = $rowE2['id'];
-        $start2 = $rowE2['start'];
-        $start2 = $rowE2['start'];
-        $end2 = $rowE2['end'];
-        $title2 = $rowE2['title'];
-        $venue2 = $rowE2['venue'];
-        $DIVISION_M2 = $rowE2['DIVISION_M'];
-        ?>
-        <div class="info-box-content">
-          <span class=""><?php echo $title2;?> on <?php echo date('F d, Y',strtotime($start2));?></span><br><br>
-          <div style="font-size: 10px">
-            <p><b>Venue : </b> <?php echo $venue2?></p>
-            <p><b>Office : </b> <?php echo $DIVISION_M2;?></p>
-            <!-- <p><b>Date : </b> <?php echo date('F d, Y',strtotime($start));?></p> -->
+              <span class="info-box-number"></span>
+
+              <div class="progress">
+              </div>
+                  <span class="progress-description">
+                  <b>Venue : </b> <?php echo $venue?>
+                  </span>
+                  <b>Office : </b> <?php echo $DIVISION_M?>
+
+                  
+            </div>
+            <!-- /.info-box-content -->
           </div>
+          <!-- /.info-box -->
         </div>
-        <!-- /.info-box-content -->
-      </div>
+        <!-- 3rd -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <?php 
+                $select_event1 = mysqli_query($conn,"SELECT e.id,e.start,e.end,e.title,e.venue,tp.DIVISION_M FROM events e LEFT JOIN tblpersonneldivision tp on tp.DIVISION_N = e.office WHERE e.id != $id and e.id != $id2 ORDER BY e.id DESC LIMIT 1");
+                $rowE1 = mysqli_fetch_array($select_event1);
+                $id = $rowE1['id'];
+                $start = $rowE1['start'];
+                $start = $rowE1['start'];
+                $end = $rowE1['end'];
+                $title = $rowE1['title'];
+                $venue = $rowE1['venue'];
+                $DIVISION_M = $rowE1['DIVISION_M'];
+              ?>
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon info-box-text"><?php echo '<h3>'.date('M',strtotime($start)).'<br>'.date('d',strtotime($start)).'</h3>';?></span>
+            <div class="info-box-content">
+            
 
+              <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
+              <span class="info-box-number"></span>
 
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="box">
-      <div class="info-box">
-        <span class="info-box-icon bg-aqua"><i class="fa fa-fw fa-calendar-check-o"></i></span>
-        <?php 
-        $select_event2 = mysqli_query($conn,"SELECT e.id,e.start,e.end,e.title,e.venue,tp.DIVISION_M FROM events e LEFT JOIN tblpersonneldivision tp on tp.DIVISION_N = e.office WHERE e.id != $id and e.id != $id2 ORDER BY e.id DESC LIMIT 1");
-        $rowE2 = mysqli_fetch_array($select_event2);
-        $id2 = $rowE2['id'];
-        $start2 = $rowE2['start'];
-        $start2 = $rowE2['start'];
-        $end2 = $rowE2['end'];
-        $title2 = $rowE2['title'];
-        $venue2 = $rowE2['venue'];
-        $DIVISION_M2 = $rowE2['DIVISION_M'];
-        ?>
-        <div class="info-box-content">
-          <span class=""><?php echo $title2;?> on <?php echo date('F d, Y',strtotime($start2));?></span><br><br>
-          <div style="font-size: 10px">
-            <p><b>Venue : </b> <?php echo $venue2?></p>
-            <p><b>Office : </b> <?php echo $DIVISION_M2;?></p>
-            <!-- <p><b>Date : </b> <?php echo date('F d, Y',strtotime($start));?></p> -->
+              <div class="progress">
+              </div>
+                  <span class="progress-description">
+                  <b>Venue : </b> <?php echo $venue?>
+                  </span>
+                  <b>Office : </b> <?php echo $DIVISION_M?>
+
+                  
+            </div>
+            <!-- /.info-box-content -->
           </div>
+          <!-- /.info-box -->
         </div>
-        <!-- /.info-box-content -->
-      </div>
-
-
-    </div>
-  </div>
 </div>
 
 <div class="row">
