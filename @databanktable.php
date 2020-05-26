@@ -1,3 +1,124 @@
+
+<?php
+
+
+
+
+if(isset($_POST['Add'])){
+    $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+    $username1 = $_SESSION['username'];
+    
+  
+$filename = $_FILES['file']['name'];
+$tempname = $_FILES['file']['tmp_name'];
+    
+
+    if(isset($filename)){
+        if(!empty($_FILES['file']['name'])){
+
+            $location = "files/";
+
+                 
+            
+            if(move_uploaded_file($tempname, $location.$filename)){
+
+               
+
+                    //echo 'File Uploaded!';
+                
+            }
+           
+        }
+        
+        
+
+    }
+
+   
+
+$category = $_POST['category'];
+$issuances = $_POST['issuances'];
+$dateissued1 = $_POST['dateissued'];
+$dateissued = date('Y-m-d', strtotime($dateissued1));
+$title = $_POST['title'];
+
+$url = $_POST['url'];
+$postedby = $_POST['postedby'];
+
+$posteddate = $_POST['posteddate'];
+$office = $_POST['office'];
+
+
+$servername = "localhost";
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
+$database = "fascalab_2020";
+
+$conn = new mysqli($servername, $username, $password,$database);
+
+// Check connection
+if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+}
+
+if(empty($_FILES['file']['name'])){
+
+  echo '<div class="addmodal"><div class="" style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
+/*  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.alert('Attached file cannot be empty.!')
+  </SCRIPT>"); */
+
+}
+else{
+  $query = mysqli_query($conn,"INSERT INTO downloads (title,file,category,dateposted,postedby,url,office) 
+  VALUES ('$title','$filename','$category','$posteddate','$username1','$url','$office')");
+
+if($query){
+
+  // echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Databank has been successfully added. </p> </div></div>  '; 
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+   window.alert(' Databank has been successfully added.')
+   window.location.href='';
+   </SCRIPT>"); 
+ 
+ }
+ else{
+ 
+ 
+ echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
+  /*  echo ("<SCRIPT LANGUAGE='JavaScript'>
+   window.alert('Error!')
+   window.location.href='../CreateIssuances.php';
+   </SCRIPT>"); */
+ }
+ 
+
+}
+
+ /* echo "INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
+ VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')";
+ exit(); */
+
+/*  echo "INSERT INTO downloads (title,file,category,dateposted,postedby,url) VALUES ('$title','$filename','$category','$posteddate','$username1','$url')";
+ exit(); */
+
+
+mysqli_close($conn);
+
+
+
+}
+
+
+
+?>
+
+
+
+
+
+
 <?php
 include('db.class.php'); // call db.class.php
 ?>
@@ -44,8 +165,11 @@ $username = $_SESSION['username'];
           <br>
         
           <div class=""  style="overflow-x:auto;">
+
+          <!-- onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" -->
+          <a name="Cancel" value="" id="Cancel"  data-toggle="modal" data-target="#add_data_Modal" title="Add" class = "btn btn-success" > <i class=''></i> Add</a> 
          
-            <li class="btn btn-success"><a href="CreateDatabank.php" style="color:white;text-decoration: none;">Add</a></li>
+          <!--   <li class="btn btn-success"><a href="CreateDatabank.php" style="color:white;text-decoration: none;">Add</a></li> -->
          
               <br>
               <br>
@@ -167,12 +291,401 @@ $username = $_SESSION['username'];
 
     </body>
 
-                <script type="text/javascript">
-    $(document).ready(function() {
-        $('#example1').DataTable();
-    } );
-</script>
               
+
+
+
+</body>
+</html>
+
+
+ <!--Add modals -->
+
+ <div id="add_data_Modal" class="modal fade ">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><b>Add Databank</b></h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="insert_form" action="" enctype="multipart/form-data">
+              
+            <!--   <label>Reason</label>
+              <input required type="text" name="reason" id="reason" class="form-control" />
+                                  
+              <br> -->
+              <div class="addmodal" >
+              <div></div>
+       
+        <table class="table"> 
+                    <tr>
+                        <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
+                    <td class="col-md-5">
+                      <select class="form-control " style="width: 100%;" name="category" id="category" > 
+                      <option value="21">Province ISO Forms</option>
+                      <option value="20">Region ISO Forms</option>
+                      <option value="19">ALL ISO Forms</option>
+                    
+                      </select></td>
+                                </tr>
+
+                                <tr>
+                        <td class="col-md-2"><b>Title/Subject<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-5">  <input required  type="text"  class="form-control" style="height: 35px;" id="title" placeholder="" name="title"></td>
+                                </tr>
+                   
+                 
+                       
+                    <tr>
+                        <td class="col-md-2"><label>Attached File<span style = "color:red;">*</span></label> </td>
+                            <td class="col-md-5"> <input id="issuances_attachment" type="file" name="file"/>
+                          <?php
+							if (!empty($_GET['option']) && $_GET['option']== 'edit') {
+							
+							if (!empty($file) && (file_exists($directory.$file)))		
+							{
+								if (fileExtensionType($file) && fileExtensionType($file) == 'document' )
+								{
+															  
+								  echo '<p class="form_details">          
+											  <label>&nbsp;</label>
+											  Current file: <a href="files/'.$file.'" target="_blank">'.$file.'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="deleteFile.php?id='.$id.'&i='.$file.'&d=files&t=issuances" title="Delete File">[x] Delete</a><br/>
+											  Allowed file: *.pdf, *.doc,*.docx,*.docm,*.xls,*.xlsx,*.ppt,*.pptx,*.rar,*.zip,*.txt
+											  <br>
+											  Max allowed size: 5mb
+										  </p>';				
+								}
+							}
+							} 
+							else
+							{
+								  echo '<p class="form_details">          
+											  <label>&nbsp;</label>
+											  Allowed file: *.pdf, *.doc,*.docx,*.docm,*.xls,*.xlsx,*.ppt,*.pptx,*.rar,*.zip,*.txt
+											    <br>
+											  Max allowed size: 5mb
+										  </p>';								
+							}	                         
+						  ?>
+                              
+                           <!--  <li class="btn btn-primary"><a href="issuances.php" style="color:white;text-decoration: none;">Choose File</a> --></li><!-- <li class="button btn-primary">Choose File</button> --> <!-- <label>&nbsp&nbspNo file Chosen</label><label class="pull-right"> Allowed file: *.pdf   Max allowed size: 5mb</label></td> -->
+                                </tr>
+
+
+                              
+                    <tr>
+                        <td class="col-md-2"><b>URL</b></td> 
+                            <td class="col-md-5">
+                            <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                </td>
+                                    </tr>
+                                    <tr>
+                        <td class="col-md-2"><b>Office</b></td>
+                            <td class="col-md-5">
+                            <!-- <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder=""> -->
+                            <?php
+
+                            $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                            $username = $_SESSION['username'];
+
+                            //echo $username;
+                            $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                            $rowdiv = mysqli_fetch_array($select_user);
+                            $DIVISION_C = $rowdiv['DIVISION_C'];
+
+                            $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                            $rowdiv1 = mysqli_fetch_array($select_office);
+                            $DIVISION_M = $rowdiv1['DIVISION_M'];
+
+
+                            ?>    
+                            <input readonly value="<?php echo $DIVISION_M;?>" id="office" name="office" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                </td>
+                                    </tr>
+
+                                    <tr>
+                        <td class="col-md-2"><b>Posted Date</b></td>
+                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" ></td>
+                                </tr>
+                    <tr>
+                        <td class="col-md-2"><b>Posted By</b></td>
+                            <td class="col-md-5"> <?php
+
+                             $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                             $username = $_SESSION['username'];
+              
+                             //echo $username;
+                             $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                             $rowdiv = mysqli_fetch_array($select_user);
+                             $DIVISION_C = $rowdiv['DIVISION_C'];
+                            
+                             $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                             $rowdiv1 = mysqli_fetch_array($select_office);
+                             $DIVISION_M = $rowdiv1['DIVISION_M'];
+                            
+                            
+                            ?>                             
+                            <input readonly value="<?php echo $username;?>" id="postedby" name="postedby" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                    </td>
+                                        </tr>
+                  
+                </table>
+
+                
+                  <br>
+              <br>
+               <!--  <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave"> -->
+               <button type="submit" name="Add" class="btn btn-success pull-right">Save</button>
+                <br>
+              <br>
+                </div>
+           
+                
+          </div>
+        </div>
+
+      
+    
+    </div>
+
+    
+    </div>
+
+
+
+
+
+
+              
+            
+
+
+            
+             
+             
+              <br />
+
+              <!-- <input type="submit" name="submit" id="submit" value="Cancel" class="btn btn-warning" /> -->
+
+             
+          
+              
+              </form>
+            </div>
+            <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+            </div>
+            </div>
+          </div>
+          </div>
+
+          <div id="dataModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Travel Order</h4>
+            </div>
+            <div class="modal-body" id="employee_detail">
+              
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+
+              
+            </div>
+            </div>
+          </div>
+          </div>
+        <!-- Add modals -->
+
+
+
+
+
+
+ <!--Edit modals -->
+
+ <div id="add_data_Modal" class="modal fade ">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><b>Edit Databank</b></h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="insert_form" action="" enctype="multipart/form-data">
+              
+            <!--   <label>Reason</label>
+              <input required type="text" name="reason" id="reason" class="form-control" />
+                                  
+              <br> -->
+              <div class="addmodal" >
+           
+       
+
+
+
+
+
+              
+            
+
+
+            
+             
+             
+              <br />
+
+              <!-- <input type="submit" name="submit" id="submit" value="Cancel" class="btn btn-warning" /> -->
+
+             
+          
+              
+              </form>
+            </div>
+            <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+            </div>
+            </div>
+          </div>
+          </div>
+
+          <div id="dataModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Travel Order</h4>
+            </div>
+            <div class="modal-body" id="employee_detail">
+              
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+
+              
+            </div>
+            </div>
+          </div>
+          </div>
+        <!-- Edit modals -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+       
+    <script type="text/javascript">
+   $(document).ready(function() {
+
+     var x = 1;
+     $('#office').click(function(e){
+       if( x == 1 ){
+         //console.log('even');
+         $('.office-responsible').show();
+         $(this).attr('placeholder','Click to Close');
+         x = 0;
+       } else {
+         //console.log('odd');
+         $('.office-responsible').hide();
+             $(this).attr('placeholder','Click to Select');
+
+         x = 1;
+       }
+       e.preventDefault();
+     });
+
+   $("legend :checkbox").click(function(){
+        var getcheckboxes = $(this).attr('class');
+     var delimiter = ";";
+     var text = $("input[id='todiv']");
+     var str = "";
+
+    $('.'+getcheckboxes).prop('checked',this.checked);
+
+
+   });
+
+     $(":checkbox").click(function () {
+         var delimiter = ";";
+         var text = $("input[name='todiv']");
+         var str = "";
+         
+         // for each checked checkbox, add the checkbox value and delimiter to the textbox
+         $(":checked").each(function () {
+             str += $(this).val() + delimiter;
+         });
+         
+         // set the value of the textbox
+        // echo (str);
+         text.val(str);
+         // echo (str);
+     });
+
+
+
+       $('#submit').click(function(e){
+                 if (!$('#offices-hidden').val()) {
+                               e.preventDefault();
+
+                     alert('empty');
+                 }
+                 else{
+                     // $("#ms").find('option').attr('selected',true);
+                     $('#form1').submit()
+                 }
+             });
+
+
+   
+     $(".page_link").change(function(){
+       var id=$(this).val();
+             getProAge(id);		
+     });
+     function getProAge(page)
+     {
+       if (page != ''){							
+         $.post("issuances-list.php",{ p: page },
+         function(data){
+           $('.proage').html(data.issuanceslist);				
+         }, "json");   
+       }
+     }				
+     
+     var oid = $(".page_link").val();
+     var cid = $(".proage").val();
+     if (oid != '' && cid == '')
+     {
+             getProAge(oid);
+     }										
+       
+    });	
+      function confirmDelete(id, rno) { 
+       var msg = "Are you sure you want to delete record no. "+rno+" ?";
+           if ( confirm(msg) ) {
+               // window.location = "<?php echo $_SERVER['PHP_SELF']; ?>?option=del&id="+id;
+           }
+       }	
+   function copyToClipboard(text) {
+     window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);
+   }					
+   </script>   
+
+
 <script>
   $(function () {
     //Initialize Select2 Elements
@@ -250,40 +763,3 @@ $username = $_SESSION['username'];
     })
   })
 </script>
-<script>
-
-  $(document).ready(function(){
-   table = document.getElementById("item_table");
-
-   tr = table.getElementsByTagName("th");
-   var td = document.getElementById("tdvalue");
-
-   if(td <= 0){
-    $('#finalizeButton').attr('disabled','disabled');
-  } else {
-    $('#finalizeButton').attr('enabled','enabled');
-  }
-
-  $('.link').click(function(){
-
-    var f = $(this);
-    var id = f.data('id');
-
-    var pr_no = $('#pr_no').val();
-    var pr_date = $('#pr_date').val();
-    var pmo = $('#pmo').val();
-    var purpose = $('#purpose').val();
-
-    window.location = 
-    'ViewPRdetails1.php?data='+id+'&pr_no='+pr_no+'&pr_date='+pr_date+'&pmo='+pmo+'&purpose='+purpose;
-  });
-}) ;
-</script>
-
-
-
-</body>
-</html>
-
-
-

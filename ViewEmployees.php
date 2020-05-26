@@ -5,6 +5,7 @@ header('location:index.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
+$division = $_SESSION['division'];
 }
 ?>
 <!DOCTYPE html>
@@ -49,9 +50,13 @@ $username = $_SESSION['username'];
     }else{
       include('sidebar2.php');
     }
+<<<<<<< HEAD
  ?>
   
   <div class="content-wrapper">
+=======
+ ?>  <div class="content-wrapper">
+>>>>>>> e0e18346f338eba5f442da1fc6b8aad3fd112e2b
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
