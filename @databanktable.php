@@ -260,9 +260,9 @@ $username = $_SESSION['username'];
                           <?php if ($office ==  $DIVISION_M ):?>
                           
                           <a  href="<?php echo $location?>" title="View" download="<?php $file?>" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Download</a> |
-                          <a href="UpdateDatabank.php?id=<?php echo $id; ?>&option=edit"  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> |
+                         <!--  <a href="UpdateDatabank.php?id=<?php echo $id; ?>&option=edit"  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | -->
                           
-                          <a name="edit" onclick="myFunction(this)" data-id="<?php echo $id;?>"  data-postedby = "<?php echo $postedby;?>" data-dateposted = "<?php echo $dateposted;?>" data-url = "<?php echo $url;?>" data-gettitle = "<?php echo $title;?>"  data-cat = "<?php echo $name;?>" data-file="<?php echo $file;?>"  value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> 
+                          <a name="edit" onclick="myFunction(this)" data-id="<?php echo $id;?>"  data-postedby = "<?php echo $postedby;?>" data-dateposted = "<?php echo $dateposted;?>" data-url = "<?php echo $url;?>" data-gettitle = "<?php echo $title;?>"  data-cat = "<?php echo $name;?>" data-file="<?php echo $file;?>"  value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> |
                             
                           <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/databankdelete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                           
