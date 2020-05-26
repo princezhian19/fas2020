@@ -232,13 +232,13 @@ $division = $_GET['division'];
                 var control_no = data[0];
 
                 swal({
-                  title: "Are you sure?",
+                  title: "Are you sure you want to delete this request?",
                   text: "You will not be able to recover this imaginary file!",
                   type: "warning",
                   showCancelButton: true,
                   confirmButtonClass: "btn-danger",
-                  confirmButtonText: "Yes, delete it!",
-                  cancelButtonText: "No, cancel plx!",
+                  confirmButtonText: "Yes",
+                  cancelButtonText: "Cancel",
                   closeOnConfirm: false,
                   closeOnCancel: false
                 }).then(function (){
@@ -252,7 +252,7 @@ $division = $_GET['division'];
                 success:function(data)
                 {
                 setTimeout(function () {
-                window.location = "techassistance.php?division=<?php echo $_GET['division'];?>";
+                window.location = "monitoring.php?division=<?php echo $_GET['division'];?>";
                 }, 1000);
                 }
                 });

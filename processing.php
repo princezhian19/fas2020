@@ -90,12 +90,11 @@ function filldataTable()
                                     <div class="col-lg-12 col-sm-12 col-xs-12" >
                                         <div class="info-box bg-gray">
                                             <span class="info-box-icon info-box-text">
-                                            <?php echo '<a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" ><span style = "font-size: 20px;"><b>'.$row['CONTROL_NO'].'</b></span></a>';?><br>
+                                            <?php echo '<a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" ><span style = "font-size: 15px;"><b>'.$row['CONTROL_NO'].'</b></span></a>';?><br>
                                             </span>
                                             </span>
                                                 <div class="info-box-content" >
                                                     <span class="info-box-text"><?php echo $row['TYPE_REQ'].' ('.$row['REQ_DATE'].')';?>
-                                                        <span class = "pull-right" <?PHP if($row['STATUS_REQUEST'] == 'Submitted') { echo 'style = "color:red;"'; }else if($row['STATUS_REQUEST'] == 'Received') { echo ' style = "color:orange;"'; }else if ($row['STATUS_REQUEST'] == 'For action') { echo 'style = "color:darkblue;"'; } ?>><b><?php echo $row['STATUS_REQUEST'];?></b></span>
                                                     </span>
                                                     <span class="info-box-number"><?php echo $row['ISSUE_PROBLEM'];?></span>
                                                 <div class="progress">
@@ -120,7 +119,7 @@ function filldataTable()
                                                             ?>
                                                     </span>
                                                 </div>
-                                                <div class = "col-lg-3">
+                                                <div class = "col-lg-4">
                                                     <span class="progress-description">
                                                     OFFICE
                                                     </span>
@@ -129,51 +128,8 @@ function filldataTable()
 
                                                     </span>
                                                 </div>
-                                                <div class = "col-lg-3">
-                                                    <span class="progress-description">
-                                                    RECEIVED DATE
-                                                    </span>
-                                                    <span class="progress-description">
-                                                    <?php 
-                                                    if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
-                                                    {
-                                                        echo '-';
-                                                    }else{
-                                                        echo date('F d, Y', strtotime($row['REQ_DATE']));
-
-                                                    }
-                                                    ?>
-
-                                                    
-
-                                                    </span>
-                                                </div>
-                                                <div class = "col-lg-3">
-                                                    <span class="progress-description">
-                                                    COMPLETED DATE
-                                                    </span>
-                                                    <span class="progress-description">
-                                                        <?php
-                                                        if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
-                                                        {
-
-                                                        if($_SESSION['complete_name'] == $row['ASSIST_BY'])
-                                                        {
-                                                        echo '-';
-                                                        }else{
-                                                        echo '-';
-
-                                                        }
-
-
-                                                        }else{
-                                                        echo date('F d, Y',strtotime($row['COMPLETED_DATE']));
-
-                                                        }
-                                                        ?>
-
-                                                    </span>
-                                                </div>
+                                                <span class = "pull-right" <?PHP if($row['STATUS_REQUEST'] == 'Submitted') { echo 'style = "color:red;"'; }else if($row['STATUS_REQUEST'] == 'Received') { echo ' style = "color:orange;"'; }else if ($row['STATUS_REQUEST'] == 'For action') { echo 'style = "color:darkblue;"'; } ?>><b><?php echo strtoupper($row['STATUS_REQUEST']);?></b></span>
+                                                
                                              </div>
                                         </div>
                                     </div>
