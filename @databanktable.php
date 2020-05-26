@@ -71,11 +71,11 @@ $username = $_SESSION['username'];
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center ">
                  
-                  <th width="200">CATEGORY <br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="category" placeholder="" name="category"> </th>
-                  <th width="400">TITLE <br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="title" placeholder="" name="title">
-                  <th width="100">OFFICE<br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="" placeholder="" name="office"> </th>
-                  <th width="150">POSTING DETAILS<br><input   type="text"  class="form-control" style="height: 35px;" id="postedby" placeholder="" name="postedby"></th>
-                  <th width="250">ACTION<br><br><br></th>
+                  <th width="200">CATEGORY <br><input onkeyup="myFunction()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput" placeholder="" name=""> </th>
+                  <th width="400">TITLE <br><input onkeyup="myFunction1()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput1" placeholder="" name="">
+                  <th width="100">OFFICE<br><input onkeyup="myFunction2()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput2" placeholder="" name=""> </th>
+                  <th width="150">POSTING DETAILS<br><input onkeyup="myFunction3()"  type="text"  class="form-control" style="height: 35px;" id="myInput3" placeholder="" name=""></th>
+                  <th width="250">ACTION<br><br></th>
                   
                 </tr>
                 </thead>
@@ -790,31 +790,85 @@ $username = $_SESSION['username'];
 </script>
 
 <script>
-$(document).ready(function() {
-    // Setup - add a text input to each footer cell
-    $('#example1 thead1 th').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input  type="text" placeholder="Search '+title+'" />' );
-    } );
- 
-    // DataTable
-    var table = $('#example').DataTable({
-        initComplete: function () {
-            // Apply the search
-            this.api().columns().every( function () {
-                var that = this;
- 
-                $( 'input', this.footer() ).on( 'keyup change clear', function () {
-                    if ( that.search() !== this.value ) {
-                        that
-                            .search( this.value )
-                            .draw();
-                    }
-                } );
-            } );
-        }
-    });
- 
-} );
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("example1");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
 
+<script>
+function myFunction1() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput1");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("example1");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+<script>
+function myFunction2() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput2");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("example1");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+<script>
+function myFunction3() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput3");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("example1");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
 </script>

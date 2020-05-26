@@ -61,12 +61,12 @@ $edit="edit";
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
-                   <th width = '10'>TAG</th> 
-                  <th width = '250'>CATEGORY</th>
-                  <th width = '200'>ISSUANCE NO</th>
-                  <th width = '200'>ISSUANCE DATE</th>
-                  <th width = '500'>TITLE/SUBJECT</th>
-                  <th width = '250'>ACTION</th>
+                   <th width = '10'>TAG<BR><BR></th> 
+                  <th width = '250'>CATEGORY <br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput" placeholder="" name=""></th>
+                  <th width = '200'>ISSUANCE NO  <br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput" placeholder="" name=""></th>
+                  <th width = '200'>ISSUANCE DATE  <br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput" placeholder="" name=""></th>
+                  <th width = '500'>TITLE/SUBJECT  <br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput" placeholder="" name=""></th>
+                  <th width = '250'>ACTION<BR><BR></th>
                   
                 </tr>
                 </thead>
