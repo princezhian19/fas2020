@@ -79,10 +79,19 @@ if(empty($_FILES['file']['name'])){
   //echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
 
   $query = mysqli_query($conn,"UPDATE downloads set title='$title',file='$getfile',category='$category',dateposted='$posteddate',postedby='$username1',url='$url',office='$office' where download_id ='$id'");
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.alert('Databank has been successfully updated.')
+  window.location.href='';
+  </SCRIPT>"); 
 }
 else
 {
  $query = mysqli_query($conn,"UPDATE downloads set title='$title',file='$filename',category='$category',dateposted='$posteddate',postedby='$username1',url='$url',office='$office' where download_id ='$id'");
+ echo ("<SCRIPT LANGUAGE='JavaScript'>
+ window.alert('Databank has been successfully updated.')
+ window.location.href='';
+ </SCRIPT>"); 
+
 }
 
 // echo "UPDATE downloads set title='$title',file='$filename',category='$category',dateposted='$posteddate',postedby='$username1',url='$url' where download_id ='$id'";
@@ -92,21 +101,20 @@ mysqli_close($conn);
 
 if($query){
 
-  echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully updated. </p> </div></div>  '; 
- /*  echo ("<SCRIPT LANGUAGE='JavaScript'>
-  window.alert('Data Added Successfully!')
-  window.location.href='../CreateIssuances.php';
-  </SCRIPT>");  */
+  //echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully updated. </p> </div></div>  '; 
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.alert('Databank has been successfully updated.')
+  window.location.href='';
+  </SCRIPT>"); 
 
 }
 else{
 
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.alert('Error')
+  window.location.href='';
+  </SCRIPT>"); 
 
-echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
- /*  echo ("<SCRIPT LANGUAGE='JavaScript'>
-  window.alert('Error!')
-  window.location.href='../CreateIssuances.php';
-  </SCRIPT>"); */
 }
 }
 ?>
@@ -212,10 +220,10 @@ $view_query = mysqli_query($conn, "SELECT * from downloads where download_id = '
         <div class="box">
           <div class="box-body">
       
-            <h1 align="">Edit Databank</h1>
+            <h1 align=""></h1>
          
         <br>
-      <li class="btn btn-success"><a href="databank.php" style="color:white;text-decoration: none;">Back</a></li>
+      <!-- <li class="btn btn-success"><a href="databank.php" style="color:white;text-decoration: none;">Back</a></li> -->
       <br>
       <br>
 
@@ -249,7 +257,7 @@ $view_query = mysqli_query($conn, "SELECT * from downloads where download_id = '
                                               
                                               // /echo "Current File: ".$file;
                                               //echo $option;
-                                              if (!empty($option) && $option == 'edit') {
+                                              if ($file!=null) {
                                                 echo  'Current file: <a name="getfile" href="files/'. $file.'" target="_blank">'.$file.'</a> <input hidden id="" type="Text" value="'.$file.'" name="getfile"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/> Allowed file: *.pdf
                                                 <br>
                                                 Max allowed size: 5mb';
