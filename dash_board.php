@@ -101,7 +101,7 @@ if (isset($_POST['update'])) {
         $venue = $rowE1['venue'];
         $DIVISION_M = $rowE1['DIVISION_M'];
         ?>
-        <span class="info-box-icon bg-aqua"><font style="font-size: 15px;padding-bottom: 20px;">asd</font>
+        <span class="info-box-icon bg-aqua"><i class="fa fa-fw fa-calendar-check-o"></i></span>
 
 
         </span>
