@@ -69,7 +69,16 @@ function filldataTable()
         <td>
             <br>
             <br>
+            <?php
+            if($row['ASSIST_BY'] =='' || $row['ASSIST_BY'] ==null)
+            {
+                echo '-';
+            }else{
+                ?>
             <img style="vertical-align:top;"  class="round" width="70" height="70" avatar="<?php echo $row['ASSIST_BY'];?>">
+                <?php
+            }
+            ?>
         </td>
             <td>
                 <div class="row">
@@ -179,7 +188,7 @@ function filldataTable()
             <td style = "width:10%;">
                     <?php
                     // Received
-                    if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
+                    if($row['STATUS_REQUEST'] == 'Submitted')
                     {
                     echo ' <button data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12">Receive</button>';
                     }else{
@@ -196,8 +205,12 @@ function filldataTable()
                     echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Completed</button>';
 
                     }
+                }else{
+                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Completed</button>';
+
                 }
                 // Assign
+             
                 if($row['STATUS_REQUEST'] == 'For action')
                 {
 
@@ -210,7 +223,7 @@ function filldataTable()
                         <?php
                     }else{
                         ?><br>
-                        <button disabled id ="sweet-16" data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">mine</button>
+                        <button disabled id ="sweet-16" data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
 
                         <?php
                     }
@@ -225,7 +238,6 @@ function filldataTable()
                                                                         
                     ?>
                 
-                    <button class = "col-lg-12 btn btn-md btn-success"><a style= "color:#fff" href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO'];?>">Export</a></button>
                     
             </td>
            
@@ -642,9 +654,9 @@ function countCompleted()
                     <div class="post">
                         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                         <thead>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>ASSIST BY</th>
+                            <th>INFORMATION</th>
+                            <th>ACTION</th>
                         </thead>
                         <tbody>
                         <?php echo filldataTable();?>
