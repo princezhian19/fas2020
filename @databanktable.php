@@ -68,21 +68,32 @@ $username = $_SESSION['username'];
             <form method="POST" action=''  >
 
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
-                <thead>
+                <!-- <thead>
                     <tr style="background-color: white;color:blue; text-align:center ">
                  
                   <th width="200">CATEGORY <br><input onkeyup="myFunction()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput" placeholder="" name=""> </th>
-                  <th width="400">TITLE <br><input onkeyup="myFunction1()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput1" placeholder="" name="">
+                  <th width="400">TITLE <br><input onkeyup="titlesearch()"   type="text"  class="form-control" style="height: 35px; width:100%" id="titlesearch" placeholder="" name=""></th>
                   <th width="100">OFFICE<br><input onkeyup="myFunction2()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput2" placeholder="" name=""> </th>
                   <th width="150">POSTING DETAILS<br><input onkeyup="myFunction3()"  type="text"  class="form-control" style="height: 35px;" id="myInput3" placeholder="" name=""></th>
                   <th width="250">ACTION<br><br></th>
                   
                 </tr>
-                </thead>
+                </thead> -->
+
 
                 
 
-             
+                <thead>
+                    <tr style="background-color: white;color:blue; text-align:center ">
+                 
+                  <th width="200">CATEGORY</th>
+                  <th width="400">TITLE </th>
+                  <th width="100">OFFICE</th>
+                  <th width="150">POSTING DETAILS</th>
+                  <th width="250">ACTION<br><br></th>
+                  
+                </tr>
+                </thead>
                 <?php
             $servername = "localhost";
             $username = "fascalab_2020";
@@ -789,86 +800,3 @@ $username = $_SESSION['username'];
   })
 </script>
 
-<script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("example1");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
-
-<script>
-function myFunction1() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput1");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("example1");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
-
-<script>
-function myFunction2() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput2");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("example1");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
-
-<script>
-function myFunction3() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput3");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("example1");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>

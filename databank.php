@@ -109,16 +109,34 @@ $username = $_SESSION['username'];
 
 
 <script>
-  $(function () {
-    $('#example1').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : true,
-      'ordering'    : false,
-      'info'        : false,
-      'autoWidth'   : false
-    })
-  })
+  $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#example1 thead tr').clone(true).appendTo( '#example1 thead' );
+    $('#example1 thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" style="width:100%" class="form-control" placeholder="" />' );
+ 
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+ 
+    var table = $('#example1').DataTable( {
+        orderCellsTop: true,
+        fixedHeader: true,
+        paging      : true,
+      lengthChange: false,
+      searching   : true,
+      ordering    : false,
+      info        : false,
+      autoWidth   : false
+    } );
+} );
 </script>
 </body>
 </html>
