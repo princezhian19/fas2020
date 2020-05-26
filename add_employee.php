@@ -260,6 +260,8 @@
 <script src="jquery-1.12.0.min.js" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>
 <script type="text/javascript">
   $(document).ready(function(){
 
@@ -395,7 +397,7 @@
           </div>
           <div class="col-xs-4">
             <label>Mobile <font style="color:red;">*</font></label>
-            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. 0995-2647-434">
+            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control cp" placeholder="ex. 0995-2647-434">
           </div>
           <br>
           <br>
@@ -451,7 +453,7 @@
           </div>
           <div class="col-xs-4">
             <label>Office Contact No</label>
-            <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control" placeholder="ex. 0995-2647-434">
+            <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-2647-434">
           </div>
           <br>
           <br>
@@ -599,6 +601,16 @@
      document.getElementById("sel_user").disabled=true;
    }
  });
+
+  $(window).load(function()
+  {
+   var phones = [{ "mask": "####-###-####"}, { "mask": "####-###-####"}];
+   $('.cp').inputmask({ 
+    mask: phones, 
+    greedy: false, 
+    definitions: { '#': { validator: "[0-9]", cardinality: 1}} });
+ });
+
 
 </script>
 <script>

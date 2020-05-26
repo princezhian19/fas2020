@@ -6,7 +6,8 @@
   function tblpersonnel($connect)
   { 
     $output = '';
-    $query = "SELECT DIVISION_N,DIVISION_M FROM `tblpersonneldivision`  ";
+    $query = "SELECT DIVISION_N,DIVISION_M FROM `tblpersonneldivision` WHERE DIVISION_N = 1 || DIVISION_N = 10 || DIVISION_N = 18 || DIVISION_N = 17 || DIVISION_N = 9 || DIVISION_N = 7 || DIVISION_N = 19 || DIVISION_N = 20 || DIVISION_N = 21 || DIVISION_N = 22 || DIVISION_N = 23 || DIVISION_N = 24 AND DIVISION_M IS NOT NULL ORDER BY DIVISION_M ASC  ";
+
     $statement = $connect->prepare($query);
     $statement->execute();
     $result = $statement->fetchAll();
@@ -36,6 +37,7 @@
         </SCRIPT>");
   }
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="row">
   <div class="col-md-12">
     <div class="box">
@@ -64,14 +66,14 @@
             </div>
             <div class="col-xs-2">
               <label>Office <font style="color:red;">*</font></label>
-              <select required class="form-control select2" name="office">
-                 <option disabled selected></option>
+              <select required class="form-control select2" name="office" id="office">
+                 <option value="0" selected></option>
                  <?php echo tblpersonnel($connect)?>
               </select>
             </div>
               <div class="col-xs-1" style="padding-top: 5px;">
               <br>
-              <button type="submit" name="submit" id="submit" class="btn btn-success">Export</button>
+            <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>">Export</a>
             </div>
 
           </div>
@@ -99,7 +101,7 @@
             </thead>
             <?php 
             $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-            $view_query = mysqli_query($conn, "SELECT tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION");
+            $view_query = mysqli_query($conn, "SELECT tblempdetails.office_contact,tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.ALTER_EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION LEFT JOIN tblempdetails on tblempdetails.EMP_N = tblemployee.EMP_N");
 
                 $sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployee WHERE UNAME = '$username'");
                 $rowU = mysqli_fetch_array($sele);
@@ -112,7 +114,9 @@
               $DIVISION_M = $row["DIVISION_M"];
               $POSITION_M = $row["POSITION_M"];
               $DESIGNATION_M = $row["DESIGNATION_M"];
+              $office_contact = $row["office_contact"];
               $MOBILEPHONE = $row["MOBILEPHONE"];
+              $ALTER_EMAIL = $row["ALTER_EMAIL"];
               $EMAIL = $row["EMAIL"];
               $BIRTH_D = $row["BIRTH_D"];
               $BIRTH = date('F d',strtotime($BIRTH_D));
@@ -126,8 +130,8 @@
                 <td width=""><?php echo $DESIGNATION_M;?></td>
                 <td width=""><?php echo $MOBILEPHONE;?></td>
                 <td width=""><?php echo $EMAIL;?></td>
-                <td width=""><?php echo $MOBILEPHONE;?></td>
-                <td width=""><?php echo $EMAIL;?></td>
+                <td width=""><?php echo $office_contact;?></td>
+                <td width=""><?php echo $ALTER_EMAIL;?></td>
                 <td width=""><?php echo $BIRTH;?></td>
 
             
@@ -151,6 +155,20 @@
    </div>
  </div>
 </div>
+<script>
+  $(document).ready(function(){
 
+    $('.link').click(function(){
+
+      var f = $(this);
+      var id = f.data('id');
+
+      var office = $('#office').val();
+
+      window.location = 
+      'export_employee.php?office='+office;
+  });
+}) ;
+</script>
 
 
