@@ -90,7 +90,7 @@ function filldataTable()
                                     <div class="col-lg-12 col-sm-12 col-xs-12" >
                                         <div class="info-box bg-gray">
                                             <span class="info-box-icon info-box-text">
-                                            <?php echo '<span style = "font-size: 20px;"><b>'.$row['CONTROL_NO'].'</b></span>';?><br>
+                                            <?php echo '<a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" ><span style = "font-size: 20px;"><b>'.$row['CONTROL_NO'].'</b></span></a>';?><br>
                                             </span>
                                             </span>
                                                 <div class="info-box-content" >
