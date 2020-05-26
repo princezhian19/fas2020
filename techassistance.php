@@ -1,28 +1,20 @@
-<?php 
-session_start();
+<?php session_start();
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
-$division = $_GET['division'];
 }
 ?>
 <!DOCTYPE html>
 <html>
 
-<title>FAS | Processing Request</title>
+
+<title>FAS | Process Request</title>
 <head>
+  
 
-  <link rel="stylesheet" href="_includes/sweetalert.css">
-  <link href="_includes/sweetalert2.min.css" rel="stylesheet"/>
-
- 
-
-
-
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
 
     <!-- Tell the browser to be responsive to screen width -->
@@ -51,418 +43,1053 @@ $division = $_GET['division'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
+  
+  
+<style>
+        pre { margin: 20px 0; padding: 20px; background: #fafafa; } .round { border-radius: 50%;vertical-align: }
+</style>
 </head>
+<?php
+
+function filldataTable()
+{
+  
+  
+
+    include 'connection.php';
+  $search_value = $_SESSION['complete_name3'];
+
+    $query = "SELECT * FROM tbltechnical_assistance 
+    where `REQ_BY` = '".$search_value."' ";
+    $result = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_array($result))
+    {
+        $data[] = $row['CONTROL_NO'];
+
+        ?>
+        <tr>
+            <td>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box">
+                            <div class="box-body"> 
+                                <div class = "col-md-12">
+                                
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row no-gutters">
+                                                <div class="col-md-2" style = "background-color:#9FA8DA;height:112px;text-align:center;padding-top:3%;font-size:20px;height:140px;">
+                                                <?php echo '<b>'.$row['CONTROL_NO'].'</b>';?>
+                                                <?php 
+                                                if($row['STATUS_REQUEST'] == 'Submitted')
+                                                {
+                                                    echo '<label style = "color:red;">'.$row['STATUS_REQUEST'].'</label>';
+                                                }else if($row['STATUS_REQUEST'] == 'Received')
+                                                {
+                                                    echo '<label style = "color:orange;">'.$row['STATUS_REQUEST'].'</label>';
+                                                }else if ($row['STATUS_REQUEST'] == 'For action')
+                                                {
+                                                    echo '<label style = "color:darkblue;">'.$row['STATUS_REQUEST'].'</label>';
+                                                }
+                                                ?>
+                                                <button class = "btn btn-md btn-success" disabled>Export</button>
+                                                <!-- <a style= "color:#fff" href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO'];?>"> -->
+                                                    
+                                                </div>
+                                                <div class="col-md-10" style = "background-color:#CFD8DC;">
+                                                    <div class="card-body col-lg-6" id="<?php echo $row['CONTROL_NO']; ?>">
+                                                        
+                                                        <h5 class="card-title">Issue/Problem</h5>
+                                                        <p class="card-text"><?php echo $row['ISSUE_PROBLEM'];?></p>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                    
+                                                        <?php
+                                        
+                                                                if($row['STATUS_REQUEST'] == 'For action')
+                                                                {
+
+                                                                
+                                                                if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+                                                                    {
+                                                                        ?><br>
+                                                                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = " pull-right  btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
+                                                                
+                                                                        <?php
+                                                                    }else{
+                                                                        ?><br>
+                                                                        <button disabled id ="sweet-16" data-id ="<?php echo $row['CONTROL_NO'];?>" class = " pull-right sweet-14 btn btn-danger" style = "background-color:orange;"><?php echo $row['ASSIST_BY'];?></button>
+                                                        
+                                                                        <?php
+                                                                    }
+
+                                                                }else{
+                                                                    ?><br>
+                                                                    <button disabled  data-id ="<?php echo $row['CONTROL_NO'];?>" class = "pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
+
+                                                                    <?php
+                                                                }
+                                                            ?>
+                                                         <div   style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Category</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-42.8px;font-size:12px;"><?php echo $row['TYPE_REQ'];?></span>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-10" style = "background-color:#CFD8DC;">
+                                                   &nbsp;
+                                                </div>
+                                                <?php
+                                                    if($row['STATUS_REQUEST'] == 'For action')
+                                                    {
+                                                       ?>
+                                                      
+                                                        
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['REQ_BY'];?>">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Requested by</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-60.8px;font-size:12px;">
+                                                            <?php
+                                                            $uname  = $row['REQ_BY'];
+                                                            $uname = trim($uname);
+                                                            
+                                                            if(strpos($uname, " ") !== false){
+                                                            
+                                                                $u = explode(" ", $uname);
+                                                                echo $u[0]; // piece1
+                                                            
+                                                            }
+                                                            ?>
+                                                            </span>
+                                                        </div>           
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Office</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-42.8px;font-size:12px;"><?php echo $row['OFFICE'];?></span>
+                                                        </div>
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Requested</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-70.8px;font-size:12px;"><?php echo date('F d, Y', strtotime($row['REQ_DATE'])).' '.$row['REQ_TIME'];?></span>
+                                                        </div>     
+                                                         <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Received</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
+                                                                <?PHP 
+                                                                 if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
+                                                                 {
+                                                                    echo '<a data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-info btn-xs" disabled > <i class="fa fa-check-circle"></i>Receive</a>';
+
+                                                                 }else{
+                                                                    echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];
+                                                                    
+                                                                 }
+                                                                ?>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">
+                                                            Completed</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
+                                                            <?PHP 
+                                                                  if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+                                                                  {
+                                                         
+                                                                    if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+                                                                    {
+                                                                        echo '<a id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
+                                                                    }else{
+                                                                        echo '<a  data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" disabled > <i class="fa fa-star"></i>Completed</a>';
+
+                                                                    }
+
+                                                                   
+                                                                  }else{
+                                                                    echo date('F d, Y',strtotime($row['COMPLETED_DATE'])).' '.$row['COMPLETED_TIME'];
+
+                                                                  }
+                                                                ?>
+                                                        </span>
+                                                   
+                                                                                
+                                                       
+                                                       
+                                                       <?php 
+                                                    }else{
+                                                        ?>
+                                                        
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['REQ_BY'];?>">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Requested by</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-60px;font-size:12px;">
+                                                            <?php
+                                                            $uname  = $row['REQ_BY'];
+                                                            $uname = trim($uname);
+                                                            
+                                                            if(strpos($uname, " ") !== false){
+                                                            
+                                                                $u = explode(" ", $uname);
+                                                                echo $u[0]; // piece1
+                                                            
+                                                            }
+                                                            ?>
+                                                            </span>
+                                                        </div>  
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Office</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-42.8px;font-size:12px;"><?php echo $row['OFFICE'];?></span>
+                                                        </div>                                              
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Requested</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-70.8px;font-size:12px;"><?php echo date('F d, Y', strtotime($row['REQ_DATE'])).' '.$row['REQ_TIME'];?></span>
+                                                        </div>     
+                                                         <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Received</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
+                                                                <?PHP 
+                                                                if($row['START_DATE'] == '' || $row['START_DATE'] == NULL || $row['START_DATE'] == 'January 01, 1970')
+                                                                {
+                                                                  // class sweet-17
+                                                                    echo '<a disabled data-id = '.$row['CONTROL_NO'].' class = " btn btn-info btn-xs" > <i class="fa fa-check-circle"></i>Receive</a>';
+                                                                }else{
+                                                                    echo date('F d, Y',strtotime($row['START_DATE'])).' '.$row['START_TIME'];
+
+                                                                }
+                                                                ?>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-2 bg-success"  style = "padding-top:10px;">
+                                                            <span style="font-size:10px;vertical-align:top;line-height:10px;">Completed</span>
+                                                            <span style="font-size:10px;line-height:40px;50px;margin-left:-61.8px;font-size:12px;">
+                                                                <?PHP 
+                                                                  if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+                                                                  {
+                                                                    // id ="sweet-16
+                                                                    echo '<a disabled data-id = '.$row['CONTROL_NO'].' class = " btn btn-success btn-xs" > <i class="fa fa-star"></i>Completed</a>';
+
+                                                                   
+                                                                  }else{
+                                                                    echo date('F d, Y',strtotime($row['COMPLETED_DATE'])).' '.$row['COMPLETED_TIME'];
+
+                                                                  }
+                                                                ?>
+                                                            </span>
+                                                        </div>                                  
+                                                          
+                                                        <?php
+                                                    }
+                                                ?>
+                                                
+                                                
+                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <?php
+    }
+
+}
+function showICTload($itstaff)
+{
+    include 'connection.php';;
+    $query = "SELECT count(*) as 'count' FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' and ASSIST_BY = '$itstaff'";
+    $result = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_array($result))
+    {
+        echo $row['count'];
+    }
+}
+
+function submittedReq()
+{
+    include 'connection.php';
+    $username = $_SESSION['username'];
+    $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' order by `REQ_DATE` DESC, `REQ_TIME` LIMIT 4 ";
+    $result = mysqli_query($conn, $query);
+    if ($result->num_rows > 0) {
+
+    echo '<ul class="list-group list-group-flush">';
+
+    while($row = mysqli_fetch_array($result))
+    {
+        $query1 = 'SELECT CONCAT(`FIRST_M`," ",`LAST_M`)AS NAME ,`UNAME` FROM `tblemployee`  WHERE CONCAT(`FIRST_M`," ",`LAST_M`) = "'.$row['ASSIST_BY'].'"';       
+        $result1 = mysqli_query($conn, $query1);
+        while($row1 = mysqli_fetch_array($result1))
+        {
+            if($row1['UNAME'] == $username)
+            {
+                ?>
+                    <li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
+                            <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY']?>">
+                            <?php echo $row['CONTROL_NO'];?>
+                            <button  type="button" class="sweet-16 btn btn-success pull-right">
+                            Completed
+                            </button>
+                        </li>
+                <?php
+            }else{
+                ?>
+                <li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
+                            <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY']?>">
+                            <?php echo $row['CONTROL_NO'];?>
+                            <button disabled type="button" class="sweet-16 btn btn-success pull-right">
+                            Completed
+                            </button>
+                        </li>
+                <?php
+            }
+        }
+        ?>
+        
+                        
+                        
+                   
+        <?php
+    }
+    echo '</ul>';
+    }else{
+        ?>
+    <li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
+    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar=DILG>
+    </li>
+            <?php
+        }
+     
+}
+
+function currentServing($assignee)
+{
+    include 'connection.php';
+    $query = "SELECT * FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' and `ASSIST_BY` like  '%$assignee%' order by `REQ_DATE` DESC, `REQ_TIME` LIMIT 1 ";
+    $result = mysqli_query($conn, $query);
+
+    while($row = mysqli_fetch_array($result))
+    {
+        ?>
+        <div class = "col-md-6 list-group-item" style = "line-height:54px;">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 style = "text-align:center;">CONTROL NUMBER:</h3>
+                                    <p style = "text-align:center;font-size:30px;color:#1565C0;font-weight:bold;"><?php echo $row['CONTROL_NO']?></p>
+                                    <button class = "btn btn-success btn-lg" style = "text-align:center;">Completed</button>
+
+                                    <p class = "pull-right">Assigned ICT Staff:<img   class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY'];?>">
+                                </div>
+                            </div>
+                        </div>
+        <?php
+    }
+}
+
+function showWorkload($ICT)
+{
+    include 'connection.php';
+    // and `STATUS_REQUEST` = 'For action' or `STATUS_REQUEST` = 'Completed'
+    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%'  order by `STATUS_REQUEST` desc  ";
+    $result = mysqli_query($conn, $query);
+    if ($result->num_rows > 0) {
+    while($row = mysqli_fetch_array($result))
+    {
+        ?>
+         <tr>
+            <td>
+            <ul class="timeline timeline-inverse" >
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                        <?php 
+                             if($row['STATUS_REQUEST'] == 'Completed')
+                             {
+                                 ?>
+                                <span class="bg-green">
+                                Request Completed
+                            </span>
+                                 <?php
+                             }else{
+                                ?>
+                                <span class="bg-red">
+                                Work Load
+                            </span>
+                                <?php
+                             }
+                        ?>
+                            
+                        </li>
+                        <li>
+         
+             <img style="vertical-align:top;"  class=" fa round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY'];?>">
+            <div class="timeline-item" >
+                <span class="time"><i class="fa fa-clock-o"></i>&nbsp;<?PHP echo date('g:m A',strtotime($row['REQ_TIME']));?></span>
+                <h3 class="timeline-header"><a href="#"><?php echo $row['REQ_BY'];?></a> sent you a request</h3>
+                    <div class="timeline-body">
+                    <?php echo $row['TYPE_REQ'];?>
+                    <P><?php echo $row['ISSUE_PROBLEM'];?></P>
+                    
+                    </div>
+                    <div class="timeline-footer">
+                    <?php 
+                    if($row['STATUS_REQUEST'] == 'Completed' || $row['COMPLETED_DATE'] == '')
+                    {
+                        ?>
+                        <a class="btn btn-success btn-md" href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO'];?>">
+                        <i class = "fa fa-eye"></i>&nbsp;View
+                         </a>
+                         <a class="btn btn-primary btn-md" href = "_editRequestTA.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>">
+                         <i class = "fa fa-edit"></i>&nbsp;Edit
+                         </a>
+                        <?php
+                    }else{
+                        ?>
+        <a class="btn btn-primary btn-md" href = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id=<?php echo $row['CONTROL_NO'];?>">
+                        Resolve
+                    </a>
+                        <?php
+                    }
+                    ?>
+                
+                    <!-- <a class="btn btn-danger btn-xs">Delete</a> -->
+                    </div>
+            </div><br><br>
+        <?PHP
+    } 
+    }else{
+        ?>
+    <div class="timeline-item">
+        <span class="time"></span>
+        <h3 class="timeline-header">There is no request on your list.</h3>
+            <div class="timeline-body">
+            
+            </div>
+            
+    </div><br><br>
+                         
+                         </li>
+                     </ul>
+             </td>
+             </tr>
+    <?PHP
+    }
+}
+function countSubmitted()
+{
+  include 'connection.php';
+  $query = "SELECT count(*) as 'count_sub' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'Submitted'  ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_sub'];
+  }
+}
+function countReceived()
+{
+  include 'connection.php';
+  $query = "SELECT count(*) as 'count_rec' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'Received'  ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_rec'];
+  }
+}
+function countForAction()
+{
+  include 'connection.php';
+  $query = "SELECT count(*) as 'count_fa' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'For action'  ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_fa'];
+  }
+}
+function countCompleted()
+{
+  include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
+  $query = "SELECT count(*) as 'count_com' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'Completed' ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_com'];
+  }
+}
+?>
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
-<?php 
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-      include('test1.php');
-    }else{
-      include('sidebar2.php');
-    }
- ?>
-  
+<?php include('sidebar2.php'); ?>
   <div class="content-wrapper">
-    <section class="content-header">
+  <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Processing of ICT TA Request</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Online ICT Technical Assistance System</a></li>
+        <li class="active">Processing of ICT Technical Assistance</li>
       </ol>
       <br>
       <br>
-        <?php include('_tableTA.php');?>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="panel panel-default">
+                    <div class="box-body">      
+                    <div> <h1>Processing of ICT Technical Assistance</h1><br> </div>
+                   <!-- Small boxes (Stat box) -->
+      <div class="row">
+       <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3><?php echo countSubmitted();?></h3>
+
+              <p>SUBMITTED</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="ion ion-pie-graph"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+            &nbsp;
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+         <!-- ./col -->
+         <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3><?php echo countReceived();?></h3>
+
+              <p>RECIEVED</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="ion ion-person-add"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+            &nbsp;
+            </a>
+          </div>
+        </div>
+ 
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-primary">
+            <div class="inner">
+              <h3><?php echo countForAction();?></h3>
+
+              <p>FOR ACTION</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="fa fa-shopping-cart"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+              &nbsp;
+            </a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3><?php echo countCompleted();?></h3>
+
+              <p>COMPLETED</p>
+            </div>
+            <div class="icon">
+              <!-- <i class="ion ion-stats-bars"></i> -->
+            </div>
+            <a href="#" class="small-box-footer">
+            &nbsp;
+            </a>
+          </div>
+        </div>
+       
+        </div>
+      <!-- /.row -->
+                  <div class="well">
+                    <div class="row">
+                        <div class="col-md-4">
+                          <button class="btn btn-success"><a style = "color:#fff;decoration:none;" href="requestForm.php?division=<?php echo $_GET['division'];?>"><i class = "fa fa-plus"></i>&nbsp;Create Request</a></button>
+                         <!-- <a class = "btn btn-md btn-success" style="color:white;text-decoration: none;"  href = "techassistance.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Monitoring</a> -->
+                        </div>
+
+               
+                    </div>
+                  </div>
+
+                    </div>
+             
+               
+  <section class="content">
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="box box-primary">
+            <div class="box-body box-profile">
+
+                <h3 class="profile-username text-center">ICT Staff Work Load</h3>
+
+                <p class="text-muted text-center">FAD-RICTU</p>
+             
+                <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Mark Kim">
+                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Web Programmer</span>
+                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-73.8px;font-size:12px;">Mark Kim A. Saluti</span>
+                                    <button disabled type="button" class="btn btn-sm btn-danger pull-right">
+                                        <span class="badge badge-light" ><?php echo showICTload('Mark Kim A. Sacluti');?></span>
+                                    </button>
+                                    
+                                </li>
+                                <li class="list-group-item">
+                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Christian Paul">
+                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Network Administrator</span>
+                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-94.8px;font-size:12px;">Christian Paul Ferrer</span>
+                                    <button  disabled type="button" class="btn btn-sm btn-danger pull-right">
+                                        <span class="badge badge-light"><?php echo showICTload('Christian Paul V.Ferrer');?></span>
+                                    </button>
+                                </li>
+                                <li class="list-group-item">
+                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Charles Adrian">
+                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Database Administrator</span>
+                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-100.8px;font-size:12px;">Charles Adrian Odi</span>
+                                    <button disabled type="button" class="btn btn-sm btn-danger pull-right" >
+                                  
+                                        <span class="badge badge-light"><?php echo showICTload('Charles Adrian T. Odi');?></span>
+
+                                    </button>
+                                </li>
+                                <li class="list-group-item">
+                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Shiela Mei">
+                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Data Analyst</span>
+                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-55.8px;font-size:12px;">Shiela Mei Olivar</span>
+                                    <button  disabled type="button" class="btn btn-sm btn-danger pull-right">
+                                        <span class="badge badge-light"><?php echo showICTload('Shiela Mei E. Olivar');?></span>
+                                    </button>
+                                </li>
+                                <li class="list-group-item">
+                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Maybelline">
+                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Information Technology Officer I</span>
+                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-135.8px;font-size:12px;">Maybelline Monteiro</span>
+                                    <button disabled type="button" class="btn btn-sm btn-danger pull-right">
+                                        <span class="badge badge-light"><?php echo showICTload('Maybelline Monteiro');?></span>
+                                    </button>
+                                </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9" >
+      
+                        <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
+                        <thead>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                        <?php echo filldataTable();?>
+                        </tbody>
+                        </table>
+        </div>
+    </div>
+</div>
+</section>
+<section class="content-header">
+  
+   
+                </div>
+            </div>
+        </div>
     </section>
-  </div>
+</div>
   <footer class="main-footer">
     <br>
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
       </div>
-      <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+      <strong>DILG IV-A Regional Information and Communications Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
       
     </footer>
     <br>
  
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.j s"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
-<!-- <script src="_includes/sweetalert.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="_includes/sweetalert.css"> -->
-<script src="_includes/sweetalert.min.js"></script>
-<script src="_includes/sweetalert2.min.js"></script>
+<script src="dist/js/adminlte.min.js"></script>
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
-<?php 
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-      ?>
-      <script>
-          $(document).ready(function() {
-            
-            $('.select2').on('change', function()
+
+
+
+
+<script src="_includes/sweetalert.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="_includes/sweetalert.css">
+<link href="_includes/sweetalert2.min.css" rel="stylesheet"/>
+<script src="_includes/sweetalert2.min.js" type="text/javascript"></script>
+
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script type="text/javascript">
+$('.sweet-14').click(function()
+    {
+        var ids=$(this).data('id');
+        swal({
+            title: 'Assign to:',
+            input: 'select',
+            inputOptions: {
+            'Mark Kim A. Sacluti': 'Mark Kim A. Sacluti',
+            'Charles Adrian T. Odi': 'Charles Adrian T. Odi',
+            'Christian Paul V.  Ferrer': 'Christian Paul V. Ferrer',
+            'Shiela Mei E. Olivar':'Shiela Mei E. Olivar',
+            'Maybelline Monteiro':'Maybelline Monteiro',
+            },
+            inputPlaceholder: 'Select ICT Staff',
+            showCancelButton: true,
+            inputValidator: function (value) {
+            return new Promise(function (resolve, reject) {
+                if (value === 'Mark Kim A. Sacluti') {
+                resolve()
+                }else if(value == 'Charles Adrian T. Odi')
                 {
-                  swal({
-                    title: "Are you sure you want to save?",
-                    text: "Control No:",
-                    type: "info",
-                    showCancelButton: true,
-                    confirmButtonClass: 'btn-danger',
-                    confirmButtonText: 'Yes',
-                    closeOnConfirm: false,
-                    showLoaderOnConfirm: true
-                  }, function () {
-                  
-                });
-              });
-              var action = '';
-              var table = $('#example').DataTable( {
-        
-                'scrollX'     : true,
-                'paging'      : true,
-                'lengthChange': true,
-                'searching'   : true,
-                'ordering'    : true,
-                'info'        : true,
-                'autoWidth'   : true,   aLengthMenu: [ [10, 10, 20, -1], [10, 10, 20, "All"] ],
-                "bPaginate": false,
-                "bLengthChange": false,
-                "bFilter": true,
-                "bInfo": false,
-                "bAutoWidth": false,
-                  "processing": true,
-                  "serverSide": false,
-                  "ajax": "DATATABLE/server_processing.php",
-                  "order": [[ 0, "desc" ]],
-                  "columnDefs": [ {
-                      "targets": 11,
-                      "render": function (data, type, row, meta ) {  
-
-                      if(row[3] == 'Jan 01, 1970' || row[0] == '0000-00-00')
-                      {
-                        $dateFormat = '';
-                        // return $dateFormat;
-                      }
-                      if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
-                      {
-
-
-                        if(<?php echo $division?> == 10)
-                        {
-                          action = '';  
-                          action = '<a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';    
-
-                        
-                        }else{
-                          action = '';
-                          action = '<a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';    
-
-                        }
-                      }
-                      else if (row[10] == '<span class="badge badge-pill" style = "background-color:orange;">Received</span>')
-                      {
-                        // action = 'ON GOING';
-                        
-                        action = '<a href = "processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" class = "btn btn-info btn-xs"   style = "width:100%;">Assign</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';          
-
-
-
-                      }
-                      else if(row[10] == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
-                      {
-                     
-                          action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';          
-
-
-                        
-                      
-                      }
-                      else if (row[10] == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
-                      { 
-                        if(<?php echo $division?> == 10)
-                        {
-                          if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
-                          {
-                            action = '';
-                          }else{
-                        action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a><a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';    
-
-                          }
-                        }else{
-                        action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';          
-
-                          // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>
-                        }
-
-                      }
-                    
-                    return action;
-                  }
-                  },
-                  {
-                      targets: 3,
-                      "render": function ( data, type, row, meta ) { 
-                    if(row[3] == '')
-                      {
-                        $action2 = '<a class = "btn btn-info btn-xs"   id = "sweet-14"> <i class="fa fa-check-circle"></i>Receive</a>';
-                        return $action2;
-                      
-                    
-                      }else{
-                        return row[3];
-                      }
-                      return row[3];
-          
-                      }
-                  } ] 
-
-              } );
-            
-      
-
-
-              $('#example tbody').on( 'click', '#edit', function () {
-                var data = table.row( $(this).parents('tr') ).data();
-                window.location="_editRequestTA.php?division=<?php echo $_GET['division'];?>&id="+data[0];
-              } );
-
-              $('#example tbody').on( 'click', '#delete', function () {
-                var data = table.row( $(this).parents('tr') ).data();
-                var control_no = data[0];
-
-                swal({
-                  title: "Are you sure?",
-                  text: "You will not be able to recover this imaginary file!",
-                  type: "warning",
-                  showCancelButton: true,
-                  confirmButtonClass: "btn-danger",
-                  confirmButtonText: "Yes, delete it!",
-                  cancelButtonText: "No, cancel plx!",
-                  closeOnConfirm: false,
-                  closeOnCancel: false
-                }).then(function (){
-                  swal("Your imaginary file has been deleted.", "success");
-                $.ajax({
-                url:"deleteRequest.php",
-                method:"POST",
-                data:{
-                control_no:control_no,
-                },
-                success:function(data)
-                {
-                setTimeout(function () {
-                window.location = "techassistance.php?division=<?php echo $_GET['division'];?>";
-                }, 1000);
+                resolve()
+                } else if(value == 'Christian Paul V. Ferrer'){
+                resolve()
+                } else if(value == 'Shiela Mei E. Olivar'){
+                resolve()
                 }
-                });
-                });
-
-
-              });
-
-              $('#example tbody').on( 'click', '#sweet-14', function () {
-                var data = table.row( $(this).parents('tr') ).data();
-                var a = data[0];
-                swal("Control No: "+data[0], "You already received this request", "success")
-                  .then(function () {
-                      $.ajax({
-                        url:"_ticketReleased.php",
-                        method:"POST",
-                        data:{
-                            id:data[0],
-                            option:"released"
-                        },
-                        success:function(data)
-                        {
-                            setTimeout(function () {
-                            swal("Record saved successfully!");
-                            }, 3000);
-                            window.location = "techassistance.php?division=<?php echo $_GET['division']?>&ticket_id="+a;
-                        }
-                      });
-                  });
-              });
-
-              $('#example tbody').on( 'click', '#view', function () {
-                var data = table.row( $(this).parents('tr') ).data();
-                window.location="report/TA/pages/viewTA.php?id="+data[0];
-              });
+                else{
+                resolve()
+                }
+            })
+            }
+        }).then(function (result) {
+            swal({
+            type: 'success',
+            html: 'Successfully approved by:' + result,
+            closeOnConfirm: false
+            })
+            $.ajax({
+            url:"_approvedTA.php",
+            method:"POST",
+            data:{
+                ict_staff:result,
+                control_no:ids
+            },
+         success:function(data)
+              {
+                  setTimeout(function () {
+                  swal("Ticket No.already assigned!");
+                  }, 3000);
+                  window.location = 'processing.php?division=<?php echo $_GET['division'];?>&ticket_id='+data[0];
+              }
+            });
+        });
+    });
+// =====================================================================
+// $('.sweet-15').click(function()
+//     {
+//         var ids = $(this).parent('div').attr('id');
+//         swal({
+//             title: "Are you sure you want to recieved this request?",
+//             text: "Control No:"+ids,
+//             type: "info",
+//             showCancelButton: true,
+//             showCancelButton: true,
+//             confirmButtonText: 'Yes',
+//             closeOnConfirm: false,
+//             showLoaderOnConfirm: true
+//         }).then(function () {
+//             $.ajax({
+//               url:"_ticketReleased.php",
+//               method:"POST",
+//               data:{
+//                   id:ids,
+//                   option:"released"
+//               },
               
-              $('#example tbody').on( 'click', '#sweet-15', function () {
-                var data = table.row( $(this).parents('tr') ).data();
-                window.location="rateService.php?division=<?php echo $_GET['division'];?>&id="+data[0];
-              });
-
-          });
-      </script>
-
-      <?php
-    }else{
-      ?>
-      <script>
-          $(document).ready(function() {
-            $('.select2').on('change', function()
-                {
-                  swal({
-                    title: "Are you sure you want to save?",
-                    text: "Control No:",
-                    type: "info",
-                    showCancelButton: true,
-                    confirmButtonClass: 'btn-danger',
-                    confirmButtonText: 'Yes',
-                    closeOnConfirm: false,
-                    showLoaderOnConfirm: true
-                  }, function () {
-                  
-                });
-              });
-              var action = '';
-              var table = $('#example').DataTable( {
-                'scrollX'     : true,
-
-                'paging'      : true,
-                'lengthChange': true,
-                'searching'   : true,
-                'ordering'    : true,
-                'info'        : true,
-                'autoWidth'   : true,   aLengthMenu: [ [10, 10, 20, -1], [10, 10, 20, "All"] ],
-                "bPaginate": false,
-                "bLengthChange": false,
-                "bFilter": true,
-                "bInfo": false,
-                "bAutoWidth": false,
-                  "processing": true,
-                  "serverSide": false,
-                  "ajax": "DATATABLE/server_processing_enduser.php",
-                  "order": [[ 0, "desc" ]],
-                  "columnDefs": [ {
-                      "targets": 11,
-                      "render": function ( data, type, row, meta ) {  
-                      if(row[3] == 'Jan 01, 1970' || row[0] == '0000-00-00')
-                      {
-                        $dateFormat = '';
-                        // return $dateFormat;
-                      }
-                  
-                      if(row[10] == '<span class="badge badge-pill" style = "background-color:red;">Submitted</span>')
-                      {
-                        
-                        if(<?php echo $division?> == 10)
-                        {
-                          action = '';          
-                        
-                        }else{
-                          action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a>';          
-
-                          // action = '';
-                        }
-                      }
-                      else if (row[10] == '<span class="badge badge-pill" style = "background-color:orange;">Received</span>')
-                      {
-                        // action = 'ON GOING';
-                      }
-                      else if(row[10] == '<span class="badge badge-pill" style = "background-color:blue;">For action</span>')
-                      {
-                        if(<?php echo $division?> == 10)
-                        {
-                          action = '<a class = "btn btn-primary btn-xs"  id = "edit" style = "width:100%;"> <i class="fa">&#xf044;</i> Edit</a>';          
-
-                        }else{
-                          action = '<a class = "btn btn-info btn-xs"  id = "view" style = "width:100%;" > <i class="fa" >&#xf06e;</i>&nbsp;View</a>';          
-
-
-                        }
-                      
-                      }
-                      else if (row[10] == '<span class="badge badge-pill" style = "background-color:green;">Completed</span>')
-                      { 
-                        if(<?php echo $division?> == 10 || <?php echo $division?> == 11 || <?php echo $division?> == 12 || <?php echo $division?> == 13 || <?php echo $division?> == 14 || <?php echo $division?> == 16 )
-                        {
-                        action = '<a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a>';          
-                        }else{
-                        action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a>';          
-
-                          // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>
-                        }
-
-                      }
-                      
-                    return action;
-                  }
-                  },
-                  {
-                      targets: 3,
-                      "render": function ( data, type, row, meta ) { 
-                    if(row[3] == '')
-                      {
-
-                        if(<?php echo $division?> == 10)
-                        {
-                        $action2 = '<a class = "btn btn-info btn-xs"   id = "sweet-14"> <i class="fa fa-check-circle"></i>Receive</a>';
-                        return $action2;
-                        }else{
-                          $action2 = '';
-                        return $action2;
-                        }
-                      
-                    
-                      }else{
-                        return row[3];
-                      }
-                      return row[3];
-          
-                      }
-                  } ] 
-
-              } );
-            
-
-              $('#example tbody').on( 'click', '#edit', function () {
-                var data = table.row( $(this).parents('tr') ).data();
-                window.location="_editRequestTA.php?division=<?php echo $_GET['division'];?>&id="+data[0];
-              } );
-
-              $('#example tbody').on( 'click', '#sweet-14', function () {
-                var data = table.row( $(this).parents('tr') ).data();
-                var a = data[0];
-                swal("Control No: "+data[0], "You already received this request", "success")
-                  
-                  .then(function () {
-                      $.ajax({
-                        url:"_ticketReleased.php",
-                        method:"POST",
-                        data:{
-                            id:data[0],
-                            option:"released"
-                        },
-                        success:function(data)
-                        {
-                            setTimeout(function () {
-                            swal("Record saved successfully!");
-                            }, 3000);
-                            window.location = "techassistance.php?division=<?php echo $_GET['division']?>&ticket_id="+a;
-                        }
-                      });
-                  });
-              });
-
-              $('#example tbody').on( 'click', '#view', function () {
-                var data = table.row( $(this).parents('tr') ).data();
-                window.location="report/TA/pages/viewTA.php?id="+data[0];
-              });
+//               success:function(data)
+//               {
+//                   setTimeout(function () {
+//                   swal("Record saved successfully!");
+//                   }, 3000);
+//                   window.location = "_tickets.php?division=<?php echo $_GET['division']?>&ticket_id=<?php echo $_GET['ticket_id']?>";
+//               }
+//             });
+//         });
+//     });
+// =====================================================================
+$(document).on('click','.sweet-17',function(e){
+    e.preventDefault();
+    var ids=$(this).data('id');
+      swal("Control No: "+ids, "You already received this request", "success")
+        // swal({
+        //     title: "Are you sure you want to recieved this request?",
+        //     text: "Control No:"+data[0],
+        //     type: "info",
+        //     showCancelButton: true,
+        //     showCancelButton: true,
+        //     confirmButtonText: 'Yes',
+        //     closeOnConfirm: false,
+        //     showLoaderOnConfirm: true
+        // })
+        .then(function () {
+            $.ajax({
+              url:"_ticketReleased.php",
+              method:"POST",
+              data:{
+                  id:ids,
+                  option:"released"
+              },
+              success:function(data)
+              {
+                  setTimeout(function () {
+                  swal("Record saved successfully!");
+                  }, 3000);
+                  window.location = "processing.php?division=<?php echo $_GET['division'];?>&ticket_id=";
+              }
+            });
+        });
+    });
+$(document).on('click','#sweet-16',function(e){
+    e.preventDefault();
+    var ids=$(this).data('id');
+        swal({
+            title: "Are you sure you already finished with this request?",
+            text: "Control No:"+ids,
+            type: "info",
+            showCancelButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }).then(function () {
+            $.ajax({
+              url:"_ticketReleased.php",
+              method:"POST",
+              data:{
+                  id:ids,
+                  option:'complete'
+              },
               
-              $('#example tbody').on( 'click', '#sweet-15', function () {
-                var data = table.row( $(this).parents('tr') ).data();
-                window.location="rateService.php?division=<?php echo $_GET['division'];?>&id="+data[0];
-              });
+              success:function(data)
+              {
+                  setTimeout(function () {
+                  swal("Service Completed!");
+                  }, 3000);
+                  window.location = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id="+ids;
+              }
+            });
+        });
+    });
+</script>
 
-          });
-      </script>
-      <?php
-    }
- ?>
+
+
+
+
 
 
 </body>
 </html>
+<script>
+  $(function () {
+
+    $('').DataTable()
+
+
+    $('#example1').DataTable({
+        <?php 
+if($_GET['ticket_id'] == '')
+{
+
+}else{
+  
+    echo ' "search": {
+        "search": "'.$_GET['ticket_id'].'"
+      },';
+}
+
+?>
+       
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example2').DataTable({
+    "search": "",
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example3').DataTable({
+    "search": "",
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example4').DataTable({
+    "search": "",
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+
+    $('#example5').DataTable({
+    "search": "",
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      "lengthMenu": [[3], [3]],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false
+    })
+  })
+</script>
+<script>
+/*
+     * LetterAvatar
+     * 
+     * Artur Heinze
+     * Create Letter avatar based on Initials
+     * based on https://gist.github.com/leecrossley/6027780
+     */
+     (function(w, d){
+
+
+function LetterAvatar (name, size) {
+
+    name  = name || '';
+    size  = size || 60;
+
+    var colours = [
+            "#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50", 
+            "#f1c40f", "#e67e22", "#e74c3c", "#ecf0f1", "#95a5a6", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d"
+        ],
+
+        nameSplit = String(name).toUpperCase().split(' '),
+        initials, charIndex, colourIndex, canvas, context, dataURI;
+
+
+    if (nameSplit.length == 1) {
+        initials = nameSplit[0] ? nameSplit[0].charAt(0):'?';
+    } else {
+        initials = nameSplit[0].charAt(0) + nameSplit[1].charAt(0);
+    }
+
+    if (w.devicePixelRatio) {
+        size = (size * w.devicePixelRatio);
+    }
+        
+    charIndex     = (initials == '?' ? 72 : initials.charCodeAt(0)) - 64;
+    colourIndex   = charIndex % 20;
+    canvas        = d.createElement('canvas');
+    canvas.width  = size;
+    canvas.height = size;
+    context       = canvas.getContext("2d");
+     
+    context.fillStyle = colours[colourIndex - 1];
+    context.fillRect (0, 0, canvas.width, canvas.height);
+    context.font = Math.round(canvas.width/2)+"px Arial";
+    context.textAlign = "center";
+    context.fillStyle = "#FFF";
+    context.fillText(initials, size / 2, size / 1.5);
+
+    dataURI = canvas.toDataURL();
+    canvas  = null;
+
+    return dataURI;
+}
+
+LetterAvatar.transform = function() {
+
+    Array.prototype.forEach.call(d.querySelectorAll('img[avatar]'), function(img, name) {
+        name = img.getAttribute('avatar');
+        img.src = LetterAvatar(name, img.getAttribute('width'));
+        img.removeAttribute('avatar');
+        img.setAttribute('alt', name);
+    });
+};
+
+
+// AMD support
+if (typeof define === 'function' && define.amd) {
+    
+    define(function () { return LetterAvatar; });
+
+// CommonJS and Node.js module support.
+} else if (typeof exports !== 'undefined') {
+    
+    // Support Node.js specific `module.exports` (which can be a function)
+    if (typeof module != 'undefined' && module.exports) {
+        exports = module.exports = LetterAvatar;
+    }
+
+    // But always support CommonJS module 1.1.1 spec (`exports` cannot be a function)
+    exports.LetterAvatar = LetterAvatar;
+
+} else {
+    
+    window.LetterAvatar = LetterAvatar;
+
+    d.addEventListener('DOMContentLoaded', function(event) {
+        LetterAvatar.transform();
+    });
+}
+
+})(window, document);
+</script>

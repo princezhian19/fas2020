@@ -14,7 +14,19 @@
                     </div><br><br>
                     <div class="col-md-12">
                         <button class="pull-right btn btn-success" id = "modal"  style = "margin-left:5%;"><i class = "fa fa-plus"></i><a style = "color:#fff;" > Add Activity</a></button>                        
+                        <?php 
+  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+      ?>
                        <button class="pull-right btn btn-success"><i class = "fa fa-edit"></i><a href ="ManageCalendar.php?division=<?php echo $_GET['division'];?>" style ="color:#fff;decoration:none;">Manage All</a></button>
+
+      <?php
+    }else{
+   ?>
+                       <button class="pull-right btn btn-success"><i class = "fa fa-eye"></i><a href ="ManageCalendar.php?division=<?php echo $_GET['division'];?>" style ="color:#fff;decoration:none;">View All</a></button>
+
+   <?php
+    }
+ ?>
                     </div>
                     <br>
                     <br>
