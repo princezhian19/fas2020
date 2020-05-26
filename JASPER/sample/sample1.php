@@ -185,7 +185,8 @@ if (mysqli_query($conn, $sql_insert)) {
  }
  ?>
 <script>
-window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
+
+window.location = '../../processing.php?division=<?php echo $_POST['division'];?>&ticket_id=';
 </script>
  <?php
     // ======

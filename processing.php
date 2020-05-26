@@ -194,22 +194,8 @@ function filldataTable()
                     }else{
                         echo ' <button disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12">Received</button>';
                     }
-                    // Completed
-                    if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
-                    {
-
-                    if($_SESSION['complete_name'] == $row['ASSIST_BY'])
-                    {
-                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Completed</button>';
-                    }else{
-                    echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Completed</button>';
-
-                    }
-                }else{
-                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Completed</button>';
-
-                }
-                // Assign
+                    echo '<br>';
+                      // Assign
              
                 if($row['STATUS_REQUEST'] == 'For action')
                 {
@@ -235,8 +221,24 @@ function filldataTable()
                     <?php
                 }
                     
-                                                                        
-                    ?>
+                      echo '<br><br>';                                      
+                    
+                    // Completed
+                    if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+                    {
+
+                    if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+                    {
+                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Completed</button>';
+                    }else{
+                    echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Completed</button>';
+
+                    }
+                }else{
+                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Completed</button>';
+
+                }
+              ?>
                 
                     
             </td>
