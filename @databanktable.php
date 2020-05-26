@@ -1,122 +1,11 @@
-
 <?php
+  if($_POST['title']){
 
-
-
-
-if(isset($_POST['Add'])){
-    $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-
-    $username1 = $_SESSION['username'];
-    
-  
-$filename = $_FILES['file']['name'];
-$tempname = $_FILES['file']['tmp_name'];
-    
-
-    if(isset($filename)){
-        if(!empty($_FILES['file']['name'])){
-
-            $location = "files/";
-
-                 
-            
-            if(move_uploaded_file($tempname, $location.$filename)){
-
-               
-
-                    //echo 'File Uploaded!';
-                
-            }
-           
-        }
-        
-        
-
-    }
-
-   
-
-$category = $_POST['category'];
-$issuances = $_POST['issuances'];
-$dateissued1 = $_POST['dateissued'];
-$dateissued = date('Y-m-d', strtotime($dateissued1));
-$title = $_POST['title'];
-
-$url = $_POST['url'];
-$postedby = $_POST['postedby'];
-
-$posteddate = $_POST['posteddate'];
-$office = $_POST['office'];
-
-
-$servername = "localhost";
-$username = "fascalab_2020";
-$password = "w]zYV6X9{*BN";
-$database = "fascalab_2020";
-
-$conn = new mysqli($servername, $username, $password,$database);
-
-// Check connection
-if ($conn->connect_error) {
-   die("Connection failed: " . $conn->connect_error);
-}
-
-if(empty($_FILES['file']['name'])){
-
-  echo '<div class="addmodal"><div class="" style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
-/*  echo ("<SCRIPT LANGUAGE='JavaScript'>
-  window.alert('Attached file cannot be empty.!')
-  </SCRIPT>"); */
-
-}
-else{
-  $query = mysqli_query($conn,"INSERT INTO downloads (title,file,category,dateposted,postedby,url,office) 
-  VALUES ('$title','$filename','$category','$posteddate','$username1','$url','$office')");
-
-if($query){
-
-  // echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Databank has been successfully added. </p> </div></div>  '; 
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-   window.alert(' Databank has been successfully added.')
-   window.location.href='';
-   </SCRIPT>"); 
- 
- }
- else{
- 
- 
- echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
-  /*  echo ("<SCRIPT LANGUAGE='JavaScript'>
-   window.alert('Error!')
-   window.location.href='../CreateIssuances.php';
-   </SCRIPT>"); */
- }
- 
-
-}
-
- /* echo "INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
- VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')";
- exit(); */
-
-/*  echo "INSERT INTO downloads (title,file,category,dateposted,postedby,url) VALUES ('$title','$filename','$category','$posteddate','$username1','$url')";
- exit(); */
-
-
-mysqli_close($conn);
-
-
-
-}
-
+    $view_query = mysqli_query($conn, "SELECT downloads.url,downloads.office,downloads.file, downloads.download_id ,downloads.category, downloads.title, downloads.dateposted, downloads.postedby, downloads_category.name from downloads left join downloads_category on downloads.category=downloads_category.id where dowloads.title like '%".$_POST['title']."%' order by downloads.download_id desc");
+  }
 
 
 ?>
-
-
-
-
 
 
 <?php
@@ -176,20 +65,24 @@ $username = $_SESSION['username'];
               
             </div>
 
-            <form method="POST" action='' enctype="multipart/form-data" >
+            <form method="POST" action=''  >
 
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center ">
                  
-                  <th width="200">CATEGORY</th>
-                  <th width="400">TITLE</th>
-                  <th width="100">OFFICE</th>
-                  <th width="150">POSTING DETAILS</th>
-                  <th width="250">ACTION</th>
+                  <th width="200">CATEGORY <br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="category" placeholder="" name="category"> </th>
+                  <th width="400">TITLE <br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="title" placeholder="" name="title">
+                  <th width="100">OFFICE<br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="" placeholder="" name="office"> </th>
+                  <th width="150">POSTING DETAILS<br><input   type="text"  class="form-control" style="height: 35px;" id="postedby" placeholder="" name="postedby"></th>
+                  <th width="250">ACTION<br><br><br></th>
                   
                 </tr>
                 </thead>
+
+                
+
+             
                 <?php
             $servername = "localhost";
             $username = "fascalab_2020";
@@ -198,8 +91,12 @@ $username = $_SESSION['username'];
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT downloads.url,downloads.office,downloads.file, downloads.download_id ,downloads.category, downloads.title, downloads.dateposted, downloads.postedby, downloads_category.name from downloads left join downloads_category on downloads.category=downloads_category.id order by downloads.download_id desc");
+            
+           
+          
 
+            $view_query = mysqli_query($conn, "SELECT downloads.url,downloads.office,downloads.file, downloads.download_id ,downloads.category, downloads.title, downloads.dateposted, downloads.postedby, downloads_category.name from downloads left join downloads_category on downloads.category=downloads_category.id order by downloads.download_id desc");
+            
                 while ($row = mysqli_fetch_assoc($view_query)) {
                   $id = $row["download_id"];
                   
@@ -314,7 +211,7 @@ $username = $_SESSION['username'];
               <h4 class="modal-title"><b>Add Databank</b></h4>
             </div>
             <div class="modal-body">
-              <form method="POST" id="insert_form" action="" enctype="multipart/form-data">
+              <form method="POST" id="insert_form" action="databank_create1.php" enctype="multipart/form-data">
               
             <!--   <label>Reason</label>
               <input required type="text" name="reason" id="reason" class="form-control" />
@@ -890,4 +787,34 @@ $username = $_SESSION['username'];
       showInputs: false
     })
   })
+</script>
+
+<script>
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#example1 thead1 th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input  type="text" placeholder="Search '+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#example').DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+ 
+} );
+
 </script>

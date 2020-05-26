@@ -66,7 +66,8 @@ $username = $_SESSION['username'];
       </ol>
       <br>
       <br>
-        <?php include('@databanktable.php');?>
+     </section>
+     <?php include('@databanktable.php');?>
         <br>
         <br>
         <br>
@@ -84,8 +85,6 @@ $username = $_SESSION['username'];
         <br>
         <br>
         <br>
-
-    </section>
   </div>
   <footer class="main-footer">
   <br>
@@ -105,6 +104,9 @@ $username = $_SESSION['username'];
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+
+
 
 <script>
   $(function () {
