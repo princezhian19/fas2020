@@ -39,7 +39,15 @@ $sql_items = mysqli_query($conn, "SELECT tblemployee.EMP_N,tblemployee.FIRST_M,t
 
 // $mont = date('M',strtotime($e_date));
 // $year = date('Y',strtotime($e_date));
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D9',$office);
+$selectoffice = mysqli_query($conn,"SELECT DIVISION_M FROM tblpersonneldivision WHERE DIVISION_N = $office");
+$rowO = mysqli_fetch_array($selectoffice);
+if ($office == 0) {
+  $DIVISION_M = 'All';
+}else{
+$DIVISION_M = $rowO['DIVISION_M'];
+  
+}
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D9',$DIVISION_M);
 // $objPHPExcel->setActiveSheetIndex()->setCellValue('D10',$mont);
 // $objPHPExcel->setActiveSheetIndex()->setCellValue('H10',$year);
 

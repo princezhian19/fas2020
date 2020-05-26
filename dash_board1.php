@@ -34,58 +34,60 @@ if (isset($_POST['update'])) {
 
   $update = mysqli_query($conn,"UPDATE announcementt SET title = '$title' , content = '$content' WHERE id = $idC ");
   if ($update) {
-      echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Successfuly Updated!')
-    </SCRIPT>");
-   header("Refresh:0");  }
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Successfuly Updated!')
+      </SCRIPT>");
+    header("Refresh:0");  }
 
-}
+  }
 
-?>
-<div class="row">
-  <div class="col-md-3">
-    <div class="box">
-      <div class="panel-heading bg-blue">
-       <img class="direct-chat-img" src="images/LOGO.png" alt="message user image">
-       <font class="text-center">PHILIPPINES STANDARD TIME </font><!-- Item(s) -->
-       <img class="direct-chat-img pull-right" src="images/ph.png" alt="message user image">
-       <div class="clearfix"></div>
-     </div>
+  ?>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="box">
+        <div class="panel-heading bg-blue">
+         <img class="direct-chat-img" src="images/LOGO.png" alt="message user image">
+         <font class="text-center">PHILIPPINES STANDARD TIME </font><!-- Item(s) -->
+         <img class="direct-chat-img pull-right" src="images/ph.png" alt="message user image">
+         <div class="clearfix"></div>
+       </div>
 
-     <p><h3><div class="text-center" id="clock">--:--:--</div></h3></p>
-     <div class="text-center"><?php echo date('F d, Y D')?></div>
-     <script type="text/javascript">
-      setInterval(displayclock, 500);
-      function displayclock(){
-        var time = new Date();
-        var hrs = time.getHours();
-        var min = time.getMinutes();
-        var sec = time.getSeconds();
+       <p><h3><div class="text-center" id="clock">--:--:--</div></h3></p>
+       <div class="text-center"><?php echo date('F d, Y D')?></div>
+       <script type="text/javascript">
+        setInterval(displayclock, 500);
+        function displayclock(){
+          var time = new Date();
+          var hrs = time.getHours();
+          var min = time.getMinutes();
+          var sec = time.getSeconds();
 
-        if (hrs > 12){
-          hrs = hrs - 12;
+          if (hrs > 12){
+            hrs = hrs - 12;
+          }
+
+          if (hrs == 0) {
+            hrs = 12;
+          }
+          if (min < 10) {
+            min = '0' + min;
+          }
+
+          if (hrs < 10) {
+            hrs = '0' + hrs;
+          }
+
+          if (sec < 10) {
+            sec = '0' + sec;
+          }
+
+          document.getElementById('clock').innerHTML = hrs + ':' + min + ':' +sec;
         }
+      </script>
 
-        if (hrs == 0) {
-          hrs = 12;
-        }
-        if (min < 10) {
-          min = '0' + min;
-        }
-
-        if (hrs < 10) {
-          hrs = '0' + hrs;
-        }
-
-        if (sec < 10) {
-          sec = '0' + sec;
-        }
-
-        document.getElementById('clock').innerHTML = hrs + ':' + min + ':' +sec;
-      }
-    </script>
-
+    </div>
   </div>
+<<<<<<< HEAD
 </div>
 
 
@@ -141,9 +143,40 @@ if (isset($_POST['update'])) {
             <span class="info-box-icon info-box-text "><?php echo '<h3>'.date('M',strtotime($start)).'<br>'.date('d',strtotime($start)).'</h3>';?></span>
             <div class="info-box-content">
             
+=======
+  <div class="col-md-3">
+    <div class="box">
+      <div class="info-box">
+        <?php 
+        $select_event1 = mysqli_query($conn,"SELECT e.id,e.start,e.end,e.title,e.venue,tp.DIVISION_M FROM events e LEFT JOIN tblpersonneldivision tp on tp.DIVISION_N = e.office ORDER BY e.id DESC LIMIT 1");
+        $rowE1 = mysqli_fetch_array($select_event1);
+        $id = $rowE1['id'];
+        $start = $rowE1['start'];
+        $start = $rowE1['start'];
+        $end = $rowE1['end'];
+        $title = $rowE1['title'];
+        $venue = $rowE1['venue'];
+        $DIVISION_M = $rowE1['DIVISION_M'];
+        ?>
+        <span class="info-box-icon bg-aqua"><i class="fa fa-fw fa-calendar-check-o"></i></span>
+
+
+        </span>
+        <div class="info-box-content">
+          <span class=""><?php echo $title;?> on <?php echo date('F d, Y',strtotime($start));?></span><br><br>
+          <div style="font-size: 10px">
+            <p><b>Venue : </b> <?php echo $venue?></p>
+            <p><b>Office : </b> <?php echo $DIVISION_M;?></p>
+            <!-- <p><b>Date : </b> <?php echo date('F d, Y',strtotime($start));?></p> -->
+          </div>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+>>>>>>> 0a4239f9231e4003e76a373322adf801094f929e
 
             <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
 
+<<<<<<< HEAD
               <span class="info-box-number"></span>
 
               <div class="progress">
@@ -176,10 +209,40 @@ if (isset($_POST['update'])) {
             <span class="info-box-icon info-box-text"><?php echo '<h3>'.date('M',strtotime($start)).'<br>'.date('d',strtotime($start)).'</h3>';?></span>
             <div class="info-box-content">
             
+=======
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="box">
+      <div class="info-box">
+        <span class="info-box-icon bg-aqua"><i class="fa fa-fw fa-calendar-check-o"></i></span>
+        <?php 
+        $select_event2 = mysqli_query($conn,"SELECT e.id,e.start,e.end,e.title,e.venue,tp.DIVISION_M FROM events e LEFT JOIN tblpersonneldivision tp on tp.DIVISION_N = e.office WHERE e.id != $id ORDER BY e.id DESC LIMIT 1");
+        $rowE2 = mysqli_fetch_array($select_event2);
+        $id2 = $rowE2['id'];
+        $start2 = $rowE2['start'];
+        $start2 = $rowE2['start'];
+        $end2 = $rowE2['end'];
+        $title2 = $rowE2['title'];
+        $venue2 = $rowE2['venue'];
+        $DIVISION_M2 = $rowE2['DIVISION_M'];
+        ?>
+        <div class="info-box-content">
+          <span class=""><?php echo $title2;?> on <?php echo date('F d, Y',strtotime($start2));?></span><br><br>
+          <div style="font-size: 10px">
+            <p><b>Venue : </b> <?php echo $venue2?></p>
+            <p><b>Office : </b> <?php echo $DIVISION_M2;?></p>
+            <!-- <p><b>Date : </b> <?php echo date('F d, Y',strtotime($start));?></p> -->
+          </div>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+>>>>>>> 0a4239f9231e4003e76a373322adf801094f929e
 
               <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
               <span class="info-box-number"></span>
 
+<<<<<<< HEAD
               <div class="progress">
               </div>
                   <span class="progress-description">
@@ -196,13 +259,46 @@ if (isset($_POST['update'])) {
 
 
 
+=======
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="box">
+      <div class="info-box">
+        <span class="info-box-icon bg-aqua"><i class="fa fa-fw fa-calendar-check-o"></i></span>
+        <?php 
+        $select_event2 = mysqli_query($conn,"SELECT e.id,e.start,e.end,e.title,e.venue,tp.DIVISION_M FROM events e LEFT JOIN tblpersonneldivision tp on tp.DIVISION_N = e.office WHERE e.id != $id and e.id != $id2 ORDER BY e.id DESC LIMIT 1");
+        $rowE2 = mysqli_fetch_array($select_event2);
+        $id2 = $rowE2['id'];
+        $start2 = $rowE2['start'];
+        $start2 = $rowE2['start'];
+        $end2 = $rowE2['end'];
+        $title2 = $rowE2['title'];
+        $venue2 = $rowE2['venue'];
+        $DIVISION_M2 = $rowE2['DIVISION_M'];
+        ?>
+        <div class="info-box-content">
+          <span class=""><?php echo $title2;?> on <?php echo date('F d, Y',strtotime($start2));?></span><br><br>
+          <div style="font-size: 10px">
+            <p><b>Venue : </b> <?php echo $venue2?></p>
+            <p><b>Office : </b> <?php echo $DIVISION_M2;?></p>
+            <!-- <p><b>Date : </b> <?php echo date('F d, Y',strtotime($start));?></p> -->
+          </div>
+        </div>
+        <!-- /.info-box-content -->
+      </div>
+
+
+    </div>
+  </div>
+>>>>>>> 0a4239f9231e4003e76a373322adf801094f929e
 </div>
 
 <div class="row">
   <div class="col-md-3">
     <div class="box" style="outline: lightgray solid 10px;">
       <div class="panel-heading">
-        <i class="fa fa-list-alt"></i>&nbsp&nbsp&nbspBirthday
+        <i class="fa fa-list-alt"></i>&nbsp&nbsp&nbspBirthday Celebrants
         <a href="" class="pull-right">View All</a>
         <div class="box-header with-border">
         </div>
@@ -211,16 +307,28 @@ if (isset($_POST['update'])) {
       <div class="box-header">
         <?php 
         $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-        $BDAY = mysqli_query($conn,"SELECT concat(FIRST_M,' ',MIDDLE_M,' ',LAST_M) as name,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
+        $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
         while ($row = mysqli_fetch_assoc($BDAY)) {
-          $name = $row['name'];
+          $FIRST_M1 = $row['FIRST_M'];
+          $FIRST_M = ucfirst(strtolower($FIRST_M1));
+          $MIDDLE_M = $row['MIDDLE_M'];
+          $LAST_M1 = $row['LAST_M'];
+          $LAST_M = ucfirst(strtolower($LAST_M1));
+          $words = explode(" ", $MIDDLE_M);
+          $acronym = "";
+
+          foreach ($words as $w) {
+            $acronym .= $w[0];
+          }
+          //asd
+          $name = $FIRST_M.' '.$acronym.'.'.' '.$LAST_M;
           $BIRTH_D = $row['BIRTH_D'];
           $PROFILE = $row['PROFILE'];
           $b_day = date('F d',strtotime($BIRTH_D));
 
           ?>  
           <img class="direct-chat-img" src="<?php echo $PROFILE; ?>" alt="message user image">
-          <b style="font-size: 12px;"><?php echo $name;?></b>
+          <b style="font-size: 13px;"><?php echo $name;?></b>
           <font style="font-size: 10px;" class="pull-right"><?php echo $b_day?></font>
           <br>
           <br>
@@ -538,32 +646,32 @@ if (isset($_POST['update'])) {
                   </b><br><?php echo $intent;?></td>
                 </tr>
                 
-              <div class="modal modal-default fade" id="modal-info_<?php echo $row['id']; ?>">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title">Edit Announcement</h4>
-                    </div>
-                    <div class="modal-body">
-                <form method="POST" >
-                     <label style="padding-right: 20px;">Title <font style="color:red;">*</font></font>&nbsp&nbsp<i><font style="color:red;">should not exceed 50 characters</i></font></label><input value="<?php echo $title?>" class="form-control" type="text" name="title"><br>
-                     <input type="text" name="idC" hidden  value="<?php echo $id?>">
-                        <label style="padding-right: 20px;">Content <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 500 characters</font></i></label><textarea  class="form-control" type="text" name="content"><?php echo $intent?></textarea><br>
-                        <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $posted_by?>"><br>
-                        <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo $date?>"><br>
-                    </div>
-                    <div class="modal-footer">
-                      <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button> -->
-                        <button type="submit" class="btn btn-primary" name="update">Save changes</button>
-                    </div>
+                <div class="modal modal-default fade" id="modal-info_<?php echo $row['id']; ?>">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title">Edit Announcement</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form method="POST" >
+                           <label style="padding-right: 20px;">Title <font style="color:red;">*</font></font>&nbsp&nbsp<i><font style="color:red;">should not exceed 50 characters</i></font></label><input value="<?php echo $title?>" class="form-control" type="text" name="title"><br>
+                           <input type="text" name="idC" hidden  value="<?php echo $id?>">
+                           <label style="padding-right: 20px;">Content <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 500 characters</font></i></label><textarea  class="form-control" type="text" name="content"><?php echo $intent?></textarea><br>
+                           <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $posted_by?>"><br>
+                           <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo $date?>"><br>
+                         </div>
+                         <div class="modal-footer">
+                          <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button> -->
+                          <button type="submit" class="btn btn-primary" name="update">Save changes</button>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- /.modal-content -->
                   </div>
-               </form>
-                  <!-- /.modal-content -->
+                  <!-- /.modal-dialog -->
                 </div>
-                <!-- /.modal-dialog -->
-              </div>
               <?php } ?>
             </table>
             
