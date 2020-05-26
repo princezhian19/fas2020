@@ -205,7 +205,7 @@ if (isset($_POST['update'])) {
           foreach ($words as $w) {
             $acronym .= $w[0];
           }
-
+          //asd
           $name = $FIRST_M.' '.$acronym.'.'.' '.$LAST_M;
           $BIRTH_D = $row['BIRTH_D'];
           $PROFILE = $row['PROFILE'];
