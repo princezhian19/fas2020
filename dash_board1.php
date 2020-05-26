@@ -521,9 +521,9 @@ if (isset($_POST['update'])) {
             <div style="padding-left: 10px;padding-right: 10px;background:#ee5;">
 
              <table id="example15" class="table " style="background-color:#ee5;">
-              <thead>
-                <tr style="background-color:#ee5;">
-                  <th></th>
+              <thead >
+                <tr style="background-color:#ee5;" >
+                  <th style="background-color:#ee5;"hidden></th>
                 </tr>
               </thead>
               <?php 

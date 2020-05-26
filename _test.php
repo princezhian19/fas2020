@@ -30,7 +30,7 @@ function fillTableInfo()
                <table  border = 1 class = "center-text" style = "width:100%;">
                             <tbody>
                                 <tr>
-                                    <td colspan = 4 class = "label-text"> <h2><b>ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</b></h2></span></td>
+                                    <td colspan = 4 class = "label-text" style = "text-align:center;"> <h2><b>ONLINE ICT TECHNICAL ASSISTANCE REQUEST FORM</b></h2></span></td>
                                     <td class = "label-text left-text">Control<br>Number:<span style = "color:red;">*</span></td>
                                     <td colspan = 2 style = "padding:5px 5px 5px 5px;background-color:#CFD8DC;">
                                     <?php echo countCN();?>
@@ -172,8 +172,8 @@ function showUser()
                                   </div>
                               </td>  
                               <td style = "width:35%;"><br>
-                                  <input  style = "margin-left:90px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
-                                  <div style = "margin-left:120px;padding-top:10px;" >
+                                  <input  style = "margin-left:140px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
+                                  <div style = "margin-left:180px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
@@ -207,8 +207,8 @@ function showUser()
                           </div>
                           </td> 
                           <td>
-                          <input  style = "margin-left:90px;"   type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "OTHERS"><b>OTHERS (please specify)</b><br>
-                          <div style = "margin-left:120px; padding-top:10px;">
+                          <input  style = "margin-left:140px;"   type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "OTHERS"><b>OTHERS (please specify)</b><br>
+                          <div style = "margin-left:180px; padding-top:10px;">
                           <input  type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                           <input  type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                           <input  type = "text" name = "others3" id = "others3" class = "checkboxgroup_g6"value = "" style = "border:none;border-bottom:1px solid black;"/><br>
