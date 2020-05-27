@@ -48,8 +48,10 @@
         <div class="row" id="boxed">
           <div class="col-xs-2">
             <br>
+                <?php if ($ACCESSTYPE == 'admin'): ?>
         <li class="btn btn-success"><a href="CreateEmployee.php" style="color:white;text-decoration: none;">Add</a></li>
-
+          <?php else: ?>
+        <?php endif ?>
           </div>
           <div class="">
             <div>
