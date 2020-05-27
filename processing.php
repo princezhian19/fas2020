@@ -138,7 +138,9 @@ function filldataTable()
                                                         <b>REQUESTED DATE</b>
                                                     </span>
                                                     <span class="progress-description">
-                                                        <?php  echo $row['REQ_DATE'];?>
+                                                        <?php  
+                                                    
+                                                        echo date('F d, Y', strtotime($row['REQ_DATE']));?>
                                                     </span>
                                                 </div>
                                                
@@ -208,7 +210,7 @@ function filldataTable()
                       echo '<br><br>';                                      
                     
                     // Complete
-                    if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+                    if($row['COMPLETED_DATE'] == '0000-00-00' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
                     {
 
                     if($_SESSION['complete_name'] == $row['ASSIST_BY'])
@@ -219,6 +221,7 @@ function filldataTable()
                     echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }
                 }else{
+        
                     echo '<button title = "Completed Date" disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">'.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'</button>';
 
                 }
