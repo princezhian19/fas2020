@@ -209,7 +209,7 @@ if (isset($_POST['update'])) {
         $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
         while ($row = mysqli_fetch_assoc($BDAY)) {
           $FIRST_M1 = $row['FIRST_M'];
-          $FIRST_M = ucfirst(strtolower($FIRST_M1));
+          $FIRST_M = ucwords(strtolower($FIRST_M1));
           $MIDDLE_M = $row['MIDDLE_M'];
           $LAST_M1 = $row['LAST_M'];
           $LAST_M = ucfirst(strtolower($LAST_M1));

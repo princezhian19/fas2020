@@ -23,8 +23,8 @@ $mi = $row['MIDDLE_M'];
 $m = substr($mi, 0, 1);
 $l= $row['LAST_M'];
 
-$firstname = ucwords(strtolower($f));
 
+$firstname = ucwords(strtolower($f));
 $lname = ucfirst($l);             // HELLO WORLD!
 $lastname = ucfirst(strtolower($l));
 
