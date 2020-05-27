@@ -547,7 +547,7 @@ else{
                   else if($DIVISION_M=='LGMED'){
 
                   $approved="GILBERTO L. TUMAMAC";
-                  $pos="OIC - LGMED Chief";
+                  $pos="OIC - Chief, LGMED";
 
                 
                   }
@@ -555,14 +555,14 @@ else{
                   else if($DIVISION_M=='LGCDD'){
 
                   $approved="JAY-AR T. BELTRAN";
-                  $pos="OIC - LGCDD Chief";
+                  $pos="OIC - Chief, LGCDD";
                   
                   }
                   
                   else if($DIVISION_M=='FAD'){
 
                   $approved="DR. CARINA S. CRUZ";
-                  $pos="Chief, FAD";
+                  $pos = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Chief, FAD';
                  
                   }
                   else{
@@ -579,10 +579,10 @@ else{
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                     <b><?php echo $approved;?></b>
                     <br>
+                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                     <b><?php echo $pos;?></b>
                   
                 </td>
