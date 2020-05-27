@@ -136,7 +136,7 @@ exit(); */
        
     
         
-     /*    $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
+      /*   $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleTop);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLeft);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleRight);
@@ -180,7 +180,13 @@ exit(); */
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($stylebottom);
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleTop);
         $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleLeft);
-        $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleRight); */
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleRight);
+
+        
+        $objPHPExcel->getActiveSheet()->getStyle('J'.$row)->applyFromArray($stylebottom);
+        $objPHPExcel->getActiveSheet()->getStyle('J'.$row)->applyFromArray($styleTop);
+        $objPHPExcel->getActiveSheet()->getStyle('J'.$row)->applyFromArray($styleLeft);
+        $objPHPExcel->getActiveSheet()->getStyle('J'.$row)->applyFromArray($styleRight); */
           $row++;
          
           
@@ -190,8 +196,11 @@ exit(); */
 
 
         $objPHPExcel->setActiveSheetIndex()->setCellValue('A9','*********No official business data.*********');
-        $objPHPExcel->setActiveSheetIndex()->mergeCells("A9:I9");
-       
+        $objPHPExcel->setActiveSheetIndex()->mergeCells("A9:J9");
+        $objPHPExcel->getActiveSheet()->getStyle("A9:J9")->applyFromArray($stylebottom);
+        $objPHPExcel->getActiveSheet()->getStyle("A9:J9")->applyFromArray($styleTop);
+        $objPHPExcel->getActiveSheet()->getStyle("A9:J9")->applyFromArray($styleLeft);
+        $objPHPExcel->getActiveSheet()->getStyle("A9:J9")->applyFromArray($styleRight);
     }
   
 

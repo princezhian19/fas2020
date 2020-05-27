@@ -89,7 +89,8 @@ $username = $_SESSION['username'];
                   <th width="200">CATEGORY</th>
                   <th width="400">TITLE </th>
                   <th width="100">OFFICE</th>
-                  <th width="150">POSTING DETAILS</th>
+                  <th width="150">POSTED BY</th>
+                  <th width="150">POSTED DATE</th>
                   <th width="250">ACTION<br><br></th>
                   
                 </tr>
@@ -117,8 +118,8 @@ $username = $_SESSION['username'];
                   $title  = $row["title"];
                   $office  = $row["office"];
                 $url= $row["url"];
-                  $dateposted  = $row["dateposted"];
-                   // $date_issued1 = date('F d, Y', strtotime($date1));
+                  $dateposted1  = $row["dateposted"];
+                    $dateposted = date('F d, Y', strtotime($dateposted1));
                   $postedby = $row["postedby"];
                  $location = "files/".$file;
                  //echo $location;
@@ -132,7 +133,8 @@ $username = $_SESSION['username'];
                 <td><?php echo $name?></td>
                 <td><?php echo $title?></td>
                 <td><?php echo $office?></td>
-                <td><?php echo $dateposted."-".$postedby?></td>
+                <td><?php echo $postedby?></td>
+                <td><?php echo $dateposted?></td>
                 
 
                 <td>
@@ -313,10 +315,7 @@ $username = $_SESSION['username'];
                                 </td>
                                     </tr>
 
-                                    <tr>
-                        <td class="col-md-2"><b>Posted Date</b></td>
-                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('Y-m-d') ?>" ></td>
-                                </tr>
+                                   
                     <tr>
                         <td class="col-md-2"><b>Posted By</b></td>
                             <td class="col-md-5"> <?php
@@ -338,6 +337,11 @@ $username = $_SESSION['username'];
                             <input readonly value="<?php echo $username;?>" id="postedby" name="postedby" autocomplete ="off" type="text" class="form-control" placeholder="">
                                     </td>
                                         </tr>
+
+                                        <tr>
+                        <td class="col-md-2"><b>Posted Date</b></td>
+                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('F d, Y') ?>" ></td>
+                                </tr>
                   
                 </table>
 
@@ -536,10 +540,7 @@ $username = $_SESSION['username'];
                                     </tr>
                     <tr>
 
-                    <tr>
-                        <td class="col-md-2"><b>Posted Date</b></td>
-                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate1" id="posteddate1" value = "<?php echo $posteddate; ?>" ></td>
-                                </tr>
+                  
 
 
                         <td class="col-md-2"><b>Posted By</b></td>
@@ -562,6 +563,12 @@ $username = $_SESSION['username'];
                             <input readonly  id="postedby1" name="postedby1" autocomplete ="off" type="text" class="form-control" placeholder="">
                                     </td>
                                         </tr>
+
+
+                            <tr>
+                        <td class="col-md-2"><b>Posted Date</b></td>
+                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate1" id="posteddate1" value = "<?php echo $posteddate; ?>" ></td>
+                                </tr>
                    
                 </table>
 

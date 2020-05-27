@@ -68,27 +68,12 @@ $edit="edit";
   <td class="col-md-7" style = "text-align:center;">
 
   
-  <form method = "POST" action = "ob_export_date.php">
-  <?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
-  
+<form method = "POST" action = "ob_export_date.php">
+<?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
+
  
 
       <b>Month</b>
-<!--      
-  <select class="" id = "selectMonth" name="month" style="width: 150px; Height:30px;">
-    <option value="January">January</option>
-    <option value="February">February</option>
-    <option value="March">March</option>
-    <option value="April">April</option>
-    <option value="May">May</option>
-    <option value="June">June</option>
-    <option value="July">July</option>
-    <option value="August">August</option>
-    <option value="September">September</option>
-    <option value="October">October</option>
-    <option value="November">November</option>
-    <option value="December">December</option>
-  </select> -->
   <select class="" name="month" id = "selectMonth" style="width: 150px; Height:30px;">
                               <?php 
                                 $current_month =  date('F');
@@ -329,6 +314,12 @@ $edit="edit";
 
   </tr>
   <!-- Header -->
+
+
+
+
+
+  
   </table>  
 
           <div class=""  style="overflow-x:auto;">
