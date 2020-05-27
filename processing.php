@@ -127,7 +127,7 @@ function filldataTable()
                                                
                                                 <div class = "col-lg-4">
                                                     <span class="progress-description">
-                                                    <i><b>REQUEST BY</b></i>
+                                                    <i><b>REQUESTED BY</b></i>
                                                     </span>
                                                     <span class="progress-description">
 

@@ -82,26 +82,43 @@ function filldataTable()
             }
             ?>
         </td>
-            <td>
+        <td>
                 <div class="row">
-                <div class="col-lg-12 col-sm-12 col-xs-12" >
-                                        <div class="info-box bg-gray">
+                    <div class="col-md-12">
+                        <div class="box">
+                            <div class="box-body"> 
+                                <div class = "col-md-12">
+                                <div class="row">
 
-                                            <span class="info-box-icon info-box-text"  >
+                                    <div class="col-lg-12 col-sm-12 col-xs-12" >
+                                        <div class="info-box bg-gray" style = "height:auto;" >
 
-                                            <?php echo '<a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" ><span style = "font-size: 20px;"><b>'.$row['CONTROL_NO'].'</b></span></a>';?><br>
+                                            <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
+
+                                            <?php echo '
+                                            <a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" >
+                                               
+                                                    <b>'.$row['CONTROL_NO'].'</b>
+                                     
+                                            </a>';?>
+                                            <p style = "color:red;margin-top:-75%;font-weight:bold;"><?php echo $row['STATUS_REQUEST']; ?></p>
+                                            
+                                            
+                                            
+                                        
+                                            
                                             </span>
-                                            </span>
-                                                <div class="info-box-content" >
+
+                                                <div class="info-box-content" ><br>
                                                     <span class="info-box-number"><?php echo $row['TYPE_REQ'];?>
                                                     </span>
                                                     <span class="info-box-text"><?php echo $row['ISSUE_PROBLEM'];?></span>
                                                 <div class="progress">
                                                     <div class="progress-bar" style="width: 100%"></div>
                                                 </div>
-                                                <div class = "col-lg-4" style = "margin-left:-15px;">
+                                                <div class = "col-lg-3" style = "margin-left:-15px;">
                                                     <span class="progress-description">
-                                                    <b>OFFICE</b>
+                                                    <b><i>OFFICE</i></b>
                                                     </span>
                                                     <span class="progress-description">
                                                     <?php echo $row['OFFICE'];?>
@@ -109,9 +126,9 @@ function filldataTable()
                                                     </span>
                                                 </div>
                                                
-                                                <div class = "col-lg-3">
+                                                <div class = "col-lg-4">
                                                     <span class="progress-description">
-                                                    <b>REQUEST BY</b>
+                                                    <i><b>REQUESTED BY</b></i>
                                                     </span>
                                                     <span class="progress-description">
 
@@ -128,22 +145,25 @@ function filldataTable()
                                                             ?>
                                                     </span>
                                                 </div>
-                                                <div class = "col-lg-4">
+                                                <div class = "col-lg-5">
                                                     <span class="progress-description">
-                                                        <b>REQUESTED DATE</b>
+                                                        <b><i>REQUESTED DATE</i></b>
                                                     </span>
                                                     <span class="progress-description">
-                                                        <?php  echo $row['REQ_DATE'];?>
+                                                        <?php  
+                                                    
+                                                        echo date('F d, Y', strtotime($row['REQ_DATE']));?>
                                                     </span>
                                                 </div>
+                                               <br>
+                                               <br>
                                                
                                                 
                                              </div>
                                         </div>
                                     </div>
-                                             </div>
-                                        </div>
-                                    </div>
+                                </div>
+                                    
                                 </div>
                             </div>
                         </div>
