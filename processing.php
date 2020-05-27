@@ -46,7 +46,7 @@ $username = $_SESSION['username'];
   
   
 <style>
-        pre { margin: 20px 0; padding: 20px; background: #fafafa; } .round { border-radius: 50%;vertical-align: }
+  pre { margin: 20px 0; padding: 20px; background: #fafafa; } .round { border-radius: 50%;vertical-align: }
 </style>
 </head>
 <?php
@@ -90,8 +90,10 @@ function filldataTable()
 
                                     <div class="col-lg-12 col-sm-12 col-xs-12" >
                                     <div class="info-box bg-gray">
-                                            <span class="info-box-icon info-box-text" STYLE = "width:60%;">
-                                            <?php echo 'SUBMITTED<a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" ><span style = "font-size: 15px;"><b>'.$row['CONTROL_NO'].'</b></span></a>';?><br>
+
+                                            <span class="info-box-icon info-box-text"  >
+
+                                            <?php echo '<a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" ><span style = "font-size: 20px;"><b>'.$row['CONTROL_NO'].'</b></span></a>';?><br>
                                             </span>
                                             </span>
                                                 <div class="info-box-content" >
