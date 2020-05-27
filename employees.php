@@ -69,7 +69,8 @@
             <div class="col-xs-2">
               <label>Office <font style="color:red;">*</font></label>
               <select required class="form-control select2" name="office" id="office">
-                 <option value="0" selected></option>
+                 <option disabled selected ></option>
+                 <option value="0" >ALL</option>
                  <?php echo tblpersonnel($connect)?>
               </select>
             </div>
