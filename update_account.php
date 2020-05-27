@@ -245,7 +245,7 @@
    $extension = pathinfo($profile, PATHINFO_EXTENSION);
    ?>
    <form method="POST" enctype="multipart/form-data"  >
-    <div class="" style="background-image: url(images/logo.png);background-repeat: no-repeat;background-position: center;">
+    <div class="" style="background-image: url(images/LOGO.png);background-repeat: no-repeat;background-position: center;">
       <div class="box-header with-border">
         <div class="pull-left" >
           <div class = "center">

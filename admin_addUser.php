@@ -300,82 +300,12 @@
    $extension = pathinfo($profile, PATHINFO_EXTENSION);
    ?>
    <form method="POST" enctype="multipart/form-data"  >
-    <div class="" style="background-image: url(images/logo.png);background-repeat: no-repeat;background-position: center;">
+    <div class="" style="background-image: url(images/LOGO.png);background-repeat: no-repeat;background-position: center;">
       <div class="box-header with-border">
         <div class="pull-left" >
           <div class = "center">
             <img id="img"   style="overflow: hidden;width:300;height:250px;margin-left:50px;border:2px solid black;" 
-            src="
-            <?php 
-            if(file_exists($profile))
-            {
-              switch($extension)
-              {
-                case 'jpg':
-                if($profile == '')
-                {
-                  echo 'images/male-user.png';
-                }
-                else if ($profile == $profile)
-                {
-                  echo $profile;   
-                }
-                else
-                {
-                  echo'images/male-user.png';
-                }
-                break;
-                case 'JPG':
-                if($profile == '')
-                {
-                  echo 'images/male-user.png';
-                }
-                else if ($profile == $profile)
-                {
-                  echo $profile;   
-                }
-                else
-                {
-                  echo'images/male-user.png';
-                }
-                break;
-                case 'jpeg':
-                if($profile == '')
-                {
-                  echo 'images/male-user.png';
-                }
-                else if ($profile == $profile)
-                {
-                  echo $profile;   
-                }
-                else
-                {
-                  echo'images/male-user.png';
-                }
-                break;
-                case 'png':
-                if($profile == '')
-                {
-                  echo'images/male-user.png';
-                }
-                else if ($profile == $profile)
-                {
-                  echo $profile;   
-                }
-                else
-                {
-                  echo'images/male-user.png';
-                }
-                break;
-                default:
-                echo'images/male-user.png';
-                break;
-              }
-              }else{
-               echo'images/male-user.png';
-             }
-
-             ?>"  title = "personnel_image" />
+            src="images/male-user.png"  title = "personnel_image" />
              <input type ="hidden" name = "dddd" value="" />
            </div>
            <input name = "image" class="pull-right" type="file" id="image"  onchange="readURL(this)" />
