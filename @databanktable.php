@@ -68,21 +68,32 @@ $username = $_SESSION['username'];
             <form method="POST" action=''  >
 
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
-                <thead>
+                <!-- <thead>
                     <tr style="background-color: white;color:blue; text-align:center ">
                  
-                  <th width="200">CATEGORY <br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="category" placeholder="" name="category"> </th>
-                  <th width="400">TITLE <br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="title" placeholder="" name="title">
-                  <th width="100">OFFICE<br><input   type="text"  class="form-control" style="height: 35px; width:100%" id="" placeholder="" name="office"> </th>
-                  <th width="150">POSTING DETAILS<br><input   type="text"  class="form-control" style="height: 35px;" id="postedby" placeholder="" name="postedby"></th>
-                  <th width="250">ACTION<br><br><br></th>
+                  <th width="200">CATEGORY <br><input onkeyup="myFunction()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput" placeholder="" name=""> </th>
+                  <th width="400">TITLE <br><input onkeyup="titlesearch()"   type="text"  class="form-control" style="height: 35px; width:100%" id="titlesearch" placeholder="" name=""></th>
+                  <th width="100">OFFICE<br><input onkeyup="myFunction2()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput2" placeholder="" name=""> </th>
+                  <th width="150">POSTING DETAILS<br><input onkeyup="myFunction3()"  type="text"  class="form-control" style="height: 35px;" id="myInput3" placeholder="" name=""></th>
+                  <th width="250">ACTION<br><br></th>
                   
                 </tr>
-                </thead>
+                </thead> -->
+
 
                 
 
-             
+                <thead>
+                    <tr style="background-color: white;color:blue; text-align:center ">
+                 
+                  <th width="200">CATEGORY</th>
+                  <th width="400">TITLE </th>
+                  <th width="100">OFFICE</th>
+                  <th width="150">POSTING DETAILS</th>
+                  <th width="250">ACTION<br><br></th>
+                  
+                </tr>
+                </thead>
                 <?php
             $servername = "localhost";
             $username = "fascalab_2020";
@@ -188,12 +199,8 @@ $username = $_SESSION['username'];
               </form>
                 
                 </div>
-            </div>
-                
-
-    </body>
-
-              
+           
+            
 
 
 
@@ -789,32 +796,3 @@ $username = $_SESSION['username'];
   })
 </script>
 
-<script>
-$(document).ready(function() {
-    // Setup - add a text input to each footer cell
-    $('#example1 thead1 th').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input  type="text" placeholder="Search '+title+'" />' );
-    } );
- 
-    // DataTable
-    var table = $('#example').DataTable({
-        initComplete: function () {
-            // Apply the search
-            this.api().columns().every( function () {
-                var that = this;
- 
-                $( 'input', this.footer() ).on( 'keyup change clear', function () {
-                    if ( that.search() !== this.value ) {
-                        that
-                            .search( this.value )
-                            .draw();
-                    }
-                } );
-            } );
-        }
-    });
- 
-} );
-
-</script>
