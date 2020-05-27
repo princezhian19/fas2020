@@ -46,7 +46,7 @@ $username = $_SESSION['username'];
   
   
 <style>
-        pre { margin: 20px 0; padding: 20px; background: #fafafa; } .round { border-radius: 50%;vertical-align: }
+  pre { margin: 20px 0; padding: 20px; background: #fafafa; } .round { border-radius: 50%;vertical-align: }
 </style>
 </head>
 <?php
@@ -56,7 +56,7 @@ function filldataTable()
 {
     include 'connection.php';
     $query = "SELECT * FROM tbltechnical_assistance 
-    where `STATUS_REQUEST` = 'Submitted' or  `STATUS_REQUEST` = 'Received' or `STATUS_REQUEST` = 'For action' 
+    where `STATUS_REQUEST` = 'Submitted' or  `STATUS_REQUEST` = 'Received' or `STATUS_REQUEST` = 'For action' or `STATUS_REQUEST` = 'Completed'  
     GROUP by tbltechnical_assistance.ID
     order by `REQ_DATE` DESC, `REQ_TIME` desc ";
     $result = mysqli_query($conn, $query);
@@ -87,10 +87,13 @@ function filldataTable()
                             <div class="box-body"> 
                                 <div class = "col-md-12">
                                 <div class="row">
+
                                     <div class="col-lg-12 col-sm-12 col-xs-12" >
-                                        <div class="info-box bg-gray">
-                                            <span class="info-box-icon info-box-text">
-                                            <?php echo '<a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" ><span style = "font-size: 15px;"><b>'.$row['CONTROL_NO'].'</b></span></a>';?><br>
+                                    <div class="info-box bg-gray">
+
+                                            <span class="info-box-icon info-box-text"  >
+
+                                            <?php echo '<a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" ><span style = "font-size: 20px;"><b>'.$row['CONTROL_NO'].'</b></span></a>';?><br>
                                             </span>
                                             </span>
                                                 <div class="info-box-content" >
@@ -100,7 +103,7 @@ function filldataTable()
                                                 <div class="progress">
                                                     <div class="progress-bar" style="width: 100%"></div>
                                                 </div>
-                                                <div class = "col-lg-4">
+                                                <div class = "col-lg-4" style = "margin-left:-15px;">
                                                     <span class="progress-description">
                                                     <b>OFFICE</b>
                                                     </span>
@@ -109,6 +112,7 @@ function filldataTable()
 
                                                     </span>
                                                 </div>
+                                               
                                                 <div class = "col-lg-3">
                                                     <span class="progress-description">
                                                     <b>REQUEST BY</b>
@@ -155,7 +159,7 @@ function filldataTable()
                   
                         if($row['START_DATE'] != '')
                         {
-                    echo ' <button disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12 " style = "color:red;"><b>'.$row['START_DATE'].'</b></button>';
+                    echo ' <button title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12 " style = "color:red;"><b>'.$row['START_DATE'].'</b></button>';
 
                         
                     }else{
@@ -205,14 +209,13 @@ function filldataTable()
 
                     if($_SESSION['complete_name'] == $row['ASSIST_BY'])
                     {
-                    
+
                     echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }else{
                     echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
-
                     }
                 }else{
-                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Complete</button>';
+                    echo '<button title = "Completed Date" disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">'.$row['COMPLETED_DATE'].'</button>';
 
                 }
               ?>
