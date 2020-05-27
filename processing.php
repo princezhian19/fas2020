@@ -46,7 +46,7 @@ $username = $_SESSION['username'];
   
   
 <style>
-  pre { margin: 20px 0; padding: 20px; background: #fafafa; } .round { border-radius: 50%;vertical-align: }
+pre { margin: 20px 0; padding: 20px; background: #fafafa; } .round { border-radius: 50%;vertical-align: }
 </style>
 </head>
 <?php
@@ -67,7 +67,7 @@ function filldataTable()
 
         ?>
         <tr>
-        <td>
+        <td style = "width:2%;">
             <br>
             <br>
             <?php
@@ -76,7 +76,7 @@ function filldataTable()
                 echo '-';
             }else{
                 ?>
-            <img style="vertical-align:top;"  class="round" width="70" height="70" avatar="<?php echo $row['ASSIST_BY'];?>">
+            <img style="vertical-align:top;"  class="round" width="50" height="50" avatar="<?php echo $row['ASSIST_BY'];?>">
                 <?php
             }
             ?>
@@ -90,14 +90,25 @@ function filldataTable()
                                 <div class="row">
 
                                     <div class="col-lg-12 col-sm-12 col-xs-12" >
-                                        <div class="info-box bg-gray">
+                                        <div class="info-box bg-gray" style = "height:auto;" >
 
-                                            <span class="info-box-icon info-box-text"  >
+                                            <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
 
-                                            <?php echo '<a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" ><span style = "font-size: 20px;"><b>'.$row['CONTROL_NO'].'</b></span></a>';?><br>
+                                            <?php echo '
+                                            <a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" >
+                                               
+                                                    <b>'.$row['CONTROL_NO'].'</b>
+                                     
+                                            </a>';?>
+                                            
+                                            <p style = "margin-top:-75%;">
+                                            <?php echo $row['STATUS_REQUEST'];?>
+                                            </p>
+                                        
+                                            
                                             </span>
-                                            </span>
-                                                <div class="info-box-content" >
+
+                                                <div class="info-box-content" ><br>
                                                     <span class="info-box-number"><?php echo $row['TYPE_REQ'];?>
                                                     </span>
                                                     <span class="info-box-text"><?php echo $row['ISSUE_PROBLEM'];?></span>
@@ -114,7 +125,7 @@ function filldataTable()
                                                     </span>
                                                 </div>
                                                
-                                                <div class = "col-lg-3">
+                                                <div class = "col-lg-4">
                                                     <span class="progress-description">
                                                     <b>REQUEST BY</b>
                                                     </span>
@@ -133,7 +144,7 @@ function filldataTable()
                                                             ?>
                                                     </span>
                                                 </div>
-                                                <div class = "col-lg-4">
+                                                <div class = "col-lg-5">
                                                     <span class="progress-description">
                                                         <b>REQUESTED DATE</b>
                                                     </span>
@@ -143,6 +154,8 @@ function filldataTable()
                                                         echo date('F d, Y', strtotime($row['REQ_DATE']));?>
                                                     </span>
                                                 </div>
+                                               <br>
+                                               <br>
                                                
                                                 
                                              </div>
