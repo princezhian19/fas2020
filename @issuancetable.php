@@ -206,9 +206,6 @@ $edit="edit";
 </script>
 
 
-
-
-
 </body>
 </html>
 
@@ -223,7 +220,7 @@ $edit="edit";
             <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title"><b>Add Databank</b></h4>
+              <h4 class="modal-title"><b>Add Issuances</b></h4>
             </div>
             <div class="modal-body">
               <form method="POST" id="insert_form" action="issuances_create1.php" enctype="multipart/form-data">

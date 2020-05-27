@@ -250,7 +250,7 @@ $username = $_SESSION['username'];
                        
                     <tr>
                         <td class="col-md-2"><label>Attached File<span style = "color:red;">*</span></label> </td>
-                            <td class="col-md-5"> <input id="issuances_attachment" type="file" name="file"/>
+                            <td class="col-md-5"> <input required id="issuances_attachment" type="file" name="file"/>
                           <?php
 							if (!empty($_GET['option']) && $_GET['option']== 'edit') {
 							
