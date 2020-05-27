@@ -100,10 +100,10 @@ function filldataTable()
                                                     <b>'.$row['CONTROL_NO'].'</b>
                                      
                                             </a>';?>
+                                            <p style = "color:red;margin-top:-75%;font-weight:bold;"><?php echo $row['STATUS_REQUEST']; ?></p>
                                             
-                                            <p style = "margin-top:-75%;">
-                                            <?php echo $row['STATUS_REQUEST'];?>
-                                            </p>
+                                            
+                                            
                                         
                                             
                                             </span>
@@ -117,7 +117,7 @@ function filldataTable()
                                                 </div>
                                                 <div class = "col-lg-3" style = "margin-left:-15px;">
                                                     <span class="progress-description">
-                                                    <b>OFFICE</b>
+                                                    <b><i>OFFICE</i></b>
                                                     </span>
                                                     <span class="progress-description">
                                                     <?php echo $row['OFFICE'];?>
@@ -127,7 +127,7 @@ function filldataTable()
                                                
                                                 <div class = "col-lg-4">
                                                     <span class="progress-description">
-                                                    <b>REQUEST BY</b>
+                                                    <i><b>REQUEST BY</b></i>
                                                     </span>
                                                     <span class="progress-description">
 
@@ -146,7 +146,7 @@ function filldataTable()
                                                 </div>
                                                 <div class = "col-lg-5">
                                                     <span class="progress-description">
-                                                        <b>REQUESTED DATE</b>
+                                                        <b><i>REQUESTED DATE</i></b>
                                                     </span>
                                                     <span class="progress-description">
                                                         <?php  
