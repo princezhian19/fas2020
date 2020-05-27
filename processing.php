@@ -63,6 +63,7 @@ function filldataTable()
     while($row = mysqli_fetch_array($result))
     {
         $data[] = $row['CONTROL_NO'];
+      
 
         ?>
         <tr>
@@ -89,7 +90,7 @@ function filldataTable()
                                 <div class="row">
 
                                     <div class="col-lg-12 col-sm-12 col-xs-12" >
-                                    <div class="info-box bg-gray">
+                                        <div class="info-box bg-gray">
 
                                             <span class="info-box-icon info-box-text"  >
 
@@ -103,7 +104,7 @@ function filldataTable()
                                                 <div class="progress">
                                                     <div class="progress-bar" style="width: 100%"></div>
                                                 </div>
-                                                <div class = "col-lg-4" style = "margin-left:-15px;">
+                                                <div class = "col-lg-3" style = "margin-left:-15px;">
                                                     <span class="progress-description">
                                                     <b>OFFICE</b>
                                                     </span>
@@ -137,7 +138,9 @@ function filldataTable()
                                                         <b>REQUESTED DATE</b>
                                                     </span>
                                                     <span class="progress-description">
-                                                        <?php  echo $row['REQ_DATE'];?>
+                                                        <?php  
+                                                    
+                                                        echo date('F d, Y', strtotime($row['REQ_DATE']));?>
                                                     </span>
                                                 </div>
                                                
@@ -157,13 +160,16 @@ function filldataTable()
                     <?php
                     // Received
                   
-                        if($row['START_DATE'] != '')
+                        if($row['START_DATE'] != '0000-00-00'  )
                         {
-                    echo ' <button title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12 " style = "color:red;"><b>'.$row['START_DATE'].'</b></button>';
+                    echo ' <button title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " ><b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b></button>';
 
                         
                     }else{
-                        echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12">Received</button>';
+                        if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == 'January 01, 1970')
+                        {
+                        echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Received</button>';
+                        }
                     }
 
 
@@ -204,7 +210,7 @@ function filldataTable()
                       echo '<br><br>';                                      
                     
                     // Complete
-                    if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+                    if($row['COMPLETED_DATE'] == '0000-00-00' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
                     {
 
                     if($_SESSION['complete_name'] == $row['ASSIST_BY'])
@@ -215,7 +221,8 @@ function filldataTable()
                     echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }
                 }else{
-                    echo '<button title = "Completed Date" disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">'.$row['COMPLETED_DATE'].'</button>';
+        
+                    echo '<button title = "Completed Date" disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">'.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'</button>';
 
                 }
               ?>

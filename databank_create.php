@@ -59,6 +59,7 @@ $url = $_POST['url'];
 $postedby = $_POST['postedby'];
 
 $posteddate = $_POST['posteddate'];
+$posteddate = date('Y-m-d', strtotime($posteddate1));
 $office = $_POST['office'];
 
 
