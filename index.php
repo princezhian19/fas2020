@@ -30,6 +30,7 @@ $pas1 = $_SESSION['pass'];
     $_SESSION['complete_name'] = ucwords(strtolower($row['FIRST_M'])).' '.$middle[0].'. '.ucwords(strtolower($row['LAST_M']));
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
+    $_SESSION['complete_name3'] = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
 
       if ($division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13) {
       // if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {

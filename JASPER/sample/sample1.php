@@ -184,9 +184,27 @@ if (mysqli_query($conn, $sql_insert)) {
  } else {
  }
  ?>
+ <?php 
+  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+      ?>
+      <script>
+window.location = '../../processing.php?division=<?php echo $_POST['division'];?>&ticket_id=';
+</script>
+<?php
+    }else{
+     ?>
+
+    
 <script>
+
 window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
 </script>
+<?php
+    }
+ ?>
+
+
+
  <?php
     // ======
 //    if($_POST['req_type_category'][$i] == "Others"){

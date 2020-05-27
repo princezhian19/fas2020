@@ -62,11 +62,11 @@ $edit="edit";
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
                    <th width = '10'>TAG</th> 
-                  <th width = '250'>CATEGORY</th>
-                  <th width = '200'>ISSUANCE NO</th>
-                  <th width = '200'>ISSUANCE DATE</th>
-                  <th width = '500'>TITLE/SUBJECT</th>
-                  <th width = '250'>ACTION</th>
+                  <th width = '250'>CATEGORY </th>
+                  <th width = '200'>ISSUANCE NO  </th>
+                  <th width = '200'>ISSUANCE DATE  </th>
+                  <th width = '500'>TITLE/SUBJECT  </th>
+                  <th width = '250'>ACTION<BR><BR></th>
                   
                 </tr>
                 </thead>

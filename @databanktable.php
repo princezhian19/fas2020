@@ -1,122 +1,11 @@
-
 <?php
+  if($_POST['title']){
 
-
-
-
-if(isset($_POST['Add'])){
-    $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-
-    $username1 = $_SESSION['username'];
-    
-  
-$filename = $_FILES['file']['name'];
-$tempname = $_FILES['file']['tmp_name'];
-    
-
-    if(isset($filename)){
-        if(!empty($_FILES['file']['name'])){
-
-            $location = "files/";
-
-                 
-            
-            if(move_uploaded_file($tempname, $location.$filename)){
-
-               
-
-                    //echo 'File Uploaded!';
-                
-            }
-           
-        }
-        
-        
-
-    }
-
-   
-
-$category = $_POST['category'];
-$issuances = $_POST['issuances'];
-$dateissued1 = $_POST['dateissued'];
-$dateissued = date('Y-m-d', strtotime($dateissued1));
-$title = $_POST['title'];
-
-$url = $_POST['url'];
-$postedby = $_POST['postedby'];
-
-$posteddate = $_POST['posteddate'];
-$office = $_POST['office'];
-
-
-$servername = "localhost";
-$username = "fascalab_2020";
-$password = "w]zYV6X9{*BN";
-$database = "fascalab_2020";
-
-$conn = new mysqli($servername, $username, $password,$database);
-
-// Check connection
-if ($conn->connect_error) {
-   die("Connection failed: " . $conn->connect_error);
-}
-
-if(empty($_FILES['file']['name'])){
-
-  echo '<div class="addmodal"><div class="" style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Attached file cannot be empty. </p> </div></div>  '; 
-/*  echo ("<SCRIPT LANGUAGE='JavaScript'>
-  window.alert('Attached file cannot be empty.!')
-  </SCRIPT>"); */
-
-}
-else{
-  $query = mysqli_query($conn,"INSERT INTO downloads (title,file,category,dateposted,postedby,url,office) 
-  VALUES ('$title','$filename','$category','$posteddate','$username1','$url','$office')");
-
-if($query){
-
-  // echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Databank has been successfully added. </p> </div></div>  '; 
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-   window.alert(' Databank has been successfully added.')
-   window.location.href='';
-   </SCRIPT>"); 
- 
- }
- else{
- 
- 
- echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
-  /*  echo ("<SCRIPT LANGUAGE='JavaScript'>
-   window.alert('Error!')
-   window.location.href='../CreateIssuances.php';
-   </SCRIPT>"); */
- }
- 
-
-}
-
- /* echo "INSERT INTO issuances (issuance_no ,status,subject,summary,keywords,office_responsible,pdf_file,dateposted,date_issued,postedby,type,category,url) 
- VALUES ('$issuances','approved','$title','','','$postedby','$filename','$posteddate','$dateissued','$username1','NULL','$category','$url')";
- exit(); */
-
-/*  echo "INSERT INTO downloads (title,file,category,dateposted,postedby,url) VALUES ('$title','$filename','$category','$posteddate','$username1','$url')";
- exit(); */
-
-
-mysqli_close($conn);
-
-
-
-}
-
+    $view_query = mysqli_query($conn, "SELECT downloads.url,downloads.office,downloads.file, downloads.download_id ,downloads.category, downloads.title, downloads.dateposted, downloads.postedby, downloads_category.name from downloads left join downloads_category on downloads.category=downloads_category.id where dowloads.title like '%".$_POST['title']."%' order by downloads.download_id desc");
+  }
 
 
 ?>
-
-
-
-
 
 
 <?php
@@ -176,17 +65,32 @@ $username = $_SESSION['username'];
               
             </div>
 
-            <form method="POST" action='' enctype="multipart/form-data" >
+            <form method="POST" action=''  >
 
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
+                <!-- <thead>
+                    <tr style="background-color: white;color:blue; text-align:center ">
+                 
+                  <th width="200">CATEGORY <br><input onkeyup="myFunction()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput" placeholder="" name=""> </th>
+                  <th width="400">TITLE <br><input onkeyup="titlesearch()"   type="text"  class="form-control" style="height: 35px; width:100%" id="titlesearch" placeholder="" name=""></th>
+                  <th width="100">OFFICE<br><input onkeyup="myFunction2()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput2" placeholder="" name=""> </th>
+                  <th width="150">POSTING DETAILS<br><input onkeyup="myFunction3()"  type="text"  class="form-control" style="height: 35px;" id="myInput3" placeholder="" name=""></th>
+                  <th width="250">ACTION<br><br></th>
+                  
+                </tr>
+                </thead> -->
+
+
+                
+
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center ">
                  
                   <th width="200">CATEGORY</th>
-                  <th width="400">TITLE</th>
+                  <th width="400">TITLE </th>
                   <th width="100">OFFICE</th>
                   <th width="150">POSTING DETAILS</th>
-                  <th width="250">ACTION</th>
+                  <th width="250">ACTION<br><br></th>
                   
                 </tr>
                 </thead>
@@ -198,8 +102,12 @@ $username = $_SESSION['username'];
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT downloads.office,downloads.file, downloads.download_id ,downloads.category, downloads.title, downloads.dateposted, downloads.postedby, downloads_category.name from downloads left join downloads_category on downloads.category=downloads_category.id order by dateposted desc");
+            
+           
+          
 
+            $view_query = mysqli_query($conn, "SELECT downloads.url,downloads.office,downloads.file, downloads.download_id ,downloads.category, downloads.title, downloads.dateposted, downloads.postedby, downloads_category.name from downloads left join downloads_category on downloads.category=downloads_category.id order by downloads.download_id desc");
+            
                 while ($row = mysqli_fetch_assoc($view_query)) {
                   $id = $row["download_id"];
                   
@@ -208,7 +116,7 @@ $username = $_SESSION['username'];
 
                   $title  = $row["title"];
                   $office  = $row["office"];
-                
+                $url= $row["url"];
                   $dateposted  = $row["dateposted"];
                    // $date_issued1 = date('F d, Y', strtotime($date1));
                   $postedby = $row["postedby"];
@@ -233,13 +141,15 @@ $username = $_SESSION['username'];
                             $username = $_SESSION['username'];
 
                             //echo $username;
+                            
                             $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
                             $rowdiv = mysqli_fetch_array($select_user);
+
                             $DIVISION_C = $rowdiv['DIVISION_C'];
                             //echo $DIVISION_C;
                             
                 ?>
-
+             
                 <?php
                   
                   $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
@@ -258,7 +168,10 @@ $username = $_SESSION['username'];
                           <?php if ($office ==  $DIVISION_M ):?>
                           
                           <a  href="<?php echo $location?>" title="View" download="<?php $file?>" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Download</a> |
-                          <a href="UpdateDatabank.php?id=<?php echo $id; ?>&option=edit"  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
+                         <!--  <a href="UpdateDatabank.php?id=<?php echo $id; ?>&option=edit"  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | -->
+                          
+                          <a name="edit" onclick="myFunction(this)" data-id="<?php echo $id;?>"  data-postedby = "<?php echo $postedby;?>" data-dateposted = "<?php echo $dateposted;?>" data-url = "<?php echo $url;?>" data-gettitle = "<?php echo $title;?>"  data-cat = "<?php echo $name;?>" data-file="<?php echo $file;?>"  value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> |
+                            
                           <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/databankdelete.php?id=<?php echo $id; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                           
                           <?php else :?>
@@ -286,12 +199,8 @@ $username = $_SESSION['username'];
               </form>
                 
                 </div>
-            </div>
-                
-
-    </body>
-
-              
+           
+            
 
 
 
@@ -309,7 +218,7 @@ $username = $_SESSION['username'];
               <h4 class="modal-title"><b>Add Databank</b></h4>
             </div>
             <div class="modal-body">
-              <form method="POST" id="insert_form" action="" enctype="multipart/form-data">
+              <form method="POST" id="insert_form" action="databank_create1.php" enctype="multipart/form-data">
               
             <!--   <label>Reason</label>
               <input required type="text" name="reason" id="reason" class="form-control" />
@@ -322,7 +231,7 @@ $username = $_SESSION['username'];
                     <tr>
                         <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
                     <td class="col-md-5">
-                      <select class="form-control " style="width: 100%;" name="category" id="category" > 
+                      <select class="form-control " style="width: 100%;" name="category" id="category" >
                       <option value="21">Province ISO Forms</option>
                       <option value="20">Region ISO Forms</option>
                       <option value="19">ALL ISO Forms</option>
@@ -452,23 +361,6 @@ $username = $_SESSION['username'];
     
     </div>
 
-
-
-
-
-
-              
-            
-
-
-            
-             
-             
-              <br />
-
-              <!-- <input type="submit" name="submit" id="submit" value="Cancel" class="btn btn-warning" /> -->
-
-             
           
               
               </form>
@@ -507,7 +399,7 @@ $username = $_SESSION['username'];
 
  <!--Edit modals -->
 
- <div id="add_data_Modal" class="modal fade ">
+ <div id="edit_data_Modal" class="modal fade ">
           <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
@@ -515,42 +407,182 @@ $username = $_SESSION['username'];
               <h4 class="modal-title"><b>Edit Databank</b></h4>
             </div>
             <div class="modal-body">
-              <form method="POST" id="insert_form" action="" enctype="multipart/form-data">
-              
-            <!--   <label>Reason</label>
-              <input required type="text" name="reason" id="reason" class="form-control" />
-                                  
-              <br> -->
-              <div class="addmodal" >
-           
+          
+                  <script>
+                  function myFunction(idget) {
+
+                    var idmodal = idget.getAttribute("data-id");
+                    var cat = idget.getAttribute("data-cat");
+                    var file = idget.getAttribute("data-file");
+
+                    var title1 = idget.getAttribute("data-gettitle");
+
+                    var url1 = idget.getAttribute("data-url");
+                    var dateposted1 = idget.getAttribute("data-dateposted");
+                    var postedby1 = idget.getAttribute("data-postedby");
+                  
+                    
+                    var id1 = $("input[name='getid']");
+                    var file1 = $("input[name='getfile']");
+
+                    //fields
+                    var category = $("input[name='category1']");
+                    var title = $("input[name='title1']");
+
+                    var url = $("input[name='url1']");
+                    var dateposted = $("input[name='posteddate1']");
+                    var postedby = $("input[name='postedby1']");
+
+
+                   
+                   
+                    var filePath = "files/"+file;
+                    
+                    //values
+                    id1.val(idmodal);
+                    file1.val(file);
+                    category.val(cat);
+                    title.val(title1);
+                    url.val(url1);
+                    dateposted.val(dateposted1);
+                    postedby.val(postedby1);
+
+                   
+                     
+                     
+                  
+
+
+                    if(file!=""){
+                      document.getElementById('modal-test').innerHTML = file;
+                      document.getElementById('modal-test').href = filePath;
+                    }
+                   else{
+                    document.getElementById('modal-test').innerHTML = "";
+                    document.getElementById('modal-test').href = "";
+                   }
+                    
+                   
+                  }
+
+                
+
+                  </script>
+
+        <form method="POST" action='databank_update1.php' enctype="multipart/form-data" >
+       
        
 
+        <table class="table"> 
+                    <tr>
+                    <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
+                    <td class="col-md-5">
+                      <select class="form-control " style="width: 100%;" name="category1" id="category1" > 
+                      <option value="21">Province ISO Forms</option>
+                      <option value="20">Region ISO Forms</option>
+                      <option value="19">ALL ISO Forms</option>
+                    
+                      </select>
+                    </td>
+                                </tr>
+                  
+                        <td class="col-md-2"><b>Title/Subject<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-5">  <input required   type="text"  class="form-control" style="height: 35px;" id="title1" placeholder="" name="title1"></td>
+                                </tr>
+                 
+                    <tr>
+                        <td class="col-md-2"><label>Attached File</label> </td>
+                            <td class="col-md-5"> <input value="<?php echo $file;?>" id="issuances_attachment" type="file" name="file1"/>
+                         
+                            Current file: <a name="getfile"  id="modal-test" href="#" target="_blank"></a> <input hidden   id="" type="Text" value="" name="getfile"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <br>
+                            Allowed file: *.pdf, *.doc,*.docx,*.docm,*.xls,*.xlsx,*.ppt,*.pptx,*.rar,*.zip,*.txt
+											      <br>
+											      Max allowed size: 5mb
+
+                                            
+                              
+                           <!--  <li class="btn btn-primary"><a href="issuances.php" style="color:white;text-decoration: none;">Choose File</a> --></li><!-- <li class="button btn-primary">Choose File</button> --> <!-- <label>&nbsp&nbspNo file Chosen</label><label class="pull-right"> Allowed file: *.pdf   Max allowed size: 5mb</label></td> -->
+                                </tr>
+                    <tr>
+                        <td class="col-md-2"><b>URL</b></td>  
+                            <td class="col-md-5">
+                            <input id="url1" value="<?php echo $url;?>" name="url1" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                </td>
+                                    </tr>
+
+                                    <tr>
+                        <td class="col-md-2"><b>Office</b></td>
+                            <td class="col-md-5">
+                            <!-- <input id="url" name="url" autocomplete ="off" type="text" class="form-control" placeholder=""> -->
+                            <?php
+
+                            $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                            $username = $_SESSION['username'];
+
+                            //echo $username;
+                            $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                            $rowdiv = mysqli_fetch_array($select_user);
+                            $DIVISION_C = $rowdiv['DIVISION_C'];
+
+                            $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                            $rowdiv1 = mysqli_fetch_array($select_office);
+                            $DIVISION_M = $rowdiv1['DIVISION_M'];
 
 
+                            ?>    
+                            <input readonly value="<?php echo $DIVISION_M;?>" id="office1" name="office1" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                </td>
+                                    </tr>
+                    <tr>
+
+                    <tr>
+                        <td class="col-md-2"><b>Posted Date</b></td>
+                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate1" id="posteddate1" value = "<?php echo $posteddate; ?>" ></td>
+                                </tr>
 
 
+                        <td class="col-md-2"><b>Posted By</b></td>
+                            <td class="col-md-5"> <?php
+
+                             $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                             $username = $_SESSION['username'];
               
-            
+                             //echo $username;
+                             $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                             $rowdiv = mysqli_fetch_array($select_user);
+                             $DIVISION_C = $rowdiv['DIVISION_C'];
+                            
+                             $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                             $rowdiv1 = mysqli_fetch_array($select_office);
+                             $DIVISION_M = $rowdiv1['DIVISION_M'];
+                            
+                            
+                            ?>                             
+                            <input readonly  id="postedby1" name="postedby1" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                    </td>
+                                        </tr>
+                   
+                </table>
 
+                
+                  <br>
+              <br>
+               <!--  <input type="submit" name="edit" class="btn btn-success pull-right" value="Save Changes" id="butsave"> -->
 
-            
-             
-             
-              <br />
-
-              <!-- <input type="submit" name="submit" id="submit" value="Cancel" class="btn btn-warning" /> -->
-
-             
-          
-              
+               <button type="submit" name="edit" class="btn btn-success pull-right">Save Changes</button>
+                <input hidden  value="<?php echo $id;?>"   type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
+                <br>
+              <br>
+                </div>
               </form>
-            </div>
-            <div class="modal-footer">
-            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-            </div>
-            </div>
+                
           </div>
-          </div>
+        </div>
+
+     
+             
+       
 
           <div id="dataModal" class="modal fade">
           <div class="modal-dialog">
@@ -689,7 +721,7 @@ $username = $_SESSION['username'];
 <script>
   $(function () {
     //Initialize Select2 Elements
-    $('.select2').select2()
+    // $('.select2').select2()
 
     //Datemask dd/mm/yyyy
     $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'mm/dd/yyyy' })
@@ -763,3 +795,4 @@ $username = $_SESSION['username'];
     })
   })
 </script>
+

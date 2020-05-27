@@ -473,10 +473,10 @@ mysqli_close($conn);
 
                       <td colspan = 1 class="" style = " font-family:Sylfaen;">
                       <br>
-                      Signature of Requesting
+                      Signature of Requesting  Employee (s)
                       <br>
-                      Employee (s)
-                      <br>
+                     
+                     
                       <br>
                       ______________________________
 
@@ -518,7 +518,7 @@ mysqli_close($conn);
                   else if($DIVISION_M=='LGMED'){
 
                   $approved="GILBERTO L. TUMAMAC";
-                  $pos="OIC - LGMED Chief";
+                  $pos="OIC-Chief, LGMED";
 
                 
                   }
@@ -526,7 +526,7 @@ mysqli_close($conn);
                   else if($DIVISION_M=='LGCDD'){
 
                   $approved="JAY-AR T. BELTRAN";
-                  $pos="OIC - LGCDD Chief";
+                  $pos="OIC-Chief, LGCDD";
                   
                   }
                   
@@ -558,11 +558,13 @@ mysqli_close($conn);
                       <br>
                       ______________________________
                       <br>
-                      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                      <div >
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <b><?php echo $approved;?></b>
                       <br>
-                      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <b><?php echo $pos;?></b>
+                      </div >
 
 
                       </td>
