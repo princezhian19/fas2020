@@ -94,24 +94,15 @@ function filldataTable()
                                             </span>
                                             </span>
                                                 <div class="info-box-content" >
-                                                    <span class="info-box-number"><?php echo $row['TYPE_REQ'];?>
+                                                    <span class="info-box-text"><?php echo $row['TYPE_REQ'].' ('.$row['REQ_DATE'].')';?>
                                                     </span>
-                                                    <span class="info-box-text"><?php echo $row['ISSUE_PROBLEM'];?></span>
+                                                    <span class="info-box-number"><?php echo $row['ISSUE_PROBLEM'];?></span>
                                                 <div class="progress">
                                                     <div class="progress-bar" style="width: 100%"></div>
                                                 </div>
-                                                <div class = "col-lg-4">
-                                                    <span class="progress-description">
-                                                    <b>OFFICE</b>
-                                                    </span>
-                                                    <span class="progress-description">
-                                                    <?php echo $row['OFFICE'];?>
-
-                                                    </span>
-                                                </div>
                                                 <div class = "col-lg-3">
                                                     <span class="progress-description">
-                                                    <b>REQUEST BY</b>
+                                                    REQUEST BY
                                                     </span>
                                                     <span class="progress-description">
 
@@ -130,13 +121,14 @@ function filldataTable()
                                                 </div>
                                                 <div class = "col-lg-4">
                                                     <span class="progress-description">
-                                                        <b>REQUESTED DATE</b>
+                                                    OFFICE
                                                     </span>
                                                     <span class="progress-description">
-                                                        <?php  echo $row['REQ_DATE'];?>
+                                                    <?php echo $row['OFFICE'];?>
+
                                                     </span>
                                                 </div>
-                                               
+                                                <span class = "pull-right" <?PHP if($row['STATUS_REQUEST'] == 'Submitted') { echo 'style = "color:red;"'; }else if($row['STATUS_REQUEST'] == 'Received') { echo ' style = "color:orange;"'; }else if ($row['STATUS_REQUEST'] == 'For action') { echo 'style = "color:darkblue;"'; } ?>><b><?php echo strtoupper($row['STATUS_REQUEST']);?></b></span>
                                                 
                                              </div>
                                         </div>
@@ -152,24 +144,12 @@ function filldataTable()
             <td style = "width:10%;">
                     <?php
                     // Received
-                  
-                        if($row['START_DATE'] != '')
-                        {
-                    echo ' <button disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12 " style = "color:red;"><b>'.$row['START_DATE'].'</b></button>';
-
-                        
+                    if($row['STATUS_REQUEST'] == 'Submitted')
+                    {
+                    echo ' <button data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12">Receive</button>';
                     }else{
-                        echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12">Received</button>';
+                        echo ' <button disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12">Received</button>';
                     }
-
-
-
-
-
-
-
-
-
                     echo '<br>';
                       // Assign
              
@@ -199,20 +179,19 @@ function filldataTable()
                     
                       echo '<br><br>';                                      
                     
-                    // Complete
+                    // Completed
                     if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
                     {
 
                     if($_SESSION['complete_name'] == $row['ASSIST_BY'])
                     {
-                    
-                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Completed</button>';
                     }else{
-                    echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+                    echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Completed</button>';
 
                     }
                 }else{
-                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Complete</button>';
+                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Completed</button>';
 
                 }
               ?>
@@ -259,7 +238,7 @@ function submittedReq()
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY']?>">
                             <?php echo $row['CONTROL_NO'];?>
                             <button  type="button" class="sweet-16 btn btn-success pull-right">
-                            Complete
+                            Completed
                             </button>
                         </li>
                 <?php
@@ -269,7 +248,7 @@ function submittedReq()
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY']?>">
                             <?php echo $row['CONTROL_NO'];?>
                             <button disabled type="button" class="sweet-16 btn btn-success pull-right">
-                            Complete
+                            Completed
                             </button>
                         </li>
                 <?php
@@ -307,7 +286,7 @@ function currentServing($assignee)
                                 <div class="card-body">
                                     <h3 style = "text-align:center;">CONTROL NUMBER:</h3>
                                     <p style = "text-align:center;font-size:30px;color:#1565C0;font-weight:bold;"><?php echo $row['CONTROL_NO']?></p>
-                                    <button class = "btn btn-success btn-lg" style = "text-align:center;">Complete</button>
+                                    <button class = "btn btn-success btn-lg" style = "text-align:center;">Completed</button>
 
                                     <p class = "pull-right">Assigned ICT Staff:<img   class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY'];?>">
                                 </div>
@@ -320,8 +299,8 @@ function currentServing($assignee)
 function showWorkload($ICT)
 {
     include 'connection.php';
- 
-    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%'  and `STATUS_REQUEST` = 'For action'   order by `STATUS_REQUEST` desc  ";
+    // and `STATUS_REQUEST` = 'For action' or `STATUS_REQUEST` = 'Completed'
+    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%'  order by `STATUS_REQUEST` desc  ";
     $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
     while($row = mysqli_fetch_array($result))
@@ -333,11 +312,11 @@ function showWorkload($ICT)
                         <!-- timeline time label -->
                         <li class="time-label">
                         <?php 
-                             if($row['STATUS_REQUEST'] == 'Complete')
+                             if($row['STATUS_REQUEST'] == 'Completed')
                              {
                                  ?>
                                 <span class="bg-green">
-                                Request Complete
+                                Request Completed
                             </span>
                                  <?php
                              }else{
@@ -363,7 +342,7 @@ function showWorkload($ICT)
                     </div>
                     <div class="timeline-footer">
                     <?php 
-                    if($row['STATUS_REQUEST'] == 'Complete' || $row['COMPLETED_DATE'] == '')
+                    if($row['STATUS_REQUEST'] == 'Completed' || $row['COMPLETED_DATE'] == '')
                     {
                         ?>
                         <a class="btn btn-success btn-md" href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO'];?>">
@@ -438,12 +417,12 @@ function countForAction()
     echo $row['count_fa'];
   }
 }
-function countComplete()
+function countCompleted()
 {
   include 'connection.php';
   $a = ucwords(strtoupper($_SESSION['complete_name3']));
   $query = "SELECT count(*) as 'count_com' FROM tbltechnical_assistance 
-  where `STATUS_REQUEST` = 'Complete' ";
+  where `STATUS_REQUEST` = 'Completed' ";
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
@@ -496,7 +475,7 @@ function countComplete()
             <div class="inner">
               <h3><?php echo countReceived();?></h3>
 
-              <p>RECEIVED</p>
+              <p>RECIEVED</p>
             </div>
             <div class="icon">
               <!-- <i class="ion ion-person-add"></i> -->
@@ -528,7 +507,7 @@ function countComplete()
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3><?php echo countComplete();?></h3>
+              <h3><?php echo countCompleted();?></h3>
 
               <p>COMPLETED</p>
             </div>
@@ -543,7 +522,7 @@ function countComplete()
        
         </div>
       <!-- /.row -->
-                  <div class="container-fluid">
+                  <div class="well">
                     <div class="row">
                         <div class="col-md-4">
                           <button class="btn btn-success"><a style = "color:#fff;decoration:none;" href="requestForm.php?division=<?php echo $_GET['division'];?>"><i class = "fa fa-plus"></i>&nbsp;Create Request</a></button>
@@ -891,7 +870,7 @@ $(document).on('click','#sweet-16',function(e){
               success:function(data)
               {
                   setTimeout(function () {
-                  swal("Service Complete!");
+                  swal("Service Completed!");
                   }, 3000);
                   window.location = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id="+ids;
               }

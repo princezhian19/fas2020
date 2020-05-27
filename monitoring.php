@@ -242,7 +242,7 @@ $division = $_GET['division'];
                   closeOnConfirm: false,
                   closeOnCancel: false
                 }).then(function (){
-                  swal("Your imaginary file has been deleted.", "success");
+                  swal("Control Number "+control_no+" has been deleted.", "success");
                 $.ajax({
                 url:"deleteRequest.php",
                 method:"POST",
