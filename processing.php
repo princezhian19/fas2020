@@ -320,8 +320,8 @@ function currentServing($assignee)
 function showWorkload($ICT)
 {
     include 'connection.php';
-    // and `STATUS_REQUEST` = 'For action' or `STATUS_REQUEST` = 'Complete'
-    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%'  order by `STATUS_REQUEST` desc  ";
+ 
+    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%'  and `STATUS_REQUEST` = 'For action'   order by `STATUS_REQUEST` desc  ";
     $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
     while($row = mysqli_fetch_array($result))
