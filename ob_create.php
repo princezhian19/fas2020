@@ -421,7 +421,7 @@ mysqli_close($conn);
 
               <td colspan = 1 class="" style = " font-family:Sylfaen;">
               <br>
-              Signature of Requesting Employee (s)
+              Signature of Requesting Employee
               <br>
              
               
