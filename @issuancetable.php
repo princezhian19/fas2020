@@ -52,7 +52,7 @@ $edit="edit";
          
             <li class="btn btn-success"><a href="CreateIssuances.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Add</a></li>
         
-          
+            <!-- <a name="Cancel" value="" id="Cancel"  data-toggle="modal" data-target="#add_data_Modal" title="Add" class = "btn btn-success" > <i class=''></i> Add</a>  -->
               <br>
               <br>
               
@@ -182,7 +182,7 @@ $edit="edit";
             </table>
                 
                 </div>
-            </div>
+
                  
       
     <script type="text/javascript">
@@ -211,6 +211,84 @@ $edit="edit";
 
 </body>
 </html>
+
+
+
+
+
+ <!--Add modals -->
+
+ <div id="add_data_Modal" class="modal fade ">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><b>Add Databank</b></h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="insert_form" action="issuances_create1.php" enctype="multipart/form-data">
+              
+        
+              <div class="addmodal" >
+             
+
+            
+                 
+
+
+
+
+                
+                  <br>
+              <br>
+              
+               <button type="submit" name="Add" class="btn btn-success pull-right">Save</button>
+               
+                <br>
+              <br>
+                </div>
+           
+                
+          </div>
+        </div>
+
+      
+    
+    </div>
+
+    
+    </div>
+
+          
+              
+              </form>
+            </div>
+            <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+            </div>
+            </div>
+          </div>
+          </div>
+
+          <div id="dataModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Travel Order</h4>
+            </div>
+            <div class="modal-body" id="employee_detail">
+              
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+
+              
+            </div>
+            </div>
+          </div>
+          </div>
+        <!-- Add modals -->
 
 
 

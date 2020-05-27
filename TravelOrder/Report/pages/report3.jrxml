@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="595" pageHeight="842" columnWidth="451" leftMargin="72" rightMargin="72" topMargin="72" bottomMargin="72" uuid="30dd5ff4-71e5-473c-8d86-008bd800a8c8">
 	<property name="ireport.zoom" value="1.464100000000001"/>
-	<property name="ireport.x" value="2"/>
-	<property name="ireport.y" value="508"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="172"/>
 	<parameter name="date" class="java.lang.String"/>
 	<parameter name="tono" class="java.lang.String"/>
 	<parameter name="name" class="java.lang.String"/>
@@ -19,6 +19,7 @@
 	<parameter name="lastdate" class="java.lang.String"/>
 	<parameter name="divchief" class="java.lang.String"/>
 	<parameter name="divpos" class="java.lang.String"/>
+	<parameter name="cancelled" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[select * from travel_order]]>
 	</queryString>
@@ -131,7 +132,7 @@ Ng Marso 1984
 				<reportElement x="1" y="391" width="224" height="56" uuid="ade65d4f-784d-4f31-ac64-961aa70f92c5"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="225" y="136" width="165" height="39" uuid="c356f26e-f7ce-47cc-acf4-b5e98fb724ba"/>
+				<reportElement x="225" y="136" width="113" height="39" uuid="c356f26e-f7ce-47cc-acf4-b5e98fb724ba"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="225" y="574" width="225" height="38" uuid="3b792ec1-091b-4b5f-8258-b25dc0cc5035"/>
@@ -170,7 +171,7 @@ Ng Marso 1984
 				<reportElement x="1" y="275" width="449" height="27" uuid="f2caf74e-fe5c-4cab-b661-6886dc6008c8"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="390" y="136" width="60" height="39" uuid="aedfd8af-d70e-4a67-9946-3cb9e3e5fe76"/>
+				<reportElement x="337" y="136" width="113" height="39" uuid="aedfd8af-d70e-4a67-9946-3cb9e3e5fe76"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="1" y="621" width="79" height="20" uuid="4ccaea52-6759-4e0a-a73c-8c87b48f1097"/>
@@ -302,29 +303,28 @@ Ng Marso 1984
 				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="229" y="139" width="87" height="20" uuid="2760c3b3-24d2-4960-9a9d-4fb6899d5a09"/>
+				<reportElement x="229" y="138" width="87" height="20" uuid="2760c3b3-24d2-4960-9a9d-4fb6899d5a09"/>
 				<textElement>
 					<font fontName="Cambria" size="11"/>
 				</textElement>
 				<text><![CDATA[Katungkulan :]]></text>
 			</staticText>
-			<textField>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="229" y="158" width="156" height="25" uuid="1219cdd7-9c73-43ae-99b4-2b9943ce5295"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="229" y="152" width="112" height="25" uuid="1219cdd7-9c73-43ae-99b4-2b9943ce5295"/>
 				<textElement>
 					<font fontName="Cambria" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{position}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="393" y="136" width="47" height="36" uuid="fbdbaa4a-a95b-459d-89b2-929f9423cac9"/>
+				<reportElement x="343" y="138" width="74" height="23" uuid="fbdbaa4a-a95b-459d-89b2-929f9423cac9"/>
 				<textElement>
 					<font fontName="Cambria" size="11"/>
 				</textElement>
-				<text><![CDATA[Taunang
-Kita:]]></text>
+				<text><![CDATA[Taunang Kita:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="392" y="161" width="74" height="20" uuid="fe17e19c-c1eb-4a0f-a448-981623d5ccae"/>
+				<reportElement x="343" y="157" width="74" height="20" uuid="fe17e19c-c1eb-4a0f-a448-981623d5ccae"/>
 				<textElement>
 					<font fontName="Cambria" isBold="true"/>
 				</textElement>
@@ -573,6 +573,13 @@ Kita:]]></text>
 				</textElement>
 				<text><![CDATA[Lugar :]]></text>
 			</staticText>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="299" width="449" height="75" forecolor="#FF9999" uuid="41d2a720-bf95-4536-bbf9-47d1a5609015"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="60" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cancelled}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 </jasperReport>

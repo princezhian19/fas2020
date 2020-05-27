@@ -55,7 +55,7 @@ $username = $_SESSION['username'];
         
           <div class=""  style="overflow-x:auto;">
 
-          <!-- onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" -->
+          
           <a name="Cancel" value="" id="Cancel"  data-toggle="modal" data-target="#add_data_Modal" title="Add" class = "btn btn-success" > <i class=''></i> Add</a> 
          
           <!--   <li class="btn btn-success"><a href="CreateDatabank.php" style="color:white;text-decoration: none;">Add</a></li> -->
