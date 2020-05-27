@@ -56,7 +56,7 @@ function filldataTable()
 {
     include 'connection.php';
     $query = "SELECT * FROM tbltechnical_assistance 
-    where `STATUS_REQUEST` = 'Submitted' or  `STATUS_REQUEST` = 'Received' or `STATUS_REQUEST` = 'For action' 
+    where `STATUS_REQUEST` = 'Submitted' or  `STATUS_REQUEST` = 'Received' or `STATUS_REQUEST` = 'For action' or `STATUS_REQUEST` = 'Completed'  
     GROUP by tbltechnical_assistance.ID
     order by `REQ_DATE` DESC, `REQ_TIME` desc ";
     $result = mysqli_query($conn, $query);
@@ -205,14 +205,13 @@ function filldataTable()
 
                     if($_SESSION['complete_name'] == $row['ASSIST_BY'])
                     {
-                    
+
                     echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }else{
                     echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
-
                     }
                 }else{
-                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "btn btn-md btn-success">Complete</button>';
+                    echo '<button disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">'.$row['COMPLETED_DATE'].'</button>';
 
                 }
               ?>

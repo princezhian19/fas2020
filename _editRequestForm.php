@@ -1096,7 +1096,7 @@ $('document').ready(function()
                   setTimeout(function () {
                   swal("Record saved successfully!");
                   }, 3000);
-                  window.location = "techassistance.php?division=<?php echo $_GET['division'];?>";
+                  window.location = "processing.php?division=<?php echo $_GET['division'];?>";
               }
             });
             
