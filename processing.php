@@ -46,7 +46,7 @@ $username = $_SESSION['username'];
   
   
 <style>
-  pre { margin: 20px 0; padding: 20px; background: #fafafa; } .round { border-radius: 50%;vertical-align: }
+pre { margin: 20px 0; padding: 20px; background: #fafafa; } .round { border-radius: 50%;vertical-align: }
 </style>
 </head>
 <?php
@@ -63,10 +63,11 @@ function filldataTable()
     while($row = mysqli_fetch_array($result))
     {
         $data[] = $row['CONTROL_NO'];
+      
 
         ?>
         <tr>
-        <td>
+        <td style = "width:2%;">
             <br>
             <br>
             <?php
@@ -75,7 +76,7 @@ function filldataTable()
                 echo '-';
             }else{
                 ?>
-            <img style="vertical-align:top;"  class="round" width="70" height="70" avatar="<?php echo $row['ASSIST_BY'];?>">
+            <img style="vertical-align:top;"  class="round" width="50" height="50" avatar="<?php echo $row['ASSIST_BY'];?>">
                 <?php
             }
             ?>
@@ -89,23 +90,34 @@ function filldataTable()
                                 <div class="row">
 
                                     <div class="col-lg-12 col-sm-12 col-xs-12" >
-                                    <div class="info-box bg-gray">
+                                        <div class="info-box bg-gray" style = "height:auto;" >
 
-                                            <span class="info-box-icon info-box-text"  >
+                                            <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
 
-                                            <?php echo '<a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" ><span style = "font-size: 20px;"><b>'.$row['CONTROL_NO'].'</b></span></a>';?><br>
+                                            <?php echo '
+                                            <a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" >
+                                               
+                                                    <b>'.$row['CONTROL_NO'].'</b>
+                                     
+                                            </a>';?>
+                                            <p style = "color:red;margin-top:-75%;font-weight:bold;"><?php echo $row['STATUS_REQUEST']; ?></p>
+                                            
+                                            
+                                            
+                                        
+                                            
                                             </span>
-                                            </span>
-                                                <div class="info-box-content" >
+
+                                                <div class="info-box-content" ><br>
                                                     <span class="info-box-number"><?php echo $row['TYPE_REQ'];?>
                                                     </span>
                                                     <span class="info-box-text"><?php echo $row['ISSUE_PROBLEM'];?></span>
                                                 <div class="progress">
                                                     <div class="progress-bar" style="width: 100%"></div>
                                                 </div>
-                                                <div class = "col-lg-4" style = "margin-left:-15px;">
+                                                <div class = "col-lg-3" style = "margin-left:-15px;">
                                                     <span class="progress-description">
-                                                    <b>OFFICE</b>
+                                                    <b><i>OFFICE</i></b>
                                                     </span>
                                                     <span class="progress-description">
                                                     <?php echo $row['OFFICE'];?>
@@ -113,9 +125,9 @@ function filldataTable()
                                                     </span>
                                                 </div>
                                                
-                                                <div class = "col-lg-3">
+                                                <div class = "col-lg-4">
                                                     <span class="progress-description">
-                                                    <b>REQUEST BY</b>
+                                                    <i><b>REQUESTED BY</b></i>
                                                     </span>
                                                     <span class="progress-description">
 
@@ -132,14 +144,18 @@ function filldataTable()
                                                             ?>
                                                     </span>
                                                 </div>
-                                                <div class = "col-lg-4">
+                                                <div class = "col-lg-5">
                                                     <span class="progress-description">
-                                                        <b>REQUESTED DATE</b>
+                                                        <b><i>REQUESTED DATE</i></b>
                                                     </span>
                                                     <span class="progress-description">
-                                                        <?php  echo $row['REQ_DATE'];?>
+                                                        <?php  
+                                                    
+                                                        echo date('F d, Y', strtotime($row['REQ_DATE']));?>
                                                     </span>
                                                 </div>
+                                               <br>
+                                               <br>
                                                
                                                 
                                              </div>
@@ -157,13 +173,16 @@ function filldataTable()
                     <?php
                     // Received
                   
-                        if($row['START_DATE'] != '')
+                        if($row['START_DATE'] != '0000-00-00'  )
                         {
-                    echo ' <button title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12 " style = "color:red;"><b>'.$row['START_DATE'].'</b></button>';
+                    echo ' <button title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " ><b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b></button>';
 
                         
                     }else{
-                        echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-info col-lg-12">Received</button>';
+                        if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == 'January 01, 1970')
+                        {
+                        echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Received</button>';
+                        }
                     }
 
 
@@ -204,7 +223,7 @@ function filldataTable()
                       echo '<br><br>';                                      
                     
                     // Complete
-                    if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+                    if($row['COMPLETED_DATE'] == '0000-00-00' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
                     {
 
                     if($_SESSION['complete_name'] == $row['ASSIST_BY'])
@@ -215,7 +234,8 @@ function filldataTable()
                     echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }
                 }else{
-                    echo '<button title = "Completed Date" disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">'.$row['COMPLETED_DATE'].'</button>';
+        
+                    echo '<button title = "Completed Date" disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">'.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'</button>';
 
                 }
               ?>
