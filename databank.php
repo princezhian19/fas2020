@@ -114,6 +114,7 @@ $username = $_SESSION['username'];
     $('#example1 thead tr').clone(true).appendTo( '#example1 thead' );
     $('#example1 thead tr:eq(1) th').each( function (i) {
         var title = $(this).text();
+        
         $(this).html( '<input type="text" style="width:100%" class="form-control" placeholder="" />' );
  
         $( 'input', this ).on( 'keyup change', function () {
