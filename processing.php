@@ -111,7 +111,10 @@ function filldataTable()
                                                 <div class="info-box-content" ><br>
                                                     <span class="info-box-number"><?php echo $row['TYPE_REQ'];?>
                                                     </span>
-                                                    <span class="info-box-text"><?php echo $row['ISSUE_PROBLEM'];?></span>
+                                                    <span  style ="font-size:15px;">
+                                                    <?php 
+                                                    echo $row['ISSUE_PROBLEM'];?>
+                                                    </span>
                                                 <div class="progress">
                                                     <div class="progress-bar" style="width: 100%"></div>
                                                 </div>
