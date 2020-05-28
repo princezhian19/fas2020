@@ -10,7 +10,7 @@ $division = $_SESSION['division'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS: Create Supplier</title>
+<title>FAS | Create Supplier</title>
 <head>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

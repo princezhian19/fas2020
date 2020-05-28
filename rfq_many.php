@@ -281,7 +281,10 @@ function checkAvailability() {
 
               <div class="form-group">
                 <label>PR Date</label>
-                <input readonly class="form-control" type="text" id="pr_date" name="pr_date" value="<?php echo $pr_date_get?>">
+                <div hidden>
+                <input  class="form-control" type="text" id="pr_date" name="pr_date" value="<?php echo $pr_date_get?>">
+                </div>
+                <input readonly class="form-control" type="text"  value="<?php echo date('F d, Y',strtotime($pr_date_get))?>">
 
               </div>
 
