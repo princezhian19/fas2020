@@ -175,7 +175,11 @@ function filldataTable()
                   
                         if($row['START_DATE'] != '0000-00-00'  )
                         {
-                    echo ' <button title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " ><b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b></button>';
+                    echo '
+                    <button title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
+                    Received Date<br>    
+                    <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
+                    </button>';
 
                         
                     }else{
@@ -235,7 +239,10 @@ function filldataTable()
                     }
                 }else{
         
-                    echo '<button title = "Completed Date" disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">'.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'</button>';
+                    echo '<button title = "Completed Date" disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
+                    Completed Date<br> 
+                    '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
+                    </button>';
 
                 }
               ?>
@@ -656,8 +663,8 @@ function countComplete()
                     <div class="post">
                         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                         <thead>
-                            <th>ASSIST BY</th>
-                            <th>INFORMATION</th>
+                            <th>ASSISTED BY</th>
+                            <th>PARTICULAR</th>
                             <th>ACTION</th>
                         </thead>
                         <tbody>
