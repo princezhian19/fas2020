@@ -92,8 +92,8 @@ if(empty($_POST['todiv1'])){
 
   //getting issuance no.
   
-  $query22 = mysqli_query($conn,"DELETE from issuances_office_responsible  where issuance_id ='$issuance'");
-
+  $query22 = mysqli_query($conn,"DELETE from issuances_office_responsible  where issuance_id ='$issuances'");
+   
 
 
 
@@ -129,9 +129,9 @@ else
   }else
   {
   
-    //getting issuance no.
     
-    $query22 = mysqli_query($conn,"DELETE from issuances_office_responsible  where issuance_id ='$issuance'");
+    
+    $query22 = mysqli_query($conn,"DELETE from issuances_office_responsible  where issuance_id ='$issuances'");
   
   
   
@@ -150,7 +150,8 @@ else
   
     }
     $query = mysqli_query($conn,"UPDATE issuances set issuance_no='$issuances',status='approved',subject='$title',office_responsible='$office_responsible',pdf_file='$filename',dateposted='$posteddate',date_issued='$dateissued',postedby='$username1',category='$category',url='$url' where id ='$id'");
-  
+   
+
     
   
   }
