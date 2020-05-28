@@ -203,7 +203,6 @@ if (isset($_POST['add'])) {
                            <br>
                            <br>
                            
-                          <button type="submit" class="btn btn-success" name="update">Save Changes</button>
                   </div>
                 </div>
                  <div class="col-md-8">
@@ -257,6 +256,8 @@ if (isset($_POST['add'])) {
                           <input type="text" name="idC" hidden  value="<?php echo $id?>">
 
                 </div>
+                          <button type="submit" class="btn btn-success pull-right" name="update">Save Changes</button>
+
               </div>
               </div>
         
@@ -318,7 +319,6 @@ if (isset($_POST['add'])) {
                            <br>
                            <br>
                            
-                          <button type="submit" class="btn btn-success" name="add">Save</button>
                   </div>
                 </div>
                  <div class="col-md-8">
@@ -372,6 +372,7 @@ if (isset($_POST['add'])) {
                           <input type="text" name="idC" hidden  value="<?php echo $id?>">
 
                 </div>
+                          <button type="submit" class="btn btn-success pull-right" name="add">Save</button>
               </div>
               </div>
         
