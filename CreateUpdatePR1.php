@@ -11,7 +11,7 @@ $username = $_SESSION['username'];
 
 <!DOCTYPE html>
 <html>
-  <title>FAS | Update PR</title>
+  <title>FAS | Add PR</title>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

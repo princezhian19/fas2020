@@ -203,7 +203,6 @@ if (isset($_POST['add'])) {
                            <br>
                            <br>
                            
-                          <button type="submit" class="btn btn-success" name="update">Save Changes</button>
                   </div>
                 </div>
                  <div class="col-md-8">
@@ -249,11 +248,16 @@ if (isset($_POST['add'])) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
+                            <div hidden>
                             <input readonly value="<?php echo $posted_date?>" type="text" class="form-control pull-right" name="posted_date" id="datepicker15"  required placeholder="mm/dd/yyyy">
+                            </div>
+                            <input readonly value="<?php echo date('F d, Y',strtotime($posted_date))?>" type="text" class="form-control pull-right"  >
                           </div>
                           <input type="text" name="idC" hidden  value="<?php echo $id?>">
 
                 </div>
+                          <button type="submit" class="btn btn-success pull-right" name="update">Save Changes</button>
+
               </div>
               </div>
         
@@ -315,7 +319,6 @@ if (isset($_POST['add'])) {
                            <br>
                            <br>
                            
-                          <button type="submit" class="btn btn-success" name="add">Save</button>
                   </div>
                 </div>
                  <div class="col-md-8">
@@ -361,11 +364,15 @@ if (isset($_POST['add'])) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
+                            <div hidden>
                             <input readonly value="<?php echo date('Y-m-d')?>" type="text" class="form-control pull-right" name="posted_date" id="datepicker15"  required placeholder="mm/dd/yyyy">
+                            </div>
+                            <input readonly value="<?php echo date('F d, Y')?>" type="text" class="form-control pull-right"    placeholder="mm/dd/yyyy">
                           </div>
                           <input type="text" name="idC" hidden  value="<?php echo $id?>">
 
                 </div>
+                          <button type="submit" class="btn btn-success pull-right" name="add">Save</button>
               </div>
               </div>
         

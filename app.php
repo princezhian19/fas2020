@@ -46,52 +46,51 @@ if (isset($_POST['submit'])) {
   $co = $_POST['co'];
   $budget = $_POST['budget'];
   $unit_id = $_POST['unit'];
-
   $year = date("Y");
-
- 
-  
   $check = mysqli_query($conn,"SELECT sn FROM pr WHERE sn = '$sn' ");
 
   if (mysqli_num_rows($check)>0) {
     echo "<div style='background-color:lightblue;color:red;'> <p> <b>Stock Number is already existing</b> <p> <div>";
   }else{
 
-   for($count = 0; $count < count($_POST["pmo"]); $count++) {
-     $insert_app_items = mysqli_query($conn,'INSERT INTO app_items(sn,code,new_entry,merge_code,procurement,unit_id,source_of_funds_id,category_id,pmo_id,qty,qty_original,mode_of_proc_id,price,app_price,remarks,app_year)
-      VALUES("'.$sn.'","'.$code.'","1","'.$code.'","'.$item.'","'.$unit_id.'","'.$fund.'","'.$category.'","'.$_POST['pmo'][$count].'","'.$_POST['qty'][$count].'","'.$_POST['qty'][$count].'","'.$mode.'","'.$price.'","'.$app_price.'","'.$remarks.'","'.$year.'")');
+     for($count = 0; $count < count($_POST["pmo"]); $count++) {
+       $insert_app_items = mysqli_query($conn,'INSERT INTO app_items(sn,code,new_entry,merge_code,procurement,unit_id,source_of_funds_id,category_id,pmo_id,qty,qty_original,mode_of_proc_id,price,app_price,remarks,app_year)
+        VALUES("'.$sn.'","'.$code.'","1","'.$code.'","'.$item.'","'.$unit_id.'","'.$fund.'","'.$category.'","'.$_POST['pmo'][$count].'","'.$_POST['qty'][$count].'","'.$_POST['qty'][$count].'","'.$mode.'","'.$price.'","'.$app_price.'","'.$remarks.'","'.$year.'")');
+    }
+   
+    
+    $select_app = mysqli_query($conn,"SELECT * FROM app_items ORDER BY id DESC LIMIT 1");
+    $rowID = mysqli_fetch_array($select_app);
+    $sn0 = $rowID['sn'];
+    $code0 = $rowID['code'];
+    $procurement0 = $rowID['procurement'];
+    $source_of_funds_id0 = $rowID['source_of_funds_id'];
+    $category_id0 = $rowID['category_id'];
+    $pmo_id0 = $rowID['pmo_id'];
+    $qty0 = $rowID['qty'];
+    $mode_of_proc_id0 = $rowID['mode_of_proc_id'];
+    $price0 = $rowID['price'];
+    $app_price0 = $rowID['app_price'];
+    $remarks0 = $rowID['remarks'];
+    $unit_id0 = $rowID['unit_id'];
+
+    $insert_app = mysqli_query($conn,"INSERT INTO app(sn,code,new_entry,merge_code,procurement,unit_id,source_of_funds_id,category_id,pmo_id,qty,mode_of_proc_id,price,app_price,remarks,app_year) VALUES('$sn0','$code0',1,'$code0','$procurement0','$unit_id0','$source_of_funds_id0','$category_id0','$pmo_id0','$qty0','$mode_of_proc_id0','$price0','$app_price0','$remarks0','2020' )");
+
+    $select_app = mysqli_query($conn,"SELECT * FROM app ORDER BY id DESC LIMIT 1");
+    $rowID = mysqli_fetch_array($select_app);
+    $app_id = $rowID['id'];
+
+
+    $insert_budget = mysqli_query($conn,"INSERT INTO estimated_budget(app_id,mooe,co,total_budget) VALUES ('$app_id','$mooe','$co','$budget')");
+     echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Successfuly Saved!')
+      window.location.href = 'CreateAPP.php?';
+      </SCRIPT>");
+
   }
- 
-  
-  $select_app = mysqli_query($conn,"SELECT * FROM app_items ORDER BY id DESC LIMIT 1");
-  $rowID = mysqli_fetch_array($select_app);
-  $sn0 = $rowID['sn'];
-  $code0 = $rowID['code'];
-  $procurement0 = $rowID['procurement'];
-  $source_of_funds_id0 = $rowID['source_of_funds_id'];
-  $category_id0 = $rowID['category_id'];
-  $pmo_id0 = $rowID['pmo_id'];
-  $qty0 = $rowID['qty'];
-  $mode_of_proc_id0 = $rowID['mode_of_proc_id'];
-  $price0 = $rowID['price'];
-  $app_price0 = $rowID['app_price'];
-  $remarks0 = $rowID['remarks'];
-  $unit_id0 = $rowID['unit_id'];
-
-  $insert_app = mysqli_query($conn,"INSERT INTO app(sn,code,new_entry,merge_code,procurement,unit_id,source_of_funds_id,category_id,pmo_id,qty,mode_of_proc_id,price,app_price,remarks,app_year) VALUES('$sn0','$code0',1,'$code0','$procurement0','$unit_id0','$source_of_funds_id0','$category_id0','$pmo_id0','$qty0','$mode_of_proc_id0','$price0','$app_price0','$remarks0','2020' )");
-
-  $select_app = mysqli_query($conn,"SELECT * FROM app ORDER BY id DESC LIMIT 1");
-  $rowID = mysqli_fetch_array($select_app);
-  $app_id = $rowID['id'];
 
 
-  $insert_budget = mysqli_query($conn,"INSERT INTO estimated_budget(app_id,mooe,co,total_budget) VALUES ('$app_id','$mooe','$co','$budget')");
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Successfuly Saved!')
-    window.location.href = 'CreateAPP.php?';
-    </SCRIPT>");
 
-}
 
 }
 
@@ -156,7 +155,7 @@ if (isset($_POST['submit'])) {
                <div class="form-group">
                     <label>Unit </label><font style="color:red;">*</font>
                     <select required class="form-control select2" style="width: 100%;" name="unit" id="unit" >
-                      <option selected disabled>Select Unit</option>
+                      <option selected disabled></option>
                       <option value="book">book</option>
                       <option value="bottle">bottle</option>
                       <option value="box">box</option>
@@ -184,7 +183,7 @@ if (isset($_POST['submit'])) {
               <div class="form-group">
                 <label>Source of Fund</label><font style="color:red;">*</font>
                 <select required class="form-control select2" style="width: 100%;" name="fund" id="fund" >
-                  <option selected disabled>Select</option>
+                  <option selected disabled></option>
                   <option value="3">Regular, Local and Trust Fund</option>
                   <option value="1">Local Fund</option>
                   <option value="2">Regular Fund</option>
@@ -201,8 +200,7 @@ if (isset($_POST['submit'])) {
              <div class="form-group">
               <label>Category</label><font style="color:red;">*</font>
               <select required class="form-control select2" style="width: 100%;" name="category" id="category" >
-                <option>Select Category</option>
-                  <option selected disabled>Select</option>
+                  <option selected disabled></option>
                 <?php echo app($connect)?>
               </select> 
             </div>
@@ -216,7 +214,7 @@ if (isset($_POST['submit'])) {
                 <label>Office </label><font style="color:red;">*</font>
                 <?php if ($pmo == 'Please Select'): ?>
                   <select required class="form-control select2" style="width: 100%;" name="pmo[]" id="pmo[]" >
-                    <option selected disabled>Select</option>
+                    <option selected disabled></option>
                     <option value="1">ORD</option>
                     <option value="3">LGMED</option>
                     <option value="4">LGCDD</option>
@@ -228,7 +226,7 @@ if (isset($_POST['submit'])) {
 
                 <?php if ($pmo == ''): ?>
                   <select required class="form-control select2" style="width: 100%;" name="pmo[]" id="pmo[]" value="asdasd">
-                    <option selected disabled>Select</option>
+                    <option selected disabled></option>
                     <option value="1" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'ORD') ? 'selected="selected"' : ''; ?>>ORD</option>
                     <option value="3" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGMED') ? 'selected="selected"' : ''; ?>>LGMED</option>
                     <option value="4" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGCDD') ? 'selected="selected"' : ''; ?>>LGCDD</option>
@@ -249,7 +247,7 @@ if (isset($_POST['submit'])) {
             <div class="form-group">
               <label>Mode of Procurement</label><font style="color:red;">*</font>
               <select required class="form-control select2" style="width: 100%;" name="mode">
-                <option selected disabled>Select</option>
+                <option selected disabled></option>
                 <option value="1">Small Value Procurement</option>
                 <option value="2">Shopping</option>
                 <option value="4">NP Lease of Venue</option>
@@ -288,7 +286,7 @@ if (isset($_POST['submit'])) {
               <input  autocomplete = "off" onKeyPress='return dec(event)' value="<?php echo isset($_POST['budget']) ? $_POST['budget'] : '' ?>" class="form-control" name="budget" type="text" id="budget" >
             </div>
             <br>
-            <button class="btn btn-info" style="float: right;" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Save</button>
+            <button class="btn btn-info" style="float: right;" id="finalizeButton" type="submit" name="submit" >Save</button>
 
 
             <!-- /.box-body -->
@@ -363,7 +361,7 @@ if (isset($_POST['submit'])) {
       e.preventDefault();
       if (x < max_fields) {
         x++;
-            $(wrapper).append('<div><a href="#" class="delete btn btn-danger">Delete</a> <div class="form-group "><label>PMO/End User </label><font style="color:red;">*</font><select required class="form-control  select2" style="width: 100%;" name="pmo[]" id="pmo[]" ><option selected disabled >Select PMO/End User</option><option value="1">ORD</option><option value="2">LGMED</option><option value="3">LGCDD</option><option value="4">FAD</option><option value="5">LGMED-PDMU</option><option value="6">LGCDD-MBRTG</option></select></div><div class="form-group"><label>Quantity</label> <font style="color:red;">*</font><input required autocomplete = "off" onkeypress="return CheckNumeric()" onkeyup="FormatCurrency(this)" value="<?php echo isset($_POST['qty[]']) ? $_POST['qty[]'] : '' ?>" class="form-control" name="qty[]" type="text" id="qty[]" > </div></div>'); //add input box
+            $(wrapper).append('<div><a href="#" class="delete btn btn-danger">Delete</a> <div class="form-group "><label>PMO/End User </label><font style="color:red;">*</font><select required class="form-control  select2" style="width: 100%;" name="pmo[]" id="pmo[]" ><option selected disabled ></option><option value="1">ORD</option><option value="2">LGMED</option><option value="3">LGCDD</option><option value="4">FAD</option><option value="5">LGMED-PDMU</option><option value="6">LGCDD-MBRTG</option></select></div><div class="form-group"><label>Quantity</label> <font style="color:red;">*</font><input required autocomplete = "off" onkeypress="return CheckNumeric()" onkeyup="FormatCurrency(this)" value="<?php echo isset($_POST['qty[]']) ? $_POST['qty[]'] : '' ?>" class="form-control" name="qty[]" type="text" id="qty[]" > </div></div>'); //add input box
           } else {
             alert('You Reached the limits')
           }
