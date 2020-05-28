@@ -399,7 +399,7 @@ $edit="edit";
                     ?>
               <label>
                 <input type="checkbox" style=" text-align:linear; " class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
-              <?php if(!empty($_POST['todiv'])) {if (in_array($k[''], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> />
+              <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> />
               <span>
                 <?php echo $k['DIVISION_M'];?>
               </span>
@@ -839,101 +839,106 @@ $edit="edit";
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
  
-<script type="text/javascript">
-$(document).ready(function() {
+        <script type="text/javascript">
+		$(document).ready(function() {
 
- var x = 1;
- $('#office').click(function(e){
-   if( x == 1 ){
-     //console.log('even');
-     $('.office-responsible').show();
-     $(this).attr('placeholder','Click to Close');
-     x = 0;
-   } else {
-     //console.log('odd');
-     $('.office-responsible').hide();
-         $(this).attr('placeholder','Click to Select');
+			var x = 1;
+			$('#office').click(function(e){
+			  if( x == 1 ){
+			    //console.log('even');
+			    $('.office-responsible').show();
+			    $(this).attr('placeholder','Click to Close');
+			    x = 0;
+			  } else {
+			    //console.log('odd');
+			    $('.office-responsible').hide();
+			        $(this).attr('placeholder','Click to Select');
 
-     x = 1;
-   }
-   e.preventDefault();
- });
+			    x = 1;
+			  }
+			  e.preventDefault();
+			});
 
-$("legend :checkbox").click(function(){
-    var getcheckboxes = $(this).attr('class');
- var delimiter = ",";
- var text = $("input[id='todiv']");
- var str = "";
+		$("legend :checkbox").click(function(){
+   	    var getcheckboxes = $(this).attr('class');
+	    var delimiter = ";";
+	    var text = $("input[id='todiv']");
+	    var str = "";
 
-$('.'+getcheckboxes).prop('checked',this.checked);
-
-
-});
-
- $(":checkbox").click(function () {
-     var delimiter = ",";
-     var text = $("input[name='todiv']");
-     var str = "";
-     
-     // for each checked checkbox, add the checkbox value and delimiter to the textbox
-     $(":checked").each(function () {
-         str += $(this).val() + delimiter;
-     });
-     
-     // set the value of the textbox
-    // echo (str);
-     text.val(str);
-     // echo (str);
- });
+	   $('.'+getcheckboxes).prop('checked',this.checked);
 
 
+		});
 
-   $('#submit').click(function(e){
-             if (!$('#offices-hidden').val()) {
-                           e.preventDefault();
+			$(":checkbox").click(function () {
+			    var delimiter = ";";
+			    var text = $("input[name='todiv']");
+			    var str = "";
+			    
+			    // for each checked checkbox, add the checkbox value and delimiter to the textbox
+			    $(":checked").each(function () {
+			        str += $(this).val() + delimiter;
+			    });
+			    
+			    // set the value of the textbox
+          var final = str .replace('11;','');
+     //alert(final);
+          var final1 = final.replace('11;','');
+        
+     text.val('');
+     text.val(final1);
 
-                 alert('empty');
-             }
-             else{
-                 // $("#ms").find('option').attr('selected',true);
-                 $('#form1').submit()
-             }
-         });
+
+			});
 
 
 
- $(".page_link").change(function(){
-   var id=$(this).val();
-         getProAge(id);		
- });
- function getProAge(page)
- {
-   if (page != ''){							
-     $.post("issuances-list.php",{ p: page },
-     function(data){
-       $('.proage').html(data.issuanceslist);				
-     }, "json");   
-   }
- }				
- 
- var oid = $(".page_link").val();
- var cid = $(".proage").val();
- if (oid != '' && cid == '')
- {
-         getProAge(oid);
- }										
-   
-});	
-  function confirmDelete(id, rno) { 
-   var msg = "Are you sure you want to delete record no. "+rno+" ?";
-       if ( confirm(msg) ) {
-           // window.location = "<?php echo $_SERVER['PHP_SELF']; ?>?option=del&id="+id;
-       }
-   }	
-function copyToClipboard(text) {
- window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);
-}					
-</script> 
+			  $('#submit').click(function(e){
+			            if (!$('#offices-hidden').val()) {
+			                          e.preventDefault();
+
+			                alert('empty');
+			            }
+			            else{
+			                // $("#ms").find('option').attr('selected',true);
+			                $('#form1').submit()
+			            }
+			        });
+
+
+		
+			$(".page_link").change(function(){
+				var id=$(this).val();
+	            getProAge(id);		
+			});
+			function getProAge(page)
+			{
+				if (page != ''){							
+					$.post("issuances-list.php",{ p: page },
+					function(data){
+						$('.proage').html(data.issuanceslist);				
+					}, "json");   
+				}
+			}				
+			
+			var oid = $(".page_link").val();
+			var cid = $(".proage").val();
+			if (oid != '' && cid == '')
+			{
+	            getProAge(oid);
+			}										
+				
+		 });	
+       function confirmDelete(id, rno) { 
+        var msg = "Are you sure you want to delete record no. "+rno+" ?";
+            if ( confirm(msg) ) {
+                // window.location = "<?php echo $_SERVER['PHP_SELF']; ?>?option=del&id="+id;
+            }
+        }	
+		function copyToClipboard(text) {
+		  window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);
+		}					
+    </script>   
 
 
 
@@ -962,30 +967,36 @@ $(document).ready(function() {
  });
 
 $("legend :checkbox").click(function(){
-    var getcheckboxes = $(this).attr('class');
- var delimiter = ",";
- var text = $("input[id='todiv1']");
- var str = "";
+    var getcheckboxes1 = $(this).attr('class');
+ var delimiter1 = ";";
+ var text1 = $("input[id='todiv1']");
+ var str1 = "";
 
-$('.'+getcheckboxes).prop('checked',this.checked);
+$('.'+getcheckboxes1).prop('checked',this.checked);
 
 
 });
 
  $(":checkbox").click(function () {
-     var delimiter = ",";
-     var text = $("input[name='todiv1']");
-     var str = "";
+     var delimiter1 = ";";
+     var text1 = $("input[name='todiv1']");
+     var str1 = "";
      
      // for each checked checkbox, add the checkbox value and delimiter to the textbox
      $(":checked").each(function () {
-         str += $(this).val() + delimiter;
+         str1 += $(this).val() + delimiter1;
+        
+       
      });
      
      // set the value of the textbox
-    // echo (str);
-     text.val(str);
-     // echo (str);
+   
+     var final1 = str1 .replace('11;11;','');
+     //alert(final);
+     text1.val('');
+     text1.val(final1);
+     
+     
  });
 
 
@@ -1002,39 +1013,8 @@ $('.'+getcheckboxes).prop('checked',this.checked);
              }
          });
 
-
-
- $(".page_link").change(function(){
-   var id=$(this).val();
-         getProAge(id);		
- });
- function getProAge(page)
- {
-   if (page != ''){							
-     $.post("issuances-list.php",{ p: page },
-     function(data){
-       $('.proage').html(data.issuanceslist);				
-     }, "json");   
-   }
- }				
- 
- var oid = $(".page_link").val();
- var cid = $(".proage").val();
- if (oid != '' && cid == '')
- {
-         getProAge(oid);
- }										
-   
 });	
-  function confirmDelete(id, rno) { 
-   var msg = "Are you sure you want to delete record no. "+rno+" ?";
-       if ( confirm(msg) ) {
-           // window.location = "<?php echo $_SERVER['PHP_SELF']; ?>?option=del&id="+id;
-       }
-   }	
-function copyToClipboard(text) {
- window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);
-}					
+ 		
 </script> 
 
 

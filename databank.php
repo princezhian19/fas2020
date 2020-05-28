@@ -110,24 +110,33 @@ $username = $_SESSION['username'];
 
 <script>
   $(document).ready(function() {
+
+
+    
     // Setup - add a text input to each footer cell
     $('#example1 thead tr').clone(true).appendTo( '#example1 thead' );
     $('#example1 thead tr:eq(1) th').each( function (i) {
         var title = $(this).text();
-        
-        $(this).html( '<input type="text" style="width:100%" class="form-control" placeholder="" />' );
+      
+        // $(this).html('<select class="form-control " name="" id="" ><option >Province ISO Forms</option><option >Region ISO Forms</option><option >ALL ISO Forms</option></select>')
+        $(this).html(  '<input type="text" style="width:100%" class="form-control" placeholder="" />' );
  
         $( 'input', this ).on( 'keyup change', function () {
             if ( table.column(i).search() !== this.value ) {
                 table
+                   
                     .column(i)
                     .search( this.value )
                     .draw();
             }
         } );
     } );
+
+    
  
     var table = $('#example1').DataTable( {
+
+
         orderCellsTop: true,
         fixedHeader: true,
         paging      : true,
@@ -136,8 +145,31 @@ $username = $_SESSION['username'];
       ordering    : false,
       info        : false,
       autoWidth   : false
+      
+    
+     
+    
     } );
+
+  
 } );
 </script>
+
+<!-- <script>
+$(function () {
+    $('#example2').DataTable()
+    $('#example1').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : false,
+      'autoWidth'   : false,
+      
+    })
+  })
+  
+</script> -->
+
 </body>
 </html>

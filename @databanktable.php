@@ -95,6 +95,11 @@ $username = $_SESSION['username'];
                   
                 </tr>
                 </thead>
+
+                
+
+           
+                   
                 <?php
             $servername = "localhost";
             $username = "fascalab_2020";
@@ -198,6 +203,8 @@ $username = $_SESSION['username'];
 
              
             </table>
+
+            
               </form>
                 
                 </div>

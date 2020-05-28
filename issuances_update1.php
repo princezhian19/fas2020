@@ -27,8 +27,6 @@ if(isset($_POST['edit'])){
                 $location = "files/";
                 if(move_uploaded_file($tempname, $location.$filename)){
     
-                   
-    
                         //echo 'File Uploaded!';
                     
                 }
