@@ -487,15 +487,23 @@
 <script>
   $('#mySelect2').on('change', function() {
     var value = $(this).val();
-    if (value != '1') {
-      document.getElementById("sel_depart").disabled=false;
-      document.getElementById("sel_user").disabled=false;
+    if (value == '1') {
+      $('#sel_depart').find('option').remove().end().append('<option disabled selected></option><option value="10">Batangas</option><option value="21">Cavite</option><option value="34">Laguna</option><option value="56">Quezon</option>  <option value="58">Rizal</option>') ;
+     $('#sel_user').find('option').remove().end().append('<option disabled selected></option>') ;
+      document.getElementById("sel_depart").disabled=true;
+      document.getElementById("sel_user").disabled=true;
     }
-    else {
+    if (value == '2' || value == '3') {
+      $('#sel_depart').find('option').remove().end().append('<option disabled selected></option><option value="10">Batangas</option><option value="21">Cavite</option><option value="34">Laguna</option><option value="56">Quezon</option>  <option value="58">Rizal</option>') ;
+     $('#sel_user').find('option').remove().end().append('<option disabled selected></option>') ;
+      document.getElementById("sel_depart").disabled=false;
+      document.getElementById("sel_user").disabled=true;
+    }
+    if (value == '4') {
      $('#sel_depart').find('option').remove().end().append('<option disabled selected></option><option value="10">Batangas</option><option value="21">Cavite</option><option value="34">Laguna</option><option value="56">Quezon</option>  <option value="58">Rizal</option>') ;
      $('#sel_user').find('option').remove().end().append('<option disabled selected></option>') ;
-     document.getElementById("sel_depart").disabled=true;
-     document.getElementById("sel_user").disabled=true;
+     document.getElementById("sel_depart").disabled=false;
+     document.getElementById("sel_user").disabled=false;
    }
  });
 

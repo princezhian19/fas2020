@@ -55,7 +55,7 @@ $username = $_SESSION['username'];
         
           <div class=""  style="overflow-x:auto;">
 
-          <!-- onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" -->
+          
           <a name="Cancel" value="" id="Cancel"  data-toggle="modal" data-target="#add_data_Modal" title="Add" class = "btn btn-success" > <i class=''></i> Add</a> 
          
           <!--   <li class="btn btn-success"><a href="CreateDatabank.php" style="color:white;text-decoration: none;">Add</a></li> -->
@@ -250,7 +250,7 @@ $username = $_SESSION['username'];
                        
                     <tr>
                         <td class="col-md-2"><label>Attached File<span style = "color:red;">*</span></label> </td>
-                            <td class="col-md-5"> <input id="issuances_attachment" type="file" name="file"/>
+                            <td class="col-md-5"> <input required id="issuances_attachment" type="file" name="file"/>
                           <?php
 							if (!empty($_GET['option']) && $_GET['option']== 'edit') {
 							

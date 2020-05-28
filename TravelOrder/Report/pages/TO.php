@@ -106,6 +106,18 @@ $contact = $row['contact'];
 $vehicle = $row['vehicle'];
 $pos = $row['pos'];
 
+$status = $row['status'];
+$stat="";
+
+if($status=='cancelled'){
+$stat='Cancelled';
+}
+else{
+$stat='';
+
+}
+
+
 }
 
 
@@ -115,7 +127,7 @@ $PHPJasperXML = new PHPJasperXML();
     $PHPJasperXML->arrayParameter=array(
         "date"=>$date,"tono"=>$tono,"name"=>$name,"position"=>$pos,"kita"=>$kita,"place"=>$fromplace,"toplace"=>$place,
         "contact"=>$contact,"fromdate"=>$fromdate,"timefrom"=>$timefrom,"timeto"=>$timeto,"purpose"=>$purpose,
-        "vehicle"=>$vehicle,"lastdate"=>$lastdate,"divchief"=>$divchief,"divpos"=>$divpos);
+        "vehicle"=>$vehicle,"lastdate"=>$lastdate,"divchief"=>$divchief,"divpos"=>$divpos,"cancelled"=>$stat);
 
 
 

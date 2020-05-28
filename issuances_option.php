@@ -305,16 +305,10 @@ require_once('_includes/class.upload.php');
                  <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}
                  else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?>/>
                  <span>
-                   <table>
-                      <tr>
-
-                      <td>
+                  
                       <?php echo $k['DIVISION_M']; ?>
 
-                      </td>
-                      </tr>
-
-                   </table>
+                   
                 
                 </span></label>
                

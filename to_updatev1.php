@@ -336,15 +336,19 @@ else{
                 <td class="col-md-5 " style =" border:1px solid black;">
               
                
-                <label>Katungkulan:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         Taunang Kita:</label>
+
+
+                <label>Katungkulan: &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       
+                Taunang Kita:</label>
                 
                <br>
-                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:320px;" name="pos" id="pos" value = "<?php echo $pos;?>" >
+                <input readonly required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:220px;" name="pos" id="pos" value = "<?php echo $pos;?>"  >
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input   type="number" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:120px;" name="kita" id="kita" value = "<?php echo $kita;?>">
+                <input   type="number" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 40px; width:240px;" name="kita" id="kita" value = "<?php echo $kita;?>">
                 <br>
-              
-                <br>
+
                
                 
 
