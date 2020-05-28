@@ -111,9 +111,9 @@ function filldataTable()
                                                 <div class="info-box-content" ><br>
                                                     <span class="info-box-number"><?php echo $row['TYPE_REQ'];?>
                                                     </span>
-                                                    <span class="info-box-text">
+                                                    <span  style ="font-size:15px;">
                                                     <?php 
-                                                        $string = substr($row['ISSUE_PROBLEM'],0,20).'...'; echo $string;?>
+                                                    echo $row['ISSUE_PROBLEM'];?>
                                                     </span>
                                                 <div class="progress">
                                                     <div class="progress-bar" style="width: 100%"></div>
