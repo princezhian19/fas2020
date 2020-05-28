@@ -117,11 +117,11 @@ $username = $_SESSION['username'];
 
                   $title  = $row["title"];
                   $office  = $row["office"];
-                $url= $row["url"];
+                  $url= $row["url"];
                   $dateposted1  = $row["dateposted"];
                     $dateposted = date('F d, Y', strtotime($dateposted1));
                   $postedby = $row["postedby"];
-                 $location = "files/".$file;
+                  $location = "files/".$file;
                  //echo $location;
 
                ?>

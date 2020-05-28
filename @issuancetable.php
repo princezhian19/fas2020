@@ -117,7 +117,7 @@ $edit="edit";
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT issuances.office_responsible,issuances.id,issuances.category, issuances.issuance_no, issuances.date_issued, issuances.subject,issuances.postedby,issuances.dateposted, issuances_category.name from issuances left join issuances_category on issuances.category=issuances_category.id order by issuances.id desc");
+            $view_query = mysqli_query($conn, "SELECT issuances.url,issuances.pdf_file,issuances.office_responsible,issuances.id,issuances.category, issuances.issuance_no, issuances.date_issued, issuances.subject,issuances.postedby,issuances.dateposted, issuances_category.name from issuances left join issuances_category on issuances.category=issuances_category.id order by issuances.id desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
                   $id = $row["id"];
@@ -128,17 +128,30 @@ $edit="edit";
                 
                   $date_issued1  = $row["date_issued"];
                   $date_issued = date('F d, Y', strtotime($date_issued1));
+
+                  $date_issued11 = date('m/d/Y', strtotime($date_issued1));
                    // $date_issued1 = date('F d, Y', strtotime($date1));
                   $subject = $row["subject"];
 
                   $office = $row["office_responsible"];
+                  $file= $row["pdf_file"];
 
+                  $url= $row["url"];
 
 
                   $dateposted1 = $row["dateposted"];
 
                   $dateposted = date('F d, Y', strtotime($dateposted1));
                   $postedby = $row["postedby"];
+
+
+                  /* $title  = $row["title"];
+                  $office  = $row["office"];
+                  $url= $row["url"];
+                  $dateposted1  = $row["dateposted"];
+                    $dateposted = date('F d, Y', strtotime($dateposted1));
+                  $postedby = $row["postedby"];
+                  $location = "files/".$file; */
                   //echo $office;
                  
 
@@ -202,7 +215,9 @@ $edit="edit";
 
                           <?php if ($office ==  $DIVISION_M ):?>
                           <a  href='ViewIssuance.php?division=<?php echo $_SESSION['division'];?>&id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
-                          <a href='UpdateIssuances.php?id=<?php echo $id;?>&option=edit&issuance=<?php echo $issuance_no?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> | 
+                          <!-- <a href='UpdateIssuances.php?id=<?php echo $id;?>&option=edit&issuance=<?php echo $issuance_no?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> |  -->
+
+                          <a name="edit" onclick="myFunction(this)" data-id="<?php echo $id;?>"  data-postedby = "<?php echo $postedby;?>" data-dateposted = "<?php echo $dateposted;?>" data-url = "<?php echo $url;?>" data-gettitle = "<?php echo $subject;?>" data-issuance_no = "<?php echo $issuance_no;?>" data-date_issued = "<?php echo $date_issued11;?>"  data-cat = "<?php echo $name;?>" data-file="<?php echo $file;?>"  value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> |
 
                           <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/issuancesdelete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                             <?php else :?>
@@ -514,6 +529,310 @@ $edit="edit";
         <!-- Add modals -->
 
 
+
+
+<!--Edit modals -->
+
+<div id="edit_data_Modal" class="modal fade ">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><b>Edit Issuances</b></h4>
+            </div>
+            <div class="modal-body">
+
+
+            <script>
+                  function myFunction(idget) {
+
+                    var idmodal = idget.getAttribute("data-id");
+                    var cat = idget.getAttribute("data-cat");
+                    var file = idget.getAttribute("data-file");
+
+                    var title1 = idget.getAttribute("data-gettitle");
+
+                    var url1 = idget.getAttribute("data-url");
+                    var dateposted1 = idget.getAttribute("data-dateposted");
+                    var postedby1 = idget.getAttribute("data-postedby");
+
+                    var date_issued = idget.getAttribute("data-date_issued");
+                    var issuance_no = idget.getAttribute("data-issuance_no");
+
+                  
+                    
+                    var id1 = $("input[name='getid']");
+                    var file1 = $("input[name='getfile1']");
+
+                    //fields
+                    var category = $("input[name='category1']");
+                    var title = $("input[name='title1']");
+                    var dateissued1 = $("input[name='dateissued1']");
+
+                    var url = $("input[name='url1']");
+                    var dateposted = $("input[name='posteddate1']");
+                    var postedby = $("input[name='postedby1']");
+                    var issuances1 = $("input[name='issuances1']");
+
+
+                   
+                   
+                    var filePath = "files/"+file;
+                    
+                    //values
+                    id1.val(idmodal);
+                    file1.val(file);
+                    category.val(cat);
+                    title.val(title1);
+                    url.val(url1);
+                    dateposted.val(dateposted1);
+                    postedby.val(postedby1);
+                    dateissued1.val(date_issued);
+                    issuances1.val(issuance_no);
+                   
+                     
+                     
+                  
+
+
+                    if(file!=""){
+                      document.getElementById('modal-test').innerHTML = file;
+                      document.getElementById('modal-test').href = filePath;
+                    }
+                   else{
+                    document.getElementById('modal-test').innerHTML = "";
+                    document.getElementById('modal-test').href = "";
+                   }
+                    
+                   
+                  }
+
+                
+
+                  </script>
+
+
+              <form method="POST" id="insert_form" action="issuances_update1.php" enctype="multipart/form-data">
+              
+        
+              <div class="addmodal" >
+             
+
+
+
+              <table class="table"> 
+
+
+              <tr>
+                        <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
+                    <td class="col-md-5">
+                      <select class="form-control " style="width: 100%;" name="category1" id="category1" > 
+                      <option value="11">Department Memorandum Circular</option>
+                      <option value="12">Department Order</option>
+                      <option value="14">Regional Memorandum Circular</option>
+                      <option value="15">Regional Order</option>
+                      <option value="20">Regional Office Order</option>
+                      <option value="17">Executive Order</option>
+                      <option value="18">Joint Memorandum Circular</option>
+                      </select></td>
+                                </tr>
+                    <tr>  
+                        <td class="col-md-2"><b>Issuance No<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-5">
+                            <input required  class="form-control" type="text" class="" style="height: 35px;" id="issuances1" name="issuances1" placeholder="" name="issuances" >
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2"><b>Issuance Date<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-5"> 
+                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued1" id="datepicker2" value = "" >
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2"><b>Title/Subject<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-5">  <input required  type="text"  class="form-control" style="height: 35px;" id="title1" placeholder="" name="title1"></td>
+                                </tr>
+
+
+                                <tr>
+                        <td class="col-md-2"><b>Concerned Office</b></td>
+                            <td class="col-md-5"> 
+                            
+                              
+                              <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
+                              <input id="office1" required name="todiv1" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
+                              <div class="office-responsible1 well  " style="text-align:linear ;position: absolute;display: none;max-width: 80%;">
+
+                          <?php
+                         
+
+                          $get_division ="SELECT * from tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N";
+                                $get_groupings ="SELECT * from tbl_groupings";
+                          
+                          $getdata = getData($conn,$get_division);
+                          $getgroup = getData($conn,$get_groupings);
+                          $countgroup = count($getgroup);
+                          // print "<div>";
+                          for ($i=0; $i < $countgroup; $i++) 
+                       
+                          {
+                          $exploded= explode('', $getgroup[$i]['GROUP_M']);
+                          	?>
+                           <fieldset class="div " style="margin-top:20px">
+
+                             <legend><?php echo $getgroup[$i]['GROUP_M'];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="divs" class="divs<?php echo $i;?>"></legend>
+                    
+                   
+
+                      <?php
+
+                      $get_options = "SELECT * FROM tblpersonneldivision as a left join tbl_groupings as b on b.GROUP_N=a.GROUP_N WHERE a.GROUP_N=".$i."";
+                      $getoptions = getData($conn,$get_options);
+                      $getcount = count($getoptions);
+                      foreach ($getoptions as $k) {
+
+
+                      if ( $counter==0) { 
+                      print "<div class='rows3 '>";
+                     
+
+                      print "</div>";
+
+                      ?>
+         
+                   <?php
+                    }
+                    $counter++;
+
+                    if (!empty($_GET['option']) && ($_GET['option'] == 'edit')) {
+                 
+
+                    
+                     ?>
+
+                   	
+                <label><input type="checkbox" class="chkGrpSD3 divs<?php echo $i;?>"  id="checkboxP" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>">
+               
+                 <?php if(!empty($_POST['todiv'])) {if (in_array($k['DIVISION_N'], $_POST['todiv'])) echo "checked='checked'" ;}
+                 else{ if(in_array($k['DIVISION_N'], $rro)): echo "checked='checked'";endif;} ?>/>
+                 <span>
+                  
+                      <?php echo $k['DIVISION_M']; ?>
+
+                   
+                
+                </span>
+              
+              </label>
+               
+                    <?php }else{
+                    ?>
+              <label>
+                <input type="checkbox" style=" text-align:linear; " class="chkGrpSD3 divs<?php echo $i;?>" name="todiv[]" value="<?php echo $k['DIVISION_M'];?>" 
+              <?php if(!empty($_POST['todiv'])) {if (in_array($k[''], $_POST['todiv'])) echo "checked='checked'" ;}else{echo "";} ?> />
+              <span>
+                <?php echo $k['DIVISION_M'];?>
+              </span>
+            </label>
+              
+                    <?php }
+                		}
+
+                     ?>
+                           </fieldset>
+
+                         <?php  }
+                         // print "</div>";
+                          ?>
+                         
+                          
+
+                  </div>
+                  </div>
+                          
+                                
+                  </td>
+                
+                </tr>
+
+
+                <tr>
+                        <td class="col-md-2"><label>Attached File <span style = "color:red;">*</span></label> </td>
+                            <td class="col-md-5"> <input  id="issuances_attachment" type="file" name="file1"/>
+                            Current file: <a name="getfile1"  id="modal-test" href="#" target="_blank"></a> <input hidden   id="" type="Text" value="" name="getfile1"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <br>
+                            Allowed file: *.pdf
+											      <br>
+											      Max allowed size: 5mb
+                                </tr>
+                    <tr>
+                        <td class="col-md-2"><b>URL</b></td>  
+                            <td class="col-md-5">
+                            <input id="url1" name="url1" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                </td>
+                                    </tr>
+                    <tr>
+                        <td class="col-md-2"><b>Posted By</b></td>
+                            <td class="col-md-5"> <?php
+
+                             $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                             $username = $_SESSION['username'];
+              
+                             //echo $username;
+                             $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                             $rowdiv = mysqli_fetch_array($select_user);
+                             $DIVISION_C = $rowdiv['DIVISION_C'];
+                            
+                             $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                             $rowdiv1 = mysqli_fetch_array($select_office);
+                             $DIVISION_M = $rowdiv1['DIVISION_M'];
+                            
+                            
+                            ?>                             
+                         
+
+                         <!-- <input readonly value="<?php echo $username;?>" id="" name="" autocomplete ="off" type="text" class="form-control" placeholder=""> -->
+                            <input readonly value="" id="postedby1" name="postedby1" autocomplete ="off" type="text" class="form-control" placeholder="">
+                                    </td>
+                                        </tr>
+                    <tr>
+                        <td class="col-md-2"><b>Posted Date</b></td>
+                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate1" id="posteddate1" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('m/d/Y') ?>" ></td>
+                                </tr>
+
+
+            </table>
+                 
+            <input readonly hidden  value="<?php echo $DIVISION_M;?>" id="office_responsible1" name="office_responsible1" autocomplete ="off" type="text" class="" placeholder="">
+            <button type="submit" name="edit" class="btn btn-success pull-right">Save Changes</button>
+            <input hidden  value="<?php echo $id;?>"   type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
+
+
+                
+                  <br>
+              <br>
+              
+              
+            
+                </div>
+           
+                
+          </div>
+        </div>
+
+      
+    
+    </div>
+
+    </div>
+ 
+
+          
+              
+              </form>
+           
+        <!-- Edit modals -->
+
+
  
 
 
@@ -554,6 +873,108 @@ $('.'+getcheckboxes).prop('checked',this.checked);
  $(":checkbox").click(function () {
      var delimiter = ",";
      var text = $("input[name='todiv']");
+     var str = "";
+     
+     // for each checked checkbox, add the checkbox value and delimiter to the textbox
+     $(":checked").each(function () {
+         str += $(this).val() + delimiter;
+     });
+     
+     // set the value of the textbox
+    // echo (str);
+     text.val(str);
+     // echo (str);
+ });
+
+
+
+   $('#submit').click(function(e){
+             if (!$('#offices-hidden').val()) {
+                           e.preventDefault();
+
+                 alert('empty');
+             }
+             else{
+                 // $("#ms").find('option').attr('selected',true);
+                 $('#form1').submit()
+             }
+         });
+
+
+
+ $(".page_link").change(function(){
+   var id=$(this).val();
+         getProAge(id);		
+ });
+ function getProAge(page)
+ {
+   if (page != ''){							
+     $.post("issuances-list.php",{ p: page },
+     function(data){
+       $('.proage').html(data.issuanceslist);				
+     }, "json");   
+   }
+ }				
+ 
+ var oid = $(".page_link").val();
+ var cid = $(".proage").val();
+ if (oid != '' && cid == '')
+ {
+         getProAge(oid);
+ }										
+   
+});	
+  function confirmDelete(id, rno) { 
+   var msg = "Are you sure you want to delete record no. "+rno+" ?";
+       if ( confirm(msg) ) {
+           // window.location = "<?php echo $_SERVER['PHP_SELF']; ?>?option=del&id="+id;
+       }
+   }	
+function copyToClipboard(text) {
+ window.prompt ("Copy to clipboard: Ctrl+C, Enter", text);
+}					
+</script> 
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+ var x = 1;
+ $('#office1').click(function(e){
+   if( x == 1 ){
+     //console.log('even');
+     $('.office-responsible1').show();
+     $(this).attr('placeholder','Click to Close');
+     x = 0;
+   } else {
+     //console.log('odd');
+     $('.office-responsible1').hide();
+         $(this).attr('placeholder','Click to Select');
+
+     x = 1;
+   }
+   e.preventDefault();
+ });
+
+$("legend :checkbox").click(function(){
+    var getcheckboxes = $(this).attr('class');
+ var delimiter = ",";
+ var text = $("input[id='todiv1']");
+ var str = "";
+
+$('.'+getcheckboxes).prop('checked',this.checked);
+
+
+});
+
+ $(":checkbox").click(function () {
+     var delimiter = ",";
+     var text = $("input[name='todiv1']");
      var str = "";
      
      // for each checked checkbox, add the checkbox value and delimiter to the textbox
