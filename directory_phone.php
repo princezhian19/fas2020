@@ -249,7 +249,10 @@ if (isset($_POST['add'])) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
+                            <div hidden>
                             <input readonly value="<?php echo $posted_date?>" type="text" class="form-control pull-right" name="posted_date" id="datepicker15"  required placeholder="mm/dd/yyyy">
+                            </div>
+                            <input readonly value="<?php echo date('F d, Y',strtotime($posted_date))?>" type="text" class="form-control pull-right"  >
                           </div>
                           <input type="text" name="idC" hidden  value="<?php echo $id?>">
 
@@ -361,7 +364,10 @@ if (isset($_POST['add'])) {
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
+                            <div hidden>
                             <input readonly value="<?php echo date('Y-m-d')?>" type="text" class="form-control pull-right" name="posted_date" id="datepicker15"  required placeholder="mm/dd/yyyy">
+                            </div>
+                            <input readonly value="<?php echo date('F d, Y')?>" type="text" class="form-control pull-right"    placeholder="mm/dd/yyyy">
                           </div>
                           <input type="text" name="idC" hidden  value="<?php echo $id?>">
 
