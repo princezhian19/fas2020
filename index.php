@@ -31,8 +31,8 @@ $pas1 = $_SESSION['pass'];
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
 
-      if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-      // if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
+      // if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+      if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
       echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='home.php?division=".$division."&username=".$username."';
         </SCRIPT>");
@@ -80,7 +80,8 @@ if (isset($_POST['submit'])) {
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
     $_SESSION['complete_name3'] = $row['FIRST_M'].' '.$middle.' '.$row['LAST_M'];
 
-      if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+      // if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+             if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
         
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Succesfully Login!')
