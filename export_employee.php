@@ -30,11 +30,11 @@ $office = $_GET['office'];
 // $e_date = $_GET['e_date'];
 
 if ($office == 0) {
-$sql_items = mysqli_query($conn, "SELECT tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION ");
+$sql_items = mysqli_query($conn, "SELECT tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION ORDER BY tblemployee.LAST_M ASC");
 
 }else{
 
-$sql_items = mysqli_query($conn, "SELECT tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION WHERE DIVISION_C = '$office' ");
+$sql_items = mysqli_query($conn, "SELECT tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION WHERE DIVISION_C = '$office' ORDER BY tblemployee.LAST_M ASC");
 }
 
 // $mont = date('M',strtotime($e_date));
@@ -51,7 +51,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('D9',$DIVISION_M);
 // $objPHPExcel->setActiveSheetIndex()->setCellValue('D10',$mont);
 // $objPHPExcel->setActiveSheetIndex()->setCellValue('H10',$year);
 
-$row = 13;
+$row = 12;
 
 while($excelrow = mysqli_fetch_assoc($sql_items) ){
 
@@ -63,20 +63,22 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   $POSITION_M = $excelrow["POSITION_M"];
   $DESIGNATION_M = $excelrow["DESIGNATION_M"];
   $MOBILEPHONE = $excelrow["MOBILEPHONE"];
+  $ALTER_EMAIL = $excelrow["ALTER_EMAIL"];
   $EMAIL = $excelrow["EMAIL"];
   $BIRTH_D = $excelrow["BIRTH_D"];
   $BIRTH = date('F d',strtotime($BIRTH_D));
 
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$LAST_M);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$FIRST_M);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$MIDDLE_M);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$FIRST_M);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$MIDDLE_M);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$LAST_M);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$DIVISION_M);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$POSITION_M);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$DESIGNATION_M);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$MOBILEPHONE);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,$EMAIL);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$row,$MOBILEPHONE);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$row,$BIRTH);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$row,$ALTER_EMAIL);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('K'.$row,$BIRTH);
 
   $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(-1);
   $row++;

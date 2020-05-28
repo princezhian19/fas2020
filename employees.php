@@ -25,6 +25,10 @@
   $posted_date = $rows['posted_date'];
   $month = date('M',strtotime($posted_date));
 
+   $sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployee WHERE UNAME = '$username'");
+                $rowU = mysqli_fetch_array($sele);
+                $ACCESSTYPE = $rowU['ACCESSTYPE'];
+
   if (isset($_POST['submit'])) {
      // $month_export = $_POST['month'];
      // $year_export = $_POST['year'];
@@ -69,7 +73,8 @@
             <div class="col-xs-2">
               <label>Office <font style="color:red;">*</font></label>
               <select required class="form-control select2" name="office" id="office">
-                 <option value="0" selected></option>
+                 <option disabled selected ></option>
+                 <option value="0" >ALL</option>
                  <?php echo tblpersonnel($connect)?>
               </select>
             </div>
@@ -105,9 +110,7 @@
             $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
             $view_query = mysqli_query($conn, "SELECT tblempdetails.office_contact,tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.ALTER_EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION LEFT JOIN tblempdetails on tblempdetails.EMP_N = tblemployee.EMP_N");
 
-                $sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployee WHERE UNAME = '$username'");
-                $rowU = mysqli_fetch_array($sele);
-                $ACCESSTYPE = $rowU['ACCESSTYPE'];
+               
             while ($row = mysqli_fetch_assoc($view_query)) {
               $id = $row["EMP_N"];
               $FIRST_M = $row["FIRST_M"];  

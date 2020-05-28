@@ -47,14 +47,14 @@ if (isset($_POST['add'])) {
   $INSERT = mysqli_query($conn,"INSERT INTO `phone_directory`(`group`, `agency`, `head_director`, `contact_no`, `email`, `address`, `posted_by`, `posted_date`) VALUES ('$group','$agency','$head_director','$contact','$email','$address','$posted_by','$posted_date')");
 
   if ($INSERT) {
-      echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Successfuly Added!')
-        window.location.href='Directory.php';
-        </SCRIPT>");
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Successfuly Added!')
+      window.location.href='Directory.php';
+      </SCRIPT>");
   }else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Error Occured!')
-        </SCRIPT>");
+      window.alert('Error Occured!')
+      </SCRIPT>");
 
   }
 
@@ -66,12 +66,18 @@ if (isset($_POST['add'])) {
       <div class="box-body table-responsive"> 
         <h1 align="">Phone Directory</h1>
         <br>
-        <form method="POST">
+        <?php if ($username == 'mmmonteiro' ||$username == 'charlesodi' || $username == 'masacluti' || $username == 'seolivar' || $username == 'rggutierrez' || $username == 'cvferrer'): ?>
+
+          <li class="btn btn-success"><a data-toggle="modal" data-target="#modal-infu" style="color:white;text-decoration: none;">Add</a></li>
+          <?php else: ?>
+
+          <?php endif ?>
+          <a href="export_phone.php" class="btn btn-success pull-right">Export</a>
+       <!--  <form method="POST">
           <div class="row" id="boxed">
             <div class="col-xs-2">
               <?php if ($username == 'mmmonteiro' ||$username == 'charlesodi' || $username == 'masacluti' || $username == 'seolivar' || $username == 'rggutierrez' || $username == 'cvferrer'): ?>
 
-                <br>
                 <li class="btn btn-success"><a data-toggle="modal" data-target="#modal-infu" style="color:white;text-decoration: none;">Add</a></li>
                 <?php else: ?>
 
@@ -91,13 +97,12 @@ if (isset($_POST['add'])) {
                <div class="col-xs-2">
                </div>
                <div class="col-xs-1" style="padding-top: 5px;">
-                <br>
                 <a href="export_phone.php" class="btn btn-success">Export</a>
               </div>
 
             </div>
           </div>
-        </form>
+        </form> -->
         <br>
         <br>
         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
@@ -117,7 +122,7 @@ if (isset($_POST['add'])) {
             </thead>
             <?php 
             $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-            $view_query = mysqli_query($conn, "SELECT * FROM phone_directory ORDER BY id DESC");
+            $view_query = mysqli_query($conn, "SELECT * FROM `phone_directory`ORDER BY `phone_directory`.`group`  ASC");
 
             while ($row = mysqli_fetch_assoc($view_query)) {
               $id = $row["id"];
@@ -162,8 +167,48 @@ if (isset($_POST['add'])) {
                         </div>
                         <div class="modal-body">
                           <form method="POST" >
+                <div class="row">
+                  <div class="col-md-3">
+                   <div class="form-group" >
+                    <p></p>
                             <label>Group <font style="color: Red;" >*</font></label>
-                            <select class="form-control "  name="group" >
+
+                  </div>
+                   <div class="form-group" >
+                           <label style="padding-top: 10px;">Agency/Office <label style="color: Red;" >*</label></label>
+
+                  </div>
+                  <div class="form-group" >
+                           <label style="padding-top: 5px;">Contact/Person <label style="color: Red;" >*</label></label>
+
+                  </div>
+                   <div class="form-group" >
+                           <label>Contact No. <label style="color: Red;" >*</label></label>
+
+                  </div>
+                   <div class="form-group" >
+                           <label style="padding-top: 5px;">Email Address <label style="color: Red;" >*</label></label>
+
+                  </div>
+                    <div class="form-group" >
+                           <label style="padding-top: 5px;" >Office Address <label style="color: Red;" >*</label></label>
+
+                  </div>
+                    <div class="form-group" >
+                           <label style="padding-top: 5px;" >Posted by <label style="color: Red;" >*</label></label>
+
+                  </div>
+                    <div class="form-group" >
+                           <label style="padding-top: 5px;" >Posted Date <label style="color: Red;" >*</label></label>
+                           <br>
+                           <br>
+                           
+                          <button type="submit" class="btn btn-success" name="update">Save Changes</button>
+                  </div>
+                </div>
+                 <div class="col-md-8">
+                 <div class="form-group" >
+                 <select class="form-control "  name="group" >
                              <option value="<?php echo $group?>"><?php echo $group?></option>
                              <option value="DILG Central">DILG Central</option>
                              <option value="DILG Region">DILG Region</option>
@@ -173,41 +218,47 @@ if (isset($_POST['add'])) {
                              <option value="REGULAR GUESTS">REGULAR GUESTS </option>
                              <option value="States, Universities and Colleges">States, Universities and Colleges </option>
                            </select>
-                           <br>
-                           <label>Agency/Office <label style="color: Red;" >*</label></label>
+
+                </div>
+                <div class="form-group" >
                            <input required value="<?php echo $agency ;?>" type="text" class="form-control"  name="agency"  >
-                           <br>
-                           <label>Contact/Person <label style="color: Red;" >*</label></label>
+
+                </div>
+                 <div class="form-group" >
                            <input required value="<?php echo $head_director ;?>"  class="form-control" name="head_director" type="text" >
 
-                           <br>
-                           <label>Contact No. <label style="color: Red;" >*</label></label>
+                </div>
+                 <div class="form-group" >
                            <input required value="<?php echo $contact_no ;?>"  class="form-control" name="contact" type="text" >
-                           <br>
-                           <label>Email Address <label style="color: Red;" >*</label></label>
+
+                </div>
+                 <div class="form-group" >
                            <input required value="<?php echo $email ;?>"  class="form-control" name="email" type="text" >
-                           <br>
-                           <label>Office Address <label style="color: Red;" >*</label></label>
+
+                </div>
+                <div class="form-group" >
                            <input required value="<?php echo $address ;?>"  class="form-control" name="address" type="text" >
-                           <br>
-                           <label>Posted by <label style="color: Red;" >*</label></label>
+
+                </div>
+                <div class="form-group" >
                            <input readonly required class="form-control" name="posted_by" type="text" value="<?php echo $posted_by?>">
-                           <br>
-                           <label>Posted Date <label style="color: Red;" >*</label></label>
-                           <div class="input-group date">
+
+                </div>
+                <div class="form-group" >
+                  <div class="input-group date">
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
                             <input readonly value="<?php echo $posted_date?>" type="text" class="form-control pull-right" name="posted_date" id="datepicker15"  required placeholder="mm/dd/yyyy">
                           </div>
                           <input type="text" name="idC" hidden  value="<?php echo $id?>">
-                        </div>
-                        <div class="modal-footer">
-                          <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button> -->
-                          <button type="submit" class="btn btn-success" name="update">Save Changes</button>
-                        </div>
-                      </div>
-                    </form>
+
+                </div>
+              </div>
+              </div>
+        
+
+          </form>
                     <!-- /.modal-content -->
                   </div>
                   <!-- /.modal-dialog -->
@@ -218,18 +269,58 @@ if (isset($_POST['add'])) {
         </div>
       </div>
     </div>
-     <div class="modal modal-default fade" id="modal-infu">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title">Add Contact</h4>
-                        </div>
-                        <div class="modal-body">
-                          <form method="POST" >
+    <div class="modal modal-default fade" id="modal-infu">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Add Contact</h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" >
+                <div class="row">
+                  <div class="col-md-3">
+                   <div class="form-group" >
+                    <p></p>
                             <label>Group <font style="color: Red;" >*</font></label>
-                            <select required class="form-control "  name="group" >
+
+                  </div>
+                   <div class="form-group" >
+                           <label style="padding-top: 10px;">Agency/Office <label style="color: Red;" >*</label></label>
+
+                  </div>
+                  <div class="form-group" >
+                           <label style="padding-top: 5px;">Contact/Person <label style="color: Red;" >*</label></label>
+
+                  </div>
+                   <div class="form-group" >
+                           <label>Contact No. <label style="color: Red;" >*</label></label>
+
+                  </div>
+                   <div class="form-group" >
+                           <label style="padding-top: 5px;">Email Address <label style="color: Red;" >*</label></label>
+
+                  </div>
+                    <div class="form-group" >
+                           <label style="padding-top: 5px;" >Office Address <label style="color: Red;" >*</label></label>
+
+                  </div>
+                    <div class="form-group" >
+                           <label style="padding-top: 5px;" >Posted by <label style="color: Red;" >*</label></label>
+
+                  </div>
+                    <div class="form-group" >
+                           <label style="padding-top: 5px;" >Posted Date <label style="color: Red;" >*</label></label>
+                           <br>
+                           <br>
+                           
+                          <button type="submit" class="btn btn-success" name="add">Save</button>
+                  </div>
+                </div>
+                 <div class="col-md-8">
+                 <div class="form-group" >
+                  <select required class="form-control "  name="group" >
                              <option disabled selected></option>
                              <option value="DILG Central">DILG Central</option>
                              <option value="DILG Region">DILG Region</option>
@@ -239,20 +330,59 @@ if (isset($_POST['add'])) {
                              <option value="REGULAR GUESTS">REGULAR GUESTS </option>
                              <option value="States, Universities and Colleges">States, Universities and Colleges </option>
                            </select>
-                           <br>
-                           <label>Agency/Office <label style="color: Red;" >*</label></label>
+
+                </div>
+                <div class="form-group" >
                            <input required type="text" class="form-control"  name="agency"  >
-                           <br>
-                           <label>Contact/Person <label style="color: Red;" >*</label></label>
+
+                </div>
+                 <div class="form-group" >
                            <input required class="form-control" name="head_director" type="text" >
 
-                           <br>
-                           <label>Contact No. <label style="color: Red;" >*</label></label>
+                </div>
+                 <div class="form-group" >
                            <input required class="form-control" name="contact" type="text" >
-                           <br>
-                           <label>Email Address <label style="color: Red;" >*</label></label>
+
+                </div>
+                 <div class="form-group" >
                            <input required class="form-control" name="email" type="text" >
-                           <br>
+
+                </div>
+                <div class="form-group" >
+                           <input required class="form-control" name="address" type="text" >
+
+                </div>
+                <div class="form-group" >
+                           <input readonly required class="form-control" name="posted_by" type="text" value="<?php echo $username?>">
+
+                </div>
+                <div class="form-group" >
+                  <div class="input-group date">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input readonly value="<?php echo date('Y-m-d')?>" type="text" class="form-control pull-right" name="posted_date" id="datepicker15"  required placeholder="mm/dd/yyyy">
+                          </div>
+                          <input type="text" name="idC" hidden  value="<?php echo $id?>">
+
+                </div>
+              </div>
+              </div>
+        
+
+          </form>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
+
+
+<!-- <form method="POST" >
+              
+
+                           
+                        
                            <label>Office Address <label style="color: Red;" >*</label></label>
                            <input required class="form-control" name="address" type="text" >
                            <br>
@@ -269,15 +399,6 @@ if (isset($_POST['add'])) {
                           <input type="text" name="idC" hidden  value="<?php echo $id?>">
                         </div>
                         <div class="modal-footer">
-                          <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button> -->
-                          <button type="submit" class="btn btn-success" name="add">Save</button>
                         </div>
                       </div>
-                    </form>
-                    <!-- /.modal-content -->
-                  </div>
-                  <!-- /.modal-dialog -->
-                </div>
-
-
-
+                    </form> -->

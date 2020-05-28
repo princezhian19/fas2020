@@ -26,7 +26,7 @@ $username = $_SESSION['username'];
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php include('sidebar.php');?>
+  <?php include('test1.php');?>
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">

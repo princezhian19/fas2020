@@ -197,7 +197,7 @@ if (isset($_POST['update'])) {
   <div class="col-md-3">
     <div class="box" style="outline: lightgray solid 10px;">
       <div class="panel-heading">
-        <i class="fa fa-list-alt"></i>&nbsp&nbsp&nbspBirthday Celebrants
+        <i class="fa fa-birthday-cake"></i>&nbsp&nbsp&nbsp<strong>Birthday Celebrants</strong>
         <a href="" class="pull-right">View All</a>
         <div class="box-header with-border">
         </div>
@@ -209,7 +209,7 @@ if (isset($_POST['update'])) {
         $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
         while ($row = mysqli_fetch_assoc($BDAY)) {
           $FIRST_M1 = $row['FIRST_M'];
-          $FIRST_M = ucfirst(strtolower($FIRST_M1));
+          $FIRST_M = ucwords(strtolower($FIRST_M1));
           $MIDDLE_M = $row['MIDDLE_M'];
           $LAST_M1 = $row['LAST_M'];
           $LAST_M = ucfirst(strtolower($LAST_M1));
@@ -527,18 +527,90 @@ if (isset($_POST['update'])) {
                 </tr>
               </thead>
               <?php 
-              $view_query = mysqli_query($conn,"SELECT a.date,a.id,a.posted_by,a.content,a.title,concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) as fname  FROM announcementt a LEFT JOIN tblemployee te on te.UNAME = a.posted_by  ORDER BY id DESC");
+              $view_query = mysqli_query($conn,"SELECT te.PROFILE,a.date,a.id,a.posted_by,a.content,a.title,concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) as fname  FROM announcementt a LEFT JOIN tblemployee te on te.UNAME = a.posted_by  ORDER BY id DESC");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["id"];  
                 $fname = $row["fname"];  
                 $posted_by = $row["posted_by"];  
                 $intent = $row["content"];  
                 $title = $row["title"];  
+                $profile = $row["PROFILE"];  
                 $date1 = $row["date"];  
                 $date = date('Y-m-d',strtotime($date1));  
+              $extension = pathinfo($profile, PATHINFO_EXTENSION);
                 ?>
                 <tr>
-                  <td width="1000"><img class="direct-chat-img" src="images/LOGO.png" alt="message user image"><b style="font-size: 10px;"><?php echo $fname;?></b><br><font style="font-size: 10px;"><?php echo 'FAD';?></font><br><br><b><?php echo $title;?><br>
+                  <td width="1000"><img class="direct-chat-img" src="
+            <?php 
+            if(file_exists($profile))
+            {
+              switch($extension)
+              {
+                case 'jpg':
+                if($profile == '')
+                {
+                  echo 'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                case 'JPG':
+                if($profile == '')
+                {
+                  echo 'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                case 'jpeg':
+                if($profile == '')
+                {
+                  echo 'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                case 'png':
+                if($profile == '')
+                {
+                  echo'images/male-user.png';
+                }
+                else if ($profile == $profile)
+                {
+                  echo $profile;   
+                }
+                else
+                {
+                  echo'images/male-user.png';
+                }
+                break;
+                default:
+                echo'images/male-user.png';
+                break;
+              }
+              }else{
+               echo'images/male-user.png';
+             }
+
+             ?>"  alt="message user image"><b style="font-size: 10px;"><?php echo $fname;?></b><br><font style="font-size: 10px;"><?php echo 'FAD';?></font><br><br><b><?php echo $title;?><br>
                     <?php if ($username == $posted_by): ?>
                       <a data-toggle="modal" data-target="#modal-info_<?php echo $row['id']; ?>" class="btn btn-success btn-xs"><i class="fa fa-edit"></i>Edit</a> | <a href="delete_announcement.php?id=<?php echo $id?>&username=<?php echo $username?>" class="btn btn-danger btn-xs "><i class="fa fa-trash"></i> Delete</a>
                     <?php endif ?>
