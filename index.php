@@ -5,7 +5,7 @@ error_reporting(0);
 if(!isset($_SESSION['username'])){
 // header('location:index.php');
 }else{
-
+$a = '';
 
   
 $username = $_SESSION['username'];
