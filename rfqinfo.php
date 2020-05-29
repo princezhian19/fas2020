@@ -151,7 +151,7 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="box-body table-responsive no-padding">
             <div class="box-body">
-                <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
+                <table id="example1" class="table table-striped " style="background-color: white;">
                     <tr>
                         <th class="pull-left" >RFQ Date</th>
                         <td width="200"><?php echo date('F d, Y',strtotime($rfq_date));?></td>
