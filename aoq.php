@@ -543,7 +543,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                     <th style="float: right;" ><?php echo $supplier_title1;?></th>
                   </thead>
                 </table>
-                <table id="" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
+                <table id="" class="table table-striped  table-responsive" style="width:500px;background-color: white;" align="center">
                  <thead >
                   <th style="float: left;">Total Quote</th>
                   <th width="" ><?php echo number_format($totsppu11,2)?></th>
@@ -575,7 +575,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                       <th width="" ><?php echo $supplier_title2;?></th>
                     </thead>
                   </table>
-                  <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
+                  <table id="example1" class="table table-striped  table-responsive" style="width:500px;background-color: white;" align="center">
                    <thead style="width:500px;">
                     <th width="" ><?php echo number_format($totsppu22,2)?></th>
                   </thead>   
@@ -612,7 +612,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                           <th style="float:left ;">Item(s)</th>
                         </thead>
                       </table>
-                      <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                      <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                        <thead>
                         <th style="float:left ;" >Total Quote</th>
                       </thead>   
@@ -635,7 +635,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                         <th style="float: ;"><?php echo $supplier_title1;?></th>
                       </thead>
                     </table>
-                    <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                    <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                      <thead>
                       <th width="" ><?php echo number_format($totsppu11,2)?></th>
                     </thead>   
@@ -666,7 +666,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                           <th  ><?php echo $supplier_title2;?></th>
                         </thead>
                       </table>
-                      <table id="example1" class="table table-striped table-bordered table-responsive" style="width:400px;background-color: white;">
+                      <table id="example1" class="table table-striped  table-responsive" style="width:400px;background-color: white;">
                        <thead>
                         <th  ><?php echo number_format($totsppu22,2)?></th>
                       </thead>   
@@ -696,7 +696,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                             <th width="" ><?php echo $supplier_title3;?></th>
                           </thead>
                         </table>
-                        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                        <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                          <thead>
                           <th width="" ><?php echo number_format($totsppu33,2)?></th>
                         </thead>   
@@ -734,7 +734,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                             <th width="" ><?php echo $supplier_title1;?></th>
                           </thead>
                         </table>
-                        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                        <table id="example1" class="table table-striped  table-responsive" style="width:200px;background-color: white;">
                          <thead>
                           <th style="float:left;" >Total Quote</th>
                           <th width="100" > <?php echo number_format($totsppu11,2)?></th>
@@ -765,7 +765,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                           <th width="" ><?php echo $supplier_title2;?></th>
                         </thead>
                       </table>
-                      <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                      <table id="example1" class="table table-striped  table-responsive" style="width:200px;background-color: white;">
                        <thead>
                         <th width="" >PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
                       </thead>   
@@ -793,7 +793,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                         <th width="" ><?php echo $supplier_title3;?></th>
                       </thead>
                     </table>
-                    <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                    <table id="example1" class="table table-striped  table-responsive" style="width:200px;background-color: white;">
                      <thead>
                       <th width="" >PPU Total Quote: <?php echo number_format($totsppu33,2)?></th>
                     </thead>   
@@ -821,7 +821,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                       <th width="" ><?php echo $supplier_title4;?></th>
                     </thead>
                   </table>
-                  <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                  <table id="example1" class="table table-striped  table-responsive" style="width:200px;background-color: white;">
                    <thead>
                     <th width="" >PPU Total Quote: <?php echo number_format($totsppu44,2)?></th>
                   </thead>   
