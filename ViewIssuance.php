@@ -52,7 +52,8 @@ $division = $_GET['division'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Issuances</li>
+        <li class="active">Records</li>
+        <li class="active">view issuances</li>
       </ol>
       <br>
       <br>

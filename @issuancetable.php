@@ -298,6 +298,7 @@ $edit="edit";
                         <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
                     <td class="col-md-5">
                       <select class="form-control " style="width: 100%;" name="category" id="category" > 
+                      <option value="15">Select Category</option>
                       <option value="11">Department Memorandum Circular</option>
                       <option value="12">Department Order</option>
                       <option value="14">Regional Memorandum Circular</option>
@@ -316,7 +317,7 @@ $edit="edit";
                     <tr>
                         <td class="col-md-2"><b>Issuance Date<span style = "color:red;">*</span></b></td>
                             <td class="col-md-5"> 
-                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="" value = "<?php echo date('m/d/Y') ?>" >
+                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = ""  autocomplete="off">
                                     </tr>
                     <tr>
                         <td class="col-md-2"><b>Title/Subject<span style = "color:red;">*</span></b></td>
@@ -884,6 +885,7 @@ $edit="edit";
           var final = str .replace('11;','');
      //alert(final);
           var final1 = final.replace('11;','');
+          var final2 = final.replace('11;','');
         
      text.val('');
      text.val(final1);
