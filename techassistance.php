@@ -610,10 +610,10 @@ function countCompleted()
       
                         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                         <thead>
-                            <th>Assist By</th>
-                            <th>Particulard</th>
-                            <th>Received Date</th>
-                            <th>Completed Date</th>
+                            <th>ASSISTED BY</th>
+                            <th>PARTICULAR</th>
+                            <th>RECEIVED DATE</th>
+                            <th>COMPLETED DATE</th>
                         </thead>
                         <tbody>
                         <?php echo filldataTable();?>
