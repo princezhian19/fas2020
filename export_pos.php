@@ -55,7 +55,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('A13',$supContact);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A14',$supName);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A15',$supAddress);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D22',$rfq_no);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D23',number_format($totalABC),2);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D23',$totalABC);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D24',$purpose);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D28',$pmo);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B43',$supName);

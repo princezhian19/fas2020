@@ -198,7 +198,7 @@
                                   $po_idget = $po_id['id'];
                                   $po_no = $po_id['po_no'];
                                   ?>
-                                  <a class="" href='ViewPO.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>' title="View"> <?php echo $po_no; ?></a>
+                                  <a class="" href='ViewPO.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>&pr_no=<?php echo $pr_no; ?>' title="View"> <?php echo $po_no; ?></a>
                                 <?php endif?> 
                               <?php endif?> 
                             <?php endif?>

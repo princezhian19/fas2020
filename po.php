@@ -70,7 +70,7 @@ $auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM po order by id desc limit
 while ($row = mysqli_fetch_assoc($auto)) {
   $idGet = $row["a"];
 }
-$autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
+$autoNo = $getDate.'-'.$m.'-'.'00'.$idGet;
 
 
 ?>
@@ -102,6 +102,10 @@ $autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
                         <option selected value="<?php echo $supplier_id;?>"><?php echo $supplier_title;?></option>
                     </select>
                 </div>
+                <div class="form-group">
+          <label>PO Amount :</label>
+          <input required type="text" name="po_amount" class="form-control" value="<?php echo $POamount;?>">
+          </div>
 
             </div>
             <div class="col-md-6">
@@ -112,25 +116,25 @@ $autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
               </div>
 
               <div class="form-group">
-                  <label>Ntp Date : <small style="color:red;">*</small></label>
+                  <label>NTP : <small style="color:red;">*</small></label>
                   <input type="date" name="ntp_date" class="form-control">
               </div>
 
               <div class="form-group">
-                  <label>Noa Date : <small style="color:red;">*</small></label>
+                  <label>NOA : <small style="color:red;">*</small></label>
                   <input type="date" name="noa_date" class="form-control">
               </div>
+               <div class="form-group">
+        <label>Remarks</label>
+        <textarea class="form-control" name="remarks" ></textarea>
+    </div>
 
           </div>
-            <div class="col-md-12">
-          <label>PO Amount :</label>
-          <input required type="text" name="po_amount" class="form-control" value="<?php echo $POamount;?>">
-            &nbsp
-          </div>
+            <br>
           <div class="col-md-6">
            <div class="form-group">
               <div style="font-size: 13px;" class="well" >
-                <label>Check List(s)</label>
+                <label>Checklist:</label>
                 <br>
                 <?php 
                 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
@@ -150,8 +154,7 @@ $autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
     <div class="col-md-6">
 
       <div class="form-group">
-        <label>Remarks</label>
-        <textarea class="form-control" name="remarks"></textarea>
+       
     </div>
 
 </div>
