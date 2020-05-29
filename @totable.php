@@ -370,18 +370,6 @@ $edit="edit";
                   <th width = '1500'>ACTION</th>
                   
 
-                 <!--  <th width ='100'>TO NO</th> 
-                  <th width = '150'>TO DATE</th>
-                  <th width = ''>OFFICE</th>
-                  <th width = '150'>NAME</th>
-                  <th width = ''>PURPOSE</th>
-                  <th width = '100'>PLACE</th>
-                  <th width = '150'>DATE</th>
-                  <th width = '100'>TIME</th>
-                  <th width = '100'>SUBMITTED DATE</th>
-                  <th width = '100'>RECEIVED DATE</th>
-                  <th width = '300'>ACTION</th>
-                   -->
                 </tr>
                 </thead>
                 <?php

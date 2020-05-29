@@ -15,35 +15,57 @@ include('db.class.php'); // call db.class.php
           <h1 align="">&nbspObligation</h1>
           
           <br>
-        
-          <div class=""  style="overflow-x:auto;">
-            <div class="col-md-2" style="overflow-x:auto;">
-            <li class="btn btn-success"><a href="obcreate.php" style="color:white;text-decoration: none;">Create</a></li>
-            </div>
-            <div class="col-md-0" style="overflow-x:auto;">
-            </div>
-            <div class="col-md-0" style="overflow-x:auto;">
-            </div>
-            <div class="col-md-10" style="overflow-x:auto;">
-              <form method = "POST" action = "@Functions/obdateexport.php">
+
+
+
+                    <table class="table" > 
+
+                <!-- Header -->
+                  <tr>
+                  <td class="col-md-1">
+                  <li class="btn btn-success"><a href="obcreate.php" style="color:white;text-decoration: none;">Create</a></li>
+
+
+                  
+                  </td>
+                      
+                  <td class="col-md-3" >
+
+                    
+                  </td>
+
+                  <td class="col-md-8" style = "text-align:center;">
+                  <form method = "POST" action = "@Functions/obdateexport.php">
                 <div class="input-group date" style="overflow-x:auto;">
                   <div class="input-group-addon" style="overflow-x:auto;">
                     FROM   <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
+                  <input type="text" class="form-control" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px" autocomplete="off">
                   <div class="input-group date" style="overflow-x:auto;">
                     <div class="input-group-addon" style="overflow-x:auto;">
                       TO <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
+                    <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px" autocomplete="off">
                     &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
                     &nbsp<button type="Summary" name="Summary"  class="btn btn-success ">Export Summary</button>
                   </div>                        
                 </form>
-              </div>
+                  
+
+                  </td>
+
+
+
+                  </tr>
+                  <!-- Header -->
+                </table>
+
+        
+          <div class=""  style="overflow-x:auto;">
+          
               <br>
               <br>
-            </div>
+           
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;">
@@ -63,7 +85,8 @@ include('db.class.php'); // call db.class.php
                   <th>REMARKS</th>
                   <th>GROUP</th>
                   <th>STATUS</th>
-                  <th>ACTION</th>
+                  <th width=''>ACTION</th>
+                  <th width=''></th>
                   
                 </tr>
               </thead>
@@ -167,10 +190,12 @@ include('db.class.php'); // call db.class.php
                                   <?php endif ?>
                                 <?php endif ?>
                                 <td>
-                                  <a href='obupdate.php?getid=<?php echo $id?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> 
+                                  <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a>
+                              
+                                </td>
+                                <td>
                                 
-                                </a>
-                                <a onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i style='font-size:24px' class='fa fa-trash-o'></i></a>
+                                <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a>
                                 </td>
                               
                               </tr> 
