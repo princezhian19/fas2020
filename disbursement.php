@@ -63,6 +63,11 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('@disbursementtable.php');?>
+
+        <br>
+      <br>
+      <br>
+      <br>
     </section>
   </div>
   <footer class="main-footer">

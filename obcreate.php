@@ -171,7 +171,7 @@ function app($connect)
                 </div>    
                 
                 <div class="col-md-6">
-                    <label>Date Received</label>
+                    <label>Date Received <label style="color: Red;" >*</label></label>
                     <br>
                     <div class="input-group date">
                         <div class="input-group-addon">
@@ -189,17 +189,20 @@ function app($connect)
                             <i class="fa fa-calendar"></i>
                         </div>
                         <input value="<?php echo date('m/d/Y')?>"date rety required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
-                        <br>
+                        
+                        
                     </div>
                 </div>
             </div>
         </div>
+
+        
         
         <div class="class">
              <!-- ORS -->
             <div class="row">
                 <div class="col-md-6">
-                <label style="color: Blue;" >Note: Payee/Supplier Required</label>
+                <!-- <label style="color: Blue;" >Note: Payee/Supplier Required</label> -->
                 <br>
             
                     <label>Payee<label style="color: Red;" >*</label></label>
@@ -272,11 +275,11 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="datereturned">
+                        <input  value="<?php echo date('m/d/Y')?>" type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="datereturned">
                     </div>
                     <br>
                     
-                    <label>Date Released</label>
+                    <label>Date Released <label style="color: Red;" >*</label></label>
                     <br>
                     <div class="input-group date">
                         <div class="input-group-addon">

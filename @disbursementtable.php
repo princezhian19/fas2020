@@ -1,11 +1,22 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FAS</title>
+
+
+</head>
+<body>
+
 <div class="box">
   <div class="box-body">
           <h1 align="">&nbspDisbursement</h1>
-          <div class="box-header"style="overflow-x:auto;">
-          </div>
+         
           <br>
           
-          <div class=""  >
+        
             <div class="col-md-0" style="overflow-x:auto;">
 
 
@@ -14,7 +25,7 @@
                 <!-- Header -->
                   <tr>
                   <td class="col-md-1">
-                  
+                  <li class="btn btn-success"><a href="CreateDisbursement1.php" style="color:white;text-decoration: none;">Create</a></li>
                   </td>
                       
                   <td class="col-md-2" >
@@ -35,11 +46,11 @@
                     <div class="input-group-addon" style="overflow-x:auto;">
                       TO <i class="fa fa-calendar"></i>
                     </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                    <button type="submit" name="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;&nbsp;Filter/Export Data&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button type="submit" name="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter/Export Data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     
-                    &nbsp  <button type="Summary" name="Summary"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export Summary&nbsp;&nbsp;&nbsp;</button>
+                    &nbsp;&nbsp;&nbsp;  <button type="Summary" name="Summary"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export Summary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                   </div>                 
                 </form>
                   
@@ -52,8 +63,6 @@
                   <!-- Header -->
                   <table>    
 
-           <!--   <li class="btn btn-success"><a href="@disbursementcreate.php" style="color:white;text-decoration: none;">Create</a></li> -->
-            </div>
           
             <div class="col-md-0" style="overflow-x:auto;">
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;" >
@@ -184,8 +193,15 @@
                                 </table>
                
                           </div>
-     
-          
+
+                          </div>
+                          </div>
+
+
+</body>
+
+
+</html>   
 <script>
   $(function () {
     //Initialize Select2 Elements

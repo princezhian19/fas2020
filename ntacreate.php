@@ -94,7 +94,7 @@ $username = $_SESSION['username'];
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input required type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datenta">
+                        <input required value="<?php echo date('m/d/Y')?>" type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datenta">
                     </div>
                     <br>
 
@@ -103,7 +103,7 @@ $username = $_SESSION['username'];
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereceived">
+                        <input required value="<?php echo date('m/d/Y')?>" type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereceived">
                     </div>
                     <br>
                     <!-- <label>Source No.</label>

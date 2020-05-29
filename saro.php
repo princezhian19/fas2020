@@ -53,6 +53,8 @@ $username = $_SESSION['username'];
       <br>
       <br>
         <?php include('@sarotable.php');?>
+        <br>
+        <br>
     </section>
   </div>
   <footer class="main-footer">
@@ -76,8 +78,8 @@ $username = $_SESSION['username'];
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 
-<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> -->
 
 <script>
   $(function () {

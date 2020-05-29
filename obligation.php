@@ -57,7 +57,7 @@ $username = $_SESSION['username'];
     text-align:center;
   }
   td{
-    text-align:center;
+    text-align:;
   }
   </style>
   </head>
@@ -104,13 +104,25 @@ $username = $_SESSION['username'];
     $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : true,
       'ordering'    : false,
-      'info'        : true,
-      'autoWidth'   : true
+      'info'        : false,
+      'autoWidth'   : false
     })
   })
+</script>
+
+<script>
+
+$(document).ready(function(){
+  $('#datepicker1').datepicker({
+      autoclose: true
+    })
+    $('#datepicker2').datepicker({
+      autoclose: true
+    })
+});
 </script>
 
 </body>
