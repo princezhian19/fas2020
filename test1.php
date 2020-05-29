@@ -29,7 +29,13 @@ function notification()
   $val = array();
   while($row = mysqli_fetch_array($result))
   {
-   echo $row['count'];
+    if($row['count'] == 0)
+    {
+      echo '';
+    }else{
+      echo '<span class="label label-success">'.$row['count'].'</span>';
+
+    }
   }
 }
 function showRequest()
@@ -168,7 +174,7 @@ function getImage()
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell"></i>
-              <span class="label label-success"><?php echo notification();?></span>
+<?php echo notification();?>
             </a>
             <ul class="dropdown-menu">
               <li class="header">You have <?php echo notification();?> technical assistance request</li>

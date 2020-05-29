@@ -186,45 +186,8 @@ echo '-';
             </td>
             <td style = "width:10%;">
                     <?php
-                    // Received
-                  
-                     
-
-
-
-
-
-
-
-
-                    echo '<br>';
-                      // Assign
-             
-                if($row['STATUS_REQUEST'] == 'For action')
-                {
-
                 
-                if($_SESSION['complete_name'] == $row['ASSIST_BY'])
-                    {
-                        ?><br>
-                        <button  disabled data-id ="<?php echo $row['CONTROL_NO'];?>" class = " col-lg-12 pull-right  btn btn-danger" style = "background-color:orange;">Assign</button>
-                
-                        <?php
-                    }else{
-                        ?><br>
-                        <button disabled id ="sweet-16" data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
-
-                        <?php
-                    }
-
-                }else{
-                    ?><br>
-                    <button disabled data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
-
-                    <?php
-                }
-                    
-                      echo '<br><br>';                                      
+                                                        
                     
                     // Complete
                     if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
@@ -233,12 +196,12 @@ echo '-';
                     if($_SESSION['complete_name'] == $row['ASSIST_BY'])
                     {
 
-                    echo '<button disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+                    echo '-';
                     }else{
-                    echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+                    echo '-';
                     }
                 }else{
-                    echo '<button disabled title = "Completed Date" disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">'.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'</button>';
+                    echo date('F d, Y',strtotime($row['COMPLETED_DATE']));
 
                 }
               ?>
@@ -648,7 +611,7 @@ function countCompleted()
                         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                         <thead>
                             <th>Assist By</th>
-                            <th>Information</th>
+                            <th>Particulard</th>
                             <th>Received Date</th>
                             <th>Completed Date</th>
                         </thead>

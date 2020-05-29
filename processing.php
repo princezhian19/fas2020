@@ -91,22 +91,23 @@ function filldataTable()
 
                                     <div class="col-lg-12 col-sm-12 col-xs-12" >
                                         <div class="info-box bg-gray" style = "height:auto;" >
+<a href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO']; ?>" style = "color:black;" title = "View ICT TA Form" >
+<span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
 
-                                            <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
+<?php echo '
+   
+        <b>'.$row['CONTROL_NO'].'</b>
 
-                                            <?php echo '
-                                            <a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" >
-                                               
-                                                    <b>'.$row['CONTROL_NO'].'</b>
-                                     
-                                            </a>';?>
-                                            <p style = "color:red;margin-top:-75%;font-weight:bold;"><?php echo $row['STATUS_REQUEST']; ?></p>
-                                            
-                                            
-                                            
-                                        
-                                            
-                                            </span>
+';?>
+<p style = "color:red;margin-top:-75%;font-weight:bold;"><?php echo $row['STATUS_REQUEST']; ?></p>
+
+
+
+
+
+</span>
+</a>
+                                           
 
                                                 <div class="info-box-content" ><br>
                                                     <span class="info-box-number"><?php echo $row['TYPE_REQ'];?>
@@ -176,19 +177,22 @@ function filldataTable()
                     <?php
                     // Received
                   
-                        if($row['START_DATE'] != '0000-00-00'  )
+                        if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == null   )
                         {
-                    echo '
-                    <button title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
-                    Received Date<br>    
-                    <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
-                    </button>';
+                        echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Receive</button>';
+
+                   
 
                         
                     }else{
-                        if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == 'January 01, 1970')
+                        if($row['START_DATE'] != '0000-00-00' || $row['START_DATE'] != 'January 01, 1970')
                         {
-                        echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Received</button>';
+
+                            echo '
+                            <button title = "Received Date"  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
+                            Received Date<br>    
+                            <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
+                            </button>';
                         }
                     }
 
@@ -210,12 +214,12 @@ function filldataTable()
                 if($_SESSION['complete_name'] == $row['ASSIST_BY'])
                     {
                         ?><br>
-                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = " col-lg-12 pull-right  btn btn-danger" style = "background-color:orange;">Assign</button>
+                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = " col-lg-12 pull-right sweet-14  btn btn-danger" style = "background-color:orange;">Assign</button>
                 
                         <?php
                     }else{
                         ?><br>
-                        <button disabled id ="sweet-16" data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
+                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
 
                         <?php
                     }
@@ -238,11 +242,11 @@ function filldataTable()
 
                     echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }else{
-                    echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+                    echo '<button id ="sweet-16"  data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }
                 }else{
         
-                    echo '<button title = "Completed Date" disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
+                    echo '<button title = "Completed Date"  id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
                     Completed Date<br> 
                     '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
                     </button>';
@@ -301,7 +305,7 @@ function submittedReq()
                 <li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY']?>">
                             <?php echo $row['CONTROL_NO'];?>
-                            <button disabled type="button" class="sweet-16 btn btn-success pull-right">
+                            <button  type="button" class="sweet-16 btn btn-success pull-right">
                             Complete
                             </button>
                         </li>

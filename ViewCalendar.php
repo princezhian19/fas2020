@@ -393,9 +393,13 @@ if($_GET['flag'] == 1)
 
 <script>
 
+$('#title').html("View Activity");
+
+
 $('#save').hide();
 function test(){
 $('#edit').show();
+
 }
 $("#edit").click(function(){
   $('#save').show();
@@ -413,14 +417,23 @@ $('#enptxtbox').prop("disabled", false);
 $('#remarks').prop("disabled", false); 
 
 });
+$('#title').html("View Activity");
+
   function displayMessage(message)
  {
     $(".response").html("<div class='alert alert-success' role='alert' style = 'background-color:#ef9a9a;'>"+message+"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
     setInterval(function() { $(".alert").fadeOut(); }, 3000);
 }
-  $('#modal').click(function(){
-    $('#myModal2').modal('show');   
-  })
+  // $('#modal').click(function(){
+  //   $('#myModal2').modal('show');   
+    
+  // })
+ 
+
+
+
+
+  
   
 $(document).ready(function()
 {
@@ -495,8 +508,11 @@ $("#all").click(function(){
           if(event.office == <?php echo $_GET['division'];?>)
           {
           test();
+
           
           }else{
+            $('#title').html("View Activity");
+
             $('#save').hide();
             $('#edit').hide();
           }
@@ -509,6 +525,7 @@ $("#all").click(function(){
           $('#remarks').prop("disabled", true); 
 
                 $('#myModal').modal('show');
+               
                 $('#myModal').find('#eventid').val(event.id);
                 $('#myModal').find('#titletxtbox').val(event.title);
                 $('#myModal').find('#datepicker1').val(moment(event.start).format('MM/DD/YYYY'));

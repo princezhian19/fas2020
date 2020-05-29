@@ -172,14 +172,14 @@ function showUser()
                                   </div>
                               </td>  
                               <td style = "width:35%;"><br>
-                                  <input  style = "margin-left:160px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
-                                  <div style = "margin-left:200px;padding-top:10px;" >
+                                  <input  style = "margin-left:120px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
+                                  <div style = "margin-left:140px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
-                                      <br><input  type = "text" name = "softwares" id= "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                      <br><input  style = "margin-left:20px;" type = "text" name = "softwares" id= "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td> 
                           </tr>
@@ -207,11 +207,11 @@ function showUser()
                           </div>
                           </td> 
                           <td>
-                          <input  style = "margin-left:160px;"   type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "OTHERS"><b>OTHERS (please specify)</b><br>
-                          <div style = "margin-left:200px; padding-top:10px;">
-                          <input  type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                          <input  type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                          <input  type = "text" name = "others3" id = "others3" class = "checkboxgroup_g6"value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input  style = "margin-left:120px;"   type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "OTHERS"><b>OTHERS (please specify)</b><br>
+                          <div style = "margin-left:140px; padding-top:10px;">
+                          <input  style = "margin-left:20px;" type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input  style = "margin-left:20px;" type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input  style = "margin-left:20px;" type = "text" name = "others3" id = "others3" class = "checkboxgroup_g6"value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                         </div>                          
                       </td> 
 
