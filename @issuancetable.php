@@ -222,7 +222,7 @@ $edit="edit";
                           <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/issuancesdelete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                             <?php else :?>
                                           
-                            <a  href="ViewIssuance.php?division=<?php echo $_SESSION['division'];?>&id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
+                            <a  href='ViewIssuance.php?division=<?php echo $_SESSION['division'];?>&id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a>
                              <?php endif?>
                 
                        
@@ -316,7 +316,7 @@ $edit="edit";
                     <tr>
                         <td class="col-md-2"><b>Issuance Date<span style = "color:red;">*</span></b></td>
                             <td class="col-md-5"> 
-                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = "<?php echo date('m/d/Y') ?>" >
+                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="" value = "<?php echo date('m/d/Y') ?>" >
                                     </tr>
                     <tr>
                         <td class="col-md-2"><b>Title/Subject<span style = "color:red;">*</span></b></td>
@@ -645,7 +645,7 @@ $edit="edit";
                     <tr>
                         <td class="col-md-2"><b>Issuance Date<span style = "color:red;">*</span></b></td>
                             <td class="col-md-5"> 
-                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued1" id="datepicker2" value = "" >
+                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued1" id="" value = "" >
                                     </tr>
                     <tr>
                         <td class="col-md-2"><b>Title/Subject<span style = "color:red;">*</span></b></td>
