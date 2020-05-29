@@ -233,7 +233,7 @@ $division = $_GET['division'];
 
                 swal({
                   title: "Are you sure you want to delete this request?",
-                  text: "You will not be able to recover this imaginary file!",
+                  text: "You will not be able to recover this record!",
                   type: "warning",
                   showCancelButton: true,
                   confirmButtonClass: "btn-danger",
