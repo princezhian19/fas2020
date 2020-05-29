@@ -93,7 +93,8 @@ function fillCheckbox()
     include 'connection.php';
 
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
-    $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='2020-249' ";
+    $id = $_GET['id'];
+    $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='$id' ";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
       {
