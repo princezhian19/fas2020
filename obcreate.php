@@ -86,30 +86,20 @@ function app($connect)
       <br>
       <br>
        
-    <!-- Start Panel -->
-   <!--  <div class="panel panel-default">
- -->        <br>
+       <br>
         <div class="box">
           <div class="box-body">
       
             <h1 align="">Create Obligation</h1>
-         <!--    <div class="box-header with-border">
-     -->
+       
         <br>
       <li class="btn btn-success"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
 
-      
-    <!--   <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-      </div> -->
-
-      <!-- Start form -->
-      <!-- <form id="fupForm" name="form1" method="post"> -->
+   
       <form id="fupForm" name="form1" Type="GET">
-     <!--  <form class="" type='GET' action="@Functions/obcreatefunction.php" > -->
-        <!-- Start Menu -->
+   
         <div class="class-bordered" >
             <div class="row">
                 <div class="col-md-6">
@@ -189,9 +179,17 @@ function app($connect)
                             <i class="fa fa-calendar"></i>
                         </div>
                         <input value="<?php echo date('m/d/Y')?>"date rety required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
-                        
-                        
+                      
                     </div>
+
+                      
+                    <table class="table table-striped table-hover" id="main">
+                      <tbody id="result">
+                      </tbody>
+                      </table>
+                      <br>
+                      
+                    
                 </div>
             </div>
         </div>
@@ -266,10 +264,11 @@ function app($connect)
 
 
 
-
-
+                
+                
                 <div class="col-md-6">
                 <label>Date Returned</label>
+                    <br>
                     <br>
                     <div class="input-group date">
                         <div class="input-group-addon">
@@ -278,6 +277,7 @@ function app($connect)
                         <input  value="<?php echo date('m/d/Y')?>" type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="datereturned">
                     </div>
                     <br>
+                    
                     
                     <label>Date Released <label style="color: Red;" >*</label></label>
                     <br>

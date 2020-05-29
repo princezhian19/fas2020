@@ -99,9 +99,20 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                       $serial_no = $row['SERIAL_NO'];
                       $ip_address = $row['IP_ADDRESS'];
                       $mac_address = $row['MAC_ADDRESS'];
+                      $status = $row['STATUS'];
+                      $status2 = $row['STATUS'];
+                      
               }
 
-
+if($status == 1)
+{
+    $status = 'correct.png';
+    $status2 = '';
+}
+else if($status == 0){
+    $status2 = 'correct.png';
+    $status = '';
+}
 
 $PHPJasperXML = new PHPJasperXML();
 // $PHPJasperXML->debugsql=true;
@@ -116,7 +127,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory1"=>'correct.png',
-                                    "currentuser"=>$name,
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -139,7 +150,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory2"=>'correct.png',
-                                    "currentuser"=>$name,
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -162,7 +173,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory3"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                  
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -185,7 +196,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory4"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -208,7 +219,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory5"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -232,7 +243,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category2"=>'correct.png',
                                     "req_type_subcategory6"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -255,7 +266,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category2"=>'correct.png',
                                     "req_type_subcategory7"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -280,7 +291,7 @@ switch($req_type_subcategory)
                                     "purpose"=>$purpose,
                                     "req_type_category2"=>'correct.png',
                                     "req_type_subcategory8"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -304,7 +315,7 @@ switch($req_type_subcategory)
                                     "purpose2"=>$purpose2,
                                     "req_type_category2"=>'correct.png',
                                     "req_type_subcategory9"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -328,7 +339,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category3"=>'correct.png',
                                     "req_type_subcategory10"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -351,7 +362,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category3"=>'correct.png',
                                     "req_type_subcategory11"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -375,7 +386,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category3"=>'correct.png',
                                     "req_type_subcategory12"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -399,7 +410,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category3"=>'correct.png',
                                     "req_type_subcategory13"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -424,7 +435,7 @@ switch($req_type_subcategory)
                                     "softwares"=>$softwares,    
                                     "req_type_category3"=>'correct.png',
                                     "req_type_subcategory14"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -448,7 +459,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category4"=>'correct.png',
                                     "req_type_subcategory15"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -472,7 +483,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category4"=>'correct.png',
                                     "req_type_subcategory16"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -496,7 +507,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category4"=>'correct.png',
                                     "req_type_subcategory17"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -520,7 +531,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category5"=>'correct.png',
                                     "req_type_subcategory18"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -544,7 +555,7 @@ switch($req_type_subcategory)
                                     "changeaccount"=>$changeaccount,
                                     "req_type_category5"=>'correct.png',
                                     "req_type_subcategory19"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -567,7 +578,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category5"=>'correct.png',
                                     "req_type_subcategory20"=>'correct.png',
-                                    "currentuser"=>$name, "resolve"=>'correct.png',                                  
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
