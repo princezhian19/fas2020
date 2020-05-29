@@ -188,7 +188,7 @@ function filldataTable()
                         {
 
                             echo '
-                            <button title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
+                            <button title = "Received Date"  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
                             Received Date<br>    
                             <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
                             </button>';
@@ -213,12 +213,12 @@ function filldataTable()
                 if($_SESSION['complete_name'] == $row['ASSIST_BY'])
                     {
                         ?><br>
-                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = " col-lg-12 pull-right  btn btn-danger" style = "background-color:orange;">Assign</button>
+                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = " col-lg-12 pull-right sweet-14  btn btn-danger" style = "background-color:orange;">Assign</button>
                 
                         <?php
                     }else{
                         ?><br>
-                        <button disabled id ="sweet-16" data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
+                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
 
                         <?php
                     }
@@ -241,11 +241,11 @@ function filldataTable()
 
                     echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }else{
-                    echo '<button disabled data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+                    echo '<button id ="sweet-16"  data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }
                 }else{
         
-                    echo '<button title = "Completed Date" disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
+                    echo '<button title = "Completed Date"  id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
                     Completed Date<br> 
                     '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
                     </button>';
@@ -304,7 +304,7 @@ function submittedReq()
                 <li class="list-group-item" id = "<?php echo $row['CONTROL_NO'];?>">
                             <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="<?php echo $row['ASSIST_BY']?>">
                             <?php echo $row['CONTROL_NO'];?>
-                            <button disabled type="button" class="sweet-16 btn btn-success pull-right">
+                            <button  type="button" class="sweet-16 btn btn-success pull-right">
                             Complete
                             </button>
                         </li>
