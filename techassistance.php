@@ -611,7 +611,7 @@ function countCompleted()
                         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                         <thead>
                             <th>Assist By</th>
-                            <th>Information</th>
+                            <th>Particulard</th>
                             <th>Received Date</th>
                             <th>Completed Date</th>
                         </thead>
