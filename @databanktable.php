@@ -95,6 +95,11 @@ $username = $_SESSION['username'];
                   
                 </tr>
                 </thead>
+
+                
+
+           
+                   
                 <?php
             $servername = "localhost";
             $username = "fascalab_2020";
@@ -117,11 +122,11 @@ $username = $_SESSION['username'];
 
                   $title  = $row["title"];
                   $office  = $row["office"];
-                $url= $row["url"];
+                  $url= $row["url"];
                   $dateposted1  = $row["dateposted"];
                     $dateposted = date('F d, Y', strtotime($dateposted1));
                   $postedby = $row["postedby"];
-                 $location = "files/".$file;
+                  $location = "files/".$file;
                  //echo $location;
 
                ?>
@@ -198,6 +203,8 @@ $username = $_SESSION['username'];
 
              
             </table>
+
+            
               </form>
                 
                 </div>
