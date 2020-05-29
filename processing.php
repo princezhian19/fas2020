@@ -176,19 +176,22 @@ function filldataTable()
                     <?php
                     // Received
                   
-                        if($row['START_DATE'] != '0000-00-00'  )
+                        if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == null   )
                         {
-                    echo '
-                    <button title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
-                    Received Date<br>    
-                    <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
-                    </button>';
+                        echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Receive</button>';
+
+                   
 
                         
                     }else{
-                        if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == 'January 01, 1970')
+                        if($row['START_DATE'] != '0000-00-00' || $row['START_DATE'] != 'January 01, 1970')
                         {
-                        echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Received</button>';
+
+                            echo '
+                            <button title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
+                            Received Date<br>    
+                            <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
+                            </button>';
                         }
                     }
 
