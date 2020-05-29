@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5be4a1da-05bd-4f9e-8b3b-66b0111942f6">
-	<property name="ireport.zoom" value="3.7974983358325707"/>
-	<property name="ireport.x" value="577"/>
-	<property name="ireport.y" value="1499"/>
+	<property name="ireport.zoom" value="4.1772481694158285"/>
+	<property name="ireport.x" value="1248"/>
+	<property name="ireport.y" value="1869"/>
 	<parameter name="currentuser" class="java.lang.String"/>
+	<parameter name="defective" class="java.lang.String"/>
 	<parameter name="requested_date" class="java.lang.String"/>
 	<parameter name="started_date" class="java.lang.String"/>
 	<parameter name="start_time" class="java.lang.String"/>
@@ -1573,6 +1574,10 @@
 			<image>
 				<reportElement x="289" y="453" width="8" height="8" uuid="c8c20e59-a42b-4602-b4c3-09f4355d55bf"/>
 				<imageExpression><![CDATA[$P{resolve}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="359" y="453" width="8" height="8" uuid="92f8aaab-4648-43c0-adf8-03847997ceda"/>
+				<imageExpression><![CDATA[$P{defective}]]></imageExpression>
 			</image>
 		</band>
 	</title>
