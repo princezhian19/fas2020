@@ -170,19 +170,25 @@ function filldataTable()
                     </div>
                 </div>
             </td>
+            <td>
+              <?php 
+
+if($row['START_DATE'] != '')
+{
+echo date('F d, Y',strtotime($row['START_DATE']));
+
+
+}else{
+echo '-';
+}
+
+            ?>
+            </td>
             <td style = "width:10%;">
                     <?php
                     // Received
                   
-                        if($row['START_DATE'] != '')
-                        {
-                    echo ' <button disabled title = "Received Date" disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 "><b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b></button>';
-
-                        
-                    }else{
-                        echo ' <button disabled  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Received</button>';
-                    }
-
+                     
 
 
 
@@ -641,9 +647,10 @@ function countCompleted()
       
                         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                         <thead>
-                            <th>ASSIST BY</th>
-                            <th>INFORMATION</th>
-                            <th>ACTION</th>
+                            <th>Assist By</th>
+                            <th>Information</th>
+                            <th>Received Date</th>
+                            <th>Completed Date</th>
                         </thead>
                         <tbody>
                         <?php echo filldataTable();?>

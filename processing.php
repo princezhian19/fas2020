@@ -666,9 +666,9 @@ function countComplete()
                     <div class="post">
                         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                         <thead>
-                            <th>ASSISTED BY</th>
-                            <th>PARTICULAR</th>
-                            <th>ACTION</th>
+                            <th>Assisted By</th>
+                            <th>Particular</th>
+                            <th>Action</th>
                         </thead>
                         <tbody>
                         <?php echo filldataTable();?>
