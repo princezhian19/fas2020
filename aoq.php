@@ -9,8 +9,10 @@ $date_opened1 = $_GET['date_opened'];
 $supplier_id_create = $_GET['supplier_id_create'];
 $abstract_no = $_GET['abstract_no'];
 $supplier_title_c = $_GET['supplier_title_c'];
-$date_opened = date("Y-m-d\TH:i:s",strtotime($date_opened1));
-$date =  date("Y-m-d\TH:i:s") ;
+$date_opened = date("Y-m-d",strtotime($date_opened1));
+$date_opened2 = date("H:i",strtotime($date_opened1));
+$date =  date("Y-m-d") ;
+$time =  date("H:i") ;
 function Allsupplier($connect)
 { 
   $output = '';
@@ -99,14 +101,17 @@ $auto = mysqli_query($conn,"SELECT max(id)+2 as a FROM abstract_of_quote order b
 while ($row = mysqli_fetch_assoc($auto)) {
   $idGet = $row["a"];
 }
-$autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
+$autoNo = $getDate.'-'.$m.'-'.$idGet;
 
 ?>
 <?php
 if (isset($_POST['submit'])) {
   $abstract_no = $_POST['abstract_no'];
   $supplier_id = $_POST['supplier_id_create'];
-  $date_opened = $_POST['date_opened'];
+  $date_opened1 = $_POST['date_opened'];
+  $time_opened = $_POST['time_opened'];
+  $date_opened = date('Y-m-d H:i:s', strtotime("$date_opened1 $time_opened"));
+
   $remarks = $_POST['remarks'];
 
   $ifExist = mysqli_query($conn,"SELECT aoq_no FROM aoq_data WHERE aoq_no = '$abstract_no'");
@@ -342,30 +347,30 @@ $rfq_id1 = $rowRFQ['rfq_id'];
       </div>
       <div class="box-body table-responsive no-padding">
         <div class="box-body">
-          <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
+          <table id="" class="table table-striped " style="background-color: white;">
             <tr>
-              <th width="100">RFQ Date</th>
+              <th  class="pull-left text-black">RFQ Date</th>
               <td><?php echo $rfq_date;?></td>
             </tr>
             <tr>
-              <th>Purpose</th>
+              <th class="pull-left text-black">Purpose</th>
               <td><?php echo $purpose;?></td>
             </tr>
             <tr>
-              <th>Office</th>
+              <th class="pull-left text-black">Office</th>
               <td><?php echo $pmo;?></td>
             </tr>
 
             <tr>
-              <th>PR No.</th>
+              <th class="pull-left text-black">PR No.</th>
               <td><?php echo $pr_no;?></td>
             </tr>
             <tr>
-              <th width="150" >PR Date Received</th>
-              <td><?php echo $pr_date;?></td>
+              <th class="pull-left text-black"  >PR Date Received</th>
+              <td width="250"><?php echo $pr_date;?></td>
             </tr>
             <tr>
-              <th width="150" >ABC</th>
+              <th  class="pull-left text-black" >ABC</th>
               <td><?php echo number_format($abc111,2);?></td>
             </tr>
           </table>
@@ -393,8 +398,8 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                   <div class="col-md-6 well" style="padding-left: 30px;padding-top:10px;">
                     <div class="form-group">
                       <label>Select Supplier</label>
-                      <select  class="form-control select2" style="width: 100%;" autocomplete="off" id="supplier_id_show" name="supplier_id_show" >
-                       <option value="" disabled selected>Select your Supplier</option>
+                      <select required class="form-control select2" style="width: 100%;" autocomplete="off" id="supplier_id_show" name="supplier_id_show" >
+                       <option disabled selected></option>
                        <?php echo Allsupplier($connect); ?>
                      </select> 
                    </div>
@@ -470,7 +475,11 @@ $rfq_id1 = $rowRFQ['rfq_id'];
              <div class="col-md-3">
                <div class="form-group">
                 <label>Date Opened</label>
-                <input required type="datetime-local" value="<?php echo $date_opened?>" name="date_opened" class="form-control">
+                <input required type="date" value="<?php echo $date_opened?>" name="date_opened" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Time Opened</label>
+                <input required type="time" value="<?php echo $date_opened2?>" name="time_opened" class="form-control">
               </div>
               <div class="form-group">
                 <label>Remarks</label>
@@ -484,7 +493,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
               <div class="form-group">
                 <label>Select Supplier</label>
                 <select required class="form-control " style="width: 100%;" autocomplete="off" id="supplier_id_create" name="supplier_id_create" >
-                 <option value="" disabled selected>Select your Supplier</option>
+                 <option  disabled selected></option>
                  <?php echo supplier($connect); ?>
                </select> 
              </div>
@@ -496,13 +505,17 @@ $rfq_id1 = $rowRFQ['rfq_id'];
            <div class="col-md-3">
              <div class="form-group">
               <label>Date Opened</label>
-              <input required type="datetime-local" value="<?php echo $date;?>" name="date_opened" class="form-control">
+              <input required type="date" value="<?php echo $date;?>" name="date_opened" class="form-control">
             </div>
+             <div class="form-group">
+                <label>Time Opened</label>
+                <input required type="time" value="<?php echo $time?>" name="time_opened" class="form-control">
+              </div>
             <div class="form-group">
               <label>Remarks</label>
               <textarea class="form-control" name="remarks" rows="8"></textarea>
             </div>
-            <button class="btn btn-primary pull-right" type="submit" name="create">Create</button>
+            <button class="btn btn-success pull-right" type="submit" name="create">Create Abstract</button>
           </div>
 
         <?php endif ?>
@@ -524,15 +537,16 @@ $rfq_id1 = $rowRFQ['rfq_id'];
           <div class="box-body">
             <div class="row" id="boxed">
               <div class="col-xs-6">
-                <table id="example1" class="  table-responsive" style="width:500px;background-color: white;" align="center">
+                <table id="" class="  table-responsive" style="width:500px;background-color: white;" align="center">
                   <thead>
+                    <th style="float: left;" >Item(s)</th>
                     <th style="float: right;" ><?php echo $supplier_title1;?></th>
                   </thead>
                 </table>
-                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
+                <table id="" class="table table-striped  table-responsive" style="width:500px;background-color: white;" align="center">
                  <thead >
-                  <th width="" >Items</th>
-                  <th width="" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
+                  <th style="float: left;">Total Quote</th>
+                  <th width="" ><?php echo number_format($totsppu11,2)?></th>
                 </thead>   
                 <?php 
                 $b = 1;
@@ -561,9 +575,9 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                       <th width="" ><?php echo $supplier_title2;?></th>
                     </thead>
                   </table>
-                  <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
+                  <table id="example1" class="table table-striped  table-responsive" style="width:500px;background-color: white;" align="center">
                    <thead style="width:500px;">
-                    <th width="" >PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
+                    <th width="" ><?php echo number_format($totsppu22,2)?></th>
                   </thead>   
                   <?php 
                   $b = 1;
@@ -595,12 +609,12 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                     <div class="col-xs-3">
                       <table id="example1" class="  table-responsive" style="width:300px;background-color: white;">
                         <thead>
-                          <th style="float: ;">Item(s)</th>
+                          <th style="float:left ;">Item(s)</th>
                         </thead>
                       </table>
-                      <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                      <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                        <thead>
-                        <th width="" >Procurement</th>
+                        <th style="float:left ;" >Total Quote</th>
                       </thead>   
                       <?php 
                       while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
@@ -621,9 +635,9 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                         <th style="float: ;"><?php echo $supplier_title1;?></th>
                       </thead>
                     </table>
-                    <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                    <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                      <thead>
-                      <th width="" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
+                      <th width="" ><?php echo number_format($totsppu11,2)?></th>
                     </thead>   
                     <?php 
                     $b = 1;
@@ -652,9 +666,9 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                           <th  ><?php echo $supplier_title2;?></th>
                         </thead>
                       </table>
-                      <table id="example1" class="table table-striped table-bordered table-responsive" style="width:400px;background-color: white;">
+                      <table id="example1" class="table table-striped  table-responsive" style="width:400px;background-color: white;">
                        <thead>
-                        <th  >PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
+                        <th  ><?php echo number_format($totsppu22,2)?></th>
                       </thead>   
                       <?php 
                       $b = 1;
@@ -682,9 +696,9 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                             <th width="" ><?php echo $supplier_title3;?></th>
                           </thead>
                         </table>
-                        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                        <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                          <thead>
-                          <th width="" >PPU Total Quote: <?php echo number_format($totsppu33,2)?></th>
+                          <th width="" ><?php echo number_format($totsppu33,2)?></th>
                         </thead>   
                         <?php 
                         $b = 1;
@@ -720,10 +734,10 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                             <th width="" ><?php echo $supplier_title1;?></th>
                           </thead>
                         </table>
-                        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                        <table id="example1" class="table table-striped  table-responsive" style="width:200px;background-color: white;">
                          <thead>
-                          <th width="200" >Item</th>
-                          <th width="100" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
+                          <th style="float:left;" >Total Quote</th>
+                          <th width="100" > <?php echo number_format($totsppu11,2)?></th>
                         </thead>   
                         <?php 
                         $b = 1;
@@ -751,7 +765,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                           <th width="" ><?php echo $supplier_title2;?></th>
                         </thead>
                       </table>
-                      <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                      <table id="example1" class="table table-striped  table-responsive" style="width:200px;background-color: white;">
                        <thead>
                         <th width="" >PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
                       </thead>   
@@ -779,7 +793,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                         <th width="" ><?php echo $supplier_title3;?></th>
                       </thead>
                     </table>
-                    <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                    <table id="example1" class="table table-striped  table-responsive" style="width:200px;background-color: white;">
                      <thead>
                       <th width="" >PPU Total Quote: <?php echo number_format($totsppu33,2)?></th>
                     </thead>   
@@ -807,7 +821,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                       <th width="" ><?php echo $supplier_title4;?></th>
                     </thead>
                   </table>
-                  <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+                  <table id="example1" class="table table-striped  table-responsive" style="width:200px;background-color: white;">
                    <thead>
                     <th width="" >PPU Total Quote: <?php echo number_format($totsppu44,2)?></th>
                   </thead>   

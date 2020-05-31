@@ -26,7 +26,9 @@ $remarks = $rowabs['remarks'];
 $abs_date1 = $rowabs['datetime_created'];
 
 
-$abs_date = date("Y-m-d\TH:i:s",strtotime($abs_date1));
+// $abs_date = date("Y-m-d\TH:i:s",strtotime($abs_date1));
+$abs_date = date("Y-m-d",strtotime($abs_date1));
+$abs_date2 = date("H:i",strtotime($abs_date1));
 
 function Allsupplier($connect)
 { 
@@ -83,6 +85,40 @@ function table(){
     echo  '<td width="400">';
     echo $procurement_sup;
     echo '</td>';
+    echo '<td hidden><textarea id="remarks_sup" name="">';
+    echo $procurement_sup;    
+    echo '</textarea></td>';
+    echo '<td hidden><textarea id="item_id_sup" name="">';
+    echo $item_id_sup;    
+    echo '</textarea></td>';
+    echo  '<td>
+    <input readonly type="text" required id="ppu_sup" name="" onKeyPress="return dec(event)" class="form-control col-md-6" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false">
+    </td>';
+  }
+  echo '</table>';
+}
+
+function table2(){
+  $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+  $rfq_id = $_GET['rfq_id'];
+
+  $select_items_sup = mysqli_query($conn,"SELECT app.procurement,rq.id FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id WHERE rq.rfq_id = $rfq_id");
+
+  while ($row_sup1 = mysqli_fetch_assoc($select_items_sup)) {
+    $procurement_sup = $row_sup1['procurement'];
+    $item_id_sup = $row_sup1['id'];
+
+    echo   '<table id="example1" class="table table-bordered-striped table-bordered " style="width:;background-color: white;">
+    <thead>
+    <tr style="background-color: white;color:black;">
+    <th>Item</th>
+    <th>Price per Unit</th>
+    </tr>
+    </thead>' ;
+
+    echo  '<td width="400">';
+    echo $procurement_sup;
+    echo '</td>';
     echo '<td hidden><textarea id="remarks_sup" name="remarks_sup[]">';
     echo $procurement_sup;    
     echo '</textarea></td>';
@@ -95,6 +131,8 @@ function table(){
   }
   echo '</table>';
 }
+
+
 
 $select_rfqitems = mysqli_query($conn,"SELECT id,rfq_id FROM rfq_items WHERE id = $rfq_items_id");
 $r1 = mysqli_fetch_array($select_rfqitems);
@@ -110,7 +148,9 @@ $view_query_sup = mysqli_query($conn, "SELECT sq.rfq_item_id,sq.supplier_id,rq.r
 if (isset($_POST['submit'])) {
     $abstract_no = $_POST['abstract_no'];
     $supplier_id = $_POST['supplier_id_orig'];
-    $date_opened = $_POST['date_opened'];
+    $date_opened1 = $_POST['date_opened'];
+    $time_opened = $_POST['time_opened'];
+    $date_opened = date('Y-m-d H:i:s', strtotime("$date_opened1 $time_opened"));
     $remarks = $_POST['remarks'];
     $UPDATE_0 = mysqli_query($conn,"UPDATE abstract_of_quote SET abstract_no = NULL WHERE supplier_id = $supplier_id1 AND rfq_id = $rfq_id ");
 
@@ -155,7 +195,7 @@ if (isset($_POST['insert_supplierQ'])) {
 
       echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Supplier Quote Created!')
-        window.location.href='UpdateAoq.php?rfq_id=$rfq_id&supplier_id=$supplier_id1&abstract_id=$abstract_id';
+        window.location.href='UpdateAoq.php?rfq_id=$rfq_id&rfq_items=$rfq_items_id&supplier_id=$supplier_id1&abstract_id=$abstract_id';
         </SCRIPT>");
 
     }else{
@@ -347,7 +387,7 @@ $totsppu44 = $rowtots44['totalppu'];
         </div>
     </div>
 </div>
-<div class="col-md-12" >
+<div class="col-md-12" disabled>
     <div class="box box-success">
       <div class="box-header with-border" align="left">
         <h4>Suppliers Quotations</h4>
@@ -365,15 +405,25 @@ $totsppu44 = $rowtots44['totalppu'];
               <div class=""><!-- widgetBody -->
                 <div class="row">
                   <div class="col-md-6 well" style="padding-left: 30px;padding-top:10px;">
-                    <div class="form-group">
+                    <div class="form-group H1">
                       <label>Select Supplier</label>
-                      <select  class="form-control select2" style="width: 100%;" autocomplete="off" id="supplier_id_show" name="supplier_id_show" >
-                       <option value="" disabled selected>Select your Supplier</option>
+                      <select  disabled="disabled" class="form-control select2" style="width: 100%;" autocomplete="off"  >
+                       <option disabled selected></option>
                        <?php echo Allsupplier($connect); ?>
                      </select> 
                    </div>
-                   <div class="form-group">
+                   <div class="form-group H2" hidden>
+                      <label>Select Supplier</label>
+                      <select  required class="form-control select2" style="width: 100%;" autocomplete="off" id="supplier_id_show" name="supplier_id_show" >
+                       <option  disabled selected></option>
+                       <?php echo Allsupplier($connect); ?>
+                     </select> 
+                   </div>
+                   <div class="form-group H1">
                      <?php echo table()?>
+                   </div>
+                   <div class="form-group H2" hidden>
+                     <?php echo table2()?>
                    </div>
 
                    <button class="btn btn-primary pull-right" id="insert_supplierQ" type="submit" name="insert_supplierQ">Add Quote</button>
@@ -414,7 +464,12 @@ $totsppu44 = $rowtots44['totalppu'];
                         <td><?php echo $count;?></td>
                         <td><?php echo $supplier_title_sup;?></td>
                         <!-- <td><?php echo $remarks_sup;?></td> -->
-                        <td>
+                        <td class="H1">
+                         <button  disabled class="btn btn-primary btn-xs"  ><i class="fa fa-fw fa-edit"></i>Edit</button> 
+                         | <button  disabled class="btn btn-danger btn-xs" ><i class="fa fa-fw fa-trash"></i>Delete</button>
+
+                       </td>
+                       <td class="H2" hidden>
                          <a class="btn btn-primary btn-xs"  href='UpdateSupplierQuote.php?rfq_id=<?php echo $rfq_id_sup; ?>&supplier_id=<?php echo $supplier_id_sup?>' title="View"><i class="fa fa-fw fa-edit"></i>Edit</a> 
                          | <a class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to Delete this?');" href='delete_supplier1.php?rfq_id=<?php echo $rfq_id; ?>&supplier_id=<?php echo $supplier_id_sup?>&rfq_items_id=<?php echo $rfq_items_id?>&abstract_id=<?php echo $abstract_id?>' title="View"><i class="fa fa-fw fa-trash"></i>Delete</a>
 
@@ -427,31 +482,60 @@ $totsppu44 = $rowtots44['totalppu'];
              </div>
           <form method="POST">
                <div class="col-md-3">
-                <div class="form-group">
+                <div class="form-group H1">
                   <label>Select Supplier</label>
-                  <select  class="form-control select2" style="width: 100%;" autocomplete="off" name="supplier_id_orig" >
+                  <select disabled="disabled" class="form-control " style="width: 100%;" autocomplete="off" name="" >
                            <option value="<?php echo $supplier_id1;?>" selected><?php echo $supplier_title;?></option>
                            <?php echo supplier($connect); ?>
                        </select> 
                </div>
-               <div class="form-group">
+               <div class="form-group H2" hidden>
+                  <label>Select Supplier</label>
+                  <select  class="form-control " style="width: 100%;" autocomplete="off" name="supplier_id_orig" >
+                           <option value="<?php echo $supplier_id1;?>" selected><?php echo $supplier_title;?></option>
+                           <?php echo supplier($connect); ?>
+                       </select> 
+               </div>
+               <div class="form-group H1" >
+                 <label>Abstract No.</label>
+                    <input readonly required type="text" value="<?php echo $aoq_no;?>" name="" class="form-control">
+               </div>
+                <div class="form-group H2" hidden >
                  <label>Abstract No.</label>
                     <input required type="text" value="<?php echo $aoq_no;?>" name="abstract_no" class="form-control">
                </div>
              </div>
              <div class="col-md-3">
-               <div class="form-group">
+               <div class="form-group H1">
                 <label>Date Opened</label>
-                    <input required type="datetime-local" value="<?php echo $abs_date;?>" name="date_opened" class="form-control">
+                    <input readonly required type="date" value="<?php echo $abs_date;?>" name="" class="form-control">
               </div>
-              <div class="form-group">
+              <div class="form-group H2" hidden>
+                <label>Date Opened</label>
+                    <input required type="date" value="<?php echo $abs_date;?>" name="date_opened" class="form-control">
+              </div>
+               <div class="form-group H1">
+                <label>Time Opened</label>
+                    <input readonly required type="time" value="<?php echo $abs_date2;?>" name="" class="form-control">
+              </div>
+               <div class="form-group H2" hidden>
+                <label>Time Opened</label>
+                    <input  required type="time" value="<?php echo $abs_date2;?>" name="time_opened" class="form-control">
+              </div>
+              <div class="form-group H1">
                 <label>Remarks</label>
-                <textarea class="form-control" name="remarks" rows="8"><?php echo $remarks?></textarea>
+                <textarea readonly class="form-control" name="" rows="8"><?php echo $remarks?></textarea>
               </div>
-           <a href="export_abstract.php?rfq_id=<?php echo $rfq_id; ?>&abstract_no=<?php echo $abstract_no1?>" class="btn btn-success">Export</a>
-            <button class="btn btn-primary pull-right" type="submit" name="submit">Award</button>
-
-
+              <div class="form-group H2" hidden>
+                <label>Remarks</label>
+                <textarea  class="form-control" name="remarks" rows="8"><?php echo $remarks?></textarea>
+              </div>
+              <div hidden class="H2">
+            <button class="btn btn-primary pull-right" type="submit" name="submit">Save</button>
+            </div>
+              <div  class="H1">
+            <a class="btn btn-success pull-right" onclick='javascript:yesnoCheck();'>Edit Abstract</a>
+            </div>
             </div>
 
       </div>
@@ -473,13 +557,14 @@ $totsppu44 = $rowtots44['totalppu'];
                             <div class="col-xs-6">
                                 <table id="example1" class="  table-responsive" style="width:500px;background-color: white;" align="center">
                                     <thead>
+                                    <th style="float: left;" >Item(s)</th>
                                         <th style="float: right;" ><?php echo $supplier_title1;?></th>
                                     </thead>
                                 </table>
-                                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
+                                <table id="example1" class="table table-striped  table-responsive" style="width:500px;background-color: white;" align="center">
                                    <thead >
-                                    <th width="" >Items</th>
-                                    <th width="" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
+                                    <th style="float: left;" >Total Quote</th>
+                                    <th width="" ><?php echo number_format($totsppu11,2)?></th>
                                 </thead>   
                                 <?php 
                                 $b = 1;
@@ -511,9 +596,9 @@ $totsppu44 = $rowtots44['totalppu'];
                                 <th width="" ><?php echo $supplier_title2;?></th>
                             </thead>
                         </table>
-                        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:500px;background-color: white;" align="center">
+                        <table id="example1" class="table table-striped  table-responsive" style="width:500px;background-color: white;" align="center">
                            <thead style="width:500px;">
-                            <th width="" >PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
+                            <th width="" ><?php echo number_format($totsppu22,2)?></th>
                         </thead>   
                         <?php 
                         $b = 1;
@@ -544,12 +629,12 @@ $totsppu44 = $rowtots44['totalppu'];
                             <div class="col-xs-3">
                                 <table id="example1" class="  table-responsive" style="width:300px;background-color: white;" >
                                     <thead>
-                                        <th>Item(s)</th>
+                                        <th style="float:left;">Item(s)</th>
                                     </thead>
                                 </table>
-                                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;" >
+                                <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;" >
                                    <thead >
-                                    <th width="" >Procurement</th>
+                                    <th style="float:left;" >Total Quote</th>
                                 </thead>   
                                 <?php 
                                 while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
@@ -569,9 +654,9 @@ $totsppu44 = $rowtots44['totalppu'];
                         <th ><?php echo $supplier_title1;?></th>
                     </thead>
                 </table>
-                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th width="" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
+                    <th width="" ><?php echo number_format($totsppu11,2)?></th>
                 </thead>   
                 <?php 
                 $b = 1;
@@ -599,9 +684,9 @@ $totsppu44 = $rowtots44['totalppu'];
                         <th  ><?php echo $supplier_title2;?></th>
                     </thead>
                 </table>
-                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th>PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
+                    <th><?php echo number_format($totsppu22,2)?></th>
                 </thead>   
                 <?php 
                 $b = 1;
@@ -630,9 +715,9 @@ $totsppu44 = $rowtots44['totalppu'];
                         <th width="" ><?php echo $supplier_title3;?></th>
                     </thead>
                 </table>
-                <table id="example1" class="table table-striped table-bordered table-responsive" style="width:300px;background-color: white;">
+                <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th width="" >PPU Total Quote: <?php echo number_format($totsppu33,2)?></th>
+                    <th width="" ><?php echo number_format($totsppu33,2)?></th>
                 </thead>   
                 <?php 
                 $b = 1;
@@ -667,7 +752,7 @@ $totsppu44 = $rowtots44['totalppu'];
                 <th width="" ><?php echo $supplier_title1;?></th>
             </thead>
         </table>
-        <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+        <table id="example1" class="table table-striped  table-responsive" style="width:200px;background-color: white;">
            <thead>
             <th width="200" >Item</th>
             <th width="100" >PPU Total Quote: <?php echo number_format($totsppu11,2)?></th>
@@ -698,7 +783,7 @@ $totsppu44 = $rowtots44['totalppu'];
             <th width="" ><?php echo $supplier_title2;?></th>
         </thead>
     </table>
-    <table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+    <table id="example1" class="table table-striped table-responsive" style="width:200px;background-color: white;">
        <thead>
         <th width="" >PPU Total Quote: <?php echo number_format($totsppu22,2)?></th>
     </thead>   
@@ -727,7 +812,7 @@ $totsppu44 = $rowtots44['totalppu'];
         <th width="" ><?php echo $supplier_title3;?></th>
     </thead>
 </table>
-<table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+<table id="example1" class="table table-striped table-responsive" style="width:200px;background-color: white;">
    <thead>
     <th width="" >PPU Total Quote: <?php echo number_format($totsppu33,2)?></th>
 </thead>   
@@ -757,7 +842,7 @@ while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
         <th width="" ><?php echo $supplier_title4;?></th>
     </thead>
 </table>
-<table id="example1" class="table table-striped table-bordered table-responsive" style="width:200px;background-color: white;">
+<table id="example1" class="table table-striped table-responsive" style="width:200px;background-color: white;">
    <thead>
     <th width="" >PPU Total Quote: <?php echo number_format($totsppu44,2)?></th>
 </thead>   
@@ -784,7 +869,9 @@ while($rowrfid14 = mysqli_fetch_assoc($sql_items4) ){
 </div>
 </div>
 </div>
-<button class="btn btn-primary" name="submit" >Save</button>
+<button class="btn btn-success" name="submit" >Award</button> 
+ <a href="export_abstract.php?rfq_id=<?php echo $rfq_id; ?>&abstract_no=<?php echo $abstract_no1?>" class="btn btn-primary">Export</a>
+
 <br>
 <br>
 <br>
@@ -802,6 +889,13 @@ while($rowrfid14 = mysqli_fetch_assoc($sql_items4) ){
     </div>
 </div>
 </body>
+<script>
+  function yesnoCheck() {
+        $(".H1").hide();
+        $(".H2").show();
+}
+
+</script>
 </html>
 
 

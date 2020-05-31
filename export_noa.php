@@ -59,15 +59,14 @@ $totalABC = $rowtots['totalABC'];
 
 $objPHPExcel->getActiveSheet()->getStyle('A13')->getFont()->setBold(true);
 $objPHPExcel->getActiveSheet()->getStyle('A15')->getFont()->setBold(true);
-$objPHPExcel->getActiveSheet()->getStyle('A16')->getFont()->setBold(true);
-$objPHPExcel->getActiveSheet()->getStyle('A17')->getFont()->setBold(true);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A13',$po_date);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A15',$contact_person);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A42',"                   ".$supplier_title);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A16',$supplier_title);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A42',$supplier_title);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A17',$supplier_address);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A20','Dear Mr./Ms. '.$contact_person);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A22','We are pleased to inform you that your Quotation for the '.$purpose.' for the '.$pmo.' with the Purchase Order equivalent to'.$towords.' (Php '.$totalABC.')is hereby accepted. ');
+  $objPHPExcel->getActiveSheet()->getRowDimension('A22')->setRowHeight(-1);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A22','We are pleased to inform you that your Quotation for the Procurement of'.$purpose.' for '.$pmo.' with the Purchase Order equivalent to Php '.number_format($totalABC,2).' is hereby accepted. ');
 // $objPHPExcel->setActiveSheetIndex()->setCellValue('A23','equivalent to'.$towords.' (Php '.$totalABC.') is hereby accepted. ');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C37',$designation);
 

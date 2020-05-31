@@ -47,6 +47,7 @@ $SelectedStyleG = array(
 $styleContent = array('font'  => array('bold'  => true,'size'  => 10, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 // $styleContent2 = array('font'  => array('bold'  => true,'size'  => 9, 'name'  => 'Cambria'));
 $styleContent2 = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
+$styleContent24 = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 $styleContent21 = array('font'  => array('size'  => 11, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 
 $styleLabel = array('font'  => array('size'  => 9, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
@@ -141,7 +142,7 @@ $select_tots = mysqli_query($conn,"SELECT sum(ppu*qty) as ABCtots FROM supplier_
 while($rowppu = mysqli_fetch_array($select_tots)){
     $ABCtots = $rowppu['ABCtots'];
 $objPHPExcel->getActiveSheet()->getStyle('C12')->getNumberFormat()->setFormatCode(FORMAT_CURRENCY_PHP);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C12',number_format($ABCtots),2);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('C12',$ABCtots);
 
 }
 
@@ -401,7 +402,13 @@ if ($rowabsno3 != NULL) {
   $fetch = mysqli_fetch_array($querycount);
   $num = $fetch['count'];
 
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowB11,'For Item(s) 1 to '.$num." to ".$WinSupply);
+  $htmlHelper = new \PHPExcel_Helper_HTML();
+  $html = "<b>".$WinSupply."</b>";
+  $rich_text = $htmlHelper->toRichTextObject($html);
+
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowB11,'For Item(s) 1 to '.$num." to");
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$rowB11)->applyFromArray($styleContent24);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowB11,$rich_text);
 
   if ($ABCtots > 49999) {
   $objPHPExcel->getActiveSheet()->getStyle('B'.$rowC)->applyFromArray($styleContent2);
@@ -425,19 +432,19 @@ if ($rowabsno3 != NULL) {
   $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowC,'ATTY. JORDAN V. NADAL');
   $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowD,'BAC Member');
 
-  $objPHPExcel->getActiveSheet()->getStyle('E'.$rowF)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('E'.$rowE)->applyFromArray($styleContent21);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$rowE)->applyFromArray($styleContent2);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$rowF)->applyFromArray($styleContent21);
   $objPHPExcel->getActiveSheet()->mergeCells('E'.$rowE.':'.'H'.$rowE);
   $objPHPExcel->getActiveSheet()->mergeCells('E'.$rowF.':'.'H'.$rowF);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowE,'GILBERTO L. TUMAMAC');
   $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowF,'BAC Member');
 
-   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowF)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('J'.$rowE)->applyFromArray($styleContent21);
+   $objPHPExcel->getActiveSheet()->getStyle('J'.$rowE)->applyFromArray($styleContent2);
+  $objPHPExcel->getActiveSheet()->getStyle('J'.$rowF)->applyFromArray($styleContent21);
   $objPHPExcel->getActiveSheet()->mergeCells('J'.$rowE.':'.'L'.$rowE);
   $objPHPExcel->getActiveSheet()->mergeCells('J'.$rowF.':'.'L'.$rowF);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowF,'JAY-AR T. BELTRAN');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowE,'Alternate BAC Member');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowE,'JAY-AR T. BELTRAN');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowF,'Alternate BAC Member');
   }else{
 
     $objPHPExcel->getActiveSheet()->getStyle('B'.$rowC)->applyFromArray($styleContent2);
@@ -461,8 +468,8 @@ if ($rowabsno3 != NULL) {
   $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowC,'HANNAH GRACE P. SOLIS');
   $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowD,'Alternate SSVPC Member');
 
-  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowF)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowE)->applyFromArray($styleContent21);
+  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowE)->applyFromArray($styleContent2);
+  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowF)->applyFromArray($styleContent21);
   $objPHPExcel->getActiveSheet()->mergeCells('I'.$rowE.':'.'J'.$rowE);
   $objPHPExcel->getActiveSheet()->mergeCells('I'.$rowF.':'.'J'.$rowF);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowE,'Noted By:');

@@ -148,6 +148,7 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   $item_unit_title1 = $excelrow["item_unit_title"];
 
   $total = $excelrow['qty']*$excelrow['ppu'];
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLabel);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['sn']);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$item_unit_title1);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$excelrow['procurement'] ."\n".$excelrow['description']);
@@ -186,6 +187,7 @@ $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($border);
 $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($border);
 $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($border);
 $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($border); 
+        $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->getFont()->setBold(true);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$sumtotal);
 
    $objPHPExcel->getActiveSheet()->getStyle('A'.$rowA)->getFont()->setItalic( true );
@@ -210,7 +212,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowE,'Signature over Prin
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowF,'               __________________________');
 $objPHPExcel->getActiveSheet()->getStyle('D'.$rowF.':F'.$rowF)->applyFromArray($stylebottom); 
 $objPHPExcel->getActiveSheet()->getStyle('E'.$rowF)->applyFromArray($styleLabel2);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowF,'       Assistant Regional Director');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowF,'              Officer-in-Charge');
 $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowG.':C'.$rowG);
 // $objPHPExcel->getActiveSheet()->getStyle('B'.$rowG)->applyFromArray($styler);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowG,'                               Date');
