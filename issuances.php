@@ -104,7 +104,7 @@ $division = $_GET['division'];
 <script src="dist/js/adminlte.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
-<script>
+<!-- <script>
   $(document).ready(function() {
     // Setup - add a text input to each footer cell
     $('#example1 thead tr').clone(true).appendTo( '#example1 thead' );
@@ -134,7 +134,7 @@ $division = $_GET['division'];
       autoWidth   : false
     } );
 } );
-</script>
+</script> -->
 </body>
 </html>
 
@@ -177,4 +177,175 @@ $( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: 
     $(".datePicker1").datepicker().datepicker("setDate", new Date());
 
    
+</script>
+
+<script>
+
+
+
+</script>
+
+
+<script>
+  $(document).ready(function() {
+
+    $('#example1').DataTable( {
+
+              'paging'      : true,
+              'lengthChange': false,
+              'searching'   : true,
+              'ordering'    : false,
+              'info'        : false,
+              'autoWidth'   : false,
+
+              initComplete: function () {
+            this.api().columns(0).every( function () {
+                var column = this;
+                var select = $('<select class="form-control" style="width:100%"><option value=""></option></select>')
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+
+            this.api().columns(1).every( function () {
+                var column = this;
+                var select = $('<select class="form-control" style="width:100%"><option value=""></option></select>')
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+
+
+            this.api().columns(2).every( function () {
+                var column = this;
+                var select = $('<select class="form-control" style="width:100%"><option value=""></option></select>')
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+
+
+
+
+
+
+            this.api().columns(3).every( function () {
+                var column = this;
+                var select = $('<select class="form-control" style="width:100%"><option value=""></option></select>')
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+
+            this.api().columns(4).every( function () {
+                var column = this;
+                var select = $('<select class="form-control" style="width:100%"><option value=""></option></select>')
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+
+            this.api().columns(5).every( function () {
+                var column = this;
+                var select = $('<select class="form-control" style="width:100%"><option value=""></option></select>')
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+
+            this.api().columns(6).every( function () {
+                var column = this;
+                var select = $('<select class="form-control" style="width:100%"><option value=""></option></select>')
+                    .appendTo( $(column.header()) )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+
+
+        }
+        
+
+    } );
+
+  
+} );
+
+
 </script>

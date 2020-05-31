@@ -93,12 +93,12 @@ $edit="edit";
               <br>
               
             </div>
-
+            <div class=""  style="overflow-x:auto;">
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
                    <th width = '10'>TAG</th> 
-                  <th width = '250'>CATEGORY </th>
+                  <th width = '250'>CATEGORY</th>
                   <th width = '200'>ISSUANCE NO  </th>
                   <th width = '200'>ISSUANCE DATE  </th>
                   <th width = '500'>TITLE/SUBJECT  </th>
@@ -109,6 +109,8 @@ $edit="edit";
                   
                 </tr>
                 </thead>
+
+                
                 <?php
             $servername = "localhost";
             $username = "fascalab_2020";
@@ -240,13 +242,13 @@ $edit="edit";
             <?php }?>
 
 
-
+                
              
             </table>
                 
                 </div>
                             </div>
-                 
+                            </div>
       
     <script type="text/javascript">
     $(document).ready(function() {
@@ -1097,4 +1099,10 @@ $('.'+getcheckboxes1).prop('checked',this.checked);
       showInputs: false
     })
   })
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+
+
+
 </script>

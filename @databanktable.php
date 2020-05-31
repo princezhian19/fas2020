@@ -66,7 +66,7 @@ $username = $_SESSION['username'];
             </div>
 
             <form method="POST" action=''  >
-
+            <div class=""  style="overflow-x:auto;">
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <!-- <thead>
                     <tr style="background-color: white;color:blue; text-align:center ">
@@ -87,11 +87,11 @@ $username = $_SESSION['username'];
                     <tr style="background-color: white;color:blue; text-align:center ">
                  
                   <th width="200">CATEGORY</th>
-                  <th width="400">TITLE </th>
+                  <th width="300">TITLE </th>
                   <th width="100">OFFICE</th>
                   <th width="150">POSTED BY</th>
                   <th width="150">POSTED DATE</th>
-                  <th width="250">ACTION<br><br></th>
+                  <th width="200">ACTION<br><br></th>
                   
                 </tr>
                 </thead>
@@ -208,7 +208,7 @@ $username = $_SESSION['username'];
               </form>
                 
                 </div>
-           
+           </div>
             
 
 
