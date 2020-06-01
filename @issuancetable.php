@@ -927,7 +927,10 @@ $("legend :checkbox").click(function(){
 
 $('.'+getcheckboxes1).prop('checked',this.checked);
 
-
+  str1 += $(this).val() + delimiter1;
+     var g = str1.replace(';;;;;;;15;','');
+     var g1 = g.replace('on;','');
+     text1.val(g1);
 });
 
  $(":checkbox").click(function () {
@@ -944,10 +947,11 @@ $('.'+getcheckboxes1).prop('checked',this.checked);
      
      // set the value of the textbox
    
-     var final1 = str1 .replace(';;;;;;;15;11;','');
+     var final1 = str1 .replace(';;;;;;;15;','');
+     var final2 = final1 .replace('11;','');
      //alert(final);
      text1.val('');
-     text1.val(final1);
+     text1.val(final2);
      
      
  });
