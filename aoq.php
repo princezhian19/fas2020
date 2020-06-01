@@ -102,7 +102,8 @@ $auto = mysqli_query($conn,"SELECT max(id)+2 as a FROM abstract_of_quote order b
 while ($row = mysqli_fetch_assoc($auto)) {
   $idGet = $row["a"];
 }
-$autoNo = $getDate.'-'.$m.'-'.$idGet;
+// $autoNo = $getDate.'-'.$m.'-'.$idGet;
+$autoNo = $getDate.'-'.$idGet;
 
 ?>
 <?php

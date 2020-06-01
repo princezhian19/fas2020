@@ -44,7 +44,8 @@ $SelectedStyleG = array(
 'fill' => array('type' => PHPExcel_Style_Fill::FILL_SOLID,'color' => array('rgb' => 'd9edf7'))
 );
 
-$styleContent = array('font'  => array('bold'  => true,'size'  => 10, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
+$styleContent77 = array('font'  => array('bold'  => true,'size'  => 10, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
+$styleContent = array('font'  => array('bold'  => false,'size'  => 10, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 // $styleContent2 = array('font'  => array('bold'  => true,'size'  => 9, 'name'  => 'Cambria'));
 $styleContent2 = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 $styleContent24 = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
@@ -232,20 +233,20 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   $objPHPExcel->getActiveSheet()->mergeCells('A'.$rowOne.':'.'E'.$rowOne);
   $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne.':'.'E'.$rowOne)->applyFromArray($border);
 
-  $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne)->applyFromArray($styleContent);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne)->applyFromArray($styleContent77);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowOne,$excelrow['procurement'] ."\n".$excelrow['description']);
-  $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($styleContent);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($styleContent77);
   $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($border);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$rowOne,$excelrow['qty']);
   $objPHPExcel->getActiveSheet()->getStyle('G'.$rowOne)->applyFromArray($border);
-  $objPHPExcel->getActiveSheet()->getStyle('G'.$rowOne)->applyFromArray($styleContent);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$rowOne)->applyFromArray($styleContent77);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$rowOne,$item_unit_title);
   $objPHPExcel->getActiveSheet()->getStyle('H'.$rowOne)->applyFromArray($border);
-  $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($styleContent);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($styleContent77);
   $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->getActiveSheet()->getStyle('G'.$rowOne)->applyFromArray($styleContent);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$rowOne)->applyFromArray($styleContent77);
   $objPHPExcel->getActiveSheet()->getStyle('G'.$rowOne)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->getActiveSheet()->getStyle('H'.$rowOne)->applyFromArray($styleContent);
+  $objPHPExcel->getActiveSheet()->getStyle('H'.$rowOne)->applyFromArray($styleContent77);
   $objPHPExcel->getActiveSheet()->getStyle('H'.$rowOne)->applyFromArray($ALIGNRIGHT);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowOne,number_format($excelrow['abc'],2));
 
@@ -402,13 +403,8 @@ if ($rowabsno3 != NULL) {
   $fetch = mysqli_fetch_array($querycount);
   $num = $fetch['count'];
 
-  $htmlHelper = new \PHPExcel_Helper_HTML();
-  $html = "<b>".$WinSupply."</b>";
-  $rich_text = $htmlHelper->toRichTextObject($html);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowB11,'For Item(s) 1 to '.$num." to ".$WinSupply);
 
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowB11,'For Item(s) 1 to '.$num." to");
-  $objPHPExcel->getActiveSheet()->getStyle('C'.$rowB11)->applyFromArray($styleContent24);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowB11,$rich_text);
 
   if ($ABCtots > 49999) {
   $objPHPExcel->getActiveSheet()->getStyle('B'.$rowC)->applyFromArray($styleContent2);
