@@ -589,7 +589,8 @@ function getImage()
         if(
           $link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
           $link == 'http://fas.calabarzon.dilg.gov.ph/techassistance.php?division='.$_GET['division'].'' ||
-          $link == 'http://fas.calabarzon.dilg.gov.ph/processing.php?division='.$_GET['division'].'&ticket_id=' 
+          $link == 'http://fas.calabarzon.dilg.gov.ph/processing.php?division='.$_GET['division'].'&ticket_id=' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/_editRequestTA.php?division='.$_GET['division'].'&id='.$_GET['id'].'' 
         ){
           echo 'class = "active" ';
         }
@@ -605,7 +606,6 @@ function getImage()
         <li class="treeview <?PHP 
         if(
           $link == 'http://fas.calabarzon.dilg.gov.ph/Accounts.php' ||
-          $link == 'http://fas.calabarzon.dilg.gov.ph/_editRequestTA.php?division='.$_GET['division'].'&id='.$_GET['id'].'' ||
           $link == 'http://fas.calabarzon.dilg.gov.ph/Approval.php' ||
           $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateAccount.php?id='.$_GET['id'].'&username='.$_SESSION['username'].'' 
           
