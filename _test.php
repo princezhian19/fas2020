@@ -409,17 +409,25 @@ return true;
 
   })
 </script>
+
 <script type = "text/javascript">
 $(document).ready(function() {
   var ckbox = $("#checkboxgroup_g5");
+  var ckbox2 = $("#checkboxgroup_g2");
+  var ckbox3 = $("#checkboxgroup_g3");
+  var ckbox4 = $("#checkboxgroup_g6");
+
   var chkId = '';
+  var chkId2 = '';
+  var chkId3 = '';
+  var chkId4 = '';
   $('input').on('click', function() {
     
     if (ckbox.is(':checked')) {
       $("#checkboxgroup_g5:checked").each ( function() {
    			chkId = $(this).val() + ",";
         chkId = chkId.slice(0, -1);
- 	  });
+ 	    });
        if($(this).val() == "Change Account to")
        {
         $("#changeaccount").prop('required',true);
@@ -430,9 +438,78 @@ $(document).ready(function() {
         $("#changeaccount").prop('required',false);
       }
        
-    }     
+    } 
+    if (ckbox2.is(':checked')) {
+      $("#checkboxgroup_g2:checked").each ( function() {
+   			chkId2 = $(this).val() + ",";
+        chkId2 = chkId2.slice(0, -1);
+ 	    });
+       if($(this).val() == "Access to Blocked Site:")
+       {
+        $("#site").prop('required',true);
+        $("#purpose").prop('required',true);
+       }else if($(this).val() == "New Connection(Wired or Wireless)"){
+        $("#site").prop('required',false);
+        $("#purpose").prop('required',false);
+       }else if($(this).val() == "No Internet (Cross or Exclamation)"){
+        $("#site").prop('required',false);
+        $("#purpose").prop('required',false);
+      } else if($(this).val() == "Internet for Personal Phone/Tablet/Laptop"){
+        $("#purpose2").prop('required',true);
+      }
+    }
+    if (ckbox3.is(':checked')) {
+      $("#checkboxgroup_g3:checked").each ( function() {
+   			chkId3 = $(this).val() + ",";
+        chkId3 = chkId3.slice(0, -1);
+ 	    });
+       if($(this).val() == "Other software/s (please specify)")
+       {
+        $("#softwares").prop('required',true);
+       }else if($(this).val() == "Operating System, Office, Anti-Virus")
+       {
+        $("#softwares").prop('required',false);
+       }else if($(this).val() == "Records Tracking System")
+       {
+        $("#softwares").prop('required',false);
+       }else if($(this).val() == "Google Drive")
+       {
+        $("#softwares").prop('required',false);
+       }else if($(this).val() == "DILG Portals/Systems")
+       {
+        $("#softwares").prop('required',false);
+       }
+
+       
+      
+       
+    } 
+    if (ckbox4.is(':checked')) {
+      $("#checkboxgroup_g5:checked").each ( function() {
+   			chkId4 = $(this).val() + ",";
+        chkId4 = chkId4.slice(0, -1);
+       });
+       if($('#others1').val() != '')
+       {
+       $("#others1").prop('required',true);
+
+       }else{
+       $("#others2").prop('required',true);
+       $("#others3").prop('required',true);
+       }
+      
+      
+       
+    }
+    
+
+    
   });
+  // ==========================================
+  
 });
+
+
 
 
 
