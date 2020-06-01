@@ -47,7 +47,7 @@ if (isset($_POST['update'])) {
     <div class="col-md-3">
       <div class="box">
         <div class="panel-heading bg-blue">
-         <img class="direct-chat-img" src="images/LOGO.png" alt="message user image">
+         <img class="direct-chat-img" src="images/male-user.png" alt="message user image">
          <font class="text-center">PHILIPPINES STANDARD TIME </font><!-- Item(s) -->
          <img class="direct-chat-img pull-right" src="images/ph.png" alt="message user image">
          <div class="clearfix"></div>

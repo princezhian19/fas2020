@@ -593,7 +593,7 @@ function getImage()
         ){
           echo 'class = "active" ';
         }
-        ?>"
+        ?>
         >
             <a href="processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
                 <i class="fa fa-users" style = "color:#black;"></i>
