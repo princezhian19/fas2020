@@ -52,6 +52,7 @@ $username = $_SESSION['username'];
 <body class="hold-transition skin-red-light fixed  sidebar-mini">
 <div class="wrapper">
   <?php include('test1.php');?>
+
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">

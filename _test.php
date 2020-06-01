@@ -179,8 +179,9 @@ function showUser()
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
-                                      <br><input  style = "margin-left:20px;" type = "text" name = "softwares" id= "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                                  </div>
+                                      <br><input  type = "text" name = "softwares" id = "softwares" value = "" style = "margin-left:20px;border:none;border-bottom:1px solid black;"/><br>
+                                  
+                                    </div>
                               </td> 
                           </tr>
                           <tr>
@@ -200,18 +201,18 @@ function showUser()
                           <td>
                             <input  style = "margin-left:180px;"  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
                             <div style = "margin-left:210px;padding-top:10px;">
-                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "New Account"> New Account<br>
-                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Change Account to"> Change Account to 
-                            <input required type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
+                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" value = "New Account"> New Account<br>
+                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" value = "Change Account to"> Change Account to 
+                            <input  type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
+                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
                           </div>
                           </td> 
                           <td>
                           <input  style = "margin-left:120px;"   type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "OTHERS"><b>OTHERS (please specify)</b><br>
                           <div style = "margin-left:140px; padding-top:10px;">
-                          <input  style = "margin-left:20px;" type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                          <input  style = "margin-left:20px;" type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                          <input  style = "margin-left:20px;" type = "text" name = "others3" id = "others3" class = "checkboxgroup_g6"value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                          <input   type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "margin-left:20px;border:none;border-bottom:1px solid black;"/><br>
+                          <input   type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "margin-left:20px;border:none;border-bottom:1px solid black;"/><br>
+                          <input   type = "text" name = "others3" id = "others3" class = "checkboxgroup_g6"value = "" style = "margin-left:20px;border:none;border-bottom:1px solid black;"/><br>
                         </div>                          
                       </td> 
 
@@ -409,6 +410,32 @@ return true;
   })
 </script>
 <script type = "text/javascript">
+$(document).ready(function() {
+  var ckbox = $("#checkboxgroup_g5");
+  var chkId = '';
+  $('input').on('click', function() {
+    
+    if (ckbox.is(':checked')) {
+      $("#checkboxgroup_g5:checked").each ( function() {
+   			chkId = $(this).val() + ",";
+        chkId = chkId.slice(0, -1);
+ 	  });
+       if($(this).val() == "Change Account to")
+       {
+        $("#changeaccount").prop('required',true);
+
+       }else if($(this).val() == "New Account"){
+        $("#changeaccount").prop('required',false);
+      }else if($(this).val() == "Password Reset"){
+        $("#changeaccount").prop('required',false);
+      }
+       
+    }     
+  });
+});
+
+
+
   $(function() {
     document.getElementById("site").disabled = true;
     document.getElementById("purpose").disabled = true;
@@ -445,8 +472,19 @@ return true;
   function enable_cb1() {
     if (this.checked) {
       $(".checkboxgroup_g1").removeAttr("disabled");
+      $(".checkboxgroup_g2").attr("disabled", true);
+      $(".checkboxgroup_g3").attr("disabled", true);
+      $(".checkboxgroup_g4").attr("disabled", true);
+      $(".checkboxgroup_g5").attr("disabled", true);
+      $(".checkboxgroup_g6").attr("disabled", true);
     } else {
       $(".checkboxgroup_g1").attr("disabled", true);
+      $(".checkboxgroup_g2").attr("disabled", true);
+      $(".checkboxgroup_g3").attr("disabled", true);
+      $(".checkboxgroup_g4").attr("disabled", true);
+      $(".checkboxgroup_g5").attr("disabled", true);
+      $(".checkboxgroup_g6").attr("disabled", true);
+      
     }
   }
   function enable_cb2() {
@@ -456,20 +494,27 @@ return true;
       document.getElementById("purpose").disabled = false; 
       document.getElementById("purpose2").disabled = false; 
 
-
+      $(".checkboxgroup_g1").attr("disabled", true);
+      $(".checkboxgroup_g3").attr("disabled", true);
+      $(".checkboxgroup_g4").attr("disabled", true);
+      $(".checkboxgroup_g5").attr("disabled", true);
+      $(".checkboxgroup_g6").attr("disabled", true);
     } else {
       $(".checkboxgroup_g2").attr("disabled", true);
       document.getElementById("site").disabled = true; 
       document.getElementById("purpose").disabled = true; 
       document.getElementById("purpose2").disabled = true; 
-
-
     }
   }
   function enable_cb3() {
     if (this.checked) {
       $(".checkboxgroup_g3").removeAttr("disabled");
       document.getElementById("softwares").disabled = false; 
+      $(".checkboxgroup_g1").attr("disabled", true);
+      $(".checkboxgroup_g2").attr("disabled", true);
+      $(".checkboxgroup_g4").attr("disabled", true);
+      $(".checkboxgroup_g5").attr("disabled", true);
+      $(".checkboxgroup_g6").attr("disabled", true);
 
     } else {
       $(".checkboxgroup_g3").attr("disabled", true);
@@ -480,14 +525,27 @@ return true;
   function enable_cb4() {
     if (this.checked) {
       $(".checkboxgroup_g4").removeAttr("disabled");
+      $(".checkboxgroup_g1").attr("disabled", true);
+      $(".checkboxgroup_g2").attr("disabled", true);
+      $(".checkboxgroup_g3").attr("disabled", true);
+      $(".checkboxgroup_g5").attr("disabled", true);
+      $(".checkboxgroup_g6").attr("disabled", true);
+      
     } else {
       $(".checkboxgroup_g4").attr("disabled", true);
     }
   }
   function enable_cb5() {
     if (this.checked) {
-      $(".checkboxgroup_g5").removeAttr("disabled");
       document.getElementById("changeaccount").disabled = false; 
+     
+
+      $(".checkboxgroup_g5").removeAttr("disabled");
+      $(".checkboxgroup_g1").attr("disabled", true);
+      $(".checkboxgroup_g2").attr("disabled", true);
+      $(".checkboxgroup_g3").attr("disabled", true);
+      $(".checkboxgroup_g4").attr("disabled", true);
+      $(".checkboxgroup_g6").attr("disabled", true);
 
     } else {
       $(".checkboxgroup_g5").attr("disabled", true);

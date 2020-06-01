@@ -1,4 +1,5 @@
 <?php
+include('functions.php');
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
@@ -85,10 +86,10 @@ function table(){
     echo  '<td width="400">';
     echo $procurement_sup;
     echo '</td>';
-    echo '<td hidden><textarea id="remarks_sup" name="">';
+    echo '<td hidden><textarea  name="">';
     echo $procurement_sup;    
     echo '</textarea></td>';
-    echo '<td hidden><textarea id="item_id_sup" name="">';
+    echo '<td hidden><textarea  name="">';
     echo $item_id_sup;    
     echo '</textarea></td>';
     echo  '<td>
@@ -184,10 +185,12 @@ if (isset($_POST['insert_supplierQ'])) {
   $ppu_sup = $_POST['ppu_sup'];
   $remarks_sup = $_POST['remarks_sup'];
 
+
   for($count = 0; $count < count($_POST["ppu_sup"]); $count++){
     $ppu_sup = $_POST['ppu_sup'][$count]; 
     $remarks_sup = $_POST['remarks_sup'][$count]; 
     $item_id_sup = $_POST['item_id_sup'][$count]; 
+
 
     $INSERT = mysqli_query($conn,"INSERT INTO supplier_quote(supplier_id,rfq_item_id,ppu,remarks) VALUES('$supplier_id_show','$item_id_sup','$ppu_sup','$remarks_sup')");
 
@@ -214,6 +217,34 @@ if (isset($_POST['insert_supplierQ'])) {
 
 
 }
+
+if (isset($_POST['update_changes'])) {
+  $supplier_id_update = $_POST['supplier_id_update'];
+  $suppQ_id = $_POST['suppQ_id'];
+  $ppu = $_POST['ppu'];
+  $remarks = $_POST['remarks'];
+
+   for($count = 0; $count < count($_POST["ppu"]); $count++){
+        $ppu = $_POST['ppu'][$count]; 
+        $remarks = $_POST['remarks'][$count]; 
+        $suppQ_id = $_POST['suppQ_id'][$count]; 
+
+        
+  $INSERT = mysqli_query($conn,"UPDATE supplier_quote SET ppu = '$ppu',supplier_id = '$supplier_id_update' WHERE id = $suppQ_id");
+
+  if ($INSERT) {
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Supplier Qoute Updated!')
+    window.location.href='UpdateAoq.php?rfq_id=$rfq_id&supplier_id=$supplier_id1&abstract_id=$abstract_id&rfq_items=$rfq_items_id';
+    </SCRIPT>");
+ }else{
+
+ }
+
+ $update = mysqli_query($conn,"UPDATE abstract_of_quote SET supplier_id = $supplier_id WHERE supplier_id = $supplier_id AND rfq_id = $rfq_id");
+}
+}
+
 
 // S U P P L I E R S     Q U O T E      Q U E R Y
 
@@ -470,12 +501,74 @@ $totsppu44 = $rowtots44['totalppu'];
 
                        </td>
                        <td class="H2" hidden>
-                         <a class="btn btn-primary btn-xs"  href='UpdateSupplierQuote.php?rfq_id=<?php echo $rfq_id_sup; ?>&supplier_id=<?php echo $supplier_id_sup?>' title="View"><i class="fa fa-fw fa-edit"></i>Edit</a> 
+                         <!-- <a class="btn btn-primary btn-xs"  href='UpdateSupplierQuote.php?rfq_id=<?php echo $rfq_id_sup; ?>&supplier_id=<?php echo $supplier_id_sup?>' title="View"><i class="fa fa-fw fa-edit"></i>Edit</a>  -->
+                         <a data-toggle="modal"  data-target="#modal-info_<?php echo $row_sup['id']; ?>"   class = "btn btn-primary btn-xs"><i class='fa'>&#xf044;</i>Edit</a>   
                          | <a class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to Delete this?');" href='delete_supplier1.php?rfq_id=<?php echo $rfq_id; ?>&supplier_id=<?php echo $supplier_id_sup?>&rfq_items_id=<?php echo $rfq_items_id?>&abstract_id=<?php echo $abstract_id?>' title="View"><i class="fa fa-fw fa-trash"></i>Delete</a>
 
                        </td>
                      </tr>
+                     <div class="modal modal-default fade" id="modal-info_<?php echo $row_sup['id']; ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title">Edit Supplier</h4>
+                            </div>
+                            <div class="modal-body">
+                              <form method="POST" >
+                               <div class="col-md-11">
+                                <label>Select Supplier</label>
+                                <select class="form-control select2" style="width: 100%;" autocomplete="off"  name="supplier_id_update" >
+                                 <option value="<?php echo $supplier_id_sup?>" ><?php echo $supplier_title_sup?></option>
+                                 <?php echo Allsupplier($connect); ?>
+                               </select> 
+                             </div>
+                             <br>
+                             <br>
+                             <br>
+                             <br>
+                             <?php 
+                             $select_items = mysqli_query($conn,"SELECT sq.id,sq.ppu,sq.remarks,app.procurement  FROM supplier_quote sq LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id LEFT JOIN app on app.id = rq.app_id WHERE rq.rfq_id = $rfq_id AND sq.supplier_id = $supplier_id_sup");
+                             while ($row = mysqli_fetch_assoc($select_items)) {
+                              $remarks = $row['remarks'];
+                              $ppu = $row['ppu'];
+                              $suppQ_id = $row['id'];
+                              ?>
+                              <div class="row">
+                                <div hidden>
+                                  <input type="text" name="suppQ_id[]" value="<?php echo $suppQ_id?>">
+                                </div>
+                                <div class="col-md-8">
+                                 <div class="form-group" >
+                                  <!-- <input type='text'  name='remarks[]' value='<?php echo $remarks?>' class='form-control col-md-6' > -->
+                                  <textarea readonly class='form-control col-md-6'><?php echo $remarks?></textarea>
+                                  <br>
+                                  <br>
+                                  <br>
+                                  <br>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group" >
+                                  <input type='text' name='ppu[]' value='<?php echo $ppu?>' class='form-control col-md-6' >
+                                  <br>
+                                  <br>
+                                </div>
+                              </div>
+                            </div>
+
                    <?php } ?>
+                    <div style="padding-right: 50px;">
+                                <button class="btn btn-primary " style="float: right;" type="submit" name="update_changes">Save Changes</button>
+                                <br>
+                                <br>
+                                <br>
+                        </div>
+                          </form>
+                      </div>
+                    </div>
+                  <?php } ?>
                  </table>
 
                </div>
