@@ -86,14 +86,14 @@ function table(){
     echo  '<td width="400">';
     echo $procurement_sup;
     echo '</td>';
-    echo '<td hidden><textarea id="remarks_sup" name="">';
+    echo '<td hidden><textarea  name="">';
     echo $procurement_sup;    
     echo '</textarea></td>';
-    echo '<td hidden><textarea id="item_id_sup" name="">';
+    echo '<td hidden><textarea  name="">';
     echo $item_id_sup;    
     echo '</textarea></td>';
     echo  '<td>
-    <input readonly type="text" required id="ppu_sup" name="ppu_sup[]" onKeyPress="return dec(event)" class="form-control col-md-6" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false">
+    <input readonly type="text" required id="ppu_sup" name="" onKeyPress="return dec(event)" class="form-control col-md-6" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false">
     </td>';
   }
   echo '</table>';
@@ -185,10 +185,12 @@ if (isset($_POST['insert_supplierQ'])) {
   $ppu_sup = $_POST['ppu_sup'];
   $remarks_sup = $_POST['remarks_sup'];
 
+
   for($count = 0; $count < count($_POST["ppu_sup"]); $count++){
     $ppu_sup = $_POST['ppu_sup'][$count]; 
     $remarks_sup = $_POST['remarks_sup'][$count]; 
     $item_id_sup = $_POST['item_id_sup'][$count]; 
+
 
     $INSERT = mysqli_query($conn,"INSERT INTO supplier_quote(supplier_id,rfq_item_id,ppu,remarks) VALUES('$supplier_id_show','$item_id_sup','$ppu_sup','$remarks_sup')");
 

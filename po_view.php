@@ -216,11 +216,11 @@ $id = $rowpo['id'];
       
             <tr>
                 <th class="pull-left">NOA </th>
-                <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="export_noa.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>">Notice of Award </a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $noa_date?></td>
+                <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="export_noa.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>">Notice of Award </a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo date('F d, Y',strtotime($noa_date))?></td>
             </tr>
             <tr>
                 <th class="pull-left">NTP </th>
-                <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="export_ntp.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>">Notice of Proceed</a>&nbsp&nbsp&nbsp&nbsp&nbsp <?php echo $ntp_date?></td>
+                <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="export_ntp.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>">Notice of Proceed</a>&nbsp&nbsp&nbsp&nbsp&nbsp <?php echo date('F d, Y',strtotime($ntp_date))?></td>
             </tr>
             <tr>
                 <th class="pull-left">ORS </th>
