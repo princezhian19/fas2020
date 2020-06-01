@@ -786,13 +786,21 @@ function setStartTime()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        if(date('g',strtotime($row['START_TIME'])) < 10)
+        if($row['START_TIME'] == '' || $row['START_TIME'] == '')
+        {
+          //datetime string.
+        $date = new DateTime();
+          $start_time = $date->format('H:i') ;
+        }else{
+          if(date('g',strtotime($row['START_TIME'])) < 10)
         {
         $start_time = '0'.date('g:i',strtotime($row['START_TIME']));
 
         }else{
         $start_time = date('g:i',strtotime($row['START_TIME']));
         }
+        }
+        
 
       }
       return $start_time;
@@ -807,13 +815,22 @@ function setCompletedTime()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        if(date('g',strtotime($row['COMPLETED_TIME'])) < 10)
+        if($row['COMPLETED_TIME'] == '' || $row['COMPLETED_TIME'] == '')
         {
-          $completed_time = '0'.date('g:i',strtotime($row['COMPLETED_TIME']));
+          //datetime string.
+          $date = new DateTime();
+          $completed_time = $date->format('H:i') ;
         }else{
-          $completed_time = date('g:i',strtotime($row['COMPLETED_TIME']));
-
+          if(date('g',strtotime($row['COMPLETED_TIME'])) < 10)
+          {
+            $completed_time = '0'.date('g:i',strtotime($row['COMPLETED_TIME']));
+          }else{
+            $completed_time = date('g:i',strtotime($row['COMPLETED_TIME']));
+  
+          }
         }
+        
+       
       }
       return $completed_time;
 }
@@ -1015,7 +1032,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input id= "timepicker" type="time" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" required>
+                          <input style = "width:100%;" id= "timepicker" type="time" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" required>
 
                           </div>
                           </td>
@@ -1025,7 +1042,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                        <input id = "timepicker2" type="time" name = "completed_time" placeholder = "Completed Time"  value="<?php echo setCompletedTime();?>" required>
+                        <input style = "width:100%;"  id = "timepicker2" type="time" name = "completed_time" placeholder = "Completed Time"  value="<?php echo setCompletedTime();?>" required>
 
                         </div>
                           </td>
