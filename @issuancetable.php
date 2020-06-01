@@ -887,10 +887,10 @@ $edit="edit";
           var final = str .replace('11;','');
      //alert(final);
           var final1 = final.replace('11;','');
-          var final2 = final.replace('11;','');
+          var final2 = final.replace(';;;;;;;15;','');
         
      text.val('');
-     text.val(final1);
+     text.val(final2);
 
 
 			});
@@ -996,9 +996,10 @@ $('.'+getcheckboxes1).prop('checked',this.checked);
      // set the value of the textbox
    
      var final1 = str1 .replace('11;11;','');
+     var final2 = final.replace(';;;;;;;15;11;','');
      //alert(final);
      text1.val('');
-     text1.val(final1);
+     text1.val(final2);
      
      
  });
