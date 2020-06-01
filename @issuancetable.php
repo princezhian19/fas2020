@@ -102,7 +102,7 @@ $edit="edit";
                   <th width = '200'>ISSUANCE NO  </th>
                   <th width = '200'>ISSUANCE DATE  </th>
                   <th width = '500'>TITLE/SUBJECT  </th>
-                  <th width = ''>POSTED BY </th>
+                  <th width = '200'>POSTED BY </th>
                   <th width = '200'>POSTED DATE  </th>
 
                   <th width = '600'>ACTION<BR><BR></th>

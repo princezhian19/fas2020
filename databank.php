@@ -199,11 +199,27 @@ $(function () {
                 } );
             } );
 
-
-
-
-
-
+            //   //Search By Dropdown and Input
+            //   this.api().columns(2).every( function () {
+            //     var column = this;
+            //     var select = $(' <input type="text" style="width:100%" class="form-control" placeholder="" />')
+            //         .appendTo( $(column.header()) )
+            //         .on( 'keyup change clear', function () {
+            //             var val = $.fn.dataTable.util.escapeRegex(
+            //                 $(this).val()
+            //             );
+ 
+            //             if ( column.search() !== this.value ) {
+            //               column
+            //                 .search( this.value )
+            //                 .draw();
+            //         }
+                   
+ 
+             
+            //     } );
+            // } );
+           
             this.api().columns(3).every( function () {
                 var column = this;
                 var select = $('<select class="form-control" style="width:100%"><option value=""></option></select>')
@@ -241,6 +257,8 @@ $(function () {
                     select.append( '<option value="'+d+'">'+d+'</option>' )
                 } );
             } );
+
+           
 
            
 
