@@ -136,7 +136,6 @@ $(document).ready(function(){
     })
 });
 $( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $(".datePicker1").datepicker().datepicker("setDate", new Date());
 </script>
    
   

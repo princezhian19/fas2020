@@ -790,14 +790,14 @@ function setStartTime()
         {
           //datetime string.
         $date = new DateTime();
-          $start_time = $date->format('H:i') ;
+          $start_time = $date->format('H:i');
         }else{
           if(date('g',strtotime($row['START_TIME'])) < 10)
         {
-        $start_time = '0'.date('g:i',strtotime($row['START_TIME']));
+        $start_time = date('H:i',strtotime($row['START_TIME']));
 
         }else{
-        $start_time = date('g:i',strtotime($row['START_TIME']));
+        $start_time = date('H:i',strtotime($row['START_TIME']));
         }
         }
         
