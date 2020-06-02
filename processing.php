@@ -241,7 +241,7 @@ function filldataTable()
                         }
                         
 
-                        <?php
+                
                     }
 
                 }else{
