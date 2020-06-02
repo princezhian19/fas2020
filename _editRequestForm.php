@@ -961,11 +961,12 @@ switch ($row['STATUS']) {
   case '1':
     ?>
     <td colspan=2 class = "label-text">
-      <input type = "checkbox"  class = "checkbox_group"  name = "isComplete" value = "1" checked/>
-    &nbsp;&nbsp;&nbsp;&nbsp;Resolved
+      <input type = "checkbox"  class = "checkbox_group" id = "resolved" name = "isComplete" value = "1" checked/>
+    &nbsp;&nbsp;&nbsp;&nbsp;Resolved<span style = "color:red;">*</span>
   </td>
     <td colspan=2 class = "label-text">
-    <input type = "checkbox" class = "checkbox_group" name = "isComplete" value = "0" />&nbsp;&nbsp;&nbsp;&nbsp;Defective(to be referred to GSS for repair)
+    <input type = "checkbox" class = "checkbox_group" id = "defective" name = "isComplete" value = "0" />&nbsp;&nbsp;&nbsp;&nbsp;
+    Defective(to be referred to GSS for repair)<span style = "color:red;">*</span>
     </td>
     <?php
     break;
@@ -973,22 +974,24 @@ switch ($row['STATUS']) {
   case '0':
     ?>
     <td colspan=2 class = "label-text">
-      <input type = "checkbox"  class = "checkbox_group"  name = "isComplete" value = "1" />
-    &nbsp;&nbsp;&nbsp;&nbsp;Resolved
+      <input type = "checkbox"  class = "checkbox_group"  id = "resolved" name = "isComplete" value = "1" />
+    &nbsp;&nbsp;&nbsp;&nbsp;Resolved<span style = "color:red;">*</span>
   </td>
     <td colspan=2 class = "label-text">
-    <input type = "checkbox" class = "checkbox_group" name = "isComplete" value = "0" checked/>&nbsp;&nbsp;&nbsp;&nbsp;Defective(to be referred to GSS for repair)
+    <input type = "checkbox" class = "checkbox_group" id = "defective" name = "isComplete" value = "0" checked/>&nbsp;&nbsp;&nbsp;&nbsp;
+    Defective(to be referred to GSS for repair)<span style = "color:red;">*</span>
     </td>
     <?php
     break;
     default:
    ?>
 <td colspan=2 class = "label-text">
-      <input type = "checkbox"  class = "checkbox_group"  name = "isComplete" value = "1" />
-    &nbsp;&nbsp;&nbsp;&nbsp;Resolved
+      <input type = "checkbox"  class = "checkbox_group"  id = "resolved" name = "isComplete" value = "1" />
+    &nbsp;&nbsp;&nbsp;&nbsp;Resolved<span style = "color:red;">*</span>
   </td>
     <td colspan=2 class = "label-text">
-    <input type = "checkbox" class = "checkbox_group" name = "isComplete" value = "0" />&nbsp;&nbsp;&nbsp;&nbsp;Defective(to be referred to GSS for repair)
+    <input type = "checkbox" class = "checkbox_group" id = "defective" name = "isComplete" value = "0" />&nbsp;&nbsp;&nbsp;&nbsp;
+    Defective(to be referred to GSS for repair)<span style = "color:red;">*</span>
     </td>
    <?php
     break;
@@ -1009,7 +1012,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input required type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="<?PHP echo setStartDate();?>" required>
+                          <input disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="<?PHP echo setStartDate();?>" required>
 
                           </div>
                           </td>
@@ -1032,7 +1035,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input style = "width:100%;" id= "timepicker" type="time" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" required>
+                          <input style = "width:100%;" id= "timepicker" type="time" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" disabled>
 
                           </div>
                           </td>
@@ -1120,23 +1123,31 @@ $('document').ready(function()
             $(this).val($(this).val().trim());
         }
     );
+
+
    
 });
 
    var c_n = $('#control_no').val();
- 
+
+  
     document.querySelector('.sweet-14').onclick = function(){
+   
       var d = $('#diagnose').val();
       var e = $('#datePicker1').val();
       var f = $('#timepicker').val();
       var g = $('#timepicker2').val();
-
-    if(d == '' || d == null)
+      var h = $('.checkbox_group').val();
+      var check = $("#resolved").is(":checked");
+      var check2 = $("#defective").is(":checked");
+      if(d == '' || d == null)
     {
       alert('Required Field:All fields with * are required!.')
       exit();
     }
-          swal({
+     if(check || check2)
+{
+  swal({
               title: "Are you sure you want to save?",
               text: "Control No:"+c_n,
               type: "info",
@@ -1164,6 +1175,13 @@ $('document').ready(function()
             
             
         });
+}else{
+  alert('Required Field:All fields with * are required!.')
+
+
+}
+ 
+         
     
     }
   $(function () {
