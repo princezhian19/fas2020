@@ -682,7 +682,7 @@ function confirmDelete(delUrl) {
                   </div>
                   <div class="form-group">
                     <label>Unit <font style="color: Red;" >*</font></label>
-                    <input required type="text" name="unit" id="unit"  class="form-control" readonly>
+                    <input  type="text" name="unit" id="unit"  class="form-control" readonly>
                    <!--  <select class="form-control select2" style="width: 100%;" name="unit" id="unit" >
                       <option value="5">------------------------------SELECT UNIT------------------------------</option>
                       <option value="16">book</option>
@@ -718,7 +718,7 @@ function confirmDelete(delUrl) {
                   </div>
                   <div class="form-group">
                     <label>Unit Cost <font style="color: Red;" >*</font></label>
-                    <input required class="form-control" type="text" id="abc"  name="abc" readonly>
+                    <input  class="form-control" type="text" id="abc"  name="abc" readonly>
                   </div>
 
                   <!-- /.box-body -->
