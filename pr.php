@@ -714,7 +714,7 @@ function confirmDelete(delUrl) {
                   <font id="p" hidden>&nbspasd</font>
                   <div class="form-group" style="padding-top: 5px;" >
                     <label >Quantity <font style="color: Red;" >*</font></label>
-                    <input required class="form-control" type="number" id="qty" name="qty" >
+                    <input  class="form-control" type="number" id="qty" name="qty" >
                   </div>
                   <div class="form-group">
                     <label>Unit Cost <font style="color: Red;" >*</font></label>
