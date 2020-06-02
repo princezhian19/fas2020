@@ -1,0 +1,6 @@
+
+.textcancelled  span
+{
+transform:rotate(-150deg);
+display:inline-block;
+}

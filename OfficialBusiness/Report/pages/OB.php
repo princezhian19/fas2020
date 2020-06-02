@@ -81,8 +81,15 @@ $timeto = date('g:i A',strtotime($row['timeto']));
 $uc = $row['uc'];
 $place1 = $row['place1'];
 
+$status = $row['status'];
+$stat="";
 
-
+if($status=='cancelled'){
+$stat='Cancelled';
+}
+else{
+$stat='';
+}
 
 $PHPJasperXML = new PHPJasperXML(); 
 
@@ -91,14 +98,14 @@ if($uc=='yes'){
         "obno"=>$obno,"date"=>$date,
         "name"=>$name,"purpose"=>$purpose,
         "place"=>$place,"obdate"=>$obdate,
-        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'correct.png',"no"=>'check1.png');
+        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'correct.png',"no"=>'check1.png',"cancelled"=>$stat);
 }
 else if ($uc=='no'){
     $PHPJasperXML->arrayParameter=array(
         "obno"=>$obno,"date"=>$date,
         "name"=>$name,"purpose"=>$purpose,
         "place"=>$place,"obdate"=>$obdate,
-        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'check1.png',"no"=>'correct.png');
+        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'check1.png',"no"=>'correct.png',"cancelled"=>$stat);
 }
 else{
 
@@ -106,7 +113,7 @@ else{
         "obno"=>$obno,"date"=>$date,
         "name"=>$name,"purpose"=>$purpose,
         "place"=>$place,"obdate"=>$obdate,
-        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'correct.png',"no"=>'check1.png');
+        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'correct.png',"no"=>'check1.png',"cancelled"=>$stat);
 }
 
 

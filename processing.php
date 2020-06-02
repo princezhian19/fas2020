@@ -110,7 +110,7 @@ function filldataTable()
                                                                                                 
 
                                                 <div class="info-box-content" ><br>
-                                                    <span class="info-box-number"><?php echo $row['TYPE_REQ'];?>
+                                                    <span class="info-box-number">Issue/Problem/Error Details
                                                     </span>
                                                     <span  style ="font-size:15px;">
                                                     <?php 
@@ -121,7 +121,16 @@ function filldataTable()
                                                 </div>
                                                 <div class = "col-lg-3" style = "margin-left:-15px;">
                                                     <span class="progress-description">
-                                                    <b><i>OFFICE</i></b>
+                                                    <b><i style = "font-size:13px;" title=  "<?php echo $row['TYPE_REQ'];?>">Category</i></b>
+                                                    </span>
+                                                    <span class="progress-description"  title=  "<?php echo $row['TYPE_REQ'];?>">
+                                                    <?php echo $row['TYPE_REQ'];?>
+
+                                                    </span>
+                                                </div>
+                                                <div class = "col-lg-3" style = "margin-left:-15px;">
+                                                    <span class="progress-description">
+                                                    <b><i style = "font-size:13px;">Office</i></b>
                                                     </span>
                                                     <span class="progress-description">
                                                     <?php echo $row['OFFICE'];?>
@@ -129,9 +138,9 @@ function filldataTable()
                                                     </span>
                                                 </div>
                                                
-                                                <div class = "col-lg-4">
+                                                <div class = "col-lg-3">
                                                     <span class="progress-description">
-                                                    <i><b>REQUESTED BY</b></i>
+                                                    <i style = "font-size:13px;"><b>Requested by</b></i>
                                                     </span>
                                                     <span class="progress-description">
 
@@ -148,9 +157,9 @@ function filldataTable()
                                                             ?>
                                                     </span>
                                                 </div>
-                                                <div class = "col-lg-5">
+                                                <div class = "col-lg-3">
                                                     <span class="progress-description">
-                                                        <b><i>REQUESTED DATE</i></b>
+                                                        <b><i style = "font-size:13px;">Requested Date</i></b>
                                                     </span>
                                                     <span class="progress-description">
                                                         <?php  
@@ -670,9 +679,9 @@ function countComplete()
                     <div class="post">
                         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                         <thead>
-                            <th>ASSISTED BY</th>
-                            <th>PARTICULAR</th>
-                            <th>ACTION</th>
+                            <th>Assisted by</th>
+                            <th>Particular</th>
+                            <th>Action</th>
                         </thead>
                         <tbody>
                         <?php echo filldataTable();?>
