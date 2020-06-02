@@ -228,7 +228,9 @@ function filldataTable()
                         <?php
                     }else{
                         ?><br>
-                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
+                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">
+                        Assigned Date<br>    
+                        <?php echo '<b>'.date('F d, Y',strtotime($row['ASSIGN_DATE'])).'</b>';?></button>
 
                         <?php
                     }
