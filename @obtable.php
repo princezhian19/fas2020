@@ -79,8 +79,8 @@ include('db.class.php'); // call db.class.php
                   <th>REMARKS</th>
                   <th>GROUP</th>
                   <th>STATUS</th>
-                  <th width=''  style="border-right: 0px; text-align: center;">ACTION</th>
-                  <th width=''></th>
+                  <th width='130'  style="border-right: 0px; text-align: center;">ACTION</th>
+                  
                   
                 </tr>
               </thead>
@@ -184,12 +184,10 @@ include('db.class.php'); // call db.class.php
                                   <?php endif ?>
                                 <?php endif ?>
                                 <td colspan="1" style="border-right: 0px; margin-left:0px">
-                                  <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a>
+                                  <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> | 
+                                  <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a>
                               </td>
-                                <td>
-                                <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a>
-                                </td>
-                              
+                               
                               </tr> 
                             <?php } ?>
                           </table>
