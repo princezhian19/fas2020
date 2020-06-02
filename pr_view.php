@@ -2,6 +2,7 @@
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
 $username = $_SESSION['username'];
+$division = $_SESSION['division'];
 $select = mysqli_query($conn,"SELECT * FROM pr WHERE id = '$id' ");
 $row = mysqli_fetch_array($select);
 $pr_no = $row['pr_no'];
@@ -58,7 +59,7 @@ if (isset($_POST['submit'])) {
 
 
 
-                 <a href="ViewRFQ.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
+                 <a href="ViewPR.php?division=<?php echo $division?>" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
                  <div style="float: right;padding:5px;">
                      <a href="export_pr.php?id=<?php echo $id; ?>" class="btn btn-success" ><i class="fa fa-fw fa-download"></i>Export</a>
                 <?php if ($canceled != NULL): ?>

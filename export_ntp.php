@@ -65,7 +65,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('A16',$supplier_title);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A43',"                     ".$supplier_title);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A17',$supplier_address);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A20','Dear Mr./Ms. '.$contact_person);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A23',$supplier_title.'that the Procurement of '.$purpose.' for '.$pmo.' shall commence upon receipt of the Notice to Proceed. ');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A23',$supplier_title.'that the Procurement of '.$purpose.' shall commence upon receipt of the Notice to Proceed. ');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C37',$designation);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');

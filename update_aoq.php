@@ -28,7 +28,7 @@ $abs_date1 = $rowabs['datetime_created'];
 
 
 // $abs_date = date("Y-m-d\TH:i:s",strtotime($abs_date1));
-$abs_date = date("Y-m-d",strtotime($abs_date1));
+$abs_date = date("m-d-Y",strtotime($abs_date1));
 $abs_date2 = date("H:i",strtotime($abs_date1));
 
 function Allsupplier($connect)
@@ -293,26 +293,26 @@ $sql_items = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.descrip
 
 $sql_items1 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid1 ");
 
-$sql_items11 = mysqli_query($conn, "SELECT sum(sq.ppu) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid1 ");
+$sql_items11 = mysqli_query($conn, "SELECT sum(sq.ppu * rq.qty) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid1 ");
 $rowtots11 = mysqli_fetch_array($sql_items11);
 $totsppu11 = $rowtots11['totalppu'];
 
 $sql_items2 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid2 ");
 
-$sql_items22 = mysqli_query($conn, "SELECT sum(sq.ppu) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid2 ");
+$sql_items22 = mysqli_query($conn, "SELECT sum(sq.ppu * rq.qty) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid2 ");
 $rowtots22 = mysqli_fetch_array($sql_items22);
 $totsppu22 = $rowtots22['totalppu'];
 
 
 $sql_items3 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid3 ");
 
-$sql_items33 = mysqli_query($conn, "SELECT sum(sq.ppu) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid3 ");
+$sql_items33 = mysqli_query($conn, "SELECT sum(sq.ppu * rq.qty) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid3 ");
 $rowtots33 = mysqli_fetch_array($sql_items33);
 $totsppu33 = $rowtots33['totalppu'];
 
 $sql_items4 = mysqli_query($conn, "SELECT sq.ppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid4 ");
 
-$sql_items44 = mysqli_query($conn, "SELECT sum(sq.ppu) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid4 ");
+$sql_items44 = mysqli_query($conn, "SELECT sum(sq.ppu * rq.qty) as totalppu,rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id LEFT JOIN  supplier_quote sq on sq.rfq_item_id = rq.id  WHERE rq.rfq_id = '$rfq_id' AND sq.supplier_id = $sid4 ");
 $rowtots44 = mysqli_fetch_array($sql_items44);
 $totsppu44 = $rowtots44['totalppu'];
 
@@ -599,14 +599,34 @@ $totsppu44 = $rowtots44['totalppu'];
                </div>
              </div>
              <div class="col-md-3">
-               <div class="form-group H1">
+              <!--  <div class="form-group H1">
                 <label>Date Opened</label>
                     <input readonly required type="date" value="<?php echo $abs_date;?>" name="" class="form-control">
+              </div> -->
+              <div class="form-group H1" >
+                  <label>Date Opened</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input readonly type="text" class="form-control pull-right" value="<?php echo $abs_date;?>" name="" id=""  required placeholder="mm/dd/yyyy">
+                    </div>
               </div>
-              <div class="form-group H2" hidden>
+              <!-- <div class="form-group H2" hidden>
                 <label>Date Opened</label>
                     <input required type="date" value="<?php echo $abs_date;?>" name="date_opened" class="form-control">
+              </div> -->
+
+              <div class="form-group H2" hidden>
+                  <label>Date Opened</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" value="<?php echo $abs_date;?>" name="date_opened" id="datepicker2"  required placeholder="mm/dd/yyyy">
+                    </div>
               </div>
+
                <div class="form-group H1">
                 <label>Time Opened</label>
                     <input readonly required type="time" value="<?php echo $abs_date2;?>" name="" class="form-control">
@@ -655,14 +675,16 @@ $totsppu44 = $rowtots44['totalppu'];
                                     </thead>
                                 </table>
                                 <table id="example1" class="table table-striped  table-responsive" style="width:500px;background-color: white;" align="center">
-                                   <thead >
-                                    <th style="float: left;" >Total Quote</th>
-                                    <th width="" ><?php echo number_format($totsppu11,2)?></th>
+                                   <thead  >
+                                    <th style="float: left;" >&nbsp</th>
+                                    <th width="" >&nbsp</th>
                                 </thead>   
                                 <?php 
                                 $b = 1;
                                 while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
+                                    $qty11 = $rowrfid1['qty'];
                                     $ppu11 = $rowrfid1['ppu'];
+                                    $tpu = $qty11 * $ppu11;
                                     $procurement = $rowrfid1['procurement'];
                                     $b++;
                                     ?>
@@ -673,13 +695,18 @@ $totsppu44 = $rowtots44['totalppu'];
                                         <?php if ($WinSupply == $supplier_title1): ?>
 
 
-                                         <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>">&nbsp&nbsp<?php echo $ppu11;?></td>
+                                         <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>">&nbsp&nbsp<?php echo number_format($tpu,2);?></td>
                                          <?php else: ?>
-                                             <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>">&nbsp&nbsp<?php echo $ppu11;?></td>
+                                             <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>">&nbsp&nbsp<?php echo number_format($tpu,2);?></td>
                                          <?php endif ?>
 
                                      </tr>
+
                                  <?php } ?>
+                                 <thead >
+                                    <th style="float: left;" >Total Quote</th>
+                                    <th ><?php echo number_format($totsppu11,2)?></th>
+                                </thead>  
                              </table>
                          </div>
                          <!-- S U P P L I E R      2  -->
@@ -691,24 +718,29 @@ $totsppu44 = $rowtots44['totalppu'];
                         </table>
                         <table id="example1" class="table table-striped  table-responsive" style="width:500px;background-color: white;" align="center">
                            <thead style="width:500px;">
-                            <th width="" ><?php echo number_format($totsppu22,2)?></th>
+                            <th width="" >&nbsp</th>
                         </thead>   
                         <?php 
                         $b = 1;
                         while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
+                            $qty112 = $rowrfid12['qty'];
                             $ppu112 = $rowrfid12['ppu'];
+                            $tpu2 = $qty112 * $ppu112;
                             $procurement2 = $rowrfid12['procurement'];
                             $b++;
                             ?>
                             <tr>
                                 <?php if ($WinSupply == $supplier_title2): ?>
-                                    <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp<?php echo $ppu112;?></td>
+                                    <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp<?php echo number_format($tpu2,2);?></td>
                                  <?php else: ?>
-                                     <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp<?php echo $ppu112;?></td>
+                                     <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp<?php echo number_format($tpu2,2);?></td>
                                  <?php endif ?>
 
                              </tr>
                          <?php } ?>
+                          <thead style="width:500px;">
+                            <th width="" ><?php echo number_format($totsppu22,2)?></th>
+                        </thead> 
                      </table>
                  </div>
              </div>
@@ -727,7 +759,7 @@ $totsppu44 = $rowtots44['totalppu'];
                                 </table>
                                 <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;" >
                                    <thead >
-                                    <th style="float:left;" >Total Quote</th>
+                                    <th style="float:left;" >&nbsp</th>
                                 </thead>   
                                 <?php 
                                 while($rowrfid1 = mysqli_fetch_assoc($sql_items) ){
@@ -737,6 +769,9 @@ $totsppu44 = $rowtots44['totalppu'];
                                         <td><?php echo $procurement;?></td>
                                      </tr>
                                  <?php } ?>
+                                  <thead >
+                                    <th style="float:left;" >Total Quote</th>
+                                </thead> 
                              </table>
                          </div>
 
@@ -749,24 +784,29 @@ $totsppu44 = $rowtots44['totalppu'];
                 </table>
                 <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th width="" ><?php echo number_format($totsppu11,2)?></th>
+                    <th width="" >&nbsp</th>
                 </thead>   
                 <?php 
                 $b = 1;
                 while($rowrfid1 = mysqli_fetch_assoc($sql_items1) ){
+                    $qty11 = $rowrfid1['qty'];
                     $ppu11 = $rowrfid1['ppu'];
+                    $tpu = $qty11 * $ppu11;
                     $b++;
                     ?>
                     <tr>
                         <?php if ($WinSupply == $supplier_title1): ?>
                             <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
-                                <?php echo $ppu11;?></td>
+                                <?php echo number_format($tpu,2);?></td>
                                 <?php else: ?>
                                   <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid1 ?>"> &nbsp&nbsp
-                                    <?php echo $ppu11;?></td>
+                                    <?php echo number_format($tpu,2);?></td>
                                 <?php endif ?>
                             </tr>
                         <?php } ?>
+                        <thead>
+                    <th width="" ><?php echo number_format($totsppu11,2)?></th>
+                </thead>
                     </table>
 
                 </div>
@@ -779,26 +819,31 @@ $totsppu44 = $rowtots44['totalppu'];
                 </table>
                 <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th><?php echo number_format($totsppu22,2)?></th>
+                    <th>&nbsp</th>
                 </thead>   
                 <?php 
                 $b = 1;
                 while($rowrfid12 = mysqli_fetch_assoc($sql_items2) ){
+                    $qty112 = $rowrfid12['qty'];
                     $ppu112 = $rowrfid12['ppu'];
+                    $tpu2 = $qty112 * $ppu112;
                     $b++;
                     ?>
                     <tr >
                       <?php if ($WinSupply == $supplier_title2): ?>
                         <td ><input  type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
-                            <?php echo $ppu112;?></td>
+                            <?php echo number_format($tpu2,2);?></td>
                             <?php else: ?>
                                 <td ><input  type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid2 ?>">&nbsp&nbsp
-                                    <?php echo $ppu112;?></td>
+                                    <?php echo number_format($tpu2,2);?></td>
                                 <?php endif ?>
 
 
                             </tr>
                         <?php } ?>
+                        <thead>
+                    <th><?php echo number_format($totsppu22,2)?></th>
+                </thead>
                     </table>
                 </div>
                 <!-- S U P P L I E R     3  -->
@@ -810,24 +855,29 @@ $totsppu44 = $rowtots44['totalppu'];
                 </table>
                 <table id="example1" class="table table-striped  table-responsive" style="width:300px;background-color: white;">
                    <thead>
-                    <th width="" ><?php echo number_format($totsppu33,2)?></th>
+                    <th width="" >&nbsp</th>
                 </thead>   
                 <?php 
                 $b = 1;
                 while($rowrfid13 = mysqli_fetch_assoc($sql_items3) ){
+                    $qty113 = $rowrfid13['qty'];
                     $ppu113 = $rowrfid13['ppu'];
+                    $tpu3 = $qty113 * $ppu113;
                     $b++;
                     ?>
                     <tr>
                         <?php if ($WinSupply == $supplier_title3): ?>
                            <td><input type="radio" checked name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
-                            <?php echo $ppu113;?></td>
+                            <?php echo number_format($tpu3,2);?></td>
                             <?php else: ?>
                                <td><input type="radio" name="supplier_id<?php echo $b;?>" value="<?php echo $sid3 ?>">&nbsp&nbsp
-                                <?php echo $ppu113;?></td>
+                                <?php echo number_format($tpu3,2);?></td>
                             <?php endif ?>
                         </tr>
                     <?php } ?>
+                     <thead>
+                    <th width="" ><?php echo number_format($totsppu33,2)?></th>
+                </thead> 
                 </table>
             </div>
 

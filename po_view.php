@@ -66,7 +66,7 @@ $id = $rowpo['id'];
     <div class="col-md-8">
         <div class="box">
             <div class="box-header with-border" align="left">
-                <h1>Purchase Request No. &nbsp <?php echo $pr_no;?></h1>
+                <h1>Purchase Order No. &nbsp <?php echo $po_no;?></h1>
                 <?php if ($canceled != NULL): ?>
 
                     <br>

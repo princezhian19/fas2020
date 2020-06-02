@@ -187,7 +187,7 @@ function app($connect)
                       <tbody id="result">
                       </tbody>
                       </table>
-                      <br>
+                      
                       
                     
                 </div>
@@ -201,7 +201,7 @@ function app($connect)
             <div class="row">
                 <div class="col-md-6">
                 <!-- <label style="color: Blue;" >Note: Payee/Supplier Required</label> -->
-                <br>
+               
             
                     <label>Payee<label style="color: Red;" >*</label></label>
                     <input  type="text"  class="form-control" style="height: 35px;" id="payee" placeholder="Payee" name="payee">
@@ -268,8 +268,8 @@ function app($connect)
                 
                 <div class="col-md-6">
                 <label>Date Returned</label>
-                    <br>
-                    <br>
+                    
+                    
                     <div class="input-group date">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>

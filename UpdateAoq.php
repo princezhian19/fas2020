@@ -86,7 +86,17 @@ $username = $_SESSION['username'];
 <script src="dist/js/adminlte.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+  <script>
 
+  $(document).ready(function(){
+    $('#datepicker1').datepicker({
+        autoclose: true
+      })
+      $('#datepicker2').datepicker({
+        autoclose: true
+      })
+  });
+  </script>
 <script>
   $(function () {
     //Initialize Select2 Elements

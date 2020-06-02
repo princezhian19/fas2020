@@ -211,7 +211,7 @@ $edit="edit";
                           <a  href='ViewIssuance.php?division=<?php echo $_SESSION['division'];?>&id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
                           <!-- <a href='UpdateIssuances.php?id=<?php echo $id;?>&option=edit&issuance=<?php echo $issuance_no?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a> |  -->
 
-                          <a name="edit" onclick="myFunction(this)" data-id="<?php echo $id;?>"  data-postedby = "<?php echo $postedby;?>" data-dateposted = "<?php echo $dateposted;?>" data-url = "<?php echo $url;?>" data-gettitle = "<?php echo $subject;?>" data-issuance_no = "<?php echo $issuance_no;?>" data-date_issued = "<?php echo $date_issued11;?>"  data-cat = "<?php echo $name;?>" data-file="<?php echo $file;?>"  value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> |
+                          <a name="edit" onclick="myFunction(this)" data-office = "<?php echo $office;?>" data-id="<?php echo $id;?>"  data-postedby = "<?php echo $postedby;?>" data-dateposted = "<?php echo $dateposted;?>" data-url = "<?php echo $url;?>" data-gettitle = "<?php echo $subject;?>" data-issuance_no = "<?php echo $issuance_no;?>" data-date_issued = "<?php echo $date_issued11;?>"  data-cat = "<?php echo $name;?>" data-file="<?php echo $file;?>"  value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> |
 
                           <a onclick="return confirm('Are you sure you want to delete this record?');" name="del"  href="@Functions/issuancesdelete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                             <?php else :?>
@@ -311,7 +311,7 @@ $edit="edit";
                     <tr>
                         <td class="col-md-2"><b>Issuance Date<span style = "color:red;">*</span></b></td>
                             <td class="col-md-5"> 
-                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = ""  autocomplete="off">
+                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
                                     </tr>
                     <tr>
                         <td class="col-md-2"><b>Title/Subject<span style = "color:red;">*</span></b></td>
@@ -568,8 +568,17 @@ $edit="edit";
                     var dateposted = $("input[name='posteddate1']");
                     var postedby = $("input[name='postedby1']");
                     var issuances1 = $("input[name='issuances1']");
+                    var todiv1 = $("input[name='todiv1']");
 
-
+                    $.ajax({
+                    method:'POST',
+                    url:"getissuance.php?",
+                    data: {issuance_no:issuance_no},
+                        success : function(data) {
+                          todiv1.val(data);
+                          //alert(data);
+                        }
+                    });
                    
                    
                     var filePath = "files/"+file;
@@ -586,10 +595,6 @@ $edit="edit";
                     issuances1.val(issuance_no);
                    
                      
-                     
-                  
-
-
                     if(file!=""){
                       document.getElementById('modal-test').innerHTML = file;
                       document.getElementById('modal-test').href = filePath;
@@ -651,10 +656,11 @@ $edit="edit";
                                 <tr>
                         <td class="col-md-2"><b>Concerned Office</b></td>
                             <td class="col-md-5"> 
-                            
+
+                          
                               
                               <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
-                              <input id="office1" required name="todiv1" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
+                              <input value="" id="office1" required name="todiv1" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
                               <div class="office-responsible1 well  " style="text-align:linear ;position: absolute;display: none;max-width: 80%;">
 
                           <?php
@@ -927,7 +933,10 @@ $("legend :checkbox").click(function(){
 
 $('.'+getcheckboxes1).prop('checked',this.checked);
 
-
+  str1 += $(this).val() + delimiter1;
+     var g = str1.replace(';;;;;;;15;','');
+     var g1 = g.replace('on;','');
+     text1.val(g1);
 });
 
  $(":checkbox").click(function () {
@@ -944,10 +953,11 @@ $('.'+getcheckboxes1).prop('checked',this.checked);
      
      // set the value of the textbox
    
-     var final1 = str1 .replace(';;;;;;;15;11;','');
+     var final1 = str1 .replace(';;;;;;;15;','');
+     var final2 = final1 .replace('11;','');
      //alert(final);
      text1.val('');
-     text1.val(final1);
+     text1.val(final2);
      
      
  });
