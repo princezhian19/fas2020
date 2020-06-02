@@ -57,7 +57,7 @@ th {
               &nbsp;&nbsp;&nbsp;&nbsp;
                 <button style="color:white;text-decoration: none; height: 35px; " type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button> | 
 
-                <li class="btn btn-success"><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none; height: 35px; ">&nbsp;&nbsp;&nbsp;Export All&nbsp;&nbsp;&nbsp;</a></li>
+                <li class="btn btn-success "><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none; height: 35px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export All&nbsp;&nbsp;&nbsp;</a></li>
                                    
             </form>
                 

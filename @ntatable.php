@@ -43,27 +43,21 @@ $username = $_SESSION['username'];
                 
                 </td>
                     
-                <td class="col-md-4" >
+                <td class="col-md-5" >
 
                   
                 </td>
 
-                <td class="col-md-7" style = "text-align:center;">
+                <td class="col-md-6" style = "text-align:center;">
                 <form method = "POST" action = "@Functions/ntadateexport.php">
               
-              <div class="input-group date">
-                  <div class="input-group-addon">
-                  FROM   <i class="fa fa-calendar"></i>
-              </div>
-                  <input type="text" class="form-control" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
               
-              <div class="input-group date">
-                  <div class="input-group-addon">
-                  TO <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp<button type="submit" name="submit"  class="btn btn-success pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export Data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                  <input type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 250px">
+                  &nbsp;&nbsp;&nbsp;
+            
+                  <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 250px">
+                 
+                  &nbsp;<button type="submit" name="submit"  class="btn btn-success pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export Data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 
                     <!-- &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none;">Export All</a></li> -->
               </div>                        
