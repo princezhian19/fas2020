@@ -66,7 +66,8 @@ if (isset($_POST['submit'])) {
   $purpose1 = $_POST['purpose'];
   $pmo1 = $_POST['pmo'];
   $unit1 = $_POST['unit1'];
-  $pr_no1 = $_POST['pr_no'];
+  $pr_no1 = $latest_pr_no;
+  // $pr_no1 = $_POST['pr_no'];
   $pmo2 = $_POST['pmo'];
   $type = $_POST['type'];
   $target_date = $_POST['target_date'];
@@ -182,7 +183,7 @@ if (isset($_POST['submit'])) {
     echo "<div style='background-color:lightblue;color:red;'> <p> <b>This PR_NO is already existing</b> <p> <div>";
   }else{
 
-
+    echo "INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2')"; exit;
     $insert_pr = mysqli_query($conn,"INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2')");
 
     for($count = 0; $count < count($_POST["items1"]); $count++)
@@ -681,7 +682,7 @@ function confirmDelete(delUrl) {
                   </div>
                   <div class="form-group">
                     <label>Unit <font style="color: Red;" >*</font></label>
-                    <input required type="text" name="unit" id="unit"  class="form-control" readonly>
+                    <input  type="text" name="unit" id="unit"  class="form-control" readonly>
                    <!--  <select class="form-control select2" style="width: 100%;" name="unit" id="unit" >
                       <option value="5">------------------------------SELECT UNIT------------------------------</option>
                       <option value="16">book</option>
@@ -713,11 +714,11 @@ function confirmDelete(delUrl) {
                   <font id="p" hidden>&nbspasd</font>
                   <div class="form-group" style="padding-top: 5px;" >
                     <label >Quantity <font style="color: Red;" >*</font></label>
-                    <input required class="form-control" type="number" id="qty" name="qty" >
+                    <input  class="form-control" type="number" id="qty" name="qty" >
                   </div>
                   <div class="form-group">
                     <label>Unit Cost <font style="color: Red;" >*</font></label>
-                    <input required class="form-control" type="text" id="abc"  name="abc" readonly>
+                    <input  class="form-control" type="text" id="abc"  name="abc" readonly>
                   </div>
 
                   <!-- /.box-body -->
@@ -732,8 +733,6 @@ function confirmDelete(delUrl) {
 
         <br>
         <br>
-        </form>
-         <form method="POST">
         <div class="form-group">
         <label>Added PR Item/s.</label>
         <div>
