@@ -217,7 +217,9 @@ echo '-';
                 
                     
             </td>
-           
+           <td>
+           <button class = "btn btn-success btn-md"><a href = "rateService.php?id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >Rate Service</a></button>
+           </td>
         </tr>
         <?php
     }
@@ -623,6 +625,7 @@ function countCompleted()
                             <th style = "text-align:center;">Particular</th>
                             <th style = "width:1%;">Received Date</th>
                             <th style = "width:1%;">Completed Date</th>
+                            <th style = "width:1%;text-align:center;">Action</th>
                         </thead>
                         <tbody>
                         <?php echo filldataTable();?>
