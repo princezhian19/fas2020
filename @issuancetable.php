@@ -311,7 +311,7 @@ $edit="edit";
                     <tr>
                         <td class="col-md-2"><b>Issuance Date<span style = "color:red;">*</span></b></td>
                             <td class="col-md-5"> 
-                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = ""  autocomplete="off">
+                            <input required type="text" class="form-control" style="height: 35px;" name="dateissued" id="datepicker1" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
                                     </tr>
                     <tr>
                         <td class="col-md-2"><b>Title/Subject<span style = "color:red;">*</span></b></td>
@@ -654,7 +654,7 @@ $edit="edit";
                             
                               
                               <div style="margin-bottom: 20px;" class="form-group offices-container checkbox">
-                              <input id="office1" required name="todiv1" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
+                              <input value="<?php echo ''?>" id="office1" required name="todiv1" autocomplete ="off" type="text" class="form-control" placeholder="Click to Select">
                               <div class="office-responsible1 well  " style="text-align:linear ;position: absolute;display: none;max-width: 80%;">
 
                           <?php
