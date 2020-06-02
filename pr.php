@@ -66,7 +66,8 @@ if (isset($_POST['submit'])) {
   $purpose1 = $_POST['purpose'];
   $pmo1 = $_POST['pmo'];
   $unit1 = $_POST['unit1'];
-  $pr_no1 = $_POST['pr_no'];
+  $pr_no1 = $latest_pr_no;
+  // $pr_no1 = $_POST['pr_no'];
   $pmo2 = $_POST['pmo'];
   $type = $_POST['type'];
   $target_date = $_POST['target_date'];
@@ -182,7 +183,7 @@ if (isset($_POST['submit'])) {
     echo "<div style='background-color:lightblue;color:red;'> <p> <b>This PR_NO is already existing</b> <p> <div>";
   }else{
 
-
+    echo "INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2')"; exit;
     $insert_pr = mysqli_query($conn,"INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2')");
 
     for($count = 0; $count < count($_POST["items1"]); $count++)
@@ -732,8 +733,6 @@ function confirmDelete(delUrl) {
 
         <br>
         <br>
-        </form>
-         <form method="POST">
         <div class="form-group">
         <label>Added PR Item/s.</label>
         <div>
@@ -883,7 +882,7 @@ function confirmDelete(delUrl) {
    <br>
  </form>
 
- <button class="btn btn-success" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
+ <button class="btn btn-success" id="" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
 </div>  
 </div>  
 <br>
