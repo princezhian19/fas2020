@@ -27,7 +27,8 @@ th {
 
 
 
-                      
+        <div class=""  style="overflow-x:auto;">
+    
                 <table class="table" > 
 
               <!-- Header -->
@@ -35,34 +36,29 @@ th {
                 <td class="col-md-1">
                 <li class="btn btn-success"><a href="sarocreate.php" style="color:white;text-decoration: none;">Create</a></li>
 
+              </td>
 
+              <td class="col-md-5">
+               
+
+              </td>
                 
-                </td>
-                    
-                <td class="col-md-3" >
-
-                  
-                </td>
-
-                <td class="col-md-8" style = "text-align:center;">
-                <form method = "POST" action = "@Functions/sarodateexport.php">
-            <div class="input-group date">
-              <div class="input-group-addon">
-                FROM   <i class="fa fa-calendar"></i>
-              </div>
-              <input type="text" class="form-control" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
               
-              <div class="input-group date">
-                <div class="input-group-addon">
-                  TO <i class="fa fa-calendar"></i>
-                </div>
-                <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                <button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button> | 
+                <td colspan="1" style = "text-align:center; overflow-x:auto;">
+                <form method = "POST" action = "@Functions/sarodateexport.php">
+             
+             
+              <input autocomplete="off" type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
+              &nbsp;&nbsp;
+              <input autocomplete="off" type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
+               
 
-                <li class="btn btn-success"><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none;">&nbsp;&nbsp;&nbsp;Export All&nbsp;&nbsp;&nbsp;</a></li>
-              </div>                            
+              &nbsp;&nbsp;&nbsp;
+                <button style="color:white;text-decoration: none; height: 35px; " type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button> | 
+
+                <li class="btn btn-success"><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none; height: 35px; ">&nbsp;&nbsp;&nbsp;Export All&nbsp;&nbsp;&nbsp;</a></li>
+                                   
             </form>
                 
 
@@ -73,6 +69,7 @@ th {
                 </tr>
                 <!-- Header -->
         </table>
+   </div>
 
 
         <div class=""  style="overflow-x:auto;">
@@ -94,8 +91,10 @@ th {
                 <th width="">DISBURSEMENT</th>
                 <th width="">BALANCE</th>
                 <th width="">GROUP</th>
-                <th width=''>ACTION</th>
-                <th width=''></th>
+                <th colspan="" style="border-right: 0px; text-align: center;" >ACTION</th>
+                <th width='' style="border-right: 0px; text-align: center;" >&nbsp;</th>
+                <th width=''>&nbsp;</th>
+                
               </tr>
               </thead>
               <?php
@@ -137,16 +136,18 @@ th {
                   <td><?php echo $obligated?></td>
                   <td><?php echo $balance?></td>
                   <td><?php echo $sarogroup?></td>
-                  <td> 
-
+                  <td style="border-right: 0px; margin-left:0px" colspan="1" style="text-align: center;"> 
                   <a class="btn btn-info btn-xs" href='obtableViewMain.php?getsaroID=<?php echo $saronumber?>&getuacs=<?php echo $uacs?>'> <i class='fa'>&#xf06e;</i> View</a>
+          
                  
                   </td>
 
-                  <td> 
-
-                 
+                  <td style="border-right: 0px;  margin-left:0px"> 
                   <a class="btn btn-primary btn-xs"href='saroupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a>
+                  </td>
+
+                   <td style="margin-left:0px">
+                   <a onclick="return confirm('Are you sure you want to delete this record?');" name=""  href="dis.php?id=<?php echo $id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
                   </td>
                     
                  
