@@ -15,7 +15,7 @@
         <div class=""style="overflow-x:auto;"> 
           <div class=""style="overflow-x:auto;">
 
-            <h1 align=""><!-- &nbspNTA Payment --></h1>
+            <h1 align="">Payment</h1>
              <div class="box-header "style="overflow-x:auto;">
             </div>
 
