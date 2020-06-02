@@ -30,7 +30,14 @@ $lunch_inL = $rowl['lunch_in'];
 $lunch_outL = $rowl['lunch_out'];
 $time_outL = $rowl['time_out'];
 
+$date_now = date('Y-m-d');
+
 if (isset($_POST['stamp1'])) {
+
+  $check1 =mysqli_query($conn,"SELECT * FROM dtr WHERE lunch_in = '$date_now' AND UNAME = '$username' ");
+  if (mysqli_num_rows($check1)>0) {
+    # code...
+  }
   $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,time_in) VALUES('$username',now())");
 
   if ($insert) {
@@ -141,7 +148,7 @@ if (isset($_POST['stamp4'])) {
           </thead>
           <?php 
 
-          $view_query = mysqli_query($conn, "SELECT * FROM dtr WHERE UNAME ='$username' ");
+          $view_query = mysqli_query($conn, "SELECT * FROM dtr WHERE UNAME ='$username' ORDER BY id ASC");
 
           while ($row = mysqli_fetch_assoc($view_query)) {
             $id = $row["id"];
@@ -153,11 +160,12 @@ if (isset($_POST['stamp4'])) {
             ?>
 
             <tr>
-              <td>$UNAME</td>
-              <td>$time_in</td>
-              <td>$lunch_in</td>
-              <td>$lunch_out</td>
-              <td>$time_out</td>
+              <td><?php echo $UNAME?></td>
+              <td><?php echo $time_in?></td>
+              <td><?php echo $lunch_in?></td>
+              <td><?php echo $lunch_out?></td>
+              <td><?php echo $time_out?></td>
+              <td><?php echo $time_out?></td>
             </tr>
           <?php } ?>
         </table>
@@ -182,7 +190,7 @@ if (isset($_POST['stamp4'])) {
           <form method="POST">
             <tr>
               <th class="pull-left" >Time In</th>
-              <?php if ($time_inL != NULL): ?>
+              <?php if (mysqli_num_rows($check1)>0): ?>
               <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
                 
                 <?php else: ?>

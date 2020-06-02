@@ -182,6 +182,7 @@ if (isset($_POST['submit'])) {
     echo "<div style='background-color:lightblue;color:red;'> <p> <b>This PR_NO is already existing</b> <p> <div>";
   }else{
 
+    echo "INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2')";exit;
 
     $insert_pr = mysqli_query($conn,"INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2')");
 
@@ -732,7 +733,8 @@ function confirmDelete(delUrl) {
 
         <br>
         <br>
-         
+        </form>
+         <form method="POST">
         <div class="form-group">
         <label>Added PR Item/s.</label>
         <div>
