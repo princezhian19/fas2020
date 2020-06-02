@@ -35,52 +35,6 @@ $styler = array('font'  => array('size'  => 11, 'name'  => 'Cambria'),'alignment
 $styleLabel = array('font'  => array('size'  => 9, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 $styleLabel2 = array('font'  => array('size'  => 11, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
-// function convertToWords($number)
-//     {
-//         $hyphen      = '-';
-//         $conjunction = ' ';
-//         $separator   = ' ';
-//         $negative    = 'negative ';
-//         $decimal     = ' and ';
-//         $dictionary  = array(
-//             0                   => 'Zero',
-//             1                   => 'One',
-//             2                   => 'Two',
-//             3                   => 'Three',
-//             4                   => 'Four',
-//             5                   => 'Five',
-//             6                   => 'Six',
-//             7                   => 'Seven',
-//             8                   => 'Eight',
-//             9                   => 'Nine',
-//             10                  => 'Ten',
-//             11                  => 'Eleven',
-//             12                  => 'Twelve',
-//             13                  => 'Thirteen',
-//             14                  => 'Fourteen',
-//             15                  => 'Fifteen',
-//             16                  => 'Sixteen',
-//             17                  => 'Seventeen',
-//             18                  => 'Eighteen',
-//             19                  => 'Nineteen',
-//             20                  => 'Twenty',
-//             30                  => 'Thirty',
-//             40                  => 'Fourty',
-//             50                  => 'Fifty',
-//             60                  => 'Sixty',
-//             70                  => 'Seventy',
-//             80                  => 'Eighty',
-//             90                  => 'Ninety',
-//             100                 => 'Hundred',
-//             1000                => 'Thousand',
-//             1000000             => 'Million',
-//             1000000000          => 'Billion',
-//             1000000000000       => 'Trillion',
-//             1000000000000000    => 'Quadrillion',
-//             1000000000000000000 => 'Quintillion'
-
-//         );
-
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
 $supplier_id = $_GET['supplier_id'];
@@ -148,7 +102,7 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   $item_unit_title1 = $excelrow["item_unit_title"];
 
   $total = $excelrow['qty']*$excelrow['ppu'];
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLabel);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLabel);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['sn']);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$item_unit_title1);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$excelrow['procurement'] ."\n".$excelrow['description']);
