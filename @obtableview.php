@@ -36,9 +36,9 @@ $getUacs = $_GET['getuacs'];
             <!--  Getting Hidden Variables -->
 
 
-            <h1 align="" >&nbspDisbursement for the Fund Source :  <label ><?php echo $getSaro?></label></h1>
-            <h1 align="" >&nbspDisbursement for the UACS :   <label name="uacs" ><?php echo $getUacs?></label></h1>
-            <h1 align="" >&nbspAllotment Amount :   <label ><?php
+            <h3 align="" >&nbspDisbursement for the Fund Source :  <label ><?php echo $getSaro?></label></h3>
+            <h3 align="" >&nbspDisbursement for the UACS :   <label name="uacs" ><?php echo $getUacs?></label></h3>
+            <h3 align="" >&nbspAllotment Amount :   <label ><?php
               
               $servername = "localhost";
               $username = "fascalab_2020";
@@ -49,10 +49,10 @@ $getUacs = $_GET['getuacs'];
              $getAmount = mysqli_query($conn, "SELECT * FROM  saro where  saronumber = '$getSaro' and uacs = '$getUacs' ");
              $rowAmount = mysqli_fetch_array($getAmount);
              $amount = $rowAmount['amount'];
-            echo number_format($amount,2)?></label></h1>
+            echo number_format($amount,2)?></label></h3>
            
 
-            <h1 align="" >&nbspTotal Obligation Amount :   <?php $getSaro = $_GET['getsaroID'];
+            <h3 align="" >&nbspTotal Obligation Amount :   <?php $getSaro = $_GET['getsaroID'];
           
             
             $servername = "localhost";
@@ -64,7 +64,7 @@ $getUacs = $_GET['getuacs'];
             $AmountAll = mysqli_query($conn, "SELECT sum(amount) as a FROM saroob where saronumber = '$getSaro' and uacs = '$getUacs' and status='Obligated' "); 
             $rowAmount = mysqli_fetch_array( $AmountAll);
 
-            echo  number_format($rowAmount['a'],2)?></h1>
+            echo  number_format($rowAmount['a'],2)?></h3>
              <input type="text" class="text" name="totalob" value="<?php echo $rowAmount['a'];?>" hidden>
 
 

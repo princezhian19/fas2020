@@ -68,8 +68,9 @@ $username = $_SESSION['username'];
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <!-- <li><a href="ViewIAR.php"><i class=""></i> Home</a></li> -->
-        <li class="active">Items</li>
+        <li><a href="#"><i class=""></i> Home</a></li>
+        <li class="active">Budget</li>
+        <li class="active">View SARO</li>
       </ol>
       <br>
       <br>
