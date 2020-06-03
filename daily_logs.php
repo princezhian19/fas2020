@@ -25,7 +25,7 @@ $ACCESSTYPE = $rowU['ACCESSTYPE'];
 $date_now = date('Y-m-d');
 $now_date = date('Y-m-d H:i:s');
 
-$logs = mysqli_query($conn,"SELECT * FROM dtr WHERE UNAME = '$username' AND `time_in` LIKE '%$date_now%' ||  `lunch_in` LIKE '%$date_now%' ||  `lunch_out` LIKE '%$date_now%' ||  `time_out` LIKE '%$date_now%'");
+$logs = mysqli_query($conn,"SELECT * FROM dtr WHERE UNAME = '$username' AND `date_today` LIKE '%$date_now%'");
 
 // $logs = mysqli_query($conn,"SELECT * FROM dtr WHERE UNAME = '$username' AND `time_in` LIKE '%$date_now%' ");
 $rowl = mysqli_fetch_array($logs);
@@ -36,10 +36,10 @@ $time_outL = $rowl['time_out'];
 
 
 
-$check1 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND `time_in` LIKE '%$date_now%' ");
-$check2 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND `lunch_in` LIKE '%$date_now%' ");
-$check3 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND `lunch_out` LIKE '%$date_now%' ");
-$check4 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND `time_out` LIKE '%$date_now%' ");
+$check1 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `time_in` IS NOT NULL ");
+$check2 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `lunch_in` IS NOT NULL ");
+$check3 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `lunch_out` IS NOT NULL ");
+$check4 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `time_out` IS NOT NULL ");
 
 $checkall = mysqli_query($conn,"SELECT * FROM dtr WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
 
@@ -220,21 +220,28 @@ if (isset($_POST['stamp4'])) {
                 <?php 
                 $undertime = 0;
                 if(date('d',strtotime($date_today)) == '01'){ 
-                // if(date('h:i',strtotime($time_in)) > date('h:i',strtotime('08:00'))){ //morning late
-                $undertime = date('h:i',strtotime('10:00'))-date('h:i',strtotime('08:00'));
-                echo date('H',$undertime);
+                // $undertime = date('h:i',strtotime('10:00'))-date('h:i',strtotime('08:00'));
+                // echo date('H',$undertime);
+                if(date('h:i',strtotime($time_in)) > date('h:i',strtotime('08:00'))){ //morning late
+                $datetime2 = new DateTime('08:00');//start time
+                $datetime1 = new DateTime($time_in);//end time
+                $dd22 = $datetime1->diff($datetime2);
+                echo $dd22->format('%h:%i');
+                echo "<br>";
+                echo $time_in;
+                }
 
-                // }
+                
                 // if(strtotime($time_out) < strtotime('17:00')){ //morning late
                 //   $undertime += strtotime('17:00') - strtotime($time_out);
                 // }
 
-                echo $dd = strtotime($time_in);
-                echo "<br>";
-                echo $dd2 = strtotime('08:00');
-                echo "<br>";
-                 $dd22 = $dd2 - $dd;
-                 echo date('H:i',$dd22);
+                // echo $dd = strtotime($time_in);
+                // echo "<br>";
+                // echo $dd2 = strtotime('08:00');
+                // echo "<br>";
+                //  $dd22 = $dd2 - $dd;
+                //  echo date('%H:%i',$dd22);
 
                 // echo $dd = date('g:i',strtotime($time_out));
                 // echo "<br>";
@@ -242,8 +249,8 @@ if (isset($_POST['stamp4'])) {
                 // echo "<br>";
                 // echo $dd22 = $dd - $dd2;
 
-                if (date('H', $undertime) > 0) {
-                }
+if (date('H', $undertime) > 0) {
+}
 
               //   if($undertime!=0 && date('H', $undertime) > 0){
               //    echo date('H', $undertime);
@@ -255,21 +262,21 @@ if (isset($_POST['stamp4'])) {
               // }else{
               //   echo '';
               // }
-              }else{
-                echo "flexi days";
-              }
+}else{
+  echo "flexi days";
+}
 
 
 
-              ?>
+?>
 
-            </td>
-            <td></td>
-          </tr>
-        <?php } ?>
-      </table>
-    </div>
-  </div>
+</td>
+<td></td>
+</tr>
+<?php } ?>
+</table>
+</div>
+</div>
 </div>
 </div>
 
