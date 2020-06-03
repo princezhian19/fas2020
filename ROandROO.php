@@ -52,7 +52,7 @@ $division = $_GET['division'];
   </style>
 </head>
 <?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('test1.php'); }else{ include('sidebar2.php'); }
+  if ($username == 'charlesodi' || $username == '' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' ||  $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno') { include('test1.php'); }else{ include('sidebar2.php'); }
  ?>
  
  <body class="hold-transition skin-red-light sidebar-mini">
