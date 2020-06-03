@@ -57,14 +57,19 @@ $username = $_SESSION['username'];
 
 
 </head>
+
+<?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('test1.php'); }else{ include('sidebar2.php'); }
+ ?>
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
-  <?php include('test1.php');?>
+
   
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
+        <li class="active">Accounting</li>
         <li class="active">Create NTA/NCA</li>
       </ol>
       <br>
@@ -193,6 +198,10 @@ $username = $_SESSION['username'];
     </div>
   </form>
     <!--End Submit -->
+    <br>
+        <br>
+        <br>
+        
   </div>
   <footer class="main-footer">
     <br>

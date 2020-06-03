@@ -38,31 +38,36 @@ th {
 
               </td>
 
-              <td class="col-md-5">
+              <td class="col-md-7">
                
 
               </td>
                 
               
-
-                <td colspan="1" style = "text-align:center; overflow-x:auto;">
                 <form method = "POST" action = "@Functions/sarodateexport.php">
-             
-             
-              <input autocomplete="off" type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
-              &nbsp;&nbsp;&nbsp;
-              <input autocomplete="off" type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
                
+               
+                <td class="col-md-1">
+                <input autocomplete="off" type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
 
-              &nbsp;&nbsp;&nbsp;&nbsp;
-                <button style="color:white;text-decoration: none; height: 35px; " type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button> | 
+               </td>
+               <td class="col-md-1">
+               <input autocomplete="off" type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
 
-                <li class="btn btn-success "><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none; height: 35px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export All&nbsp;&nbsp;&nbsp;</a></li>
-                                   
-            </form>
+               </td>
+               <td class="col-md-1">
+               <button style="color:white;text-decoration: none; height: 35px; " type="submit" name="submit"  class="btn btn-success pull-right">Filter/Export Data</button>
+
+               </td>
+               <td class="col-md-1">
+               <li class="btn btn-success pull-right "><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none; height: 35px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export All&nbsp;&nbsp;&nbsp;</a></li>
+
+               </td>
+
+                </form>
                 
 
-                </td>
+              
 
 
 

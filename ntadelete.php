@@ -16,27 +16,26 @@ if ($conn->connect_error) {
 //echo "Connected successfully";
 
 //Get Data
-$getid = $_GET['getid'];
+$id = $_GET['id'];
+//echo $getid;
 
+$do = "DELETE FROM nta where id = ".$id."";
+/* echo "DELETE FROM nta where id = ".$id."";
+exit(); */
 
-// Perform queries
-
-$do = "DELETE FROM disbursement where ID = ".$getid."";
 $query = mysqli_query($conn,$do);
-
-
-
 mysqli_close($conn);
 
 if($query){
 
+  
 //if query is successful
 echo ("<SCRIPT LANGUAGE='JavaScript'>
-window.alert('Disbursement Deleted Successfully!')
-window.location.href='../disbursement.php';
+window.alert('NTA/NCA Deleted Successfully!')
+
+window.location.href='nta.php';
 </SCRIPT>"); 
 
-//header('Location:../@obligation.php?message=Data Added Successfully!');
 
 }
 else{
@@ -45,9 +44,10 @@ else{
 echo ("<SCRIPT LANGUAGE='JavaScript'>
 
 window.alert('Error!')
-window.location.href='../disbursement.php';
+window.location.href='nta.php';
 </SCRIPT>");
 }
+
 
 
 
