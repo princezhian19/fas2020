@@ -19,9 +19,8 @@ switch ($option) {
         $insert ="UPDATE `tbltechnical_assistance` SET 
         `STATUS_REQUEST` = 'Received',
         `START_DATE` = '$date_recieved',
-        `START_TIME` = '$time_recieved',
-        `ASSIST_BY`  = '$complete_name'
-        WHERE `CONTROL_NO` = '$id' ";
+        `START_TIME` = '$time_recieved'
+         WHERE `CONTROL_NO` = '$id' ";
         if (mysqli_query($conn, $insert)) {
         } else {
         }

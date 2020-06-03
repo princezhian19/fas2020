@@ -88,7 +88,10 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                       $issue = $row['ISSUE_PROBLEM'];
                       $status_desc = $row['STATUS_DESC'];
                       $timeliness = $row['TIMELINESS'];
-                      $quality = $row['QUALITY'];
+                    
+                      
+                      $quality = $row['STATUS'];
+
                       $assisted_by =strtoupper($row['ASSIST_BY']);
                      
                       // $status = $row['status'];

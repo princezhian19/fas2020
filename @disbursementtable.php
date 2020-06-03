@@ -28,31 +28,32 @@
                   <li class="btn btn-success"><a href="CreateDisbursement1.php" style="color:white;text-decoration: none;">Create</a></li>
                   </td>
                       
-                  <td class="col-md-2" >
+                  <td class="col-md-7" >
 
                     
                   </td>
-
-                  <td class="col-md-9" style = "text-align:center;">
-
-                  
                   <form method = "POST" action = "@Functions/ddateexport1.php">
-                <div class="input-group date" style="overflow-x:auto;">
-                  <div class="input-group-addon" style="overflow-x:auto;">
-                    FROM   <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
-                  <div class="input-group date" style="overflow-x:auto;">
-                    <div class="input-group-addon" style="overflow-x:auto;">
-                      TO <i class="fa fa-calendar"></i>
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                    <button type="submit" name="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter/Export Data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                  <td class="col-md-1" style = "text-align:center;">
+                  <input type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 220px">
+                
+                 <td class="col-md-1" >
+                <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 220px">
+                
+                </td>
+                <td class="col-md-1" >
+                <button type="submit" name="submit"  class="btn btn-success pull-right ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter/Export Data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                
+                </td>
+
+                <td class="col-md-1" >
+                <button type="Summary" name="Summary"  class="btn btn-success pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export Summary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                
+                </td>
                     
-                    &nbsp;&nbsp;&nbsp;  <button type="Summary" name="Summary"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export Summary&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                  </div>                 
+                        
                 </form>
+
+            
                   
 
                   </td>
@@ -185,8 +186,9 @@
                                         <?php endif ?>
                                       <?php endif ?>
                                       <td>
-                                        <a  class = "btn btn-primary btn-xs" href='disbursementupdate.php?getid=<?php echo $id;?>' > <i class='fa'>&#xf044;</i> Edit</a>
-                                        <!-- <a href='@Functions/ddeletefunction.php?getid=<?php echo $id;?>'> <i style='font-size:24px'> <i class='fa fa-trash-o'></i></i> </a> -->
+                                        <a  class = "btn btn-primary btn-xs" href='disbursementupdate.php?getid=<?php echo $id;?>' > <i class='fa'>&#xf044;</i> Edit</a> | 
+                                      
+                                        <a onclick="return confirm('Are you sure you want to delete this record?');" name=""  href="@Functions/ddeletefunction.php?getid=<?php echo $id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>                                     
                                       </td>
                                     </tr>
                                   <?php } ?>    

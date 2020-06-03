@@ -60,21 +60,23 @@ $edit="edit";
   <li class="btn btn-success"><a href="OfficialBusinessCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a></li>
   </td>
       
-  <td class="col-md-3" >
+  <td class="col-md-6" >
 
     
   </td>
 
-  <td class="col-md-7" style = "text-align:center;">
+  <form method = "POST" action = "ob_export_date.php">
+
+  <td class="col-md-1" >
 
   
-<form method = "POST" action = "ob_export_date.php">
+
 <?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
 
  
 
-      <b>Month</b>
-  <select class="" name="month" id = "selectMonth" style="width: 150px; Height:30px;">
+  <b>Month</b>
+  <select class="" name="month" id = "selectMonth" style="width: 130px; Height:30px;">
                               <?php 
                                 $current_month =  date('F');
                               switch($current_month){
@@ -264,9 +266,9 @@ $edit="edit";
                               </select>
 
   
-  
-  <b>Year</b>
-  <select class="" id="year" name="year" style="width: 150px; Height:30px;">
+<td class="col-md-1" >
+<b>Year</b>
+  <select class="" id="year" name="year" style="width: 130px; Height:30px;">
   
     <option value="2020">2020</option>
     <option value="2021">2021</option>
@@ -281,9 +283,12 @@ $edit="edit";
     <option value="2030">2030</option>
     
   </select>
-
+    
+</td>
+  
+<td class="col-md-1" >
   <b>Office</b>
-  <select class="" id="office" name="office" style="width: 150px; Height:30px;">
+  <select class="" id="office" name="office" style="width: 130px; Height:30px;">
     
     <option value="ALL">ALL</option>
     <option value="ORD">ORD</option>
@@ -300,13 +305,15 @@ $edit="edit";
     <option value="Lucena City">Lucena City</option>
     
   </select>
-  &nbsp;&nbsp;&nbsp;
-  <button style="  Height:30px;"  id="" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
-                 
-  </form>
-  
 
+</td>
+
+<td class="col-md-1" >
+  <br>
+  <button style="  Height:30px;"  id="" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;&nbsp;&nbsp;</button>              
   </td>
+
+  </form>
 
   <?php else:?>
 

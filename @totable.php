@@ -67,285 +67,272 @@ $edit="edit";
           <h1 align="">Travel Order</h1>
           
           <br>
-          <table class="table" > 
+<table class="table" > 
 
 <!-- Header -->
-  <tr>
-  <td class="col-md-2">
-  <!-- <li class="btn btn-success"><a href="OfficialBusinessCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Add</a></li> -->
-  <li class="btn btn-success"><a href="TravelOrderCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a></li>  
+<tr>
+<td class="col-md-2">
+
+<li class="btn btn-success"><a href="TravelOrderCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a></li>  
 </td>
-      
-  <td class="col-md-3" >
 
-    
-  </td>
+<td class="col-md-6" >
 
-  <td class="col-md-7" style = "text-align:center;">
 
- <!--  to_export_date.php -->
-  <form method = "POST" action = "to_export_date.php">
-  <?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
-  
- 
+</td>
 
-      <b>Month</b>
-<!--      
-  <select class="" id = "selectMonth" name="month" style="width: 150px; Height:30px;">
-    <option value="January">January</option>
-    <option value="February">February</option>
-    <option value="March">March</option>
-    <option value="April">April</option>
-    <option value="May">May</option>
-    <option value="June">June</option>
-    <option value="July">July</option>
-    <option value="August">August</option>
-    <option value="September">September</option>
-    <option value="October">October</option>
-    <option value="November">November</option>
-    <option value="December">December</option>
-  </select> -->
-  <select class="" name="month" id = "selectMonth" style="width: 150px; Height:30px;">
-                              <?php 
-                                $current_month =  date('F');
-                              switch($current_month){
-                                case 'January':
-                                  echo '
-                                  <option value="01" selected>January</option>
-                                  <option value="02">February</option>
-                                  <option value="03">March</option>
-                                  <option value="04">April</option>
-                                  <option value="05">May</option>
-                                  <option value="06">June</option>
-                                  <option value="07">July</option>
-                                  <option value="08">August</option>
-                                  <option value="09">September</option>
-                                  <option value="10">October</option>
-                                  <option value="11">November</option>
-                                  <option value="12">December</option>';
-                                break;
-                                case 'February':
-                                  echo '
-                                  <option value="01">January</option>
-                                  <option value="02" selected>February</option>
-                                  <option value="03">March</option>
-                                  <option value="04">April</option>
-                                  <option value="05">May</option>
-                                  <option value="06">June</option>
-                                  <option value="07">July</option>
-                                  <option value="08">August</option>
-                                  <option value="09">September</option>
-                                  <option value="10">October</option>
-                                  <option value="11">November</option>
-                                  <option value="12">December</option>';
-                                break;
-                                case 'March':
-                                  echo '
-                                  <option value="01">January</option>
-                                  <option value="02">February</option>
-                                  <option value="03" selected>March</option>
-                                  <option value="04">April</option>
-                                  <option value="05">May</option>
-                                  <option value="06">June</option>
-                                  <option value="07">July</option>
-                                  <option value="08">August</option>
-                                  <option value="09">September</option>
-                                  <option value="10">October</option>
-                                  <option value="11">November</option>
-                                  <option value="12">December</option>';
-                                break;
-                                case 'April':
-                                  echo '
-                                  <option value="01">January</option>
-                                  <option value="02">February</option>
-                                  <option value="03">March</option>
-                                  <option value="04" selected>April</option>
-                                  <option value="05">May</option>
-                                  <option value="06">June</option>
-                                  <option value="07">July</option>
-                                  <option value="08">August</option>
-                                  <option value="09">September</option>
-                                  <option value="10">October</option>
-                                  <option value="11">November</option>
-                                  <option value="12">December</option>';
-                                break;
-                                case 'May':
-                                  echo '
-                                  <option value="01">January</option>
-                                  <option value="02">February</option>
-                                  <option value="03">March</option>
-                                  <option value="04">April</option>
-                                  <option value="05" selected>May</option>
-                                  <option value="06">June</option>
-                                  <option value="07">July</option>
-                                  <option value="08">August</option>
-                                  <option value="09">September</option>
-                                  <option value="10">October</option>
-                                  <option value="11">November</option>
-                                  <option value="12">December</option>';
-                                break;
-                                case 'June':
-                                  echo '
-                                  <option value="01">January</option>
-                                  <option value="02">February</option>
-                                  <option value="03">March</option>
-                                  <option value="04">April</option>
-                                  <option value="05">May</option>
-                                  <option value="06" selected>June</option>
-                                  <option value="07">July</option>
-                                  <option value="08">August</option>
-                                  <option value="09">September</option>
-                                  <option value="10">October</option>
-                                  <option value="11">November</option>
-                                  <option value="12">December</option>';
-                                break;
-                                case 'July':
-                                  echo '
-                                  <option value="01">January</option>
-                                  <option value="02">February</option>
-                                  <option value="03">March</option>
-                                  <option value="04">April</option>
-                                  <option value="05">May</option>
-                                  <option value="06">June</option>
-                                  <option value="07" selected>July</option>
-                                  <option value="08">August</option>
-                                  <option value="09">September</option>
-                                  <option value="10">October</option>
-                                  <option value="11">November</option>
-                                  <option value="12">December</option>';
-                                break;
-                                case 'August':
-                                  echo '
-                                  <option value="01">January</option>
-                                  <option value="02">February</option>
-                                  <option value="03">March</option>
-                                  <option value="04">April</option>
-                                  <option value="05">May</option>
-                                  <option value="06">June</option>
-                                  <option value="07">July</option>
-                                  <option value="08" selected>August</option>
-                                  <option value="09">September</option>
-                                  <option value="10">October</option>
-                                  <option value="11">November</option>
-                                  <option value="12">December</option>';
-                                break;
-                                case 'September':
-                                  echo '
-                                  <option value="01">January</option>
-                                  <option value="02">February</option>
-                                  <option value="03">March</option>
-                                  <option value="04">April</option>
-                                  <option value="05">May</option>
-                                  <option value="06">June</option>
-                                  <option value="07">July</option>
-                                  <option value="08">August</option>
-                                  <option value="09" selected>September</option>
-                                  <option value="10">October</option>
-                                  <option value="11">November</option>
-                                  <option value="12">December</option>';
-                                break;
-                                case 'October':
-                                  echo '
-                                  <option value="01">January</option>
-                                  <option value="02">February</option>
-                                  <option value="03">March</option>
-                                  <option value="04">April</option>
-                                  <option value="05">May</option>
-                                  <option value="06">June</option>
-                                  <option value="07">July</option>
-                                  <option value="08">August</option>
-                                  <option value="09">September</option>
-                                  <option value="10" selected>October</option>
-                                  <option value="11">November</option>
-                                  <option value="12">December</option>';
-                                break;
-                                case 'November':
-                                  echo '
-                                  <option value="01">January</option>
-                                  <option value="02">February</option>
-                                  <option value="03">March</option>
-                                  <option value="04">April</option>
-                                  <option value="05">May</option>
-                                  <option value="06">June</option>
-                                  <option value="07">July</option>
-                                  <option value="08">August</option>
-                                  <option value="09">September</option>
-                                  <option value="10">October</option>
-                                  <option value="11" selected>November</option>
-                                  <option value="12">December</option>';
-                                break;
-                                case 'December':
-                                  echo '
-                                  <option value="01">January</option>
-                                  <option value="02">February</option>
-                                  <option value="03">March</option>
-                                  <option value="04">April</option>
-                                  <option value="05">May</option>
-                                  <option value="06">June</option>
-                                  <option value="07">July</option>
-                                  <option value="08">August</option>
-                                  <option value="09">September</option>
-                                  <option value="10">October</option>
-                                  <option value="11">November</option>
-                                  <option value="12" selected>December</option>';
-                                break;
-                              }
-                              ?>
-                                
-                              </select>
 
-  
-  
-  <b>Year</b>
-  <select class="" id="year" name="year" style="width: 150px; Height:30px;">
-    <!-- <option value="">Year</option> -->
-    <option value="2020">2020</option>
-    <option value="2021">2021</option>
-    <option value="2022">2022</option>
-    <option value="2023">2023</option>
-    <option value="2024">2024</option>
-    <option value="2025">2025</option>
-    <option value="2026">2026</option>
-    <option value="2027">2027</option>
-    <option value="2028">2028</option>
-    <option value="2029">2029</option>
-    <option value="2030">2030</option>
-    
-  </select>
 
-  <b>Office</b>
-  <select class="" id="office" name="office" style="width: 150px; Height:30px;">
-    <!-- <option value="" style="color:gray">Office</option> -->
-    <option value="ALL">ALL</option>
-    <option value="ORD">ORD</option>
-    <option value="FAD">FAD</option>
-    <option value="LGCDD">LGCDD</option>
-    <option value="MBRTG">MBRTG</option>
-    <option value="LGMED">LGMED</option>
-    <option value="PDMU">PDMU</option>
-    <option value="Batangas">Batangas</option>
-    <option value="Cavite">Cavite</option>
-    <option value="Laguna">Laguna</option>
-    <option value="Rizal">Rizal</option>
-    <option value="Quezon">Quezon</option>
-    <option value="Lucena City">Lucena City</option>
-    
-  </select>
-  &nbsp;&nbsp;&nbsp;
-  <button style="  Height:30px;"  id="" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
-                 
-  </form>
-  
+<form method = "POST" action = "to_export_date.php">
+<td class="col-md-1" >
 
-  </td>
+<?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
+<b>Month</b>
+<select class="" name="month" id = "selectMonth" style="width: 150px; Height:30px;">
+<?php 
+$current_month =  date('F');
+switch($current_month){
+case 'January':
+echo '
+<option value="01" selected>January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>';
+break;
+case 'February':
+echo '
+<option value="01">January</option>
+<option value="02" selected>February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>';
+break;
+case 'March':
+echo '
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03" selected>March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>';
+break;
+case 'April':
+echo '
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04" selected>April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>';
+break;
+case 'May':
+echo '
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05" selected>May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>';
+break;
+case 'June':
+echo '
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06" selected>June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>';
+break;
+case 'July':
+echo '
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07" selected>July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>';
+break;
+case 'August':
+echo '
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08" selected>August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>';
+break;
+case 'September':
+echo '
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09" selected>September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>';
+break;
+case 'October':
+echo '
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10" selected>October</option>
+<option value="11">November</option>
+<option value="12">December</option>';
+break;
+case 'November':
+echo '
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11" selected>November</option>
+<option value="12">December</option>';
+break;
+case 'December':
+echo '
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12" selected>December</option>';
+break;
+}
+?>
 
-  <?php else:?>
+</select>
+</td>
 
-  <?php endif?>
+<td class="col-md-1" >
+<b>Year</b>
+<select class="" id="year" name="year" style="width: 150px; Height:30px;">
+<!-- <option value="">Year</option> -->
+<option value="2020">2020</option>
+<option value="2021">2021</option>
+<option value="2022">2022</option>
+<option value="2023">2023</option>
+<option value="2024">2024</option>
+<option value="2025">2025</option>
+<option value="2026">2026</option>
+<option value="2027">2027</option>
+<option value="2028">2028</option>
+<option value="2029">2029</option>
+<option value="2030">2030</option>
 
-  </tr>
-  <!-- Header -->
-  </table>  
+</select>
+
+</td>
+<td class="col-md-1" >
+<b>Office</b>
+<select class="" id="office" name="office" style="width: 150px; Height:30px;">
+<!-- <option value="" style="color:gray">Office</option> -->
+<option value="ALL">ALL</option>
+<option value="ORD">ORD</option>
+<option value="FAD">FAD</option>
+<option value="LGCDD">LGCDD</option>
+<option value="MBRTG">MBRTG</option>
+<option value="LGMED">LGMED</option>
+<option value="PDMU">PDMU</option>
+<option value="Batangas">Batangas</option>
+<option value="Cavite">Cavite</option>
+<option value="Laguna">Laguna</option>
+<option value="Rizal">Rizal</option>
+<option value="Quezon">Quezon</option>
+<option value="Lucena City">Lucena City</option>
+
+</select>
+
+</td>
+<td class="col-md-1" >
+<br>
+<button style="  Height:30px;"  id="" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
+
+</td>
+
+</form>
+
+<?php else:?>
+
+<?php endif?>
+
+</tr>
+<!-- Header -->
+</table>  
          
          <br>
 

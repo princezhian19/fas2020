@@ -12,7 +12,7 @@ $username = $_SESSION['username'];
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Financial Management System</title>
+<title>Financial Management System</title>
 
  
 
@@ -21,17 +21,9 @@ $username = $_SESSION['username'];
 <div class="box">
   <div class="box-body">
             
-      
+  <div class="class"  style="overflow-x:auto;">
             <h1 align="">&nbspNTA/NCA</h1>
-             <div class="box-header "  style="overflow-x:auto;">
-    </div>
-    <br>
-  
-  
-  
-    <div class="class"  style="overflow-x:auto;">
-
-
+     <br>
                 <table class="table" > 
 
              <!-- Header -->
@@ -43,61 +35,33 @@ $username = $_SESSION['username'];
                 
                 </td>
                     
-                <td class="col-md-4" >
+                <td class="col-md-7" >
 
                   
                 </td>
 
-                <td class="col-md-7" style = "text-align:center;">
-                <form method = "POST" action = "@Functions/ntadateexport.php">
-              
-              <div class="input-group date">
-                  <div class="input-group-addon">
-                  FROM   <i class="fa fa-calendar"></i>
-              </div>
-                  <input type="text" class="form-control" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
-              
-              <div class="input-group date">
-                  <div class="input-group-addon">
-                  TO <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp<button type="submit" name="submit"  class="btn btn-success pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export Data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-
-                    <!-- &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="@Functions/saroexportall.php" style="color:white;text-decoration: none;">Export All</a></li> -->
-              </div>                        
-                
-                  </form>
                
-
+                <form method = "POST" action = "@Functions/ntadateexport.php">
+                <td class="col-md-1" >
+                <input type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 250px">
+                  
                 </td>
-
-
-
+                  <td class="col-md-1" >
+                  <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 250px">
+                  
+                </td>
+                <td class="col-md-1" >
+                <button type="submit" name="submit"  class="btn btn-success pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export Data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                  
+                </td>
+              
+                </form>
+               
                 </tr>
                 <!-- Header -->
-                <table>
+                </table>
 
-      </div>
-
-   <div class="class">
-
-   <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" style="height: 35px; width: 500px; margin-left: 40px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" >
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                    <script>
-                    $(document).ready(function(){
-                      $("#myInput").on("keyup", function() {
-                        var value = $(this).val().toLowerCase();
-                        $("#example1 tr").filter(function() {
-                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                        });
-                      });
-                    });
-                    </script> -->
         
-            
-        <br>
       <br>
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
@@ -119,7 +83,7 @@ $username = $_SESSION['username'];
                         <th style="text-align:center" width="800">OBLIGATED</th>
                         <th style="text-align:center" width="800">BALANCE</th>
                         <th style="text-align:center" width="800">GROUP</th> -->
-                        <th style="text-align:center" width="150">ACTION</th>
+                        <th style="text-align:center" width="200">ACTION</th>
                        
 
                     <!-- </tr> -->
@@ -138,7 +102,7 @@ $username = $_SESSION['username'];
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT * FROM nta order by datenta asc");
+            $view_query = mysqli_query($conn, "SELECT * FROM nta order by id asc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
                   $id = $row["id"];
@@ -191,13 +155,10 @@ $username = $_SESSION['username'];
                     
                     <td  > 
                     
-
-                   
-                    
-                    <a  class = "btn btn-info btn-xs"  href='ntatableViewMain.php?getntano=<?php echo $ntano?>&getparticular=<?php echo $particular?>'><i class='fa'>&#xf06e;</i> Export</a> | 
-                    <a  class = "btn btn-primary btn-xs"  href='ntaupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a>
+                    <a  class = "btn btn-primary btn-xs"  href='ntaupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> | 
+                    <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This NTA/NCA Item?');" href='ntadelete.php?id=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a> | 
+                    <a  class = "btn btn-info btn-xs"  href='ntatableViewMain.php?getntano=<?php echo $ntano?>&getparticular=<?php echo $particular?>'><i class='fa'>&#xf06e;</i> Export</a>
                 
-                    
                     </td>
                    
 
@@ -208,21 +169,22 @@ $username = $_SESSION['username'];
                  
                  <!-- <a href='@Functions/sarodeletefunction.php?getid=$id'> <i style='font-size:24px'<i class='fa fa-trash-o'></i> </a> -->
             </table>
+                    </div>
+                    </div>
+                    </div>
            
-
+           
+        
 </body>
+</html>
+ 
+          
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('#example1').DataTable();
     } );
 </script>
-</div>
-</div>
-
-   
-<div class="panel-footer"></div>
-</div>
-</div>
 
 
 <script>
@@ -291,9 +253,6 @@ $username = $_SESSION['username'];
   })
 </script>
 
-
-</body>
-</html>
 
 
 

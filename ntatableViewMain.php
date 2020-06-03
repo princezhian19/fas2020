@@ -6,11 +6,8 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
-  <title>FAS | NTA View</title>
 <!-- <style>
   a:hover {
   color: blue;
@@ -22,6 +19,7 @@ $username = $_SESSION['username'];
   color: blue;
 }
 </style> -->
+<title>FAS | NTA/NCA</title>
 <head>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,44 +51,45 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <style>
-  th{
-    color:#a9242d;
-    text-align:center;
-  }
-  td{
-    text-align:center;
-  }
+  
   </style>
 </head>
-<body class="hold-transition skin-red-light sidebar-mini">
+
+<?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('test1.php'); }else{ include('sidebar2.php'); }
+ ?>
+<body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
-  <?php include('test1.php');?>
+ 
   
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <!-- <li><a href="ViewIAR.php"><i class=""></i> Home</a></li> -->
-        <li class="active">Items</li>
+        <li><a href="home.php"><i class=""></i> Home</a></li>
+        <li class="active">Accounting</li>
+        <li class="active">NTA/NCA view</li>
       </ol>
       <br>
       <br>
-      
-        <?php include('@ntatableview.php');?>
+      <?php include('@ntatableview.php');?>
 
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
     </section>
-    <footer class="main-footer">
+    </div>
+  <footer class="main-footer">
     <br>
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
       </div>
       <strong>DILG IV-A Regional Information and Communications Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+      
     </footer>
     <br>
-  </div>
-
 </div>
-
-
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -102,6 +101,22 @@ $username = $_SESSION['username'];
 
 
 <script>
+    $(document).ready(function(){
+      //Date picker,
+      $('#datepicker1').datepicker({
+      autoclose: true
+    })
+
+    $('#datepicker2').datepicker({
+      autoclose: true
+    })
+    $('#datepicker3').datepicker({
+      autoclose: true
+    })
+    $('#datepicker4').datepicker({
+      autoclose: true
+    })
+  })
   $(function () {
     $('#example2').DataTable()
     $('#example1').DataTable({
@@ -109,7 +124,7 @@ $username = $_SESSION['username'];
       'lengthChange': false,
       'searching'   : true,
       'ordering'    : false,
-      'info'        : true,
+      'info'        : false,
       'autoWidth'   : false
     })
   })
