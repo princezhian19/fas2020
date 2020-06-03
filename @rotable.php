@@ -123,7 +123,8 @@ $edit="edit";
  <!--  to_export_date.php -->
   <form method = "POST" action = "ro_export_date.php">
   <?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
-      <b>Month</b>
+    
+  <b>Month</b>
 
   <select class="" name="month" id = "selectMonth" style="width: 150px; Height:30px;">
                               <?php 
@@ -352,7 +353,7 @@ $edit="edit";
     
   </select>
   &nbsp;&nbsp;&nbsp;
-  <button style="  Height:30px;"  id="" name="submit" type="submit"  class="btn btn-success ">&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;</button>
+  <button style="  Height:30px;"  id="" name="submit" type="submit"  class="btn btn-success pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                  
   </form>
   
