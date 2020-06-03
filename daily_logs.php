@@ -22,24 +22,33 @@ $sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployee WHERE UNAME = '$u
 $rowU = mysqli_fetch_array($sele);
 $ACCESSTYPE = $rowU['ACCESSTYPE'];
 
+$date_now = date('Y-m-d');
+$now_date = date('Y-m-d H:i:s');
 
-$logs = mysqli_query($conn,"SELECT * FROM dtr WHERE UNAME = '$username'");
+$logs = mysqli_query($conn,"SELECT * FROM dtr WHERE UNAME = '$username' AND `time_in` LIKE '%$date_now%' ||  `lunch_in` LIKE '%$date_now%' ||  `lunch_out` LIKE '%$date_now%' ||  `time_out` LIKE '%$date_now%'");
+
+// $logs = mysqli_query($conn,"SELECT * FROM dtr WHERE UNAME = '$username' AND `time_in` LIKE '%$date_now%' ");
 $rowl = mysqli_fetch_array($logs);
 $time_inL = $rowl['time_in'];
 $lunch_inL = $rowl['lunch_in'];
 $lunch_outL = $rowl['lunch_out'];
 $time_outL = $rowl['time_out'];
 
-$date_now = date('Y-m-d');
+
+
+$check1 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND `time_in` LIKE '%$date_now%' ");
+$check2 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND `lunch_in` LIKE '%$date_now%' ");
+$check3 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND `lunch_out` LIKE '%$date_now%' ");
+$check4 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND `time_out` LIKE '%$date_now%' ");
+
+$checkall = mysqli_query($conn,"SELECT * FROM dtr WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
 
 if (isset($_POST['stamp1'])) {
-
-  $check1 =mysqli_query($conn,"SELECT * FROM dtr WHERE lunch_in = '$date_now' AND UNAME = '$username' ");
-  if (mysqli_num_rows($check1)>0) {
-    # code...
+  if (mysqli_num_rows($checkall)>0) {
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+  }else{
+    $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,time_in) VALUES('$username',now())");
   }
-  $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,time_in) VALUES('$username',now())");
-
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Success!')
@@ -54,7 +63,11 @@ if (isset($_POST['stamp1'])) {
 }
 
 if (isset($_POST['stamp2'])) {
-  $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,lunch_in) VALUES('$username',now())");
+  if (mysqli_num_rows($checkall)>0) {
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+  }else{
+    $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,lunch_in) VALUES('$username',now())");
+  }
 
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -70,7 +83,11 @@ if (isset($_POST['stamp2'])) {
 }
 
 if (isset($_POST['stamp3'])) {
-  $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,lunch_out) VALUES('$username',now())");
+  if (mysqli_num_rows($checkall)>0) {
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+  }else{
+    $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,lunch_out) VALUES('$username',now())");
+  }
 
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -86,7 +103,11 @@ if (isset($_POST['stamp3'])) {
 }
 
 if (isset($_POST['stamp4'])) {
-  $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,time_out) VALUES('$username',now())");
+  if (mysqli_num_rows($checkall)>0) {
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+  }else{
+    $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,time_out) VALUES('$username',now())");
+  }
 
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -142,6 +163,7 @@ if (isset($_POST['stamp4'])) {
               <th width="">Time In</th>
               <th width="">Lunch In</th>
               <th width="">Lunch Out</th>
+              <th width="">Time Out</th>
               <th width="">Minutes</th>
               <th width="">Hrs</th>
             </tr>
@@ -153,6 +175,7 @@ if (isset($_POST['stamp4'])) {
           while ($row = mysqli_fetch_assoc($view_query)) {
             $id = $row["id"];
             $UNAME = $row["UNAME"];  
+            $date_today = $row["date_today"];  
             $time_in = $row["time_in"];
             $lunch_in = $row["lunch_in"];
             $lunch_out = $row["lunch_out"];
@@ -160,18 +183,94 @@ if (isset($_POST['stamp4'])) {
             ?>
 
             <tr>
-              <td><?php echo $UNAME?></td>
-              <td><?php echo $time_in?></td>
-              <td><?php echo $lunch_in?></td>
-              <td><?php echo $lunch_out?></td>
-              <td><?php echo $time_out?></td>
-              <td><?php echo $time_out?></td>
-            </tr>
-          <?php } ?>
-        </table>
-      </div>
+              <td><?php 
+              echo date('F d, Y',strtotime($date_today));
+
+
+              ?></td>
+              <td><?php 
+              if ($time_in == NULL) {
+                echo '';
+              }else{
+                echo date('h:i A',strtotime($time_in));
+              }
+              ?></td>
+              <td><?php 
+              if ($lunch_in == NULL) {
+                echo '';
+              }else{
+                echo date('h:i A',strtotime($lunch_in));
+              }
+              ?></td>
+              <td><?php 
+              if ($lunch_out == NULL) {
+                echo '';
+              }else{
+                echo date('h:i A',strtotime($lunch_out));
+              }
+              ?></td>
+              <td><?php 
+              if ($time_out == NULL) {
+                echo '';
+              }else{
+                echo date('h:i A',strtotime($time_out));
+              }
+              ?></td>
+              <td>
+                <?php 
+                $undertime = 0;
+                if(date('d',strtotime($date_today)) == '01'){ 
+                // if(date('h:i',strtotime($time_in)) > date('h:i',strtotime('08:00'))){ //morning late
+                $undertime = date('h:i',strtotime('10:00'))-date('h:i',strtotime('08:00'));
+                echo date('H',$undertime);
+
+                // }
+                // if(strtotime($time_out) < strtotime('17:00')){ //morning late
+                //   $undertime += strtotime('17:00') - strtotime($time_out);
+                // }
+
+                echo $dd = strtotime($time_in);
+                echo "<br>";
+                echo $dd2 = strtotime('08:00');
+                echo "<br>";
+                 $dd22 = $dd2 - $dd;
+                 echo date('H:i',$dd22);
+
+                // echo $dd = date('g:i',strtotime($time_out));
+                // echo "<br>";
+                // echo $dd2 = date('g:i',strtotime('17:00'));
+                // echo "<br>";
+                // echo $dd22 = $dd - $dd2;
+
+                if (date('H', $undertime) > 0) {
+                }
+
+              //   if($undertime!=0 && date('H', $undertime) > 0){
+              //    echo date('H', $undertime);
+              //  }else{
+              //   echo "";
+              // }
+              //   if($undertime!=0 && date('i', $undertime) > 0){
+              //    echo $undertime);
+              // }else{
+              //   echo '';
+              // }
+              }else{
+                echo "flexi days";
+              }
+
+
+
+              ?>
+
+            </td>
+            <td></td>
+          </tr>
+        <?php } ?>
+      </table>
     </div>
   </div>
+</div>
 </div>
 
 
@@ -191,44 +290,56 @@ if (isset($_POST['stamp4'])) {
             <tr>
               <th class="pull-left" >Time In</th>
               <?php if (mysqli_num_rows($check1)>0): ?>
-              <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
+                <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
                 
                 <?php else: ?>
-              <td width="250"><button class="btn btn-success" name="stamp1" type="submit"><strong>Stamp</strong></button></td>
-              <?php endif ?>
-            </tr>
-            <tr>
-              <th class="pull-left" >Lunch In</th>
-              <td width="250"><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
-            </tr>
-            <tr>
-              <th class="pull-left">Lunch Out</th>
-              <td width="250"><button class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
-            </tr>
+                  <td width="250"><button class="btn btn-success" name="stamp1" type="submit"><strong>Stamp</strong></button></td>
+                <?php endif ?>
+              </tr>
+              <tr>
+                <th class="pull-left" >Lunch In</th>
+                <?php if (mysqli_num_rows($check2)>0): ?>
+                  <td width="250"><?php echo date('h:i A',strtotime($lunch_inL))?></td>
+                  <?php else: ?>
+                    <td width="250"><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                  <?php endif ?>
+                </tr>
+                <tr>
+                  <th class="pull-left">Lunch Out</th>
+                  <?php if (mysqli_num_rows($check3)>0): ?>
+                    <td width="250"><?php echo date('h:i A',strtotime($lunch_outL))?></td>
+                    <?php else: ?>
+                      <td width="250"><button class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                    <?php endif ?>
+                  </tr>
 
-            <tr>
-              <th class="pull-left" >Time Out</th>
-              <td width="250"><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
-            </tr>
-          </form>
-        </table>
+                  <tr>
+                    <th class="pull-left" >Time Out</th>
+                    <?php if (mysqli_num_rows($check4)>0): ?>
+                      <td width="250"><?php echo date('h:i A',strtotime($time_outL))?></td>
+                      <?php else: ?>
+                        <td width="250"><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
+                      <?php endif ?>
+                    </tr>
+                  </form>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-</div>
-<div class="row">
-  <div class="col-md-7">
+      <div class="row">
+        <div class="col-md-7">
 
-  </div>
-  <div class="col-md-5">
+        </div>
+        <div class="col-md-5">
 
 
-  </div>
-</div>
+        </div>
+      </div>
 
 
-</body>
-</html>
+    </body>
+    </html>
 
 
