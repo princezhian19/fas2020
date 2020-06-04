@@ -291,8 +291,8 @@ $edit="edit";
               <tr>
                         <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
                     <td class="col-md-5">
-                      <select class="form-control " style="width: 100%;" name="category" id="category" > 
-                      <option value="15">Select Category</option>
+                      <select required class="form-control " style="width: 100%;" name="category" id="category" > 
+                      <option value="">Select Category</option>
                       <option value="11">Department Memorandum Circular</option>
                       <option value="12">Department Order</option>
                       <option value="14">Regional Memorandum Circular</option>

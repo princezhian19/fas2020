@@ -232,8 +232,8 @@ $username = $_SESSION['username'];
                     <tr>
                         <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
                     <td class="col-md-5">
-                      <select class="form-control " style="width: 100%;" name="category" id="category" >
-                      <option value="19">Select Category</option>
+                      <select required class="form-control select2" style="width: 100%;" name="category" id="category" >
+                      <option value="">Select Category</option>
                       <option value="21">Province ISO Forms</option>
                       <option value="20">Region ISO Forms</option>
                       <option value="19">ALL ISO Forms</option>
