@@ -1,4 +1,9 @@
 <?php
+header("Cache-Control: no-cache, must-revalidate");
+header("Expires: Mon, 26 Jul 2030 05:00:00 GMT");
+header("Content-Type: application/xml; charset=utf-8");
+?>
+<?php
   if($_POST['title']){
 
     $view_query = mysqli_query($conn, "SELECT downloads.url,downloads.office,downloads.file, downloads.download_id ,downloads.category, downloads.title, downloads.dateposted, downloads.postedby, downloads_category.name from downloads left join downloads_category on downloads.category=downloads_category.id where dowloads.title like '%".$_POST['title']."%' order by downloads.download_id desc");
@@ -68,19 +73,6 @@ $username = $_SESSION['username'];
             <form method="POST" action=''  >
             <div class=""  style="overflow-x:auto;">
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
-                <!-- <thead>
-                    <tr style="background-color: white;color:blue; text-align:center ">
-                 
-                  <th width="200">CATEGORY <br><input onkeyup="myFunction()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput" placeholder="" name=""> </th>
-                  <th width="400">TITLE <br><input onkeyup="titlesearch()"   type="text"  class="form-control" style="height: 35px; width:100%" id="titlesearch" placeholder="" name=""></th>
-                  <th width="100">OFFICE<br><input onkeyup="myFunction2()"   type="text"  class="form-control" style="height: 35px; width:100%" id="myInput2" placeholder="" name=""> </th>
-                  <th width="150">POSTING DETAILS<br><input onkeyup="myFunction3()"  type="text"  class="form-control" style="height: 35px;" id="myInput3" placeholder="" name=""></th>
-                  <th width="250">ACTION<br><br></th>
-                  
-                </tr>
-                </thead> -->
-
-
                 
 
                 <thead>
@@ -348,7 +340,7 @@ $username = $_SESSION['username'];
 
                                         <tr>
                         <td class="col-md-2"><b>Posted Date</b></td>
-                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('F d, Y') ?>" ></td>
+                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" ></td>
                                 </tr>
                   
                 </table>

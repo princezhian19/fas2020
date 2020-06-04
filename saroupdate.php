@@ -116,7 +116,8 @@ while ($row = mysqli_fetch_assoc($view_query)) {
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Create SARO/SUB-ARO</li>
+        <li class="active">Budget</li>
+        <li class="active">Edit SARO/SUB-ARO</li>
       </ol>
       <br>
       <br>

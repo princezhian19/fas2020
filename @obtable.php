@@ -29,26 +29,36 @@ include('db.class.php'); // call db.class.php
                   
                   </td>
                       
-                  <td class="col-md-4" >
+                  <td class="col-md-7" >
 
                     
                   </td>
 
-                  <td class="col-md-7" style = "text-align:center;">
+          
+
                   <form method = "POST" action = "@Functions/obdateexport.php">
-                 
+                  <td class="col-md-1">
                   <input type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 250px" autocomplete="off">
-                  &nbsp;
-                    <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 250px" autocomplete="off">
-                    &nbsp; &nbsp;<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
-                    &nbsp; &nbsp; &nbsp;<button type="Summary" name="Summary"  class="btn btn-success ">Export Summary</button>
-                  </div>                        
+
+                  </td>
+                  <td class="col-md-1">
+                  <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 250px" autocomplete="off">
+
+                  </td>
+                  <td class="col-md-1">
+                  <button type="submit" name="submit"  class="btn btn-success pull-right">Filter/Export Data</button>
+
+                  </td>
+                  <td class="col-md-1">
+                  <button type="Summary" name="Summary"  class="btn btn-success pull-right">Export Summary</button>
+
+                  </td>
+                 
+           
                 </form>
                   
 
-                  </td>
-
-
+               
 
                   </tr>
                   <!-- Header -->
@@ -79,8 +89,8 @@ include('db.class.php'); // call db.class.php
                   <th>REMARKS</th>
                   <th>GROUP</th>
                   <th>STATUS</th>
-                  <th width=''  style="border-right: 0px; text-align: center;">ACTION</th>
-                  <th width=''></th>
+                  <th width='130'  style="border-right: 0px; text-align: center;">ACTION</th>
+                  
                   
                 </tr>
               </thead>
@@ -184,12 +194,10 @@ include('db.class.php'); // call db.class.php
                                   <?php endif ?>
                                 <?php endif ?>
                                 <td colspan="1" style="border-right: 0px; margin-left:0px">
-                                  <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a>
+                                  <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> | 
+                                  <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a>
                               </td>
-                                <td>
-                                <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a>
-                                </td>
-                              
+                               
                               </tr> 
                             <?php } ?>
                           </table>

@@ -26,10 +26,11 @@ $getparticular = $_GET['getparticular'];
 
 </head>
 <body>
-    <div class="" style="overflow-x:auto;">
-      <div class="panel panel-default" style="overflow-x:auto;" >
-        <div class=""  style="overflow-x:auto;"> 
-          <div class=""  style="overflow-x:auto;">
+
+<div class="box">
+  <div class="box-body">
+            
+  <div class="class"  style="overflow-x:auto;">
             <br>
             
       
@@ -41,8 +42,8 @@ $getparticular = $_GET['getparticular'];
             <!--  Getting Hidden Variables -->
 
 
-            <h1 align="" >&nbspNTA No. :  <label ><?php echo $getntano?></label></h1>
-            <h1 align="" >&nbspParticular :   <label name="particular" ><?php echo $getparticular?></label></h1>
+            <h3 align="" >&nbspNTA No. :  <label ><?php echo $getntano?></label></h3>
+            <h3 align="" >&nbspParticular :   <label name="particular" ><?php echo $getparticular?></label></h3>
             <!-- <h1 align="" >&nbspAllotment Amount :   <label ><?php
               
               $servername = "localhost";
@@ -57,7 +58,7 @@ $getparticular = $_GET['getparticular'];
             echo number_format($amount,2)?></label></h1>
             -->
 
-            <h1 align="" >&nbspDisbursed Amount :   <?php $getntano = $_GET['getntano'];
+            <h3 align="" >&nbspDisbursed Amount :   <?php $getntano = $_GET['getntano'];
           
             
             $servername = "localhost";
@@ -74,45 +75,10 @@ $getparticular = $_GET['getparticular'];
             $AmountAll = mysqli_query($conn, "SELECT sum(net) as a FROM disbursement where nta = '$getntano' and ntaparticular = '$getparticular' and status='Disbursed' "); 
             $rowAmount = mysqli_fetch_array( $AmountAll);
 
-            echo  number_format($rowAmount['a'],2)?></h1>
+            echo  number_format($rowAmount['a'],2)?></h3>
             <input type="text" class="text" name="totaldisbursed" value="<h><?php echo $rowAmount['a'];?>" hidden>
 
 
-           
-
-
-          </div>
-          <div class="col-md-9">
-        
-<!-- x -->
-
-
-
-        </div>
-
-
-        <br>
-      <br>
-
-
-      </div>
-
-    
-        
-   <div class="class">
-
-   <!-- &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" style="height: 35px; width: 500px; margin-left: 40px" id="myInput" onkeyup="myFunction()" placeholder="Search Here" >
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                    <script>
-                    $(document).ready(function(){
-                      $("#myInput").on("keyup", function() {
-                        var value = $(this).val().toLowerCase();
-                        $("#example1 tr").filter(function() {
-                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                        });
-                      });
-                    });
-                    </script> -->
         
             
         <br>
@@ -259,13 +225,8 @@ $getparticular = $_GET['getparticular'];
         $('#example1').DataTable();
     } );
 </script>
-</div>
-</div>
 
-   
-<div class="panel-footer"></div>
-</div>
-</div>
+
 
 
 

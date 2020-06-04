@@ -128,7 +128,8 @@ $query = mysqli_query($conn,"SELECT * FROM disbursement where ID = '$getid' ");
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Update Disbursement</li>
+        <li class="active">Accounting</li>
+        <li class="active">Edit Disbursement</li>
       </ol>
       <br>
       <br>
@@ -137,7 +138,7 @@ $query = mysqli_query($conn,"SELECT * FROM disbursement where ID = '$getid' ");
     <div class="panel panel-default">
         <br>
       
-            <h1 align="">&nbspUpdate Disbursement at ID: <label for=""><?php echo $getid;?></h1>
+            <h1 align="">&nbsp;Edit Disbursement at ID: <label for=""><?php echo $getid;?></h1>
              <div class="box-header with-border">
     
         <br>

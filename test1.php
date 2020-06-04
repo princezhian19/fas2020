@@ -362,7 +362,39 @@ function getImage()
             <ul class="treeview-menu" >
               <li><a href="ViewEmployees.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Employees Directory</a></li>
               <li><a href="ob.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Official Business</a></li>
+
               <li><a href="TravelOrder.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Travel Order</a></li>
+              
+              
+              <li><a href="ROandROO.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>RO and ROO<span class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = ""><b>
+              
+              
+              <?php
+                  
+                  $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                  $username = $_SESSION['username'];
+
+                  //echo $username;
+                  $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                  $rowdiv = mysqli_fetch_array($select_user);
+                  $DIVISION_C = $rowdiv['DIVISION_C'];
+
+                  $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+                  $rowdiv1 = mysqli_fetch_array($select_office);
+                  $DIVISION_M = $rowdiv1['DIVISION_M'];
+
+                  $countissuances = mysqli_query($conn, "SELECT count(id) as a from ro_roo where office = '$DIVISION_M'");
+                  $rowc = mysqli_fetch_array($countissuances);
+                  $countissuancesspan = $rowc['a'];
+                  
+                ?>
+                
+                <?php echo $countissuancesspan  ;?>
+              
+              
+              
+              
+              </b></span></a></li>
             </ul>
         </li>
          <!-- Pesonnel -->
@@ -388,6 +420,7 @@ function getImage()
             </a>
 
             <ul class="treeview-menu" >
+            <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Databank<span class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li>
            <li>
                 <a href="issuances.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa" style = "color:#black;">&#xf0f6;
               
@@ -437,9 +470,9 @@ function getImage()
 
         
         
-          <li><a href="databank.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Databank<span class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = ""><b>0</b></span></a></li>
+        
               <li><a href="Directory.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Phone Directory</a></li>
-          
+            
             </ul>
 
         </li>
