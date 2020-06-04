@@ -60,7 +60,7 @@ function filldataTable()
   $search_value = $_SESSION['complete_name3'];
 
     $query = "SELECT * FROM tbltechnical_assistance 
-    where `REQ_BY` = '".$search_value."' and  `STATUS_REQUEST` = 'Completed' and STATUS != '' ";
+    where `REQ_BY` = '".$search_value."' and  `STATUS_REQUEST` = 'Completed' ||   and STATUS != '' ";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
