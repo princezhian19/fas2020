@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set('Asia/Manila');
+
 include 'connection.php';
 $ict_staff = $_POST['ict_staff'];
 $control_no = $_POST['control_no'];

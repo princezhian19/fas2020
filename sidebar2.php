@@ -16,6 +16,45 @@ function getDivision()
   $row = mysqli_fetch_array($sqlUsername);
   echo  $row['DIVISION_M']; 
 }
+$cn = $_SESSION['complete_name3'];
+
+function notification()
+{
+  include 'connection.php';
+$cn = $_SESSION['complete_name3'];
+  $query = "SELECT count(*) as 'count' from tbltechnical_assistance where REQ_BY ='$cn' and `STATUS_REQUEST` = 'Completed' and STATUS != '' ";
+  $result = mysqli_query($conn, $query);
+  $val = array();
+  while($row = mysqli_fetch_array($result))
+  {
+   echo $row['count'];
+  }
+}
+function showRequest()
+{
+  include 'connection.php';
+  $cn = $_SESSION['complete_name3'];
+
+  $query = "SELECT * from tbltechnical_assistance where REQ_BY ='$cn' AND `STATUS_REQUEST` = 'Completed' and STATUS != '' ";
+  $result = mysqli_query($conn, $query);
+  $val = array();
+  while($row = mysqli_fetch_array($result))
+  {
+  ?>
+  <li>
+    <a href="techassistance.php?division=<?php echo $_GET['division']?>&ticket_id=<?php echo $row['CONTROL_NO'];?>">
+      <div class="pull-left">
+        <img src="images/male-user.png" class="img-circle" alt="User Image">
+      </div>
+        <h4>
+        <?php echo $row['REQ_BY'];?>
+      </h4>
+      <p><?PHP echo $row['ISSUE_PROBLEM'];?></p>
+    </a>
+  </li>
+  <?php
+  }
+}
 ?>
 </style>
 <style>
@@ -42,7 +81,25 @@ function getDivision()
         </a>
 
         <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell"></i>
+              <span class="label label-success"><?php echo notification();?></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have <?php echo notification();?> technical assistance request completed</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  
+                <?php echo showRequest();?>
+                </ul>
+              </li>
+              <li class="footer"><a href="processing.php?division=<?php echo $_GET['division'];?>&ticket_id=">See All Request</a></li>
+            </ul>
+          </li>
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
