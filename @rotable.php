@@ -27,28 +27,7 @@ $username1 = $_SESSION['username'];
 
   //echo $DIVISION_M;
 
-  $idGet='';
-  $getDate = date('Y');
-  $m = date('m');
-  $auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM ro_roo order by id desc limit 1");
-  while ($row = mysqli_fetch_assoc($auto)) {
-  
-    $idGet = $row["a"];
-  }
-  
-  if($idGet<9){
-  $obcount = $getDate.'-'.'00'.$idGet;
-  
-  }
-  else if($idGet<99){
-  
-  $obcount = $getDate.'-'.'0'.$idGet;
-  
-  }
-  else{
-  $obcount = $getDate.'-'.$idGet;
-  }
-
+ 
 
 ?>
 
@@ -82,10 +61,6 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 require_once('_includes/class.upload.php');
 
 
-
-
-
-
 ?>
 
 
@@ -98,7 +73,6 @@ $edit="edit";
 <html>
 <head>
   <title>FAS</title>
-
 
 </head>
 <body>
@@ -296,17 +270,21 @@ else{
               <tr>
                         <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
                     <td class="col-md-5">
-                      <select class="form-control " style="width: 100%;" name="category" id="category" > 
-                      <option value="Regional Order">Select Category</option>
+                      <select required class="form-control select2" style="width: 100%;" name="category" id="category" > 
+                      <option value="">Select Category</option>
                       <option value="Regional Order">Regional Order</option>
                       <option value="Regional Office Order">Regional Office Order</option>
                      
-                      </select></td>
+                      </select>
+                  
+                      </select>
+                    
+                    </td>
                                 </tr>
                     <tr>  
                         <td class="col-md-2"><b>Issuance No<span style = "color:red;">*</span></b></td>
                             <td class="col-md-5">
-                            <input required readonly value="<?php echo $obcount; ?>"  class="form-control" type="text" class="" style="height: 35px;" id="issuanceno" name="issuanceno" placeholder="" name="issuances" >
+                            <input required readonly value=""  class="form-control" type="text" class="" style="height: 35px;" id="issuanceno" name="issuanceno" placeholder="" name="issuances" >
                                     </td>
                                         </tr>
                     <tr>
@@ -363,8 +341,8 @@ else{
             </table>
                  
            
-            <button type="submit" name="Add" class="btn btn-success pull-right">Save</button>
-
+            <button type="submit" name="Add"  id="Add" onclick="cat()" class="btn btn-success pull-right">Save</button>
+            <input hidden   value=""   type="text"  class="" style="height: 35px;" id="rocount" placeholder="" name="rocount">
 
                 
                   <br>
@@ -411,13 +389,14 @@ else{
                     
                     //getting from data-id from button
                     var idmodal = idget.getAttribute("data-id");
+                    var category1 = idget.getAttribute("data-category");
                     var issuanceno1 = idget.getAttribute("data-issuanceno");
                     var issuancedate1 = idget.getAttribute("data-issuancedate");
                     var title1 = idget.getAttribute("data-title");
                     var office1 = idget.getAttribute("data-office");
                     var registeredby1 = idget.getAttribute("data-registeredby");
                     var registereddate1 = idget.getAttribute("data-registereddate");
-                  
+                 
                    
                     //Getting input ID's
                     var id1 = $("input[name='getid']");
@@ -427,7 +406,15 @@ else{
                     var office = $("input[name='office1']");
                     var registeredby = $("input[name='registeredby1']");
                     var registereddate = $("input[name='registereddate1']");
+                    //var category11 = $("input[name='category1']");
 
+                    if(category1=='Regional Order'){
+                      document.getElementById("category1").selectedIndex = "0";
+                    }
+                    else{
+                      document.getElementById("category1").selectedIndex = "1";
+                    }
+                   
                     
                     //setting values to input
                     id1.val(idmodal);
@@ -437,9 +424,6 @@ else{
                     office.val(office1);
                     registeredby.val(registeredby1);
                     registereddate.val(registereddate1);
-                    
-                  
-                   
                   }
 
                 
@@ -459,9 +443,9 @@ else{
 
 <tr>
           <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
-      <td class="col-md-5">
-        <select class="form-control " style="width: 100%;" name="category1" id="category1" > 
-        
+        <td class="col-md-5">
+        <select class="form-control select 2 " style="width: 100%;" name="category1" id="category1" >
+
         <option value="Regional Order">Regional Order</option>
         <option value="Regional Office Order">Regional Office Order</option>
        
@@ -512,27 +496,107 @@ else{
             <button type="submit" name="edit" class="btn btn-success pull-right">Save Changes</button>
             <input hidden   value="<?php echo $id;?>"   type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
 
-
-                
+          
                   <br>
               <br>
               
-              
-            
+
                 </div>
            
                 </form>
           </div>
         </div>
 
-      
-    
     </div>
 
     </div>
         <!-- Edit modals -->
 
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Select on change -->
+
+<script>
+$(document).ready(function(){
+  $("#category").change(function (){
+
+
+    cat = document.getElementById("category").value;
+
+   
+    if(cat=='Regional Order'){
+   
+        $.ajax({
+        method:'POST',
+        url:"ro_count.php?",
+        data: {cat:cat},
+        success : function(data) {
+        var issuanceno = $("input[name='issuanceno']"); 
+        var rocount = $("input[name='rocount']");
+        if(data<9){
+          var ro = '2020-00'+ data;
+        }
+        else if(data<99){
+          var ro = '2020-0'+ data;
+
+        }
+        else{
+          var ro = '2020-'+data;
+        }
+      
+        issuanceno.val(ro);
+        rocount.val(data);
+      
+        }
+        });
+    }
+    else if(cat=='Regional Office Order'){
+        $.ajax({
+        method:'POST',
+        url:"roo_count.php?",
+        data: {cat:cat},
+        success : function(data) {
+        var issuanceno = $("input[name='issuanceno']"); 
+        var rocount = $("input[name='rocount']");
+        if(data<9){
+        var roo = '2020-00'+ data;
+        }
+        else if(data<99){
+        var roo = '2020-0'+ data;
+
+        }
+        else{
+        var roo = '2020-'+data;
+        }
+
+        issuanceno.val(roo);
+        rocount.val(data);
+        //alert(data);
+        }
+        });
+    }
+
+    else{
+      var issuanceno = $("input[name='issuanceno']");
+      var rocount = $("input[name='rocount']");
+      issuanceno.val('');
+    
+      rocount.val('');
+    }
+   
+    //alert(cat);
+
+  });
+});
+</script>
+
+
+<!-- Select on change -->
+
+
 <script>
   $(function () {
     //Initialize Select2 Elements
