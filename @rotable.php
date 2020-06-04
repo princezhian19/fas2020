@@ -110,13 +110,14 @@ $edit="edit";
 <tr>
 <td class="col-md-2">
 
-<a name="Cancel" value="" id="Cancel"  data-toggle="modal" data-target="#add_data_Modal" title="Add" class = "btn btn-success" > <i class=''></i> Register</a> 
+<a name="" value="" id=""  data-toggle="modal" data-target="#add_data_Modal" title="Add" class = "btn btn-success" > <i class=''></i> Register</a> 
 </td>
 
 <td class="col-md-6" >
 
 
 </td>
+
 <form method = "POST" action = "ro_export_date.php">
 <td class="col-md-1">
 
@@ -337,7 +338,7 @@ break;
 
 <b>Office</b>
 <select class="" id="office" name="office" style="width: 150px; Height:30px;">
-<!-- <option value="" style="color:gray">Office</option> -->
+
 <option value="ALL">ALL</option>
 <option value="ORD">ORD</option>
 <option value="FAD">FAD</option>
@@ -356,10 +357,9 @@ break;
 </td>
 <td class="col-md-1" >
 <br>
-<button style="  Height:30px;"  id="" name="submit" type="submit"  class="btn btn-success pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+<button style="  Height:30px;"  id="" name="export" type="submit"  class="btn btn-success pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 </td>
 </form>
-
 
 <?php else:?>
 
@@ -369,10 +369,7 @@ break;
 <!-- Header -->
 </table>  
           <div class=""  style="overflow-x:auto;">
-         
-            <!-- <li class="btn btn-success"><a href="CreateIssuances.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Add</a></li> -->
-        
-          
+     
               <br>
               
             </div>
@@ -380,7 +377,6 @@ break;
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
-                   <!-- <th width = '10'>TAG</th>  -->
                   <th width = '300'>CATEGORY</th>
                   <th width = '200'>ISSUANCE NO  </th>
                   <th width = '200'>ISSUANCE DATE  </th>
@@ -428,15 +424,12 @@ break;
                   $registereddate = date('F d, Y', strtotime($registereddate1));
                   
 
-             
 
                ?>
 
                 <tr align = ''>
 
-              
-                
-
+            
                 <td><?php echo $category?></td>
                 <td><?php echo $issuanceno?></td>
                 <td><?php echo $issuancedate?></td>
@@ -461,8 +454,6 @@ break;
                     $rowdiv1 = mysqli_fetch_array($select_office);
                     $DIVISION_M = $rowdiv1['DIVISION_M'];
  
-
-
                   ?>
 
                     <?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
@@ -475,31 +466,25 @@ break;
 
 
                     <?php endif?>
-                
-                       
-            
-
-              
-
+        
                 </td>
-                
-               
-
+          
                 </tr>
-
             
             <?php }?>
-
-
-                
-             
-            </table>
+        </table>
                 
                 </div>
-                            </div>
-                            </div>
+      </div>
+      </div>
       
-    <script type="text/javascript">
+   
+
+</body>
+</html>
+
+
+<script type="text/javascript">
     $(document).ready(function() {
         var dataTable=$('#example1').DataTable({
             'lengthChange': true,
@@ -520,10 +505,6 @@ break;
 </script>
 
 
-</body>
-</html>
-
-
 <!--Add modals -->
 
 <div id="add_data_Modal" class="modal fade ">
@@ -534,7 +515,7 @@ break;
               <h4 class="modal-title"><b>Add Regional Order and Regional Office Order</b></h4>
             </div>
             <div class="modal-body">
-              <form method="POST" id="insert_form" action="ro_create.php" enctype="multipart/form-data">
+              <form method="POST" action="ro_create.php" >
               
         
               <div class="addmodal" >
@@ -626,7 +607,7 @@ break;
             
                 </div>
            
-                
+                </form>
           </div>
         </div>
 
@@ -639,7 +620,7 @@ break;
 
           
               
-              </form>
+ 
            
         <!-- Add modals -->
 
@@ -699,10 +680,10 @@ break;
                   </script>
 
 
-              <form method="POST" id="insert_form" action="ro_update.php" enctype="multipart/form-data">
+              <form method="POST" id="" action="ro_update.php" >
               
         
-              <div class="addmodal" >
+              <div class="" >
              
 
 
@@ -773,7 +754,7 @@ break;
             
                 </div>
            
-                
+                </form>
           </div>
         </div>
 
@@ -782,150 +763,7 @@ break;
     </div>
 
     </div>
- 
-
-          
-              
-              </form>
-           
         <!-- Edit modals -->
-
-
- 
-
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
- 
-        <script type="text/javascript">
-		$(document).ready(function() {
-
-			var x = 1;
-			$('#office').click(function(e){
-			  if( x == 1 ){
-			    //console.log('even');
-			    $('.office-responsible').show();
-			    $(this).attr('placeholder','Click to Close');
-			    x = 0;
-			  } else {
-			    //console.log('odd');
-			    $('.office-responsible').hide();
-			        $(this).attr('placeholder','Click to Select');
-
-			    x = 1;
-			  }
-			  e.preventDefault();
-			});
-
-		$("legend :checkbox").click(function(){
-   	    var getcheckboxes = $(this).attr('class');
-	    var delimiter = ";";
-	    var text = $("input[id='todiv']");
-	    var str = "";
-
-	   $('.'+getcheckboxes).prop('checked',this.checked);
-     str += $(this).val() + delimiter;
-     var final111 = str.replace(';;;;;;;15;on;on;','');
-     text.val(final111);
-		});
-
-			$(":checkbox").click(function () {
-			    var delimiter = ";";
-			    var text = $("input[name='todiv']");
-			    var str = "";
-			    
-			    // for each checked checkbox, add the checkbox value and delimiter to the textbox
-			    $(":checked").each(function () {
-			        str += $(this).val() + delimiter;
-			    });
-			    
-			    // set the value of the textbox
-          var final = str .replace('11;','');
-     //alert(final);
-         // var final1 = final.replace('11;','');
-         // var final2 = final.replace('11;','');
-
-          var final11 = final .replace(';;;;;;;15;','');
-        
-     text.val('');
-     text.val(final11);
-
-
-			});
-
-
-
-				
-		 });	
-      
-    </script>   
-
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-
- var x = 1;
- $('#office1').click(function(e){
-   if( x == 1 ){
-     //console.log('even');
-     $('.office-responsible1').show();
-     $(this).attr('placeholder','Click to Close');
-     x = 0;
-   } else {
-     //console.log('odd');
-     $('.office-responsible1').hide();
-         $(this).attr('placeholder','Click to Select');
-
-     x = 1;
-   }
-   e.preventDefault();
- });
-
-$("legend :checkbox").click(function(){
-    var getcheckboxes1 = $(this).attr('class');
- var delimiter1 = ";";
- var text1 = $("input[id='todiv1']");
- var str1 = "";
-
-$('.'+getcheckboxes1).prop('checked',this.checked);
-
-  str1 += $(this).val() + delimiter1;
-     var g = str1.replace(';;;;;;;15;','');
-     var g1 = g.replace('on;','');
-     text1.val(g1);
-});
-
- $(":checkbox").click(function () {
-     var delimiter1 = ";";
-     var text1 = $("input[name='todiv1']");
-     var str1 = "";
-     
-     // for each checked checkbox, add the checkbox value and delimiter to the textbox
-     $(":checked").each(function () {
-         str1 += $(this).val() + delimiter1;
-        
-       
-     });
-     
-     // set the value of the textbox
-   
-     var final1 = str1 .replace(';;;;;;;15;','');
-     var final2 = final1 .replace('11;','');
-     //alert(final);
-     text1.val('');
-     text1.val(final2);
-     
-     
- });
-
-
-
-  
-});	
- 		
-</script> 
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
