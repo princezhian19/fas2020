@@ -270,6 +270,8 @@ else{
               <tr>
                         <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
                     <td class="col-md-5">
+
+                 
                       <select required class="form-control select2" style="width: 100%;" name="category" id="category" > 
                       <option value="">Select Category</option>
                       <option value="Regional Order">Regional Order</option>
@@ -406,21 +408,22 @@ else{
                     var office = $("input[name='office1']");
                     var registeredby = $("input[name='registeredby1']");
                     var registereddate = $("input[name='registereddate1']");
-                    //var category11 = $("input[name='category1']");
+                    var category = $("input[name='category1']");
 
-                    if(category1=='Regional Order'){
+                  /*   if(category1=='Regional Order'){
                       document.getElementById("category1").selectedIndex = "0";
                       $("#category1").attr( "disabled", "disabled" );
 
                     }
                     else{
                       document.getElementById("category1").selectedIndex = "1";
-                      $("#category1").attr( "disabled", "disabled" );
-                    }
+                      $("#category1").attr( "disabled", "readonly" );
+                    } */
                    
                     
                     //setting values to input
                     id1.val(idmodal);
+                    category.val(category1);
                     issuanceno.val(issuanceno1);
                     issuancedate.val(issuancedate1);
                     title.val(title1);
@@ -447,12 +450,13 @@ else{
 <tr>
           <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
         <td class="col-md-5">
-        <select class="form-control select 2 " style="width: 100%;" name="category1" id="category1" >
+        <input required readonly value=""  class="form-control" type="text" class="" style="height: 35px;" id="category1" name="category1" placeholder=""  >
+      <!--   <select class="form-control select 2 " style="width: 100%;" name="category1" id="category1" >
 
         <option value="Regional Order">Regional Order</option>
         <option value="Regional Office Order">Regional Office Order</option>
        
-        </select></td>
+        </select> --></td>
                   </tr>
       <tr>  
           <td class="col-md-2"><b>Issuance No<span style = "color:red;">*</span></b></td>
