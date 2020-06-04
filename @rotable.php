@@ -589,7 +589,7 @@ break;
                                         </tr>
                     <tr>
                         <td class="col-md-2"><b>Registered Date <span style = "color:red;">*</span></b></td>
-                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="registereddate" id="registereddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('F d, Y') ?>" ></td>
+                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="registereddate" id="registereddate" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" ></td>
                                 </tr>
 
 
@@ -735,7 +735,7 @@ break;
                           </tr>
       <tr>
           <td class="col-md-2"><b>Registered Date <span style = "color:red;">*</span></b></td>
-              <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="registereddate1" id="registereddate1" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('F d, Y') ?>" ></td>
+              <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="registereddate1" id="registereddate1" value = "" ></td>
                   </tr>
 
 
