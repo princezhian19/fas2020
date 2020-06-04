@@ -60,7 +60,7 @@ function filldataTable()
   $search_value = $_SESSION['complete_name3'];
 
     $query = "SELECT * FROM tbltechnical_assistance 
-    where `REQ_BY` = '".$search_value."' ";
+    where `REQ_BY` = '".$search_value."' and  `STATUS_REQUEST` = 'Completed' and STATUS != '' ";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
@@ -77,10 +77,13 @@ function filldataTable()
                 echo '-';
             }else{
                 ?>
-            <img style="vertical-align:top;"  class="round" width="70" height="70" avatar="<?php echo $row['ASSIST_BY'];?>">
+            <center>
+                <img style="vertical-align:top;"  class="round" width="70" height="70" avatar="<?php echo $row['ASSIST_BY'];?>">
+            </center>
                 <?php
             }
             ?>
+
         </td>
         <td>
                 <div class="row">
@@ -179,47 +182,69 @@ function filldataTable()
                     </div>
                 </div>
             </td>
-            <td>
-              <?php 
-
-if($row['START_DATE'] != '')
-{
-echo date('F d, Y',strtotime($row['START_DATE']));
-
-
-}else{
-echo '-';
-}
-
-            ?>
-            </td>
+        
             <td style = "width:10%;">
+           <button class = "btn btn-success btn-md col-lg-12 "><a href = "rateService.php?id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >Rate Service</a></button>
+
                     <?php
+                    // Received
+                  
+                        if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == null   )
+                        {
+                        echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Receive</button>';
+
+                   
+
+                        
+                    }else{
+                        if($row['START_DATE'] != '0000-00-00' || $row['START_DATE'] != 'January 01, 1970')
+                        {
+
+                            echo '
+                            <button disabled title = "Received Date"  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
+                            Received Date<br>    
+                            <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
+                            </button>';
+                        }
+                    }
+
+
+
+
+
+
+
+
+
+                    echo '<br>';
                 
-                                                        
+                    
+                      echo '<br><br>';                                      
                     
                     // Complete
-                    if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+                    if($row['COMPLETED_DATE'] == '0000-00-00' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
                     {
 
                     if($_SESSION['complete_name'] == $row['ASSIST_BY'])
                     {
 
-                    echo '-';
+                    echo '<button disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }else{
-                    echo '-';
+                    echo '<button disabled id ="sweet-16"  data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }
                 }else{
-                    echo date('F d, Y',strtotime($row['COMPLETED_DATE']));
+        
+                    echo '<button disabled title = "Completed Date"  id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
+                    Completed Date<br> 
+                    '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
+                    </button>';
 
                 }
               ?>
                 
                     
             </td>
-           <td>
-           <button class = "btn btn-success btn-md"><a href = "rateService.php?id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >Rate Service</a></button>
-           </td>
+           
         </tr>
         <?php
     }
@@ -623,8 +648,7 @@ function countCompleted()
                         <thead>
                             <th style = "width:2%;text-align:center;">Assisted by</th>
                             <th style = "text-align:center;">Particular</th>
-                            <th style = "width:1%;">Received Date</th>
-                            <th style = "width:1%;">Completed Date</th>
+                        
                             <th style = "width:1%;text-align:center;">Action</th>
                         </thead>
                         <tbody>
