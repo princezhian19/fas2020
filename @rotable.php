@@ -410,9 +410,12 @@ else{
 
                     if(category1=='Regional Order'){
                       document.getElementById("category1").selectedIndex = "0";
+                      $("#category1").attr( "disabled", "disabled" );
+
                     }
                     else{
                       document.getElementById("category1").selectedIndex = "1";
+                      $("#category1").attr( "disabled", "disabled" );
                     }
                    
                     
