@@ -85,604 +85,439 @@ function app($connect)
         <li class="active">Create Obligation</li>
       </ol>
       <br>
-      <br>
+
        
        <br>
         <div class="box">
           <div class="box-body">
       
-            <h1 align="">Create Obligation</h1>
+          <h1 align="">Create Obligation</h1>
        
-        <br>
-      <li class="btn btn-success"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
-      <br>
-      <br>
+       <br>
+     <li class="btn btn-success"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
+     <br>
+     <br>
 
-   
-      <form id="fupForm" name="form1" Type="GET">
-   
-      <table class="table"> 
+  
+     <form id="fupForm" name="form1" Type="GET">
+  
+     <table class="table"> 
 
 
-        <tr>
-          <td class="col-md-5">
-            <label>ORS Serial No. <label style="color: Red;" >*</label></label>
-            <input  type="text" class="form-control" style="height: 35px;" id="ors" placeholder="Enter ORS Number" name="ors" required>
-            <br>
-            <label>PO No.</label>
-            <input  type="text" class="typeahead form-control" style="height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum" value="<?php echo isset($_GET['ponum']) ? $_GET['ponum'] : '' ?>">
+       <tr>
+         <td class="col-md-5">
+           <label>ORS Serial No. <label style="color: Red;" >*</label></label>
+           <input  type="text" class="form-control" style="height: 35px;" id="ors" placeholder="Enter ORS Number" name="ors" required>
+           <br>
+           <label>PO No.</label>
+           <input  type="text" class="typeahead form-control" style="height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum" value="<?php echo isset($_GET['ponum']) ? $_GET['ponum'] : '' ?>">
 
-            <table class="table table-striped table-hover" id="main">
-            <tbody id="result">
-            </tbody>
-            </table>
+           <table class="table table-striped table-hover" id="main">
+           <tbody id="result">
+           </tbody>
+           </table>
+         
+         </td>
+         <td class="col-md-5">
+         <label>Date Received <label style="color: Red;" >*</label></label>
+           <br>
+           <div class="input-group date">
+           <div class="input-group-addon">
+           <i class="fa fa-calendar"></i>
+           </div>
+           <input value="<?php echo date('m/d/Y')?>" required type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datereceived">
+           </div>
+           <br>
+
+
+           <label>Date Processed</label>
+           <br>
+           <div class="input-group date">
+           <div class="input-group-addon">
+           <i class="fa fa-calendar"></i>
+           </div>
+           <input value="<?php echo date('m/d/Y')?>"date rety required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
+           </div> 
+           <table class="table table-striped table-hover" id="main">
+           <tbody id="result">
+           </tbody>
+           </table>
+
+         </td>
+       </tr>
+
+       <tr>
+         <td class="col-md-5">
+           
+           <label>Payee<label style="color: Red;" >*</label></label>
+           <input  type="text"  class="form-control" style="height: 35px;" id="payee" placeholder="Payee" name="payee">
+           <br>
+
+           <label>Supplier<label style="color: Red;" >*</label></label>
+           <input  type="text"  class="form-control" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
+           
+           <table class="table table-striped table-hover" id="main4">
+           <tbody id="result4">
+           </tbody>
+           </table>
+
+             <!-- supplier -->
+
+             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+               <script type="text/javascript">
+             $(document).ready(function(){
+               function load_data(query)
+               {
+                 $.ajax({
+                   url:"@obsupplier.php",
+                   method:"POST",
+                   data:{query:query},
+                   success:function(data)
+                   {
+                     $('#result4').html(data);
+                   }
+                 });
+               }
+               $('#supplier').keyup(function(){
+                 var search = $(this).val();
+                 if(search != '')
+                 {
+                   load_data(search);
+                 }
+                 else
+                 {
+
+                   load_data();
+                   document.getElementById('supplier').value = "";
+                  
+                   $("#main4").show();
+                   
+                 }
+               });
+             });
+             function showRow4(row)
+             {
+               var x=row.cells;
+               document.getElementById("supplier").value = x[0].innerHTML;
+               
+               
+             }
+           </script>
+
+         </td>
+         <td class="col-md-5">
+           <label>Date Returned <label style="color: Red;" >&nbsp;</label></label>
+
+
+           <div class="input-group date">
+           <div class="input-group-addon">
+           <i class="fa fa-calendar"></i>
+           </div>
+           <input  value="<?php echo date('m/d/Y')?>" type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="datereturned">
+           </div>
+           <br>
+
+
+           <label>Date Released <label style="color: Red;" >*</label></label>
+           <br>
+           <div class="input-group date">
+           <div class="input-group-addon">
+           <i class="fa fa-calendar"></i>
+           </div>
+           <input value="<?php echo date('m/d/Y')?>" required type="text" class="form-control pull-right" id="datepicker4" placeholder='Enter Date' name="datereleased">
+           </div>
+           <br>
+
+         </td>
+       </tr>
+
+       <tr>
+         <td class="col-md-5">
           
-          </td>
-          <td class="col-md-5">
-          <label>Date Received <label style="color: Red;" >*</label></label>
-            <br>
-            <div class="input-group date">
-            <div class="input-group-addon">
-            <i class="fa fa-calendar"></i>
-            </div>
-            <input value="<?php echo date('m/d/Y')?>" required type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datereceived">
-            </div>
-            <br>
+         <label>Particular/Purpose</label>
+         <input  type="text"   class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
 
-
-            <label>Date Processed</label>
-            <br>
-            <div class="input-group date">
-            <div class="input-group-addon">
-            <i class="fa fa-calendar"></i>
-            </div>
-            <input value="<?php echo date('m/d/Y')?>"date rety required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
-            </div> 
-            <table class="table table-striped table-hover" id="main">
-            <tbody id="result">
-            </tbody>
-            </table>
-
-          </td>
-        </tr>
-
-        <tr>
-          <td class="col-md-5">
-            
-            <label>Payee<label style="color: Red;" >*</label></label>
-            <input  type="text"  class="form-control" style="height: 35px;" id="payee" placeholder="Payee" name="payee">
-            <br>
-
-            <label>Supplier<label style="color: Red;" >*</label></label>
-            <input  type="text"  class="form-control" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
-            
-            <table class="table table-striped table-hover" id="main4">
-            <tbody id="result4">
-            </tbody>
-            </table>
-
-              <!-- supplier -->
-
-              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                <script type="text/javascript">
-              $(document).ready(function(){
-                function load_data(query)
-                {
-                  $.ajax({
-                    url:"@obsupplier.php",
-                    method:"POST",
-                    data:{query:query},
-                    success:function(data)
-                    {
-                      $('#result4').html(data);
-                    }
-                  });
-                }
-                $('#supplier').keyup(function(){
-                  var search = $(this).val();
-                  if(search != '')
-                  {
-                    load_data(search);
-                  }
-                  else
-                  {
-
-                    load_data();
-                    document.getElementById('supplier').value = "";
-                   
-                    $("#main4").show();
-                    
-                  }
-                });
-              });
-              function showRow4(row)
-              {
-                var x=row.cells;
-                document.getElementById("supplier").value = x[0].innerHTML;
-                
-                
-              }
-            </script>
-
-          </td>
-          <td class="col-md-5">
-            <label>Date Returned <label style="color: Red;" >&nbsp;</label></label>
-
-
-            <div class="input-group date">
-            <div class="input-group-addon">
-            <i class="fa fa-calendar"></i>
-            </div>
-            <input  value="<?php echo date('m/d/Y')?>" type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="datereturned">
-            </div>
-            <br>
-
-
-            <label>Date Released <label style="color: Red;" >*</label></label>
-            <br>
-            <div class="input-group date">
-            <div class="input-group-addon">
-            <i class="fa fa-calendar"></i>
-            </div>
-            <input value="<?php echo date('m/d/Y')?>" required type="text" class="form-control pull-right" id="datepicker4" placeholder='Enter Date' name="datereleased">
-            <br>
-
-          </td>
-        </tr>
-
-        <tr>
-          <td class="col-md-5">
-           
-          <label>Particular/Purpose</label>
-          <input  type="text"   class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
-
-          </td>
-          <td class="col-md-5">
-         
-          </td>
-        </tr>
-
-
-
-
-
-    </table>
-
-
-    
-    <div class="well">
-      <table class="table">
-        <tr>
-      
-      <td class="col-md-3">
-           
-           <label>Fund Source <label style="color: Red;" >*</label></label>
-           <input required  type="text"  class="form-control" style="height: 40px; width:100%" id="saronum" placeholder="Fund Source" name="saronum"class="typeahead"/>
-           <!-- <input type="text" name="txtCountry" id="txtCountry" class="typeahead"/> -->
-           <table class="table table-striped table-hover" id="main1">
-           <tbody id="result1">
-           </tbody>
-           </table>
-           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                 <script type="text/javascript">
-                 $(document).ready(function(){
-                 function load_data(query)
-                 {
-                   $.ajax({
-                     url:"@obsarosearch.php",
-                     method:"POST",
-                     data:{query:query},
-                     success:function(data)
-                     {
-                       $('#result1').html(data);
-                     }
-                   });
-                 }
-                 $('#saronum').keyup(function(){
-                   var search = $(this).val();
-                   if(search != '')
-                   {
-                     load_data(search);
-                   }
-                   else
-                   {
-                     load_data();
-                     document.getElementById('saronum').value = "";
-                     document.getElementById("main1").value="";
-                     document.getElementById("sarogroup").value = "";
-                    // document.getElementById("uacs").value = "";
-
-                     $("#main1").show();
-                    
-                     
-                     
-                   }
-                 });
-               });
-               function showRow1(row)
-               {
-                 var x=row.cells;
-                 document.getElementById("saronum").value = x[0].innerHTML;
-                 document.getElementById("sarogroup").value = x[5].innerHTML;
-                 document.getElementById("ppa").value = x[6].innerHTML;
-                 //document.getElementById("uacs").value = x[1].innerHTML;
-                 
-                 
-               }
-             </script> 
-
-          </td>
-
-          <td class="col-md-3">
-            <label>MFO/PPA<label style="color: Red;" >&nbsp;</label></label>
-            <input readonly required  type="text"  class="form-control" style="height: 40px; width:100%" id="ppa" placeholder="PPA" name="ppa">
-            <table class="table table-striped table-hover" id="main3">
-            <tbody id="result3">
-            </tbody>
-            </table>
-
-              <!-- PPA Search -->
-              
-              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                <script type="text/javascript">
-              $(document).ready(function(){
-                function load_data(query)
-                {
-                  $.ajax({
-                    url:"@obsaroppasearch.php",
-                    method:"POST",
-                    data:{query:query},
-                    success:function(data)
-                    {
-                      $('#result3').html(data);
-                    }
-                  });
-                }
-                $('#ppa').keyup(function(){
-                  var search = $(this).val();
-                  if(search != '')
-                  {
-                    load_data(search);
-                  }
-                  else
-                  {
-                    load_data();
-                    document.getElementById('ppa').value = "";
-                   
-                    $("#main3").show();
-                    
-                  }
-                });
-              });
-              function showRow3(row)
-              {
-                var x=row.cells;
-                document.getElementById("ppa").value = x[0].innerHTML;
-                
-                
-              }
-            </script>
-          </td>
-          <td class="col-md-3">
-           
-           <label>UACS Object Code <label style="color: Red;" >&nbsp;</label></label>
-           <input  required type="text"  class="form-control" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs">
-           <table class="table table-striped table-hover" id="main2" name="main2">
-           <tbody id="result2">
-           </tbody>
-           </table>
- 
-           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                 <script type="text/javascript">
-               $(document).ready(function(){
-                 function load_data(query)
-                 {
-                   $.ajax({
-                     url:"@obsarouacssearch.php",
-                     method:"POST",
-                     data:{query:query},
-                     success:function(data)
-                     {
-                       $('#result2').html(data);
-                     }
-                   });
-                 }
-                 $('#uacs').keyup(function(){
-                   var search = $(this).val();
-                   if(search != '')
-                   {
-                     load_data(search);
-                   }
-                   else
-                   {
-                     // document.getElementById('uacs').value = "";
-                     load_data();
-           /* document.getElementById("code").value = ""; */
-                     document.getElementById("uacs").value = "";
-                     $("#main2").show();
-                     
-                     
-                   }
-                 });
-               });
-               function showRow2(row)
-               {
-                 var x=row.cells;
-                 document.getElementById("uacs").value = x[0].innerHTML;
-                 
-                 
-               }
-             </script>
- 
-            </td>
-            <td class="col-md-3">
-            <label>Amount <label style="color: Red;" >*</label></label>
-             <input required  type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
-            </td>
-
-            
-
-
-        </tr> 
-        </table>
-
-        <table class="table">
-        <tr>
-        <td class="col-md-4">
-          <label>Remarks</label>
-          <textarea class="form-control" placeholder="Remarks" id="remarks" name="remarks" style="width: 400px; height: 40px;" ></textarea> 
-        <td>
-        <td class="col-md-4">
-          <label>Group</label>
-          <!-- <textarea class="form-control" placeholder="Remarks" name="remarks" ></textarea> --> 
-          <!-- <select class="form-control select" style="width: 100%; height: 40px;" name="sarogroup" id="sarogroup" required > -->
-          <!-- <option>Select Group</option> -->
-          <!-- <?php echo app($connect);?> -->
-          <!-- </select> -->
-          <input   type="text"  class="form-control" style="height: 40px; width:400px " id="sarogroup" placeholder="SARO Group" name="sarogroup" readonly>
-        <td>
-        <td class="col-md-4">
-        <label>Status</label>
-        <!-- <textarea class="form-control" placeholder="Remarks" name="remarks" ></textarea> --> 
-        <select class="form-control select" style="width: 100%; height: 40px; width:300px" name="status" id="status" required >
-
-        <option value = "Obligated">Obligated</option>
-        <option value = "Pending">Pending</option>
-        <!-- <option>Select Status</option> -->
-
-
-        </select>
-        <td>
-
-        </tr>
-      </table>
-              <input type="button" name="send" class="btn btn-primary" value="Add data" id="butsend">
-              <input type="button" name="save" class="btn btn-primary pull-right" value="Save Data" id="butsave">
-              <br>
-              <br>
-      </div>
-       
-           
-            <br>
-            
-         
-              <div class=""  style="overflow-x:auto;">
-            
-          <table id="table1" name="table1" class="table table-bordered"  style="background-color: white;border-width: medium;">
-         
-          <tbody>
-          <tr>
+         </td>
+         <td class="col-md-5">
         
-          <th>DATE RECEIVED</th>
-          <th>DATE OBLIGATED</th>
-          <th>DATE RETURNED</th>
-          <th>DATE RELEASED</th>
-          <th>ORS NUMBER</th>
-          <th>PO NUMBER</th>
-          <th>PAYEE</th>
-          <th>SUPPLIER</th>
-          <th>PARTICULAR</th>
-          <th>SARO NUMBER</th>
-          <th>PPA</th>
-          <th>UACS</th>
-          <th>AMOUNT</th>
-          <th>REMARKS</th>
-          <th>GROUP</th>
-          <th>STATUS</th>
-          <th>ACTION</th>
-         
-          <tr>
+         </td>
+       </tr>
+
+
+
+
+
+   </table>
+
+
+   
+   <div class="well">
+     <table class="table">
+       <tr>
+     
+     <td class="col-md-3">
+          
+          <label>Fund Source <label style="color: Red;" >*</label></label>
+          <input required  type="text"  class="form-control" style="height: 40px; width:100%" id="saronum" placeholder="Fund Source" name="saronum"class="typeahead"/>
+          <!-- <input type="text" name="txtCountry" id="txtCountry" class="typeahead"/> -->
+          <table class="table table-striped table-hover" id="main1">
+          <tbody id="result1">
           </tbody>
           </table>
-         <br>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script type="text/javascript">
+                $(document).ready(function(){
+                function load_data(query)
+                {
+                  $.ajax({
+                    url:"@obsarosearch.php",
+                    method:"POST",
+                    data:{query:query},
+                    success:function(data)
+                    {
+                      $('#result1').html(data);
+                    }
+                  });
+                }
+                $('#saronum').keyup(function(){
+                  var search = $(this).val();
+                  if(search != '')
+                  {
+                    load_data(search);
+                  }
+                  else
+                  {
+                    load_data();
+                    document.getElementById('saronum').value = "";
+                    document.getElementById("main1").value="";
+                    document.getElementById("sarogroup").value = "";
+                   // document.getElementById("uacs").value = "";
 
+                    $("#main1").show();
+                   
+                    
+                    
+                  }
+                });
+              });
+              function showRow1(row)
+              {
+                var x=row.cells;
+                document.getElementById("saronum").value = x[0].innerHTML;
+                document.getElementById("sarogroup").value = x[5].innerHTML;
+                document.getElementById("ppa").value = x[6].innerHTML;
+                //document.getElementById("uacs").value = x[1].innerHTML;
+                
+                
+              }
+            </script> 
 
+         </td>
 
-          <script>
-          $(document).ready(function() {
-          var id = 1; 
-          /*Assigning id and class for tr and td tags for separation.*/
-          $("#butsend").click(function() {
-          var newid = id++;
+         <td class="col-md-3">
+           <label>MFO/PPA<label style="color: Red;" >&nbsp;</label></label>
+           <input readonly required  type="text"  class="form-control" style="height: 40px; width:100%" id="ppa" placeholder="PPA" name="ppa">
+           <table class="table table-striped table-hover" id="main3">
+           <tbody id="result3">
+           </tbody>
+           </table>
+
+             <!-- PPA Search -->
+             
+             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+               <script type="text/javascript">
+             $(document).ready(function(){
+               function load_data(query)
+               {
+                 $.ajax({
+                   url:"@obsaroppasearch.php",
+                   method:"POST",
+                   data:{query:query},
+                   success:function(data)
+                   {
+                     $('#result3').html(data);
+                   }
+                 });
+               }
+               $('#ppa').keyup(function(){
+                 var search = $(this).val();
+                 if(search != '')
+                 {
+                   load_data(search);
+                 }
+                 else
+                 {
+                   load_data();
+                   document.getElementById('ppa').value = "";
+                  
+                   $("#main3").show();
+                   
+                 }
+               });
+             });
+             function showRow3(row)
+             {
+               var x=row.cells;
+               document.getElementById("ppa").value = x[0].innerHTML;
+               
+               
+             }
+           </script>
+         </td>
+         <td class="col-md-3">
           
-          var amount = $('#amount').val();
-          var ors = $('#ors').val();
-          var saronum = $('#saronum').val();
-          var payee = $('#payee').val();
-          var supplier = $('#supplier').val();
+          <label>UACS Object Code <label style="color: Red;" >&nbsp;</label></label>
+          <input  required type="text"  class="form-control" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs">
+          <table class="table table-striped table-hover" id="main2" name="main2">
+          <tbody id="result2">
+          </tbody>
+          </table>
+
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script type="text/javascript">
+              $(document).ready(function(){
+                function load_data(query)
+                {
+                  $.ajax({
+                    url:"@obsarouacssearch.php",
+                    method:"POST",
+                    data:{query:query},
+                    success:function(data)
+                    {
+                      $('#result2').html(data);
+                    }
+                  });
+                }
+                $('#uacs').keyup(function(){
+                  var search = $(this).val();
+                  if(search != '')
+                  {
+                    load_data(search);
+                  }
+                  else
+                  {
+                    // document.getElementById('uacs').value = "";
+                    load_data();
+          /* document.getElementById("code").value = ""; */
+                    document.getElementById("uacs").value = "";
+                    $("#main2").show();
+                    
+                    
+                  }
+                });
+              });
+              function showRow2(row)
+              {
+                var x=row.cells;
+                document.getElementById("uacs").value = x[0].innerHTML;
+                
+                
+              }
+            </script>
+
+           </td>
+           <td class="col-md-3">
+           <label>Amount <label style="color: Red;" >*</label></label>
+            <input required  type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
+           </td>
+
+           
 
 
-          if(amount=="" || ors=="" || saronum=="" || supplier==""&&payee==""){
-            alert("Required Fields Detected!");
-          }else
-          {
+       </tr> 
+       </table>
 
-          /* 
-          var datereceived = $('#datepicker1').val();
-		      var datereprocessed = $('#datepicker2').val();
-          var datereturned = $('#datepicker3').val();
-          var datereleased = $('#datepicker4').val();
-          var ors = $('#ors').val();
-          var ponum = $('#ponum').val();
-          var payee = $('#payee').val();
-          var supplier = $('#supplier').val();
-          var particular = $('#particular').val();
-          var saronum = $('#saronum').val();
-          var ppa = $('#ppa').val();
-          var uacs = $('#uacs').val();
-          var amount = $('#amount').val();
-          var remarks = $('#remarks').val();
-          var sarogroup = $('#sarogroup').val();
-          var status = $('#status').val(); */
+       <table class="table">
+       <tr>
+       <td class="col-md-4">
+         <label>Remarks</label>
+         <textarea class="form-control" placeholder="Remarks" id="remarks" name="remarks" style="width: 400px; height: 40px;" ></textarea> 
+       <td>
+       <td class="col-md-4">
+         <label>Group</label>
+         <!-- <textarea class="form-control" placeholder="Remarks" name="remarks" ></textarea> --> 
+         <!-- <select class="form-control select" style="width: 100%; height: 40px;" name="sarogroup" id="sarogroup" required > -->
+         <!-- <option>Select Group</option> -->
+         <!-- <?php echo app($connect);?> -->
+         <!-- </select> -->
+         <input   type="text"  class="form-control" style="height: 40px; width:400px " id="sarogroup" placeholder="SARO Group" name="sarogroup" readonly>
+       <td>
+       <td class="col-md-4">
+       <label>Status</label>
+       <!-- <textarea class="form-control" placeholder="Remarks" name="remarks" ></textarea> --> 
+       <select class="form-control select" style="width: 100%; height: 40px; width:300px" name="status" id="status" required >
 
-          $("#table1").append('<tr valign="top" id="'+newid+'">\n\
-          <td width="100px" class="datereceived'+newid+'">' + $("#datepicker1").val() + '</td>\n\
-          <td width="100px" class="datereprocessed'+newid+'">' + $("#datepicker2").val() + '</td>\n\
-          <td width="100px" class="datereturned'+newid+'">' + $("#datepicker3").val() + '</td>\n\
-          <td width="100px" class="datereleased'+newid+'">' + $("#datepicker4").val() + '</td>\n\
-          <td width="100px" class="ors'+newid+'">' + $("#ors").val() + '</td>\n\
-          <td width="100px" class="ponum'+newid+'">' + $("#ponum").val() + '</td>\n\
-          <td width="100px" class="payee'+newid+'">' + $("#payee").val() + '</td>\n\
-          <td width="100px" class="supplier'+newid+'">' + $("#supplier").val() + '</td>\n\
-          <td width="100px" class="particular'+newid+'">' + $("#particular").val() + '</td>\n\
-          <td width="100px" class="saronum'+newid+'">' + $("#saronum").val() + '</td>\n\
-          <td width="100px" class="ppa'+newid+'">' + $("#ppa").val() + '</td>\n\
-          <td width="100px" class="uacs'+newid+'">' + $("#uacs").val() + '</td>\n\
-          <td width="100px" class="amount'+newid+'">' + $("#amount").val() + '</td>\n\
-          <td width="100px" class="remarks'+newid+'">' + $("#remarks").val() + '</td>\n\
-          <td width="100px" class="sarogroup'+newid+'">' + $("#sarogroup").val() + '</td>\n\
-          <td width="100px" class="status'+newid+'">' + $("#status").val() + '</td>\n\
-          <td width="100px"><a href="javascript:void(0);" class="remCF">Remove</a></td>\n\ </tr>');
-          }
+       <option value = "Obligated">Obligated</option>
+       <option value = "Pending">Pending</option>
+       <!-- <option>Select Status</option> -->
+
+
+       </select>
+       <td>
+
+       </tr>
+     </table>
+             <input type="button" name="send" class="btn btn-primary" value="Add data" id="butsend">
+             <input type="button" name="save" class="btn btn-primary pull-right" value="Save Data" id="butsave">
+             
+     </div>
+      
           
-          });
-          $("#table1").on('click', '.remCF', function() {
-          $(this).parent().parent().remove();
-          });
-          /*crating new click event for save button*/
-          $("#butsave").click(function() {
-
-          /* var table  = $('#table1').empty();
-          if(table==""){
-            alert("Table cannot be empty");
-          }
-          else{ */
-
-          
-          var lastRowId = $('#table1 tr:last').attr("id"); /*finds id of the last row inside table*/
-
-          var datereceived = new Array();
-		      var datereprocessed = new Array();
-          var datereturned = new Array(); 
-          var datereleased = new Array(); 
-          var ors = new Array(); 
-          var ponum = new Array(); 
-          var payee = new Array(); 
-          var supplier = new Array(); 
-          var particular = new Array(); 
-          var saronum = new Array(); 
-          var ppa = new Array(); 
-          var uacs = new Array(); 
-          var amount = new Array(); 
-          var remarks = new Array(); 
-          var sarogroup = new Array(); 
-          var status = new Array(); 
+           <br>
+           
+           
+         <table id="table1" name="table1" class="table table-bordered"  style="background-color: white;border-width: medium;">
         
-          for ( var i = 1; i <= lastRowId; i++) {
-        // name.push($("#"+i+" .name"+i).html()); /*pushing all the names listed in the table*/
-        // email.push($("#"+i+" .email"+i).html()); /*pushing all the emails listed in the table*/
-         datereceived.push($("#"+i+" .datereceived"+i).html());
-         datereprocessed.push($("#"+i+" .datereprocessed"+i).html()); 
-         datereturned.push($("#"+i+" .datereturned"+i).html());
-         datereleased.push($("#"+i+" .datereleased"+i).html()); 
-         ors.push($("#"+i+" .ors"+i).html()); 
-         ponum.push($("#"+i+" .ponum"+i).html()); 
-         payee.push($("#"+i+" .payee"+i).html()); 
-         supplier.push($("#"+i+" .supplier"+i).html()); 
-         particular.push($("#"+i+" .particular"+i).html()); 
-         saronum.push($("#"+i+" .saronum"+i).html()); 
-         ppa.push($("#"+i+" .ppa"+i).html()); 
-         uacs.push($("#"+i+" .uacs"+i).html()); 
-         amount.push($("#"+i+" .amount"+i).html()); 
-         remarks.push($("#"+i+" .remarks"+i).html()); 
-         sarogroup.push($("#"+i+" .sarogroup"+i).html()); 
-         status.push($("#"+i+" .status"+i).html()); 
-		 
-          }
-          
-        /*   var sendName = JSON.stringify(name); 
-          var sendEmail = JSON.stringify(email); */
+         <tbody>
+         <tr>
+          <thead>
+         <th>DATE RECEIVED</th>
+         <th>DATE OBLIGATED</th>
+         <th>DATE RETURNED</th>
+         <th>DATE RELEASED</th>
+         <th>ORS NUMBER</th>
+         <th>PO NUMBER</th>
+         <th>PAYEE</th>
+         <th>SUPPLIER</th>
+         <th>PARTICULAR</th>
+         <th>SARO NUMBER</th>
+         <th>PPA</th>
+         <th>UACS</th>
+         <th>AMOUNT</th>
+         <th>REMARKS</th>
+         <th>GROUP</th>
+         <th>STATUS</th>
+         <th>ACTION</th>
+            </thead>
+         </tr>
+         </tbody>
+         </table>
+        <br>
 
-          var datereceived = JSON.stringify(datereceived);
-          var datereprocessed = JSON.stringify(datereprocessed);
-          var datereturned = JSON.stringify(datereturned);   
-          var datereleased = JSON.stringify(datereleased);
-          var ors = JSON.stringify(ors); 
-          var ponum = JSON.stringify(ponum);
-          var payee = JSON.stringify(payee);   
-          var supplier = JSON.stringify(supplier);
-          var particular = JSON.stringify(particular); 
-          var saronum = JSON.stringify(saronum);
-          var ppa = JSON.stringify(ppa);   
-          var uacs = JSON.stringify(uacs);
-          var amount = JSON.stringify(amount); 
-          var remarks = JSON.stringify(remarks);
-          var sarogroup = JSON.stringify(sarogroup);   
-          var status = JSON.stringify(status);
-          $.ajax({
-          url: "obcreatefunction.php",
-          type: "post",
-          data: {datereceived : datereceived , 
-            datereprocessed : datereprocessed, 
-            datereturned : datereturned, 
-            datereleased : datereleased, 
-            ors : ors, 
-            ponum : ponum, 
-            payee : payee, 
-            supplier : supplier, 
-            particular : particular, 
-            saronum : saronum, 
-            ppa : ppa, 
-            uacs : uacs, 
-            amount : amount, 
-            remarks : remarks, 
-            sarogroup : sarogroup, 
-            status : status},
-          success : function(data){
-          alert(data); /* alerts the response from php.*/
-          window.location.href='obligation.php';
-          }
-          });
-          /* } */
-          
-          });
-          });
-          </script>
+      
 
-
-  </form>
-  </div>
-
-  </div>
-</div>  
-</div> 
- </div> 
-
- <footer class="main-footer">
+ </form>
+  
+            </div>  
+            
+        </div> 
+        </div> 
+        <footer class="main-footer">
+    <br>
     <br>
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
       </div>
       <strong>DILG IV-A Regional Information and Communications Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
     </footer>
-    <br>
+    
+    
+
     </section>
- 
+</div>
+</div>
 
-
-
-
-
+  
 </body>
 </html>
     <!-- Getting PO NUmber -->      
@@ -881,3 +716,165 @@ $(document).ready(function(){
   });
 });
 </script>
+
+
+<script>
+          $(document).ready(function() {
+          var id = 1; 
+          /*Assigning id and class for tr and td tags for separation.*/
+          $("#butsend").click(function() {
+          var newid = id++;
+          
+          var amount = $('#amount').val();
+          var ors = $('#ors').val();
+          var saronum = $('#saronum').val();
+          var payee = $('#payee').val();
+          var supplier = $('#supplier').val();
+
+
+          if(amount=="" || ors=="" || saronum=="" || supplier==""&&payee==""){
+            alert("Required Fields Detected!");
+          }else
+          {
+
+          /* 
+          var datereceived = $('#datepicker1').val();
+		      var datereprocessed = $('#datepicker2').val();
+          var datereturned = $('#datepicker3').val();
+          var datereleased = $('#datepicker4').val();
+          var ors = $('#ors').val();
+          var ponum = $('#ponum').val();
+          var payee = $('#payee').val();
+          var supplier = $('#supplier').val();
+          var particular = $('#particular').val();
+          var saronum = $('#saronum').val();
+          var ppa = $('#ppa').val();
+          var uacs = $('#uacs').val();
+          var amount = $('#amount').val();
+          var remarks = $('#remarks').val();
+          var sarogroup = $('#sarogroup').val();
+          var status = $('#status').val(); */
+
+          $("#table1").append('<tr valign="top" id="'+newid+'">\n\
+          <td width="100px" class="datereceived'+newid+'">' + $("#datepicker1").val() + '</td>\n\
+          <td width="100px" class="datereprocessed'+newid+'">' + $("#datepicker2").val() + '</td>\n\
+          <td width="100px" class="datereturned'+newid+'">' + $("#datepicker3").val() + '</td>\n\
+          <td width="100px" class="datereleased'+newid+'">' + $("#datepicker4").val() + '</td>\n\
+          <td width="100px" class="ors'+newid+'">' + $("#ors").val() + '</td>\n\
+          <td width="100px" class="ponum'+newid+'">' + $("#ponum").val() + '</td>\n\
+          <td width="100px" class="payee'+newid+'">' + $("#payee").val() + '</td>\n\
+          <td width="100px" class="supplier'+newid+'">' + $("#supplier").val() + '</td>\n\
+          <td width="100px" class="particular'+newid+'">' + $("#particular").val() + '</td>\n\
+          <td width="100px" class="saronum'+newid+'">' + $("#saronum").val() + '</td>\n\
+          <td width="100px" class="ppa'+newid+'">' + $("#ppa").val() + '</td>\n\
+          <td width="100px" class="uacs'+newid+'">' + $("#uacs").val() + '</td>\n\
+          <td width="100px" class="amount'+newid+'">' + $("#amount").val() + '</td>\n\
+          <td width="100px" class="remarks'+newid+'">' + $("#remarks").val() + '</td>\n\
+          <td width="100px" class="sarogroup'+newid+'">' + $("#sarogroup").val() + '</td>\n\
+          <td width="100px" class="status'+newid+'">' + $("#status").val() + '</td>\n\
+          <td width="100px"><a href="javascript:void(0);" class="remCF">Remove</a></td>\n\ </tr>');
+          }
+          
+          });
+          $("#table1").on('click', '.remCF', function() {
+          $(this).parent().parent().remove();
+          });
+          /*crating new click event for save button*/
+          $("#butsave").click(function() {
+
+          /* var table  = $('#table1').empty();
+          if(table==""){
+            alert("Table cannot be empty");
+          }
+          else{ */
+
+          
+          var lastRowId = $('#table1 tr:last').attr("id"); /*finds id of the last row inside table*/
+
+          var datereceived = new Array();
+		      var datereprocessed = new Array();
+          var datereturned = new Array(); 
+          var datereleased = new Array(); 
+          var ors = new Array(); 
+          var ponum = new Array(); 
+          var payee = new Array(); 
+          var supplier = new Array(); 
+          var particular = new Array(); 
+          var saronum = new Array(); 
+          var ppa = new Array(); 
+          var uacs = new Array(); 
+          var amount = new Array(); 
+          var remarks = new Array(); 
+          var sarogroup = new Array(); 
+          var status = new Array(); 
+        
+          for ( var i = 1; i <= lastRowId; i++) {
+        // name.push($("#"+i+" .name"+i).html()); /*pushing all the names listed in the table*/
+        // email.push($("#"+i+" .email"+i).html()); /*pushing all the emails listed in the table*/
+         datereceived.push($("#"+i+" .datereceived"+i).html());
+         datereprocessed.push($("#"+i+" .datereprocessed"+i).html()); 
+         datereturned.push($("#"+i+" .datereturned"+i).html());
+         datereleased.push($("#"+i+" .datereleased"+i).html()); 
+         ors.push($("#"+i+" .ors"+i).html()); 
+         ponum.push($("#"+i+" .ponum"+i).html()); 
+         payee.push($("#"+i+" .payee"+i).html()); 
+         supplier.push($("#"+i+" .supplier"+i).html()); 
+         particular.push($("#"+i+" .particular"+i).html()); 
+         saronum.push($("#"+i+" .saronum"+i).html()); 
+         ppa.push($("#"+i+" .ppa"+i).html()); 
+         uacs.push($("#"+i+" .uacs"+i).html()); 
+         amount.push($("#"+i+" .amount"+i).html()); 
+         remarks.push($("#"+i+" .remarks"+i).html()); 
+         sarogroup.push($("#"+i+" .sarogroup"+i).html()); 
+         status.push($("#"+i+" .status"+i).html()); 
+		 
+          }
+          
+        /*   var sendName = JSON.stringify(name); 
+          var sendEmail = JSON.stringify(email); */
+
+          var datereceived = JSON.stringify(datereceived);
+          var datereprocessed = JSON.stringify(datereprocessed);
+          var datereturned = JSON.stringify(datereturned);   
+          var datereleased = JSON.stringify(datereleased);
+          var ors = JSON.stringify(ors); 
+          var ponum = JSON.stringify(ponum);
+          var payee = JSON.stringify(payee);   
+          var supplier = JSON.stringify(supplier);
+          var particular = JSON.stringify(particular); 
+          var saronum = JSON.stringify(saronum);
+          var ppa = JSON.stringify(ppa);   
+          var uacs = JSON.stringify(uacs);
+          var amount = JSON.stringify(amount); 
+          var remarks = JSON.stringify(remarks);
+          var sarogroup = JSON.stringify(sarogroup);   
+          var status = JSON.stringify(status);
+          $.ajax({
+          url: "obcreatefunction.php",
+          type: "post",
+          data: {datereceived : datereceived , 
+            datereprocessed : datereprocessed, 
+            datereturned : datereturned, 
+            datereleased : datereleased, 
+            ors : ors, 
+            ponum : ponum, 
+            payee : payee, 
+            supplier : supplier, 
+            particular : particular, 
+            saronum : saronum, 
+            ppa : ppa, 
+            uacs : uacs, 
+            amount : amount, 
+            remarks : remarks, 
+            sarogroup : sarogroup, 
+            status : status},
+          success : function(data){
+          alert(data); /* alerts the response from php.*/
+          window.location.href='obligation.php';
+          }
+          });
+          /* } */
+          
+          });
+          });
+          </script>
