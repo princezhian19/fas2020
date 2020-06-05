@@ -210,6 +210,15 @@ if ($unit == "22") {
     // $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleRight);
     // $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleRight);
     // $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($stylebottom);
+
+    $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
+
+
+    $objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
+    
     $row++;
     $rowA++;
     $rowB++;
