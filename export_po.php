@@ -168,7 +168,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowC,'Very Truly Yours:')
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowD,'       ______________________________________');
         $objPHPExcel->getActiveSheet()->getStyle('E'.$rowD)->getFont()->setBold(true);
 $objPHPExcel->getActiveSheet()->getStyle('E'.$rowD)->applyFromArray($styleLabel2);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowD,'NOEL R. BARTOLABAC, CESO V');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowD,'ARIEL O. IGLESIA, CESO III');
 $objPHPExcel->getActiveSheet()->getStyle('D'.$rowD.':F'.$rowD)->applyFromArray($stylebottom); 
 $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowE.':C'.$rowE);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowE,'Signature over Printed Name of Supplier');
