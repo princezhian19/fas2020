@@ -441,7 +441,7 @@ $objPHPExcel->getActiveSheet()->getStyle('B'.$rowI)->applyFromArray($styleRight)
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowJ,"Designation:");
 $objPHPExcel->getActiveSheet()->mergeCells('D'.$rowJ.':E'.$rowJ);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowJ,"OIC Regional Director");
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowJ,"Regional Director");
 $objPHPExcel->getActiveSheet()->mergeCells('F'.$rowJ.':G'.$rowJ);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$rowJ,"Chief, GSS");
 $objPHPExcel->getActiveSheet()->getStyle('A'.$rowJ)->applyFromArray($styleContent3);
