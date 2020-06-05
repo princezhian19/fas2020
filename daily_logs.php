@@ -218,64 +218,61 @@ if (isset($_POST['stamp4'])) {
               ?></td>
               <td>
                 <?php 
+                if(date('d',strtotime($date_today)) == '01'){ 
+                  $late = date('h:i',strtotime($time_in)) > date('h:i',strtotime('08:00'));
+                if($late){ //morning late
+                $datetime2 = new DateTime('08:00');//time
+                $datetime1 = new DateTime($time_in);//time in
+                $dd22 = $datetime1->diff($datetime2);
+              }
+                  $under = date('h:i',strtotime($time_out)) < date('h:i',strtotime('17:00'));
+                  if ($under) {
+                    $datetime3 = new DateTime('17:00');//time
+                    $datetime4 = new DateTime($time_out);//time out
+                    $dd22 += $datetime3->diff($datetime4);
+                  }
+                echo $dd22->format('%i');
+
+              
+            }else{
+              $late = date('h:i',strtotime($time_in)) > date('h:i',strtotime('09:00'));
+              if($late){ //morning late
+                $datetime2 = new DateTime('09:00');//start time
+                $datetime1 = new DateTime($time_in);//end time
+                $dd22 = $datetime1->diff($datetime2);
+                echo $dd22->format('%i');
+              }
+            }
+            ?>
+
+          </td>
+          <td>
+                <?php 
                 $undertime = 0;
                 if(date('d',strtotime($date_today)) == '01'){ 
-                // $undertime = date('h:i',strtotime('10:00'))-date('h:i',strtotime('08:00'));
-                // echo date('H',$undertime);
                 if(date('h:i',strtotime($time_in)) > date('h:i',strtotime('08:00'))){ //morning late
                 $datetime2 = new DateTime('08:00');//start time
                 $datetime1 = new DateTime($time_in);//end time
                 $dd22 = $datetime1->diff($datetime2);
-                echo $dd22->format('%h:%i');
-                echo "<br>";
-                echo $time_in;
-                }
+                echo $dd22->format('%H');
+              }
+              if (date('H', $undertime) > 0) {
+              }
+            }else{
+                if(date('h:i',strtotime($time_in)) > date('h:i',strtotime('09:00'))){ //morning late
+                $datetime2 = new DateTime('09:00');//start time
+                $datetime1 = new DateTime($time_in);//end time
+                $dd22 = $datetime1->diff($datetime2);
+                echo $dd22->format('%H');
+              }
+            }
+            ?>
 
-                
-                // if(strtotime($time_out) < strtotime('17:00')){ //morning late
-                //   $undertime += strtotime('17:00') - strtotime($time_out);
-                // }
-
-                // echo $dd = strtotime($time_in);
-                // echo "<br>";
-                // echo $dd2 = strtotime('08:00');
-                // echo "<br>";
-                //  $dd22 = $dd2 - $dd;
-                //  echo date('%H:%i',$dd22);
-
-                // echo $dd = date('g:i',strtotime($time_out));
-                // echo "<br>";
-                // echo $dd2 = date('g:i',strtotime('17:00'));
-                // echo "<br>";
-                // echo $dd22 = $dd - $dd2;
-
-if (date('H', $undertime) > 0) {
-}
-
-              //   if($undertime!=0 && date('H', $undertime) > 0){
-              //    echo date('H', $undertime);
-              //  }else{
-              //   echo "";
-              // }
-              //   if($undertime!=0 && date('i', $undertime) > 0){
-              //    echo $undertime);
-              // }else{
-              //   echo '';
-              // }
-}else{
-  echo "flexi days";
-}
-
-
-
-?>
-
-</td>
-<td></td>
-</tr>
-<?php } ?>
-</table>
-</div>
+          </td>
+        </tr>
+      <?php } ?>
+    </table>
+  </div>
 </div>
 </div>
 </div>
