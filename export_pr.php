@@ -1,7 +1,7 @@
 <?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("library/export_pr.xls");
+$objPHPExcel = PHPExcel_IOFactory::load("library/export_pr.xlsx");
 
 $styleTop = array(
   'borders' => array(
@@ -210,6 +210,15 @@ if ($unit == "22") {
     // $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleRight);
     // $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleRight);
     // $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($stylebottom);
+
+    $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
+
+
+    $objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
+    
     $row++;
     $rowA++;
     $rowB++;

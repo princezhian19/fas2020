@@ -889,9 +889,9 @@ $edit="edit";
          // var final2 = final.replace('11;','');
 
           var final11 = final .replace(';;;;;;;15;','');
-        
+          var f = final11 = final .replace(';;;;;;;;','');
      text.val('');
-     text.val(final11);
+     text.val(f);
 
 
 			});
@@ -955,9 +955,10 @@ $('.'+getcheckboxes1).prop('checked',this.checked);
    
      var final1 = str1 .replace(';;;;;;;15;','');
      var final2 = final1 .replace('11;','');
+     var f2 = final2 .replace(';;;;;;;;','');
      //alert(final);
      text1.val('');
-     text1.val(final2);
+     text1.val(f2);
      
      
  });

@@ -93,10 +93,10 @@ $username = $_SESSION['username'];
     $('#example2').DataTable()
     $('#example1').DataTable({
       'paging'      : true,
-      'lengthChange': true,
+      'lengthChange': false,
       'searching'   : false,
       'ordering'    : false,
-      'info'        : true,
+      'info'        : false,
       'autoWidth'   : true
     })
   })

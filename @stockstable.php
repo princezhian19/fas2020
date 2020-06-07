@@ -3,74 +3,62 @@ include('db.class.php'); // call db.class.php
 
 ?>
 
-<div class="row">
-  <div class="col-md-12">
+
     <div class="box">
       <div class="box-body">
-        <div class="row">
-          <div class="col-md-12">
+        
+         
+        
             <h1>Stocks</h1> 
 
         <div class="class-responsive">
-          <div class="col-md-2">
-            <li class="btn btn-success"><a href="CreateStocks.php" style="color:white;text-decoration: none;">Update Stocks</a></li>
-              </div>
 
-        <div class="col-md-5">
-        <div class="input-group date">
-        <form method = "POST" action = "@stocksearch.php">
-        <input  type="text" class="form-control" style="height: 35px; width: 400px" id="form-control" placeholder="Enter Stock Number" name="stocksearch" > &nbsp
-        &nbsp<button type="submit" name="submit"  class="btn btn-success  ">Search</button>
-        </form>
-        </div>
-        </div>
-        <div class="col-md-5">
-        <form method = "POST" action = "@Functions/stocksdateexport.php">
-                    <!-- <div class="input-group date">
-                        <div class="input-group-addon">
-                        FROM   <i class="fa fa-calendar"></i>
-                        <input type="text" class="" id="datepicker1" placeholder='Enter Date' name="datefrom" style="height: 35px; width: 250px">
-                        </div>
-                        <div class="input-group-addon">
-                        TO <i class="fa fa-calendar"></i>
-                        <input type="text" class="" id="datepicker2" placeholder='Enter Date' name="dateto" style="height: 35px; width: 250px">
-                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
-                        </div>
-                      <br> -->
-                      <div class="input-group date">
-                        <div class="input-group-addon">
-                        FOR THE MONTH OF <i class="fa fa-calendar"></i>
-                        </div>
-                        <div>
-                        <input type="text" class="form-control" id="datepicker2" placeholder='Enter Date' name="dateto" style="height: 35px; width: 250px">
-                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
-                       </div>
-                    </div> 
-          </form>
 
-        
-        </div>
-      </div>
-      <br>
-      <br>
-      <br>
-                <!-- table here -->
+          
+<table class="table" > 
+
+
+<tr>
+<td class="col-md-1">
+<li class="btn btn-success"><a href="CreateStocks.php" style="color:white;text-decoration: none;">Update Stocks</a></li>
+</td>
+
+<td class="col-md-6" >
+
+
+</td>
+<form method = "POST" action = "@stocksearch.php">
+<td class="col-md-1">
+<input  type="text" class="form-control" style="height: 35px; width: 200px" id="form-control" placeholder="Enter Stock Number" name="stocksearch" >
+</td>
+
+<td class="col-md-1">
+<button type="submit" name="submit"  class="btn btn-success  ">Search</button>
+</td>
+</form>
+<form method = "POST" action = "@Functions/stocksdateexport.php">
+<td class="col-md-2">
+
+<input type="text" class="form-control" id="datepicker2" placeholder='Enter Date' name="dateto" style="height: 35px; width: 250px">
+</td>
+
+<td class="col-md-1">
+<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
+</td>
+</form>
+
+
+</tr>
+</table>
+         
+      
+       
 
 <table id="xample1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;">
                         
-                      <!--   <th width="100"></th>
-                        <th width="800">NO.</th>
-                        <th width="800">ITEMS</th>
-                        <th width="800">UNIT</th>
-                        <th width="800">BALANCE BEFORE</th>
-                        <th width="800">DELIVERY</th>
-                        <th width="800">AVAILABLE BALANCE</th>
-                        <th width="800">ISSUE MONTH</th>
-                        <th width="800">BALANCE AFTER</th>
-                        <th width="800">CURRENT PRICE</th> -->
-
+                    
                     
                         <th width="800">STOCK NO.</th>
                         <th width="800">ITEMS</th>
@@ -81,9 +69,6 @@ include('db.class.php'); // call db.class.php
                         <th width="800">ISSUE MONTH</th>
                         <th width="800">BALANCE AFTER</th>
                         <th width="800">CURRENT PRICE</th>
-                        
-                  
-
                     </tr>
                 </thead>
             
@@ -141,12 +126,11 @@ include('db.class.php'); // call db.class.php
         $('#example1').DataTable();
     } );
 </script>
-</div>
-</div>
+
+
 
    
-<div class="panel-footer"></div>
-</div>
+
 </div>
 
 
