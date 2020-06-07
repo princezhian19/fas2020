@@ -215,12 +215,6 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('B37',$purpose);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B43',strtoupper($pmo_contact_person));
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B44',$designation);
 
-
-  
-
-  
-
-
 }
  
 
