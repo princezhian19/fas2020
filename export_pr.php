@@ -42,8 +42,6 @@ $purpose = $row['purpose'];
 $pr_date = $row['pr_date'];
 
 $d1 = date('F d, Y', strtotime($pr_date));
-
-
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B7',$pmo);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C7','PR No.:  '.$pr_no);
 if($pr_date == '0000-00-00'){
@@ -58,9 +56,12 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('F7',$d1);
 
 $totalcount = mysqli_query($conn, "SELECT sum(pr.qty) as first ,sum(pr.abc) as second FROM pr_items pr left join app a on a.id = pr.items WHERE pr.pr_no = '$pr_no' "); 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 292bab72c218de7b426f9977399769eba65c63e3
 $sql_items = mysqli_query($conn, "SELECT a.sn,a.id,a.procurement,pr.description,pr.unit,pr.qty,pr.abc FROM pr_items pr left join app a on a.id = pr.items WHERE pr.pr_no = '$pr_no' ");
 
  
@@ -70,9 +71,6 @@ $rowB = 13;
 $rowC = 14;
 $rowD = 15;
 $rowE = 16;
-
-
-
 
   while($excelrow = mysqli_fetch_assoc($sql_items) ){
 
@@ -165,8 +163,6 @@ if ($unit == "21") {
 if ($unit == "22") {
   $unit = "cart";
 }
-
-
     $total = $excelrow['qty']*$excelrow['abc'];
     $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['sn']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$unit);
@@ -175,20 +171,22 @@ if ($unit == "22") {
     $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$excelrow['procurement'] ."\n".$excelrow['description']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$excelrow['qty']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$excelrow['abc']);
-    //$objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,number_format($total,2));
     $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$total);
+<<<<<<< HEAD
 
 
 
        
 
+=======
+>>>>>>> 292bab72c218de7b426f9977399769eba65c63e3
     $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
 
 
-    $objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
-    $objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
-    $objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
-    $objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
+    // $objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
+    // $objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
+    // $objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
+    // $objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
     
     $row++;
     $rowA++;
@@ -200,7 +198,6 @@ if ($unit == "22") {
 
   $select_purpsoe = mysqli_query($conn,"SELECT pr.purpose,pr.pmo,pmo.pmo_contact_person,pmo.designation FROM pr left join pmo on pmo.pmo_title = pr.pmo WHERE pr.id = $id ");
 $rowP = mysqli_fetch_array($select_purpsoe);
-// $purpose = $rowP['purpose'];
 $pmo_contact_person = $rowP['pmo_contact_person'];
 $pmo_contact_person;
 $designation = $rowP['designation'];
@@ -209,10 +206,13 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('B37',$purpose);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B43',strtoupper($pmo_contact_person));
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B44',$designation);
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 292bab72c218de7b426f9977399769eba65c63e3
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
 header('location: export_pr.xlsx');
