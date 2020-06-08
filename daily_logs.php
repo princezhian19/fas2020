@@ -271,105 +271,103 @@ if (isset($_POST['stamp4'])) {
                 }
                 ?></td>
                 <td>
+               
+          </td>
+          <td>
+           
+
+        </td>
+      </tr>
+    <?php } ?>
+  </table>
+</div>
+</div>
+</div>
+</div>
 
 
-                </td>
-                <td>
 
-                </td>
-              </tr>
-            <?php } ?>
-          </table>
-        </div>
-      </div>
+
+<div class="col-md-4">
+
+
+  <div class="box box-success">
+    <div class="box-header with-border" align="left">
+      <h4><strong>Logs For Today : <?php echo date('F d, Y')?></strong></h4>
     </div>
-  </div>
+    <div class="box-body table-responsive no-padding">
+      <div class="box-body">
+        <table id="example1" class="table table-striped " style="background-color: white;">
+          <form method="POST">
+            <tr>
+              <th class="pull-left" >Time In</th>
+              <?php if (mysqli_num_rows($check1)>0): ?>
+                <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
 
-
-
-
-  <div class="col-md-4">
-
-
-    <div class="box box-success">
-      <div class="box-header with-border" align="left">
-        <h4><strong>Logs For Today : <?php echo date('F d, Y')?></strong></h4>
-      </div>
-      <div class="box-body table-responsive no-padding">
-        <div class="box-body">
-          <table id="example1" class="table table-striped " style="background-color: white;">
-            <form method="POST">
+                <?php else: ?>
+                  <td width="250"><button class="btn btn-success" name="stamp1" type="submit"><strong>Stamp</strong></button></td>
+                <?php endif ?>
+              </tr>
               <tr>
-                <th class="pull-left" >Time In</th>
-                <?php if (mysqli_num_rows($check1)>0): ?>
-                  <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
-
+                <th class="pull-left" >Lunch In</th>
+                <?php if (mysqli_num_rows($check2)>0): ?>
+                  <td width="250"><?php echo date('h:i A',strtotime($lunch_inL))?></td>
                   <?php else: ?>
-                    <td width="250"><button class="btn btn-success" name="stamp1" type="submit"><strong>Stamp</strong></button></td>
-                  <?php endif ?>
-                </tr>
-                <tr>
-                  <th class="pull-left" >Lunch In</th>
-                  <?php if (mysqli_num_rows($check2)>0): ?>
-                    <td width="250"><?php echo date('h:i A',strtotime($lunch_inL))?></td>
-                    <?php else: ?>
-                      <?php if (mysqli_num_rows($check1)>0): ?>
-                        <td width="250"><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                    <?php if (mysqli_num_rows($check1)>0): ?>
+                      <td width="250"><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                      <?php else: ?>
+                        <td width="250"><button disabled class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                      <?php endif ?>
+                    <?php endif ?>
+                  </tr>
+                  <tr>
+                    <th class="pull-left">Lunch Out</th>
+                    <?php if (mysqli_num_rows($check3)>0): ?>
+                      <td width="250"><?php echo date('h:i A',strtotime($lunch_outL))?></td>
+                      <?php else: ?>
+                        <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0): ?>
+                        <td width="250"><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
                         <?php else: ?>
-                          <td width="250"><button disabled class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                          <td width="250"><button disabled class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
                         <?php endif ?>
                       <?php endif ?>
                     </tr>
+
                     <tr>
-                      <th class="pull-left">Lunch Out</th>
-                      <?php if (mysqli_num_rows($check3)>0): ?>
-                        <td width="250"><?php echo date('h:i A',strtotime($lunch_outL))?></td>
+                      <th class="pull-left" >Time Out</th>
+                      <?php if (mysqli_num_rows($check4)>0): ?>
+                        <td width="250"><?php echo date('h:i A',strtotime($time_outL))?></td>
                         <?php else: ?>
-                          <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0): ?>
-                          <td width="250"><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                          <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0 && mysqli_num_rows($check3)>0): ?>
+                          <td width="250"><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
                           <?php else: ?>
-                            <td width="250"><button disabled class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                            <td width="250"><button disabled class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
                           <?php endif ?>
                         <?php endif ?>
                       </tr>
-
-                      <tr>
-                        <th class="pull-left" >Time Out</th>
-                        <?php if (mysqli_num_rows($check4)>0): ?>
-                          <td width="250"><?php echo date('h:i A',strtotime($time_outL))?></td>
-                          <?php else: ?>
-                            <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0 && mysqli_num_rows($check3)>0): ?>
-                            <td width="250"><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
-                            <?php else: ?>
-                              <td width="250"><button disabled class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
-                            <?php endif ?>
-                          <?php endif ?>
-                        </tr>
-                      </form>
-                    </table>
-                  </div>
+                    </form>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
-        </body>
-        <script>
-          $(document).ready(function(){
+        </div>
+      </body>
+      <script>
+        $(document).ready(function(){
 
-            $('.link').click(function(){
+          $('.link').click(function(){
 
-              var f = $(this);
-              var id = f.data('id');
+            var f = $(this);
+            var id = f.data('id');
 
-              var month = $('#month').val();
-              var year = $('#year').val();
-              var username = $('#username').val();
-
+            var month = $('#month').val();
+            var year = $('#year').val();
+            var username = $('#username').val();
               window.location = 
               'export_dtr.php?month='+month+'&year='+year+'&username='+username;
             });
           }) ;
         </script>
         </html>
-
 

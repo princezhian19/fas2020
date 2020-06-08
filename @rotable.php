@@ -125,8 +125,9 @@ else{
                   <th width = '250'>OFFICE</th>
                   <th width = '200'>REGISTERED BY </th>
                   <th width = '200'>REGISTERED DATE  </th>
-
-                  <th width = '300'>ACTION<BR><BR></th>
+                  <th width = '200'>SUBMITTED DATE  </th>
+                  <th width = '200'>RECEIVED DATE  </th>
+                  <th width = '500'>ACTION<BR><BR></th>
                   
                 </tr>
                 </thead>
@@ -161,9 +162,23 @@ else{
                   $registeredby= $row["registeredby"];
 
 
-               $registereddate1  = $row["registereddate"];
+                  $registereddate1  = $row["registereddate"];
                   $registereddate = date('F d, Y', strtotime($registereddate1));
-                  
+
+                
+
+
+                  $submitteddate1  = $row["submitteddate"];
+                  $submitteddate = date('F d, Y', strtotime($submitteddate1));
+                  $submittedby= $row["submittedby"];
+
+                  $submitteddate1  = $row["submitteddate"];
+                  $submitteddate = date('F d, Y', strtotime($submitteddate1));
+                  $submittedby= $row["submittedby"];
+
+                  $receiveddate1  = $row["receiveddate"];
+                  $receiveddate = date('F d, Y', strtotime($receiveddate1));
+                  $receivedby= $row["receivedby"];
 
 
                ?>
@@ -179,6 +194,45 @@ else{
 
                 <td><?php echo $registeredby?></td>
                 <td><?php echo $registereddate?></td>
+             
+                <?php if ($submitteddate1 == '0000-00-00'): ?>
+                  
+                  <?php if ($status!='cancelled'):?> 
+                  <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Official Business?');" href='ob_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
+                  <?php else: ?>
+                  <td></td>
+                  <?php endif ?>
+
+        
+                  <?php else: ?>
+                  <td><?php echo $submitteddate .'<br>'.$submittedby.''?></td>
+                  <?php endif ?>
+
+                    <!-- receive -->
+                     <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
+                          <?php if ($username1 == 'itdummy1' || $username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
+                              <?php if ($status=='cancelled'):?>
+                              <td></td>
+                              <?php else: ?>
+                                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to receive this Official Business?');" href='ob_receive.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Receive">Receive</a></td>
+                              <?php endif ?>
+                          <?php else: ?>
+                          <td></td>
+                          <?php endif ?> 
+                        <?php else: ?>
+                         
+                        <td>
+                            
+                          <?php if ($receiveddate1 == '0000-00-00'): ?>
+                          <!-- //no dates -->
+                          <?php else: ?>
+                            <?php echo $receiveddate .'<br>'.$receivedby.''?>
+                          <?php endif ?>
+
+                        </td>
+                         
+                          <?php endif ?>
+                  <!-- receive -->
 
                 <td>
                   <?php
@@ -197,16 +251,23 @@ else{
  
                   ?>
 
-                    <?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
 
 
-                    <a name="edit" onclick="myFunction(this)" data-office = "<?php echo $office;?>" data-id="<?php echo $id;?>"  data-registeredby = "<?php echo $registeredby;?>" data-registereddate = "<?php echo $registereddate;?>" data-title = "<?php echo $title;?>" data-issuanceno = "<?php echo $issuanceno;?>" data-issuancedate = "<?php echo $issuancedate11;?>"  data-category = "<?php echo $category;?>"   value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> |
-
-                    <a onclick="return confirm('Are you sure you want to delete this Regional Order/Regional Office Order?');" name="del"  href="ro_delete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
-                    <?php else :?>
+                            <?php if ($office ==  $DIVISION_M ):?>
+                           
 
 
-                    <?php endif?>
+                            <a name="edit" onclick="myFunction(this)" data-office = "<?php echo $office;?>" data-id="<?php echo $id;?>"  data-registeredby = "<?php echo $registeredby;?>" data-registereddate = "<?php echo $registereddate;?>" data-title = "<?php echo $title;?>" data-issuanceno = "<?php echo $issuanceno;?>" data-issuancedate = "<?php echo $issuancedate11;?>"  data-category = "<?php echo $category;?>"   value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> |
+
+                            <!-- <a onclick="return confirm('Are you sure you want to delete this Regional Order/Regional Office Order?');" name="del"  href="ro_delete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a> -->
+                            <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+
+                            <?php else :?>
+                                        
+                           
+                         
+                           <?php endif?>
+                 
         
                 </td>
           
