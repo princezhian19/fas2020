@@ -208,7 +208,7 @@ function showUser()
                           </div>
                           </td> 
                           <td>
-                          <input  style = "margin-left:120px;"   type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" value = "OTHERS"><b>OTHERS (please specify)</b><br>
+                          <input  style = "margin-left:120px;"   type = "checkbox" name = "req_type_category[]"  id = "checkboxgroup_g6" class = "checkbox_group"  value = "OTHERS"><b>OTHERS (please specify)</b><br>
                           <div style = "margin-left:140px; padding-top:10px;">
                           <input   type = "text" name = "others1" id = "others1" class = "checkboxgroup_g6" value = "" style = "margin-left:20px;border:none;border-bottom:1px solid black;"/><br>
                           <input   type = "text" name = "others2" id = "others2" class = "checkboxgroup_g6" value = "" style = "margin-left:20px;border:none;border-bottom:1px solid black;"/><br>
@@ -529,6 +529,7 @@ $(document).ready(function() {
       enable_cb4();
       enable_cb5();
       enable_cb6();
+      enable_cb6();
     $("#checkboxgroup_g1").click(enable_cb1);
     $("#checkboxgroup_g2").click(enable_cb2);
     $("#checkboxgroup_g3").click(enable_cb3);
@@ -537,13 +538,13 @@ $(document).ready(function() {
     $("#checkboxgroup_g6").click(enable_cb6);
     
   });
-  function enable_cb6() {
-    if (this.checked) {
-      $(".checkboxgroup_g6").removeAttr("disabled");
-    } else {
-      $(".checkboxgroup_g6").attr("disabled", true);
-    }
-  }
+  // function enable_cb6s() {
+  //   if (this.checked) {
+  //     $(".checkboxgroup_g6").removeAttr("disabled");
+  //   } else {
+  //     $(".checkboxgroup_g6").attr("disabled", true);
+  //   }
+  // }
 
   function enable_cb1() {
     if (this.checked) {
@@ -670,6 +671,35 @@ $(document).ready(function() {
       $(".checkboxgroup_g5").attr("disabled", true);
       document.getElementById("changeaccount").disabled = true; 
       
+
+    }
+  }
+
+  function enable_cb6(){
+    if (this.checked) {
+     
+
+      $(".checkboxgroup_g6").removeAttr("disabled");
+      $(".checkboxgroup_g1").attr("disabled", true);
+      $(".checkboxgroup_g2").attr("disabled", true);
+      $(".checkboxgroup_g3").attr("disabled", true);
+      $(".checkboxgroup_g4").attr("disabled", true);
+      $(".checkboxgroup_g5").attr("disabled", true);
+
+      $('.checkboxgroup_g1').not(this).prop('checked', false);  
+      $('.checkboxgroup_g2').not(this).prop('checked', false);  
+      $('.checkboxgroup_g3').not(this).prop('checked', false);  
+      $('.checkboxgroup_g4').not(this).prop('checked', false);  
+      $('.checkboxgroup_g5').not(this).prop('checked', false);  
+      $('.checkboxgroup_g6').not(this).prop('checked', false);  
+
+    }else{
+      $(".checkboxgroup_g6").attr("disabled", true);
+      $(".checkboxgroup_g1").attr("disabled", true);
+      $(".checkboxgroup_g2").attr("disabled", true);
+      $(".checkboxgroup_g3").attr("disabled", true);
+      $(".checkboxgroup_g4").attr("disabled", true);
+      $(".checkboxgroup_g5").attr("disabled", true);
 
     }
   }
