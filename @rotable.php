@@ -274,6 +274,7 @@ else{
                     $DIVISION_M = $rowdiv1['DIVISION_M'];
  
                   ?>
+                           <?php if ($submitteddate1 == 0000-00-00): ?>
 
                             <?php if ($status=='cancelled'):?>
                                
@@ -281,24 +282,62 @@ else{
                               
                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
 
-                             <?php else: ?>
+                              <?php else: ?>
                            
                             
                               <?php if ($office ==  $DIVISION_M ):?>
                            
 
 
-                           <a name="edit" onclick="myFunction(this)" data-office = "<?php echo $office;?>" data-id="<?php echo $id;?>"  data-registeredby = "<?php echo $registeredby;?>" data-registereddate = "<?php echo $registereddate;?>" data-title = "<?php echo $title;?>" data-issuanceno = "<?php echo $issuanceno;?>" data-issuancedate = "<?php echo $issuancedate11;?>"  data-category = "<?php echo $category;?>"   value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> |
+                                  <a name="edit" onclick="myFunction(this)" data-office = "<?php echo $office;?>" data-id="<?php echo $id;?>"  data-registeredby = "<?php echo $registeredby;?>" data-registereddate = "<?php echo $registereddate;?>" data-title = "<?php echo $title;?>" data-issuanceno = "<?php echo $issuanceno;?>" data-issuancedate = "<?php echo $issuancedate11;?>"  data-category = "<?php echo $category;?>"   value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> |
 
-                           <!-- <a onclick="return confirm('Are you sure you want to delete this Regional Order/Regional Office Order?');" name="del"  href="ro_delete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a> -->
-                           <a name="Cancel" value="" id="Cancel" onclick="myFunction1(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#cancel_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                              <!-- <a onclick="return confirm('Are you sure you want to delete this Regional Order/Regional Office Order?');" name="del"  href="ro_delete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a> -->
+                              <a name="Cancel" value="" id="Cancel" onclick="myFunction1(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#cancel_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
                            <?php else :?>
                                        
                           
                         
                            <?php endif?>
-                             <?php endif ?>
+
+
+
+                          <?php endif ?>
+                          
+                      <?php else :?>
+
+                          <?php if ($status=='cancelled'):?>
+                            
+                               <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
+
+                              <?php else: ?>
+                           
+                            
+                              <?php if ($office ==  $DIVISION_M ):?>
+                           
+
+                              <a name="Cancel" value="" id="Cancel" onclick="myFunction1(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#cancel_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+
+                           <?php else :?>
+                                       
+                          
+                        
+                           <?php endif?>
+
+
+                           
+                          <?php endif ?>
+
+                      <?php endif ?>
+
+
+
+                       
+
+
+                          
+
+
 
                  
         
