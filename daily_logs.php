@@ -34,7 +34,7 @@ $lunch_inL = $rowl['lunch_in'];
 $lunch_outL = $rowl['lunch_out'];
 $time_outL = $rowl['time_out'];
 
-$time_now = date('H:a');
+$time_now = date('h:i');
 
 
 $check1 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `time_in` IS NOT NULL ");
