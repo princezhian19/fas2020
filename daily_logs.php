@@ -34,6 +34,7 @@ $lunch_inL = $rowl['lunch_in'];
 $lunch_outL = $rowl['lunch_out'];
 $time_outL = $rowl['time_out'];
 
+$time_now = date('h:i');
 
 
 $check1 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `time_in` IS NOT NULL ");
@@ -51,7 +52,7 @@ $d1=cal_days_in_month(CAL_GREGORIAN,$month,$year);
 
 if (isset($_POST['stamp1'])) {
   if (mysqli_num_rows($checkall)>0) {
-    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }else{
 
     for($d = 1; $d <=$d1; $d++)
@@ -60,7 +61,7 @@ if (isset($_POST['stamp1'])) {
       $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
 
     }
-    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -77,7 +78,7 @@ if (isset($_POST['stamp1'])) {
 
 if (isset($_POST['stamp2'])) {
   if (mysqli_num_rows($checkall)>0) {
-    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }else{
     for($d = 1; $d <=$d1; $d++)
     {
@@ -85,7 +86,7 @@ if (isset($_POST['stamp2'])) {
       $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
 
     }
-    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }
 
   if ($insert) {
@@ -103,7 +104,7 @@ if (isset($_POST['stamp2'])) {
 
 if (isset($_POST['stamp3'])) {
   if (mysqli_num_rows($checkall)>0) {
-    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }else{
     for($d = 1; $d <=$d1; $d++)
     {
@@ -111,7 +112,7 @@ if (isset($_POST['stamp3'])) {
       $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
 
     }
-    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }
 
   if ($insert) {
@@ -129,7 +130,7 @@ if (isset($_POST['stamp3'])) {
 
 if (isset($_POST['stamp4'])) {
   if (mysqli_num_rows($checkall)>0) {
-    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }else{
     for($d = 1; $d <=$d1; $d++)
     {
@@ -138,7 +139,7 @@ if (isset($_POST['stamp4'])) {
 
     }
 
-    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }
 
   if ($insert) {
@@ -169,6 +170,8 @@ if (isset($_POST['stamp4'])) {
         <font style="font-size: 20px;"><b>Position</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $POSITION_M?></font>
         <br>
         <font style="font-size: 20px;"><b>Month</b> : 
+          </font>&nbsp <font style="font-size: 20px;"><?php echo date('F Y')?></font>
+          <div hidden>
           <select name="month" id="month">
             <option value="<?php echo date('m')?>"><?php echo date('F')?></option>
             <option value="01">January</option>
@@ -191,7 +194,7 @@ if (isset($_POST['stamp4'])) {
             <option value="2020">2020</option>
             <option value="2021">2021</option>
           </select>
-          <!-- </font>&nbsp <font style="font-size: 20px;"><?php echo date('F d, Y')?></font> -->
+          </div>
           <br>
 
         </div>
@@ -200,13 +203,10 @@ if (isset($_POST['stamp4'])) {
             <?php if ($ACCESSTYPE == 'admin'): ?>
              <a href="ViewEmployees.php?division=<?php echo $division?>&username=<?php echo $username?>" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
            <?php endif ?>
-           <div style="float: right;padding:5px;">
+           <div style="float: right;padding:5px;" hidden>
             <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
 
           </div>
-          <br>
-          <br>
-          <br>
           <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
             <thead>
               <tr style="background-color: white;color:blue;">
@@ -215,8 +215,6 @@ if (isset($_POST['stamp4'])) {
                 <th width="">Lunch In</th>
                 <th width="">Lunch Out</th>
                 <th width="">Time Out</th>
-                <th width="">Minutes</th>
-                <th width="">Hrs</th>
               </tr>
             </thead>
             <?php 
@@ -270,13 +268,7 @@ if (isset($_POST['stamp4'])) {
                   echo date('h:i A',strtotime($time_out));
                 }
                 ?></td>
-                <td>
-               
-          </td>
-          <td>
-           
-
-        </td>
+              
       </tr>
     <?php } ?>
   </table>
