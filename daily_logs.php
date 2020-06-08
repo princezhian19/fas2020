@@ -207,9 +207,6 @@ if (isset($_POST['stamp4'])) {
             <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
 
           </div>
-          <br>
-          <br>
-          <br>
           <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
             <thead>
               <tr style="background-color: white;color:blue;">
