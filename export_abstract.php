@@ -53,7 +53,7 @@ $styleContent21 = array('font'  => array('size'  => 11, 'name'  => 'Cambria'),'a
 
 $styleLabel = array('font'  => array('size'  => 9, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
-$ALIGNRIGHT = array('font'  => array('size'  => 10, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_RIGHT));
+$ALIGNRIGHT = array('font'  => array('size'  => 9, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_RIGHT));
 
 $GrayStyle = array(
             'font'  => array('bold'  => true,'size'  => 9, 'name'  => 'Cambria'),
@@ -230,7 +230,7 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   $item_unit_title = $excelrow['item_unit_title'];
   $unit = $excelrow['unit'];
 
-  $objPHPExcel->getActiveSheet()->mergeCells('A'.$rowOne.':'.'E'.$rowOne);
+  // $objPHPExcel->getActiveSheet()->mergeCells('A'.$rowOne.':'.'E'.$rowOne);
   $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne.':'.'E'.$rowOne)->applyFromArray($border);
 
   $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne)->applyFromArray($styleContent);

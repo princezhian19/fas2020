@@ -2,6 +2,7 @@
 require_once('functions.php'); 
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $rfq_id = $_GET['rfq_id'];
+$pr_no = $_GET['pr_no'];
 $select_ = mysqli_query($conn,"SELECT rfq.rfq_no,s.id,s.supplier_title FROM abstract_of_quote abs LEFT JOIN rfq on rfq.id = abs.rfq_id LEFT JOIN supplier s on s.id = abs.supplier_id LEFT JOIN rfq_items rq on rq.rfq_id = abs.rfq_id WHERE abs.rfq_id = $rfq_id AND abs.abstract_no IS NOT NULL");
 $row_ = mysqli_fetch_array($select_);
 $rfq_no = $row_['rfq_no'];
@@ -63,7 +64,7 @@ if (isset($_POST['submit'])) {
 
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successful!');
-      window.location.href='ViewPO.php?rfq_id=$rfq_id&supplier_id=$supplier_id';
+      window.location.href='ViewPO.php?rfq_id=$rfq_id&supplier_id=$supplier_id&pr_no=$pr_no';
       </SCRIPT>");
   }
 }
@@ -96,25 +97,25 @@ $autoNo = $getDate.'-'.$m.'-'.'00'.$idGet;
               <div class="col-md-6">
                <div class="form-group">
                 <label>PO No. :  </label>
-                <input required type="text" name="po_no" class="form-control" value = '<?php echo $autoNo;?>'>
+                <input readonly required type="text" name="po_no" class="form-control" value = '<?php echo $autoNo;?>'>
               </div>
               <div class="form-group">
                 <label>RFQ No. :  </label>
-                <input required class="form-control" type="text" name="rfq_no" value="<?php echo $rfq_no;?>">
+                <input readonly required class="form-control" type="text" name="rfq_no" value="<?php echo $rfq_no;?>">
               </div>
               <div class="form-group">
                 <label>Supplier : <small style="color:red;">*</small></label>
-                <select class="form-control" name="supplier_id">
+                <select readonly class="form-control" name="supplier_id">
                   <option selected value="<?php echo $supplier_id;?>"><?php echo $supplier_title;?></option>
                 </select>
               </div>
               <div class="form-group">
                 <label>PO Amount :</label>
-                <input required type="text" name="" class="form-control" value="<?php echo number_format($POamount,2);?>">
+                <input readonly required type="text" name="" class="form-control" value="<?php echo number_format($POamount,2);?>">
               </div>
               <div class="form-group" hidden>
                 <label>PO Amount :</label>
-                <input required type="text" name="po_amount" class="form-control" value="<?php echo $POamount;?>">
+                <input readonly required type="text" name="po_amount" class="form-control" value="<?php echo $POamount;?>">
               </div>
 
             </div>
@@ -126,7 +127,7 @@ $autoNo = $getDate.'-'.$m.'-'.'00'.$idGet;
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control pull-right"  name="po_date" id="datepicker"  required placeholder="mm/dd/yyyy">
+                  <input required type="text" class="form-control pull-right"  name="po_date" id="datepicker"  required placeholder="mm/dd/yyyy">
                 </div>
               </div>
               <div class="form-group">
@@ -166,7 +167,7 @@ $autoNo = $getDate.'-'.$m.'-'.'00'.$idGet;
                   $id = $rowC['id'];
                   $note = $rowC['note'];
                   ?>
-                  <input type="checkbox"  name="note_id[]" value="<?php echo $id; ?>">&nbsp<b><?php echo $note;?></b></input>
+                  <input required type="checkbox"  name="note_id[]" value="<?php echo $id; ?>">&nbsp<b><?php echo $note;?></b></input>
                   <br>
 
                 <?php } ?>
@@ -185,7 +186,8 @@ $autoNo = $getDate.'-'.$m.'-'.'00'.$idGet;
       </div>
     </div>
     <div style="padding:15px;">
-      <button class="btn btn-success btn-s" style="float: left;" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
+      <button class="btn btn-success btn-s" style="float: left;" id="finalizeButton" type="submit" name="submit" >Create</button>
+      <!-- <button class="btn btn-success btn-s" style="float: left;" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button> -->
     </div>
     <br>
   </form>
