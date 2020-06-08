@@ -34,12 +34,11 @@ $lunch_inL = $rowl['lunch_in'];
 $lunch_outL = $rowl['lunch_out'];
 $time_outL = $rowl['time_out'];
 
-$time_now = date('h:i');
 
 date_default_timezone_set('Asia/Manila');
-$timeNow = (new DateTime('now'))->format('F d, Y H:i:s');
+$time_now = (new DateTime('now'))->format('h:i');
 //ito yung ireplace mo sa now()
-echo $timeNow;
+echo $time_now;
 
 
 $check1 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `time_in` IS NOT NULL ");
