@@ -34,10 +34,7 @@ $lunch_inL = $rowl['lunch_in'];
 $lunch_outL = $rowl['lunch_out'];
 $time_outL = $rowl['time_out'];
 
-echo date('F d, Y H:i A');
-echo "<br>";
-echo date('F d, Y h:i a');
-
+$time_now = date('h:a');
 
 
 $check1 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `time_in` IS NOT NULL ");
@@ -55,7 +52,7 @@ $d1=cal_days_in_month(CAL_GREGORIAN,$month,$year);
 
 if (isset($_POST['stamp1'])) {
   if (mysqli_num_rows($checkall)>0) {
-    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }else{
 
     for($d = 1; $d <=$d1; $d++)
@@ -64,7 +61,7 @@ if (isset($_POST['stamp1'])) {
       $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
 
     }
-    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -81,7 +78,7 @@ if (isset($_POST['stamp1'])) {
 
 if (isset($_POST['stamp2'])) {
   if (mysqli_num_rows($checkall)>0) {
-    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }else{
     for($d = 1; $d <=$d1; $d++)
     {
@@ -89,7 +86,7 @@ if (isset($_POST['stamp2'])) {
       $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
 
     }
-    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }
 
   if ($insert) {
@@ -107,7 +104,7 @@ if (isset($_POST['stamp2'])) {
 
 if (isset($_POST['stamp3'])) {
   if (mysqli_num_rows($checkall)>0) {
-    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }else{
     for($d = 1; $d <=$d1; $d++)
     {
@@ -115,7 +112,7 @@ if (isset($_POST['stamp3'])) {
       $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
 
     }
-    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }
 
   if ($insert) {
@@ -133,7 +130,7 @@ if (isset($_POST['stamp3'])) {
 
 if (isset($_POST['stamp4'])) {
   if (mysqli_num_rows($checkall)>0) {
-    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }else{
     for($d = 1; $d <=$d1; $d++)
     {
@@ -142,7 +139,7 @@ if (isset($_POST['stamp4'])) {
 
     }
 
-    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }
 
   if ($insert) {
