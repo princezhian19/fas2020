@@ -58,9 +58,9 @@ function filldataTable()
 
     include 'connection.php';
   $search_value = $_SESSION['complete_name3'];
-
+//   nd  `STATUS_REQUEST` = 'Completed' ||   and STATUS != '' "
     $query = "SELECT * FROM tbltechnical_assistance 
-    where `REQ_BY` = '".$search_value."' and  `STATUS_REQUEST` = 'Completed' ||   and STATUS != '' ";
+    where `REQ_BY` = '".$search_value."'";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
