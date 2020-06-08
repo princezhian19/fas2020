@@ -136,7 +136,7 @@ $ris_latest = $getDate.'-'.'0'.$idGet;
 
             <div class="col-xs-3">
               <label>Approved by : </label>
-              <input type="text" readonly class="form-control" style="height: 40px;" id="approved_by" placeholder="" name="approved_by" value="ARIEL O. IGLESIA, CESO III">
+              <input type="text" readonly class="form-control" style="height: 40px;" id="approved_by" placeholder="" name="approved_by" value="ARIEL O. IGLESIA, CESO IV">
             </div>
 
             <div class="col-xs-3">
