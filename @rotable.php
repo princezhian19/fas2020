@@ -386,11 +386,11 @@ id1.val(idtomodal1);
               <button type="submit" name="cancel" class="btn btn-warning pull-right">Cancel</button>
 
 
-              <input  type="text" name="id1" id="id1" value="" class=""/>
+              <input  hidden type="text" name="id1" id="id1" value="" class=""/>
               <br>
-              <input  type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
+              <input hidden  type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
               <br>
-              <input  type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+              <input hidden  type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
               </tr>
               </table>
                 
