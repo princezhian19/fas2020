@@ -218,8 +218,6 @@ if (isset($_POST['stamp4'])) {
                 <th width="">Lunch In</th>
                 <th width="">Lunch Out</th>
                 <th width="">Time Out</th>
-                <th width="">Minutes</th>
-                <th width="">Hrs</th>
               </tr>
             </thead>
             <?php 
@@ -273,13 +271,7 @@ if (isset($_POST['stamp4'])) {
                   echo date('h:i A',strtotime($time_out));
                 }
                 ?></td>
-                <td>
-               
-          </td>
-          <td>
-           
-
-        </td>
+              
       </tr>
     <?php } ?>
   </table>
