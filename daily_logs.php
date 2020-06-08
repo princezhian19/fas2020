@@ -38,7 +38,6 @@ $time_outL = $rowl['time_out'];
 date_default_timezone_set('Asia/Manila');
 $time_now = (new DateTime('now'))->format('h:i');
 //ito yung ireplace mo sa now()
-echo $time_now;
 
 
 $check1 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `time_in` IS NOT NULL ");
