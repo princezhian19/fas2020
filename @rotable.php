@@ -141,7 +141,16 @@ else{
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT * from ro_roo order by id desc");
+            // $view_query = mysqli_query($conn, "SELECT * from ro_roo order by id desc");
+
+            if ($username1 == 'cvferrer' || $username1 == 'itdummy1'|| $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno')
+            {
+              $view_query = mysqli_query($conn, "SELECT * from ro_roo order by id desc");
+            }
+            else{
+              $view_query = mysqli_query($conn, "SELECT * from ro_roo where office ='$DIVISION_M' order by id desc");
+
+            }
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
                   $id = $row["id"];
@@ -180,6 +189,14 @@ else{
                   $receiveddate = date('F d, Y', strtotime($receiveddate1));
                   $receivedby= $row["receivedby"];
 
+                  $cancelleddate1  = $row["cancelleddate"];
+                  $cancelleddate = date('F d, Y', strtotime($cancelleddate1));
+                  $cancelledby= $row["cancelledby"];
+
+                  $status= $row["status"];
+                  $reason= $row["reason"];
+
+
 
                ?>
 
@@ -196,11 +213,18 @@ else{
                 <td><?php echo $registereddate?></td>
              
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
-                  
-                  <?php if ($status!='cancelled'):?> 
-                  <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Official Business?');" href='ob_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
-                  <?php else: ?>
+                  <?php if ($username1 == 'itdummy1' || $username1 == '' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
                   <td></td>
+                  <?php else: ?>
+                  <?php if ($status!='cancelled'):?> 
+                          <?php if ($office==$DIVISION_M):?> 
+                          <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this RO and ROO?');" href='ro_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
+                          <?php else: ?>
+                            <td></td>
+                          <?php endif ?> 
+                    <?php else: ?>
+                  <td></td>
+                  <?php endif ?>
                   <?php endif ?>
 
         
@@ -209,12 +233,12 @@ else{
                   <?php endif ?>
 
                     <!-- receive -->
-                     <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
+                    <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
                           <?php if ($username1 == 'itdummy1' || $username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
                               <?php if ($status=='cancelled'):?>
                               <td></td>
                               <?php else: ?>
-                                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to receive this Official Business?');" href='ob_receive.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Receive">Receive</a></td>
+                                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to receive this Ro and ROO?');" href='ro_receive.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Receive">Receive</a></td>
                               <?php endif ?>
                           <?php else: ?>
                           <td></td>
@@ -251,22 +275,31 @@ else{
  
                   ?>
 
+                            <?php if ($status=='cancelled'):?>
+                               
 
+                              
+                               <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
 
-                            <?php if ($office ==  $DIVISION_M ):?>
+                             <?php else: ?>
+                           
+                            
+                              <?php if ($office ==  $DIVISION_M ):?>
                            
 
 
-                            <a name="edit" onclick="myFunction(this)" data-office = "<?php echo $office;?>" data-id="<?php echo $id;?>"  data-registeredby = "<?php echo $registeredby;?>" data-registereddate = "<?php echo $registereddate;?>" data-title = "<?php echo $title;?>" data-issuanceno = "<?php echo $issuanceno;?>" data-issuancedate = "<?php echo $issuancedate11;?>"  data-category = "<?php echo $category;?>"   value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> |
+                           <a name="edit" onclick="myFunction(this)" data-office = "<?php echo $office;?>" data-id="<?php echo $id;?>"  data-registeredby = "<?php echo $registeredby;?>" data-registereddate = "<?php echo $registereddate;?>" data-title = "<?php echo $title;?>" data-issuanceno = "<?php echo $issuanceno;?>" data-issuancedate = "<?php echo $issuancedate11;?>"  data-category = "<?php echo $category;?>"   value="" id="edit"  data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class=''></i> <i class='fa'>&#xf044;</i> Edit</a> |
 
-                            <!-- <a onclick="return confirm('Are you sure you want to delete this Regional Order/Regional Office Order?');" name="del"  href="ro_delete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a> -->
-                            <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                           <!-- <a onclick="return confirm('Are you sure you want to delete this Regional Order/Regional Office Order?');" name="del"  href="ro_delete.php?id=<?php echo $id; ?>&issuance=<?php echo $issuance_no?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a> -->
+                           <a name="Cancel" value="" id="Cancel" onclick="myFunction1(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#cancel_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
 
-                            <?php else :?>
-                                        
-                           
-                         
+                           <?php else :?>
+                                       
+                          
+                        
                            <?php endif?>
+                             <?php endif ?>
+
                  
         
                 </td>
@@ -305,6 +338,86 @@ else{
         
     } );
 </script>
+
+
+
+<!-- //Setting ID -->
+
+<script>
+function myFunction1(idget1) {
+
+var idtomodal1 = idget1.getAttribute("data-idtomodal");
+var id1 = $("input[name='id1']");
+id1.val(idtomodal1);
+
+
+
+
+}
+</script>
+<!-- //Setting ID -->
+
+<!--cancel modals -->
+
+<div id="cancel_data_Modal" class="modal fade ">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Regional Order and Regional Office Order</h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="ro_cancel.php" >
+              
+        
+              <div class="addmodal" >
+             
+
+
+
+              <table class="table"> 
+              <tr>
+              <label>Reason</label>
+              <input required type="text" name="reason" id="reason" class="form-control" />
+                                  
+              <br>
+              
+              
+              <button type="submit" name="cancel" class="btn btn-warning pull-right">Cancel</button>
+
+
+              <input  hidden type="text" name="id1" id="id1" value="" class=""/>
+              <br>
+              <input hidden  type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
+              <br>
+              <input hidden  type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+              </tr>
+              </table>
+                
+              
+              
+            
+                </div>
+           
+                </form>
+          </div>
+        </div>
+
+      
+    
+    </div>
+
+    </div>
+ 
+
+          
+              
+ 
+           
+        <!-- cancel modals -->
+
+
+
 
 
 <!--Add modals -->

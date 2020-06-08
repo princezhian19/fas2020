@@ -27,6 +27,8 @@ $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivisio
 $rowdiv1 = mysqli_fetch_array($select_office);
 $DIVISION_M = $rowdiv1['DIVISION_M'];
 
+
+
 ?>
 
 
@@ -458,13 +460,22 @@ $edit="edit";
              
 
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
+
+                  <?php if ($username1 == 'itdummy1' || $username1 == 'cvferrer' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
+                  <td></td>
+                  <?php else: ?>
                   
                           <?php if ($status!='cancelled'):?> 
-                          <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Official Business?');" href='ob_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
+                                <?php if ($office==$DIVISION_M):?>   
+                                <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Official Business?');" href='ob_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
+                                <?php else: ?>
+                                <td></td>
+                                <?php endif ?>
+                          
                           <?php else: ?>
                           <td></td>
                           <?php endif ?>
-
+                  <?php endif ?>
                 
                 <?php else: ?>
                 <td><?php echo $submitteddate .'<br>'.$submittedby.''?></td>

@@ -43,12 +43,12 @@ function fillTableInfo()
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input required type="text" name = "request_date" placeholder = "Request Date" class="datePicker1" value="" required placeholder="mm/dd/yyyy" >
+                                            <input disabled required type="text" name = "request_date" placeholder = "Request Date" class="datePicker1" value="" required placeholder="mm/dd/yyyy" >
                                         </div>
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Requested Time:<span style = "color:red;">*</span></td>
                                     <td style = "width:15%;  padding:5px 5px 5px 5px;">
-                                    <input required style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
+                                    <input disabled style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
                                     </td>
                                     <!-- date("H:i A",strtotime(date("h:m A"))) -->
                                     <td colspan = 4 class = "label-text" style = "text-align:center;">HARDWARE INFORMATION (if applicable)</td>
@@ -63,31 +63,31 @@ function fillTableInfo()
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;">
                                       <input required type = "hidden"  name="requested_by" value = "<?php $row['EMP_N'];?>" />
-                                      <input required type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $firstname.' '.$row['MIDDLE_M'][0].'. '.$lastname.' ';?>" >
+                                      <input disabled type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $firstname.' '.$row['MIDDLE_M'][0].'. '.$lastname.' ';?>" >
                                     <td class = "label-text left-text">Brand Model:</td>
                                     <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input  type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
                                 <tr>
                                     <td class = "label-text left-text">Office:<span style = "color:red;">*</span></td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "office" placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['DIVISION_M'];?>" /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled  id = "office" placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['DIVISION_M'];?>" /></td>
                                     <td class = "label-text left-text">Property Number:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "" /> </td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Position/Designation:<span style = "color:red;">*</span></td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "position"  placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION_M'];?>"  /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled id = "position"  placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION_M'];?>"  /></td>
                                     <td class = "label-text left-text">Serial Number:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Contact Number:<span style = "color:red;">*</span></td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "phone" placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MOBILEPHONE'];?>"  /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled id = "phone" placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MOBILEPHONE'];?>"  /></td>
                                     <td class = "label-text left-text">IP Address:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input    type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Email Address:<span style = "color:red;">*</span></td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input required id = "email" placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['EMAIL'];?>"/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled id = "email" placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['EMAIL'];?>"/></td>
                                     <td class = "label-text left-text">MAC Address:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
@@ -375,8 +375,7 @@ $('#submit').click(function(){
 
 
 if(cb1 == '' && cb2 == '' && cb3 == '' && cb4 == '' && cb5 == '' && cb6 == '' )
-{
-  alert('Required Field:Choose at least one on type of request');
+{  alert('Required Field:Choose at least one Type of Request');
   return false;
 }
 return true;
@@ -554,7 +553,20 @@ $(document).ready(function() {
       $(".checkboxgroup_g4").attr("disabled", true);
       $(".checkboxgroup_g5").attr("disabled", true);
       $(".checkboxgroup_g6").attr("disabled", true);
+
+      $('.checkboxgroup_g2').not(this).prop('checked', false);  
+      $('.checkboxgroup_g3').not(this).prop('checked', false);  
+      $('.checkboxgroup_g4').not(this).prop('checked', false);  
+      $('.checkboxgroup_g5').not(this).prop('checked', false);  
+      $('.checkboxgroup_g6').not(this).prop('checked', false);  
+      
+ 
+
+
     } else {
+      $('.checkboxgroup_g1').not(this).prop('checked', false);  
+
+
       $(".checkboxgroup_g1").attr("disabled", true);
       $(".checkboxgroup_g2").attr("disabled", true);
       $(".checkboxgroup_g3").attr("disabled", true);
@@ -570,14 +582,24 @@ $(document).ready(function() {
       document.getElementById("site").disabled = false; 
       document.getElementById("purpose").disabled = false; 
       document.getElementById("purpose2").disabled = false; 
+      $('.checkboxgroup_g1').not(this).prop('checked', false);  
 
       $(".checkboxgroup_g1").attr("disabled", true);
       $(".checkboxgroup_g3").attr("disabled", true);
       $(".checkboxgroup_g4").attr("disabled", true);
       $(".checkboxgroup_g5").attr("disabled", true);
       $(".checkboxgroup_g6").attr("disabled", true);
+
+      $('.checkboxgroup_g2').not(this).prop('checked', false);  
+      $('.checkboxgroup_g3').not(this).prop('checked', false);  
+      $('.checkboxgroup_g4').not(this).prop('checked', false);  
+      $('.checkboxgroup_g5').not(this).prop('checked', false);  
+      $('.checkboxgroup_g6').not(this).prop('checked', false);  
     } else {
       $(".checkboxgroup_g2").attr("disabled", true);
+     
+
+
       document.getElementById("site").disabled = true; 
       document.getElementById("purpose").disabled = true; 
       document.getElementById("purpose2").disabled = true; 
@@ -592,6 +614,13 @@ $(document).ready(function() {
       $(".checkboxgroup_g4").attr("disabled", true);
       $(".checkboxgroup_g5").attr("disabled", true);
       $(".checkboxgroup_g6").attr("disabled", true);
+
+      $('.checkboxgroup_g1').not(this).prop('checked', false);  
+      $('.checkboxgroup_g2').not(this).prop('checked', false);  
+      $('.checkboxgroup_g3').not(this).prop('checked', false);  
+      $('.checkboxgroup_g4').not(this).prop('checked', false);  
+      $('.checkboxgroup_g5').not(this).prop('checked', false);  
+      $('.checkboxgroup_g6').not(this).prop('checked', false);  
 
     } else {
       $(".checkboxgroup_g3").attr("disabled", true);
@@ -608,6 +637,12 @@ $(document).ready(function() {
       $(".checkboxgroup_g5").attr("disabled", true);
       $(".checkboxgroup_g6").attr("disabled", true);
       
+      $('.checkboxgroup_g1').not(this).prop('checked', false);  
+      $('.checkboxgroup_g2').not(this).prop('checked', false);  
+      $('.checkboxgroup_g3').not(this).prop('checked', false);  
+      $('.checkboxgroup_g4').not(this).prop('checked', false);  
+      $('.checkboxgroup_g5').not(this).prop('checked', false);  
+      $('.checkboxgroup_g6').not(this).prop('checked', false);  
     } else {
       $(".checkboxgroup_g4").attr("disabled", true);
     }
@@ -623,6 +658,13 @@ $(document).ready(function() {
       $(".checkboxgroup_g3").attr("disabled", true);
       $(".checkboxgroup_g4").attr("disabled", true);
       $(".checkboxgroup_g6").attr("disabled", true);
+
+      $('.checkboxgroup_g1').not(this).prop('checked', false);  
+      $('.checkboxgroup_g2').not(this).prop('checked', false);  
+      $('.checkboxgroup_g3').not(this).prop('checked', false);  
+      $('.checkboxgroup_g4').not(this).prop('checked', false);  
+      $('.checkboxgroup_g5').not(this).prop('checked', false);  
+      $('.checkboxgroup_g6').not(this).prop('checked', false);  
 
     } else {
       $(".checkboxgroup_g5").attr("disabled", true);
