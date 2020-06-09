@@ -367,10 +367,10 @@ function getImage()
               <li><a href="TravelOrder.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Travel Order</a></li>
               
               
-              <li><a href="ROandROO.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>RO and ROO<span class="label  bg-blue" style = "background-color:skyblue;color:blue;" id = ""><b>
+              <li><a href="ROandROO.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>RO and ROO
               
               
-              <?php
+              <!-- <?php
                   
                   $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                   $username = $_SESSION['username'];
@@ -392,10 +392,9 @@ function getImage()
                 
                 <?php echo $countissuancesspan  ;?>
               
+               -->
               
-              
-              
-              </b></span></a></li>
+              </a></li>
             </ul>
         </li>
          <!-- Pesonnel -->
