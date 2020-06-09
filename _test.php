@@ -43,7 +43,8 @@ function fillTableInfo()
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input disabled required type="text" name = "request_date" placeholder = "Request Date" class="datePicker1" value="" required placeholder="mm/dd/yyyy" >
+                                            <input disabled  type="text" name = "request_date1" class="datePicker1" value="<?php echo date('m/d/y');?>"  >
+                                            <input hidden  type="text" name = "request_date" class="datePicker1" value="<?php echo date('m/d/y');?>"  >
                                         </div>
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Requested Time:<span style = "color:red;">*</span></td>
