@@ -1,28 +1,21 @@
 <?php session_start();
+date_default_timezone_set('Asia/Manila');
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
+$division = $_SESSION['division'];
 }
 ?><!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
-<title>FAS | Supplies Ledger</title>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FAS | DTR</title>
   <link rel="shortcut icon" type="image/png" href="dilg.png">
 
     <!-- Tell the browser to be responsive to screen width -->
@@ -50,34 +43,35 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
 </head>
-<body class="hold-transition skin-red-light fixed  sidebar-mini">
 <div class="wrapper">
-  <?php include('test1.php');?>
-  
+    <?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('test1.php'); }else{ include('sidebar2.php'); }
+ ?>
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Supplies Ledger</li>
+        <li><a href="ViewPR.php"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Procurement</li>
+        <li class="active">View PR</li>
       </ol>
       <br>
       <br>
-        <?php include('@stockledgertable.php');?>
-
-   
+        <?php include('daily_logs2.php');?>
     </section>
-       
+    
   </div>
+  
   <footer class="main-footer">
-  <br>
-
+    <br>
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
     <strong>DILG IV-A Regional Information and Communications Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
   </footer>
   <br>
+
 </div>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -86,21 +80,14 @@ $username = $_SESSION['username'];
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
 <script>
   $(function () {
-    $('#example2').DataTable()
-    $('#example1').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : false,
-      'info'        : false,
-      'autoWidth'   : true
+    $('.select2').select2()
+    $('#datepicker').datepicker({
+      autoclose: true
     })
+   
   })
 </script>
-
 </body>
 </html>

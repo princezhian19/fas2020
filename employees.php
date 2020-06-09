@@ -172,7 +172,7 @@
       var office = $('#office').val();
 
       window.location = 
-      'export_employee.php?office='+office;
+      'export_employee.php?office='+office+'&pr_no='+pr_no;
   });
 }) ;
 </script>

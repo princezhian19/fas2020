@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="595" pageHeight="842" columnWidth="451" leftMargin="72" rightMargin="72" topMargin="72" bottomMargin="72" uuid="30dd5ff4-71e5-473c-8d86-008bd800a8c8">
 	<property name="ireport.zoom" value="1.464100000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="240"/>
+	<property name="ireport.y" value="336"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -543,14 +543,14 @@ Ng Marso 1984
 				<textElement textAlignment="Center">
 					<font fontName="Cambria" size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[NOEL R. BARTOLABAC, CESO V]]></text>
+				<text><![CDATA[ARIEL O. IGLESIA, CESO III]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="225" y="511" width="225" height="20" uuid="6f75ac93-4ae5-425d-b217-20f6a3766b52"/>
 				<textElement textAlignment="Center">
 					<font fontName="Cambria" size="11"/>
 				</textElement>
-				<text><![CDATA[OIC-Regional Director]]></text>
+				<text><![CDATA[Regional Director]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="536" width="449" height="14" uuid="6c0d3ff0-5863-4602-b401-20493fff7379"/>

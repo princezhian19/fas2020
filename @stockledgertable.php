@@ -26,48 +26,33 @@ include('db.class.php'); // call db.class.php
     
     <div class="class-responsive">
 
-  
+    <table class="table" > 
+
+
+<tr>
+<td class="col-md-1">
+
+</td>
+
+<td class="col-md-9" >
+
+
+</td>
+<form method = "POST" action = "@stockledgersearch.php">
+<td class="col-md-1">
+<input  type="text" class="" style="height: 35px; width: 400px" id="stocksearch" placeholder="Search Stock No. Here" name="stocksearch" autofocus>
+</td>
+
+<td class="col-md-1">
+<button type="submit" name="submit"  class="btn btn-success ">Search</button>
+</td>
+</form>
+
+
+</tr>
+</table> 
           
-        <div class="col-md-4-responsive">
-        <div class="input-group date">
-         <form method = "POST" action = "@stockledgersearch.php">
-        <input  type="text" class="" style="height: 35px; width: 400px" id="stocksearch" placeholder="Search Stock No. Here" name="stocksearch" autofocus>
-         <button type="submit" name="submit"  class="btn btn-success ">Search</button>
-          </form>
-        </div>
-        </div>
-
-        
-        <div class="col-md-1">
- `
-      </div>
-
-        <div class="col-md-7">
-
-       <!--  <form method = "POST" action = "@Functions/stocksdateexport.php">
-                    <div class="input-group date">
-                        <div class="input-group-addon">
-                        FROM   <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="" id="datepicker1" placeholder='Enter Date' name="datefrom" style="height: 35px; width: 300px">
-                        <div class="input-group-addon">
-                        TO <i class="fa fa-calendar"></i>
-                        </div>
-                        <input type="text" class="" id="datepicker2" placeholder='Enter Date' name="dateto" style="height: 35px; width: 250px">
-                        &nbsp<button type="submit" name="submit"  class="btn btn-success ">Filter/Export Data</button>
-                    </div>
-                    <br>
-          </form> -->
-       <!--  <form method = "POST" action = "@Functions/stocksexportall.php">
-            &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success ">Export All</button>
-          </form> -->
-        </div>
-      </div>
-      <br>
-    
-
-            <!-- table here -->
-
+       
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue;">
