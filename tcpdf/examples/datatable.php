@@ -22,7 +22,7 @@
  $id = $_SESSION['inet_credentials']['id'];
 $record_number = mysqli_query( $conn,"select FLAGAS, URL, ROUTING_N, ROUTED_TO, ROUTED_FROM, concat(FIRST_M,' ', LAST_M) as NAME, UNAME, ACTION, REMARKS, DATE_ROUTED, TIME_ROUTED
                                      from tblrouting
-                                    left join tblemployee on tblrouting.SENDER_M=tblemployee.EMP_N
+                                    left join tblemployeeinfo on tblrouting.SENDER_M=tblemployeeinfo.EMP_N
                                      where RECORD_N='".$_GET['id']."'
                                      ORDER BY ROUTING_N DESC
                                      ");

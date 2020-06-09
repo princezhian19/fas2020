@@ -73,13 +73,13 @@
     $access         = "";       
     $cellphone       = $_POST["cellphone"];
 
-    $sqlUsername =  "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
-    $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployee WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
+    $sqlUsername =  "SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
+    $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeeinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
     if (!ifRecordExist($sqlEMP_N)){
       if (!ifRecordExist($sqlUsername)){
         if ($password == $repassword){
 
-          $sql_insert_query     = "INSERT INTO tblemployee (
+          $sql_insert_query     = "INSERT INTO tblemployeeinfo (
           EMP_NUMBER,
           LAST_M, FIRST_M, MIDDLE_M, BIRTH_D, SEX_C,
           REGION_C, PROVINCE_C, CITYMUN_C,

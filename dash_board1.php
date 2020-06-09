@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
   $posted_by = $_POST['posted_by'];
   $date = $_POST['date'];
 
-  $get_dv = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$posted_by'");
+  $get_dv = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$posted_by'");
   $rowdv = mysqli_fetch_array($get_dv);
   $rDIVISION_C = $rowdv['DIVISION_C'];
 
@@ -528,7 +528,7 @@ if (isset($_POST['update'])) {
                 </tr>
               </thead>
               <?php 
-              $view_query = mysqli_query($conn,"SELECT te.PROFILE,a.date,a.id,a.posted_by,a.content,a.title,concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) as fname  FROM announcementt a LEFT JOIN tblemployee te on te.UNAME = a.posted_by  ORDER BY id DESC");
+              $view_query = mysqli_query($conn,"SELECT te.PROFILE,a.date,a.id,a.posted_by,a.content,a.title,concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) as fname  FROM announcementt a LEFT JOIN tblemployeeinfo te on te.UNAME = a.posted_by  ORDER BY id DESC");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["id"];  
                 $fname = $row["fname"];  
@@ -704,8 +704,8 @@ if (isset($_POST['update'])) {
           $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
           $username = $_SESSION['username'];
 
-                // echo "SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'";
-          $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+                // echo "SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'";
+          $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'");
           $rowdiv = mysqli_fetch_array($select_user);
           $DIVISION_C = $rowdiv['DIVISION_C'];
 

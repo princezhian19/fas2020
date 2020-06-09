@@ -10,7 +10,7 @@
 		<![CDATA[SELECT
      *
 FROM
-     tblemployee]]>
+     tblemployeeinfo]]>
 	</queryString>
 	<field name="EMP_N" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>

@@ -76,7 +76,7 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
              $currentuser = $_POST['curuser'];
 
 
-              $query = "SELECT * FROM tblemployee where EMP_N = $currentuser";
+              $query = "SELECT * FROM tblemployeeinfo where EMP_N = $currentuser";
               $name = '';
               $result = mysqli_query($conn, $query);
               $val = array();

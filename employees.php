@@ -26,7 +26,7 @@
   $posted_date = $rows['posted_date'];
   $month = date('M',strtotime($posted_date));
 
-   $sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployee WHERE UNAME = '$username'");
+   $sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployeeinfo WHERE UNAME = '$username'");
                 $rowU = mysqli_fetch_array($sele);
                 $ACCESSTYPE = $rowU['ACCESSTYPE'];
 
@@ -109,7 +109,7 @@
             </thead>
             <?php 
             $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-            $view_query = mysqli_query($conn, "SELECT tblempdetails.office_contact,tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.UNAME,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.ALTER_EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION LEFT JOIN tblempdetails on tblempdetails.EMP_N = tblemployee.EMP_N");
+            $view_query = mysqli_query($conn, "SELECT tblempdetails.office_contact,tblemployeeinfo.EMP_N,tblemployeeinfo.FIRST_M,tblemployeeinfo.MIDDLE_M,tblemployeeinfo.UNAME,tblemployeeinfo.LAST_M,tblemployeeinfo.BIRTH_D,tblemployeeinfo.EMAIL,tblemployeeinfo.ALTER_EMAIL,tblemployeeinfo.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployeeinfo LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployeeinfo.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeeinfo.DESIGNATION LEFT JOIN tblempdetails on tblempdetails.EMP_N = tblemployeeinfo.EMP_N");
 
                
             while ($row = mysqli_fetch_assoc($view_query)) {

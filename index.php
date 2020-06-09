@@ -9,14 +9,14 @@ if(!isset($_SESSION['username'])){
   
 $username = $_SESSION['username'];
 $pas1 = $_SESSION['pass'];
-    $sqlUsername = mysqli_query($conn,"SELECT CODE,EMP_N,isPlanningOfficer FROM tblemployee WHERE md5(UNAME) = '".md5($username)."' LIMIT 1");
+    $sqlUsername = mysqli_query($conn,"SELECT CODE,EMP_N,isPlanningOfficer FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($username)."' LIMIT 1");
   $row = mysqli_fetch_array($sqlUsername);
   $salt       = $row['CODE'];
   $_SESSION['currentuser'] = $row['EMP_N']; 
   $_SESSION['planningofficer'] = $row['isPlanningOfficer']; 
 
   // ===============================================
-  $query = "SELECT * FROM tblemployee WHERE UNAME = '".$username."' AND PSWORD = '".$pas1."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1 ";
+  $query = "SELECT * FROM tblemployeeinfo WHERE UNAME = '".$username."' AND PSWORD = '".$pas1."' AND BLOCK = 'N' LIMIT 1 ";
   $result = mysqli_query($conn, $query);
   $val = array();
   // $numrows= mysqli_num_rows($query);
@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $_SESSION['username'] = $username ;
   $username = $_SESSION['username'];
-  $sqlUsername = mysqli_query($conn,"SELECT CODE,EMP_N,isPlanningOfficer FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' LIMIT 1");
+  $sqlUsername = mysqli_query($conn,"SELECT CODE,EMP_N,isPlanningOfficer FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($_POST['username'])."' LIMIT 1");
   
   $row = mysqli_fetch_array($sqlUsername);
   $salt       = $row['CODE'];
@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
   $_SESSION['pass'] = $password;
 
   // ===============================================
-  $query = "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1 ";
+  $query = "SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND  BLOCK = 'N' LIMIT 1 ";
   $result = mysqli_query($conn, $query);
   $val = array();
   // $numrows= mysqli_num_rows($query);

@@ -19,7 +19,7 @@ $totalData=mysqli_num_rows($query);
 $totalFilter=$totalData;
 
 //Search
-$sql ="SELECT * FROM tblemployee WHERE 1=1";
+$sql ="SELECT * FROM tblemployeeinfo WHERE 1=1";
 if(!empty($request['search']['value'])){
     $sql.=" AND (id Like '".$request['search']['value']."%' ";
     $sql.=" OR supplier_title Like '".$request['search']['value']."%' ";
