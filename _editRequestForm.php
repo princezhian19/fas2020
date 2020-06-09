@@ -50,38 +50,39 @@ function fillTableInfo()
                                 <tr>
                                     <td colspan = 4 class = "label-text">END-USER INFORMATION </td>
                                     <td class = "label-text left-text">Equipment</td>
-                                    <td colspan = 3 class = "left-text " style = "padding:5px 5px 5px 5px;"><input  value = "<?php echo $row['EQUIPMENT_TYPE'];?>" disabled style ="width:100%;" placeholder = "Equipment Type" type = "text" name = "equipment_type" class = "alphanum subtxt" /></td>
+                                    <td colspan = 3 class = "left-text " style = "padding:5px 5px 5px 5px;"><input  value = "<?php echo $row['EQUIPMENT_TYPE'];?>" disabled style ="width:100%;" type = "text" name = "equipment_type" class = "alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;">
-                                      <?php echo $row['REQ_BY'];?>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"> 
+                                      
+                                      <input  type = "text"  class = "sizeMax alphanum subtxt" value = "<?php echo $row['REQ_BY'];?>" disabled/>
                                     <td class = "label-text left-text">Brand Model:</td>
-                                    <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Brand Model" type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = "<?php echo $row['BRAND_MODEL'];?>" disabled/></td>
+                                    <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input   type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = "<?php echo $row['BRAND_MODEL'];?>" disabled/></td>
                                 </tr>
                                 <tr>
                                     <td class = "label-text left-text">Office:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "office" readonly placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['OFFICE'];?>" disabled/></td>
                                     <td class = "label-text left-text">Property Number:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "Property No." type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['PROPERTY_NO'];?>" disabled /> </td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  stype = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['PROPERTY_NO'];?>" disabled /> </td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Position/Designation:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "position" disabled placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION'];?>"  /></td>
                                     <td class = "label-text left-text">Serial Number:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled value  = "<?php echo $row['SERIAL_NO'];?>" placeholder = "Serial No." type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled value  = "<?php echo $row['SERIAL_NO'];?>"  type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Contact Number:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "phone" placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['CONTACT_NO'];?>" disabled /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "phone"  type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['CONTACT_NO'];?>" disabled /></td>
                                     <td class = "label-text left-text">IP Address:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "IP Address" type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['IP_ADDRESS'];?>" disabled/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input   type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['IP_ADDRESS'];?>" disabled/></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Email Address:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "email" placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $email;?>" disabled/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "email" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $email;?>" disabled/></td>
                                     <td class = "label-text left-text">MAC Address:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  placeholder = "MAC Address" type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MAC_ADDRESS'];?>" disabled/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MAC_ADDRESS'];?>" disabled/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -772,7 +773,13 @@ function setCompletedDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
+        if($row['COMPLETED_DATE'] == '')
+        {
+          $completed_date = '';
+        }else{
+          $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
+
+        }
       }
       return $completed_date;
 }
@@ -815,11 +822,11 @@ function setCompletedTime()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        if($row['COMPLETED_TIME'] == '' || $row['COMPLETED_TIME'] == '')
+        if($row['COMPLETED_TIME'] == '')
         {
           //datetime string.
           $date = new DateTime();
-          $completed_time = $date->format('H:i') ;
+          $completed_time = '-';
         }else{
           if(date('g',strtotime($row['COMPLETED_TIME'])) < 10)
           {
