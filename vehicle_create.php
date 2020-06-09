@@ -265,7 +265,7 @@ else{
                         </td> 
 
                         <td class="col-md-5 label-text" style="text-align:center">
-                        <h3><b>VEHICLE REQUEST FORM (VRF)</b></h3>
+                        <h2><b>VEHICLE REQUEST FORM (VRF)</b></h2>
                         </td>
 
                         <td class="col-md-0" >
@@ -273,27 +273,228 @@ else{
                         </td>
 
                         <td class="col-md-2  label-text" style =" border:1px solid black; background-color:#CFD8DC; text-align:center">
-                        <input  required type="text" class="" style="text-align:center; border:none; font-size:25px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "Control Number:" >
+                        <input  required type="text" class="" style="text-align:center; margin-top:15px; border:none; font-size:25px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "Control Number:" >
                         </td>
                         <td class="col-md-2" style =" border:1px solid black; text-align:center">
                         
-                        <input  required type="text" class="" style="text-align:center; border:none; font-size:30px; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "<?php echo $vrcount?>" >
+                        <input  required type="text" class="" style="text-align:center; border:none; margin-top:15px; font-size:30px; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "<?php echo $vrcount?>" >
+                        </td>
+                        
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        </tr>
+                        <!-- Header -->
+
+                </table>
+
+                
+                <table class="table">
+                
+                        <!-- A -->
+                        <tr>
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        <td colspan=8 class=" label-text" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                      
+                        <input  required type="text" class="" style="text-align:center; border:none; font-size:20px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "A. REQUEST FOR VEHICLE (To be Accomplished by Requesting Personnel)" >
+                        </td>
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        </tr>
+                        <!-- A -->
+
+                        <!-- body -->
+                        <tr>
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        <td class="col-md-1 " style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                        <input  required type="text" class="" style="text-align:center; border:none; font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "Requested Date:" >
+                       
+                        </td>
+
+                        <td class="col-md-2 " style=" border:1px solid black; text-align:center; ">
+                        <input readonly required type="text" class="" style=" text-align:center; border:none;border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 30px; width:100%;" name="date" id="" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" >
+                       
+                      </td>
+
+                      <td class="col-md-1 " style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                      
+                      <input  required type="text" class="" style="text-align:center; border:none; font-size:13 px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "Requested Time:" >
+                      </td>
+
+                      <td class="col-md-1 " style=" border:1px solid black; text-align:center; ">
+                      
+                      <input readonly required type="text" class="" style=" text-align:center; border:none;border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 30px; width:100%;" name="date" id="" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('H:i A') ?>" >
+                      </td>
+
+                     
+                      <td class="col-md-1 " style=" border:1px solid black; text-align:center; ">
+                      
+                      <input type="checkbox" class="form-check-input " id="dropoff">
+                      <input readonly  type="text" class="" style=" text-align:center; border:none; font-weight:bold; font-size:12px; height: 30px; width:60%;" name="" id="" value = "Drop Off" >
+                      </td>
+
+                      <td class="col-md-1 " style=" border:1px solid black; text-align:center;">
+                      <input type="checkbox" class="form-check-input " id="pickup">
+                      <input readonly  type="text" class="" style=" text-align:center; border:none; font-weight:bold; font-size:12px; height: 30px; width:60%;" name="" id="" value = "Pick-up" >
+                       
+                      </td>
+
+                      <td class="col-md-1 " style=" border:1px solid black; text-align:center; ">
+                      <input type="checkbox" class="form-check-input " id="pickup">
+                      <input readonly  type="text" class="" style=" text-align:center; border:none; font-weight:bold; font-size:12px; height: 30px; width:70%;" name="" id="" value = "Whole Day" >
+                       
+                      </td>
+
+                      <td class="col-md-2 " style=" border:1px solid black; text-align:center; ">
+                      <input type="checkbox" class="form-check-input " id="days">
+                      <input   type="number" class="" style=" text-align:center; border:none;border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 30px; width:40%;" name="nod" id="" value = "0" >
+                      <input readonly  type="text" class="" style=" text-align:left; border:none; font-weight:bold; font-size:12px; height: 30px; width:40%;" name="" id="" value = "Day/s" >
+                       
+                      </td>
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                </tr>
+                        <!-- Body -->
+
+
+
+                        <!-- body details -->
+                        <tr>
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        <td class="col-md-1" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                        <input  required type="text" class="" style="text-align:left; border:none; font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="" id="" value = "Requested By:" >
+                       
+                        </td>
+
+                        <td colspan=3 style=" border:1px solid black; text-align:center; ">
+                        <input readonly  type="text"  class="" style="  text-align:left; border:none;  font-size:15px;  font-weight:bold; height: 30px; width:100%;" id="office" placeholder="office" name="office" value = "<?php echo $fullname ?>">
+                       
                         </td>
 
 
+
+                        <td rowspan="2" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                        <input  required type="text" class="" style="margin-top:20px; text-align:center; border:none; font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="" id="" value = "Purpose:" >
+                       
+                        </td>
+                        <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
+                        <input  required type="text" class="" style="text-align:left; border:none; font-size:15px;  height: 80px; width:100%;" name="" id="" value = "" placeholder="Purpose" >
+                       
+                        </td>
+                        
+                     
+                      
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                </tr>
+                        <!-- body details -->
+
+                        <!-- body details1 -->
+                        <tr>
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        <td class="col-md-1" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                        <input  required type="text" class="" style="text-align:left; border:none; font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="" id="" value = "Office:" >
+
+                        </td>
+
+                        <td colspan=3 style=" border:1px solid black; text-align:center; ">
+                        <input readonly  type="text"  class="" style=" text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  font-weight:bold; height: 30px; width:100%;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>">
+                       
+                        </td>
+
+                      
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        </tr>
+                        <!-- body details1 -->
+
+                        <!-- body details2 -->
+                        <tr>
+
+                        <td class="col-md-1">
+
+                        </td> 
+                    
+                        <td class="col-md-1" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                        <input  required type="text" class="" style="text-align:left; border:none; font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="" id="" value = "Position :" >
+                      
+
+                        </td>
+
+                        <td colspan=3 style=" border:1px solid black; text-align:center; ">
+                        <input readonly  type="text"  class="" style=" text-align:left; border:none; border-bottom:1px solid black;  font-size:15px;  font-weight:bold; height: 30px; width:100%;" id="office" placeholder="office" name="office" value = "<?php echo $POSITION_M ?>">
+
+                        </td>
+
+                        <td rowspan="2" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                        <input  required type="text" class="" style="margin-top:20px; text-align:center; border:none; font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="" id="" value = "Destination :" >
+                       
+                        </td>
+                        <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
+                        <input  required type="text" class="" style="text-align:left; border:none; font-size:15px;  height: 80px; width:100%;" name="destination" id="destination" value = "" placeholder="Destination" >
+                       
+                        </td>
 
 
                         <td class="col-md-1">
 
                         </td> 
 
+                        </tr>
+                        <!-- body details2 -->
+
+                        <!-- body details3 -->
+                        <tr>
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        <td class="col-md-1" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                        <input  required type="text" class="" style="text-align:left; border:none; font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="" id="" value = "Mobile Number:" >
+
+                        </td>
+
+                        <td colspan=3 style=" border:1px solid black; text-align:center; ">
+                        <input   type="number"   class="" style=" text-align:left; border:none; border-bottom:1px solid black; font-size:15px; height: 30px; width:100%;" id="mobile" placeholder="Mobile" name="mobile" value = "">
+                        </td>
 
 
+                        <td class="col-md-1">
 
-
+                        </td> 
 
                         </tr>
-                        <!-- Header -->
+                        <!-- body details3 -->
 
                 </table>
 
@@ -311,44 +512,15 @@ else{
                     <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
 
                     <br>
-                    <br>
-                    </div>
+                    <br>  
+                </div>
               </form>
                 
+          </div>
           </div>
 
       
    
-  
-
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-<!--  <div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker3'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker3').datetimepicker({
-                    format: 'LT'
-                });
-            });
-        </script>
-    </div>
-</div>
-
-
- -->
-
-
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
  
