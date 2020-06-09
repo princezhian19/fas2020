@@ -1,12 +1,15 @@
 <?php
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$u = mysqli_query($conn,"SELECT emp.FIRST_M,emp.MIDDLE_M,emp.LAST_M,pos.POSITION_M FROM tblemployeeinfo emp LEFT JOIN tbldilgposition pos on pos.POSITION_ID = emp.POSITION_C WHERE emp.UNAME = '$username' ");
+$u = mysqli_query($conn,"SELECT tblemployeeinfo.FIRST_M,tblemployeeinfo.MIDDLE_M,tblemployeeinfo.LAST_M,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M FROM tblemployeeinfo tblemployeeinfo LEFT JOIN tbldilgposition tbldilgposition on tbldilgposition.POSITION_ID = tblemployeeinfo.POSITION_C LEFT JOIN  tblpersonneldivision tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C WHERE tblemployeeinfo.UNAME = '$username' ");
+
+
 $row = mysqli_fetch_array($u);
 $FIRST_M1 = $row['FIRST_M'];
 $FIRST_M = ucwords(strtolower($FIRST_M1));
 $MIDDLE_M = $row['MIDDLE_M'];
 $LAST_M1 = $row['LAST_M'];
 $LAST_M = ucfirst(strtolower($LAST_M1));
+$DIVISION_M = $row['DIVISION_M'];
 $POSITION_M = $row['POSITION_M'];
 $words = explode(" ", $MIDDLE_M);
 $acronym = "";
@@ -170,6 +173,7 @@ if (isset($_POST['stamp4'])) {
         <br>
         <font style="font-size: 20px;"><b>Name</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $name;?></font>
         <br>
+        <font style="font-size: 20px;"><b>Office</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $DIVISION_M?></font><br>
         <font style="font-size: 20px;"><b>Position</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $POSITION_M?></font>
         <br>
         <font style="font-size: 20px;"><b>Month</b> : 
@@ -296,9 +300,9 @@ if (isset($_POST['stamp4'])) {
                  echo ''; 
                }
                else{
-                 
+
                 echo $finalfinal->format('%H');  
-                
+
               }
 
             }else{
@@ -324,9 +328,9 @@ if (isset($_POST['stamp4'])) {
                  echo ''; 
                }
                else{
-                 
+
                 echo $finalfinal->format('%H');  
-                
+
               }
 
 
@@ -344,7 +348,7 @@ if (isset($_POST['stamp4'])) {
              echo ''; 
            }
            else{
-             
+
             echo $finalfinal->format('%i');  
           }
 
