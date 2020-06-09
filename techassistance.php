@@ -191,7 +191,7 @@ function filldataTable()
                   
                         if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == null   )
                         {
-                        echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Receive</button>';
+                        echo ' <button  disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Receive</button>';
 
                    
 
