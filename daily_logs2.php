@@ -160,7 +160,7 @@ if (isset($_POST['stamp4'])) {
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <div class="box">
       <div class="box-header with-border" align="left">
         <h1>Daily Time Record</h1>
@@ -192,7 +192,6 @@ if (isset($_POST['stamp4'])) {
             <option value="2020">2020</option>
             <option value="2021">2021</option>
           </select>
-          <!-- </font>&nbsp <font style="font-size: 20px;"><?php echo date('F d, Y')?></font> -->
           <br>
 
         </div>
@@ -289,7 +288,7 @@ if (isset($_POST['stamp4'])) {
 
 
 
-  <div class="col-md-4">
+  <div class="col-md-4" hidden>
 
 
     <div class="box box-success">
