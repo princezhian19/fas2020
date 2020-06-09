@@ -153,7 +153,7 @@ if (isset($_POST['submit'])) {
 
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Created!')
-      window.location.href='UpdateAoq.php?rfq_id=$rfq_id&abstract_id=$abstract_id&supplier_id=$supplier_id&rfq_items=$rfq_items_id';
+      window.location.href='UpdateAoq.php?rfq_id=$rfq_id&abstract_id=$abstract_id&supplier_id=$supplier_id';
       </SCRIPT>");
   }
 }

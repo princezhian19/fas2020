@@ -58,7 +58,9 @@ function filldataTable()
     $query = "SELECT * FROM tbltechnical_assistance 
     where `STATUS_REQUEST` = 'Submitted' or  `STATUS_REQUEST` = 'Received' or `STATUS_REQUEST` = 'For action' or `STATUS_REQUEST` = 'Completed'  
     GROUP by tbltechnical_assistance.ID
-    order by `REQ_DATE` DESC, `REQ_TIME` desc ";
+    order by `CONTROL_NO` DESC ";
+
+    // -- order by `REQ_DATE` DESC, `REQ_TIME` desc ";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {

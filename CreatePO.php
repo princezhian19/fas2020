@@ -13,7 +13,7 @@ $username = $_SESSION['username'];
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Encode PO</title>
+  <title>Create PO</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
 
@@ -54,7 +54,7 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="ViewPR.php"><i class=""></i> Home</a></li>
-        <li class="active">Encode Aoq</li>
+        <li class="active">Create PO</li>
       </ol>
       <br>
       <br>
