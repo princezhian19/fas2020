@@ -475,17 +475,26 @@ break;
              
               
                 <?php if ($submitteddate1 == '0000-00-00'): ?>
-                  
+                  <?php if ($username1 == 'itdummy1' || $username1 == '' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
+                  <td></td>
+                  <?php else: ?>
                   <?php if ($status!='cancelled'):?> 
-                  <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Travel Order?');" href='to_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
+                      <?php if ($office==$DIVISION_M):?> 
+                      <td><a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to submit this Travel Order?');" href='to_submit.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Submit</a></td>
+                      <?php else: ?>
+                      <td></td>
+                      <?php endif ?>
+                  
                   <?php else: ?>
                   <td></td>
                   <?php endif ?>
-
+                  <?php endif ?>
         
                   <?php else: ?>
                   <td><?php echo $submitteddate .'<br>'.$submittedby.''?></td>
                   <?php endif ?>
+
+                  
 
 
 
@@ -547,7 +556,7 @@ break;
                                
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#add_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php endif ?>
-                          <?php endif ?>
+                    <?php endif ?>
                         
                
                         
