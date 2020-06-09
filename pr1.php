@@ -782,11 +782,9 @@ function confirmDelete(delUrl) {
             </div>
           </div>
         </div>  
-</form>
 
         <br>
         <br>
-         <form method="POST">
         <div class="form-group">
         <label>Added PR Item/s.</label>
         <div>

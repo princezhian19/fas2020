@@ -43,11 +43,24 @@ $check4 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AN
 
 $checkall = mysqli_query($conn,"SELECT * FROM dtr WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
 
+
+$month = date('m');
+$year = date('Y');
+
+$d1=cal_days_in_month(CAL_GREGORIAN,$month,$year);
+
 if (isset($_POST['stamp1'])) {
   if (mysqli_num_rows($checkall)>0) {
     $insert = mysqli_query($conn,"UPDATE dtr SET time_in = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }else{
-    $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,time_in) VALUES('$username',now())");
+
+    for($d = 1; $d <=$d1; $d++)
+    {
+      $date_in_month = $year.'-'.$month.'-'.$d;
+      $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
+
+    }
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -66,7 +79,13 @@ if (isset($_POST['stamp2'])) {
   if (mysqli_num_rows($checkall)>0) {
     $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }else{
-    $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,lunch_in) VALUES('$username',now())");
+    for($d = 1; $d <=$d1; $d++)
+    {
+      $date_in_month = $year.'-'.$month.'-'.$d;
+      $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
+
+    }
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }
 
   if ($insert) {
@@ -86,7 +105,13 @@ if (isset($_POST['stamp3'])) {
   if (mysqli_num_rows($checkall)>0) {
     $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }else{
-    $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,lunch_out) VALUES('$username',now())");
+    for($d = 1; $d <=$d1; $d++)
+    {
+      $date_in_month = $year.'-'.$month.'-'.$d;
+      $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
+
+    }
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = now() WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
   }
 
   if ($insert) {
@@ -106,7 +131,14 @@ if (isset($_POST['stamp4'])) {
   if (mysqli_num_rows($checkall)>0) {
     $insert = mysqli_query($conn,"UPDATE dtr SET time_out = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }else{
-    $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,time_out) VALUES('$username',now())");
+    for($d = 1; $d <=$d1; $d++)
+    {
+      $date_in_month = $year.'-'.$month.'-'.$d;
+      $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
+
+    }
+
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = now() WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }
 
   if ($insert) {
@@ -121,6 +153,7 @@ if (isset($_POST['stamp4'])) {
       </SCRIPT>");
   }
 }
+
 
 
 ?>
@@ -170,7 +203,7 @@ if (isset($_POST['stamp4'])) {
           </thead>
           <?php 
 
-          $view_query = mysqli_query($conn, "SELECT * FROM dtr WHERE UNAME ='$username' ORDER BY id ASC");
+          $view_query = mysqli_query($conn, "SELECT id, UNAME,date_today,time_in, lunch_out,lunch_in,time_out,SUBTIME(time_out,'01:00:00') as time_out1 FROM dtr WHERE UNAME ='$username' ORDER BY id ASC");
 
           while ($row = mysqli_fetch_assoc($view_query)) {
             $id = $row["id"];
@@ -178,8 +211,11 @@ if (isset($_POST['stamp4'])) {
             $date_today = $row["date_today"];  
             $time_in = $row["time_in"];
             $lunch_in = $row["lunch_in"];
-            $lunch_out = $row["lunch_out"];
+            $lunch_out= $row["lunch_out"];
             $time_out = $row["time_out"];
+
+            $time_out1 = $row["time_out1"];
+
             ?>
 
             <tr>
@@ -190,91 +226,45 @@ if (isset($_POST['stamp4'])) {
               ?></td>
               <td><?php 
               if ($time_in == NULL) {
-                echo '';
+                echo '&nbsp.';
               }else{
                 echo date('h:i A',strtotime($time_in));
               }
               ?></td>
               <td><?php 
               if ($lunch_in == NULL) {
-                echo '';
+                echo '&nbsp.';
               }else{
                 echo date('h:i A',strtotime($lunch_in));
               }
               ?></td>
               <td><?php 
               if ($lunch_out == NULL) {
-                echo '';
+                echo '&nbsp.';
               }else{
                 echo date('h:i A',strtotime($lunch_out));
               }
               ?></td>
               <td><?php 
               if ($time_out == NULL) {
-                echo '';
+                echo '&nbsp.';
               }else{
                 echo date('h:i A',strtotime($time_out));
               }
               ?></td>
               <td>
-                <?php 
-                if(date('d',strtotime($date_today)) == '01'){ 
-                  $late = date('h:i',strtotime($time_in)) > date('h:i',strtotime('08:00'));
-                if($late){ //morning late
-                $datetime2 = new DateTime('08:00');//time
-                $datetime1 = new DateTime($time_in);//time in
-                $dd22 = $datetime1->diff($datetime2);
-              }
-                  $under = date('h:i',strtotime($time_out)) < date('h:i',strtotime('17:00'));
-                  if ($under) {
-                    $datetime3 = new DateTime('17:00');//time
-                    $datetime4 = new DateTime($time_out);//time out
-                    $dd22 += $datetime3->diff($datetime4);
-                  }
-                echo $dd22->format('%i');
 
-              
-            }else{
-              $late = date('h:i',strtotime($time_in)) > date('h:i',strtotime('09:00'));
-              if($late){ //morning late
-                $datetime2 = new DateTime('09:00');//start time
-                $datetime1 = new DateTime($time_in);//end time
-                $dd22 = $datetime1->diff($datetime2);
-                echo $dd22->format('%i');
-              }
-            }
-            ?>
 
-          </td>
-          <td>
-                <?php 
-                $undertime = 0;
-                if(date('d',strtotime($date_today)) == '01'){ 
-                if(date('h:i',strtotime($time_in)) > date('h:i',strtotime('08:00'))){ //morning late
-                $datetime2 = new DateTime('08:00');//start time
-                $datetime1 = new DateTime($time_in);//end time
-                $dd22 = $datetime1->diff($datetime2);
-                echo $dd22->format('%H');
-              }
-              if (date('H', $undertime) > 0) {
-              }
-            }else{
-                if(date('h:i',strtotime($time_in)) > date('h:i',strtotime('09:00'))){ //morning late
-                $datetime2 = new DateTime('09:00');//start time
-                $datetime1 = new DateTime($time_in);//end time
-                $dd22 = $datetime1->diff($datetime2);
-                echo $dd22->format('%H');
-              }
-            }
-            ?>
+              </td>
+              <td>
 
-          </td>
-        </tr>
-      <?php } ?>
-    </table>
+              </td>
+            </tr>
+          <?php } ?>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 </div>
 
 
@@ -305,7 +295,11 @@ if (isset($_POST['stamp4'])) {
                 <?php if (mysqli_num_rows($check2)>0): ?>
                   <td width="250"><?php echo date('h:i A',strtotime($lunch_inL))?></td>
                   <?php else: ?>
+                <?php if (mysqli_num_rows($check1)>0): ?>
                     <td width="250"><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                  <?php else: ?>
+                    <td width="250"><button disabled class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                  <?php endif ?>
                   <?php endif ?>
                 </tr>
                 <tr>
@@ -313,7 +307,11 @@ if (isset($_POST['stamp4'])) {
                   <?php if (mysqli_num_rows($check3)>0): ?>
                     <td width="250"><?php echo date('h:i A',strtotime($lunch_outL))?></td>
                     <?php else: ?>
-                      <td width="250"><button class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                      <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0): ?>
+                      <td width="250"><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                      <?php else: ?>
+                        <td width="250"><button disabled class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                      <?php endif ?>
                     <?php endif ?>
                   </tr>
 
@@ -322,7 +320,11 @@ if (isset($_POST['stamp4'])) {
                     <?php if (mysqli_num_rows($check4)>0): ?>
                       <td width="250"><?php echo date('h:i A',strtotime($time_outL))?></td>
                       <?php else: ?>
+                        <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0 && mysqli_num_rows($check3)>0): ?>
                         <td width="250"><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
+                        <?php else: ?>
+                          <td width="250"><button disabled class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
+                        <?php endif ?>
                       <?php endif ?>
                     </tr>
                   </form>

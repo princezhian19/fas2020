@@ -291,8 +291,8 @@ $edit="edit";
               <tr>
                         <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
                     <td class="col-md-5">
-                      <select class="form-control " style="width: 100%;" name="category" id="category" > 
-                      <option value="15">Select Category</option>
+                      <select required class="form-control " style="width: 100%;" name="category" id="category" > 
+                      <option value="">Select Category</option>
                       <option value="11">Department Memorandum Circular</option>
                       <option value="12">Department Order</option>
                       <option value="14">Regional Memorandum Circular</option>
@@ -488,7 +488,7 @@ $edit="edit";
                                         </tr>
                     <tr>
                         <td class="col-md-2"><b>Posted Date</b></td>
-                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('F d, Y') ?>" ></td>
+                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="posteddate" id="posteddate" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" ></td>
                                 </tr>
 
 

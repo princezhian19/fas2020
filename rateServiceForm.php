@@ -1038,10 +1038,57 @@ function setQuality()
                           <td colspan = 4 style ="background-color:#EEEEEE;text-align:center;"><u><?php echo setSig();?></u><br><span class = "label-text">Signature over Printed Name</span></td>
 
                          
-                          <td colspan=2 class = "label-text"><input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Resolved</td>
-                          <td colspan=2 class = "label-text">
-                          <input type = "checkbox" disabled />&nbsp;&nbsp;&nbsp;&nbsp;Defective(to be referred to GSS for repair)
-                          </td>
+                          <?php
+ include 'connection.php';
+
+ if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+ $id = $_GET['id'];
+ $query = "SELECT * FROM `tbltechnical_assistance` where `CONTROL_NO` ='$id' ";
+ $result = mysqli_query($conn, $query);
+ while($row = mysqli_fetch_array($result))
+   {
+switch ($row['STATUS']) {
+  case '1':
+    ?>
+    <td colspan=2 class = "label-text">
+      <input type = "checkbox"  class = "checkbox_group" id = "resolved" name = "isComplete" value = "1" checked/>
+    &nbsp;&nbsp;&nbsp;&nbsp;Resolved<span style = "color:red;">*</span>
+  </td>
+    <td colspan=2 class = "label-text">
+    <input type = "checkbox" class = "checkbox_group" id = "defective" name = "isComplete" value = "0" />&nbsp;&nbsp;&nbsp;&nbsp;
+    Defective(to be referred to GSS for repair)<span style = "color:red;">*</span>
+    </td>
+    <?php
+    break;
+  
+  case '0':
+    ?>
+    <td colspan=2 class = "label-text">
+      <input type = "checkbox"  class = "checkbox_group"  id = "resolved" name = "isComplete" value = "1" />
+    &nbsp;&nbsp;&nbsp;&nbsp;Resolved<span style = "color:red;">*</span>
+  </td>
+    <td colspan=2 class = "label-text">
+    <input type = "checkbox" class = "checkbox_group" id = "defective" name = "isComplete" value = "0" checked/>&nbsp;&nbsp;&nbsp;&nbsp;
+    Defective(to be referred to GSS for repair)<span style = "color:red;">*</span>
+    </td>
+    <?php
+    break;
+    default:
+   ?>
+<td colspan=2 class = "label-text">
+      <input type = "checkbox"  class = "checkbox_group"  id = "resolved" name = "isComplete" value = "1" />
+    &nbsp;&nbsp;&nbsp;&nbsp;Resolved<span style = "color:red;">*</span>
+  </td>
+    <td colspan=2 class = "label-text">
+    <input type = "checkbox" class = "checkbox_group" id = "defective" name = "isComplete" value = "0" />&nbsp;&nbsp;&nbsp;&nbsp;
+    Defective(to be referred to GSS for repair)<span style = "color:red;">*</span>
+    </td>
+   <?php
+    break;
+}
+
+   }
+                         ?>
               
                           <tr> 
                           <td colspan = 4 class = "label-text">DEAR END USER, YOUR FEEDBACK IS IMPORTANT TO US:</td>

@@ -1,3 +1,8 @@
+<?php
+header("Cache-Control: no-cache, must-revalidate");
+header("Expires: Mon, 26 Jul 2030 05:00:00 GMT");
+header("Content-Type: application/xml; charset=utf-8");
+?>
 <?php session_start();
 if(!isset($_SESSION['username'])){
 header('location:index.php');
@@ -22,28 +27,7 @@ $username1 = $_SESSION['username'];
 
   //echo $DIVISION_M;
 
-  $idGet='';
-  $getDate = date('Y');
-  $m = date('m');
-  $auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM ro_roo order by id desc limit 1");
-  while ($row = mysqli_fetch_assoc($auto)) {
-  
-    $idGet = $row["a"];
-  }
-  
-  if($idGet<9){
-  $obcount = $getDate.'-'.'00'.$idGet;
-  
-  }
-  else if($idGet<99){
-  
-  $obcount = $getDate.'-'.'0'.$idGet;
-  
-  }
-  else{
-  $obcount = $getDate.'-'.$idGet;
-  }
-
+ 
 
 ?>
 
@@ -77,10 +61,6 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 require_once('_includes/class.upload.php');
 
 
-
-
-
-
 ?>
 
 
@@ -93,7 +73,6 @@ $edit="edit";
 <html>
 <head>
   <title>FAS</title>
-
 
 </head>
 <body>
@@ -110,269 +89,28 @@ $edit="edit";
 <tr>
 <td class="col-md-2">
 
-<a name="Cancel" value="" id="Cancel"  data-toggle="modal" data-target="#add_data_Modal" title="Add" class = "btn btn-success" > <i class=''></i> Register</a> 
+<a name="" value="" id=""  data-toggle="modal" data-target="#add_data_Modal" title="Add" class = "btn btn-success" > <i class=''></i> Register</a> 
 </td>
 
 <td class="col-md-6" >
 
 
 </td>
-<form method = "POST" action = "ro_export_date.php">
-<td class="col-md-1">
+<?php if( $username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'){
+include('ro_include.php');
 
-<?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
-
-<b>Month</b>
-
-<select class="" name="month" id = "selectMonth" style="width: 150px; Height:30px;">
-<?php 
-$current_month =  date('F');
-switch($current_month){
-case 'January':
-echo '
-<option value="01" selected>January</option>
-<option value="02">February</option>
-<option value="03">March</option>
-<option value="04">April</option>
-<option value="05">May</option>
-<option value="06">June</option>
-<option value="07">July</option>
-<option value="08">August</option>
-<option value="09">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>';
-break;
-case 'February':
-echo '
-<option value="01">January</option>
-<option value="02" selected>February</option>
-<option value="03">March</option>
-<option value="04">April</option>
-<option value="05">May</option>
-<option value="06">June</option>
-<option value="07">July</option>
-<option value="08">August</option>
-<option value="09">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>';
-break;
-case 'March':
-echo '
-<option value="01">January</option>
-<option value="02">February</option>
-<option value="03" selected>March</option>
-<option value="04">April</option>
-<option value="05">May</option>
-<option value="06">June</option>
-<option value="07">July</option>
-<option value="08">August</option>
-<option value="09">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>';
-break;
-case 'April':
-echo '
-<option value="01">January</option>
-<option value="02">February</option>
-<option value="03">March</option>
-<option value="04" selected>April</option>
-<option value="05">May</option>
-<option value="06">June</option>
-<option value="07">July</option>
-<option value="08">August</option>
-<option value="09">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>';
-break;
-case 'May':
-echo '
-<option value="01">January</option>
-<option value="02">February</option>
-<option value="03">March</option>
-<option value="04">April</option>
-<option value="05" selected>May</option>
-<option value="06">June</option>
-<option value="07">July</option>
-<option value="08">August</option>
-<option value="09">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>';
-break;
-case 'June':
-echo '
-<option value="01">January</option>
-<option value="02">February</option>
-<option value="03">March</option>
-<option value="04">April</option>
-<option value="05">May</option>
-<option value="06" selected>June</option>
-<option value="07">July</option>
-<option value="08">August</option>
-<option value="09">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>';
-break;
-case 'July':
-echo '
-<option value="01">January</option>
-<option value="02">February</option>
-<option value="03">March</option>
-<option value="04">April</option>
-<option value="05">May</option>
-<option value="06">June</option>
-<option value="07" selected>July</option>
-<option value="08">August</option>
-<option value="09">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>';
-break;
-case 'August':
-echo '
-<option value="01">January</option>
-<option value="02">February</option>
-<option value="03">March</option>
-<option value="04">April</option>
-<option value="05">May</option>
-<option value="06">June</option>
-<option value="07">July</option>
-<option value="08" selected>August</option>
-<option value="09">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>';
-break;
-case 'September':
-echo '
-<option value="01">January</option>
-<option value="02">February</option>
-<option value="03">March</option>
-<option value="04">April</option>
-<option value="05">May</option>
-<option value="06">June</option>
-<option value="07">July</option>
-<option value="08">August</option>
-<option value="09" selected>September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>';
-break;
-case 'October':
-echo '
-<option value="01">January</option>
-<option value="02">February</option>
-<option value="03">March</option>
-<option value="04">April</option>
-<option value="05">May</option>
-<option value="06">June</option>
-<option value="07">July</option>
-<option value="08">August</option>
-<option value="09">September</option>
-<option value="10" selected>October</option>
-<option value="11">November</option>
-<option value="12">December</option>';
-break;
-case 'November':
-echo '
-<option value="01">January</option>
-<option value="02">February</option>
-<option value="03">March</option>
-<option value="04">April</option>
-<option value="05">May</option>
-<option value="06">June</option>
-<option value="07">July</option>
-<option value="08">August</option>
-<option value="09">September</option>
-<option value="10">October</option>
-<option value="11" selected>November</option>
-<option value="12">December</option>';
-break;
-case 'December':
-echo '
-<option value="01">January</option>
-<option value="02">February</option>
-<option value="03">March</option>
-<option value="04">April</option>
-<option value="05">May</option>
-<option value="06">June</option>
-<option value="07">July</option>
-<option value="08">August</option>
-<option value="09">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12" selected>December</option>';
-break;
 }
+else{
+
+}
+
 ?>
-
-</select>
-</td>
-<td class="col-md-1" >
-<b>Year</b>
-<select class="" id="year" name="year" style="width: 150px; Height:30px;">
-<!-- <option value="">Year</option> -->
-<option value="2020">2020</option>
-<option value="2021">2021</option>
-<option value="2022">2022</option>
-<option value="2023">2023</option>
-<option value="2024">2024</option>
-<option value="2025">2025</option>
-<option value="2026">2026</option>
-<option value="2027">2027</option>
-<option value="2028">2028</option>
-<option value="2029">2029</option>
-<option value="2030">2030</option>
-
-</select>
-
-</td>
-
-<td class="col-md-1" >
-
-<b>Office</b>
-<select class="" id="office" name="office" style="width: 150px; Height:30px;">
-<!-- <option value="" style="color:gray">Office</option> -->
-<option value="ALL">ALL</option>
-<option value="ORD">ORD</option>
-<option value="FAD">FAD</option>
-<option value="LGCDD">LGCDD</option>
-<option value="MBRTG">MBRTG</option>
-<option value="LGMED">LGMED</option>
-<option value="PDMU">PDMU</option>
-<option value="Batangas">Batangas</option>
-<option value="Cavite">Cavite</option>
-<option value="Laguna">Laguna</option>
-<option value="Rizal">Rizal</option>
-<option value="Quezon">Quezon</option>
-<option value="Lucena City">Lucena City</option>
-
-</select>
-</td>
-<td class="col-md-1" >
-<br>
-<button style="  Height:30px;"  id="" name="submit" type="submit"  class="btn btn-success pull-right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Export&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-</td>
-</form>
-
-
-<?php else:?>
-
-<?php endif?>
 
 </tr>
 <!-- Header -->
 </table>  
           <div class=""  style="overflow-x:auto;">
-         
-            <!-- <li class="btn btn-success"><a href="CreateIssuances.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Add</a></li> -->
-        
-          
+     
               <br>
               
             </div>
@@ -380,7 +118,6 @@ break;
             <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
-                   <!-- <th width = '10'>TAG</th>  -->
                   <th width = '300'>CATEGORY</th>
                   <th width = '200'>ISSUANCE NO  </th>
                   <th width = '200'>ISSUANCE DATE  </th>
@@ -428,15 +165,12 @@ break;
                   $registereddate = date('F d, Y', strtotime($registereddate1));
                   
 
-             
 
                ?>
 
                 <tr align = ''>
 
-              
-                
-
+            
                 <td><?php echo $category?></td>
                 <td><?php echo $issuanceno?></td>
                 <td><?php echo $issuancedate?></td>
@@ -461,8 +195,6 @@ break;
                     $rowdiv1 = mysqli_fetch_array($select_office);
                     $DIVISION_M = $rowdiv1['DIVISION_M'];
  
-
-
                   ?>
 
                     <?php if ($username1 == 'cvferrer' || $username1 == 'itdummy1' || $username1 == 'seolivar' || $username1 == 'magonzales' || $username1 == 'jbaco' || $username1 == 'gpvillanueva'|| $username1 == 'hpsolis'|| $username1 == 'rmsaturno'):?>
@@ -475,31 +207,25 @@ break;
 
 
                     <?php endif?>
-                
-                       
-            
-
-              
-
+        
                 </td>
-                
-               
-
+          
                 </tr>
-
             
             <?php }?>
-
-
-                
-             
-            </table>
+        </table>
                 
                 </div>
-                            </div>
-                            </div>
+      </div>
+      </div>
       
-    <script type="text/javascript">
+   
+
+</body>
+</html>
+
+
+<script type="text/javascript">
     $(document).ready(function() {
         var dataTable=$('#example1').DataTable({
             'lengthChange': true,
@@ -520,10 +246,6 @@ break;
 </script>
 
 
-</body>
-</html>
-
-
 <!--Add modals -->
 
 <div id="add_data_Modal" class="modal fade ">
@@ -534,7 +256,7 @@ break;
               <h4 class="modal-title"><b>Add Regional Order and Regional Office Order</b></h4>
             </div>
             <div class="modal-body">
-              <form method="POST" id="insert_form" action="ro_create.php" enctype="multipart/form-data">
+              <form method="POST" action="ro_create.php" >
               
         
               <div class="addmodal" >
@@ -548,17 +270,23 @@ break;
               <tr>
                         <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
                     <td class="col-md-5">
-                      <select class="form-control " style="width: 100%;" name="category" id="category" > 
-                      <option value="Regional Order">Select Category</option>
+
+                 
+                      <select required class="form-control select2" style="width: 100%;" name="category" id="category" > 
+                      <option value="">Select Category</option>
                       <option value="Regional Order">Regional Order</option>
                       <option value="Regional Office Order">Regional Office Order</option>
                      
-                      </select></td>
+                      </select>
+                  
+                      </select>
+                    
+                    </td>
                                 </tr>
                     <tr>  
                         <td class="col-md-2"><b>Issuance No<span style = "color:red;">*</span></b></td>
                             <td class="col-md-5">
-                            <input required readonly value="<?php echo $obcount; ?>"  class="form-control" type="text" class="" style="height: 35px;" id="issuanceno" name="issuanceno" placeholder="" name="issuances" >
+                            <input required readonly value=""  class="form-control" type="text" class="" style="height: 35px;" id="issuanceno" name="issuanceno" placeholder="" name="issuances" >
                                     </td>
                                         </tr>
                     <tr>
@@ -608,15 +336,15 @@ break;
                                         </tr>
                     <tr>
                         <td class="col-md-2"><b>Registered Date <span style = "color:red;">*</span></b></td>
-                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="registereddate" id="registereddate" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('F d, Y') ?>" ></td>
+                            <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="registereddate" id="registereddate" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" ></td>
                                 </tr>
 
 
             </table>
                  
            
-            <button type="submit" name="Add" class="btn btn-success pull-right">Save</button>
-
+            <button type="submit" name="Add"  id="Add" onclick="cat()" class="btn btn-success pull-right">Save</button>
+            <input hidden   value=""   type="text"  class="" style="height: 35px;" id="rocount" placeholder="" name="rocount">
 
                 
                   <br>
@@ -626,7 +354,7 @@ break;
             
                 </div>
            
-                
+                </form>
           </div>
         </div>
 
@@ -639,7 +367,7 @@ break;
 
           
               
-              </form>
+ 
            
         <!-- Add modals -->
 
@@ -663,13 +391,14 @@ break;
                     
                     //getting from data-id from button
                     var idmodal = idget.getAttribute("data-id");
+                    var category1 = idget.getAttribute("data-category");
                     var issuanceno1 = idget.getAttribute("data-issuanceno");
                     var issuancedate1 = idget.getAttribute("data-issuancedate");
                     var title1 = idget.getAttribute("data-title");
                     var office1 = idget.getAttribute("data-office");
                     var registeredby1 = idget.getAttribute("data-registeredby");
                     var registereddate1 = idget.getAttribute("data-registereddate");
-                  
+                 
                    
                     //Getting input ID's
                     var id1 = $("input[name='getid']");
@@ -679,19 +408,28 @@ break;
                     var office = $("input[name='office1']");
                     var registeredby = $("input[name='registeredby1']");
                     var registereddate = $("input[name='registereddate1']");
+                    var category = $("input[name='category1']");
 
+                  /*   if(category1=='Regional Order'){
+                      document.getElementById("category1").selectedIndex = "0";
+                      $("#category1").attr( "disabled", "disabled" );
+
+                    }
+                    else{
+                      document.getElementById("category1").selectedIndex = "1";
+                      $("#category1").attr( "disabled", "readonly" );
+                    } */
+                   
                     
                     //setting values to input
                     id1.val(idmodal);
+                    category.val(category1);
                     issuanceno.val(issuanceno1);
                     issuancedate.val(issuancedate1);
                     title.val(title1);
                     office.val(office1);
                     registeredby.val(registeredby1);
                     registereddate.val(registereddate1);
-                    
-                  
-                   
                   }
 
                 
@@ -699,10 +437,10 @@ break;
                   </script>
 
 
-              <form method="POST" id="insert_form" action="ro_update.php" enctype="multipart/form-data">
+              <form method="POST" id="" action="ro_update.php" >
               
         
-              <div class="addmodal" >
+              <div class="" >
              
 
 
@@ -711,13 +449,14 @@ break;
 
 <tr>
           <td class="col-md-2"><b>Category<span style = "color:red;">*</span></b></td>
-      <td class="col-md-5">
-        <select class="form-control " style="width: 100%;" name="category1" id="category1" > 
-        
+        <td class="col-md-5">
+        <input required readonly value=""  class="form-control" type="text" class="" style="height: 35px;" id="category1" name="category1" placeholder=""  >
+      <!--   <select class="form-control select 2 " style="width: 100%;" name="category1" id="category1" >
+
         <option value="Regional Order">Regional Order</option>
         <option value="Regional Office Order">Regional Office Order</option>
        
-        </select></td>
+        </select> --></td>
                   </tr>
       <tr>  
           <td class="col-md-2"><b>Issuance No<span style = "color:red;">*</span></b></td>
@@ -754,7 +493,7 @@ break;
                           </tr>
       <tr>
           <td class="col-md-2"><b>Registered Date <span style = "color:red;">*</span></b></td>
-              <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="registereddate1" id="registereddate1" value = "<?php if (isset($_POST["date_issued"])) echo $_POST["date_issued"]; else echo date('F d, Y') ?>" ></td>
+              <td class="col-md-5"><input readonly type="text" class="form-control" style="height: 35px;" name="registereddate1" id="registereddate1" value = "" ></td>
                   </tr>
 
 
@@ -764,170 +503,107 @@ break;
             <button type="submit" name="edit" class="btn btn-success pull-right">Save Changes</button>
             <input hidden   value="<?php echo $id;?>"   type="text"  class="" style="height: 35px;" id="getid" placeholder="" name="getid">
 
-
-                
+          
                   <br>
               <br>
               
-              
-            
+
                 </div>
            
-                
+                </form>
           </div>
         </div>
 
-      
-    
     </div>
 
     </div>
- 
-
-          
-              
-              </form>
-           
         <!-- Edit modals -->
 
 
- 
-
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
- 
-        <script type="text/javascript">
-		$(document).ready(function() {
-
-			var x = 1;
-			$('#office').click(function(e){
-			  if( x == 1 ){
-			    //console.log('even');
-			    $('.office-responsible').show();
-			    $(this).attr('placeholder','Click to Close');
-			    x = 0;
-			  } else {
-			    //console.log('odd');
-			    $('.office-responsible').hide();
-			        $(this).attr('placeholder','Click to Select');
-
-			    x = 1;
-			  }
-			  e.preventDefault();
-			});
-
-		$("legend :checkbox").click(function(){
-   	    var getcheckboxes = $(this).attr('class');
-	    var delimiter = ";";
-	    var text = $("input[id='todiv']");
-	    var str = "";
-
-	   $('.'+getcheckboxes).prop('checked',this.checked);
-     str += $(this).val() + delimiter;
-     var final111 = str.replace(';;;;;;;15;on;on;','');
-     text.val(final111);
-		});
-
-			$(":checkbox").click(function () {
-			    var delimiter = ";";
-			    var text = $("input[name='todiv']");
-			    var str = "";
-			    
-			    // for each checked checkbox, add the checkbox value and delimiter to the textbox
-			    $(":checked").each(function () {
-			        str += $(this).val() + delimiter;
-			    });
-			    
-			    // set the value of the textbox
-          var final = str .replace('11;','');
-     //alert(final);
-         // var final1 = final.replace('11;','');
-         // var final2 = final.replace('11;','');
-
-          var final11 = final .replace(';;;;;;;15;','');
-        
-     text.val('');
-     text.val(final11);
-
-
-			});
-
-
-
-				
-		 });	
-      
-    </script>   
-
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-
- var x = 1;
- $('#office1').click(function(e){
-   if( x == 1 ){
-     //console.log('even');
-     $('.office-responsible1').show();
-     $(this).attr('placeholder','Click to Close');
-     x = 0;
-   } else {
-     //console.log('odd');
-     $('.office-responsible1').hide();
-         $(this).attr('placeholder','Click to Select');
-
-     x = 1;
-   }
-   e.preventDefault();
- });
-
-$("legend :checkbox").click(function(){
-    var getcheckboxes1 = $(this).attr('class');
- var delimiter1 = ";";
- var text1 = $("input[id='todiv1']");
- var str1 = "";
-
-$('.'+getcheckboxes1).prop('checked',this.checked);
-
-  str1 += $(this).val() + delimiter1;
-     var g = str1.replace(';;;;;;;15;','');
-     var g1 = g.replace('on;','');
-     text1.val(g1);
-});
-
- $(":checkbox").click(function () {
-     var delimiter1 = ";";
-     var text1 = $("input[name='todiv1']");
-     var str1 = "";
-     
-     // for each checked checkbox, add the checkbox value and delimiter to the textbox
-     $(":checked").each(function () {
-         str1 += $(this).val() + delimiter1;
-        
-       
-     });
-     
-     // set the value of the textbox
-   
-     var final1 = str1 .replace(';;;;;;;15;','');
-     var final2 = final1 .replace('11;','');
-     //alert(final);
-     text1.val('');
-     text1.val(final2);
-     
-     
- });
-
-
-
-  
-});	
- 		
-</script> 
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!-- Select on change -->
+
+<script>
+$(document).ready(function(){
+  $("#category").change(function (){
+
+
+    cat = document.getElementById("category").value;
+
+   
+    if(cat=='Regional Order'){
+   
+        $.ajax({
+        method:'POST',
+        url:"ro_count.php?",
+        data: {cat:cat},
+        success : function(data) {
+        var issuanceno = $("input[name='issuanceno']"); 
+        var rocount = $("input[name='rocount']");
+        if(data<9){
+          var ro = '2020-00'+ data;
+        }
+        else if(data<99){
+          var ro = '2020-0'+ data;
+
+        }
+        else{
+          var ro = '2020-'+data;
+        }
+      
+        issuanceno.val(ro);
+        rocount.val(data);
+      
+        }
+        });
+    }
+    else if(cat=='Regional Office Order'){
+        $.ajax({
+        method:'POST',
+        url:"roo_count.php?",
+        data: {cat:cat},
+        success : function(data) {
+        var issuanceno = $("input[name='issuanceno']"); 
+        var rocount = $("input[name='rocount']");
+        if(data<9){
+        var roo = '2020-00'+ data;
+        }
+        else if(data<99){
+        var roo = '2020-0'+ data;
+
+        }
+        else{
+        var roo = '2020-'+data;
+        }
+
+        issuanceno.val(roo);
+        rocount.val(data);
+        //alert(data);
+        }
+        });
+    }
+
+    else{
+      var issuanceno = $("input[name='issuanceno']");
+      var rocount = $("input[name='rocount']");
+      issuanceno.val('');
+    
+      rocount.val('');
+    }
+   
+    //alert(cat);
+
+  });
+});
+</script>
+
+
+<!-- Select on change -->
+
+
 <script>
   $(function () {
     //Initialize Select2 Elements

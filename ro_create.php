@@ -15,9 +15,8 @@ $username = $_SESSION['username'];
 
 
 if(isset($_POST['Add'])){
-    $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $category = $_POST['category'];
 $issuanceno = $_POST['issuanceno'];
 $issuancedate1 = $_POST['issuancedate'];
@@ -29,8 +28,9 @@ $registeredby = $_POST['registeredby'];
 
 $registereddate1 = $_POST['registereddate'];
 $registereddate = date('Y-m-d', strtotime($registereddate1));
-
-
+$rocount = $_POST['rocount'];
+/* echo $rocount;
+exit(); */
 
 $servername = "localhost";
 $username = "fascalab_2020";
@@ -46,18 +46,37 @@ if ($conn->connect_error) {
 
 
 
- $query = mysqli_query($conn,"INSERT INTO ro_roo (category ,issuanceno,issuancedate,title,office,registeredby,registereddate) 
- VALUES ('$category','$issuanceno','$issuancedate','$title','$office','$registeredby','$registereddate')");
 
-/* echo "INSERT INTO ro_roo (category ,issuanceno,issuancedate,title,office,registeredby,registereddate) 
-VALUES ('$category','$issuanceno','$issuancedate','$title','$office','$registeredby','$registereddate')";
-exit();
- */
+
+
+ if($category=='Regional Order'){
+    $query = mysqli_query($conn,"INSERT INTO ro_roo (category ,issuanceno,issuancedate,title,office,registeredby,registereddate) 
+    VALUES ('$category','$issuanceno','$issuancedate','$title','$office','$registeredby','$registereddate')");
+
+    $query1 = mysqli_query($conn,"INSERT INTO ro_count (count) VALUES ('$rocount')");
+    /* echo "INSERT INTO ro_count (count) VALUES ('$rocount')";
+    exit(); */
+}
+
+else if($category =='Regional Office Order'){
+    $query = mysqli_query($conn,"INSERT INTO ro_roo (category ,issuanceno,issuancedate,title,office,registeredby,registereddate) 
+    VALUES ('$category','$issuanceno','$issuancedate','$title','$office','$registeredby','$registereddate')");
+
+    $query1 = mysqli_query($conn,"INSERT INTO roo_count (count) VALUES ('$rocount')");
+    /* echo "INSERT INTO roo_count (count) VALUES ('$rocount')";
+    exit(); */
+}
+else{
+
+}
+
 mysqli_close($conn);
 
 if($query){
 
    
+
+
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Regional Order/Regional Office Order has been successfully added.')
     window.location.href='ROandROO.php?division=';

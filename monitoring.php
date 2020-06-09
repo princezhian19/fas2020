@@ -278,7 +278,7 @@ $division = $_GET['division'];
                             setTimeout(function () {
                             swal("Record saved successfully!");
                             }, 3000);
-                            window.location = "techassistance.php?division=<?php echo $_GET['division']?>&ticket_id="+a;
+                            window.location = "monitoring.php?division=<?php echo $_GET['division']?>&ticket_id="+a;
                         }
                       });
                   });
