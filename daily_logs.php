@@ -291,8 +291,17 @@ if (isset($_POST['stamp4'])) {
                 $date333 = new DateTime("08:00");
                 $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
                 $finalfinal = $date3333->diff($date333);
-                echo $finalfinal->format('%H');
-              }else{
+                if($time_out == NULL){
+
+                 echo ''; 
+               }
+               else{
+                 
+                echo $finalfinal->format('%H');  
+                
+              }
+
+            }else{
               $lateD = date('h:i',strtotime($time_in)) < date('h:i',strtotime('07:00')); // pag 6 59 pbaba time ine
                 if($lateD){ //morning late
                 $datetime1 = new DateTime('07:00');//time in
@@ -310,55 +319,42 @@ if (isset($_POST['stamp4'])) {
                 $finalfinal = $date3333->diff($date333);
 
 
-                if($time_in== NULL && $time_out == NULL){
+                if($time_out == NULL){
 
                  echo ''; 
                }
                else{
-                if ($date3333 > $date333) {
-                 echo ''; 
-               }else{
-                if ($finalfinal->format('%H') == 0) {
-                 echo ''; 
-               }else{
+                 
                 echo $finalfinal->format('%H');  
+                
               }
+
+
+
+
             }
+            ?>
+
+          </td>
+          <td>
+            <?php 
+
+            if($time_out == NULL){
+
+             echo ''; 
+           }
+           else{
+             
+            echo $finalfinal->format('%i');  
           }
 
+          ?>
 
+        </td>
 
-
-        }
-        ?>
-
-      </td>
-      <td>
-        <?php 
-
-        if($time_in== NULL && $time_out == NULL){
-
-         echo ''; 
-       }
-       else{
-        if ($date3333 > $date333) {
-         echo ''; 
-       }else{
-        if ($finalfinal->format('%i') == 0) {
-         echo ''; 
-       }else{
-        echo $finalfinal->format('%i');  
-      }
-    }
-  }
-
-  ?>
-
-</td>
-
-</tr>
-<?php } ?>
-</table>
+      </tr>
+    <?php } ?>
+  </table>
 </div>
 </div>
 </div>

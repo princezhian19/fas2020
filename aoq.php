@@ -48,7 +48,7 @@ function supplier($connect)
   return $output;
 }
 
-
+echo "SELECT app.procurement,rq.id FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id WHERE rq.rfq_id = $rfq_id";
 
 function table(){
   $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
