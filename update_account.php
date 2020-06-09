@@ -124,6 +124,11 @@
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
+    $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
+      $password   = crypt($password, '$2a$10$'.$code.'$');
+      echo "UPDATE tblemployeeinfo SET PSWORD = '$password', SHOWDETAILS = 'No',CODE = '$code' "; exit;
+      $update = mysqli_query($conn,"UPDATE tblemployeeinfo SET PSWORD = '$password', SHOWDETAILS = 'No',CODE = '$code' ");exit;
+
     if(!empty(basename($_FILES["image"]["name"])))
     {
       if(!empty($_FILES["image"]["name"]))
