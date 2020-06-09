@@ -543,7 +543,7 @@ Ng Marso 1984
 				<textElement textAlignment="Center">
 					<font fontName="Cambria" size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ARIEL O. IGLESIA, CESO III]]></text>
+				<text><![CDATA[ARIEL O. IGLESIA, CESO IV]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="225" y="511" width="225" height="20" uuid="6f75ac93-4ae5-425d-b217-20f6a3766b52"/>
