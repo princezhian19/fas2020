@@ -238,7 +238,7 @@ else{
                 </td>
 
                 <td class="col-md-2" >
-                <img id="img" class="pull-right"  style="margin-top:0px; margin-bottom:0px; width:100;height:120px;" src='vehicle.png' title = "" />
+                <img id="img" class="pull-right"  style="margin-top:0px; margin-bottom:0px; width:100;height:120px;" src='vehicle.PNG' title = "" />
                 </td>
 
                
@@ -273,11 +273,11 @@ else{
                         </td>
 
                         <td class="col-md-2  label-text" style =" border:1px solid black; background-color:#CFD8DC; text-align:center">
-                        <h4><b>Control Number:</b></h4>
+                        <input  required type="text" class="" style="text-align:center; border:none; font-size:25px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "Control Number:" >
                         </td>
                         <td class="col-md-2" style =" border:1px solid black; text-align:center">
                         
-                        <input  required type="text" class="" style="text-align:center; border:none; font-size:35px; font-weight:bold; height: 35px; width:100%;" name="vrno" id="vrno" value = "<?php echo $vrcount?>" >
+                        <input  required type="text" class="" style="text-align:center; border:none; font-size:30px; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "<?php echo $vrcount?>" >
                         </td>
 
 
