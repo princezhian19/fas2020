@@ -459,7 +459,7 @@ if (isset($_POST['stamp4'])) {
 <div class="col-md-4">
   <div class="box box-success">
     <div class="box-header with-border" align="left">
-      <h4><strong>Logs For Today : <?php echo date('F d, Y')?></strong></h4>
+      <!-- <h4><strong>Logs For Today : <?php echo date('F d, Y')?></strong></h4> -->
     </div>
     <div class="box-body table-responsive no-padding">
       <div class="box-body">
