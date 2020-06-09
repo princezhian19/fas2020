@@ -5,7 +5,7 @@ include("DBController.php");
 // code user Email availablity
 if(!empty($_POST["employee_number"])) {
 	$employee_number= $_POST["employee_number"];
-		$sql ="SELECT EMP_NUMBER FROM tblemployee WHERE EMP_NUMBER=:employee_number";
+		$sql ="SELECT EMP_NUMBER FROM tblemployeinfo WHERE EMP_NUMBER=:employee_number";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':employee_number', $employee_number, PDO::PARAM_STR);
 $query-> execute();
@@ -24,7 +24,7 @@ echo "<span style='color:red'> Employee Number is Already Exist! </span>";
 
 if(!empty($_POST["username"])) {
 	$username= $_POST["username"];
-		$sql ="SELECT UNAME FROM tblemployee WHERE UNAME=:username";
+		$sql ="SELECT UNAME FROM tblemployeinfo WHERE UNAME=:username";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':username', $username, PDO::PARAM_STR);
 $query-> execute();

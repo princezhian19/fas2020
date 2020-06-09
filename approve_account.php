@@ -18,7 +18,7 @@
           </thead>
           <?php
           $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-          $QUERY = mysqli_query($conn, "SELECT tblpersonneldivision.DIVISION_M,tblemployee.UNAME,tblemployee.EMP_N,tblemployee.LAST_M,tblemployee.MIDDLE_M,tblemployee.FIRST_M FROM tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C WHERE tblemployee.ACTIVATED = 'No' AND tblemployee.BLOCK ='N' ORDER BY tblemployee.EMP_N DESC ");
+          $QUERY = mysqli_query($conn, "SELECT tblpersonneldivision.DIVISION_M,tblemployeinfo.UNAME,tblemployeinfo.EMP_N,tblemployeinfo.LAST_M,tblemployeinfo.MIDDLE_M,tblemployeinfo.FIRST_M FROM tblemployeinfo LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeinfo.DIVISION_C WHERE tblemployeinfo.ACTIVATED = 'No' AND tblemployeinfo.BLOCK ='N' ORDER BY tblemployeinfo.EMP_N DESC ");
           while ($row = mysqli_fetch_assoc($QUERY)) {
             $id = $row["EMP_N"];
             $DIVISION_M = $row["DIVISION_M"];

@@ -6,7 +6,7 @@ $conn=mysqli_connect("localhost","fascalab_2020","","loop");
 
 $sql = "SELECT FLAGAS, URL, ROUTING_N, ROUTED_TO, ROUTED_FROM, concat(FIRST_M,' ', LAST_M) as NAME, UNAME, ACTION, REMARKS, DATE_ROUTED, TIME_ROUTED
                                      from tblrouting
-                                    left join tblemployee on tblrouting.SENDER_M=tblemployee.EMP_N
+                                    left join tblemployeinfo on tblrouting.SENDER_M=tblemployeinfo.EMP_N
                                      where RECORD_N='R190326-10' ";  
       $result = mysqli_query($conn, $sql);  
       

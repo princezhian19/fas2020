@@ -15,7 +15,7 @@ if (!$DBConn) {
 }	
 
 function getDivisionCode($id){
-  $query = "select DIVISION_C from tblemployee where md5(EMP_N)='".md5($id)."'";
+  $query = "select DIVISION_C from tblemployeinfo where md5(EMP_N)='".md5($id)."'";
  // echo $query;
   $queryinfo = select_info_multiple_key($query);
   if($queryinfo){
@@ -35,7 +35,7 @@ if (!empty($byme)) {
 
 $sql="SELECT h.DATE_ROUTED,b.REMARKS,a.TYPE,a.DATE,a.SUBJECT AS SUBJECT,g.SOURCE_M as external,f.SOURCE_M as SOURCE_M,d.DIVISION_M as internal,a.RECEIVE_MODE as RECEIVE_MODE,a.date_received AS date_received,a.TIME as TIME,b.DATE_RELEASED as DATE_RELEASED,b.TIME_RELEASED as TIME_RELEASED,b.RELEASED_TO ,a.record_n as arecord from tblrecords a
 left join  tblrecordrelease b on b.RECORD_N=a.RECORD_N
-left join  tblemployee c on c.EMP_N=b.SENDER_M
+left join  tblemployeinfo c on c.EMP_N=b.SENDER_M
 left join tblrouting h on h.record_n=a.RECORD_N
 left join  tblrecordsources f on f.SOURCE_N=a.SOURCE
 left join tblrecordsources g on g.SOURCE_N=b.RELEASED_TO
@@ -47,7 +47,7 @@ else{
 
 /*$sql = "SELECT h.DATE_ROUTED,b.REMARKS,a.TYPE,a.DATE,a.SUBJECT AS SUBJECT,g.SOURCE_M as external,f.SOURCE_M as SOURCE_M,d.DIVISION_M as internal,a.RECEIVE_MODE as RECEIVE_MODE,a.date_received AS date_received,a.TIME as TIME,b.DATE_RELEASED as DATE_RELEASED,b.TIME_RELEASED as TIME_RELEASED,b.RELEASED_TO ,a.record_n as arecord from tblrecords a
 left join  tblrecordrelease b on b.RECORD_N=a.RECORD_N
-left join  tblemployee c on c.EMP_N=b.SENDER_M
+left join  tblemployeinfo c on c.EMP_N=b.SENDER_M
 left join tblrouting h on h.record_n=a.RECORD_N
 left join  tblrecordsources f on f.SOURCE_N=a.SOURCE
 left join tblrecordsources g on g.SOURCE_N=b.RELEASED_TO
@@ -55,7 +55,7 @@ left join  tblpersonneldivision d on d.DIVISION_N=b.RELEASED_TO
 WHERE b.DATE_RELEASED = '".$date."' and b.RELEASED_FROM = ".$division."";*/
 $sql="SELECT h.TIME_ROUTED,h.RECEIVED,h.routed_to,h.received_details,h.DATE_ROUTED,b.REMARKS,a.TYPE,a.DATE,a.SUBJECT AS SUBJECT,g.SOURCE_M as external,f.SOURCE_M as SOURCE_M,d.DIVISION_M as internal,a.RECEIVE_MODE as RECEIVE_MODE,a.date_received AS date_received,a.TIME as TIME,b.DATE_RELEASED as DATE_RELEASED,b.TIME_RELEASED as TIME_RELEASED,b.RELEASED_TO ,a.record_n as arecord from tblrecords a
 left join  (select * from tblrecordrelease where date_released='".$date."') b on b.RECORD_N=a.RECORD_N
-left join  tblemployee c on c.EMP_N=b.SENDER_M
+left join  tblemployeinfo c on c.EMP_N=b.SENDER_M
 left join (select * from tblrouting where date_routed <= DATE_ROUTED and routed_to=".$division." and received_details like '%".$date."%' ORDER by ROUTING_N DESC) h on h.RECORD_N=a.RECORD_N
 left join  tblrecordsources f on f.SOURCE_N=a.SOURCE
 left join tblrecordsources g on g.SOURCE_N=b.RELEASED_TO
@@ -147,7 +147,7 @@ $templateProcessor->setValue('serverName', realpath(__DIR__)); // On header*/
 
 $templateProcessor->cloneRow('rowValue', $count); 
 
- $sql2 = "SELECT accesstype FROM tblemployee where EMP_N='".$dataRow['ADDED_BY']."'";
+ $sql2 = "SELECT accesstype FROM tblemployeinfo where EMP_N='".$dataRow['ADDED_BY']."'";
     
 
 // print_debug($query_data);
@@ -157,9 +157,9 @@ $process_day = "";
 
   $i=1;
 foreach ($query_data as $key) {
-            $sql2 = "SELECT accesstype FROM tblemployee where EMP_N='".$key['ADDED_BY']."'";
+            $sql2 = "SELECT accesstype FROM tblemployeinfo where EMP_N='".$key['ADDED_BY']."'";
 
-            $sql4 = "SELECT UNAME from tblemployee where EMP_N=".$key['RECEIVED']."";
+            $sql4 = "SELECT UNAME from tblemployeinfo where EMP_N=".$key['RECEIVED']."";
         
           $get_receiver = getData($DBConn,$sql4)[0]['UNAME'];
           $get_received_date = getData($DBConn,$sql5)[0]['RECEIVED_DETAILS'];

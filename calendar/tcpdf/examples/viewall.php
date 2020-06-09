@@ -133,7 +133,7 @@ $html = '
 
 
 
-    $stmt5 = $bdd->query("SELECT * FROM events inner join tblemployee ON events.postedby = tblemployee.emp_n  ");
+    $stmt5 = $bdd->query("SELECT * FROM events inner join tblemployeinfo ON events.postedby = tblemployeinfo.emp_n  ");
     $count = 1;
 	while ($row5 = $stmt5->fetch()) {
         $postedby = $row5['UNAME'];

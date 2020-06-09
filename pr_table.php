@@ -72,8 +72,8 @@ if (isset($_POST['submit'])) {
             $username = $_SESSION['username'];
 
 
-               // echo "SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'";
-            $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
+               // echo "SELECT DIVISION_C FROM tblemployeinfo WHERE UNAME = '$username'";
+            $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeinfo WHERE UNAME = '$username'");
             $rowdiv = mysqli_fetch_array($select_user);
             $DIVISION_C = $rowdiv['DIVISION_C'];
             if ($DIVISION_C == '10' || $DIVISION_C == '11' || $DIVISION_C == '12' || $DIVISION_C == '13' || $DIVISION_C == '14' || $DIVISION_C == '15' || $DIVISION_C == '16' ) {

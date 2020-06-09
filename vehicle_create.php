@@ -8,7 +8,7 @@ $username = $_SESSION['username'];
 }
  
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$query = mysqli_query($conn, "SELECT FIRST_M,MIDDLE_M, LAST_M, DIVISION_C FROM tblemployeeinfo where UNAME  = '$username'");
+$query = mysqli_query($conn, "SELECT FIRST_M,MIDDLE_M, LAST_M, DIVISION_C FROM tblemployeinfoinfo where UNAME  = '$username'");
 
 $row = mysqli_fetch_array($query);
 
@@ -29,7 +29,7 @@ $row = mysqli_fetch_array($query);
 // echo '<br>';
 
 //Get Office
-$select_user = mysqli_query($conn,"SELECT POSITION_C, DESIGNATION FROM tblemployeeinfo WHERE UNAME = '$username'");
+$select_user = mysqli_query($conn,"SELECT POSITION_C, DESIGNATION FROM tblemployeinfoinfo WHERE UNAME = '$username'");
 $rowdiv = mysqli_fetch_array($select_user);
 $POSITION_C = $rowdiv['POSITION_C'];
 $DESIGNATION = $rowdiv['DESIGNATION'];

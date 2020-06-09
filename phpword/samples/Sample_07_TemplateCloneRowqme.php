@@ -168,7 +168,7 @@ for ($i=0; $i <$counted ; $i++) {
 
                 left join tblrouting b on b.RECORD_N=a.RECORD_N
 
-                left join tblemployee c on c.EMP_N=a.ADDED_BY
+                left join tblemployeinfo c on c.EMP_N=a.ADDED_BY
 
                 where a.DATE like '%".$dates_to_look[$i]."%' and c.DIVISION_C=".$division." GROUP BY a.RECORD_N";
 
@@ -178,7 +178,7 @@ for ($i=0; $i <$counted ; $i++) {
 
                 left join tblrouting b on b.RECORD_N=a.RECORD_N
 
-                left join tblemployee c on c.EMP_N=a.ADDED_BY
+                left join tblemployeinfo c on c.EMP_N=a.ADDED_BY
 
                 where a.DATE like '%".$dates_to_look[$i]."%' and b.date_routed like '%".$dates_to_look[$i]."%' and c.DIVISION_C= ".$division." GROUP BY a.RECORD_N";
 
@@ -190,7 +190,7 @@ for ($i=0; $i <$counted ; $i++) {
 
                 left join tblrecordrelease d on d.RECORD_N=a.RECORD_N
 
-                left join tblemployee c on c.EMP_N=a.ADDED_BY
+                left join tblemployeinfo c on c.EMP_N=a.ADDED_BY
 
                 where b.RECEIVED_DETAILS like '%".$dates_to_look[$i]."%' and d.date_released like '%".$dates_to_look[$i]."%' and  d.RELEASED_FROM= ".$division."  GROUP BY a.RECORD_N";
 
@@ -202,7 +202,7 @@ for ($i=0; $i <$counted ; $i++) {
 
                 left join tblrecordrelease d on d.RECORD_N=a.RECORD_N
 
-                left join tblemployee c on c.EMP_N=a.ADDED_BY
+                left join tblemployeinfo c on c.EMP_N=a.ADDED_BY
 
                 where d.DATE_RELEASED like '%".$dates_to_look[$i]."%' and d.RELEASED_FROM=".$division." GROUP by a.RECORD_N";
 
@@ -212,7 +212,7 @@ for ($i=0; $i <$counted ; $i++) {
 
                 left join tblrecords d on d.RECORD_N=a.RECORD_N
 
-                left join tblemployee b on b.EMP_N=d.ADDED_BY 
+                left join tblemployeinfo b on b.EMP_N=d.ADDED_BY 
 
                 left join tblpersonneldivision c on c.DIVISION_N=b.DIVISION_C
 
@@ -224,7 +224,7 @@ for ($i=0; $i <$counted ; $i++) {
 
                 left join tblrecords d on d.RECORD_N=a.RECORD_N
 
-                left join tblemployee b on b.EMP_N=d.ADDED_BY 
+                left join tblemployeinfo b on b.EMP_N=d.ADDED_BY 
 
                 left join tblpersonneldivision c on c.DIVISION_N=b.DIVISION_C
 

@@ -159,7 +159,7 @@ function inetmainmenu_v2($parent,$level)
 			$link = mysqli_connect("localhost","root","", "loop");
 
 			if(mysqli_connect_errno()){echo mysqli_connect_error();}  
-			$query = "SELECT ACCESSLIST FROM tblemployee WHERE CODE='".$_SESSION['inet_credentials']['code']."'";
+			$query = "SELECT ACCESSLIST FROM tblemployeinfo WHERE CODE='".$_SESSION['inet_credentials']['code']."'";
 			$result = mysqli_query($link, $query);
 			if($row = mysqli_fetch_array($result))
 			{
@@ -291,7 +291,7 @@ function inetmainmenu($parent, $level)
 		return false;
 	}
 		
-	$query = "SELECT ACCESSLIST FROM tblemployee WHERE CODE='".$_SESSION['inet_credentials']['code']."'";
+	$query = "SELECT ACCESSLIST FROM tblemployeinfo WHERE CODE='".$_SESSION['inet_credentials']['code']."'";
 	$queryRs = $DBConn->query( $query );																			
 	$useraccess = array();
 	$crt = 0;								
@@ -425,7 +425,7 @@ function IsthereAccess($section){
 	if (empty($section)) return false;
 
 	//$query = "SELECT access FROM user_rights WHERE md5(`code`)='".md5($_SESSION['inet_credentials']['code'])."' LIMIT 1";
-	$query = "SELECT ACCESSLIST FROM tblemployee WHERE CODE='".$_SESSION['inet_credentials']['code']."' LIMIT 1";
+	$query = "SELECT ACCESSLIST FROM tblemployeinfo WHERE CODE='".$_SESSION['inet_credentials']['code']."' LIMIT 1";
 		
 	$queryRs = $DBConn->query( $query );
 	$useraccess = array();
@@ -454,7 +454,7 @@ function cntregacc()
 		return false;
 	}	
 	
-	$sqlCount = "SELECT count(EMP_N) as cnt FROM tblemployee WHERE tblemployee.REGION_C = ".$_SESSION['inet_credentials']["region"]." AND tblemployee.INVI = 'No' AND activated = 'No'	AND tblemployee.UNAME IS NOT NULL AND  tblemployee.PSWORD IS NOT NULL";						
+	$sqlCount = "SELECT count(EMP_N) as cnt FROM tblemployeinfo WHERE tblemployeinfo.REGION_C = ".$_SESSION['inet_credentials']["region"]." AND tblemployeinfo.INVI = 'No' AND activated = 'No'	AND tblemployeinfo.UNAME IS NOT NULL AND  tblemployeinfo.PSWORD IS NOT NULL";						
 	$queryRs = $DBConn->query( $sqlCount );	
 	if ($queryRs->num_rows)
 	{		
@@ -803,7 +803,7 @@ function IsThereAccess2($section){
 	if (empty($section)) return false;
 
 	//$query = "SELECT access FROM user_rights WHERE md5(`code`)='".md5($_SESSION['inet_credentials']['code'])."' LIMIT 1";
-	$query = "SELECT ACCESSLIST FROM tblemployee WHERE CODE='".$_SESSION['inet_credentials']['code']."' LIMIT 1";
+	$query = "SELECT ACCESSLIST FROM tblemployeinfo WHERE CODE='".$_SESSION['inet_credentials']['code']."' LIMIT 1";
 
 	$queryRs = $DBConn->query( $query );
 	$useraccess = array();

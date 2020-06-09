@@ -23,7 +23,7 @@ $currentuser=$_SESSION['inet_credentials']['id'];
 
 
 
-$stmt = $bdd->query("SELECT * FROM tblemployee where EMP_N = '$currentuser'");
+$stmt = $bdd->query("SELECT * FROM tblemployeinfo where EMP_N = '$currentuser'");
 while ($row = $stmt->fetch()) {
 	$lastname = $row['LAST_M'];
 	$firstname = $row['FIRST_M'];

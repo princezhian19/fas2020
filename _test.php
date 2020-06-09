@@ -10,9 +10,9 @@ function fillTableInfo()
     include 'connection.php';
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
     $query = "SELECT EMP_N,FIRST_M,MIDDLE_M, LAST_M, MOBILEPHONE, EMAIL,DIVISION_N, DIVISION_M , POSITION_M FROM tblpersonneldivision 
-    INNER JOIN tblemployee on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C 
-    INNER JOIN tbldilgposition on tblemployee.POSITION_C = tbldilgposition.POSITION_ID
-    where tblemployee.UNAME  = '".$_SESSION['username']."' ";
+    INNER JOIN tblemployeinfo on tblpersonneldivision.DIVISION_N = tblemployeinfo.DIVISION_C 
+    INNER JOIN tbldilgposition on tblemployeinfo.POSITION_C = tbldilgposition.POSITION_ID
+    where tblemployeinfo.UNAME  = '".$_SESSION['username']."' ";
     $result = mysqli_query($conn, $query);
     $val = array();
     if($row = mysqli_fetch_array($result))
@@ -121,8 +121,8 @@ function showUser()
   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
   
   $query = "SELECT * FROM `tblpersonneldivision` 
-  LEFT JOIN tblemployee ON tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C 
-  WHERE tblemployee.UNAME  = '".$_SESSION['username']."' ";
+  LEFT JOIN tblemployeinfo ON tblpersonneldivision.DIVISION_N = tblemployeinfo.DIVISION_C 
+  WHERE tblemployeinfo.UNAME  = '".$_SESSION['username']."' ";
   $result = mysqli_query($link, $query);
   $val = array();
   while($row = mysqli_fetch_array($result))

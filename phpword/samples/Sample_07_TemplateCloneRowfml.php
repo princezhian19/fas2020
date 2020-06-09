@@ -16,7 +16,7 @@ if (!$DBConn) {
 
 
 function getDivisionCode($id){
-  $query = "select DIVISION_C from tblemployee where md5(EMP_N)='".md5($id)."'";
+  $query = "select DIVISION_C from tblemployeinfo where md5(EMP_N)='".md5($id)."'";
  // echo $query;
   $queryinfo = select_info_multiple_key($query);
   if($queryinfo){
@@ -125,7 +125,7 @@ $templateProcessor->setValue('serverName', realpath(__DIR__)); // On header*/
 
 
 
- $sql2 = "SELECT accesstype FROM tblemployee where EMP_N='".$dataRow['ADDED_BY']."'";
+ $sql2 = "SELECT accesstype FROM tblemployeinfo where EMP_N='".$dataRow['ADDED_BY']."'";
 
 
 
@@ -179,7 +179,7 @@ foreach ($list as $key => $value) {
             
              $explain_sql9 = "SELECT f.folder,d.date,d.time,d.record_n,d.subject as record_series,a.DATE_FILED,a.TIME_FILED,e.CATEGORY_M,a.RECORD_CODE,a.LOCATION,a.FSFOLDER,a.FSSCHEME,a.RPACTIVE,a.RPSTORAGE,a.RPTOTAL from tblrecordforfiling a 
                 left join tblrecords d on d.RECORD_N=a.RECORD_N
-                left join tblemployee b on b.EMP_N=d.ADDED_BY 
+                left join tblemployeinfo b on b.EMP_N=d.ADDED_BY 
                 left join tblpersonneldivision c on c.DIVISION_N=b.DIVISION_C
                 left join tblrecordcategory e on e.CATEGORY_N=d.CATEGORY
                 left join tblfilingschemefolder f on f.id=a.FSFOLDER
@@ -188,7 +188,7 @@ foreach ($list as $key => $value) {
           
           $sql9 = "SELECT * from tblrecordforfiling a 
                 left join tblrecords d on d.RECORD_N=a.RECORD_N
-                left join tblemployee b on b.EMP_N=d.ADDED_BY 
+                left join tblemployeinfo b on b.EMP_N=d.ADDED_BY 
                 left join tblpersonneldivision c on c.DIVISION_N=b.DIVISION_C
                 left join tblrecordcategory e on e.CATEGORY_N=d.CATEGORY
                 left join tblfilingschemefolder f on f.id=a.FSFOLDER
@@ -198,14 +198,14 @@ foreach ($list as $key => $value) {
             
              $explain_sql9 = "SELECT  f.folder,d.date,d.time,d.record_n,d.subject as record_series,a.DATE_FILED,a.TIME_FILED,e.CATEGORY_M,a.RECORD_CODE,a.LOCATION,a.FSFOLDER,a.FSSCHEME,a.RPACTIVE,a.RPSTORAGE,a.RPTOTAL from tblrecordforfiling a 
                 left join tblrecords d on d.RECORD_N=a.RECORD_N
-                left join tblemployee b on b.EMP_N=d.ADDED_BY 
+                left join tblemployeinfo b on b.EMP_N=d.ADDED_BY 
                 left join tblpersonneldivision c on c.DIVISION_N=b.DIVISION_C
                 left join tblrecordcategory e on e.CATEGORY_N=d.CATEGORY
                 left join tblfilingschemefolder f on f.id=a.FSFOLDER
                 where d.category=156 and  a.DATE_CREATED like '%".$value."%' and b.DIVISION_C=".$division." and a.STATUS=1 ";
           $sql9 = "SELECT * from tblrecordforfiling a 
                 left join tblrecords d on d.RECORD_N=a.RECORD_N
-                left join tblemployee b on b.EMP_N=d.ADDED_BY 
+                left join tblemployeinfo b on b.EMP_N=d.ADDED_BY 
                 left join tblpersonneldivision c on c.DIVISION_N=b.DIVISION_C
                 left join tblrecordcategory e on e.CATEGORY_N=d.CATEGORY
                 left join tblfilingschemefolder f on f.id=a.FSFOLDER

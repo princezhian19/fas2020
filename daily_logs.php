@@ -1,6 +1,6 @@
 <?php
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$u = mysqli_query($conn,"SELECT tblemployeeinfo.FIRST_M,tblemployeeinfo.MIDDLE_M,tblemployeeinfo.LAST_M,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M FROM tblemployeeinfo tblemployeeinfo LEFT JOIN tbldilgposition tbldilgposition on tbldilgposition.POSITION_ID = tblemployeeinfo.POSITION_C LEFT JOIN  tblpersonneldivision tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C WHERE tblemployeeinfo.UNAME = '$username' ");
+$u = mysqli_query($conn,"SELECT tblemployeinfoinfo.FIRST_M,tblemployeinfoinfo.MIDDLE_M,tblemployeinfoinfo.LAST_M,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M FROM tblemployeinfoinfo tblemployeinfoinfo LEFT JOIN tbldilgposition tbldilgposition on tbldilgposition.POSITION_ID = tblemployeinfoinfo.POSITION_C LEFT JOIN  tblpersonneldivision tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeinfoinfo.DIVISION_C WHERE tblemployeinfoinfo.UNAME = '$username' ");
 
 
 $row = mysqli_fetch_array($u);
@@ -21,7 +21,7 @@ foreach ($words as $w) {
 $name = $FIRST_M.' '.$acronym.'.'.' '.$LAST_M;
 
 
-$sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployee WHERE UNAME = '$username'");
+$sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployeinfo WHERE UNAME = '$username'");
 $rowU = mysqli_fetch_array($sele);
 $ACCESSTYPE = $rowU['ACCESSTYPE'];
 

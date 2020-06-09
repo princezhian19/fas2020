@@ -21,7 +21,7 @@ if (!empty($_GET['logout']))
 }
 
 /* Check If user is blocked? */
-$checkQueryBlock = "SELECT EMP_N, CONCAT(UPPER(FIRST_M),' ',UPPER(LAST_M)) as cname FROM tblemployee WHERE md5(CODE)='".md5($_SESSION['inet_credentials']['code'])."' AND BLOCK = 'Y'";
+$checkQueryBlock = "SELECT EMP_N, CONCAT(UPPER(FIRST_M),' ',UPPER(LAST_M)) as cname FROM tblemployeinfo WHERE md5(CODE)='".md5($_SESSION['inet_credentials']['code'])."' AND BLOCK = 'Y'";
 if (ifRecordExist($checkQueryBlock))
 {
 	dbaselogs("Blocked ".$_SERVER['PHP_SELF'], "", "");

@@ -186,7 +186,7 @@ $sstatus = $fdata['STATUS'];
 $conn = mysqli_connect("localhost", "fascalab_2020", "", "loop");   
       $sql = "SELECT FLAGAS, URL, ROUTING_N, ROUTED_TO, ROUTED_FROM, concat(FIRST_M,' ', LAST_M) as NAME, UNAME, ACTION, REMARKS, DATE_ROUTED, TIME_ROUTED
                                      from tblrouting
-                                    left join tblemployee on tblrouting.SENDER_M=tblemployee.EMP_N
+                                    left join tblemployeinfo on tblrouting.SENDER_M=tblemployeinfo.EMP_N
                                      where RECORD_N='".$_GET['id']."'
                                      ORDER BY ROUTING_N DESC";  
       $result = mysqli_query($conn, $sql);  
@@ -280,7 +280,7 @@ function fetch_data()
       $conn = mysqli_connect("localhost", "fascalab_2020", "", "loop");   
       $sql = "SELECT FLAGAS, URL, ROUTING_N, ROUTED_TO, ROUTED_FROM, concat(FIRST_M,' ', LAST_M) as NAME, UNAME, ACTION, REMARKS, DATE_ROUTED, TIME_ROUTED
                                      from tblrouting
-                                    left join tblemployee on tblrouting.SENDER_M=tblemployee.EMP_N
+                                    left join tblemployeinfo on tblrouting.SENDER_M=tblemployeinfo.EMP_N
                                      where RECORD_N='".$_GET['id']."'
                                      ORDER BY ROUTING_N DESC";  
       $result = mysqli_query($conn, $sql);  
@@ -491,7 +491,7 @@ $pdf->WriteHTMLCell(78,0,'','',"<b>ARD / RD's REMARKS / INSTRUCTIONS:</b>",0,0);
 // ---------------------------------------------------------
 $queryrelease = "select TYPE, UNAME, URL, RELEASED_N, RELEASED_TO, RELEASED_FROM, concat(FIRST_M,' ', LAST_M) as NAME, REMARKS, DATE_RELEASED, TIME_RELEASED
                                      from tblrecordrelease
-                                    left join tblemployee on tblrecordrelease.SENDER_M=tblemployee.EMP_N
+                                    left join tblemployeinfo on tblrecordrelease.SENDER_M=tblemployeinfo.EMP_N
                                      where md5(RECORD_N)='".md5($_GET['id'])."'";
 $resultrelease = mysqli_query($conn, $queryrelease);  
 
@@ -512,7 +512,7 @@ function fetch_dataRelease()
       $output1 = '';  
       $queryrelease = "select TYPE, UNAME, URL, RELEASED_N, RELEASED_TO, RELEASED_FROM, concat(FIRST_M,' ', LAST_M) as NAME, REMARKS, DATE_RELEASED, TIME_RELEASED
                                      from tblrecordrelease
-                                    left join tblemployee on tblrecordrelease.SENDER_M=tblemployee.EMP_N
+                                    left join tblemployeinfo on tblrecordrelease.SENDER_M=tblemployeinfo.EMP_N
                                      where md5(RECORD_N)='".md5($_GET['id'])."'";
 $resultrelease = mysqli_query($conn, $queryrelease);  
 

@@ -30,11 +30,11 @@ $office = $_GET['office'];
 // $e_date = $_GET['e_date'];
 
 if ($office == 0) {
-$sql_items = mysqli_query($conn, "SELECT tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION ORDER BY tblemployee.LAST_M ASC");
+$sql_items = mysqli_query($conn, "SELECT tblemployeinfo.EMP_N,tblemployeinfo.FIRST_M,tblemployeinfo.MIDDLE_M,tblemployeinfo.LAST_M,tblemployeinfo.BIRTH_D,tblemployeinfo.EMAIL,tblemployeinfo.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeinfoinfo tblemployeinfo LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeinfo.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployeinfo.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeinfo.DESIGNATION ORDER BY tblemployeinfo.LAST_M ASC");
 
 }else{
 
-$sql_items = mysqli_query($conn, "SELECT tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION WHERE DIVISION_C = '$office' ORDER BY tblemployee.LAST_M ASC");
+$sql_items = mysqli_query($conn, "SELECT tblemployeinfo.EMP_N,tblemployeinfo.FIRST_M,tblemployeinfo.MIDDLE_M,tblemployeinfo.LAST_M,tblemployeinfo.BIRTH_D,tblemployeinfo.EMAIL,tblemployeinfo.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeinfoinfo tblemployeinfo LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeinfo.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployeinfo.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeinfo.DESIGNATION WHERE DIVISION_C = '$office' ORDER BY tblemployeinfo.LAST_M ASC");
 }
 
 // $mont = date('M',strtotime($e_date));

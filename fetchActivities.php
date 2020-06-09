@@ -3,7 +3,7 @@
 include 'connection.php';
 $id = $_POST['id'];
     if(mysqli_connect_errno()){echo mysqli_connect_error();}  
-    $query = "SELECT * FROM `events` inner join tblemployee on events.postedby = tblemployee.EMP_N where `ID` ='$id' ";
+    $query = "SELECT * FROM `events` inner join tblemployeinfo on events.postedby = tblemployeinfo.EMP_N where `ID` ='$id' ";
     $result = mysqli_query($conn, $query);
     $data = array();
     while($row = mysqli_fetch_array($result))

@@ -51,7 +51,7 @@ $link = mysqli_connect('localhost','root','','db_dilg_pmis');
              $currentuser = $_POST['curuser'];
 
 
-              $query = "SELECT * FROM tblemployee where EMP_N = $currentuser";
+              $query = "SELECT * FROM tblemployeinfo where EMP_N = $currentuser";
               $name = '';
               $result = mysqli_query($link, $query);
               $val = array();
