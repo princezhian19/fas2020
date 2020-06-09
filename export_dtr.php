@@ -51,7 +51,7 @@ $year = $_GET['year'];
 
 $this_date = $year.'-'.$month;
 
-$sql = mysqli_query($conn, "SELECT concat(LAST_M,',',FIRST_M,' ',MIDDLE_M) as FNAME FROM tblemployeinfoinfo WHERE UNAME = '$username'");
+$sql = mysqli_query($conn, "SELECT concat(LAST_M,',',FIRST_M,' ',MIDDLE_M) as FNAME FROM tblemployeinfo WHERE UNAME = '$username'");
 $row = mysqli_fetch_array($sql);
 $FNAME = $row['FNAME'];
 

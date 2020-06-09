@@ -207,7 +207,7 @@ if (isset($_POST['update'])) {
       <div class="box-header">
         <?php 
         $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-        $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeinfoinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
+        $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
         while ($row = mysqli_fetch_assoc($BDAY)) {
           $FIRST_M1 = $row['FIRST_M'];
           $FIRST_M = ucwords(strtolower($FIRST_M1));
@@ -252,21 +252,21 @@ if (isset($_POST['update'])) {
                 </div>
                 <br>
                 <?php 
-                $select_gender = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeinfoinfo WHERE SEX_C = 'Female' AND ACTIVATED = 'Yes' ");
+                $select_gender = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeinfo WHERE SEX_C = 'Female' AND ACTIVATED = 'Yes' ");
                 $rowG = mysqli_fetch_array($select_gender);
                 $female = $rowG['female'];
 
-                $select_genderB = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeinfoinfo WHERE SEX_C = 'Male' AND ACTIVATED = 'Yes' ");
+                $select_genderB = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeinfo WHERE SEX_C = 'Male' AND ACTIVATED = 'Yes' ");
                 $rowGB = mysqli_fetch_array($select_genderB);
                 $male = $rowGB['male'];
 
                 $reg = $female + $male;
 
-                $select_gender2 = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeinfoinfo WHERE SEX_C = 'Female' AND ACTIVATED = 'No' ");
+                $select_gender2 = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeinfo WHERE SEX_C = 'Female' AND ACTIVATED = 'No' ");
                 $rowG2 = mysqli_fetch_array($select_gender2);
                 $female2 = $rowG2['female'];
 
-                $select_genderB2 = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeinfoinfo WHERE SEX_C = 'Male' AND ACTIVATED = 'No' ");
+                $select_genderB2 = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeinfo WHERE SEX_C = 'Male' AND ACTIVATED = 'No' ");
                 $rowGB2 = mysqli_fetch_array($select_genderB2);
                 $male2 = $rowGB2['male'];
 
@@ -284,37 +284,37 @@ if (isset($_POST['update'])) {
               </div>
               <!-- /.col -->
               <?php 
-              $count_region = mysqli_query($conn,"SELECT count(*) as region FROM tblemployeinfoinfo WHERE OFFICE_STATION = 1");
+              $count_region = mysqli_query($conn,"SELECT count(*) as region FROM tblemployeinfo WHERE OFFICE_STATION = 1");
               $cregion = mysqli_fetch_array($count_region);
               $region = $cregion['region'];
               ?>
               <?php 
-              $count_batangas = mysqli_query($conn,"SELECT count(*) as batangas FROM tblemployeinfoinfo WHERE DIVISION_C IN (19,28,29,30,44)");
+              $count_batangas = mysqli_query($conn,"SELECT count(*) as batangas FROM tblemployeinfo WHERE DIVISION_C IN (19,28,29,30,44)");
               $cbatangas = mysqli_fetch_array($count_batangas);
               $batangas = $cbatangas['batangas'];
               ?>
               <?php 
-              $count_cavite = mysqli_query($conn,"SELECT count(*) as cavite FROM tblemployeinfoinfo WHERE DIVISION_C IN (20,34,35,36,45)");
+              $count_cavite = mysqli_query($conn,"SELECT count(*) as cavite FROM tblemployeinfo WHERE DIVISION_C IN (20,34,35,36,45)");
               $ccavite = mysqli_fetch_array($count_cavite);
               $cavite = $ccavite['cavite'];
               ?>
               <?php 
-              $count_laguna = mysqli_query($conn,"SELECT count(*) as laguna FROM tblemployeinfoinfo WHERE DIVISION_C IN (21,40,41,42,47,51,52)");
+              $count_laguna = mysqli_query($conn,"SELECT count(*) as laguna FROM tblemployeinfo WHERE DIVISION_C IN (21,40,41,42,47,51,52)");
               $claguna = mysqli_fetch_array($count_laguna);
               $laguna = $claguna['laguna'];
               ?> 
               <?php 
-              $count_rizal = mysqli_query($conn,"SELECT count(*) as rizal FROM tblemployeinfoinfo WHERE DIVISION_C IN (23,37,38,39,46,50,52)");
+              $count_rizal = mysqli_query($conn,"SELECT count(*) as rizal FROM tblemployeinfo WHERE DIVISION_C IN (23,37,38,39,46,50,52)");
               $crizal = mysqli_fetch_array($count_rizal);
               $rizal = $crizal['rizal'];
               ?> 
               <?php 
-              $count_quezon = mysqli_query($conn,"SELECT count(*) as quezon FROM tblemployeinfoinfo WHERE DIVISION_C IN (22,31,32,33,48,49,53)");
+              $count_quezon = mysqli_query($conn,"SELECT count(*) as quezon FROM tblemployeinfo WHERE DIVISION_C IN (22,31,32,33,48,49,53)");
               $cquezon = mysqli_fetch_array($count_quezon);
               $quezon = $cquezon['quezon'];
               ?> 
               <?php 
-              $count_lucena = mysqli_query($conn,"SELECT count(*) as lucena FROM tblemployeinfoinfo WHERE DIVISION_C IN (24)");
+              $count_lucena = mysqli_query($conn,"SELECT count(*) as lucena FROM tblemployeinfo WHERE DIVISION_C IN (24)");
               $clucena = mysqli_fetch_array($count_lucena);
               $lucena = $clucena['lucena'];
               ?> 
@@ -333,7 +333,7 @@ if (isset($_POST['update'])) {
                <div class="progress-group">
                 <span class="progress-text">Region</span>
                 <?php 
-                $count_region = mysqli_query($conn,"SELECT count(*) as region FROM tblemployeinfoinfo WHERE OFFICE_STATION = 1");
+                $count_region = mysqli_query($conn,"SELECT count(*) as region FROM tblemployeinfo WHERE OFFICE_STATION = 1");
                 $cregion = mysqli_fetch_array($count_region);
                 $region = $cregion['region'];
                 ?>
@@ -347,7 +347,7 @@ if (isset($_POST['update'])) {
               <div class="progress-group">
                 <span class="progress-text">Batangas</span>
                 <?php 
-                $count_batangas = mysqli_query($conn,"SELECT count(*) as batangas FROM tblemployeinfoinfo WHERE DIVISION_C IN (19,28,29,30,44)");
+                $count_batangas = mysqli_query($conn,"SELECT count(*) as batangas FROM tblemployeinfo WHERE DIVISION_C IN (19,28,29,30,44)");
                 $cbatangas = mysqli_fetch_array($count_batangas);
                 $batangas = $cbatangas['batangas'];
                 ?>
@@ -361,7 +361,7 @@ if (isset($_POST['update'])) {
               <div class="progress-group">
                 <span class="progress-text">Cavite</span>
                 <?php 
-                $count_cavite = mysqli_query($conn,"SELECT count(*) as cavite FROM tblemployeinfoinfo WHERE DIVISION_C IN (20,34,35,36,45)");
+                $count_cavite = mysqli_query($conn,"SELECT count(*) as cavite FROM tblemployeinfo WHERE DIVISION_C IN (20,34,35,36,45)");
                 $ccavite = mysqli_fetch_array($count_cavite);
                 $cavite = $ccavite['cavite'];
                 ?>
@@ -375,7 +375,7 @@ if (isset($_POST['update'])) {
               <div class="progress-group">
                 <span class="progress-text">Laguna</span>
                 <?php 
-                $count_laguna = mysqli_query($conn,"SELECT count(*) as laguna FROM tblemployeinfoinfo WHERE DIVISION_C IN (21,40,41,42,47,51,52)");
+                $count_laguna = mysqli_query($conn,"SELECT count(*) as laguna FROM tblemployeinfo WHERE DIVISION_C IN (21,40,41,42,47,51,52)");
                 $claguna = mysqli_fetch_array($count_laguna);
                 $laguna = $claguna['laguna'];
                 ?>                
@@ -388,7 +388,7 @@ if (isset($_POST['update'])) {
               <div class="progress-group">
                 <span class="progress-text">Rizal</span>
                 <?php 
-                $count_rizal = mysqli_query($conn,"SELECT count(*) as rizal FROM tblemployeinfoinfo WHERE DIVISION_C IN (23,37,38,39,46,50,52)");
+                $count_rizal = mysqli_query($conn,"SELECT count(*) as rizal FROM tblemployeinfo WHERE DIVISION_C IN (23,37,38,39,46,50,52)");
                 $crizal = mysqli_fetch_array($count_rizal);
                 $rizal = $crizal['rizal'];
                 ?> 
@@ -401,7 +401,7 @@ if (isset($_POST['update'])) {
               <div class="progress-group">
                 <span class="progress-text">Quezon</span>
                 <?php 
-                $count_quezon = mysqli_query($conn,"SELECT count(*) as quezon FROM tblemployeinfoinfo WHERE DIVISION_C IN (22,31,32,33,48,49,53)");
+                $count_quezon = mysqli_query($conn,"SELECT count(*) as quezon FROM tblemployeinfo WHERE DIVISION_C IN (22,31,32,33,48,49,53)");
                 $cquezon = mysqli_fetch_array($count_quezon);
                 $quezon = $cquezon['quezon'];
                 ?> 
@@ -414,7 +414,7 @@ if (isset($_POST['update'])) {
               <div class="progress-group">
                 <span class="progress-text">Lucena City</span>
                 <?php 
-                $count_lucena = mysqli_query($conn,"SELECT count(*) as lucena FROM tblemployeinfoinfo WHERE DIVISION_C IN (24)");
+                $count_lucena = mysqli_query($conn,"SELECT count(*) as lucena FROM tblemployeinfo WHERE DIVISION_C IN (24)");
                 $clucena = mysqli_fetch_array($count_lucena);
                 $lucena = $clucena['lucena'];
                 ?> 

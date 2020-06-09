@@ -109,7 +109,7 @@
             </thead>
             <?php 
             $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-            $view_query = mysqli_query($conn, "SELECT tblempdetails.office_contact,tblemployeinfo.EMP_N,tblemployeinfo.FIRST_M,tblemployeinfo.MIDDLE_M,tblemployeinfo.UNAME,tblemployeinfo.LAST_M,tblemployeinfo.BIRTH_D,tblemployeinfo.EMAIL,tblemployeinfo.ALTER_EMAIL,tblemployeinfo.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeinfoinfo tblemployeinfo LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeinfo.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployeinfo.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeinfo.DESIGNATION LEFT JOIN tblempdetails on tblempdetails.EMP_N = tblemployeinfo.EMP_N");
+            $view_query = mysqli_query($conn, "SELECT tblempdetails.office_contact,tblemployeinfo.EMP_N,tblemployeinfo.FIRST_M,tblemployeinfo.MIDDLE_M,tblemployeinfo.UNAME,tblemployeinfo.LAST_M,tblemployeinfo.BIRTH_D,tblemployeinfo.EMAIL,tblemployeinfo.ALTER_EMAIL,tblemployeinfo.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeinfo tblemployeinfo LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeinfo.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployeinfo.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeinfo.DESIGNATION LEFT JOIN tblempdetails on tblempdetails.EMP_N = tblemployeinfo.EMP_N");
 
                
             while ($row = mysqli_fetch_assoc($view_query)) {

@@ -1,7 +1,7 @@
  <?php 
  $id = $_GET['id'];
  $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
- $query = mysqli_query($conn,"SELECT ACCESSTYPE,APPROVEDBY,CONCAT(FIRST_M, ' ', MIDDLE_M, ' ', LAST_M) AS fullname FROM tblemployeinfoinfo WHERE EMP_N = $id");
+ $query = mysqli_query($conn,"SELECT ACCESSTYPE,APPROVEDBY,CONCAT(FIRST_M, ' ', MIDDLE_M, ' ', LAST_M) AS fullname FROM tblemployeinfo WHERE EMP_N = $id");
  $row = mysqli_fetch_array($query);
  $role = $row['UROLE'];
  $ACCESSTYPE = $row['ACCESSTYPE'];

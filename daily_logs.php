@@ -1,6 +1,6 @@
 <?php
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$u = mysqli_query($conn,"SELECT tblemployeinfoinfo.FIRST_M,tblemployeinfoinfo.MIDDLE_M,tblemployeinfoinfo.LAST_M,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M FROM tblemployeinfoinfo tblemployeinfoinfo LEFT JOIN tbldilgposition tbldilgposition on tbldilgposition.POSITION_ID = tblemployeinfoinfo.POSITION_C LEFT JOIN  tblpersonneldivision tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeinfoinfo.DIVISION_C WHERE tblemployeinfoinfo.UNAME = '$username' ");
+$u = mysqli_query($conn,"SELECT tblemployeinfo.FIRST_M,tblemployeinfo.MIDDLE_M,tblemployeinfo.LAST_M,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M FROM tblemployeinfo tblemployeinfo LEFT JOIN tbldilgposition tbldilgposition on tbldilgposition.POSITION_ID = tblemployeinfo.POSITION_C LEFT JOIN  tblpersonneldivision tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeinfo.DIVISION_C WHERE tblemployeinfo.UNAME = '$username' ");
 
 
 $row = mysqli_fetch_array($u);

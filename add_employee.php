@@ -46,7 +46,7 @@
     return $output;
   }
 
-  $sqltable   = "tblemployeinfoinfo";
+  $sqltable   = "tblemployeinfo";
 
   $checkQuery = "SELECT * FROM $sqltable a LEFT JOIN tblpersonneldivision b on b.DIVISION_N = a.DIVISION_C LEFT JOIN tbldesignation c on c.DESIGNATION_ID = a.DESIGNATION LEFT JOIN tbldilgposition d on d.POSITION_ID = a.POSITION_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1";
 
@@ -126,12 +126,12 @@
 
 
 
-    $sqlUsername =  "SELECT * FROM tblemployeinfoinfo WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
-    $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeinfoinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
+    $sqlUsername =  "SELECT * FROM tblemployeinfo WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
+    $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
     if (!ifRecordExist($sqlEMP_N)){
           $insertinf = mysqli_query($conn,"INSERT INTO tblempdetails(EMP_N,office_contact,office_address) VALUES('$employee_number','$office_contact','$office_address')");
 
-          $sql_insert_query     = "INSERT INTO tblemployeinfoinfo (
+          $sql_insert_query     = "INSERT INTO tblemployeinfo (
           EMP_NUMBER,
           LAST_M, FIRST_M, MIDDLE_M, BIRTH_D, SEX_C,
           REGION_C, PROVINCE_C, CITYMUN_C,
@@ -161,7 +161,7 @@
            {
             if(!empty($_FILES["image"]["name"]))
             {
-              $update_image = mysqli_query($conn,"UPDATE tblemployeinfoinfo SET PROFILE = '$target_file' WHERE EMP_N = '".$_GET['id']."' ");
+              $update_image = mysqli_query($conn,"UPDATE tblemployeinfo SET PROFILE = '$target_file' WHERE EMP_N = '".$_GET['id']."' ");
             // Check if file already exists
               if (file_exists($target_file)) 
               {
