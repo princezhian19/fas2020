@@ -12,7 +12,7 @@ $username = $_SESSION['username'];
   $username = $_SESSION['username'];
 
   //echo $username;
-  $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeinfo WHERE UNAME = '$username'");
+  $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'");
   $rowdiv = mysqli_fetch_array($select_user);
   $DIVISION_C = $rowdiv['DIVISION_C'];
  
@@ -28,7 +28,7 @@ $username = $_SESSION['username'];
                   $username = $_SESSION['username'];
 
                   //echo $username;
-                  $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeinfo WHERE UNAME = '$username'");
+                  $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'");
                   $rowdiv = mysqli_fetch_array($select_user);
                   $DIVISION_C = $rowdiv['DIVISION_C'];
 

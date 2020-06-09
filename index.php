@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $_SESSION['username'] = $username ;
   $username = $_SESSION['username'];
-  $sqlUsername = mysqli_query($conn,"SELECT CODE,EMP_N,isPlanningOfficer FROM tblemployeinfo WHERE md5(UNAME) = '".md5($_POST['username'])."' LIMIT 1");
+  $sqlUsername = mysqli_query($conn,"SELECT CODE,EMP_N,isPlanningOfficer FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($_POST['username'])."' LIMIT 1");
   
   $row = mysqli_fetch_array($sqlUsername);
   $salt       = $row['CODE'];
@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
   $_SESSION['pass'] = $password;
 
   // ===============================================
-  $query = "SELECT * FROM tblemployeinfo WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND  BLOCK = 'N' LIMIT 1 ";
+  $query = "SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND  BLOCK = 'N' LIMIT 1 ";
   $result = mysqli_query($conn, $query);
   $val = array();
   // $numrows= mysqli_num_rows($query);

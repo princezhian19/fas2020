@@ -65,7 +65,7 @@ $events = $req->fetchAll();
 function viewEvents()
 {
     include 'connection.php';
-    $sqlQuery = "SELECT * FROM events INNER JOIN tblemployeinfo on events.postedby = tblemployeinfo.EMP_N where events.id = ".$_GET['eventid']."";
+    $sqlQuery = "SELECT * FROM events INNER JOIN tblemployeeinfo on events.postedby = tblemployeeinfo.EMP_N where events.id = ".$_GET['eventid']."";
     $result = mysqli_query($conn, $sqlQuery);
     $eventArray = array();
     if ($row = mysqli_fetch_array($result)) {

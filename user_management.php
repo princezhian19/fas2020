@@ -20,7 +20,7 @@
           </thead>
           <?php
           $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-          $QUERY = mysqli_query($conn, "SELECT tb.DIVISION_M,te.BLOCK,te.UNAME,te.EMP_N,te.LAST_M,te.MIDDLE_M,te.FIRST_M FROM tblemployeinfo te  LEFT JOIN tblpersonneldivision tb on tb.DIVISION_N = te.DIVISION_C ORDER BY te.LAST_M ASC ");
+          $QUERY = mysqli_query($conn, "SELECT tb.DIVISION_M,te.BLOCK,te.UNAME,te.EMP_N,te.LAST_M,te.MIDDLE_M,te.FIRST_M FROM tblemployeeinfo te  LEFT JOIN tblpersonneldivision tb on tb.DIVISION_N = te.DIVISION_C ORDER BY te.LAST_M ASC ");
           while ($row = mysqli_fetch_assoc($QUERY)) {
             $id = $row["EMP_N"];
             $UNAME = $row["UNAME"];

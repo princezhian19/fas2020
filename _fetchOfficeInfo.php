@@ -5,8 +5,8 @@ if(mysqli_connect_errno()){echo mysqli_connect_error();}
 
 
 $query = "SELECT EMP_N,MOBILEPHONE, EMAIL,DIVISION_N, DIVISION_M , POSITION_M FROM tblpersonneldivision 
-          INNER JOIN tblemployeinfo on tblpersonneldivision.DIVISION_N = tblemployeinfo.DIVISION_C 
-          INNER JOIN tbldilgposition on tblemployeinfo.POSITION_C = tbldilgposition.POSITION_ID
+          INNER JOIN tblemployeeinfo on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C 
+          INNER JOIN tbldilgposition on tblemployeeinfo.POSITION_C = tbldilgposition.POSITION_ID
           where EMP_N =  $id ";
 $result = mysqli_query($link, $query);
               while($row = mysqli_fetch_array($result)){

@@ -354,8 +354,8 @@
                     $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                     $username = $_SESSION['username'];
 
-                // echo "SELECT DIVISION_C FROM tblemployeinfo WHERE UNAME = '$username'";
-                    $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeinfo WHERE UNAME = '$username'");
+                // echo "SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'";
+                    $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'");
                     $rowdiv = mysqli_fetch_array($select_user);
                     $DIVISION_C = $rowdiv['DIVISION_C'];
 

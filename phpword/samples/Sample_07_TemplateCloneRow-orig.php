@@ -14,7 +14,7 @@ if (!$DBConn) {
 } 
 
 function getDivisionCode($id){
-  $query = "select DIVISION_C from tblemployeinfo where md5(EMP_N)='".md5($id)."'";
+  $query = "select DIVISION_C from tblemployeeinfo where md5(EMP_N)='".md5($id)."'";
  // echo $query;
   $queryinfo = select_info_multiple_key($query);
   if($queryinfo){
@@ -32,14 +32,14 @@ if (!empty($byme)) {
   $sql = "SELECT *,a.record_N as arecord FROM `tblrecords` a 
 left join tblrouting b  on a.RECORD_N=b.RECORD_N 
   left join tblrecordsources as e on e.SOURCE_N = a.SOURCE 
-left JOIN tblemployeinfo c on a.added_by=c.EMP_N
+left JOIN tblemployeeinfo c on a.added_by=c.EMP_N
 left join tblpersonneldivision d on b.ROUTED_TO=d.DIVISION_N
 where DATE = '".$date."' and a.ADDED_BY = ".$byme." and c.DIVISION_C = ".$division." ";
 }
 else{
 $sql = "SELECT *,a.record_N as arecord  FROM `tblrecords` a 
 left join tblrouting b  on a.RECORD_N=b.RECORD_N 
-left JOIN tblemployeinfo c on a.added_by=c.EMP_N
+left JOIN tblemployeeinfo c on a.added_by=c.EMP_N
 left join tblpersonneldivision d on b.ROUTED_TO=d.DIVISION_N
   left join tblrecordsources as e on e.SOURCE_N = a.SOURCE 
 where DATE = '".$date."' and c.DIVISION_C = ".$division." ";
@@ -127,14 +127,14 @@ $templateProcessor->setValue('serverName', realpath(__DIR__)); // On header*/
 
 $templateProcessor->cloneRow('rowValue', $count);
 
- $sql2 = "SELECT accesstype FROM tblemployeinfo where EMP_N='".$dataRow['ADDED_BY']."'";
+ $sql2 = "SELECT accesstype FROM tblemployeeinfo where EMP_N='".$dataRow['ADDED_BY']."'";
     
 
 $i=1;
 foreach ($query_data as $key) {
-            $sql2 = "SELECT accesstype FROM tblemployeinfo where EMP_N='".$key['ADDED_BY']."'";
+            $sql2 = "SELECT accesstype FROM tblemployeeinfo where EMP_N='".$key['ADDED_BY']."'";
 
-            $sql4 = "SELECT UNAME from tblemployeinfo where EMP_N=".$key['RECEIVED']."";
+            $sql4 = "SELECT UNAME from tblemployeeinfo where EMP_N=".$key['RECEIVED']."";
         
           $get_receiver = getData($DBConn,$sql4)[0]['UNAME'];
           $remove_year = array_shift($compared);

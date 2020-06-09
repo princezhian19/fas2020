@@ -60,7 +60,7 @@ function getImage()
 {
 
                   $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-                  $slect = mysqli_query($conn,"SELECT PROFILE FROM tblemployeinfo WHERE UNAME = '$username'");
+                  $slect = mysqli_query($conn,"SELECT PROFILE FROM tblemployeeinfo WHERE UNAME = '$username'");
                   $rowP = mysqli_fetch_array($slect);
                   $profile                 = $rowP['PROFILE'];
                   $extension = pathinfo($profile, PATHINFO_EXTENSION);
@@ -192,7 +192,7 @@ function getImage()
               <!-- User image -->
               <?php 
                   $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-                  $slect = mysqli_query($conn,"SELECT PROFILE FROM tblemployeinfo WHERE UNAME = '$username'");
+                  $slect = mysqli_query($conn,"SELECT PROFILE FROM tblemployeeinfo WHERE UNAME = '$username'");
                   $rowP = mysqli_fetch_array($slect);
                   $profile                 = $rowP['PROFILE'];
                   $extension = pathinfo($profile, PATHINFO_EXTENSION);
@@ -435,7 +435,7 @@ function getImage()
                   $username = $_SESSION['username'];
 
                   //echo $username;
-                  $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeinfo WHERE UNAME = '$username'");
+                  $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'");
                   $rowdiv = mysqli_fetch_array($select_user);
                   $DIVISION_C = $rowdiv['DIVISION_C'];
 

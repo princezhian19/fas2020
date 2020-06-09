@@ -49,7 +49,7 @@
     return $output;
   }
 
-  $sqltable   = "tblemployeinfo";
+  $sqltable   = "tblemployeeinfo";
 
   $checkQuery = "SELECT * FROM $sqltable a LEFT JOIN tblpersonneldivision b on b.DIVISION_N = a.DIVISION_C LEFT JOIN tbldesignation c on c.DESIGNATION_ID = a.DESIGNATION LEFT JOIN tbldilgposition d on d.POSITION_ID = a.POSITION_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1";
 
@@ -140,7 +140,7 @@
     {
       if(!empty($_FILES["image"]["name"]))
       {
-        $update_image = mysqli_query($conn,"UPDATE tblemployeinfo SET PROFILE = '$target_file' WHERE EMP_N = '".$_GET['id']."' ");
+        $update_image = mysqli_query($conn,"UPDATE tblemployeeinfo SET PROFILE = '$target_file' WHERE EMP_N = '".$_GET['id']."' ");
             // Check if file already exists
         if (file_exists($target_file)) 
         {
@@ -201,7 +201,7 @@
         $insertdetails = mysqli_query($conn,"INSERT INTO `tblempdetails`(`EMP_N`, `office_contact`, `office_address`) VALUES ('$get_id','$office_contact','$office_address')");
       }
       $updateSQL->bind_param("ssssssssssssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username, $designation,$suffix,$status);
-      $update_stat = mysqli_query($conn,"UPDATE tblemployeinfo SET CIVIL_STATUS = '$status' WHERE EMP_N = $cid");
+      $update_stat = mysqli_query($conn,"UPDATE tblemployeeinfo SET CIVIL_STATUS = '$status' WHERE EMP_N = $cid");
     }else{
       $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
       $password   = crypt($password, '$2a$10$'.$code.'$');

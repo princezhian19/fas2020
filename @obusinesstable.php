@@ -13,7 +13,7 @@ $division = $_SESSION['division'];
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 //Get Office
-$select_user = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,DIVISION_C FROM tblemployeinfo WHERE UNAME = '$username1'");
+$select_user = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username1'");
 $rowdiv = mysqli_fetch_array($select_user);
 $DIVISION_C = $rowdiv['DIVISION_C'];
 $f = $rowdiv['FIRST_M'];

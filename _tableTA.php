@@ -91,7 +91,7 @@ th{
             <?php
 include 'connection.php';
             $name = $_SESSION['username'];
-            $query = "SELECT * from tblemployeinfo where UNAME = '$name'";
+            $query = "SELECT * from tblemployeeinfo where UNAME = '$name'";
             $result = mysqli_query($conn,$query);
             if($row = mysqli_fetch_array($result))
             {

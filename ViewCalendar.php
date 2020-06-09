@@ -16,7 +16,7 @@ require_once 'calendar/sample/sql_statements.php';
 $sql = "SELECT DIVISION_M, id, title, start, end, description,venue, tblpersonneldivision.DIVISION_COLOR as 'color', cancelflag, office,enp,posteddate, remarks,UNAME 
 FROM events 
 inner join tblpersonneldivision on events.office = tblpersonneldivision.DIVISION_N
-inner join tblemployeinfo on events.postedby = tblemployeinfo.EMP_N
+inner join tblemployeeinfo on events.postedby = tblemployeeinfo.EMP_N
 where cancelflag = 0 and events.status = 1 ";
 $req = $bdd->prepare($sql);
 $req->execute();

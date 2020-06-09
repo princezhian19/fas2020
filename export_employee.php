@@ -30,11 +30,11 @@ $office = $_GET['office'];
 // $e_date = $_GET['e_date'];
 
 if ($office == 0) {
-$sql_items = mysqli_query($conn, "SELECT tblemployeinfo.EMP_N,tblemployeinfo.FIRST_M,tblemployeinfo.MIDDLE_M,tblemployeinfo.LAST_M,tblemployeinfo.BIRTH_D,tblemployeinfo.EMAIL,tblemployeinfo.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeinfo tblemployeinfo LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeinfo.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployeinfo.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeinfo.DESIGNATION ORDER BY tblemployeinfo.LAST_M ASC");
+$sql_items = mysqli_query($conn, "SELECT tblemployeeinfo.EMP_N,tblemployeeinfo.FIRST_M,tblemployeeinfo.MIDDLE_M,tblemployeeinfo.LAST_M,tblemployeeinfo.BIRTH_D,tblemployeeinfo.EMAIL,tblemployeeinfo.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployeeinfo LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployeeinfo.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeeinfo.DESIGNATION ORDER BY tblemployeeinfo.LAST_M ASC");
 
 }else{
 
-$sql_items = mysqli_query($conn, "SELECT tblemployeinfo.EMP_N,tblemployeinfo.FIRST_M,tblemployeinfo.MIDDLE_M,tblemployeinfo.LAST_M,tblemployeinfo.BIRTH_D,tblemployeinfo.EMAIL,tblemployeinfo.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeinfo tblemployeinfo LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeinfo.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployeinfo.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeinfo.DESIGNATION WHERE DIVISION_C = '$office' ORDER BY tblemployeinfo.LAST_M ASC");
+$sql_items = mysqli_query($conn, "SELECT tblemployeeinfo.EMP_N,tblemployeeinfo.FIRST_M,tblemployeeinfo.MIDDLE_M,tblemployeeinfo.LAST_M,tblemployeeinfo.BIRTH_D,tblemployeeinfo.EMAIL,tblemployeeinfo.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployeeinfo LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployeeinfo.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeeinfo.DESIGNATION WHERE DIVISION_C = '$office' ORDER BY tblemployeeinfo.LAST_M ASC");
 }
 
 // $mont = date('M',strtotime($e_date));

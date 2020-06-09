@@ -9,7 +9,7 @@ $name = $_SESSION['username'];
 $division  = $_SESSION['division'];
 $complete_name = $_SESSION['complete_name'];
 // ===============================================================================
-$query = "SELECT * from tblemployeinfo where UNAME = '$name'";
+$query = "SELECT * from tblemployeeinfo where UNAME = '$name'";
 $result = mysqli_query($con,$query);
 if($row = mysqli_fetch_array($result))
 {
@@ -21,13 +21,13 @@ if($row = mysqli_fetch_array($result))
 	{
 		$fieldsName = '`UNAME`,`DIVISION_N`, `DIVISION_M`, `DIVISION_COLOR`, `DIVISION_LONG_M`, `D_GROUP`, `GROUP_N`, `PGROUP_N`,`id`, `office`, `title`, `color`, `start`, `end`, `description`, `venue`, `enp`, `postedby`, `posteddate`, `realenddate`, `cancelflag`, `isRead`, `isGenerateRO`, `remarks`';
 		$table = 'events';
-		$join = ' left join tblemployeinfo te ON events.postedby = te.emp_n  left join tblpersonneldivision tp on tp.DIVISION_N = events.office';
+		$join = ' left join tblemployeeinfo te ON events.postedby = te.emp_n  left join tblpersonneldivision tp on tp.DIVISION_N = events.office';
 		$WHERE = "where cancelflag = '0'";
 	}else{
 		$fieldsName = ' `UNAME`,`DIVISION_N`, `DIVISION_M`, `DIVISION_COLOR`, `DIVISION_LONG_M`, `D_GROUP`, `GROUP_N`, `PGROUP_N`,`id`, `office`, `title`, `color`, `start`, `end`, `description`, `venue`, `enp`, `postedby`, `posteddate`, `realenddate`, `cancelflag`, `isRead`, `isGenerateRO`, `remarks`';
 
         $table = 'events';
-		$join = ' left join tblemployeinfo te ON events.postedby = te.emp_n left join tblpersonneldivision tp on tp.DIVISION_N = events.office';
+		$join = ' left join tblemployeeinfo te ON events.postedby = te.emp_n left join tblpersonneldivision tp on tp.DIVISION_N = events.office';
 		$WHERE = "  where cancelflag = '0' AND office = 16";
 	}
 

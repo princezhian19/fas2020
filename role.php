@@ -1,7 +1,7 @@
  <?php 
  $id = $_GET['id'];
  $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
- $query = mysqli_query($conn,"SELECT ACCESSTYPE,APPROVEDBY,CONCAT(FIRST_M, ' ', MIDDLE_M, ' ', LAST_M) AS fullname FROM tblemployeinfo WHERE EMP_N = $id");
+ $query = mysqli_query($conn,"SELECT ACCESSTYPE,APPROVEDBY,CONCAT(FIRST_M, ' ', MIDDLE_M, ' ', LAST_M) AS fullname FROM tblemployeeinfo WHERE EMP_N = $id");
  $row = mysqli_fetch_array($query);
  $role = $row['UROLE'];
  $ACCESSTYPE = $row['ACCESSTYPE'];
@@ -10,7 +10,7 @@
  if (isset($_POST['submit'])) {
   $UROLE = $_POST['UROLE'];
   $HR = $_POST['HR'];
-  $updateQ = mysqli_query($conn,"UPDATE tblemployeinfo SET APPROVEDBY = '$UROLE', ACCESSTYPE = '$HR' WHERE EMP_N = $id");
+  $updateQ = mysqli_query($conn,"UPDATE tblemployeeinfo SET APPROVEDBY = '$UROLE', ACCESSTYPE = '$HR' WHERE EMP_N = $id");
   if ($updateQ) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Assigned!')

@@ -16,7 +16,7 @@ $col =array(
 
 
 $sql ="SELECT * FROM events 
-left join tblemployeinfo te ON events.postedby = te.emp_n  
+left join tblemployeeinfo te ON events.postedby = te.emp_n  
 left join tblpersonneldivision tp on tp.DIVISION_N = events.office";
 $query=mysqli_query($con,$sql);
 
@@ -26,7 +26,7 @@ $totalFilter=$totalData;
 
 //Search
 $sql ="SELECT * FROM events 
-left join tblemployeinfo te ON events.postedby = te.emp_n  
+left join tblemployeeinfo te ON events.postedby = te.emp_n  
 left join tblpersonneldivision tp on tp.DIVISION_N = events.office WHERE 1=1";
 if(!empty($request['search']['value'])){
     $sql.=" AND (id Like '".$request['search']['value']."%' ";

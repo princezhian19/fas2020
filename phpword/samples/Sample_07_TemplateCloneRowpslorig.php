@@ -16,7 +16,7 @@ if (!$DBConn) {
 
 
 function getDivisionCode($id){
-  $query = "select DIVISION_C from tblemployeinfo where md5(EMP_N)='".md5($id)."'";
+  $query = "select DIVISION_C from tblemployeeinfo where md5(EMP_N)='".md5($id)."'";
  // echo $query;
   $queryinfo = select_info_multiple_key($query);
   if($queryinfo){
@@ -125,7 +125,7 @@ $templateProcessor->setValue('serverName', realpath(__DIR__)); // On header*/
 
 
 
- $sql2 = "SELECT accesstype FROM tblemployeinfo where EMP_N='".$dataRow['ADDED_BY']."'";
+ $sql2 = "SELECT accesstype FROM tblemployeeinfo where EMP_N='".$dataRow['ADDED_BY']."'";
 
 
 
@@ -152,30 +152,30 @@ $objectivetwo_percent_unmeta = array();
 
 $i=1;
 foreach ($list as $key => $value) {
-            $sql2 = "SELECT accsstype FROM tblemployeinfo where EMP_N='".$key['ADDED_BY']."'";
+            $sql2 = "SELECT accsstype FROM tblemployeeinfo where EMP_N='".$key['ADDED_BY']."'";
 
-            $sql4 = "SELECT UNAME from tblemployeinfo where EMP_N=".$key['RECEIVED']."";
+            $sql4 = "SELECT UNAME from tblemployeeinfo where EMP_N=".$key['RECEIVED']."";
             //get incoming and routed within the day
             $sql5 = "SELECT count(a.RECORD_N) as daterouted  from tblrecords a
             		left join tblrouting b on b.RECORD_N=a.RECORD_N
-            		left join tblemployeinfo c on c.EMP_N=a.ADDED_BY
+            		left join tblemployeeinfo c on c.EMP_N=a.ADDED_BY
             		where a.DATE like '%".$value."%' and b.date_routed like '%".$value."%' and c.DIVISION_C= ".$division." GROUP BY a.RECORD_N ";
             //get incoming for the day
             $sql6 = "SELECT count(a.RECORD_N) as recordn  from tblrecords a
                 left join tblrouting b on b.RECORD_N=a.RECORD_N
-                left join tblemployeinfo c on c.EMP_N=a.ADDED_BY
+                left join tblemployeeinfo c on c.EMP_N=a.ADDED_BY
                 where a.DATE like '%".$value."%' and c.DIVISION_C= ".$division." GROUP BY a.RECORD_N";
             //get outgoing received and released within the day
             $sql7 = "SELECT *,count(a.RECORD_N) as recordn  from tblrecords a
                 left join tblrouting b on b.RECORD_N=a.RECORD_N
                 left join tblrecordrelease d on d.RECORD_N=a.RECORD_N
-                left join tblemployeinfo c on c.EMP_N=a.ADDED_BY
+                left join tblemployeeinfo c on c.EMP_N=a.ADDED_BY
                 where b.RECEIVED_DETAILS like '%".$value."%' and d.date_released like '%".$value."%' and  d.RELEASED_FROM= ".$division."  GROUP BY a.RECORD_N";
                //get outgoing released within the day
             $sql8 = "SELECT *,count(a.RECORD_N) as recordn  from tblrecords a
                 left join tblrouting b on b.RECORD_N=a.RECORD_N
                 left join tblrecordrelease d on d.RECORD_N=a.RECORD_N
-                left join tblemployeinfo c on c.EMP_N=a.ADDED_BY
+                left join tblemployeeinfo c on c.EMP_N=a.ADDED_BY
                 where d.DATE_RELEASED like '%".$value."%' and d.RELEASED_FROM=".$division." GROUP by a.RECORD_N";
               //get the categories that match the existing file records
              /*6 = Regional Office
@@ -192,7 +192,7 @@ foreach ($list as $key => $value) {
               */
             $filed_records= array(6,105,2,3,5,22,161,116,103,235,237);
             $sql9 = "SELECT * from tblrecords a 
-					left join tblemployeinfo b on b.EMP_N=a.ADDED_BY 
+					left join tblemployeeinfo b on b.EMP_N=a.ADDED_BY 
 					left join tblpersonneldivision c on c.DIVISION_N=b.DIVISION_C
 					where category in(6,105,2,3,5,22,161,116,103,235) and DATE like '%".$value."%' and b.DIVISION_C=".$division." ";
         
