@@ -41,7 +41,7 @@ $time_outL = $rowl['time_out'];
 
 
 date_default_timezone_set('Asia/Manila');
-$time_now = (new DateTime('now'))->format('h:i');
+$time_now = (new DateTime('now'))->format('H:i');
 //ito yung ireplace mo sa now()
 
 
