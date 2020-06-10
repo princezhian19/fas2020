@@ -264,7 +264,7 @@ else{
 
                         </td> 
 
-                        <td class="col-md-5 label-text" style="text-align:center">
+                        <td class="col-md-6" style="text-align:center">
                         <h2><b>VEHICLE REQUEST FORM (VRF)</b></h2>
                         </td>
 
@@ -273,7 +273,7 @@ else{
                         </td>
 
                         <td class="col-md-2  label-text" style =" border:1px solid black; background-color:#CFD8DC; text-align:center">
-                        <input readonly required type="text" class="" style="text-align:center; margin-top:15px; border:none; font-size:25px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "Control Number:" >
+                        <input readonly required type="text" class="" style="text-align:center; margin-top:15px; border:none; font-size:23px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "Control Number:" >
                         </td>
                         <td class="col-md-2" style =" border:1px solid black; text-align:center">
                         
