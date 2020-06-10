@@ -79,14 +79,14 @@
                  <?php echo tblpersonnel($connect)?>
               </select>
             </div>
-        </form>
               <div class="col-xs-1" style="padding-top: 5px;">
               <br>
-            <a style="float:right;" href="javascript:void(0);" class="btn btn-primary link" data-id="<=$data['id']?>">Generate</a>
+            <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>">Export</a>
             </div>
 
           </div>
         </div>
+        </form>
         <br>
         <br>
         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
@@ -109,7 +109,7 @@
             </thead>
             <?php 
             $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-            $view_query = mysqli_query($conn, "SELECT tblempdetails.office_contact,tblemployeeinfo.EMP_N,tblemployeeinfo.FIRST_M,tblemployeeinfo.MIDDLE_M,tblemployeeinfo.UNAME,tblemployeeinfo.LAST_M,tblemployeeinfo.BIRTH_D,tblemployeeinfo.EMAIL,tblemployeeinfo.ALTER_EMAIL,tblemployeeinfo.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployeeinfo LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployeeinfo.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeeinfo.DESIGNATION LEFT JOIN tblempdetails on tblempdetails.EMP_N = tblemployeeinfo.EMP_N");
+            $view_query = mysqli_query($conn, "SELECT tblempdetails.office_contact,tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.UNAME,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.ALTER_EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION LEFT JOIN tblempdetails on tblempdetails.EMP_N = tblemployee.EMP_N");
 
                
             while ($row = mysqli_fetch_assoc($view_query)) {
@@ -173,7 +173,8 @@
       var office = $('#office').val();
 
       window.location = 
-      'export_employee.php?office='+office+'&pr_no='+pr_no;
+      'export_employee.php?office='+office;
+      // 'export_employee.php?office='+office+'&pr_no='+pr_no;
   });
 }) ;
 </script>

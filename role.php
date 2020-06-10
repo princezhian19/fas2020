@@ -3,7 +3,7 @@
  $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
  $query = mysqli_query($conn,"SELECT ACCESSTYPE,APPROVEDBY,CONCAT(FIRST_M, ' ', MIDDLE_M, ' ', LAST_M) AS fullname FROM tblemployeeinfo WHERE EMP_N = $id");
  $row = mysqli_fetch_array($query);
- $role = $row['UROLE'];
+ $role = $row['APPROVEDBY'];
  $ACCESSTYPE = $row['ACCESSTYPE'];
  $fullname = $row['fullname'];
 
@@ -41,6 +41,7 @@
          <option value="NULL">User</option>
          <option value="3">BAC-GSS</option>
          <option value="2">Finance</option>
+         <option value="4">Field Officer</option>
        </select>
      <?php endif ?>
      <?php if ($role == 2): ?>
@@ -49,6 +50,7 @@
        <option value="1">Admin</option>
        <option value="NULL">User</option>
        <option value="3">BAC-GSS</option>
+         <option value="4">Field Officer</option>
      </select>
    <?php endif ?>
    <?php if ($role == 3): ?>
@@ -57,6 +59,7 @@
      <option value="1">Admin</option>
      <option value="NULL">User</option>
      <option value="2">Finance</option>
+     <option value="4">Field Officer</option>
    </select>
  <?php endif ?>
  <?php if ($role == NULL): ?>
@@ -65,10 +68,21 @@
    <option value="1">Admin</option>
    <option value="3">BAC-GSS</option>
    <option value="2">Finance</option>
+     <option value="4">Field Officer</option>
  </select>
 <?php endif ?>
 
-<?php if ($role != NULL && $role != 1 && $role != 2 && $role != 3): ?>
+<?php if ($role == 4): ?>
+  <select class="form-control select2" name="photo">
+   <option value="4">Field Officer</option>
+   <option value="NULL">User</option>
+   <option value="1">Admin</option>
+   <option value="3">BAC-GSS</option>
+   <option value="2">Finance</option>
+ </select>
+<?php endif ?>
+
+<?php if ($role != NULL && $role != 1 && $role != 2 && $role != 3 && $role != 4): ?>
   <select class="form-control select2" name="photo">
    <option disabled selected>Select Role</option>
    <option value="NULL">User</option>

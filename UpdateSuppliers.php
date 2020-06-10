@@ -48,7 +48,7 @@ $username = $_SESSION['username'];
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
 
-  <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda'): ?>
+  <?php if ($username == 'charlesodi' || $username == 'mmmonteiro' ||  $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial'): ?>
 <?php include('test1.php');?>
   <?php else: ?>
   <?php include('sidebar2.php');?>

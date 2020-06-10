@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
                      <a data-toggle="modal"  data-target="#modal-info"   class = "btn btn-warning"><i class="fa fa-fw fa-close"></i>Cancel</a>  
                 <?php endif ?>
                  </div>
-                 <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?>
+                 <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?>
 
                      <div style="float: right;padding:5px;">
                         <a href="ViewRFQdetails.php?id=<?php echo $id; ?>" class="btn btn-primary"><i class='fa'>&#xf044;</i>Edit</a>
@@ -108,7 +108,7 @@ if (isset($_POST['submit'])) {
             <!-- /.modal-dialog -->
         </div>
 
-        <!-- <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?> -->
+        <!-- <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?> -->
         <!-- <?php else: ?> -->
         <!-- <a href="ViewPR.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a> -->
         <!-- <?php endif ?> -->

@@ -1,6 +1,6 @@
 <?php
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$u = mysqli_query($conn,"SELECT tblemployeeinfo.FIRST_M,tblemployeeinfo.MIDDLE_M,tblemployeeinfo.LAST_M,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M FROM tblemployeeinfo tblemployeeinfo LEFT JOIN tbldilgposition tbldilgposition on tbldilgposition.POSITION_ID = tblemployeeinfo.POSITION_C LEFT JOIN  tblpersonneldivision tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C WHERE tblemployeeinfo.UNAME = '$username' ");
+$u = mysqli_query($conn,"SELECT tblemployeeinfo.FIRST_M,tblemployeeinfo.PROFILE,tblemployeeinfo.MIDDLE_M,tblemployeeinfo.LAST_M,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M FROM tblemployeeinfo tblemployeeinfo LEFT JOIN tbldilgposition tbldilgposition on tbldilgposition.POSITION_ID = tblemployeeinfo.POSITION_C LEFT JOIN  tblpersonneldivision tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C WHERE tblemployeeinfo.UNAME = '$username' ");
 
 
 $row = mysqli_fetch_array($u);
@@ -9,10 +9,12 @@ $FIRST_M = ucwords(strtolower($FIRST_M1));
 $MIDDLE_M = $row['MIDDLE_M'];
 $LAST_M1 = $row['LAST_M'];
 $LAST_M = ucfirst(strtolower($LAST_M1));
+$profile = $row['PROFILE'];
 $DIVISION_M = $row['DIVISION_M'];
 $POSITION_M = $row['POSITION_M'];
 $words = explode(" ", $MIDDLE_M);
 $acronym = "";
+
 
 foreach ($words as $w) {
   $acronym .= $w[0];
@@ -169,117 +171,195 @@ if (isset($_POST['stamp4'])) {
   <div class="col-md-8">
     <div class="box">
       <div class="box-header with-border" align="left">
-        <h1>Daily Time Record</h1>
-        <br>
-        <font style="font-size: 20px;"><b>Name</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $name;?></font>
-        <br>
-        <font style="font-size: 20px;"><b>Office</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $DIVISION_M?></font><br>
-        <font style="font-size: 20px;"><b>Position</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $POSITION_M?></font>
-        <br>
-        <font style="font-size: 20px;"><b>Month</b> : 
-        </font>&nbsp <font style="font-size: 20px;"><?php echo date('F Y')?></font>
+       <div class="pull-right">
+        <?php 
+        $extension = pathinfo($profile, PATHINFO_EXTENSION);
+        ?>
+        <img id="img"   style="overflow: hidden;width:300;height:250px;margin-left:50px;border:2px solid black;" 
+        src="
+        <?php 
+        if(file_exists($profile))
+        {
+          switch($extension)
+          {
+            case 'jpg':
+            if($profile == '')
+            {
+              echo 'images/male-user.png';
+            }
+            else if ($profile == $profile)
+            {
+              echo $profile;   
+            }
+            else
+            {
+              echo'images/male-user.png';
+            }
+            break;
+            case 'JPG':
+            if($profile == '')
+            {
+              echo 'images/male-user.png';
+            }
+            else if ($profile == $profile)
+            {
+              echo $profile;   
+            }
+            else
+            {
+              echo'images/male-user.png';
+            }
+            break;
+            case 'jpeg':
+            if($profile == '')
+            {
+              echo 'images/male-user.png';
+            }
+            else if ($profile == $profile)
+            {
+              echo $profile;   
+            }
+            else
+            {
+              echo'images/male-user.png';
+            }
+            break;
+            case 'png':
+            if($profile == '')
+            {
+              echo'images/male-user.png';
+            }
+            else if ($profile == $profile)
+            {
+              echo $profile;   
+            }
+            else
+            {
+              echo'images/male-user.png';
+            }
+            break;
+            default:
+            echo'images/male-user.png';
+            break;
+          }
+          }else{
+           echo'images/male-user.png';
+         }
+
+         ?>"  title = "personnel_image" />
+       </div>
+       <h1>Daily Time Record</h1>
+       <br>
+       <font style="font-size: 20px;"><b>Name</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $name;?></font>
+       <br>
+       <font style="font-size: 20px;"><b>Office</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $DIVISION_M?></font><br>
+       <font style="font-size: 20px;"><b>Position</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $POSITION_M?></font>
+       <br>
+       <font style="font-size: 20px;"><b>Month</b> : 
+       </font>&nbsp <font style="font-size: 20px;"><?php echo date('F Y')?></font>
+       <div hidden>
+        <select name="month" id="month">
+          <option value="<?php echo date('m')?>"><?php echo date('F')?></option>
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
         <div hidden>
-          <select name="month" id="month">
-            <option value="<?php echo date('m')?>"><?php echo date('F')?></option>
-            <option value="01">January</option>
-            <option value="02">February</option>
-            <option value="03">March</option>
-            <option value="04">April</option>
-            <option value="05">May</option>
-            <option value="06">June</option>
-            <option value="07">July</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-          </select>
-          <div hidden>
-            <input type="text" name="username" id="username" value="<?php echo $username;?>">
-          </div>
-          <select name="year" id="year">
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-          </select>
+          <input type="text" name="username" id="username" value="<?php echo $username;?>">
         </div>
-        <br>
+        <select name="year" id="year">
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+        </select>
+      </div>
+      <br>
+
+    </div>
+    <div class="box-body table-responsive no-padding">
+      <div class="box-body">
+        <?php if ($ACCESSTYPE == 'admin'): ?>
+         <a href="ViewEmployees.php?division=<?php echo $division?>&username=<?php echo $username?>" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
+         <br>
+       <?php endif ?>
+       <div style="float: right;padding:5px;" hidden>
+        <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
 
       </div>
-      <div class="box-body table-responsive no-padding">
-        <div class="box-body">
-          <?php if ($ACCESSTYPE == 'admin'): ?>
-           <a href="ViewEmployees.php?division=<?php echo $division?>&username=<?php echo $username?>" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
-         <?php endif ?>
-         <div style="float: right;padding:5px;" hidden>
-          <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
+      <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
+        <thead>
+          <tr style="background-color: white;color:blue;">
+            <th width="">Date</th>
+            <th width="">Time In</th>
+            <th width="">Lunch In</th>
+            <th width="">Lunch Out</th>
+            <th width="">Time Out</th>
+            <th width="">Hours</th>
+            <th width="">Minutes</th>
+          </tr>
+        </thead>
+        <?php 
 
-        </div>
-        <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
-          <thead>
-            <tr style="background-color: white;color:blue;">
-              <th width="">Date</th>
-              <th width="">Time In</th>
-              <th width="">Lunch In</th>
-              <th width="">Lunch Out</th>
-              <th width="">Time Out</th>
-              <th width="">Hours</th>
-              <th width="">Minutes</th>
-            </tr>
-          </thead>
-          <?php 
+        $view_query = mysqli_query($conn, "SELECT id, UNAME,date_today,time_in, lunch_out,lunch_in,time_out,SUBTIME(time_out,'01:00:00') as time_out1 FROM dtr WHERE UNAME ='$username' ORDER BY id ASC");
 
-          $view_query = mysqli_query($conn, "SELECT id, UNAME,date_today,time_in, lunch_out,lunch_in,time_out,SUBTIME(time_out,'01:00:00') as time_out1 FROM dtr WHERE UNAME ='$username' ORDER BY id ASC");
+        while ($row = mysqli_fetch_assoc($view_query)) {
+          $id = $row["id"];
+          $UNAME = $row["UNAME"];  
+          $date_today = $row["date_today"];  
+          $time_in = $row["time_in"];
+          $lunch_in = $row["lunch_in"];
+          $lunch_out= $row["lunch_out"];
+          $time_out = $row["time_out"];
 
-          while ($row = mysqli_fetch_assoc($view_query)) {
-            $id = $row["id"];
-            $UNAME = $row["UNAME"];  
-            $date_today = $row["date_today"];  
-            $time_in = $row["time_in"];
-            $lunch_in = $row["lunch_in"];
-            $lunch_out= $row["lunch_out"];
-            $time_out = $row["time_out"];
+          $time_out1 = $row["time_out1"];
 
-            $time_out1 = $row["time_out1"];
+          ?>
 
-            ?>
-
-            <tr>
-              <td><?php 
-              echo date('F d, Y',strtotime($date_today));
+          <tr>
+            <td><?php 
+            echo date('F d, Y',strtotime($date_today));
 
 
-              ?></td>
-              <td><?php 
-              if ($time_in == NULL) {
-                echo '&nbsp.';
-              }else{
-                echo date('h:i A',strtotime($time_in));
-              }
-              ?></td>
-              <td><?php 
-              if ($lunch_in == NULL) {
-                echo '&nbsp.';
-              }else{
-                echo date('h:i A',strtotime($lunch_in));
-              }
-              ?></td>
-              <td><?php 
-              if ($lunch_out == NULL) {
-                echo '&nbsp.';
-              }else{
-                echo date('h:i A',strtotime($lunch_out));
-              }
-              ?></td>
-              <td><?php 
-              if ($time_out == NULL) {
-                echo '&nbsp.';
-              }else{
-                echo date('h:i A',strtotime($time_out));
-              }
-              ?></td>
-              <td>
-               <?php 
-               if(date('d',strtotime($date_today)) == '01'){ 
+            ?></td>
+            <td><?php 
+            if ($time_in == NULL) {
+              echo '&nbsp.';
+            }else{
+              echo date('h:i A',strtotime($time_in));
+            }
+            ?></td>
+            <td><?php 
+            if ($lunch_in == NULL) {
+              echo '&nbsp.';
+            }else{
+              echo date('h:i A',strtotime($lunch_in));
+            }
+            ?></td>
+            <td><?php 
+            if ($lunch_out == NULL) {
+              echo '&nbsp.';
+            }else{
+              echo date('h:i A',strtotime($lunch_out));
+            }
+            ?></td>
+            <td><?php 
+            if ($time_out == NULL) {
+              echo '&nbsp.';
+            }else{
+              echo date('h:i A',strtotime($time_out));
+            }
+            ?></td>
+            <td>
+             <?php 
+             if(date('d',strtotime($date_today)) == '01'){ 
                   $lateD = date('h:i',strtotime($time_in)) < date('h:i',strtotime('08:00')); // eto kasi pre kunwari time in nya 7 50.. i mmatic ko na na 8:00 para ah okas oks
                 if($lateD){ //morning late
                 $datetime1 = new DateTime('08:00');//time in
@@ -368,11 +448,18 @@ if (isset($_POST['stamp4'])) {
 
 
 <div class="col-md-4">
+  <div class="box box-success">
+    <h1 class="text-center" style="color:blue;"><strong><?php echo date('F d, Y')?></strong></h1>
+    <div class="text-center" style="color:red;">
+      <font style="font-size: 60px;"><strong><?php echo date('h:i:s A')?></strong></font>
+    </div>
+  </div>
+</div>
 
-
+<div class="col-md-4">
   <div class="box box-success">
     <div class="box-header with-border" align="left">
-      <h4><strong>Logs For Today : <?php echo date('F d, Y')?></strong></h4>
+      <!-- <h4><strong>Logs For Today : <?php echo date('F d, Y')?></strong></h4> -->
     </div>
     <div class="box-body table-responsive no-padding">
       <div class="box-body">
