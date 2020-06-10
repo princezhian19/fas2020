@@ -772,7 +772,13 @@ function setCompletedDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
+        if($row['COMPLETED_DATE'] == '')
+        {
+          $completed_date = '';
+        }else{
+          $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
+
+        }
       }
       return $completed_date;
 }
@@ -815,11 +821,11 @@ function setCompletedTime()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        if($row['COMPLETED_TIME'] == '' || $row['COMPLETED_TIME'] == '')
+        if($row['COMPLETED_TIME'] == '')
         {
           //datetime string.
           $date = new DateTime();
-          $completed_time = $date->format('H:i') ;
+          $completed_time = '-';
         }else{
           if(date('g',strtotime($row['COMPLETED_TIME'])) < 10)
           {

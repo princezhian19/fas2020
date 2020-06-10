@@ -65,41 +65,25 @@ function filldataTable()
     while($row = mysqli_fetch_array($result))
     {
         $data[] = $row['CONTROL_NO'];
-      
-
         ?>
         <tr>
-        <td style = "width:2%;">
-            <br>
-            <br>
-            <?php
-            if($row['ASSIST_BY'] =='' || $row['ASSIST_BY'] ==null)
-            {
-                echo '-';
-            }else{
-                ?>
-            <img style="vertical-align:top;"  class="round" width="50" height="50" avatar="<?php echo $row['ASSIST_BY'];?>">
-                <?php
-            }
-            ?>
-        </td>
+            <td style = "width:2%;">
+                <br> <br>
+                <?php if($row['ASSIST_BY'] =='' || $row['ASSIST_BY'] ==null) { echo '-'; }else{ ?> <img style="vertical-align:top;"  class="round" width="50" height="50" avatar="<?php echo $row['ASSIST_BY'];?>"> <?php } ?>
+            </td>
             <td>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="box">
                             <div class="box-body"> 
                                 <div class = "col-md-12">
-                                <div class="row">
-
-                                    <div class="col-lg-12 col-sm-12 col-xs-12" >
-                                        <div class="info-box bg-gray" style = "height:auto;" >
-                                                        <a href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO']; ?>" style = "color:black;" title = "View ICT TA Form" >
-                                                        <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
-
+                                    <div class="row">
+                                        <div class="col-lg-12 col-sm-12 col-xs-12" >
+                                            <div class="info-box bg-gray" style = "height:auto;" >
+                                                <a href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO']; ?>" style = "color:black;" title = "View ICT TA Form" >
+                                                    <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
                                                         <?php echo '
-                                                        
                                                                 <b>'.$row['CONTROL_NO'].'</b>
-
                                                         ';?>
                                                         <p style = "color:red;margin-top:-75%;font-weight:bold;"><?php echo $row['STATUS_REQUEST']; ?></p>
 
@@ -111,8 +95,8 @@ function filldataTable()
                                                         </a>
                                                                                                 
 
-                                                <div class="info-box-content" ><br>
-                                                    <span class="info-box-number">Issue/Problem/Error Details
+                                                <div class="info-box-content" >
+                                                    <span class="info-box-number"><i style = "font-size:16px;font-weight:bold;">Issue/Problem/Error Details</i>
                                                     </span>
                                                     <span  style ="font-size:15px;">
                                                     <?php 
@@ -120,7 +104,7 @@ function filldataTable()
                                                     </span>
                                                 <div class="progress">
                                                     <div class="progress-bar" style="width: 100%"></div>
-                                                </div>
+                                                </div><br>
                                                 <div class = "col-lg-3" style = "margin-left:-15px;">
                                                     <span class="progress-description">
                                                     <b><i style = "font-size:13px;" title=  "<?php echo $row['TYPE_REQ'];?>">Category</i></b>
@@ -218,8 +202,7 @@ function filldataTable()
                     echo '<br>';
                       // Assign
              
-                if($row['STATUS_REQUEST'] == 'For action')
-                {
+               
 
                 
                 if($_SESSION['complete_name'] == $row['ASSIST_BY'])
@@ -256,12 +239,7 @@ function filldataTable()
                 
                     }
 
-                }else{
-                    ?><br>
-                    <button data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">Assign</button>
-
-                    <?php
-                }
+                
                     
                       echo '<br><br>';                                      
                     
