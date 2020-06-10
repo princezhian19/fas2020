@@ -112,23 +112,26 @@ function filldataTable()
                                             
                                             </span>
 
-                                                <div class="info-box-content" ><br>
-                                                    <span class="info-box-number">Issue/Problem/Error Details
+                                            <div class="info-box-content" >
+                                                    <span class="info-box-number"><i style = "font-size:16px;font-weight:bold;">Issue/Problem/Error Details</i>
                                                     </span>
-                                                    <span class="info-box-text"><?php echo $row['ISSUE_PROBLEM'];?></span>
+                                                    <span  style ="font-size:15px;">
+                                                    <?php 
+                                                    echo $row['ISSUE_PROBLEM'];?>
+                                                    </span>
                                                 <div class="progress">
                                                     <div class="progress-bar" style="width: 100%"></div>
-                                                </div>
+                                                </div><br>
                                                 <div class = "col-lg-3" style = "margin-left:-15px;">
                                                     <span class="progress-description">
                                                     <b><i style = "font-size:13px;" title=  "<?php echo $row['TYPE_REQ'];?>">Category</i></b>
                                                     </span>
-                                                    <span class="progress-description">
+                                                    <span class="progress-description"  title=  "<?php echo $row['TYPE_REQ'];?>">
                                                     <?php echo $row['TYPE_REQ'];?>
 
                                                     </span>
                                                 </div>
-                                                <div class = "col-lg-3" >
+                                                <div class = "col-lg-3" style = "margin-left:-15px;">
                                                     <span class="progress-description">
                                                     <b><i style = "font-size:13px;">Office</i></b>
                                                     </span>
@@ -151,13 +154,13 @@ function filldataTable()
                                                             if(strpos($uname, " ") !== false){
                                                             
                                                                 $u = explode(" ", $uname);
-                                                                echo $u[0]; // piece1
+                                                                echo ucfirst(strtolower($u[0])); // piece1
                                                             
                                                             }
                                                             ?>
                                                     </span>
                                                 </div>
-                                                <div class = "col-lg-3" >
+                                                <div class = "col-lg-3">
                                                     <span class="progress-description">
                                                         <b><i style = "font-size:13px;">Requested Date</i></b>
                                                     </span>
