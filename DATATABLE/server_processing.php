@@ -9,7 +9,8 @@ $name = $_SESSION['username'];
 $division  = $_SESSION['division'];
 $complete_name = $_SESSION['complete_name'];
 // ===============================================================================
-$query = "SELECT * from tblemployeeinfo where UNAME = '$name'";
+$query = "SELECT * from tblemployee where UNAME = '$name'";
+
 $result = mysqli_query($con,$query);
 if($row = mysqli_fetch_array($result))
 {
@@ -17,18 +18,18 @@ if($row = mysqli_fetch_array($result))
 	$uname    = $row['UNAME'];
 	
 	
-	if ($division = 10 || $division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13)
-	{
+	// if ($division = 10 || $division == 14 || $division == 16 || $division == 11 || $division == 12 || $division == 13)
+	// {
 		$fieldsName = '`ID`, `CONTROL_NO`, `REQ_DATE`, `REQ_TIME`, `REQ_BY`, `OFFICE`, `POSITION`, `CONTACT_NO`, `EMAIL_ADD`, `EQUIPMENT_TYPE`, `BRAND_MODEL`, `PROPERTY_NO`, `SERIAL_NO`, `IP_ADDRESS`, `MAC_ADDRESS`, `TYPE_REQ`, `TYPE_REQ_DESC`, `TEXT1`, `TEXT2`, `TEXT3`, `TEXT4`, `TEXT5`, `TEXT6`, `TEXT7`, `TEXT8`, `ISSUE_PROBLEM`, `START_DATE`, `START_TIME`, `STATUS_DESC`, `COMPLETED_DATE`, `COMPLETED_TIME`, `ASSIST_BY`, `PERSON_ASSISTED`, `TIMELINESS`, `QUALITY`, `STATUS`, `STATUS_REQUEST`';
 		$table = 'tbltechnical_assistance';
 		$join = '';
 		$WHERE = "WHERE `REQ_DATE` != '0000-00-00'";
-	}else{
-		$fieldsName = '`ID`, `CONTROL_NO`, `REQ_DATE`, `REQ_TIME`, `REQ_BY`, `OFFICE`, `POSITION`, `CONTACT_NO`, `EMAIL_ADD`, `EQUIPMENT_TYPE`, `BRAND_MODEL`, `PROPERTY_NO`, `SERIAL_NO`, `IP_ADDRESS`, `MAC_ADDRESS`, `TYPE_REQ`, `TYPE_REQ_DESC`, `TEXT1`, `TEXT2`, `TEXT3`, `TEXT4`, `TEXT5`, `TEXT6`, `TEXT7`, `TEXT8`, `ISSUE_PROBLEM`, `START_DATE`, `START_TIME`, `STATUS_DESC`, `COMPLETED_DATE`, `COMPLETED_TIME`, `ASSIST_BY`, `PERSON_ASSISTED`, `TIMELINESS`, `QUALITY`, `STATUS`, `STATUS_REQUEST`';
-		$table = 'tbltechnical_assistance';
-		$join = '';
-		$WHERE = "WHERE `REQ_DATE` != '0000-00-00' and `REQ_BY` LIKE '%$complete_name%' ";
-	}
+	// }else{
+	// 	$fieldsName = '`ID`, `CONTROL_NO`, `REQ_DATE`, `REQ_TIME`, `REQ_BY`, `OFFICE`, `POSITION`, `CONTACT_NO`, `EMAIL_ADD`, `EQUIPMENT_TYPE`, `BRAND_MODEL`, `PROPERTY_NO`, `SERIAL_NO`, `IP_ADDRESS`, `MAC_ADDRESS`, `TYPE_REQ`, `TYPE_REQ_DESC`, `TEXT1`, `TEXT2`, `TEXT3`, `TEXT4`, `TEXT5`, `TEXT6`, `TEXT7`, `TEXT8`, `ISSUE_PROBLEM`, `START_DATE`, `START_TIME`, `STATUS_DESC`, `COMPLETED_DATE`, `COMPLETED_TIME`, `ASSIST_BY`, `PERSON_ASSISTED`, `TIMELINESS`, `QUALITY`, `STATUS`, `STATUS_REQUEST`';
+	// 	$table = 'tbltechnical_assistance';
+	// 	$join = '';
+	// 	$WHERE = "WHERE `REQ_DATE` != '0000-00-00' and `REQ_BY` LIKE '%$complete_name%' ";
+	// }
 
 		
 	
