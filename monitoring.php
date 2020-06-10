@@ -55,7 +55,8 @@ $division = $_GET['division'];
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
 <?php 
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+ if($_GET['division'] == 10 || $_GET['division'] == 11 || $_GET['division'] == 12 || $_GET['division'] == 13 || $_GET['division'] == 14 || $_GET['division'] == 16)
+
       include('test1.php');
     }else{
       include('sidebar2.php');
