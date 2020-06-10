@@ -367,6 +367,7 @@ function showUser()
 <!-- Page script -->
 <script>
 $('#submit').click(function(){
+ 
   var cb1 = document.getElementById("checkboxgroup_g1").checked;
   var cb2 = document.getElementById("checkboxgroup_g2").checked;
   var cb3 = document.getElementById("checkboxgroup_g3").checked;
@@ -494,6 +495,8 @@ $(document).ready(function() {
        $("#others1").prop('required',true);
 
        }else{
+       $("#others1").prop('required',true);
+
        $("#others2").prop('required',true);
        $("#others3").prop('required',true);
        }
