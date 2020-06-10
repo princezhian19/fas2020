@@ -338,7 +338,33 @@ function getImage()
               <li><a href="Directory.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Phone Directory</a></li>
             </ul>
         </li> -->
-       
+
+       <!-- GSS -->
+       <li class ="treeview 
+       <?php 
+       if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewEmployees.php?division='.$_GET['division'].'&username='.$_GET['username'].''||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/ob.php?division='.$_GET['division'].'' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/ob.php' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/TravelOrder.php?division='.$_GET['division'].'' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/TravelOrderCreate.php?division='.$_GET['division'].'' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateEmployee.php?id='.$_GET['id'].'&view='.$_GET['view'].'' ||
+          $link == 'http://fas.calabarzon.dilg.gov.ph/OfficialBusinessUpdate.php?id='.$_GET['id'].''
+          )
+          { echo 'active"';}?>"
+        >
+            <a  href="#" >
+              <i class="fa fa-users" style = "color:#black;"></i> 
+              <span  style = "color:#black;font-weight:normal;">General Service and Supply</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+            </a>
+            <ul class="treeview-menu" >
+          
+            
+              <li><a href="VehicleRequest.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Vehicle Request</a></li>
+              
+             
+            </ul>
+        </li>
+         <!-- GSS -->
     
 
         </li>
@@ -363,38 +389,11 @@ function getImage()
             <li><a href="DTR.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>DTR</a></li>
               <li><a href="ViewEmployees.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Employees Directory</a></li>
               <li><a href="ob.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Official Business</a></li>
-
+              <li><a href="ROandROO.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>RO and ROO</a></li>
               <li><a href="TravelOrder.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Travel Order</a></li>
+            
               
-              
-              <li><a href="ROandROO.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>RO and ROO
-              
-              
-              <!-- <?php
-                  
-                  $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-                  $username = $_SESSION['username'];
-
-                  //echo $username;
-                  $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployee WHERE UNAME = '$username'");
-                  $rowdiv = mysqli_fetch_array($select_user);
-                  $DIVISION_C = $rowdiv['DIVISION_C'];
-
-                  $select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
-                  $rowdiv1 = mysqli_fetch_array($select_office);
-                  $DIVISION_M = $rowdiv1['DIVISION_M'];
-
-                  $countissuances = mysqli_query($conn, "SELECT count(id) as a from ro_roo where office = '$DIVISION_M'");
-                  $rowc = mysqli_fetch_array($countissuances);
-                  $countissuancesspan = $rowc['a'];
-                  
-                ?>
-                
-                <?php echo $countissuancesspan  ;?>
-              
-               -->
-              
-              </a></li>
+             
             </ul>
         </li>
          <!-- Pesonnel -->
