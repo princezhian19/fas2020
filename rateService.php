@@ -5,6 +5,7 @@ header('location:index.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
+$division = $_GET['division'];
 }
 ?>
 <!DOCTYPE html>
@@ -43,7 +44,7 @@ $username = $_SESSION['username'];
 <body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
 <?php 
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13 || $division == 16) {
       include('test1.php');
     }else{
       include('sidebar2.php');

@@ -263,7 +263,23 @@ function filldataTable()
 
                 }
               ?>
-                
+              <br>
+              <br>
+              <?php 
+              if($row['STATUS_REQUEST'] == 'Completed')
+                {
+                    ?>
+                <button   class = "btn btn-danger btn-md col-lg-12 "><a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >Rate Service</a></button>
+
+                    <?php
+                }else{
+                    ?>
+                <button   disabled class = "btn btn-danger btn-md col-lg-12 ">Rate Service</button>
+
+                    <?php
+                }
+
+              ?>
                     
             </td>
            

@@ -55,7 +55,8 @@ $division = $_GET['division'];
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
 <?php 
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+ if($_GET['division'] == 10 || $_GET['division'] == 11 || $_GET['division'] == 12 || $_GET['division'] == 13 || $_GET['division'] == 14 || $_GET['division'] == 16)
+{
       include('test1.php');
     }else{
       include('sidebar2.php');
@@ -96,7 +97,7 @@ $division = $_GET['division'];
 <script src="_includes/sweetalert2.min.js"></script>
 
 <?php 
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13 || $division == 16 ){
       ?>
       <script>
           $(document).ready(function() {
@@ -190,7 +191,7 @@ $division = $_GET['division'];
 
                           }
                         }else{
-                        action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';          
+                        action = '<a class = "btn btn-success btn-xs"  id = "sweet-15" style = "width:100%;"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a><a class = "btn btn-danger btn-xs"  id = "delete" style = "width:100%;"> <i class="fa fa-trash"></i>Delete</a>';          
 
                           // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>
                         }
@@ -381,7 +382,7 @@ $division = $_GET['division'];
                         {
                         action = '<a class = "btn btn-success btn-xs"  id = "edit" style = "width:100%;"> <i class="fa info-circle"></i>Resolve</a>';          
                         }else{
-                        action = '<a class = "btn btn-success btn-xs"  id = "sweet-15"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a>';          
+                        action = '<a class = "btn btn-success btn-xs"  id = "sweet-15" style = "width:100%;"> <i class="fa fa-star" aria-hidden="true"></i>&nbsp;Rate Service</a>';          
 
                           // <i style = "font-size:20px;color:#2196F3;tex-align:center;" class="fa fa-print" id = "view" ></i>
                         }
