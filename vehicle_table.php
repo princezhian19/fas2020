@@ -103,8 +103,9 @@ $edit="edit";
                   <th width = ''>TYPE</th>
                   <th width = ''>NAME</th>
                   <th width = ''>OFFICE</th>
-                  <th width = ''>POSITION/DESIGNATION</th>
+                  <th width = ''>POSITION</th>
                   <th width = ''>MOBILE NO</th>
+                  <th width = ''>REMARKS</th>
                   <th width = ''>PURPOSE</th>
                   <th width = ''>DESTINATION</th>
                   <th width = ''>NO OF PASSENGERS</th>
@@ -157,6 +158,7 @@ $edit="edit";
                   $office = $row['office'];
                   $position = $row['position'];
                   $mobile = $row['mobile'];
+                  $remarks = $row['remarks'];
                   $purpose = $row['purpose'];
                   $destination = $row['destination'];
                   $nop = $row['nop'];
@@ -219,6 +221,7 @@ $edit="edit";
                 <td><?php echo  $office?></td>
                 <td><?php echo  $position?></td>
                 <td><?php echo  $mobile?></td>
+                <td><?php echo  $remarks?></td>
                 <td><?php echo  $purpose?></td>
                 <td><?php echo  $destination?></td>
                 <td><?php echo  $nop?></td>
