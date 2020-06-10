@@ -104,7 +104,7 @@ if (mysqli_num_rows($sql_items)>0) {
     }
 
     if(date('d',strtotime($date)) == '01'){ 
-      $lateD = date('h:i',strtotime($time_in)) < date('h:i',strtotime('08:00'));
+      $lateD = date('H:i',strtotime($time_in)) < date('H:i',strtotime('08:00'));
   if($lateD){ //morning late
    $datetime1 = new DateTime('08:00');//time in
  }else{
@@ -121,7 +121,7 @@ if (mysqli_num_rows($sql_items)>0) {
     $finalfinal = $date3333->diff($date333);
 
 
-    if($time_in== NULL && $time_out == NULL){
+    if($time_out == NULL){
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
    }
    else{
@@ -134,24 +134,21 @@ if (mysqli_num_rows($sql_items)>0) {
 }
     // echo $finalfinal->format('%i');
   }else{
-    $lateD = date('h:i',strtotime($time_in)) < date('h:i',strtotime('07:00')); // pag 6 59 pbaba time ine
+    $lateD = date('H:i',strtotime($time_in)) < date('H:i',strtotime('07:00')); // pag 6 59 pbaba time ine
     if($lateD){ //morning late
     $datetime1 = new DateTime('07:00');//time in
   }else{
     $datetime1 = new DateTime($time_in);//time in
   }
     $datetime2 = new DateTime($time_out1);//time
-    $datetime3 = new DateTime('17:00');
-    if ($datetime2 > $datetime3) { // pag 6pm onwards ang timeout nya matic na 6pm
-     $datetime2 = new DateTime('17:00');
-   }
+   
    $finaldate = $datetime2->diff($datetime1); 
     $date333 = new DateTime("08:00"); // eto ung mminus sa time diff oks try mo
     $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
     $finalfinal = $date3333->diff($date333);
 
 
-    if($time_in== NULL && $time_out == NULL){
+    if($time_out == NULL){
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
    }
    else{
