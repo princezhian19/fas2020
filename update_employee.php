@@ -7,6 +7,7 @@
   $get_id = $_GET['id'];
   $division777 = $_GET['division'];
   $username777 = $_GET['username'];
+  $3d = $_GET['3d'];
   function tblpersonnel($connect)
   { 
     $output = '';
@@ -203,10 +204,17 @@
     }else{
 
     }
+    if ($_GET['3d']==3) {
+       echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Successfuly Updated!')
+      window.location.href = 'UpdateEmployee.php?id=$cid&division=$division777&username=$username777&3d=$3d';
+      </SCRIPT>");
+    }else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Updated!')
       window.location.href = 'UpdateEmployee.php?id=$cid&division=$division777&username=$username777';
       </SCRIPT>");
+    }
 
 
   }else{
