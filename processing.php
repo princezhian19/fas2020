@@ -137,7 +137,7 @@ function filldataTable()
                                                             if(strpos($uname, " ") !== false){
                                                             
                                                                 $u = explode(" ", $uname);
-                                                                echo $u[0]; // piece1
+                                                                echo ucfirst(strtolower($u[0])); // piece1
                                                             
                                                             }
                                                             ?>
