@@ -153,7 +153,7 @@ function showUser()
                               <td>
                                   <input  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g1" class = "checkbox_group" value = "DESKTOP/LAPTOP"> <b>DESKTOP/LAPTOP</b><br>
                                   <div style = "margin-left:30px;padding-top:10px;" >
-                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Hardware Error"> Hardware Error<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" id = "cb1" value ="Hardware Error"> Hardware Error<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Software Error"> Software Error<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Computer Assembly"> Computer Assembly<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Parts Replacement"> Parts Replacement<br>
@@ -163,7 +163,7 @@ function showUser()
                               <td><br>
                                   <input style = "margin-left:180px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
                                   <div style = "margin-left:210px;padding-top:10px;" >
-                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" id = "cb2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet(Cross or Exclamation)"> No Internet (Cross or Exclamation)<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
                                       <input  type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
@@ -175,7 +175,7 @@ function showUser()
                               <td style = "width:35%;"><br>
                                   <input  style = "margin-left:120px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
                                   <div style = "margin-left:140px;padding-top:10px;" >
-                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
+                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" id = "cb3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
@@ -194,7 +194,7 @@ function showUser()
 
                           <div style = "margin-left:30px;padding-top:10px;" >
 
-                          <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Installation"> Installation<br>
+                          <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" id = "cb4" value = "Installation"> Installation<br>
                           <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Troubleshooting"> Troubleshooting<br>
                           <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g4" value = "Sharing/Networking"> Sharing/Networking<br>
                           </div>
@@ -202,7 +202,7 @@ function showUser()
                           <td>
                             <input  style = "margin-left:180px;"  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
                             <div style = "margin-left:210px;padding-top:10px;">
-                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" value = "New Account"> New Account<br>
+                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" id = "cb5" value = "New Account"> New Account<br>
                             <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" value = "Change Account to"> Change Account to 
                             <input  type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
                             <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
@@ -549,6 +549,10 @@ $(document).ready(function() {
 
   function enable_cb1() {
     if (this.checked) {
+      if($('.checkboxgroup_g1').val() == 'Hardware Error')
+      {
+        $('#cb1').not(this).prop('checked', true);  
+      }
       $(".checkboxgroup_g1").removeAttr("disabled");
       $(".checkboxgroup_g2").attr("disabled", true);
       $(".checkboxgroup_g3").attr("disabled", true);
@@ -580,6 +584,10 @@ $(document).ready(function() {
   }
   function enable_cb2() {
     if (this.checked) {
+      if($('.checkboxgroup_g2').val() == 'New Connection(Wired or Wireless)')
+      {
+        $('#cb2').not(this).prop('checked', true);  
+      }
       $(".checkboxgroup_g2").removeAttr("disabled");
       document.getElementById("site").disabled = false; 
       document.getElementById("purpose").disabled = false; 
@@ -592,7 +600,6 @@ $(document).ready(function() {
       $(".checkboxgroup_g5").attr("disabled", true);
       $(".checkboxgroup_g6").attr("disabled", true);
 
-      $('.checkboxgroup_g2').not(this).prop('checked', false);  
       $('.checkboxgroup_g3').not(this).prop('checked', false);  
       $('.checkboxgroup_g4').not(this).prop('checked', false);  
       $('.checkboxgroup_g5').not(this).prop('checked', false);  
@@ -609,6 +616,10 @@ $(document).ready(function() {
   }
   function enable_cb3() {
     if (this.checked) {
+      if($('.checkboxgroup_g3').val() == 'Operating System, Office, Anti-Virus')
+      {
+        $('#cb3').not(this).prop('checked', true);  
+      }
       $(".checkboxgroup_g3").removeAttr("disabled");
       document.getElementById("softwares").disabled = false; 
       $(".checkboxgroup_g1").attr("disabled", true);
@@ -619,7 +630,6 @@ $(document).ready(function() {
 
       $('.checkboxgroup_g1').not(this).prop('checked', false);  
       $('.checkboxgroup_g2').not(this).prop('checked', false);  
-      $('.checkboxgroup_g3').not(this).prop('checked', false);  
       $('.checkboxgroup_g4').not(this).prop('checked', false);  
       $('.checkboxgroup_g5').not(this).prop('checked', false);  
       $('.checkboxgroup_g6').not(this).prop('checked', false);  
@@ -632,6 +642,10 @@ $(document).ready(function() {
   }
   function enable_cb4() {
     if (this.checked) {
+      if($('.checkboxgroup_g4').val() == 'Installation')
+      {
+        $('#cb4').not(this).prop('checked', true);  
+      }
       $(".checkboxgroup_g4").removeAttr("disabled");
       $(".checkboxgroup_g1").attr("disabled", true);
       $(".checkboxgroup_g2").attr("disabled", true);
@@ -642,7 +656,6 @@ $(document).ready(function() {
       $('.checkboxgroup_g1').not(this).prop('checked', false);  
       $('.checkboxgroup_g2').not(this).prop('checked', false);  
       $('.checkboxgroup_g3').not(this).prop('checked', false);  
-      $('.checkboxgroup_g4').not(this).prop('checked', false);  
       $('.checkboxgroup_g5').not(this).prop('checked', false);  
       $('.checkboxgroup_g6').not(this).prop('checked', false);  
     } else {
@@ -652,7 +665,10 @@ $(document).ready(function() {
   function enable_cb5() {
     if (this.checked) {
       document.getElementById("changeaccount").disabled = false; 
-     
+      if($('.checkboxgroup_g5').val() == 'New Account')
+      {
+        $('#cb5').not(this).prop('checked', true);  
+      }
 
       $(".checkboxgroup_g5").removeAttr("disabled");
       $(".checkboxgroup_g1").attr("disabled", true);
@@ -665,7 +681,6 @@ $(document).ready(function() {
       $('.checkboxgroup_g2').not(this).prop('checked', false);  
       $('.checkboxgroup_g3').not(this).prop('checked', false);  
       $('.checkboxgroup_g4').not(this).prop('checked', false);  
-      $('.checkboxgroup_g5').not(this).prop('checked', false);  
       $('.checkboxgroup_g6').not(this).prop('checked', false);  
 
     } else {
