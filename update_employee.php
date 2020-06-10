@@ -183,19 +183,15 @@
     }
   }
 
-  $add = "";
-  if($password!=''){
-    $add = ", PSWORD=? , CODE=? ";
-  }
+
 
   $query = "UPDATE $sqltable SET EMP_NUMBER=?,LAST_M=?, FIRST_M=?, MIDDLE_M=?, BIRTH_D=?, SEX_C=?,
   REGION_C=?, PROVINCE_C=?, CITYMUN_C=?,
   POSITION_C=?,
   MOBILEPHONE=?, EMAIL=?, AGENCY_EMP_NO=?,
-  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$e_stats."', UNAME=?$add,DESIGNATION=?,SUFFIX=?,SEX_C=?,LANDPHONE=?,REMARKS_M=? WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
+  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$e_stats."', UNAME=?,DESIGNATION=?,SUFFIX=?,SEX_C=?,LANDPHONE=?,REMARKS_M=? WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
   if ($updateSQL = $DBConn->prepare($query)) 
   { 
-    if($password==''){
       // $selectif = mysqli_query($conn,"SELECT * FROM tblempdetails WHERE EMP_N = '$employee_number'");
       // if (mysqli_num_rows($selectif)>0) {
       //   $updatedetails = mysqli_query($conn,"UPDATE `tblempdetails` SET `EMP_N`='$get_id',`office_contact`='$office_contact',`office_address`='$office_address' WHERE EMP_N = '$employee_number'");
@@ -204,17 +200,30 @@
       // }
       $updateSQL->bind_param("ssssssssssssssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username, $designation,$suffix,$status,$office_contact,$office_address);
       $update_stat = mysqli_query($conn,"UPDATE tblemployeeinfo SET CIVIL_STATUS = '$status' WHERE EMP_N = $cid");
-    }else{
-      $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
+      
+       $user_id = $_GET['id'];
+  if($password!=''){
+    $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
       $password   = crypt($password, '$2a$10$'.$code.'$');
-
-      $updateSQL->bind_param("ssssssssssssssssssssssss", $lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position,  $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division, $access, $username,  $password, $code);
+      $update_ac = mysqli_query($conn,"UPDATE tblemployeeinfo SET PSWORD='$password', CODE='$code' WHERE EMP_N = $user_id ");
+    }else{
+      echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Password does not matched!')
+      </SCRIPT>");
     }
     $updateSQL->execute();
+    if ($update_ac) {
+      # code...
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Updated!')
       window.location.href = 'ViewEmployees.php?division=$division777&username=$username777';
       </SCRIPT>");
+    }else{
+       echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Error Occured!')
+      </SCRIPT>");
+    }
+
   }else{
                 //echo mysqli_connect_error();
   } 
@@ -575,7 +584,32 @@
     </div>
     <!-- username and pw -->
   </div>
-  <div class="well" hidden>
+ <?php if ($_GET['3d'] == 3): ?>
+   <div class="well" >
+    <div class="box-header with-border">
+      <h3 class="box-title">Username and Password</h3>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-xs-4">
+          <label>Username<font style="color:red;">*</font> </label>
+          <input readonly autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
+
+        </div>
+        <div class="col-xs-4">
+          <label>Password<font style="color:red;">*</font> </label>
+          <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
+        </div>
+        <div class="col-xs-4" hidden>
+          <label>Re-type Password<font style="color:red;">*</font></label>
+          <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
+        </div>
+
+      </div>
+    </div>
+  </div> 
+  <?php else: ?>
+     <div class="well" hidden>
     <div class="box-header with-border">
       <h3 class="box-title">Username and Password</h3>
     </div>
@@ -597,7 +631,9 @@
 
       </div>
     </div>
-  </div>  
+  </div> 
+    
+  <?php endif ?> 
   <?php if ($_GET['view'] == 1): ?>
 
     <?php else: ?>
