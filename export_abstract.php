@@ -46,6 +46,7 @@ $SelectedStyleG = array(
 
 $styleContent77 = array('font'  => array('bold'  => true,'size'  => 10, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 $styleContent = array('font'  => array('bold'  => false,'size'  => 9, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
+$styleContent18 = array('font'  => array('bold'  => false,'size'  => 9, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 // $styleContent2 = array('font'  => array('bold'  => true,'size'  => 9, 'name'  => 'Cambria'));
 $styleContent2 = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 $styleContent24 = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
@@ -218,6 +219,7 @@ $rowF = 31;
 $rowG = 33;
 $rowH = 34;
 $rowI = 35;
+$itemno = 1;
 
 $sql_items = mysqli_query($conn, "SELECT rq.id,app.procurement,rq.description,rq.qty,rq.abc,iu.item_unit_title FROM rfq_items rq LEFT JOIN app on app.id = rq.app_id LEFT JOIN item_unit iu on iu.id = rq.unit_id WHERE rfq_id = '$rfq_id' ");
 
@@ -233,8 +235,10 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   // $objPHPExcel->getActiveSheet()->mergeCells('A'.$rowOne.':'.'E'.$rowOne);
   $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne.':'.'E'.$rowOne)->applyFromArray($border);
 
-  $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne)->applyFromArray($styleContent);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowOne,$excelrow['procurement'] ."\n".$excelrow['description']);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne)->applyFromArray($styleContent18);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowOne,$itemno);
+  $objPHPExcel->getActiveSheet()->getStyle('B'.$rowOne)->applyFromArray($styleContent);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowOne,$excelrow['procurement'] ."\n".$excelrow['description']);
   $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($border);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$rowOne,$excelrow['qty']);
@@ -251,6 +255,7 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowOne,number_format($excelrow['abc'],2));
 
   $rowOne++;
+  $itemno++;
   $rowA++;
   $rowB++;
   $rowB1++;
