@@ -26,7 +26,7 @@
   $posted_date = $rows['posted_date'];
   $month = date('M',strtotime($posted_date));
 
-   $sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployee WHERE UNAME = '$username'");
+   $sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployeeinfo WHERE UNAME = '$username'");
                 $rowU = mysqli_fetch_array($sele);
                 $ACCESSTYPE = $rowU['ACCESSTYPE'];
 
