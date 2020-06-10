@@ -97,7 +97,7 @@ $division = $_GET['division'];
 <script src="_includes/sweetalert2.min.js"></script>
 
 <?php 
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13 || $division == 16 ){
       ?>
       <script>
           $(document).ready(function() {
