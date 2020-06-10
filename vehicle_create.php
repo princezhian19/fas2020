@@ -211,7 +211,7 @@ else{
 
                 </td>
                     
-                <td class="col-md-7"  colspan="1">
+                <td class="col-md-8"  colspan="1">
                    
                     <img id="img" class="pull-left"  style="margin-top:0px; margin-bottom:0px; width:100;height:120px;" src='images/male-user.png' title = "" />
                     &nbsp; &nbsp; &nbsp;
@@ -233,7 +233,7 @@ else{
                     dilg4a.calabarzon@gmail.com  www.calabarzon.dilg.gov.ph
                    
                 </td>
-                <td class="col-md-1" >
+                <td class="col-md-0" >
                 
                 </td>
 
@@ -616,7 +616,7 @@ else{
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100;" name="returndate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returndate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
                         </td>   
                       <!--  Return Date: -->  
                        <!--  Return Time: -->
