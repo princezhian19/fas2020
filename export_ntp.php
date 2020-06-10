@@ -41,10 +41,30 @@ $supplier_title = $row2['supplier_title'];
 $supplier_address = $row2['supplier_address'];
 $contact_person = $row2['contact_person'];
 
-$sql3 = mysqli_query($conn, "SELECT pr.purpose,pr.pmo FROM pr LEFT JOIN rfq on rfq.pr_no = pr.pr_no WHERE rfq.id = $rfq_id ");
+$sql3 = mysqli_query($conn, "SELECT pr.purpose,pr.pmo,pr.type FROM pr LEFT JOIN rfq on rfq.pr_no = pr.pr_no WHERE rfq.id = $rfq_id ");
 $row3 = mysqli_fetch_array($sql3);
 $purpose = $row3['purpose'];
 $pmo = $row3['pmo'];
+$type = $row3['type'];
+
+if ($type == 1) {
+  $type = 'Catering Services';
+}
+if ($type == 2) {
+  $type = 'Meals, Venue and Accommodation';
+}
+if ($type == 3) {
+  $type = 'Repair and Maintenance';
+}
+if ($type == 4) {
+  $type = 'Supplies, Materials and Devices';
+}
+if ($type == 5) {
+  $type = 'Other Services';
+}
+if ($type == 6) {
+  $type = 'Reimbursement and Petty Cash';
+}
 
 
 $select_rfqitems = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id");
@@ -65,7 +85,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('A16',$supplier_title);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A43',"                     ".$supplier_title);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A17',$supplier_address);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A20','Dear Mr./Ms. '.$contact_person);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A23',$supplier_title.'that the Procurement of '.$purpose.' shall commence upon receipt of the Notice to Proceed. ');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A23',$supplier_title.' that the Procurement of '.$type.' for the '.$purpose.' shall commence upon receipt of the Notice to Proceed. ');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C37',$designation);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');

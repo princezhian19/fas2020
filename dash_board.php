@@ -47,10 +47,23 @@ if (isset($_POST['update'])) {
     <div class="col-md-3">
       <div class="box">
         <div class="panel-heading bg-blue">
-         <img class="direct-chat-img" src="images/male-user.png" alt="message user image">
-         <font class="text-center">PHILIPPINES STANDARD TIME </font><!-- Item(s) -->
-         <img class="direct-chat-img pull-right" src="images/ph.png" alt="message user image">
-         <div class="clearfix"></div>
+        <table class="">
+            <tr>
+              <td class="col-md-0">
+              <img class="direct-chat-img" src="images/male-user.png" alt="message user image">    
+              </td>
+              <td class="col-md-12" >
+               <div style="overflow-x:auto;"> 
+              <h5>PHILIPPINES STANDARD TIME</h5>
+                </div> 
+              </td>
+              <td class="col-md-0">
+              <img class="direct-chat-img" src="images/ph.png" alt="message user image">
+              </td>
+              
+          </tr>
+          </table>
+         <!-- <div class="clearfix"></div> -->
        </div>
 
        <p><h3><div class="text-center" id="clock">--:--:--</div></h3></p>

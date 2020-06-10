@@ -79,14 +79,14 @@
                  <?php echo tblpersonnel($connect)?>
               </select>
             </div>
+        </form>
               <div class="col-xs-1" style="padding-top: 5px;">
               <br>
-            <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>">Export</a>
+            <a style="float:right;" href="javascript:void(0);" class="btn btn-primary link" data-id="<=$data['id']?>">Generate</a>
             </div>
 
           </div>
         </div>
-        </form>
         <br>
         <br>
         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
