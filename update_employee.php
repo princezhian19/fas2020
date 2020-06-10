@@ -192,14 +192,14 @@
   MOBILEPHONE=?, EMAIL=?, AGENCY_EMP_NO=?,
   SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$e_stats."', UNAME=?$add,DESIGNATION=?,SUFFIX=?,SEX_C=? WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
   if ($updateSQL = $DBConn->prepare($query)) 
-  {
+  { 
     if($password==''){
-      $selectif = mysqli_query($conn,"SELECT * FROM tblempdetails WHERE EMP_N = '$employee_number'");
-      if (mysqli_num_rows($selectif)>0) {
-        $updatedetails = mysqli_query($conn,"UPDATE `tblempdetails` SET `EMP_N`='$get_id',`office_contact`='$office_contact',`office_address`='$office_address' WHERE EMP_N = '$employee_number'");
-      }else{
-        $insertdetails = mysqli_query($conn,"INSERT INTO `tblempdetails`(`EMP_N`, `office_contact`, `office_address`) VALUES ('$get_id','$office_contact','$office_address')");
-      }
+      // $selectif = mysqli_query($conn,"SELECT * FROM tblempdetails WHERE EMP_N = '$employee_number'");
+      // if (mysqli_num_rows($selectif)>0) {
+      //   $updatedetails = mysqli_query($conn,"UPDATE `tblempdetails` SET `EMP_N`='$get_id',`office_contact`='$office_contact',`office_address`='$office_address' WHERE EMP_N = '$employee_number'");
+      // }else{
+      //   $insertdetails = mysqli_query($conn,"INSERT INTO `tblempdetails`(`EMP_N`, `office_contact`, `office_address`) VALUES ('$get_id','$office_contact','$office_address')");
+      // }
       $updateSQL->bind_param("ssssssssssssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username, $designation,$suffix,$status);
       $update_stat = mysqli_query($conn,"UPDATE tblemployeeinfo SET CIVIL_STATUS = '$status' WHERE EMP_N = $cid");
     }else{
