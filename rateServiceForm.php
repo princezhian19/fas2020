@@ -1241,7 +1241,7 @@ var c_n = $('#control_no').val();
                   setTimeout(function () {
                   swal("Record saved successfully!");
                   }, 3000);
-                  window.location = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?PHP echo $_GET['id'];?>";
+                  // window.location = "processing.php?division=<?php echo $_GET['division'];?>&ticket_id=";
               }
             });
         });
