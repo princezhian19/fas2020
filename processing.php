@@ -286,7 +286,7 @@ function filldataTable()
                     }
                 }else{
                     ?>
-                <button   disabled class = "btn btn-danger btn-md col-lg-12 ">Rated Date</button>
+                <button   disabled class = "btn btn-danger btn-md col-lg-12 ">Rated Service</button>
 <?php
                 }
 
