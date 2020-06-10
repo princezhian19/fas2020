@@ -481,7 +481,7 @@ switch($req_type_subcategory)
         case 'Troubleshooting':
             $PHPJasperXML->arrayParameter=array(
                                     "control_no"=>$control_no,"started_date"=>$started_date,
-                                    "timeli[ness"=>$timeliness,
+                                    "timeliness"=>$timeliness,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category4"=>'correct.png',
