@@ -90,7 +90,7 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                       $timeliness = $row['TIMELINESS'];
                     
                       
-                      $quality = $row['STATUS'];
+                      $quality = $row['QUALITY'];
 
                       $assisted_by =strtoupper($row['ASSIST_BY']);
                      
