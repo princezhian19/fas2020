@@ -138,13 +138,13 @@
           POSITION_C, DESIGNATION, 
           MOBILEPHONE, EMAIL, ALTER_EMAIL, AGENCY_EMP_NO, 
           CODE, UNAME, PSWORD, DATE_CREATED,
-          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE,SUFFIX,CIVIL_STATUS,ACTIVATED)
+          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE,SUFFIX,CIVIL_STATUS,ACTIVATED,REMARKS_M)
           VALUES (    ?, ?, ?, ?, ?, 
           ?, ?, ?, ?, 
           ?, ?, 
           ?, ?, ?, ?, 
           ?, ?, ?, ?,
-          ?, ?, ?, ?, '".$access."', 'user',?,?,?,?)";
+          ?, ?, ?, ?, '".$access."', 'user',?,?,?,?,?)";
 
 
           if ($insertSQL = $DBConn->prepare($sql_insert_query)) 
@@ -153,7 +153,7 @@
            $date_created   = date("Y-m-j H:i:s");
            $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
            $password   = crypt($password, '$2a$10$'.$code.'$');
-           $insertSQL->bind_param("ssssssddddsssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $designation, $cellphone, $email, $alter_email, $employee_number, $code, $username, $password, $date_created, $cluster, $contact, $office, $division,$target_file,$suffix,$status,$e_stats);
+           $insertSQL->bind_param("ssssssddddsssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $designation, $cellphone, $email, $alter_email, $employee_number, $code, $username, $password, $date_created, $cluster, $office_contact, $office, $division,$target_file,$suffix,$status,$e_stats,$office_address);
            /* execute query */
            $insertSQL->execute();
 

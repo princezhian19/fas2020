@@ -89,6 +89,8 @@
       $alter_email  = $row["ALTER_EMAIL"];  
       $suffix  = $row["SUFFIX"];  
       $status          = $row["CIVIL_STATUS"]; 
+      $office_address = $data['REMARKS_M'];
+      $office_contact = $data['LANDPHONE'];
     }
   }
   
@@ -190,7 +192,7 @@
   REGION_C=?, PROVINCE_C=?, CITYMUN_C=?,
   POSITION_C=?,
   MOBILEPHONE=?, EMAIL=?, AGENCY_EMP_NO=?,
-  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$e_stats."', UNAME=?$add,DESIGNATION=?,SUFFIX=?,SEX_C=? WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
+  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$e_stats."', UNAME=?$add,DESIGNATION=?,SUFFIX=?,SEX_C=?,LANDPHONE=?,REMARKS_M=? WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
   if ($updateSQL = $DBConn->prepare($query)) 
   { 
     if($password==''){
@@ -200,7 +202,7 @@
       // }else{
       //   $insertdetails = mysqli_query($conn,"INSERT INTO `tblempdetails`(`EMP_N`, `office_contact`, `office_address`) VALUES ('$get_id','$office_contact','$office_address')");
       // }
-      $updateSQL->bind_param("ssssssssssssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username, $designation,$suffix,$status);
+      $updateSQL->bind_param("ssssssssssssssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username, $designation,$suffix,$status,$office_contact,$office_address);
       $update_stat = mysqli_query($conn,"UPDATE tblemployeeinfo SET CIVIL_STATUS = '$status' WHERE EMP_N = $cid");
     }else{
       $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
@@ -442,10 +444,7 @@
           </div>
           <div class="col-xs-4">
             <label>Office Contact No</label>
-            <?php $getThis = mysqli_query($conn,"SELECT * FROM tblempdetails WHERE EMP_N = '$EMP_NUMBER1'");
-            $data = mysqli_fetch_array($getThis);
-            $office_address = $data['office_address'];
-            $office_contact = $data['office_contact'];?>
+           
             <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-2647-434">
           </div>
           <br>
