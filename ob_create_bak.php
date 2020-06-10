@@ -219,7 +219,7 @@ else{
                     
                     <tr>
                        
-                       <td class="col-md-5"><input  type="time" class="form-control" style="height: 35px;" style="display:block" name="timeto" id="timeto"></td>
+                       <td class="col-md-5"><input  type="time" class="form-control" style="height: 35px;"  name="timeto" id="timeto"></td>
                     </tr>
 
                     <tr>
