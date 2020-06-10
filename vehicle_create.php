@@ -344,26 +344,25 @@ else{
 
                      
                       <td class="col-md-1 " style=" border:1px solid black; text-align:center; ">
-                      
-                      <input type="checkbox" class="form-check-input " id="dropoff">
-                      <input readonly  type="text" class="" style=" text-align:center; border:none; font-weight:bold; font-size:12px; height: 30px; width:60%;" name="" id="" value = "Drop Off" >
+                      <input type="checkbox"  onclick="myFunction()" class = "checkboxgroup_g1" id="dropoff">
+                      <input readonly  type="text" style=" text-align:center; border:none; font-weight:bold; font-size:12px; height: 30px; width:60%;" name="" id="" value = "Drop Off" >
                       </td>
 
                       <td class="col-md-1 " style=" border:1px solid black; text-align:center;">
-                      <input type="checkbox" class="form-check-input " id="pickup">
+                      <input type="checkbox" onclick="myFunction()" class = "checkboxgroup_g2" id="pickup">
                       <input readonly  type="text" class="" style=" text-align:left; border:none; font-weight:bold; font-size:14px; height: 30px; width:60%;" name="" id="" value = "Pick-up" >
                        
                       </td>
 
                       <td class="col-md-1 " style=" border:1px solid black; text-align:center; ">
-                      <input type="checkbox" class="form-check-input " id="pickup">
+                      <input type="checkbox" onclick="myFunction()" class = "checkboxgroup_g3" id="wholeday">
                       <input readonly  type="text" class="" style=" text-align:center; border:none; font-weight:bold; font-size:12px; height: 30px; width:70%;" name="" id="" value = "Whole Day" >
                        
                       </td>
 
                       <td class="col-md-2 " style=" border:1px solid black; text-align:center; ">
-                      <input type="checkbox" class="form-check-input " id="days">
-                      <input   type="number" class="" style=" text-align:center; border:none;border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 30px; width:40%;" name="nod" id="" value = "0" >
+                      <input type="checkbox" onclick="myFunction()" class = "checkboxgroup_g4" id="days">
+                      <input  disabled type="number" class="" style=" text-align:center; border:none;border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 30px; width:40%;" name="nod" id="nod" value = "" placeholder="0">
                       <input readonly  type="text" class="" style=" text-align:left; border:none; font-weight:bold; font-size:12px; height: 30px; width:40%;" name="" id="" value = "Day/s" >
                        
                       </td>
@@ -1353,6 +1352,106 @@ function myFunction() {
       showInputs: true
     })
   })
+</script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script>
+function myFunction() {
+  var dropoff = document.getElementById("dropoff");
+  var pickup = document.getElementById("pickup");
+  var wholeday = document.getElementById("wholeday");
+  var days = document.getElementById("days");
+
+  var check = $("input[name='check']");
+
+  
+  
+  if (dropoff.checked == true)
+  {
+
+    $("#nod").attr("disabled", "disabled");
+
+    check.val('dropoff');
+    alert(check.val());
+    
+  }
+
+  else if (pickup.checked == true)
+  {
+    $("#nod").attr("disabled", "disabled");
+    check.val('pickup');
+    alert(check.val());
+    
+  }
+  else if (wholeday.checked == true)
+  {
+    $("#nod").attr("disabled", "disabled");
+
+    check.val('wholeday');
+    alert(check.val());
+    
+  }
+  else if (days.checked == true)
+  {
+   
+   
+        $("#nod").removeAttr("disabled");
+        $("#nod").focus();
+        check.val('Day/s');
+        alert(check.val());
+   
+  }
+}
+
+</script>
+
+<script>
+$(document).ready(function(){
+
+  var check = $("input[name='check']");
+
+  $('.checkboxgroup_g1').on('change', function() {
+      $('.checkboxgroup_g2').not(this).prop('checked', false);  
+      $('.checkboxgroup_g3').not(this).prop('checked', false); 
+      $('.checkboxgroup_g4').not(this).prop('checked', false);
+      check.val('dropoff');
+  });
+
+  
+  $('.checkboxgroup_g2').on('change', function() {
+      $('.checkboxgroup_g1').not(this).prop('checked', false);  
+    
+      $('.checkboxgroup_g3').not(this).prop('checked', false); 
+      $('.checkboxgroup_g4').not(this).prop('checked', false);
+      check.val('pickup');
+
+  });
+  $('.checkboxgroup_g3').on('change', function() {
+    $('.checkboxgroup_g1').not(this).prop('checked', false);  
+    
+    $('.checkboxgroup_g2').not(this).prop('checked', false); 
+    $('.checkboxgroup_g4').not(this).prop('checked', false); 
+    check.val('wholeday'); 
+  });
+
+  
+  $('.checkboxgroup_g4').on('change', function() {
+    $('.checkboxgroup_g1').not(this).prop('checked', false);  
+    
+    $('.checkboxgroup_g2').not(this).prop('checked', false); 
+    $('.checkboxgroup_g3').not(this).prop('checked', false);
+    $("#nod").removeAttr("disabled");
+    $("#nod").focus();
+    check.val('Day/s');
+    
+    
+  });
+  
+
+});
 </script>
 
 
