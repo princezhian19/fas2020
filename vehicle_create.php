@@ -572,7 +572,7 @@ else{
                        <!--  Departure Date: -->
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
                         
-                        <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Departure Date:" >
+                        <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:11px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Departure Date:" >
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
@@ -581,7 +581,7 @@ else{
                       <!--  Departure Date: -->  
                        <!--  Departure Time: -->
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
-                        <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Departure Time:" >
+                        <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:11px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Departure Time:" >
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
@@ -616,7 +616,7 @@ else{
                        <!--  Return Date: -->
                        <td class="col-md-1" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
                         
-                        <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Departure Date:" >
+                        <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:11px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Return Date:" >
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
@@ -625,7 +625,7 @@ else{
                       <!--  Return Date: -->  
                        <!--  Return Time: -->
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
-                        <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Departure Time:" >
+                        <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:11px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Return Time:" >
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
@@ -944,12 +944,41 @@ else{
                         <input readonly required type="text" class="" style="text-align:center; border:none; font-size:20px; background-color:#CFD8DC; font-weight:bold; height: 20px; width:100%;" name="" id="" value = "D. APPROVAL/DISAPPROVAL" >
                         </td>
 
+                       
+
                         <td class="col-md-1">
 
                         </td> 
 
                         </tr>
+
+                        <!-- D11 -->
+                        <tr>
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        <td colspan=8 class=" label-text" style=" border:1px solid black;">
+                        <input type="checkbox" class="form-check-input " id="dropoff" >
+                        <input readonly  type="text" class="" style=" text-align:left; border:none; font-weight:bold; font-size:20px; height: 30px; width:60%;" name="" id="" value = "APPROVED" >
+                       
+                        </td>
+
+                       
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        </tr>
+
+
+
+
                         <!-- D1 -->
+
+                        
                         <tr>
 
                         <td class="col-md-1">
@@ -1056,8 +1085,143 @@ else{
                         </td> 
 
                         </tr>
+
+                        <!-- D4 -->
+                        <tr>
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        <td colspan=4 class=" label-text" style=" border:1px solid black; text-align:left; ">
+                        <input type="checkbox" class="form-check-input " id="dropoff" >
+                        <input readonly  type="text" class="" style=" text-align:left; border:none; font-weight:bold; font-size:20px; height: 30px; width:60%;" name="" id="" value = "DISAPPROVED" >
+                       
+                        </td>
+
+                        <td rowspan="2" class=" label-text" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+
+                        <input readonly required type="text" class="" style="margin-top:30px;text-align:center; border:none; background-color:#CFD8DC; font-size:15px; font-weight:bold; height: 20px; width:100%;" name="" id="" value = "Reason/s:" >
+                       
+                        </td>
+
+                        <td colspan=3 rowspan="2" class=" label-text" style=" border:1px solid black; text-align:center;">
+
+
+                       
+                        </td>
+
+                    
+
+                        <td class="col-md-1">
+
+                        </td> 
+
+                        </tr>
+
+                          <!-- D5 -->
+                          <tr>
+
+                          <td class="col-md-1">
+
+                          </td> 
+
+                            <td class="col-md-1 " style=" border:1px solid black; text-align:center; background-color:#CFD8DC; ">
+                            <input readonly required type="text" class="" style="margin-top:10px;text-align:center; border:none; background-color:#CFD8DC; font-size:15px; font-weight:bold; height: 20px; width:100%;" name="" id="" value = "Date:" >
+                            </td>
+
+                            <td class="col-md-1 " style=" border:1px solid black; text-align:center;  ">
+                            
+                            </td>
+
+                            <td class="col-md-1 " style=" border:1px solid black; text-align:center; background-color:#CFD8DC; ">
+                            <input readonly required type="text" class="" style="margin-top:10px;text-align:center; border:none; background-color:#CFD8DC; font-size:15px; font-weight:bold; height: 20px; width:100%;" name="" id="" value = "Time:" >
+                            </td>
+
+                            <td class="col-md-1 " style=" border:1px solid black; text-align:center; ">
+                         
+                            </td>
+                         
+                          <td class="col-md-1">
+
+                          </td> 
+
+                          </tr>
                       <!-- D -->
 
+                      <!-- D(1) -->
+                      <tr>
+
+                      <td class="col-md-1">
+
+                      </td> 
+
+                      <td colspan=8 class=" label-text" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+
+                      <input readonly required type="text" class="" style="text-align:center; border:none; font-size:20px; background-color:#CFD8DC; font-weight:bold; height: 20px; width:100%;" name="" id="" value = "D. SERVE COPY TO REQUESTING OFFICE " >
+                      </td>
+
+
+
+                      <td class="col-md-1">
+
+                      </td> 
+
+                      </tr>
+
+                      <td class="col-md-1">
+
+                      </td> 
+
+                      <td class="col-md-1 " style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                      <input readonly  required type="text" class="" style=" margin-top:0px;text-align:left; border:none;  font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "Served" >
+                      <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:12px; background-color:#CFD8DC; font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "Date:" >
+
+                      </td>
+
+                      <td class="col-md-2 " style=" border:1px solid black; text-align:center; ">
+
+
+                      </td>
+
+                      <td class="col-md-1 " style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+
+                      <input readonly  required type="text" class="" style=" margin-top:0px;text-align:left; border:none;  font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "Served" >
+                      <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:12px; background-color:#CFD8DC; font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "Time:" >
+                      </td>
+
+                      <td class="col-md-1 " style=" border:1px solid black; text-align:center; ">
+
+
+                      </td>
+
+
+                      <td class="col-md-1 " style=" border:1px solid black; text-align:center; background-color:#CFD8DC; ">
+
+                      <input readonly  required type="text" class="" style=" margin-top:0px;text-align:left; border:none;  font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "Served " >
+                      <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:12px; background-color:#CFD8DC; font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "To:" >
+                      </td>
+
+                      <td class="col-md-1 " style=" border:1px solid black; text-align:center;">
+
+                      </td>
+
+                      <td class="col-md-1 " style=" border:1px solid black; text-align:center; background-color:#CFD8DC; ">
+                      <input readonly  required type="text" class="" style="text-align:left; border:none; font-size:13 px; background-color:#CFD8DC; font-weight:bold; height: 25px; width:100%;" name="" id="" value = "Signature:" >
+                 
+                      </td>
+
+                      <td class="col-md-2 " style=" border:1px solid black; text-align:center; ">
+
+
+                      </td>
+
+                      <td class="col-md-1">
+
+                      </td>
+
+                      </tr>
+                      <!-- D(1) -->
                 </table>
 
 
