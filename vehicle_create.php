@@ -463,7 +463,7 @@ else{
                        
                         </td>
                         <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
-                        <input  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 100px; width:100%;" name="destination" id="destination" value = "" placeholder="Destination" >
+                        <input required  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 100px; width:100%;" name="destination" id="destination" value = "" placeholder="Destination" >
                        
                         </td>
 
@@ -488,7 +488,7 @@ else{
                         </td>
 
                         <td colspan=3 style=" border:1px solid black; text-align:center; ">
-                        <input   type="number"   class="" style=" text-align:left; border:none; border-bottom:1px solid black; font-size:15px; height: 40px; width:100%;" id="mobile" placeholder="Mobile" name="mobile" value = "">
+                        <input   type="number"   class="" style=" text-align:left; border:none; border-bottom:1px solid black; font-size:15px; height: 40px; width:100%;" id="mobile" placeholder="Mobile (Optional)" name="mobile" value = "">
                         </td>
 
 
@@ -549,7 +549,7 @@ else{
                         <input readonly  required type="text" class="" style=" margin-top:0px;text-align:left; border:none;  font-size:13px;  font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "No of " >
                         <input readonly  required type="text" class="" style=" margin-top:0px;text-align:left; border:none;  font-size:12px;  font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "Passengers:" >
                         <br>
-                        <input  required type="number" class="" style=" margin-top:0px;text-align:left; border:none; border-bottom:1px solid black;  font-size:13px; height: 30px; width:100%; "  name="nop" id="nop" value = "" >
+                        <input required type="number" class="" style=" margin-top:0px;text-align:left; border:none; border-bottom:1px solid black;  font-size:13px; height: 30px; width:100%; "  name="nop" id="nop" value = "" placeholder="0" >
                         </td> 
                         
 
