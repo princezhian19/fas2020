@@ -19,7 +19,7 @@ foreach ($words as $w) {
 $name = $FIRST_M.' '.$acronym.'.'.' '.$LAST_M;
 
 
-$sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployee WHERE UNAME = '$username'");
+$sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployeeinfo WHERE UNAME = '$username'");
 $rowU = mysqli_fetch_array($sele);
 $ACCESSTYPE = $rowU['ACCESSTYPE'];
 

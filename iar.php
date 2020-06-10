@@ -1,3 +1,18 @@
+  <?php 
+  $idGet='';
+  $getDate = date('Y');
+  $m = date('m');
+  $auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM iar order by id desc limit 1");
+  while ($row = mysqli_fetch_assoc($auto)) {
+
+    $idGet = $row["a"];
+  }
+
+  $latest_pr_no = $getDate.'-'.$m.'-'.'0'.$idGet;
+
+
+  ?>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
@@ -92,7 +107,7 @@
             </div>
             <div class="col-xs-3">
               <label>Iar No. : </label>
-              <input type="text" class="form-control" style="height: 40px;" id="iar_no" placeholder="" name="iar_no">
+              <input type="text" class="form-control" style="height: 40px;" id="iar_no" value="<?php echo $latest_pr_no?>" name="iar_no">
             </div>
             <div class="col-xs-3">
               <label>Iar Date : </label>

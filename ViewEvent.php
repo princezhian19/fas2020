@@ -71,7 +71,7 @@ $events = $req->fetchAll();
 function viewEvents()
 {
     include 'connection.php';
-    $sqlQuery = "SELECT * FROM events INNER JOIN tblemployee on events.postedby = tblemployee.EMP_N where events.id = ".$_GET['eventid']."";
+    $sqlQuery = "SELECT * FROM events INNER JOIN tblemployeeinfo on events.postedby = tblemployeeinfo.EMP_N where events.id = ".$_GET['eventid']."";
     $result = mysqli_query($conn, $sqlQuery);
     $eventArray = array();
     if ($row = mysqli_fetch_array($result)) {
@@ -135,7 +135,7 @@ function viewEvents()
 <body >
 <div class="wrapper">
 <?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('test1.php'); }else{ include('sidebar2.php'); }
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); }else{ include('sidebar2.php'); }
  ?>
   <?php include('connection.php');?>
   

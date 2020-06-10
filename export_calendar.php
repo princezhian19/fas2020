@@ -43,7 +43,7 @@ $year = $_GET['year'];
 $office = $_GET['office_id'];
 
 $sql_q10 = mysqli_query($conn, "SELECT e.title,e.start,e.end,e.posteddate,DIVISION_M, e.venue,e.enp,e.remarks,te.UNAME FROM events e 
-LEFT JOIN tblemployee te on te.EMP_N = e.postedby
+LEFT JOIN tblemployeeinfo te on te.EMP_N = e.postedby
 LEFT JOIN tblpersonneldivision on e.office = tblpersonneldivision.DIVISION_N
 WHERE office IN(".$office.") and e.cancelflag = 0 and MONTH(start) = '".$_GET['month']."' and YEAR(start) = '".$_GET['year']."'");
     if (mysqli_num_rows($sql_q10)>0) {

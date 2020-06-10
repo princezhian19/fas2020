@@ -117,7 +117,7 @@ $id = $rowpo['id'];
             <!-- /.modal-dialog -->
         </div>
 
-        <!-- <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?> -->
+        <!-- <?php if ($username == 'charlesodi' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti'  ): ?> -->
         <!-- <?php else: ?> -->
         <!-- <a href="ViewPR.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a> -->
         <!-- <?php endif ?> -->

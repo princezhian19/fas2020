@@ -46,9 +46,9 @@
     return $output;
   }
 
-  $sqltable   = "tblemployee";
+  $sqltable   = "tblemployeeinfo";
 
-  $checkQuery = "SELECT * FROM tblemployee a LEFT JOIN tblpersonneldivision b on b.DIVISION_N = a.DIVISION_C LEFT JOIN tbldesignation c on c.DESIGNATION_ID = a.DESIGNATION LEFT JOIN tbldilgposition d on d.POSITION_ID = a.POSITION_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1";
+  $checkQuery = "SELECT * FROM tblemployeeinfo a LEFT JOIN tblpersonneldivision b on b.DIVISION_N = a.DIVISION_C LEFT JOIN tbldesignation c on c.DESIGNATION_ID = a.DESIGNATION LEFT JOIN tbldilgposition d on d.POSITION_ID = a.POSITION_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1";
 
   $checkQuery1 = mysqli_query($conn,"SELECT c.province_id,c.province_title FROM $sqltable a LEFT JOIN tblprovinse c on c.province_id = a.PROVINCE_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1");
   $row1 = mysqli_fetch_array($checkQuery1);
@@ -124,11 +124,16 @@
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
+    $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
+      $password   = crypt($password, '$2a$10$'.$code.'$');
+      echo "UPDATE tblemployeeinfo SET PSWORD = '$password', SHOWDETAILS = 'No',CODE = '$code' "; exit;
+      $update = mysqli_query($conn,"UPDATE tblemployeeinfo SET PSWORD = '$password', SHOWDETAILS = 'No',CODE = '$code' ");exit;
+
     if(!empty(basename($_FILES["image"]["name"])))
     {
       if(!empty($_FILES["image"]["name"]))
       {
-        $update_image = mysqli_query($conn,"UPDATE tblemployee SET PROFILE = '$target_file' WHERE EMP_N = '".$_GET['id']."' ");
+        $update_image = mysqli_query($conn,"UPDATE tblemployeeinfo SET PROFILE = '$target_file' WHERE EMP_N = '".$_GET['id']."' ");
             // Check if file already exists
         if (file_exists($target_file)) 
         {

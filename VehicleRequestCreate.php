@@ -52,7 +52,7 @@ $division = $_GET['division'];
   </style>
 </head>
 <?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rdmiranda') { include('test1.php'); }else{ include('sidebar2.php'); }
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); }else{ include('sidebar2.php'); }
  ?>
 
 <body class="hold-transition skin-red-light sidebar-mini">
@@ -114,3 +114,43 @@ $division = $_GET['division'];
 </script>
 </body>
 </html>
+
+<script>
+
+$(document).ready(function(){
+  $('#datepicker1').datepicker({
+      autoclose: true
+    })
+});
+
+$(document).ready(function(){
+  $('#datepicker2').datepicker({
+      autoclose: true
+    })
+});
+
+
+$(document).ready(function(){
+  $('#datepicker3 ').datepicker({
+      autoclose: true
+    })
+});
+
+
+$(document).ready(function(){
+  $('.timepicker1').datepicker({
+      autoclose: true
+    })
+});
+
+$(document).ready(function(){
+  $('.timepicker2').datepicker({
+      autoclose: true
+    })
+});
+
+$( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $(".datePicker1").datepicker().datepicker("setDate", new Date());
+
+   
+</script>

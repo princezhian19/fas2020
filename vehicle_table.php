@@ -18,7 +18,7 @@ $division = $_SESSION['division'];
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
   //Get Office
-$select_user = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,DIVISION_C FROM tblemployee WHERE UNAME = '$username1'");
+$select_user = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username1'");
 $rowdiv = mysqli_fetch_array($select_user);
 $DIVISION_C = $rowdiv['DIVISION_C'];
 $f = $rowdiv['FIRST_M'];
@@ -29,7 +29,7 @@ $fullname = $f.' '.$m.' '.$l;
 
 
 //Get Office
-$select_user = mysqli_query($conn,"SELECT DIVISION_C, DESIGNATION FROM tblemployee WHERE UNAME = '$username'");
+$select_user = mysqli_query($conn,"SELECT DIVISION_C, DESIGNATION FROM tblemployeeinfo WHERE UNAME = '$username'");
 $rowdiv = mysqli_fetch_array($select_user);
 $DIVISION_C = $rowdiv['DIVISION_C'];
 $DESIGNATION = $rowdiv['DESIGNATION'];
@@ -103,8 +103,9 @@ $edit="edit";
                   <th width = ''>TYPE</th>
                   <th width = ''>NAME</th>
                   <th width = ''>OFFICE</th>
-                  <th width = ''>POSITION/DESIGNATION</th>
+                  <th width = ''>POSITION</th>
                   <th width = ''>MOBILE NO</th>
+                  <th width = ''>REMARKS</th>
                   <th width = ''>PURPOSE</th>
                   <th width = ''>DESTINATION</th>
                   <th width = ''>NO OF PASSENGERS</th>
@@ -157,6 +158,7 @@ $edit="edit";
                   $office = $row['office'];
                   $position = $row['position'];
                   $mobile = $row['mobile'];
+                  $remarks = $row['remarks'];
                   $purpose = $row['purpose'];
                   $destination = $row['destination'];
                   $nop = $row['nop'];
@@ -219,6 +221,7 @@ $edit="edit";
                 <td><?php echo  $office?></td>
                 <td><?php echo  $position?></td>
                 <td><?php echo  $mobile?></td>
+                <td><?php echo  $remarks?></td>
                 <td><?php echo  $purpose?></td>
                 <td><?php echo  $destination?></td>
                 <td><?php echo  $nop?></td>

@@ -17,7 +17,7 @@ $currentuser=3174;
 
 
 
-$stmt = $bdd->query("SELECT * FROM tblemployee where EMP_N = '$currentuser'");
+$stmt = $bdd->query("SELECT * FROM tblemployeeinfo where EMP_N = '$currentuser'");
 while ($row = $stmt->fetch()) {
 	$lastname = $row['LAST_M'];
 	$firstname = $row['FIRST_M'];

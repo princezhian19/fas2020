@@ -26,7 +26,7 @@
   $posted_date = $rows['posted_date'];
   $month = date('M',strtotime($posted_date));
 
-   $sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployee WHERE UNAME = '$username'");
+   $sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployeeinfo WHERE UNAME = '$username'");
                 $rowU = mysqli_fetch_array($sele);
                 $ACCESSTYPE = $rowU['ACCESSTYPE'];
 
@@ -79,14 +79,14 @@
                  <?php echo tblpersonnel($connect)?>
               </select>
             </div>
-        </form>
               <div class="col-xs-1" style="padding-top: 5px;">
               <br>
-            <a style="float:right;" href="javascript:void(0);" class="btn btn-primary link" data-id="<=$data['id']?>">Generate</a>
+            <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>">Export</a>
             </div>
 
           </div>
         </div>
+        </form>
         <br>
         <br>
         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
@@ -173,7 +173,8 @@
       var office = $('#office').val();
 
       window.location = 
-      'export_employee.php?office='+office+'&pr_no='+pr_no;
+      'export_employee.php?office='+office;
+      // 'export_employee.php?office='+office+'&pr_no='+pr_no;
   });
 }) ;
 </script>

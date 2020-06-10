@@ -10,13 +10,13 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
   $_SESSION['username'] = $username ;
 
-  $sqlUsername = mysqli_query($conn,"SELECT CODE FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' LIMIT 1");
+  $sqlUsername = mysqli_query($conn,"SELECT CODE FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($_POST['username'])."' LIMIT 1");
   $row = mysqli_fetch_array($sqlUsername);
   $salt       = $row['CODE'];
   $password  = crypt($_POST['password'], '$2a$10$'.$salt.'$');
 
   // ===============================================
-  $query = "SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1 ";
+  $query = "SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1 ";
   $result = mysqli_query($conn, $query);
   $val = array();
 
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
   </SCRIPT>");
 }
   // ===============================================
-  // $sql = mysqli_query($conn,"SELECT * FROM tblemployee WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1");
+  // $sql = mysqli_query($conn,"SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($_POST['username'])."' AND PSWORD = '".$password."' AND ACTIVATED = 'Yes' AND BLOCK = 'N' LIMIT 1");
   // $row = mysqli_fetch_array($sql);
   // $division =$row['DIVISION_C'];
   // $division2 = $row['DIVISION_C'];

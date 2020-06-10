@@ -286,7 +286,7 @@ function submittedReq()
 
     while($row = mysqli_fetch_array($result))
     {
-        $query1 = 'SELECT CONCAT(`FIRST_M`," ",`LAST_M`)AS NAME ,`UNAME` FROM `tblemployee`  WHERE CONCAT(`FIRST_M`," ",`LAST_M`) = "'.$row['ASSIST_BY'].'"';       
+        $query1 = 'SELECT CONCAT(`FIRST_M`," ",`LAST_M`)AS NAME ,`UNAME` FROM `tblemployeeinfo`  WHERE CONCAT(`FIRST_M`," ",`LAST_M`) = "'.$row['ASSIST_BY'].'"';       
         $result1 = mysqli_query($conn, $query1);
         while($row1 = mysqli_fetch_array($result1))
         {
