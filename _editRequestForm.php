@@ -80,7 +80,7 @@ function fillTableInfo()
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Email Address:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "email" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $email;?>" disabled/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "email" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['EMAIL_ADD'];?>" disabled/></td>
                                     <td class = "label-text left-text">MAC Address:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MAC_ADDRESS'];?>" disabled/></td>
                                 </tr>
