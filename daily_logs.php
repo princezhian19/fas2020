@@ -304,7 +304,7 @@ if (isset($_POST['stamp4'])) {
             <th width="">AM DEPARTURE</th>
             <th width="">PM ARIVAL</th>
             <th width="">PM DEPARTURE</th>
-            <th width="">UNDERTIME HOURSE</th>
+            <th width="">UNDERTIME HOURS</th>
             <th width="">UNDERTIME MINUTES</th>
           </tr>
         </thead>
