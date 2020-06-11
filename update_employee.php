@@ -493,11 +493,11 @@
           <?php if ($status == 'Single'): ?>
            <select class="form-control select2" name="status">
             <option value="Single">Single</option>
-            <option value="Maried">Maried</option>
+            <option value="Maried">Married</option>
           </select>
           <?php else: ?>
             <select class="form-control select2" name="status">
-              <option value="Maried">Maried</option>
+              <option value="Maried">Married</option>
               <option value="Single">Single</option>
             </select>
           <?php endif ?>
