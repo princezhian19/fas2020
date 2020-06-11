@@ -458,7 +458,8 @@ if (isset($_POST['stamp4'])) {
   <div class="box box-success">
     <h1 class="text-center" style="color:blue;"><strong><?php echo date('F d, Y')?></strong></h1>
     <div class="text-center" style="color:red;">
-      <font style="font-size: 60px;"><strong><?php echo date('h:i:s A')?></strong></font>
+      <strong><font style="font-size: 60px;" id="clock"></font><?php echo date('A')?></strong>
+
     </div>
   </div>
 </div>
@@ -477,6 +478,7 @@ if (isset($_POST['stamp4'])) {
               <th class="pull-left" >AM ARRIVAL</th>
               <?php if (mysqli_num_rows($check1)>0): ?>
                 <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
+
 
                 <?php else: ?>
                   <td width="250"><button class="btn btn-success" name="stamp1"  type="submit"><strong>Stamp</strong></button></td>
@@ -557,3 +559,33 @@ if (isset($_POST['stamp4'])) {
         });
     });
 </script>
+<script type="text/javascript">
+        setInterval(displayclock, 500);
+        function displayclock(){
+          var time = new Date();
+          var hrs = time.getHours();
+          var min = time.getMinutes();
+          var sec = time.getSeconds();
+
+          if (hrs > 12){
+            hrs = hrs - 12;
+          }
+
+          if (hrs == 0) {
+            hrs = 12;
+          }
+          if (min < 10) {
+            min = '0' + min;
+          }
+
+          if (hrs < 10) {
+            hrs = '0' + hrs;
+          }
+
+          if (sec < 10) {
+            sec = '0' + sec;
+          }
+
+          document.getElementById('clock').innerHTML = hrs + ':' + min + ':' +sec;
+        }
+      </script>
