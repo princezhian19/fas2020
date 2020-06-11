@@ -277,10 +277,10 @@ function fillCheckbox()
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
                                         <input checked style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
-                                        <input type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "<?php echo $row['TEXT1'];?>" type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <input type = "text" name = "site" id = "site" value = "<?php echo $row['TEXT2'];?>" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "<?php echo $row['TEXT2'];?>" type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
-                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "<?php echo $row['TEXT2'];?>" type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                        <i style = "margin-left:5%;"><i style = "margin-left:5%">Purpose</i></i><input value = "" type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                     </div>
                                 <?php
                         break;
