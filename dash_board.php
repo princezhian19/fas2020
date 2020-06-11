@@ -197,8 +197,9 @@ if (isset($_POST['stamp4'])) {
           </table>
          <!-- <div class="clearfix"></div> -->
        </div>
-
-       <p><h3><div class="text-center" id="clock">--:--:--</div></h3></p>
+       <div class="text-center">
+       <p><strong><h1 style="color:red;"><font  id="clock">--:--:--</font> <?php echo date('A')?></h1></strong></p>
+       </div>
        <div class="text-center"><?php echo date('F d, Y D')?></div>
        <script type="text/javascript">
         setInterval(displayclock, 500);
