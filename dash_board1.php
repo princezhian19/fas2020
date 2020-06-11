@@ -20,8 +20,8 @@ if (isset($_POST['submit'])) {
   if ($insert) {
    echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Successfuly Saved!')
+      window.location.href = 'home1.php?division=$division';
     </SCRIPT>");
-   header("Refresh:0");
  }
 
 }
@@ -37,20 +37,159 @@ if (isset($_POST['update'])) {
   if ($update) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Updated!')
+      window.location.href = 'home1.php?division=$division';
       </SCRIPT>");
-    header("Refresh:0");  }
+     }
 
   }
 
   ?>
+  <?php
+$date_now = date('Y-m-d');
+$now_date = date('Y-m-d H:i:s');
+$logs = mysqli_query($conn,"SELECT * FROM dtr WHERE UNAME = '$username' AND `date_today` LIKE '%$date_now%'");
+$rowl = mysqli_fetch_array($logs);
+$time_inL = $rowl['time_in'];
+$lunch_inL = $rowl['lunch_in'];
+$lunch_outL = $rowl['lunch_out'];
+$time_outL = $rowl['time_out'];
+$time_now = (new DateTime('now'))->format('H:i');
+
+$check1 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `time_in` IS NOT NULL ");
+$check2 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `lunch_in` IS NOT NULL ");
+$check3 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `lunch_out` IS NOT NULL ");
+$check4 =mysqli_query($conn,"SELECT *  FROM `dtr` WHERE `UNAME` = '$username' AND date_today LIKE '%$date_now%' AND `time_out` IS NOT NULL ");
+$checkall = mysqli_query($conn,"SELECT * FROM dtr WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+$month = date('m');
+$year = date('Y');
+$d1=cal_days_in_month(CAL_GREGORIAN,$month,$year);
+if (isset($_POST['stamp1'])) {
+  if (mysqli_num_rows($checkall)>0) {
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+  }else{
+    for($d = 1; $d <=$d1; $d++)
+    {
+      $date_in_month = $year.'-'.$month.'-'.$d;
+      $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
+    }
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_in = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+  }
+  if ($insert) {
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Success!')
+      window.location.href = 'home1.php?division=$division';
+      </SCRIPT>");
+  }else{
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Success!')
+      window.location.href = 'home1.php?division=$division';
+      </SCRIPT>");
+  }
+}
+
+if (isset($_POST['stamp2'])) {
+  if (mysqli_num_rows($checkall)>0) {
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+  }else{
+    for($d = 1; $d <=$d1; $d++)
+    {
+      $date_in_month = $year.'-'.$month.'-'.$d;
+      $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
+
+    }
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_in = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+  }
+
+  if ($insert) {
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Success!')
+      window.location.href = 'home1.php?division=$division';
+      </SCRIPT>");
+  }else{
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Success!')
+      window.location.href = 'home1.php?division=$division';
+      </SCRIPT>");
+  }
+}
+
+if (isset($_POST['stamp3'])) {
+  if (mysqli_num_rows($checkall)>0) {
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+  }else{
+    for($d = 1; $d <=$d1; $d++)
+    {
+      $date_in_month = $year.'-'.$month.'-'.$d;
+      $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
+
+    }
+    $insert = mysqli_query($conn,"UPDATE dtr SET lunch_out = '$time_now' WHERE `date_today` LIKE '%$date_now%' AND `UNAME` = '$username'");
+  }
+
+  if ($insert) {
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Success!')
+      window.location.href = 'home1.php?division=$division';
+      </SCRIPT>");
+  }else{
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Success!')
+      window.location.href = 'home1.php?division=$division';
+      </SCRIPT>");
+  }
+}
+
+if (isset($_POST['stamp4'])) {
+  if (mysqli_num_rows($checkall)>0) {
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+  }else{
+    for($d = 1; $d <=$d1; $d++)
+    {
+      $date_in_month = $year.'-'.$month.'-'.$d;
+      $insert = mysqli_query($conn,"INSERT INTO dtr(UNAME,date_today) VALUES('$username','$date_in_month')");
+
+    }
+
+    $insert = mysqli_query($conn,"UPDATE dtr SET time_out = '$time_now' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
+  }
+
+  if ($insert) {
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Success!')
+      window.location.href = 'home1.php?division=$division';
+      </SCRIPT>");
+  }else{
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Success!')
+      window.location.href = 'home1.php?division=$division';
+      </SCRIPT>");
+  }
+}
+
+
+
+?>
   <div class="row">
     <div class="col-md-3">
       <div class="box">
         <div class="panel-heading bg-blue">
-         <img class="direct-chat-img" src="images/male-user.png" alt="message user image">
-         <font class="text-center">PHILIPPINES STANDARD TIME </font><!-- Item(s) -->
-         <img class="direct-chat-img pull-right" src="images/ph.png" alt="message user image">
-         <div class="clearfix"></div>
+        <table class="">
+            <tr>
+              <td class="col-md-0">
+              <img class="direct-chat-img" src="images/male-user.png" alt="message user image">    
+              </td>
+              <td class="col-md-12" >
+               <div style="overflow-x:auto;"> 
+              <h5>PHILIPPINES STANDARD TIME</h5>
+                </div> 
+              </td>
+              <td class="col-md-0">
+              <img class="direct-chat-img" src="images/ph.png" alt="message user image">
+              </td>
+              
+          </tr>
+          </table>
+         <!-- <div class="clearfix"></div> -->
        </div>
 
        <p><h3><div class="text-center" id="clock">--:--:--</div></h3></p>
@@ -196,51 +335,79 @@ if (isset($_POST['update'])) {
 
 <div class="row">
   <div class="col-md-3">
-    <div class="box" style="outline: lightgray solid 10px;">
+    <div class="box" >
       <div class="panel-heading">
-        <i class="fa fa-birthday-cake"></i>&nbsp&nbsp&nbsp<strong>Birthday Celebrants</strong>
-        <a href="" class="pull-right">View All</a>
-        <div class="box-header with-border">
-        </div>
-        <div class="clearfix"></div>
+        <i class="fa fa-fw fa-clock-o"></i>&nbsp&nbsp&nbsp<strong>TODAY LOGS</strong>
       </div>
-      <div class="box-header">
-        <?php 
-        $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-        $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
-        while ($row = mysqli_fetch_assoc($BDAY)) {
-          $FIRST_M1 = $row['FIRST_M'];
-          $FIRST_M = ucwords(strtolower($FIRST_M1));
-          $MIDDLE_M = $row['MIDDLE_M'];
-          $LAST_M1 = $row['LAST_M'];
-          $LAST_M = ucfirst(strtolower($LAST_M1));
-          $words = explode(" ", $MIDDLE_M);
-          $acronym = "";
-
-          foreach ($words as $w) {
-            $acronym .= $w[0];
-          }
-          //asd
-          $name = $FIRST_M.' '.$acronym.'.'.' '.$LAST_M;
-          $BIRTH_D = $row['BIRTH_D'];
-          $PROFILE = $row['PROFILE'];
-          $b_day = date('F d',strtotime($BIRTH_D));
-
-          ?>  
-          <img class="direct-chat-img" src="<?php echo $PROFILE; ?>" alt="message user image">
-          <b style="font-size: 13px;"><?php echo $name;?></b>
-          <font style="font-size: 10px;" class="pull-right"><?php echo $b_day?></font>
-          <br>
-          <br>
-          <br>
+      <div class="">
+       <table id="example1" class="table table-striped " style="background-color: white;">
+          <form method="POST">
+            <tr>
+              <th  width="150">AM ARRIVAL</th>
+              <?php if (mysqli_num_rows($check1)>0): ?>
+                <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
 
 
-        <?php } ?>
+                <?php else: ?>
+                  <td width="250"><button class="btn btn-success" name="stamp1"  type="submit"><strong>Stamp</strong></button></td>
+                <?php endif ?>
+              </tr>
+              <tr>
+                <th  >AM DEPARTURE</th>
+                <?php if (mysqli_num_rows($check2)>0): ?>
+                  <td width="250"><?php echo date('h:i A',strtotime($lunch_inL))?></td>
+                  <?php else: ?>
+                    <?php if (mysqli_num_rows($check1)>0): ?>
+                      <td width="250"><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                      <?php else: ?>
+                        <td width="250"><button disabled class="btn btn-success" id="s2" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                      <?php endif ?>
+                    <?php endif ?>
+                  </tr>
+                  <tr>
+                    <th >PM ARRIVAL</th>
+                    <?php if (mysqli_num_rows($check3)>0): ?>
+                      <td width="250"><?php echo date('h:i A',strtotime($lunch_outL))?></td>
+                      <?php else: ?>
+                        <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0): ?>
+                        <td width="250"><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                        <?php else: ?>
+                          <td width="250"><button disabled class="btn btn-success" id="s3" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                        <?php endif ?>
+                      <?php endif ?>
+                    </tr>
+
+                    <tr>
+                      <th  >PM DEPARTURE</th>
+                      <?php if (mysqli_num_rows($check4)>0): ?>
+                        <td width="250"><?php echo date('h:i A',strtotime($time_outL))?></td>
+                        <?php else: ?>
+                          <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0 && mysqli_num_rows($check3)>0): ?>
+                          <td width="250"><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
+                          <?php else: ?>
+                            <td width="250"><button disabled class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
+                          <?php endif ?>
+                        <?php endif ?>
+                      </tr>
+                    </form>
+                  </table>
       </div>
     </div>
+
+    <div >
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+
     <div class="row" >
       <div class="col-md-12" >
-        <div class="box"  style="width: 700px;padding-right: 10px;padding-left: 10px;border-left: 5px solid black;">
+        <div class="box"  style="width: 600px;padding-right: 10px;padding-left: 10px;border-left: 5px solid black;">
           <!-- /.box-header -->
           <div class="box-body">
             <div class="row">
@@ -472,19 +639,49 @@ if (isset($_POST['update'])) {
 <div class="col-md-9">
 
   <div class="row"> 
-    <div class="col-md-5">
+    <div class="col-md-5" style="color:white;">
 
       <div class="box" style="background-image: url('images/purple.jpg');border-radius: 20px;">
-        <p>&nbsp</p>
-        <p>&nbsp</p>
-        <p>&nbsp</p>
-        <p>&nbsp</p>
-        <p>&nbsp</p>
-        <p>&nbsp</p>
-        <p>&nbsp</p>
-        <p>&nbsp</p>
-        <p>&nbsp</p>
-        <p>&nbsp</p>
+        <div class="panel-heading">
+        <i class="fa fa-birthday-cake"></i>&nbsp&nbsp&nbsp<strong>Birthday Celebrants</strong>
+        <a href="" class="pull-right">View All</a>
+        <div class="box-header with-border">
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="box-header" style="color:white;">
+        <?php 
+        $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+        $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
+        while ($row = mysqli_fetch_assoc($BDAY)) {
+          $FIRST_M1 = $row['FIRST_M'];
+          $FIRST_M = ucwords(strtolower($FIRST_M1));
+          $MIDDLE_M = $row['MIDDLE_M'];
+          $LAST_M1 = $row['LAST_M'];
+          $LAST_M = ucfirst(strtolower($LAST_M1));
+          $words = explode(" ", $MIDDLE_M);
+          $acronym = "";
+
+          foreach ($words as $w) {
+            $acronym .= $w[0];
+          }
+          //asd
+          $name = $FIRST_M.' '.$acronym.'.'.' '.$LAST_M;
+          $BIRTH_D = $row['BIRTH_D'];
+          $PROFILE = $row['PROFILE'];
+          $b_day = date('F d',strtotime($BIRTH_D));
+
+          ?>  
+          <img class="direct-chat-img" src="<?php echo $PROFILE; ?>" alt="message user image">
+          <b style="font-size: 13px;"><?php echo $name;?></b>
+          <font style="font-size: 10px;" class="pull-right"><?php echo $b_day?></font>
+          <br>
+          <br>
+          <br>
+
+
+        <?php } ?>
+      </div>
       </div>
     </div>
     <div class="col-md-3">

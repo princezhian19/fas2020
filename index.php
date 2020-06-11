@@ -84,13 +84,11 @@ if (isset($_POST['submit'])) {
              if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
         
         echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Succesfully Login!')
         window.location.href='home.php?division=".$division."&username=".$username."';
         </SCRIPT>");
       }else{
         
        echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Succesfully Login!')
         window.location.href='home1.php?division=".$division."&username=".$username."';
         </SCRIPT>");
        }  

@@ -291,6 +291,7 @@ if (isset($_POST['stamp4'])) {
         <?php if ($ACCESSTYPE == 'admin'): ?>
          <a href="ViewEmployees.php?division=<?php echo $division?>&username=<?php echo $username?>" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
          <br>
+         <br>
        <?php endif ?>
        <div style="float: right;padding:5px;" hidden>
         <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
@@ -472,12 +473,12 @@ if (isset($_POST['stamp4'])) {
     </div>
     <div class="box-body table-responsive no-padding">
       <div class="box-body">
-        <table id="example1" class="table table-striped " style="background-color: white;">
+        <table id="" class="table table-striped " style="background-color: white;">
           <form method="POST">
             <tr>
-              <th class="pull-left" >AM ARRIVAL</th>
+              <th width="150" >AM ARRIVAL</th>
               <?php if (mysqli_num_rows($check1)>0): ?>
-                <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
+                <td width=""><?php echo date('h:i A',strtotime($time_inL))?></td>
 
 
                 <?php else: ?>
@@ -485,7 +486,7 @@ if (isset($_POST['stamp4'])) {
                 <?php endif ?>
               </tr>
               <tr>
-                <th class="pull-left" >AM DEPARTURE</th>
+                <th >AM DEPARTURE</th>
                 <?php if (mysqli_num_rows($check2)>0): ?>
                   <td width="250"><?php echo date('h:i A',strtotime($lunch_inL))?></td>
                   <?php else: ?>
@@ -510,7 +511,7 @@ if (isset($_POST['stamp4'])) {
                     </tr>
 
                     <tr>
-                      <th class="pull-left" >PM DEPARTURE</th>
+                      <th  >PM DEPARTURE</th>
                       <?php if (mysqli_num_rows($check4)>0): ?>
                         <td width="250"><?php echo date('h:i A',strtotime($time_outL))?></td>
                         <?php else: ?>
