@@ -301,8 +301,8 @@ if (isset($_POST['stamp4'])) {
           <tr style="background-color: white;color:blue;">
             <th width="">Date</th>
             <th width="">Time In</th>
-            <th width="">Lunch In</th>
             <th width="">Lunch Out</th>
+            <th width="">Lunch In</th>
             <th width="">Time Out</th>
             <th width="">Hours</th>
             <th width="">Minutes</th>
@@ -483,7 +483,7 @@ if (isset($_POST['stamp4'])) {
                 <?php endif ?>
               </tr>
               <tr>
-                <th class="pull-left" >Lunch In</th>
+                <th class="pull-left" >Lunch Out</th>
                 <?php if (mysqli_num_rows($check2)>0): ?>
                   <td width="250"><?php echo date('h:i A',strtotime($lunch_inL))?></td>
                   <?php else: ?>
@@ -495,7 +495,7 @@ if (isset($_POST['stamp4'])) {
                     <?php endif ?>
                   </tr>
                   <tr>
-                    <th class="pull-left">Lunch Out</th>
+                    <th class="pull-left">Lunch In</th>
                     <?php if (mysqli_num_rows($check3)>0): ?>
                       <td width="250"><?php echo date('h:i A',strtotime($lunch_outL))?></td>
                       <?php else: ?>
