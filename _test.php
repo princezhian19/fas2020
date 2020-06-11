@@ -608,8 +608,14 @@ $(document).ready(function() {
       $('.checkboxgroup_g5').not(this).prop('checked', false);  
       $('.checkboxgroup_g6').not(this).prop('checked', false);  
     } else {
+      $('.checkboxgroup_g2').not(this).prop('checked', false);  
+
+      $(".checkboxgroup_g1").attr("disabled", true);
       $(".checkboxgroup_g2").attr("disabled", true);
-     
+      $(".checkboxgroup_g3").attr("disabled", true);
+      $(".checkboxgroup_g4").attr("disabled", true);
+      $(".checkboxgroup_g5").attr("disabled", true);
+      $(".checkboxgroup_g6").attr("disabled", true);
 
 
       document.getElementById("site").disabled = true; 
@@ -638,8 +644,18 @@ $(document).ready(function() {
       $('.checkboxgroup_g6').not(this).prop('checked', false);  
 
     } else {
-      $(".checkboxgroup_g3").attr("disabled", true);
       document.getElementById("softwares").disabled = true; 
+
+
+      $('.checkboxgroup_g3').not(this).prop('checked', false);  
+
+      $(".checkboxgroup_g1").attr("disabled", true);
+      $(".checkboxgroup_g2").attr("disabled", true);
+      $(".checkboxgroup_g3").attr("disabled", true);
+      $(".checkboxgroup_g4").attr("disabled", true);
+      $(".checkboxgroup_g5").attr("disabled", true);
+      $(".checkboxgroup_g6").attr("disabled", true);
+
 
     }
   }
@@ -649,6 +665,8 @@ $(document).ready(function() {
       {
         $('#cb4').not(this).prop('checked', true);  
       }
+
+
       $(".checkboxgroup_g4").removeAttr("disabled");
       $(".checkboxgroup_g1").attr("disabled", true);
       $(".checkboxgroup_g2").attr("disabled", true);
@@ -662,7 +680,15 @@ $(document).ready(function() {
       $('.checkboxgroup_g5').not(this).prop('checked', false);  
       $('.checkboxgroup_g6').not(this).prop('checked', false);  
     } else {
+      $('.checkboxgroup_g4').not(this).prop('checked', false);  
+
+      
+      $(".checkboxgroup_g1").attr("disabled", true);
+      $(".checkboxgroup_g2").attr("disabled", true);
+      $(".checkboxgroup_g3").attr("disabled", true);
       $(".checkboxgroup_g4").attr("disabled", true);
+      $(".checkboxgroup_g5").attr("disabled", true);
+      $(".checkboxgroup_g6").attr("disabled", true);
     }
   }
   function enable_cb5() {
