@@ -474,7 +474,7 @@ if (isset($_POST['stamp4'])) {
         <table id="example1" class="table table-striped " style="background-color: white;">
           <form method="POST">
             <tr>
-              <th class="pull-left" >Time In</th>
+              <th class="pull-left" >AM Arival</th>
               <?php if (mysqli_num_rows($check1)>0): ?>
                 <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
 
@@ -483,7 +483,7 @@ if (isset($_POST['stamp4'])) {
                 <?php endif ?>
               </tr>
               <tr>
-                <th class="pull-left" >Lunch Out</th>
+                <th class="pull-left" >AM Departure</th>
                 <?php if (mysqli_num_rows($check2)>0): ?>
                   <td width="250"><?php echo date('h:i A',strtotime($lunch_inL))?></td>
                   <?php else: ?>
@@ -495,7 +495,7 @@ if (isset($_POST['stamp4'])) {
                     <?php endif ?>
                   </tr>
                   <tr>
-                    <th class="pull-left">Lunch In</th>
+                    <th class="pull-left">PM Arival</th>
                     <?php if (mysqli_num_rows($check3)>0): ?>
                       <td width="250"><?php echo date('h:i A',strtotime($lunch_outL))?></td>
                       <?php else: ?>
@@ -508,7 +508,7 @@ if (isset($_POST['stamp4'])) {
                     </tr>
 
                     <tr>
-                      <th class="pull-left" >Time Out</th>
+                      <th class="pull-left" >PM Departure</th>
                       <?php if (mysqli_num_rows($check4)>0): ?>
                         <td width="250"><?php echo date('h:i A',strtotime($time_outL))?></td>
                         <?php else: ?>
