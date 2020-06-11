@@ -202,6 +202,7 @@ function filldataTable()
                         Received Date<br>    
                         <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
                     </button>';
+                    echo '<br>';
                 }
             }
 
@@ -220,11 +221,11 @@ function filldataTable()
               <?php 
               if($row['ASSIGN_DATE'] == null || $row['ASSIGN_DATE'] == '')
               {
-              echo 'Assign';?></button>
+              echo 'Assign';?></button><br>
               <?php
               }else{
              echo  'Assigned Date<br>';  
-              echo '<b>'.date('F d, Y',strtotime($row['ASSIGN_DATE'])).'</b>';?></button>
+              echo '<b>'.date('F d, Y',strtotime($row['ASSIGN_DATE'])).'</b>';?></button><br>
               <?php
               }
       ?>
