@@ -39,11 +39,11 @@ function fillTableInfo()
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" name = "request_date" placeholder = "Request Date" value="<?php echo date('m/d/y',strtotime($row['REQ_DATE'])); ?>" disabled placeholder="mm/dd/yyyy" >
+                                            <input type="text" name = "request_date" value="<?php echo date('m/d/y',strtotime($row['REQ_DATE'])); ?>" disabled placeholder="mm/dd/yyyy" >
                                         </div>
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Request Time:</td>
-                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input disabled style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A",strtotime($row['REQ_TIME']));?>"/></td>
+                                    <td style = "width:15%;  padding:5px 5px 5px 5px;"><input disabled style = "text-align:left;"  type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A",strtotime($row['REQ_TIME']));?>"/></td>
                                     <!-- date("H:i A",strtotime(date("h:m A"))) -->
                                     <td colspan = 4 class = "label-text">HARDWARE INFORMATION</td>
                                 </tr>
@@ -62,13 +62,13 @@ function fillTableInfo()
                                 </tr>
                                 <tr>
                                     <td class = "label-text left-text">Office:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "office" readonly placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['OFFICE'];?>" disabled/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "office" readonly type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['OFFICE'];?>" disabled/></td>
                                     <td class = "label-text left-text">Property Number:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  stype = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['PROPERTY_NO'];?>" disabled /> </td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Position/Designation:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "position" disabled placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION'];?>"  /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "position" disabled type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION'];?>"  /></td>
                                     <td class = "label-text left-text">Serial Number:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled value  = "<?php echo $row['SERIAL_NO'];?>"  type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
@@ -1019,7 +1019,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="<?PHP echo setStartDate();?>" required>
+                          <input disabled type="text" name = "started_date"  class="datePicker1" value="<?PHP echo setStartDate();?>" required>
 
                           </div>
                           </td>
@@ -1029,7 +1029,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="text" name = "completed_date" placeholder = "Completed Date" id = "completed_date" class="datePicker1" value="<?php echo setCompletedDate();?>" required>
+                          <input type="text" name = "completed_date" id = "completed_date" class="datePicker1" value="<?php echo setCompletedDate();?>" required>
                           </div>
                           </td>
 
@@ -1042,7 +1042,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input style = "width:100%;" id= "timepicker" type="time" name = "started_time" placeholder = "Started Time"  value="<?php echo setStartTime(); ?>" disabled>
+                          <input style = "width:100%;" id= "timepicker" type="time" name = "started_time"  value="<?php echo setStartTime(); ?>" disabled>
 
                           </div>
                           </td>
@@ -1052,7 +1052,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                        <input style = "width:100%;"  id = "timepicker2" type="time" name = "completed_time" placeholder = "Completed Time"  value="<?php echo setCompletedTime();?>" required>
+                        <input style = "width:100%;"  id = "timepicker2" type="time" name = "completed_time"   value="<?php echo setCompletedTime();?>" required>
 
                         </div>
                           </td>
