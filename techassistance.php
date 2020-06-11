@@ -187,7 +187,70 @@ function filldataTable()
             </td>
         
             <td style = "width:10%;">
+            <?php
+  // Received
+                  
+            if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == null   )
+            {
+                echo ' <button  disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Receive</button>';
+            }
+            else{
+                if($row['START_DATE'] != '0000-00-00' || $row['START_DATE'] != 'January 01, 1970')
+                {
+                echo '
+                    <button disabled title = "Received Date"  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
+                        Received Date<br>    
+                        <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
+                    </button>';
+                }
+            }
+
+            // Assign
             
+            echo '<br>';
+            // Assign
+   
+     
+
+      
+      if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+          {
+              ?><br>
+              <button  disabled data-id ="<?php echo $row['CONTROL_NO'];?>" class = " col-lg-12 pull-right sweet-14  btn btn-danger" style = "background-color:orange;">
+              <?php 
+              if($row['ASSIGN_DATE'] == null || $row['ASSIGN_DATE'] == '')
+              {
+              echo 'Assign';?></button>
+              <?php
+              }else{
+             echo  'Assigned Date<br>';  
+              echo '<b>'.date('F d, Y',strtotime($row['ASSIGN_DATE'])).'</b>';?></button>
+              <?php
+              }
+      ?>
+              <?php
+          }else{
+              ?><br>
+              <button  disabled data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">
+              <?php 
+              if($row['ASSIGN_DATE'] == null || $row['ASSIGN_DATE'] == '')
+              {
+              echo 'Assign';?></button>
+              <?php
+              }else{
+             echo  'Assigned Date<br>';  
+              echo '<b>'.date('F d, Y',strtotime($row['ASSIGN_DATE'])).'</b>';?></button><br>
+              <?php
+              }
+              
+
+      
+          }
+
+
+
+
+            ?>
            <button 
            <?php 
             if($row['STATUS_REQUEST'] != 'Completed')
@@ -201,31 +264,7 @@ function filldataTable()
            <!-- <a href = "rateService.php?id=" style = "decoration:none;color:#fff;" >R -->
 
                     <?php
-                    // Received
                   
-                        if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == null   )
-                        {
-                        echo ' <button  disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Receive</button>';
-
-                   
-
-                        
-                    }else{
-                        if($row['START_DATE'] != '0000-00-00' || $row['START_DATE'] != 'January 01, 1970')
-                        {
-
-                            echo '
-                            <button disabled title = "Received Date"  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
-                            Received Date<br>    
-                            <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
-                            </button>';
-                        }
-                    }
-
-
-
-
-
 
 
 
