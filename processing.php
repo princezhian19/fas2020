@@ -294,7 +294,7 @@ function filldataTable()
                     }
                 }else if($row['STATUS_REQUEST'] == 'Rated'){
                     ?>
-                <button   disabled class = "btn btn-danger btn-md col-lg-12 ">Rated Date<br><?php echo date('F d, Y', strtotime($row['DATE_RATED']));?></button>
+                <button    class = "btn btn-danger btn-md col-lg-12 ">Rated Date<br><?php echo date('F d, Y', strtotime($row['DATE_RATED']));?></button>
 
 <?php
                 }else{
@@ -1016,7 +1016,7 @@ $(document).on('click','#update_complete',function(e){
                   setTimeout(function () {
                   swal("Service Complete!");
                   }, 3000);
-                  window.location = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id="+ids;
+                  window.location = "completeRequest.php?&division=<?php echo $_GET['division']?>&id="+ids;
               }
             });
         });
