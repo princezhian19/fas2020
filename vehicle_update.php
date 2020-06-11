@@ -188,7 +188,7 @@ else{
 <div class="box">
           <div class="box-body">
       
-            <h1 align="">Create Vehicle Request</h1>
+            <h1 align="">Update Vehicle Request</h1>
             
         <br>
       <li class="btn btn-success"><a href="VehicleRequest.php" style="color:white;text-decoration: none;">Back</a></li>
