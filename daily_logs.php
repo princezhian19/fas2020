@@ -476,49 +476,49 @@ if (isset($_POST['stamp4'])) {
         <table id="" class="table table-striped " style="background-color: white;">
           <form method="POST">
             <tr>
-              <th width="150" >AM ARRIVAL</th>
+              <th  class="pull-left" >AM ARRIVAL</th>
               <?php if (mysqli_num_rows($check1)>0): ?>
-                <td width=""><?php echo date('h:i A',strtotime($time_inL))?></td>
+                <td ><?php echo date('h:i A',strtotime($time_inL))?></td>
 
 
                 <?php else: ?>
-                  <td width="250"><button class="btn btn-success" name="stamp1"  type="submit"><strong>Stamp</strong></button></td>
+                  <td ><button class="btn btn-success" name="stamp1"  type="submit"><strong>Stamp</strong></button></td>
                 <?php endif ?>
               </tr>
               <tr>
-                <th >AM DEPARTURE</th>
+                <th class="pull-left" >AM DEPARTURE</th>
                 <?php if (mysqli_num_rows($check2)>0): ?>
-                  <td width="250"><?php echo date('h:i A',strtotime($lunch_inL))?></td>
+                  <td ><?php echo date('h:i A',strtotime($lunch_inL))?></td>
                   <?php else: ?>
                     <?php if (mysqli_num_rows($check1)>0): ?>
-                      <td width="250"><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                      <td ><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
                       <?php else: ?>
-                        <td width="250"><button disabled class="btn btn-success" id="s2" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                        <td ><button disabled class="btn btn-success" id="s2" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
                       <?php endif ?>
                     <?php endif ?>
                   </tr>
                   <tr>
-                    <th class="pull-left">PM ARRIVAL</th>
+                    <th class="pull-left" >PM ARRIVAL</th>
                     <?php if (mysqli_num_rows($check3)>0): ?>
-                      <td width="250"><?php echo date('h:i A',strtotime($lunch_outL))?></td>
+                      <td ><?php echo date('h:i A',strtotime($lunch_outL))?></td>
                       <?php else: ?>
                         <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0): ?>
-                        <td width="250"><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                        <td ><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
                         <?php else: ?>
-                          <td width="250"><button disabled class="btn btn-success" id="s3" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                          <td ><button disabled class="btn btn-success" id="s3" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
                         <?php endif ?>
                       <?php endif ?>
                     </tr>
 
                     <tr>
-                      <th  >PM DEPARTURE</th>
+                      <th  class="pull-left" >PM DEPARTURE</th>
                       <?php if (mysqli_num_rows($check4)>0): ?>
-                        <td width="250"><?php echo date('h:i A',strtotime($time_outL))?></td>
+                        <td ><?php echo date('h:i A',strtotime($time_outL))?></td>
                         <?php else: ?>
                           <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0 && mysqli_num_rows($check3)>0): ?>
-                          <td width="250"><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
+                          <td ><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
                           <?php else: ?>
-                            <td width="250"><button disabled class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
+                            <td ><button disabled class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
                           <?php endif ?>
                         <?php endif ?>
                       </tr>
