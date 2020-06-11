@@ -167,6 +167,7 @@ if (isset($_POST['stamp4'])) {
 
 
 ?>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="row">
   <div class="col-md-8">
@@ -406,7 +407,7 @@ if (isset($_POST['stamp4'])) {
                  echo ''; 
                }
                else{
-                if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
+                  if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
                  echo ''; 
                 }else{
                 echo $finalfinal->format('%H');  
@@ -464,8 +465,9 @@ if (isset($_POST['stamp4'])) {
 
 <div class="col-md-4">
   <div class="box box-success">
-    <div class="box-header with-border" align="left">
+    <div class="box-header with-border pull-right" align="left">
       <!-- <h4><strong>Logs For Today : <?php echo date('F d, Y')?></strong></h4> -->
+      <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-Day</strong></font>
     </div>
     <div class="box-body table-responsive no-padding">
       <div class="box-body">
@@ -477,7 +479,7 @@ if (isset($_POST['stamp4'])) {
                 <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
 
                 <?php else: ?>
-                  <td width="250"><button class="btn btn-success" name="stamp1" type="submit"><strong>Stamp</strong></button></td>
+                  <td width="250"><button class="btn btn-success" name="stamp1"  type="submit"><strong>Stamp</strong></button></td>
                 <?php endif ?>
               </tr>
               <tr>
@@ -488,7 +490,7 @@ if (isset($_POST['stamp4'])) {
                     <?php if (mysqli_num_rows($check1)>0): ?>
                       <td width="250"><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
                       <?php else: ?>
-                        <td width="250"><button disabled class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                        <td width="250"><button disabled class="btn btn-success" id="s2" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
                       <?php endif ?>
                     <?php endif ?>
                   </tr>
@@ -500,7 +502,7 @@ if (isset($_POST['stamp4'])) {
                         <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0): ?>
                         <td width="250"><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
                         <?php else: ?>
-                          <td width="250"><button disabled class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                          <td width="250"><button disabled class="btn btn-success" id="s3" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
                         <?php endif ?>
                       <?php endif ?>
                     </tr>
@@ -541,5 +543,17 @@ if (isset($_POST['stamp4'])) {
           });
         }) ;
       </script>
-      </html>
-
+<script>
+    $(document).ready(function(){
+        $("#ck").click(function(){
+            if($(this).prop("checked") == true){
+                $('#s3').prop("disabled", false);
+                $('#s2').prop("disabled", false);
+            }
+            else if($(this).prop("checked") == false){
+                $('#s3').prop("disabled", true);
+                $('#s2').prop("disabled", true);
+            }
+        });
+    });
+</script>
