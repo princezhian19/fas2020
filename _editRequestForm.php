@@ -1029,7 +1029,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="<?php echo setCompletedDate();?>" required>
+                          <input type="text" name = "completed_date" placeholder = "Completed Date" id = "completed_date" class="datePicker1" value="<?php echo setCompletedDate();?>" required>
                           </div>
                           </td>
 
@@ -1140,6 +1140,8 @@ $('document').ready(function()
   
     document.querySelector('.sweet-14').onclick = function(){
    
+      var cd = $('#completed_date').val();
+      var ct = $('#timepicker2').val();
       var d = $('#diagnose').val();
       var e = $('#datePicker1').val();
       var f = $('#timepicker').val();
@@ -1147,7 +1149,7 @@ $('document').ready(function()
       var h = $('.checkbox_group').val();
       var check = $("#resolved").is(":checked");
       var check2 = $("#defective").is(":checked");
-      if(d == '' || d == null)
+      if(cd == '' || d == null || ct == '') 
     {
       alert('Required Field:All fields with * are required!.')
       exit();
