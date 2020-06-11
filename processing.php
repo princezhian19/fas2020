@@ -56,7 +56,7 @@ function filldataTable()
 {
     include 'connection.php';
     $query = "SELECT * FROM tbltechnical_assistance 
-    where `STATUS_REQUEST` = 'Submitted' or  `STATUS_REQUEST` = 'Received' or `STATUS_REQUEST` = 'For action' or `STATUS_REQUEST` = 'Completed'  
+    where `STATUS_REQUEST` != '' 
     GROUP by tbltechnical_assistance.ID
     order by `CONTROL_NO` DESC ";
 
@@ -188,6 +188,7 @@ function filldataTable()
                             Received Date<br>    
                             <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
                             </button>';
+                            echo '<br>';
                         }
                     }
 
@@ -231,7 +232,7 @@ function filldataTable()
                         <?php
                         }else{
                        echo  'Assigned Date<br>';  
-                        echo '<b>'.date('F d, Y',strtotime($row['ASSIGN_DATE'])).'</b>';?></button>
+                        echo '<b>'.date('F d, Y',strtotime($row['ASSIGN_DATE'])).'</b>';?></button><br>
                         <?php
                         }
                         
@@ -256,10 +257,11 @@ function filldataTable()
                     }
                 }else{
         
-                    echo '<button title = "Completed Date"  id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
+                    echo '<button title = "Completed Date"  id ="update_complete" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
                     Completed Date<br> 
                     '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
                     </button>';
+                    echo '<br>';
 
                 }
               ?>
@@ -270,7 +272,11 @@ function filldataTable()
                 {
                     if ($row['DATE_RATED'] != '' || $row['DATE_RATED'] != NULL){
                         ?>
-                <button   disabled class = "btn btn-danger btn-md col-lg-12 ">Rated Date<br><?php echo date('F d, Y', strtotime($row['DATE_RATED']));?></button>
+                <button    class = "btn btn-danger btn-md col-lg-12 ">
+                <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                        Rate Service
+                    </a>
+                </button>
 
                         <?php
                     }
@@ -278,16 +284,33 @@ function filldataTable()
 
                     
                     ?>
-                <button   class = "btn btn-danger btn-md col-lg-12 "><a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >Rate Service</a></button>
+                <button   class = "btn btn-danger btn-md col-lg-12 ">
+                    <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                        Rate Service
+                    </a>
+                </button>
 
                    
 
                     <?php
                     }
+                }else if($row['STATUS_REQUEST'] == 'Rated'){
+                    ?>
+                <button    class = "btn btn-danger btn-md col-lg-12 ">
+                <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                
+                Rated Date<br><?php echo date('F d, Y', strtotime($row['DATE_RATED']));?></a></button>
+
+<?php
                 }else{
                     ?>
-                <button    class = "btn btn-danger btn-md col-lg-12 "><a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >Rate Service</a></button>
-<?php
+                    <button    class = "btn btn-danger btn-md col-lg-12 ">
+                    <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                            Rate Service
+                        </a>
+                    </button>
+    
+                            <?php
                 }
 
               ?>
@@ -968,6 +991,37 @@ $(document).on('click','#sweet-16',function(e){
                   swal("Service Complete!");
                   }, 3000);
                   window.location = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id="+ids;
+              }
+            });
+        });
+    });
+$(document).on('click','#update_complete',function(e){
+    e.preventDefault();
+    var ids=$(this).data('id');
+        swal({
+            title: "Are you sure you already finished with this request?",
+            text: "Control No:"+ids,
+            type: "info",
+            showCancelButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }).then(function () {
+            $.ajax({
+              url:"_ticketReleased.php",
+              method:"POST",
+              data:{
+                  id:ids,
+                  option:'test'
+              },
+              
+              success:function(data)
+              {
+                  setTimeout(function () {
+                  swal("Service Complete!");
+                  }, 3000);
+                  window.location = "completeRequest.php?&division=<?php echo $_GET['division']?>&id="+ids;
               }
             });
         });

@@ -187,75 +187,140 @@ function filldataTable()
             </td>
         
             <td style = "width:10%;">
-            
-           <button 
-           <?php 
-            if($row['STATUS_REQUEST'] != 'Completed')
-            {
-                echo 'disabled';
-            }else{
-                echo '';
-            }
-            ?>
-           class = "btn btn-success btn-md col-lg-12 ">Rate Service</a></button><br><br>
-           <!-- <a href = "rateService.php?id=" style = "decoration:none;color:#fff;" >R -->
-
-                    <?php
-                    // Received
+            <?php
+  // Received
                   
-                        if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == null   )
-                        {
-                        echo ' <button  disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Receive</button>';
+            if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == null   )
+            {
+                echo ' <button  disabled data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Receive</button>';
+            }
+            else{
+                if($row['START_DATE'] != '0000-00-00' || $row['START_DATE'] != 'January 01, 1970')
+                {
+                echo '
+                    <button disabled title = "Received Date"  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
+                        Received Date<br>    
+                        <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
+                    </button>';
+                    echo '<br>';
+                }
+            }
+
+            // Assign
+            
+            echo '<br>';
+            // Assign
+   
+     
+
+      
+      if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+          {
+              ?><br>
+              <button  disabled data-id ="<?php echo $row['CONTROL_NO'];?>" class = " col-lg-12 pull-right sweet-14  btn btn-danger" style = "background-color:orange;">
+              <?php 
+              if($row['ASSIGN_DATE'] == null || $row['ASSIGN_DATE'] == '')
+              {
+              echo 'Assign';?></button><br>
+              <?php
+              }else{
+             echo  'Assigned Date<br>';  
+              echo '<b>'.date('F d, Y',strtotime($row['ASSIGN_DATE'])).'</b>';?></button><br>
+              <?php
+              }
+      ?>
+              <?php
+          }else{
+              ?><br>
+              <button  disabled data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">
+              <?php 
+              if($row['ASSIGN_DATE'] == null || $row['ASSIGN_DATE'] == '')
+              {
+              echo 'Assign';?></button>
+              <?php
+              }else{
+             echo  'Assigned Date<br>';  
+              echo '<b>'.date('F d, Y',strtotime($row['ASSIGN_DATE'])).'</b>';?></button><br>
+              <?php
+              }
+              
+
+      
+          }
+
+
+
+
+            ?>
+
+            <?php
+             echo '<br><br>';                                      
+                    
+             // Complete
+             if($row['COMPLETED_DATE'] == '0000-00-00' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+             {
+
+             if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+             {
+
+             echo '<button disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+             }else{
+             echo '<button disabled id ="sweet-16"  data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+             }
+         }else{
+ 
+             echo '<button disabled title = "Completed Date"  id ="update_complete" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
+             Completed Date<br> 
+             '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
+             </button>';
+             echo '<br>';
+
+         }
+       ?>
+       <br>
+       <br>
+
+       <?php 
+              if($row['STATUS_REQUEST'] == 'Completed')
+                {
+                    if ($row['DATE_RATED'] != '' || $row['DATE_RATED'] != NULL){
+                        ?>
+                <button    disabled class = "btn btn-danger btn-md col-lg-12 ">
+                        Rate Service
+                    
+                </button>
+
+                        <?php
+                    }
+                    else{
+
+                    
+                    ?>
+                <button  disabled class = "btn btn-danger btn-md col-lg-12 ">
+                        Rate Service
+                </button>
 
                    
 
-                        
-                    }else{
-                        if($row['START_DATE'] != '0000-00-00' || $row['START_DATE'] != 'January 01, 1970')
-                        {
-
-                            echo '
-                            <button disabled title = "Received Date"  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
-                            Received Date<br>    
-                            <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
-                            </button>';
-                        }
+                    <?php
                     }
+                }else if($row['STATUS_REQUEST'] == 'Rated'){
+                    ?>
+                <button  disabled class = "btn btn-danger btn-md col-lg-12 ">Rated Date<br><?php echo date('F d, Y', strtotime($row['DATE_RATED']));?></button>
 
-
-
-
-
-
-
-
-
-                    echo '<br>';
-                
-                    
-                      echo '<br><br>';                                      
-                    
-                    // Complete
-                    if($row['COMPLETED_DATE'] == '0000-00-00' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
-                    {
-
-                    if($_SESSION['complete_name'] == $row['ASSIST_BY'])
-                    {
-
-                    echo '<button disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
-                    }else{
-                    echo '<button disabled id ="sweet-16"  data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
-                    }
+<?php
                 }else{
-        
-                    echo '<button disabled title = "Completed Date"  id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
-                    Completed Date<br> 
-                    '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
-                    </button>';
-
+                    ?>
+                    <button disabled class = "btn btn-danger btn-md col-lg-12 ">
+                            Rate Service
+                    
+                    </button>
+    
+                            <?php
                 }
+
               ?>
-                
+                    
                     
             </td>
            

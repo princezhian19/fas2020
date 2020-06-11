@@ -15,7 +15,7 @@
               <th width="150">FIRST NAME</th>
               <th width="150">MIDDLE NAME</th>
               <th width="150">LAST NAME</th>
-              <th width="350">ACTION</th>
+              <th width="400">ACTION</th>
             </tr>
           </thead>
           <?php
