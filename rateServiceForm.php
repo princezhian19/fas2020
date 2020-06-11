@@ -219,10 +219,10 @@ function fillCheckbox()
                         </div>
                       </td> 
                       <td>
-                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
-                        <input style = "margin-left:90px;" type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                        <input style = "margin-left:90px;"  type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                        <input style = "margin-left:90px;"  type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input disabled style = "margin-left:90px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS (please specify)</b><br>
+                        <input style = "margin-left:120px;" type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input style = "margin-left:120px;"  type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input style = "margin-left:120px;"  type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                       </td> 
                     </tr>
                     <?php
@@ -333,10 +333,10 @@ function fillCheckbox()
                         </div>
                       </td> 
                       <td>
-                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
-                        <input style = "margin-left:90px;" type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                        <input style = "margin-left:90px;" type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                        <input style = "margin-left:90px;" type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input disabled style = "margin-left:90px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS (please specify)</b><br>
+                        <input style = "margin-left:120px;" type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input style = "margin-left:120px;" type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input style = "margin-left:120px;" type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                       </td> 
                     </tr>
                     <?php
@@ -456,10 +456,10 @@ function fillCheckbox()
                         </div>
                       </td> 
                       <td>
-                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
-                        <input style = "margin-left:90px;"  type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                        <input style = "margin-left:90px;"  type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                        <input style = "margin-left:90px;" type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input disabled style = "margin-left:90px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS (please specify)</b><br>
+                        <input style = "margin-left:120px;"  type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input style = "margin-left:120px;"  type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input style = "margin-left:120px;" type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                       </td> 
                     </tr>
                 <?php
@@ -548,10 +548,10 @@ function fillCheckbox()
                         </div>
                       </td> 
                       <td>
-                        <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
-                        <input style = "margin-left:90px;"  type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                        <input style = "margin-left:90px;"  type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                        <input style = "margin-left:90px;" type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input disabled style = "margin-left:90px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS (please specify)</b><br>
+                        <input style = "margin-left:120px;"  type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input style = "margin-left:120px;"  type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                        <input style = "margin-left:120px;" type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                       </td> 
                 </tr>
                 
@@ -642,10 +642,10 @@ function fillCheckbox()
                   ?> 
                 </td> 
                 <td>
-                  <input disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
-                  <input style = "margin-left:60px; type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                  <input style = "margin-left:60px; type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                  <input style = "margin-left:60px; type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                  <input disabled style = "margin-left:90px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS (please specify)</b><br>
+                  <input style = "margin-left:120px; type = "text" name = "others1" id = "others1" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                  <input style = "margin-left:120px; type = "text" name = "others2" id = "others2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                  <input style = "margin-left:120px; type = "text" name = "others3" id = "others3" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                 </td> 
               </tr>
               <?php
