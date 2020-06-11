@@ -525,7 +525,8 @@ else{
                         
                         </td>
                         <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
-                        <input  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 135px; width:100%;" name="passengers" id="passengers" value = "" placeholder="" >
+                        <textarea name="passengers" id="passengers" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 135px; width:100%;"></textarea>
+                        <!-- <input  required type="text" class=""   value = "" placeholder="" > -->
                        
                         </td>
                       <!-- Passengers/: -->

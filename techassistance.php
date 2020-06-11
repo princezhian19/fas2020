@@ -229,8 +229,6 @@ function filldataTable()
 
 
 
-
-                    echo '<br>';
                 
                     
                       echo '<br><br>';                                      
