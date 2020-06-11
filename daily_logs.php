@@ -300,12 +300,12 @@ if (isset($_POST['stamp4'])) {
         <thead>
           <tr style="background-color: white;color:blue;">
             <th width="">Date</th>
-            <th width="">Time In</th>
-            <th width="">Lunch Out</th>
-            <th width="">Lunch In</th>
-            <th width="">Time Out</th>
-            <th width="">Hours</th>
-            <th width="">Minutes</th>
+            <th width="">AM Arival</th>
+            <th width="">AM Departure</th>
+            <th width="">PM Arival</th>
+            <th width="">PM Departure</th>
+            <th width="">Undertime Hours</th>
+            <th width="">Undertime Minutes</th>
           </tr>
         </thead>
         <?php 
