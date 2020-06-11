@@ -419,7 +419,7 @@ function fillCheckbox()
                     break;
                     case 'Other software/s (please specify)':
                         ?>
-                        <div style = "margin-left:60px;padding-top:10px;">
+                        <div style = "margin-left:120px;padding-top:10px;">
                                 <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
                                 <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
