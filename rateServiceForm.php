@@ -425,7 +425,7 @@ function fillCheckbox()
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
                                 <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
                                 <input checked style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
-                                <br><input value = "<?php echo $row['TEST4'];?>" type = "text" name = "softwares" id= "softwares" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
+                                <br><input value = "<?php echo $row['TEST4'];?>" type = "text" name = "softwares" id= "softwares" value = "" style = "margin-left:10px;border:none;border-bottom:1px solid black;"/><br>
                             </div>
                         <?php
                     break;                
@@ -708,10 +708,10 @@ function fillCheckbox()
                   </div>
                 </td> 
                 <td>
-                  <input checked disabled style = "margin-left:60px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS</b><br>
-                  <input style = "margin-left:60px;" type = "text" name = "others1" id = "others1" value = "<?php echo $row['TEXT6'];?>" style = "border:none;border-bottom:1px solid black;"/><br>
-                  <input  style = "margin-left:60px;" type = "text" name = "others2" id = "others2" value = "<?php echo $row['TEXT7'];?>" style = "border:none;border-bottom:1px solid black;"/><br>
-                  <input  style = "margin-left:60px;" type = "text" name = "others3" id = "others3" value = "<?php echo $row['TEXT8'];?>" style = "border:none;border-bottom:1px solid black;"/><br>
+                  <input checked disabled style = "margin-left:90px;margin-bottom:10px;" type = "checkbox" name = "req_type_category[]" value = "OTHERS"><b>OTHERS (please specify)</b><br>
+                  <input style = "margin-left:120px;" type = "text" name = "others1" id = "others1" value = "<?php echo $row['TEXT6'];?>" style = "border:none;border-bottom:1px solid black;"/><br>
+                  <input  style = "margin-left:120px;" type = "text" name = "others2" id = "others2" value = "<?php echo $row['TEXT7'];?>" style = "border:none;border-bottom:1px solid black;"/><br>
+                  <input  style = "margin-left:120px;" type = "text" name = "others3" id = "others3" value = "<?php echo $row['TEXT8'];?>" style = "border:none;border-bottom:1px solid black;"/><br>
                 </td> 
               </tr>
               <?php
