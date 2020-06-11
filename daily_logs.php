@@ -300,10 +300,10 @@ if (isset($_POST['stamp4'])) {
         <thead>
           <tr style="background-color: white;color:blue;">
             <th width="">Date</th>
-            <th width="">AM Arival</th>
-            <th width="">AM Departure</th>
-            <th width="">PM Arival</th>
-            <th width="">PM Departure</th>
+            <th width="">AM ARIVAL</th>
+            <th width="">AM DEPARTURE</th>
+            <th width="">PM ARIVAL</th>
+            <th width="">PM DEPARTURE</th>
             <th width="">Undertime Hours</th>
             <th width="">Undertime Minutes</th>
           </tr>
@@ -474,7 +474,7 @@ if (isset($_POST['stamp4'])) {
         <table id="example1" class="table table-striped " style="background-color: white;">
           <form method="POST">
             <tr>
-              <th class="pull-left" >AM Arival</th>
+              <th class="pull-left" >AM ARIVAL</th>
               <?php if (mysqli_num_rows($check1)>0): ?>
                 <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
 
@@ -483,7 +483,7 @@ if (isset($_POST['stamp4'])) {
                 <?php endif ?>
               </tr>
               <tr>
-                <th class="pull-left" >AM Departure</th>
+                <th class="pull-left" >AM DEPARTURE</th>
                 <?php if (mysqli_num_rows($check2)>0): ?>
                   <td width="250"><?php echo date('h:i A',strtotime($lunch_inL))?></td>
                   <?php else: ?>
@@ -495,7 +495,7 @@ if (isset($_POST['stamp4'])) {
                     <?php endif ?>
                   </tr>
                   <tr>
-                    <th class="pull-left">PM Arival</th>
+                    <th class="pull-left">PM ARIVAL</th>
                     <?php if (mysqli_num_rows($check3)>0): ?>
                       <td width="250"><?php echo date('h:i A',strtotime($lunch_outL))?></td>
                       <?php else: ?>
@@ -508,7 +508,7 @@ if (isset($_POST['stamp4'])) {
                     </tr>
 
                     <tr>
-                      <th class="pull-left" >PM Departure</th>
+                      <th class="pull-left" >PM DEPARTURE</th>
                       <?php if (mysqli_num_rows($check4)>0): ?>
                         <td width="250"><?php echo date('h:i A',strtotime($time_outL))?></td>
                         <?php else: ?>
