@@ -252,48 +252,75 @@ function filldataTable()
 
 
             ?>
-           <button 
-           <?php 
-            if($row['STATUS_REQUEST'] != 'Completed')
-            {
-                echo 'disabled';
-            }else{
-                echo '';
-            }
-            ?>
-           class = "btn btn-success btn-md col-lg-12 ">Rate Service</a></button><br><br>
-           <!-- <a href = "rateService.php?id=" style = "decoration:none;color:#fff;" >R -->
+
+            <?php
+             echo '<br><br>';                                      
+                    
+             // Complete
+             if($row['COMPLETED_DATE'] == '0000-00-00' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+             {
+
+             if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+             {
+
+             echo '<button disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+             }else{
+             echo '<button disabled id ="sweet-16"  data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+             }
+         }else{
+ 
+             echo '<button disabled title = "Completed Date"  id ="update_complete" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
+             Completed Date<br> 
+             '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
+             </button>';
+             echo '<br>';
+
+         }
+       ?>
+       <br>
+       <br>
+
+       <?php 
+              if($row['STATUS_REQUEST'] == 'Completed')
+                {
+                    if ($row['DATE_RATED'] != '' || $row['DATE_RATED'] != NULL){
+                        ?>
+                <button    disabled class = "btn btn-danger btn-md col-lg-12 ">
+                        Rate Service
+                    
+                </button>
+
+                        <?php
+                    }
+                    else{
+
+                    
+                    ?>
+                <button  disabled class = "btn btn-danger btn-md col-lg-12 ">
+                        Rate Service
+                </button>
+
+                   
 
                     <?php
-                  
-
-
-
-                
-                    
-                      echo '<br><br>';                                      
-                    
-                    // Complete
-                    if($row['COMPLETED_DATE'] == '0000-00-00' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
-                    {
-
-                    if($_SESSION['complete_name'] == $row['ASSIST_BY'])
-                    {
-
-                    echo '<button disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
-                    }else{
-                    echo '<button disabled id ="sweet-16"  data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }
-                }else{
-        
-                    echo '<button disabled title = "Completed Date"  id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
-                    Completed Date<br> 
-                    '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
-                    </button>';
+                }else if($row['STATUS_REQUEST'] == 'Rated'){
+                    ?>
+                <button  disabled class = "btn btn-danger btn-md col-lg-12 ">Rated Date<br><?php echo date('F d, Y', strtotime($row['DATE_RATED']));?></button>
 
+<?php
+                }else{
+                    ?>
+                    <button disabled class = "btn btn-danger btn-md col-lg-12 ">
+                            Rate Service
+                    
+                    </button>
+    
+                            <?php
                 }
+
               ?>
-                
+                    
                     
             </td>
            
