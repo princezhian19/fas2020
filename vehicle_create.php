@@ -29,11 +29,12 @@ $row = mysqli_fetch_array($query);
 // echo '<br>';
 
 //Get Office
-$select_user = mysqli_query($conn,"SELECT POSITION_C, DESIGNATION FROM tblemployeeinfo WHERE UNAME = '$username'");
+$select_user = mysqli_query($conn,"SELECT POSITION_C, DESIGNATION, MOBILEPHONE FROM tblemployeeinfo WHERE UNAME = '$username'");
 $rowdiv = mysqli_fetch_array($select_user);
 $POSITION_C = $rowdiv['POSITION_C'];
 $DESIGNATION = $rowdiv['DESIGNATION'];
-//echo $DESIGNATION;
+$MOBILEPHONE = $rowdiv['MOBILEPHONE'];
+//echo $MOBILEPHONE;
 
 
 //Get Position
@@ -277,7 +278,7 @@ else{
                         </td>
                         <td class="col-md-2" style =" border:1px solid black; text-align:center">
                         
-                        <input  readonly required type="text" class="" style="text-align:center; border:none; margin-top:15px; font-size:30px; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "<?php echo $vrcount?>" >
+                        <input  readonly required type="text" class="" style="text-align:center; border:none; margin-top:15px; font-size:30px; color:red; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "<?php echo $vrcount?>" >
                         </td>
                         
                         <td class="col-md-1">
@@ -339,7 +340,7 @@ else{
 
                       <td class="col-md-1 " style=" border:1px solid black; text-align:left; ">
                       
-                      <input readonly required type="text" class="" style=" text-align:left; border:none;border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 30px; width:100%;" name="vrtime" id="" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('H:i A') ?>" >
+                      <input readonly required type="text" class="" style=" text-align:left; border:none;border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 30px; width:100%;" name="vrtime" id="" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('h:i A') ?>" >
                       </td>
 
                      
@@ -400,7 +401,7 @@ else{
                        
                         </td>
                         <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
-                        <input  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 80px; width:100%;" name="purpose" id="purpose" value = "" placeholder="Purpose" >
+                        <input  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 80px; width:100%;" name="purpose" id="purpose" value = "" placeholder="" >
                        
                         </td>
                         
@@ -449,7 +450,7 @@ else{
                     
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
                          <input readonly  required type="text" class="" style=" text-align:left; border:none;  font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Position/" >
-                       <input readonly  required type="text" class="" style=" text-align:left; border:none;  font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 13px; width:100%;" wrap="soft" row='2' name="" id="" value = "designation:" >
+                       <input readonly  required type="text" class="" style=" text-align:left; border:none;  font-size:13px; background-color:#CFD8DC; font-weight:bold; height: 13px; width:100%;" wrap="soft" row='2' name="" id="" value = "Designation:" >
 
                         </td>
 
@@ -463,7 +464,7 @@ else{
                        
                         </td>
                         <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
-                        <input required  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 100px; width:100%;" name="destination" id="destination" value = "" placeholder="Destination" >
+                        <input required  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 100px; width:100%;" name="destination" id="destination" value = "" placeholder="" >
                        
                         </td>
 
@@ -488,7 +489,7 @@ else{
                         </td>
 
                         <td colspan=3 style=" border:1px solid black; text-align:center; ">
-                        <input   type="number"   class="" style=" text-align:left; border:none; border-bottom:1px solid black; font-size:15px; height: 40px; width:100%;" id="mobile" placeholder="Mobile (Optional)" name="mobile" value = "">
+                        <input readonly  type="text"   class="" style=" text-align:left; border:none; border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 40px; width:100%;" id="mobile" placeholder="" name="mobile" value = "<?php echo $MOBILEPHONE?>">
                         </td>
 
 
@@ -513,7 +514,7 @@ else{
                        
                         </td>
                         <td colspan=3 rowspan="3" style=" border:1px solid black; text-align:center; ">
-                        <input  required type="text" class="" style="margin-top:0px;text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 190px; width:100%;" name="purpose" id="purpose" value = "" placeholder="Remarks/Instructions" >
+                        <input  required type="text" class="" style="margin-top:0px;text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 190px; width:100%;" name="purpose" id="purpose" value = "" placeholder="" >
                        
                         </td>
 
@@ -524,7 +525,7 @@ else{
                         
                         </td>
                         <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
-                        <input  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 135px; width:100%;" name="passengers" id="passengers" value = "" placeholder="Passenger/s Name" >
+                        <input  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 135px; width:100%;" name="passengers" id="passengers" value = "" placeholder="" >
                        
                         </td>
                       <!-- Passengers/: -->
@@ -549,7 +550,7 @@ else{
                         <input readonly  required type="text" class="" style=" margin-top:0px;text-align:left; border:none;  font-size:13px;  font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "No of " >
                         <input readonly  required type="text" class="" style=" margin-top:0px;text-align:left; border:none;  font-size:12px;  font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "Passengers:" >
                         <br>
-                        <input required type="number" class="" style=" margin-top:0px;text-align:left; border:none; border-bottom:1px solid black;  font-size:13px; height: 30px; width:100%; "  name="nop" id="nop" value = "" placeholder="0" >
+                        <input required type="number" class="" style=" margin-top:0px;text-align:left; border:none; border-bottom:1px solid black; font-weight:bold;  font-size:13px; height: 30px; width:100%; "  name="nop" id="nop" value = "" placeholder="0" >
                         </td> 
                         
 
@@ -643,13 +644,13 @@ else{
 
 
                         <!-- B -->
-                        <tr>
+                        <tr >
 
                         <td class="col-md-1">
 
                         </td> 
 
-                        <td colspan=8 class=" label-text" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                        <td  colspan=8 class=" label-text" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
 
                         <input readonly required type="text" class="" style="text-align:center; border:none; font-size:20px; background-color:#CFD8DC; font-weight:bold; height: 20px; width:100%;" name="" id="" value = "B.	RECEIVED BY GSS  SECTION (To be Accomplished by GSS Staff)" >
                         </td>
@@ -1076,7 +1077,7 @@ else{
 
                        
                         <input readonly required type="text" class="" style="margin-top:20px; text-align:center; border:none; font-size:15px; font-weight:bold; height: 20px; width:100%;" name="" id="" value = "_____________________________" >
-                        <input readonly required type="text" class="" style="text-align:center; border:none; font-size:15px; font-weight:bold; height: 20px; width:100%;" name="" id="" value = "ARIEL O. IGLESIA, CESO IV" >
+                        <input readonly required type="text" class="" style="text-align:center; border:none; font-size:15px; font-weight:bold; height: 20px; width:100%;" name="" id="" value = "ARIEL O. IGLESIA" >
                         <input readonly required type="text" class="" style="margin-bottom:10px; text-align:center; border:none; font-size:15px; font-weight:bold; height: 20px; width:100%;" name="" id="" value = "Regional Director" >
                         </td>
 
