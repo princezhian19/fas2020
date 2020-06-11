@@ -98,24 +98,24 @@ $edit="edit";
                     <tr style="background-color: white;color:blue; text-align:center">
 
                   <th width =''>VR NO</th> 
-                  <th width = ''>VR DATE</th>
-                  <th width = ''>VR TIME</th>
+                  <th width = ''>VEHICLE REQUEST</th>
+                  
                   <th width = ''>TYPE</th>
                   <th width = ''>NAME</th>
                   <th width = ''>OFFICE</th>
-                  <th width = ''>POSITION</th>
-                  <th width = ''>MOBILE NO</th>
-                  <th width = ''>REMARKS</th>
                   <th width = ''>PURPOSE</th>
                   <th width = ''>DESTINATION</th>
-                  <th width = ''>NO OF PASSENGERS</th>
+                  <th width = '100'>NO OF PAX</th>
                   <th width = ''>PASSENGER/S NAME</th>
-                  <th width = ''>DEPARTURE DATE</th>
-                  <th width = ''>DEPARTURE TIME</th>
-                  <th width = ''>RETURN DATE</th>
-                  <th width = ''>RETURN TIME</th>
+                  <th width = ''>DEPARTURE </th>
+                  <th width = ''>RETURN </th>
                   <th width = ''>SUBMITTED DATE</th>
                   <th width = ''>RECEIVED DATE</th>
+                  <th width = ''>ASSIGNED</th>
+                  <th width = ''>RECOMMENDING</th> 
+                  <th width = ''>APPROVED</th> 
+                  <th width = ''>SERVED COPY</th> 
+                  
                   <th width = ''>ACTION</th>
                   
 
@@ -210,18 +210,17 @@ $edit="edit";
                 <?php if ($vrdate1 == '0000-00-00'): ?>
                 <td></td>
                 <?php else: ?>
-                  <td><?php echo  $vrdate?></td>
+                  <td><?php echo  $vrdate.'<br>'.$vrtime?></td>
                 <?php endif ?>
 
 
-                <td> <?php echo  $vrtime?></td>
+                
 
                 <td><?php echo  $type?></td>
                 <td><?php echo  $name?></td>
                 <td><?php echo  $office?></td>
-                <td><?php echo  $position?></td>
-                <td><?php echo  $mobile?></td>
-                <td><?php echo  $remarks?></td>
+
+                
                 <td><?php echo  $purpose?></td>
                 <td><?php echo  $destination?></td>
                 <td><?php echo  $nop?></td>
@@ -240,20 +239,15 @@ $edit="edit";
                 <?php if ($departuredate1=='0000-00-00'): ?>
                 <td></td>
                 <?php else: ?>
-               <td><?php echo  $departuredate?></td>
+               <td><?php echo  $departuredate.'<br>'.$departuretime?></td>
                 <?php endif ?>
 
-                <td><?php echo $departuretime?></td>
-
+               
                 <?php if ($returndate=='0000-00-00'): ?>
                 <td></td>
                 <?php else: ?>
-               <td><?php echo  $returndate?></td>
+               <td><?php echo  $returndate.'<br>'.$returntime?></td>
                 <?php endif ?>
-
-                <td><?php echo $returntime?></td>
-
-               
 
              
               
@@ -306,9 +300,21 @@ $edit="edit";
                         </td>
                          
                           <?php endif ?>
-                <td>
 
-                      <?php if ($submitteddate1 == 0000-00-00): ?>
+
+                          <td><a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Assign</a></td>
+                <td><a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Recommend</a></td>
+                <td><a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Approve</a></td>
+                <td><a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Serve Copy</a></td>
+
+
+
+
+
+
+
+                <td>
+                    <?php if ($submitteddate1 == 0000-00-00): ?>
                           <!--  -->
                               <?php if ($status!='cancelled'):?>
                                 

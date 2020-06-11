@@ -54,7 +54,7 @@
           <div class="col-xs-2">
             <br>
                 <?php if ($ACCESSTYPE == 'admin' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'charlesodi' || $username == 'seolivar'): ?>
-        <li class="btn btn-success"><a href="CreateEmployee.php" style="color:white;text-decoration: none;">Add</a></li>
+        <li class="btn btn-success"><a href="CreateEmployee.php?division=<?php echo $division?>&username=<?php echo $username?>" style="color:white;text-decoration: none;">Add</a></li>
           <?php else: ?>
         <?php endif ?>
           </div>

@@ -167,7 +167,6 @@ if (isset($_POST['stamp4'])) {
 
 
 ?>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="row">
   <div class="col-md-8">
@@ -362,90 +361,113 @@ if (isset($_POST['stamp4'])) {
             <td>
              <?php 
              if(date('d',strtotime($date_today)) == '01'){ 
-                  $lateD = date('h:i',strtotime($time_in)) < date('h:i',strtotime('08:00'));
-                if($lateD){ 
+              $lateD = date('h:i',strtotime($time_in)) < date('h:i',strtotime('08:00'));
+              if($lateD){ 
                 $datetime1 = new DateTime('08:00');
               }else{
                 $datetime1 = new DateTime($time_in);
               }
-                $datetime2 = new DateTime($time_out1);
-                $datetime3 = new DateTime('16:00');
-                if ($datetime2 > $datetime3) {
-                  $datetime2 = new DateTime('16:00');
-                }
-                $finaldate = $datetime2->diff($datetime1); 
-                $date333 = new DateTime("08:00");
-                $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
-                $finalfinal = $date3333->diff($date333);
-                if($time_out == NULL){
-
-                 echo ''; 
-               }
-               else{
-
-                echo $finalfinal->format('%H');  
-
+              $datetime2 = new DateTime($time_out1);
+              $datetime3 = new DateTime('16:00');
+              if ($datetime2 > $datetime3) {
+                $datetime2 = new DateTime('16:00');
               }
+              $finaldate = $datetime2->diff($datetime1); 
+              $date333 = new DateTime("08:00");
+              $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
+              $finalfinal = $date3333->diff($date333);
+              if($time_out == NULL){
 
-            }else{
-              $lateD = date('H:i',strtotime($time_in)) < date('H:i',strtotime('07:00')); 
-                if($lateD){
-                $datetime1 = new DateTime('07:00');
-              }else{
-                $datetime1 = new DateTime($time_in);
-              }
-                $datetime2 = new DateTime($time_out1);
+               echo ''; 
+             }
+             else{
 
-                $finaldate = $datetime2->diff($datetime1); 
-                $date333 = new DateTime("08:00"); 
-                $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
-                $finalfinal = $date3333->diff($date333);
-
-
-                if($time_out == NULL){
-
-                 echo ''; 
-               }
-               else{
-                  if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
-                 echo ''; 
-                }else{
-                echo $finalfinal->format('%H');  
-                }
-
-              }
-
-
-
+              echo $finalfinal->format('%H');  
 
             }
-            ?>
 
-          </td>
-          <td>
-            <?php 
+          }else{
+            $lateD = date('H:i',strtotime($time_in)) < date('H:i',strtotime('07:00')); 
+            if($lateD){
+              $datetime1 = new DateTime('07:00');
+            }else{
+              $datetime1 = new DateTime($time_in);
+            }
+            $datetime2 = new DateTime($time_out1);
 
-            
-                  if($time_out == NULL){
+            $finaldate = $datetime2->diff($datetime1); 
+            $date333 = new DateTime("08:00"); 
+            $date777 = new DateTime("05:00"); 
+            $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
+            $finalfinal = $date3333->diff($date333);
 
-                 echo ''; 
-               }
-               else{
-                if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
-                 echo ''; 
-                }else{
-                echo $finalfinal->format('%i');  
-                }
 
-              }
+            if($time_out == NULL){
 
-          ?>
+             echo ''; 
+           }
+           else{
+            if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
+             echo ''; 
+           }else{
+            if ($finalfinal->format('%H') > $date777->format('H:i')) {
+              $finaltime = $finalfinal->diff($date777);
+              echo $finaltime->format('%H');  
+            }else{
+              $finaly = new DateTime($finalfinal->format('%H'.':'.'%i'));
+              $finaly->add(new \DateInterval('PT60M'));
 
-        </td>
+              echo $finaly->format('H');  
+                // $time = date('H:i', strtotime($finalfinal,'+1 hour'));
 
-      </tr>
-    <?php } ?>
-  </table>
+            }
+          }
+
+        }
+
+
+
+
+      }
+      ?>
+
+    </td>
+    <td>
+      <?php 
+
+
+
+            if($time_out == NULL){
+
+             echo ''; 
+           }
+           else{
+            if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
+             echo ''; 
+           }else{
+            if ($finalfinal->format('%H') > $date777->format('H:i')) {
+              $finaltime = $finalfinal->diff($date777);
+              echo $finaltime->format('%H'); 
+              echo "string"; 
+            }else{
+              $finaly = new DateTime($finalfinal->format('%H'.':'.'%i'));
+              $finaly->add(new \DateInterval('PT60M'));
+
+              echo $finaly->format('i');  
+                // $time = date('H:i', strtotime($finalfinal,'+1 hour'));
+
+            }
+          }
+
+        }
+
+  ?>
+
+</td>
+
+</tr>
+<?php } ?>
+</table>
 </div>
 </div>
 </div>
@@ -465,9 +487,8 @@ if (isset($_POST['stamp4'])) {
 
 <div class="col-md-4">
   <div class="box box-success">
-    <div class="box-header with-border pull-right" align="left">
+    <div class="box-header with-border" align="left">
       <!-- <h4><strong>Logs For Today : <?php echo date('F d, Y')?></strong></h4> -->
-      <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-Day</strong></font>
     </div>
     <div class="box-body table-responsive no-padding">
       <div class="box-body">
@@ -479,7 +500,7 @@ if (isset($_POST['stamp4'])) {
                 <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
 
                 <?php else: ?>
-                  <td width="250"><button class="btn btn-success" name="stamp1"  type="submit"><strong>Stamp</strong></button></td>
+                  <td width="250"><button class="btn btn-success" name="stamp1" type="submit"><strong>Stamp</strong></button></td>
                 <?php endif ?>
               </tr>
               <tr>
@@ -490,7 +511,7 @@ if (isset($_POST['stamp4'])) {
                     <?php if (mysqli_num_rows($check1)>0): ?>
                       <td width="250"><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
                       <?php else: ?>
-                        <td width="250"><button disabled class="btn btn-success" id="s2" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                        <td width="250"><button disabled class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
                       <?php endif ?>
                     <?php endif ?>
                   </tr>
@@ -502,7 +523,7 @@ if (isset($_POST['stamp4'])) {
                         <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0): ?>
                         <td width="250"><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
                         <?php else: ?>
-                          <td width="250"><button disabled class="btn btn-success" id="s3" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                          <td width="250"><button disabled class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
                         <?php endif ?>
                       <?php endif ?>
                     </tr>
@@ -543,17 +564,5 @@ if (isset($_POST['stamp4'])) {
           });
         }) ;
       </script>
-<script>
-    $(document).ready(function(){
-        $("#ck").click(function(){
-            if($(this).prop("checked") == true){
-                $('#s3').prop("disabled", false);
-                $('#s2').prop("disabled", false);
-            }
-            else if($(this).prop("checked") == false){
-                $('#s3').prop("disabled", true);
-                $('#s2').prop("disabled", true);
-            }
-        });
-    });
-</script>
+      </html>
+

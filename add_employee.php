@@ -4,6 +4,8 @@
   $DBConn = dbConnect();
   $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
   $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+  $division = $_GET['division'];
+  $username = $_GET['username'];
   function tblpersonnel($connect)
   { 
     $output = '';
@@ -237,7 +239,7 @@
 
         echo ("<SCRIPT LANGUAGE='JavaScript'>
           window.alert('Successfuly Added')
-          window.location.href = 'ViewEmployees.php';
+          window.location.href = 'ViewEmployees.php?division=".$_GET['division']."&username=".$_GET['username']."';
           </SCRIPT>");
 
       }else{
