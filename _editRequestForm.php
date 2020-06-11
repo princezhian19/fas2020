@@ -80,7 +80,7 @@ function fillTableInfo()
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Email Address:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "email" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $email;?>" disabled/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "email" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['EMAIL_ADD'];?>" disabled/></td>
                                     <td class = "label-text left-text">MAC Address:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MAC_ADDRESS'];?>" disabled/></td>
                                 </tr>
@@ -1029,7 +1029,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input type="text" name = "completed_date" placeholder = "Completed Date" class="datePicker1" value="<?php echo setCompletedDate();?>" required>
+                          <input type="text" name = "completed_date" placeholder = "Completed Date" id = "completed_date" class="datePicker1" value="<?php echo setCompletedDate();?>" required>
                           </div>
                           </td>
 
@@ -1140,6 +1140,8 @@ $('document').ready(function()
   
     document.querySelector('.sweet-14').onclick = function(){
    
+      var cd = $('#completed_date').val();
+      var ct = $('#timepicker2').val();
       var d = $('#diagnose').val();
       var e = $('#datePicker1').val();
       var f = $('#timepicker').val();
@@ -1147,7 +1149,7 @@ $('document').ready(function()
       var h = $('.checkbox_group').val();
       var check = $("#resolved").is(":checked");
       var check2 = $("#defective").is(":checked");
-      if(d == '' || d == null)
+      if(cd == '' || d == null || ct == '') 
     {
       alert('Required Field:All fields with * are required!.')
       exit();
