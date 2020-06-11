@@ -53,7 +53,9 @@
 
   $checkQuery = "SELECT * FROM $sqltable a LEFT JOIN tblpersonneldivision b on b.DIVISION_N = a.DIVISION_C LEFT JOIN tbldesignation c on c.DESIGNATION_ID = a.DESIGNATION LEFT JOIN tbldilgposition d on d.POSITION_ID = a.POSITION_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1";
 
+
   $checkQuery1 = mysqli_query($conn,"SELECT c.province_id,c.province_title FROM $sqltable a LEFT JOIN tblprovinse c on c.province_id = a.PROVINCE_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1");
+
   $row1 = mysqli_fetch_array($checkQuery1);
   $province11               = $row1["province_title"];
   
@@ -78,7 +80,6 @@
       $birthdate1              = $row["BIRTH_D"];
       $bday1                   = date('m/d/Y',strtotime($birthdate1));
       $email1                  = $row["EMAIL"];
-      $contact1                = $row["LANDPHONE"];
       $cellphone1              = $row["MOBILEPHONE"];
       $username1               = $row["UNAME"];
       $division1               = $row["DIVISION_C"];
@@ -89,10 +90,12 @@
       $alter_email  = $row["ALTER_EMAIL"];  
       $suffix  = $row["SUFFIX"];  
       $status          = $row["CIVIL_STATUS"]; 
-      $office_address = $data['REMARKS_M'];
-      $office_contact = $data['LANDPHONE'];
+      $office_address = $row['REMARKS_M'];
+      $office_contact = $row['LANDPHONE'];
     }
   }
+
+
   
   $checkQuery1 = mysqli_query($conn,"SELECT b.city_id,b.city_title FROM $sqltable a LEFT JOIN tblmunicipality b on b.city_id = a.CITYMUN_C WHERE b.province = $province1 AND a.EMP_N = '".$_GET['id']."' LIMIT 1");
   $row1 = mysqli_fetch_array($checkQuery1);
@@ -183,38 +186,36 @@
     }
   }
 
-  $add = "";
-  if($password!=''){
-    $add = ", PSWORD=? , CODE=? ";
-  }
-
-  $query = "UPDATE $sqltable SET EMP_NUMBER=?,LAST_M=?, FIRST_M=?, MIDDLE_M=?, BIRTH_D=?, SEX_C=?,
-  REGION_C=?, PROVINCE_C=?, CITYMUN_C=?,
-  POSITION_C=?,
-  MOBILEPHONE=?, EMAIL=?, AGENCY_EMP_NO=?,
-  SHOWDETAILS=?, ALTER_EMAIL=?, INVI=?, CLUSTER=?, LANDPHONE=?, OFFICE_STATION=?, ACCESSTYPE=?, DIVISION_C=?,  ACCESSLIST=?, ACTIVATED='".$e_stats."', UNAME=?$add,DESIGNATION=?,SUFFIX=?,SEX_C=?,LANDPHONE=?,REMARKS_M=? WHERE EMP_N = '".$_GET['id']."' LIMIT 1";
-  if ($updateSQL = $DBConn->prepare($query)) 
+  $query = mysqli_query($conn,"UPDATE $sqltable SET EMP_NUMBER='$employee_number',LAST_M='$lname', FIRST_M='$fname', MIDDLE_M='$mname', BIRTH_D='$birthdate', SEX_C='$gender',
+    REGION_C='$region', PROVINCE_C='$province', CITYMUN_C='$municipality',
+    POSITION_C='$position',
+    MOBILEPHONE='$cellphone', EMAIL='$email',
+    ALTER_EMAIL='$alter_email',  LANDPHONE='$contact', OFFICE_STATION='$office', DIVISION_C='$division', ACTIVATED='".$e_stats."', UNAME='$username',DESIGNATION='$designation',SUFFIX='$suffix',LANDPHONE='$office_contact',REMARKS_M='$office_address' WHERE EMP_N = '$cid' LIMIT 1");
+  if ($query) 
   { 
-    if($password==''){
-      // $selectif = mysqli_query($conn,"SELECT * FROM tblempdetails WHERE EMP_N = '$employee_number'");
-      // if (mysqli_num_rows($selectif)>0) {
-      //   $updatedetails = mysqli_query($conn,"UPDATE `tblempdetails` SET `EMP_N`='$get_id',`office_contact`='$office_contact',`office_address`='$office_address' WHERE EMP_N = '$employee_number'");
-      // }else{
-      //   $insertdetails = mysqli_query($conn,"INSERT INTO `tblempdetails`(`EMP_N`, `office_contact`, `office_address`) VALUES ('$get_id','$office_contact','$office_address')");
-      // }
-      $updateSQL->bind_param("ssssssssssssssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division , $access, $username, $designation,$suffix,$status,$office_contact,$office_address);
-      $update_stat = mysqli_query($conn,"UPDATE tblemployeeinfo SET CIVIL_STATUS = '$status' WHERE EMP_N = $cid");
-    }else{
+    $update_stat = mysqli_query($conn,"UPDATE tblemployeeinfo SET CIVIL_STATUS = '$status' WHERE EMP_N = $cid");
+
+    $user_id = $_GET['id'];
+    if($password!=''){
       $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
       $password   = crypt($password, '$2a$10$'.$code.'$');
+      $update_ac = mysqli_query($conn,"UPDATE tblemployeeinfo SET PSWORD='$password', CODE='$code' WHERE EMP_N = $user_id ");
+    }else{
 
-      $updateSQL->bind_param("ssssssssssssssssssssssss", $lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position,  $cellphone, $email, $employeeid, $publish, $alter_email, $invi, $cluster, $contact, $office, $usetype, $division, $access, $username,  $password, $code);
     }
-    $updateSQL->execute();
+    if ($_GET['3d']==3) {
+       echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Successfuly Updated!')
+      window.location.href = 'UpdateEmployee.php?id=$cid&division=$division777&username=$username777&3d=".$_GET['3d']." ';
+      </SCRIPT>");
+    }else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Updated!')
-      window.location.href = 'ViewEmployees.php?division=$division777&username=$username777';
+      window.location.href = 'UpdateEmployee.php?id=$cid&division=$division777&username=$username777';
       </SCRIPT>");
+    }
+
+
   }else{
                 //echo mysqli_connect_error();
   } 
@@ -230,35 +231,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
 
-    $("#sel_depart").change(function(){
-      var deptid = $(this).val();
-
-      $.ajax({
-        url: 'getUsers.php',
-        type: 'post',
-        data: {depart:deptid},
-        dataType: 'json',
-        success:function(response){
-
-          var len = response.length;
-
-          $("#sel_user").empty();
-          for( var i = 0; i<len; i++){
-            var id = response[i]['citymun_c'];
-            var name = response[i]['citymun_m'];
-
-            $("#sel_user").append("<option value='"+id+"'>"+name+"</option>");
-
-          }
-        }
-      });
-    });
-
-  });
-</script>
 
 <div class="box box-success">
   <div class="box-header with-border">
@@ -365,7 +338,7 @@
           </div>
           <div class="col-xs-4">
             <label>Mobile <font style="color:red;">*</font></label>
-            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control" placeholder="ex. 0995-2647-434">
+            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control cp" placeholder="ex. 0995-2647-434">
           </div>
           <br>
           <br>
@@ -444,7 +417,7 @@
           </div>
           <div class="col-xs-4">
             <label>Office Contact No</label>
-           
+
             <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-2647-434">
           </div>
           <br>
@@ -461,154 +434,181 @@
             </select>
           <?php endif ?>
 
-            <?php if ($office1 == 4): ?>
-             <select  id="sel_user" name="municipality" class="form-control select2">
-              <option value="<?php echo $city_id;?>"><?php echo $municipality11;?></option>
-              <option value="0"></option>
-            </select>
-          <?php endif ?>
-          
-        </div>
-        <div class="col-xs-4">
-          <label>Extension Name<font style="color:red;"></font></label>
-          <input  value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
-        </div>
-        <div class="col-xs-4">
-          <label>Office Email Address <font style="color:red;">*</font></label>
-          <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="col-xs-4">
-          <label>Office/Division<font style="color:red;">*</font></label>
-          <select required class="form-control select2" style="width: 100%;" name="division" id="" >
-            <option value="<?php echo $division1;?>" selected><?php echo $division11;?></option>
-            <?php echo tblpersonnel($connect)?>
+          <?php if ($office1 == 4): ?>
+           <select  id="sel_user" name="municipality" class="form-control select2">
+            <option value="<?php echo $city_id;?>"><?php echo $municipality11;?></option>
+            <option value="0"></option>
           </select>
-        </div>
-        <div class="col-xs-4">
-          <label>Sex<font style="color:red;">*</font></label>
-          <select class="form-control select2" name="gender">
-            <?php if ($gender1 == 'Male'): ?>
-              <option value="1">Male</option>
-              <option value="2">Female</option>
-              <?php else: ?>
-                <option value="2">Female</option>
-                <option value="1">Male</option>
-              <?php endif ?>
-            </select>
-          </div>
-          <div class="col-xs-4">
-            <label>Office Address</label>
-            <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
-          </div>
-          <br>
-          <br>
-          <br>
-          <br>
-          <div class="col-xs-4">
-            <label>Position<font style="color:red;">*</font></label>
-            <select required class="form-control select2" style="width: 100%;" name="position" id="" >
-              <option value="<?php echo $position11;?>" selected><?php echo $position1;?></option>
-              <?php echo tbldilgposition($connect)?>
-            </select>
-          </div>
-          <div class="col-xs-4">
-            <label>Civil Status<font style="color:red;">*</font></label>
-            <?php if ($status == 'Single'): ?>
-             <select class="form-control select2" name="status">
-              <option value="Single">Single</option>
-              <option value="Maried">Maried</option>
-            </select>
+        <?php endif ?>
+
+      </div>
+      <div class="col-xs-4">
+        <label>Extension Name<font style="color:red;"></font></label>
+        <input  value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
+      </div>
+      <div class="col-xs-4">
+        <label>Office Email Address <font style="color:red;">*</font></label>
+        <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="col-xs-4">
+        <label>Office/Division<font style="color:red;">*</font></label>
+        <select required class="form-control select2" style="width: 100%;" name="division" id="" >
+          <option value="<?php echo $division1;?>" selected><?php echo $division11;?></option>
+          <?php echo tblpersonnel($connect)?>
+        </select>
+      </div>
+      <div class="col-xs-4">
+        <label>Sex<font style="color:red;">*</font></label>
+        <select class="form-control select2" name="gender">
+          <?php if ($gender1 == 'Male'): ?>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
             <?php else: ?>
-              <select class="form-control select2" name="status">
-                <option value="Maried">Maried</option>
-                <option value="Single">Single</option>
-              </select>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
             <?php endif ?>
-            
-          </div>
-          <div class="col-xs-4">
-            <label>Employement Status<font style="color:red;">*</font></label>
-            <?php if ($ACTIVATED == 'Yes'): ?>
-             <select class="form-control select2" name="e_stats">
-              <option value="Yes">Regular</option>
-              <option value="No">COS</option>
-            </select>
-            <?php else: ?>
-             <select class="form-control select2" name="e_stats">
-              <option value="No">COS</option>
-              <option value="Yes">Regular</option>
-            </select>
-          <?php endif ?>
-          
-        </div>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        
-        <div class="col-xs-4">
-          <label>Designation<font style="color:red;">*</font></label>
-          <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
-            <option value="<?php echo $designation11;?>" selected><?php echo $designation1;?></option>
-            <?php echo tbldesignation($connect)?>
           </select>
         </div>
         <div class="col-xs-4">
-          <label>Birth Date<font style="color:red;">*</font></label>
-          <div class="input-group date">
-            <div class="input-group-addon">
-              <i class="fa fa-calendar"></i>
-            </div>
-            <input autocomplete="new-password" required type="text" value="<?php echo $bday1;?>" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="Birth Date">
+          <label>Office Address</label>
+          <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="col-xs-4">
+          <label>Position<font style="color:red;">*</font></label>
+          <select required class="form-control select2" style="width: 100%;" name="position" id="" >
+            <option value="<?php echo $position11;?>" selected><?php echo $position1;?></option>
+            <?php echo tbldilgposition($connect)?>
+          </select>
+        </div>
+        <div class="col-xs-4">
+          <label>Civil Status<font style="color:red;">*</font></label>
+          <?php if ($status == 'Single'): ?>
+           <select class="form-control select2" name="status">
+            <option value="Single">Single</option>
+            <option value="Maried">Maried</option>
+          </select>
+          <?php else: ?>
+            <select class="form-control select2" name="status">
+              <option value="Maried">Maried</option>
+              <option value="Single">Single</option>
+            </select>
+          <?php endif ?>
+
+        </div>
+        <div class="col-xs-4">
+          <label>Employement Status<font style="color:red;">*</font></label>
+          <?php if ($ACTIVATED == 'Yes'): ?>
+           <select class="form-control select2" name="e_stats">
+            <option value="Yes">Regular</option>
+            <option value="No">COS</option>
+          </select>
+          <?php else: ?>
+           <select class="form-control select2" name="e_stats">
+            <option value="No">COS</option>
+            <option value="Yes">Regular</option>
+          </select>
+        <?php endif ?>
+
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <div class="col-xs-4">
+        <label>Designation<font style="color:red;">*</font></label>
+        <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
+          <option value="<?php echo $designation11;?>" selected><?php echo $designation1;?></option>
+          <?php echo tbldesignation($connect)?>
+        </select>
+      </div>
+      <div class="col-xs-4">
+        <label>Birth Date<font style="color:red;">*</font></label>
+        <div class="input-group date">
+          <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
           </div>
+          <input autocomplete="new-password" required type="text" value="<?php echo $bday1;?>" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="Birth Date">
         </div>
-
-
-
-
       </div>
+
+
+
+
     </div>
-    <!-- username and pw -->
   </div>
-  <div class="well" hidden>
-    <div class="box-header with-border">
-      <h3 class="box-title">Username and Password</h3>
-    </div>
-    <div class="box-body">
-      <div class="row">
-        <div class="col-xs-4">
-          <label>Username<font style="color:red;">*</font> </label>
-          <input autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
-
-        </div>
-        <div class="col-xs-4">
-          <label>Password<font style="color:red;">*</font> </label>
-          <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
-        </div>
-        <div class="col-xs-4" >
-          <label>Re-type Password<font style="color:red;">*</font></label>
-          <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
-        </div>
-
-      </div>
-    </div>
-  </div>  
-  <?php if ($_GET['view'] == 1): ?>
-
-    <?php else: ?>
-      <div class="row">
-        <div class="col-xs-2" align="center" >
-          <button class="btn btn-block btn-primary" name="submit" type="submit" id="submit"><font size="">Save</font></button>
-        </div>
-      </div>
-    <?php endif ?>
-    
+  <!-- username and pw -->
+</div>
+<?php if ($_GET['3d'] == 3): ?>
+ <div class="well" >
+  <div class="box-header with-border">
+    <h3 class="box-title">Username and Password</h3>
   </div>
+  <div class="box-body">
+    <div class="row">
+      <div class="col-xs-4">
+        <label>Username<font style="color:red;">*</font> </label>
+        <input readonly autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
+
+      </div>
+      <div class="col-xs-4">
+        <label>Password<font style="color:red;">*</font> </label>
+        <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
+      </div>
+      <div class="col-xs-4" hidden>
+        <label>Re-type Password<font style="color:red;">*</font></label>
+        <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
+      </div>
+
+    </div>
+  </div>
+</div> 
+<?php else: ?>
+ <div class="well" hidden>
+  <div class="box-header with-border">
+    <h3 class="box-title">Username and Password</h3>
+  </div>
+  <div class="box-body">
+    <div class="row">
+      <div class="col-xs-4">
+        <label>Username<font style="color:red;">*</font> </label>
+        <input autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
+
+      </div>
+      <div class="col-xs-4">
+        <label>Password<font style="color:red;">*</font> </label>
+        <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
+      </div>
+      <div class="col-xs-4" >
+        <label>Re-type Password<font style="color:red;">*</font></label>
+        <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
+      </div>
+
+    </div>
+  </div>
+</div> 
+
+<?php endif ?> 
+<?php if ($_GET['view'] == 1): ?>
+
+  <?php else: ?>
+    <div class="row">
+      <div class="col-xs-2" align="center" >
+        <button class="btn btn-block btn-primary" name="submit" type="submit" id="submit"><font size="">Save</font></button>
+      </div>
+    </div>
+  <?php endif ?>
+
+</div>
 </form>
 
 
@@ -617,15 +617,17 @@
     var value = $(this).val();
     if (value == '1') {
       $('#sel_depart').find('option').remove().end().append('<option disabled selected></option><option value="10">Batangas</option><option value="21">Cavite</option><option value="34">Laguna</option><option value="56">Quezon</option>  <option value="58">Rizal</option>') ;
-     $('#sel_user').find('option').remove().end().append('<option disabled selected></option>') ;
+      $('#sel_user').find('option').remove().end().append('<option disabled selected></option>') ;
       document.getElementById("sel_depart").disabled=true;
       document.getElementById("sel_user").disabled=true;
+
     }
     if (value == '2' || value == '3') {
       $('#sel_depart').find('option').remove().end().append('<option disabled selected></option><option value="10">Batangas</option><option value="21">Cavite</option><option value="34">Laguna</option><option value="56">Quezon</option>  <option value="58">Rizal</option>') ;
-     $('#sel_user').find('option').remove().end().append('<option disabled selected></option>') ;
+      $('#sel_user').find('option').remove().end().append('<option disabled selected></option>') ;
       document.getElementById("sel_depart").disabled=false;
       document.getElementById("sel_user").disabled=true;
+
     }
     if (value == '4') {
      $('#sel_depart').find('option').remove().end().append('<option disabled selected></option><option value="10">Batangas</option><option value="21">Cavite</option><option value="34">Laguna</option><option value="56">Quezon</option>  <option value="58">Rizal</option>') ;
@@ -635,6 +637,38 @@
    }
  });
 
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $("#sel_depart").change(function(){
+      var deptid = $(this).val();
+      
+      $.ajax({
+        url: 'getUsers.php',
+        type: 'post',
+        data: {depart:deptid},
+        dataType: 'json',
+        success:function(response){
+
+          var len = response.length;
+
+          $("#sel_user").empty();
+          for( var i = 0; i<len; i++){
+            var id = response[i]['citymun_c'];
+            var name = response[i]['citymun_m'];
+
+            $("#sel_user").append("<option value='"+id+"'>"+name+"</option>");
+
+          }
+        }
+      });
+
+
+    });
+
+  });
 </script>
 <script>
 
