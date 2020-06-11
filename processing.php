@@ -256,7 +256,7 @@ function filldataTable()
                     }
                 }else{
         
-                    echo '<button title = "Completed Date"  id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
+                    echo '<button title = "Completed Date"  id ="update_complete" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
                     Completed Date<br> 
                     '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
                     </button>';
@@ -297,6 +297,15 @@ function filldataTable()
                 <button   disabled class = "btn btn-danger btn-md col-lg-12 ">Rated Date<br><?php echo date('F d, Y', strtotime($row['DATE_RATED']));?></button>
 
 <?php
+                }else{
+                    ?>
+                    <button    class = "btn btn-danger btn-md col-lg-12 ">
+                    <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                            Rate Service
+                        </a>
+                    </button>
+    
+                            <?php
                 }
 
               ?>
@@ -969,6 +978,37 @@ $(document).on('click','#sweet-16',function(e){
               data:{
                   id:ids,
                   option:'complete'
+              },
+              
+              success:function(data)
+              {
+                  setTimeout(function () {
+                  swal("Service Complete!");
+                  }, 3000);
+                  window.location = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id="+ids;
+              }
+            });
+        });
+    });
+$(document).on('click','#update_complete',function(e){
+    e.preventDefault();
+    var ids=$(this).data('id');
+        swal({
+            title: "Are you sure you already finished with this request?",
+            text: "Control No:"+ids,
+            type: "info",
+            showCancelButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }).then(function () {
+            $.ajax({
+              url:"_ticketReleased.php",
+              method:"POST",
+              data:{
+                  id:ids,
+                  option:'update_complete'
               },
               
               success:function(data)

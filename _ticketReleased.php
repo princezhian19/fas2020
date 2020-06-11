@@ -35,6 +35,14 @@ switch ($option) {
         } else {
         }
             break;
+    case 'update_complete':
+        $insert ="UPDATE `tbltechnical_assistance` SET 
+        `STATUS_REQUEST` = 'Rated'
+        WHERE `CONTROL_NO` = '$id' ";
+        if (mysqli_query($conn, $insert)) {
+        } else {
+        }
+    break;
     
     default:
         # code...
