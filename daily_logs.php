@@ -299,13 +299,13 @@ if (isset($_POST['stamp4'])) {
       <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
         <thead>
           <tr style="background-color: white;color:blue;">
-            <th width="">Date</th>
+            <th width="">DATE</th>
             <th width="">AM ARIVAL</th>
             <th width="">AM DEPARTURE</th>
             <th width="">PM ARIVAL</th>
             <th width="">PM DEPARTURE</th>
-            <th width="">Undertime Hours</th>
-            <th width="">Undertime Minutes</th>
+            <th width="">UNDERTIME HOURSE</th>
+            <th width="">UNDERTIME MINUTES</th>
           </tr>
         </thead>
         <?php 
