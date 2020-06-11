@@ -173,6 +173,7 @@ if (isset($_POST['stamp4'])) {
 
 
 ?>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <div class="row">
     <div class="col-md-3">
 
@@ -342,13 +343,16 @@ if (isset($_POST['stamp4'])) {
   <div class="col-md-3">
     <div class="box" >
       <div class="panel-heading">
-        <i class="fa fa-fw fa-clock-o"></i>&nbsp&nbsp&nbsp<strong>TODAY LOGS</strong>
+        <strong>ONLINE DTR</strong>
+        <div class="pull-right">
+      <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-Day</strong></font>
+      </div>
       </div>
       <div class="">
        <table id="example1" class="table table-striped " style="background-color: white;">
           <form method="POST">
             <tr>
-              <th  width="150">AM ARRIVAL</th>
+              <th  width="200">AM ARRIVAL</th>
               <?php if (mysqli_num_rows($check1)>0): ?>
                 <td width="250"><?php echo date('h:i A',strtotime($time_inL))?></td>
 
@@ -411,7 +415,7 @@ if (isset($_POST['stamp4'])) {
 
     <div class="row" >
       <div class="col-md-12" >
-        <div class="box"  style="width: 600px;padding-right: 10px;padding-left: 10px;border-left: 5px solid black;">
+        <div class="box"  style="width: 530px;padding-right: 10px;padding-left: 10px;border-left: 5px solid black;">
           <!-- /.box-header -->
           <div class="box-body">
             <div class="row">
@@ -643,7 +647,7 @@ if (isset($_POST['stamp4'])) {
 <div class="col-md-9">
 
   <div class="row"> 
-    <div class="col-md-5" style="color:white;">
+    <div class="col-md-4" style="color:white;">
 
       <div class="box" style="background-image: url('images/purple.jpg');border-radius: 20px;">
          <div class="panel-heading">
@@ -688,7 +692,7 @@ if (isset($_POST['stamp4'])) {
       </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="row">
         <div class="col-md-12">
           <div class="box" >
@@ -1201,3 +1205,17 @@ if (isset($_POST['stamp4'])) {
     </div>
   </div>
 </div>  
+<script>
+    $(document).ready(function(){
+        $("#ck").click(function(){
+            if($(this).prop("checked") == true){
+                $('#s3').prop("disabled", false);
+                $('#s2').prop("disabled", false);
+            }
+            else if($(this).prop("checked") == false){
+                $('#s3').prop("disabled", true);
+                $('#s2').prop("disabled", true);
+            }
+        });
+    });
+</script>
