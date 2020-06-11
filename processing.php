@@ -56,7 +56,7 @@ function filldataTable()
 {
     include 'connection.php';
     $query = "SELECT * FROM tbltechnical_assistance 
-    where `STATUS_REQUEST` = 'Submitted' or  `STATUS_REQUEST` = 'Received' or `STATUS_REQUEST` = 'For action' or `STATUS_REQUEST` = 'Completed'  
+    where `STATUS_REQUEST` != '' 
     GROUP by tbltechnical_assistance.ID
     order by `CONTROL_NO` DESC ";
 
