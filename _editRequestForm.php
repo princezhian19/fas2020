@@ -366,7 +366,7 @@ function fillCheckbox()
                 <input style = "margin-left:60px;" checked disabled type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
                 <?php
                 switch ($row['TYPE_REQ_DESC']) {
-                    case 'Operating System, Antivirus':
+                    case 'Operating System, Office, Anti-Virus':
                         ?>
                         <div style = "margin-left:90px;padding-top:10px;">
                             <input checked style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
