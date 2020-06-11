@@ -11,6 +11,13 @@ $request_date =  date("M d, Y",strtotime($_POST['request_date']));
 $request_date1 = $_POST['request_date'];
 $req_date_format = date("Y-m-d",strtotime($request_date1));
 
+$office = $_POST['office'];
+
+$position = $_POST['position'];
+$contact_no = $_POST['contact_no'];
+$email_address = $_POST['email_address'];
+$req_type_category = $_POST['req_type_category'];
+
 // $request_time = $_POST['request_time'];
 if (strstr($_POST['request_time'], 'PM' ) ) {
     $a = str_replace("PM","",$_POST['request_time']);
@@ -20,11 +27,6 @@ if (strstr($_POST['request_time'], 'PM' ) ) {
     $a = str_replace("AM","",$_POST['request_time']);
     $request_time  = date("H:i",strtotime($_POST['request_time']));
 }
-$office = $_POST['office'];
-$position = $_POST['position'];
-$contact_no = $_POST['contact_no'];
-$email_address = $_POST['email_address'];
-$req_type_category = $_POST['req_type_category'];
 if(isset($_POST['req_type_subcategory']))
 {
     $req_type_subcategory = $_POST['req_type_subcategory'];

@@ -26,6 +26,7 @@ function fillTableInfo()
         $lastname = ucfirst(strtolower($lname));
           ?>
                                   <input required type = "hidden" name = "curuser" value = "<?php echo $row['EMP_N'];?>" id = "selectedUser" />
+                              
 
                <table  border = 1 class = "center-text" style = "width:100%;">
                             <tbody>
@@ -64,31 +65,31 @@ function fillTableInfo()
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:<span style = "color:red;">*</span></td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;">
                                       <input required type = "hidden"  name="requested_by" value = "<?php $row['EMP_N'];?>" />
-                                      <input disabled type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $firstname.' '.$row['MIDDLE_M'][0].'. '.$lastname.' ';?>" >
+                                      <input readonly type = "text" class = "sizeMax alphanum subtxt" value = "<?php echo $firstname.' '.$row['MIDDLE_M'][0].'. '.$lastname.' ';?>" >
                                     <td class = "label-text left-text">Brand Model:</td>
                                     <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input  type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
                                 <tr>
                                     <td class = "label-text left-text">Office:<span style = "color:red;">*</span></td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled  id = "office" placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['DIVISION_M'];?>" /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly  id = "office" placeholder = "Office" type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['DIVISION_M'];?>" /></td>
                                     <td class = "label-text left-text">Property Number:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "" /> </td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Position/Designation:<span style = "color:red;">*</span></td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled id = "position"  placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION_M'];?>"  /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly id = "position"  placeholder = "Position/Designation" type = "text" name = "position" class = "sizeMax alphanum subtxt" value = "<?php echo $row['POSITION_M'];?>"  /></td>
                                     <td class = "label-text left-text">Serial Number:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input type = "text" name = "serial_no" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Contact Number:<span style = "color:red;">*</span></td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled id = "phone" placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MOBILEPHONE'];?>"  /></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly id = "phone" placeholder = "Contact Number" type = "text" name = "contact_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['MOBILEPHONE'];?>"  /></td>
                                     <td class = "label-text left-text">IP Address:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input    type = "text" name = "ip_address" class = "sizeMax alphanum subtxt" /></td>
                                 </tr>
                                 <tr>
                                     <td style = "width:15%;" class = "label-text left-text">Email Address:<span style = "color:red;">*</span></td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input disabled id = "email" placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['EMAIL'];?>"/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input readonly id = "email" placeholder = "Email Address" type = "text" name = "email_address" class = "sizeMax alphanum subtxt" value = "<?php echo $row['EMAIL'];?>"/></td>
                                     <td class = "label-text left-text">MAC Address:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  type = "text" name = "mac_address" class = "sizeMax alphanum subtxt" value = ""/></td>
                                 </tr>
