@@ -197,7 +197,8 @@ function filldataTable()
                 echo '';
             }
             ?>
-           class = "btn btn-success btn-md col-lg-12 "><a href = "rateService.php?id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >Rate Service</a></button>
+           class = "btn btn-success btn-md col-lg-12 ">Rate Service</a></button><br><br>
+           <!-- <a href = "rateService.php?id=" style = "decoration:none;color:#fff;" >R -->
 
                     <?php
                     // Received
