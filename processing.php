@@ -270,7 +270,11 @@ function filldataTable()
                 {
                     if ($row['DATE_RATED'] != '' || $row['DATE_RATED'] != NULL){
                         ?>
-                <button   disabled class = "btn btn-danger btn-md col-lg-12 ">Rated Date<br><?php echo date('F d, Y', strtotime($row['DATE_RATED']));?></button>
+                <button    class = "btn btn-danger btn-md col-lg-12 ">
+                <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                        Rate Service
+                    </a>
+                </button>
 
                         <?php
                     }
