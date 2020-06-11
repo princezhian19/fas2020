@@ -556,6 +556,17 @@ $(document).ready(function() {
       {
         $('#cb1').not(this).prop('checked', true);  
       }
+      $('#site').val('');
+      $('#purpose').val('');
+      $('#purpose2').val('');
+      $('#softwares').val('');
+      $('#changeaccount').val('');
+      $('#others1').val('');
+      $('#others2').val('');
+      $('#others3').val('');
+
+  
+
       $(".checkboxgroup_g1").removeAttr("disabled");
       $(".checkboxgroup_g2").attr("disabled", true);
       $(".checkboxgroup_g3").attr("disabled", true);
@@ -573,6 +584,7 @@ $(document).ready(function() {
 
 
     } else {
+
       $('.checkboxgroup_g1').not(this).prop('checked', false);  
 
 
@@ -591,6 +603,16 @@ $(document).ready(function() {
       {
         $('#cb2').not(this).prop('checked', true);  
       }
+      $('#site').val('');
+      $('#purpose').val('');
+      $('#purpose2').val('');
+      $('#softwares').val('');
+      $('#changeaccount').val('');
+      $('#others1').val('');
+      $('#others2').val('');
+      $('#others3').val('');
+
+
       $(".checkboxgroup_g2").removeAttr("disabled");
       document.getElementById("site").disabled = false; 
       document.getElementById("purpose").disabled = false; 
@@ -608,6 +630,10 @@ $(document).ready(function() {
       $('.checkboxgroup_g5').not(this).prop('checked', false);  
       $('.checkboxgroup_g6').not(this).prop('checked', false);  
     } else {
+      $('#site').val('');
+      $('#purpose').val('');
+      $('#purpose2').val('');
+
       $('.checkboxgroup_g2').not(this).prop('checked', false);  
 
       $(".checkboxgroup_g1").attr("disabled", true);
@@ -629,6 +655,15 @@ $(document).ready(function() {
       {
         $('#cb3').not(this).prop('checked', true);  
       }
+      $('#site').val('');
+      $('#purpose').val('');
+      $('#purpose2').val('');
+      $('#softwares').val('');
+      $('#changeaccount').val('');
+      $('#others1').val('');
+      $('#others2').val('');
+      $('#others3').val('');
+
       $(".checkboxgroup_g3").removeAttr("disabled");
       document.getElementById("softwares").disabled = false; 
       $(".checkboxgroup_g1").attr("disabled", true);
@@ -646,7 +681,7 @@ $(document).ready(function() {
     } else {
       document.getElementById("softwares").disabled = true; 
 
-
+    $('#softwares').val('');
       $('.checkboxgroup_g3').not(this).prop('checked', false);  
 
       $(".checkboxgroup_g1").attr("disabled", true);
@@ -665,7 +700,14 @@ $(document).ready(function() {
       {
         $('#cb4').not(this).prop('checked', true);  
       }
-
+      $('#site').val('');
+      $('#purpose').val('');
+      $('#purpose2').val('');
+      $('#softwares').val('');
+      $('#changeaccount').val('');
+      $('#others1').val('');
+      $('#others2').val('');
+      $('#others3').val('');
 
       $(".checkboxgroup_g4").removeAttr("disabled");
       $(".checkboxgroup_g1").attr("disabled", true);
@@ -698,6 +740,16 @@ $(document).ready(function() {
       {
         $('#cb5').not(this).prop('checked', true);  
       }
+      $('#site').val('');
+      $('#purpose').val('');
+      $('#purpose2').val('');
+      $('#softwares').val('');
+      $('#changeaccount').val('');
+      $('#others1').val('');
+      $('#others2').val('');
+      $('#others3').val('');
+
+
 
       $(".checkboxgroup_g5").removeAttr("disabled");
       $(".checkboxgroup_g1").attr("disabled", true);
@@ -713,8 +765,17 @@ $(document).ready(function() {
       $('.checkboxgroup_g6').not(this).prop('checked', false);  
 
     } else {
-      $(".checkboxgroup_g5").attr("disabled", true);
       document.getElementById("changeaccount").disabled = true; 
+      $('#changeaccount').val('');
+      $('.checkboxgroup_g5').not(this).prop('checked', false);  
+
+      $(".checkboxgroup_g1").attr("disabled", true);
+      $(".checkboxgroup_g2").attr("disabled", true);
+      $(".checkboxgroup_g3").attr("disabled", true);
+      $(".checkboxgroup_g4").attr("disabled", true);
+      $(".checkboxgroup_g5").attr("disabled", true);
+      $(".checkboxgroup_g6").attr("disabled", true);
+
       
 
     }
@@ -722,7 +783,12 @@ $(document).ready(function() {
 
   function enable_cb6(){
     if (this.checked) {
-     
+      $('#site').val('');
+      $('#purpose').val('');
+      $('#purpose2').val('');
+      $('#softwares').val('');
+      $('#changeaccount').val('');
+
 
       $(".checkboxgroup_g6").removeAttr("disabled");
       $(".checkboxgroup_g1").attr("disabled", true);
@@ -739,6 +805,11 @@ $(document).ready(function() {
       $('.checkboxgroup_g6').not(this).prop('checked', false);  
 
     }else{
+      $('#others1').val('');
+      $('#others2').val('');
+      $('#others3').val('');
+      
+
       $(".checkboxgroup_g6").attr("disabled", true);
       $(".checkboxgroup_g1").attr("disabled", true);
       $(".checkboxgroup_g2").attr("disabled", true);
