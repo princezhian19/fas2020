@@ -407,7 +407,7 @@ if (isset($_POST['stamp4'])) {
 
     <div class="row" >
       <div class="col-md-12" >
-        <div class="box"  style="width: 700px;padding-right: 10px;padding-left: 10px;border-left: 5px solid black;">
+        <div class="box"  style="width: 600px;padding-right: 10px;padding-left: 10px;border-left: 5px solid black;">
           <!-- /.box-header -->
           <div class="box-body">
             <div class="row">
