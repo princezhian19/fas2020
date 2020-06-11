@@ -105,7 +105,7 @@ $edit="edit";
                   <th width = ''>OFFICE</th>
                   <th width = ''>PURPOSE</th>
                   <th width = ''>DESTINATION</th>
-                  <th width = '100'>NO OF PAX</th>
+                  <th width = ''>NO OF PAX</th>
                   <th width = ''>PASSENGER/S NAME</th>
                   <th width = ''>DEPARTURE </th>
                   <th width = ''>RETURN </th>
@@ -153,6 +153,7 @@ $edit="edit";
                   $vrtime1 = $row['vrtime'];
                   $vrtime=  date("g:i A",strtotime($vrtime1));
 
+                  $nod= $row['nod'];
                   $type = $row['type'];
                   $name = $row['name'];
                   $office = $row['office'];
@@ -214,9 +215,13 @@ $edit="edit";
                 <?php endif ?>
 
 
-                
+                <?php if ($type == 'Day/s'): ?>
+                <td><?php echo  $nod.' '.$type?></td>
+                <?php else: ?>
+                  <td><?php echo $type?></td>
+                <?php endif ?>
 
-                <td><?php echo  $type?></td>
+                
                 <td><?php echo  $name?></td>
                 <td><?php echo  $office?></td>
 
@@ -324,7 +329,7 @@ $edit="edit";
                                 <a   title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i>&nbsp; Export&nbsp;</a>
                                 <br>
                              
-                                  <a href='VehicleRequestUpdate.php?id=<?php echo $id;?>&pos=<?php echo $pos;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>&nbsp;&nbsp;&nbsp; Edit &nbsp;&nbsp;&nbsp;</a>
+                                  <a href='VehicleRequestUpdate.php?id=<?php echo $id;?>&pos=<?php echo $pos;?>&vrno=<?php echo $vrno;?>&type=<?php echo $type;?>' onclick="myFunctionPassengers()" data-vrno = <?php echo $vrno?>  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>&nbsp;&nbsp;&nbsp; Edit &nbsp;&nbsp;&nbsp;</a>
                                   <br>
                                   
                                 
@@ -483,3 +488,24 @@ $edit="edit";
           </div>
           </div>
         <!-- modals -->
+
+
+
+        <script>
+                  function myFunctionPassengers() {
+
+                    var vrno = idget.getAttribute("data-vrno");
+                    var passengers = $("input[name='passengers']");
+
+                    $.ajax({
+                    method:'POST',
+                    url:"vr_passengers.php?",
+                    data: {vrno:vrno},
+                        success : function(data) {
+                          passengers.val(data);
+                          //alert(data);
+                        }
+                    });
+                   
+                  }
+</script>
