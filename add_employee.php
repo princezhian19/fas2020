@@ -446,7 +446,7 @@
             <select class="form-control select2" name="status">
               <option disabled selected></option>
               <option value="Single">Single</option>
-              <option value="Maried">Maried</option>
+              <option value="Maried">Married</option>
             </select>
           </div>
           <div class="col-xs-4">
