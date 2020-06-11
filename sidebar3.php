@@ -67,7 +67,7 @@ function showRequest()
   <div class="wrapper">
     <header class="main-header">
       <!-- Logo -->
-      <a href="home.php?division=<?php echo $_SESSION['division'];?>" class="logo">
+      <a href="home2.php?division=<?php echo $_SESSION['division'];?>" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><img src = "images/logo2.png"/></span>
         <!-- logo for regular state and mobile devices -->
@@ -228,8 +228,8 @@ function showRequest()
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-          <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/home.php?division='.$_SESSION['division'].''){ echo 'class = "active"';}?>>
-            <a href="home1.php?division=<?php echo $_GET['division']; ?>" >
+          <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/home2.php?division='.$_SESSION['division'].''){ echo 'class = "active"';}?>>
+            <a href="home2.php?division=<?php echo $_GET['division']; ?>" >
               <i class="fa fa-dashboard" style = "color:#black;"></i> <span style = "color:#black;font-weight:normal;">Dashboard</span>
               <span class="pull-right-container">
               </span>
