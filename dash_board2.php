@@ -333,7 +333,7 @@ if (isset($_POST['stamp4'])) {
       <div class="panel-heading">
         <strong><a href="DTR.php">ONLINE DTR</a></strong>
         <div class="pull-right">
-      <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-Day</strong></font>
+      <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-day</strong></font>
       </div>
       </div>
       <div class="">

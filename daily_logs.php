@@ -461,7 +461,7 @@ if (isset($_POST['stamp4'])) {
   <div class="box box-success">
     <div class="box-header with-border pull-right" align="left">
       <!-- <h4><strong>Logs For Today : <?php echo date('F d, Y')?></strong></h4> -->
-      <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-Day</strong></font>
+      <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-day</strong></font>
     </div>
     <div class="box-body table-responsive no-padding">
       <div class="box-body">
