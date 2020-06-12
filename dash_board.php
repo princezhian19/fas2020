@@ -80,12 +80,10 @@ if (isset($_POST['stamp1'])) {
   }
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Success!')
       window.location.href = 'home.php?division=$division';
       </SCRIPT>");
   }else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Success!')
       window.location.href = 'home.php?division=$division';
       </SCRIPT>");
   }
@@ -106,12 +104,10 @@ if (isset($_POST['stamp2'])) {
 
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Success!')
       window.location.href = 'home.php?division=$division';
       </SCRIPT>");
   }else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Success!')
       window.location.href = 'home.php?division=$division';
       </SCRIPT>");
   }
@@ -132,12 +128,10 @@ if (isset($_POST['stamp3'])) {
 
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Success!')
       window.location.href = 'home.php?division=$division';
       </SCRIPT>");
   }else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Success!')
       window.location.href = 'home.php?division=$division';
       </SCRIPT>");
   }
@@ -159,12 +153,10 @@ if (isset($_POST['stamp4'])) {
 
   if ($insert) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Success!')
       window.location.href = 'home.php?division=$division';
       </SCRIPT>");
   }else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Success!')
       window.location.href = 'home.php?division=$division';
       </SCRIPT>");
   }
@@ -370,7 +362,7 @@ if (isset($_POST['stamp4'])) {
                     <?php if (mysqli_num_rows($check1)>0): ?>
                       <td ><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
                       <?php else: ?>
-                        <td ><button disabled class="btn btn-success" id="s2" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
+                        <td ><button disabled class="btn btn-success"  name="stamp2" type="submit"><strong>Stamp</strong></button></td>
                       <?php endif ?>
                     <?php endif ?>
                   </tr>
@@ -395,7 +387,7 @@ if (isset($_POST['stamp4'])) {
                           <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0 && mysqli_num_rows($check3)>0): ?>
                           <td ><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
                           <?php else: ?>
-                            <td ><button disabled class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
+                            <td ><button disabled class="btn btn-success" id="s2" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
                           <?php endif ?>
                         <?php endif ?>
                       </tr>
