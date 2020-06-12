@@ -158,7 +158,7 @@ if (isset($_POST['submit'])) {
           <div class="row">
             <div class="col-xs-8">
               <div class="checkbox icheck">
-                <label>
+                <label hidden>
                   <a href="Registration.php" class="btn btn-success btn-xs">Not yet Registered?</a>
                 </label>
               </div>
