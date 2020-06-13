@@ -347,6 +347,13 @@
           <div class="col-xs-4">
             <label>Office Station<font style="color:red;">*</font></label>
             <select required id="mySelect2" class="form-control" name="office">
+              <?php if ($office1 == 0): ?>
+                <option selected disabled></option>
+                <option value="1">Regional Office</option>
+                <option value="2">Provincial/HUC Office</option>
+                <option value="3">Cluster Office</option>
+                <option value="4">City/Municipal Office</option>
+              <?php endif ?>
               <?php if ($office1 == 1): ?>
                 <option value="1">Regional Office</option>
                 <option value="2">Provincial/HUC Office</option>
@@ -435,6 +442,13 @@
           <?php endif ?>
 
           <?php if ($office1 == 4): ?>
+           <select  id="sel_user" name="municipality" class="form-control select2">
+            <option value="<?php echo $city_id;?>"><?php echo $municipality11;?></option>
+            <option value="0"></option>
+          </select>
+        <?php endif ?>
+
+        <?php if ($office1 == 0): ?>
            <select  id="sel_user" name="municipality" class="form-control select2">
             <option value="<?php echo $city_id;?>"><?php echo $municipality11;?></option>
             <option value="0"></option>
