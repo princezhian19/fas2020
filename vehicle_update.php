@@ -158,7 +158,7 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 $username1 = $_SESSION['username'];
 //input check value
 $checked = $_POST['check'];
-echo $checked;
+//echo $checked;
 /* Requset vr_count */
 $vr_c = $_POST['vr_c'];
 
