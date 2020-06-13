@@ -158,7 +158,8 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 $username1 = $_SESSION['username'];
 //input check value
 $checked = $_POST['check'];
-//echo $checked;
+/* echo $checked;
+exit(); */
 /* Requset vr_count */
 $vr_c = $_POST['vr_c'];
 
@@ -188,7 +189,7 @@ else if($checked=='wholeday'){
   $type1="Whole Day";
 }
 else if($checked=='Day/s'){
-  $type1=$nod." Day/s";
+  $type1=$nod1." Day/s";
 
 }
 else{

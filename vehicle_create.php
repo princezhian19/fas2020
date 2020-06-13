@@ -1417,10 +1417,10 @@ function myFunction() {
     
   }
   else{
-
+    check.val('');
     $("#nod").attr("disabled", "disabled");
 
-    check.val('');
+   
     // alert(check.val());
   }
 
@@ -1442,10 +1442,10 @@ function myFunction1() {
     
   }
   else{
-
+    check1.val('');
     $("#nod").attr("disabled", "disabled");
 
-    check1.val('');
+    
     // alert(check1.val());
   }
 
@@ -1467,10 +1467,11 @@ function myFunction2() {
     
   }
   else{
+    check2.val('');
 
     $("#nod").attr("disabled", "disabled");
 
-    check2.val('');
+   
     // alert(check2.val());
   }
 
