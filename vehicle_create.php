@@ -1,4 +1,8 @@
-<?php session_start();
+<?php
+
+use function PHPSTORM_META\type;
+
+session_start();
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }else{
@@ -130,7 +134,7 @@ else if($checked=='Day/s'){
 }
 else{
   //$type="N/A";
-  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Type is required.  </p> </div></div>  '; 
+ 
 }
 
 
@@ -167,6 +171,11 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
+if($type==''){
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Type is a required field.  </p> </div></div>  '; 
+
+}
+else{
 
   /* insert to vr_passengers table */
   $passengers = $_POST["passengers"];
@@ -205,6 +214,9 @@ else{
   echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
    
 }
+}
+
+
 
 }
 
@@ -218,7 +230,7 @@ else{
             <h1 align="">Create Vehicle Request</h1>
             
         <br>
-      <li class="btn btn-success"><a href="VehicleRequest.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-warning"><a href="VehicleRequest.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
      
@@ -430,7 +442,7 @@ else{
                        
                         </td>
                         <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
-                        <input  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 80px; width:100%;" name="purpose" id="purpose" value = "" placeholder="" >
+                        <input  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 80px; width:100%;" name="purpose" id="purpose" value="<?php echo isset($_POST['purpose']) ? htmlspecialchars($_POST['purpose'], ENT_QUOTES) : ''; ?>" placeholder="" >
                        
                         </td>
                         
@@ -493,7 +505,7 @@ else{
                        
                         </td>
                         <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
-                        <input required  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 100px; width:100%;" name="destination" id="destination" value = "" placeholder="" >
+                        <input required  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 100px; width:100%;" name="destination" id="destination" value="<?php echo isset($_POST['destination']) ? htmlspecialchars($_POST['destination'], ENT_QUOTES) : ''; ?>" placeholder="" >
                        
                         </td>
 
@@ -543,7 +555,7 @@ else{
                        
                         </td>
                         <td colspan=3 rowspan="3" style=" border:1px solid black; text-align:center; ">
-                        <input  required type="text" class="" style="margin-top:0px;text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 190px; width:100%;" name="remarks" id="remarks" value = "" placeholder="" >
+                        <input   type="text" class="" style="margin-top:0px;text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 190px; width:100%;" name="remarks" id="remarks" value="<?php echo isset($_POST['remarks']) ? htmlspecialchars($_POST['remarks'], ENT_QUOTES) : ''; ?>" placeholder="" >
                        
                         </td>
 
@@ -554,7 +566,7 @@ else{
                         
                         </td>
                         <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
-                        <textarea rows = "50" cols="1" name="passengers" id="passengers" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 135px; width:100%;"></textarea>
+                        <textarea required rows = "50" cols="1" name="passengers" id="passengers" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 135px; width:100%;"><?php echo isset($_POST['passengers']) ? htmlspecialchars($_POST['passengers'], ENT_QUOTES) : ''; ?></textarea>
                         <!-- <input  required type="text" class=""   value = "" placeholder="" > -->
                        
                         </td>
@@ -580,7 +592,7 @@ else{
                         <input readonly  required type="text" class="" style=" margin-top:0px;text-align:left; border:none;  font-size:13px;  font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "No of " >
                         <input readonly  required type="text" class="" style=" margin-top:0px;text-align:left; border:none;  font-size:12px;  font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "Passengers:" >
                         <br>
-                        <input required type="number" class="" style=" margin-top:0px;text-align:left; border:none; border-bottom:1px solid black; font-weight:bold;  font-size:13px; height: 30px; width:100%; "  name="nop" id="nop" value = "" placeholder="0" >
+                        <input required type="number" class="" style=" margin-top:0px;text-align:left; border:none; border-bottom:1px solid black; font-weight:bold;  font-size:13px; height: 30px; width:100%; "  name="nop" id="nop" value="<?php echo isset($_POST['nop']) ? htmlspecialchars($_POST['nop'], ENT_QUOTES) : ''; ?>" placeholder="0" >
                         </td> 
                         
 
@@ -607,7 +619,7 @@ else{
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100;" name="departuredate" id="datepicker1" value = "" placeholder="mm/dd/yyyy">
+                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100;" name="departuredate" id="datepicker1" value="<?php echo isset($_POST['departuredate']) ? htmlspecialchars($_POST['departuredate'], ENT_QUOTES) : ''; ?>" placeholder="mm/dd/yyyy">
                         </td>   
                       <!--  Departure Date: -->  
                        <!--  Departure Time: -->
@@ -616,7 +628,7 @@ else{
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="departuretime" id="departuretime"></td>
+                        <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="departuretime" id="departuretime" value="<?php echo isset($_POST['departuretime']) ? htmlspecialchars($_POST['departuretime'], ENT_QUOTES) : ''; ?>"></td>
                         </td>   
                          <!--  Departure Time: -->
 
@@ -651,7 +663,7 @@ else{
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returndate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returndate" id="datepicker2" value="<?php echo isset($_POST['returndate']) ? htmlspecialchars($_POST['returndate'], ENT_QUOTES) : ''; ?>" placeholder="mm/dd/yyyy">
                         </td>   
                       <!--  Return Date: -->  
                        <!--  Return Time: -->
@@ -660,7 +672,7 @@ else{
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returntime" id="returntime"></td>
+                        <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returntime" id="returntime" value="<?php echo isset($_POST['returntime']) ? htmlspecialchars($_POST['returntime'], ENT_QUOTES) : ''; ?>"></td>
                         </td>   
                          <!--  Return Time: -->
 

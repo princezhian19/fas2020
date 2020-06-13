@@ -97,7 +97,7 @@ $edit="edit";
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
 
-                  <th width =''>VR NO</th> 
+                  <th width =''>CTRL NO</th> 
                   <th width = ''>VEHICLE REQUEST</th>
                   
                   <th width = ''>TYPE</th>
