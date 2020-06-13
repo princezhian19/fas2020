@@ -189,7 +189,7 @@ else if($checked=='wholeday'){
   $type1="Whole Day";
 }
 else if($checked=='Day/s'){
-  $type1=$nod1." Day/s";
+  $type1="Day/s";
 
 }
 else{
@@ -254,7 +254,7 @@ else
   }
 
   /* insert to vr table */
-  $query = mysqli_query($conn,"UPDATE vr set vrno='$vrno1',vrdate='$vrdate1',vrtime='$vrtime1',type='$type1',name='$name1',office='$office1',position='$pos1',mobile='$mobile1',purpose='$purpose1',destination='$destination1',nop='$nop1',departuredate='$departuredate1',departuretime='$departuretime1',returndate='$returndate1',returntime='$returntime1',pos='$pos1' where id = '$id'");
+  $query = mysqli_query($conn,"UPDATE vr set vrno='$vrno1',vrdate='$vrdate1',vrtime='$vrtime1',type='$type1',nod='$nod1',name='$name1',office='$office1',position='$pos1',mobile='$mobile1',purpose='$purpose1',destination='$destination1',nop='$nop1',departuredate='$departuredate1',departuretime='$departuretime1',returndate='$returndate1',returntime='$returntime1',pos='$pos1' where id = '$id'");
 
  /*  echo "UPDATE vr set vrno='$vrno1',vrdate='$vrdate1',vrtime='$vrtime1',type='$type1',name='$name1',office='$office1',position='$pos1',mobile='$mobile1',purpose='$purpose1',destination='$destination1',nop='$nop1',departuredate='$departuredate1',departuretime='$departuretime1',returndate='$returndate1',returntime='$returntime1',pos='$pos1' where id = '$id'";
   exit();
