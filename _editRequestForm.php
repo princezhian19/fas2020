@@ -847,7 +847,7 @@ function setSig()
 
   $assist_by = '';
    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
-   $query = "SELECT ASSIST_BY FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+   $query = "SELECT REQ_BY FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
    $result = mysqli_query($conn, $query);
    if($row = mysqli_fetch_array($result))
      {
