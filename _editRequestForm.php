@@ -1070,7 +1070,7 @@ switch ($row['STATUS']) {
                           </td>
                           <td colspan = 4 style = "text-align:center;">
                           _____________________________________________________
-                          <p class = "label-text">Signature over Printer Name</p>
+                          <p class = "label-text">Signature over Printed Name</p>
                           
                           </td>
                           </tr>
