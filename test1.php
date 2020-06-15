@@ -648,10 +648,7 @@ function getImage()
 
 
 
-            <a href="processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
-                <i class="fa fa-users" style = "color:#black;"></i>
-                <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
-            </a>
+           
            
         </li>
       
