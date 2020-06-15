@@ -23,6 +23,8 @@ $pas1 = $_SESSION['pass'];
   if ($result->num_rows > 0) {
     while($row = mysqli_fetch_array($result))
   {
+    $OFFICE_STATION =$row['OFFICE_STATION'];
+    $_SESSION['OFFICE_STATION'] = $OFFICE_STATION;
     $division =$row['DIVISION_C'];
     $division2 = $row['DIVISION_C'];
     $_SESSION['division'] = $division;
@@ -37,10 +39,16 @@ $pas1 = $_SESSION['pass'];
         window.location.href='home.php?division=".$division."&username=".$username."';
         </SCRIPT>");
       }else{
-        
-       echo ("<SCRIPT LANGUAGE='JavaScript'>
+        if ($OFFICE_STATION == 1) {
+           echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='home1.php?division=".$division."&username=".$username."';
         </SCRIPT>");
+        }else{
+           echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.location.href='home2.php?division=".$division."&username=".$username."';
+        </SCRIPT>");
+        }
+      
        } 
 }
 
@@ -72,6 +80,8 @@ if (isset($_POST['submit'])) {
   if ($result->num_rows > 0) {
     while($row = mysqli_fetch_array($result))
   {
+    $OFFICE_STATION =$row['OFFICE_STATION'];
+    $_SESSION['OFFICE_STATION'] = $OFFICE_STATION;
     $division =$row['DIVISION_C'];
     $division2 = $row['DIVISION_C'];
     $_SESSION['division'] = $division;
@@ -88,9 +98,15 @@ if (isset($_POST['submit'])) {
         </SCRIPT>");
       }else{
         
-       echo ("<SCRIPT LANGUAGE='JavaScript'>
+        if ($OFFICE_STATION == 1) {
+           echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='home1.php?division=".$division."&username=".$username."';
         </SCRIPT>");
+        }else{
+           echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.location.href='home2.php?division=".$division."&username=".$username."';
+        </SCRIPT>");
+        }
        }  
   }
 }else{
@@ -142,7 +158,7 @@ if (isset($_POST['submit'])) {
           <div class="row">
             <div class="col-xs-8">
               <div class="checkbox icheck">
-                <label>
+                <label hidden>
                   <a href="Registration.php" class="btn btn-success btn-xs">Not yet Registered?</a>
                 </label>
               </div>

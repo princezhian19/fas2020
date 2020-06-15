@@ -131,122 +131,65 @@
     $sqlUsername =  "SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
     $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeeinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
     if (!ifRecordExist($sqlEMP_N)){
-          $insertinf = mysqli_query($conn,"INSERT INTO tblempdetails(EMP_N,office_contact,office_address) VALUES('$employee_number','$office_contact','$office_address')");
+      $sql_insert_query     = mysqli_query($conn,"INSERT INTO tblemployeeinfo (EMP_NUMBER,LAST_M, FIRST_M,MIDDLE_M, BIRTH_D, SEX_C,REGION_C, PROVINCE_C, CITYMUN_C,POSITION_C,DESIGNATION,MOBILEPHONE, EMAIL, ALTER_EMAIL,UNAME, DATE_CREATED,LANDPHONE, OFFICE_STATION, DIVISION_C, PROFILE,SUFFIX,CIVIL_STATUS,ACTIVATED,REMARKS_M)
+      VALUES ('$employee_number','$lname', '$fname', '$mname', '$birthdate', '$gender', '$region', '$province', '$municipality', '$position', '$designation', '$cellphone', '$email', '$alter_email','$username', '$date_created', '$office_contact', '$office', '$division','$target_file','$suffix','$status','$e_stats','$office_address')");
 
-          $sql_insert_query     = "INSERT INTO tblemployeeinfo (
-          EMP_NUMBER,
-          LAST_M, FIRST_M, MIDDLE_M, BIRTH_D, SEX_C,
-          REGION_C, PROVINCE_C, CITYMUN_C,
-          POSITION_C, DESIGNATION, 
-          MOBILEPHONE, EMAIL, ALTER_EMAIL, AGENCY_EMP_NO, 
-          CODE, UNAME, PSWORD, DATE_CREATED,
-          CLUSTER, LANDPHONE, OFFICE_STATION, DIVISION_C, ACCESSLIST, ACCESSTYPE,PROFILE,SUFFIX,CIVIL_STATUS,ACTIVATED,REMARKS_M)
-          VALUES (    ?, ?, ?, ?, ?, 
-          ?, ?, ?, ?, 
-          ?, ?, 
-          ?, ?, ?, ?, 
-          ?, ?, ?, ?,
-          ?, ?, ?, ?, '".$access."', 'user',?,?,?,?,?)";
-
-
-          if ($insertSQL = $DBConn->prepare($sql_insert_query)) 
-          { 
-
-           $date_created   = date("Y-m-j H:i:s");
-           $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
-           $password   = crypt($password, '$2a$10$'.$code.'$');
-           $insertSQL->bind_param("ssssssddddsssssssssssssssss", $employee_number,$lname, $fname, $mname, $birthdate, $gender, $region, $province, $municipality, $position, $designation, $cellphone, $email, $alter_email, $employee_number, $code, $username, $password, $date_created, $cluster, $office_contact, $office, $division,$target_file,$suffix,$status,$e_stats,$office_address);
-           /* execute query */
-           $insertSQL->execute();
-
-           if(!empty(basename($_FILES["image"]["name"])))
-           {
-            if(!empty($_FILES["image"]["name"]))
-            {
-              $update_image = mysqli_query($conn,"UPDATE tblemployeeinfo SET PROFILE = '$target_file' WHERE EMP_N = '".$_GET['id']."' ");
+      if ($sql_insert_query) 
+      { 
+       if(!empty(basename($_FILES["image"]["name"])))
+       {
+        if(!empty($_FILES["image"]["name"]))
+        {
             // Check if file already exists
-              if (file_exists($target_file)) 
-              {
+          if (file_exists($target_file)) 
+          {
                 // echo "Sorry, file already exists.";
-                $uploadOk = 0;
-              }
+            $uploadOk = 0;
+          }
             // Check file size
-              if ($_FILES["image"]["size"] > 9000000)
-              {
+          if ($_FILES["image"]["size"] > 9000000)
+          {
                 // echo "Sorry, your file is too large.";
-                $uploadOk = 0;
-              }
+            $uploadOk = 0;
+          }
             // Allow certain file formats
-              if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
-              {
+          if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
+          {
                 // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                $uploadOk = 0;
-              }
+            $uploadOk = 0;
+          }
             // Check if $uploadOk is set to 0 by an error
-              if ($uploadOk == 0) 
-              {
+          if ($uploadOk == 0) 
+          {
             // if everything is ok, try to upload file
-              } 
-              else 
-              {
-               if(!empty($_FILES["image"]["tmp_name"]))
-               {
-                if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) 
-                {
-                  echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
-                } else 
-                {
-                  echo "Sorry, there was an error uploading your file.";
-                }
-              }
+          } 
+          else 
+          {
+           if(!empty($_FILES["image"]["tmp_name"]))
+           {
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) 
+            {
+              echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+            } else 
+            {
+              echo "Sorry, there was an error uploading your file.";
             }
-
           }
         }
 
-        $sql1 ="INSERT INTO `hris_son_daugther`(`ID`, `EMP_ID`, `FULL_NAME`, `FIRST_NAME`, `MIDDLE_NAME`, `LAST_NAME`, `DATE_OF_BIRTH`) 
-        VALUES (NULL,$employee_number,'-',null,null,null,'0000-00-00')";
-        $connect->prepare($sql1)->execute([$employee_number]); 
+      }
+    }
 
-        $sql2 = mysqli_query($conn,"INSERT INTO `hris_personnal_information`(
-         `ID`, 
-         `EMP_ID`,
-         `SEX`, 
-         `DOB`, 
-         `POB`, 
-         `HEIGHT`, 
-         `WEIGHT`, 
-         `BLOOD_TYPE`,
-         `CIVIL_STATUS`, 
-         `MOB_NO`, 
-         `TEL_NO`, 
-         `EMAIL`, 
-         `GSIS_NO`, 
-         `PAGIBIG_NO`, 
-         `PHILHEALTH_NO`, 
-         `SSS_NO`, 
-         `TIN_NO`, 
-         `DILG_NO`, 
-         `HOUSE_NO`, 
-         `STREET`, 
-         `SUBDIVISION`, 
-         `BARANGAY`, 
-         `MUNICIPALITY`, 
-         `PROVINCE`,
-         `ZIP_CODE`) 
-         VALUES (null,'$employee_number','-','0000-00-00','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-')");
-        $connect->prepare($sql1)->execute([$employee_number]);
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Successfuly Added')
+      window.location.href = 'ViewEmployees.php?division=".$_GET['division']."&username=".$_GET['username']."';
+      </SCRIPT>");
 
-        echo ("<SCRIPT LANGUAGE='JavaScript'>
-          window.alert('Successfuly Added')
-          window.location.href = 'ViewEmployees.php?division=".$_GET['division']."&username=".$_GET['username']."';
-          </SCRIPT>");
-
-      }else{
-       echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Error Occured Uppon Saving!');
-        </SCRIPT>");
-     }
+  }else{
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Error Occured Uppon Saving!');
+    </SCRIPT>");
+ }
 
 
 }else{
@@ -307,13 +250,13 @@
           <div class = "center">
             <img id="img"   style="overflow: hidden;width:300;height:250px;margin-left:50px;border:2px solid black;" 
             src="images/male-user.png"  title = "personnel_image" />
-             <input type ="hidden" name = "dddd" value="" />
-           </div>
-           <input name = "image" class="pull-right" type="file" id="image"  onchange="readURL(this)" />
-         </div>
-       </div>
-     </div>
-     <div class="well">
+            <input type ="hidden" name = "dddd" value="" />
+          </div>
+          <input name = "image" class="pull-right" type="file" id="image"  onchange="readURL(this)" />
+        </div>
+      </div>
+    </div>
+    <div class="well">
       <div class="box-header with-border">
         <!-- <h3 class="box-title">Please Fill up Required Fields <font style="color:red;">(*)</font></h3> -->
       </div>
@@ -451,7 +394,7 @@
           </div>
           <div class="col-xs-4">
             <label>Employement Status<font style="color:red;">*</font></label>
-               <select class="form-control select2" name="e_stats">
+            <select class="form-control select2" name="e_stats">
               <option disabled selected></option>
               <option value="Yes">Regular</option>
               <option value="No">COS</option>
@@ -524,13 +467,13 @@
     var value = $(this).val();
     if (value == '1') {
       $('#sel_depart').find('option').remove().end().append('<option disabled selected></option><option value="10">Batangas</option><option value="21">Cavite</option><option value="34">Laguna</option><option value="56">Quezon</option>  <option value="58">Rizal</option>') ;
-     $('#sel_user').find('option').remove().end().append('<option disabled selected></option>') ;
+      $('#sel_user').find('option').remove().end().append('<option disabled selected></option>') ;
       document.getElementById("sel_depart").disabled=true;
       document.getElementById("sel_user").disabled=true;
     }
     if (value == '2' || value == '3') {
       $('#sel_depart').find('option').remove().end().append('<option disabled selected></option><option value="10">Batangas</option><option value="21">Cavite</option><option value="34">Laguna</option><option value="56">Quezon</option>  <option value="58">Rizal</option>') ;
-     $('#sel_user').find('option').remove().end().append('<option disabled selected></option>') ;
+      $('#sel_user').find('option').remove().end().append('<option disabled selected></option>') ;
       document.getElementById("sel_depart").disabled=false;
       document.getElementById("sel_user").disabled=true;
     }

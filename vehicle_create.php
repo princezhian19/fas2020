@@ -1,4 +1,8 @@
-<?php session_start();
+<?php
+
+use function PHPSTORM_META\type;
+
+session_start();
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }else{
@@ -52,8 +56,6 @@ $checked = "";
 
 
 
-
-
 //count ob
 $idGet='';
 $getDate = date('Y');
@@ -62,24 +64,26 @@ $auto = mysqli_query($conn,"SELECT max(count)+1 as a FROM vr_count order by id d
 while ($row = mysqli_fetch_assoc($auto)) {
 
   $idGet = $row["a"];
-  //$idGet = '100';
+  echo $idget;
 }
-
-//$tocount = 'TO '.$getDate.'-'.'00'.$idGet;
-
+  
 if($idGet<9){
   $vrcount =$getDate.'-'.'00'.$idGet;
+  
   
   }
   else if($idGet<99){
   
   $vrcount =$getDate.'-'.'0'.$idGet;
   
+  
   }
   else{
   $vrcount =$getDate.'-'.$idGet;
+  
   }
-
+  $vrcount11 =''.$idGet;
+  
 
 ?>
 
@@ -93,55 +97,67 @@ if($idGet<9){
 if(isset($_POST['submit'])){
 
 
-
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-
 $username1 = $_SESSION['username'];
- 
+//input check value
 $checked = $_POST['check'];
-
-$pos = $_POST['pos'];
-//echo $checked;
-
-$tono = $_POST['tono'];
-$date1 = $_POST['date'];
-$date = date('Y-m-d', strtotime($date1));
+/* Requset vr_count */
+$vr_c = $_POST['vr_c'];
 
 
-$lastdate1 = $_POST['lastdate'];
-if($lastdate1==''){
-  $lastdate = '0000-00-00';
-}else{
+$vrno = $_POST['vrno'];
+$vrdate1 = $_POST['vrdate'];
+$vrdate = date('Y-m-d', strtotime($vrdate1));
 
-$lastdate = date('Y-m-d', strtotime($lastdate1));
+$vrtime1 = $_POST['vrtime'];
+$vrtime = date('H:i', strtotime($vrtime1));
+
+$nod = $_POST['nod'];
+
+$type="";
+
+if($checked=='dropoff'){
+$type="Drop Off";
+
+}
+else if($checked=='pickup'){
+  $type="Pick-up";
+
+}
+else if($checked=='wholeday'){
+
+  $type="Whole Day";
+}
+else if($checked=='Day/s'){
+  $type="Day/s";
+
+}
+else{
+  //$type="N/A";
+ 
 }
 
-$kita = $_POST['kita'];
-
-$office = $_POST['office'];
 
 $name = $_POST['name'];
+$office = $_POST['office'];
+$pos = $_POST['pos'];
+$mobile = $_POST['mobile'];
 $purpose = $_POST['purpose'];
-$place = $_POST['place'];
+$destination = $_POST['destination'];
+$nop = $_POST['nop'];
+
+$departuredate1= $_POST['departuredate'];
+$departuredate = date('Y-m-d', strtotime($departuredate1));
+
+$departuretime = $_POST['departuretime'];
+
+$returndate1= $_POST['returndate'];
+$returndate = date('Y-m-d', strtotime($returndate1));
+
+$returntime = $_POST['returntime'];
+$remarks = $_POST['remarks'];
 
 
-$todate1 = $_POST['todate'];
-$todate = date('Y-m-d', strtotime($todate1));
-
-
-$fromdate1 = $_POST['fromdate'];
-
-
-$fromdate = date('Y-m-d', strtotime($fromdate1));
-
-$timefrom = $_POST['timefrom'];
-$timeto = $_POST['timeto'];
-$timefrom = $_POST['timefrom'];
-
-
-$fromplace = $_POST['fromplace'];
-$contact = $_POST['contact'];
-$vehicle = $_POST['vehicle'];
 
 $servername = "localhost";
 $username = "fascalab_2020";
@@ -155,29 +171,52 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
+if($type==''){
+  echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Type is a required field.  </p> </div></div>  '; 
 
-  $query = mysqli_query($conn,"INSERT INTO travel_order (tono,date,office,name,purpose,place,todate,timefrom,timeto,fromplace,contact,vehicle,kita,lastdate,fromdate,pos) 
-  VALUES ('$tocount','$date','$office','$name','$purpose','$place','$todate','$timefrom','$timeto','$fromplace','$contact','$vehicle','$kita','$lastdate','$fromdate','$pos')");
+}
+else{
+
+  /* insert to vr_passengers table */
+  $passengers = $_POST["passengers"];
+  $p  = preg_split('/\r\n|\n|\r/', $passengers);
+
+
+  foreach($p as $ps)
+  {
+
+  $query2 = mysqli_query($conn, "INSERT INTO  vr_passengers (vrid,name) VALUES ('".$vrno."','".$ps."')");
+
+  }
+
+  /* insert to vr table */
+  $query = mysqli_query($conn,"INSERT INTO vr (vrno,vrdate,vrtime,type,nod,name,office,position,mobile,purpose,destination,nop,departuredate,departuretime,returndate,returntime,pos,remarks) 
+  VALUES ('$vrno','$vrdate','$vrtime','$type','$nod','$name','$office','$pos','$mobile','$purpose','$destination','$nop','$departuredate','$departuretime','$returndate','$returntime','$pos','$remarks')");
 
 
 
 mysqli_close($conn);
 
 if($query){
+    /* insert to vr_count table */
+  $conn = new mysqli($servername, $username, $password,$database);
+  
+  $query1 = mysqli_query($conn, "INSERT INTO  vr_count (count) VALUES ($vr_c)");
 
-    // echo '<div class=""><div class="panel-heading " style = "background-color:Green"> <p style = "color:white;font-size:16px;"> Data has been successfully added. </p> </div></div>  '; 
+
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert(' Travel Order has been successfully added.')
-    window.location.href='TravelOrder.php';
+    window.alert(' Vehicle Request has been successfully added.')
+    window.location.href='VehicleRequest.php';
     </SCRIPT>");
 
 }
 else{
-
-  
   echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
    
 }
+}
+
+
 
 }
 
@@ -191,7 +230,7 @@ else{
             <h1 align="">Create Vehicle Request</h1>
             
         <br>
-      <li class="btn btn-success"><a href="VehicleRequest.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-warning"><a href="VehicleRequest.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
      
@@ -203,7 +242,9 @@ else{
                 <table class="table"> 
               
                 <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
-                <input  hidden  type="text"  class="" style="height: 35px;" id="office" placeholder="office" name="office" value = "<?php echo $DIVISION_M ?>">
+                <input  hidden class="" type="text" class="" style="height: 35px;" id="vr_c" name="vr_c" placeholder="" value ="<?php echo $vrcount11?>">
+                
+                
             
         
                 <!-- Header -->
@@ -274,7 +315,7 @@ else{
                         </td>
 
                         <td class="col-md-2  label-text" style =" border:1px solid black; background-color:#CFD8DC; text-align:center">
-                        <input readonly required type="text" class="" style="text-align:center; margin-top:15px; border:none; font-size:23px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="vrno" id="vrno" value = "Control Number:" >
+                        <input readonly required type="text" class="" style="text-align:center; margin-top:15px; border:none; font-size:23px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="" id="" value = "Control Number:" >
                         </td>
                         <td class="col-md-2" style =" border:1px solid black; text-align:center">
                         
@@ -326,7 +367,7 @@ else{
                         </td>
 
                         <td class="col-md-2 " style=" border:1px solid black; text-align:left; ">
-                        <input readonly required type="text" class="" style=" text-align:left; border:none;border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 30px; width:100%;" name="vrdate" id="" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" >
+                        <input readonly required type="text" class="" style=" text-align:left; border:none;border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 30px; width:100%;" name="vrdate" id="vrdate" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" >
                        
                       </td>
 
@@ -390,7 +431,7 @@ else{
                         </td>
 
                         <td colspan=3 style=" border:1px solid black; text-align:center; ">
-                        <input readonly  type="text"  class="" style="  text-align:left; border:none; border-bottom:1px solid black;  font-size:15px;  font-weight:bold; height: 30px; width:100%;" id="office" placeholder="office" name="office" value = "<?php echo $fullname ?>">
+                        <input readonly  type="text"  class="" style="  text-align:left; border:none; border-bottom:1px solid black;  font-size:15px;  font-weight:bold; height: 30px; width:100%;" id="name" placeholder="name" name="name" value = "<?php echo $fullname ?>">
                        
                         </td>
 
@@ -401,7 +442,7 @@ else{
                        
                         </td>
                         <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
-                        <input  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 80px; width:100%;" name="purpose" id="purpose" value = "" placeholder="" >
+                        <input  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 80px; width:100%;" name="purpose" id="purpose" value="<?php echo isset($_POST['purpose']) ? htmlspecialchars($_POST['purpose'], ENT_QUOTES) : ''; ?>" placeholder="" >
                        
                         </td>
                         
@@ -455,7 +496,7 @@ else{
                         </td>
 
                         <td colspan=3 style=" border:1px solid black; text-align:center; ">
-                        <input readonly  type="text"  class="" style=" text-align:left; border:none; border-bottom:1px solid black;  font-size:15px;  font-weight:bold; height: 40px; width:100%;" id="office" placeholder="office" name="office" value = "<?php echo $POSITION_M ?>">
+                        <input readonly  type="text"  class="" style=" text-align:left; border:none; border-bottom:1px solid black;  font-size:15px;  font-weight:bold; height: 40px; width:100%;" id="pos" placeholder="" name="pos" value = "<?php echo $POSITION_M ?>">
 
                         </td>
 
@@ -464,7 +505,7 @@ else{
                        
                         </td>
                         <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
-                        <input required  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 100px; width:100%;" name="destination" id="destination" value = "" placeholder="" >
+                        <input required  required type="text" class="" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 100px; width:100%;" name="destination" id="destination" value="<?php echo isset($_POST['destination']) ? htmlspecialchars($_POST['destination'], ENT_QUOTES) : ''; ?>" placeholder="" >
                        
                         </td>
 
@@ -514,7 +555,7 @@ else{
                        
                         </td>
                         <td colspan=3 rowspan="3" style=" border:1px solid black; text-align:center; ">
-                        <input  required type="text" class="" style="margin-top:0px;text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 190px; width:100%;" name="purpose" id="purpose" value = "" placeholder="" >
+                        <input   type="text" class="" style="margin-top:0px;text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 190px; width:100%;" name="remarks" id="remarks" value="<?php echo isset($_POST['remarks']) ? htmlspecialchars($_POST['remarks'], ENT_QUOTES) : ''; ?>" placeholder="" >
                        
                         </td>
 
@@ -525,7 +566,7 @@ else{
                         
                         </td>
                         <td colspan=3 rowspan="2" style=" border:1px solid black; text-align:center; ">
-                        <textarea name="passengers" id="passengers" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 135px; width:100%;"></textarea>
+                        <textarea required rows = "50" cols="1" name="passengers" id="passengers" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 135px; width:100%;"><?php echo isset($_POST['passengers']) ? htmlspecialchars($_POST['passengers'], ENT_QUOTES) : ''; ?></textarea>
                         <!-- <input  required type="text" class=""   value = "" placeholder="" > -->
                        
                         </td>
@@ -551,7 +592,7 @@ else{
                         <input readonly  required type="text" class="" style=" margin-top:0px;text-align:left; border:none;  font-size:13px;  font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "No of " >
                         <input readonly  required type="text" class="" style=" margin-top:0px;text-align:left; border:none;  font-size:12px;  font-weight:bold; height: 15px; width:100%;" wrap="soft" row='2' name="" id="" value = "Passengers:" >
                         <br>
-                        <input required type="number" class="" style=" margin-top:0px;text-align:left; border:none; border-bottom:1px solid black; font-weight:bold;  font-size:13px; height: 30px; width:100%; "  name="nop" id="nop" value = "" placeholder="0" >
+                        <input required type="number" class="" style=" margin-top:0px;text-align:left; border:none; border-bottom:1px solid black; font-weight:bold;  font-size:13px; height: 30px; width:100%; "  name="nop" id="nop" value="<?php echo isset($_POST['nop']) ? htmlspecialchars($_POST['nop'], ENT_QUOTES) : ''; ?>" placeholder="0" >
                         </td> 
                         
 
@@ -578,7 +619,7 @@ else{
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100;" name="departuredate" id="datepicker1" value = "" placeholder="mm/dd/yyyy">
+                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100;" name="departuredate" id="datepicker1" value="<?php echo isset($_POST['departuredate']) ? htmlspecialchars($_POST['departuredate'], ENT_QUOTES) : ''; ?>" placeholder="mm/dd/yyyy">
                         </td>   
                       <!--  Departure Date: -->  
                        <!--  Departure Time: -->
@@ -587,7 +628,7 @@ else{
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="departuretime" id="departuretime"></td>
+                        <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="departuretime" id="departuretime" value="<?php echo isset($_POST['departuretime']) ? htmlspecialchars($_POST['departuretime'], ENT_QUOTES) : ''; ?>"></td>
                         </td>   
                          <!--  Departure Time: -->
 
@@ -622,7 +663,7 @@ else{
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returndate" id="datepicker2" value = "" placeholder="mm/dd/yyyy">
+                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returndate" id="datepicker2" value="<?php echo isset($_POST['returndate']) ? htmlspecialchars($_POST['returndate'], ENT_QUOTES) : ''; ?>" placeholder="mm/dd/yyyy">
                         </td>   
                       <!--  Return Date: -->  
                        <!--  Return Time: -->
@@ -631,7 +672,7 @@ else{
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returntime" id="returntime"></td>
+                        <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returntime" id="returntime" value="<?php echo isset($_POST['returntime']) ? htmlspecialchars($_POST['returntime'], ENT_QUOTES) : ''; ?>"></td>
                         </td>   
                          <!--  Return Time: -->
 
@@ -1376,10 +1417,10 @@ function myFunction() {
     
   }
   else{
-
+    check.val('');
     $("#nod").attr("disabled", "disabled");
 
-    check.val('');
+   
     // alert(check.val());
   }
 
@@ -1401,10 +1442,10 @@ function myFunction1() {
     
   }
   else{
-
+    check1.val('');
     $("#nod").attr("disabled", "disabled");
 
-    check1.val('');
+    
     // alert(check1.val());
   }
 
@@ -1426,10 +1467,11 @@ function myFunction2() {
     
   }
   else{
+    check2.val('');
 
     $("#nod").attr("disabled", "disabled");
 
-    check2.val('');
+   
     // alert(check2.val());
   }
 
@@ -1452,10 +1494,10 @@ function myFunction3() {
     
   }
   else{
-
+    check3.val('');
     $("#nod").attr("disabled", "disabled");
 
-    check3.val('');
+   
     // alert(check3.val());
   }
 
@@ -1473,6 +1515,7 @@ $(document).ready(function(){
       $('.checkboxgroup_g2').not(this).prop('checked', false);  
       $('.checkboxgroup_g3').not(this).prop('checked', false); 
       $('.checkboxgroup_g4').not(this).prop('checked', false);
+      // check.val('');
       check.val('dropoff');
   });
 
@@ -1482,6 +1525,7 @@ $(document).ready(function(){
     
       $('.checkboxgroup_g3').not(this).prop('checked', false); 
       $('.checkboxgroup_g4').not(this).prop('checked', false);
+      // check.val('');
       check.val('pickup');
 
   });
@@ -1490,6 +1534,7 @@ $(document).ready(function(){
     
     $('.checkboxgroup_g2').not(this).prop('checked', false); 
     $('.checkboxgroup_g4').not(this).prop('checked', false); 
+    // check.val('');
     check.val('wholeday'); 
   });
 
@@ -1499,6 +1544,7 @@ $(document).ready(function(){
     
     $('.checkboxgroup_g2').not(this).prop('checked', false); 
     $('.checkboxgroup_g3').not(this).prop('checked', false);
+    // check.val('');
    
     check.val('Day/s');
     

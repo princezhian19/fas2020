@@ -50,8 +50,18 @@ $username = $_SESSION['username'];
   }
   </style>
 </head>
-<?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); }else{ include('sidebar2.php'); }
+    <?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); 
+}else{ 
+
+     if ($OFFICE_STATION == 1) {
+  include('sidebar2.php');
+           
+        }else{
+  include('sidebar3.php');
+         
+        } 
+}
  ?>
 
 <body class="hold-transition skin-red-light sidebar-mini">

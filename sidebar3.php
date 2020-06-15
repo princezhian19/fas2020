@@ -1,189 +1,248 @@
-<header class="main-header" >
-    <a href="" class="logo" style="text-decoration: none; background-color: #3c8dbc;">
-      <span class="logo-lg" style="color:white;">FAS</span>
-    </a>
-    <nav class="navbar navbar-static-top" style="text-decoration: none; background-color: #0072C7;">
-  </header>
-<aside class="main-sidebar">
-    <section class="sidebar"  style="background-color: white;height: 1000px;">
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="plog.png" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <!-- <p style="color:black;">Asset Management</p> -->
-          <p style="color:black;font-size: 10px;">Financial and Administrative</p>
-          <p align="center" style="color:black;font-size: 10px;">System</p>
+<?php 
+session_start();
+if(!isset($_SESSION['username']) || !isset($_SESSION['complete_name'])){
+  header('location:index.php');
+}else{
+  error_reporting(0);
+  ini_set('display_errors', 0);
+  $username = $_SESSION['username'];
+}
 
-          <!-- <a href="#" style="color:black;"><i class="fa fa-circle text-success"></i> Online</a> -->
+$link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .   $_SERVER['REQUEST_URI']; 
+function getDivision()
+{
+  include 'connection.php';
+  $sqlUsername = mysqli_query($conn,"SELECT * FROM  tblemployeeinfo INNER JOIN tblpersonneldivision ON tblemployeeinfo.DIVISION_C = tblpersonneldivision.DIVISION_N where  UNAME ='".$_SESSION['username']."'");
+  $row = mysqli_fetch_array($sqlUsername);
+  echo  $row['DIVISION_M']; 
+}
+$cn = $_SESSION['complete_name3'];
 
-        </div>
+function notification()
+{
+  include 'connection.php';
+$cn = $_SESSION['complete_name3'];
+  $query = "SELECT count(*) as 'count' from tbltechnical_assistance where REQ_BY ='$cn' and `STATUS_REQUEST` = 'Completed' and STATUS != '' ";
+  $result = mysqli_query($conn, $query);
+  $val = array();
+  while($row = mysqli_fetch_array($result))
+  {
+   echo $row['count'];
+  }
+}
+function showRequest()
+{
+  include 'connection.php';
+  $cn = $_SESSION['complete_name3'];
+
+  $query = "SELECT * from tbltechnical_assistance where REQ_BY ='$cn' AND `STATUS_REQUEST` = 'Completed' and STATUS != '' ";
+  $result = mysqli_query($conn, $query);
+  $val = array();
+  while($row = mysqli_fetch_array($result))
+  {
+  ?>
+  <li>
+    <a href="techassistance.php?division=<?php echo $_GET['division']?>&ticket_id=<?php echo $row['CONTROL_NO'];?>">
+      <div class="pull-left">
+        <img src="images/male-user.png" class="img-circle" alt="User Image">
       </div>
-      <ul class="sidebar-menu" data-widget="tree" s>
-        <li class="header" style="background-color: white;">MENUS</li>
+        <h4>
+        <?php echo $row['REQ_BY'];?>
+      </h4>
+      <p><?PHP echo $row['ISSUE_PROBLEM'];?></p>
+    </a>
+  </li>
+  <?php
+  }
+}
+?>
+</style>
+<style>
+  th{
+    color:blue;
+  }
+  
+</style>
+<body class=" hold-transition skin-red-light sidebar-mini">
+  <div class="wrapper">
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="home2.php?division=<?php echo $_SESSION['division'];?>" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><img src = "images/logo2.png"/></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b><img src = "images/logo1.png"/></b></span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
 
+        <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell"></i>
+              <span class="label label-success"><?php echo notification();?></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have <?php echo notification();?> technical assistance request completed</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  
+                <?php echo showRequest();?>
+                </ul>
+              </li>
+              <li class="footer"><a href="processing.php?division=<?php echo $_GET['division'];?>&ticket_id=">See All Request</a></li>
+            </ul>
+          </li>
+            <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-        <li><a style="color:black;text-decoration: none;" href="home.php"><i class="fa fa-dashboard"></i> <span>DASHBOARD</span></a></li>
+                <img src="dilg.png" class="user-image" alt="User Image">
+                <span class="hidden-xs"><?php echo $_SESSION['complete_name'];?></span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <?php 
+                $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                $slect = mysqli_query($conn,"SELECT PROFILE FROM tblemployeeinfo WHERE UNAME = '$username'");
+                $rowP = mysqli_fetch_array($slect);
+                $profile                 = $rowP['PROFILE'];
+                $extension = pathinfo($profile, PATHINFO_EXTENSION);
+                ?>
+                <li class="user-header">
+                  <img src="
+                  <?php 
+                  if(file_exists($profile))
+                  {
+                    switch($extension)
+                    {
+                      case 'jpg':
+                      if($profile == '')
+                      {
+                        echo 'images/male-user.png';
+                      }
+                      else if ($profile == $profile)
+                      {
+                        echo $profile;   
+                      }
+                      else
+                      {
+                        echo'images/male-user.png';
+                      }
+                      break;
+                      case 'JPG':
+                      if($profile == '')
+                      {
+                        echo 'images/male-user.png';
+                      }
+                      else if ($profile == $profile)
+                      {
+                        echo $profile;   
+                      }
+                      else
+                      {
+                        echo'images/male-user.png';
+                      }
+                      break;
+                      case 'jpeg':
+                      if($profile == '')
+                      {
+                        echo 'images/male-user.png';
+                      }
+                      else if ($profile == $profile)
+                      {
+                        echo $profile;   
+                      }
+                      else
+                      {
+                        echo'images/male-user.png';
+                      }
+                      break;
+                      case 'png':
+                      if($profile == '')
+                      {
+                        echo'images/male-user.png';
+                      }
+                      else if ($profile == $profile)
+                      {
+                        echo $profile;   
+                      }
+                      else
+                      {
+                        echo'images/male-user.png';
+                      }
+                      break;
+                      default:
+                      echo'images/male-user.png';
+                      break;
+                    }
+                    }else{
+                     echo'images/male-user.png';
+                   }
 
+                   ?>" class="img-circle" alt="User Image">
 
-        <li class="treeview" tyle="background-color: lightgray;">
-          <a href="" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
-            <span style="color:black;text-decoration: none;">PROCUREMENT</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu" >
-            <li class="treeview">
-          <!-- <a href="" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"></i>
-            <span style="color:black;text-decoration: none;">APP</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a> -->
-          <!-- <ul class="treeview-menu" >
-            li><a href="ViewApp.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> APP</a></li>
-            <li><a href="/pmis/frontend/web/uapp/index" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> UPP</a></li>
-            <li><a href="/pmis/frontend/web/app/cancelled" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> Cancelled Items<d/></li>
-          </ul> -->
-        </li>
-        <li><a href="ViewApp.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> APP</a></li>
-        <!-- <li><a href="ViewPRreceived.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> PR Received</a></li> -->
-        <li><a href="ViewPR.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> PURCHASE REQUEST</a></li>
-        <!-- <li class="treeview">
-          <a href="#" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"></i>
-            <span style="color:black;text-decoration: none;">Request For Quotation</span>
-            
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu" > -->
-            <!-- <li><a href="/pmis/frontend/web/rfq/index" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> Draft/For Posting RFQs</a></li> -->
-            <!-- <li><a href="ViewRFQ.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> Draft/For Posting RFQs</a></li> -->
-            <!-- <li><a href="/pmis/frontend/web/rfq/cancelled" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> Cancelled RFQs</a></li> -->
-          <!-- </ul>
-        </li> -->
-            <li><a href="ViewRFQ.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> REQUEST FOR QUOTATION</a></li>
-            <!-- <li><a href="ViewSupplier.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Supplier Quotation</a></li> -->
-            <!-- <li><a href="/pmis/frontend/web/abstract-of-quote/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Abstract of Quotations</a></li> -->
-            <!-- <li><a href="/pmis/frontend/web/purchase-order/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Purchase Order</a></li> -->
-            <!-- <li><a href="/pmis/frontend/web/contract/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Contract & MOA</a></li>
-            <li><a href="/pmis/frontend/web/resolution/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Resolution </a></li>
-            <li><a href="/pmis/frontend/web/supplier/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>Supplier </a></li> -->
-        <li><a style="color:black;text-decoration: none;" href="/pmis/frontend/web/supplier/index"><i class="fa fa-folder-o"></i> <span>SUPPLIER</span></a></li>
+                   <p><b>
+                    <?php echo $_SESSION['complete_name'];?></b>
+                    <small><?php echo getDivision();?></small>
+                  </p>
+                </li>
+
+                <li class="user-footer">
+                  <div class="pull-left">
+                    <a href="UpdateEmployee.php?id=<?php echo  $_SESSION['currentuser'];?>&username=<?php echo  $_SESSION['username'];?>&3d=<?php echo '3';?>" class="btn btn-default btn-flat"><i class = "fa fa-cogs"></i>Profile</a>
+                  </div>
+                  <div class="pull-right">
+                    <a href="logout.php" class="btn btn-default btn-flat"><i class = "fa fa-sign-out"></i> Log out</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
           </ul>
-        <!-- </li> -->
+        </div>
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar"  style = "background-color:#f6cdd0;">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+          <div class="pull-left image">
+            <img src="dilg.png" class="img-circle" alt="User Image">
+          </div>
+          <div class="pull-left info">
+            <p><?php echo $_SESSION['username'];?></p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          </div>
+        </div>
+        <!-- search form -->
 
-        <li class="treeview" tyle="background-color: lightgray;">
-          <a href="" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
-            <span style="color:black;text-decoration: none;">ASSET MANAGEMENT</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu" >
-           <li><a href="@items.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ITEMS</a></li>
-           <!-- <li><a href="ViewStocks.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> Stocks</a></li> -->
-           <li><a href="@stocks.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> STOCK CARD</a></li>
-           <li><a href="@stockledger.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> SUPPLIES LEDGER CARD</a></li>
-
-           <li><a href="ViewIAR.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> IAR</a></li>
-      
-            <li><a href="ViewRIS.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>RIS</a></li>
-            <li><a href="ViewRPCI.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>ICS</a></li>
-            <li><a href="ViewRPCPPE.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAR</a></li>
-          </ul>
-        </li>
-
-        <li class="treeview" tyle="background-color: lightgray;">
-          <a href="" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
-            <span style="color:black;text-decoration: none;">FINANCIAL MANAGEMENT</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu" >
-           
-        <li class="treeview">
-          <a href="#" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"></i>
-            <span style="color:black;text-decoration: none;">BUDGET</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu" >
-            <!-- <li><a href="/pmis/frontend/web/rfq/index" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> Draft/For Posting RFQs</a></li> -->
-            <!-- <li><a href="@saro.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> SARO/SUB-ARO</a></li> -->
-            <!-- <li><a href="@obligation.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li> -->
-        <li><a href="ViewBurs.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i> ORS/BURS</a></li>
-
-          </ul>
-        </li>
-         <li class="treeview">
-          <a href="#" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"></i>
-            <span style="color:black;text-decoration: none;">ACCOUNTING</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu" >
-            <!-- <li><a href="@nta.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA/NCA</a></li> -->
-            <!-- <li><a href="@disbursement.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>DISBURSEMENT</a></li> -->
-         <li><a href="ViewDv.php" style="color:black;text-decoration: none;"><i class="fa fa-copy"></i>Disbursement</a></li>
-          
-            <!-- <li><a href="@ntaobligation.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>NTA Payment</a></li> -->
-          </ul>
-        </li>
-
-
-         
-         <li class="treeview" hidden>
-          <a href="#" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"></i>
-            <span style="color:black;text-decoration: none;">CASH</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu" >
-           
-            <li><a href="@ntaobligation.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i>PAYMENT</a></li>
-          </ul>
-        </li>
-
-
-            
-          </ul>
-        </li>
-
-
-       <!--  <li class="treeview" tyle="background-color: lightgray;">
-          <a href="" style="color:black;text-decoration: none;">
-            <i class="fa fa-folder-open-o"style="color:black;text-decoration: none;"></i>
-            <span style="color:black;text-decoration: none;">OTHERS</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu" >
-            <li><a href="/pmis/frontend/web/notification-doc/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DOCUMENT TEMPLATE</a></li>
-            <li><a href="/pmis/frontend/web/iso-doc/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> ISO DOCUMENT</a></li>
-            <li><a href="/pmis/frontend/web/notes/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> RFQ NOTES</a></li>
-            <li><a href="/pmis/frontend/web/checklist/index" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV CHECKLIST</a></li>
-          
-          </ul>
-        </li> -->
-
-
-
-
-    </section>
-  </aside>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+          <li <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/home2.php?division='.$_SESSION['division'].''){ echo 'class = "active"';}?>>
+            <a href="home2.php?division=<?php echo $_GET['division']; ?>" >
+              <i class="fa fa-dashboard" style = "color:#black;"></i> <span style = "color:#black;font-weight:normal;">Dashboard</span>
+              <span class="pull-right-container">
+              </span>
+            </a>
+</li>
+  <li><a href="DTR.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>DTR</a></li>
+<li>
+  <a href="logout.php">
+    <i class="fa fa-sign-out " style = "color:#black;"></i> 
+    <span  style = "color:#black;font-weight:normal;">Log out</span>
+  </a>
+</li> 
+</ul>
+</section>
+<!-- /.sidebar -->
+</aside>
