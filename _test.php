@@ -50,7 +50,7 @@ function fillTableInfo()
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Requested Time:<span style = "color:red;">*</span></td>
                                     <td style = "width:15%;  padding:5px 5px 5px 5px;">
-                                    <input disabled style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
+                                    <input readonly style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
                                     </td>
                                     <!-- date("H:i A",strtotime(date("h:m A"))) -->
                                     <td colspan = 4 class = "label-text" style = "text-align:center;">HARDWARE INFORMATION (if applicable)</td>
@@ -582,7 +582,7 @@ $(document).ready(function() {
     
       } 
     }
-    
+
     function cb3_2func()
     {
         if (this.checked) {

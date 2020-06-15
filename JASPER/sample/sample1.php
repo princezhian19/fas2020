@@ -1,5 +1,7 @@
 <?php
 session_start();
+date_default_timezone_set ('Asia/Manila');
+
 $division = $_SESSION['division'];
 $username = $_SESSION['username'];
 
@@ -29,6 +31,8 @@ if (strstr($_POST['request_time'], 'PM' ) ) {
     $a = str_replace("AM","",$_POST['request_time']);
     $request_time  = date("H:i",strtotime($_POST['request_time']));
 }
+
+
 if(isset($_POST['req_type_subcategory']))
 {
     $req_type_subcategory = $_POST['req_type_subcategory'];
