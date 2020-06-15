@@ -826,7 +826,7 @@ function setCompletedTime()
       {
         if($row['COMPLETED_TIME'] == '' || $row['COMPLETED_TIME'] == NULL)
         {
-          $completed_time = date('H:i');
+          $completed_time = date('g:i A');
         }else{
         $completed_time = date('g:i A',strtotime($row['COMPLETED_TIME']));
 
