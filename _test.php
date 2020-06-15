@@ -177,10 +177,10 @@ function showUser()
                                   <input  style = "margin-left:120px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
                                   <div style = "margin-left:140px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" id = "cb3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
-                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
-                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
-                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
-                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
+                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" id = "cb3_2" value = "Records Tracking System"> Records Tracking System<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" id = "cb3_3" value = "Google Drive"> Google Drive<br>
+                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" id = "cb3_4" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
+                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" id ="cb3_5" value = "Other software/s (please specify)"> Other software/s (please specify)
                                       <br><input  type = "text" name = "softwares" id = "softwares" value = "" style = "margin-left:20px;border:none;border-bottom:1px solid black;"/><br>
                                   
                                     </div>
@@ -548,6 +548,11 @@ $(document).ready(function() {
     $('#cb5_2').click(cb5_2func);
     $('#cb5').click(cb5_1func);
     $('#cb5_3').click(cb5_3func);
+    $('#cb3_5').click(cb3_5func);
+    $('#cb3').click(cb3_1func);
+    $('#cb3_2').click(cb3_2func);
+    $('#cb3_3').click(cb3_3func);
+    $('#cb3_4').click(cb3_4func);
     
     
   });
@@ -558,6 +563,62 @@ $(document).ready(function() {
   //     $(".checkboxgroup_g6").attr("disabled", true);
   //   }
   // }
+  function cb3_4func()
+  {
+    if (this.checked) {
+      $('#softwares').val('');
+    
+
+  }else{
+  
+  
+  }
+  }
+  function cb3_3func()
+  {
+    if (this.checked) {
+      $('#softwares').val('');
+    
+
+  }else{
+  
+  
+  }
+  }
+  function cb3_2func()
+  {
+    if (this.checked) {
+      $('#softwares').val('');
+    
+
+  }else{
+  
+  
+  }
+  }
+
+  function cb3_1func()
+  {
+    if (this.checked) {
+      $('#softwares').val('');
+    
+
+  }else{
+  
+  
+  }
+  }
+function cb3_5func()
+{
+  if (this.checked) {
+    
+
+}else{
+  $('#softwares').val('');
+
+
+}
+}
   function cb5_3func()
   {
     if (this.checked) {
