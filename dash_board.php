@@ -165,7 +165,7 @@ if (isset($_POST['stamp4'])) {
 
 
 ?>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
   <div class="row">
     <div class="col-md-3">
 
