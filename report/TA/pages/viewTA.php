@@ -143,7 +143,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory1"=>'correct.png',
-                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,
+                                    "currentuser"=>splitName($name),"resolve"=>$status,"defective"=>$status2,
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
