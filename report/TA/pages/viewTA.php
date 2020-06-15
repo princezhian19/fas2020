@@ -115,7 +115,7 @@ if($status == 1)
 else if($status == 0){
     $status2 = 'correct.png';
     $status = '';
-}else{
+}else if($status == '' || $status == null){
     $status2 = '';
     $status = '';
 }
