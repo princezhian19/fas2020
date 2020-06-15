@@ -851,7 +851,7 @@ function setSig()
    $result = mysqli_query($conn, $query);
    if($row = mysqli_fetch_array($result))
      {
-       $assist_by = $row['ASSIST_BY'];
+       $assist_by = $row['REQ_BY'];
      }
      return $assist_by;
 }
