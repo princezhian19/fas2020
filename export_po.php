@@ -178,7 +178,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowE,'Signature over Prin
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowF,'               __________________________');
 $objPHPExcel->getActiveSheet()->getStyle('D'.$rowF.':F'.$rowF)->applyFromArray($stylebottom); 
 $objPHPExcel->getActiveSheet()->getStyle('E'.$rowF)->applyFromArray($styleLabel2);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowF,'              Officer-in-Charge');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowF,'              Regional Director');
 $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowG.':C'.$rowG);
 // $objPHPExcel->getActiveSheet()->getStyle('B'.$rowG)->applyFromArray($styler);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowG,'                               Date');
