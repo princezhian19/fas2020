@@ -56,7 +56,7 @@ function fillTableInfo()
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"> 
                                       
-                                      <input  type = "text"  class = "sizeMax alphanum subtxt" value = "<?php echo $row['REQ_BY'];?>" disabled/>
+                                      <input  type = "text"  class = "sizeMax alphanum subtxt" value = "<?php echo cwords(strtolower($row['REQ_BY']));?>" disabled/>
                                     <td class = "label-text left-text">Brand Model:</td>
                                     <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input   type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = "<?php echo $row['BRAND_MODEL'];?>" disabled/></td>
                                 </tr>
@@ -775,7 +775,7 @@ function setCompletedDate()
       {
         if($row['COMPLETED_DATE'] == '')
         {
-          $completed_date = '';
+          $completed_date = date('F d, Y');
         }else{
           $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
 
@@ -851,7 +851,7 @@ function setSig()
    $result = mysqli_query($conn, $query);
    if($row = mysqli_fetch_array($result))
      {
-       $assist_by = $row['REQ_BY'];
+       $assist_by = cwords(strtolower($row['REQ_BY']));
      }
      return $assist_by;
 }
