@@ -554,6 +554,30 @@ function countCompleted()
     echo $row['count_com'];
   }
 }
+function countRated()
+{
+  include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
+  $query = "SELECT count(*) as 'count_com' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` = 'Rated' ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_com'];
+  }
+}
+function countAssigned()
+{
+  include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
+  $query = "SELECT count(*) as 'count_com' FROM tbltechnical_assistance 
+  where `STATUS_REQUEST` != '' ";
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['count_com'];
+  }
+}
 ?>
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
@@ -578,11 +602,11 @@ function countCompleted()
        <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-blue">
             <div class="inner">
-              <h3><?php echo countSubmitted();?></h3>
+              <h3><?php echo countReceived();?></h3>
 
-              <p>SUBMITTED</p>
+              <p>RECEIVED</p>
             </div>
             <div class="icon">
               <!-- <i class="ion ion-pie-graph"></i> -->
@@ -598,9 +622,9 @@ function countCompleted()
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3><?php echo countReceived();?></h3>
+              <h3><?php echo countAssigned();?></h3>
 
-              <p>RECIEVED</p>
+              <p>ASSIGNED</p>
             </div>
             <div class="icon">
               <!-- <i class="ion ion-person-add"></i> -->
@@ -613,11 +637,11 @@ function countCompleted()
  
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-primary">
+          <div class="small-box bg-green">
             <div class="inner">
-              <h3><?php echo countForAction();?></h3>
+              <h3><?php echo countCompleted();?></h3>
 
-              <p>FOR ACTION</p>
+              <p>COMPLETED</p>
             </div>
             <div class="icon">
               <!-- <i class="fa fa-shopping-cart"></i> -->
@@ -630,11 +654,11 @@ function countCompleted()
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-green">
+          <div class="small-box bg-red">
             <div class="inner">
-              <h3><?php echo countCompleted();?></h3>
+              <h3><?php echo countRated();?></h3>
 
-              <p>COMPLETED</p>
+              <p>RATED</p>
             </div>
             <div class="icon">
               <!-- <i class="ion ion-stats-bars"></i> -->

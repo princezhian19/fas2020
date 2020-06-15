@@ -97,7 +97,7 @@ $edit="edit";
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
 
-                  <th width =''>VR NO</th> 
+                  <th width =''>CTRL NO.</th> 
                   <th width = ''>VEHICLE REQUEST</th>
                   
                   <th width = ''>TYPE</th>
@@ -323,8 +323,7 @@ $edit="edit";
                           <!--  -->
                               <?php if ($status!='cancelled'):?>
                                 
-                                <!-- href='/TravelOrder/Report/pages/TO.php?id=<?php echo $id;?>&division=<?php echo $division?>&pos=<?php echo $pos;?>' -->
-                                  
+                              
                               
                                 <a   title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i>&nbsp; Export&nbsp;</a>
                                 <br>
@@ -356,7 +355,7 @@ $edit="edit";
                              
                                   <a  href='' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i>&nbsp; Export&nbsp;</a>
                                   <br>
-                                 <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="cancel_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
+                                 <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#cancel_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php endif ?>
                     <?php endif ?>
                         

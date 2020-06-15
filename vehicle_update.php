@@ -158,6 +158,8 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 $username1 = $_SESSION['username'];
 //input check value
 $checked = $_POST['check'];
+/* echo $checked;
+exit(); */
 /* Requset vr_count */
 $vr_c = $_POST['vr_c'];
 
@@ -187,12 +189,12 @@ else if($checked=='wholeday'){
   $type1="Whole Day";
 }
 else if($checked=='Day/s'){
-  $type1=$nod." Day/s";
+  $type1="Day/s";
 
 }
 else{
-  $type1="Drop Off";
-  //echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Type is required.  </p> </div></div>  '; 
+ // $type1="";
+ 
 }
 
 /* echo $type;
@@ -229,7 +231,12 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
+if($checked==''){
+ echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Type is a required field.  </p> </div></div>  '; 
 
+}
+else
+{
   $query2 = mysqli_query($conn, "DELETE from vr_passengers where vrid='$vrno' ");
   /* echo "DELETE from vr_passengers where vrid='$vrno' ";
   exit(); */
@@ -247,7 +254,7 @@ if ($conn->connect_error) {
   }
 
   /* insert to vr table */
-  $query = mysqli_query($conn,"UPDATE vr set vrno='$vrno1',vrdate='$vrdate1',vrtime='$vrtime1',type='$type1',name='$name1',office='$office1',position='$pos1',mobile='$mobile1',purpose='$purpose1',destination='$destination1',nop='$nop1',departuredate='$departuredate1',departuretime='$departuretime1',returndate='$returndate1',returntime='$returntime1',pos='$pos1' where id = '$id'");
+  $query = mysqli_query($conn,"UPDATE vr set vrno='$vrno1',vrdate='$vrdate1',vrtime='$vrtime1',type='$type1',nod='$nod1',name='$name1',office='$office1',position='$pos1',mobile='$mobile1',purpose='$purpose1',destination='$destination1',nop='$nop1',departuredate='$departuredate1',departuretime='$departuretime1',returndate='$returndate1',returntime='$returntime1',pos='$pos1' where id = '$id'");
 
  /*  echo "UPDATE vr set vrno='$vrno1',vrdate='$vrdate1',vrtime='$vrtime1',type='$type1',name='$name1',office='$office1',position='$pos1',mobile='$mobile1',purpose='$purpose1',destination='$destination1',nop='$nop1',departuredate='$departuredate1',departuretime='$departuretime1',returndate='$returndate1',returntime='$returntime1',pos='$pos1' where id = '$id'";
   exit();
@@ -270,6 +277,7 @@ else{
   echo '<div class=""><div class="panel-heading " style = "background-color:Red"> <p style = "color:white;font-size:16px;"> Error. </p> </div></div>  '; 
    
 }
+}
 
 }
 
@@ -283,7 +291,7 @@ else{
             <h1 align="">Update Vehicle Request</h1>
             
         <br>
-      <li class="btn btn-success"><a href="VehicleRequest.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-warning"><a href="VehicleRequest.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
      
@@ -294,7 +302,7 @@ else{
         <form method="POST" action='' enctype="multipart/form-data" >
                 <table class="table"> 
               
-                <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
+                <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check"  value ="<?php echo $type?>">
                 <input  hidden class="" type="text" class="" style="height: 35px;" id="vr_c" name="vr_c" placeholder="" value ="<?php echo $vrcount11?>">
                 
                 
@@ -665,7 +673,7 @@ else{
                         }
                         ?>
                         
-                        <textarea rows = "50" cols="1" name="passengers" id="passengers" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 135px; width:100%;"><?php echo passengers($connect)?></textarea>
+                        <textarea required rows = "50" cols="1" name="passengers" id="passengers" style="text-align:left; border:none; border-bottom:1px solid black; font-size:15px;  height: 135px; width:100%;"><?php echo passengers($connect)?></textarea>
                         
                       </td>
                       <!-- Passengers/: -->
