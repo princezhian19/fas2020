@@ -4,6 +4,7 @@ header('location:index.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
+$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 $username = $_SESSION['username'];
 }
 ?>
