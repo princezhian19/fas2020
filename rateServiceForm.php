@@ -607,7 +607,7 @@ function fillCheckbox()
                   </div>
                 </td> 
                 <td>
-                  <input style = "margin-left:150px; disabled type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
+                  <input style = "margin-left:150px;" disabled type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
                   <?php 
                     switch ($row['TYPE_REQ_DESC']) 
                     {
