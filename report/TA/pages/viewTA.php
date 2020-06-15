@@ -10,7 +10,7 @@ function splitName($name){
     $lastname = $names[count($names) - 1];
     unset($names[count($names) - 1]);
     $firstname = join(' ', $names);
-    return $firstname . ' = ' . $lastname;
+    return $firstname . ' ' . $lastname;
 }
 
 $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
