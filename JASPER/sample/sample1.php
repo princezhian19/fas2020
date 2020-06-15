@@ -189,6 +189,7 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
 if (mysqli_query($conn, $sql_insert)) {
  } else {
  }
+
  ?>
  <?php 
         if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial'){

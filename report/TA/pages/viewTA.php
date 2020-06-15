@@ -115,6 +115,9 @@ if($status == 1)
 else if($status == 0){
     $status2 = 'correct.png';
     $status = '';
+}else{
+    $status2 = '';
+    $status = '';
 }
 
 $PHPJasperXML = new PHPJasperXML();
