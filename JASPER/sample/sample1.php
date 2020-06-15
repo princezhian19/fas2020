@@ -94,7 +94,7 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
               $val = array();
               while($row = mysqli_fetch_array($result))
               {
-                $name = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
+                $name = $row['FIRST_M'].' '.$row['LAST_M'];
               }
 
 
