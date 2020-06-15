@@ -168,7 +168,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowC,'Very Truly Yours:')
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowD,'       ______________________________________');
         $objPHPExcel->getActiveSheet()->getStyle('E'.$rowD)->getFont()->setBold(true);
 $objPHPExcel->getActiveSheet()->getStyle('E'.$rowD)->applyFromArray($styleLabel2);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowD,'ARIEL O. IGLESIA, CESO IV');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowD,'ARIEL O. IGLESIA');
 $objPHPExcel->getActiveSheet()->getStyle('D'.$rowD.':F'.$rowD)->applyFromArray($stylebottom); 
 $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowE.':C'.$rowE);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowE,'Signature over Printed Name of Supplier');
@@ -178,7 +178,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowE,'Signature over Prin
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowF,'               __________________________');
 $objPHPExcel->getActiveSheet()->getStyle('D'.$rowF.':F'.$rowF)->applyFromArray($stylebottom); 
 $objPHPExcel->getActiveSheet()->getStyle('E'.$rowF)->applyFromArray($styleLabel2);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowF,'              Officer-in-Charge');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowF,'              Regional Director');
 $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowG.':C'.$rowG);
 // $objPHPExcel->getActiveSheet()->getStyle('B'.$rowG)->applyFromArray($styler);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowG,'                               Date');
