@@ -265,7 +265,8 @@ function showUser()
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input required disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="<?php echo date('F d, Y');?>" required>
+                          <!-- class="datePicker1"  -->
+                          <input required disabled type="text" name = "started_date" placeholder = "Started Date" value="<?php echo date('F d, Y');?>" required>
                           </div>
                           </td>
                           <td style = "width:12.5%;" class = "label-text">Completed Date:</td>
