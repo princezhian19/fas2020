@@ -454,7 +454,7 @@ function showWorkload($ICT)
                 <span class="time"><i class="fa fa-clock-o"></i>&nbsp;<?PHP echo date('g:m A',strtotime($row['REQ_TIME']));?></span>
                 <h3 class="timeline-header"><a href="#"><?php echo $row['REQ_BY'];?></a> sent you a request</h3>
                     <div class="timeline-body">
-                    <div class = "pull-right" style = "padding:2px;border:4px solid red;color:red;font-size:50px;font-weight:bold;"> <?php echo $row['STATUS_REQUEST'];?>  </div>
+                    <div class = "pull-right" style = "width:25%;text-align:center;padding:2px;border:4px solid red;color:red;font-size:50px;font-weight:bold;"> <?php echo $row['STATUS_REQUEST'];?>  </div>
 
                     <?php echo $row['TYPE_REQ'];?>
                     <P><?php echo $row['ISSUE_PROBLEM'];?></P>
