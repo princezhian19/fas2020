@@ -150,6 +150,10 @@ $columns = array(
 			{
 				$d = '<span class="badge badge-pill" style = "background-color:orange;">'.$d.'</span>';
 			}
+			else if($d == 'Rated')
+			{
+				$d = '<span class="badge badge-pill" style = "background-color:purple;">'.$d.'</span>';
+			}
 			
 			return $d;
 	})
