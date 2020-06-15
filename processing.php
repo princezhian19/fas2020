@@ -474,7 +474,8 @@ function showWorkload($ICT)
                     }else{
                         ?>
         <a class="btn btn-primary btn-md" href = "_editRequestTA.php?division=<?php echo $_GET['division']?>&id=<?php echo $row['CONTROL_NO'];?>">
-                        Resolve
+        <i class = "fa fa-eye"></i>&nbsp;View
+
                     </a>
                         <?php
                     }
