@@ -165,11 +165,11 @@ function showUser()
                                   <input style = "margin-left:180px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
                                   <div style = "margin-left:210px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" id = "cb2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
-                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet(Cross or Exclamation)"> No Internet (Cross or Exclamation)<br>
-                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" id = "cb2_2" value = "No Internet(Cross or Exclamation)"> No Internet (Cross or Exclamation)<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" id = "cb2_3"  value = "Access to Blocked Site:"> Access to Blocked Site:
                                       <input  type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
                                       <i style = "margin-left:5%;">Purpose</i>:<input  type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" id= "cb2_4" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
                                       <i style = "margin-left:5%;">Purpose</i>:<input  type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td>  
@@ -540,6 +540,12 @@ $(document).ready(function() {
     $("#checkboxgroup_g4").click(enable_cb4);
     $("#checkboxgroup_g5").click(enable_cb5);
     $("#checkboxgroup_g6").click(enable_cb6);
+
+    $('#cb2_3').click(cb2func);
+    $('#cb2_2').click(cb4func);
+    $('#cb2_4').click(cb3func);
+    $('#cb2').click(cb1func);
+    
     
   });
   // function enable_cb6s() {
@@ -549,6 +555,78 @@ $(document).ready(function() {
   //     $(".checkboxgroup_g6").attr("disabled", true);
   //   }
   // }
+  function cb4func()
+  {
+  if (this.checked) {
+    $('#site').val('');
+    $('#purpose').val('');
+    $('#purpose2').val('');
+  }else{
+
+  }
+  }
+  function cb1func()
+  {
+  if (this.checked) {
+    $('#site').val('');
+    $('#purpose').val('');
+    $('#purpose2').val('');
+  }else{
+
+  }
+  }
+function cb2func(){
+  if (this.checked) {
+    $('#purpose2').val('');
+
+  }else{
+    $('#site').val('');
+    $('#purpose').val('');
+  }
+}
+
+function cb3func()
+{
+  if (this.checked) {
+    $('#site').val('');
+    $('#purpose').val('');
+}else{
+  $('#purpose2').val('');
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   function enable_cb1() {
     if (this.checked) {
@@ -603,6 +681,7 @@ $(document).ready(function() {
       {
         $('#cb2').not(this).prop('checked', true);  
       }
+    
       $('#site').val('');
       $('#purpose').val('');
       $('#purpose2').val('');
