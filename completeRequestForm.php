@@ -881,6 +881,7 @@ function setSig()
     }
     .sizeMax{
     width:100%;
+    text-align:left;
     }
     td.label-text{
     background-color:#B0BEC5;
