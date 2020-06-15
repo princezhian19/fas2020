@@ -760,7 +760,14 @@ function setStartDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $start_date = date('F d, Y',strtotime($row['START_DATE']));
+        if($row['START_DATE'] == '' || $row['START_DATE'] == NULL)
+        {
+          $start_date = date('F d, Y');
+
+        }else{
+          $start_date = date('F d, Y',strtotime($row['START_DATE']));
+
+        }
       }
       return $start_date;
 }
@@ -774,7 +781,15 @@ function setCompletedDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
+        if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL)
+        {
+        $completed_date = date('F d, Y');
+
+        }
+        else{
+          $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
+
+        }
       }
       return $completed_date;
 }
@@ -788,7 +803,14 @@ function setStartTime()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $start_time = date('g:i A',strtotime($row['START_TIME']));
+        if($row['START_TIME'] == '' || $row['START_TIME'] == NULL)
+        {
+          $start_time = date('H:i');
+
+        }else{
+          $start_time = date('g:i A',strtotime($row['START_TIME']));
+
+        }
       }
       return $start_time;
 }
@@ -802,6 +824,14 @@ function setCompletedTime()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
+        if($row['COMPLETED_TIME'] == '' || $row['COMPLETED_TIME'] == NULL)
+        {
+          $completed_time = date('H:i');
+        }else{
+        $completed_time = date('g:i A',strtotime($row['COMPLETED_TIME']));
+
+        }
+
         $completed_time = date('g:i A',strtotime($row['COMPLETED_TIME']));
       }
       return $completed_time;
