@@ -775,7 +775,7 @@ function setCompletedDate()
       {
         if($row['COMPLETED_DATE'] == '')
         {
-          $completed_date = date('F d, Y');
+          $completed_date = '';
         }else{
           $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
 
