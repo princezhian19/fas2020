@@ -276,26 +276,26 @@ switch($req_type_subcategory)
         break;
         case 'No Internet Connection(Cross or Exclamation)':
             $PHPJasperXML->arrayParameter=array(
-                "control_no"=>$control_no,"started_date"=>$started_date,
-                "timeliness"=>$timeliness,"start_time"=>$started_time,
-                "quality"=>$quality,"completed_date"=>$completed_date,
-                "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
-                "req_type_category2"=>'correct.png',
-                "req_type_subcategory6"=>'correct.png',
-                "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
-                "assisted_by"=>$assisted_by,
-                "requested_date"=>$request_date,
-                "requested_time"=>$request_time,
-                "office"=>$office,
-                "position"=>$position,
-                "contact_no"=>$contact_no,
-                "email"=>$email_address,
-                "equipment_type"=>$equipment_type,
-                "brand_model"=>$brand_model,
-                "property_no"=>$property_no,
-                "serial_no"=>$serial_no,
-                "ip_address"=>$ip_address,
-                "mac_address"=>$mac_address);
+                                    "control_no"=>$control_no,"started_date"=>$started_date,
+                                    "timeliness"=>$timeliness,"start_time"=>$started_time,
+                                    "quality"=>$quality,"completed_date"=>$completed_date,
+                                    "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
+                                    "req_type_category2"=>'correct.png',
+                                    "req_type_subcategory7"=>'correct.png',
+                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
+                                    "assisted_by"=>$assisted_by,
+                                    "requested_date"=>$request_date,
+                                    "requested_time"=>$request_time,
+                                    "office"=>$office,
+                                    "position"=>$position,
+                                    "contact_no"=>$contact_no,
+                                    "email"=>$email_address,
+                                    "equipment_type"=>$equipment_type,
+                                    "brand_model"=>$brand_model,
+                                    "property_no"=>$property_no,
+                                    "serial_no"=>$serial_no,
+                                    "ip_address"=>$ip_address,
+                                    "mac_address"=>$mac_address);
         break;
         case 'Access to Blocked Site:':
             $PHPJasperXML->arrayParameter=array(
