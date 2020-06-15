@@ -193,6 +193,14 @@ if (mysqli_query($conn, $sql_insert)) {
  <?php 
     if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial')
     {
+        ?>
+        
+            
+        <script>
+        
+        window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
+        </script>
+        <?php
 
     }else{
         if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
