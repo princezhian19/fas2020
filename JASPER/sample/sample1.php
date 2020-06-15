@@ -1,6 +1,8 @@
 <?php
 session_start();
 $division = $_SESSION['division'];
+$username = $_SESSION['username'];
+
 /* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -187,8 +189,20 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
 if (mysqli_query($conn, $sql_insert)) {
  } else {
  }
+
  ?>
  <?php 
+        if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial'){
+            ?>
+
+    
+<script>
+
+window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
+</script>
+<?php
+        }
+ else{
   if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
       ?>
       <script>
@@ -671,7 +685,7 @@ window.location = '../../techassistance.php?division=<?php echo $_POST['division
 
     // }
 }
-
+}
 // $PHPJasperXML->load_xml_file("report1.jrxml");
 // $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','','fascalab_2020');
 // $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file

@@ -56,7 +56,7 @@ function fillTableInfo()
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"> 
                                       
-                                      <input  type = "text"  class = "sizeMax alphanum subtxt" value = "<?php echo $row['REQ_BY'];?>" disabled/>
+                                      <input  type = "text"  class = "sizeMax alphanum subtxt" value = " <?php $assist_by = ucwords(strtolower($row['REQ_BY'])); echo $assist_by; ?>" disabled/>
                                     <td class = "label-text left-text">Brand Model:</td>
                                     <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input   type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = "<?php echo $row['BRAND_MODEL'];?>" disabled/></td>
                                 </tr>
@@ -847,11 +847,11 @@ function setSig()
 
   $assist_by = '';
    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
-   $query = "SELECT ASSIST_BY FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+   $query = "SELECT REQ_BY FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
    $result = mysqli_query($conn, $query);
    if($row = mysqli_fetch_array($result))
      {
-       $assist_by = $row['ASSIST_BY'];
+       $assist_by = ucwords(strtolower($row['REQ_BY']));
      }
      return $assist_by;
 }
@@ -875,6 +875,7 @@ function setSig()
     }
     .sizeMax{
     width:100%;
+    text-align:left;
     }
     td.label-text{
     background-color:#B0BEC5;

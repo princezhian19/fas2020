@@ -599,7 +599,7 @@ function countAssigned()
             <div class="inner">
               <h3><?php echo countReceived();?></h3>
 
-              <p>RECIEVED</p>
+              <p>RECEIVED</p>
             </div>
             <div class="icon">
               <!-- <i class="ion ion-pie-graph"></i> -->
