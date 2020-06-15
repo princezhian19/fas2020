@@ -5,7 +5,13 @@
  */
 include_once("../PHPJasperXML.inc.php");
 
-
+function splitName($name){
+    $names = explode(' ', $name);
+    $lastname = $names[count($names) - 1];
+    unset($names[count($names) - 1]);
+    $firstname = join(' ', $names);
+    return $firstname . ' = ' . $lastname;
+}
 
 $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
 
@@ -20,7 +26,9 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                 $val = array();
                 while($row = mysqli_fetch_array($result))
                 {
-                $name = strtoupper($row['REQ_BY']);
+                $name =ucwords(strtolower($row['REQ_BY']));
+               
+            
                 
                 
                 $request_date = date('M d, Y',strtotime($row['REQ_DATE']));
