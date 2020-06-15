@@ -826,7 +826,7 @@ function setCompletedTime()
         {
           //datetime string.
           $date = new DateTime();
-          $completed_time = '-';
+          $completed_time = date('g:i');
         }else{
           if(date('g',strtotime($row['COMPLETED_TIME'])) < 10)
           {
@@ -851,7 +851,7 @@ function setSig()
    $result = mysqli_query($conn, $query);
    if($row = mysqli_fetch_array($result))
      {
-       $assist_by = $row['REQ_BY'];
+       $assist_by = ucwords(strtolower($row['REQ_BY']));
      }
      return $assist_by;
 }
