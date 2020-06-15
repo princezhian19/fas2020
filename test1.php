@@ -631,7 +631,7 @@ function getImage()
         <?php
         if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial'){
           ?>
-        <a href="techcassitance.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
+        <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
                 <i class="fa fa-users" style = "color:#black;"></i>
                 <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
             </a>
