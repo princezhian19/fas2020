@@ -498,8 +498,7 @@ $(document).ready(function() {
        }else{
        $("#others1").prop('required',true);
 
-       $("#others2").prop('required',true);
-       $("#others3").prop('required',true);
+       
        }
       
       
