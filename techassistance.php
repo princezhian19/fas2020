@@ -581,8 +581,20 @@ function countAssigned()
 ?>
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
-<?php include('sidebar2.php'); ?>
-  <div class="content-wrapper">
+<?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); 
+  }else{ 
+  
+       if ($OFFICE_STATION == 1) {
+    include('sidebar2.php');
+             
+          }else{
+    include('sidebar3.php');
+           
+          } 
+  }
+?>
+<div class="content-wrapper">
   <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
