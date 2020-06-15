@@ -106,8 +106,13 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                       $status2 = $row['STATUS'];
                       
               }
+              
+               if($status == '' || $status == null){
+                $status2 = '';
+                $status = '';
+            }
 
-if($status == 1)
+else if($status == 1)
 {
     $status = 'correct.png';
     $status2 = '';
@@ -115,11 +120,9 @@ if($status == 1)
 else if($status == 0){
     $status2 = 'correct.png';
     $status = '';
-}else if($status == '' || $status == null){
-    $status2 = '';
-    $status = '';
 }
-
+echo $status.'--'.$status2;
+exit();
 $PHPJasperXML = new PHPJasperXML();
 // $PHPJasperXML->debugsql=true;
 switch($req_type_subcategory)
