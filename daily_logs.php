@@ -558,7 +558,7 @@ if (isset($_POST['stamp4'])) {
           var time = new Date();
           var hrs = time.getHours();
           var min = time.getMinutes();
-          var sec = time.getSeconds();
+          var sec = time.getSeconds()+1;
 
           if (hrs > 12){
             hrs = hrs - 12;
