@@ -289,7 +289,7 @@ if($_SESSION['planningofficer'] == 1)
          
         } 
 }
- ?>
+ 
   // if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
   //     include('test1.php');
   //   }else{
