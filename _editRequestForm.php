@@ -760,7 +760,13 @@ function setStartDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $start_date = date('F d, Y',strtotime($row['START_DATE']));
+        if($row['START_DATE'] == '' || $row['START_DATE'] == null)
+        {
+          $start_date = date('F d, Y');
+        }else{
+          $start_date = date('F d, Y',strtotime($row['START_DATE']));
+
+        }
       }
       return $start_date;
 }
@@ -827,7 +833,7 @@ function setCompletedTime()
         {
           //datetime string.
           $date = new DateTime();
-          $completed_time = date('g:i');
+          $completed_time = date('H:i');
         }else{
           if(date('g',strtotime($row['COMPLETED_TIME'])) < 10)
           {
