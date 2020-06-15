@@ -1,6 +1,8 @@
 <?php
 session_start();
 $division = $_SESSION['division'];
+$username = $_SESSION['username'];
+
 /* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -189,23 +191,41 @@ if (mysqli_query($conn, $sql_insert)) {
  }
  ?>
  <?php 
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-      ?>
-      <script>
-window.location = '../../processing.php?division=<?php echo $_POST['division'];?>&ticket_id=';
-</script>
-<?php
+    if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial')
+    {
+        ?>
+        
+            
+        <script>
+        
+        window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
+        </script>
+        <?php
     }else{
-     ?>
 
-    
-<script>
 
-window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
-</script>
-<?php
+        if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+            if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial'){
+        
+              ?>
+              <script>
+        window.location = '../../processing.php?division=<?php echo $_POST['division'];?>&ticket_id=';
+        </script>
+        <?php
+            }else{
+             ?>
+        
+            
+        <script>
+        
+        window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
+        </script>
+        <?php
+            }
+         ?>
+        
     }
- ?>
+
 
 
 
