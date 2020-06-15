@@ -203,7 +203,8 @@ window.location = '../../techassistance.php?division=<?php echo $_POST['division
 <?php
         }
  else{
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+    if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar') {
+
       ?>
       <script>
 window.location = '../../processing.php?division=<?php echo $_POST['division'];?>&ticket_id=';
