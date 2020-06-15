@@ -274,7 +274,7 @@ function showUser()
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input required disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
+                          <input required disabled type="text" name = "completed_time"  value="" required>
                           </div>
                           </td>
 
@@ -287,7 +287,7 @@ function showUser()
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input required disabled type="text" name = "started_time" placeholder = "Started Time"  value="" required>
+                          <input required disabled type="text" name = "started_time"  value="" required>
                           </div>
                           </td>
                           <td style = "width:12.5%;" class = "label-text">Completed Time:</td>
@@ -296,7 +296,7 @@ function showUser()
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input required disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
+                          <input required disabled type="text" name = "completed_time"  value="" required>
                           </div>
                           </td>
                           </tr>
@@ -563,39 +563,37 @@ $(document).ready(function() {
   //     $(".checkboxgroup_g6").attr("disabled", true);
   //   }
   // }
-  function cb3_4func()
-  {
-    if (this.checked) {
-      $('#softwares').val('');
-    
+    function cb3_4func()
+    {
+      if (this.checked) {
+        $('#softwares').val('');
+        }else{
+      }
+    }
 
-  }else{
-  
-  
-  }
-  }
-  function cb3_3func()
-  {
-    if (this.checked) {
-      $('#softwares').val('');
-    
+    function cb3_3func()
+    {
+      if (this.checked) {
+        $('#softwares').val('');
+      
 
-  }else{
-  
-  
-  }
-  }
-  function cb3_2func()
-  {
-    if (this.checked) {
-      $('#softwares').val('');
+      }else{
     
+    
+      } 
+    }
+    
+    function cb3_2func()
+    {
+        if (this.checked) {
+          $('#softwares').val('');
+        
 
-  }else{
-  
-  
-  }
-  }
+      }else{
+      
+      
+      }
+    }
 
   function cb3_1func()
   {
