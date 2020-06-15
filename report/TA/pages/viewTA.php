@@ -274,7 +274,7 @@ switch($req_type_subcategory)
                                     "ip_address"=>$ip_address,
                                     "mac_address"=>$mac_address);
         break;
-        case 'No Internet Connection(Cross or Exclamation)':
+        case 'No Internet (Cross or Exclamation)':
             $PHPJasperXML->arrayParameter=array(
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
