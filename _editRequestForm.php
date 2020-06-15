@@ -255,7 +255,7 @@ function fillCheckbox()
                                     </div>
                                 <?php
                         break;
-                        case 'No Internet Connection(Cross or Exclamation)';
+                        case 'No Internet (Cross or Exclamation)';
                                 ?>
                                     <div style = "margin-left:180px;padding-top:10px;">
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
