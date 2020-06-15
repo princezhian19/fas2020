@@ -92,7 +92,7 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                       
                       $quality = $row['QUALITY'];
 
-                      $assisted_by =strtoupper($row['ASSIST_BY']);
+                      $assisted_by =ucwords(strtolower($row['ASSIST_BY']));
                      
                       // $status = $row['status'];
 
