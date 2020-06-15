@@ -1,8 +1,6 @@
 <?php
 session_start();
 $division = $_SESSION['division'];
-$username = $_SESSION['username'];
-
 /* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -191,48 +189,38 @@ if (mysqli_query($conn, $sql_insert)) {
  }
  ?>
  <?php 
-    if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial')
-    {
-        ?>
-        
-            
-        <script>
-        
-        window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
-        </script>
-        <?php
+        if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial'){
+            ?>
 
-    }else{
-        if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-            if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial'){
-        
-              ?>
-              <script>
-        window.location = '../../processing.php?division=<?php echo $_POST['division'];?>&ticket_id=';
-        </script>
-        <?php
-            }else{
-             ?>
-        
-            
-        <script>
-        
-        window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
-        </script>
-        <?php
-            }
+    
+<script>
+
+window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
+</script>
+<?php
         }
-         ?>
+ else{
+  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+      ?>
+      <script>
+window.location = '../../processing.php?division=<?php echo $_POST['division'];?>&ticket_id=';
+</script>
+<?php
+    }else{
+     ?>
+
+    
+<script>
+
+window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
+</script>
+<?php
     }
-
-
-
-
+ ?>
 
 
 
  <?php
-
     // ======
 //    if($_POST['req_type_category'][$i] == "Others"){
 //         $PHPJasperXML->arrayParameter=array(
@@ -693,8 +681,8 @@ if (mysqli_query($conn, $sql_insert)) {
 
 
     // }
-
-
+}
+}
 // $PHPJasperXML->load_xml_file("report1.jrxml");
 // $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','','fascalab_2020');
 // $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
