@@ -204,9 +204,9 @@ function showUser()
                             <input  style = "margin-left:180px;"  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
                             <div style = "margin-left:210px;padding-top:10px;">
                             <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" id = "cb5" value = "New Account"> New Account<br>
-                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" value = "Change Account to"> Change Account to 
+                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" id = "cb5_2" value = "Change Account to"> Change Account to 
                             <input  type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
+                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" id = "cb5_3" value = "Password Reset"> Password Reset<br>
                           </div>
                           </td> 
                           <td>
@@ -545,6 +545,9 @@ $(document).ready(function() {
     $('#cb2_2').click(cb4func);
     $('#cb2_4').click(cb3func);
     $('#cb2').click(cb1func);
+    $('#cb5_2').click(cb5_2func);
+    $('#cb5').click(cb5_1func);
+    $('#cb5_3').click(cb5_3func);
     
     
   });
@@ -555,6 +558,35 @@ $(document).ready(function() {
   //     $(".checkboxgroup_g6").attr("disabled", true);
   //   }
   // }
+  function cb5_3func()
+  {
+    if (this.checked) {
+  $('#changeaccount').val('');
+
+
+}else{
+
+}
+  }
+  function cb5_1func()
+  {
+    if (this.checked) {
+  $('#changeaccount').val('');
+
+
+}else{
+
+}
+  }
+  function cb5_2func()
+  {
+    if (this.checked) {
+
+  }else{
+    $('#changeaccount').val('');
+
+  }
+  }
   function cb4func()
   {
   if (this.checked) {
