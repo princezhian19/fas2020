@@ -57,12 +57,7 @@ function fillTableInfo()
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"> 
                                       
                                       <input  type = "text"  class = "sizeMax alphanum subtxt" value = "
-                                      <?php 
-                                    
-       $assist_by = ucwords(strtolower($row['REQ_BY']));
-       echo $assist_by;
-
-                                      ?>" disabled/>
+                                      <?php $assist_by = ucwords(strtolower($row['REQ_BY'])); echo $assist_by;?>" disabled/>
                                     <td class = "label-text left-text">Brand Model:</td>
                                     <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input   type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = "<?php echo $row['BRAND_MODEL'];?>" disabled/></td>
                                 </tr>
@@ -880,7 +875,7 @@ function setSig()
     border: none;
     }
     .sizeMax{
-    width:100%;
+    
     text-align:left;
     }
     td.label-text{
