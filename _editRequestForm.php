@@ -255,7 +255,7 @@ function fillCheckbox()
                                     </div>
                                 <?php
                         break;
-                        case 'No Internet(Cross or Exclamation)';
+                        case 'No Internet (Cross or Exclamation)';
                         
                                 ?>
                                     <div style = "margin-left:180px;padding-top:10px;">
