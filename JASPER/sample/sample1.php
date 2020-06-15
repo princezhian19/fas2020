@@ -193,17 +193,8 @@ if (mysqli_query($conn, $sql_insert)) {
  <?php 
     if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial')
     {
-        ?>
-        
-            
-        <script>
-        
-        window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
-        </script>
-        <?php
+
     }else{
-
-
         if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
             if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial'){
         
@@ -222,14 +213,18 @@ if (mysqli_query($conn, $sql_insert)) {
         </script>
         <?php
             }
+        }
          ?>
-        
     }
 
 
 
 
+
+
+
  <?php
+
     // ======
 //    if($_POST['req_type_category'][$i] == "Others"){
 //         $PHPJasperXML->arrayParameter=array(
@@ -690,7 +685,7 @@ if (mysqli_query($conn, $sql_insert)) {
 
 
     // }
-}
+
 
 // $PHPJasperXML->load_xml_file("report1.jrxml");
 // $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','','fascalab_2020');
