@@ -855,6 +855,20 @@ function setSig()
      }
      return $assist_by;
 }
+function setSig2()
+{
+  include 'connection.php';
+
+  $assist_by = '';
+   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+   $query = "SELECT ASSIST_BY FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+   $result = mysqli_query($conn, $query);
+   if($row = mysqli_fetch_array($result))
+     {
+       $assist_by = ucwords(strtolower($row['ASSIST_BY']));
+     }
+     return $assist_by;
+}
 ?>
  
 <!DOCTYPE html>
@@ -1069,7 +1083,7 @@ switch ($row['STATUS']) {
                           </ol>
                           </td>
                           <td colspan = 4 style = "text-align:center;">
-                          _____________________________________________________
+                          <u><?php echo setSig2();?></u><br>
                           <p class = "label-text">Signature over Printed Name</p>
                           
                           </td>
