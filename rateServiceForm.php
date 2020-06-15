@@ -805,7 +805,7 @@ function setStartTime()
       {
         if($row['START_TIME'] == '' || $row['START_TIME'] == NULL)
         {
-          $start_time = date('H:i');
+          $start_time = date('g:i A');
 
         }else{
           $start_time = date('g:i A',strtotime($row['START_TIME']));
