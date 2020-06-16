@@ -328,7 +328,7 @@ function filldataTable()
 function showICTload($itstaff)
 {
     include 'connection.php';;
-    $query = "SELECT count(*) as 'count' FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' and ASSIST_BY = '$itstaff'";
+    $query = "SELECT count(*) as 'count' FROM tbltechnical_assistance WHERE  ASSIST_BY LIKE '%$itstaff%'";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
@@ -710,7 +710,7 @@ function countAssigned()
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Web Programmer</span>
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-73.8px;font-size:12px;">Mark Kim A. Saluti</span>
                                     <button disabled type="button" class="btn btn-sm btn-danger pull-right">
-                                        <span class="badge badge-light" ><?php echo showICTload('Mark Kim A. Sacluti');?></span>
+                                        <span class="badge badge-light" ><?php echo showICTload('Mark');?></span>
                                     </button>
                                     
                                 </li>
@@ -719,7 +719,7 @@ function countAssigned()
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Network Administrator</span>
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-94.8px;font-size:12px;">Christian Paul Ferrer</span>
                                     <button  disabled type="button" class="btn btn-sm btn-danger pull-right">
-                                        <span class="badge badge-light"><?php echo showICTload('Christian Paul V.Ferrer');?></span>
+                                        <span class="badge badge-light"><?php echo showICTload('Christian');?></span>
                                     </button>
                                 </li>
                                 <li class="list-group-item">
@@ -728,7 +728,7 @@ function countAssigned()
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-100.8px;font-size:12px;">Charles Adrian Odi</span>
                                     <button disabled type="button" class="btn btn-sm btn-danger pull-right" >
                                   
-                                        <span class="badge badge-light"><?php echo showICTload('Charles Adrian T. Odi');?></span>
+                                        <span class="badge badge-light"><?php echo showICTload('Charles');?></span>
 
                                     </button>
                                 </li>
@@ -737,7 +737,7 @@ function countAssigned()
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Data Analyst</span>
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-55.8px;font-size:12px;">Shiela Mei Olivar</span>
                                     <button  disabled type="button" class="btn btn-sm btn-danger pull-right">
-                                        <span class="badge badge-light"><?php echo showICTload('Shiela Mei E. Olivar');?></span>
+                                        <span class="badge badge-light"><?php echo showICTload('Shiela');?></span>
                                     </button>
                                 </li>
                                 <li class="list-group-item">
@@ -745,7 +745,7 @@ function countAssigned()
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Information Technology Officer I</span>
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-135.8px;font-size:12px;">Maybelline Monteiro</span>
                                     <button disabled type="button" class="btn btn-sm btn-danger pull-right">
-                                        <span class="badge badge-light"><?php echo showICTload('Maybelline Monteiro');?></span>
+                                        <span class="badge badge-light"><?php echo showICTload('Maybelline');?></span>
                                     </button>
                                 </li>
                 </ul>
