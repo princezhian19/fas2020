@@ -38,7 +38,7 @@ switch ($option) {
         // ============================================
         $insert1 ="UPDATE `ta_monitoring` SET 
         `COUNT` = '$COUNT'
-         WHERE `ta_monitoring`.`ID` = 1;;
+         WHERE `ta_monitoring`.`ID` = 1";
         if (mysqli_query($conn, $insert1)) {
         } else {
         }
