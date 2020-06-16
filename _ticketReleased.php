@@ -36,10 +36,10 @@ switch ($option) {
 
 
         // ============================================
-        $insert ="UPDATE `ta_monitoring` SET 
+        $insert1 ="UPDATE `ta_monitoring` SET 
         `COUNT` = '$COUNT'
          WHERE `STATUS_REQUEST` = 'RECEIVED' ";
-        if (mysqli_query($conn, $insert)) {
+        if (mysqli_query($conn, $insert1)) {
         } else {
         }
    
