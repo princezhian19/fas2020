@@ -245,25 +245,28 @@ function filldataTable()
                       echo '<br><br>';                                      
                     
                     // Complete
-                    if($row['COMPLETED_DATE'] == '0000-00-00' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+                    if($row['STATUS_REQUEST'] == 'Submitted')
                     {
-
-                    if($_SESSION['complete_name'] == $row['ASSIST_BY'])
-                    {
-
-                    echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+                        echo '<button disabled id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
                     }else{
-                    echo '<button id ="sweet-16"  data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
-                    }
-                }else{
-        
-                    echo '<button title = "Completed Date"  id ="update_complete" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
-                    Completed Date<br> 
-                    '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
-                    </button>';
-                    echo '<br>';
+                        if($row['COMPLETED_DATE'] == '0000-00-00' || $row['COMPLETED_DATE'] == NULL || $row['COMPLETED_DATE'] == 'January 01, 1970')
+                    {
+                        if($_SESSION['complete_name'] == $row['ASSIST_BY'])
+                        {
+                            echo '<button id ="sweet-16" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+                        }else{
+                            echo '<button id ="sweet-16"  data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">Complete</button>';
+                        }   
+                    }else{
 
-                }
+                        echo '<button title = "Completed Date"  id ="update_complete" data-id = '.$row['CONTROL_NO'].' class = "col-lg-12 btn btn-md btn-success">
+                        Completed Date<br> 
+                        '.date('F d, Y',strtotime($row['COMPLETED_DATE'])).'
+                        </button>';
+                        echo '<br>';
+                    }
+                    }
+                    
               ?>
               <br>
               <br>
