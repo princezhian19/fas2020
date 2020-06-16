@@ -332,6 +332,7 @@ function showICTload($itstaff)
 {
     include 'connection.php';;
     $query = "SELECT count(*) as 'count' FROM tbltechnical_assistance WHERE ASSIST_BY = '$itstaff'";
+    
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
@@ -783,7 +784,7 @@ function countAssigned()
                             <th></th>
                         </thead>
                         <tbody>
-                            <?php echo showWorkload('Mark');?>
+                            <?php echo showWorkload('Mark Kim A. Sacluti');?>
                         </tbody>
                     </table>
                 </div>
