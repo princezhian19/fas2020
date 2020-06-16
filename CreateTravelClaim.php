@@ -10,7 +10,7 @@ $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS | Create PR</title>
+<title>FAS | Create Travel Claim</title>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,11 +50,11 @@ $username = $_SESSION['username'];
      <br>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Procurement</li>
-        <li class="active">Create PR</li>
+        <li class="active">Financial</li>
+        <li class="active">Travel Claim</li>
       </ol><br>
      
-
+<?php include 'travelclaim.php';?>
     </section>
   </div>
   <footer class="main-footer">
