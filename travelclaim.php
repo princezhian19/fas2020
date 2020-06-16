@@ -22,85 +22,53 @@ include 'travelclaim_functions.php';
 
     <br>
     <br>
-    <form method="POST" >
-      <div class="box-body">
-        <div class="well">
-          <div class="row">
+        <form method="POST" >
+        <div class="box-body">
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Name <label style="color: Red;" >*</label> </label>
+                                <input  readonly autocomplete = "off"  class="form-control" name="complete_name" type="text" value = "<?php echo getCompleteName();?>">
+                                    </div>
 
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>Name <label style="color: Red;" >*</label> </label>
-                    <input  readonly autocomplete = "off" value="" class="form-control" name="complete_name" type="text" >
-                        </div>
+                        <div class="form-group">
+                            <label>Position <label style="color: Red;" >*</label></label>
+                                <input type="text" class="form-control" style="width: 100%;" name="position"  readonly value= "<?php echo getPosition();?>">
+                                    </div>
 
-            <div class="form-group">
-                <label>Position <label style="color: Red;" >*</label></label>
-                    <input type="text" class="form-control" style="width: 100%;" name="position"  readonly >
+                        <div class="form-group">
+                            <label>Office <label style="color: Red;" >*</label></label>
+                                <input type="text" class="form-control" style="width: 100%;" name="office" readonly value="" >
+                                    </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Date of Filing <label style="color: red;" >*</label></label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input required  type="text" class="form-control pull-right" name="date_of_filinf" id="datepicker1" value="<?php echo date("F d, Y"); ?>">
+                            </div>
                         </div>
-
-            <div class="form-group">
-                <label>Office <label style="color: Red;" >*</label></label>
-                    <input type="text" class="form-control" style="width: 100%;" name="office" readonly value="" >
+                        <div class="form-group">
+                            <label>Date of Travel <label style="color: Red;" >*</label></label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control pull-right" name="target_date" id="datepicker2" value="<?php echo $target_date ?>" required placeholder="mm/dd/yyyy">
+                                </div>
                         </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>Date of Filing <label style="color: red;" >*</label></label>
-                    <div class="input-group date">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
+                        <div class="form-group" >
+                            <label>Purpose of Travel <label style="color: Red;" >*</label></label>
+                            <input required type="text" style="height: 60px" class="form-control pull-right" name="purpose" id="purpose"  required placeholder="Purpose">
                         </div>
-                        <input required  type="text" class="form-control pull-right" name="date_of_filinf" id="datepicker1" value="<?php echo date("F d, Y"); ?>">
+                    </div>
                 </div>
             </div>
-
-
-<div class="form-group">
-<label>Date of Travel <label style="color: Red;" >*</label></label>
-<div class="input-group date">
-<div class="input-group-addon">
-<i class="fa fa-calendar"></i>
-</div>
-<input type="text" class="form-control pull-right" name="target_date" id="datepicker2" value="<?php echo $target_date ?>" required placeholder="mm/dd/yyyy">
-
-</div>
-</div>
-
-                 
-                
-
-              <div class="form-group" >
-                <label>Purpose of Travel <label style="color: Red;" >*</label></label>
-                <?php if ($purpose ==''): ?>
-                  <!-- <textarea  required class="form-control" type="text" id="purpose" name="purpose"><?php echo isset($_POST['purpose']) ? $_POST['purpose'] : '' ?> </textarea>  -->
-                  
-                  <input required type="text" style="height: 60px" class="form-control pull-right" name="purpose" id="purpose" value="<?php echo isset($_POST['purpose']) ? $_POST['purpose'] : '' ?>" required placeholder="Purpose">
-                  <?php else: ?>
-                    <!-- <textarea required class="form-control" type="text" id="purpose" name="purpose"><?php echo $purpose ?> </textarea> -->
-
-                    <input required type="text" style="height: 60px" class="form-control pull-right" name="purpose" id="purpose"  required placeholder="Purpose">
-
-                  <?php endif ?>
-
-                  <!-- <input type="text" name="purpose" value="<?php echo isset($_POST['purpose']) ? $_POST['purpose'] : '' ?>" /> -->
-
-                </div>
-
-
-                <!-- /.box-body -->
-              </div>
-              <!-- /.form-group -->
-            </div>
-            <!-- /.col -->
-          </div>
-         <!--  <div class="item panel panel-info"></div> -->
-          <?php 
-          if ($insert_items) {
-            echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Item Added!  </p> </div></div>  '; 
-          }
-
-          ?> 
+        
           <div class="panel panel-success" id="item_table">
            <div class="panel-heading">
             <i class="fa fa-list-alt"></i>&nbsp&nbsp&nbspPR Items <!-- Item(s) -->
