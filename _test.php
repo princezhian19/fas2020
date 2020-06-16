@@ -415,6 +415,7 @@ return true;
 
 <script type = "text/javascript">
 $(document).ready(function() {
+  var ckbox1 = $("#checkboxgroup_g1");
   var ckbox = $("#checkboxgroup_g5");
   var ckbox2 = $("#checkboxgroup_g2");
   var ckbox3 = $("#checkboxgroup_g3");
@@ -425,7 +426,15 @@ $(document).ready(function() {
   var chkId3 = '';
   var chkId4 = '';
   $('input').on('click', function() {
-    
+    // DESKTOP/LAPTOP
+    if(ckbox1.is(':checked')){
+      $("#site").prop('required',false);
+        $("#purpose").prop('required',false);
+        $("#purpose2").prop('required',false);
+        $("#changeaccount").prop('required',false);
+
+   
+    }
     if (ckbox.is(':checked')) {
       $("#checkboxgroup_g5:checked").each ( function() {
    			chkId = $(this).val() + ",";
@@ -459,9 +468,10 @@ $(document).ready(function() {
         $("#purpose").prop('required',false);
       } else if($(this).val() == "Internet for Personal Phone/Tablet/Laptop"){
         $("#purpose2").prop('required',true);
-      }else{
         $("#site").prop('required',false);
         $("#purpose").prop('required',false);
+      }else{
+     
       }
     }
     if (ckbox3.is(':checked')) {
