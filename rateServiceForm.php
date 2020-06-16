@@ -4,7 +4,6 @@ require_once('_includes/setting.php');
 require_once('_includes/dbaseCon.php');
 require_once('_includes/library.php');
 require_once('_includes/sql_statements.php');
-// require_once('_includes/secure.php');
 
 
 
