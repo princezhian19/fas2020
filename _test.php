@@ -420,6 +420,7 @@ $(document).ready(function() {
   var ckbox2 = $("#checkboxgroup_g2");
   var ckbox3 = $("#checkboxgroup_g3");
   var ckbox4 = $("#checkboxgroup_g6");
+  var ckbox_printer = $("#checkboxgroup_g4");
 
   var chkId = '';
   var chkId2 = '';
@@ -432,10 +433,20 @@ $(document).ready(function() {
         $("#purpose").prop('required',false);
         $("#purpose2").prop('required',false);
         $("#changeaccount").prop('required',false);
+        $("#softwares").prop('required',false);
 
    
     }
+    if(ckbox_printer.is(':checked'))
+    {
+      $("#site").prop('required',false);
+        $("#purpose").prop('required',false);
+        $("#purpose2").prop('required',false);
+        $("#changeaccount").prop('required',false);
+        $("#softwares").prop('required',false);
+    }
     if (ckbox.is(':checked')) {
+
       $("#checkboxgroup_g5:checked").each ( function() {
    			chkId = $(this).val() + ",";
         chkId = chkId.slice(0, -1);
@@ -452,6 +463,8 @@ $(document).ready(function() {
        
     } 
     if (ckbox2.is(':checked')) {
+      $("#changeaccount").prop('required',false);
+        $("#softwares").prop('required',false);
       $("#checkboxgroup_g2:checked").each ( function() {
    			chkId2 = $(this).val() + ",";
         chkId2 = chkId2.slice(0, -1);
@@ -475,6 +488,11 @@ $(document).ready(function() {
       }
     }
     if (ckbox3.is(':checked')) {
+      $("#site").prop('required',false);
+        $("#purpose").prop('required',false);
+        $("#purpose2").prop('required',false);
+        $("#changeaccount").prop('required',false);
+
       $("#checkboxgroup_g3:checked").each ( function() {
    			chkId3 = $(this).val() + ",";
         chkId3 = chkId3.slice(0, -1);
