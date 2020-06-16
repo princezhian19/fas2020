@@ -70,14 +70,7 @@ switch ($option) {
           }
             break;
     case 'update_complete':
-        $query = "SELECT * FROM `ta_monitoring` WHERE `STATUS_REQUEST` LIKE '%RATED%' ";
-
-        $result = mysqli_query($conn, $query);
-        $COUNT = '';
-        while($row = mysqli_fetch_array($result))
-        {
-            $COUNT = $row['COUNT']+1;
-        }
+     
 
 
 
@@ -88,12 +81,7 @@ switch ($option) {
         } else {
         }
          // =========================================================================
-          $insert1 ="UPDATE `ta_monitoring` SET 
-          `COUNT` = '$COUNT'
-           WHERE `ta_monitoring`.`ID` = 4";
-          if (mysqli_query($conn, $insert1)) {
-          } else {
-          }
+         
     break;
     
     default:
