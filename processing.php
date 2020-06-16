@@ -518,12 +518,11 @@ function countSubmitted()
 function countReceived()
 {
   include 'connection.php';
-  $query = "SELECT `COUNT` as 'count_rec' FROM  ta_monitoring 
-  where `STATUS_REQUEST` = 'RECEIVED'  ";
+  $query = "SELECT * FROM `ta_monitoring` WHERE `STATUS_REQUEST` LIKE '%RECEIVED%' ";
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
-    echo $row['count_rec'];
+    echo $row['COUNT'];
   }
 }
 function countForAction()
