@@ -99,7 +99,6 @@ include 'travelclaim_functions.php';
                 
  </form>
 
- <button class="btn btn-success" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
 </div>  
 </div>  
 <br>
