@@ -545,7 +545,7 @@ function countComplete()
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
-    echo $row['count_com'];
+    echo $row['COUNT'];
   }
 }
 function countRated()
@@ -557,7 +557,7 @@ function countRated()
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
-    echo $row['count_com'];
+    echo $row['COUNT'];
   }
 }
 function countAssigned()
