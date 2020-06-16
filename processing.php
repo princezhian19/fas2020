@@ -270,53 +270,56 @@ function filldataTable()
               ?>
               <br>
               <br>
-              <?php 
-              if($row['STATUS_REQUEST'] == 'Completed')
+
+
+            <?php 
+             if($row['STATUS_REQUEST'] == 'Submitted')
+             {
+                 ?>
+                <button    disabled class = "btn btn-danger btn-md col-lg-12 ">
+                                Rate Service
+                        </button>
+                 <?php
+             }else{
+
+             
+                if($row['STATUS_REQUEST'] == 'Completed')
                 {
                     if ($row['DATE_RATED'] != '' || $row['DATE_RATED'] != NULL){
-                        ?>
-                <button    class = "btn btn-danger btn-md col-lg-12 ">
-                <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
-                        Rate Service
-                    </a>
-                </button>
-
-                        <?php
+                    ?>
+                        <button    class = "btn btn-danger btn-md col-lg-12 ">
+                            <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                                Rate Service
+                            </a>
+                        </button>
+                    <?php
                     }
                     else{
-
-                    
                     ?>
-                <button   class = "btn btn-danger btn-md col-lg-12 ">
-                    <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
-                        Rate Service
-                    </a>
-                </button>
-
-                   
-
+                        <button   class = "btn btn-danger btn-md col-lg-12 ">
+                            <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                                Rate Service
+                            </a>
+                        </button>
                     <?php
                     }
                 }else if($row['STATUS_REQUEST'] == 'Rated'){
                     ?>
-                <button    class = "btn btn-danger btn-md col-lg-12 ">
-                <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
-                
-                Rated Date<br><?php echo date('F d, Y', strtotime($row['DATE_RATED']));?></a></button>
-
-<?php
+                        <button    class = "btn btn-danger btn-md col-lg-12 ">
+                            <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                                Rated Date<br><?php echo date('F d, Y', strtotime($row['DATE_RATED']));?></a></button>
+                            <?php
                 }else{
                     ?>
                     <button    class = "btn btn-danger btn-md col-lg-12 ">
-                    <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                        <a href = "rateService.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
                             Rate Service
                         </a>
                     </button>
-    
-                            <?php
+                    <?php
                 }
-
-              ?>
+            }
+?>
                     
             </td>
            
