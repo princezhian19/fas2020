@@ -273,7 +273,7 @@ function filldataTable()
 
 
             <?php 
-             if($row['COMPLETED_DATE'] == '' || )
+             if($row['COMPLETED_DATE'] == '')
              {
                  ?>
                 <button    disabled class = "btn btn-danger btn-md col-lg-12 ">
