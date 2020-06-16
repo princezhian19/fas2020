@@ -518,8 +518,8 @@ function countSubmitted()
 function countReceived()
 {
   include 'connection.php';
-  $query = "SELECT count(*) as 'count_rec' FROM tbltechnical_assistance 
-  where `STATUS_REQUEST` = 'Received'  ";
+  $query = "SELECT `COUNT` as 'count_rec' FROM  ta_monitoring 
+  where `STATUS_REQUEST` = 'RECEIVED'  ";
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
