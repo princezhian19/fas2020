@@ -39,7 +39,7 @@ include 'travelclaim_functions.php';
 
                         <div class="form-group">
                             <label>Office <label style="color: Red;" >*</label></label>
-                                <input type="text" class="form-control" style="width: 100%;" name="office" readonly value="" >
+                                <input type="text" class="form-control" style="width: 100%;" name="office" readonly value="<?PHP echo getOffice();?>" >
                                     </div>
                     </div>
                     <div class="col-md-6">
