@@ -129,8 +129,9 @@
     $code     = substr(str_replace('+', '.', base64_encode(pack('N4', mt_rand(), mt_rand(), mt_rand(), mt_rand()))), 0, 22);
       $password   = crypt($password, '$2a$10$'.$code.'$');
 
-      $update_ac = mysqli_query($conn,"UPDATE tblemployeeinfo SET PSWORD='$password', CODE='$code' WHERE EMP_N = $user_id ");
+      $update_ac = mysqli_query($conn,"UPDATE tblemployeeinfo SET PSWORD='$password', CODE='$code', UNAME ='$username' WHERE EMP_N = $user_id ");
     }else{
+      $update_ac = mysqli_query($conn,"UPDATE tblemployeeinfo SET  UNAME ='$username' WHERE EMP_N = $user_id ");
 
     }
 
@@ -535,7 +536,7 @@
       <div class="row">
         <div class="col-xs-4">
           <label>Username<font style="color:red;">*</font> </label>
-          <input readonly value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
+          <input  value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
 
         </div>
         <div class="col-xs-4">
