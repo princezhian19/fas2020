@@ -459,6 +459,9 @@ $(document).ready(function() {
         $("#purpose").prop('required',false);
       } else if($(this).val() == "Internet for Personal Phone/Tablet/Laptop"){
         $("#purpose2").prop('required',true);
+      }else{
+        $("#site").prop('required',false);
+        $("#purpose").prop('required',false);
       }
     }
     if (ckbox3.is(':checked')) {
