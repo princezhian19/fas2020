@@ -13,14 +13,32 @@ $time_recieved= date("H:i", strtotime($time));
 
 
 
-
 switch ($option) {
     case 'released':
+        $query = "SELECT * FROM `ta_monitoring` 
+        where `STATUS_REQUEST` = 'RECEIVED' ";
+
+        $result = mysqli_query($conn, $query);
+        $COUNT = '';
+        while($row = mysqli_fetch_array($result))
+        {
+            $COUNT = $row['COUNT']+1;
+        }
+
         $insert ="UPDATE `tbltechnical_assistance` SET 
         `STATUS_REQUEST` = 'Received',
         `START_DATE` = '$date_recieved',
         `START_TIME` = '$time_recieved'
          WHERE `CONTROL_NO` = '$id' ";
+        if (mysqli_query($conn, $insert)) {
+        } else {
+        }
+
+
+        // ============================================
+        $insert ="UPDATE `ta_monitoring` SET 
+        `COUNT` = '$COUNT',
+         WHERE `STATUS_REQUEST` = 'RECEIVED' ";
         if (mysqli_query($conn, $insert)) {
         } else {
         }
