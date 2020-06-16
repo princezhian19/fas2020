@@ -273,7 +273,7 @@ function filldataTable()
 
 
             <?php 
-             if($row['STATUS_REQUEST'] == 'Submitted')
+             if($row['STATUS_REQUEST'] != 'Completed')
              {
                  ?>
                 <button    disabled class = "btn btn-danger btn-md col-lg-12 ">
