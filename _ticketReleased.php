@@ -44,7 +44,7 @@ switch ($option) {
         }
    
         break;
-        echo $insert;
+        echo $query;
     case 'complete':
         $insert ="UPDATE `tbltechnical_assistance` SET 
         `STATUS_REQUEST` = 'Completed'
