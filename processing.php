@@ -325,7 +325,7 @@ function filldataTable()
 function showICTload($itstaff)
 {
     include 'connection.php';;
-    $query = "SELECT count(*) as 'count' FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' and ASSIST_BY = '$itstaff'";
+    $query = "SELECT count(*) as 'count' FROM tbltechnical_assistance WHERE ASSIST_BY = '$itstaff'";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
