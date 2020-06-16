@@ -288,7 +288,7 @@ function showUser()
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input required disabled type="text" name = "started_time"  value="" required>
+                          <input required disabled type="text" name = "started_time"  value="<?php echo date('H:i A');?>">
                           </div>
                           </td>
                           <td style = "width:12.5%;" class = "label-text">Completed Time:</td>

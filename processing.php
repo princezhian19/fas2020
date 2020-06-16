@@ -425,7 +425,7 @@ function showWorkload($ICT)
 {
     include 'connection.php';
  
-    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%'     order by `STATUS_REQUEST` desc  ";
+    $query = "SELECT * FROM `tbltechnical_assistance` WHERE `ASSIST_BY` LIKE '%$ICT%' order by `CONTROL_NO` DESC ";
     $result = mysqli_query($conn, $query);
     if ($result->num_rows > 0) {
     while($row = mysqli_fetch_array($result))
