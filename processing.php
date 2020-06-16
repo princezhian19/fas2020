@@ -540,8 +540,8 @@ function countComplete()
 {
   include 'connection.php';
   $a = ucwords(strtoupper($_SESSION['complete_name3']));
-  $query = "SELECT count(*) as 'count_com' FROM tbltechnical_assistance 
-  where `STATUS_REQUEST` = 'Completed' ";
+  $query = "SELECT * FROM `ta_monitoring` WHERE `STATUS_REQUEST` LIKE '%COMPLETED%' ";
+
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
@@ -552,8 +552,8 @@ function countRated()
 {
   include 'connection.php';
   $a = ucwords(strtoupper($_SESSION['complete_name3']));
-  $query = "SELECT count(*) as 'count_com' FROM tbltechnical_assistance 
-  where `STATUS_REQUEST` = 'Rated' ";
+  $query = "SELECT * FROM `ta_monitoring` WHERE `STATUS_REQUEST` LIKE '%RATED%' ";
+
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
