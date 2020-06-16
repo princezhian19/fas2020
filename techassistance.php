@@ -94,22 +94,19 @@ function filldataTable()
 
                                     <div class="col-lg-12 col-sm-12 col-xs-12" >
                                         <div class="info-box bg-gray" style = "height:auto;" >
-
-                                            <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
-
-                                            <?php echo '
+                                        <?php echo '
                                             <a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" >
                                                
+                                            <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
+
+                                            
                                                     <b>'.$row['CONTROL_NO'].'</b>
                                      
-                                            </a>';?>
-                                            <p style = "color:red;margin-top:-75%;font-weight:bold;"><?php echo $row['STATUS_REQUEST']; ?></p>
-                                            
-                                            
-                                            
-                                        
-                                            
+                                           
+                                            <p style = "color:red;margin-top:-75%;font-weight:bold;">'.$row['STATUS_REQUEST'].'</p>
+          
                                             </span>
+                                            </a>';?>
 
                                             <div class="info-box-content" >
                                                     <span class="info-box-number"><i style = "font-size:16px;font-weight:bold;">Issue/Problem/Error Details</i>
