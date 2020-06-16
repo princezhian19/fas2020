@@ -690,7 +690,7 @@ function countAssigned()
 
 <div class="row">
     <div class="col-md-3">
-        <div class="box box-primary">
+        <div class="box box-primary" style = "background-color:#ECEFF1;">
             <div class="box-body box-profile">
 
                 <h3 class="profile-username text-center">ICT Staff Work Load</h3>
@@ -747,7 +747,7 @@ function countAssigned()
         </div>
     </div>
     <div class="col-md-9" >
-        <div class="nav-tabs-custom" style = "background:pink;color:#fff;" >
+        <div class="nav-tabs-custom" style = "background:#CFD8DC;color:#fff;" >
             <ul class="nav nav-tabs" style="text-align: left;">
                 <li class="active"><a href="#first" data-toggle="tab" id="first_tab">Processing</a></li>
                 <li><a href="#second" data-toggle="tab" id="second_tab">Mark Kim A. Sacluti</a></li>
@@ -757,7 +757,7 @@ function countAssigned()
                 <li><a href="#six" data-toggle="tab" id="six_tab">Maybelline Monteiro</a></li>
             </ul>
 
-            <div class="tab-content">
+            <div class="tab-content" style = "background-color:#ECEFF1;padding:10px;">
                 <div class="active tab-pane" id="first">
                     <div class="post">
                         <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
