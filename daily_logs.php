@@ -553,12 +553,12 @@ if (isset($_POST['stamp4'])) {
     });
 </script>
 <script type="text/javascript">
-        setInterval(displayclock, 500);
+        setInterval(displayclock, 1000);
         function displayclock(){
           var time = new Date();
           var hrs = time.getHours();
           var min = time.getMinutes();
-          var sec = time.getSeconds()+1;
+          var sec = time.getSeconds();
 
           if (hrs > 12){
             hrs = hrs - 12;
