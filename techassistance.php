@@ -54,7 +54,7 @@ $username = $_SESSION['username'];
 function filldataTable()
 {
   
-    complete_name2
+    
     include 'connection.php';
   $search_value = $_SESSION['complete_name2'];
 //   nd  `STATUS_REQUEST` = 'Completed' ||   and STATUS != '' "
