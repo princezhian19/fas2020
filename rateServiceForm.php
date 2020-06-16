@@ -846,7 +846,7 @@ function setSig()
    $result = mysqli_query($conn, $query);
    if($row = mysqli_fetch_array($result))
      {
-       $assist_by = '<b>'.$row['REQ_BY'].'</b>';
+       $assist_by = '<b>'.ucwords(strtolower($row['REQ_BY'])).'</b>';
      }
      return $assist_by;
 }
@@ -860,7 +860,7 @@ function setSigICT()
    $result = mysqli_query($conn, $query);
    if($row = mysqli_fetch_array($result))
      {
-       $assist_by = '<b>'.$row['ASSIST_BY'].'</b>';
+       $assist_by = '<b>'.ucwords(strtolower($row['ASSIST_BY'])).'</b>';
      }
      return $assist_by;
 }
