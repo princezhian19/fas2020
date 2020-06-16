@@ -81,12 +81,14 @@ function filldataTable()
                                         <div class="col-lg-12 col-sm-12 col-xs-12" >
                                             <div class="info-box bg-gray" style = "height:auto;" >
                                                 <a href = "report/TA/pages/viewTA.php?id=<?php echo $row['CONTROL_NO']; ?>" style = "color:black;" title = "View ICT TA Form" >
-                                                    <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
+                                                    <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:125px;"  >
                                                         <?php echo '
                                                                 <b>'.$row['CONTROL_NO'].'</b>
                                                         ';?>
-                                                        <p style = "color:red;margin-top:-75%;font-weight:bold;"><?php echo $row['STATUS_REQUEST']; ?></p>
-
+                                                        <p style = "color:red;margin-top:-75%;font-weight:bold;"><?php echo $row['STATUS_REQUEST']; ?><br>
+                                                        <img src = "images/print.png" style = "width:40px;height:auto;margin-top:-130%;"/>
+                                                        
+                                                        </p>
 
 
 
