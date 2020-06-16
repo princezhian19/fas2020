@@ -54,10 +54,9 @@ $username = $_SESSION['username'];
 function filldataTable()
 {
   
-  
-
+    complete_name2
     include 'connection.php';
-  $search_value = $_SESSION['complete_name3'];
+  $search_value = $_SESSION['complete_name2'];
 //   nd  `STATUS_REQUEST` = 'Completed' ||   and STATUS != '' "
     $query = "SELECT * FROM tbltechnical_assistance 
     where `REQ_BY` = '".$search_value."'";
