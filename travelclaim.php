@@ -52,7 +52,7 @@ include 'travelclaim_functions.php';
                         <label>Entity Name: <label style="color: Red;" >*</label>
                       </td>
                       <td colspan = 8>
-                      <input type = "text" class = "form-control"/>
+                      <input type = "text" class = "form-control" value = "DILG Region IV-A"/>
                       </td>
                     </tr>
                     <tr>
@@ -77,19 +77,20 @@ include 'travelclaim_functions.php';
                     <label>Name: <label style="color: Red;" >*</label>
                     
                     </td>
-                    <td colspan = 4><input type = "text" class = "form-control"/></td>
+                    <td colspan = 4><input type = "text" class = "form-control" value = "<?php echo getCompleteName();?>"/></td>
                     <td colspan = 2 class = "label-text">Date of Travel:</td>
                     <td colspan = 2><input type = "text" class = "form-control"/></td>
                   </tr>
                   
                   <tr>
-                    <td class = "label-text">Position:</td>
-                    <td colspan = 4 ><input type = "text" class = "form-control"/></td>
-                    <td colspan = 4 rowspan = 2><textarea></textarea></td>
+                    <td class = "label-text">  <label>Position: <label style="color: Red;" >*</label></td>
+                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>"/></td>
+                    <td colspan = 4 rowspan = 2>
+                    <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;"></textarea></td>
                   </tr>
                   <tr>
-                    <td class = "label-text">Official Station:</td>
-                    <td colspan = 4><input type = "text" class = "form-control"/></td>
+                    <td class = "label-text">  <label>Official Station: <label style="color: Red;" >*</label></td>
+                    <td colspan = 4><input type = "text" class = "form-control" value = "<?php echo getOffice();?>" /></td>
                   </tr>
                  
                   <tr>
@@ -131,8 +132,10 @@ include 'travelclaim_functions.php';
               <td >1500</td>
               </tr>
               <tr>
-              <td rowspan = 3 colspan = 5>a</td>
+              <td rowspan = 4 colspan = 5 style = "text-align:justify;"> 
+              I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.    </td>
               <td colspan = 5>a</td>
+              <
               </tr>
               <tr>
               <td colspan = 5>a</td>
@@ -141,7 +144,6 @@ include 'travelclaim_functions.php';
               <td colspan = 5>a</td>
               </tr>
               <tr>
-              <td colspan = 5>a</td>
               <td colspan = 5>a</td>
               </tr>
 
