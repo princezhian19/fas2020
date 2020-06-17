@@ -78,7 +78,7 @@ include 'travelclaim_functions.php';
                     
                     </td>
                     <td colspan = 4><input type = "text" class = "form-control" value = "<?php echo getCompleteName();?>"/></td>
-                    <td colspan = 2 class = "label-text">Date of Travel:</td>
+                    <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
                     <td colspan = 2><input type = "text" class = "form-control"/></td>
                   </tr>
                   
@@ -132,19 +132,28 @@ include 'travelclaim_functions.php';
               <td >1500</td>
               </tr>
               <tr>
-              <td rowspan = 4 colspan = 5 style = "text-align:justify;"> 
-              I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.    </td>
-              <td colspan = 5>a</td>
-              <
+              <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
+              I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.   
+              <CENTER><br>_____________________________________________<br>
+              <b>DR. CARINA S. CRUZ</b></CENTER>
+               </td>
+              <br>
+              <td colspan = 5 rowspan = 2>Prepared by:
+              <CENTER><br>_____________________________________________<br>
+              <?php echo '<b>'.getCompleteName().'</b>';?></CENTER>
+              </td>
+              
               </tr>
               <tr>
-              <td colspan = 5>a</td>
               </tr>
               <tr>
-              <td colspan = 5>a</td>
+              <td colspan = 5 rowspan = 2>Approved By
+              <CENTER><br>_____________________________________________<br>
+             <b> NOEL R. BARTOLABAC, CESO V		</b>			
+</CENTER>
+              </td>
               </tr>
               <tr>
-              <td colspan = 5>a</td>
               </tr>
 
 
