@@ -17,6 +17,15 @@ include 'travelclaim_functions.php';
   }
   th{
     color:black;
+    background-color:#B0BEC5; 
+
+  }
+  td{
+    padding:5px;
+  }
+  td.label-text{ 
+    background-color:#B0BEC5; 
+
   }
 </style>
 </head>
@@ -35,60 +44,109 @@ include 'travelclaim_functions.php';
             <div class="well" style = "padding:20px;">
 
             <center>
-              <table border = 0 style = "width:80%;">
-                <thead>
-                  <th colspan = "2">ITENERARY</th>
+            
+            <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
+            <th colspan = "9">ITENERARY</th>
                     <tr>
-                      <td colspan = "2">
-                        <label>Entity Name: <label style="color: Red;" >*</label> </label>
+                      <td class = "label-text">
+                        <label>Entity Name: <label style="color: Red;" >*</label>
+                      </td>
+                      <td colspan = 8>
+                      <input type = "text" class = "form-control"/>
                       </td>
                     </tr>
                     <tr>
-                      <td>
+                      <td class = "label-text">
                         <label>Fund Cluster: <label style="color: Red;" >*</label> </label>
                       </td>
-                      <td>
+                      <td colspan = "4">
+                      <input type = "text" class = "form-control"/>
+</td>
+                      <td class = "label-text">
                         <label>No: <label style="color: Red;" >*</label> </label>
                       </td>
+                      <td colspan = 4>
+                      <input type = "text" class = "form-control"/>
+
+</td>
                     </tr>
                 </thead>
-              </table>
-            <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
-             
               <tbody>
                   <tr>
-                    <td colspan = 6>Name:</td>
-                    <td colspan = 3>Date of Travel:</td>
+                    <td class = "label-text">
+                    <label>Name: <label style="color: Red;" >*</label>
+                    
+                    </td>
+                    <td colspan = 4><input type = "text" class = "form-control"/></td>
+                    <td colspan = 2 class = "label-text">Date of Travel:</td>
+                    <td colspan = 2><input type = "text" class = "form-control"/></td>
                   </tr>
                   
                   <tr>
-                    <td colspan = 6>Position:</td>
-                    <td colspan = 3 rowspan = 2>Purpose of Travel:</td>
+                    <td class = "label-text">Position:</td>
+                    <td colspan = 4 ><input type = "text" class = "form-control"/></td>
+                    <td colspan = 4 rowspan = 2><textarea></textarea></td>
                   </tr>
                   <tr>
-                    <td colspan = 6>Official Station:</td>
+                    <td class = "label-text">Official Station:</td>
+                    <td colspan = 4><input type = "text" class = "form-control"/></td>
                   </tr>
                  
                   <tr>
-                  <th style = "text-align:center;background-color:#F5F5F5;" rowspan = 2>
+                  <th style = "text-align:center;" rowspan = 2>
                     Date
                   </th>
-                  <th style = "text-indent:10px;text-align:center;background-color:#F5F5F5;" rowspan = 2>Places to be visited (Destination)</th>
-                  <th style = "text-indent:10px;text-align:center;background-color:#F5F5F5;" colspan = 2>Time</th>
-                  <th style = "text-indent:10px;text-align:center;background-color:#F5F5F5;" rowspan = 2>Means of Transportation</th>
-                  <th style = "text-indent:10px;text-align:center;background-color:#F5F5F5;" rowspan = 2>Transportation</th>
-                  <th style = "text-indent:10px;text-align:center;background-color:#F5F5F5;" rowspan = 2>Per Diem</th>
-                  <th style = "text-indent:10px;text-align:center;background-color:#F5F5F5;" rowspan = 2>Others</th>
-                  <th style = "text-indent:10px;text-align:center;background-color:#F5F5F5;" rowspan = 2>Total Amount</th>
+                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Places to be visited (Destination)</th>
+                  <th style = "text-indent:10px;text-align:center;" colspan = 2>Time</th>
+                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Means of Transportation</th>
+                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Transportation</th>
+                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Per Diem</th>
+                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Others</th>
+                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Total Amount</th>
               </tr>
               <tr>
-              
-                  <th style = "background-color:#F5F5F5;text-align:center;">From</th>
-                  <th style = "background-color:#F5F5F5;text-align:center;">To</th>
-               
-                                </tr>
-                                <tr>
-                                <td colspan = 9>&nbsp;</td>
+
+              <th style = "text-align:center;">From</th>
+              <th style = "text-align:center;">To</th>
+
+              </tr>
+              <tr>
+              <td colspan = 9><input type = "text" class = "form-control"/></td>
+              </tr>
+              <tr>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                
+              </tr>
+             
+              <tr>
+              <td colspan = 8>TOTAL</td>
+              <td >1500</td>
+              </tr>
+              <tr>
+              <td rowspan = 3 colspan = 5>a</td>
+              <td colspan = 5>a</td>
+              </tr>
+              <tr>
+              <td colspan = 5>a</td>
+              </tr>
+              <tr>
+              <td colspan = 5>a</td>
+              </tr>
+              <tr>
+              <td colspan = 5>a</td>
+              <td colspan = 5>a</td>
+              </tr>
+
+
+
                                 
               </tbody>
             </table>
