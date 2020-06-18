@@ -612,8 +612,9 @@ function getImage()
             </a>
             <ul class="treeview-menu" >
               <li><a href="ntaobligation.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>PAYMENT</a></li>
-            </ul>
+            </ul> 
           </li>
+          <li><a href="CreateTravelClaim.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Travel Claim</a></li>
           </ul>
         </li>
         <li 
@@ -628,10 +629,27 @@ function getImage()
         }
         ?>
         >
-            <a href="processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
+        <?php
+        if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial'){
+          ?>
+        <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
                 <i class="fa fa-users" style = "color:#black;"></i>
                 <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
             </a>
+          <?php
+        }else{
+          ?>
+<a href="processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
+                <i class="fa fa-users" style = "color:#black;"></i>
+                <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
+            </a>
+          <?php
+        }
+        ?>
+
+
+
+           
            
         </li>
       

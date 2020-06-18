@@ -1,6 +1,10 @@
 <?php
 session_start();
+date_default_timezone_set ('Asia/Manila');
+
 $division = $_SESSION['division'];
+$username = $_SESSION['username'];
+
 /* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -27,6 +31,8 @@ if (strstr($_POST['request_time'], 'PM' ) ) {
     $a = str_replace("AM","",$_POST['request_time']);
     $request_time  = date("H:i",strtotime($_POST['request_time']));
 }
+
+
 if(isset($_POST['req_type_subcategory']))
 {
     $req_type_subcategory = $_POST['req_type_subcategory'];
@@ -92,7 +98,7 @@ $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020")
               $val = array();
               while($row = mysqli_fetch_array($result))
               {
-                $name = $row['FIRST_M'].' '.$row['MIDDLE_M'].' '.$row['LAST_M'];
+                $name = $row['FIRST_M'].' '.$row['LAST_M'];
               }
 
 
@@ -187,9 +193,22 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
 if (mysqli_query($conn, $sql_insert)) {
  } else {
  }
+
  ?>
  <?php 
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
+        if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial'){
+            ?>
+
+    
+<script>
+
+window.location = '../../techassistance.php?division=<?php echo $_POST['division'];?>';
+</script>
+<?php
+        }
+ else{
+    if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar') {
+
       ?>
       <script>
 window.location = '../../processing.php?division=<?php echo $_POST['division'];?>&ticket_id=';
@@ -671,7 +690,7 @@ window.location = '../../techassistance.php?division=<?php echo $_POST['division
 
     // }
 }
-
+}
 // $PHPJasperXML->load_xml_file("report1.jrxml");
 // $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','','fascalab_2020');
 // $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file

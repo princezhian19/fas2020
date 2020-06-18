@@ -54,10 +54,9 @@ $username = $_SESSION['username'];
 function filldataTable()
 {
   
-  
-
+    
     include 'connection.php';
-  $search_value = $_SESSION['complete_name3'];
+  $search_value = $_SESSION['complete_name2'];
 //   nd  `STATUS_REQUEST` = 'Completed' ||   and STATUS != '' "
     $query = "SELECT * FROM tbltechnical_assistance 
     where `REQ_BY` = '".$search_value."'";
@@ -95,22 +94,19 @@ function filldataTable()
 
                                     <div class="col-lg-12 col-sm-12 col-xs-12" >
                                         <div class="info-box bg-gray" style = "height:auto;" >
-
-                                            <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
-
-                                            <?php echo '
+                                        <?php echo '
                                             <a href = "report/TA/pages/viewTA.php?id='.$row['CONTROL_NO'].'" style = "color:black;" title = "View ICT TA Form" >
                                                
+                                            <span class="info-box-icon info-box-text " style = "background-color:#90A4AE;height:auto;"  >
+
+                                            
                                                     <b>'.$row['CONTROL_NO'].'</b>
                                      
-                                            </a>';?>
-                                            <p style = "color:red;margin-top:-75%;font-weight:bold;"><?php echo $row['STATUS_REQUEST']; ?></p>
-                                            
-                                            
-                                            
-                                        
-                                            
+                                           
+                                            <p style = "color:red;margin-top:-75%;font-weight:bold;">'.$row['STATUS_REQUEST'].'</p>
+          
                                             </span>
+                                            </a>';?>
 
                                             <div class="info-box-content" >
                                                     <span class="info-box-number"><i style = "font-size:16px;font-weight:bold;">Issue/Problem/Error Details</i>
@@ -332,7 +328,7 @@ function filldataTable()
 function showICTload($itstaff)
 {
     include 'connection.php';;
-    $query = "SELECT count(*) as 'count' FROM tbltechnical_assistance WHERE `STATUS_REQUEST` = 'For action' and ASSIST_BY = '$itstaff'";
+    $query = "SELECT count(*) as 'count' FROM tbltechnical_assistance WHERE  ASSIST_BY LIKE '%$itstaff%'";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
@@ -523,12 +519,12 @@ function countSubmitted()
 function countReceived()
 {
   include 'connection.php';
-  $query = "SELECT count(*) as 'count_rec' FROM tbltechnical_assistance 
-  where `STATUS_REQUEST` = 'Received'  ";
+  $query = "SELECT * FROM `ta_monitoring` WHERE `STATUS_REQUEST` LIKE '%RECEIVED%' ";
+
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
-    echo $row['count_rec'];
+    echo $row['COUNT'];
   }
 }
 function countForAction()
@@ -546,8 +542,32 @@ function countCompleted()
 {
   include 'connection.php';
   $a = ucwords(strtoupper($_SESSION['complete_name3']));
+  $query = "SELECT * FROM `ta_monitoring` WHERE `STATUS_REQUEST` LIKE '%COMPLETED%' ";
+
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['COUNT'];
+  }
+}
+function countRated()
+{
+  include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
+  $query = "SELECT * FROM `ta_monitoring` WHERE `STATUS_REQUEST` LIKE '%RATED%' ";
+
+  $result = mysqli_query($conn, $query);
+  while($row = mysqli_fetch_array($result))
+  {
+    echo $row['COUNT'];
+  }
+}
+function countAssigned()
+{
+  include 'connection.php';
+  $a = ucwords(strtoupper($_SESSION['complete_name3']));
   $query = "SELECT count(*) as 'count_com' FROM tbltechnical_assistance 
-  where `STATUS_REQUEST` = 'Completed' ";
+  where `ASSIST_BY` != '' ";
   $result = mysqli_query($conn, $query);
   while($row = mysqli_fetch_array($result))
   {
@@ -557,8 +577,20 @@ function countCompleted()
 ?>
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
-<?php include('sidebar2.php'); ?>
-  <div class="content-wrapper">
+<?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); 
+  }else{ 
+  
+       if ($OFFICE_STATION == 1) {
+    include('sidebar2.php');
+             
+          }else{
+    include('sidebar3.php');
+           
+          } 
+  }
+?>
+<div class="content-wrapper">
   <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -578,11 +610,11 @@ function countCompleted()
        <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-blue">
             <div class="inner">
-              <h3><?php echo countSubmitted();?></h3>
+              <h3><?php echo countReceived();?></h3>
 
-              <p>SUBMITTED</p>
+              <p>RECEIVED</p>
             </div>
             <div class="icon">
               <!-- <i class="ion ion-pie-graph"></i> -->
@@ -598,9 +630,9 @@ function countCompleted()
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3><?php echo countReceived();?></h3>
+              <h3><?php echo countAssigned();?></h3>
 
-              <p>RECIEVED</p>
+              <p>ASSIGNED</p>
             </div>
             <div class="icon">
               <!-- <i class="ion ion-person-add"></i> -->
@@ -613,11 +645,11 @@ function countCompleted()
  
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-primary">
+          <div class="small-box bg-green">
             <div class="inner">
-              <h3><?php echo countForAction();?></h3>
+              <h3><?php echo countCompleted();?></h3>
 
-              <p>FOR ACTION</p>
+              <p>COMPLETED</p>
             </div>
             <div class="icon">
               <!-- <i class="fa fa-shopping-cart"></i> -->
@@ -630,11 +662,11 @@ function countCompleted()
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-green">
+          <div class="small-box bg-red">
             <div class="inner">
-              <h3><?php echo countCompleted();?></h3>
+              <h3><?php echo countRated();?></h3>
 
-              <p>COMPLETED</p>
+              <p>RATED</p>
             </div>
             <div class="icon">
               <!-- <i class="ion ion-stats-bars"></i> -->
@@ -678,7 +710,7 @@ function countCompleted()
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Web Programmer</span>
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-73.8px;font-size:12px;">Mark Kim A. Saluti</span>
                                     <button disabled type="button" class="btn btn-sm btn-danger pull-right">
-                                        <span class="badge badge-light" ><?php echo showICTload('Mark Kim A. Sacluti');?></span>
+                                        <span class="badge badge-light" ><?php echo showICTload('Mark');?></span>
                                     </button>
                                     
                                 </li>
@@ -687,7 +719,7 @@ function countCompleted()
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Network Administrator</span>
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-94.8px;font-size:12px;">Christian Paul Ferrer</span>
                                     <button  disabled type="button" class="btn btn-sm btn-danger pull-right">
-                                        <span class="badge badge-light"><?php echo showICTload('Christian Paul V.Ferrer');?></span>
+                                        <span class="badge badge-light"><?php echo showICTload('Christian');?></span>
                                     </button>
                                 </li>
                                 <li class="list-group-item">
@@ -696,7 +728,7 @@ function countCompleted()
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-100.8px;font-size:12px;">Charles Adrian Odi</span>
                                     <button disabled type="button" class="btn btn-sm btn-danger pull-right" >
                                   
-                                        <span class="badge badge-light"><?php echo showICTload('Charles Adrian T. Odi');?></span>
+                                        <span class="badge badge-light"><?php echo showICTload('Charles');?></span>
 
                                     </button>
                                 </li>
@@ -705,7 +737,7 @@ function countCompleted()
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Data Analyst</span>
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-55.8px;font-size:12px;">Shiela Mei Olivar</span>
                                     <button  disabled type="button" class="btn btn-sm btn-danger pull-right">
-                                        <span class="badge badge-light"><?php echo showICTload('Shiela Mei E. Olivar');?></span>
+                                        <span class="badge badge-light"><?php echo showICTload('Shiela');?></span>
                                     </button>
                                 </li>
                                 <li class="list-group-item">
@@ -713,7 +745,7 @@ function countCompleted()
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Information Technology Officer I</span>
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-135.8px;font-size:12px;">Maybelline Monteiro</span>
                                     <button disabled type="button" class="btn btn-sm btn-danger pull-right">
-                                        <span class="badge badge-light"><?php echo showICTload('Maybelline Monteiro');?></span>
+                                        <span class="badge badge-light"><?php echo showICTload('Maybelline');?></span>
                                     </button>
                                 </li>
                 </ul>

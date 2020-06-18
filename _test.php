@@ -50,7 +50,7 @@ function fillTableInfo()
                                     </td>
                                     <td style = "width:15%;"class = "label-text">Requested Time:<span style = "color:red;">*</span></td>
                                     <td style = "width:15%;  padding:5px 5px 5px 5px;">
-                                    <input disabled style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
+                                    <input readonly style = "text-align:left;" placeholder = "Request Time" type = "text" name = "request_time" class = "sizeMax alphanum subtxt" value ="<?php echo date("h:i:s A");?>"/>
                                     </td>
                                     <!-- date("H:i A",strtotime(date("h:m A"))) -->
                                     <td colspan = 4 class = "label-text" style = "text-align:center;">HARDWARE INFORMATION (if applicable)</td>
@@ -165,11 +165,11 @@ function showUser()
                                   <input style = "margin-left:180px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
                                   <div style = "margin-left:210px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" id = "cb2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
-                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet(Cross or Exclamation)"> No Internet (Cross or Exclamation)<br>
-                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Access to Blocked Site:"> Access to Blocked Site:
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" id = "cb2_2" value = "No Internet (Cross or Exclamation)"> No Internet (Cross or Exclamation)<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" id = "cb2_3"  value = "Access to Blocked Site:"> Access to Blocked Site:
                                       <input  type = "text" name = "site" id = "site" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
                                       <i style = "margin-left:5%;">Purpose</i>:<input  type = "text" name = "purpose" id = "purpose" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
-                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" id= "cb2_4" value = "Internet for Personal Phone/Tablet/Laptop"> Internet for Personal Phone/Tablet/Laptop<br>
                                       <i style = "margin-left:5%;">Purpose</i>:<input  type = "text" name = "purpose2" id =  "purpose2" value = "" style = "border:none;border-bottom:1px solid black;"/><br>
                                   </div>
                               </td>  
@@ -177,10 +177,10 @@ function showUser()
                                   <input  style = "margin-left:120px;" type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
                                   <div style = "margin-left:140px;padding-top:10px;" >
                                       <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" id = "cb3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
-                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
-                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Google Drive"> Google Drive<br>
-                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
-                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
+                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" id = "cb3_2" value = "Records Tracking System"> Records Tracking System<br>
+                                      <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" id = "cb3_3" value = "Google Drive"> Google Drive<br>
+                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" id = "cb3_4" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
+                                      <input  style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" id ="cb3_5" value = "Other software/s (please specify)"> Other software/s (please specify)
                                       <br><input  type = "text" name = "softwares" id = "softwares" value = "" style = "margin-left:20px;border:none;border-bottom:1px solid black;"/><br>
                                   
                                     </div>
@@ -204,9 +204,9 @@ function showUser()
                             <input  style = "margin-left:180px;"  type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
                             <div style = "margin-left:210px;padding-top:10px;">
                             <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" id = "cb5" value = "New Account"> New Account<br>
-                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" value = "Change Account to"> Change Account to 
+                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" id = "cb5_2" value = "Change Account to"> Change Account to 
                             <input  type = "text" id = "changeaccount" name = "changeaccount" value = "" style = "width:30%;border:none;border-bottom:1px solid black;" /><br>
-                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" value = "Password Reset"> Password Reset<br>
+                            <input  style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]"  class = "checkboxgroup_g5" id = "cb5_3" value = "Password Reset"> Password Reset<br>
                           </div>
                           </td> 
                           <td>
@@ -265,7 +265,8 @@ function showUser()
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input required disabled type="text" name = "started_date" placeholder = "Started Date" class="datePicker1" value="" required>
+                          <!-- class="datePicker1"  -->
+                          <input required disabled type="text" name = "started_date" placeholder = "Started Date" value="<?php echo date('F d, Y');?>" required>
                           </div>
                           </td>
                           <td style = "width:12.5%;" class = "label-text">Completed Date:</td>
@@ -274,7 +275,7 @@ function showUser()
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input required disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
+                          <input required disabled type="text" name = "completed_time"  value="" required>
                           </div>
                           </td>
 
@@ -287,7 +288,7 @@ function showUser()
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input required disabled type="text" name = "started_time" placeholder = "Started Time"  value="" required>
+                          <input required disabled type="text" name = "started_time"  value="<?php echo date('H:i A');?>">
                           </div>
                           </td>
                           <td style = "width:12.5%;" class = "label-text">Completed Time:</td>
@@ -296,7 +297,7 @@ function showUser()
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input required disabled type="text" name = "completed_time" placeholder = "Completed Time"  value="" required>
+                          <input required disabled type="text" name = "completed_time"  value="" required>
                           </div>
                           </td>
                           </tr>
@@ -414,18 +415,38 @@ return true;
 
 <script type = "text/javascript">
 $(document).ready(function() {
+  var ckbox1 = $("#checkboxgroup_g1");
   var ckbox = $("#checkboxgroup_g5");
   var ckbox2 = $("#checkboxgroup_g2");
   var ckbox3 = $("#checkboxgroup_g3");
   var ckbox4 = $("#checkboxgroup_g6");
+  var ckbox_printer = $("#checkboxgroup_g4");
 
   var chkId = '';
   var chkId2 = '';
   var chkId3 = '';
   var chkId4 = '';
   $('input').on('click', function() {
-    
+    // DESKTOP/LAPTOP
+    if(ckbox1.is(':checked')){
+      $("#site").prop('required',false);
+        $("#purpose").prop('required',false);
+        $("#purpose2").prop('required',false);
+        $("#changeaccount").prop('required',false);
+        $("#softwares").prop('required',false);
+
+   
+    }
+    if(ckbox_printer.is(':checked'))
+    {
+      $("#site").prop('required',false);
+        $("#purpose").prop('required',false);
+        $("#purpose2").prop('required',false);
+        $("#changeaccount").prop('required',false);
+        $("#softwares").prop('required',false);
+    }
     if (ckbox.is(':checked')) {
+
       $("#checkboxgroup_g5:checked").each ( function() {
    			chkId = $(this).val() + ",";
         chkId = chkId.slice(0, -1);
@@ -442,6 +463,8 @@ $(document).ready(function() {
        
     } 
     if (ckbox2.is(':checked')) {
+      $("#changeaccount").prop('required',false);
+        $("#softwares").prop('required',false);
       $("#checkboxgroup_g2:checked").each ( function() {
    			chkId2 = $(this).val() + ",";
         chkId2 = chkId2.slice(0, -1);
@@ -458,9 +481,18 @@ $(document).ready(function() {
         $("#purpose").prop('required',false);
       } else if($(this).val() == "Internet for Personal Phone/Tablet/Laptop"){
         $("#purpose2").prop('required',true);
+        $("#site").prop('required',false);
+        $("#purpose").prop('required',false);
+      }else{
+     
       }
     }
     if (ckbox3.is(':checked')) {
+      $("#site").prop('required',false);
+        $("#purpose").prop('required',false);
+        $("#purpose2").prop('required',false);
+        $("#changeaccount").prop('required',false);
+
       $("#checkboxgroup_g3:checked").each ( function() {
    			chkId3 = $(this).val() + ",";
         chkId3 = chkId3.slice(0, -1);
@@ -498,8 +530,7 @@ $(document).ready(function() {
        }else{
        $("#others1").prop('required',true);
 
-       $("#others2").prop('required',true);
-       $("#others3").prop('required',true);
+       
        }
       
       
@@ -541,6 +572,20 @@ $(document).ready(function() {
     $("#checkboxgroup_g4").click(enable_cb4);
     $("#checkboxgroup_g5").click(enable_cb5);
     $("#checkboxgroup_g6").click(enable_cb6);
+
+    $('#cb2_3').click(cb2func);
+    $('#cb2_2').click(cb4func);
+    $('#cb2_4').click(cb3func);
+    $('#cb2').click(cb1func);
+    $('#cb5_2').click(cb5_2func);
+    $('#cb5').click(cb5_1func);
+    $('#cb5_3').click(cb5_3func);
+    $('#cb3_5').click(cb3_5func);
+    $('#cb3').click(cb3_1func);
+    $('#cb3_2').click(cb3_2func);
+    $('#cb3_3').click(cb3_3func);
+    $('#cb3_4').click(cb3_4func);
+    
     
   });
   // function enable_cb6s() {
@@ -550,6 +595,161 @@ $(document).ready(function() {
   //     $(".checkboxgroup_g6").attr("disabled", true);
   //   }
   // }
+    function cb3_4func()
+    {
+      if (this.checked) {
+        $('#softwares').val('');
+        }else{
+      }
+    }
+
+    function cb3_3func()
+    {
+      if (this.checked) {
+        $('#softwares').val('');
+      
+
+      }else{
+    
+    
+      } 
+    }
+
+    function cb3_2func()
+    {
+        if (this.checked) {
+          $('#softwares').val('');
+        
+
+      }else{
+      
+      
+      }
+    }
+
+  function cb3_1func()
+  {
+    if (this.checked) {
+      $('#softwares').val('');
+    
+
+  }else{
+  
+  
+  }
+  }
+function cb3_5func()
+{
+  if (this.checked) {
+    
+
+}else{
+  $('#softwares').val('');
+
+
+}
+}
+  function cb5_3func()
+  {
+    if (this.checked) {
+  $('#changeaccount').val('');
+
+
+}else{
+
+}
+  }
+  function cb5_1func()
+  {
+    if (this.checked) {
+  $('#changeaccount').val('');
+
+
+}else{
+
+}
+  }
+  function cb5_2func()
+  {
+    if (this.checked) {
+
+  }else{
+    $('#changeaccount').val('');
+
+  }
+  }
+  function cb4func()
+  {
+  if (this.checked) {
+    $('#site').val('');
+    $('#purpose').val('');
+    $('#purpose2').val('');
+  }else{
+
+  }
+  }
+  function cb1func()
+  {
+  if (this.checked) {
+    $('#site').val('');
+    $('#purpose').val('');
+    $('#purpose2').val('');
+  }else{
+
+  }
+  }
+function cb2func(){
+  if (this.checked) {
+    $('#purpose2').val('');
+
+  }else{
+    $('#site').val('');
+    $('#purpose').val('');
+  }
+}
+
+function cb3func()
+{
+  if (this.checked) {
+    $('#site').val('');
+    $('#purpose').val('');
+}else{
+  $('#purpose2').val('');
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   function enable_cb1() {
     if (this.checked) {
@@ -604,6 +804,7 @@ $(document).ready(function() {
       {
         $('#cb2').not(this).prop('checked', true);  
       }
+    
       $('#site').val('');
       $('#purpose').val('');
       $('#purpose2').val('');

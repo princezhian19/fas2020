@@ -5,7 +5,13 @@
  */
 include_once("../PHPJasperXML.inc.php");
 
-
+function splitName($name){
+    $names = explode(' ', $name);
+    $lastname = $names[count($names) - 1];
+    unset($names[count($names) - 1]);
+    $firstname = join(' ', $names);
+    return $firstname . ' ' . $lastname;
+}
 
 $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
 
@@ -20,7 +26,9 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                 $val = array();
                 while($row = mysqli_fetch_array($result))
                 {
-                $name = strtoupper($row['REQ_BY']);
+                $name =ucwords(strtolower($row['REQ_BY']));
+               
+            
                 
                 
                 $request_date = date('M d, Y',strtotime($row['REQ_DATE']));
@@ -92,7 +100,7 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                       
                       $quality = $row['QUALITY'];
 
-                      $assisted_by =strtoupper($row['ASSIST_BY']);
+                      $assisted_by =ucwords(strtolower($row['ASSIST_BY']));
                      
                       // $status = $row['status'];
 
@@ -107,7 +115,12 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                       
               }
 
-if($status == 1)
+               if($status == '' || $status == null){
+                $status2 = '';
+                $status = '';
+            }
+
+else if($status == 1)
 {
     $status = 'correct.png';
     $status2 = '';
@@ -130,7 +143,7 @@ switch($req_type_subcategory)
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
                                     "req_type_category1"=>'correct.png',
                                     "req_type_subcategory1"=>'correct.png',
-                                    "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,
+                                    "currentuser"=>splitName($name),"resolve"=>$status,"defective"=>$status2,
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
                                     "requested_time"=>$request_time,
@@ -261,7 +274,7 @@ switch($req_type_subcategory)
                                     "ip_address"=>$ip_address,
                                     "mac_address"=>$mac_address);
         break;
-        case 'No Internet Connection(Cross or Exclamation)':
+        case 'No Internet (Cross or Exclamation)':
             $PHPJasperXML->arrayParameter=array(
                                     "control_no"=>$control_no,"started_date"=>$started_date,
                                     "timeliness"=>$timeliness,"start_time"=>$started_time,
@@ -480,7 +493,7 @@ switch($req_type_subcategory)
         
         case 'Troubleshooting':
             $PHPJasperXML->arrayParameter=array(
-                                    "control_no"=>$control_no,"started_date"=>$started_date,
+                                    "control_no"=>$control_no,"started_date"=>$started_date,"start_time"=>$started_time,
                                     "timeliness"=>$timeliness,
                                     "quality"=>$quality,"completed_date"=>$completed_date,
                                     "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,

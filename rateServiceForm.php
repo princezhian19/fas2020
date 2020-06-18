@@ -4,7 +4,6 @@ require_once('_includes/setting.php');
 require_once('_includes/dbaseCon.php');
 require_once('_includes/library.php');
 require_once('_includes/sql_statements.php');
-// require_once('_includes/secure.php');
 
 
 
@@ -258,7 +257,7 @@ function fillCheckbox()
                                     </div>
                                 <?php
                         break;
-                        case 'No Internet Connection(Cross or Exclamation)';
+                        case 'No Internet (Cross or Exclamation)';
                                 ?>
                                     <div style = "margin-left:180px;padding-top:10px;">
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
@@ -570,7 +569,7 @@ function fillCheckbox()
                       <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g1" value ="Virus Scanning"> Virus Scanning
                       </div>
               <td>
-              <input style = "margin-left:150px; disabled type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
+              <input style = "margin-left:150px;" disabled type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g2" class = "checkbox_group" value = "INTERNET CONNECTIVITY"><b>&nbsp;INTERNET CONNECTIVITY</b><br>
                             <div style = "margin-left:180px;padding-top:10px;">
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
                                 <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "No Internet Connection(Cross or Exclamation)"> No Internet Connection(Cross or Exclamation)<br>
@@ -582,7 +581,7 @@ function fillCheckbox()
                             </div>
               </td>
               <td>
-              <input style = "margin-left:60px; disabled type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
+              <input style = "margin-left:60px;" disabled type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g3" class = "checkbox_group" value = "SOFTWARE/SYSTEM"> <b>SOFTWARE/SYSTEM</b><br>
                             <div style = "margin-left:90px;padding-top:10px;">
                                 <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Operating System, Office, Anti-Virus"> Operating System, Office, Anti-Virus<br>
                                 <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Records Tracking System"> Records Tracking System<br>
@@ -607,7 +606,7 @@ function fillCheckbox()
                   </div>
                 </td> 
                 <td>
-                  <input style = "margin-left:150px; disabled type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
+                  <input style = "margin-left:150px;" disabled type = "checkbox" name = "req_type_category[]" id = "checkboxgroup_g5" class = "checkbox_group" value ="GOVMAIL" > <b>GOVMAIL</b><br>
                   <?php 
                     switch ($row['TYPE_REQ_DESC']) 
                     {
@@ -760,7 +759,14 @@ function setStartDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $start_date = date('F d, Y',strtotime($row['START_DATE']));
+        if($row['START_DATE'] == '' || $row['START_DATE'] == NULL)
+        {
+          $start_date = date('F d, Y');
+
+        }else{
+          $start_date = date('F d, Y',strtotime($row['START_DATE']));
+
+        }
       }
       return $start_date;
 }
@@ -774,7 +780,15 @@ function setCompletedDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
+        if($row['COMPLETED_DATE'] == '' || $row['COMPLETED_DATE'] == NULL)
+        {
+        $completed_date = date('F d, Y');
+
+        }
+        else{
+          $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
+
+        }
       }
       return $completed_date;
 }
@@ -788,7 +802,14 @@ function setStartTime()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $start_time = date('g:i A',strtotime($row['START_TIME']));
+        if($row['START_TIME'] == '' || $row['START_TIME'] == NULL)
+        {
+          $start_time = date('g:i A');
+
+        }else{
+          $start_time = date('g:i A',strtotime($row['START_TIME']));
+
+        }
       }
       return $start_time;
 }
@@ -802,6 +823,14 @@ function setCompletedTime()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
+        if($row['COMPLETED_TIME'] == '' || $row['COMPLETED_TIME'] == NULL)
+        {
+          $completed_time = date('g:i A');
+        }else{
+        $completed_time = date('g:i A',strtotime($row['COMPLETED_TIME']));
+
+        }
+
         $completed_time = date('g:i A',strtotime($row['COMPLETED_TIME']));
       }
       return $completed_time;
@@ -816,7 +845,7 @@ function setSig()
    $result = mysqli_query($conn, $query);
    if($row = mysqli_fetch_array($result))
      {
-       $assist_by = '<b>'.$row['REQ_BY'].'</b>';
+       $assist_by = '<b>'.ucwords(strtolower($row['REQ_BY'])).'</b>';
      }
      return $assist_by;
 }
@@ -830,7 +859,7 @@ function setSigICT()
    $result = mysqli_query($conn, $query);
    if($row = mysqli_fetch_array($result))
      {
-       $assist_by = '<b>'.$row['ASSIST_BY'].'</b>';
+       $assist_by = '<b>'.ucwords(strtolower($row['ASSIST_BY'])).'</b>';
      }
      return $assist_by;
 }

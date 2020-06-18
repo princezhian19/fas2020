@@ -292,7 +292,7 @@ if (isset($_POST['stamp4'])) {
       <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
         <thead>
           <tr style="background-color: white;color:blue;">
-            <th width="">DATE</th>
+            <th width="100">DATE</th>
             <th width="">AM ARRIVAL</th>
             <th width="">AM DEPARTURE</th>
             <th width="">PM ARRIVAL</th>
@@ -465,16 +465,16 @@ if (isset($_POST['stamp4'])) {
     </div>
     <div class="box-body table-responsive no-padding">
       <div class="box-body">
-        <table id="" class="table table-striped " style="background-color: white;">
+        <table id="example1" class="table table-striped " style="background-color: white;">
           <form method="POST">
             <tr>
-              <th  class="pull-left" >AM ARRIVAL</th>
+              <th class="pull-left" >AM ARRIVAL</th>
               <?php if (mysqli_num_rows($check1)>0): ?>
                 <td ><?php echo date('h:i A',strtotime($time_inL))?></td>
 
 
                 <?php else: ?>
-                  <td ><button class="btn btn-success" name="stamp1"  type="submit"><strong>Stamp</strong></button></td>
+                  <td ><button class="btn btn-success " name="stamp1" id="" type="submit"><strong>Stamp</strong></button></td>
                 <?php endif ?>
               </tr>
               <tr>
@@ -482,36 +482,24 @@ if (isset($_POST['stamp4'])) {
                 <?php if (mysqli_num_rows($check2)>0): ?>
                   <td ><?php echo date('h:i A',strtotime($lunch_inL))?></td>
                   <?php else: ?>
-                    <?php if (mysqli_num_rows($check1)>0): ?>
-                      <td ><button class="btn btn-success" name="stamp2" type="submit"><strong>Stamp</strong></button></td>
-                      <?php else: ?>
-                        <td ><button disabled class="btn btn-success"  name="stamp2" type="submit"><strong>Stamp</strong></button></td>
-                      <?php endif ?>
+                      <td ><button class="btn btn-success " name="stamp2" id="" type="submit"><strong>Stamp</strong></button></td>
                     <?php endif ?>
                   </tr>
                   <tr>
-                    <th class="pull-left" >PM ARRIVAL</th>
+                    <th class="pull-left">PM ARRIVAL</th>
                     <?php if (mysqli_num_rows($check3)>0): ?>
                       <td ><?php echo date('h:i A',strtotime($lunch_outL))?></td>
                       <?php else: ?>
-                        <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0): ?>
                         <td ><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
-                        <?php else: ?>
-                          <td ><button disabled class="btn btn-success" id="s3" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
-                        <?php endif ?>
                       <?php endif ?>
                     </tr>
 
                     <tr>
-                      <th  class="pull-left" >PM DEPARTURE</th>
+                      <th class="pull-left" >PM DEPARTURE</th>
                       <?php if (mysqli_num_rows($check4)>0): ?>
                         <td ><?php echo date('h:i A',strtotime($time_outL))?></td>
                         <?php else: ?>
-                          <?php if (mysqli_num_rows($check1)>0 && mysqli_num_rows($check2)>0 && mysqli_num_rows($check3)>0): ?>
                           <td ><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
-                          <?php else: ?>
-                            <td ><button disabled class="btn btn-success" id="s2" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
-                          <?php endif ?>
                         <?php endif ?>
                       </tr>
                     </form>
@@ -553,7 +541,7 @@ if (isset($_POST['stamp4'])) {
     });
 </script>
 <script type="text/javascript">
-        setInterval(displayclock, 500);
+        setInterval(displayclock, 1000);
         function displayclock(){
           var time = new Date();
           var hrs = time.getHours();

@@ -1,19 +1,19 @@
 <?php session_start();
+date_default_timezone_set('Asia/Manila');
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
-$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 $username = $_SESSION['username'];
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html>
+<title>FAS | Create Travel Claim</title>
 <head>
- 
 <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FAS | Purchase Request</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
 
     <!-- Tell the browser to be responsive to screen width -->
@@ -43,35 +43,27 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
 </head>
-<body class="hold-transition skin-red-light fixed  sidebar-mini">
-<div class="wrapper">
-    <?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); }else{ include('sidebar2.php'); }
- ?>
+
+<?php include 'test1.php';?>
   <div class="content-wrapper">
     <section class="content-header">
+     <br>
       <ol class="breadcrumb">
-        <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Procurement</li>
-        <li class="active">Purchase Request</li>
-      </ol>
-      <br>
-      <br>
-        <?php include('pr_table.php');?>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Financial</li>
+        <li class="active">Travel Claim</li>
+      </ol><br>
+     
+<?php include 'travelclaim.php';?>
     </section>
   </div>
-  
   <footer class="main-footer">
-  <br>
-
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0
-    </div>
-    <strong>DILG IV-A Regional Information and Communications Technology Unit (RICTU) © 2019 All Right Reserved .</strong> 
-  </footer>
-  <br>
-
-</div>
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0
+      </div>
+      <strong>DILG IV-A Regional Information and Communications Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+    </footer>
+    
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -79,18 +71,20 @@ $username = $_SESSION['username'];
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
-<script>
-  $(function () {
-    $('#example1').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : true,
-      'ordering'    : false,
-      'info'        : false,
-      'autoWidth'   : true
-    })
-  })
-</script>
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
-</body>
-</html>
+
+<script>
+
+$(document).ready(function(){
+  $('#datepicker1').datepicker({
+      autoclose: true
+    })
+    $('#datepicker2').datepicker({
+      autoclose: true
+    })
+});
+</script>
+   
+  
+  

@@ -56,7 +56,7 @@ function fillTableInfo()
                                     <td style = "width:15%;" class = "label-text left-text">Requested By:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"> 
                                       
-                                      <input  type = "text"  class = "sizeMax alphanum subtxt" value = "<?php echo $row['REQ_BY'];?>" disabled/>
+                                      <input  type = "text"  class = "sizeMax alphanum subtxt" value = "<?php    echo ucwords(strtolower($row['REQ_BY']));?>" disabled/>
                                     <td class = "label-text left-text">Brand Model:</td>
                                     <td colspan =3 style = "  padding:5px 5px 5px 5px;"><input   type = "text" name = "brand_model" class = "sizeMax alphanum subtxt" value = "<?php echo $row['BRAND_MODEL'];?>" disabled/></td>
                                 </tr>
@@ -255,7 +255,8 @@ function fillCheckbox()
                                     </div>
                                 <?php
                         break;
-                        case 'No Internet Connection(Cross or Exclamation)';
+                        case 'No Internet (Cross or Exclamation)';
+                        
                                 ?>
                                     <div style = "margin-left:180px;padding-top:10px;">
                                         <input style = "margin-bottom:10px;" type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g2" value = "New Connection(Wired or Wireless)"> New Connection(Wired or Wireless)<br>
@@ -759,7 +760,13 @@ function setStartDate()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        $start_date = date('F d, Y',strtotime($row['START_DATE']));
+        if($row['START_DATE'] == '' || $row['START_DATE'] == null)
+        {
+          $start_date = date('F d, Y');
+        }else{
+          $start_date = date('F d, Y',strtotime($row['START_DATE']));
+
+        }
       }
       return $start_date;
 }
@@ -775,7 +782,7 @@ function setCompletedDate()
       {
         if($row['COMPLETED_DATE'] == '')
         {
-          $completed_date = '';
+          $completed_date =  date("F d, Y");
         }else{
           $completed_date = date('F d, Y',strtotime($row['COMPLETED_DATE']));
 
@@ -826,7 +833,7 @@ function setCompletedTime()
         {
           //datetime string.
           $date = new DateTime();
-          $completed_time = '-';
+          $completed_time = date('H:i');
         }else{
           if(date('g',strtotime($row['COMPLETED_TIME'])) < 10)
           {
@@ -847,11 +854,25 @@ function setSig()
 
   $assist_by = '';
    if(mysqli_connect_errno()){echo mysqli_connect_error();}  
+   $query = "SELECT REQ_BY FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
+   $result = mysqli_query($conn, $query);
+   if($row = mysqli_fetch_array($result))
+     {
+       $assist_by = ucwords(strtolower($row['REQ_BY']));
+     }
+     return $assist_by;
+}
+function setSig2()
+{
+  include 'connection.php';
+
+  $assist_by = '';
+   if(mysqli_connect_errno()){echo mysqli_connect_error();}  
    $query = "SELECT ASSIST_BY FROM `tbltechnical_assistance` where `CONTROL_NO` ='".$_GET['id']."' ";
    $result = mysqli_query($conn, $query);
    if($row = mysqli_fetch_array($result))
      {
-       $assist_by = $row['ASSIST_BY'];
+       $assist_by = ucwords(strtolower($row['ASSIST_BY']));
      }
      return $assist_by;
 }
@@ -1069,8 +1090,8 @@ switch ($row['STATUS']) {
                           </ol>
                           </td>
                           <td colspan = 4 style = "text-align:center;">
-                          _____________________________________________________
-                          <p class = "label-text">Signature over Printer Name</p>
+                          <u><?php echo setSig2();?></u><br>
+                          <p class = "label-text">Signature over Printed Name</p>
                           
                           </td>
                           </tr>
