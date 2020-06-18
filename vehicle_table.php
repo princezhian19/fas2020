@@ -116,7 +116,7 @@ $edit="edit";
                   <th width = ''>APPROVED</th> 
                   <th width = ''>SERVED COPY</th> 
                   
-                  <th width = ''>ACTION</th>
+                  <th width = '1000'>ACTION</th>
                   
 
                 </tr>
