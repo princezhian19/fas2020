@@ -306,8 +306,27 @@ $edit="edit";
                          
                           <?php endif ?>
 
+                          <?php if ($receiveddate1 != '0000-00-00'): ?>
+                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
+                              <?php if ($status != 'cancelled'): ?>
+                                <td>
+                                  <a name="assign" value="" id="assign" onclick="myFunction1(this)" data-assignID="<?php echo $id;?>" data-toggle="modal" data-target="#assign_data_Modal" title="Assign" class = "btn btn-success btn-xs" > <i class='fa'></i> Assign</a> 
+                                </td>   
+                              <?php else: ?>
+                              <td ></td>
+                              <?php endif ?>
+                            <?php else: ?>
+                            <td ></td>
+                            <?php endif ?>
+                            <?php else: ?>
+                         
+                            <td></td>
+                          
+                            <?php endif ?>
+                        
+             
 
-                          <td><a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Assign</a></td>
+
                 <td><a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Recommend</a></td>
                 <td><a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Approve</a></td>
                 <td><a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Serve Copy</a></td>
@@ -337,7 +356,9 @@ $edit="edit";
                                
                                 <a href='' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
                                 
-                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
+                                <label style="color:red">Cancelled</label> 
+                                <br>
+                                <?php echo $cancelleddate.'<br>'.$cancelledby.'<br>'.'Reason: '.$reason ?>
                               <?php endif ?>
                         
                         <?php else: ?>
@@ -348,7 +369,9 @@ $edit="edit";
 
                                 <a   href='' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i>&nbsp; Export&nbsp;</a>
                                 
-                                <label style="color:red">Cancelled</label> <?php echo $cancelleddate.'&nbsp;'.$cancelledby.'<br>'.'Reason: '.$reason ?>
+                                <label style="color:red">Cancelled</label>
+                                <br>
+                                <?php echo $cancelleddate.'<br>'.$cancelledby.'<br>'.'Reason: '.$reason ?>
                                 <br>
                               <?php else: ?>
                             
@@ -395,6 +418,20 @@ $edit="edit";
         }
         </script>
           <!-- //Setting ID -->
+
+           <!-- //Setting assign ID -->
+        <script>
+        function myFunction1(assignvalue) {
+
+          var assignID1 = assignvalue.getAttribute("data-assignID");
+          var assignID = $("input[name='assignID']");
+          assignID.val(assignID1);
+
+         
+       
+        }
+        </script>
+          <!-- //Setting assign ID -->
       
     <script type="text/javascript">
     $(document).ready(function() {
@@ -489,7 +526,72 @@ $edit="edit";
         <!-- modals -->
 
 
+<!-- assign -->
 
+<div id="assign_data_Modal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Assign Vehicle Request</h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="insert_form" action="vehicle_assign.php">
+              
+              <label>Reason</label>
+              <input required type="text" name="reason" id="reason" class="form-control" />
+                                  
+              <br>
+              
+              
+              <button type="submit" name="cancel" class="btn btn-warning pull-right">Cancel</button>
+
+
+              <input  type="text" name="assignID" id="assignID" value="" class=""/>
+              <br>
+              <input  type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
+              <br>
+              <input  type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+             
+             
+              <br />
+
+              <!-- <input type="submit" name="submit" id="submit" value="Cancel" class="btn btn-warning" /> -->
+
+             
+          
+              
+              </form>
+            </div>
+            <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+            </div>
+            </div>
+          </div>
+          </div>
+
+          <div id="dataModal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Cancel Travel Order</h4>
+            </div>
+            <div class="modal-body" id="employee_detail">
+              
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+
+              
+            </div>
+            </div>
+          </div>
+          </div>
+  <!-- assign -->
+
+
+        
         <script>
                   function myFunctionPassengers() {
 
