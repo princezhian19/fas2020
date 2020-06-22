@@ -13,6 +13,5 @@ include 'connection.php';
     if (mysqli_query($conn, $insert)) {
     } else {
     }
-echo $insert;
-// header("Location:CreateTravelClaim.php")
+header("Location:CreateTravelClaim.php")
 ?>
