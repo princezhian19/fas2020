@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 function getCompleteName()
 {
     include 'connection.php';
@@ -37,58 +35,67 @@ function getOffice()
         echo $row['DIVISION_M'];
     }
 }
-function showData()
+function fill()
 {
-
     include 'connection.php';
     $query = "SELECT * FROM tbltravel_claim_info2 where ID = ".sample()."";
+    echo $query.'<br>';
     $result = mysqli_query($conn, $query);
     if(mysqli_num_rows($result) > 0)
     {
         while($row = mysqli_fetch_array($result))
         {
-        
-                echo '<input 
-                type = "text" 
-                style = "width:89%;padding:5px;border:1px solid gray;"
-                value = "'.$row['RO_TO_OB'].'"
-                />'; 
         }
-    }else{
-        echo ' <button
-        class = "btn btn-success btn-md"
-        style = "width:10.5%;"
-        data-toggle="modal"  
-        data-target="#editModal" 
-        id= "editbtn" 
-        class = "btn btn-primary btn-xs">
-        
-    
-        Add Travel
-        </button>';
     }
-
-    
 }
-function sample()
+function showData()
 {
-    $id = '';
-    $id1 =$_GET['id'];
     include 'connection.php';
-    $query = "SELECT * FROM tbltravel_claim_info2 order by ID desc limit 1";
+    $query = "SELECT * FROM tbltravel_claim_info2 where `NAME` = '".$_GET['username']."'";
     $result = mysqli_query($conn, $query);
-    if($row = mysqli_fetch_array($result))
+    if(mysqli_num_rows($result) > 0)
     {
-    }
-    if ($id1 = '')
-    {
-        $id = $row['ID']+1;
-
+        while($row = mysqli_fetch_array($result))
+        {
+        ?>
+        <tr>
+        <td colspan = 9 style = "background-color:#B0BEC5;">
+        <input 
+                type = "text" 
+                style = "width:100%;padding:5px;border:1px solid gray;"
+                value = "<?php echo $row['RO_TO_OB']; ?>"
+                readonly
+        />
+        </td>
+        </tr>
+        <tr>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td>
+        </tr>
+       
+        <?php
+        }
+        ?>
+        <tr>
+            <td colspan = 9>
+                <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+            </td>
+        </tr>
+        <?php
     }else{
-        $id = $id1;
     }
-       return $id;
+
+    
 }
+
     
 
 ?>
