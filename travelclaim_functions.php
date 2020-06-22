@@ -91,6 +91,15 @@ function showData()
         </tr>
         <?php
     }else{
+        ?>
+          <tr>
+            <td colspan = 9>
+                <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+            </td>
+        </tr>
+
+        <?php
     }
 
     

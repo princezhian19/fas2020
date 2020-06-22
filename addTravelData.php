@@ -1,8 +1,6 @@
 <?php
 include 'connection.php';
-include 'travelclaim_functions.php';
 
-$id = sample();
   $insert ="INSERT INTO `tbltravel_claim_info2`(`ID`, `RO_TO_OB`, `TRAVEL_DAYS`, `START_DATE`, `END_DATE`, `ORIGIN`, `DESTINATION`, `VENUE`) 
     VALUES (NULL,
     '".$_POST['rto']."',
@@ -15,5 +13,5 @@ $id = sample();
     if (mysqli_query($conn, $insert)) {
     } else {
     }
-header("Location:CreateTravelClaim.php?id=$id");
+header("Location:CreateTravelClaim.php");
 ?>
