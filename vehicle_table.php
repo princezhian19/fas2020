@@ -201,7 +201,7 @@ $edit="edit";
 
                  
                   $assigneddate1=$row["assigneddate"];
-                  $assigneddate = date('Y-m-d', strtotime($assigneddate1));
+                  $assigneddate = date('F d, Y', strtotime($assigneddate1));
 
                   $assignedtime1=$row["assignedtime"];
                   $assignedtime = date('H:i', strtotime($assignedtime1));
@@ -212,6 +212,22 @@ $edit="edit";
                   $ad=$row["ad"];
                   $plate=$row["plate"];
                   $vremarks=$row["vremarks"];
+                  $rstatus=$row["rstatus"];
+
+                  $recommenddate1=$row["recommenddate"];
+                  $recommenddate = date('F d, Y', strtotime($recommenddate1));
+
+                  $recommendby=$row["recommendby"];
+
+                  $approveddate1=$row["approveddate"];
+                  $approveddate = date('F d, Y', strtotime($approveddate1));
+
+                  $approvedby=$row["approvedby"];
+
+                  $serveddate1=$row["serveddate"];
+                  $serveddate = date('F d, Y', strtotime($serveddate1));
+
+                  $servedby=$row["servedby"];
                
 
                ?>
@@ -355,14 +371,21 @@ $edit="edit";
                             
 
                             <?php if ($assigneddate1 != '0000-00-00'): ?>
-                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
-                              <?php if ($status != 'cancelled'): ?>
+                              <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' && $status != 'cancelled'):?>
+                             
+                                  <?php if ($recommenddate1 == '0000-00-00'): ?>
+                                  <td>
+                                  <a name="recommend" value="" id="recommend" onclick="myFunction2(this)" data-rvalue="<?php echo $id;?>" data-toggle="modal" data-target="#recommending_data_Modal" title="Recommend" class = "btn btn-success btn-xs" > <i class='fa'></i> Recommend</a> 
+                                 
+                                  </td>  
+                                <?php else: ?>
                                 <td>
-                                <a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Recommend</a>
-                                </td>   
-                              <?php else: ?>
-                              <td ></td>
-                              <?php endif ?>
+                                <?php echo $recommenddate.'<br>'.$recommendby.'<br>'.$rstatus?>
+                                </td>
+                                <?php endif ?>
+
+
+                             
                             <?php else: ?>
                             <td ></td>
                             <?php endif ?>
@@ -511,7 +534,7 @@ $edit="edit";
         </script>
           <!-- //Setting ID -->
 
-           <!-- //Setting assign ID -->
+        <!-- //Setting assign ID -->
         <script>
         function myFunction1(assignvalue) {
 
@@ -524,6 +547,21 @@ $edit="edit";
         }
         </script>
           <!-- //Setting assign ID -->
+
+
+            <!-- //Setting recommending ID -->
+        <script>
+        function myFunction2(rvalue) {
+
+          var rvalue1 = rvalue.getAttribute("data-rvalue");
+          var rvalue = $("input[name='rvalue']");
+          rvalue.val(rvalue1);
+
+         
+       
+        }
+        </script>
+          <!-- //Setting recommending ID -->
       
     <script type="text/javascript">
     $(document).ready(function() {
@@ -733,7 +771,7 @@ $edit="edit";
               <input  hidden type="text" name="userv" id="userv" value="<?php echo $username1?>" class=""/>
               <br>
               <input hidden  type="text" name="nowv" id="nowv" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
-            
+        </form>
         
             </div>
            
@@ -742,6 +780,76 @@ $edit="edit";
           </div>
           </div>
   <!-- assign -->
+
+
+
+
+  <!-- recommending -->
+
+<div id="recommending_data_Modal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Assign Vehicle Request</h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="insert_form" action="vehicle_recommend.php">
+              
+            
+              
+              <table class="table">
+                  <tr>
+                  <td class="col-md-3" >
+
+                
+
+                  </td>
+
+                  <td class="col-3" >
+
+                  <button type="submit" name="approved" class="btn btn-primary pull-right">Approved</button>
+
+                  </td>
+
+                  <td class="col-3" >
+
+                  <button type="submit" name="disapproved" class="btn btn-primary pull-right">Disapproved</button>
+
+                  </td>
+
+                  <td class="col-md-3" >
+
+
+                  </td>
+
+                 
+                  </tr>
+                  
+                
+
+              </table>
+
+
+              <br>
+            
+             
+
+
+              <input hidden  type="text" name="rvalue" id="rvalue" value="" class=""/>
+              <br>
+              <input hidden   type="text" name="userr" id="userr" value="<?php echo $username1?>" class=""/>
+              <br>
+              <input hidden  type="text" name="nowr" id="nowr" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+            
+        </form>
+            </div>
+           
+            </div>
+            </div>
+          </div>
+          </div>
+  <!-- recommending -->
 
 
         

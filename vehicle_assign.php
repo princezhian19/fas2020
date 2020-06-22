@@ -39,7 +39,7 @@ exit(); */
 if($query){
    
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Vehicle details assigned successfully.')
+    window.alert('Vehicle Request details assigned successfully.')
     window.location.href='VehicleRequest.php';
     </SCRIPT>"); 
 }
