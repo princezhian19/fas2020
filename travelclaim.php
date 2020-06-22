@@ -12,10 +12,14 @@ include 'travelclaim_functions.php';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <style>
-  table{
+  button{
+    font-family:'Arial';
+
+  }
+  table tr{ 
     font-family:'Cambria';
   }
-  th{
+  .table-header{
     color:black;
     background-color:#B0BEC5; 
 
@@ -39,20 +43,19 @@ include 'travelclaim_functions.php';
 
     <br>
     <br>
-        <form method="POST" >
         <div class="box-body">
             <div class="well" style = "padding:20px;">
 
             <center>
+            <h1>ITENERARY OF TRAVEL </h1>
             
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
-            <th colspan = "9">ITENERARY</th>
                     <tr>
                       <td class = "label-text">
                         <label>Entity Name: <label style="color: Red;" >*</label>
                       </td>
                       <td colspan = 8>
-                      <input type = "text" class = "form-control" value = "DILG Region IV-A"/>
+                      <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
                       </td>
                     </tr>
                     <tr>
@@ -60,13 +63,13 @@ include 'travelclaim_functions.php';
                         <label>Fund Cluster: <label style="color: Red;" >*</label> </label>
                       </td>
                       <td colspan = "4">
-                      <input type = "text" class = "form-control"/>
+                      <input type = "text" class = "form-control" readonly/>
 </td>
                       <td class = "label-text">
-                        <label>No: <label style="color: Red;" >*</label> </label>
+                        <label>No:</label>
                       </td>
                       <td colspan = 4>
-                      <input type = "text" class = "form-control"/>
+                      <input type = "text" class = "form-control" readonly/>
 
 </td>
                     </tr>
@@ -77,16 +80,16 @@ include 'travelclaim_functions.php';
                     <label>Name: <label style="color: Red;" >*</label>
                     
                     </td>
-                    <td colspan = 4><input type = "text" class = "form-control" value = "<?php echo getCompleteName();?>"/></td>
+                    <td colspan = 4><input type = "text" class = "form-control" value = "<?php echo getCompleteName();?>" readonly/></td>
                     <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                    <td colspan = 2><input type = "text" class = "form-control"/></td>
+                    <td colspan = 2><input type = "text" class = "form-control datepicker1" id = "datepicker1" /></td>
                   </tr>
                   
                   <tr>
                     <td class = "label-text">  <label>Position: <label style="color: Red;" >*</label></td>
-                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>"/></td>
+                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly/></td>
                     <td colspan = 4 rowspan = 2>
-                    <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;"></textarea></td>
+                    <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"></textarea></td>
                   </tr>
                   <tr>
                     <td class = "label-text">  <label>Official Station: <label style="color: Red;" >*</label></td>
@@ -94,27 +97,51 @@ include 'travelclaim_functions.php';
                   </tr>
                  
                   <tr>
-                  <th style = "text-align:center;" rowspan = 2>
+                  <th class = "table-header" style = "text-align:center;" rowspan = 2>
                     Date
                   </th>
-                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Places to be visited (Destination)</th>
-                  <th style = "text-indent:10px;text-align:center;" colspan = 2>Time</th>
-                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Means of Transportation</th>
-                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Transportation</th>
-                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Per Diem</th>
-                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Others</th>
-                  <th style = "text-indent:10px;text-align:center;" rowspan = 2>Total Amount</th>
+                  <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Places to be visited (Destination)</th>
+                  <th class = "table-header" style = "text-indent:10px;text-align:center;" colspan = 2>Time</th>
+                  <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Means of Transportation</th>
+                  <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Transportation</th>
+                  <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Per Diem</th>
+                  <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Others</th>
+                  <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Total Amount</th>
               </tr>
               <tr>
 
-              <th style = "text-align:center;">From</th>
-              <th style = "text-align:center;">To</th>
+              <th class = "table-header"  style = "text-align:center;">Arrival</th>
+              <th class = "table-header"  style = "text-align:center;">Departure</th>
 
               </tr>
               <tr>
-              <td colspan = 9><input type = "text" class = "form-control"/></td>
+              <td colspan = 9>
+              <div>
+                  <button
+                  class = "btn btn-success btn-md"
+                  style = "width:10.5%;"
+                  data-toggle="modal"  
+                  data-target="#editModal" 
+                  id= "editbtn" 
+                  class = "btn btn-primary btn-xs">
+                  
+                
+                  Add Travel
+                  </button>
+               <?php echo showData();?>
+                </div>
+              </td>
               </tr>
               <tr>
+              <td colspan = 9>
+              <button
+              class = "btn btn-primary btn-md"
+              >
+              Add Travel Dates
+              </button>
+              </td>
+
+                <!-- <td><input type = "text" class = "form-control"/></td>
                 <td><input type = "text" class = "form-control"/></td>
                 <td><input type = "text" class = "form-control"/></td>
                 <td><input type = "text" class = "form-control"/></td>
@@ -122,8 +149,7 @@ include 'travelclaim_functions.php';
                 <td><input type = "text" class = "form-control"/></td>
                 <td><input type = "text" class = "form-control"/></td>
                 <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
+                <td><input type = "text" class = "form-control"/></td> -->
                 
               </tr>
              
@@ -166,10 +192,11 @@ include 'travelclaim_functions.php';
             
             </center>
                 
- </form>
 
 </div>  
 </div>  
+
+
 <br>
 <br>
 <br>
@@ -184,120 +211,66 @@ include 'travelclaim_functions.php';
 <br>  
 <br>
 </body>
-
+<div class="modal fade" id="editModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title">Add Travel</h4>
+                <button type="button" class="close" data-dismiss="modal">&times; 
+                </button>
+                </div>
+                <div class="modal-body">
+                <form method = "POST" action = "addTravelData.php">
+                        <input  type = "hidden" name = "eventid" id = "eventid">
+                        <table class="table table-bordered" style = "width:100%;"> 
+                            <tr>
+                                <td class="col-md-2" style ="font-weight:bold">RO/TO/OB No.<span style = "color:red;">*</span></td>
+                                    <td class="col-md-5"><input  type = "text" class = "form-control" name = "rto" id = "ro_txt"    /></td>
+                                        </tr>
+                            <tr>
+                                <td class="col-md-2" style ="font-weight:bold">No. of Travel Days<span style = "color:red;">*</span></td>
+                                    <td class="col-md-5">
+                                        <input  type="text" class = "form-control" name = "ntd" autocomplete = off  >
+                                            </td>
+                                                </tr>
+                            <tr>
+                                <td class="col-md-2" style ="font-weight:bold">Start Date<span style = "color:red;">*</span></td>
+                                    <td class="col-md-5">
+                                        <input  type = "text"  class = "form-control datepicker2" id = "datepicker2" name = "start"  placeholder="mm/dd/yyyy"   autocomplete = off /></td>
+                                            </tr>
+                            <tr>
+                                <td class="col-md-2" style ="font-weight:bold">End Date</td>
+                                    <td class="col-md-5"><input  type = "text"  class = "form-control datepicker3" id = "datepicker3" name = "end"  placeholder="mm/dd/yyyy"   autocomplete = off /></td>
+                                        </tr>
+                            <tr>
+                                <td class="col-md-2" style ="font-weight:bold">Origin<span style = "color:red;">*</span></td>
+                                    <td class="col-md-5"><input  type = "text" class = "form-control" name = "origin"  value = "" /></td>
+                                        </tr>
+                            <tr>
+                                <td class="col-md-2" style ="font-weight:bold">Destination<span style = "color:red;">*</span></td>
+                                    <td class="col-md-5"><input  type = "text" name = "destination" class = "form-control" value = ""  /></td>
+                                        </tr>
+                            <tr>
+                                <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>  
+                                    <td class="col-md-5">
+                                    <input  type = "text" class = "form-control" name = "venue" alue = "" />
+                                        </td>
+                                            </tr>
+                        
+                        </table>
+                        <input type = "submit" class = "pull-right btn btn-success btn-md" value = "Save" name = "submit"/>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+        </div>
 <script>
-$(document).ready(function(){
-  $("#result").click(function(){
-    $("#main").hide();
-    $("#p").show();
-  });
+$(document).on('click','#editbtn',function(e){
+
+var purpose = $('#or').val();
+$('#ro_txt').val(purpose);
 });
-</script>
-
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
-    $('[data-mask]').inputmask()
-
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
-      },
-      function (start, end) {
-        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
-    )
-
-    //Date picker,
-    $('#datepicker1').datepicker({
-      autoclose: true
-    })
-
-    $('#datepicker2').datepicker({
-      autoclose: true
-    })
-    $('#datepicker3').datepicker({
-      autoclose: true
-    })
-    $('#datepicker4').datepicker({
-      autoclose: true
-    })
-
-    //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass   : 'iradio_minimal-blue'
-    })
-    //Red color scheme for iCheck
-    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass   : 'iradio_minimal-red'
-    })
-    //Flat red color scheme for iCheck
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass   : 'iradio_flat-green'
-    })
-
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
-
-    //Timepicker
-    $('.timepicker').timepicker({
-      showInputs: false
-    })
-  })
-</script>
-<script>
-
-  $(document).ready(function(){
-   table = document.getElementById("item_table");
-
-   tr = table.getElementsByTagName("th");
-   var td = document.getElementById("tdvalue");
-
-   if(td <= 0){
-    $('#finalizeButton').attr('disabled','disabled');
-  } else {
-    $('#finalizeButton').attr('enabled','enabled');
-  }
-
-  $('.link').click(function(){
-
-    var f = $(this);
-    var id = f.data('id');
-
-    var pr_no = $('#pr_no').val();
-    var pr_date = $('#pr_date').val();
-    var pmo = $('#pmo').val();
-    var purpose = $('#purpose').val();
-
-    window.location = 
-    'ViewPRdetails1.php?data='+id+'&pr_no='+pr_no+'&pr_date='+pr_date+'&pmo='+pmo+'&purpose='+purpose;
-  });
-}) ;
 </script>
 

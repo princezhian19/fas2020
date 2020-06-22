@@ -37,4 +37,21 @@ function getOffice()
         echo $row['DIVISION_M'];
     }
 }
+function showData()
+{
+    include 'connection.php';
+    $query = "SELECT * FROM tbltravel_claim_info2 limit 1";
+    $result = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_array($result))
+    {
+        echo '<input 
+        type = "text" 
+        style = "width:89%;padding:5px;border:1px solid gray;"
+        value = "'.$row['RO_TO_OB'].'"
+        />';
+    }
+    
+}
+    
+
 ?>
