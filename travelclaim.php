@@ -31,6 +31,14 @@ include 'travelclaim_functions.php';
     background-color:#B0BEC5; 
 
   }
+  .borderless {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: blue
+}
+.borderless:focus {
+  border-color: green
+}
 </style>
 </head>
 <div class="box">
@@ -248,14 +256,13 @@ include 'travelclaim_functions.php';
       </div>
       <!-- ================ travel dates ============== -->
       <div class="modal fade" id="add_travel_dates">
-        <div class="modal-dialog" style = "width:65%;">
+        <div class="modal-dialog" style = "width:50%;">
           <div class="modal-content" >
             <div class="modal-header">
               <h4 class="modal-title">Add Travel Dates</h4>
                 <button type="button" class="close" data-dismiss="modal">&times; </button>
             </div>
             <div class="modal-body">
-            <form method = "POST">
               <div class="box-body">
                 <div class="well" style = "padding:10px;">
                   <div class="box-body">
@@ -286,25 +293,18 @@ include 'travelclaim_functions.php';
                     </div>
                     <div class="row">
                       <div class="col-md-6">
-               
-
-              <!-- radio -->
-              <div class="form-group">
-                <label>
-                Meals
-                </label><br>
-                <input type="checkbox" name="r2" class="minimal-red" checked> Breakfast
-                <input type="checkbox" name="r2" class="minimal-red" checked> Lunch
-                <input type="checkbox" name="r2" class="minimal-red" checked> Dinner
-                
-              </div>
-
-          
-
+                        <div class="form-group">
+                        <label>
+                        Meals
+                        </label><br>
+                        <input type="checkbox" name="r2" class="minimal-red" checked> Breakfast
+                        <input type="checkbox" name="r2" class="minimal-red" checked> Lunch
+                        <input type="checkbox" name="r2" class="minimal-red" checked> Dinner
+                      </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
-                          <label>Time Going to Venue</label>
+                          <label style = "font-size:13px;">Time Going to Home or back to Official Station</label>
                             <input type = "text" class = "form-control"/>
                         </div>
                       </div>
@@ -314,16 +314,61 @@ include 'travelclaim_functions.php';
                           <input type = "text" class = "form-control"/>
                         </div>
                       </div>
-                    </div>                    
+                    </div>  
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>
+                          Accomodation
+                          </label><br>
+                          <input type="checkbox" name="r2" class="minimal-red" checked> With
+                          <input type="checkbox" name="r2" class="minimal-red" checked> Without
+                          <input type="text" name="r2"  class = "borderless" style = "width:50%;"/>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Others</label>
+                          <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask><br>
+                          <button class = "btn btn-success btn-md pull-right">Add More </button>
+                        </div>
+                      </div>
+                    </div>                  
                     </div>
                   </div>
-                </div>
-              </div>
+                <div class="well" style = "padding:10px;">
 
-            </form>
+                  <div class="box-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>From</label>
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>To</label>
+                            <input type = "text" class = "form-control"/>
+                        </div>
+                      </div>
+                    </div>
+                                     
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                
+              </div>
+              
           </div>
-          <div class = "modal-footer">
-          </div>
+          
+          
         </div>
       </div>
     </div>
