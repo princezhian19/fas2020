@@ -243,7 +243,7 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne)->applyFromArray($styleContent18);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowOne,$itemno);
   $objPHPExcel->getActiveSheet()->getStyle('B'.$rowOne)->applyFromArray($styleContent);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowOne,$excelrow['procurement']]);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowOne,$excelrow['procurement']);
   $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($border);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$rowOne,$excelrow['qty']);
