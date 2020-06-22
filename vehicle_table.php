@@ -109,8 +109,8 @@ $edit="edit";
                   <th width = ''>PASSENGER/S NAME</th>
                   <th width = ''>DEPARTURE </th>
                   <th width = ''>RETURN </th>
-                  <th width = ''>SUBMITTED DATE</th>
-                  <th width = ''>RECEIVED DATE</th>
+                  <th width = ''>SUBMITTED</th>
+                  <th width = ''>RECEIVED</th>
                   <th width = ''>ASSIGNED</th>
                   <th width = ''>RECOMMENDING</th> 
                   <th width = ''>APPROVED</th> 
@@ -198,6 +198,20 @@ $edit="edit";
                   $reason = $row['reason'];
                   $status=$row['status'];
                   $pos=$row['pos'];
+
+                 
+                  $assigndate1=$row["assigndate"];
+                  $assigndate = date('Y-m-d', strtotime($assigndate1));
+
+                  $assigntime1=$row["assigntime"];
+                  $assigntime = date('H:i', strtotime($assigntime1));
+
+                  $dispatcher=$row["dispatcher"];
+                  $nov=$row["nov"];
+                  $av=$row["av"];
+                  $ad=$row["ad"];
+                  $plate=$row["plate"];
+                  $vremarks=$row["vremarks"];
                
 
                ?>
@@ -306,11 +320,73 @@ $edit="edit";
                          
                           <?php endif ?>
 
-                          <?php if ($receiveddate1 != '0000-00-00'): ?>
+
+
+
+
+                          <?php if ($receiveddate1 != '0000-00-00' && $assigneddate1 == '0000-00-00' ): ?>
                             <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
                               <?php if ($status != 'cancelled'): ?>
                                 <td>
                                   <a name="assign" value="" id="assign" onclick="myFunction1(this)" data-assignID="<?php echo $id;?>" data-toggle="modal" data-target="#assign_data_Modal" title="Assign" class = "btn btn-success btn-xs" > <i class='fa'></i> Assign</a> 
+                                </td>   
+                              <?php else: ?>
+                              <td ></td>
+                              <?php endif ?>
+                            <?php else: ?>
+                            <td ></td>
+                            <?php endif ?>
+                            <?php else: ?>
+                         
+                            <td>
+                            
+                            <?php echo $av.'<br>'.$ad?>
+
+                            </td>
+                          
+                            <?php endif ?>
+
+                            <?php if ($receiveddate1 != '0000-00-00' ): ?>
+                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
+                              <?php if ($status != 'cancelled'): ?>
+                                <td>
+                                <a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Recommend</a>
+                                </td>   
+                              <?php else: ?>
+                              <td ></td>
+                              <?php endif ?>
+                            <?php else: ?>
+                            <td ></td>
+                            <?php endif ?>
+                            <?php else: ?>
+                         
+                            <td></td>
+                          
+                            <?php endif ?>
+
+                            <?php if ($receiveddate1 != '0000-00-00'): ?>
+                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == 'aoiglesia' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
+                              <?php if ($status != 'cancelled'): ?>
+                                <td>
+                                <a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Approve</a>
+                                </td>   
+                              <?php else: ?>
+                              <td ></td>
+                              <?php endif ?>
+                            <?php else: ?>
+                            <td ></td>
+                            <?php endif ?>
+                            <?php else: ?>
+                         
+                            <td></td>
+                          
+                            <?php endif ?>
+
+                            <?php if ($receiveddate1 != '0000-00-00'): ?>
+                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
+                              <?php if ($status != 'cancelled'): ?>
+                                <td>
+                                <a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Serve Copy</a>
                                 </td>   
                               <?php else: ?>
                               <td ></td>
@@ -327,9 +403,9 @@ $edit="edit";
              
 
 
-                <td><a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Recommend</a></td>
-                <td><a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Approve</a></td>
-                <td><a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Serve Copy</a></td>
+              
+              
+               
 
 
 
@@ -538,52 +614,113 @@ $edit="edit";
             <div class="modal-body">
               <form method="POST" id="insert_form" action="vehicle_assign.php">
               
-              <label>Reason</label>
-              <input required type="text" name="reason" id="reason" class="form-control" />
-                                  
+            
+              
+              <table class="table">
+                  <tr>
+                  <td >Assigned Date :</td>
+
+                  <td class="" >
+                  <input  required type="text" class="form-control" name="assigndate" id="datepicker1" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
+
+                  </td>
+                  </tr>
+                  
+                  <tr>
+                  <td >Assigned Time :</td>
+                  
+                  <td class="" >
+                  <input  required type="time" class="form-control" name="assigntime" id="assigntime" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
+
+                  </td>
+                  </tr>
+
+                  <tr>
+                  <td> Dispatcher :</td>
+                  
+                  <td class="" >
+                  <input readonly required type="text" class="form-control" name="dispatcher" id="dispatcher" value="<?php echo $username1?>" >
+
+                  </td>
+                  </tr>
+
+
+                  <tr>
+                  <td >No. of Assigned Vehicle :</td>
+                  
+                  <td class="" >
+                  <input  required type="number" class="form-control" name="nov" id="nov" value = "" >
+
+                  </td>
+                  </tr>
+
+                  <tr>
+                  <td >Assigned Vehicle</td>
+                  
+                  <td class="" >
+                  <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
+                  <select required class="form-control" style="width: 100%;" name="av" id="av" >
+                      <option value="">Select Vehicle</option>
+                      <option value="Cross Wind-8974">Cross Wind-8974</option>
+                      <option value="Cross Wind-8994">Cross Wind-8994</option>
+                      <option value="Isuzu-918">Isuzu-918</option>
+                     
+                  </select>
+                  </td> 
+                  </tr>
+
+                  <tr>
+                  <td >Assigned Driver :</td>
+                  <td class="" >
+                 
+                  <select required class="form-control" style="width: 100%;" name="ad" id="ad" >
+                      <option value="">Select Driver</option>
+                      <option value="Daniel Narciso">Daniel Narciso</option>
+                      <option value="Joachim Lacdang">Joachim Lacdang</option>
+                      <option value="Louie Blanco">Louie Blanco</option>
+                     
+                  </select>
+                  </td>
+                 
+                  </tr>
+
+                  <tr>
+                  <td >Plate Number :</td>
+                  
+                  <td class="" >
+                  <input readonly required type="Text" class="form-control" name="plate" id="plate" value = "" >
+
+                  </td>
+                  </tr>
+
+                  <tr>
+                  <td >Remarks :</td>
+                  
+                  <td class="" >
+                  <input  type="text" class="form-control" style="height: 70px; width:100%;" name="vremarks" id="vremarks" value = "" >
+
+                  </td>
+                  </tr>
+
+              </table>
+
+
               <br>
+            
               
               
-              <button type="submit" name="cancel" class="btn btn-warning pull-right">Cancel</button>
+              <button type="submit" name="assign" class="btn btn-primary pull-right">Assign</button>
 
 
-              <input  type="text" name="assignID" id="assignID" value="" class=""/>
+              <input hidden type="text" name="assignID" id="assignID" value="" class=""/>
               <br>
-              <input  type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
+              <input  hidden type="text" name="userv" id="userv" value="<?php echo $username1?>" class=""/>
               <br>
-              <input  type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
-             
-             
-              <br />
-
-              <!-- <input type="submit" name="submit" id="submit" value="Cancel" class="btn btn-warning" /> -->
-
-             
-          
-              
-              </form>
+              <input hidden  type="text" name="nowv" id="nowv" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+            
+        
             </div>
-            <div class="modal-footer">
-            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-            </div>
-            </div>
-          </div>
-          </div>
-
-          <div id="dataModal" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Cancel Travel Order</h4>
-            </div>
-            <div class="modal-body" id="employee_detail">
-              
-            </div>
-            <div class="modal-footer">
-              <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-
-              
+           
             </div>
             </div>
           </div>
@@ -609,4 +746,146 @@ $edit="edit";
                     });
                    
                   }
+</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Date picker,
+    $('#datepicker1').datepicker({
+      autoclose: true
+    })
+
+    $('#datepicker2').datepicker({
+      autoclose: true
+    })
+    $('#datepicker3').datepicker({
+      autoclose: true
+    })
+    $('#datepicker4').datepicker({
+      autoclose: true
+    })
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass   : 'iradio_minimal-blue'
+    })
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass   : 'iradio_minimal-red'
+    })
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass   : 'iradio_flat-green'
+    })
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    //Timepicker
+    $('.timepicker1').timepicker({
+      showInputs: true
+    })
+
+    $('.timepicker2').timepicker({
+      showInputs: true
+    })
+  })
+</script>
+
+<script>
+$(document).ready(function(){
+  $("#av").change(function (){
+
+    
+    assignvehicle = document.getElementById("av").value;
+
+   
+    if(assignvehicle=='Cross Wind-8974'){
+   
+      
+        var plate = $("input[name='plate']"); 
+       
+      
+        plate.val('CN 8974');
+     
+     
+    }
+    else if(assignvehicle=='Cross Wind-8994'){
+      
+      var plate = $("input[name='plate']"); 
+       
+      
+       plate.val('CN 8994');
+       
+       
+    }
+
+    else if(assignvehicle=='Isuzu-918'){
+      
+      var plate = $("input[name='plate']"); 
+       
+      
+       plate.val('GNJ 918');
+       
+       
+    }
+    else{
+
+      var plate = $("input[name='plate']"); 
+       
+      
+       plate.val('');
+    }
+   
+    //alert(cat);
+
+  });
+});
 </script>
