@@ -279,7 +279,13 @@ if($_SESSION['planningofficer'] == 1)
     </style>
  <?php 
 
+if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
 
+      include('test1.php');
+}else{
+  include('sidebar2.php');
+
+}
  
   // if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
   //     include('test1.php');
