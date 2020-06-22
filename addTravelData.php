@@ -15,5 +15,5 @@ $id = sample();
     if (mysqli_query($conn, $insert)) {
     } else {
     }
-header("Location:CreateTravelClaim.php?id=$id")
+header("Location:CreateTravelClaim.php?id=$id");
 ?>

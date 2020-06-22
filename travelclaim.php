@@ -124,29 +124,12 @@ include 'travelclaim_functions.php';
               <th class = "table-header"  style = "text-align:center;">Departure</th>
 
               </tr>
-              <tr>
-              <td colspan = 9>
+              
                <?php echo showData();?>
-              </td>
-              </tr>
-              <tr>
-              <td colspan = 9>
-              <button
-              class = "btn btn-primary btn-md"
-              >
-              Add Travel Dates
-              </button>
-              </td>
+            
+            
 
-                <!-- <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td> -->
+             
                 
               </tr>
              
@@ -208,6 +191,7 @@ include 'travelclaim_functions.php';
 <br>  
 <br>
 </body>
+<!-- ================= add travel =================== -->
 <div class="modal fade" id="editModal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -218,7 +202,6 @@ include 'travelclaim_functions.php';
                 </div>
                 <div class="modal-body">
                 <form method = "POST" action = "addTravelData.php">
-                        <input  type = "hidden" name = "eventid" id = "eventid">
                         <table class="table table-bordered" style = "width:100%;"> 
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">RO/TO/OB No.<span style = "color:red;">*</span></td>
@@ -262,7 +245,89 @@ include 'travelclaim_functions.php';
                 </div>
             </div>
         </div>
+      </div>
+      <!-- ================ travel dates ============== -->
+      <div class="modal fade" id="add_travel_dates">
+        <div class="modal-dialog" style = "width:65%;">
+          <div class="modal-content" >
+            <div class="modal-header">
+              <h4 class="modal-title">Add Travel Dates</h4>
+                <button type="button" class="close" data-dismiss="modal">&times; </button>
+            </div>
+            <div class="modal-body">
+            <form method = "POST">
+              <div class="box-body">
+                <div class="well" style = "padding:10px;">
+                  <div class="box-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Date</label>
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Time Going to Venue</label>
+                            <input type = "text" class = "form-control"/>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label>&nbsp;</label>
+                          <input type = "text" class = "form-control"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+               
+
+              <!-- radio -->
+              <div class="form-group">
+                <label>
+                Meals
+                </label><br>
+                <input type="checkbox" name="r2" class="minimal-red" checked> Breakfast
+                <input type="checkbox" name="r2" class="minimal-red" checked> Lunch
+                <input type="checkbox" name="r2" class="minimal-red" checked> Dinner
+                
+              </div>
+
+          
+
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label>Time Going to Venue</label>
+                            <input type = "text" class = "form-control"/>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label>&nbsp;</label>
+                          <input type = "text" class = "form-control"/>
+                        </div>
+                      </div>
+                    </div>                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class = "modal-footer">
+          </div>
         </div>
+      </div>
+    </div>
+
 <script>
 $(document).on('click','#editbtn',function(e){
 
