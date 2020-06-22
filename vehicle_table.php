@@ -677,9 +677,9 @@ $edit="edit";
                   <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
                   <select required class="form-control" style="width: 100%;" name="av" id="av" >
                       <option value="">Select Vehicle</option>
-                      <option value="Cross Wind-8974">Isuzu Cross Wind-8974</option>
-                      <option value="Cross Wind-8994">Isuzu Cross Wind-8994</option>
-                      <option value="Isuzu-918">Isuzu Pick-up</option>
+                      <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
+                      <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
+                      <option value="Isuzu Pick-up">Isuzu Pick-up</option>
                      
                   </select>
                   </td> 
