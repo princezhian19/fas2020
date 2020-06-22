@@ -341,9 +341,9 @@ $edit="edit";
 
 
                           <?php if ($receiveddate1 != '0000-00-00'): ?>
-                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' && $status != 'cancelled'):?>
+                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' ):?>
                              
-                                <?php if ($assigneddate1 == '0000-00-00'): ?>
+                                <?php if ($assigneddate1 == '0000-00-00' && $status != 'cancelled'): ?>
                                   <td>
                                   <a name="assign" value="" id="assign" onclick="myFunction1(this)" data-assignID="<?php echo $id;?>" data-toggle="modal" data-target="#assign_data_Modal" title="Assign" class = "btn btn-success btn-xs" > <i class='fa'></i> Assign</a> 
                                  
@@ -371,16 +371,22 @@ $edit="edit";
                             
 
                             <?php if ($assigneddate1 != '0000-00-00'): ?>
-                              <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' && $status != 'cancelled'):?>
+                              <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
                              
-                                  <?php if ($recommenddate1 == '0000-00-00'): ?>
+                                  <?php if ($recommenddate1 == '0000-00-00' && $status != 'cancelled'): ?>
                                   <td>
                                   <a name="recommend" value="" id="recommend" onclick="myFunction2(this)" data-rvalue="<?php echo $id;?>" data-toggle="modal" data-target="#recommending_data_Modal" title="Recommend" class = "btn btn-success btn-xs" > <i class='fa'></i> Recommend</a> 
                                  
                                   </td>  
                                 <?php else: ?>
                                 <td>
+
+                                <?php if ($recommenddate1 == '0000-00-00'): ?>
+                                <!-- //no dates -->
+                                <?php else: ?>
                                 <?php echo $recommenddate.'<br>'.$recommendby.'<br>'.$rstatus?>
+                                <?php endif ?>
+                               
                                 </td>
                                 <?php endif ?>
 
