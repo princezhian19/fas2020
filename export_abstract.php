@@ -149,7 +149,7 @@ $view_query1 = mysqli_query($conn, "SELECT  sum(abc*qty) as aa from pr_items WHE
 // while($rowppu = mysqli_fetch_array($select_tots)){
     // $ABCtots = $rowppu['ABCtots'];
 $objPHPExcel->getActiveSheet()->getStyle('C12')->getNumberFormat()->setFormatCode(FORMAT_CURRENCY_PHP);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C12',$tot);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('C12',$abc12);
 
 // }
 
