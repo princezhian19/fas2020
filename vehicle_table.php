@@ -350,7 +350,16 @@ $edit="edit";
                                 </td>  
                                 <?php else: ?>
                                 <td>
-                                <?php echo $av.'<br>'.$ad?>
+                                <?php if ($recommenddate1 != '0000-00-00'): ?>
+                                  <?php echo $av.'<br>'.$ad?>
+                                <?php else: ?>
+                                  <?php echo $av.'<br>'.$ad?>
+                                  <!-- <a href='VehicleRequestUpdate.php?id=<?php echo $id;?>&pos=<?php echo $pos;?>&vrno=<?php echo $vrno;?>&type=<?php echo $type;?>' onclick="myFunctionPassengers()" data-vrno = <?php echo $vrno?>  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit </a> -->
+
+
+                                <?php endif ?>
+                              
+
                                 </td>
                                 <?php endif ?>
                           
@@ -697,7 +706,9 @@ $edit="edit";
               
               <table class="table">
                   <tr>
-                  <td >Assigned Date :</td>
+                  <td >
+                  <label> Assigned Date <span style = "color:red;">*</span></label>  
+                 </td>
 
                   <td class="" >
                   <input  required type="text" class="form-control" name="assigneddate" id="datepicker1" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
@@ -706,7 +717,7 @@ $edit="edit";
                   </tr>
                   
                   <tr>
-                  <td >Assigned Time :</td>
+                  <td >  <label> Assigned Time <span style = "color:red;">*</span></label>  </td>
                   
                   <td class="" >
                   <input  required type="time" class="form-control" name="assignedtime" id="assignedtime" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
@@ -715,7 +726,7 @@ $edit="edit";
                   </tr>
 
                   <tr>
-                  <td> Dispatcher :</td>
+                  <td>   <label> Dispatcher <span style = "color:red;">*</span></label>  </td>
                   
                   <td class="" >
                   <input readonly required type="text" class="form-control" name="dispatcher" id="dispatcher" value="<?php echo $username1?>" >
@@ -725,7 +736,7 @@ $edit="edit";
 
 
                   <tr>
-                  <td >No. of Assigned Vehicle :</td>
+                  <td ><label>  No. of Assigned Vehicle <span style = "color:red;">*</span></label> </td>
                   
                   <td class="" >
                   <input  required type="number" class="form-control" name="nov" id="nov" value = "" >
@@ -734,7 +745,7 @@ $edit="edit";
                   </tr>
 
                   <tr>
-                  <td >Assigned Vehicle</td>
+                  <td > <label>Assigned Vehicle <span style = "color:red;">*</span></label> </td>
                   
                   <td class="" >
                   <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
@@ -749,7 +760,7 @@ $edit="edit";
                   </tr>
 
                   <tr>
-                  <td >Assigned Driver :</td>
+                  <td > <label>Assigned Driver <span style = "color:red;">*</span></label></td>
                   <td class="" >
                  
                   <select required class="form-control" style="width: 100%;" name="ad" id="ad" >
@@ -764,7 +775,7 @@ $edit="edit";
                   </tr>
 
                   <tr>
-                  <td >Plate Number :</td>
+                  <td > <label>Plate Number <span style = "color:red;">*</span></label></td>
                   
                   <td class="" >
                   <input readonly required type="Text" class="form-control" name="plate" id="plate" value = "" >
@@ -773,7 +784,7 @@ $edit="edit";
                   </tr>
 
                   <tr>
-                  <td >Remarks :</td>
+                  <td > <label>Remarks <span style = "color:red;"></span></label></td>
                   
                   <td class="" >
                   <input  type="text" class="form-control" style="height: 70px; width:100%;" name="vremarks" id="vremarks" value = "" >
