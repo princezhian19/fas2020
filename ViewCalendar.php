@@ -278,17 +278,8 @@ if($_SESSION['planningofficer'] == 1)
   }
     </style>
  <?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); 
-}else{ 
 
-     if ($OFFICE_STATION == 1) {
-  include('sidebar2.php');
-           
-        }else{
-  include('sidebar3.php');
-         
-        } 
-}
+
  
   // if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
   //     include('test1.php');
@@ -436,10 +427,10 @@ $('#title').html("View Activity");
     $(".response").html("<div class='alert alert-success' role='alert' style = 'background-color:#ef9a9a;'>"+message+"<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
     setInterval(function() { $(".alert").fadeOut(); }, 3000);
 }
-  // $('#modal').click(function(){
-  //   $('#myModal2').modal('show');   
+  $('#modal').click(function(){
+    $('#myModal2').modal('show');   
     
-  // })
+  })
  
 
 
