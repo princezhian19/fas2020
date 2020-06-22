@@ -903,7 +903,7 @@ function setQuality()
     $result = mysqli_query($conn, $query);
     if($row = mysqli_fetch_array($result))
       {
-        if($row['STATUS'] == '5')
+        if($row['QUALITY'] == '5')
         {
             ?>
             <select class="form-control " style="width: 22%;" name="quality" >
@@ -914,7 +914,7 @@ function setQuality()
             <option value = "1">Poor</option>
             </select>
             <?php
-        }else if($row['STATUS'] == '4'){
+        }else if($row['QUALITY'] == '4'){
             ?>
             <select class="form-control " style="width: 22%;" name="quality" >
             <option value = "5" >Outstanding</option>
@@ -924,7 +924,7 @@ function setQuality()
             <option value = "1">Poor</option>
             </select>
             <?php
-        }else if($row['STATUS'] == '3'){
+        }else if($row['QUALITY'] == '3'){
             ?>
             <select class="form-control " style="width: 22%;" name="quality" >
             <option value = "5" >Outstanding</option>
@@ -934,7 +934,7 @@ function setQuality()
             <option value = "1">Poor</option>
             </select>
             <?php
-        }else if($row['STATUS'] == '2'){
+        }else if($row['QUALITY'] == '2'){
             ?>
             <select class="form-control " style="width: 22%;" name="quality" >
             <option value = "5" >Outstanding</option>
@@ -944,7 +944,7 @@ function setQuality()
             <option value = "1">Poor</option>
             </select>
             <?php
-        }else if($row['STATUS'] == '1'){
+        }else if($row['QUALITY'] == '1'){
             ?>
             <select class="form-control " style="width: 22%;" name="quality" >
             <option value = "5" >Outstanding</option>

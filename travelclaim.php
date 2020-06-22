@@ -126,20 +126,7 @@ include 'travelclaim_functions.php';
               </tr>
               <tr>
               <td colspan = 9>
-              <div>
-                  <button
-                  class = "btn btn-success btn-md"
-                  style = "width:10.5%;"
-                  data-toggle="modal"  
-                  data-target="#editModal" 
-                  id= "editbtn" 
-                  class = "btn btn-primary btn-xs">
-                  
-                
-                  Add Travel
-                  </button>
                <?php echo showData();?>
-                </div>
               </td>
               </tr>
               <tr>
