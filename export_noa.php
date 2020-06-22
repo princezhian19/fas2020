@@ -82,7 +82,7 @@ $objPHPExcel->getActiveSheet()->getStyle('A13')->getFont()->setBold(true);
 $objPHPExcel->getActiveSheet()->getStyle('A15')->getFont()->setBold(true);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A13',$po_date);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A15',$contact_person);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A41',"                   ".$supplier_title);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A41',"                   ".$contact_person);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A16',$supplier_title);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A17',$supplier_address);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A20','Dear Mr./Ms. '.$contact_person);
