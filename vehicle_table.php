@@ -116,7 +116,7 @@ $edit="edit";
                   <th width = ''>APPROVED</th> 
                   <th width = ''>SERVED COPY</th> 
                   
-                  <th width = '1000'>ACTION</th>
+                  <th width = '500'>ACTION</th>
                   
 
                 </tr>
@@ -200,11 +200,11 @@ $edit="edit";
                   $pos=$row['pos'];
 
                  
-                  $assigndate1=$row["assigndate"];
-                  $assigndate = date('Y-m-d', strtotime($assigndate1));
+                  $assigneddate1=$row["assigneddate"];
+                  $assigneddate = date('F d, Y', strtotime($assigneddate1));
 
-                  $assigntime1=$row["assigntime"];
-                  $assigntime = date('H:i', strtotime($assigntime1));
+                  $assignedtime1=$row["assignedtime"];
+                  $assignedtime = date('H:i', strtotime($assignedtime1));
 
                   $dispatcher=$row["dispatcher"];
                   $nov=$row["nov"];
@@ -212,6 +212,22 @@ $edit="edit";
                   $ad=$row["ad"];
                   $plate=$row["plate"];
                   $vremarks=$row["vremarks"];
+                  $rstatus=$row["rstatus"];
+
+                  $recommenddate1=$row["recommenddate"];
+                  $recommenddate = date('F d, Y', strtotime($recommenddate1));
+
+                  $recommendby=$row["recommendby"];
+
+                  $approveddate1=$row["approveddate"];
+                  $approveddate = date('F d, Y', strtotime($approveddate1));
+
+                  $approvedby=$row["approvedby"];
+
+                  $serveddate1=$row["serveddate"];
+                  $serveddate = date('F d, Y', strtotime($serveddate1));
+
+                  $servedby=$row["servedby"];
                
 
                ?>
@@ -322,98 +338,146 @@ $edit="edit";
 
 
 
+                          <!--   Assign -->
 
-
-                          <?php if ($receiveddate1 != '0000-00-00' && $assigneddate1 == '0000-00-00' ): ?>
-                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
-                              <?php if ($status != 'cancelled'): ?>
-                                <td>
+                          <?php if ($receiveddate1 != '0000-00-00'): ?>
+                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' ):?>
+                             
+                                <?php if ($assigneddate1 == '0000-00-00' && $status != 'cancelled'): ?>
+                                  <td>
                                   <a name="assign" value="" id="assign" onclick="myFunction1(this)" data-assignID="<?php echo $id;?>" data-toggle="modal" data-target="#assign_data_Modal" title="Assign" class = "btn btn-success btn-xs" > <i class='fa'></i> Assign</a> 
-                                </td>   
-                              <?php else: ?>
-                              <td ></td>
-                              <?php endif ?>
+                                 
+                                </td>  
+                                <?php else: ?>
+                                <td>
+                                <?php echo $av.'<br>'.$ad?>
+                                </td>
+                                <?php endif ?>
+                          
                             <?php else: ?>
-                            <td ></td>
+                            <td >
+
+                            </td>
                             <?php endif ?>
+
                             <?php else: ?>
                          
                             <td>
-                            
-                            <?php echo $av.'<br>'.$ad?>
-
+                           
                             </td>
                           
                             <?php endif ?>
+                            <!--   Assign -->
+                            
+                            <!--   Recommend -->
+                            <?php if ($assigneddate1 != '0000-00-00'): ?>
+                              <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
+                             
+                                  <?php if ($recommenddate1 == '0000-00-00' && $status != 'cancelled'): ?>
+                                  <td>
+                                  <a name="recommend" value="" id="recommend" onclick="myFunction2(this)" data-rvalue="<?php echo $id;?>" data-toggle="modal" data-target="#recommending_data_Modal" title="Recommend" class = "btn btn-success btn-xs" > <i class='fa'></i> Recommend</a> 
+                                 
+                                  </td>  
+                                <?php else: ?>
+                                <td>
 
-                            <?php if ($receiveddate1 != '0000-00-00' ): ?>
+                                <?php if ($recommenddate1 == '0000-00-00'): ?>
+                                <!-- //no dates -->
+                                <?php else: ?>
+                                <?php echo $recommenddate.'<br>'.$recommendby.'<br>'.$rstatus?>
+                                <?php endif ?>
+                               
+                                </td>
+                                <?php endif ?>
+
+
+                             
+                            <?php else: ?>
+                            <td ></td>
+                            <?php endif ?>
+                            <?php else: ?>
+                         
+                            <td></td>
+                          
+                            <?php endif ?>
+
+                            <!--   Recommend -->
+
+                            <!--   Approve -->
+                            <?php if ($recommenddate1 != '0000-00-00'): ?>
+                              <?php if ($username1 == 'cvferrer' || $username1 == 'aoiglesia' || $username1 == '' || $username1 == '' || $username1 == ''|| $username1 == ''|| $username1 == ''):?>
+                             
+                                  <?php if ($approveddate1 == '0000-00-00' && $status != 'cancelled'): ?>
+                                  <td>
+                                  
+                                  <a  class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to approve this Vehicle Request?');" href='vehicle_approve.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Approve">Approve</a>
+                                  </td>  
+                                <?php else: ?>
+                                <td>
+
+                                <?php if ($approveddate1 == '0000-00-00'): ?>
+                                <!-- //no dates -->
+                                <?php else: ?>
+                                <?php echo $approveddate.'<br>'.$approvedby?>
+                                <?php endif ?>
+                               
+                                </td>
+                                <?php endif ?>
+
+
+                             
+                            <?php else: ?>
+                            <td ></td>
+                            <?php endif ?>
+                            <?php else: ?>
+                         
+                            <td></td>
+                          
+                            <?php endif ?>
+
+                          <!--   Approve -->
+
+
+
+
+                          <!--   Serve -->
+                          <?php if ($approveddate1 != '0000-00-00'): ?>
                             <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
-                              <?php if ($status != 'cancelled'): ?>
-                                <td>
-                                <a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Recommend</a>
-                                </td>   
-                              <?php else: ?>
-                              <td ></td>
-                              <?php endif ?>
-                            <?php else: ?>
-                            <td ></td>
-                            <?php endif ?>
-                            <?php else: ?>
-                         
-                            <td></td>
-                          
-                            <?php endif ?>
 
-                            <?php if ($receiveddate1 != '0000-00-00'): ?>
-                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == 'aoiglesia' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
-                              <?php if ($status != 'cancelled'): ?>
-                                <td>
-                                <a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Approve</a>
-                                </td>   
-                              <?php else: ?>
-                              <td ></td>
-                              <?php endif ?>
-                            <?php else: ?>
-                            <td ></td>
-                            <?php endif ?>
-                            <?php else: ?>
-                         
-                            <td></td>
-                          
-                            <?php endif ?>
+                          <?php if ($serveddate1 == '0000-00-00' && $status != 'cancelled'): ?>
+                          <td>
 
-                            <?php if ($receiveddate1 != '0000-00-00'): ?>
-                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
-                              <?php if ($status != 'cancelled'): ?>
-                                <td>
-                                <a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Serve Copy</a>
-                                </td>   
-                              <?php else: ?>
-                              <td ></td>
-                              <?php endif ?>
-                            <?php else: ?>
-                            <td ></td>
-                            <?php endif ?>
-                            <?php else: ?>
-                         
-                            <td></td>
-                          
-                            <?php endif ?>
+                          <a  class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to serve this Vehicle Request?');" href='vehicle_serve.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Serve">Serve</a>
+                          </td>  
+                          <?php else: ?>
+                          <td>
+
+                          <?php if ($serveddate1 == '0000-00-00'): ?>
+                          <!-- //no dates -->
+                          <?php else: ?>
+                          <?php echo $serveddate.'<br>'.$servedby?>
+                          <?php endif ?>
+
+                          </td>
+                          <?php endif ?>
+
+
+
+                          <?php else: ?>
+                          <td ></td>
+                          <?php endif ?>
+                          <?php else: ?>
+
+                          <td></td>
+
+                          <?php endif ?>
+
+                          <!--   Serve -->
                         
              
 
 
-              
-              
-               
-
-
-
-
-
-
-
-                <td>
+                  <td>
                     <?php if ($submitteddate1 == 0000-00-00): ?>
                           <!--  -->
                               <?php if ($status!='cancelled'):?>
@@ -495,7 +559,7 @@ $edit="edit";
         </script>
           <!-- //Setting ID -->
 
-           <!-- //Setting assign ID -->
+        <!-- //Setting assign ID -->
         <script>
         function myFunction1(assignvalue) {
 
@@ -508,6 +572,21 @@ $edit="edit";
         }
         </script>
           <!-- //Setting assign ID -->
+
+
+            <!-- //Setting recommending ID -->
+        <script>
+        function myFunction2(rvalue) {
+
+          var rvalue1 = rvalue.getAttribute("data-rvalue");
+          var rvalue = $("input[name='rvalue']");
+          rvalue.val(rvalue1);
+
+         
+       
+        }
+        </script>
+          <!-- //Setting recommending ID -->
       
     <script type="text/javascript">
     $(document).ready(function() {
@@ -621,7 +700,7 @@ $edit="edit";
                   <td >Assigned Date :</td>
 
                   <td class="" >
-                  <input  required type="text" class="form-control" name="assigndate" id="datepicker1" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
+                  <input  required type="text" class="form-control" name="assigneddate" id="datepicker1" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
 
                   </td>
                   </tr>
@@ -630,7 +709,7 @@ $edit="edit";
                   <td >Assigned Time :</td>
                   
                   <td class="" >
-                  <input  required type="time" class="form-control" name="assigntime" id="assigntime" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
+                  <input  required type="time" class="form-control" name="assignedtime" id="assignedtime" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
 
                   </td>
                   </tr>
@@ -661,9 +740,9 @@ $edit="edit";
                   <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
                   <select required class="form-control" style="width: 100%;" name="av" id="av" >
                       <option value="">Select Vehicle</option>
-                      <option value="Cross Wind-8974">Cross Wind-8974</option>
-                      <option value="Cross Wind-8994">Cross Wind-8994</option>
-                      <option value="Isuzu-918">Isuzu-918</option>
+                      <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
+                      <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
+                      <option value="Isuzu Pick-up">Isuzu Pick-up</option>
                      
                   </select>
                   </td> 
@@ -717,7 +796,7 @@ $edit="edit";
               <input  hidden type="text" name="userv" id="userv" value="<?php echo $username1?>" class=""/>
               <br>
               <input hidden  type="text" name="nowv" id="nowv" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
-            
+        </form>
         
             </div>
            
@@ -726,6 +805,75 @@ $edit="edit";
           </div>
           </div>
   <!-- assign -->
+
+
+
+
+  <!-- recommending -->
+
+<div id="recommending_data_Modal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Recommend Vehicle Request</h4>
+              
+            </div>
+            
+           
+              <form method="POST" id="insert_form" action="vehicle_recommend.php">
+              
+            
+              
+              <table class="table">
+                  <tr>
+                  <td class="col-md-3" >
+
+                
+
+                  </td>
+
+                  <td class="col-3" >
+
+                  <button type="submit" name="approved" onclick="return confirm('Are you sure you want to approve this Vehicle Request?');" class="btn btn-primary pull-right">Approved</button>
+
+                  </td>
+
+                  <td class="col-3" >
+
+                  <button type="submit" onclick="return confirm('Are you sure you want to disapprove this Vehicle Request?');" name="disapproved" class="btn btn-primary pull-right">Disapproved</button>
+
+                  </td>
+
+                  <td class="col-md-3" >
+
+
+                  </td>
+
+                 
+                  </tr>
+                  
+                
+
+              </table>
+
+
+
+
+              <input hidden  type="text" name="rvalue" id="rvalue" value="" class=""/>
+             
+              <input hidden   type="text" name="userr" id="userr" value="<?php echo $username1?>" class=""/>
+             
+              <input hidden  type="text" name="nowr" id="nowr" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+            <br>
+        </form>
+            </div>
+           
+            </div>
+            </div>
+          </div>
+         
+  <!-- recommending -->
 
 
         
@@ -847,7 +995,7 @@ $(document).ready(function(){
     assignvehicle = document.getElementById("av").value;
 
    
-    if(assignvehicle=='Cross Wind-8974'){
+    if(assignvehicle=='Isuzu Cross Wind-8974'){
    
       
         var plate = $("input[name='plate']"); 
@@ -857,7 +1005,7 @@ $(document).ready(function(){
      
      
     }
-    else if(assignvehicle=='Cross Wind-8994'){
+    else if(assignvehicle=='Isuzu Cross Wind-8994'){
       
       var plate = $("input[name='plate']"); 
        
@@ -867,7 +1015,7 @@ $(document).ready(function(){
        
     }
 
-    else if(assignvehicle=='Isuzu-918'){
+    else if(assignvehicle=='Isuzu Pick-up'){
       
       var plate = $("input[name='plate']"); 
        
