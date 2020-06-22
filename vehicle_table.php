@@ -116,7 +116,7 @@ $edit="edit";
                   <th width = ''>APPROVED</th> 
                   <th width = ''>SERVED COPY</th> 
                   
-                  <th width = '1000'>ACTION</th>
+                  <th width = '500'>ACTION</th>
                   
 
                 </tr>
@@ -338,7 +338,7 @@ $edit="edit";
 
 
 
-
+                          <!--   Assign -->
 
                           <?php if ($receiveddate1 != '0000-00-00'): ?>
                             <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' ):?>
@@ -367,9 +367,9 @@ $edit="edit";
                             </td>
                           
                             <?php endif ?>
-
+                            <!--   Assign -->
                             
-
+                            <!--   Recommend -->
                             <?php if ($assigneddate1 != '0000-00-00'): ?>
                               <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
                              
@@ -401,19 +401,31 @@ $edit="edit";
                           
                             <?php endif ?>
 
+                            <!--   Recommend -->
 
-
-
-
-                            <?php if ($receiveddate1 != '0000-00-00'): ?>
-                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == 'aoiglesia' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
-                              <?php if ($status != 'cancelled'): ?>
+                            <!--   Approve -->
+                            <?php if ($recommenddate1 != '0000-00-00'): ?>
+                              <?php if ($username1 == 'cvferrer' || $username1 == 'aoiglesia' || $username1 == '' || $username1 == '' || $username1 == ''|| $username1 == ''|| $username1 == ''):?>
+                             
+                                  <?php if ($approveddate1 == '0000-00-00' && $status != 'cancelled'): ?>
+                                  <td>
+                                  
+                                  <a  class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to approve this Vehicle Request?');" href='vehicle_approve.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Approve">Approve</a>
+                                  </td>  
+                                <?php else: ?>
                                 <td>
-                                <a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Approve</a>
-                                </td>   
-                              <?php else: ?>
-                              <td ></td>
-                              <?php endif ?>
+
+                                <?php if ($approveddate1 == '0000-00-00'): ?>
+                                <!-- //no dates -->
+                                <?php else: ?>
+                                <?php echo $approveddate.'<br>'.$approvedby?>
+                                <?php endif ?>
+                               
+                                </td>
+                                <?php endif ?>
+
+
+                             
                             <?php else: ?>
                             <td ></td>
                             <?php endif ?>
@@ -423,42 +435,49 @@ $edit="edit";
                           
                             <?php endif ?>
 
+                          <!--   Approve -->
 
 
 
 
-                            <?php if ($receiveddate1 != '0000-00-00'): ?>
+                          <!--   Serve -->
+                          <?php if ($approveddate1 != '0000-00-00'): ?>
                             <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
-                              <?php if ($status != 'cancelled'): ?>
-                                <td>
-                                <a class="btn btn-success btn-xs" onclick="" href='#?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Submit">Serve Copy</a>
-                                </td>   
-                              <?php else: ?>
-                              <td ></td>
-                              <?php endif ?>
-                            <?php else: ?>
-                            <td ></td>
-                            <?php endif ?>
-                            <?php else: ?>
-                         
-                            <td></td>
-                          
-                            <?php endif ?>
+
+                          <?php if ($serveddate1 == '0000-00-00' && $status != 'cancelled'): ?>
+                          <td>
+
+                          <a  class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to serve this Vehicle Request?');" href='vehicle_serve.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Serve">Serve</a>
+                          </td>  
+                          <?php else: ?>
+                          <td>
+
+                          <?php if ($serveddate1 == '0000-00-00'): ?>
+                          <!-- //no dates -->
+                          <?php else: ?>
+                          <?php echo $serveddate.'<br>'.$servedby?>
+                          <?php endif ?>
+
+                          </td>
+                          <?php endif ?>
+
+
+
+                          <?php else: ?>
+                          <td ></td>
+                          <?php endif ?>
+                          <?php else: ?>
+
+                          <td></td>
+
+                          <?php endif ?>
+
+                          <!--   Serve -->
                         
              
 
 
-              
-              
-               
-
-
-
-
-
-
-
-                <td>
+                  <td>
                     <?php if ($submitteddate1 == 0000-00-00): ?>
                           <!--  -->
                               <?php if ($status!='cancelled'):?>
@@ -797,9 +816,11 @@ $edit="edit";
             <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Assign Vehicle Request</h4>
+              <h4 class="modal-title">Recommend Vehicle Request</h4>
+              
             </div>
-            <div class="modal-body">
+            
+           
               <form method="POST" id="insert_form" action="vehicle_recommend.php">
               
             
@@ -814,13 +835,13 @@ $edit="edit";
 
                   <td class="col-3" >
 
-                  <button type="submit" name="approved" class="btn btn-primary pull-right">Approved</button>
+                  <button type="submit" name="approved" onclick="return confirm('Are you sure you want to approve this Vehicle Request?');" class="btn btn-primary pull-right">Approved</button>
 
                   </td>
 
                   <td class="col-3" >
 
-                  <button type="submit" name="disapproved" class="btn btn-primary pull-right">Disapproved</button>
+                  <button type="submit" onclick="return confirm('Are you sure you want to disapprove this Vehicle Request?');" name="disapproved" class="btn btn-primary pull-right">Disapproved</button>
 
                   </td>
 
@@ -837,24 +858,21 @@ $edit="edit";
               </table>
 
 
-              <br>
-            
-             
 
 
               <input hidden  type="text" name="rvalue" id="rvalue" value="" class=""/>
-              <br>
+             
               <input hidden   type="text" name="userr" id="userr" value="<?php echo $username1?>" class=""/>
-              <br>
+             
               <input hidden  type="text" name="nowr" id="nowr" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
-            
+            <br>
         </form>
             </div>
            
             </div>
             </div>
           </div>
-          </div>
+         
   <!-- recommending -->
 
 
