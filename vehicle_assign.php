@@ -9,11 +9,11 @@ $now1=$_POST["nowv"];
 $date = date('Y-m-d', strtotime($now1));
 $user=$_POST["userv"];
 
-$assigndate1=$_POST["assigndate"];
-$assigndate = date('Y-m-d', strtotime($assigndate1));
+$assigneddate1=$_POST["assigneddate"];
+$assigneddate = date('Y-m-d', strtotime($assigneddate1));
 
-$assigntime1=$_POST["assigntime"];
-$assigntime = date('H:i', strtotime($assigntime1));
+$assignedtime1=$_POST["assignedtime"];
+$assignedtime = date('H:i', strtotime($assignedtime1));
 
 $dispatcher=$_POST["dispatcher"];
 $nov=$_POST["nov"];
@@ -29,7 +29,7 @@ if ($conn->connect_error) {
 }
      
 
-$query = mysqli_query($conn, "UPDATE vr set assigneddate='$assigndate', assignedtime='$assigntime',dispatcher='$dispatcher',nov='$nov',av='$av',ad='$ad',plate='$plate',vremarks='$vremarks' where id = '$id'");
+$query = mysqli_query($conn, "UPDATE vr set assigneddate='$assigneddate', assignedtime='$assignedtime',dispatcher='$dispatcher',nov='$nov',av='$av',ad='$ad',plate='$plate',vremarks='$vremarks' where id = '$id'");
 
 /* echo "UPDATE vr set assigneddate='$assigndate', assignedtime='$assigntime',dispatcher='$dispatcher',nov='$nov',av='$av',ad='$ad',plate='$plate',vremarks='$vremarks' where id = '$id'";
 exit(); */

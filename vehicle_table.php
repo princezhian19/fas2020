@@ -200,11 +200,11 @@ $edit="edit";
                   $pos=$row['pos'];
 
                  
-                  $assigndate1=$row["assigndate"];
-                  $assigndate = date('Y-m-d', strtotime($assigndate1));
+                  $assigneddate1=$row["assigneddate"];
+                  $assigneddate = date('Y-m-d', strtotime($assigneddate1));
 
-                  $assigntime1=$row["assigntime"];
-                  $assigntime = date('H:i', strtotime($assigntime1));
+                  $assignedtime1=$row["assignedtime"];
+                  $assignedtime = date('H:i', strtotime($assignedtime1));
 
                   $dispatcher=$row["dispatcher"];
                   $nov=$row["nov"];
@@ -324,29 +324,37 @@ $edit="edit";
 
 
 
-                          <?php if ($receiveddate1 != '0000-00-00' && $assigneddate1 == '0000-00-00' ): ?>
-                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
-                              <?php if ($status != 'cancelled'): ?>
-                                <td>
+                          <?php if ($receiveddate1 != '0000-00-00'): ?>
+                            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' && $status != 'cancelled'):?>
+                             
+                                <?php if ($assigneddate1 == '0000-00-00'): ?>
+                                  <td>
                                   <a name="assign" value="" id="assign" onclick="myFunction1(this)" data-assignID="<?php echo $id;?>" data-toggle="modal" data-target="#assign_data_Modal" title="Assign" class = "btn btn-success btn-xs" > <i class='fa'></i> Assign</a> 
-                                </td>   
-                              <?php else: ?>
-                              <td ></td>
-                              <?php endif ?>
+                                 
+                                </td>  
+                                <?php else: ?>
+                                <td>
+                                <?php echo $av.'<br>'.$ad?>
+                                </td>
+                                <?php endif ?>
+                          
                             <?php else: ?>
-                            <td ></td>
+                            <td >
+
+                            </td>
                             <?php endif ?>
+
                             <?php else: ?>
                          
                             <td>
-                            
-                            <?php echo $av.'<br>'.$ad?>
-
+                           
                             </td>
                           
                             <?php endif ?>
 
-                            <?php if ($receiveddate1 != '0000-00-00' ): ?>
+                            
+
+                            <?php if ($assigneddate1 != '0000-00-00'): ?>
                             <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
                               <?php if ($status != 'cancelled'): ?>
                                 <td>
@@ -363,6 +371,10 @@ $edit="edit";
                             <td></td>
                           
                             <?php endif ?>
+
+
+
+                            
 
                             <?php if ($receiveddate1 != '0000-00-00'): ?>
                             <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == 'aoiglesia' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
@@ -381,6 +393,10 @@ $edit="edit";
                             <td></td>
                           
                             <?php endif ?>
+
+
+
+
 
                             <?php if ($receiveddate1 != '0000-00-00'): ?>
                             <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
@@ -621,7 +637,7 @@ $edit="edit";
                   <td >Assigned Date :</td>
 
                   <td class="" >
-                  <input  required type="text" class="form-control" name="assigndate" id="datepicker1" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
+                  <input  required type="text" class="form-control" name="assigneddate" id="datepicker1" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
 
                   </td>
                   </tr>
@@ -630,7 +646,7 @@ $edit="edit";
                   <td >Assigned Time :</td>
                   
                   <td class="" >
-                  <input  required type="time" class="form-control" name="assigntime" id="assigntime" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
+                  <input  required type="time" class="form-control" name="assignedtime" id="assignedtime" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
 
                   </td>
                   </tr>
