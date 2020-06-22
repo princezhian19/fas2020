@@ -158,7 +158,8 @@ $autoNo = $getDate.'-'.$m.'-'.'00'.$idGet;
             <div class="col-md-6">
              <div class="form-group">
               <div style="font-size: 13px;" class="well" >
-                <input type="checkbox" id="select-all" onClick="toggle(this)" ><label>Checklist:</label>
+                <label>Checklist:</label>
+                <!-- <input type="checkbox" id="select-all" onClick="toggle(this)" ><label>Checklist:</label> -->
                 <br>
                 <?php 
                 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
@@ -167,7 +168,7 @@ $autoNo = $getDate.'-'.$m.'-'.'00'.$idGet;
                   $id = $rowC['id'];
                   $note = $rowC['note'];
                   ?>
-                  <input required type="checkbox"  name="note_id[]" value="<?php echo $id; ?>">&nbsp<b><?php echo $note;?></b></input>
+                  <input checked type="checkbox"  name="note_id[]" value="<?php echo $id; ?>">&nbsp<b><?php echo $note;?></b></input>
                   <br>
 
                 <?php } ?>
