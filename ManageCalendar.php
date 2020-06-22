@@ -239,7 +239,7 @@ function viewEvents2()
                                 <th style = "text-align:center;">TARGET PAX</th>
                                 <th style = "text-align:center;width:10%;">POSTED BY</th>
                                 <th style = "text-align:center;width:10%;">POSTED DATE</th>
-                                <?php if ($username == 'mmmonteiro' ||$username == 'charlesodi' || $username == 'masacluti' || $username == 'seolivar' || $username == 'rggutierrez' || $username == 'cvferrer'): ?>
+                                <?php if ($username = 'lasabanal' || $username == 'mmmonteiro' ||$username == 'charlesodi' || $username == 'masacluti' || $username == 'seolivar' || $username == 'rggutierrez' || $username == 'cvferrer'): ?>
                                     <th style = "text-align:center;width:18%;">ACTION</th>
 
                 <?php else: ?>
