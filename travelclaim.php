@@ -93,7 +93,17 @@ include 'travelclaim_functions.php';
                   </tr>
                   <tr>
                     <td class = "label-text">  <label>Official Station: <label style="color: Red;" >*</label></td>
-                    <td colspan = 4><input type = "text" class = "form-control" value = "<?php echo getOffice();?>" /></td>
+                    <td colspan = 4>
+                    <select required id="mySelect2" class="form-control" name="office">
+                    <option selected disabled></option>
+                <option value="1" selected>Regional Office</option>
+                <option value="2">Provincial/HUC Office</option>
+                <option value="3">Cluster Office</option>
+                <option value="4">City/Municipal Office</option>
+                    </select>
+
+                    
+                    </td>
                   </tr>
                  
                   <tr>
