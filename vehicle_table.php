@@ -374,7 +374,7 @@ $edit="edit";
 
 
 
-                            
+
 
                             <?php if ($receiveddate1 != '0000-00-00'): ?>
                             <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == 'aoiglesia' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
@@ -677,9 +677,9 @@ $edit="edit";
                   <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
                   <select required class="form-control" style="width: 100%;" name="av" id="av" >
                       <option value="">Select Vehicle</option>
-                      <option value="Cross Wind-8974">Cross Wind-8974</option>
-                      <option value="Cross Wind-8994">Cross Wind-8994</option>
-                      <option value="Isuzu-918">Isuzu-918</option>
+                      <option value="Cross Wind-8974">Isuzu Cross Wind-8974</option>
+                      <option value="Cross Wind-8994">Isuzu Cross Wind-8994</option>
+                      <option value="Isuzu-918">Isuzu Pick-up</option>
                      
                   </select>
                   </td> 
@@ -863,7 +863,7 @@ $(document).ready(function(){
     assignvehicle = document.getElementById("av").value;
 
    
-    if(assignvehicle=='Cross Wind-8974'){
+    if(assignvehicle=='Isuzu Cross Wind-8974'){
    
       
         var plate = $("input[name='plate']"); 
@@ -873,7 +873,7 @@ $(document).ready(function(){
      
      
     }
-    else if(assignvehicle=='Cross Wind-8994'){
+    else if(assignvehicle=='Isuzu Cross Wind-8994'){
       
       var plate = $("input[name='plate']"); 
        
@@ -883,7 +883,7 @@ $(document).ready(function(){
        
     }
 
-    else if(assignvehicle=='Isuzu-918'){
+    else if(assignvehicle=='Isuzu Pick-up'){
       
       var plate = $("input[name='plate']"); 
        
