@@ -1013,7 +1013,7 @@ while($rowrfid14 = mysqli_fetch_assoc($sql_items4) ){
 </div>
 </div>
 <button class="btn btn-success" name="submit" >Award</button> 
- <a href="export_abstract.php?rfq_id=<?php echo $rfq_id; ?>&abstract_no=<?php echo $abstract_no1?>" class="btn btn-primary">Export</a>
+ <a href="export_abstract.php?rfq_id=<?php echo $rfq_id; ?>&abstract_no=<?php echo $abstract_no1?>&pr_no=<?php echo $pr_no?>" class="btn btn-primary">Export</a>
 
 <br>
 <br>

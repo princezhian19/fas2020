@@ -140,13 +140,18 @@ while ($rfqitems = mysqli_fetch_assoc($select_rfqitems)) {
 }
 $implode2 = implode(',', $rfq_items_id_abc);
 
-$select_tots = mysqli_query($conn,"SELECT sum(ppu*qty) as ABCtots FROM supplier_quote sq LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE rfq_item_id in($implode2) AND supplier_id = $win_id");
-while($rowppu = mysqli_fetch_array($select_tots)){
-    $ABCtots = $rowppu['ABCtots'];
-$objPHPExcel->getActiveSheet()->getStyle('C12')->getNumberFormat()->setFormatCode(FORMAT_CURRENCY_PHP);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C12',$ABCtots);
+// $select_tots = mysqli_query($conn,"SELECT sum(ppu*qty) as ABCtots FROM supplier_quote sq LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE rfq_item_id in($implode2) AND supplier_id = $win_id");
 
-}
+$view_query1 = mysqli_query($conn, "SELECT  sum(abc*qty) as aa from pr_items WHERE pr_no = '$pr_no' ");
+            $rowppu = mysqli_fetch_array($view_query1);
+            $abc12 = $rowppu["aa"];
+            $tot = number_format($abc12,2);
+// while($rowppu = mysqli_fetch_array($select_tots)){
+    // $ABCtots = $rowppu['ABCtots'];
+$objPHPExcel->getActiveSheet()->getStyle('C12')->getNumberFormat()->setFormatCode(FORMAT_CURRENCY_PHP);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('C12',$abc12);
+
+// }
 
 
 
@@ -232,13 +237,13 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   $item_unit_title = $excelrow['item_unit_title'];
   $unit = $excelrow['unit'];
 
-  // $objPHPExcel->getActiveSheet()->mergeCells('A'.$rowOne.':'.'E'.$rowOne);
+  $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowOne.':'.'E'.$rowOne);
   $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne.':'.'E'.$rowOne)->applyFromArray($border);
 
   $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne)->applyFromArray($styleContent18);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowOne,$itemno);
   $objPHPExcel->getActiveSheet()->getStyle('B'.$rowOne)->applyFromArray($styleContent);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowOne,$excelrow['procurement'] ."\n".$excelrow['description']);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowOne,$excelrow['procurement']);
   $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($styleContent);
   $objPHPExcel->getActiveSheet()->getStyle('F'.$rowOne)->applyFromArray($border);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$rowOne,$excelrow['qty']);
