@@ -224,6 +224,8 @@ $edit="edit";
 
                   $approvedby=$row["approvedby"];
 
+                  $astatus=$row["astatus"];
+
                   $serveddate1=$row["serveddate"];
                   $serveddate = date('F d, Y', strtotime($serveddate1));
 
@@ -414,20 +416,22 @@ $edit="edit";
 
                             <!--   Approve -->
                             <?php if ($recommenddate1 != '0000-00-00'): ?>
-                              <?php if ($username1 == 'cvferrer' || $username1 == 'aoiglesia' || $username1 == '' || $username1 == '' || $username1 == ''|| $username1 == ''|| $username1 == ''):?>
+                              <?php if ($username1 == 'cvferrer' || $username1 == 'aoiglesia' || $username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
                              
                                   <?php if ($approveddate1 == '0000-00-00' && $status != 'cancelled'): ?>
                                   <td>
                                   
-                                  <a  class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to approve this Vehicle Request?');" href='vehicle_approve.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Approve">Approve</a>
-                                  </td>  
+                                  <!-- <a  class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to approve this Vehicle Request?');" href='vehicle_approve.php?id=<?php echo $id;?>&now=<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>&user=<?php echo $username1;?>'title="Approve">Approve</a> -->
+                                  <a name="approve" value="" id="approve" onclick="myFunction3(this)" data-avalue="<?php echo $id;?>" data-toggle="modal" data-target="#approve_data_Modal" title="Recommend" class = "btn btn-success btn-xs" > <i class='fa'></i> Approve</a>   
+                                
+                                </td>  
                                 <?php else: ?>
                                 <td>
 
                                 <?php if ($approveddate1 == '0000-00-00'): ?>
                                 <!-- //no dates -->
                                 <?php else: ?>
-                                <?php echo $approveddate.'<br>'.$approvedby?>
+                                <?php echo $approveddate.'<br>'.$approvedby.'<br>'. $astatus?>
                                 <?php endif ?>
                                
                                 </td>
@@ -596,6 +600,21 @@ $edit="edit";
         }
         </script>
           <!-- //Setting recommending ID -->
+
+          
+            <!-- //Setting approve ID -->
+        <script>
+        function myFunction3(avalue) {
+
+          var avalue1 = avalue.getAttribute("data-avalue");
+          var avalue = $("input[name='avalue']");
+          avalue.val(avalue1);
+
+         
+       
+        }
+        </script>
+          <!-- //Setting approve ID -->
       
     <script type="text/javascript">
     $(document).ready(function() {
@@ -846,13 +865,13 @@ $edit="edit";
 
                   <td class="col-3" >
 
-                  <button type="submit" name="approved" onclick="return confirm('Are you sure you want to approve this Vehicle Request?');" class="btn btn-primary pull-right">Approved</button>
+                  <button type="submit" name="r" onclick="return confirm('Are you sure you want to recommend this Vehicle Request?');" class="btn btn-primary pull-right">Recommend</button>
 
                   </td>
 
                   <td class="col-3" >
 
-                  <button type="submit" onclick="return confirm('Are you sure you want to disapprove this Vehicle Request?');" name="disapproved" class="btn btn-primary pull-right">Disapproved</button>
+                  <button type="submit" name="nr" onclick="return confirm('Are you sure you dont want to recommend this Vehicle Request?');"  class="btn btn-primary pull-right">Don't Recommend</button>
 
                   </td>
 
@@ -885,6 +904,74 @@ $edit="edit";
           </div>
          
   <!-- recommending -->
+
+
+
+  <!-- approving -->
+
+<div id="approve_data_Modal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Approve Vehicle Request</h4>
+              
+            </div>
+            
+           
+              <form method="POST" id="insert_form" action="vehicle_approve.php">
+              
+            
+              
+              <table class="table">
+                  <tr>
+                  <td class="col-md-3" >
+
+                
+
+                  </td>
+
+                  <td class="col-3" >
+
+                  <button type="submit" name="approved" onclick="return confirm('Are you sure you want to approve this Vehicle Request?');" class="btn btn-primary pull-right">Approve</button>
+
+                  </td>
+
+                  <td class="col-3" >
+
+                  <button type="submit" onclick="return confirm('Are you sure you dont want to disapprove this Vehicle Request?');" name="disapproved" class="btn btn-primary pull-right">Disapprove</button>
+
+                  </td>
+
+                  <td class="col-md-3" >
+
+
+                  </td>
+
+                 
+                  </tr>
+                  
+                
+
+              </table>
+
+
+
+
+              <input hidden  type="text" name="avalue" id="avalue" value="" class=""/>
+             
+              <input hidden   type="text" name="usera" id="usera" value="<?php echo $username1?>" class=""/>
+             
+              <input hidden  type="text" name="nowa" id="nowa" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+            <br>
+        </form>
+            </div>
+           
+            </div>
+            </div>
+          </div>
+         
+  <!-- approving -->
 
 
         
