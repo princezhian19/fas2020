@@ -77,6 +77,13 @@ $edit="edit";
 <td class="col-md-2">
 
 <li class="btn btn-success"><a href="VehicleRequestCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a></li>  
+&nbsp;&nbsp;
+<li class="btn btn-success"><a href="VehicleRequestSchedule.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Trip Schedule</a></li>  
+</td>
+
+<td class="col-md-1">
+
+
 </td>
 
 <td class="col-md-6" >
@@ -739,7 +746,7 @@ $edit="edit";
                   <td >  <label> Assigned Time <span style = "color:red;">*</span></label>  </td>
                   
                   <td class="" >
-                  <input  required type="time" class="form-control" name="assignedtime" id="assignedtime" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
+                  <input  required type="time" class="form-control" name="assignedtime" id="assignedtime" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('H:i') ?>" >
 
                   </td>
                   </tr>
