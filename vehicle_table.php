@@ -78,7 +78,14 @@ $edit="edit";
 
 <li class="btn btn-success"><a href="VehicleRequestCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a></li>  
 &nbsp;&nbsp;
+
+<?php  if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'): ?>
 <li class="btn btn-success"><a href="VehicleRequestSchedule.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Trip Schedule</a></li>  
+<?php else: ?>
+
+<?php endif ?>
+
+
 </td>
 
 <td class="col-md-1">

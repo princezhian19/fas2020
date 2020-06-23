@@ -6,8 +6,10 @@
               <div class="row">
                 <div class="col-md-4">
                 <h1>Trip Schedule</h1>
+                <br>
+                <li class="btn btn-warning"><a href="VehicleRequest.php" style="color:white;text-decoration: none;">Back</a></li>
                 <div class = "col-lg-12">
-                
+               
                     <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-12">
                     <!-- <input type = "text" class = "form-control filter"  id="type_filter" placeholder=  "Search Activities"/> -->
                     
@@ -69,58 +71,34 @@
                                     <table class="table table-bordered" style="border-width: 3px;max-width:100%;">
                                             <tr>
                                                 <td colspan = "2"><b><input  class='calFilter' type="checkbox" name = "offices[]" value="0"  id = "all" ></label>
-                                                All Offices</b></td>
+                                                All Drivers</b></td>
                                             </tr>
                                         
                                             <tr>
                                             <td style="background-color: #D5D911; color:white;WIDTH:50%;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="1" id = "ord" ><label style = "margin-left:15%;">ORD</label>
+                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Reynaldo Parale" id = "Reynaldo Parale" ><label style = "margin-left:15%;">Reynaldo Parale</label>
                                                 </td>
                                                 <td style="background-color: #607D8B; color:#fff;padding:9px;WIDTH:50%;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="19" id = "batangas"><label style = "margin-left:15%;">Batangas</label>
+                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Louie Blanco" id = "Louie Blanco"><label style = "margin-left:15%;">Louie Blanco</label>
                                                 </td>
                                             </tr>
                                             <tr>
                                             <td style="background-color: #E60785; color:white;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="10" id = "fad"><label style = "margin-left:15%;">FAD</label>
+                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Joachim Lacdang" id = "Joachim Lacdang"><label style = "margin-left:15%;">Joachim Lacdang</label>
                                                 </td>
                                                 <td style="background-color:#FF9800 ; color:white;;padding:9px;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="20" id = "cavite"><label style = "margin-left:15%;">Cavite</label>
+                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Medel Saturno" id = "Medel Saturno"><label style = "margin-left:15%;">Medel Saturno</label>
                                                 </td>
                                             </tr>
                                             <tr>
                                             <td style="background-color: #48BD0D; color:white;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="17" id = "lgcdd"><label style = "margin-left:15%;">LGCDD</label>
+                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Daniel Narciso" id = "Daniel Narciso"><label style = "margin-left:15%;">Daniel Narciso</label>
                                                 </td>
-                                                <td style="background-color:#009688; color:white;;padding:9px;">                                   
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="21" id = "laguna" ><label style = "margin-left:15%;">Laguna</label>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                            <td style="background-color: #E6680E; color:white;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="7" id = "mbrtg"><label style = "margin-left:15%;">MBRTG</label>
-                                                </td>
-                                                <td style="background-color:#81D4FA; color:white;;padding:9px;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="23" id = "rizal"><label style = "margin-left:15%;">Rizal</label>
-                                                </td>
+                                               
                                             
                                             </tr>
                                             <tr>
-                                            <td style="background-color: #0071c5; color:white;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="18" id = "lgmed"><label style = "margin-left:15%;">LGMED</label>
-                                                </td>
-                                                <td style="background-color:#d50000; color:white;;padding:9px;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="22" id = "quezon"><label style = "margin-left:15%;">Quezon</label>
-                                                </td>
-                                            
-                                            </tr>
-                                            <tr>
-                                            <td style="background-color: #8F0CC7; color:white;">
-                                                    <input class='calFilter' data-id = "9" type="checkbox" name = "offices[]" value="9" id = "pdmu" ><label style = "margin-left:15%;">PDMU</label>
-                                                </td>
-                                                <td style="background-color: #FFEB3B; color:white;;padding:9px;">
-                                        <input class='calFilter' type="checkbox" name = "offices[]" value="24"id = "lucena"><label style = "margin-left:15%;">Lucena City</label>
-                                    </td>
+                                           
                                             </tr>
                                     </table>
                                 <button class="btn btn-success pull-right"><a style = "color:#fff;"  id = "export"  >Export</a></button>
