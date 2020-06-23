@@ -287,11 +287,7 @@ if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmont
 
 }
  
-  // if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-  //     include('test1.php');
-  //   }else{
-  //     include('sidebar2.php');
-  //   }
+  
  ?>
 <?php include 'connection.php';?>
 
@@ -451,20 +447,12 @@ $(document).ready(function()
 
   
             $( "#all" ).prop( "checked", true );
-            $( "#ord" ).prop( "checked", true );
-            $( "#fad" ).prop( "checked", true );
-            $( "#lgcdd" ).prop( "checked", true );
-            $( "#lgmed" ).prop( "checked", true );
-            $( "#mbrtg" ).prop( "checked", true );
-            $( "#pdmu" ).prop( "checked", true );
-
-            $( "#addll" ).prop( "checked", true );
-            $( "#cavite" ).prop( "checked", true );
-            $( "#laguna" ).prop( "checked", true );
-            $( "#batangas" ).prop( "checked", true );
-            $( "#quezon" ).prop( "checked", true );
-            $( "#rizal" ).prop( "checked", true );
-            $( "#lucena" ).prop( "checked", true );
+            $( "#ReynaldoParale" ).prop( "checked", true );
+            $( "#LouieBlanco" ).prop( "checked", true );
+            $( "#JoachimLacdang" ).prop( "checked", true );
+            $( "#MedelSaturno" ).prop( "checked", true );
+            $( "#DanielNarciso" ).prop( "checked", true );
+            
       
  
             $(".datepicker1").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
@@ -482,18 +470,12 @@ $(document).ready(function()
 $(document).ready(function() {
 $("#all").click(function(){
     $('#all').not(this).prop('checked', this.checked);
-    $('#ord').not(this).prop('checked', this.checked);
-    $('#fad').not(this).prop('checked', this.checked);
-    $('#lgcdd').not(this).prop('checked', this.checked);
-    $('#mbrtg').not(this).prop('checked', this.checked);
-    $('#lgmed').not(this).prop('checked', this.checked);
-    $('#pdmu').not(this).prop('checked', this.checked);
-    $('#cavite').not(this).prop('checked', this.checked);
-    $('#laguna').not(this).prop('checked', this.checked);
-    $('#batangas').not(this).prop('checked', this.checked);
-    $('#quezon').not(this).prop('checked', this.checked);
-    $('#rizal').not(this).prop('checked', this.checked);
-    $('#lucena').not(this).prop('checked', this.checked);
+    $('#ReynaldoParale').not(this).prop('checked', this.checked);
+    $('#LouieBlanco').not(this).prop('checked', this.checked);
+    $('#JoachimLacdang').not(this).prop('checked', this.checked);
+    $('#MedelSaturno').not(this).prop('checked', this.checked);
+    $('#DanielNarciso').not(this).prop('checked', this.checked);
+   
 });  
 
     
@@ -562,32 +544,25 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
            var show_username, show_type = true, show_calendar = true;
           //  ===================
        
+
       
-          if($('input[id=ord]').is(':checked')){
+          if($('input[id=ReynaldoParale]').is(':checked')){
             $( "#all" ).prop( "checked", false );
-          }else if($('input[id=fad]').is(':checked')){
+          }else if($('input[id=LouieBlanco]').is(':checked')){
             $( "#all" ).prop( "checked", false );
-          }else if($('input[id=lgcdd]').is(':checked')){
+          }else if($('input[id=JoachimLacdang]').is(':checked')){
             $( "#all" ).prop( "checked", false );
-          }else if($('input[id=mbrtg]').is(':checked')){
+          }else if($('input[id=MedelSaturno]').is(':checked')){
             $( "#all" ).prop( "checked", false );
-          }else if($('input[id=lgmed]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }else if($('input[id=pdmu]').is(':checked')){
+          }else if($('input[id=DanielNarciso]').is(':checked')){
             $( "#all" ).prop( "checked", false );
           }
-          if($('input[id=ord]').is(':checked') && 
-            $('input[id=fad]').is(':checked') && 
-            $('input[id=lgcdd]').is(':checked') &&
-            $('input[id=mbrtg]').is(':checked')&&
-            $('input[id=lgmed]').is(':checked')&&
-            $('input[id=pdmu]').is(':checked')&&
-            $('input[id=cavite]').is(':checked')&&
-            $('input[id=batangas]').is(':checked')&&
-            $('input[id=laguna]').is(':checked')&&
-            $('input[id=rizal]').is(':checked')&&
-            $('input[id=quezon]').is(':checked')&&
-            $('input[id=lucena]').is(':checked')
+          if($('input[id=ReynaldoParale]').is(':checked') && 
+            $('input[id=LouieBlanco]').is(':checked') && 
+            $('input[id=JoachimLacdang]').is(':checked') &&
+            $('input[id=MedelSaturno]').is(':checked')&&
+            $('input[id=DanielNarciso]').is(':checked')
+           
             )
             
             {

@@ -76,23 +76,23 @@
                                         
                                             <tr>
                                             <td style="background-color: #D5D911; color:white;WIDTH:50%;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Reynaldo Parale" id = "Reynaldo Parale" ><label style = "margin-left:15%;">Reynaldo Parale</label>
+                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Reynaldo Parale" id = "ReynaldoParale" ><label style = "margin-left:15%;">Reynaldo Parale</label>
                                                 </td>
                                                 <td style="background-color: #607D8B; color:#fff;padding:9px;WIDTH:50%;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Louie Blanco" id = "Louie Blanco"><label style = "margin-left:15%;">Louie Blanco</label>
+                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Louie Blanco" id = "LouieBlanco"><label style = "margin-left:15%;">Louie Blanco</label>
                                                 </td>
                                             </tr>
                                             <tr>
                                             <td style="background-color: #E60785; color:white;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Joachim Lacdang" id = "Joachim Lacdang"><label style = "margin-left:15%;">Joachim Lacdang</label>
+                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Joachim Lacdang" id = "JoachimLacdang"><label style = "margin-left:15%;">Joachim Lacdang</label>
                                                 </td>
                                                 <td style="background-color:#FF9800 ; color:white;;padding:9px;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Medel Saturno" id = "Medel Saturno"><label style = "margin-left:15%;">Medel Saturno</label>
+                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Medel Saturno" id = "MedelSaturno"><label style = "margin-left:15%;">Medel Saturno</label>
                                                 </td>
                                             </tr>
                                             <tr>
                                             <td style="background-color: #48BD0D; color:white;">
-                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Daniel Narciso" id = "Daniel Narciso"><label style = "margin-left:15%;">Daniel Narciso</label>
+                                                    <input class='calFilter' type="checkbox" name = "offices[]" value="Daniel Narciso" id = "DanielNarciso"><label style = "margin-left:15%;">Daniel Narciso</label>
                                                 </td>
                                                
                                             
