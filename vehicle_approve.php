@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 }
      
 
-$query = mysqli_query($conn, "UPDATE vr set approveddate='$date', approvedby='$user', astatus='Recommended' where id = '$id'");
+$query = mysqli_query($conn, "UPDATE vr set approveddate='$date', approvedby='$user', astatus='Approved' where id = '$id'");
 
 /* echo "UPDATE vr set recommenddate='$date', recommendby='$user' rstatus='Approved' where id = '$id'";
 exit(); */
