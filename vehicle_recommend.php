@@ -2,7 +2,7 @@
 
 
 
-if (isset($_POST['approved'])){
+if (isset($_POST['r'])){
  
 $id=$_POST["rvalue"];
 $now1=$_POST["nowr"];
@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 }
      
 
-$query = mysqli_query($conn, "UPDATE vr set recommenddate='$date', recommendby='$user', rstatus='Approved' where id = '$id'");
+$query = mysqli_query($conn, "UPDATE vr set recommenddate='$date', recommendby='$user', rstatus='Recommended' where id = '$id'");
 
 /* echo "UPDATE vr set recommenddate='$date', recommendby='$user' rstatus='Approved' where id = '$id'";
 exit(); */
@@ -28,7 +28,7 @@ exit(); */
 if($query){
    
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Vehicle Request Approved successfully.')
+    window.alert('Vehicle Request recommended successfully.')
     window.location.href='VehicleRequest.php';
     </SCRIPT>"); 
 }
@@ -41,7 +41,7 @@ else{
 
 }
 
-else if(isset($_POST['disapproved'])){
+else if(isset($_POST['nr'])){
 
     $id=$_POST["rvalue"];
     $now1=$_POST["nowr"];
@@ -57,7 +57,7 @@ else if(isset($_POST['disapproved'])){
     }
          
     
-    $query = mysqli_query($conn, "UPDATE vr set recommenddate='$date', recommendby='$user', rstatus='Disapproved' where id = '$id'");
+    $query = mysqli_query($conn, "UPDATE vr set recommenddate='$date', recommendby='$user', rstatus='Not Recommended' where id = '$id'");
     
    /*  echo "UPDATE vr set recommenddate='$date', recommendby='$user' rstatus='Disapproved' where id = '$id'";
     exit(); */
@@ -67,7 +67,7 @@ else if(isset($_POST['disapproved'])){
     if($query){
        
         echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Vehicle Request Disapproved successfully.')
+        window.alert('Vehicle Request was not recommended.')
         window.location.href='VehicleRequest.php';
         </SCRIPT>"); 
     }
