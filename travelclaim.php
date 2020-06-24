@@ -320,7 +320,7 @@ include 'travelclaim_functions.php';
                       <div class="col-md-3">
                         <div class="form-group">
                         
-                  <label>&nbsp;</label>
+                  <label>Time Going Home</label>
                             <input type = "time" name = "from2" class = "form-control"/>
                         </div>
                       </div>
@@ -388,18 +388,14 @@ include 'travelclaim_functions.php';
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>From</label>
-                            <div class="input-group">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" name = "from3[]" class="form-control datepicker6" id = "datepicker6" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
-                          </div>
+                           
+                            <input type="text" name = "from3[]" class="form-control " data-mask>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>To</label>
-                            <input type = "text" name = "to3[]" class = "form-control datepicker5" id = "datepicker5" />
+                            <input type = "text" name = "to3[]" class = "form-control "  />
                         </div>
                       </div>
                       <div class="col-md-6">
