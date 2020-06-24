@@ -331,6 +331,7 @@ include 'travelclaim_functions.php';
                         <input type="checkbox" name="r2" class="minimal-red checkboxgroup" > Breakfast
                         <input type="checkbox" name="r2" class="minimal-red checkboxgroup" > Lunch
                         <input type="checkbox" name="r2"  class="minimal-red checkboxgroup" > Dinner
+                        <input type="checkbox" name="r2"  class="minimal-red checkboxgroup" > Without Meals
                       </div>
                       </div>
                       <div class="col-md-3">
@@ -352,8 +353,9 @@ include 'travelclaim_functions.php';
                           <label>
                           Accomodation
                           </label><br>
-                          <input type="checkbox" name="r2" class="minimal-red" checked> With
-                          <input type="checkbox" name="r2" class="minimal-red" checked> Without
+                          <input type="checkbox"  class="minimal-red checkboxgroup1" id = "wa"> With Accomodation<br>
+                          <input type="checkbox"  class="minimal-red checkboxgroup1" id = "wr"> With Receipt<br>
+                          <input type="checkbox"  class="minimal-red checkboxgroup1" id = "wor"> Without Receipt
                           <input type="text" name="r2"  class = "borderless" style = "width:50%;"/>
                         </div>
                       </div>
@@ -361,7 +363,7 @@ include 'travelclaim_functions.php';
                         <div class="form-group">
                           <label>Others</label>
                           <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask><br>
-                          <button class = "btn btn-success btn-md pull-right">Add More </button>
+                          <button class = "btn btn-success btn-md pull-right">Add Fair </button>
                         </div>
                       </div>
                     </div>                  
@@ -408,7 +410,24 @@ include 'travelclaim_functions.php';
 $(document).on('click','#editbtn',function(e){
 
 var purpose = $('#or').val();
+var with_accomodation = $('#wa');
+var with_receipt = $('#wr');
+var without_receipt = $('#wor');
 $('#ro_txt').val(purpose);
 });
+
+$('.checkboxgroup').on('change', function() { 
+      $('.checkboxgroup').not(this).prop('checked', false);  
+  });
+
+  $('.checkboxgroup1').on('change', function() { 
+      $('.checkboxgroup1').not(this).prop('checked', false);  
+  });
+  // checkbox validation
+if(with_accomodation.is(':checked'))
+{
+  alert('a');
+}
+
 </script>
 

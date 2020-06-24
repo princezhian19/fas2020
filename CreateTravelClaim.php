@@ -107,9 +107,6 @@ $(document).ready(function(){
       showInputs: false
     })
     // ================================
-    $('.checkboxgroup').on('change', function() {
-      $('.checkboxgroup').not(this).prop('checked', false);  
-  });
 
  
 });
