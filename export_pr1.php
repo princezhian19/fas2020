@@ -182,12 +182,6 @@ if ($unit == "21") {
     $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
 
 
-    $objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
-    $objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
-    $objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
-    $objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
-
-    $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
     
     $row++;
     $rowA++;
