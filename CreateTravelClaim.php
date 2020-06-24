@@ -93,6 +93,25 @@ $(document).ready(function(){
     $('#datepicker3').datepicker({
       autoclose: true
     })
+
+    $('#datepicker4').datepicker({
+      autoclose: true
+    })
+    $('#datepicker5').datepicker({
+      autoclose: true
+    })
+    $('#datepicker6').datepicker({
+      autoclose: true
+    })
+    $('#timepicker').timepicker({
+      showInputs: false
+    })
+    // ================================
+    $('.checkboxgroup').on('change', function() {
+      $('.checkboxgroup').not(this).prop('checked', false);  
+  });
+
+ 
 });
 </script>
    

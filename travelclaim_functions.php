@@ -6,7 +6,7 @@ function getCompleteName()
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
-        echo ucfirst(strtolower($row['FIRST_M'])).' '.ucfirst(strtolower($row['LAST_M']));
+        echo ucwords(strtolower($row['FIRST_M'])).' '.ucfirst(strtolower($row['LAST_M']));
     }
 }
 function getPosition()
@@ -59,34 +59,43 @@ function showData()
         {
         ?>
         <tr>
-        <td colspan = 9 style = "background-color:#B0BEC5;">
-        <input 
-                type = "text" 
-                style = "width:100%;padding:5px;border:1px solid gray;"
-                value = "<?php echo $row['RO_TO_OB']; ?>"
-                readonly
-        />
-        </td>
+            <td colspan = 9 style = "background-color:#B0BEC5;">
+                <!-- <input type = "checkbox"> -->
+                <input type = "text" style = "width:100%;padding:5px;border:1px solid gray;" value = "<?php echo $row['RO_TO_OB']; ?>" readonly />
+            </td>
         </tr>
-        <tr>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-                <td><input type = "text" class = "form-control"/></td>
-        </tr>
+        <!-- <tr>
+            <td><input type = "text" class = "form-control"/></td>
+            <td><input type = "text" class = "form-control"/></td>
+            <td><input type = "text" class = "form-control"/></td>
+            <td><input type = "text" class = "form-control"/></td>
+            <td><input type = "text" class = "form-control"/></td>
+            <td><input type = "text" class = "form-control"/></td>
+            <td><input type = "text" class = "form-control"/></td>
+            <td><input type = "text" class = "form-control"/></td>
+            <td><input type = "text" class = "form-control"/></td>
+        </tr> -->
        
         <?php
         }
         ?>
         <tr>
             <td colspan = 9>
-                <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+            <?php 
+            if(mysqli_num_rows($result) > 0)
+            {
+                ?>
+                    <button disabled class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                    <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+                <?php
+            }else{
+                ?>
+                    <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                    <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+                <?php
+            }
+            ?>
+                
             </td>
         </tr>
         <?php
