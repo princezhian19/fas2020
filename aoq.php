@@ -10,11 +10,11 @@ $date_opened1 = $_GET['date_opened'];
 $supplier_id_create = $_GET['supplier_id_create'];
 $abstract_no = $_GET['abstract_no'];
 $supplier_title_c = $_GET['supplier_title_c'];
-$date_opened = date("m-d-Y",strtotime($date_opened1));
+$date_opened = date("m/d/Y",strtotime($date_opened1));
 $date_opened2 = date("H:i",strtotime($date_opened1));
 $date =  date("m/d/Y") ;
 $time =  date("H:i") ;
-function Allsupplier($connect)
+function Allsupplier($connect)  
 { 
   $output = '';
   $query = "SELECT * FROM supplier GROUP BY supplier_title ASC ";
@@ -113,7 +113,6 @@ if (isset($_POST['submit'])) {
   $date_opened1 = $_POST['date_opened'];
   $time_opened = $_POST['time_opened'];
   $date_opened = date('Y-m-d H:i:s', strtotime("$date_opened1 $time_opened"));
-
   $remarks = $_POST['remarks'];
 
   $ifExist = mysqli_query($conn,"SELECT aoq_no FROM aoq_data WHERE aoq_no = '$abstract_no'");

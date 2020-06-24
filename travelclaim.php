@@ -43,7 +43,7 @@ include 'travelclaim_functions.php';
 </head>
 <div class="box">
   <div class="box-body">
-    <h1 align="">&nbsp<b>Create Itenerary</b></h1>
+    <h1 align="">&nbsp<b>Create Itinerary</b></h1>
     <div class="box-header with-border">
     </div>
     <br>
@@ -55,7 +55,19 @@ include 'travelclaim_functions.php';
             <div class="well" style = "padding:20px;">
 
             <center>
-            <h1>ITENERARY OF TRAVEL </h1>
+            <div class = "row">
+            <div class = "col-md-3">
+&nbsp;
+</div>
+              <div class = "col-md-3">
+            <h1>ITINERARY OF TRAVEL </h1>
+
+              </div>
+              <div class = "col-md-3">
+            <H5><i>Appendix 45</i></H5>
+
+              </div>
+            </div>
             
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
                     <tr>
@@ -102,13 +114,14 @@ include 'travelclaim_functions.php';
                   <tr>
                     <td class = "label-text">  <label>Official Station: <label style="color: Red;" >*</label></td>
                     <td colspan = 4>
-                    <select required id="mySelect2" class="form-control" name="office">
+                    <input type = "text" class = "form-control" readonly/>
+                    <!-- <select required id="mySelect2" class="form-control" name="office">
                     <option selected disabled></option>
                 <option value="1" selected>Regional Office</option>
                 <option value="2">Provincial/HUC Office</option>
                 <option value="3">Cluster Office</option>
                 <option value="4">City/Municipal Office</option>
-                    </select>
+                    </select> -->
 
                     
                     </td>
@@ -163,7 +176,7 @@ include 'travelclaim_functions.php';
               <tr>
               <td colspan = 5 rowspan = 2>Approved By
               <CENTER><br>_____________________________________________<br>
-             <b> NOEL R. BARTOLABAC, CESO V		</b>			
+             <b> ARIEL O. IGLESIA	</b>			
 </CENTER>
               </td>
               </tr>
@@ -268,55 +281,73 @@ include 'travelclaim_functions.php';
                   <div class="box-body">
                     <div class="row">
                       <div class="col-md-6">
+                        <div class = "form-group">
+                          <label> Destination </label>
+                            <input type="text" class="form-control " data-inputmask="'alias': 'dd/mm/yyyy'"  data-mask>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class = "form-group">
+                          <label> Means of Transportation </label>
+                            <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'"  data-mask>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class = "form-group">
+                          <label> Per Diem </label>
+                            <input type="text" class="form-control " data-inputmask="'alias': 'dd/mm/yyyy'"  data-mask>
+                        </div>
+                      </div>     
+                      <div class="col-md-6">
                         <div class="form-group">
                           <label>Date</label>
                             <div class="input-group">
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                            <input type="text" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
                           <label>Time Going to Venue</label>
-                            <input type = "text" class = "form-control"/>
+                            <input type = "time" class = "form-control "/>
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
                           <label>&nbsp;</label>
-                          <input type = "text" class = "form-control"/>
+                          <input type = "time" class = "form-control"/>
                         </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-6 well">
                         <div class="form-group">
                         <label>
                         Meals
                         </label><br>
-                        <input type="checkbox" name="r2" class="minimal-red" checked> Breakfast
-                        <input type="checkbox" name="r2" class="minimal-red" checked> Lunch
-                        <input type="checkbox" name="r2" class="minimal-red" checked> Dinner
+                        <input type="checkbox" name="r2" class="minimal-red checkboxgroup" > Breakfast
+                        <input type="checkbox" name="r2" class="minimal-red checkboxgroup" > Lunch
+                        <input type="checkbox" name="r2"  class="minimal-red checkboxgroup" > Dinner
                       </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
                           <label style = "font-size:13px;">Time Going to Home or back to Official Station</label>
-                            <input type = "text" class = "form-control"/>
+                            <input type = "time" class = "form-control"/>
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
                           <label>&nbsp;</label>
-                          <input type = "text" class = "form-control"/>
+                          <input type = "time" class = "form-control" style = "margin-top:15px;"/>
                         </div>
                       </div>
                     </div>  
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-6 well">
                         <div class="form-group">
                           <label>
                           Accomodation
@@ -347,18 +378,18 @@ include 'travelclaim_functions.php';
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                            <input type="text" class="form-control datepicker6" id = "datepicker6" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>To</label>
-                            <input type = "text" class = "form-control"/>
+                            <input type = "text" class = "form-control datepicker5" id = "datepicker5" />
                         </div>
                       </div>
                     </div>
-                                     
+
                     </div>
                   </div>
                   </div>
