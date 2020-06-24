@@ -275,7 +275,8 @@ include 'travelclaim_functions.php';
               <h4 class="modal-title">Add Travel Dates</h4>
                 <button type="button" class="close" data-dismiss="modal">&times; </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style = " max-height: calc(100vh - 200px);
+    overflow-y: auto;">
               <div class="box-body">
                 <div class="well" style = "padding:10px;">
                   <div class="box-body">
@@ -363,16 +364,16 @@ include 'travelclaim_functions.php';
                         <div class="form-group">
                           <label>Others</label>
                           <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask><br>
-                          <button class = "btn btn-success btn-md pull-right">Add Fair </button>
+                          <button class = "btn btn-success btn-md pull-right" id = "add_fair">Add Fair </button>
                         </div>
                       </div>
                     </div>                  
                     </div>
                   </div>
-                <div class="well" style = "padding:10px;">
+                <div class="well" style = "padding:10px;" id = "travelPanel">
 
-                  <div class="box-body">
-                    <div class="row">
+                  <div class="box-body myTemplate2">
+                    <div class="row ">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>From</label>
@@ -391,12 +392,13 @@ include 'travelclaim_functions.php';
                         </div>
                       </div>
                     </div>
+                    
 
                     </div>
                   </div>
                   </div>
                 </div>
-                
+                 
               </div>
               
           </div>
@@ -407,12 +409,27 @@ include 'travelclaim_functions.php';
     </div>
 
 <script>
+ var myCounter = 1;
+
+ $('#add_fair').click(function(){
+    $('.myTemplate2')
+   .clone()
+   .removeClass("myTemplate2")
+   .addClass("additionalDate")
+   .show()
+   .appendTo('#travelPanel');
+   
+  myCounter++;
+
+
+});
 $(document).on('click','#editbtn',function(e){
+ 
 
 var purpose = $('#or').val();
-var with_accomodation = $('#wa');
-var with_receipt = $('#wr');
-var without_receipt = $('#wor');
+// var with_accomodation = $('#wa');
+// var with_receipt = $('#wr');
+// var without_receipt = $('#wor');
 $('#ro_txt').val(purpose);
 });
 
@@ -424,10 +441,10 @@ $('.checkboxgroup').on('change', function() {
       $('.checkboxgroup1').not(this).prop('checked', false);  
   });
   // checkbox validation
-if(with_accomodation.is(':checked'))
-{
-  alert('a');
-}
+// if(with_accomodation.is(':checked'))
+// {
+//   alert('a');
+// }
 
 </script>
 

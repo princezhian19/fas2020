@@ -103,9 +103,7 @@ $(document).ready(function(){
     $('#datepicker6').datepicker({
       autoclose: true
     })
-    $('#timepicker').timepicker({
-      showInputs: false
-    })
+      
     // ================================
 
  
