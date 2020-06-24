@@ -80,7 +80,7 @@
             <form method="POST">
              <div hidden>
               <input    type="text"  class="form-control" id="rfq_id" required placeholder="rfq_id" name="rfq_id">
-              <input    type="text"  class="form-control" id="app_id" required placeholder="app_id" name="app_id">
+              <input    type="text"  class="form-control" id="app_id"  placeholder="app_id" name="app_id">
               <input    type="text"  class="form-control" id="sup_id" required placeholder="" name="sup_id">
             </div>
             <div class="col-xs-3">
