@@ -169,7 +169,10 @@ if ($unit == "22") {
     $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$total);
 
 
-
+    $objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
+    $objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
        
 
     $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
