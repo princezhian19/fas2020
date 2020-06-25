@@ -63,7 +63,8 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('E9',$iar_date);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('E10',$invoice_no);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('E11',$invoice_date);
 
-$sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit_id,b.qty from app as a left join rfq_items as b on a.id = b.app_id where b.rfq_id = '$rfq_id'");
+$sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit_id,b.qty FROM rfq_items b LEFT JOIN app a on a.id = b.app_id WHERE b.rfq_id = '$rfq_id' ");
+
 /* echo "SELECT sn,unit_id,qty,procurement,abc,description from rfq_items left join app on app.id = rfq_items.app_id where rfq_id = '$rfq_id'";
 exit(); */
 
