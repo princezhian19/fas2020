@@ -62,7 +62,7 @@ function aa($id)
         
         <tr>
             <td><input type = "text" class = "form-control" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['PLACE'];?>"/></td>
+            <td><textarea cols = 50 style = "resize:none;"><?php echo $row1['PLACE'];?></textarea></td>
             <td><input type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
             <td><input type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
             <td><input type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
@@ -89,7 +89,7 @@ function showData()
         ?>
         <tr>
             <td colspan = 9 style = "background-color:#B0BEC5;">
-                <input type = "text" style = "width:100%;padding:5px;border:1px solid gray;" value = "<?php echo $row['RO_TO_OB']; ?>" readonly />
+        <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?>
             </td>
         </tr>
        
@@ -105,7 +105,7 @@ function showData()
                 if(mysqli_num_rows($result) > 0)
                     {
                         ?>
-                            <button  disabled class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                            <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
                             <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
                         <?php
                     }else{
@@ -135,7 +135,7 @@ function showData()
         </tr>
         <tr>
             <td><input type = "text" class = "form-control" value = "<?php echo $row['DATE'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row['PLACE'];?>"/></td>
+            <td><textarea ><?php echo $row['PLACE'];?></textarea></td>
             <td><input type = "text" class = "form-control" value = "<?php echo $row['ARRIVAL'];?>"/></td>
             <td><input type = "text" class = "form-control" value = "<?php echo $row['DEPARTURE'];?>"/></td>
             <td><input type = "text" class = "form-control" value = "<?php echo $row['MOT'];?>"/></td>
