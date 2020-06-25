@@ -179,12 +179,19 @@ if (isset($_POST['submit'])) {
  }
 
  if ($count_pmo != $count_rows) {
-   $delete_old_app = mysqli_query($conn,"DELETE FROM app WHERE id = '$id1'");
+
+  // echo "pag morethan";
+  // echo "<br>";
+  // echo $count_pmo;
+  // echo "<br>";
+  // echo $count_rows;
+  // exit;
+   $delete_old_app = mysqli_query($conn,"DELETE FROM app WHERE id = '$id'");
    $delete_old_app_items = mysqli_query($conn,"DELETE FROM app_items WHERE sn = '$sn1' AND code = '$code1' AND pmo_id = '$pmo_id' ");
    for($count = 0; $count < count($_POST["pmo"]); $count++) {
      $id1 = $_POST["id1"][$count];
-     $insert_app_items = mysqli_query($conn,'INSERT INTO app_items(sn,code,new_entry,merge_code,procurement,source_of_funds_id,category_id,pmo_id,qty,qty_original,mode_of_proc_id,price,app_price,remarks,app_year)
-      VALUES("'.$sn1.'","'.$code1.'",1,"'.$code1.'","'.$item1.'","'.$fund1.'","'.$category1.'","'.$_POST['pmo'][$count].'","'.$_POST['qty'][$count].'","'.$_POST['qty'][$count].'","'.$mode1.'","'.$price1.'","'.$app_price1.'","'.$remarks1.'","'.$year.'")');
+     $insert_app_items = mysqli_query($conn,'INSERT INTO app_items(sn,code,new_entry,merge_code,procurement,source_of_funds_id,category_id,pmo_id,qty,qty_original,mode_of_proc_id,price,app_price,remarks,app_year,unit_id)
+      VALUES("'.$sn1.'","'.$code1.'",1,"'.$code1.'","'.$item1.'","'.$fund1.'","'.$category1.'","'.$_POST['pmo'][$count].'","'.$_POST['qty'][$count].'","'.$_POST['qty'][$count].'","'.$mode1.'","'.$price1.'","'.$app_price1.'","'.$remarks1.'","'.$year.'","'.$unit_id11.'")');
    }
 
    
@@ -200,8 +207,9 @@ if (isset($_POST['submit'])) {
    $mode_of_proc_id0 = $rowID['mode_of_proc_id'];
    $price0 = $rowID['price'];
    $remarks0 = $rowID['remarks'];
+   $unit_id0 = $rowID['unit_id'];
 
-   $insert_app = mysqli_query($conn,"INSERT INTO app(sn,code,new_entry,merge_code,procurement,source_of_funds_id,category_id,pmo_id,qty,mode_of_proc_id,price,app_price,remarks,app_year) VALUES('$sn0','$code0',1,'$code0','$procurement0','$source_of_funds_id0','$category_id0','$pmo_id0','$qty0','$mode_of_proc_id0','$price0','$app_price1','$remarks0','2020' )");
+   $insert_app = mysqli_query($conn,"INSERT INTO app(sn,code,new_entry,merge_code,procurement,source_of_funds_id,category_id,pmo_id,qty,mode_of_proc_id,price,app_price,remarks,app_year,unit_id) VALUES('$sn0','$code0',1,'$code0','$procurement0','$source_of_funds_id0','$category_id0','$pmo_id0','$qty0','$mode_of_proc_id0','$price0','$app_price1','$remarks0','2020','$unit_id0' )");
    
    $select_app2 = mysqli_query($conn,"SELECT id FROM app ORDER BY id DESC LIMIT 1");
    $rowID = mysqli_fetch_array($select_app2);
@@ -219,6 +227,13 @@ if (isset($_POST['submit'])) {
 
  }else{
 
+  // echo "pag lessthan";
+  //  echo "<br>";
+  // echo $count_pmo;
+  // echo "<br>";
+  // echo $count_rows;
+
+  // exit;
   for($count = 0; $count < count($_POST["pmo"]); $count++) {
    $pmo2 = $_POST["pmo"][$count];
    $qty = $_POST["qty"][$count];
