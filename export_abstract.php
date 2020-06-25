@@ -235,7 +235,7 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
   $qtyL = $excelrow['qty'];
   $abc = $excelrow['abc'];
   $item_unit_title = $excelrow['item_unit_title'];
-  $unit = $excelrow['unit'];
+  // $unit = $excelrow['unit'];
 
   $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowOne.':'.'E'.$rowOne);
   $objPHPExcel->getActiveSheet()->getStyle('A'.$rowOne.':'.'E'.$rowOne)->applyFromArray($border);
