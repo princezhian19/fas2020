@@ -66,7 +66,7 @@ include 'travelclaim_functions.php';
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
                     <tr>
                       <td class = "label-text">
-                        <label>Entity Name: <label style="color: Red;" >*</label>
+                        <label>Entity Name: 
                       </td>
                       <td colspan = 8>
                       <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
@@ -74,7 +74,7 @@ include 'travelclaim_functions.php';
                     </tr>
                     <tr>
                       <td class = "label-text">
-                        <label>Fund Cluster: <label style="color: Red;" >*</label> </label>
+                        <label>Fund Cluster:</label>
                       </td>
                       <td colspan = "4">
                       <input type = "text" class = "form-control" readonly/>
@@ -91,7 +91,7 @@ include 'travelclaim_functions.php';
               <tbody>
                   <tr>
                     <td class = "label-text">
-                    <label>Name: <label style="color: Red;" >*</label>
+                    <label>Name: 
                     
                     </td>
                     <td colspan = 4><input type = "text" class = "form-control" value = "<?php echo getCompleteName();?>" readonly/></td>
@@ -100,13 +100,13 @@ include 'travelclaim_functions.php';
                   </tr>
                   
                   <tr>
-                    <td class = "label-text">  <label>Position: <label style="color: Red;" >*</label></td>
+                    <td class = "label-text">  <label>Position:</label></td>
                     <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly/></td>
                     <td colspan = 4 rowspan = 2>
                     <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"></textarea></td>
                   </tr>
                   <tr>
-                    <td class = "label-text">  <label>Official Station: <label style="color: Red;" >*</label></td>
+                    <td class = "label-text">  <label>Official Station: </label></td>
                     <td colspan = 4>
                     <input type = "text" class = "form-control" readonly/>
                     <!-- <select required id="mySelect2" class="form-control" name="office">
@@ -308,7 +308,7 @@ include 'travelclaim_functions.php';
                         <label>
                         Meals
                         </label><br>
-                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > Without Meals<br>
+                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > <b>Without Meals</b><br>
 
                         <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Breakfast
                         <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Lunch
@@ -334,7 +334,7 @@ include 'travelclaim_functions.php';
                           <label>
                           Accomodation
                           </label><br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wa" value = "With Accomodation"> With Accomodation<br>
+                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wa" value = "With Accomodation"><b> With Accomodation</b><br>
                           <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wr"> With Receipt<br>
                           <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wor"> Without Receipt
                           <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
@@ -435,6 +435,15 @@ $(document).on('click','#editbtn',function(e){
 
 var purpose = $('#or').val();
 $('#ro_txt').val(purpose);
+if(purpose == '' || purpose == null)
+{
+  alert('Required Field:All fields with * are required!.');
+$('#ro').prop('required',true);
+exit();
+
+}else{
+
+}
 });
 
 $('.checkboxgroup').on('change', function() { 
