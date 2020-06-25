@@ -1,8 +1,13 @@
 <?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
+$sql_items = mysqli_query($conn, "SELECT a.sn,a.id,a.procurement,pr.description,pr.unit,pr.qty,pr.abc FROM pr_items pr left join app a on a.id = pr.items WHERE pr.pr_no = '$pr_no' ");
+if (mysqli_num_rows($sql_items)>45) {
+  # code...
+$objPHPExcel = PHPExcel_IOFactory::load("library/export_pr15.xlsx");
+}else{
 $objPHPExcel = PHPExcel_IOFactory::load("library/export_pr.xlsx");
-
+}
 $styleTop = array(
   'borders' => array(
     'top' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
@@ -57,7 +62,6 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('F7',$d1);
 $totalcount = mysqli_query($conn, "SELECT sum(pr.qty) as first ,sum(pr.abc) as second FROM pr_items pr left join app a on a.id = pr.items WHERE pr.pr_no = '$pr_no' "); 
 
 
-$sql_items = mysqli_query($conn, "SELECT a.sn,a.id,a.procurement,pr.description,pr.unit,pr.qty,pr.abc FROM pr_items pr left join app a on a.id = pr.items WHERE pr.pr_no = '$pr_no' ");
 
  
 $row = 11;
