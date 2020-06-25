@@ -96,7 +96,7 @@ include 'travelclaim_functions.php';
                     </td>
                     <td colspan = 4><input type = "text" class = "form-control" value = "<?php echo getCompleteName();?>" readonly/></td>
                     <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                    <td colspan = 2><input type = "text" class = "form-control datepicker1" id = "datepicker1" /></td>
+                    <td colspan = 2><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
                   </tr>
                   
                   <tr>
@@ -308,9 +308,9 @@ include 'travelclaim_functions.php';
                         <label>
                         Meals
                         </label><br>
-                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > <b>Without Meals</b><br>
+                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > <b>Will Claim Meals</b><br>
 
-                        <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Breakfast
+                        <input style = "margin-left:14px" type="checkbox" name="meals" class="minimal-red checkboxgroup" > Breakfast
                         <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Lunch
                         <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > Dinner
                       </div>
@@ -334,10 +334,12 @@ include 'travelclaim_functions.php';
                           <label>
                           Accomodation
                           </label><br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wa" value = "With Accomodation"><b> With Accomodation</b><br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wr"> With Receipt<br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wor"> Without Receipt
+                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wa" value = "With Accomodation"><b> Will Claim Accomodation</b><br>
+                          <input style = "margin-left:14px" type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wr"> With Receipt
                           <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
+                          
+                          <br>
+                          <input style = "margin-left:14px"type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wor"> Without Receipt
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -446,9 +448,9 @@ exit();
 }
 });
 
-$('.checkboxgroup').on('change', function() { 
-      $('.checkboxgroup').not(this).prop('checked', false);  
-  });
+// $('.checkboxgroup').on('change', function() { 
+//       $('.checkboxgroup').not(this).prop('checked', false);  
+//   });
 
   $('.checkboxgroup1').on('change', function() { 
       $('.checkboxgroup1').not(this).prop('checked', false);  
@@ -458,11 +460,12 @@ $('.checkboxgroup').on('change', function() {
         $('#wor').click(function(){
             if($(this).prop("checked") == true){
               
-        $("#wor_txt").prop('disabled',false);
+        $("#wor_txt").prop('disabled',true);
+        $("#wor_txt").val('');
 
             }
             else if($(this).prop("checked") == false){
-              $("#wor_txt").prop('disabled',true);
+              $("#wor_txt").prop('disabled',false);
             }
         });
         $('#wa').click(function(){
@@ -473,7 +476,7 @@ $('.checkboxgroup').on('change', function() {
         });
         $('#wr').click(function(){
             if($(this).prop("checked") == true){
-        $("#wor_txt").prop('disabled',true);
+        $("#wor_txt").prop('disabled',false);
               
             }
         });

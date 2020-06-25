@@ -83,11 +83,10 @@ $_SESSION['unique_id'] = 1;
 <script>
 
 $(document).ready(function(){
-  $(".datepicker1").datepicker().datepicker("setDate", new Date());
 
   $('#datepicker1').datepicker({
       autoclose: true
-    }).datepicker("setDate", new Date())
+    })
     $('#datepicker2').datepicker({
       autoclose: true
     })
