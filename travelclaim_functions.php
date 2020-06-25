@@ -48,16 +48,85 @@ function fill()
         }
     }
 }
+function aa($id)
+{
+    include 'connection.php';
+
+    $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.TC_ID = tbltravel_claim_info.TC_ID WHERE tbltravel_claim_info.`TC_ID` = '".$id."'";
+    $result1 = mysqli_query($conn, $query1);
+    if(mysqli_num_rows($result1) > 0)
+    {
+        while($row1 = mysqli_fetch_array($result1))
+        {
+        ?>
+        
+        <tr>
+            <td><input type = "text" class = "form-control" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+            <td><textarea cols = 50 style = "resize:none;"><?php echo $row1['PLACE'];?></textarea></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row1['TRANSPORTATION'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row1['PERDIEM'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row1['TOTAL_AMOUNT'];?>"/></td>
+        </tr>
+        
+        <?php
+        }
+    }
+
+}
 function showData()
 {
     include 'connection.php';
-    $query = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.TC_ID = tbltravel_claim_info.TC_ID WHERE `NAME` = '".$_GET['username']."'";
+    $query = "SELECT * FROM tbltravel_claim_info2  WHERE `NAME` = '".$_GET['username']."'";
     $result = mysqli_query($conn, $query);
-    if(mysqli_num_rows($result) > 0)
+    if(mysqli_num_rows($result) > 0)    
     {
         while($row = mysqli_fetch_array($result))
         {
         ?>
+        <tr>
+            <td colspan = 9 style = "background-color:#B0BEC5;">
+        <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?>
+            </td>
+        </tr>
+       
+        
+       
+        <?php
+        aa($row['TC_ID']);
+        }
+        ?>
+        <tr>
+            <td colspan = 9>
+                <?php 
+                if(mysqli_num_rows($result) > 0)
+                    {
+                        ?>
+                            <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                            <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+                        <?php
+                    }else{
+                        ?>
+                            <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                            <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+                        <?php
+                    }
+                    ?>
+                    
+            </td>
+        </tr>
+        <?php
+    }else{
+        $query = "SELECT * FROM tbltravel_claim_info2 WHERE `NAME` = '".$_GET['username']."'";
+        $result = mysqli_query($conn, $query);
+        if(mysqli_num_rows($result) > 0)
+        {
+            while($row = mysqli_fetch_array($result))
+            {
+                ?>
         <tr>
             <td colspan = 9 style = "background-color:#B0BEC5;">
                 <!-- <input type = "checkbox"> -->
@@ -66,9 +135,9 @@ function showData()
         </tr>
         <tr>
             <td><input type = "text" class = "form-control" value = "<?php echo $row['DATE'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row['PLACE'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row['PLACE'];?>"/></td>
-            <td><input type = "text" class = "form-control"/></td>
+            <td><textarea ><?php echo $row['PLACE'];?></textarea></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row['ARRIVAL'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row['DEPARTURE'];?>"/></td>
             <td><input type = "text" class = "form-control" value = "<?php echo $row['MOT'];?>"/></td>
             <td><input type = "text" class = "form-control" value = "<?php echo $row['TRANSPORTATION'];?>"/></td>
             <td><input type = "text" class = "form-control" value = "<?php echo $row['PERDIEM'];?>"/></td>
@@ -77,29 +146,8 @@ function showData()
         </tr>
        
         <?php
-        }
-        ?>
-        <tr>
-            <td colspan = 9>
-            <?php 
-            if(mysqli_num_rows($result) > 0)
-            {
-                ?>
-                    <button disabled class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                    <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                <?php
-            }else{
-                ?>
-                    <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                    <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                <?php
             }
-            ?>
-                
-            </td>
-        </tr>
-        <?php
-    }else{
+        }
         ?>
           <tr>
             <td colspan = 9>
@@ -112,6 +160,26 @@ function showData()
     }
 
     
+}
+function getTotal()
+{
+    include 'connection.php';
+    $query1 = "SELECT * FROM tbltravel_claim_info2  WHERE `NAME` = '".$_GET['username']."'";
+    $result1 = mysqli_query($conn, $query1);
+    
+        if($row1 = mysqli_fetch_array($result1))
+        {
+                $query2 = "SELECT sum(`TOTAL_AMOUNT`)AS 'total' FROM tbltravel_claim_info  WHERE `TC_ID` = '".$row1['TC_ID']."'";
+                $result2 = mysqli_query($conn, $query2);
+                if(mysqli_num_rows($result2) > 0)
+                {
+                    if($row2 = mysqli_fetch_array($result2))
+                    {
+                        echo $row2['total'];
+                    }
+                }
+            }
+        
 }
 
     

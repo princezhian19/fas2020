@@ -66,7 +66,7 @@ include 'travelclaim_functions.php';
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
                     <tr>
                       <td class = "label-text">
-                        <label>Entity Name: <label style="color: Red;" >*</label>
+                        <label>Entity Name: 
                       </td>
                       <td colspan = 8>
                       <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
@@ -74,7 +74,7 @@ include 'travelclaim_functions.php';
                     </tr>
                     <tr>
                       <td class = "label-text">
-                        <label>Fund Cluster: <label style="color: Red;" >*</label> </label>
+                        <label>Fund Cluster:</label>
                       </td>
                       <td colspan = "4">
                       <input type = "text" class = "form-control" readonly/>
@@ -91,22 +91,22 @@ include 'travelclaim_functions.php';
               <tbody>
                   <tr>
                     <td class = "label-text">
-                    <label>Name: <label style="color: Red;" >*</label>
+                    <label>Name: 
                     
                     </td>
                     <td colspan = 4><input type = "text" class = "form-control" value = "<?php echo getCompleteName();?>" readonly/></td>
                     <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                    <td colspan = 2><input type = "text" class = "form-control datepicker1" id = "datepicker1" /></td>
+                    <td colspan = 2><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
                   </tr>
                   
                   <tr>
-                    <td class = "label-text">  <label>Position: <label style="color: Red;" >*</label></td>
+                    <td class = "label-text">  <label>Position:</label></td>
                     <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly/></td>
                     <td colspan = 4 rowspan = 2>
                     <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"></textarea></td>
                   </tr>
                   <tr>
-                    <td class = "label-text">  <label>Official Station: <label style="color: Red;" >*</label></td>
+                    <td class = "label-text">  <label>Official Station: </label></td>
                     <td colspan = 4>
                     <input type = "text" class = "form-control" readonly/>
                     <!-- <select required id="mySelect2" class="form-control" name="office">
@@ -150,7 +150,11 @@ include 'travelclaim_functions.php';
              
               <tr>
               <td colspan = 8>TOTAL</td>
-              <td >1500</td>
+              <td >
+              <?php
+              getTotal();
+              ?>
+              </td>
               </tr>
               <tr>
               <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
@@ -308,11 +312,11 @@ include 'travelclaim_functions.php';
                         <label>
                         Meals
                         </label><br>
-                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > Without Meals<br>
+                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > <b>Will Claim Meals</b><br>
 
-                        <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Breakfast
-                        <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Lunch
-                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > Dinner
+                        <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" value = "200"> Breakfast
+                        <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" value = "200"> Lunch
+                        <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" value = "200"> Dinner
                       </div>
                       </div>
                       <div class="col-md-3">
@@ -334,10 +338,12 @@ include 'travelclaim_functions.php';
                           <label>
                           Accomodation
                           </label><br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wa" value = "With Accomodation"> With Accomodation<br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wr"> With Receipt<br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wor"> Without Receipt
+                          <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation"><b> Will Claim Accomodation</b><br>
+                          <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red checkboxgroup1" id = "wr"> With Receipt
                           <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
+                          
+                          <br>
+                          <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red checkboxgroup1" id = "wor" value ="1100"> Without Receipt
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -435,25 +441,49 @@ $(document).on('click','#editbtn',function(e){
 
 var purpose = $('#or').val();
 $('#ro_txt').val(purpose);
+if(purpose == '' || purpose == null)
+{
+  alert('Required Field:All fields with * are required!.');
+$('#ro').prop('required',true);
+exit();
+
+}else{
+
+}
 });
 
-$('.checkboxgroup').on('change', function() { 
-      $('.checkboxgroup').not(this).prop('checked', false);  
-  });
+// $('.checkboxgroup').on('change', function() { 
+//       $('.checkboxgroup').not(this).prop('checked', false);  
+//   });
 
   $('.checkboxgroup1').on('change', function() { 
       $('.checkboxgroup1').not(this).prop('checked', false);  
   });
   // checkbox validation
   $(document).ready(function(){
+// $('#editbtn').click(function () {
+//   var purpose = $('#or').val();
+// if(purpose == '' || purpose == null)
+// {
+// $('#travelbtn').prop('disabled',true);
+// }else{
+
+// }
+// $('#travelbtn').prop('disabled',false);
+
+
+// });
+
+
         $('#wor').click(function(){
             if($(this).prop("checked") == true){
               
-        $("#wor_txt").prop('disabled',false);
+        $("#wor_txt").prop('disabled',true);
+        $("#wor_txt").val('');
 
             }
             else if($(this).prop("checked") == false){
-              $("#wor_txt").prop('disabled',true);
+              $("#wor_txt").prop('disabled',false);
             }
         });
         $('#wa').click(function(){
@@ -464,7 +494,7 @@ $('.checkboxgroup').on('change', function() {
         });
         $('#wr').click(function(){
             if($(this).prop("checked") == true){
-        $("#wor_txt").prop('disabled',true);
+        $("#wor_txt").prop('disabled',false);
               
             }
         });
