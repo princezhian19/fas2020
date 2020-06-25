@@ -150,7 +150,11 @@ include 'travelclaim_functions.php';
              
               <tr>
               <td colspan = 8>TOTAL</td>
-              <td >1500</td>
+              <td >
+              <?php
+getTotal();
+              ?>
+              </td>
               </tr>
               <tr>
               <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
@@ -310,9 +314,9 @@ include 'travelclaim_functions.php';
                         </label><br>
                         <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > <b>Will Claim Meals</b><br>
 
-                        <input style = "margin-left:14px" type="checkbox" name="meals" class="minimal-red checkboxgroup" > Breakfast
-                        <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Lunch
-                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > Dinner
+                        <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" value = "200"> Breakfast
+                        <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" value = "200"> Lunch
+                        <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" value = "200"> Dinner
                       </div>
                       </div>
                       <div class="col-md-3">
@@ -334,12 +338,12 @@ include 'travelclaim_functions.php';
                           <label>
                           Accomodation
                           </label><br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wa" value = "With Accomodation"><b> Will Claim Accomodation</b><br>
-                          <input style = "margin-left:14px" type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wr"> With Receipt
+                          <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation"><b> Will Claim Accomodation</b><br>
+                          <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red checkboxgroup1" id = "wr"> With Receipt
                           <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
                           
                           <br>
-                          <input style = "margin-left:14px"type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wor"> Without Receipt
+                          <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red checkboxgroup1" id = "wor" value ="1100"> Without Receipt
                         </div>
                       </div>
                       <div class="col-md-6">
