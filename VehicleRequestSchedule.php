@@ -6,18 +6,14 @@ header('location:index.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
-$username = $_SESSION['username'];
+$username1 = $_SESSION['username'];
 }
 $division = $_GET['division'];
 require_once 'calendar/sample/bdd.php';
 require_once 'calendar/sample/dbaseCon.php';
 require_once 'calendar/sample/sql_statements.php';
 
-$sql = "SELECT DIVISION_M, id, title, start, end, description,venue, tblpersonneldivision.DIVISION_COLOR as 'color', cancelflag, office,enp,posteddate, remarks,UNAME 
-FROM events 
-inner join tblpersonneldivision on events.office = tblpersonneldivision.DIVISION_N
-inner join tblemployeeinfo on events.postedby = tblemployeeinfo.EMP_N
-where cancelflag = 0 and events.status = 1 ";
+$sql = "SELECT * from vr";
 $req = $bdd->prepare($sql);
 $req->execute();
 $events = $req->fetchAll();
@@ -29,49 +25,45 @@ function viewEvents()
                 <input  type = "hidden" name = "eventid" id = "eventid">
                 <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox"  /></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assined Date</td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "assigneddate" id = "assigneddate"  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Start Date<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assigned Time</td>
                             <td class="col-md-5">
-                                <input required type="text" class = "form-control datepicker1" name = "startdatetxtbox" id="datepicker1" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
+                                <input required type="text" class = "form-control " name = "assignedtime" id="assignedtime" value = ""   required autocomplete = off  >
                                     </td>
                                         </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">End Date</td>
+                        <td class="col-md-2" style ="font-weight:bold">Dispatcher</td>
                             <td class="col-md-5">
-                                <input  type = "text"  class = "form-control datepicker2" id = "datepicker2" name = "enddatetxtbox"  placeholder="mm/dd/yyyy"   autocomplete = off /></td>
+                                <input  type = "text"  class = "form-control datepicker2" id = "dispatcher" name = "dispatcher"    autocomplete = off /></td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Description</td>
-                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
+                        <td class="col-md-2" style ="font-weight:bold">No. of Vehicles</td>
+                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "nov" id = "nov" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "venuetxtbox" id= "venuetxtbox" value = "" /></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assigned Vehicle</td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "ac" id= "av" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Expected Number of Participants<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input required type = "number" min = "0" name = "enptxtbox" id= "enptxtbox" class = "form-control" value = ""  /></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assigned Driver</td>
+                            <td class="col-md-5"><input required type = "number" min = "" name = "ad" id= "ad" class = "form-control" value = ""  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Target Participants<span style = "color:red;">*</span></td>  
+                        <td class="col-md-2" style ="font-weight:bold">Plate</td>  
                             <td class="col-md-5">
-                            <input required type = "text" class = "form-control" name = "remarks" id= "remarks" value = "" />
+                            <input required type = "text" class = "form-control" name = "plate" id= "plate" value = "" />
                                 </td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Posted By</td>
+                        <td class="col-md-2" style ="font-weight:bold">Remarks</td>
                             <td class="col-md-5">                              
-                            <input readonly type = "text"  class = "form-control" id= "postedby"  value="<?php echo $_SESSION['username'];?>"/>
+                            <input  type = "text"  class = "form-control" id= "vremarks"  name = "vremarks" />
                                     </td>
                                         </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Posted Date</td>
-                            <td class="col-md-5"><input disabled type = "text" class = "form-control datepicker3" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
-                                </tr>
-                   
+                
                     
                 </table>
                 <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save"> 
@@ -84,7 +76,7 @@ function viewEvents()
 function getCurrentID()
 {
     include 'connection.php';
-    $sqlQuery = "SELECT ID FROM `events`  ORDER BY ID DESC LIMIT 1";
+    $sqlQuery = "SELECT ID FROM `vr`  ORDER BY ID DESC LIMIT 1";
     $result = mysqli_query($conn, $sqlQuery);
     if ($row = mysqli_fetch_array($result)) {
         echo $row['ID'];
@@ -99,54 +91,51 @@ function viewEvents2()
     <input  type = "hidden" name = "eventid" id = "eventid">
 <?php 
 
-if($_SESSION['planningofficer'] == 1)
+if($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial')
 {
   ?>
-  <table class="table table-bordered" style = "width:100%;"> 
+  <input  type = "hidden" name = "eventid" id = "eventid">
+                <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox" value = ""  /></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assined Date</td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "assigneddate" id = "assigneddate"  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Start Date<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assigned Time</td>
                             <td class="col-md-5">
-                                <input disabled type="text" class = "form-control datepicker1" name = "startdatetxtbox" id = "datepicker1" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
+                                <input required type="text" class = "form-control " name = "assignedtime" id="assignedtime" value = ""   required autocomplete = off  >
                                     </td>
                                         </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">End Date</td>
+                        <td class="col-md-2" style ="font-weight:bold">Dispatcher</td>
                             <td class="col-md-5">
-                                <input autocomplete ="off" disabled type = "text"  class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
+                                <input  type = "text"  class = "form-control datepicker2" id = "dispatcher" name = "dispatcher"    autocomplete = off /></td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Description</td>
-                            <td class="col-md-5"><input disabled  type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
+                        <td class="col-md-2" style ="font-weight:bold">No. of Vehicles</td>
+                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "nov" id = "nov" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "venuetxtbox" id = "venuetxtbox" value = "" /></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assigned Vehicle</td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "ac" id= "av" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Expected Number of Participants<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input disabled type = "number" min = "0" name = "enptxtbox" id = "enptxtbox" class = "form-control" value = ""  /></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assigned Driver</td>
+                            <td class="col-md-5"><input required type = "number" min = "" name = "ad" id= "ad" class = "form-control" value = ""  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Target Participants<span style = "color:red;">*</span></td>  
+                        <td class="col-md-2" style ="font-weight:bold">Plate</td>  
                             <td class="col-md-5">
-                            <input disabled type = "text" class = "form-control" name = "remarks" id = "remarks" value = "" />
+                            <input required type = "text" class = "form-control" name = "plate" id= "plate" value = "" />
                                 </td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Posted By</td>
+                        <td class="col-md-2" style ="font-weight:bold">Remarks</td>
                             <td class="col-md-5">                              
-                            <input readonly type = "text"  class = "form-control"  id = "postedby"/>
+                            <input  type = "text"  class = "form-control" id= "vremarks"  name = "vremarks" />
                                     </td>
                                         </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Posted Date</td>
-                            <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
-                                </tr>
-                   
+                
                     
                 </table>
   <?php
@@ -154,51 +143,48 @@ if($_SESSION['planningofficer'] == 1)
 }else{
 
 ?>
-  <table class="table table-bordered" style = "width:100%;"> 
+ <input  type = "hidden" name = "eventid" id = "eventid">
+                <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Activity Title<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "titletxtbox" id = "titletxtbox" value = ""  /></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assined Date</td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "assigneddate" id = "assigneddate"  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Start Date<span style = "color:red;">*</span></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assigned Time</td>
                             <td class="col-md-5">
-                                <input disabled type="text" class = "form-control datepicker1" name = "startdatetxtbox" id = "datepicker1" value = "" placeholder="mm/dd/yyyy"  required autocomplete = off  >
+                                <input required type="text" class = "form-control" name = "assignedtime" id="assignedtime" value = ""   required autocomplete = off  >
                                     </td>
                                         </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">End Date</td>
+                        <td class="col-md-2" style ="font-weight:bold">Dispatcher</td>
                             <td class="col-md-5">
-                                <input disabled type = "text" placeholder="mm/dd/yyyy" class = "form-control" name = "enddatetxtbox"  id="datepicker2" value = "" /></td>
+                                <input  type = "text"  class = "form-control " id = "dispatcher" name = "dispatcher"    autocomplete = off /></td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Description</td>
-                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "descriptiontxtbox" id = "descriptiontxtbox" value = "" /></td>
+                        <td class="col-md-2" style ="font-weight:bold">No. of Vehicles</td>
+                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "nov" id = "nov" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input disabled type = "text" class = "form-control" name = "venuetxtbox" id = "venuetxtbox" value = "" /></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assigned Vehicle</td>
+                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "ac" id= "av" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Expected Number of Participants<span style = "color:red;">*</span></td>
-                            <td class="col-md-5"><input disabled type = "number" min = "0" name = "enptxtbox" id = "enptxtbox" class = "form-control" value = ""  /></td>
+                        <td class="col-md-2" style ="font-weight:bold">Assigned Driver</td>
+                            <td class="col-md-5"><input required type = "number" min = "" name = "ad" id= "ad" class = "form-control" value = ""  /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Target Participants<span style = "color:red;">*</span></td>  
+                        <td class="col-md-2" style ="font-weight:bold">Plate</td>  
                             <td class="col-md-5">
-                            <input disabled type = "text" class = "form-control" name = "remarks" id = "remarks" value = "" />
+                            <input required type = "text" class = "form-control" name = "plate" id= "plate" value = "" />
                                 </td>
                                     </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Posted By</td>
+                        <td class="col-md-2" style ="font-weight:bold">Remarks</td>
                             <td class="col-md-5">                              
-                            <input disabled type = "text"  class = "form-control" id = "postedby" value = "" />
+                            <input  type = "text"  class = "form-control" id= "vremarks"  name = "vremarks" />
                                     </td>
                                         </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Posted Date</td>
-                            <td class="col-md-5"><input disabled type = "text" class = "form-control" placeholder = "Posted Date" id="datepicker3" name = "enddatetxtbox"  /></td>
-                                </tr>
-                   
+                
                     
                 </table>
 <?php
@@ -209,8 +195,8 @@ if($_SESSION['planningofficer'] == 1)
                <?php 
                 
              
-                  echo ' <a id = "edit"  style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary"> Edit</a>';
-                  echo ' <input id = "save"  type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> ';
+                  // echo ' <a id = "edit"  style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary"> Edit</a>';
+                  // echo ' <input id = "save"  type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> ';
                 
 
                ?>
@@ -330,11 +316,11 @@ if($_GET['flag'] == 1)
         <div class="modal-header">
           <h4 class="modal-title">
           <?php 
-          if($_SESSION['planningofficer'] == 1)
+          if($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial')
           {
-            echo  '<label id ="title">View Activity</label>';
+            echo  '<label id ="title">View Assigned Drivers</label>';
           }else{
-            echo  '<label id ="title" >View Activity</label>';
+            echo  '<label id ="title" >View Assigned Drivers</label>';
           }
           ?>  
          </h4>
@@ -400,7 +386,7 @@ if($_GET['flag'] == 1)
 
 <script>
 
-$('#title').html("View Activity");
+$('#title').html("View Assigned Vehicle");
 
 
 $('#save').hide();
@@ -414,17 +400,18 @@ $('#edit').hide();
 
 
 
-$('#title').html("Edit Activity");
-$('#titletxtbox').prop("disabled", false); 
-$('#datepicker1').prop("disabled", false); 
-$('#datepicker2').prop("disabled", false); 
-$('#descriptiontxtbox').prop("disabled", false); 
-$('#venuetxtbox').prop("disabled", false); 
-$('#enptxtbox').prop("disabled", false); 
+$('#title').html("Edit Assigned Vehicle");
+$('#assigneddate').prop("disabled", false); 
+$('#assignedtime').prop("disabled", false); 
+$('#dispatcher').prop("disabled", false); 
+$('#nov').prop("disabled", false); 
+$('#av').prop("disabled", false); 
+$('#ad').prop("disabled", false); 
+$('#plate').prop("disabled", false); 
 $('#remarks').prop("disabled", false); 
 
 });
-$('#title').html("View Activity");
+$('#title').html("View Assigned Vehicle");
 
   function displayMessage(message)
  {
@@ -454,7 +441,7 @@ $(document).ready(function()
             $( "#DanielNarciso" ).prop( "checked", true );
             
       
- 
+ /* 
             $(".datepicker1").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
             $("#datepicker1").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
             $(".datepicker1").datepicker().datepicker("setDate", new Date());
@@ -462,7 +449,7 @@ $(document).ready(function()
             $(".datepicker2").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
 
             $("#datepicker3").datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-            $(".datepicker3").datepicker().datepicker("setDate", new Date());
+            $(".datepicker3").datepicker().datepicker("setDate", new Date()); */
 
 
 
@@ -491,51 +478,42 @@ $("#all").click(function(){
           selectable: true,
           selectHelper: true,
 
-        select: function (start, end, allDay) {
+        select: function (allDay)  {
           $('#myModal').modal('show');
         },
         eventClick: function(event, element) {
 
 
 
-          if(event.office == <?php echo $_GET['division'];?>)
-          {
+         
           test();
 
-          
-          }else{
-            $('#title').html("View Activity");
+       
+            $('#title').html("View Assigned Drivers");
 
             $('#save').hide();
             $('#edit').hide();
-          }
-          $('#titletxtbox').prop("disabled", true); 
+          
+       /*    $('#titletxtbox').prop("disabled", true); 
           $('#datepicker1').prop("disabled", true); 
           $('#datepicker2').prop("disabled", true); 
           $('#descriptiontxtbox').prop("disabled", true); 
           $('#venuetxtbox').prop("disabled", true); 
           $('#enptxtbox').prop("disabled", true); 
-          $('#remarks').prop("disabled", true); 
+          $('#remarks').prop("disabled", true);  */
 
                 $('#myModal').modal('show');
                
                 $('#myModal').find('#eventid').val(event.id);
-                $('#myModal').find('#titletxtbox').val(event.title);
-                $('#myModal').find('#datepicker1').val(moment(event.start).format('MM/DD/YYYY'));
-if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970-01-01 00:00:00')
-{  
-  $('#myModal').find('#datepicker2').val('');
-}else{
-  $('#myModal').find('#datepicker2').val(moment(event.end).subtract(1, "days").format('MM/DD/YYYY'));
+                $('#myModal').find('#assigneddate').val(event.assigneddate).format('MM/DD/YYYY');
+                $('#myModal').find('#assignedtime').val(moment(event.assignedtime).format('H:i'));
 
-}    
-                // $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
-                $('#myModal').find('#datepicker3').val(moment(event.posteddate).format('MM/DD/YYYY'));
-                $('#myModal').find('#descriptiontxtbox').val(event.description);
-                $('#myModal').find('#remarks').val(event.remarks);
-                $('#myModal').find('#postedby').val(event.postedby);
-                $('#myModal').find('#venuetxtbox').val(event.venue);
-                $('#myModal').find('#enptxtbox').val(event.enp);
+                $('#myModal').find('#dispatcher').val(moment(event.dispatcher));
+                $('#myModal').find('#nov').val(event.nov);
+                $('#myModal').find('#av').val(event.av);
+                $('#myModal').find('#ad').val(event.ad);
+                $('#myModal').find('#plate').val(event.plate);
+                $('#myModal').find('#vremarks').val(event.vremarks);
                 
      
             },
@@ -576,7 +554,7 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
 
           if($('input[id=all]').is(':checked') ){
 
-            return ['0', calEvent.office].indexOf($('#selectDivision').val()) >= 0 
+            return ['0', calEvent.ad].indexOf($('#selectDivision').val()) >= 0 
           }else{      
             var types = $('#type_filter').val();    
             if (types && types.length > 0) 
@@ -587,7 +565,7 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
 
                     return show_type;
                 } else {
-                    show_type = types.indexOf(calEvent.title) >= 0;
+                    show_type = types.indexOf(calEvent.ad) >= 0;
                     return show_type;
                 }
                 return show_type;
@@ -606,41 +584,40 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
           events: [
                   <?php foreach($events as $event): 
 
-                    $start = explode(" ", $event['start']);
-                    $end = explode(" ", $event['end']);
+                  /*   $start = explode(" ", $event['assigneddate']);
+                 
                     if($start[1] == '00:00:00'){
                       $start = $start[0];
                     }else{
-                      $start = $event['start'];
+                      $start = $event['assigneddate'];
                     }
                     if($end[1] == '00:00:00'){
                       $end =  date('Y-m-d', strtotime("+1 day", strtotime($end[0])));
 
 
                     }else{
-                      $end = $event['end'];
-                    }
+                     
+                    } */
 
-
+/* 
                   $enddate = str_replace('-', '/', $end);
-                  $realenddate = date('Y-m-d',strtotime($enddate));
+                  $realenddate = date('Y-m-d',strtotime($enddate)); */
 
-                  if($_SESSION['planningofficer'] == 1){
+                  if($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'){
                     if (TRUE) {
                       ?>
                       {
                         id: '<?php echo $event['id']; ?>',
-                        title: '<?php echo $event['title']; ?>',
-                        start: '<?php echo $start; ?>',
-                        end: '<?php echo $realenddate; ?>',
-                        description: '<?php echo $event['description']; ?>',
-                        venue: '<?php echo $event['venue']; ?>',
-                        color: '<?php echo $event['color']; ?>',
-                        office: '<?php echo $event['office']; ?>',
-                        posteddate: '<?php echo $event['posteddate']; ?>',
-                        remarks: '<?php echo preg_replace('/[^\w]/', ' ',$event['remarks']); ?>',
-                        postedby:'<?php echo $event['UNAME'];?>',
-                        enp: '<?php echo $event['enp']; ?>',
+                        assigneddate: '<?php echo $event['assigneddate']; ?>',
+                       
+                        assignedtime: '<?php echo $event['assignedtime']; ?>',
+                        dispatcher: '<?php echo $event['dispatcher']; ?>',
+                        nov: '<?php echo $event['nov']; ?>',
+                        av: '<?php echo $event['av']; ?>',
+                        ad: '<?php echo $event['ad']; ?>',
+                        vremarks: '<?php echo preg_replace('/[^\w]/', ' ',$event['vremarks']); ?>',
+                        plate:'<?php echo $event['plate'];?>',
+                       
                     
 
                       },
@@ -652,18 +629,15 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
                       ?>
                       {
                         id: '<?php echo $event['id']; ?>',
-                        title: '<?php echo ''.$event['title']; ?>',
-                        start: '<?php echo $start; ?>',
-                        end: '<?php echo $realenddate; ?>',
-                        description: '<?php echo $event['description']; ?>',
-                        venue: '<?php echo $event['venue']; ?>',
-                        color: '<?php echo $event['color']; ?>',
-                        office: '<?php echo $event['office']; ?>',
-                        posteddate: '<?php echo $event['posteddate']; ?>',
-                        remarks: '<?php echo preg_replace('/[^\w]/', ' ',$event['remarks']); ?>',
-                        postedby:'<?php echo $event['UNAME'];?>',
-                        enp: '<?php echo $event['enp']; ?>',
-                        
+                        assigneddate: '<?php echo $event['assigneddate']; ?>',
+                       
+                        assignedtime: '<?php echo $event['assignedtime']; ?>',
+                        dispatcher: '<?php echo $event['dispatcher']; ?>',
+                        nov: '<?php echo $event['nov']; ?>',
+                        av: '<?php echo $event['av']; ?>',
+                        ad: '<?php echo $event['ad']; ?>',
+                        vremarks: '<?php echo preg_replace('/[^\w]/', ' ',$event['vremarks']); ?>',
+                        plate:'<?php echo $event['plate'];?>',
 
                     
 
@@ -684,35 +658,23 @@ if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970
       $( ".filter" ).keyup(function() {
         if($('#type_filter').val() == '')
           {
+
+           
             $( "#all" ).prop( "checked", true );
-            $( "#ord" ).prop( "checked", true );
-            $( "#fad" ).prop( "checked", true );
-            $( "#lgcdd" ).prop( "checked", true );
-            $( "#lgmed" ).prop( "checked", true );
-            $( "#mbrtg" ).prop( "checked", true );
-            $( "#pdmu" ).prop( "checked", true );
-            $( "#addll" ).prop( "checked", true );
-            $( "#cavite" ).prop( "checked", true );
-            $( "#laguna" ).prop( "checked", true );
-            $( "#batangas" ).prop( "checked", true );
-            $( "#quezon" ).prop( "checked", true );
-            $( "#rizal" ).prop( "checked", true );
-            $( "#lucena" ).prop( "checked", true );
+            $( "#ReynaldoParale" ).prop( "checked", true );
+            $( "#LouieBlanco" ).prop( "checked", true );
+            $( "#JoachimLacdang" ).prop( "checked", true );
+            $( "#MedelSaturno" ).prop( "checked", true );
+            $( "#DanielNarciso" ).prop( "checked", true );
+          
           }else{
             $( "#all" ).prop( "checked", false );
-            $( "#ord" ).prop( "checked", false );
-            $( "#fad" ).prop( "checked", false );
-            $( "#lgcdd" ).prop( "checked", false );
-            $( "#lgmed" ).prop( "checked", false );
-            $( "#mbrtg" ).prop( "checked", false );
-            $( "#pdmu" ).prop( "checked", false );
-            $( "#addll" ).prop( "checked", false );
-            $( "#cavite" ).prop( "checked", false );
-            $( "#laguna" ).prop( "checked", false );
-            $( "#batangas" ).prop( "checked", false );
-            $( "#quezon" ).prop( "checked", false );
-            $( "#rizal" ).prop( "checked", false );
-            $( "#lucena" ).prop( "checked", false );
+            $( "#ReynaldoParaleord" ).prop( "checked", false );
+            $( "#LouieBlanco" ).prop( "checked", false );
+            $( "#JoachimLacdang" ).prop( "checked", false );
+            $( "#MedelSaturno" ).prop( "checked", false );
+            $( "#DanielNarciso" ).prop( "checked", false );
+           
             
           }
 
@@ -821,7 +783,7 @@ var array = $.parseJSON(a);
         // alert(vals.push($(this).val()));
       });
      
-        return vals.indexOf(calEvent.office) !== -1;
+        return vals.indexOf(calEvent.ad) !== -1;
 
       
     }

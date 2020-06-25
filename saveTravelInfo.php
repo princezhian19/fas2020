@@ -7,45 +7,58 @@ $dinner = $_POST['dinner'];
 $receipt = $_POST['wor_txt'];
 $perdiem = $breakfast+$lunch+$dinner+$receipt;
 
-
-for($a=0;$a < count($_POST['from3']); $a++)
+include 'connection.php';
+$query = "SELECT ID as 'uid' FROM tbltravel_claim_info2  WHERE `NAME` = '".$_SESSION['username']."'  order by ID DESC limit 1  ";
+$result = mysqli_query($conn, $query);
+if(mysqli_num_rows($result) > 0)    
 {
-    $from3  = $_POST['from3'][$a];
-    $to3 = $_POST['to3'][$a];
-    $destination = $from3.' to '.$to3;
-    $transpo_fare = $_POST['transpo_fare'][$a];
-$totalamount = $_POST['transpo_fare'][$a]+$perdiem;
+    if($row = mysqli_fetch_array($result))
+    {
+        $uid = $row['uid'];
+        for($a=0;$a < count($_POST['mot']); $a++)
+        {
+            $from3  = $_POST['from3'][$a];
+            $to3 = $_POST['to3'][$a];
+            $destination = $from3.' to '.$to3;
+            $transpo_fare = $_POST['transpo_fare'][$a];
+            $totalamount = $_POST['transpo_fare'][$a]+$perdiem;
+            $mot = $_POST['mot'][$a];
 
-    include 'connection.php';
-    $insert ="INSERT INTO `tbltravel_claim_info`(`TC_ID`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `OTHERS`, `TOTAL_AMOUNT`) 
-            VALUES 
-            ('".$unique_id."',
-             '".date('Y-m-d',strtotime($_POST['date']))."',
-             '".$destination."',
-             '".date('g:i',strtotime($_POST['from1']))."',
-             '".date('g:i',strtotime($_POST['to1']))."',
-            null,
-             '".$transpo_fare."',
-             '".$perdiem."',
-             '".$_POST['others']."',
-             '".$totalamount."'
-            )";
-    if (mysqli_query($conn, $insert)) {
-    } else {
+            include 'connection.php';
+            $insert ="INSERT INTO `tbltravel_claim_info`(`TC_ID`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `OTHERS`, `TOTAL_AMOUNT`) 
+                    VALUES 
+                    ('".$uid."',
+                    '".date('Y-m-d',strtotime($_POST['date']))."',
+                    '".$destination."',
+                    '".date('g:i',strtotime($_POST['from1']))."',
+                    '".date('g:i',strtotime($_POST['to1']))."',
+                    '".$mot."',
+                    '".$transpo_fare."',
+                    '".$perdiem."',
+                    '".$_POST['others']."',
+                    '".$totalamount."'
+                    )";
+            if (mysqli_query($conn, $insert)) {
+            } else {
+            }
+
+        
+        }
+        // ========================================================
+        // for($b=0;$b < count($_POST['mot'])+1; $b++)
+        // {
+            
+        //     $mot = $_POST['mot'][$b];
+        //     include 'connection.php';
+        //     $update ="UPDATE `tbltravel_claim_info` SET `MOT`='".$mot."'  WHERE `ID` = '".$b."' ";
+        //     if (mysqli_query($conn, $update)) {
+        //     } else {
+        //     }
+
+        //     echo $update.'<br>';
+        }
     }
 
- 
-}
-for($b=0;$b < count($_POST['mot']); $b++)
-{
-    $mot = $_POST['mot'][$b];
-    include 'connection.php';
-    $update ="UPDATE `tbltravel_claim_info` SET `MOT`='".$mot."'  WHERE `TC_ID` = '".$unique_id."' ";
-    if (mysqli_query($conn, $update)) {
-    } else {
-    }
-    echo $update;
-}
 header("Location:CreateTravelClaim.php?username=".$_SESSION['username']."");
 
 ?>

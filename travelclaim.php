@@ -152,7 +152,7 @@ include 'travelclaim_functions.php';
               <td colspan = 8>TOTAL</td>
               <td >
               <?php
-getTotal();
+              getTotal();
               ?>
               </td>
               </tr>
@@ -461,6 +461,20 @@ exit();
   });
   // checkbox validation
   $(document).ready(function(){
+// $('#editbtn').click(function () {
+//   var purpose = $('#or').val();
+// if(purpose == '' || purpose == null)
+// {
+// $('#travelbtn').prop('disabled',true);
+// }else{
+
+// }
+// $('#travelbtn').prop('disabled',false);
+
+
+// });
+
+
         $('#wor').click(function(){
             if($(this).prop("checked") == true){
               
