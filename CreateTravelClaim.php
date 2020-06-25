@@ -6,8 +6,7 @@ header('location:index.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
-$unique_id = $_SESSION['unique_id'];
-$unique_id = 1;
+$_SESSION['unique_id'] = 1;
 
 }
 ?>

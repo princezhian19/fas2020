@@ -53,21 +53,15 @@ include 'travelclaim_functions.php';
     <br>
         <div class="box-body">
             <div class="well" style = "padding:20px;">
+            <H5 style = "margin-left:1300px;"><i>Appendix 45</i></H5>
 
             <center>
-            <div class = "row">
-            <div class = "col-md-3">
-&nbsp;
-</div>
-              <div class = "col-md-3">
+            
             <h1>ITINERARY OF TRAVEL </h1>
 
-              </div>
-              <div class = "col-md-3">
-            <H5><i>Appendix 45</i></H5>
+             
 
-              </div>
-            </div>
+           
             
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
                     <tr>
@@ -309,11 +303,13 @@ include 'travelclaim_functions.php';
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6 well">
+                      <div class="col-md-6">
                         <div class="form-group">
                         <label>
                         Meals
                         </label><br>
+                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > Without Meals<br>
+
                         <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Breakfast
                         <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Lunch
                         <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > Dinner
@@ -333,12 +329,12 @@ include 'travelclaim_functions.php';
                       </div>
                     </div>  
                     <div class="row">
-                      <div class="col-md-6 well">
+                      <div class="col-md-6">
                         <div class="form-group">
                           <label>
                           Accomodation
                           </label><br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wa" value = "With Accomodation"> With<br>
+                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wa" value = "With Accomodation"> With Accomodation<br>
                           <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wr"> With Receipt<br>
                           <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wor"> Without Receipt
                           <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
@@ -348,7 +344,7 @@ include 'travelclaim_functions.php';
                         <div class="form-group">
                           <label>Others</label>
                           <input type="text" name = "others" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask><br>
-                          <span class = "btn btn-success btn-md pull-right" id = "add_fair">Add Fair </span>
+                          <span class = "btn btn-success btn-md pull-right" id = "add_fair"><i class = "fa fa-plus"></i>&nbsp;Add Fair </span>
                         </div>
                       </div>
                     </div>                  
@@ -374,7 +370,7 @@ include 'travelclaim_functions.php';
                         <div class="form-group">
                           <label>Means of Transportation</label>
                             
-                            <input type="text" name = "traspo[]" class="form-control" data-mask>
+                            <input type="text" name = "mot[]" class="form-control">
                         </div>
                       </div>
                       <div class="col-md-6">

@@ -51,7 +51,7 @@ function fill()
 function showData()
 {
     include 'connection.php';
-    $query = "SELECT * FROM tbltravel_claim_info2 where `NAME` = '".$_GET['username']."'";
+    $query = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.TC_ID = tbltravel_claim_info.TC_ID WHERE `NAME` = '".$_GET['username']."'";
     $result = mysqli_query($conn, $query);
     if(mysqli_num_rows($result) > 0)
     {
@@ -64,17 +64,17 @@ function showData()
                 <input type = "text" style = "width:100%;padding:5px;border:1px solid gray;" value = "<?php echo $row['RO_TO_OB']; ?>" readonly />
             </td>
         </tr>
-        <!-- <tr>
+        <tr>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row['DATE'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row['PLACE'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row['PLACE'];?>"/></td>
             <td><input type = "text" class = "form-control"/></td>
-            <td><input type = "text" class = "form-control"/></td>
-            <td><input type = "text" class = "form-control"/></td>
-            <td><input type = "text" class = "form-control"/></td>
-            <td><input type = "text" class = "form-control"/></td>
-            <td><input type = "text" class = "form-control"/></td>
-            <td><input type = "text" class = "form-control"/></td>
-            <td><input type = "text" class = "form-control"/></td>
-            <td><input type = "text" class = "form-control"/></td>
-        </tr> -->
+            <td><input type = "text" class = "form-control" value = "<?php echo $row['MOT'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row['TRANSPORTATION'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row['PERDIEM'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row['OTHERS'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo $row['TOTAL_AMOUNT'];?>"/></td>
+        </tr>
        
         <?php
         }
