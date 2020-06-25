@@ -281,19 +281,9 @@ include 'travelclaim_functions.php';
                 <div class="well" style = "padding:10px;">
                   <div class="box-body">
                     <div class="row">
-                      <div class="col-md-12">
-                        <div class = "form-group">
-                          <label> Destination </label>
-                            <input type="text" name = "destination" class="form-control " data-inputmask="'alias': 'dd/mm/yyyy'"  data-mask>
-                        </div>
-                      </div>
+                     
                       
-                      <div class="col-md-6">
-                        <div class = "form-group">
-                          <label> Per Diem </label>
-                            <input type="text" name = "perdiem" class="form-control " data-inputmask="'alias': 'dd/mm/yyyy'"  data-mask>
-                        </div>
-                      </div>     
+                       
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>Date</label>
@@ -317,44 +307,41 @@ include 'travelclaim_functions.php';
                           <input type = "time" name = "to1" class = "form-control"/>
                         </div>
                       </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 well">
+                        <div class="form-group">
+                        <label>
+                        Meals
+                        </label><br>
+                        <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Breakfast
+                        <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Lunch
+                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > Dinner
+                      </div>
+                      </div>
                       <div class="col-md-3">
                         <div class="form-group">
-                        
-                  <label>Time Going Home</label>
+                          <label style = "font-size:13px;">Time Going to Home or back to Official Station</label>
                             <input type = "time" name = "from2" class = "form-control"/>
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="form-group">
                           <label>&nbsp;</label>
-                          <input type = "time" name = "to2" class = "form-control" >
+                          <input type = "time" name = "to2" class = "form-control" style = "margin-top:15px;"/>
                         </div>
                       </div>
-                    </div>
+                    </div>  
                     <div class="row">
                       <div class="col-md-6 well">
                         <div class="form-group">
                           <label>
-                          Meals
+                          Accomodation
                           </label><br>
-                          <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Breakfast
-                          <input type="checkbox" name="meals" class="minimal-red checkboxgroup" > Lunch
-                          <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > Dinner
-                          <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > Without Meals
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label>Means of Transportation</label>
-                            
-                            <input type="text" name = "trasportation" class="form-control" data-mask>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label>Transportation Fare</label>
-                            
-                            <input type="text" name = "transportation_fare" class="form-control" data-mask>
+                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wa" value = "With Accomodation"> With<br>
+                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wr"> With Receipt<br>
+                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wor"> Without Receipt
+                          <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -364,20 +351,6 @@ include 'travelclaim_functions.php';
                           <span class = "btn btn-success btn-md pull-right" id = "add_fair">Add Fair </span>
                         </div>
                       </div>
-                    </div>  
-                    <div class="row">
-                      <div class="col-md-6 well" style = "margin-top:-60px;">
-                        <div class="form-group">
-                          <label>
-                          Accomodation
-                          </label><br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wa" value = "With Accomodation"> With Accomodation<br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wr"> With Receipt<br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red checkboxgroup1" id = "wor"> Without Receipt
-                          <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
-                        </div>
-                      </div>
-                   
                     </div>                  
                     </div>
                   </div>
@@ -388,14 +361,13 @@ include 'travelclaim_functions.php';
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>From</label>
-                           
-                            <input type="text" name = "from3[]" class="form-control " data-mask>
-                        </div>
+                            <input type="text" name = "from3[]" class="form-control">
+                          </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>To</label>
-                            <input type = "text" name = "to3[]" class = "form-control "  />
+                            <input type = "text" name = "to3[]" class = "form-control"/>
                         </div>
                       </div>
                       <div class="col-md-6">

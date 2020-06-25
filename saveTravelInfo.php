@@ -1,4 +1,5 @@
 <?php 
+session_start();
 // destination
 // perdiem
 // date
@@ -14,7 +15,8 @@
 // to3[]
 // transpo[]
 // transpo_fare[]
-$totalamount = ($_POST['perdiem'] + $_POST['transpo_fare']);
+// $totalamount = $_POST['perdiem'] + $_POST['transpo_fare'];
+
 for($a=0;$a <= count($_POST['from3']); $a++)
 {
     $from3  = $_POST['from3'][$a];
@@ -22,25 +24,28 @@ for($a=0;$a <= count($_POST['from3']); $a++)
     $transpo = $_POST['transpo'][$a];
     $transpo_fare = $_POST['transpo_fare'][$a];
     include 'connection.php';
-
-  $insert ="INSERT INTO `tbltravel_claim_info`(`TC_ID`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `OTHERS`, `TOTAL_AMOUNT`) 
+    $insert ="INSERT INTO `tbltravel_claim_info`(`TC_ID`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `OTHERS`, `TOTAL_AMOUNT`) 
             VALUES 
             ('".$unique_id."',
              '".$_POST['date']."',
              '".$_POST['destination']."',
              '".$_POST['from1']."',
              '".$_POST['to1']."',
-             '".$_POST['transpo']."',
+             '".$transpo."',
+             '".$transpo_fare."',
              '".$_POST['perdiem']."',
              '".$_POST['others']."',
-             '".$_totalamount."'
+             '".$totalamount."'
             )";
     if (mysqli_query($conn, $insert)) {
     } else {
     }
- 
 
+  
+ 
+echo $insert.'<br>';
 }
+exit();
 header("Location:CreateTravelClaim.php?username=".$_SESSION['username']."");
 
 ?>
