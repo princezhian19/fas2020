@@ -191,7 +191,7 @@ if (isset($_POST['submit'])) {
   // echo $count_rows;
   // exit;
    $delete_old_app = mysqli_query($conn,"DELETE FROM app WHERE id = '$id'");
-   $delete_old_app_items = mysqli_query($conn,"DELETE FROM app_items WHERE sn = '$sn1' AND code = '$code1' AND pmo_id = '$pmo_id' ");
+   $delete_old_app_items = mysqli_query($conn,"DELETE FROM app_items WHERE sn = '$sn1' AND code = '$code1' AND procurement = '$item1' ");
    for($count = 0; $count < count($_POST["pmo"]); $count++) {
      $id1 = $_POST["id1"][$count];
      $insert_app_items = mysqli_query($conn,'INSERT INTO app_items(sn,code,new_entry,merge_code,procurement,source_of_funds_id,category_id,pmo_id,qty,qty_original,mode_of_proc_id,price,app_price,remarks,app_year,unit_id)
