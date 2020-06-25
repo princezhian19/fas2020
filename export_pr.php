@@ -1,6 +1,15 @@
 <?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+$id = $_GET['id'];
+
+$sql = mysqli_query($conn, "SELECT * FROM pr WHERE id = '$id' ");
+$row = mysqli_fetch_array($sql);
+$pr_no = $row['pr_no'];
+$pmo = $row['pmo'];
+$purpose = $row['purpose'];
+$pr_date = $row['pr_date'];
 $sql_items = mysqli_query($conn, "SELECT a.sn,a.id,a.procurement,pr.description,pr.unit,pr.qty,pr.abc FROM pr_items pr left join app a on a.id = pr.items WHERE pr.pr_no = '$pr_no' ");
 if (mysqli_num_rows($sql_items)>45) {
   # code...
@@ -36,15 +45,7 @@ $styleHeader = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  =>
 
  $styleLabel = array('font'  => array('size'  => 11, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
-$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$id = $_GET['id'];
 
-$sql = mysqli_query($conn, "SELECT * FROM pr WHERE id = '$id' ");
-$row = mysqli_fetch_array($sql);
-$pr_no = $row['pr_no'];
-$pmo = $row['pmo'];
-$purpose = $row['purpose'];
-$pr_date = $row['pr_date'];
 
 $d1 = date('F d, Y', strtotime($pr_date));
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B7',$pmo);
