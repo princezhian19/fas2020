@@ -52,7 +52,7 @@ function aa()
 {
     include 'connection.php';
 
-    $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.TC_ID = tbltravel_claim_info.TC_ID WHERE `NAME` = '".$_GET['username']."'";
+    $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.TC_ID = tbltravel_claim_info.TC_ID WHERE `TC_ID` = '".$_GET['username']."'";
     $result1 = mysqli_query($conn, $query1);
     if(mysqli_num_rows($result1) > 0)
     {
@@ -61,10 +61,10 @@ function aa()
         ?>
         
         <tr>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['DATE'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
             <td><input type = "text" class = "form-control" value = "<?php echo $row1['PLACE'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['ARRIVAL'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['DEPARTURE'];?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
+            <td><input type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
             <td><input type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
             <td><input type = "text" class = "form-control" value = "<?php echo $row1['TRANSPORTATION'];?>"/></td>
             <td><input type = "text" class = "form-control" value = "<?php echo $row1['PERDIEM'];?>"/></td>
@@ -105,7 +105,7 @@ function showData()
                 if(mysqli_num_rows($result) > 0)
                     {
                         ?>
-                            <button disabled class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                            <button  class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
                             <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
                         <?php
                     }else{
