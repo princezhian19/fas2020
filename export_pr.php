@@ -171,8 +171,11 @@ if ($unit == "22") {
     $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$excelrow['procurement'] ."\n".$excelrow['description']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$excelrow['qty']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$excelrow['abc']);
+if (mysqli_num_rows($sql_items)>45) {
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('F58',$total);
+    }else{
     $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$total);
-
+}
 
     $objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
     $objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
