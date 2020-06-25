@@ -382,19 +382,19 @@ $objPHPExcel->getActiveSheet()->getStyle('C'.$rowF)->applyFromArray($styleConten
 $objPHPExcel->getActiveSheet()->getStyle('C'.$rowF.':C'.$rowG)->applyFromArray($styleLeft);
 $objPHPExcel->getActiveSheet()->getStyle('C'.$rowF.':C'.$rowG)->applyFromArray($styleRight);
 
-if ($request_by == 1 ) {
+if ($request_by == 'JAY-AR T. BELTRAN' ) {
   $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowI,"JAY-AR T. BELTRAN");
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ,"Chief, LGCDD");
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ," OIC-LGCDD Chief");
 
 }
-if ($request_by == 2 ) {
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowI,"JOHN M. CEREZO");
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ,"OIC - LGMED Chief");
+if ($request_by == 'GILBERTO L. TUMAMAC' ) {
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowI,"GILBERTO L. TUMAMAC");
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ,"OIC-LGMED Chief");
 
 }
-if ($request_by == 3 ) {
+if ($request_by == 'DR. CARINA S. CRUZ' ) {
   $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowI,"DR. CARINA S. CRUZ");
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ,"CAO/ Chief, FAD");
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ,"FAD Chief");
 }
 
 $objPHPExcel->getActiveSheet()->getStyle('C'.$rowI)->applyFromArray($styleContent3);
