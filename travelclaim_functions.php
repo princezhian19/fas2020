@@ -48,11 +48,12 @@ function fill()
         }
     }
 }
-function aa()
+function aa($id)
 {
     include 'connection.php';
 
-    $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.TC_ID = tbltravel_claim_info.TC_ID WHERE `TC_ID` = '".$_GET['username']."'";
+    $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.TC_ID = tbltravel_claim_info.TC_ID WHERE tbltravel_claim_info.`TC_ID` = '".$id."'";
+   echo $query1;
     $result1 = mysqli_query($conn, $query1);
     if(mysqli_num_rows($result1) > 0)
     {
@@ -96,7 +97,7 @@ function showData()
         
        
         <?php
-        aa();
+        aa($row['TC_ID']);
         }
         ?>
         <tr>
