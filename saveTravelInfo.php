@@ -1,21 +1,12 @@
 <?php 
 session_start();
 $unique_id = $_SESSION['unique_id'];
-// destination
-// perdiem
-// date
-// from1
-// to1
-// meals
-// from2
-// to2
-// accomodation
-// others
+$breakfast = $_POST['breakfast'];
+$lunch = $_POST['lunch'];
+$dinner = $_POST['dinner'];
+$receipt = $_POST['wor_txt'];
+$perdiem = $breakfast+$lunch+$dinner+$receipt;
 
-// from3[]
-// to3[]
-// transpo[]
-// transpo_fare[]
 
 for($a=0;$a < count($_POST['from3']); $a++)
 {
@@ -23,7 +14,7 @@ for($a=0;$a < count($_POST['from3']); $a++)
     $to3 = $_POST['to3'][$a];
     $destination = $from3.' to '.$to3;
     $transpo_fare = $_POST['transpo_fare'][$a];
-$totalamount = $_POST['transpo_fare'][$a];
+$totalamount = $_POST['transpo_fare'][$a]+$perdiem;
 
     include 'connection.php';
     $insert ="INSERT INTO `tbltravel_claim_info`(`TC_ID`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `OTHERS`, `TOTAL_AMOUNT`) 
@@ -35,7 +26,7 @@ $totalamount = $_POST['transpo_fare'][$a];
              '".date('g:i',strtotime($_POST['to1']))."',
             null,
              '".$transpo_fare."',
-             null,
+             '".$perdiem."',
              '".$_POST['others']."',
              '".$totalamount."'
             )";
@@ -43,7 +34,6 @@ $totalamount = $_POST['transpo_fare'][$a];
     } else {
     }
 
-  
  
 }
 for($b=0;$b < count($_POST['mot']); $b++)

@@ -82,7 +82,7 @@ function showData()
     include 'connection.php';
     $query = "SELECT * FROM tbltravel_claim_info2  WHERE `NAME` = '".$_GET['username']."'";
     $result = mysqli_query($conn, $query);
-    if(mysqli_num_rows($result) > 0)
+    if(mysqli_num_rows($result) > 0)    
     {
         while($row = mysqli_fetch_array($result))
         {
@@ -105,7 +105,7 @@ function showData()
                 if(mysqli_num_rows($result) > 0)
                     {
                         ?>
-                            <button  class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                            <button  disabled class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
                             <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
                         <?php
                     }else{
@@ -160,6 +160,26 @@ function showData()
     }
 
     
+}
+function getTotal()
+{
+    include 'connection.php';
+    $query1 = "SELECT * FROM tbltravel_claim_info2  WHERE `NAME` = '".$_GET['username']."'";
+    $result1 = mysqli_query($conn, $query1);
+    
+        if($row1 = mysqli_fetch_array($result1))
+        {
+                $query2 = "SELECT sum(`TOTAL_AMOUNT`)AS 'total' FROM tbltravel_claim_info  WHERE `TC_ID` = '".$row1['TC_ID']."'";
+                $result2 = mysqli_query($conn, $query2);
+                if(mysqli_num_rows($result2) > 0)
+                {
+                    if($row2 = mysqli_fetch_array($result2))
+                    {
+                        echo $row2['total'];
+                    }
+                }
+            }
+        
 }
 
     
