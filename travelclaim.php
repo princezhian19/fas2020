@@ -247,14 +247,14 @@ div.pac-container {
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">Origin<span style = "color:red;">*</span></td>
                                     <td class="col-md-5">
-                                      <input type="text" class="form-control" id="search_input" placeholder="Type address..." />
+                                      <input type="text" class="form-control" id="search_input" name = "origin" placeholder="Type address..." />
                                     
                                     </td>
                                         </tr>
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">Destination<span style = "color:red;">*</span></td>
                                     <td class="col-md-5">
-                                    <input type="text" class="form-control" id="search_input2" placeholder="Type address..." />
+                                    <input type="text" class="form-control" id="search_input2" name = "destination" placeholder="Type address..." />
                                     
                                     </td>
                                         </tr>
