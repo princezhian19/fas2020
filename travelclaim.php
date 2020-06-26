@@ -39,6 +39,9 @@ include 'travelclaim_functions.php';
 .borderless:focus {
   border-color: green
 }
+div.pac-container {
+    z-index: 99999999999 !important;
+}
 </style>
 </head>
 <div class="box">
@@ -243,11 +246,17 @@ include 'travelclaim_functions.php';
                                         </tr>
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">Origin<span style = "color:red;">*</span></td>
-                                    <td class="col-md-5"><input  type = "text" class = "form-control" name = "origin"  value = "" /></td>
+                                    <td class="col-md-5">
+                                      <input type="text" class="form-control" id="search_input" placeholder="Type address..." />
+                                    
+                                    </td>
                                         </tr>
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">Destination<span style = "color:red;">*</span></td>
-                                    <td class="col-md-5"><input  type = "text" name = "destination" class = "form-control" value = ""  /></td>
+                                    <td class="col-md-5">
+                                    <input type="text" class="form-control" id="search_input2" placeholder="Type address..." />
+                                    
+                                    </td>
                                         </tr>
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>  
@@ -500,4 +509,31 @@ exit();
         });
     });
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+    var searchInput = 'search_input';
+    var searchInput2 = 'search_input2';
+
+    $(document).ready(function () {
+        var autocomplete;
+        var autocomplete2;
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+            types: ['geocode'],
+            /*componentRestrictions: {
+                country: "USA"
+            }*/
+        });
+
+        autocomplete2 = new google.maps.places.Autocomplete((document.getElementById(searchInput2)), {
+            types: ['geocode'],
+            /*componentRestrictions: {
+                country: "USA"
+            }*/
+        });
+        
+        
+    });  
+    </script>
 
