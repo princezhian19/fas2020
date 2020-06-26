@@ -231,7 +231,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row4,'VERIFIED as to the 
 $objPHPExcel->getActiveSheet()->mergeCells('C'.$row5.':E'.$row5);
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row5.':E'.$row5)->applyFromArray($stylebottom);
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row5)->applyFromArray($styleHeader);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row5,'DR. CARINA S. CRUZ');
+// $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row5,'DR. CARINA S. CRUZ');
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row5.':E'.$row5)->applyFromArray($stylebottom);
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row6)->applyFromArray($styleHeader2);
 $objPHPExcel->getActiveSheet()->mergeCells('C'.$row6.':E'.$row6);

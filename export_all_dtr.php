@@ -51,7 +51,7 @@ $emp_status = $_GET['emp_status'];
 $year = '2020';
 
 $this_date = $year.'-'.$month;
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A8','For the Month of '.date('F Y',strtotime($this_date)));
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('A8','For the Month of '.date('F Y',strtotime($this_date)));
 if ($emp_status == '') {
   $sql_items = mysqli_query($conn, "SELECT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND dtr.date_today = '$this_date' ");
   # code...
@@ -60,7 +60,7 @@ if ($emp_status == '') {
 
 
 }
-$sql_items1 = mysqli_query($conn, "SELECT DISTINCT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME,te.LAST_M FROM dtr LEFT JOIN tblemployeeinfo te on te.UNAME = dtr.UNAME ");
+  $sql_items1 = mysqli_query($conn, "SELECT DISTINCT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME,te.LAST_M FROM dtr LEFT JOIN tblemployeeinfo te on te.UNAME = dtr.UNAME ");
 // $row = mysqli_fetch_array($sql);
 // $FNAME = $row['FNAME'];
 
@@ -78,48 +78,48 @@ $row5 = 22;
 $row6 = 23;
 
   # code...
-while($excelrow1 = mysqli_fetch_assoc($sql_items1) ){
-  $tempSheet = clone $objPHPExcel->getSheet(0);
+  while($excelrow1 = mysqli_fetch_assoc($sql_items1) ){
+    $tempSheet = clone $objPHPExcel->getSheet(0);
           //$tempSheet = $DTR->getSheet(0)->copy();
-  $tempSheet->setTitle('asd');
-  $objPHPExcel->addSheet($tempSheet);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('A6',$excelrow1['FNAME']);
-  if (mysqli_num_rows($sql_items)>0) {
+    $tempSheet->setTitle('asd');
+    $objPHPExcel->addSheet($tempSheet);
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('A6',$excelrow1['FNAME']);
+if (mysqli_num_rows($sql_items)>0) {
 
-    while($excelrow = mysqli_fetch_assoc($sql_items) ){
-      
+  while($excelrow = mysqli_fetch_assoc($sql_items) ){
+  
 
-      $date = $excelrow['date_today'];
-      $time_in = $excelrow['time_in'];
-      $lunch_in = $excelrow['lunch_in'];
-      $lunch_out = $excelrow['lunch_out'];
-      $time_out = $excelrow['time_out'];
-      $time_out1 = $excelrow['time_out1'];
+    $date = $excelrow['date_today'];
+    $time_in = $excelrow['time_in'];
+    $lunch_in = $excelrow['lunch_in'];
+    $lunch_out = $excelrow['lunch_out'];
+    $time_out = $excelrow['time_out'];
+    $time_out1 = $excelrow['time_out1'];
 
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,date('F d, Y',strtotime($excelrow['date_today'])));
-      if ($time_in == NULL) {
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,'');
-      }else{
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,date('h:i A',strtotime($time_in)));
-      }
-      if ($lunch_in == NULL) {
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,'');
-      }else{
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,date('h:i A',strtotime($lunch_in)));
-      }
-      if ($lunch_out == NULL) {
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,'');
-      }else{
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,date('h:i A',strtotime($lunch_out)));
-      }
-      if ($time_out == NULL) {
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,'');
-      }else{
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,date('h:i A',strtotime($time_out)));
-      }
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,date('F d, Y',strtotime($excelrow['date_today'])));
+    if ($time_in == NULL) {
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,'');
+    }else{
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,date('h:i A',strtotime($time_in)));
+    }
+    if ($lunch_in == NULL) {
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,'');
+    }else{
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,date('h:i A',strtotime($lunch_in)));
+    }
+    if ($lunch_out == NULL) {
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,'');
+    }else{
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,date('h:i A',strtotime($lunch_out)));
+    }
+    if ($time_out == NULL) {
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,'');
+    }else{
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,date('h:i A',strtotime($time_out)));
+    }
 
-      if(date('d',strtotime($date)) == '01'){ 
-        $lateD = date('H:i',strtotime($time_in)) < date('H:i',strtotime('08:00'));
+    if(date('d',strtotime($date)) == '01'){ 
+      $lateD = date('H:i',strtotime($time_in)) < date('H:i',strtotime('08:00'));
   if($lateD){ //morning late
    $datetime1 = new DateTime('08:00');//time in
  }else{
@@ -226,7 +226,6 @@ while($excelrow1 = mysqli_fetch_assoc($sql_items1) ){
   $row4++;
   $row5++;
   $row6++;
-}
 
 $objPHPExcel->getActiveSheet()->mergeCells('A'.$row2.':G'.$row2);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row2)->applyFromArray($styleContent);
@@ -246,6 +245,7 @@ $objPHPExcel->getActiveSheet()->getStyle('C'.$row5.':E'.$row5)->applyFromArray($
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row6)->applyFromArray($styleHeader2);
 $objPHPExcel->getActiveSheet()->mergeCells('C'.$row6.':E'.$row6);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row6,'In Charge');
+}
 }
 }
 
