@@ -135,6 +135,8 @@
                 <option value="3">Medel A. Saturno</option>
                 <option value="4">Rafael M. Saturno</option>
                 <option value="5">Camille T. Ronquillo</option>
+                <option value="6">Art Brian G. Rubio</option>
+                <option value="7">Hannah Grace P. Solis</option>
               </select>
             </div>
           </div>

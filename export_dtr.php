@@ -140,9 +140,9 @@ if (mysqli_num_rows($sql_items)>0) {
   }else{
     $datetime1 = new DateTime($time_in);//time in
   }
-    $latePM = date('H:i',strtotime($time_out1)) > date('H:i',strtotime('16:00')); // pag 6 59 pbaba time ine
+   $latePM = date('H:i',strtotime($time_out1)) > date('H:i',strtotime('17:00')); // pag 6 59 pbaba time ine
   if ($latePM) {
-    $datetime2 = new DateTime('16:00');//time in
+   $datetime2 = new DateTime('17:00');
   }else{
     $datetime2 = new DateTime($time_out1);//time
   }
@@ -231,7 +231,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row4,'VERIFIED as to the 
 $objPHPExcel->getActiveSheet()->mergeCells('C'.$row5.':E'.$row5);
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row5.':E'.$row5)->applyFromArray($stylebottom);
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row5)->applyFromArray($styleHeader);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row5,'DR. CARINA S. CRUZ');
+// $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row5,'DR. CARINA S. CRUZ');
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row5.':E'.$row5)->applyFromArray($stylebottom);
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row6)->applyFromArray($styleHeader2);
 $objPHPExcel->getActiveSheet()->mergeCells('C'.$row6.':E'.$row6);
