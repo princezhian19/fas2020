@@ -1,7 +1,7 @@
 <?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("library/export_dtr.xlsx");
+$objPHPExcel = PHPExcel_IOFactory::load("library/export_dtr2.xlsx");
 
 $styleTop = array(
   'borders' => array(
@@ -45,35 +45,49 @@ $styleHeader2 = array('font'  => array('size'  => 11, 'name'  => 'Calibri'),'ali
 
 
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$username = $_GET['username'];
 $month = $_GET['month'];
 $office = $_GET['office'];
+$emp_status = $_GET['emp_status'];
 $year = '2020';
 
 $this_date = $year.'-'.$month;
-
-$sql = mysqli_query($conn, "SELECT concat(LAST_M,',',FIRST_M,' ',MIDDLE_M) as FNAME FROM tblemployeeinfo WHERE OFFICE_STATION = '$office'");
-$row = mysqli_fetch_array($sql);
-$FNAME = $row['FNAME'];
-
-
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A6',$FNAME);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A8','For the Month of '.date('F Y',strtotime($this_date)));
-
-$sql_items = mysqli_query($conn, "SELECT id, UNAME,date_today,time_in, lunch_out,lunch_in,time_out,SUBTIME(time_out,'01:00:00') as time_out1 FROM dtr WHERE UNAME ='$username' AND  `date_today` LIKE '%$this_date%'
-");
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('A8','For the Month of '.date('F Y',strtotime($this_date)));
+if ($emp_status == '') {
+  $sql_items = mysqli_query($conn, "SELECT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND dtr.date_today = '$this_date' ");
+  # code...
+}else{
+  $sql_items = mysqli_query($conn, "SELECT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME,te.LAST_M,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND te.ACTIVATED = '$emp_status' AND dtr.date_today LIKE '%$this_date%' LIMIT 200");
 
 
+}
+  $sql_items1 = mysqli_query($conn, "SELECT DISTINCT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME,te.LAST_M FROM dtr LEFT JOIN tblemployeeinfo te on te.UNAME = dtr.UNAME ");
+// $row = mysqli_fetch_array($sql);
+// $FNAME = $row['FNAME'];
 
+
+// $objPHPExcel->setActiveSheetIndex()->setCellValue('A6',$FNAME);
+// $objPHPExcel->setActiveSheetIndex()->setCellValue('A8','For the Month of '.date('F Y',strtotime($this_date)));
+
+// $sql_items = mysqli_query($conn, "SELECT id, UNAME,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM dtr WHERE UNAME ='$username' AND  `date_today` LIKE '%$this_date%'
+// ");
 $row = 14;
 $row2 = 16;
 $row3 = 18;
 $row4 = 20;
 $row5 = 22;
 $row6 = 23;
+
+  # code...
+  while($excelrow1 = mysqli_fetch_assoc($sql_items1) ){
+    $tempSheet = clone $objPHPExcel->getSheet(0);
+          //$tempSheet = $DTR->getSheet(0)->copy();
+    $tempSheet->setTitle('asd');
+    $objPHPExcel->addSheet($tempSheet);
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('A6',$excelrow1['FNAME']);
 if (mysqli_num_rows($sql_items)>0) {
 
   while($excelrow = mysqli_fetch_assoc($sql_items) ){
+  
 
     $date = $excelrow['date_today'];
     $time_in = $excelrow['time_in'];
@@ -124,15 +138,15 @@ if (mysqli_num_rows($sql_items)>0) {
 
     if($time_out == NULL){
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
-   }
-   else{
-    if ($date3333 > $date333) {
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
-   }else{
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, $finalfinal->format('%H'));
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, $finalfinal->format('%i'));
-  }
-}
+    }
+    else{
+      if ($date3333 > $date333) {
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
+      }else{
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, $finalfinal->format('%H'));
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, $finalfinal->format('%i'));
+      }
+    }
     // echo $finalfinal->format('%i');
   }else{
     $lateD = date('H:i',strtotime($time_in)) < date('H:i',strtotime('07:00')); // pag 6 59 pbaba time ine
@@ -142,8 +156,8 @@ if (mysqli_num_rows($sql_items)>0) {
     $datetime1 = new DateTime($time_in);//time in
   }
     $datetime2 = new DateTime($time_out1);//time
-   
-   $finaldate = $datetime2->diff($datetime1); 
+
+    $finaldate = $datetime2->diff($datetime1); 
     $date333 = new DateTime("08:00"); // eto ung mminus sa time diff oks try mo
     $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
     $finalfinal = $date3333->diff($date333);
@@ -151,67 +165,67 @@ if (mysqli_num_rows($sql_items)>0) {
 
     if($time_out == NULL){
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
-   }
-   else{
-    if ($date3333 > $date333) {
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
-   }else{
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, $finalfinal->format('%H'));
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, $finalfinal->format('%i'));
+    }
+    else{
+      if ($date3333 > $date333) {
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
+      }else{
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, $finalfinal->format('%H'));
+        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, $finalfinal->format('%i'));
+      }
+    }
+
+
+
+
   }
-}
 
 
 
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleRight);
 
-}
+  $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleRight);
 
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleRight);
 
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleRight);
 
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleTop);
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLeft);
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleRight);
-
-$objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($stylebottom);
-$objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleTop);
-$objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleLeft);
-$objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleRight);
-
-$objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($stylebottom);
-$objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleTop);
-$objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleLeft);
-$objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleRight);
-
-$objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($stylebottom);
-$objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleTop);
-$objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleLeft);
-$objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleRight);
-
-$objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($stylebottom);
-$objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleTop);
-$objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleLeft);
-$objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleRight);
 
 
-$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
-$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleTop);
-$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLeft);
-$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleRight);
-$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
 
-$objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($stylebottom);
-$objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleTop);
-$objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleLeft);
-$objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleRight);
-$objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($stylebottom);
 
-$row++;
-$row2++;
-$row3++;
-$row4++;
-$row5++;
-$row6++;
+  $row++;
+  $row2++;
+  $row3++;
+  $row4++;
+  $row5++;
+  $row6++;
 }
 
 $objPHPExcel->getActiveSheet()->mergeCells('A'.$row2.':G'.$row2);
@@ -233,11 +247,12 @@ $objPHPExcel->getActiveSheet()->getStyle('C'.$row6)->applyFromArray($styleHeader
 $objPHPExcel->getActiveSheet()->mergeCells('C'.$row6.':E'.$row6);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row6,'In Charge');
 }
+}
 
 
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-header('location: export_dtr.xlsx');
+header('location: export_all_dtr.xlsx');
 
 ?>

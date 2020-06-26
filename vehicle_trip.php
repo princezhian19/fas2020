@@ -56,12 +56,12 @@
                                     <select class="form-control division_dropdown " id="selectDivision" style="width: 100%;">
                                         <?php 
                                         require_once 'connection.php';
-                                        $sql = mysqli_query($conn, "SELECT DIVISION_N,DIVISION_M FROM `tblpersonneldivision` ORDER BY DIVISION_N ASC");
+                                        $sql = mysqli_query($conn, "SELECT name FROM `vr_drivers` ORDER BY id ASC");
                                         if (mysqli_num_rows($sql)>0) {
                                         while($row = mysqli_fetch_assoc($sql) )
                                         {
-                                        $selectedOpt = ($row['DIVISION_N'] == 0)?'selected':''; 
-                                        echo '<option  value="'.$row["DIVISION_N"].'" '.$selectedOpt.' >'.$row["DIVISION_M"].'</option>';
+                                        $selectedOpt = ($row['name'] == '0')?'selected':''; 
+                                        echo '<option  value="'.$row["name"].'" '.$selectedOpt.' >'.$row["name"].'</option>';
                                         }
                                         }
                                         ?>
