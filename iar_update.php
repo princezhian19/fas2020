@@ -89,7 +89,7 @@ ob_start();
                 <?php
                 $sq = mysqli_query($conn,"SELECT iar_date from iar where id ='".$_GET['id']."' ");
                 while ($row = mysqli_fetch_assoc($sq)) {
-                  echo '<input type="text" class="form-control" style="height: 40px;" placeholder="" name="iar_date" id="iar_date" value="'.$row['iar_date'].'" />';   
+                  echo '<input type="text" class="form-control" style="height: 40px;" placeholder="" name="iar_date" id="iar_date" value="'.date('m/d/Y',strtotime($row['iar_date'])).'" />';   
                 }
                 ?>
               </div>
@@ -109,7 +109,7 @@ ob_start();
                 <?php
                 $sq = mysqli_query($conn,"SELECT invoice_date from iar where id ='".$_GET['id']."' ");
                 while ($row = mysqli_fetch_assoc($sq)) {
-                  echo '<input type="text" class="form-control" style="height: 40px;" placeholder="" name="invoice_date" id="invoice_date" value="'.$row['invoice_date'].'" />';   
+                  echo '<input type="text" class="form-control" style="height: 40px;" placeholder="" name="invoice_date" id="invoice_date" value="'.date('m/d/Y',strtotime($row['invoice_date'])).'" />';   
                 }
                 ?>
               </div>
