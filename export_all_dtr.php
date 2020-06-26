@@ -226,6 +226,7 @@ if (mysqli_num_rows($sql_items)>0) {
   $row4++;
   $row5++;
   $row6++;
+}
 
 $objPHPExcel->getActiveSheet()->mergeCells('A'.$row2.':G'.$row2);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row2)->applyFromArray($styleContent);
@@ -240,12 +241,11 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row4,'VERIFIED as to the 
 $objPHPExcel->getActiveSheet()->mergeCells('C'.$row5.':E'.$row5);
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row5.':E'.$row5)->applyFromArray($stylebottom);
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row5)->applyFromArray($styleHeader);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row5,'DR. CARINA S. CRUZ');
+// $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row5,'DR. CARINA S. CRUZ');
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row5.':E'.$row5)->applyFromArray($stylebottom);
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row6)->applyFromArray($styleHeader2);
 $objPHPExcel->getActiveSheet()->mergeCells('C'.$row6.':E'.$row6);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row6,'In Charge');
-}
 }
 }
 

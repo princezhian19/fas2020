@@ -290,6 +290,32 @@ if ($officerIncharge == 1) {
   $objDrawing->setWidth(241.5); 
   $objDrawing->setHeight(251.5);  
   $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
+}elseif($officerIncharge == 5){
+  $objDrawing = new PHPExcel_Worksheet_Drawing();
+  $objDrawing->setName('test_img');
+  $objDrawing->setDescription('test_img');
+  $objDrawing->setPath('iar6.png');
+  $objDrawing->setCoordinates('A'.$row);                      
+//setOffsetX works properly
+  $objDrawing->setOffsetX(5); 
+  $objDrawing->setOffsetY(5);                
+//set width, height
+  $objDrawing->setWidth(241.5); 
+  $objDrawing->setHeight(251.5);  
+  $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
+}elseif($officerIncharge == 5){
+  $objDrawing = new PHPExcel_Worksheet_Drawing();
+  $objDrawing->setName('test_img');
+  $objDrawing->setDescription('test_img');
+  $objDrawing->setPath('iar7.png');
+  $objDrawing->setCoordinates('A'.$row);                      
+//setOffsetX works properly
+  $objDrawing->setOffsetX(5); 
+  $objDrawing->setOffsetY(5);                
+//set width, height
+  $objDrawing->setWidth(241.5); 
+  $objDrawing->setHeight(251.5);  
+  $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
 }
 else{
 
