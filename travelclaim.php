@@ -50,7 +50,7 @@ div.pac-container {
     <div class="box-header with-border">
     </div>
     <br>
-    &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="ViewPR.php" style="color:white;text-decoration: none;">Back</a></li>
+    &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="home.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Back</a></li>
 
     <br>
     <br>
@@ -111,14 +111,9 @@ div.pac-container {
                   <tr>
                     <td class = "label-text">  <label>Official Station: </label></td>
                     <td colspan = 4>
-                    <input type = "text" class = "form-control" readonly/>
-                    <!-- <select required id="mySelect2" class="form-control" name="office">
-                    <option selected disabled></option>
-                <option value="1" selected>Regional Office</option>
-                <option value="2">Provincial/HUC Office</option>
-                <option value="3">Cluster Office</option>
-                <option value="4">City/Municipal Office</option>
-                    </select> -->
+               <?php 
+echo getOffice();
+               ?>
 
                     
                     </td>
