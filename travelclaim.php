@@ -447,9 +447,9 @@ var purpose = $('#or').val();
 $('#ro_txt').val(purpose);
 if(purpose == '' || purpose == null)
 {
+  
   alert('Required Field:All fields with * are required!.');
-$('#ro').prop('required',true);
-exit();
+$('#editModal').modal().hide();
 
 }else{
 
