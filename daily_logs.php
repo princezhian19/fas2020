@@ -387,8 +387,14 @@ if (isset($_POST['stamp4'])) {
               }else{
                 $datetime1 = new DateTime($time_in);
               }
+             $latePM = date('H:i',strtotime($time_out1)) > date('H:i',strtotime('17:00')); // pag 6 59 pbaba time ine
+             if ($latePM) {
+                $datetime2 = new DateTime('17:00');
+             }else{
                 $datetime2 = new DateTime($time_out1);
 
+             }
+           
                 $finaldate = $datetime2->diff($datetime1); 
                 $date333 = new DateTime("08:00"); 
                 $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));

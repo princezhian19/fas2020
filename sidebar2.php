@@ -362,7 +362,7 @@ function showRequest()
 
       
 
-      <?php if ($username == 'rbnanez' || $username == 'lnpaquita' || $username == 'lnmelanio' || $username == 'jscubio' ): ?>
+      <?php if ($username == 'rbnanez' || $username == 'lnpaquita' || $username == 'lnmelanio' || $username == 'jscubio' || $username == 'arsamia'): ?>
        <li class="treeview 
        <?php 
        if(
@@ -387,7 +387,7 @@ function showRequest()
         <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
       </a>
       <ul class="treeview-menu" >
-        <?php if ($username == 'jscubio'): ?>
+        <?php if ($username == 'jscubio' || $username == 'arsamia'): ?>
           <li class="treeview">
           <a href="#" >
             <i class="fa fa-folder-open-o" style = "color:#black;"></i>
@@ -404,7 +404,7 @@ function showRequest()
         <?php else: ?>
 
         <?php endif ?>
-      <?php if ($username == 'rbnanez' || $username == 'lnpaquita' || $username == 'lnmelanio' || $username == 'jscubio' ): ?>
+      <?php if ($username == 'rbnanez' || $username == 'lnpaquita' || $username == 'lnmelanio' || $username == 'jscubio' || $username == 'arsamia'): ?>
 
       <li class="treeview">
         <a href="#" >

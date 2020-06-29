@@ -39,6 +39,9 @@ include 'travelclaim_functions.php';
 .borderless:focus {
   border-color: green
 }
+div.pac-container {
+    z-index: 99999999999 !important;
+}
 </style>
 </head>
 <div class="box">
@@ -47,7 +50,7 @@ include 'travelclaim_functions.php';
     <div class="box-header with-border">
     </div>
     <br>
-    &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="ViewPR.php" style="color:white;text-decoration: none;">Back</a></li>
+    &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="home.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Back</a></li>
 
     <br>
     <br>
@@ -108,14 +111,9 @@ include 'travelclaim_functions.php';
                   <tr>
                     <td class = "label-text">  <label>Official Station: </label></td>
                     <td colspan = 4>
-                    <input type = "text" class = "form-control" readonly/>
-                    <!-- <select required id="mySelect2" class="form-control" name="office">
-                    <option selected disabled></option>
-                <option value="1" selected>Regional Office</option>
-                <option value="2">Provincial/HUC Office</option>
-                <option value="3">Cluster Office</option>
-                <option value="4">City/Municipal Office</option>
-                    </select> -->
+               <?php 
+echo getOffice();
+               ?>
 
                     
                     </td>
@@ -243,11 +241,17 @@ include 'travelclaim_functions.php';
                                         </tr>
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">Origin<span style = "color:red;">*</span></td>
-                                    <td class="col-md-5"><input  type = "text" class = "form-control" name = "origin"  value = "" /></td>
+                                    <td class="col-md-5">
+                                      <input type="text" class="form-control" id="search_input" name = "origin" placeholder="Type address..." />
+                                    
+                                    </td>
                                         </tr>
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">Destination<span style = "color:red;">*</span></td>
-                                    <td class="col-md-5"><input  type = "text" name = "destination" class = "form-control" value = ""  /></td>
+                                    <td class="col-md-5">
+                                    <input type="text" class="form-control" id="search_input2" name = "destination" placeholder="Type address..." />
+                                    
+                                    </td>
                                         </tr>
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>  
@@ -350,7 +354,7 @@ include 'travelclaim_functions.php';
                         <div class="form-group">
                           <label>Others</label>
                           <input type="text" name = "others" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask><br>
-                          <span class = "btn btn-success btn-md pull-right" id = "add_fair"><i class = "fa fa-plus"></i>&nbsp;Add Fair </span>
+                          <span class = "btn btn-success btn-md pull-right" id = "add_fair"><i class = "fa fa-plus"></i>&nbsp;Add Fare </span>
                         </div>
                       </div>
                     </div>                  
@@ -443,9 +447,9 @@ var purpose = $('#or').val();
 $('#ro_txt').val(purpose);
 if(purpose == '' || purpose == null)
 {
+  
   alert('Required Field:All fields with * are required!.');
-$('#ro').prop('required',true);
-exit();
+$('#editModal').modal().hide();
 
 }else{
 
@@ -461,6 +465,7 @@ exit();
   });
   // checkbox validation
   $(document).ready(function(){
+    $('#datepicker4').val($('#travel_date').val());
 // $('#editbtn').click(function () {
 //   var purpose = $('#or').val();
 // if(purpose == '' || purpose == null)
@@ -500,4 +505,31 @@ exit();
         });
     });
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+    var searchInput = 'search_input';
+    var searchInput2 = 'search_input2';
+
+    $(document).ready(function () {
+        var autocomplete;
+        var autocomplete2;
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+            types: ['geocode'],
+            /*componentRestrictions: {
+                country: "USA"
+            }*/
+        });
+
+        autocomplete2 = new google.maps.places.Autocomplete((document.getElementById(searchInput2)), {
+            types: ['geocode'],
+            /*componentRestrictions: {
+                country: "USA"
+            }*/
+        });
+        
+        
+    });  
+    </script>
 
