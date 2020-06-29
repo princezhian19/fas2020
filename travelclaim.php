@@ -74,7 +74,7 @@ div.pac-container {
                       <td class = "label-text">
                         <label>Entity Name: 
                       </td>
-                      <td colspan = 8>
+                      <td colspan = 10  >
                       <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
                       </td>
                     </tr>
@@ -102,13 +102,13 @@ div.pac-container {
                     </td>
                     <td colspan = 4><input type = "text" class = "form-control" value = "<?php echo getCompleteName();?>" readonly/></td>
                     <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                    <td colspan = 2><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
+                    <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
                   </tr>
                   
                   <tr>
                     <td class = "label-text">  <label>Position:</label></td>
                     <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly/></td>
-                    <td colspan = 4 rowspan = 2>
+                    <td colspan = 5 rowspan = 2>
                     <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"></textarea></td>
                   </tr>
                   <tr>
@@ -123,7 +123,7 @@ echo getOffice();
                   </tr>
                  
                   <tr>
-                  <th class = "table-header" style = "text-align:center;" rowspan = 2>
+                  <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2>
                     Date
                   </th>
                   <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Places to be visited (Destination)</th>
@@ -133,6 +133,7 @@ echo getOffice();
                   <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Per Diem</th>
                   <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Others</th>
                   <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Total Amount</th>
+                  <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Action</th>
               </tr>
               <tr>
 
@@ -150,12 +151,12 @@ echo getOffice();
               </tr>
              
               <tr>
-              <td colspan = 8>TOTAL</td>
-              <td >
-              <?php
-              getTotal();
+              <td colspan = 10>TOTAL 
+              <?php 
+getTotal();              
               ?>
               </td>
+            
               </tr>
               <tr>
               <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
