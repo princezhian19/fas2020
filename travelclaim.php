@@ -282,84 +282,90 @@ echo getOffice();
               <form method = "POST" action = "saveTravelInfo.php">
                 <div class="well" style = "padding:10px;">
                   <div class="box-body">
-                    <div class="row">
-                     
-                      
-                       
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Date</label>
-                            <div class="input-group">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" name = "date" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label>Time Going to Venue</label>
-                            <input type = "time" name = "from1" class = "form-control "/>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label>&nbsp;</label>
-                          <input type = "time" name = "to1" class = "form-control"/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                        <label>
-                        Meals
-                        </label><br>
-                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > <b>Will Claim Meals</b><br>
+                    <div class = "row">
+                      <div class = "col-sm-12 col-md-12 col-lg-12">
+                          <div class = "col-sm-6 col-md-6 col-lg-6">
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label>Date</label>
+                                    <div class="input-group">
+                                      <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" name = "date" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Time Going to Venue</label>
+                                    <input type = "time" name = "from1" class = "form-control "/>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>&nbsp;</label>
+                                  <input type = "time" name = "to1" class = "form-control"/>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label style = "font-size:13px;">Time Going Home or back to Official Station</label>
+                                    <input type = "time" name = "from2" class = "form-control"/>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>&nbsp;</label>
+                                  <input type = "time" name = "to2" class = "form-control" style = "margin-top:15px;"/>
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label>Date</label>
+                                    <input type="text" name = "others" class="form-control" >
+                                </div>
+                              </div>
+  
 
-                        <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" value = "200"> Breakfast
-                        <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" value = "200"> Lunch
-                        <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" value = "200"> Dinner
-                      </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label style = "font-size:13px;">Time Going to Home or back to Official Station</label>
-                            <input type = "time" name = "from2" class = "form-control"/>
+
+                 
+                          </div>
+
+                        <div class = "col-sm-6 col-md-6 col-lg-6">
+                          <div class="col-md-12 well">
+                            <div class="form-group">
+                              <label>
+                              Meals
+                              </label><br>
+                              <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > <b>Will Claim Meals</b><br>
+
+                              <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" value = "200"> Breakfast
+                              <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" value = "200"> Lunch
+                              <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" value = "200"> Dinner
+                            </div>
+                            <div class="form-group">
+                              <label>
+                              Accomodation
+                              </label><br>
+                              <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation"><b> Will Claim Accomodation</b><br>
+                              <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red checkboxgroup1" id = "wr"> With Receipt
+                              <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
+                              
+                              <br>
+                              <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red checkboxgroup1" id = "wor" value ="1100"> Without Receipt
+                            </div>
+                          </div>
+
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label>&nbsp;</label>
-                          <input type = "time" name = "to2" class = "form-control" style = "margin-top:15px;"/>
-                        </div>
-                      </div>
-                    </div>  
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>
-                          Accomodation
-                          </label><br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation"><b> Will Claim Accomodation</b><br>
-                          <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red checkboxgroup1" id = "wr"> With Receipt
-                          <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
-                          
-                          <br>
-                          <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red checkboxgroup1" id = "wor" value ="1100"> Without Receipt
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Others</label>
-                          <input type="text" name = "others" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask><br>
-                          <span class = "btn btn-success btn-md pull-right" id = "add_fair"><i class = "fa fa-plus"></i>&nbsp;Add Fare </span>
-                        </div>
-                      </div>
-                    </div>                  
                     </div>
+                    
                   </div>
+
+
+
+
                 <div class="well" style = "padding:10px;" id = "travelPanel">
 
                   <div class="box-body myTemplate2">
