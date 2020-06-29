@@ -482,7 +482,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
     
    
     $("#myModal2").modal("show");
-     alert(event.assigneddate);
+    //  alert(event.assigneddate);
 
 
 
