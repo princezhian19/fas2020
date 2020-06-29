@@ -203,6 +203,8 @@ function viewEvents2()
       margin: 0 auto;
       background-color:#ECEFF1;
   }
+
+  
   
   .response {
       height: 60px;

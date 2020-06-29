@@ -71,7 +71,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 <li class="btn btn-warning"><a href="VehicleRequest.php" style="color:white;text-decoration: none;">Back</a></li>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" id='modes'>
 
         <br>
         <br>
@@ -80,7 +80,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
             
             <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-12">
-            <table class="table" style="border-width: 3px;max-width:100%;">
+            <table  class="table" id='table' style="border-width: 3px;max-width:100%;">
 
             <tr>
 
@@ -319,7 +319,6 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             All Drivers</b></td>
             </tr>
 
-            <tr>
             <td style="background-color: #D5D911; color:white;WIDTH:50%;">
             <input class='calFilter' type="checkbox" name = "offices[]" value="Reynaldo Parale" id = "ReynaldoParale" ><label style = "margin-left:15%;">Reynaldo Parale</label>
             </td>
@@ -340,14 +339,14 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             <input class='calFilter' type="checkbox" name = "offices[]" value="Daniel Narciso" id = "DanielNarciso"><label style = "margin-left:15%;">Daniel Narciso</label>
             </td>
 
-
+           
             </tr>
             <tr>
-
-            </tr>
-            </table>
+            <td>
             <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' ):?>
-            <button class="btn btn-success pull-left"><a style = "color:#fff;"  id = "export"  >Export</a></button>
+            
+            <br>
+            <button class="btn btn-success pull-left"><a style = "color:#fff; "  id = "export"  >Export</a></button>
 
             <?php else: ?>
 
@@ -356,6 +355,10 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             </td>
 
             <?php endif ?>
+            </td>
+            </tr>
+            </table>
+          
             </div>
         </form>
 
