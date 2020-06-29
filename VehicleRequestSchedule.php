@@ -28,47 +28,47 @@ function viewEvents()
                 <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Assined Date</td>
-                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "assigneddate" id = "assigneddate"  /></td>
+                            <td class="col-md-5"><input readonly required type = "text" class = "form-control" name = "assigneddate" id = "assigneddate"  /></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Assigned Time</td>
                             <td class="col-md-5">
-                                <input required type="text" class = "form-control " name = "assignedtime" id="assignedtime" value = ""   required autocomplete = off  >
+                                <input readonly required type="text" class = "form-control " name = "assignedtime" id="assignedtime" value = ""   required autocomplete = off  >
                                     </td>
                                         </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Dispatcher</td>
                             <td class="col-md-5">
-                                <input  type = "text"  class = "form-control datepicker2" id = "dispatcher" name = "dispatcher"    autocomplete = off /></td>
+                                <input  readonly type = "text"  class = "form-control datepicker2" id = "dispatcher" name = "dispatcher"    autocomplete = off /></td>
                                     </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">No. of Vehicles</td>
-                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "nov" id = "nov" value = "" /></td>
+                            <td class="col-md-5"><input readonly  type = "text" class = "form-control" name = "nov" id = "nov" value = "" /></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Assigned Vehicle</td>
-                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "ac" id= "av" value = "" /></td>
+                            <td class="col-md-5"><input readonly required type = "text" class = "form-control" name = "av" id= "av" value = "" /></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Assigned Driver</td>
-                            <td class="col-md-5"><input required type = "number" min = "" name = "ad" id= "ad" class = "form-control" value = ""  /></td>
+                            <td class="col-md-5"><input readonly required type = "number" min = "" name = "ad" id= "ad" class = "form-control" value = ""  /></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Plate</td>  
                             <td class="col-md-5">
-                            <input required type = "text" class = "form-control" name = "plate" id= "plate" value = "" />
+                            <input readonly required type = "text" class = "form-control" name = "plate" id= "plate" value = "" />
                                 </td>
                                     </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Remarks</td>
                             <td class="col-md-5">                              
-                            <input  type = "text"  class = "form-control" id= "vremarks"  name = "vremarks" />
+                            <input readonly  type = "text"  class = "form-control" id= "vremarks"  name = "vremarks" />
                                     </td>
                                         </tr>
                 
                     
                 </table>
-                <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save"> 
+                <!-- <input type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save">  -->
 
             </form>
         <?php
@@ -405,5 +405,37 @@ $(document).ready(function() {
 
 
 </script>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+<script>
+
+$(document).ready(function()
+{
+ 
+$( "#all" ).prop( "checked", true );
+$( "#ReynaldoParale" ).prop( "checked", true );
+$( "#LouieBlanco" ).prop( "checked", true );
+$( "#JoachimLacdang" ).prop( "checked", true );
+$( "#MedelSaturno" ).prop( "checked", true );
+$( "#DanielNarciso" ).prop( "checked", true );
+      
+
+});
+$(document).ready(function() {
+
+  $("#all").click(function(){
+    $('#all').not(this).prop('checked', this.checked);
+    $('#ReynaldoParale').not(this).prop('checked', this.checked);
+    $('#LouieBlanco').not(this).prop('checked', this.checked);
+    $('#JoachimLacdang').not(this).prop('checked', this.checked);
+    $('#MedelSaturno').not(this).prop('checked', this.checked);
+    $('#DanielNarciso').not(this).prop('checked', this.checked);
+   
+});
+
+
+});  
+</script>
+
 </body>
 </html>

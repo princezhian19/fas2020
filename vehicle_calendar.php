@@ -167,10 +167,42 @@
       })
      } */
 
-     $("#myModal2").modal("show");
+    
 
+    $('#assigneddate').prop("disabled", true); 
+    $('#assignedtime').prop("disabled", true); 
+    $('#dispatcher').prop("disabled", true); 
+    $('#nov').prop("disabled", true); 
+    $('#av').prop("disabled", true); 
+    $('#ad').prop("disabled", true); 
+    $('#plate').prop("disabled", true); 
+    $('#vremarks').prop("disabled", true); 
+
+    // $('#myModal').modal('show');
+
+  
+    $('#myModal').find('#datepicker1').val(moment(event.start).format('MM/DD/YYYY'));
+    if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970-01-01 00:00:00')
+    {  
+    $('#myModal').find('#datepicker2').val('');
+    }else{
+    $('#myModal').find('#datepicker2').val(moment(event.end).subtract(1, "days").format('MM/DD/YYYY'));
+
+    }    
+    // $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
+    $('#myModal').find('#datepicker3').val(moment(event.posteddate).format('MM/DD/YYYY'));
+    $('#myModal').find('#descriptiontxtbox').val(event.description);
+    $('#myModal').find('#remarks').val(event.remarks);
+    $('#myModal').find('#postedby').val(event.postedby);
+    $('#myModal').find('#venuetxtbox').val(event.venue);
+    $('#myModal').find('#enptxtbox').val(event.enp);
+    $("#myModal2").modal("show");
 
     },
+    
+    
+
+
 
    });
   });
