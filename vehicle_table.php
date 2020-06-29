@@ -79,11 +79,8 @@ $edit="edit";
 <li class="btn btn-success"><a href="VehicleRequestCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a></li>  
 &nbsp;&nbsp;
 
-<?php  if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'): ?>
 <li class="btn btn-success"><a href="VehicleRequestSchedule.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Trip Schedule</a></li>  
-<?php else: ?>
 
-<?php endif ?>
 
 
 </td>
@@ -381,14 +378,14 @@ $edit="edit";
                           
                             <?php else: ?>
                             <td >
-
+                                <?php echo $av.'<br>'.$ad?>
                             </td>
                             <?php endif ?>
 
                             <?php else: ?>
                          
                             <td>
-                           
+                         
                             </td>
                           
                             <?php endif ?>
@@ -418,7 +415,14 @@ $edit="edit";
 
                              
                             <?php else: ?>
-                            <td ></td>
+                            <td >
+                            
+                            <?php if ($recommenddate1 == '0000-00-00'): ?>
+                                <!-- //no dates -->
+                                <?php else: ?>
+                                <?php echo $recommenddate.'<br>'.$recommendby.'<br>'.$rstatus?>
+                                <?php endif ?>
+                            </td>
                             <?php endif ?>
                             <?php else: ?>
                          
@@ -430,7 +434,7 @@ $edit="edit";
 
                             <!--   Approve -->
                             <?php if ($recommenddate1 != '0000-00-00'): ?>
-                              <?php if ($username1 == 'cvferrer' || $username1 == 'aoiglesia' || $username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
+                              <?php if ($username1 == 'cvferrer' || $username1 == 'aoiglesia' || $username1 == '' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
                              
                                   <?php if ($approveddate1 == '0000-00-00' && $status != 'cancelled'): ?>
                                   <td>
@@ -454,7 +458,13 @@ $edit="edit";
 
                              
                             <?php else: ?>
-                            <td ></td>
+                            <td >
+                            <?php if ($approveddate1 == '0000-00-00'): ?>
+                                <!-- //no dates -->
+                                <?php else: ?>
+                                <?php echo $approveddate.'<br>'.$approvedby.'<br>'. $astatus?>
+                                <?php endif ?>
+                            </td>
                             <?php endif ?>
                             <?php else: ?>
                          
@@ -491,7 +501,14 @@ $edit="edit";
 
 
                           <?php else: ?>
-                          <td ></td>
+                          <td >
+                          <?php if ($serveddate1 == '0000-00-00'): ?>
+                          <!-- //no dates -->
+                          <?php else: ?>
+                          <?php echo $serveddate.'<br>'.$servedby?>
+                          <?php endif ?>
+
+                          </td>
                           <?php endif ?>
                           <?php else: ?>
 
