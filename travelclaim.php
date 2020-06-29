@@ -342,18 +342,18 @@ echo getOffice();
 
                               <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" id = "breakfast" value = "breakfast"> Breakfast
                               <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" id= "lunch" value = "lunch"> Lunch
-                              <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" id="dinner" value = "dinnner"> Dinner
+                              <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" id="dinner" value = "dinner"> Dinner
                             </div>
                             <div class="form-group">
                               <label>
                               Accomodation
                               </label><br>
-                              <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation"><b> Will Claim Accomodation</b><br>
-                              <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red checkboxgroup1" id = "wr"> With Receipt
+                              <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
+                              <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt" id = "wr" value ="With Receipt"> With Receipt
                               <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
                               
                               <br>
-                              <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red checkboxgroup1" id = "wor" value ="1100"> Without Receipt
+                              <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt" id = "wor" value ="Without Receipt"> Without Receipt
                             </div>
                           </div>
 
@@ -463,8 +463,8 @@ $('#editModal').modal().hide();
 });
 
 
-  $('.checkboxgroup1').on('change', function() { 
-      $('.checkboxgroup1').not(this).prop('checked', false);  
+  $('.receipt').on('change', function() { 
+      $('.receipt').not(this).prop('checked', false);  
   });
   // checkbox validation
   $(document).ready(function(){
@@ -497,8 +497,10 @@ $('#editModal').modal().hide();
 
     
       enable_cb1();
+      enable_cb2();
 
   $("#cb1").click(enable_cb1);
+  $("#wa").click(enable_cb2);
   function enable_cb1() {
     if (this.checked) {
       if($('.checkboxgroup').val() == 'breakfast')
@@ -507,30 +509,39 @@ $('#editModal').modal().hide();
         $('#lunch').not(this).prop('checked', true);  
         $('#dinner').not(this).prop('checked', true);  
       }
-      
-  
-
       $("#breakfast").removeAttr("disabled");
       $("#lunch").removeAttr("disabled");
       $("#dinner").removeAttr("disabled");
-
-      
- 
-
-
     } else {
 
       $('#breakfast').not(this).prop('checked', false);  
       $('#lunch').not(this).prop('checked', false);  
       $('#dinner').not(this).prop('checked', false);  
 
-
-
       $("#breakfast").attr("disabled", true);
       $("#lunch").attr("disabled", true);
       $("#dinner").attr("disabled", true);
       
     }
+  }
+  function enable_cb2()
+  {
+    if (this.checked) {
+      if($('.receipt').val() == 'With Receipt')
+      {
+        $('#wr').not(this).prop('checked', true);  
+        $('#wor').not(this).prop('checked', true);  
+      }
+      $("#wr").removeAttr("disabled");
+      $("#wor").removeAttr("disabled");
+    }else{
+      $('#wr').not(this).prop('checked', false);  
+      $('#wor').not(this).prop('checked', false); 
+      
+      $("#wr").attr("disabled", true);
+      $("#wor").attr("disabled", true);
+    }
+
   }
 </script>
 

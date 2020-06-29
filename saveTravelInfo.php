@@ -5,7 +5,24 @@ $breakfast = $_POST['breakfast'];
 $lunch = $_POST['lunch'];
 $dinner = $_POST['dinner'];
 $receipt = $_POST['wor_txt'];
+if($breakfast == 'breakfast')
+{
+    $breakfast = 200;
+}
+if($lunch == 'lunch')
+{
+    $lunch = 200;
+}
+if($dinner == 'dinner')
+{
+    $dinner = 200;
+}
+if($receipt == 'Without Receipt')
+{
+    $receipt = 1100;
+}
 $perdiem = $breakfast+$lunch+$dinner+$receipt;
+
 
 include 'connection.php';
 $query = "SELECT ID as 'uid' FROM tbltravel_claim_info2  WHERE `NAME` = '".$_SESSION['username']."'  order by ID DESC limit 1  ";
