@@ -338,11 +338,11 @@ echo getOffice();
                               <label>
                               Meals
                               </label><br>
-                              <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > <b>Will Claim Meals</b><br>
+                              <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1" id = "cb1"> <b>Will Claim Meals</b><br>
 
-                              <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" value = "200"> Breakfast
-                              <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" value = "200"> Lunch
-                              <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" value = "200"> Dinner
+                              <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" id = "breakfast" value = "breakfast"> Breakfast
+                              <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" id= "lunch" value = "lunch"> Lunch
+                              <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" id="dinner" value = "dinnner"> Dinner
                             </div>
                             <div class="form-group">
                               <label>
@@ -462,9 +462,6 @@ $('#editModal').modal().hide();
 }
 });
 
-// $('.checkboxgroup').on('change', function() { 
-//       $('.checkboxgroup').not(this).prop('checked', false);  
-//   });
 
   $('.checkboxgroup1').on('change', function() { 
       $('.checkboxgroup1').not(this).prop('checked', false);  
@@ -472,20 +469,6 @@ $('#editModal').modal().hide();
   // checkbox validation
   $(document).ready(function(){
     $('#datepicker4').val($('#travel_date').val());
-// $('#editbtn').click(function () {
-//   var purpose = $('#or').val();
-// if(purpose == '' || purpose == null)
-// {
-// $('#travelbtn').prop('disabled',true);
-// }else{
-
-// }
-// $('#travelbtn').prop('disabled',false);
-
-
-// });
-
-
         $('#wor').click(function(){
             if($(this).prop("checked") == true){
               
@@ -510,6 +493,45 @@ $('#editModal').modal().hide();
             }
         });
     });
+
+
+    
+      enable_cb1();
+
+  $("#cb1").click(enable_cb1);
+  function enable_cb1() {
+    if (this.checked) {
+      if($('.checkboxgroup').val() == 'breakfast')
+      {
+        $('#breakfast').not(this).prop('checked', true);  
+        $('#lunch').not(this).prop('checked', true);  
+        $('#dinner').not(this).prop('checked', true);  
+      }
+      
+  
+
+      $("#breakfast").removeAttr("disabled");
+      $("#lunch").removeAttr("disabled");
+      $("#dinner").removeAttr("disabled");
+
+      
+ 
+
+
+    } else {
+
+      $('#breakfast').not(this).prop('checked', false);  
+      $('#lunch').not(this).prop('checked', false);  
+      $('#dinner').not(this).prop('checked', false);  
+
+
+
+      $("#breakfast").attr("disabled", true);
+      $("#lunch").attr("disabled", true);
+      $("#dinner").attr("disabled", true);
+      
+    }
+  }
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0"></script>
