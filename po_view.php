@@ -47,10 +47,6 @@ while($rowppu = mysqli_fetch_array($select_tots)){
 }
 
 
-$select_ors = mysqli_query($conn,"SELECT po_no,id FROM burs WHERE po_no = '$po_no'");
-$rowpo = mysqli_fetch_array($select_ors);
-$rowpo_no = $rowpo['po_no'];
-$id = $rowpo['id'];
 
 
 
@@ -84,12 +80,12 @@ $id = $rowpo['id'];
 
 
 
-                     <a href="ViewRFQ.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
-                     <div style="float: right;padding:5px;">
-                         <a href="export_po.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-success" ><i class="fa fa-fw fa-download"></i>Export</a>
-                     </div>
+                       <a href="ViewRFQ.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
+                       <div style="float: right;padding:5px;">
+                           <a href="export_po.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>" class="btn btn-success" ><i class="fa fa-fw fa-download"></i>Export</a>
+                       </div>
 
-                     <div style="float: right;padding:5px;">
+                       <div style="float: right;padding:5px;">
                         <a href="UpdatePO.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_title=<?php echo $supplier_titleD; ?>&po_no=<?php echo $po_no; ?>&po_date=<?php echo $po_date; ?>&ntp_date=<?php echo $ntp_date; ?>&noa_date=<?php echo $noa_date; ?>&remarks=<?php echo $remarks; ?>&po_amount=<?php echo $po_amount; ?>&rfq_no=<?php echo $rfqnoD; ?>" class="btn btn-primary"><i class='fa'>&#xf044;</i>Edit</a>
                     </div>
 
@@ -103,11 +99,11 @@ $id = $rowpo['id'];
                           </div>
                           <div class="modal-body">
                             <form method="POST" >
-                               <label style="padding-right: 20px;">Reason 
-                               </label><input  class="form-control" type="text" name="reason"><br>
-                               <input type="text" name="idC" hidden  value="<?php echo $id?>">
-                           </div>
-                           <div class="modal-footer">
+                             <label style="padding-right: 20px;">Reason 
+                             </label><input  class="form-control" type="text" name="reason"><br>
+                             <input type="text" name="idC" hidden  value="<?php echo $id?>">
+                         </div>
+                         <div class="modal-footer">
                             <button type="submit" class="btn btn-warning" name="submit">Cancel</button>
                         </div>
                     </div>
@@ -213,7 +209,7 @@ $id = $rowpo['id'];
 
         <br>
         <table id="example1" class="table table-striped table-bordered" style="background-color white;">
-      
+          
             <tr>
                 <th class="pull-left">NOA </th>
                 <td><i class="glyphicon glyphicon-link" style="margin-right4px;"></i><a href="export_noa.php?po_id=<?php echo $po_id;?>&rfq_id=<?php echo $rfq_id;?>&supplier_id=<?php echo $supplier_id; ?>">Notice of Award </a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo date('F d, Y',strtotime($noa_date))?></td>
@@ -224,6 +220,13 @@ $id = $rowpo['id'];
             </tr>
             <tr>
                 <th class="pull-left">ORS </th>
+                <?php 
+                $select_ors = mysqli_query($conn,"SELECT po_no,id FROM burs WHERE po_no = '$po_no'");
+                $rowpo = mysqli_fetch_array($select_ors);
+                $rowpo_no = $rowpo['po_no'];
+                $id = $rowpo['id'];
+
+                ?>
                 <?php if ($rowpo_no != ''): ?>
                     <td><i lass="btn btn-primary btn-xs" class="" style="margin-right4px;"></i><a href="UpdateBURS.php?id=<?php echo $id;?>">View ORS</a></td>
                     <?php else: ?>
@@ -280,70 +283,70 @@ $id = $rowpo['id'];
             <div class="box-body">
                 <table id="example1" class="table table-striped " style="background-color: white;">
                     <tr>
-                    <th class="pull-left">PO No.</th>
-                    <td><?php echo $po_no;?></td>
-                </tr>
-                <tr>
-                    <th class="pull-left">PO Date</th>
-                    <td width="220"><?php echo date('F d, Y',strtotime($po_date));?></td>
-                </tr>
-                <tr>
-                    <th class="pull-left">PO Amount.</th>
-                    <td><?php echo $po_amount;?></td>
-                </tr>
-                 <tr>
-                    <th class="pull-left">Supplier</th>
-                    <td><?php echo $supplier_titleD;?></td>
-                </tr>
-                <tr>
-                    <th class="pull-left">Address</th>
-                    <td width="220"><?php echo $supplier_addressD;?></td>
-                </tr>
-                <tr>
-                    <th class="pull-left">Contact No.</th>
-                    <td><?php echo $supplier_contactD;?></td>
-                </tr>
-                <tr>
-                    <th class="pull-left">RFQ Date</th>
-                    <td><?php echo date('F d, Y',strtotime($rfq_dateD));?></td>
-                </tr>
-                <tr>
-                    <th class="pull-left">Purpose</th>
-                    <td><?php echo $purpose;?></td>
-                </tr>
-                <tr>
-                    <th class="pull-left">Office</th>
-                    <td><?php echo $office;?></td>
-                </tr>
+                        <th class="pull-left">PO No.</th>
+                        <td><?php echo $po_no;?></td>
+                    </tr>
+                    <tr>
+                        <th class="pull-left">PO Date</th>
+                        <td width="220"><?php echo date('F d, Y',strtotime($po_date));?></td>
+                    </tr>
+                    <tr>
+                        <th class="pull-left">PO Amount.</th>
+                        <td><?php echo $po_amount;?></td>
+                    </tr>
+                    <tr>
+                        <th class="pull-left">Supplier</th>
+                        <td><?php echo $supplier_titleD;?></td>
+                    </tr>
+                    <tr>
+                        <th class="pull-left">Address</th>
+                        <td width="220"><?php echo $supplier_addressD;?></td>
+                    </tr>
+                    <tr>
+                        <th class="pull-left">Contact No.</th>
+                        <td><?php echo $supplier_contactD;?></td>
+                    </tr>
+                    <tr>
+                        <th class="pull-left">RFQ Date</th>
+                        <td><?php echo date('F d, Y',strtotime($rfq_dateD));?></td>
+                    </tr>
+                    <tr>
+                        <th class="pull-left">Purpose</th>
+                        <td><?php echo $purpose;?></td>
+                    </tr>
+                    <tr>
+                        <th class="pull-left">Office</th>
+                        <td><?php echo $office;?></td>
+                    </tr>
 
-                <tr>
-                    <th class="pull-left">PR No.</th>
-                    <td><?php echo $pr_no;?></td>
-                </tr>
-                <tr>
-                    <th class="pull-left">PR Date Received</th>
-                    <td width="220"><?php echo date('F d, Y',strtotime($pr_date));?></td>
-                </tr>
-                <tr>
-                    <th class="pull-left">ABC</th>
-                    <?php 
-                    $view_query1 = mysqli_query($conn, "SELECT  sum(abc*qty) as aa from pr_items WHERE pr_no = '$pr_no' ");
-                    while ($row = mysqli_fetch_assoc($view_query1)) {
-                        $abc1 = $row["aa"];
-                    }
-                    ?>
-                    <td><?php echo number_format($abc1,2);?></td>
-                </tr>
-            </table>
+                    <tr>
+                        <th class="pull-left">PR No.</th>
+                        <td><?php echo $pr_no;?></td>
+                    </tr>
+                    <tr>
+                        <th class="pull-left">PR Date Received</th>
+                        <td width="220"><?php echo date('F d, Y',strtotime($pr_date));?></td>
+                    </tr>
+                    <tr>
+                        <th class="pull-left">ABC</th>
+                        <?php 
+                        $view_query1 = mysqli_query($conn, "SELECT  sum(abc*qty) as aa from pr_items WHERE pr_no = '$pr_no' ");
+                        while ($row = mysqli_fetch_assoc($view_query1)) {
+                            $abc1 = $row["aa"];
+                        }
+                        ?>
+                        <td><?php echo number_format($abc1,2);?></td>
+                    </tr>
+                </table>
 
 
+
+
+            </div>
 
 
         </div>
-
-
     </div>
-</div>
 </div>
 <br>
 

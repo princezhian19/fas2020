@@ -52,14 +52,7 @@ $year = '2020';
 
 $this_date = $year.'-'.$month;
     $objPHPExcel->setActiveSheetIndex()->setCellValue('A8','For the Month of '.date('F Y',strtotime($this_date)));
-if ($emp_status == '') {
-  $sql_items = mysqli_query($conn, "SELECT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND dtr.date_today = '$this_date' ");
-  # code...
-}else{
-  $sql_items = mysqli_query($conn, "SELECT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME,te.LAST_M,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND te.ACTIVATED = '$emp_status' AND dtr.date_today LIKE '%$this_date%' LIMIT 200");
 
-
-}
   $sql_items1 = mysqli_query($conn, "SELECT DISTINCT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME,te.LAST_M FROM dtr LEFT JOIN tblemployeeinfo te on te.UNAME = dtr.UNAME ");
 // $row = mysqli_fetch_array($sql);
 // $FNAME = $row['FNAME'];
@@ -77,13 +70,16 @@ $row4 = 20;
 $row5 = 22;
 $row6 = 23;
 
-  # code...
   while($excelrow1 = mysqli_fetch_assoc($sql_items1) ){
-    $tempSheet = clone $objPHPExcel->getSheet(0);
-          //$tempSheet = $DTR->getSheet(0)->copy();
-    $tempSheet->setTitle('asd');
-    $objPHPExcel->addSheet($tempSheet);
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('A6',$excelrow1['FNAME']);
+   
+    if ($emp_status == '') {
+  $sql_items = mysqli_query($conn, "SELECT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND dtr.date_today = '$this_date' ");
+  # code...
+}else{
+  $sql_items = mysqli_query($conn, "SELECT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME,te.LAST_M,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND te.ACTIVATED = '$emp_status' AND dtr.date_today LIKE '%$this_date%' ");
+
+
+}
 if (mysqli_num_rows($sql_items)>0) {
 
   while($excelrow = mysqli_fetch_assoc($sql_items) ){
@@ -246,6 +242,15 @@ $objPHPExcel->getActiveSheet()->getStyle('C'.$row5.':E'.$row5)->applyFromArray($
 $objPHPExcel->getActiveSheet()->getStyle('C'.$row6)->applyFromArray($styleHeader2);
 $objPHPExcel->getActiveSheet()->mergeCells('C'.$row6.':E'.$row6);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row6,'In Charge');
+
+ $tempSheet = clone $objPHPExcel->getSheet(0);
+    if ($excelrow1['LAST_M'] == NULL) {
+    $tempSheet->setTitle('asd');
+    }else{
+    $tempSheet->setTitle($excelrow1['LAST_M']);
+    }
+    $objPHPExcel->addSheet($tempSheet);
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('A6',$excelrow1['FNAME']);
 }
 }
 
