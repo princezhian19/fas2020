@@ -228,7 +228,7 @@ $objPHPExcel->getActiveSheet()->mergeCells('A'.$row.':E'.$row);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styler);
    $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getFont()->setItalic( true );
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getFont()->setBold(true);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,'(Total Amount in Words)   '.numberTowords($sumtotal).'pesos only');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,'(Total Amount in Words)   '.numberTowords($sumtotal).' pesos only');
 $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(30);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($border);
 $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($border);
