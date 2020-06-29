@@ -25,14 +25,60 @@ function getPosition()
 function getOffice()
 {
     include 'connection.php';
-    $query = "SELECT DIVISION_M FROM tblpersonneldivision 
-              INNER JOIN tblemployeeinfo on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C 
-              INNER JOIN tbldilgposition on tblemployeeinfo.POSITION_C = tbldilgposition.POSITION_ID
-              where tblemployeeinfo.UNAME = '".$_SESSION['username']."' ";
+    $query = "SELECT OFFICE_STATION   from tblemployeeinfo where UNAME = '".$_SESSION['username']."' ";
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))
     {
-        echo $row['DIVISION_M'];
+        switch ($row['OFFICE_STATION']) {
+            case '1':
+                ?>
+                     <select required id="mySelect2" class="form-control" name="office" disabled>
+                        <option selected disabled></option>
+                        <option value="1" selected>Regional Office</option>
+                        <option value="2">Provincial/HUC Office</option>
+                        <option value="3">Cluster Office</option>
+                        <option value="4">City/Municipal Office</option>
+                    </select>
+                <?PHP
+                break;
+            case '2':
+                ?>
+                        <select required id="mySelect2" class="form-control" name="office" disabled>
+                        <option selected disabled></option>
+                        <option value="1" >Regional Office</option>
+                        <option value="2" selected>Provincial/HUC Office</option>
+                        <option value="3">Cluster Office</option>
+                        <option value="4">City/Municipal Office</option>
+                    </select>
+                <?PHP
+                break;
+            case '3':
+                ?>
+                        <select required id="mySelect2" class="form-control" name="office" disabled>
+                        <option selected disabled></option>
+                        <option value="1" >Regional Office</option>
+                        <option value="2" >Provincial/HUC Office</option>
+                        <option value="3" selected>Cluster Office</option>
+                        <option value="4">City/Municipal Office</option>
+                    </select>
+                <?PHP
+                break;
+            case '4':
+                ?>
+                        <select required id="mySelect2" class="form-control" name="office" disabled>
+                        <option selected disabled></option>
+                        <option value="1" >Regional Office</option>
+                        <option value="2" >Provincial/HUC Office</option>
+                        <option value="3" >Cluster Office</option>
+                        <option value="4" selected>City/Municipal Office</option>
+                    </select>
+                <?PHP
+                break;
+            
+            default:
+                # code...
+                break;
+        }
     }
 }
 function fill()
@@ -54,25 +100,47 @@ function aa($id)
 
     $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID WHERE tbltravel_claim_info.`TC_ID` = '".$id."'";
     $result1 = mysqli_query($conn, $query1);
+    $saved = array();
+
     if(mysqli_num_rows($result1) > 0)
     {
         while($row1 = mysqli_fetch_array($result1))
         {
+            $saved[] = $row1["ID"]; // you are missing []
+
+            if($row1['DATE'] == $row1['DATE'])
+            {
+                
+               if($row1['ID'] > $saved[0] ){
+                    ?>
+            <td></td>
+
+                    <?PHP
+               }else{
+                   ?>
+            <td><input readonly id = "travel_date" type = "text" class = "form-control" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+
+                   <?php
+               }
+                
+            }else{
         ?>
         
-        <tr>
-            <td><input type = "text" class = "form-control" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
-            <td><textarea cols = 50 style = "resize:none;"><?php echo $row1['PLACE'];?></textarea></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['TRANSPORTATION'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['PERDIEM'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['TOTAL_AMOUNT'];?>"/></td>
+   <tr>
+      
+            <?php }?>
+            <td><textarea readonly cols = 50 style = "resize:none;background:#ECEFF1;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['TRANSPORTATION'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['PERDIEM'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['TOTAL_AMOUNT'];?>"/></td>
         </tr>
         
         <?php
+        $row1['DATE'] = '';
         }
     }
 
@@ -180,6 +248,17 @@ function getTotal()
                 }
             }
         
+}
+function getDistance()
+{
+    include 'connection.php';
+    $query1 = "SELECT DISTANCE FROM tbltravel_claim_info2  WHERE `NAME` = '".$_GET['username']."'";
+    $result1 = mysqli_query($conn, $query1);
+    
+        if($row1 = mysqli_fetch_array($result1))
+        {
+            echo $row1['DISTANCE'];
+        }
 }
 
     

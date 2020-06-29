@@ -39,6 +39,12 @@ include 'travelclaim_functions.php';
 .borderless:focus {
   border-color: green
 }
+div.pac-container {
+    z-index: 99999999999 !important;
+}
+.border-disabled{
+  border: 2px solid red;
+}
 </style>
 </head>
 <div class="box">
@@ -47,7 +53,7 @@ include 'travelclaim_functions.php';
     <div class="box-header with-border">
     </div>
     <br>
-    &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="ViewPR.php" style="color:white;text-decoration: none;">Back</a></li>
+    &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="home.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Back</a></li>
 
     <br>
     <br>
@@ -108,14 +114,9 @@ include 'travelclaim_functions.php';
                   <tr>
                     <td class = "label-text">  <label>Official Station: </label></td>
                     <td colspan = 4>
-                    <input type = "text" class = "form-control" readonly/>
-                    <!-- <select required id="mySelect2" class="form-control" name="office">
-                    <option selected disabled></option>
-                <option value="1" selected>Regional Office</option>
-                <option value="2">Provincial/HUC Office</option>
-                <option value="3">Cluster Office</option>
-                <option value="4">City/Municipal Office</option>
-                    </select> -->
+               <?php 
+echo getOffice();
+               ?>
 
                     
                     </td>
@@ -243,11 +244,17 @@ include 'travelclaim_functions.php';
                                         </tr>
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">Origin<span style = "color:red;">*</span></td>
-                                    <td class="col-md-5"><input  type = "text" class = "form-control" name = "origin"  value = "" /></td>
+                                    <td class="col-md-5">
+                                      <input type="text" class="form-control" id="search_input" name = "origin" placeholder="Type address..." />
+                                    
+                                    </td>
                                         </tr>
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">Destination<span style = "color:red;">*</span></td>
-                                    <td class="col-md-5"><input  type = "text" name = "destination" class = "form-control" value = ""  /></td>
+                                    <td class="col-md-5">
+                                    <input type="text" class="form-control" id="search_input2" name = "destination" placeholder="Type address..." />
+                                    
+                                    </td>
                                         </tr>
                             <tr>
                                 <td class="col-md-2" style ="font-weight:bold">Venue<span style = "color:red;">*</span></td>  
@@ -278,84 +285,99 @@ include 'travelclaim_functions.php';
               <form method = "POST" action = "saveTravelInfo.php">
                 <div class="well" style = "padding:10px;">
                   <div class="box-body">
-                    <div class="row">
-                     
-                      
-                       
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Date</label>
-                            <div class="input-group">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" name = "date" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label>Time Going to Venue</label>
-                            <input type = "time" name = "from1" class = "form-control "/>
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label>&nbsp;</label>
-                          <input type = "time" name = "to1" class = "form-control"/>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                        <label>
-                        Meals
-                        </label><br>
-                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup" > <b>Will Claim Meals</b><br>
+                    <div class = "row">
+                      <div class = "col-sm-12 col-md-12 col-lg-12">
+                          <div class = "col-sm-6 col-md-6 col-lg-6">
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label>Date</label>
+                                    <div class="input-group">
+                                      <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" name = "date" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Time Going to Venue</label>
+                                    <input type = "time" name = "from1" class = "form-control "/>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>&nbsp;</label>
+                                  <input type = "time" name = "to1" class = "form-control"/>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label style = "font-size:13px;">Time Going Home or back to Official Station</label>
+                                    <input type = "time" name = "from2" class = "form-control"/>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>&nbsp;</label>
+                                  <input type = "time" name = "to2" class = "form-control" style = "margin-top:15px;"/>
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label>Date</label>
+                                    <input type="text" name = "others" class="form-control" >
+                                </div>
+                              </div>
+  
 
-                        <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" value = "200"> Breakfast
-                        <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" value = "200"> Lunch
-                        <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" value = "200"> Dinner
-                      </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label style = "font-size:13px;">Time Going to Home or back to Official Station</label>
-                            <input type = "time" name = "from2" class = "form-control"/>
+
+                 
+                          </div>
+
+                        <div class = "col-sm-6 col-md-6 col-lg-6">
+                          <div class="col-md-12 well perdiem">
+                          <div class="form-group">
+                              <label>
+                              Per Diem
+                              </label>
+                              <label class = "pull-right">
+                              <input type ="hidden" value = "<?php echo getDistance();?>" id = "distance"/>
+                              Distance: <?php echo getDistance();?>
+                              </label>
+                            </div>
+                            <div class="form-group">
+                              <label>
+                              Meals
+                              </label><br>
+                              <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1" id = "cb1"> <b>Will Claim Meals</b><br>
+
+                              <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" id = "breakfast" value = "breakfast"> Breakfast
+                              <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" id= "lunch" value = "lunch"> Lunch
+                              <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" id="dinner" value = "dinner"> Dinner
+                            </div>
+                            <div class="form-group">
+                              <label>
+                              Accomodation
+                              </label><br>
+                              <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
+                              <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt" id = "wr" value ="With Receipt"> With Receipt
+                              <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
+                              
+                              <br>
+                              <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt" id = "wor" value ="Without Receipt"> Without Receipt
+                            </div>
+                          </div>
+
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label>&nbsp;</label>
-                          <input type = "time" name = "to2" class = "form-control" style = "margin-top:15px;"/>
-                        </div>
-                      </div>
-                    </div>  
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>
-                          Accomodation
-                          </label><br>
-                          <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation"><b> Will Claim Accomodation</b><br>
-                          <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red checkboxgroup1" id = "wr"> With Receipt
-                          <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
-                          
-                          <br>
-                          <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red checkboxgroup1" id = "wor" value ="1100"> Without Receipt
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Others</label>
-                          <input type="text" name = "others" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask><br>
-                          <span class = "btn btn-success btn-md pull-right" id = "add_fair"><i class = "fa fa-plus"></i>&nbsp;Add Fair </span>
-                        </div>
-                      </div>
-                    </div>                  
                     </div>
+                    
                   </div>
+
+
+
+
                 <div class="well" style = "padding:10px;" id = "travelPanel">
 
                   <div class="box-body myTemplate2">
@@ -443,38 +465,22 @@ var purpose = $('#or').val();
 $('#ro_txt').val(purpose);
 if(purpose == '' || purpose == null)
 {
+  
   alert('Required Field:All fields with * are required!.');
-$('#ro').prop('required',true);
-exit();
+$('#editModal').modal().hide();
 
 }else{
 
 }
 });
 
-// $('.checkboxgroup').on('change', function() { 
-//       $('.checkboxgroup').not(this).prop('checked', false);  
-//   });
 
-  $('.checkboxgroup1').on('change', function() { 
-      $('.checkboxgroup1').not(this).prop('checked', false);  
+  $('.receipt').on('change', function() { 
+      $('.receipt').not(this).prop('checked', false);  
   });
   // checkbox validation
   $(document).ready(function(){
-// $('#editbtn').click(function () {
-//   var purpose = $('#or').val();
-// if(purpose == '' || purpose == null)
-// {
-// $('#travelbtn').prop('disabled',true);
-// }else{
-
-// }
-// $('#travelbtn').prop('disabled',false);
-
-
-// });
-
-
+    $('#datepicker4').val($('#travel_date').val());
         $('#wor').click(function(){
             if($(this).prop("checked") == true){
               
@@ -499,5 +505,109 @@ exit();
             }
         });
     });
+
+
+    
+      enable_cb1();
+      enable_cb2();
+  $("#cb1").click(enable_cb1);
+  $("#wa").click(enable_cb2);
+  function enable_cb1() {
+    if (this.checked) {
+      if($('.checkboxgroup').val() == 'breakfast')
+      {
+        $('#breakfast').not(this).prop('checked', true);  
+        $('#lunch').not(this).prop('checked', true);  
+        $('#dinner').not(this).prop('checked', true);  
+      }
+      $("#breakfast").removeAttr("disabled");
+      $("#lunch").removeAttr("disabled");
+      $("#dinner").removeAttr("disabled");
+    } else {
+
+      $('#breakfast').not(this).prop('checked', false);  
+      $('#lunch').not(this).prop('checked', false);  
+      $('#dinner').not(this).prop('checked', false);  
+
+      $("#breakfast").attr("disabled", true);
+      $("#lunch").attr("disabled", true);
+      $("#dinner").attr("disabled", true);
+      
+    }
+  }
+  function enable_cb2()
+  {
+    if (this.checked) {
+      if($('.receipt').val() == 'With Receipt')
+      {
+        $('#wr').not(this).prop('checked', true);  
+        $('#wor').not(this).prop('checked', true);  
+      }
+      $("#wr").removeAttr("disabled");
+      $("#wor").removeAttr("disabled");
+    }else{
+      $('#wr').not(this).prop('checked', false);  
+      $('#wor').not(this).prop('checked', false); 
+      
+      $("#wr").attr("disabled", true);
+      $("#wor").attr("disabled", true);
+    }
+
+  }
+  function disabledDIV()
+  {
+   var distance =  $('#distance').val();
+   distance = distance.replace('km', '');
+   console.log($('#distance').val());
+      if(distance > 50)
+   {
+    $("#breakfast").attr("disabled", false);
+      $("#lunch").attr("disabled", false);
+      $("#dinner").attr("disabled", false);
+      $("#cb1").attr("disabled", false);
+      $("#wa").attr("disabled", false);
+
+   }else{
+
+
+    $("#breakfast").attr("disabled", true);
+      $("#lunch").attr("disabled", true);
+      $("#dinner").attr("disabled", true);
+      $("#cb1").attr("disabled", true);
+      $("#wa").attr("disabled", true);
+      $('.perdiem').addClass('border-disabled');
+
+   }
+
+  }
+  disabledDIV();
+
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+    var searchInput = 'search_input';
+    var searchInput2 = 'search_input2';
+
+    $(document).ready(function () {
+        var autocomplete;
+        var autocomplete2;
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+            types: ['geocode'],
+            /*componentRestrictions: {
+                country: "USA"
+            }*/
+        });
+
+        autocomplete2 = new google.maps.places.Autocomplete((document.getElementById(searchInput2)), {
+            types: ['geocode'],
+            /*componentRestrictions: {
+                country: "USA"
+            }*/
+        });
+        
+        
+    });  
+    </script>
 
