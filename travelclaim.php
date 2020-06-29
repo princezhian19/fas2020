@@ -354,7 +354,7 @@ echo getOffice();
                         <div class="form-group">
                           <label>Others</label>
                           <input type="text" name = "others" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask><br>
-                          <span class = "btn btn-success btn-md pull-right" id = "add_fair"><i class = "fa fa-plus"></i>&nbsp;Add Fair </span>
+                          <span class = "btn btn-success btn-md pull-right" id = "add_fair"><i class = "fa fa-plus"></i>&nbsp;Add Fare </span>
                         </div>
                       </div>
                     </div>                  
