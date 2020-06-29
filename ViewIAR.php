@@ -40,12 +40,16 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 <style>
   th{
-    color:#a9242d;
-    text-align:center;
+    text-align:left;
   }
   td{
-    text-align:center;
+    text-align:left;
   }
+  tr{
+    text-align:left;
+  }
+
+
   </style>
       </head>
 <body class="hold-transition skin-red-light fixed sidebar-mini">

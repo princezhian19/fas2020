@@ -63,13 +63,14 @@ if (isset($_POST['submit'])) {
                  <div class="col-xs-1">
                  </div>
                <div class="col-xs-2 " style="padding-top: 5px;">
+                <div hidden>
                 <br>
               <a href="javascript:void(0);" class="btn btn-success link2 pull-right" data-id="<=$data['id']?>">DTR</a>
-
+              </div>
                  </div>
                </div>
                  <div class="col-xs-2">
-                <div >
+                <div hidden>
                <label>Employement Status </label>
                 <select  class="form-control select2" name="emp_status" id="emp_status">
                   <option selected disabled></option>
@@ -80,7 +81,7 @@ if (isset($_POST['submit'])) {
                </div>
                </div>
                <div class="col-xs-2">
-                <div >
+                <div hidden>
                 <label>Month </label>
                 <select  class="form-control select2" name="month" id="month">
                   <option selected disabled></option>
@@ -110,7 +111,7 @@ if (isset($_POST['submit'])) {
 
              <div class="col-xs-1" style="padding-top: 5px;">
               <br>
-              <a href="javascript:void(0);" class="btn btn-primary link" data-id="<=$data['id']?>">DATA</a>
+              <a href="javascript:void(0);" class="btn btn-primary link" data-id="<=$data['id']?>">Export</a>
               <br>  
               <br>  
             </div>

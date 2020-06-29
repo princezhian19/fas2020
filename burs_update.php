@@ -47,11 +47,7 @@ if (isset($_POST['submit'])) {
 <body>
  <div class="box box-default">
   <div class="box-header with-border">
-      <?php if ($doc_type == 1): ?>
-    <h1 align="">&nbspUPDATE ORS</h1>
-    <?php else: ?>
-    <h1 align="">&nbspUPDATE BURS</h1>
-  <?php endif ?>
+    <h1 align="">&nbspUPDATE ORS/BURS</h1>
     <div class="box-header with-border">
     </div>
     <br>
@@ -75,11 +71,11 @@ if (isset($_POST['submit'])) {
              <div class="form-group">
               <label>Please Select : <small style="color:red;">*</small></label><br>
               <?php if ($doc_type == 1): ?>
-                <input type="checkbox" class="checkbox1" name="burs" value="1" checked> ORS &nbsp&nbsp&nbsp
-                <input type="checkbox" class="checkbox1" name="burs" value="2"> BURS
+                <input type="radio" class="checkbox1" name="burs" value="1" checked> ORS &nbsp&nbsp&nbsp
+                <input type="radio" class="checkbox1" name="burs" value="2"> BURS
               <?php else: ?>
-                <input type="checkbox" class="checkbox1" name="burs" value="1" > ORS &nbsp&nbsp&nbsp
-                <input type="checkbox" class="checkbox1" name="burs" value="2" checked> BURS
+                <input type="radio" class="checkbox1" name="burs" value="1" > ORS &nbsp&nbsp&nbsp
+                <input type="radio" class="checkbox1" name="burs" value="2" checked> BURS
               <?php endif ?>
              
             </div>
