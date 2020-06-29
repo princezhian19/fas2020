@@ -19,6 +19,7 @@ $purpose = $row['purpose'];
 $amount = $row['amount'];
 $doc_type = $row['doc_type'];
 $date_submit = $row['date_submit'];
+$status = $row['status'];
 
 if (isset($_POST['submit'])) {
   $po_no1 = $_POST['po_no'];
@@ -50,11 +51,24 @@ if (isset($_POST['submit'])) {
     <div class="box-header with-border">
     </div>
     <br>
-  <?php $btn = $_GET['btn']; ?>
-  <?php if ($btn == 'no'): ?>
+    <?php if ($status == 0): ?>
+    <li class="btn btn-primary btn-s"><a href="export_dv.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;"><i class='fa fa-fw fa-download'></i>Export</a></li>
+   <li class="btn btn-success btn-s"><a href="submit_dv.php?id=<?php echo $id;?>&stat=2" style="color:white;text-decoration: none;"><i class="fa fa-fw fa-send-o"></i>Submit</a></li>
     <?php else: ?>
-    <li class="btn btn-success btn-s"><a href="export_dv.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;">Export</a></li>
+    <li class="btn btn-primary btn-s"><a href="export_dv.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;"><i class='fa fa-fw fa-download'></i>Export</a></li>
+ <?php if ($status == 1): ?>
+   <font style="color: green;"><b>Submitted</b></font>
   <?php endif ?>
+  <?php if ($status == 2): ?>
+   <font style="color: green;"><b>Received</b></font>
+  <?php endif ?>
+  <?php if ($status == 4): ?>
+   <font style="color: green;"><b>Proccessed</b></font>
+  <?php endif ?>
+  <?php if ($status == 5): ?>
+   <font style="color: green;"><b>Released</b></font>
+  <?php endif ?>
+    <?php endif ?>
     <br>
     <br>
     <form method="POST" autocomplete="off" >

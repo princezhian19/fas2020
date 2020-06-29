@@ -44,11 +44,7 @@ $username = $_SESSION['username'];
 <body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
 <?php 
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-      include('test1.php');
-    }else{
-      include('sidebar2.php');
-    }
+    if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); }else{ include('sidebar2.php'); }
  ?>
   <div class="content-wrapper">
     <section class="content-header">
@@ -70,6 +66,7 @@ $username = $_SESSION['username'];
     </footer>
     <br>
 </div>
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -77,6 +74,8 @@ $username = $_SESSION['username'];
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
 <script>
   $(function () {
     $('#example1').DataTable({

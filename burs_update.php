@@ -54,10 +54,26 @@ if (isset($_POST['submit'])) {
   <?php $btn = $_GET['btn']; ?>
   <?php if ($btn == 'no'): ?>
     <?php else: ?>
-      <?php if ($doc_type == 1): ?>
-   <li class="btn btn-success btn-s"><a href="export_ors.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;">Export</a></li>
+      <?php if ($status != 0): ?>
+   <li class="btn btn-primary btn-s"><a href="export_ors.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;"><i class='fa fa-fw fa-download'></i>Export</a></li>
+      
+    <?php if ($status == 1): ?>
+   <font style="color: green;"><b>Submitted</b></font>
+  <?php endif ?>
+  <?php if ($status == 2): ?>
+   <font style="color: green;"><b>Received</b></font>
+  <?php endif ?>
+  <?php if ($status == 4): ?>
+   <font style="color: green;"><b>Proccessed</b></font>
+  <?php endif ?>
+  <?php if ($status == 5): ?>
+   <font style="color: green;"><b>Released</b></font>
+  <?php endif ?>
     <?php else: ?>
-       <li class="btn btn-success btn-s"><a href="export_burs.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;">Export</a></li>
+       <li class="btn btn-primary btn-s"><a href="export_burs.php?id=<?php echo $id;?>" style="color:white;text-decoration: none;"><i class='fa fa-fw fa-download'></i>Export</a></li>
+       <?php if ($status == 0): ?>
+   <li class="btn btn-success btn-s"><a href="submit_burs.php?id=<?php echo $id;?>&stat=2" style="color:white;text-decoration: none;"><i class="fa fa-fw fa-send-o"></i>Submit</a></li>
+  <?php endif ?>
   <?php endif ?>
   <?php endif ?>
 
