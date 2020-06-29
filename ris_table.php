@@ -39,11 +39,11 @@
                       $request_by = "DR. CARINA S. CRUZ";
                     }
                 ?>
-                    <tr align = ''>
+                    <tr align = 'left'>
                     <td> <?php echo $ris_no; ?></td>
                     <td> <?php echo $po_no; ?></td>
                     <td> <?php echo $division; ?></td>
-                    <td> <?php echo $purpose; ?></td>
+                    <td > <?php echo $purpose; ?></td>
                     <td>
                     <a href='UpdateRIS.php?id=<?php echo $id?>' class='btn btn-primary btn-xs'><i class='fa'>&#xf044;</i> Edit</a> | 
                     <a href='export_ris.php?id=<?php echo $id?>' class='btn btn-success btn-xs'><i class='fa fa-fw fa-download'></i> Export</a> | <a href='deleteRIS.php?id=<?php echo $id?>' onclick="return confirm('Are you sure you want to Delete this?');" class='btn btn-danger btn-xs'><i class='fa fa-fw fa-trash'></i>Delete</a>

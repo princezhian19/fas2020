@@ -9,7 +9,7 @@
             <li class="btn btn-success"><a href="CreateIAR.php" style="color:white;text-decoration: none;">Create</a></li>
             <br>
             <br>
-            <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
+            <table id="example1" class="table table-bordered" style="background-color: white;" align="left">
                 <thead>
                     <tr style="background-color: white; color:blue;">
                         <th>PO NUMBER</th>
@@ -30,7 +30,11 @@
                     $dept = $row["dept"];
                     $ccode = $row["ccode"];
                     $iar_no = $row['iar_no'];
-                    $iar_date = $row['iar_date'];
+                    $iar_date = date('F d, Y',strtotime($row['iar_date']));
+                    if ($iar_date == 'January 01, 1970') {
+                      # code...
+                      $iar_date='';
+                    }
                     $invoice_no = $row['invoice_no'];
                     $invoice_date = $row['invoice_date'];
                     $stock_no = $row['stock_no'];

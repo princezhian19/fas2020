@@ -62,91 +62,113 @@
       <div class="box-header with-border">
       </div>
       <br>
-      &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="ViewIAR.php" style="color:white;text-decoration: none;">Back</a></li>
+      &nbsp &nbsp &nbsp   <li class="btn btn-warning"><a href="ViewIAR.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
-      <div class="col-xs-6">
-        <label>Search PO No. : </label>
-        <input type="text" class="form-control" name="search_text" id="search_text" placeholder="Search Code" class="" />
-        <br>
-      </div>
-      <table class="table table-striped table-hover" id="main">
-        <tbody id="result">
-        </tbody>
-      </table>
       <div class="box-body">
         <div class="well">
           <div class="row">
-            <form method="POST">
-             <div hidden>
-              <input    type="text"  class="form-control" id="rfq_id" required placeholder="rfq_id" name="rfq_id">
-              <input    type="text"  class="form-control" id="app_id"  placeholder="app_id" name="app_id">
-              <input    type="text"  class="form-control" id="sup_id" required placeholder="" name="sup_id">
-            </div>
-            <div class="col-xs-3">
-              <label>Supplier : </label>
-              <input readonly type="text" class="form-control" style="height: 40px;" id="sup" placeholder="" name="sup">
-            </div>
-            <div class="col-xs-3">
-              <label>PO No. : </label>
-              <input readonly type="text" class="form-control" style="height: 40px;" id="po_no" placeholder="" name="po">
-            </div>
-            <div class="col-xs-3">
-              <label>PO Date : </label>
-              <input readonly type="text" class="form-control" style="height: 40px;" id="po_date" placeholder="" name="po_date">
-            </div>
-            <div class="col-xs-3">
-              <label>Requisition Dept. : </label>
-              <input readonly type="text" class="form-control" style="height: 40px;" id="dept" placeholder="" name="dept">
-            </div>
-            <p>&nbsp</p>
-            <p>&nbsp</p>
-            <div class="col-xs-3">
-              <label>Code Center</label>
-              <input type="text" class="form-control" style="height: 40px;" id="ccode" placeholder="" name="ccode">
-            </div>
-            <div class="col-xs-3">
-              <label>Iar No. : </label>
-              <input type="text" class="form-control" style="height: 40px;" id="iar_no" value="<?php echo $latest_pr_no?>" name="iar_no">
-            </div>
-            <div class="col-xs-3">
-              <label>Iar Date : </label>
-              <input type="date" class="form-control" style="height: 40px;" id="iar_date" placeholder="" name="iar_date">
-            </div>
-            <div class="col-xs-3">
-              <label>Invoice No. : </label>
-              <input type="text" class="form-control" style="height: 40px;" id="invoice" placeholder="" name="invoice">
-            </div>
-            <p>&nbsp</p>
-            <p>&nbsp</p>
-            <div class="col-xs-3">
-              <label>Invoice Date. : </label>
-              <input type="date" class="form-control" style="height: 40px;" id="invoice_date" placeholder="" name="invoice_date">
-            </div>
-            <div hidden class="col-xs-2">
-              <label>Password:</label>
-              <input type="text" class="form-control" id="sn" placeholder="Enter password" name="sn">
-            </div>
-            <div class="col-xs-3">
-              <label>Select Officer:</label>
-              <select name="officer" class="form-control">
-                <option value="1">Reschiel B. Veridiano</option>
-                <option value="2">Leticia A. Delgado</option>
-                <option value="3">Medel A. Saturno</option>
-                <option value="4">Rafael M. Saturno</option>
-                <option value="5">Camille T. Ronquillo</option>
-                <option value="6">Art Brian G. Rubio</option>
-                <option value="7">Hannah Grace P. Solis</option>
-              </select>
+            <div class="col-xs-6">
+              <label>Search PO No. : </label>
+              <input type="text" class="form-control" name="search_text" id="search_text" placeholder="Search Code" class="" />
+              <br>
+              <div style="background-color:black;">
+               <b><table class="table table-striped table-hover" id="main" >
+                <tbody id="result" style="color:black;">
+                </tbody>
+              </table></b>
             </div>
           </div>
         </div>
       </div>
-      <div style="padding:20px;">
-        <button type="submit" name="submit"  class="btn btn-success">Create</button>
+    </div>
+
+    <div class="box-body">
+      <div class="well">
+        <div class="row">
+          <form method="POST">
+           <div hidden>
+            <input    type="text"  class="form-control" id="rfq_id" required placeholder="rfq_id" name="rfq_id">
+            <input    type="text"  class="form-control" id="app_id"  placeholder="app_id" name="app_id">
+            <input    type="text"  class="form-control" id="sup_id" required placeholder="" name="sup_id">
+          </div>
+          <div class="col-xs-3">
+            <label>Supplier : </label>
+            <input readonly type="text" class="form-control" id="sup" placeholder="" name="sup">
+          </div>
+          <div class="col-xs-3">
+            <label>PO No. : </label>
+            <input readonly type="text" class="form-control" id="po_no" placeholder="" name="po">
+          </div>
+          <div class="col-xs-3">
+            <label>PO Date : </label>
+            <input readonly type="text" class="form-control" id="po_date" placeholder="" name="po_date">
+          </div>
+          <div class="col-xs-3">
+            <label>Requisition Dept. : </label>
+            <input readonly type="text" class="form-control"  id="dept" placeholder="" name="dept">
+          </div>
+          <p>&nbsp</p>
+          <p>&nbsp</p>
+          <div class="col-xs-3">
+            <label>Code Center</label>
+            <input type="text" class="form-control" id="ccode" placeholder="" name="ccode">
+          </div>
+          <div class="col-xs-3">
+            <label>IAR NO. : </label>
+            <input type="text" class="form-control"  id="iar_no" value="<?php echo $latest_pr_no?>" name="iar_no">
+          </div>
+          <div class="col-xs-3">
+            <label>IAR DATE : </label>
+            <div class="input-group date">
+          <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <input autocomplete="new-password" required type="text" name="iar_date" class="form-control" id="datepicker" placeholder="Birth Date">
+        </div>
+            <!-- <input type="date" class="form-control" style="height: 40px;" id="iar_date" placeholder="" name="iar_date"> -->
+          </div>
+          <div class="col-xs-3">
+            <label>Invoice No. : </label>
+            <input type="text" class="form-control" id="invoice" placeholder="" name="invoice">
+          </div>
+          <p>&nbsp</p>
+          <p>&nbsp</p>
+          <div class="col-xs-3">
+            <label>Invoice Date. : </label>
+             <div class="input-group date">
+          <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <input autocomplete="new-password" required type="text" name="invoice_date" class="form-control" id="datepicker2" placeholder="Birth Date">
+        </div>
+            <!-- <input type="date" class="form-control"  id="invoice_date" placeholder="" name="invoice_date"> -->
+          </div>
+          <div hidden class="col-xs-2">
+            <label>Password:</label>
+            <input type="text" class="form-control" id="sn" placeholder="Enter password" name="sn">
+          </div>
+          <div class="col-xs-3">
+            <label>Select Officer:</label>
+            <select name="officer" class="form-control">
+              <option value="1">Reschiel B. Veridiano</option>
+              <option value="2">Leticia A. Delgado</option>
+              <option value="3">Medel A. Saturno</option>
+              <option value="4">Rafael M. Saturno</option>
+              <option value="5">Camille T. Ronquillo</option>
+              <option value="6">Art Brian G. Rubio</option>
+              <option value="7">Hannah Grace P. Solis</option>
+              <option value="8">Eunice A. Sales</option>
+            </select>
+          </div>
+        </div>
       </div>
-    </form>
-  </div>
+    </div>
+    <div style="padding:20px;">
+      <button type="submit" name="submit"  class="btn btn-success">Create</button>
+    </div>
+  </form>
+</div>
 </div>
 </body>
 </html>
