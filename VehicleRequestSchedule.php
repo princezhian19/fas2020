@@ -15,7 +15,7 @@ require_once 'calendar/sample/sql_statements.php';
 
 
 
-$sql = "SELECT id,assigneddate,assignedtime,dispatcher,nov,av,ad,vremarks,plate from vr";
+$sql = "SELECT * from vr";
 $req = $bdd->prepare($sql);
 $req->execute();
 $events = $req->fetchAll();
@@ -93,8 +93,7 @@ function viewEvents2()
     <input  type = "hidden" name = "eventid" id = "eventid">
 <?php 
 
-if($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial')
-{
+
   ?>
   <input  type = "hidden" name = "eventid" id = "eventid">
                 <table class="table table-bordered" style = "width:100%;"> 
@@ -140,58 +139,8 @@ if($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || 
                 
                     
                 </table>
-  <?php
+  
 
-}else{
-
-?>
- <input  type = "hidden" name = "eventid" id = "eventid">
-                <table class="table table-bordered" style = "width:100%;"> 
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assined Date</td>
-                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "assigneddate" id = "assigneddate"  /></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assigned Time</td>
-                            <td class="col-md-5">
-                                <input required type="text" class = "form-control" name = "assignedtime" id="assignedtime" value = ""   required autocomplete = off  >
-                                    </td>
-                                        </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Dispatcher</td>
-                            <td class="col-md-5">
-                                <input  type = "text"  class = "form-control " id = "dispatcher" name = "dispatcher"    autocomplete = off /></td>
-                                    </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">No. of Vehicles</td>
-                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "nov" id = "nov" value = "" /></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assigned Vehicle</td>
-                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "ac" id= "av" value = "" /></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assigned Driver</td>
-                            <td class="col-md-5"><input required type = "number" min = "" name = "ad" id= "ad" class = "form-control" value = ""  /></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Plate</td>  
-                            <td class="col-md-5">
-                            <input required type = "text" class = "form-control" name = "plate" id= "plate" value = "" />
-                                </td>
-                                    </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Remarks</td>
-                            <td class="col-md-5">                              
-                            <input  type = "text"  class = "form-control" id= "vremarks"  name = "vremarks" />
-                                    </td>
-                                        </tr>
-                
-                    
-                </table>
-<?php
-}
-?>
 
               
                <?php 
@@ -309,7 +258,7 @@ if($_GET['flag'] == 1)
   <script>
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
   </script>
-    <?php include 'vehicle_trip.php';?>
+    <?php include 'vehicle_calendar.php';?>
  &nbsp;
  &nbsp;
 <div class="modal fade" id="myModal">
@@ -343,7 +292,7 @@ if($_GET['flag'] == 1)
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Add Activity</h4>
+          <h4 class="modal-title">View Activity</h4>
           <button type="button" class="close" data-dismiss="modal">&times; 
           </button>
         </div>
