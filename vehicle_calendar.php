@@ -341,7 +341,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             <tr>
             <td style="background-color: #48BD0D; color:white;">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Daniel Narciso" id = "DanielNarciso"><label style = "margin-left:15%;">Daniel Narciso</label>
-            <input hidden class='' type="text" name = "" value="#48BD0D;" id = "colorPicker5">
+            <input hidden class='' type="text" name = "colorPicker5" value="#48BD0D" id = "colorPicker5">
             </td>
 
            
@@ -382,14 +382,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
    
   $(document).ready(function(event) {
 
-   
-    
-
-
    var calendar = $('#calendar').fullCalendar({
-   
-
-    
     editable:true,
     header:{
      left:'prev,next today',
@@ -398,23 +391,15 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
      
     },
 
-   
-
     events: 'vehicle_load.php',
     selectable:true,
     selectHelper:true,
-
-   
-   /*  eventColor: $("#colorPicker1").val(),
-    eventColor: $("#colorPicker2").val(),
-    eventColor: $("#colorPicker3").val(),
-    eventColor: $("#colorPicker4").val(), */
     eventColor: $("#colorPicker5").val(),
     
     
     
 
-    select: function(start, end, allDay)
+    /* select: function(start, end, allDay)
     {
      var title = prompt("Enter Event Title");
      if(title)
@@ -432,9 +417,9 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
        }
       })
      }
-    },
+    }, */
     
-    editable:true,
+    editable:false,
     eventResize:function(event)
     {
      var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
@@ -450,9 +435,13 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
        alert('Event Update');
       }
      })
+
+     
     },
 
-    eventDrop:function(event)
+    
+
+    /* eventDrop:function(event)
     {
      var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
      var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
@@ -468,7 +457,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
        alert("Event Updated");
       }
      });
-    },
+    }, */
 
     eventClick:function(event)
     {
