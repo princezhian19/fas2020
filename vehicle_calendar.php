@@ -1,4 +1,58 @@
 <?php
+header("Cache-Control: no-cache, must-revalidate");
+header("Expires: Mon, 26 Jul 2030 05:00:00 GMT");
+header("Content-Type: application/xml; charset=utf-8");
+?>
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:index.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username1 = $_SESSION['username'];
+$division = $_SESSION['division'];
+
+
+
+}
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+  //Get Office
+$select_user = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username1'");
+$rowdiv = mysqli_fetch_array($select_user);
+$DIVISION_C = $rowdiv['DIVISION_C'];
+$f = $rowdiv['FIRST_M'];
+$m = $rowdiv['MIDDLE_M'];
+$l= $rowdiv['LAST_M'];
+
+$fullname = $f.' '.$m.' '.$l;
+
+
+//Get Office
+$select_user = mysqli_query($conn,"SELECT DIVISION_C, DESIGNATION FROM tblemployeeinfo WHERE UNAME = '$username'");
+$rowdiv = mysqli_fetch_array($select_user);
+$DIVISION_C = $rowdiv['DIVISION_C'];
+$DESIGNATION = $rowdiv['DESIGNATION'];
+//echo $DESIGNATION;
+
+
+//Get Position
+$select_position = mysqli_query($conn,"SELECT  POSITION_M FROM tblposition WHERE POSITION_C = '$DESIGNATION'");
+$rowdiv1 = mysqli_fetch_array($select_position);
+$POSITION_M = $rowdiv1['POSITION_M'];
+//echo $POSITION_M;
+
+$select_office = mysqli_query($conn, "SELECT DIVISION_M from tblpersonneldivision where DIVISION_N = '$DIVISION_C'");
+$rowdiv1 = mysqli_fetch_array($select_office);
+$DIVISION_M = $rowdiv1['DIVISION_M'];
+
+//echo $DIVISION_M;
+
+// echo '<div class=""><div class="panel-heading " style = "background-color:orange"> <p style = "color:white;font-size:16px;"> This module is under development </p> </div></div>  '; 
+// echo '<br>';
+?>
+
+<?php
 //index.php
 
 
@@ -22,9 +76,245 @@
         <br>
         <br>
             
+
+
+            
             <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-12">
-            <table class="table table-bordered" style="border-width: 3px;max-width:100%;">
+            <table class="table" style="border-width: 3px;max-width:100%;">
+
             <tr>
+
+            <form method = "POST" action = "vr_export_date.php">
+            <td class="col-md-1" >
+
+            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' ):?>
+          
+            <select class="" name="month" id = "selectMonth" style="width: 150px; Height:30px;">
+            <?php 
+            $current_month =  date('F');
+            switch($current_month){
+            case 'January':
+            echo '
+            <option value="01" selected>January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>';
+            break;
+            case 'February':
+            echo '
+            <option value="01">January</option>
+            <option value="02" selected>February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>';
+            break;
+            case 'March':
+            echo '
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03" selected>March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>';
+            break;
+            case 'April':
+            echo '
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04" selected>April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>';
+            break;
+            case 'May':
+            echo '
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05" selected>May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>';
+            break;
+            case 'June':
+            echo '
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06" selected>June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>';
+            break;
+            case 'July':
+            echo '
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07" selected>July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>';
+            break;
+            case 'August':
+            echo '
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08" selected>August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>';
+            break;
+            case 'September':
+            echo '
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09" selected>September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>';
+            break;
+            case 'October':
+            echo '
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10" selected>October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>';
+            break;
+            case 'November':
+            echo '
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11" selected>November</option>
+            <option value="12">December</option>';
+            break;
+            case 'December':
+            echo '
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12" selected>December</option>';
+            break;
+            }
+            ?>
+
+            </select>
+            </td>
+
+            <td class="col-md-1" >
+         
+            <select class="pull-right" id="year" name="year" style="width: 150px; Height:30px;">
+            <!-- <option value="">Year</option> -->
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+
+            </select>
+
+            </td>
+           
+            <td class="col-md-1" >
+            <br>
+           
+
+            </td>
+
+            <?php else:?>
+
+            <?php endif?>
+
+           
+
+            </tr>
+            <tr>
+            
+
             <td colspan = "2"><b><input  class='calFilter' type="checkbox" name = "offices[]" value="0"  id = "all" ></label>
             All Drivers</b></td>
             </tr>
@@ -57,7 +347,7 @@
             </tr>
             </table>
             <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' ):?>
-            <button class="btn btn-success pull-right"><a style = "color:#fff;"  id = "export"  >Export</a></button>
+            <button class="btn btn-success pull-left"><a style = "color:#fff;"  id = "export"  >Export</a></button>
 
             <?php else: ?>
 
@@ -67,6 +357,7 @@
 
             <?php endif ?>
             </div>
+        </form>
 
     </div>
 
@@ -178,29 +469,48 @@
     $('#plate').prop("disabled", true); 
     $('#vremarks').prop("disabled", true); 
 
-    // $('#myModal').modal('show');
 
-  
-    $('#myModal').find('#datepicker1').val(moment(event.start).format('MM/DD/YYYY'));
-    if(event.end == '0000-00-00 00:00:00' || event.end == null || event.end == '1970-01-01 00:00:00')
-    {  
-    $('#myModal').find('#datepicker2').val('');
-    }else{
-    $('#myModal').find('#datepicker2').val(moment(event.end).subtract(1, "days").format('MM/DD/YYYY'));
-
-    }    
-    // $('#myModal').find('#datepicker2').val(moment(event.end).format('MM/DD/YYYY'));
-    $('#myModal').find('#datepicker3').val(moment(event.posteddate).format('MM/DD/YYYY'));
-    $('#myModal').find('#descriptiontxtbox').val(event.description);
-    $('#myModal').find('#remarks').val(event.remarks);
-    $('#myModal').find('#postedby').val(event.postedby);
-    $('#myModal').find('#venuetxtbox').val(event.venue);
-    $('#myModal').find('#enptxtbox').val(event.enp);
+    $('#myModal2').find('#assigneddate').val(event.assigneddate);
+    $('#myModal2').find('#assignedtime').val(event.assignedtime);
+    $('#myModal2').find('#dispatcher').val(event.dispatcher);
+    $('#myModal2').find('#nov').val(event.nov);
+    $('#myModal2').find('#av').val(event.av);
+    $('#myModal2').find('#ad').val(event.ad);
+    $('#myModal2').find('#plate').val(event.plate);
+    $('#myModal2').find('#vremarks').val(event.vremarks);
+    
+    
+   
     $("#myModal2").modal("show");
+     alert(event.assigneddate);
+
+
 
     },
     
-    
+    event: [
+                  <?php foreach($events as $event): ?>
+                      {
+
+
+                        id: '<?php echo $event['id']; ?>',
+                        assigneddate: '<?php echo $event['assigneddate']; ?>',
+                     
+                        assignedtime: '<?php echo $event['assignedtime']; ?>',
+                        dispatcher: '<?php echo $event['dispatcher']; ?>',
+                        nov: '<?php echo $event['nov']; ?>',
+                        av: '<?php echo $event['av']; ?>',
+                        ad: '<?php echo $event['ad']; ?>',
+                        plate: '<?php $event['plate']; ?>',
+                        vremarks:'<?php echo $event['vremarks'];?>',
+                       
+
+                      },
+                    <?php 
+                   
+
+                  endforeach; ?>
+                ]
 
 
 
