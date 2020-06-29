@@ -321,22 +321,27 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
             <td style="background-color: #D5D911; color:white;WIDTH:50%;">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Reynaldo Parale" id = "ReynaldoParale" ><label style = "margin-left:15%;">Reynaldo Parale</label>
+            <input hidden class='' type="text" name = "" value="#D5D911;" id = "colorPicker1">
             </td>
             <td style="background-color: #607D8B; color:#fff;padding:9px;WIDTH:50%;">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Louie Blanco" id = "LouieBlanco"><label style = "margin-left:15%;">Louie Blanco</label>
+            <input hidden class='' type="text" name = "" value="#607D8B;" id = "colorPicker2">
             </td>
             </tr>
             <tr>
             <td style="background-color: #E60785; color:white;">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Joachim Lacdang" id = "JoachimLacdang"><label style = "margin-left:15%;">Joachim Lacdang</label>
+            <input hidden class='' type="text" name = "" value="#E60785;" id = "colorPicker3">
             </td>
             <td style="background-color:#FF9800 ; color:white;;padding:9px;">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Medel Saturno" id = "MedelSaturno"><label style = "margin-left:15%;">Medel Saturno</label>
+            <input hidden class='' type="text" name = "" value="#FF9800;" id = "colorPicker4">
             </td>
             </tr>
             <tr>
             <td style="background-color: #48BD0D; color:white;">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Daniel Narciso" id = "DanielNarciso"><label style = "margin-left:15%;">Daniel Narciso</label>
+            <input hidden class='' type="text" name = "colorPicker5" value="#48BD0D" id = "colorPicker5">
             </td>
 
            
@@ -375,20 +380,26 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
   <script>
    
-  $(document).ready(function() {
+  $(document).ready(function(event) {
+
    var calendar = $('#calendar').fullCalendar({
     editable:true,
     header:{
      left:'prev,next today',
      center:'title',
      right:'month,agendaWeek,agendaDay'
+     
     },
+
     events: 'vehicle_load.php',
     selectable:true,
     selectHelper:true,
+    eventColor: $("#colorPicker5").val(),
+    
+    
+    
 
-
-    select: function(start, end, allDay)
+    /* select: function(start, end, allDay)
     {
      var title = prompt("Enter Event Title");
      if(title)
@@ -406,9 +417,9 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
        }
       })
      }
-    },
+    }, */
     
-    editable:true,
+    editable:false,
     eventResize:function(event)
     {
      var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
@@ -424,9 +435,13 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
        alert('Event Update');
       }
      })
+
+     
     },
 
-    eventDrop:function(event)
+    
+
+    /* eventDrop:function(event)
     {
      var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
      var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
@@ -442,7 +457,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
        alert("Event Updated");
       }
      });
-    },
+    }, */
 
     eventClick:function(event)
     {
@@ -496,6 +511,8 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
 
    });
+
+   
   });
    
   </script>
