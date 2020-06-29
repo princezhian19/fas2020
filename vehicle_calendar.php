@@ -315,28 +315,33 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             <tr>
             
 
-            <td colspan = "2"><b><input  class='calFilter' type="checkbox" name = "offices[]" value="0"  id = "all" ></label>
+            <td colspan = "2"><b><input  class='calFilter' type="checkbox" name = "drivers[]" value="0"  id = "all" ></label>
             All Drivers</b></td>
             </tr>
 
             <td style="background-color: #D5D911; color:white;WIDTH:50%;">
-            <input class='calFilter' type="checkbox" name = "offices[]" value="Reynaldo Parale" id = "ReynaldoParale" ><label style = "margin-left:15%;">Reynaldo Parale</label>
+            <input class='calFilter' type="checkbox" name = "drivers[]" value="Reynaldo Parale" id = "ReynaldoParale" ><label style = "margin-left:15%;">Reynaldo Parale</label>
+            <input hidden class='' type="text" name = "" value="#D5D911;" id = "colorPicker1">
             </td>
             <td style="background-color: #607D8B; color:#fff;padding:9px;WIDTH:50%;">
-            <input class='calFilter' type="checkbox" name = "offices[]" value="Louie Blanco" id = "LouieBlanco"><label style = "margin-left:15%;">Louie Blanco</label>
+            <input class='calFilter' type="checkbox" name = "drivers[]" value="Louie Blanco" id = "LouieBlanco"><label style = "margin-left:15%;">Louie Blanco</label>
+            <input hidden class='' type="text" name = "" value="#607D8B;" id = "colorPicker2">
             </td>
             </tr>
             <tr>
             <td style="background-color: #E60785; color:white;">
-            <input class='calFilter' type="checkbox" name = "offices[]" value="Joachim Lacdang" id = "JoachimLacdang"><label style = "margin-left:15%;">Joachim Lacdang</label>
+            <input class='calFilter' type="checkbox" name = "drivers[]" value="Joachim Lacdang" id = "JoachimLacdang"><label style = "margin-left:15%;">Joachim Lacdang</label>
+            <input hidden class='' type="text" name = "" value="#E60785;" id = "colorPicker3">
             </td>
             <td style="background-color:#FF9800 ; color:white;;padding:9px;">
-            <input class='calFilter' type="checkbox" name = "offices[]" value="Medel Saturno" id = "MedelSaturno"><label style = "margin-left:15%;">Medel Saturno</label>
+            <input class='calFilter' type="checkbox" name = "drivers[]" value="Medel Saturno" id = "MedelSaturno"><label style = "margin-left:15%;">Medel Saturno</label>
+            <input hidden class='' type="text" name = "" value="#FF9800;" id = "colorPicker4">
             </td>
             </tr>
             <tr>
             <td style="background-color: #48BD0D; color:white;">
-            <input class='calFilter' type="checkbox" name = "offices[]" value="Daniel Narciso" id = "DanielNarciso"><label style = "margin-left:15%;">Daniel Narciso</label>
+            <input class='calFilter' type="checkbox" name = "drivers[]" value="Daniel Narciso" id = "DanielNarciso"><label style = "margin-left:15%;">Daniel Narciso</label>
+            <input hidden class='' type="text" name = "" value="#48BD0D;" id = "colorPicker5">
             </td>
 
            
@@ -375,18 +380,39 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
   <script>
    
-  $(document).ready(function() {
+  $(document).ready(function(event) {
+
+   
+    
+
+
    var calendar = $('#calendar').fullCalendar({
+   
+
+    
     editable:true,
     header:{
      left:'prev,next today',
      center:'title',
      right:'month,agendaWeek,agendaDay'
+     
     },
+
+   
+
     events: 'vehicle_load.php',
     selectable:true,
     selectHelper:true,
 
+   
+   /*  eventColor: $("#colorPicker1").val(),
+    eventColor: $("#colorPicker2").val(),
+    eventColor: $("#colorPicker3").val(),
+    eventColor: $("#colorPicker4").val(), */
+    eventColor: $("#colorPicker5").val(),
+    
+    
+    
 
     select: function(start, end, allDay)
     {
@@ -478,7 +504,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
     $('#myModal2').find('#dispatcher').val(event.dispatcher);
     $('#myModal2').find('#nov').val(event.nov);
     $('#myModal2').find('#av').val(event.av);
-    $('#myModal2').find('#ad').val(event.ad);
+    $('#myModal2').find('#ad').val(event.title);
     $('#myModal2').find('#plate').val(event.plate);
     $('#myModal2').find('#vremarks').val(event.vremarks);
     
@@ -491,33 +517,13 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
     },
     
-    event: [
-                  <?php foreach($events as $event): ?>
-                      {
-
-
-                        id: '<?php echo $event['id']; ?>',
-                        assigneddate: '<?php echo $event['assigneddate']; ?>',
-                     
-                        assignedtime: '<?php echo $event['assignedtime']; ?>',
-                        dispatcher: '<?php echo $event['dispatcher']; ?>',
-                        nov: '<?php echo $event['nov']; ?>',
-                        av: '<?php echo $event['av']; ?>',
-                        ad: '<?php echo $event['ad']; ?>',
-                        plate: '<?php $event['plate']; ?>',
-                        vremarks:'<?php echo $event['vremarks'];?>',
-                       
-
-                      },
-                    <?php 
-                   
-
-                  endforeach; ?>
-                ]
+   
 
 
 
    });
+
+   
   });
    
   </script>

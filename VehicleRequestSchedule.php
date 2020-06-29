@@ -23,7 +23,7 @@ $events = $req->fetchAll();
 function viewEvents()
 {
         ?>
-            <form method = "POST" action = "calendar/add-event.php">
+            <form method = "POST" action = "">
                 <input  type = "hidden" name = "eventid" id = "eventid">
                 <table class="table table-bordered" style = "width:100%;"> 
                     <tr>
@@ -51,7 +51,7 @@ function viewEvents()
                                 </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Assigned Driver</td>
-                            <td class="col-md-5"><input readonly required type = "number" min = "" name = "ad" id= "ad" class = "form-control" value = ""  /></td>
+                            <td class="col-md-5"><input readonly required type = "text" min = "" name = "ad" id= "ad" class = "form-control" value = ""  /></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Plate</td>  
@@ -62,7 +62,7 @@ function viewEvents()
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Remarks</td>
                             <td class="col-md-5">                              
-                            <input readonly  type = "text"  class = "form-control" id= "vremarks"  name = "vremarks" />
+                            <input readonly  type = "text"  class = "form-control" id= "vremarks"  name = "vremarks" style="height:60px" />
                                     </td>
                                         </tr>
                 
@@ -96,49 +96,7 @@ function viewEvents2()
 
   ?>
   <input  type = "hidden" name = "eventid" id = "eventid">
-                <table class="table table-bordered" style = "width:100%;"> 
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assined Date</td>
-                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "assigneddate" id = "assigneddate"  /></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assigned Time</td>
-                            <td class="col-md-5">
-                                <input required type="text" class = "form-control " name = "assignedtime" id="assignedtime" value = ""   required autocomplete = off  >
-                                    </td>
-                                        </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Dispatcher</td>
-                            <td class="col-md-5">
-                                <input  type = "text"  class = "form-control datepicker2" id = "dispatcher" name = "dispatcher"    autocomplete = off /></td>
-                                    </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">No. of Vehicles</td>
-                            <td class="col-md-5"><input  type = "text" class = "form-control" name = "nov" id = "nov" value = "" /></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assigned Vehicle</td>
-                            <td class="col-md-5"><input required type = "text" class = "form-control" name = "ac" id= "av" value = "" /></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assigned Driver</td>
-                            <td class="col-md-5"><input required type = "number" min = "" name = "ad" id= "ad" class = "form-control" value = ""  /></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Plate</td>  
-                            <td class="col-md-5">
-                            <input required type = "text" class = "form-control" name = "plate" id= "plate" value = "" />
-                                </td>
-                                    </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Remarks</td>
-                            <td class="col-md-5">                              
-                            <input  type = "text"  class = "form-control" id= "vremarks"  name = "vremarks" />
-                                    </td>
-                                        </tr>
                 
-                    
-                </table>
   
 
 
@@ -146,8 +104,7 @@ function viewEvents2()
                <?php 
                 
              
-                  // echo ' <a id = "edit"  style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-primary"> Edit</a>';
-                  // echo ' <input id = "save"  type = "submit" name = "submit" style = "text-align:center;margin-left:5px;" class = "pull-right btn btn-success" value = "Save Changes"> ';
+                
                 
 
                ?>
@@ -294,7 +251,7 @@ if($_GET['flag'] == 1)
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">View Activity</h4>
+          <h4 class="modal-title">View Vehicle Request Schedule</h4>
           <button type="button" class="close" data-dismiss="modal">&times; 
           </button>
         </div>

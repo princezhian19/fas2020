@@ -284,6 +284,7 @@ echo getOffice();
               <div class="box-body">
               <form method = "POST" action = "saveTravelInfo.php">
                 <div class="well" style = "padding:10px;">
+
                   <div class="box-body">
                     <div class = "row">
                       <div class = "col-sm-12 col-md-12 col-lg-12">
@@ -329,86 +330,78 @@ echo getOffice();
                                     <input type="text" name = "others" class="form-control" >
                                 </div>
                               </div>
-  
-
-
-                 
                           </div>
+                          <div class = "col-sm-6 col-md-6 col-lg-6">
+                            <div class="col-md-12 well perdiem">
+                              <div class="form-group">
+                                  <label>
+                                  Per Diem
+                                  </label>
+                                  <label class = "pull-right">
+                                  <input type ="hidden" value = "<?php echo getDistance();?>" id = "distance"/>
+                                  Distance: <?php echo getDistance();?>
+                                  </label>
+                              </div>
+                              <div class="form-group">
+                                <label>
+                                Meals
+                                </label><br>
+                                <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1" id = "cb1"> <b>Will Claim Meals</b><br>
 
-                        <div class = "col-sm-6 col-md-6 col-lg-6">
-                          <div class="col-md-12 well perdiem">
-                          <div class="form-group">
-                              <label>
-                              Per Diem
-                              </label>
-                              <label class = "pull-right">
-                              <input type ="hidden" value = "<?php echo getDistance();?>" id = "distance"/>
-                              Distance: <?php echo getDistance();?>
-                              </label>
-                            </div>
-                            <div class="form-group">
-                              <label>
-                              Meals
-                              </label><br>
-                              <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1" id = "cb1"> <b>Will Claim Meals</b><br>
-
-                              <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" id = "breakfast" value = "breakfast"> Breakfast
-                              <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" id= "lunch" value = "lunch"> Lunch
-                              <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" id="dinner" value = "dinner"> Dinner
-                            </div>
-                            <div class="form-group">
-                              <label>
-                              Accomodation
-                              </label><br>
-                              <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
-                              <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt" id = "wr" value ="With Receipt"> With Receipt
-                              <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
-                              
-                              <br>
-                              <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt" id = "wor" value ="Without Receipt"> Without Receipt
+                                <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" id = "breakfast" value = "breakfast"> Breakfast
+                                <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" id= "lunch" value = "lunch"> Lunch
+                                <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" id="dinner" value = "dinner"> Dinner
+                              </div>
+                              <div class="form-group">
+                                <label>
+                                Accomodation
+                                </label><br>
+                                <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
+                                <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt" id = "wr" value ="With Receipt"> With Receipt
+                                <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
+                                <br>
+                                <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt" id = "wor" value ="Without Receipt"> Without Receipt
+                              </div>
                             </div>
                           </div>
-
-                        </div>
                       </div>
                     </div>
-                    
+                    <span class = "btn btn-success btn-md pull-right" id= "add_fare">Add Fare</span>
                   </div>
 
 
 
+                  </div>
 
-                <div class="well" style = "padding:10px;" id = "travelPanel">
-
-                  <div class="box-body myTemplate2">
-                    <div class="row ">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>From</label>
-                            <input type="text" name = "from3[]" class="form-control">
+                  <div class="well" style = "padding:10px;" id = "travelPanel">
+                    <div class="box-body myTemplate2">
+                      <div class="row ">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>From</label>
+                              <input type="text" name = "from3[]" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>To</label>
+                              <input type = "text" name = "to3[]" class = "form-control"/>
                           </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>To</label>
-                            <input type = "text" name = "to3[]" class = "form-control"/>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Means of Transportation</label>
+                              
+                              <input type="text" name = "mot[]" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>Transportation Fare</label>
+                              <input type = "text" name = "transpo_fare[]" class = "form-control"  />
+                          </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Means of Transportation</label>
-                            
-                            <input type="text" name = "mot[]" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Transportation Fare</label>
-                            <input type = "text" name = "transpo_fare[]" class = "form-control"  />
-                        </div>
-                      </div>
-                      
-                    </div>
                     </div>
                   </div>
                   <button type = "submit" class = "btn btn-success btn-md pull-right">Save </button>
@@ -428,7 +421,7 @@ echo getOffice();
 <script>
  var myCounter = 1;
 
- $('#add_fair').click(function(){
+ $('#add_fare').click(function(){
     $('.myTemplate2')
    .clone()
    .removeClass("myTemplate2")
@@ -561,11 +554,7 @@ $('#editModal').modal().hide();
    console.log($('#distance').val());
       if(distance > 50)
    {
-    $("#breakfast").attr("disabled", false);
-      $("#lunch").attr("disabled", false);
-      $("#dinner").attr("disabled", false);
-      $("#cb1").attr("disabled", false);
-      $("#wa").attr("disabled", false);
+   
 
    }else{
 
