@@ -465,6 +465,7 @@ $('#editModal').modal().hide();
   });
   // checkbox validation
   $(document).ready(function(){
+    $('#datepicker4').val($('#travel_date').val());
 // $('#editbtn').click(function () {
 //   var purpose = $('#or').val();
 // if(purpose == '' || purpose == null)

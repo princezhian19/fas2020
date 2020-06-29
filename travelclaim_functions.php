@@ -100,25 +100,47 @@ function aa($id)
 
     $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID WHERE tbltravel_claim_info.`TC_ID` = '".$id."'";
     $result1 = mysqli_query($conn, $query1);
+    $saved = array();
+
     if(mysqli_num_rows($result1) > 0)
     {
         while($row1 = mysqli_fetch_array($result1))
         {
+            $saved[] = $row1["ID"]; // you are missing []
+
+            if($row1['DATE'] == $row1['DATE'])
+            {
+                
+               if($row1['ID'] > $saved[0] ){
+                    ?>
+            <td></td>
+
+                    <?PHP
+               }else{
+                   ?>
+            <td><input readonly id = "travel_date" type = "text" class = "form-control" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+
+                   <?php
+               }
+                
+            }else{
         ?>
         
-        <tr>
-            <td><input type = "text" class = "form-control" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
-            <td><textarea cols = 50 style = "resize:none;"><?php echo $row1['PLACE'];?></textarea></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['TRANSPORTATION'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['PERDIEM'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
-            <td><input type = "text" class = "form-control" value = "<?php echo $row1['TOTAL_AMOUNT'];?>"/></td>
+   <tr>
+      
+            <?php }?>
+            <td><textarea readonly cols = 50 style = "resize:none;background:#ECEFF1;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['TRANSPORTATION'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['PERDIEM'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['TOTAL_AMOUNT'];?>"/></td>
         </tr>
         
         <?php
+        $row1['DATE'] = '';
         }
     }
 
