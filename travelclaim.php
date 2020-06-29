@@ -42,6 +42,9 @@ include 'travelclaim_functions.php';
 div.pac-container {
     z-index: 99999999999 !important;
 }
+.border-disabled{
+  border: 2px solid red;
+}
 </style>
 </head>
 <div class="box">
@@ -333,7 +336,16 @@ echo getOffice();
                           </div>
 
                         <div class = "col-sm-6 col-md-6 col-lg-6">
-                          <div class="col-md-12 well">
+                          <div class="col-md-12 well perdiem">
+                          <div class="form-group">
+                              <label>
+                              Per Diem
+                              </label>
+                              <label class = "pull-right">
+                              <input type ="hidden" value = "<?php echo getDistance();?>" id = "distance"/>
+                              Distance: <?php echo getDistance();?>
+                              </label>
+                            </div>
                             <div class="form-group">
                               <label>
                               Meals
@@ -498,7 +510,6 @@ $('#editModal').modal().hide();
     
       enable_cb1();
       enable_cb2();
-
   $("#cb1").click(enable_cb1);
   $("#wa").click(enable_cb2);
   function enable_cb1() {
@@ -543,6 +554,34 @@ $('#editModal').modal().hide();
     }
 
   }
+  function disabledDIV()
+  {
+   var distance =  $('#distance').val();
+   distance = distance.replace('km', '');
+   console.log($('#distance').val());
+      if(distance > 50)
+   {
+    $("#breakfast").attr("disabled", false);
+      $("#lunch").attr("disabled", false);
+      $("#dinner").attr("disabled", false);
+      $("#cb1").attr("disabled", false);
+      $("#wa").attr("disabled", false);
+
+   }else{
+
+
+    $("#breakfast").attr("disabled", true);
+      $("#lunch").attr("disabled", true);
+      $("#dinner").attr("disabled", true);
+      $("#cb1").attr("disabled", true);
+      $("#wa").attr("disabled", true);
+      $('.perdiem').addClass('border-disabled');
+
+   }
+
+  }
+  disabledDIV();
+
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0"></script>

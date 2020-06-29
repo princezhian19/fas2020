@@ -249,6 +249,17 @@ function getTotal()
             }
         
 }
+function getDistance()
+{
+    include 'connection.php';
+    $query1 = "SELECT DISTANCE FROM tbltravel_claim_info2  WHERE `NAME` = '".$_GET['username']."'";
+    $result1 = mysqli_query($conn, $query1);
+    
+        if($row1 = mysqli_fetch_array($result1))
+        {
+            echo $row1['DISTANCE'];
+        }
+}
 
     
 
