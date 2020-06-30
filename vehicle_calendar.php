@@ -391,7 +391,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
     selectable:true,
     selectHelper:true,
     
-    eventColor: $("#colorPicker5").val(),
+    // eventColor: $("#colorPicker5").val(),
     
     
     
@@ -484,14 +484,24 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
     $('#plate').prop("disabled", true); 
     $('#vremarks').prop("disabled", true); 
 
-
+    $('#myModal2').find('#purpose').val(event.title);
     $('#myModal2').find('#assigneddate').val(event.assigneddate);
     $('#myModal2').find('#assignedtime').val(event.assignedtime);
     $('#myModal2').find('#dispatcher').val(event.dispatcher);
     $('#myModal2').find('#nov').val(event.nov);
+
     $('#myModal2').find('#av').val(event.av);
     $('#myModal2').find('#ad').val(event.ad);
     $('#myModal2').find('#plate').val(event.plate);
+
+    $('#myModal2').find('#av1').val(event.av1);
+    $('#myModal2').find('#ad1').val(event.ad1);
+    $('#myModal2').find('#plate1').val(event.plate1);
+
+    $('#myModal2').find('#av2').val(event.av2);
+    $('#myModal2').find('#ad2').val(event.ad2);
+    $('#myModal2').find('#plate2').val(event.plate2);
+
     $('#myModal2').find('#vremarks').val(event.vremarks);
     
     

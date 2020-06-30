@@ -23,10 +23,19 @@ foreach($result as $row)
   'assignedtime'   => $row["assignedtime"],
   'dispatcher'   => $row["dispatcher"],
   'nov'   => $row["nov"],
+
   'ad'   => $row["ad"],
   'av'   => $row["av"],
-  
   'plate'   => $row["plate"],
+
+  'ad1'   => $row["ad1"],
+  'av1'   => $row["av1"],
+  'plate1'   => $row["plate1"],
+
+  'ad2'   => $row["ad2"],
+  'av2'   => $row["av2"],
+  'plate2'   => $row["plate2"],
+
   'vremarks'   => $row["vremarks"],
 
   'start'   => $row["assigneddate"],

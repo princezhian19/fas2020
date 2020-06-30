@@ -20,6 +20,15 @@ $nov=$_POST["nov"];
 $av=$_POST["av"];
 $ad=$_POST["ad"];
 $plate=$_POST["plate"];
+
+$av1=$_POST["av1"];
+$ad1=$_POST["ad1"];
+$plate1=$_POST["plate1"];
+
+$av2=$_POST["av2"];
+$ad2=$_POST["ad2"];
+$plate2=$_POST["plate2"];
+
 $vremarks=$_POST["vremarks"];
 
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
@@ -29,7 +38,7 @@ if ($conn->connect_error) {
 }
      
 
-$query = mysqli_query($conn, "UPDATE vr set assigneddate='$assigneddate', assignedtime='$assignedtime',dispatcher='$dispatcher',nov='$nov',av='$av',ad='$ad',plate='$plate',vremarks='$vremarks' where id = '$id'");
+$query = mysqli_query($conn, "UPDATE vr set assigneddate='$assigneddate', assignedtime='$assignedtime',dispatcher='$dispatcher',nov='$nov',av='$av',ad='$ad',plate='$plate',av1='$av1',ad1='$ad1',plate1='$plate1',av2='$av2',ad2='$ad2',plate2='$plate2',vremarks='$vremarks' where id = '$id'");
 
 /* echo "UPDATE vr set assigneddate='$assigndate', assignedtime='$assigntime',dispatcher='$dispatcher',nov='$nov',av='$av',ad='$ad',plate='$plate',vremarks='$vremarks' where id = '$id'";
 exit(); */

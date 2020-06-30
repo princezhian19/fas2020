@@ -26,42 +26,81 @@ function viewEvents()
             <form method = "POST" action = "">
                 <input  type = "hidden" name = "eventid" id = "eventid">
                 <table class="table table-bordered" style = "width:100%;"> 
+
+                <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Purpose</td>
+                            <td class="col-md-5" colspan="2"><input readonly required type = "text" class = "form-control" name = "purpose" id = "purpose"  /></td>
+                                </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assined Date</td>
-                            <td class="col-md-5"><input readonly required type = "text" class = "form-control" name = "assigneddate" id = "assigneddate"  /></td>
+
+                    <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Assigned Date</td>
+                            <td class="col-md-5" colspan="2"><input readonly required type = "text" class = "form-control" name = "assigneddate" id = "assigneddate"  /></td>
                                 </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Assigned Time</td>
-                            <td class="col-md-5">
+                            <td class="col-md-5"  colspan="2">
                                 <input readonly required type="text" class = "form-control " name = "assignedtime" id="assignedtime" value = ""   required autocomplete = off  >
                                     </td>
                                         </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Dispatcher</td>
-                            <td class="col-md-5">
+                            <td class="col-md-5"  colspan="2">
                                 <input  readonly type = "text"  class = "form-control datepicker2" id = "dispatcher" name = "dispatcher"    autocomplete = off /></td>
                                     </tr>
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">No. of Vehicles</td>
-                            <td class="col-md-5"><input readonly  type = "text" class = "form-control" name = "nov" id = "nov" value = "" /></td>
+                            <td class="col-md-5"  colspan="2"><input readonly  type = "text" class = "form-control" name = "nov" id = "nov" value = "" /></td>
                                 </tr>
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assigned Vehicle</td>
-                            <td class="col-md-5"><input readonly required type = "text" class = "form-control" name = "av" id= "av" value = "" /></td>
-                                </tr>
+
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assigned Driver</td>
-                            <td class="col-md-5"><input readonly required type = "text" min = "" name = "ad" id= "ad" class = "form-control" value = ""  /></td>
-                                </tr>
-                    <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Plate</td>  
-                            <td class="col-md-5">
-                            <input readonly required type = "text" class = "form-control" name = "plate" id= "plate" value = "" />
-                                </td>
-                                    </tr>
+
+                  <td class="col-md-4" >
+
+                  <label>Assigned Vehicle 1 <span style = "color:red;"></span></label> 
+                  <input readonly required type = "text" class = "form-control" name = "av" id= "av" value = "" />
+
+                  <label>Assigned Driver 1 <span style = "color:red;"></span></label>
+                  <input readonly required type = "text" min = "" name = "ad" id= "ad" class = "form-control" value = ""  />
+                  
+                  <label>Plate Number <span style = "color:red;"></span></label>
+                  <input readonly required type = "text" class = "form-control" name = "plate" id= "plate" value = "" />
+                  
+                  </td>
+
+                  <td class="col-md-4" >
+
+                  <label>Assigned Vehicle 2 <span style = "color:red;"></span></label> 
+                  <input readonly required type = "text" class = "form-control" name = "av1" id= "av1" value = "" />
+
+                  <label>Assigned Driver 2 <span style = "color:red;"></span></label>
+                  <input readonly required type = "text" min = "" name = "ad1" id= "ad1" class = "form-control" value = ""  />
+                  
+                  <label>Plate Number <span style = "color:red;"></span></label>
+                  <input readonly required type = "text" class = "form-control" name = "plate1" id= "plate1" value = "" />
+
+                  </td>
+
+                  <td class="col-md-4" >
+
+                  <label>Assigned Vehicle 3 <span style = "color:red;"></span></label> 
+                  <input readonly required type = "text" class = "form-control" name = "av2" id= "av2" value = "" />
+
+                  <label>Assigned Driver 3 <span style = "color:red;"></span></label>
+                  <input readonly required type = "text" min = "" name = "ad2" id= "ad2" class = "form-control" value = ""  />
+                  
+                  <label>Plate Number <span style = "color:red;"></span></label>
+                  <input readonly required type = "text" class = "form-control" name = "plate2" id= "plate2" value = "" />
+
+                  </td>
+            
+              </tr>
+
+
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Remarks</td>
-                            <td class="col-md-5">                              
+                            <td class="col-md-5"  colspan="2">                              
                             <input readonly  type = "text"  class = "form-control" id= "vremarks"  name = "vremarks" style="height:60px" />
                                     </td>
                                         </tr>
