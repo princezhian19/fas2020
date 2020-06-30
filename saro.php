@@ -56,7 +56,7 @@ $username = $_SESSION['username'];
         <?php include('@sarotable.php');?>
         <br>
         <br>
-    </section>
+    </section>  
   </div>
   <footer class="main-footer">
     <br>

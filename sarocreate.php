@@ -335,7 +335,8 @@ $username = $_SESSION['username'];
           $.ajax({
           url: "sarocreatefunction.php",
           type: "post",
-          data: {date : date, 
+          data: {
+            date : date, 
             saronumber : saronumber, 
             fund : fund, 
             legalbasis : legalbasis, 
@@ -349,7 +350,7 @@ $username = $_SESSION['username'];
             group : group
            },
           success : function(data){
-          alert(data); /* alerts the response from php.*/
+          console.log(data); /* alerts the response from php.*/
           window.location.href='saro.php';
           }
           });

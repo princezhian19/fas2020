@@ -35,7 +35,7 @@ $view_query = mysqli_query($conn, "SELECT * FROM saro where id ='$getid' ");
 while ($row = mysqli_fetch_assoc($view_query)) {
   $id = $row["id"];  
   $date1 = $row["sarodate"];
-  $d1 = date('m/d/Y', strtotime($date1));
+  $d1 = date('Y-m-d', strtotime($date1));
 
   $saronumber = $row["saronumber"];
   $fund = $row["fund"];
@@ -313,8 +313,10 @@ while ($row = mysqli_fetch_assoc($view_query)) {
   $(document).ready(function(){
     //Date picker,
     $('#datepicker1').datepicker({
-      autoclose: true
+      autoclose: true,
     })
+
+
 
   });
   $(function () {

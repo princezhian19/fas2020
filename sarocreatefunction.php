@@ -3,9 +3,9 @@
 //include('../@classes/db.php');
 
 
-//$date = json_decode($_POST["date"]);
-$saronumber = json_decode($_POST["saronumber"]);
+$date = json_decode($_POST["date"]);
 
+$saronumber = json_decode($_POST["saronumber"]);
 $fund = json_decode($_POST["fund"]);
 $legalbasis = json_decode($_POST["legalbasis"]);
 $ppa = json_decode($_POST["ppa"]);
@@ -29,10 +29,11 @@ $group = json_decode($_POST["group"]);
 
     for ($i = 0; $i < count($saronumber); $i++) {
         if(($saronumber[$i] != "")){ /*not allowing empty values and the row which has been removed.*/
-            
+            $datef = $date[$i];
+            $dateformat = date('Y-m-d',strtotime($datef));
         
             $sql = "INSERT INTO saro (sarodate,saronumber,fund,legalbasis,ppa,expenseclass,particulars,uacs,amount,obligated,balance,sarogroup) 
-            VALUES (now(),'$saronumber[$i]','$fund[$i]','$legalbasis[$i]','$ppa[$i]','$expenseclass[$i]','$particulars[$i]','$uacs[$i]','$amount[$i]','$obligated[$i]','$amount[$i]','$group[$i]')";
+            VALUES ('$dateformat','$saronumber[$i]','$fund[$i]','$legalbasis[$i]','$ppa[$i]','$expenseclass[$i]','$particulars[$i]','$uacs[$i]','$amount[$i]','$obligated[$i]','$amount[$i]','$group[$i]')";
                if (!mysqli_query($con,$sql))
                {
                die('Error: ' . mysqli_error($con));
@@ -40,7 +41,7 @@ $group = json_decode($_POST["group"]);
                }else{
              
                }
-              
+
             }
             else{
                 Print "Fund Source Field Canot be Empty";
