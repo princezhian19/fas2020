@@ -116,6 +116,19 @@
             }
     }
 
+    function deleteTravelOrder()
+    {
+        include 'connection.php';
+        $insert ="DELETE FROM `tbltravel_claim_info` WHERE `ID` = '".$_POST['id']."' ";
+        if (mysqli_query($conn, $insert)) {
+        } else {
+        }
+        echo $insert;
+    }
+    if($_POST['function'] == 'deleteTravelOrder')
+    {
+        deleteTravelOrder();
+    }
     
 
 ?>

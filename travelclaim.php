@@ -119,16 +119,17 @@ function aa($id)
                 function(){
                 swal("Deleted!", "Your activity has been deleted.", "success");
                     $.ajax({
-                        url:"calendar/deddlete-event.php",
+                        url:"travelclaim_functions.php",
                         method:"POST",
                         data:{
-                        title:'a',
+                        function: 'deleteTravelOrder',
+                        id: <?php echo $row1['ID'];?>,
                     },
                     success:function(data)
                     {
                 
                           setTimeout(function () {
-                          // window.location = "ManageCalendar.php";
+                          window.location = "CreateTravelClaim.php?username=<?php echo $_GET['username'];?>&division=<?php echo $_GET['division'];?>";
                           }, 1000);
 
                       
