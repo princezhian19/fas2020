@@ -18,11 +18,12 @@ foreach($result as $row)
 {
  $data[] = array(
   'id'   => $row["id"],
+  'title'   => $row["purpose"],
   'assigneddate'   => $row["assigneddate"],
   'assignedtime'   => $row["assignedtime"],
   'dispatcher'   => $row["dispatcher"],
   'nov'   => $row["nov"],
-  'title'   => $row["ad"],
+  'ad'   => $row["ad"],
   'av'   => $row["av"],
   
   'plate'   => $row["plate"],

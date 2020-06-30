@@ -299,11 +299,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
             </td>
            
-            <td class="col-md-1" >
-            <br>
            
-
-            </td>
 
             <?php else:?>
 
@@ -394,6 +390,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
     events: 'vehicle_load.php',
     selectable:true,
     selectHelper:true,
+    
     eventColor: $("#colorPicker5").val(),
     
     
