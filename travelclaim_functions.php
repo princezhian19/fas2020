@@ -6,7 +6,7 @@
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_array($result))
         {
-            echo ucwords(strtolower($row['FIRST_M'])).' '.ucfirst(strtolower($row['LAST_M']));
+            echo '<b>'.ucwords(strtoupper($row['FIRST_M'])).' '.ucfirst(strtoupper($row['LAST_M'])).'</b>';
         }
     }
     function getPosition()
@@ -82,7 +82,6 @@
         }
     }
 
-   
     function getTotal()
     {
         include 'connection.php';
@@ -98,7 +97,7 @@
                     {
                         if($row2 = mysqli_fetch_array($result2))
                         {
-                ECHO '<span style = "margin-left:84%;color:red;font-weight:bold;">₱ &nbsp;'.$row2['total'].'</span>';
+                ECHO '<span style = "margin-left:84%;color:red;font-weight:bold;">₱ &nbsp;'.sprintf("%.2f",$row2['total']).'</span>';
                         }
                     }
                 }

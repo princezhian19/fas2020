@@ -91,10 +91,10 @@ function aa($id)
             <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
             <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
             <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
-            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['TRANSPORTATION'];?>"/></td>
-            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['PERDIEM'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['PERDIEM']);?>"/></td>
             <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
-            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['TOTAL_AMOUNT'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
             <td><button class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['ID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</button></td>
 
         </tr>
@@ -117,7 +117,7 @@ function aa($id)
                 closeOnConfirm: false
                 },
                 function(){
-                swal("Deleted!", "Your activity has been deleted.", "success");
+                swal("Deleted!", "Your travel date  has been deleted.", "success");
                     $.ajax({
                         url:"travelclaim_functions.php",
                         method:"POST",
