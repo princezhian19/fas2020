@@ -122,7 +122,7 @@ $edit="edit";
                   <th width = ''>RETURN </th>
                   <th width = ''>SUBMITTED</th>
                   <th width = ''>RECEIVED</th>
-                  <th width = ''>ASSIGNED</th>
+                  <th width = '500'>ASSIGNED</th>
                   <th width = ''>RECOMMENDING</th> 
                   <th width = ''>APPROVED</th> 
                   <th width = ''>SERVED COPY</th> 
@@ -375,15 +375,23 @@ $edit="edit";
                                 <?php else: ?>
                                 <td>
                                 <?php if ($recommenddate1 != '0000-00-00'): ?>
-                                  <?php echo $av.'<br>'.$ad?>
+                                <?php echo $av.'<br>'.$ad?>
+                                <br>
+                                <?php echo ' '?>
                                 <br>
                                 <?php echo $av1.'<br>'.$ad1?>
+                                <br>
+                                <?php echo ' '?>
                                 <br>
                                 <?php echo $av2.'<br>'.$ad2?>
                                 <?php else: ?>
                                   <?php echo $av.'<br>'.$ad?>
+                                  <br>
+                                <?php echo ' '?>
                                 <br>
                                 <?php echo $av1.'<br>'.$ad1?>
+                                <br>
+                                <?php echo ' '?>
                                 <br>
                                 <?php echo $av2.'<br>'.$ad2?>
                                   <!-- <a href='VehicleRequestUpdate.php?id=<?php echo $id;?>&pos=<?php echo $pos;?>&vrno=<?php echo $vrno;?>&type=<?php echo $type;?>' onclick="myFunctionPassengers()" data-vrno = <?php echo $vrno?>  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit </a> -->
@@ -399,7 +407,11 @@ $edit="edit";
                             <td >
                                 <?php echo $av.'<br>'.$ad?>
                                 <br>
+                                <?php echo ' '?>
+                                <br>
                                 <?php echo $av1.'<br>'.$ad1?>
+                                <br>
+                                <?php echo ' '?>
                                 <br>
                                 <?php echo $av2.'<br>'.$ad2?>
                             </td>
@@ -1370,6 +1382,39 @@ $(document).ready(function(){
     }
    
     //alert(cat);
+
+  });
+});
+</script>
+
+
+<!-- Validation -->
+<script>
+$(document).ready(function(){
+  $("#ad").change(function (){
+
+    
+    driver = document.getElementById("ad").value;
+
+    driver1 = document.getElementById("ad1").value;
+
+    driver1 = document.getElementById("ad2").value;
+
+   
+    if(driver=='Daniel Narciso'){
+   
+    /*   $(" #ad1 option[value='Daniel Narciso']").remove(); 
+      $(" #ad2 option[value='Daniel Narciso']").remove();  */
+      
+     
+     
+    }
+    else{
+     
+
+    }
+
+
 
   });
 });
