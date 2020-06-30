@@ -26,6 +26,13 @@ function viewEvents()
             <form method = "POST" action = "">
                 <input  type = "hidden" name = "eventid" id = "eventid">
                 <table class="table table-bordered" style = "width:100%;"> 
+
+                <tr>
+                        <td class="col-md-2" style ="font-weight:bold">Purpose</td>
+                            <td class="col-md-5" colspan="2"><input readonly required type = "text" class = "form-control" name = "purpose" id = "purpose"  /></td>
+                                </tr>
+                    <tr>
+
                     <tr>
                         <td class="col-md-2" style ="font-weight:bold">Assined Date</td>
                             <td class="col-md-5" colspan="2"><input readonly required type = "text" class = "form-control" name = "assigneddate" id = "assigneddate"  /></td>
