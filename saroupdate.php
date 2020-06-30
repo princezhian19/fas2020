@@ -154,7 +154,7 @@ while ($row = mysqli_fetch_assoc($view_query)) {
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="sarodate" value = "<?php echo $d1;?>">
+                        <input type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="sarodate" value = "<?php echo date('F d, Y',strtotime($d1));?>">
                     </div>
                     <br>
                     <label>Source No. <label style="color: Red;" >*</label></label>
@@ -314,6 +314,7 @@ while ($row = mysqli_fetch_assoc($view_query)) {
     //Date picker,
     $('#datepicker1').datepicker({
       autoclose: true,
+      dateFormat: "yy-mm-dd" 
     })
 
 
