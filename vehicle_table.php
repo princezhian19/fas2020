@@ -219,9 +219,20 @@ $edit="edit";
 
                   $dispatcher=$row["dispatcher"];
                   $nov=$row["nov"];
+
                   $av=$row["av"];
                   $ad=$row["ad"];
                   $plate=$row["plate"];
+
+                  $av1=$row["av1"];
+                  $ad1=$row["ad1"];
+                  $plate1=$row["plate1"];
+
+                  $av2=$row["av2"];
+                  $ad2=$row["ad2"];
+                  $plate2=$row["plate2"];
+
+
                   $vremarks=$row["vremarks"];
                   $rstatus=$row["rstatus"];
 
@@ -365,8 +376,16 @@ $edit="edit";
                                 <td>
                                 <?php if ($recommenddate1 != '0000-00-00'): ?>
                                   <?php echo $av.'<br>'.$ad?>
+                                <br>
+                                <?php echo $av1.'<br>'.$ad1?>
+                                <br>
+                                <?php echo $av2.'<br>'.$ad2?>
                                 <?php else: ?>
                                   <?php echo $av.'<br>'.$ad?>
+                                <br>
+                                <?php echo $av1.'<br>'.$ad1?>
+                                <br>
+                                <?php echo $av2.'<br>'.$ad2?>
                                   <!-- <a href='VehicleRequestUpdate.php?id=<?php echo $id;?>&pos=<?php echo $pos;?>&vrno=<?php echo $vrno;?>&type=<?php echo $type;?>' onclick="myFunctionPassengers()" data-vrno = <?php echo $vrno?>  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>Edit </a> -->
 
 
@@ -379,6 +398,10 @@ $edit="edit";
                             <?php else: ?>
                             <td >
                                 <?php echo $av.'<br>'.$ad?>
+                                <br>
+                                <?php echo $av1.'<br>'.$ad1?>
+                                <br>
+                                <?php echo $av2.'<br>'.$ad2?>
                             </td>
                             <?php endif ?>
 
@@ -760,7 +783,7 @@ $edit="edit";
                   <label> Assigned Date <span style = "color:red;">*</span></label>  
                  </td>
 
-                  <td class="" >
+                  <td class="" colspan="2" >
                   <input  required type="text" class="form-control" name="assigneddate" id="datepicker1" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
 
                   </td>
@@ -769,7 +792,7 @@ $edit="edit";
                   <tr>
                   <td >  <label> Assigned Time <span style = "color:red;">*</span></label>  </td>
                   
-                  <td class="" >
+                  <td class="" colspan="2" >
                   <input  required type="time" class="form-control" name="assignedtime" id="assignedtime" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('H:i') ?>" >
 
                   </td>
@@ -778,7 +801,7 @@ $edit="edit";
                   <tr>
                   <td>   <label> Dispatcher <span style = "color:red;">*</span></label>  </td>
                   
-                  <td class="" >
+                  <td class=""  colspan="2">
                   <input readonly required type="text" class="form-control" name="dispatcher" id="dispatcher" value="<?php echo $username1?>" >
 
                   </td>
@@ -788,55 +811,132 @@ $edit="edit";
                   <tr>
                   <td ><label>  No. of Assigned Vehicle <span style = "color:red;">*</span></label> </td>
                   
-                  <td class="" >
+                  <td class="" colspan="2">
                   <input  required type="number" class="form-control" name="nov" id="nov" value = "" >
 
                   </td>
                   </tr>
 
-                  <tr>
-                  <td > <label>Assigned Vehicle <span style = "color:red;">*</span></label> </td>
-                  
-                  <td class="" >
-                  <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
-                  <select required class="form-control" style="width: 100%;" name="av" id="av" >
-                      <option value="">Select Vehicle</option>
-                      <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
-                      <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
-                      <option value="Isuzu Pick-up">Isuzu Pick-up</option>
-                     
-                  </select>
-                  </td> 
-                  </tr>
 
-                  <tr>
-                  <td > <label>Assigned Driver <span style = "color:red;">*</span></label></td>
-                  <td class="" >
-                 
-                  <select required class="form-control" style="width: 100%;" name="ad" id="ad" >
-                      <option value="">Select Driver</option>
-                      <option value="Daniel Narciso">Daniel Narciso</option>
-                      <option value="Joachim Lacdang">Joachim Lacdang</option>
-                      <option value="Louie Blanco">Louie Blanco</option>
-                     
-                  </select>
+              <tr>
+
+                  <td class="col-md-4" >
+                 <!--   Driver 1 -->
+           
+          <label>Assigned Vehicle 1 <span style = "color:red;">*</span></label> 
+                
+                <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
+                <select required class="form-control" style="width: 100%;" name="av" id="av" >
+                    <option value="">Select Vehicle</option>
+                    <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
+                    <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
+                    <option value="Isuzu Pick-up">Isuzu Pick-up</option>
+                   
+                </select>
+               
+             
+              
+              
+             <label>Assigned Driver 1 <span style = "color:red;">*</span></label>
+                <select required class="form-control" style="width: 100%;" name="ad" id="ad" >
+                    <option value="">Select Driver</option>
+                    <option value="Daniel Narciso">Daniel Narciso</option>
+                    <option value="Joachim Lacdang">Joachim Lacdang</option>
+                    <option value="Louie Blanco">Louie Blanco</option>
+                   
+                </select>
+               
+              
+              
+                <label>Plate Number <span style = "color:red;">*</span></label>
+                <input readonly required type="Text" class="form-control" name="plate" id="plate" value = "" >
+               
+              
+                <!--   Driver 1 -->
+
                   </td>
+
+                  <td class="col-md-4" >
                  
-                  </tr>
 
-                  <tr>
-                  <td > <label>Plate Number <span style = "color:red;">*</span></label></td>
-                  
-                  <td class="" >
-                  <input readonly required type="Text" class="form-control" name="plate" id="plate" value = "" >
-
+                  <!--   Driver 1 -->
+           
+          <label>Assigned Vehicle 2 <span style = "color:red;"></span></label> 
+                
+                <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
+                <select required class="form-control" style="width: 100%;" name="av1" id="av1" >
+                    <option value="">Select Vehicle</option>
+                    <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
+                    <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
+                    <option value="Isuzu Pick-up">Isuzu Pick-up</option>
+                   
+                </select>
+               
+             
+              
+              
+             <label>Assigned Driver 2 <span style = "color:red;"></span></label>
+                <select required class="form-control" style="width: 100%;" name="ad1" id="ad1" >
+                    <option value="">Select Driver</option>
+                    <option value="Daniel Narciso">Daniel Narciso</option>
+                    <option value="Joachim Lacdang">Joachim Lacdang</option>
+                    <option value="Louie Blanco">Louie Blanco</option>
+                   
+                </select>
+               
+              
+              
+                <label>Plate Number <span style = "color:red;"></span></label>
+                <input readonly required type="Text" class="form-control" name="plate1" id="plate1" value = "" >
+               
+              
+                <!--   Driver 1 -->
                   </td>
-                  </tr>
+
+                  <td class="col-md-4" >
+                 
+
+
+                  <!--   Driver 1 -->
+           
+          <label>Assigned Vehicle 3 <span style = "color:red;"></span></label> 
+                
+                <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
+                <select required class="form-control" style="width: 100%;" name="av2" id="av2" >
+                    <option value="">Select Vehicle</option>
+                    <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
+                    <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
+                    <option value="Isuzu Pick-up">Isuzu Pick-up</option>
+                   
+                </select>
+               
+             
+              
+              
+             <label>Assigned Driver 3 <span style = "color:red;"></span></label>
+                <select required class="form-control" style="width: 100%;" name="ad2" id="ad2" >
+                    <option value="">Select Driver</option>
+                    <option value="Daniel Narciso">Daniel Narciso</option>
+                    <option value="Joachim Lacdang">Joachim Lacdang</option>
+                    <option value="Louie Blanco">Louie Blanco</option>
+                   
+                </select>
+               
+              
+              
+                <label>Plate Number <span style = "color:red;"></span></label>
+                <input readonly required type="Text" class="form-control" name="plate2" id="plate2" value = "" >
+               
+              
+                <!--   Driver 1 -->
+                  </td>
+            
+              </tr>
 
                   <tr>
                   <td > <label>Remarks <span style = "color:red;"></span></label></td>
                   
-                  <td class="" >
+                  <td class="" colspan="2" >
                   <input  type="text" class="form-control" style="height: 70px; width:100%;" name="vremarks" id="vremarks" value = "" >
 
                   </td>
@@ -1166,3 +1266,116 @@ $(document).ready(function(){
   });
 });
 </script>
+
+
+
+
+
+<script>
+$(document).ready(function(){
+  $("#av1").change(function (){
+
+    
+    assignvehicle1 = document.getElementById("av1").value;
+
+   
+    if(assignvehicle1=='Isuzu Cross Wind-8974'){
+   
+      
+        var plate1 = $("input[name='plate1']"); 
+       
+      
+        plate1.val('CN 8974');
+     
+     
+    }
+    else if(assignvehicle1=='Isuzu Cross Wind-8994'){
+      
+      var plate1 = $("input[name='plate1']"); 
+       
+      
+       plate1.val('CN 8994');
+       
+       
+    }
+
+    else if(assignvehicle1=='Isuzu Pick-up'){
+      
+      var plate1 = $("input[name='plate1']"); 
+       
+      
+       plate1.val('GNJ 918');
+       
+       
+    }
+    else{
+
+      var plate1 = $("input[name='plate1']"); 
+       
+      
+       plate1.val('');
+    }
+   
+    //alert(cat);
+
+  });
+});
+</script>
+
+
+
+<script>
+$(document).ready(function(){
+  $("#av2").change(function (){
+
+    
+    assignvehicle2 = document.getElementById("av2").value;
+
+   
+    if(assignvehicle2=='Isuzu Cross Wind-8974'){
+   
+      
+        var plate2 = $("input[name='plate2']"); 
+       
+      
+        plate2.val('CN 8974');
+     
+     
+    }
+    else if(assignvehicle2=='Isuzu Cross Wind-8994'){
+      
+      var plate2 = $("input[name='plate2']"); 
+       
+      
+       plate2.val('CN 8994');
+       
+       
+    }
+
+    else if(assignvehicle2=='Isuzu Pick-up'){
+      
+      var plate2 = $("input[name='plate2']"); 
+       
+      
+       plate2.val('GNJ 918');
+       
+       
+    }
+    else{
+
+      var plate2 = $("input[name='plate2']"); 
+       
+      
+       plate2.val('');
+    }
+   
+    //alert(cat);
+
+  });
+});
+</script>
+
+
+
+
+
