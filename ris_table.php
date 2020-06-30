@@ -8,7 +8,7 @@
     <li class="btn btn-success"><a href="CreateRIS.php" style="color:white;text-decoration: none;">Create</a></li>
         <br>
         <br>
-            <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
+            <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;" align="left">
                 <thead>
                     <tr style="background-color: white;color:blue;font-family: Arial, Helvetica, sans-serif;">
                         <th width="80">RIS NO.</th>
