@@ -3,7 +3,7 @@
 //include('../@classes/db.php');
 
 
-$date = json_decode($_POST["date"]);
+//$date = json_decode($_POST["date"]);
 $saronumber = json_decode($_POST["saronumber"]);
 
 $fund = json_decode($_POST["fund"]);
@@ -32,7 +32,7 @@ $group = json_decode($_POST["group"]);
             
         
             $sql = "INSERT INTO saro (sarodate,saronumber,fund,legalbasis,ppa,expenseclass,particulars,uacs,amount,obligated,balance,sarogroup) 
-            VALUES ($date,'$saronumber[$i]','$fund[$i]','$legalbasis[$i]','$ppa[$i]','$expenseclass[$i]','$particulars[$i]','$uacs[$i]','$amount[$i]','$obligated[$i]','$amount[$i]','$group[$i]')";
+            VALUES (now(),'$saronumber[$i]','$fund[$i]','$legalbasis[$i]','$ppa[$i]','$expenseclass[$i]','$particulars[$i]','$uacs[$i]','$amount[$i]','$obligated[$i]','$amount[$i]','$group[$i]')";
                if (!mysqli_query($con,$sql))
                {
                die('Error: ' . mysqli_error($con));
