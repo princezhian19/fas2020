@@ -490,7 +490,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
     $('#myModal2').find('#dispatcher').val(event.dispatcher);
     $('#myModal2').find('#nov').val(event.nov);
     $('#myModal2').find('#av').val(event.av);
-    $('#myModal2').find('#ad').val(event.title);
+    $('#myModal2').find('#ad').val(event.ad);
     $('#myModal2').find('#plate').val(event.plate);
     $('#myModal2').find('#vremarks').val(event.vremarks);
     
