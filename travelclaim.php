@@ -327,7 +327,7 @@ getTotal();
                               </div>
                               <div class="col-md-12">
                                 <div class="form-group">
-                                  <label>Date</label>
+                                  <label>Others</label>
                                     <input type="text" name = "others" class="form-control" >
                                 </div>
                               </div>

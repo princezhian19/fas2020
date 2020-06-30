@@ -85,31 +85,39 @@
     function aa($id)
     {
         include 'connection.php';
-
-        $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID WHERE tbltravel_claim_info.`TC_ID` = '".$id."' ORDER BY DATE";
-        $result1 = mysqli_query($conn, $query1);
-        $saved = array();
-
-        if(mysqli_num_rows($result1) > 0)
+        $query = "SELECT distinct(DATE) from tbltravel_claim_info";
+        $result = mysqli_query($conn, $query);
+        $date = array();
+        if(mysqli_num_rows($result) > 0)
         {
-            while($row1 = mysqli_fetch_array($result1))
+            while($row = mysqli_fetch_array($result))
             {
-                $saved[] = $row1["DATE"]; // you are missing []
+                $date = $row['DATE'];
+                $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID WHERE tbltravel_claim_info.`TC_ID` = '".$id."' and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
+                $result1 = mysqli_query($conn, $query1);
+                $saved = array();
+        
+                if(mysqli_num_rows($result1) > 0)
+                {
+                    while($row1 = mysqli_fetch_array($result1))
+                    {
+                        $saved[] = $row1["DATE"]; // you are missing []
 
                 if($row1['DATE'] == $row1['DATE'])
                 {
-                    if($row1['DATE'] == $saved[1] )
+                    if($row1['DATE'] == $saved[1])
                     {
                         echo '<td></td>';
                     }else
                     {
-                    ?>
-                    <td><input readonly id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
-                    <?php
-                }   
+                        ?>
+                            <td><input readonly id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+                        <?php
+                    }   
                     
                 }else{
             ?>
+            
             
             <tr>
                 <?php }?>
@@ -129,8 +137,21 @@
             
             <?php
             $row1['DATE'] = '';
+                    }
+                }
             }
         }
+        // $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID WHERE tbltravel_claim_info.`TC_ID` = '".$id."' and tbltravel_claim_info.`DATE` = '2020-05-02' ORDER BY DATE";
+        // $result1 = mysqli_query($conn, $query1);
+        // $saved = array();
+
+        // if(mysqli_num_rows($result1) > 0)
+        // {
+        //     while($row1 = mysqli_fetch_array($result1))
+        //     {
+                
+        //     }
+        // }
 
     }
     function showData()
