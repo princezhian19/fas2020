@@ -34,7 +34,7 @@ function viewEvents()
                     <tr>
 
                     <tr>
-                        <td class="col-md-2" style ="font-weight:bold">Assined Date</td>
+                        <td class="col-md-2" style ="font-weight:bold">Assigned Date</td>
                             <td class="col-md-5" colspan="2"><input readonly required type = "text" class = "form-control" name = "assigneddate" id = "assigneddate"  /></td>
                                 </tr>
                     <tr>
