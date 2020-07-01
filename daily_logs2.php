@@ -202,6 +202,9 @@ if (isset($_POST['stamp4'])) {
            <?php endif ?>
            <div style="float: right;padding:5px;">
             <?php if ($TIN_N == '1' || $TIN_N == '0' || $TIN_N == NULL): ?>
+            <?php if ($ACCESSTYPE == 'admin'): ?>
+            <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
+           <?php endif ?>
               <?php else: ?>
             <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
            <?php endif ?>
