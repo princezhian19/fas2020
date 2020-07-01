@@ -321,7 +321,7 @@ if($_GET['flag'] == 1)
   </footer>
   <br>
 
-  <!-- <div class="control-sidebar-bg"></div> -->
+  <div class="control-sidebar-bg"></div>
 </div>
 
 
