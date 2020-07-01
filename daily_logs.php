@@ -27,6 +27,14 @@ $sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployeeinfo WHERE UNAME =
 $rowU = mysqli_fetch_array($sele);
 $ACCESSTYPE = $rowU['ACCESSTYPE'];
 
+$get_month = $_GET['month'];
+if ($get_month != '') {
+$this_month = '2020-'.$get_month;
+}else{
+$this_month = date('Y-m');
+
+}
+
 $date_now = date('Y-m-d');
 $now_date = date('Y-m-d H:i:s');
 
@@ -58,6 +66,14 @@ $month = date('m');
 $year = date('Y');
 
 $d1=cal_days_in_month(CAL_GREGORIAN,$month,$year);
+
+if (isset($_POST['month'])) {
+  $month = $_POST['month'];
+ echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.location.href = 'DTR.php?month=$month';
+      </SCRIPT>");
+
+}
 
 if (isset($_POST['stamp1'])) {
   if (mysqli_num_rows($checkall)>0) {
@@ -106,6 +122,7 @@ if (isset($_POST['stamp2'])) {
       </SCRIPT>");
   }
 }
+
 
 if (isset($_POST['stamp3'])) {
   if (mysqli_num_rows($checkall)>0) {
@@ -249,11 +266,17 @@ if (isset($_POST['stamp4'])) {
        <font style="font-size: 20px;"><b>Office</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $DIVISION_M?></font><br>
        <font style="font-size: 20px;"><b>Position</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $POSITION_M?></font>
        <br>
+       <!-- <font style="font-size: 20px;"><b>Month</b> :  -->
+       <!-- </font>&nbsp <font style="font-size: 20px;"><?php echo date('F Y')?></font> -->
+       <div >
+      <form method="POST">
        <font style="font-size: 20px;"><b>Month</b> : 
-       </font>&nbsp <font style="font-size: 20px;"><?php echo date('F Y')?></font>
-       <div hidden>
-        <select name="month" id="month">
+        <select name="month" id="month" onchange="this.form.submit()">
+          <?php if ($get_month != ''): ?>
+          <option value="<?php echo date('m',strtotime($this_month))?>"><?php echo date('F',strtotime($this_month))?></option>
+            <?php else: ?>
           <option value="<?php echo date('m')?>"><?php echo date('F')?></option>
+          <?php endif ?>
           <option value="01">January</option>
           <option value="02">February</option>
           <option value="03">March</option>
@@ -270,12 +293,14 @@ if (isset($_POST['stamp4'])) {
         <div hidden>
           <input type="text" name="username" id="username" value="<?php echo $username;?>">
         </div>
-        <select name="year" id="year">
+        <select disabled name="year" id="year">
           <option value="2020">2020</option>
           <option value="2021">2021</option>
         </select>
       </div>
+      </form>
       <br>
+   
 
     </div>
     <div class="box-body table-responsive no-padding">
@@ -303,7 +328,7 @@ if (isset($_POST['stamp4'])) {
         </thead>
         <?php 
 
-        $view_query = mysqli_query($conn, "SELECT id, UNAME,date_today,time_in, lunch_out,lunch_in,time_out,SUBTIME(time_out,'01:00:00') as time_out1 FROM dtr WHERE UNAME ='$username' ORDER BY id ASC");
+        $view_query = mysqli_query($conn, "SELECT id, UNAME,date_today,time_in, lunch_out,lunch_in,time_out,SUBTIME(time_out,'01:00:00') as time_out1 FROM dtr WHERE UNAME = '$username' AND `date_today` LIKE '%$this_month%' ORDER BY id ASC");
 
         while ($row = mysqli_fetch_assoc($view_query)) {
           $id = $row["id"];
