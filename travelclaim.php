@@ -508,8 +508,7 @@ function showData()
                           <div class = "col-sm-6 col-md-6 col-lg-6">
                             <div class="col-md-12 well perdiem">
                             <div>
-        <img src="images/50km.png" alt="Flying Kites" style = "width:100%;height:auto;">
-        <div class="text">
+        <!-- <img src="images/50km.png" alt="Flying Kites" style = "width:100%;height:auto;"> -->
         <div class="form-group">
                                   <label>
                                   Per Diem
@@ -540,7 +539,6 @@ function showData()
                                 <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt" id = "wor" value ="Without Receipt"> Without Receipt
                               </div>
         </div>
-    </div>
                             
                              
                             </div>
