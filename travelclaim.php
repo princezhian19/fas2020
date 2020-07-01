@@ -60,6 +60,32 @@ div.pac-container {
         top:0; /* Adjust this value to move the positioned div up and down */
         width: 100%; /* Set the width of the positioned div */
     }
+
+    .scroll{
+    height:300px;display:block;overflow-y:hidden;
+    }
+    .scroll:hover{
+  overflow-y: scroll;
+
+    }
+ 
+tbody {
+    display:block;
+    height:300px;
+    overflow:auto;
+    
+}
+
+.fixed-header{
+    display:table;
+    table-layout:fixed;
+    margin-top:-24.2%;
+    width: calc( 100% - 1em )
+
+}
+
+
+
 </style>
 <?php
 // PHP FUNCTION
@@ -92,7 +118,7 @@ function aa($id)
                       }else
                       {
                           ?>
-                              <td><input readonly id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+                              <td style = "width:11%;"><input readonly id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
                           <?php
                       }   
                       
@@ -101,7 +127,7 @@ function aa($id)
         
         <tr>
             <?php }?>
-            <td><textarea readonly cols = 50 style = "resize:none;background:#ECEFF1;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
+            <td><textarea readonly cols = 34 style = "resize:none;background:#ECEFF1;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
             <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
             <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
             <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
@@ -170,8 +196,27 @@ function showData()
             while($row = mysqli_fetch_array($result))
             {
             ?>
-            <tbody style='height:300px;display:block;overflow-y:scroll'>
-            
+            <tbody class = "scroll">
+            <tr>
+            <thead class = "fixed-header">
+                <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2>
+                  Date
+                </th>
+                <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Places to be visited (Destination)</th>
+                <th class = "table-header" style = "text-indent:10px;text-align:center;" colspan = 2>Time</th>
+                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Means of Transportation</th>
+                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Transportation</th>
+                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Per Diem</th>
+                <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Others</th>
+                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Total Amount</th>
+                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Action</th>
+              </tr>
+              <tr>
+                <th class = "table-header"  style = "text-align:center;">Arrival</th>
+                <th class = "table-header"  style = "text-align:center;">Departure</th>
+            </thead>
+
+              </tr>
             <tr>
                 <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?> </td>
             </tr>
@@ -260,103 +305,90 @@ function showData()
             
             <h1>ITINERARY OF TRAVEL </h1>
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
-              <tr>
-                <td class = "label-text">
-                  <label>Entity Name: 
+            <tbody>
+              <thead>
+                <tr>
+                    <td class = "label-text">
+                      <label>Entity Name: 
+                        </td>
+                          <td colspan = 10  >
+                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
+                      </td>
+                  </tr>
+          
+              
+                <tr>
+                  <td class = "label-text">
+                    <label>Fund Cluster:</label>
+                      </td>
+                        <td colspan = "4">
+                      <input type = "text" class = "form-control" readonly/>
                     </td>
-                      <td colspan = 10  >
-                    <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
-                  </td>
-              </tr>
-              <tr>
-                <td class = "label-text">
-                  <label>Fund Cluster:</label>
+                  <td class = "label-text">
+                    <label>No:</label>
+                      </td>
+                        <td colspan = 4>
+                      <input type = "text" class = "form-control" readonly/>
                     </td>
-                      <td colspan = "4">
-                    <input type = "text" class = "form-control" readonly/>
-                  </td>
-                <td class = "label-text">
-                  <label>No:</label>
-                    </td>
-                      <td colspan = 4>
-                    <input type = "text" class = "form-control" readonly/>
-                  </td>
-              </tr>
-              <tr>
-                <td class = "label-text">
-                  <label>Name: 
-                    </td>
-                <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo getCompleteName();?>" readonly/></td>
-                <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
-              </tr>
-              <tr>
-                <td class = "label-text">  <label>Position:</label></td>
-                  <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly/></td>
-                    <td colspan = 5 rowspan = 2>
-                      <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"></textarea></td>
-              </tr>
-              <tr>
-                <td class = "label-text">  <label>Official Station: </label></td>
-                <td colspan = 4> <?php echo getOffice(); ?> </td>
-              </tr>
-              <tr>
-                <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2>
-                  Date
-                </th>
-                <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Places to be visited (Destination)</th>
-                <th class = "table-header" style = "text-indent:10px;text-align:center;" colspan = 2>Time</th>
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Means of Transportation</th>
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Transportation</th>
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Per Diem</th>
-                <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Others</th>
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Total Amount</th>
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Action</th>
-              </tr>
-              <tr>
-                <th class = "table-header"  style = "text-align:center;">Arrival</th>
-                <th class = "table-header"  style = "text-align:center;">Departure</th>
-              </tr>
+                </tr>
+                <tr>
+                  <td class = "label-text">
+                    <label>Name: 
+                      </td>
+                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo getCompleteName();?>" readonly/></td>
+                  <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
+                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
+                </tr>
+                <tr>
+                  <td class = "label-text">  <label>Position:</label></td>
+                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly/></td>
+                      <td colspan = 5 rowspan = 2>
+                        <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"></textarea></td>
+                </tr>
+                <tr>
+                  <td class = "label-text">  <label>Official Station: </label></td>
+                  <td colspan = 4> <?php echo getOffice(); ?> </td>
+                </tr>
+              </thead>
+              </tbody>
             </table>
-            <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
+            <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1" style = "margin-top:-19.5%;">
                <?php echo showData();?>
-            
-              
-              
+          
             </table>
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
-            <tr>
-                <td colspan = 10>
-                    <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                    <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                </td>
-            </tr>
-            <tr>
-                <td colspan = 10>TOTAL <?php getTotal(); ?></td>
-              </tr>
-            <tr>
-                <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
-                I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.   
-                <CENTER><br>_____________________________________________<br>
-                <b>DR. CARINA S. CRUZ</b></CENTER>
-                </td>
-                <br>
-                <td colspan = 5 rowspan = 2>Prepared by:
-                <CENTER><br>_____________________________________________<br>
-                <?php echo '<b>'.getCompleteName().'</b>';?></CENTER>
-                </td>
-              
+              <tr>
+                  <td colspan = 10>
+                      <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                      <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+                  </td>
               </tr>
               <tr>
-              </tr>
+                  <td colspan = 10>TOTAL <?php getTotal(); ?></td>
+                </tr>
               <tr>
-                <td colspan = 5 rowspan = 2>Approved By <CENTER><br>_____________________________________________<br> <b> ARIEL O. IGLESIA	</b> </CENTER> </td>
-              </tr>
-              <tr>
-              </tr>
+                  <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
+                  I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.   
+                  <CENTER><br>_____________________________________________<br>
+                  <b>DR. CARINA S. CRUZ</b></CENTER>
+                  </td>
+                  <br>
+                  <td colspan = 5 rowspan = 2>Prepared by:
+                  <CENTER><br>_____________________________________________<br>
+                  <?php echo '<b>'.getCompleteName().'</b>';?></CENTER>
+                  </td>
+                
+                </tr>
+                <tr>
+                </tr>
+                <tr>
+                  <td colspan = 5 rowspan = 2>Approved By <CENTER><br>_____________________________________________<br> <b> ARIEL O. IGLESIA	</b> </CENTER> </td>
+                </tr>
+                <tr>
+                </tr>
             </table>
   
-        
+      
            
             
             </center>
