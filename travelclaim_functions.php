@@ -6,7 +6,8 @@
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_array($result))
         {
-            echo '<b>'.ucwords(strtoupper($row['FIRST_M'])).' '.ucfirst(strtoupper($row['LAST_M'])).'</b>';
+            $name = ucwords(strtoupper($row['FIRST_M'])).' '.ucfirst(strtoupper($row['LAST_M']));
+            echo $name;
         }
     }
     function getPosition()
