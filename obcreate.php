@@ -13,19 +13,7 @@ $username = $_SESSION['username'];
 <title>FAS | OB Create</title>
 <?php
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
-function app($connect)
-{ 
-  $output = '';
-  $query = "SELECT sarogroup FROM `saro` Group BY sarogroup ASC";
-  $statement = $connect->prepare($query);
-  $statement->execute();
-  $result = $statement->fetchAll();
-  foreach($result as $row)
-  {
-    $output .= '<option text="text" value="'.$row["sarogroup"].'">'.$row["sarogroup"].'</option>';
-  }
-  return $output;
-}
+
 
 ?>
 <!-- <style>
@@ -70,17 +58,22 @@ function app($connect)
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
  
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
 </head>
 
      
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
-  <?php include('test1.php');?>
+<?php 
+  if ($username == 'arsamia' || $username == 'jscubio' || $username == 'cvferrer' ) { include('test1.php'); }else{ include('sidebar2.php'); }
+ ?>
   
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
+        <li><a href=""><i class=""></i> Home</a></li>
         <li class="active">Budget</li>
         <li class="active">Create Obligation</li>
       </ol>
@@ -99,7 +92,7 @@ function app($connect)
      <br>
 
   
-     <form id="fupForm" name="form1" Type="GET">
+     <form id="fupForm" name="form1" Type="POST">
   
      <table class="table"> 
 
@@ -435,11 +428,7 @@ function app($connect)
        <td>
        <td class="col-md-4">
          <label>Group</label>
-         <!-- <textarea class="form-control" placeholder="Remarks" name="remarks" ></textarea> --> 
-         <!-- <select class="form-control select" style="width: 100%; height: 40px;" name="sarogroup" id="sarogroup" required > -->
-         <!-- <option>Select Group</option> -->
-         <!-- <?php echo app($connect);?> -->
-         <!-- </select> -->
+        
          <input   type="text"  class="form-control" style="height: 40px; width:400px " id="sarogroup" placeholder="SARO Group" name="sarogroup" readonly>
        <td>
        <td class="col-md-4">
@@ -851,7 +840,7 @@ $(document).ready(function(){
           var status = JSON.stringify(status);
           $.ajax({
           url: "obcreatefunction.php",
-          type: "post",
+          type: "POST",
           data: {datereceived : datereceived , 
             datereprocessed : datereprocessed, 
             datereturned : datereturned, 
