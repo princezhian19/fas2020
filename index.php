@@ -26,6 +26,8 @@ $pas1 = $_SESSION['pass'];
     $OFFICE_STATION =$row['OFFICE_STATION'];
     $_SESSION['OFFICE_STATION'] = $OFFICE_STATION;
     $division =$row['DIVISION_C'];
+    $TIN_N =$row['TIN_N'];
+    $_SESSION['TIN_N'] = $TIN_N;
     $division2 = $row['DIVISION_C'];
     $_SESSION['division'] = $division;
     $middle = $row['MIDDLE_M'];
@@ -83,6 +85,8 @@ if (isset($_POST['submit'])) {
     $OFFICE_STATION =$row['OFFICE_STATION'];
     $_SESSION['OFFICE_STATION'] = $OFFICE_STATION;
     $division =$row['DIVISION_C'];
+    $TIN_N =$row['TIN_N'];
+    $_SESSION['TIN_N'] = $TIN_N;
     $division2 = $row['DIVISION_C'];
     $_SESSION['division'] = $division;
     $middle = $row['MIDDLE_M'];

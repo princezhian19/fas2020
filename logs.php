@@ -1,6 +1,6 @@
 <?php
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$u = mysqli_query($conn,"SELECT tblemployeeinfo.FIRST_M,tblemployeeinfo.PROFILE,tblemployeeinfo.MIDDLE_M,tblemployeeinfo.LAST_M,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M FROM tblemployeeinfo tblemployeeinfo LEFT JOIN tbldilgposition tbldilgposition on tbldilgposition.POSITION_ID = tblemployeeinfo.POSITION_C LEFT JOIN  tblpersonneldivision tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C WHERE tblemployeeinfo.UNAME = '$username' ");
+$u = mysqli_query($conn,"SELECT tblemployeeinfo.DIVISION_C,tblemployeeinfo.FIRST_M,tblemployeeinfo.PROFILE,tblemployeeinfo.MIDDLE_M,tblemployeeinfo.LAST_M,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M FROM tblemployeeinfo tblemployeeinfo LEFT JOIN tbldilgposition tbldilgposition on tbldilgposition.POSITION_ID = tblemployeeinfo.POSITION_C LEFT JOIN  tblpersonneldivision tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C WHERE tblemployeeinfo.UNAME = '$username' ");
 
 
 $row = mysqli_fetch_array($u);
@@ -10,6 +10,7 @@ $MIDDLE_M = $row['MIDDLE_M'];
 $LAST_M1 = $row['LAST_M'];
 $LAST_M = ucfirst(strtolower($LAST_M1));
 $profile = $row['PROFILE'];
+$DIVISION_C = $row['DIVISION_C'];
 $DIVISION_M = $row['DIVISION_M'];
 $POSITION_M = $row['POSITION_M'];
 $words = explode(" ", $MIDDLE_M);
@@ -187,88 +188,15 @@ if (isset($_POST['stamp4'])) {
         $extension = pathinfo($profile, PATHINFO_EXTENSION);
         ?>
         <img id="img"   style="overflow: hidden;width:300;height:250px;margin-left:50px;border:2px solid black;" 
-        src="
-        <?php 
-        if(file_exists($profile))
-        {
-          switch($extension)
-          {
-            case 'jpg':
-            if($profile == '')
-            {
-              echo 'images/male-user.png';
-            }
-            else if ($profile == $profile)
-            {
-              echo $profile;   
-            }
-            else
-            {
-              echo'images/male-user.png';
-            }
-            break;
-            case 'JPG':
-            if($profile == '')
-            {
-              echo 'images/male-user.png';
-            }
-            else if ($profile == $profile)
-            {
-              echo $profile;   
-            }
-            else
-            {
-              echo'images/male-user.png';
-            }
-            break;
-            case 'jpeg':
-            if($profile == '')
-            {
-              echo 'images/male-user.png';
-            }
-            else if ($profile == $profile)
-            {
-              echo $profile;   
-            }
-            else
-            {
-              echo'images/male-user.png';
-            }
-            break;
-            case 'png':
-            if($profile == '')
-            {
-              echo'images/male-user.png';
-            }
-            else if ($profile == $profile)
-            {
-              echo $profile;   
-            }
-            else
-            {
-              echo'images/male-user.png';
-            }
-            break;
-            default:
-            echo'images/male-user.png';
-            break;
-          }
-          }else{
-           echo'images/male-user.png';
-         }
-
-         ?>"  title = "personnel_image" />
+        src="images/male-user.png"  title = "personnel_image" />
        </div>
        <h1>Daily Time Record</h1>
        <br>
-       <font style="font-size: 20px;"><b>Name</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $name;?></font>
-       <br>
        <font style="font-size: 20px;"><b>Office</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $DIVISION_M?></font><br>
-       <font style="font-size: 20px;"><b>Position</b> : </font>&nbsp <font style="font-size: 20px;"><?php echo  $POSITION_M?></font>
        <br>
        <!-- <font style="font-size: 20px;"><b>Month</b> :  -->
        <!-- </font>&nbsp <font style="font-size: 20px;"><?php echo date('F Y')?></font> -->
-       <div >
+       <div hidden>
       <form method="POST">
        <font style="font-size: 20px;"><b>Month</b> : 
         <select name="month" id="month" onchange="this.form.submit()">
@@ -317,7 +245,8 @@ if (isset($_POST['stamp4'])) {
       <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
         <thead>
           <tr style="background-color: white;color:blue;">
-            <th width="100">DATE</th>
+            <th width="250">UNAME</th>
+            <th width="">DATE</th>
             <th width="">AM ARRIVAL</th>
             <th width="">AM DEPARTURE</th>
             <th width="">PM ARRIVAL</th>
@@ -328,10 +257,11 @@ if (isset($_POST['stamp4'])) {
         </thead>
         <?php 
 
-        $view_query = mysqli_query($conn, "SELECT id, UNAME,date_today,time_in, lunch_out,lunch_in,time_out,SUBTIME(time_out,'01:00:00') as time_out1 FROM dtr WHERE UNAME = '$username' AND `date_today` LIKE '%$this_month%' ORDER BY id ASC");
+        $view_query = mysqli_query($conn, "SELECT CONCAT(te.FIRST_M,', ',te.LAST_M) AS FNAME,dtr.id, dtr.UNAME,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM dtr LEFT JOIN tblemployeeinfo te on te.UNAME = dtr.UNAME WHERE te.DIVISION_C = '$DIVISION_C' AND dtr.date_today LIKE '%$date_now%' ORDER BY te.LAST_M ASC");
 
         while ($row = mysqli_fetch_assoc($view_query)) {
           $id = $row["id"];
+          $FNAME = $row["FNAME"];  
           $UNAME = $row["UNAME"];  
           $date_today = $row["date_today"];  
           $time_in = $row["time_in"];
@@ -344,6 +274,7 @@ if (isset($_POST['stamp4'])) {
           ?>
 
           <tr>
+            <td><?php echo $FNAME?></td>
             <td><?php 
             echo date('F d, Y',strtotime($date_today));
 
@@ -488,7 +419,7 @@ if (isset($_POST['stamp4'])) {
   </div>
 </div>
 
-<div class="col-md-4">
+<div class="col-md-4" hidden>
   <div class="box box-success">
     <div class="box-header with-border pull-right" align="left">
       <!-- <h4><strong>Logs For Today : <?php echo date('F d, Y')?></strong></h4> -->
