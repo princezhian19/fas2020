@@ -22,7 +22,7 @@
 </head> 
 <body>
     <div class="box">
-        <img src="images/logo.png" alt="Flying Kites">
+        <img src="images/50km.png" alt="Flying Kites" style = "width:10%;height:auto;">
         <div class="text">
             <h1>Flying Kites</h1>
         </div>
