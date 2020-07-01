@@ -303,7 +303,7 @@ if (isset($_POST['stamp4'])) {
         </thead>
         <?php 
 
-        $view_query = mysqli_query($conn, "SELECT id, UNAME,date_today,time_in, lunch_out,lunch_in,time_out,SUBTIME(time_out,'01:00:00') as time_out1 FROM dtr WHERE UNAME ='$username' ORDER BY id ASC");
+        $view_query = mysqli_query($conn, "SELECT id, UNAME,date_today,time_in, lunch_out,lunch_in,time_out,SUBTIME(time_out,'01:00:00') as time_out1 FROM dtr WHERE UNAME = '$username' AND `date_today` LIKE '%$date_now%' ORDER BY id ASC");
 
         while ($row = mysqli_fetch_assoc($view_query)) {
           $id = $row["id"];
