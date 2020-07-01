@@ -183,7 +183,7 @@ function showData()
             }
             ?>
             <tr>
-                <td colspan = 10>
+                <!-- <td colspan = 10>
                     <?php 
                     if(mysqli_num_rows($result) > 0)
                         {
@@ -199,7 +199,7 @@ function showData()
                         }
                         ?>
                         
-                </td>
+                </td> -->
             </tr>
             <?php
         }else{
@@ -233,12 +233,7 @@ function showData()
                 }
             }
             ?>
-            <tr>
-                <td colspan = 10>
-                    <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                    <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                </td>
-            </tr>
+          
 
             <?php
         }
