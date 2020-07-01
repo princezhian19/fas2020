@@ -3,6 +3,7 @@ date_default_timezone_set('Asia/Manila');
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 $username = $_GET['username'];
+$username1 = $_SESSION['username'];
 $division = $_GET['division'];
 function tblpersonnel($connect)
 { 
@@ -26,9 +27,10 @@ $rows = mysqli_fetch_array($sel);
 $posted_date = $rows['posted_date'];
 $month = date('M',strtotime($posted_date));
 
-$sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployeeinfo WHERE UNAME = '$username'");
+$sele = mysqli_query($conn,"SELECT ACCESSTYPE,TIN_N FROM tblemployeeinfo WHERE UNAME = '$username1'");
 $rowU = mysqli_fetch_array($sele);
 $ACCESSTYPE = $rowU['ACCESSTYPE'];
+$TIN_N = $rowU['TIN_N'];
 
 if (isset($_POST['submit'])) {
      // $month_export = $_POST['month'];
@@ -181,9 +183,15 @@ if (isset($_POST['submit'])) {
              </td>
              <td><a onclick="return confirm('Are you sure you want to Delete this Account now?');" href='delete_account2.php?id=<?php echo $id;?>&division=<?php echo $division;?>&username=<?php echo $username;?>' title="delete" class = "btn btn-danger btn-xs" > <i class='fa fa-fw fa-trash'></i> Delete</a> </td>
              <?php else: ?>
+            <?php if ($TIN_N == 1): ?>
               <td>
-               <a href='UpdateEmployee.php?id=<?php echo $id; ?>&view=1' title="View" class="btn btn-info btn-xs">View</a>
+               <a href='UpdateEmployee.php?id=<?php echo $id; ?>&view=1' title="View" class="btn btn-info btn-xs">View</a> <a href='DTRa.php?id=<?php echo $id; ?>&division=<?php echo $_GET['division']; ?>&username=<?php echo $UNAME; ?>' title="dtr" class="btn btn-warning btn-xs"> <i class='fa fa-fw fa-clock-o'></i>DTR</a>
              </td>
+             <?php else: ?>
+              <td>
+               <a href='UpdateEmployee.php?id=<?php echo $id; ?>&view=1' title="View" class="btn btn-info btn-xs">View</a> 
+             </td>
+           <?php endif ?>
              <td></td>
            <?php endif ?>
 

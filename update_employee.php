@@ -49,6 +49,20 @@
     return $output;
   }
 
+  function fill_unit_select_box($connect)
+  { 
+    $output = '';
+    $query = "SELECT salary_grade FROM tbl_salary_grade GROUP BY salary_grade ASC ";
+    $statement = $connect->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    foreach($result as $row)
+    {
+      $output .= '<option text="text" value="'.$row["salary_grade"].'">'.$row["salary_grade"].'</option>';
+    }
+    return $output;
+  }
+
   $sqltable   = "tblemployeeinfo";
 
   $checkQuery = "SELECT * FROM $sqltable a LEFT JOIN tblpersonneldivision b on b.DIVISION_N = a.DIVISION_C LEFT JOIN tbldesignation c on c.DESIGNATION_ID = a.DESIGNATION LEFT JOIN tbldilgposition d on d.POSITION_ID = a.POSITION_C WHERE a.EMP_N = '".$_GET['id']."' LIMIT 1";
@@ -103,6 +117,18 @@
   $municipality11           = $row1["city_title"];
   $cid = $_GET['id'];
 
+  $get_details = mysqli_query($conn,"SELECT * FROM tbl_employee WHERE emp_no = '$EMP_NUMBER1' ");
+  $rowEmp = mysqli_fetch_array($get_details);
+  $pagibig = $rowEmp['pagibig'];
+  $pagibig_premium = $rowEmp['pagibig_premium'];
+  $tin = $rowEmp['tin'];
+  $philhealth = $rowEmp['philhealth'];
+  $gsis = $rowEmp['gsis'];
+  $salary = $rowEmp['salary'];
+  $step = $rowEmp['step'];
+  $employment_date1 = $rowEmp['employment_date'];
+  $employment_date = date('m/d/Y',strtotime($employment_date1));
+
   if (isset($_POST['submit'])) {
     $region          = '04';
     $province        = $_POST["province"];
@@ -135,11 +161,20 @@
     $office_contact  = $_POST["office_contact"]; // eto 
     $suffix          = $_POST["suffix"]; //eto      
     $status          = $_POST["status"];  // eto
-    $e_stats          = $_POST["e_stats"]; 
+    $e_stats         = $_POST["e_stats"]; 
     $target_dir      = "images/profile/";
     $target_file     = $target_dir . basename($_FILES["image"]["name"]);
     $uploadOk        = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $imageFileType   = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $pagibig         = $_POST["pagibig"];
+    $pagibig_premium = $_POST["pagibig_premium"];
+    $tin             = $_POST["tin"];
+    $bir             = $_POST["bir"];
+    $philhealth      = $_POST["philhealth"];
+    $gsis            = $_POST["gsis"];
+    $salary          = $_POST["salary"];
+    $step            = $_POST["step"];
+    $employment_date = $_POST["employment_date"];    
 
     if(!empty(basename($_FILES["image"]["name"])))
     {
@@ -191,6 +226,34 @@
     POSITION_C='$position',
     MOBILEPHONE='$cellphone', EMAIL='$email',
     ALTER_EMAIL='$alter_email',  LANDPHONE='$contact', OFFICE_STATION='$office', DIVISION_C='$division', ACTIVATED='".$e_stats."', UNAME='$username',DESIGNATION='$designation',SUFFIX='$suffix',LANDPHONE='$office_contact',REMARKS_M='$office_address' WHERE EMP_N = '$cid' LIMIT 1");
+
+
+  $update_tbl_deductions = mysqli_query($conn,"UPDATE tbl_deductions SET emp_no = '$employee_number' WHERE emp_no = '$employee_number' ");
+  $update_tbl_deduction_loans = mysqli_query($conn,"UPDATE tbl_deduction_loans SET emp_no = '$employee_number' WHERE emp_no = '$employee_number' ");
+
+  $update_emp = mysqli_query($conn,"UPDATE tbl_employee SET emp_no = '$employee_number',pagibig = '$pagibig',pagibig_premium = '$pagibig_premium',tin = '$tin',bir = '$bir',philhealth = '$philhealth',gsis = '$gsis',salary = '$salary',step = '$step',employment_date = '$employment_date' WHERE emp_no = '$employee_number'");
+
+  if ($update_emp) {
+
+    $select = mysqli_query($conn,"SELECT $step FROM tbl_salary_grade WHERE salary_grade = '$salary' ");
+    $row = mysqli_fetch_array($select);
+    $salaryS = $row[$step];
+
+    $save_salary = $salaryS *.09;
+
+    if ($salaryS > 59999) {
+
+      $phil = 900;
+      $insert_deduct = mysqli_query($conn,"
+        UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$employee_number'  ");
+    }else{
+      $phil = $salaryS *.03 / 2;
+      $insert_deduct = mysqli_query($conn,"
+        UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$employee_number'  ");
+    }
+  }
+
+
   if ($query) 
   { 
     $update_stat = mysqli_query($conn,"UPDATE tblemployeeinfo SET CIVIL_STATUS = '$status' WHERE EMP_N = $cid");
@@ -204,21 +267,21 @@
 
     }
     if ($_GET['3d']==3) {
-       echo ("<SCRIPT LANGUAGE='JavaScript'>
+     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Updated!')
       window.location.href = 'UpdateEmployee.php?id=$cid&division=$division777&username=$username777&3d=".$_GET['3d']." ';
       </SCRIPT>");
-    }else{
+   }else{
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Updated!')
       window.location.href = 'UpdateEmployee.php?id=$cid&division=$division777&username=$username777';
       </SCRIPT>");
-    }
+  }
 
 
-  }else{
+}else{
                 //echo mysqli_connect_error();
-  } 
+} 
 
 
 }
@@ -322,29 +385,74 @@
          </div>
        </div>
      </div>
-     <div class="well">
-      <div class="box-header with-border">
-        <h3 class="box-title">Please Fill up Required Fields <font style="color:red;">(*)</font></h3>
-      </div>
-      <div class="box-body">
-        <div class="row" id="boxed">
-          <div class="col-xs-4">
-            <label>Employee No. <font style="color:red;">*</font></label>
-            <input value="<?php echo $EMP_NUMBER1;?>" type="text" class="form-control" placeholder="Employee No." name="employee_number" id="employee_number">
+     <div class="box-body">
+      <div class="well">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+             <label>Employee No. <font style="color:red;">*</font></label>
+             <input value="<?php echo $EMP_NUMBER1;?>" type="text" class="form-control" placeholder="Employee No." name="employee_number" id="employee_number">
+           </div>
+
+           <div class="form-group">
+            <label>Last Name<font style="color:red;">*</font></label>
+            <input required type="text" value="<?php echo $lname1;?>" name="lname" class="form-control" placeholder="Last Name">
           </div>
-          <div class="col-xs-4">
+
+          <div class="form-group">
             <label>First Name<font style="color:red;">*</font></label>
             <input required value="<?php echo $fname1;?>" type="text" name="fname" class="form-control" placeholder="First Name">
           </div>
-          <div class="col-xs-4">
-            <label>Mobile <font style="color:red;">*</font></label>
-            <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control cp" placeholder="ex. 0995-2647-434">
+
+          <div class="form-group">
+            <label>Middle Name<font style="color:red;">*</font></label>
+            <input required value="<?php echo $mname1;?>" type="text" name="mname" class="form-control" placeholder="Middle Name">
           </div>
-          <br>
-          <br>
-          <br>
-          <br>
-          <div class="col-xs-4">
+
+          <div class="form-group">
+            <label>Extension Name<font style="color:red;"></font></label>
+            <input  value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
+          </div>
+
+          <div class="form-group">
+           <label>Birth Date<font style="color:red;">*</font></label>
+           <div class="input-group date">
+            <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+            </div>
+            <input autocomplete="new-password" required type="text" value="<?php echo $bday1;?>" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="Birth Date">
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label>Sex<font style="color:red;">*</font></label>
+          <select class="form-control select2" name="gender">
+            <?php if ($gender1 == 'Male'): ?>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <?php else: ?>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+              <?php endif ?>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Employment Date &nbsp<b style="color:red;">*</b></label>
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input autocomplete="new-password" required type="text"  name="employment_date" class="form-control pull-right" id="datepicker2" value="<?php echo $employment_date ?>" placeholder="Employment Date">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+
+          <div class="form-group">
             <label>Office Station<font style="color:red;">*</font></label>
             <select required id="mySelect2" class="form-control" name="office">
               <?php if ($office1 == 0): ?>
@@ -381,22 +489,11 @@
 
             </select>
           </div>
-          <div class="col-xs-4">
-            <label>Middle Name<font style="color:red;">*</font></label>
-            <input required value="<?php echo $mname1;?>" type="text" name="mname" class="form-control" placeholder="Middle Name">
-          </div>
-          <div class="col-xs-4">
-            <label>Personal Email Address <font style="color:red;">*</font></label>
-            <input value="<?php echo $email1;?>" type="text" name="email" class="form-control" placeholder="">
-          </div>
-          <br>
-          <br>
-          <br>
-          <br>
-          <div class="col-xs-4">
-            <label>Province</label>
-            <input type="text" name="province" hidden>
-            <?php if ($office1 == 1 ): ?>
+
+          <div class="form-group">
+           <label>Province</label>
+           <input type="text" name="province" hidden>
+           <?php if ($office1 == 1 ): ?>
              <select  disabled class="form-control select2" style="width: 100%;" name="province" id="sel_depart" >
               <option disabled selected></option>
               <option value="10">Batangas</option>
@@ -415,26 +512,12 @@
                 <option value="58">Rizal</option>
               </select>
             <?php endif ?>
-            
-            <div class="clear"></div>
           </div>
-          <div class="col-xs-4">
-            <label>Last Name<font style="color:red;">*</font></label>
-            <input required type="text" value="<?php echo $lname1;?>" name="lname" class="form-control" placeholder="Last Name">
-          </div>
-          <div class="col-xs-4">
-            <label>Office Contact No</label>
 
-            <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-2647-434">
-          </div>
-          <br>
-          <br>
-          <br>
-          <br>
-          <div class="col-xs-4">
-            <label>City/Municipality</label>
-            <input type="text" name="municipality" hidden>
-            <?php if ($office1 == 1 || $office1 == 2 || $office1 == 3): ?>
+          <div class="form-group">
+           <label>City/Municipality</label>
+           <input type="text" name="municipality" hidden>
+           <?php if ($office1 == 1 || $office1 == 2 || $office1 == 3): ?>
              <select disabled id="sel_user" name="municipality" class="form-control select2">
               <option disabled selected></option>
               <option value="0"></option>
@@ -449,118 +532,190 @@
         <?php endif ?>
 
         <?php if ($office1 == 0): ?>
-           <select  id="sel_user" name="municipality" class="form-control select2">
-            <option value="<?php echo $city_id;?>"><?php echo $municipality11;?></option>
-            <option value="0"></option>
-          </select>
-        <?php endif ?>
-
-      </div>
-      <div class="col-xs-4">
-        <label>Extension Name<font style="color:red;"></font></label>
-        <input  value="<?php echo $suffix;?>" type="text" name="suffix" class="form-control" placeholder="Extension Name">
-      </div>
-      <div class="col-xs-4">
-        <label>Office Email Address <font style="color:red;">*</font></label>
-        <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
-      </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div class="col-xs-4">
-        <label>Office/Division<font style="color:red;">*</font></label>
-        <select required class="form-control select2" style="width: 100%;" name="division" id="" >
-          <option value="<?php echo $division1;?>" selected><?php echo $division11;?></option>
-          <?php echo tblpersonnel($connect)?>
+         <select  id="sel_user" name="municipality" class="form-control select2">
+          <option value="<?php echo $city_id;?>"><?php echo $municipality11;?></option>
+          <option value="0"></option>
         </select>
-      </div>
-      <div class="col-xs-4">
-        <label>Sex<font style="color:red;">*</font></label>
-        <select class="form-control select2" name="gender">
-          <?php if ($gender1 == 'Male'): ?>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <?php else: ?>
-              <option value="Female">Female</option>
-              <option value="Male">Male</option>
-            <?php endif ?>
-          </select>
-        </div>
-        <div class="col-xs-4">
-          <label>Office Address</label>
-          <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="col-xs-4">
-          <label>Position<font style="color:red;">*</font></label>
-          <select required class="form-control select2" style="width: 100%;" name="position" id="" >
-            <option value="<?php echo $position11;?>" selected><?php echo $position1;?></option>
-            <?php echo tbldilgposition($connect)?>
-          </select>
-        </div>
-        <div class="col-xs-4">
-          <label>Civil Status<font style="color:red;">*</font></label>
-          <?php if ($status == 'Single'): ?>
-           <select class="form-control select2" name="status">
-            <option value="Single">Single</option>
-            <option value="Maried">Married</option>
-          </select>
-          <?php else: ?>
-            <select class="form-control select2" name="status">
-              <option value="Maried">Married</option>
-              <option value="Single">Single</option>
-            </select>
-          <?php endif ?>
-
-        </div>
-        <div class="col-xs-4">
-          <label>Employement Status<font style="color:red;">*</font></label>
-          <?php if ($ACTIVATED == 'Yes'): ?>
-           <select class="form-control select2" name="e_stats">
-            <option value="Yes">Regular</option>
-            <option value="No">COS</option>
-          </select>
-          <?php else: ?>
-           <select class="form-control select2" name="e_stats">
-            <option value="No">COS</option>
-            <option value="Yes">Regular</option>
-          </select>
-        <?php endif ?>
-
-      </div>
-
-      <br>
-      <br>
-      <br>
-      <br>
-
-      <div class="col-xs-4">
-        <label>Designation<font style="color:red;">*</font></label>
-        <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
-          <option value="<?php echo $designation11;?>" selected><?php echo $designation1;?></option>
-          <?php echo tbldesignation($connect)?>
-        </select>
-      </div>
-      <div class="col-xs-4">
-        <label>Birth Date<font style="color:red;">*</font></label>
-        <div class="input-group date">
-          <div class="input-group-addon">
-            <i class="fa fa-calendar"></i>
-          </div>
-          <input autocomplete="new-password" required type="text" value="<?php echo $bday1;?>" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="Birth Date">
-        </div>
-      </div>
-
-
-
-
+      <?php endif ?>
     </div>
+
+    <div class="form-group">
+      <label>Office/Division<font style="color:red;">*</font></label>
+      <select required class="form-control select2" style="width: 100%;" name="division" id="" >
+        <option value="<?php echo $division1;?>" selected><?php echo $division11;?></option>
+        <?php echo tblpersonnel($connect)?>
+      </select>
+    </div>
+
+    <div class="form-group">
+     <label>Position<font style="color:red;">*</font></label>
+     <select required class="form-control select2" style="width: 100%;" name="position" id="" >
+      <option value="<?php echo $position11;?>" selected><?php echo $position1;?></option>
+      <?php echo tbldilgposition($connect)?>
+    </select>
   </div>
-  <!-- username and pw -->
+
+  <div class="form-group">
+    <label>Designation<font style="color:red;">*</font></label>
+    <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
+      <option value="<?php echo $designation1;?>" selected><?php echo $designation1;?></option>
+      <?php echo tbldesignation($connect)?>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Civil Status<font style="color:red;">*</font></label>
+    <?php if ($status == 'Single'): ?>
+     <select class="form-control select2" name="status">
+      <option value="Single">Single</option>
+      <option value="Maried">Married</option>
+    </select>
+    <?php else: ?>
+      <select class="form-control select2" name="status">
+        <option value="Maried">Married</option>
+        <option value="Single">Single</option>
+      </select>
+    <?php endif ?>
+  </div>
+
+</div>
+
+<div class="col-md-3">
+
+
+  <div class="form-group">
+    <label>Mobile <font style="color:red;">*</font></label>
+    <input  value="<?php echo $cellphone1;?>" type="text" name="cellphone" class="form-control cp" placeholder="ex. 0995-2647-434">
+  </div>
+
+  <div class="form-group">
+    <label>Personal Email Address <font style="color:red;">*</font></label>
+    <input value="<?php echo $email1;?>" type="text" name="email" class="form-control" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label>Office Contact No</label>
+    <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-2647-434">
+  </div>
+  <div class="form-group">
+    <label>Employement Status<font style="color:red;">*</font></label>
+    <?php if ($ACTIVATED == 'Yes'): ?>
+     <select class="form-control select2" name="e_stats">
+      <option value="Yes">Regular</option>
+      <option value="No">COS</option>
+    </select>
+    <?php else: ?>
+     <select class="form-control select2" name="e_stats">
+      <option value="No">COS</option>
+      <option value="Yes">Regular</option>
+    </select>
+  <?php endif ?>
+</div>
+
+<div class="form-group">
+  <label>Office Email Address <font style="color:red;">*</font></label>
+  <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
+</div>
+
+<div class="form-group">
+  <label>Office Address</label>
+  <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
+</div>
+
+<div class="form-group">
+  <label>Salary Grade &nbsp<b style="color:red;">*</b></label>
+  <select required class="form-control select2" style="width: 100%;" name="salary" id="salary" >
+    <option value="<?php echo $salary;?>"><?php echo $salary;?></option>
+    <?php echo fill_unit_select_box($connect);?>
+  </select>
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+  <div class="form-group">
+    <label>Step &nbsp<b style="color:red;">*</b></label>
+    <?php 
+    if ($step == "step_1") {
+      $stepp = "1";
+    }
+    if ($step == "step_2") {
+      $stepp = "2";
+    }
+    if ($step == "step_3") {
+      $stepp = "3";
+    }
+
+    if ($step == "step_4") {
+      $stepp = "4";
+    }
+
+    if ($step == "step_5") {
+      $stepp = "5";
+    }
+
+    if ($step == "step_6") {
+      $stepp = "6";
+    }
+
+    if ($step == "step_7") {
+      $stepp = "7";
+    }
+
+    if ($step == "step_8") {
+      $stepp = "8";
+    }
+
+    ?>
+
+    <select required class="form-control select2" style="width: 100%;" name="step" id="step" >
+      <option value="<?php echo $step;?>"><?php echo $stepp;?></option>
+      <option value="step_1">1</option>
+      <option value="step_2">2</option>
+      <option value="step_3">3</option>
+      <option value="step_4">4</option>
+      <option value="step_5">5</option>
+      <option value="step_6">6</option>
+      <option value="step_7">7</option>
+      <option value="step_8">8</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>TIN</label>
+    <input class="form-control" type="text" name="tin" id="tin" autocomplete = "off" value="<?php echo $tin ?>">
+  </div>
+
+  <div class="form-group">
+    <label>GSIS Number</label>
+    <input class="form-control" type="text" name="gsis" id="gsis" autocomplete = "off" value="<?php echo $gsis ?>">
+  </div>
+
+  <div class="form-group">
+    <label>Philhealth Number</label>
+    <input class="form-control" type="text" name="philhealth" id="philhealth" autocomplete = "off" value="<?php echo $philhealth ?>">
+  </div>
+
+  <div class="form-group">
+    <label>PAGIBIG Number</label>
+    <input class="form-control" type="text" name="pagibig" id="pagibig" autocomplete = "off" value="<?php echo $pagibig ?>">
+  </div>
+  <div class="form-group">
+    <label>PAGIBIG Premium</label>
+    <input class="form-control" type="text" name="pagibig_premium" id="pagibig_premium" autocomplete = "off" value="<?php echo $pagibig_premium ?>">
+  </div>
+  <div class="form-group">
+    <label>BIR Tax</label>
+    <input class="form-control" type="text" name="bir" id="bir" autocomplete = "off" value="<?php echo $bir ?>">
+  </div>
+
+
+</div>
+</div>
+</div>
+<!-- username and pw -->
+</div>
 </div>
 <?php if ($_GET['3d'] == 3): ?>
  <div class="well" >
@@ -569,18 +724,24 @@
   </div>
   <div class="box-body">
     <div class="row">
-      <div class="col-xs-4">
-        <label>Username<font style="color:red;">*</font> </label>
-        <input readonly autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Username<font style="color:red;">*</font> </label>
+          <input readonly autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
 
+        </div>
       </div>
-      <div class="col-xs-4">
-        <label>Password<font style="color:red;">*</font> </label>
-        <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Password<font style="color:red;">*</font> </label>
+          <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
+        </div>
       </div>
-      <div class="col-xs-4" hidden>
-        <label>Re-type Password<font style="color:red;">*</font></label>
-        <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
+      <div class="col-md-3" hidden>
+        <div class="form-group">
+          <label>Re-type Password<font style="color:red;">*</font></label>
+          <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
+        </div>
       </div>
 
     </div>
@@ -593,22 +754,30 @@
   </div>
   <div class="box-body">
     <div class="row">
-      <div class="col-xs-4">
-        <label>Username<font style="color:red;">*</font> </label>
-        <input autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>Username<font style="color:red;">*</font> </label>
+          <input autocomplete="new-password" value="<?php echo $username1;?>" type="text" name="username" id="username" class="form-control" placeholder="Username">
 
+        </div>
       </div>
-      <div class="col-xs-4">
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
         <label>Password<font style="color:red;">*</font> </label>
         <input autocomplete="new-password" type="password" name="password" class="form-control" placeholder="Password">
       </div>
-      <div class="col-xs-4" >
-        <label>Re-type Password<font style="color:red;">*</font></label>
-        <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
-      </div>
-
     </div>
   </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <label>Re-type Password<font style="color:red;">*</font></label>
+      <input autocomplete="new-password" type="password" name="repassword" class="form-control" placeholder="Re-type Password">
+    </div>
+  </div>
+
+</div>
+</div>
 </div> 
 
 <?php endif ?> 
