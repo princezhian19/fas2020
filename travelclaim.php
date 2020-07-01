@@ -46,6 +46,192 @@ div.pac-container {
   border: 2px solid red;
 }
 </style>
+<?php
+// PHP FUNCTION
+function aa($id)
+{
+    include 'connection.php';
+    $query = "SELECT distinct(DATE) from tbltravel_claim_info";
+    $result = mysqli_query($conn, $query);
+    $date = array();
+    if(mysqli_num_rows($result) > 0)
+    {
+        while($row = mysqli_fetch_array($result))
+        {
+            $date = $row['DATE'];
+            $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID WHERE tbltravel_claim_info.`TC_ID` = '".$id."' and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
+            $result1 = mysqli_query($conn, $query1);
+            $saved = array();
+    
+            if(mysqli_num_rows($result1) > 0)
+            {
+                while($row1 = mysqli_fetch_array($result1))
+                {
+                    $saved[] = $row1["DATE"]; // you are missing []
+
+                  if($row1['DATE'] == $row1['DATE'])
+                  {
+                      if($row1['DATE'] == $saved[1])
+                      {
+                          echo '<td></td>';
+                      }else
+                      {
+                          ?>
+                              <td><input readonly id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+                          <?php
+                      }   
+                      
+                  }else{
+        ?>
+        
+        
+        <tr>
+            <?php }?>
+            <td><textarea readonly cols = 50 style = "resize:none;background:#ECEFF1;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['PERDIEM']);?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
+            <td><button class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['ID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</button></td>
+
+        </tr>
+        
+        <?php
+        $row1['DATE'] = '';
+        ?>
+        <script>
+            $(document).ready(function(){
+          
+
+        $( "#btnids<?php echo $row1['ID'];?>" ).click(function() {
+          swal({
+                title: "Are you sure?",
+                text: "Your will not be able to recover this travel date!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn btn-danger",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+                },
+                function(){
+                swal("Deleted!", "Your travel date  has been deleted.", "success");
+                    $.ajax({
+                        url:"travelclaim_functions.php",
+                        method:"POST",
+                        data:{
+                        function: 'deleteTravelOrder',
+                        id: <?php echo $row1['ID'];?>,
+                    },
+                    success:function(data)
+                    {
+                
+                          setTimeout(function () {
+                          window.location = "CreateTravelClaim.php?username=<?php echo $_GET['username'];?>&division=<?php echo $_GET['division'];?>";
+                          }, 1000);
+
+                      
+                    }
+                    });
+
+                });
+        });
+        });
+        </script>
+      <?php
+                }
+            }
+        }
+    }
+}
+function showData()
+{
+        include 'connection.php';
+        $query = "SELECT * FROM tbltravel_claim_info2  WHERE `NAME` = '".$_GET['username']."'";
+        $result = mysqli_query($conn, $query);
+        if(mysqli_num_rows($result) > 0)    
+        {
+            while($row = mysqli_fetch_array($result))
+            {
+            ?>
+            <tr>
+                <td colspan = 10 style = "background-color:#B0BEC5;">
+            <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?>
+                </td>
+            </tr>
+        
+            
+        
+            <?php
+            aa($row['ID']);
+            }
+            ?>
+            <tr>
+                <td colspan = 10>
+                    <?php 
+                    if(mysqli_num_rows($result) > 0)
+                        {
+                            ?>
+                                <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+                            <?php
+                        }else{
+                            ?>
+                                <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+                            <?php
+                        }
+                        ?>
+                        
+                </td>
+            </tr>
+            <?php
+        }else{
+            $query = "SELECT * FROM tbltravel_claim_info2 WHERE `NAME` = '".$_GET['username']."'";
+            $result = mysqli_query($conn, $query);
+            if(mysqli_num_rows($result) > 0)
+            {
+                while($row = mysqli_fetch_array($result))
+                {
+                    ?>
+            <tr>    
+                <td colspan = 10 style = "background-color:#B0BEC5;">
+                    <!-- <input type = "checkbox"> -->
+                    <input type = "text" style = "width:100%;padding:5px;border:1px solid gray;" value = "<?php echo $row['RO_TO_OB']; ?>" readonly />
+                </td>
+            </tr>
+            <tr>
+                <td><input type = "text" class = "form-control" value = "<?php echo $row['DATE'];?>"/></td>
+                <td><textarea ><?php echo $row['PLACE'];?></textarea></td>
+                <td><input type = "text" class = "form-control" value = "<?php echo $row['ARRIVAL'];?>"/></td>
+                <td><input type = "text" class = "form-control" value = "<?php echo $row['DEPARTURE'];?>"/></td>
+                <td><input type = "text" class = "form-control" value = "<?php echo $row['MOT'];?>"/></td>
+                <td><input type = "text" class = "form-control" value = "<?php echo $row['TRANSPORTATION'];?>"/></td>
+                <td><input type = "text" class = "form-control" value = "<?php echo $row['PERDIEM'];?>"/></td>
+                <td><input type = "text" class = "form-control" value = "<?php echo $row['OTHERS'];?>"/></td>
+                <td><input type = "text" class = "form-control" value = "<?php echo $row['TOTAL_AMOUNT'];?>"/></td>
+                <td><button class = "btn btn-md btn-danger" id = "btnids" data-id = "<?php echo $row['ID'];?>" value = "<?php echo $row['ID'];?>"><i class = "fa fa-trash"></i>Delete</button></td>
+            </tr>
+        
+            <?php
+                }
+            }
+            ?>
+            <tr>
+                <td colspan = 10>
+                    <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                    <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+                </td>
+            </tr>
+
+            <?php
+        }
+
+    
+}
+?>
 </head>
 <div class="box">
   <div class="box-body">
@@ -188,6 +374,8 @@ getTotal();
                                 
               </tbody>
             </table>
+  
+</table>
         
            
             
@@ -406,6 +594,8 @@ getTotal();
                     </div>
                   </div>
                   <button type = "submit" class = "btn btn-success btn-md pull-right">Save </button>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
               </form>
                   </div>
                 </div>
@@ -418,8 +608,10 @@ getTotal();
         </div>
       </div>
     </div>
+    
 
 <script>
+
  var myCounter = 1;
 
  $('#add_fare').click(function(){

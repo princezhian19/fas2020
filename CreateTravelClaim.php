@@ -47,6 +47,8 @@ $_SESSION['unique_id'] = 1;
 <!-- Google Font -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <link rel="stylesheet" href="calendar/fullcalendar/fullcalendar.min.css" />
+<script src="_includes/sweetalert.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="_includes/sweetalert.css">
 <script src="calendar/fullcalendar/lib/jquery.min.js"></script>
 <script src="calendar/fullcalendar/lib/moment.min.js"></script>
 <script src="calendar/fullcalendar/fullcalendar.min.js"></script>
@@ -109,6 +111,5 @@ $(document).ready(function(){
  
 });
 </script>
-   
-  
+
   
