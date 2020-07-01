@@ -287,6 +287,8 @@ function showData()
 }
 ?>
 </head>
+
+
 <div class="box">
   <div class="box-body">
     <h1 align="">&nbsp<b>Create Itinerary</b></h1>
@@ -304,8 +306,7 @@ function showData()
             <center>
             
             <h1>ITINERARY OF TRAVEL </h1>
-            <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
-            <tbody>
+            <table  cellpadding="0" cellspacing="0" width="80%" border="1">
               <thead>
                 <tr>
                     <td class = "label-text">
@@ -350,9 +351,8 @@ function showData()
                   <td colspan = 4> <?php echo getOffice(); ?> </td>
                 </tr>
               </thead>
-              </tbody>
             </table>
-            <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1" style = "margin-top:-19.5%;">
+            <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1" >
                <?php echo showData();?>
           
             </table>

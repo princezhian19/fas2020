@@ -97,7 +97,7 @@ function app($connect)
          <!--    <div class="box-header with-border">
      -->
         <br>
-      <li class="btn btn-success"><a href="@obligation.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-success"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
 
@@ -124,7 +124,7 @@ function app($connect)
                       <tbody id="result">
                       </tbody>
                       </table>
-                      <br>
+                     
                   <!-- Getting PO NUmber -->      
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             
@@ -178,7 +178,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input value="<?php echo date('m/d/Y')?>" required type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datereceived">
+                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datereceived">
                     </div>
                     <br>
                     
@@ -189,7 +189,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input value="<?php echo date('m/d/Y')?>"date rety required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
+                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>"date rety required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
                         <br>
                     </div>
                 </div>
@@ -207,10 +207,6 @@ function app($connect)
                     <label>Supplier</label>
                     <input  type="text"  class="form-control" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
                     <br>
-                    <table class="table table-striped table-hover" id="main4">
-                      <tbody id="result4">
-                      </tbody>
-                      </table>
 
                     <label>Particular/Purpose</label>
                     <input  type="text"   class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
@@ -270,7 +266,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="datereturned">
+                        <input  value ="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="datereturned">
                     </div>
                     <br>
                     
@@ -280,8 +276,8 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input value="<?php echo date('m/d/Y')?>" required type="text" class="form-control pull-right" id="datepicker4" placeholder='Enter Date' name="datereleased">
-                        <br>
+                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right" id="datepicker4" placeholder='Enter Date' name="datereleased">
+                        
                     </div>
 
                    
