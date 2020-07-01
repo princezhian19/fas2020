@@ -199,17 +199,10 @@ if (isset($_POST['stamp4'])) {
           <div class="box-body">
             <?php if ($ACCESSTYPE == 'admin'): ?>
              <a href="ViewEmployees.php?division=<?php echo $division?>&username=<?php echo $username?>" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
-           <?php endif ?>
            <div style="float: right;padding:5px;">
-            <?php if ($TIN_N == '1' || $TIN_N == '0' || $TIN_N == NULL): ?>
-            <?php if ($ACCESSTYPE == 'admin'): ?>
             <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
-           <?php endif ?>
-              <?php else: ?>
-            <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
-           <?php endif ?>
-
           </div>
+           <?php endif ?>
           <br>
           <br>
           <br>
