@@ -29,14 +29,19 @@ $rowU = mysqli_fetch_array($sele);
 $ACCESSTYPE = $rowU['ACCESSTYPE'];
 
 $get_month = $_GET['month'];
+$day = $_GET['day'];
+if ($get_month != '') {
+$date_now = '2020-'.$get_month.'-'.$day;
+}else{
+$date_now = date('Y-m-d');
+
+}
 if ($get_month != '') {
 $this_month = '2020-'.$get_month;
 }else{
 $this_month = date('Y-m');
 
 }
-
-$date_now = date('Y-m-d');
 $now_date = date('Y-m-d H:i:s');
 
 
@@ -70,8 +75,9 @@ $d1=cal_days_in_month(CAL_GREGORIAN,$month,$year);
 
 if (isset($_POST['month'])) {
   $month = $_POST['month'];
+  $day = $_POST['day'];
  echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.location.href = 'DTR.php?month=$month';
+      window.location.href = 'DtrMonitoring.php?month=$month&day=$day';
       </SCRIPT>");
 
 }
@@ -196,10 +202,10 @@ if (isset($_POST['stamp4'])) {
        <br>
        <!-- <font style="font-size: 20px;"><b>Month</b> :  -->
        <!-- </font>&nbsp <font style="font-size: 20px;"><?php echo date('F Y')?></font> -->
-       <div hidden>
+       <div >
       <form method="POST">
        <font style="font-size: 20px;"><b>Month</b> : 
-        <select name="month" id="month" onchange="this.form.submit()">
+        <select name="month" id="month" >
           <?php if ($get_month != ''): ?>
           <option value="<?php echo date('m',strtotime($this_month))?>"><?php echo date('F',strtotime($this_month))?></option>
             <?php else: ?>
@@ -221,6 +227,77 @@ if (isset($_POST['stamp4'])) {
         <div hidden>
           <input type="text" name="username" id="username" value="<?php echo $username;?>">
         </div>
+        <?php if ($get_month == ''): ?>
+          <select  name="day" id="day" onchange="this.form.submit()">
+          <option selected disabled></option>
+          <option value="01">1</option>
+          <option value="02">2</option>
+          <option value="03">3</option>
+          <option value="04">4</option>
+          <option value="05">5</option>
+          <option value="06">6</option>
+          <option value="07">7</option>
+          <option value="08">8</option>
+          <option value="09">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+        </select>
+        <?php else: ?>
+          <select  name="day" id="day" onchange="this.form.submit()">
+          <option value="<?php echo $day?>"><?php echo $day?></option>
+          <option value="01">1</option>
+          <option value="02">2</option>
+          <option value="03">3</option>
+          <option value="04">4</option>
+          <option value="05">5</option>
+          <option value="06">6</option>
+          <option value="07">7</option>
+          <option value="08">8</option>
+          <option value="09">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+          <option value="21">21</option>
+          <option value="22">22</option>
+          <option value="23">23</option>
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="26">26</option>
+          <option value="27">27</option>
+          <option value="28">28</option>
+          <option value="29">29</option>
+          <option value="30">30</option>
+          <option value="31">31</option>
+        </select>
+        <?php endif ?>
         <select disabled name="year" id="year">
           <option value="2020">2020</option>
           <option value="2021">2021</option>
@@ -245,8 +322,8 @@ if (isset($_POST['stamp4'])) {
       <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
         <thead>
           <tr style="background-color: white;color:blue;">
-            <th width="250">NAME</th>
-            <th width="">DATE</th>
+            <th width="100">UNAME</th>
+            <th width="100">DATE</th>
             <th width="">AM ARRIVAL</th>
             <th width="">AM DEPARTURE</th>
             <th width="">PM ARRIVAL</th>
@@ -257,7 +334,7 @@ if (isset($_POST['stamp4'])) {
         </thead>
         <?php 
 
-        $view_query = mysqli_query($conn, "SELECT CONCAT(te.LAST_M,' ',te.FIRST_M) AS FNAME,dtr.id, dtr.UNAME,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM dtr LEFT JOIN tblemployeeinfo te on te.UNAME = dtr.UNAME WHERE te.DIVISION_C = '$DIVISION_C' AND dtr.date_today LIKE '%$date_now%' ORDER BY te.LAST_M ASC");
+        $view_query = mysqli_query($conn, "SELECT CONCAT(te.FIRST_M,'',te.LAST_M) AS FNAME,dtr.id, dtr.UNAME,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM dtr LEFT JOIN tblemployeeinfo te on te.UNAME = dtr.UNAME WHERE te.DIVISION_C = '$DIVISION_C' AND dtr.date_today LIKE '%$date_now%' ORDER BY te.LAST_M ASC");
 
         while ($row = mysqli_fetch_assoc($view_query)) {
           $id = $row["id"];
@@ -274,7 +351,7 @@ if (isset($_POST['stamp4'])) {
           ?>
 
           <tr>
-            <td><?php echo $FNAME?></td>
+            <td><?php echo $UNAME?></td>
             <td><?php 
             echo date('F d, Y',strtotime($date_today));
 
