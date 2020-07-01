@@ -148,6 +148,10 @@ $username = $_SESSION['username'];
     $('#datepicker').datepicker({
       autoclose: true
     })
+
+    $('#datepicker2').datepicker({
+      autoclose: true
+    })
     
 
     //iCheck for checkbox and radio inputs

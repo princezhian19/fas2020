@@ -1,6 +1,7 @@
 <?php
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $username = $_GET['username'];
+$username1 = $_SESSION['username'];
 $u = mysqli_query($conn,"SELECT emp.FIRST_M,emp.MIDDLE_M,emp.LAST_M,pos.POSITION_M FROM tblemployeeinfo emp LEFT JOIN tbldilgposition pos on pos.POSITION_ID = emp.POSITION_C WHERE emp.UNAME = '$username' ");
 $row = mysqli_fetch_array($u);
 $FIRST_M1 = $row['FIRST_M'];
@@ -19,7 +20,7 @@ foreach ($words as $w) {
 $name = $FIRST_M.' '.$acronym.'.'.' '.$LAST_M;
 
 
-$sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployeeinfo WHERE UNAME = '$username'");
+$sele = mysqli_query($conn,"SELECT ACCESSTYPE FROM tblemployeeinfo WHERE UNAME = '$username1'");
 $rowU = mysqli_fetch_array($sele);
 $ACCESSTYPE = $rowU['ACCESSTYPE'];
 
@@ -199,11 +200,10 @@ if (isset($_POST['stamp4'])) {
           <div class="box-body">
             <?php if ($ACCESSTYPE == 'admin'): ?>
              <a href="ViewEmployees.php?division=<?php echo $division?>&username=<?php echo $username?>" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
-           <?php endif ?>
            <div style="float: right;padding:5px;">
             <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
-
           </div>
+           <?php endif ?>
           <br>
           <br>
           <br>
@@ -270,13 +270,95 @@ if (isset($_POST['stamp4'])) {
                   echo date('h:i A',strtotime($time_out));
                 }
                 ?></td>
-                <td>
+               <td>
+             <?php 
+             if(date('d',strtotime($date_today)) == '01'){ 
+                  $lateD = date('h:i',strtotime($time_in)) < date('h:i',strtotime('08:00'));
+                if($lateD){ 
+                $datetime1 = new DateTime('08:00');
+              }else{
+                $datetime1 = new DateTime($time_in);
+              }
+                $datetime2 = new DateTime($time_out1);
+                $datetime3 = new DateTime('16:00');
+                if ($datetime2 > $datetime3) {
+                  $datetime2 = new DateTime('16:00');
+                }
+                $finaldate = $datetime2->diff($datetime1); 
+                $date333 = new DateTime("08:00");
+                $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
+                $finalfinal = $date3333->diff($date333);
+                if($time_out == NULL){
+
+                 echo ''; 
+               }
+               else{
+
+                echo $finalfinal->format('%H');  
+
+              }
+
+            }else{
+              $lateD = date('H:i',strtotime($time_in)) < date('H:i',strtotime('07:00')); 
+                if($lateD){
+                $datetime1 = new DateTime('07:00');
+              }else{
+                $datetime1 = new DateTime($time_in);
+              }
+             $latePM = date('H:i',strtotime($time_out1)) > date('H:i',strtotime('17:00')); // pag 6 59 pbaba time ine
+             if ($latePM) {
+                $datetime2 = new DateTime('17:00');
+             }else{
+                $datetime2 = new DateTime($time_out1);
+
+             }
+           
+                $finaldate = $datetime2->diff($datetime1); 
+                $date333 = new DateTime("08:00"); 
+                $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
+                $finalfinal = $date3333->diff($date333);
 
 
-                </td>
-                <td>
+                if($time_out == NULL){
 
-                </td>
+                 echo ''; 
+               }
+               else{
+                  if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
+                 echo ''; 
+                }else{
+                echo $finalfinal->format('%H');  
+                }
+
+              }
+
+
+
+
+            }
+            ?>
+
+          </td>
+          <td>
+            <?php 
+
+            
+                  if($time_out == NULL){
+
+                 echo ''; 
+               }
+               else{
+                if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
+                 echo ''; 
+                }else{
+                echo $finalfinal->format('%i');  
+                }
+
+              }
+
+          ?>
+
+        </td>
               </tr>
             <?php } ?>
           </table>

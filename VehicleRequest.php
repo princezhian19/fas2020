@@ -69,15 +69,7 @@ $division = $_GET['division'];
       <br>
         <?php include('vehicle_table.php');?>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        
+       
 
     </section>
   </div>
