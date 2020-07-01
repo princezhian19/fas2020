@@ -206,7 +206,7 @@ function app($connect)
 
                     <label>Supplier</label>
                     <input  type="text"  class="form-control" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
-                  
+                    <br>
 
                     <label>Particular/Purpose</label>
                     <input  type="text"   class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
