@@ -206,11 +206,7 @@ function app($connect)
 
                     <label>Supplier</label>
                     <input  type="text"  class="form-control" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
-                    <br>
-                    <table class="table table-striped table-hover" id="main4">
-                      <tbody id="result4">
-                      </tbody>
-                      </table>
+                  
 
                     <label>Particular/Purpose</label>
                     <input  type="text"   class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
@@ -281,7 +277,7 @@ function app($connect)
                             <i class="fa fa-calendar"></i>
                         </div>
                         <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right" id="datepicker4" placeholder='Enter Date' name="datereleased">
-                        <br>
+                        
                     </div>
 
                    
