@@ -321,10 +321,10 @@ if($_GET['flag'] == 1)
   </footer>
   <br>
 
-  <div class="control-sidebar-bg"></div>
+  <!-- <div class="control-sidebar-bg"></div> -->
 </div>
 
-<!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
+
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -332,77 +332,7 @@ if($_GET['flag'] == 1)
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<script>
 
-$(document).ready(function() {
-    
-
-  
-  //WEATHER GRAMATICALLY
-  
-  function retira_acentos(str) {
-    var com_acento = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝRÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿr";
-    var sem_acento = "AAAAAAACEEEEIIIIDNOOOOOOUUUUYRsBaaaaaaaceeeeiiiionoooooouuuuybyr";
-    var novastr="";
-    for(i=0; i<str.length; i++) {
-      troca=false;
-      for (a=0; a<com_acento.length; a++) {
-        if (str.substr(i,1)==com_acento.substr(a,1)) {
-          novastr+=sem_acento.substr(a,1);
-          troca=true;
-          break;
-        }
-      }
-      if (troca==false) {
-        novastr+=str.substr(i,1);
-      }
-    }
-    return novastr.toLowerCase().replace( /\s/g, '-' );
-  }
-  
-  //WEATHER THEMES
-  
-  document.getElementById('switchWeatherTheme').addEventListener('change', function(){
-    
-    var valueTheme = $(this).val();
-    var widget = document.querySelector('.weatherwidget-io');
-    widget.setAttribute('data-theme', valueTheme);
-    __weatherwidget_init();
-    
-  });
-  
-  //WEATHER LOCATION
-  var input = document.getElementById('searchTextField');
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  
-  google.maps.event.addListener(autocomplete, 'place_changed', function () {
-    var place = autocomplete.getPlace();
-    var latitude = place.geometry.location.lat();
-    var longitude = place.geometry.location.lng();
-    var newPlace = retira_acentos(place.name);
-    
-    var urlDataWeather = 'https://forecast7.com/en/'+ latitude.toFixed(2).replace(/\./g,'d').replace(/\-/g,'n') + longitude.toFixed(2).replace(/\./g,'d').replace(/\-/g,'n') + '/'+ newPlace +'/';
-    
-    alert(urlDataWeather);
-    
-    var weatherWidget = document.querySelector('.weatherwidget-io');
-    weatherWidget.href = urlDataWeather;
-    weatherWidget.dataset.label_1 = place.name;
-    __weatherwidget_init();
-    
-    //document.getElementById('city2').value = place.name;
-    //document.getElementById('cityLat').value = place.geometry.location.lat();
-    //document.getElementById('cityLng').value = place.geometry.location.lng();
-    //alert("This function is working!");
-    //alert(place.name);
-    // alert(place.address_components[0].long_name);
-
-  });
-  
-});
-
-
-</script>
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
 <script>
