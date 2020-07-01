@@ -299,7 +299,7 @@ if (isset($_POST['stamp4'])) {
                 ?></td>
                <td>
              <?php 
-             if(date('d',strtotime($date_today)) == '01'){ 
+             if(date('D',strtotime($date_today)) == 'Mon'){ 
                   $lateD = date('h:i',strtotime($time_in)) < date('h:i',strtotime('08:00'));
                 if($lateD){ 
                 $datetime1 = new DateTime('08:00');
