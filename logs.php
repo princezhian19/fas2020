@@ -245,8 +245,8 @@ if (isset($_POST['stamp4'])) {
       <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
         <thead>
           <tr style="background-color: white;color:blue;">
-            <th width="100">UNAME</th>
-            <th width="100">DATE</th>
+            <th width="250">UNAME</th>
+            <th width="">DATE</th>
             <th width="">AM ARRIVAL</th>
             <th width="">AM DEPARTURE</th>
             <th width="">PM ARRIVAL</th>
@@ -257,7 +257,7 @@ if (isset($_POST['stamp4'])) {
         </thead>
         <?php 
 
-        $view_query = mysqli_query($conn, "SELECT CONCAT(te.FIRST_M,'',te.LAST_M) AS FNAME,dtr.id, dtr.UNAME,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM dtr LEFT JOIN tblemployeeinfo te on te.UNAME = dtr.UNAME WHERE te.DIVISION_C = '$DIVISION_C' AND dtr.date_today LIKE '%$date_now%' ORDER BY te.LAST_M ASC");
+        $view_query = mysqli_query($conn, "SELECT CONCAT(te.FIRST_M,', ',te.LAST_M) AS FNAME,dtr.id, dtr.UNAME,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM dtr LEFT JOIN tblemployeeinfo te on te.UNAME = dtr.UNAME WHERE te.DIVISION_C = '$DIVISION_C' AND dtr.date_today LIKE '%$date_now%' ORDER BY te.LAST_M ASC");
 
         while ($row = mysqli_fetch_assoc($view_query)) {
           $id = $row["id"];
@@ -274,7 +274,7 @@ if (isset($_POST['stamp4'])) {
           ?>
 
           <tr>
-            <td><?php echo $UNAME?></td>
+            <td><?php echo $FNAME?></td>
             <td><?php 
             echo date('F d, Y',strtotime($date_today));
 
