@@ -103,7 +103,7 @@ if (mysqli_num_rows($sql_items)>0) {
       $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,date('h:i A',strtotime($time_out)));
     }
 
-    if(date('d',strtotime($date)) == '01'){ 
+    if(date('D',strtotime($date)) == 'Mon'){ 
       $lateD = date('H:i',strtotime($time_in)) < date('H:i',strtotime('08:00'));
   if($lateD){ //morning late
    $datetime1 = new DateTime('08:00');//time in
