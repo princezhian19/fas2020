@@ -876,7 +876,7 @@ $edit="edit";
           <label>Assigned Vehicle 2 <span style = "color:red;"></span></label> 
                 
                 <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
-                <select required class="form-control" style="width: 100%;" name="av1" id="av1" >
+                <select  class="form-control" style="width: 100%;" name="av1" id="av1" >
                     <option value="">Select Vehicle</option>
                     <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
                     <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
@@ -888,7 +888,7 @@ $edit="edit";
               
               
              <label>Assigned Driver 2 <span style = "color:red;"></span></label>
-                <select required class="form-control" style="width: 100%;" name="ad1" id="ad1" >
+                <select  class="form-control" style="width: 100%;" name="ad1" id="ad1" >
                     <option value="">Select Driver</option>
                     <option value="Daniel Narciso">Daniel Narciso</option>
                     <option value="Joachim Lacdang">Joachim Lacdang</option>
@@ -914,7 +914,7 @@ $edit="edit";
           <label>Assigned Vehicle 3 <span style = "color:red;"></span></label> 
                 
                 <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
-                <select required class="form-control" style="width: 100%;" name="av2" id="av2" >
+                <select  class="form-control" style="width: 100%;" name="av2" id="av2" >
                     <option value="">Select Vehicle</option>
                     <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
                     <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
@@ -926,7 +926,7 @@ $edit="edit";
               
               
              <label>Assigned Driver 3 <span style = "color:red;"></span></label>
-                <select required class="form-control" style="width: 100%;" name="ad2" id="ad2" >
+                <select  class="form-control" style="width: 100%;" name="ad2" id="ad2" >
                     <option value="">Select Driver</option>
                     <option value="Daniel Narciso">Daniel Narciso</option>
                     <option value="Joachim Lacdang">Joachim Lacdang</option>
