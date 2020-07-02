@@ -387,6 +387,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
      
     },
 
+
     events: 'vehicle_load.php',
     selectable:true,
     selectHelper:true,
@@ -484,7 +485,9 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
     $('#plate').prop("disabled", true); 
     $('#vremarks').prop("disabled", true); 
 
-    $('#myModal2').find('#purpose').val(event.title);
+    $('#myModal2').find('#destination').val(event.title);
+    $('#myModal2').find('#purpose').val(event.purpose);
+ 
     $('#myModal2').find('#assigneddate').val(event.assigneddate);
     $('#myModal2').find('#assignedtime').val(event.assignedtime);
     $('#myModal2').find('#dispatcher').val(event.dispatcher);
