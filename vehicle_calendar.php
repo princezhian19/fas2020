@@ -69,6 +69,9 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 <h1>Trip Schedule</h1>
 <br>
 <li class="btn btn-warning"><a href="VehicleRequest.php" style="color:white;text-decoration: none;">Back</a></li>
+&nbsp;&nbsp;
+<li class="btn btn-success"><a href="VehicleRequestCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a></li>  
+
 
 <div class="row">
     <div class="col-md-4" id='modes'>
