@@ -368,31 +368,6 @@ $(document).ready(function() {
 });
 
 
-          if($('input[id=ReynaldoParale]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }else if($('input[id=LouieBlanco]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }else if($('input[id=JoachimLacdang]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }else if($('input[id=MedelSaturno]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }else if($('input[id=DanielNarciso]').is(':checked')){
-            $( "#all" ).prop( "checked", false );
-          }
-          if($('input[id=ReynaldoParale]').is(':checked') && 
-            $('input[id=LouieBlanco]').is(':checked') && 
-            $('input[id=JoachimLacdang]').is(':checked') &&
-            $('input[id=MedelSaturno]').is(':checked')&&
-            $('input[id=DanielNarciso]').is(':checked')
-            )
-            
-            {
-            $( "#all" ).prop( "checked", true );
-            }
-            else{
-              $( "#all" ).prop( "checked", false )
-
-            }
 
             
 
