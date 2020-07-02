@@ -69,6 +69,9 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 <h1>Trip Schedule</h1>
 <br>
 <li class="btn btn-warning"><a href="VehicleRequest.php" style="color:white;text-decoration: none;">Back</a></li>
+&nbsp;&nbsp;
+<li class="btn btn-success"><a href="VehicleRequestCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a></li>  
+
 
 <div class="row">
     <div class="col-md-4" id='modes'>
@@ -387,6 +390,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
      
     },
 
+
     events: 'vehicle_load.php',
     selectable:true,
     selectHelper:true,
@@ -484,7 +488,9 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
     $('#plate').prop("disabled", true); 
     $('#vremarks').prop("disabled", true); 
 
-    $('#myModal2').find('#purpose').val(event.title);
+    $('#myModal2').find('#destination').val(event.title);
+    $('#myModal2').find('#purpose').val(event.purpose);
+ 
     $('#myModal2').find('#assigneddate').val(event.assigneddate);
     $('#myModal2').find('#assignedtime').val(event.assignedtime);
     $('#myModal2').find('#dispatcher').val(event.dispatcher);

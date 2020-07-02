@@ -86,7 +86,7 @@ $chief = strtoupper($pmo_title);
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D6',$supplier);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D10',$address);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('D15',$purpose.', in the amount of..........');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D15','To Obligate the payment for the provision of '.$purpose);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('L16',$amount);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C43',$chief);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C45',$designation);
