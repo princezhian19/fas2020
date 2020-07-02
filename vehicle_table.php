@@ -857,6 +857,8 @@ $edit="edit";
                     <option value="Daniel Narciso">Daniel Narciso</option>
                     <option value="Joachim Lacdang">Joachim Lacdang</option>
                     <option value="Louie Blanco">Louie Blanco</option>
+                    <option value="Medel Saturno">Medel Saturno</option>
+                    <option value="Reynaldo Parale">Reynaldo Parale</option>
                    
                 </select>
                
@@ -895,6 +897,9 @@ $edit="edit";
                     <option value="Daniel Narciso">Daniel Narciso</option>
                     <option value="Joachim Lacdang">Joachim Lacdang</option>
                     <option value="Louie Blanco">Louie Blanco</option>
+                    <option value="Medel Saturno">Medel Saturno</option>
+                    <option value="Reynaldo Parale">Reynaldo Parale</option>
+                   
                    
                 </select>
                
@@ -935,6 +940,9 @@ $edit="edit";
                     <option value="Daniel Narciso">Daniel Narciso</option>
                     <option value="Joachim Lacdang">Joachim Lacdang</option>
                     <option value="Louie Blanco">Louie Blanco</option>
+                    <option value="Medel Saturno">Medel Saturno</option>
+                    <option value="Reynaldo Parale">Reynaldo Parale</option>
+                   
                    
                 </select>
                
