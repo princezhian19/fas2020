@@ -618,17 +618,17 @@ else{
                         <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:11px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Departure Date:" >
                         </td>   
 
-                        <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100;" name="departuredate" id="datepicker1" value="<?php echo isset($_POST['departuredate']) ? htmlspecialchars($_POST['departuredate'], ENT_QUOTES) : ''; ?>" placeholder="mm/dd/yyyy">
+                        <td class=" col-md-1" style=" border:1px solid black; text-align:center; ">
+                        <input autocomplete="off" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100;" name="departuredate" id="datepicker1" value="<?php echo isset($_POST['departuredate']) ? htmlspecialchars($_POST['departuredate'], ENT_QUOTES) : ''; ?>" placeholder="mm/dd/yyyy">
                         </td>   
                       <!--  Departure Date: -->  
                        <!--  Departure Time: -->
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
-                        <input readonly  required type="text" class="" style="text-align:left; border:none;  font-size:11px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Departure Time:" >
+                        <input  readonly  required type="text" class="" style="text-align:left; border:none;  font-size:11px; background-color:#CFD8DC; font-weight:bold; height: 12px; width:100%;" wrap="soft" row='2' name="" id="" value = "Departure Time:" >
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="departuretime" id="departuretime" value="<?php echo isset($_POST['departuretime']) ? htmlspecialchars($_POST['departuretime'], ENT_QUOTES) : ''; ?>"></td>
+                        <input autocomplete="off" required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="departuretime" id="departuretime" value="<?php echo isset($_POST['departuretime']) ? htmlspecialchars($_POST['departuretime'], ENT_QUOTES) : ''; ?>"></td>
                         </td>   
                          <!--  Departure Time: -->
 
@@ -663,7 +663,7 @@ else{
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returndate" id="datepicker2" value="<?php echo isset($_POST['returndate']) ? htmlspecialchars($_POST['returndate'], ENT_QUOTES) : ''; ?>" placeholder="mm/dd/yyyy">
+                        <input autocomplete="off" required type="text" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returndate" id="datepicker2" value="<?php echo isset($_POST['returndate']) ? htmlspecialchars($_POST['returndate'], ENT_QUOTES) : ''; ?>" placeholder="mm/dd/yyyy">
                         </td>   
                       <!--  Return Date: -->  
                        <!--  Return Time: -->
@@ -672,7 +672,7 @@ else{
                         </td>   
 
                         <td class="col-md-1" style=" border:1px solid black; text-align:center; ">
-                        <input required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returntime" id="returntime" value="<?php echo isset($_POST['returntime']) ? htmlspecialchars($_POST['returntime'], ENT_QUOTES) : ''; ?>"></td>
+                        <input autocomplete="off" required  type="time" class="" style="border:none;border-bottom:1px solid black; font-weight:bold; height: 35px; width:100%;" name="returntime" id="returntime" value="<?php echo isset($_POST['returntime']) ? htmlspecialchars($_POST['returntime'], ENT_QUOTES) : ''; ?>"></td>
                         </td>   
                          <!--  Return Time: -->
 
