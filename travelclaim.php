@@ -62,14 +62,14 @@ div.pac-container {
     }
 
     .scroll{
-    height:300px;display:block;overflow-y:hidden;
+    height:300px;display:block;overflow-y:hidden; 
     }
     .scroll:hover{
   overflow-y: scroll;
 
     }
  
-tbody {
+tbody{
     display:block;
     height:300px;
     overflow:auto;
@@ -80,7 +80,7 @@ tbody {
     display:table;
     table-layout:fixed;
     margin-top:-24.2%;
-    width: calc( 100% - 1em )
+    width:100%;
 
 }
 
@@ -127,15 +127,15 @@ function aa($id)
         
         <tr>
             <?php }?>
-            <td><textarea readonly cols = 34 style = "resize:none;background:#ECEFF1;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
+            <td><textarea readonly cols = 13 style = "resize:none;background:#ECEFF1;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
             <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
-            <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
-            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
-            <td><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
-            <td><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['PERDIEM']);?>"/></td>
-            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
-            <td><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
-            <td><button class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['ID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</button></td>
+            <td style = "width:9.5%;"><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
+            <td style = "width:9.5%;"><input readonly type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
+            <td style = "width:9.5%;"><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
+            <td style = "width:9.5%;"><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['PERDIEM']);?>"/></td>
+            <td style = "width:9.5%;"><input readonly type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
+            <td style = "width:12%;"><input readonly type = "text" class = "form-control" style = "width:100%%;" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
+            <td style = "width:9.5%;"><button class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['ID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</button></td>
 
         </tr>
         
@@ -193,10 +193,13 @@ function showData()
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
+          $rnums = mysqli_num_rows($result);
             while($row = mysqli_fetch_array($result))
             {
+              $rnums = mysqli_num_rows($result1);
+      
+              
             ?>
-            <tbody class = "scroll">
             <tr>
             <thead class = "fixed-header">
                 <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2>
@@ -209,7 +212,7 @@ function showData()
                 <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Per Diem</th>
                 <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Others</th>
                 <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Total Amount</th>
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Action</th>
+                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan =3W>Action</th>
               </tr>
               <tr>
                 <th class = "table-header"  style = "text-align:center;">Arrival</th>
@@ -217,6 +220,10 @@ function showData()
             </thead>
 
               </tr>
+<?php 
+// TBODY
+rowCount();
+?>
             <tr>
                 <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?> </td>
             </tr>
@@ -285,6 +292,54 @@ function showData()
 
     
 }
+function rowCount(){
+  include 'connection.php';
+  $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID";
+  $result1 = mysqli_query($conn, $query1);
+  $row_cnt = $result1->num_rows;
+  if($row_cnt == 1)
+  {
+    ?>
+              <tbody class = "scroll" style ="height:90px;">
+
+    <?php
+  }else if($row_cnt == 2) {
+    ?>
+              <tbody class = "scroll" style ="height:180px;">
+
+    <?php
+  }else if($row_cnt == 3) {
+    ?>
+              <tbody class = "scroll" style ="height:270px;">
+
+    <?php
+  }else if($row_cnt == 4) {
+    ?>
+              <tbody class = "scroll" style ="height:360px;">
+
+    <?php
+  }else if($row_cnt == 5) {
+    ?>
+              <tbody class = "scroll" style ="height:450px;">
+
+    <?php
+  }else{
+    ?>
+              <tbody class = "scroll" style ="height:540px;">
+
+    <?php
+
+  }
+}
+
+        
+    
+
+        
+    
+
+
+
 ?>
 </head>
 
@@ -325,7 +380,7 @@ function showData()
                         <td colspan = "4">
                       <input type = "text" class = "form-control" readonly/>
                     </td>
-                  <td class = "label-text">
+                  <td class = "label-text" colspan = 2>
                     <label>No:</label>
                       </td>
                         <td colspan = 4>
@@ -628,7 +683,6 @@ function showData()
     
 
 <script>
-
  var myCounter = 1;
 
  $('#add_fare').click(function(){
