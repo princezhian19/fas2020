@@ -387,7 +387,7 @@ function getImage()
               <span  style = "color:#black;font-weight:normal;">Personnel</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
             </a>
             <ul class="treeview-menu" >
-            <li><a href="PayrollEmployee.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Update Payroll Emp</a></li>
+            
             <li><a href="DTR.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>DTR</a></li>
 
             <?php if ($TIN_N == 1 ): ?>
@@ -621,6 +621,7 @@ function getImage()
             </ul> 
           </li>
           <li><a href="CreateTravelClaim.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Travel Claim</a></li>
+          <li><a href="PayrollEmployee.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Update Payroll Emp</a></li>
           </ul>
         </li>
         <li 
