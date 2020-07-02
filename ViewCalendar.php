@@ -287,11 +287,7 @@ if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmont
 
 }
  
-  // if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-  //     include('test1.php');
-  //   }else{
-  //     include('sidebar2.php');
-  //   }
+
  ?>
 <?php include 'connection.php';?>
 
