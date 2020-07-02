@@ -279,7 +279,7 @@ if($_SESSION['planningofficer'] == 1)
     </style>
  <?php 
 
-if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
+if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'sglee' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
 
       include('test1.php');
 }else{
@@ -287,11 +287,7 @@ if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmont
 
 }
  
-  // if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-  //     include('test1.php');
-  //   }else{
-  //     include('sidebar2.php');
-  //   }
+
  ?>
 <?php include 'connection.php';?>
 
