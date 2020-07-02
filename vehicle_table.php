@@ -824,7 +824,7 @@ $edit="edit";
                   <td ><label>  No. of Assigned Vehicle <span style = "color:red;">*</span></label> </td>
                   
                   <td class="" colspan="2">
-                  <input  required type="number" class="form-control" name="nov" id="nov" value = "" >
+                  <input  required onkeyup="myFunctionED()" type="number" class="form-control" name="nov" id="nov" value = "" >
 
                   </td>
                   </tr>
@@ -833,6 +833,8 @@ $edit="edit";
               <tr>
 
                   <td class="col-md-4" >
+
+                  <div class="div" id="div1">
                  <!--   Driver 1 -->
            
           <label>Assigned Vehicle 1 <span style = "color:red;">*</span></label> 
@@ -865,13 +867,13 @@ $edit="edit";
                
               
                 <!--   Driver 1 -->
-
+                </div>
                   </td>
 
                   <td class="col-md-4" >
                  
-
-                  <!--   Driver 1 -->
+        <div class="div" id="div2">
+                  <!--   Driver 2 -->
            
           <label>Assigned Vehicle 2 <span style = "color:red;"></span></label> 
                 
@@ -902,16 +904,18 @@ $edit="edit";
                 <input readonly required type="Text" class="form-control" name="plate1" id="plate1" value = "" >
                
               
-                <!--   Driver 1 -->
+                <!--   Driver 2 -->
+                </div>
+
                   </td>
 
                   <td class="col-md-4" >
                  
 
+                <div class="div" id="div3">
+                  <!--   Driver 3 -->
 
-                  <!--   Driver 1 -->
-           
-          <label>Assigned Vehicle 3 <span style = "color:red;"></span></label> 
+                <label>Assigned Vehicle 3 <span style = "color:red;"></span></label> 
                 
                 <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
                 <select  class="form-control" style="width: 100%;" name="av2" id="av2" >
@@ -940,7 +944,8 @@ $edit="edit";
                 <input readonly required type="Text" class="form-control" name="plate2" id="plate2" value = "" >
                
               
-                <!--   Driver 1 -->
+                <!--   Driver 3 -->
+                </div>
                   </td>
             
               </tr>
@@ -1420,7 +1425,95 @@ $(document).ready(function(){
 });
 </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<!-- Value Change -->
+<script>
+$(document).ready(function(){
 
+  
+ /*  $("#div1").children().attr("disabled","disabled");
+  $("#div2").children().attr("disabled","disabled");
+  $("#div3").children().attr("disabled","disabled");
+ */ 
+  $('#av').prop('disabled', true);$('#ad').prop('disabled', true);
+  $('#av1').prop('disabled', true);$('#ad1').prop('disabled', true);
+  $('#av2').prop('disabled', true);$('#ad2').prop('disabled', true);
+
+
+  
+
+});
+</script>
+
+
+
+<script>
+function myFunctionED() {
+  var nov = document.getElementById("nov").value;
+/* 
+
+  document.getElementById("demo").innerHTML = "You selected: " + x; */
+      if(nov=='1'){
+       /*  var av = document.getElementById("av");
+        av.disabled=false; */
+        $("#av").removeAttr('disabled'); //enable
+        $("#ad").removeAttr('disabled'); //enable
+     
+      // alert(nov);
+
+      }
+
+      else if(nov=='2'){
+
+        $("#av").removeAttr('disabled'); //enable
+        $("#ad").removeAttr('disabled'); //enable
+
+        $("#av1").removeAttr('disabled'); //enable
+        $("#ad1").removeAttr('disabled'); //enable
+
+      }
+      else if(nov=='3'){
+
+        $("#av").removeAttr('disabled'); //enable
+        $("#ad").removeAttr('disabled'); //enable
+
+        $("#av1").removeAttr('disabled'); //enable
+        $("#ad1").removeAttr('disabled'); //enable
+
+        $("#av2").removeAttr('disabled'); //enable
+        $("#ad2").removeAttr('disabled'); //enable
+
+
+      }
+      else if(nov=='' || nov>3){
+
+        // var av = document.getElementById("av").disabled = true;
+        $('#av').prop('disabled', true);$('#ad').prop('disabled', true);
+        $('#av1').prop('disabled', true);$('#ad1').prop('disabled', true);
+        $('#av2').prop('disabled', true);$('#ad2').prop('disabled', true);
+
+        document.getElementById("av").selectedIndex = "0";
+        document.getElementById("av1").selectedIndex = "0";
+        document.getElementById("av2").selectedIndex = "0";
+
+        document.getElementById("ad").selectedIndex = "0";
+        document.getElementById("ad1").selectedIndex = "0";
+        document.getElementById("ad2").selectedIndex = "0";
+
+
+        var plate = $("input[name='plate']"); 
+        plate.val('');
+
+        var plate1 = $("input[name='plate1']"); 
+        plate1.val('');
+
+        var plate2 = $("input[name='plate2']"); 
+        plate2.val('');
+
+      }
+
+}
+</script>
 
 
 
