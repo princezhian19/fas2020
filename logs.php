@@ -322,7 +322,7 @@ if (isset($_POST['stamp4'])) {
       <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
         <thead>
           <tr style="background-color: white;color:blue;">
-            <th width="100">UNAME</th>
+            <th width="100">NAME</th>
             <th width="100">DATE</th>
             <th width="">AM ARRIVAL</th>
             <th width="">AM DEPARTURE</th>
@@ -351,7 +351,7 @@ if (isset($_POST['stamp4'])) {
           ?>
 
           <tr>
-            <td><?php echo $UNAME?></td>
+            <td><?php echo $FNAME?></td>
             <td><?php 
             echo date('F d, Y',strtotime($date_today));
 

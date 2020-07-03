@@ -45,6 +45,7 @@
                     <tr style="background-color: white;color:blue;">
                         <th>ARTICLE</th>
                         <th>DESCRIPTION</th>
+                        <th>OFFICE</th>
                         <th>PROPERTY NO.</th>
                         <th>DATE ACQUIRED</th>
                         <th>UNIT VALUE</th>
@@ -55,6 +56,7 @@
                         <th>SHORTAGE(VALUE)</th>
                         <th>REMARKS</th>
                         <th>ACTION</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <?php 
@@ -73,10 +75,12 @@
                     $shortage_Q = $row["shortage_Q"];
                     $shortage_V = $row["shortage_V"];
                     $remarks = $row["remarks"];
+                    $office = $row["office"];
                     ?>
                     <tr>
                         <td><?php echo $article;?></td>
                         <td><?php echo $description;?></td>
+                        <td><?php echo $office;?></td>
                         <td><?php echo $property_number;?></td>
                         <td><?php echo $date_acquired;?></td>
                         <td><?php echo $unit;?></td>
@@ -89,8 +93,10 @@
                         <td>
                         <a  href='ViewPPE.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i  class='fa'>&#xf06e;</i> Edit</a>
                         </td>
-                   <!--   <a  onclick="return confirm('Are you sure you want to Delete this item?');" href='delete_rpcppe.php?id=<?php echo $id; ?>  ' title="Delete"> 
-                        <i style='font-size:20px' class='fa fa-trash-o' ></i> </a> -->
+                        <td>
+                     <a  onclick="return confirm('Are you sure you want to Delete this item?');" class="btn btn-danger btn-xs" href='delete_rpcppe.php?id=<?php echo $id; ?>  ' title="Delete"> 
+                        <i  class='fa fa-trash-o' ></i> Delete</a>
+                        </td>
                 </tr>
             <?php } ?>
         </table>

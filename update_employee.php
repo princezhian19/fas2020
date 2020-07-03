@@ -228,30 +228,30 @@
     ALTER_EMAIL='$alter_email',  LANDPHONE='$contact', OFFICE_STATION='$office', DIVISION_C='$division', ACTIVATED='".$e_stats."', UNAME='$username',DESIGNATION='$designation',SUFFIX='$suffix',LANDPHONE='$office_contact',REMARKS_M='$office_address' WHERE EMP_N = '$cid' LIMIT 1");
 
 
-  $update_tbl_deductions = mysqli_query($conn,"UPDATE tbl_deductions SET emp_no = '$employee_number' WHERE emp_no = '$employee_number' ");
-  $update_tbl_deduction_loans = mysqli_query($conn,"UPDATE tbl_deduction_loans SET emp_no = '$employee_number' WHERE emp_no = '$employee_number' ");
+  // $update_tbl_deductions = mysqli_query($conn,"UPDATE tbl_deductions SET emp_no = '$employee_number' WHERE emp_no = '$employee_number' ");
+  // $update_tbl_deduction_loans = mysqli_query($conn,"UPDATE tbl_deduction_loans SET emp_no = '$employee_number' WHERE emp_no = '$employee_number' ");
 
-  $update_emp = mysqli_query($conn,"UPDATE tbl_employee SET emp_no = '$employee_number',pagibig = '$pagibig',pagibig_premium = '$pagibig_premium',tin = '$tin',bir = '$bir',philhealth = '$philhealth',gsis = '$gsis',salary = '$salary',step = '$step',employment_date = '$employment_date' WHERE emp_no = '$employee_number'");
+  // $update_emp = mysqli_query($conn,"UPDATE tbl_employee SET emp_no = '$employee_number',pagibig = '$pagibig',pagibig_premium = '$pagibig_premium',tin = '$tin',bir = '$bir',philhealth = '$philhealth',gsis = '$gsis',salary = '$salary',step = '$step',employment_date = '$employment_date' WHERE emp_no = '$employee_number'");
 
-  if ($update_emp) {
+  // if ($update_emp) {
 
-    $select = mysqli_query($conn,"SELECT $step FROM tbl_salary_grade WHERE salary_grade = '$salary' ");
-    $row = mysqli_fetch_array($select);
-    $salaryS = $row[$step];
+  //   $select = mysqli_query($conn,"SELECT $step FROM tbl_salary_grade WHERE salary_grade = '$salary' ");
+  //   $row = mysqli_fetch_array($select);
+  //   $salaryS = $row[$step];
 
-    $save_salary = $salaryS *.09;
+  //   $save_salary = $salaryS *.09;
 
-    if ($salaryS > 59999) {
+  //   if ($salaryS > 59999) {
 
-      $phil = 900;
-      $insert_deduct = mysqli_query($conn,"
-        UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$employee_number'  ");
-    }else{
-      $phil = $salaryS *.03 / 2;
-      $insert_deduct = mysqli_query($conn,"
-        UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$employee_number'  ");
-    }
-  }
+  //     $phil = 900;
+  //     $insert_deduct = mysqli_query($conn,"
+  //       UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$employee_number'  ");
+  //   }else{
+  //     $phil = $salaryS *.03 / 2;
+  //     $insert_deduct = mysqli_query($conn,"
+  //       UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$employee_number'  ");
+  //   }
+  // }
 
 
   if ($query) 

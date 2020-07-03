@@ -312,25 +312,24 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
             </tr>
             <tr>
-            
-
+           
             <td colspan = "2"><b><input  class='calFilter' type="checkbox" name = "drivers[]" value="0"  id = "all" ></label>
             All Drivers</b></td>
             </tr>
-
-            <td style="background-color: #D5D911; color:white;WIDTH:50%;">
-            <input class='calFilter' type="checkbox" name = "drivers[]" value="Reynaldo Parale" id = "ReynaldoParale" ><label style = "margin-left:15%;">Reynaldo Parale</label>
-            <input hidden class='' type="text" name = "" value="#D5D911;" id = "colorPicker1">
+              
+            <td style="background-color: #48BD0D; color:white;">
+            <input class='calFilter' type="checkbox" name = "drivers[]" value="Daniel Narciso" id = "DanielNarciso"><label style = "margin-left:15%;">Daniel Narciso</label>
+            <input hidden class='' type="text" name = "colorPicker5" value="#48BD0D" id = "colorPicker5">
             </td>
-            <td style="background-color: #607D8B; color:#fff;padding:9px;WIDTH:50%;">
-            <input class='calFilter' type="checkbox" name = "drivers[]" value="Louie Blanco" id = "LouieBlanco"><label style = "margin-left:15%;">Louie Blanco</label>
-            <input hidden class='' type="text" name = "" value="#607D8B;" id = "colorPicker2">
-            </td>
-            </tr>
-            <tr>
             <td style="background-color: #E60785; color:white;">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Joachim Lacdang" id = "JoachimLacdang"><label style = "margin-left:15%;">Joachim Lacdang</label>
             <input hidden class='' type="text" name = "" value="#E60785;" id = "colorPicker3">
+            </td>
+            </tr>
+            <tr>
+            <td style="background-color: #607D8B; color:#fff;padding:9px;WIDTH:50%;">
+            <input class='calFilter' type="checkbox" name = "drivers[]" value="Louie Blanco" id = "LouieBlanco"><label style = "margin-left:15%;">Louie Blanco</label>
+            <input hidden class='' type="text" name = "" value="#607D8B;" id = "colorPicker2">
             </td>
             <td style="background-color:#FF9800 ; color:white;;padding:9px;">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Medel Saturno" id = "MedelSaturno"><label style = "margin-left:15%;">Medel Saturno</label>
@@ -338,11 +337,12 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             </td>
             </tr>
             <tr>
-            <td style="background-color: #48BD0D; color:white;">
-            <input class='calFilter' type="checkbox" name = "drivers[]" value="Daniel Narciso" id = "DanielNarciso"><label style = "margin-left:15%;">Daniel Narciso</label>
-            <input hidden class='' type="text" name = "colorPicker5" value="#48BD0D" id = "colorPicker5">
+            <td style="background-color: #D5D911; color:white;WIDTH:50%;">
+            <input class='calFilter' type="checkbox" name = "drivers[]" value="Reynaldo Parale" id = "ReynaldoParale" ><label style = "margin-left:15%;">Reynaldo Parale</label>
+            <input hidden class='' type="text" name = "" value="#D5D911;" id = "colorPicker1">
             </td>
 
+           
            
             </tr>
             <tr>
@@ -382,6 +382,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
   $(document).ready(function(event) {
 
    var calendar = $('#calendar').fullCalendar({
+
     editable:true,
     header:{
      left:'prev,next today',
@@ -390,6 +391,88 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
      
     },
 
+    eventRender: function(calEvent, element, view) {
+            
+            var show_username, show_type = true, show_calendar = true;
+           //  ===================
+        
+       
+          
+           if($('input[id=ReynaldoParale]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=LouieBlanco]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=JoachimLacdang]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=MedelSaturno]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }else if($('input[id=DanielNarciso]').is(':checked')){
+            $( "#all" ).prop( "checked", false );
+          }
+          if($('input[id=ReynaldoParale]').is(':checked') && 
+            $('input[id=LouieBlanco]').is(':checked') && 
+            $('input[id=JoachimLacdang]').is(':checked') &&
+            $('input[id=MedelSaturno]').is(':checked')&&
+            $('input[id=DanielNarciso]').is(':checked')
+            )
+            
+            {
+            $( "#all" ).prop( "checked", true );
+            }
+            else{
+              $( "#all" ).prop( "checked", false )
+
+            }
+ // ===========================================================
+ 
+           if($('input[id=all]').is(':checked') ){
+ 
+             return ['0', calEvent.title].indexOf($('#all').val()) >= 0 
+            }else
+            
+            {  
+
+            if($('input[id=DanielNarciso]').is(':checked') ){
+
+              return ['0', calEvent.ad].indexOf($('#DanielNarciso').val()) >= 0 
+
+            }
+
+            if($('input[id=LouieBlanco]').is(':checked') ){
+
+            return ['0', calEvent.ad].indexOf($('#LouieBlanco').val()) >= 0 
+
+            }
+
+            if($('input[id=ReynaldoParale]').is(':checked') ){
+
+            return ['0', calEvent.ad].indexOf($('#ReynaldoParale').val()) >= 0 
+
+            }
+
+            if($('input[id=JoachimLacdang]').is(':checked') ){
+
+            return ['0', calEvent.ad].indexOf($('#JoachimLacdang').val()) >= 0 
+
+            }
+
+            if($('input[id=MedelSaturno]').is(':checked') ){
+
+            return ['0', calEvent.ad].indexOf($('#MedelSaturno').val()) >= 0 
+
+            }
+              
+            
+
+          }
+            return  filter(calEvent) ;
+             
+ 
+ 
+             // ============================
+             
+       
+           },
 
     events: 'vehicle_load.php',
     selectable:true,
@@ -419,7 +502,6 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
       })
      }
     }, */
-    
     editable:false,
     eventResize:function(event)
     {
@@ -525,8 +607,29 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
    });
 
+   /* When a checkbox changes, re-render events */
+      $('input:checkbox.calFilter').on('change', function() {
+        $('#calendar').fullCalendar('rerenderEvents');
+      });
+  
+
+    function filter(calEvent) {
+      var vals = [];
+      $('input:checkbox.calFilter:checked').each(function() {
+        vals.push($(this).val());
+      });
+      return vals.indexOf(calEvent.risk) !== -1;
+    }
+
    
-  });
+  }
+  
+  
+  
+  );
+
+
+  
    
   </script>
  </head>

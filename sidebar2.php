@@ -6,7 +6,8 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['complete_name'])){
   error_reporting(0);
   ini_set('display_errors', 0);
   $username = $_SESSION['username'];
-$TIN_N = $_SESSION['TIN_N'];
+  $TIN_N = $_SESSION['TIN_N'];
+  $ORD = $_SESSION['ORD'];
 }
 
 $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .   $_SERVER['REQUEST_URI']; 
@@ -361,7 +362,42 @@ function showRequest()
           <span class="pull-right-container"></span>
         </a>
       </li>
-
+      <?php if ($ORD != NULL || $ORD == 1): ?>
+        <li class="treeview
+         <?php 
+               if(
+                 $link == 'http://fas.calabarzon.dilg.gov.ph/stocks.php?division='.$_GET['division'].'' ||
+                 $link == 'http://fas.calabarzon.dilg.gov.ph/@stockledger.php?division='.$_GET['division'].'' ||
+                 $link == 'http://fas.calabarzon.dilg.gov.ph/ViewIAR.php?division='.$_GET['division'].'' ||
+                 $link == 'http://fas.calabarzon.dilg.gov.ph/ViewRIS.php?division='.$_GET['division'].'' ||
+                 $link == 'http://fas.calabarzon.dilg.gov.ph/ViewRPCPPE.php?division='.$_GET['division'].'' ||
+                 $link == 'http://fas.calabarzon.dilg.gov.ph/ViewRPCI.php?division='.$_GET['division'].'' ||
+                 $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateIAR.php?id='.$_GET['id'].'' ||
+                 $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateRIS.php?id='.$_GET['id'].'' ||
+                 $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPPE.php?id='.$_GET['id'].'' ||
+                 $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateRPCI.php?id='.$_GET['id'].'' 
+                 ) 
+                
+                { echo 'active';}
+            
+         ?>">
+            <a href="" >
+              <i class="fa fa-briefcase " style = "color:#black;"></i>
+              <span style = "color:#black;font-weight:normal;" >Asset Management</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" >
+              <li><a href="stocks.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> Stock Card</a></li>
+              <li><a href="@stockledger.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>Supplies Ledger Card</a></li>
+              <li><a href="ViewIAR.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> IAR</a></li>
+              <li><a href="ViewRIS.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>RIS</a></li>
+              <li><a href="ViewRPCI.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>ICS</a></li>
+              <li><a href="ViewRPCPPE.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i>PAR</a></li>
+            </ul>
+        </li>
+      <?php endif ?>
 
 
       

@@ -19,6 +19,7 @@ $shortage_Q1 = $row['shortage_Q'];
 $shortage_V1 = $row['shortage_V'];
 $remarks1 = $row['remarks'];
 $status1 = $row['status'];
+$office1 = $row['office'];
 
 if (isset($_POST['submit'])) {
   $date_aquired = $_POST['date_aquired'];
@@ -34,10 +35,11 @@ if (isset($_POST['submit'])) {
   $shortage_Q = $_POST['shortage_Q'];
   $shortage_V = $_POST['shortage_V'];
   $remarks = $_POST['remarks'];
-  $status = $row['status'];
+  $status = $_POST['status'];
+  $office = $_POST['office'];
 
   
-  $update = mysqli_query($conn,"UPDATE rpcppe SET article ='$article',description ='$description',property_number ='$property_number',unit ='$unit',amount ='$amount',property_card ='$property_card',physical_count ='$physical_count',shortage_Q ='$shortage_Q',shortage_V ='$shortage_V',remarks ='$remarks',date_acquired ='$date_aquired', status = '$status' WHERE property_number = '$property_number'");
+  $update = mysqli_query($conn,"UPDATE rpcppe SET article ='$article',description ='$description',property_number ='$property_number',unit ='$unit',amount ='$amount',property_card ='$property_card',physical_count ='$physical_count',shortage_Q ='$shortage_Q',shortage_V ='$shortage_V',remarks ='$remarks',date_acquired ='$date_aquired', status = '$status', office = '$office' WHERE property_number = '$property_number'");
 
   if ($update) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -101,9 +103,11 @@ if (isset($_POST['submit'])) {
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                      <input type="date" value="<?php echo $date_aquireda?>" class="form-control pull-right" name="date_aquired" id="" >
+                      <input type="text" value="<?php echo $date_aquired1?>" class="form-control pull-right" name="date_aquired" id="datepicker" >
                   </div>
                 </div>
+
+          
 
 
     <!--     <div class="input-group date">
@@ -144,6 +148,11 @@ if (isset($_POST['submit'])) {
               </div>
               <div class="col-md-6">
                <div class="form-group">
+                <label>Office</label>
+                <input autocomplete = "false" value="<?php echo $office1?>" class="form-control" name="office" type="text" id="office">
+              </div>
+
+              <div class="form-group">
                 <label>Property Card</label>
                 <input autocomplete = "false" value="<?php echo $property_card1?>" class="form-control" name="property_card" type="text" id="property_card">
               </div>

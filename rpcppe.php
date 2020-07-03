@@ -1,15 +1,8 @@
 <?php
-// error_reporting(0);
-// ini_set('display_errors', 0);
-
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-
-
-
-
 if (isset($_POST['submit'])) {
-  $date_acquired = $_POST['date_acquired'];
-  // $dateAq = date('Y-m-d', strtotime($date_aquired)); 
+  $date_acquired1 = $_POST['date_acquired'];
+  $date_acquired = date('Y-m-d', strtotime($date_aquired1)); 
   $article = $_POST['article'];
   $description = $_POST['description'];
   $property_number = $_POST['property_number'];
@@ -22,10 +15,9 @@ if (isset($_POST['submit'])) {
   $remarks = $_POST['remarks'];
   $status = $_POST['status'];
   $category = $_POST['category'];
+  $office = $_POST['office'];
 
-
-
-  $insert_rpcppe = mysqli_query($conn,"INSERT INTO rpcppe(article,description,property_number,date_acquired,unit,amount,property_card,physical_count,shortage_Q,shortage_V,remarks,status,category) VALUES('$article','$description','$property_number','$date_acquired','$unit','$amount','$property_card','$physical_count','$shortage_Q','$shortage_V','$remarks','$status','$category')");
+  $insert_rpcppe = mysqli_query($conn,"INSERT INTO rpcppe(article,description,property_number,date_acquired,unit,amount,property_card,physical_count,shortage_Q,shortage_V,remarks,status,category,office) VALUES('$article','$description','$property_number','$date_acquired','$unit','$amount','$property_card','$physical_count','$shortage_Q','$shortage_V','$remarks','$status','$category','$office')");
 
   if ($insert_rpcppe) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -89,7 +81,7 @@ if (isset($_POST['submit'])) {
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="date" class="form-control pull-right" name="date_acquired" id="" >
+                    <input type="text" class="form-control pull-right" name="date_acquired" id="datepicker" >
                   </div>
                 </div>
 
@@ -126,6 +118,11 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="col-md-6">
                      <div class="form-group">
+                      <label>Office</label>
+                      <input autocomplete = "false"  class="form-control" name="office" type="text" id="office">
+                    </div>
+
+                    <div class="form-group">
                       <label>Property Card</label>
                       <input autocomplete = "false"  class="form-control" name="property_card" type="text" id="property_card">
                     </div>
