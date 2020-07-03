@@ -45,6 +45,7 @@
                     <tr style="background-color: white;color:blue;">
                         <th>ARTICLE</th>
                         <th>DESCRIPTION</th>
+                        <th>OFFICE</th>
                         <th>PROPERTY NO.</th>
                         <th>DATE ACQUIRED</th>
                         <th>UNIT VALUE</th>
@@ -73,10 +74,12 @@
                     $shortage_Q = $row["shortage_Q"];
                     $shortage_V = $row["shortage_V"];
                     $remarks = $row["remarks"];
+                    $office = $row["office"];
                     ?>
                     <tr>
                         <td><?php echo $article;?></td>
                         <td><?php echo $description;?></td>
+                        <td><?php echo $office;?></td>
                         <td><?php echo $property_number;?></td>
                         <td><?php echo $date_acquired;?></td>
                         <td><?php echo $unit;?></td>
