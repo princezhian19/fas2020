@@ -56,6 +56,7 @@
                         <th>SHORTAGE(VALUE)</th>
                         <th>REMARKS</th>
                         <th>ACTION</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <?php 
@@ -92,8 +93,10 @@
                         <td>
                         <a  href='ViewPPE.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i  class='fa'>&#xf06e;</i> Edit</a>
                         </td>
-                   <!--   <a  onclick="return confirm('Are you sure you want to Delete this item?');" href='delete_rpcppe.php?id=<?php echo $id; ?>  ' title="Delete"> 
-                        <i style='font-size:20px' class='fa fa-trash-o' ></i> </a> -->
+                        <td>
+                     <a  onclick="return confirm('Are you sure you want to Delete this item?');" class="btn btn-danger btn-xs" href='delete_rpcppe.php?id=<?php echo $id; ?>  ' title="Delete"> 
+                        <i  class='fa fa-trash-o' ></i> Delete</a>
+                        </td>
                 </tr>
             <?php } ?>
         </table>
