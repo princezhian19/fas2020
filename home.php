@@ -47,7 +47,7 @@ $username = $_SESSION['username'];
    <?php 
   if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'sglee') { 
     include('test1.php'); 
-    if($username == 'masacluti'){
+    if($username == 'masacluti' || $username == 'charlesodi' ){
     ?>
     
     <script>
