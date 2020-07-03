@@ -440,8 +440,12 @@ function rowCount(){
                   <td colspan = 5 rowspan = 2>Approved By <CENTER><br>_____________________________________________<br> <b> ARIEL O. IGLESIA	</b> </CENTER> </td>
                 </tr>
                 <tr>
+                
                 </tr>
+            
+                
             </table>
+  
   
       
            
@@ -627,14 +631,7 @@ function rowCount(){
                           </div>
                       </div>
                     </div>
-                    <span class = "btn btn-success btn-md pull-right" id= "add_fare">Add Fare</span>
-                  </div>
-
-
-
-                  </div>
-
-                  <div class="well" style = "padding:10px;" id = "travelPanel">
+                    <div style = "padding:10px;" >
                     <div class="box-body myTemplate2">
                       <div class="row ">
                         <div class="col-md-6">
@@ -664,6 +661,17 @@ function rowCount(){
                         </div>
                       </div>
                     </div>
+                  </div>
+                    <span class = "btn btn-success btn-md pull-right" id= "add_fare">Add Fare</span>
+                  </div>
+
+
+
+                  </div>
+
+            
+
+                  <div class = "well" style = "padding:10px;" id = "travelPanel">
                   </div>
                   <button type = "submit" class = "btn btn-success btn-md pull-right">Save </button>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

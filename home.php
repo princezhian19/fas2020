@@ -45,7 +45,18 @@ $username = $_SESSION['username'];
 <body class="hold-transition fixed skin-red-light sidebar-mini">
 <div class="wrapper">
    <?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'sglee') { include('test1.php'); 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'sglee') { 
+    include('test1.php'); 
+    if($username == 'masacluti' || $username == 'charlesodi' ){
+    ?>
+    
+    <script>
+window.location.href = 'DTR.php?division=<?php echo $_GET['division']; ?>&username=<?php echo $username;?>';
+
+</script>
+
+    <?php
+    }
 }else{ 
 
      if ($OFFICE_STATION == 1) {
