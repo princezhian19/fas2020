@@ -3,6 +3,27 @@
 error_reporting(0);
 ini_set('display_errors', 0);
 
+ob_start();  
+
+//Get the ipconfig details using system commond  
+system('ipconfig /all');  
+
+// Capture the output into a variable  
+$mycomsys=ob_get_contents();  
+
+// Clean (erase) the output buffer  
+ob_clean();  
+
+$find_mac = "Physical"; 
+//find the "Physical" & Find the position of Physical text  
+
+$pmac = strpos($mycomsys, $find_mac);  
+// Get Physical Address  
+
+$macaddress=substr($mycomsys,($pmac+36),17);  
+//Display Mac Address  
+
+
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
@@ -315,6 +336,9 @@ if (isset($_POST['add'])) {
     $unit = 22;
   }
 
+
+
+
   $check = mysqli_query($conn,"SELECT pr_no FROM pr WHERE pr_no = '$pr_no' ");
 
       $select_app_id = mysqli_query($conn,"SELECT id,sn FROM app WHERE id = $app_items ");
@@ -350,8 +374,8 @@ if (isset($_POST['add'])) {
 
       } else{
        
-         $insert_items = mysqli_query($conn,'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc) 
-          VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'")');
+         $insert_items = mysqli_query($conn,'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc,mac) 
+          VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'","'.$macaddress.'")');
 
         /*   echo 'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc) 
           VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'")';
@@ -757,7 +781,7 @@ function confirmDelete(delUrl) {
           if ($pr_no == '') {
             $pr_no = $_GET['pr_no'];
           }
-          $sql_items = $conn->query("SELECT a.sn,pa.id,pa.qty,pa.items,pa.app_id,pa.pr_no,pa.description,pa.unit,pa.abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' AND pmo = '$pmo' ");
+          $sql_items = $conn->query("SELECT a.sn,pa.id,pa.qty,pa.items,pa.app_id,pa.pr_no,pa.description,pa.unit,pa.abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' AND pmo = '$pmo' AND mac = '$macaddress' ");
           while ($row = $sql_items->fetch()) {
             $sn = $row['sn'];
             $id = $row['id'];
