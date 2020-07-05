@@ -216,24 +216,24 @@ if (isset($_POST['submit'])) {
       $rowAI = mysqli_fetch_array($select_app_id);
       $snAi = $rowAI['sn'];
 
-     $insert_items = mysqli_query($conn,'INSERT INTO pr_items(pr_no,items,description,unit,qty,abc)
-      VALUES("'.$pr_no1.'","'.$_POST['items1'][$count].'","'.$_POST['description1'][$count].'","'.$unit1[$count].'","'.$_POST['qty1'][$count].'","'.$_POST['abc1'][$count].'")');
+      $insert_items = mysqli_query($conn,'INSERT INTO pr_items(pr_no,items,description,unit,qty,abc)
+        VALUES("'.$pr_no1.'","'.$_POST['items1'][$count].'","'.$_POST['description1'][$count].'","'.$unit1[$count].'","'.$_POST['qty1'][$count].'","'.$_POST['abc1'][$count].'")');
 
-     $update_minus = mysqli_query($conn,'UPDATE app_items SET qty_original = qty_original - '.$_POST['qty1'][$count].' WHERE pmo_id = '.$pmo3.' AND sn = "'.$snAi.'" ');
+      $update_minus = mysqli_query($conn,'UPDATE app_items SET qty_original = qty_original - '.$_POST['qty1'][$count].' WHERE pmo_id = '.$pmo3.' AND sn = "'.$snAi.'" ');
 
      // echo 'UPDATE app_items SET qty_original = qty_original - '.$_POST['qty1'][$count].' WHERE pmo_id = '.$pmo3.' AND sn = "'.$snAi.'"';
-   }
+    }
 
 
-   $select_id = mysqli_query($conn,"SELECT * FROM pr WHERE pr_no = '$pr_no1'");
-   $rowW = mysqli_fetch_array($select_id);
-   $ids = $rowW['id'];
-   echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Successfuly Saved!')
-    window.location.href = 'ViewPRv.php?id=$ids';
-    </SCRIPT>");
+    $select_id = mysqli_query($conn,"SELECT * FROM pr WHERE pr_no = '$pr_no1'");
+    $rowW = mysqli_fetch_array($select_id);
+    $ids = $rowW['id'];
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+      window.alert('Successfuly Saved!')
+      window.location.href = 'ViewPRv.php?id=$ids';
+      </SCRIPT>");
 
- }
+  }
 
 }
 
@@ -250,7 +250,7 @@ if (isset($_POST['add'])) {
   $qty = $_POST["qty"];
   $abc = $_POST["abc"];
 
-   if ($pmo == "ORD") {
+  if ($pmo == "ORD") {
     $pmo3 = 1;
   }
   if ($pmo == "LGMED") {
@@ -342,15 +342,15 @@ if (isset($_POST['add'])) {
 
   $check = mysqli_query($conn,"SELECT pr_no FROM pr WHERE pr_no = '$pr_no' ");
 
-      $select_app_id = mysqli_query($conn,"SELECT id,sn FROM app WHERE id = $app_items ");
-      $rowAI = mysqli_fetch_array($select_app_id);
-      $snAi = $rowAI['sn'];
+  $select_app_id = mysqli_query($conn,"SELECT id,sn FROM app WHERE id = $app_items ");
+  $rowAI = mysqli_fetch_array($select_app_id);
+  $snAi = $rowAI['sn'];
 
-      $select_Aitems = mysqli_query($conn,"SELECT * FROM app_items WHERE sn = '$snAi' AND pmo_id = $pmo3");
-      $rowPmo = mysqli_fetch_array($select_Aitems);
-      $qty_original = $rowPmo['qty_original'];
+  $select_Aitems = mysqli_query($conn,"SELECT * FROM app_items WHERE sn = '$snAi' AND pmo_id = $pmo3");
+  $rowPmo = mysqli_fetch_array($select_Aitems);
+  $qty_original = $rowPmo['qty_original'];
 
-   
+  
   // if ($qty_original == 0 )
   // {
   //   echo "<div style='background-color:lightblue;color:red;'> <p>  <p> <div>";
@@ -374,151 +374,91 @@ if (isset($_POST['add'])) {
         echo "<div style='background-color:lightblue;color:red;'> <p> <b>Unit Cannot Be Blank</b> <p> <div>";
 
       } else{
-
-        echo 'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc,mac) 
-          VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'","'.$macaddress.'")';exit;
-       
-         $insert_items = mysqli_query($conn,'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc,mac) 
-          VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'","'.$macaddress.'")');
-
-        /*   echo 'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc) 
-          VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'")';
-          exit();
- */
-
-
-     echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Successfuly Saved!  </p> </div></div>  '; 
+       $insert_items = mysqli_query($conn,'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc,mac) 
+        VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'","'.$macaddress.'")');
+       echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Successfuly Saved!  </p> </div></div>  '; 
      }
    }
  }
-// }
 }
-
-
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      function load_data(query)
-      {
-        $.ajax({
-          url:"fetch_pr.php?",
-          method:"POST",
-          data:{query:query},
-          success:function(data)
-          {
-            $('#result').html(data);
-          }
-        });
-      }
-      $('#app_items').keyup(function(){
-        var search = $(this).val();
-        if(search != '')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    function load_data(query)
+    {
+      $.ajax({
+        url:"fetch_pr.php?",
+        method:"POST",
+        data:{query:query},
+        success:function(data)
         {
-          load_data(search);
-        }
-        else
-        {
-          
-          load_data();
-          /* document.getElementById("code").value = ""; */
-          document.getElementById("stocknumber").value = "";
-          document.getElementById("abc").value="";
-          document.getElementById("unit").value="";
-          $("#main").show();
-          
+          $('#result').html(data);
         }
       });
-    });
-    function showRow(row)
-    {
-
-      var x=row.cells;
-      document.getElementById("id").value = x[0].innerHTML;
-      document.getElementById("abc").value = x[1].innerHTML;
-      document.getElementById("stocknumber").value = x[2].innerHTML;
-      document.getElementById("abc").value = x[3].innerHTML;
-      document.getElementById("app_items").value = x[4].innerHTML;
-     document.getElementById("unit").value = x[5].innerHTML;
-     //load_data();
-  
-    //  $('#result').html(data);
-
-     
-      //document.getElementById("abc").value = x[6].innerHTML;
     }
-  </script>
-</head>
-<!-- <script>
-function checkAvailability() {
-  $("#loaderIcon").show();
-  jQuery.ajax({
-  url: "ch.php",
-  data:'pr_no='+$("#pr_no").val(),
-  type: "POST",
-  success:function(data){
-    $("#user-availability-status").html(data);
-    $("#loaderIcon").hide();
-  },
-  error:function (){}
+    $('#app_items').keyup(function(){
+      var search = $(this).val();
+      if(search != '')
+      {
+        load_data(search);
+      }
+      else
+      {
+        
+        load_data();
+        /* document.getElementById("code").value = ""; */
+        document.getElementById("stocknumber").value = "";
+        document.getElementById("abc").value="";
+        document.getElementById("unit").value="";
+        $("#main").show();
+        
+      }
+    });
   });
-}
-</script> -->
+  function showRow(row)
+  {
 
-<body>
-<!-- <script>
-function confirmDelete(delUrl) {
-  if (confirm("Are you sure you want to delete")) {
-   document.location = delUrl;
+    var x=row.cells;
+    document.getElementById("id").value = x[0].innerHTML;
+    document.getElementById("abc").value = x[1].innerHTML;
+    document.getElementById("stocknumber").value = x[2].innerHTML;
+    document.getElementById("abc").value = x[3].innerHTML;
+    document.getElementById("app_items").value = x[4].innerHTML;
+    document.getElementById("unit").value = x[5].innerHTML;
   }
-}
 </script>
-
-<a href="javascript:confirmDelete('delete.page?id=1')">Delete</a>
--->
-<div class="box">
-  <div class="box-body">
-    <h1 align="">&nbsp<b>Create Purchase Request</b></h1>
-    <div class="box-header with-border">
-    </div>
-    <br>
-    &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="ViewPR.php" style="color:white;text-decoration: none;">Back</a></li>
-    <!-- <a href="javascript:void(0);"  class="btn btn-primary link" data-id="<=$data['id']?>">View Items</a><br><br> -->
-
-    <br>
-    <br>
-    <form method="POST" >
-      <div class="box-body">
-        <div class="well">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>PR No. <label style="color: Red;" >*</label> </label>
-                <?php if ($pr_no != ''): ?>
-                 <!--  <input class="form-control" type="text" name="pr_no" id="pr_no" autocomplete = "off" value="<?php echo $pr_no ?>"> -->
-                 <input readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'0'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span>
-                 <?php else:  ?>
-                  <!--   <input class="form-control" type="text" name="pr_no" id="pr_no" autocomplete = "off" value="<?php echo isset($_POST['pr_no']) ? $_POST['pr_no'] : '' ?>"> -->
-
-                  <input  readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'0'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
-                <?php endif ?>
-
-              </div>
-            <div class="form-group">
+</head>
+<body>
+  <div class="box">
+    <div class="box-body">
+      <h1 align="">&nbsp<b>Create Purchase Request</b></h1>
+      <div class="box-header with-border">
+      </div>
+      <br>
+      &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="ViewPR.php" style="color:white;text-decoration: none;">Back</a></li>
+      <br>
+      <br>
+      <form method="POST" >
+        <div class="box-body">
+          <div class="well">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>PR No. <label style="color: Red;" >*</label> </label>
+                  <?php if ($pr_no != ''): ?>
+                   <input readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'0'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span>
+                   <?php else:  ?>
+                    <input  readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'0'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
+                  <?php endif ?>
+                </div>
+                <div class="form-group">
                   <label>Office <label style="color: Red;" >*</label></label>
-                
-                    <input type="text" class="form-control" style="width: 100%;" name="pmo" id="pmo" readonly value="FAD" >
-                
-              </div>
-
-              <div class="form-group">
+                  
+                  <input type="text" class="form-control" style="width: 100%;" name="pmo" id="pmo" readonly value="FAD" >
+                </div>
+                <div class="form-group">
                   <label>Type <label style="color: Red;" >*</label></label>
                   <?php if ($type == 1): ?>
                     <select class="form-control " style="width: 100%;" name="type" id="type" >
@@ -528,8 +468,6 @@ function confirmDelete(delUrl) {
                       <option value="3">Repair and Maintenance</option>
                       <option value="6">Reimbursement and Petty Cash</option>
                       <option value="4">Supplies, Materials and Devices</option>
-                      
-                    
                     </select>
                   <?php endif ?>
                   <?php if ($type == 2): ?>
@@ -570,10 +508,8 @@ function confirmDelete(delUrl) {
                       <option value="3">Repair and Maintenance</option>
                       <option value="4">Supplies, Materials and Devices</option>
                       <option value="6">Reimbursement and Petty Cash</option>
-                    
                     </select>
                   <?php endif ?>
-
                   <?php if ($type == 6): ?>
                     <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="6">Reimbursement and Petty Cash</option>
@@ -582,13 +518,10 @@ function confirmDelete(delUrl) {
                       <option value="3">Repair and Maintenance</option>
                       <option value="4">Supplies, Materials and Devices</option>
                       <option value="5">Other Services</option>
-                     
                     </select>
                   <?php endif ?>
                   <?php if ($type == ''): ?>
-
-                  <select class="form-control " style="width: 100%;" name="type" id="type" >
-                   <!--    <option value="5">------------------------SELECT TYPE------------------------</option> -->
+                    <select class="form-control " style="width: 100%;" name="type" id="type" >
                       <option value="1">Catering Services</option>
                       <option value="2">Meals, Venue and Accommodation</option>
                       <option value="5">Other Services</option>
@@ -597,14 +530,10 @@ function confirmDelete(delUrl) {
                       <option value="4">Supplies, Materials and Devices</option>
                     </select>
                   <?php endif ?>
-                 
+                </div>
               </div>
-
-
-          </div>
-          <div class="col-md-6">
-
-            <div class="form-group">
+              <div class="col-md-6">
+                <div class="form-group">
                   <label>PR Date <label style="color: red;" >*</label></label>
                   <div class="input-group date">
                     <div class="input-group-addon">
@@ -612,332 +541,267 @@ function confirmDelete(delUrl) {
                     </div>
                     <?php if ($pr_date ==''): ?>
                       <input required  type="text" class="form-control pull-right" name="pr_date" id="datepicker1" value="<?php $now = date("m/d/Y"); echo $now;  ?>">
-                    <?php else: ?>
+                      <?php else: ?>
                         <input required  type="text" class="form-control pull-right" name="pr_date" id="datepicker1" value="<?php $now =  date("m/d/Y"); echo $now;  ?>">
                       <?php endif ?>
                     </div>
                   </div>
-                  
-
                   <div class="form-group">
-                  <label>Target Date <label style="color: Red;" >*</label></label>
-                  <div class="input-group date">
-                    <div class="input-group-addon">
-                      <i class="fa fa-calendar"></i>
+                    <label>Target Date <label style="color: Red;" >*</label></label>
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <?php if ($target_date ==''): ?>
+                        <input type="text" class="form-control pull-right" name="target_date" id="datepicker2" value="<?php echo isset($_POST['target_date']) ? $_POST['target_date'] : '' ?>" required placeholder="mm/dd/yyyy">
+                        <?php else: ?>
+                          <input type="text" class="form-control pull-right" name="target_date" id="datepicker2" value="<?php echo $target_date ?>" required placeholder="mm/dd/yyyy">
+                        <?php endif ?>
+                      </div>
                     </div>
-                    <?php if ($target_date ==''): ?>
-                    <input type="text" class="form-control pull-right" name="target_date" id="datepicker2" value="<?php echo isset($_POST['target_date']) ? $_POST['target_date'] : '' ?>" required placeholder="mm/dd/yyyy">
-                    <?php else: ?>
-                      <input type="text" class="form-control pull-right" name="target_date" id="datepicker2" value="<?php echo $target_date ?>" required placeholder="mm/dd/yyyy">
-                    <?php endif ?>
-                      <!-- <input type="date" class="form-control pull-right" name="target_date" id="target_date" value="" required> -->
-                    
+                    <div class="form-group" >
+                      <label>Purpose <label style="color: Red;" >*</label></label>
+                      <?php if ($purpose ==''): ?>
+                        <input required type="text" style="height: 60px" class="form-control pull-right" name="purpose" id="purpose" value="<?php echo isset($_POST['purpose']) ? $_POST['purpose'] : '' ?>" required placeholder="Purpose">
+                        <?php else: ?>
+                          <input required type="text" style="height: 60px" class="form-control pull-right" name="purpose" id="purpose"  required placeholder="Purpose">
+                        <?php endif ?>
+                      </div>
                     </div>
                   </div>
-
-                 
-                
-
-              <div class="form-group" >
-                <label>Purpose <label style="color: Red;" >*</label></label>
-                <?php if ($purpose ==''): ?>
-                  <!-- <textarea  required class="form-control" type="text" id="purpose" name="purpose"><?php echo isset($_POST['purpose']) ? $_POST['purpose'] : '' ?> </textarea>  -->
-                  
-                  <input required type="text" style="height: 60px" class="form-control pull-right" name="purpose" id="purpose" value="<?php echo isset($_POST['purpose']) ? $_POST['purpose'] : '' ?>" required placeholder="Purpose">
-                  <?php else: ?>
-                    <!-- <textarea required class="form-control" type="text" id="purpose" name="purpose"><?php echo $purpose ?> </textarea> -->
-
-                    <input required type="text" style="height: 60px" class="form-control pull-right" name="purpose" id="purpose"  required placeholder="Purpose">
-
-                  <?php endif ?>
-
-                  <!-- <input type="text" name="purpose" value="<?php echo isset($_POST['purpose']) ? $_POST['purpose'] : '' ?>" /> -->
-
                 </div>
-
-
-                <!-- /.box-body -->
-              </div>
-              <!-- /.form-group -->
-            </div>
-            <!-- /.col -->
-          </div>
-         <!--  <div class="item panel panel-info"></div> -->
-          <?php 
-          if ($insert_items) {
-            echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Item Added!  </p> </div></div>  '; 
-          }
-
-          ?> 
-          <div class="panel panel-success" id="item_table">
-           <div class="panel-heading">
-            <i class="fa fa-list-alt"></i>&nbsp&nbsp&nbspPR Items <!-- Item(s) -->
-            <div class="clearfix"></div>
-          </div>
-          <div class="panel-body container-items">
-            <div class=""><!-- widgetBody -->
-              <div class="row">
-                <div class="col-md-6" style="padding-left: 30px;padding-top:10px;">
-                  <label>Item/s <font style="color: Red;" >*</font> </label>
-                  <input  type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
-                  <font id="p" hidden>&nbsp</font>
-                  <table class="table table-striped table-hover" id="main">
-                    <tbody id="result">
-                    </tbody>
-                  </table>
-                  
-                  <div hidden>
-                    <input type="text" name="app_items" id="id" class="form-control"/>
-                  </div>
-                  <div class="form-group">
-                    <label>Stock/Property No.  <font style="color: Red;" >*</font> </label>
-                    <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
-                  </div>
-                  <div class="form-group">
-                    <label>Description/Specification </label>
-                    <input type="text" name="description" class="form-control">
+                <?php 
+                if ($insert_items) {
+                  echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Item Added!  </p> </div></div>  '; 
+                }
+                ?> 
+                <div class="panel panel-success" id="item_table">
+                 <div class="panel-heading">
+                  <i class="fa fa-list-alt"></i>&nbsp&nbsp&nbspPR Items <!-- Item(s) -->
+                  <div class="clearfix"></div>
+                </div>
+                <div class="panel-body container-items">
+                  <div class=""><!-- widgetBody -->
+                    <div class="row">
+                      <div class="col-md-6" style="padding-left: 30px;padding-top:10px;">
+                        <label>Item/s <font style="color: Red;" >*</font> </label>
+                        <input  type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
+                        <font id="p" hidden>&nbsp</font>
+                        <table class="table table-striped table-hover" id="main">
+                          <tbody id="result">
+                          </tbody>
+                        </table>
+                        
+                        <div hidden>
+                          <input type="text" name="app_items" id="id" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                          <label>Stock/Property No.  <font style="color: Red;" >*</font> </label>
+                          <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
+                        </div>
+                        <div class="form-group">
+                          <label>Description/Specification </label>
+                          <input type="text" name="description" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <p></p>
+                        <div class="form-group" hidden>
+                          <label>Existing QTY</label>
+                          <input class="form-control" type="number" readonly id="two" name="two">
+                        </div>
+                        <div class="form-group">
+                          <label>Unit <font style="color: Red;" >*</font></label>
+                          <input  type="text" name="unit" id="unit"  class="form-control" readonly>
+                        </div>
+                        <font id="p" hidden>&nbspasd</font>
+                        <div class="form-group" style="padding-top: 5px;" >
+                          <label >Quantity <font style="color: Red;" >*</font></label>
+                          <input  class="form-control" type="number" id="qty" name="qty" >
+                        </div>
+                        <div class="form-group">
+                          <label>Unit Cost <font style="color: Red;" >*</font></label>
+                          <input  class="form-control" type="text" id="abc"  name="abc" readonly>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-primary pull-right"  type="submit" name="add" onclick="/* return confirm('Are you sure you want to Add this item?'); */">Add Item</button>
                   </div>
                 </div>
+              </div>  
+              <br>
+              <br>
+              <div class="form-group">
+                <label>Added PR Item/s.</label>
+                <div>
+                  <div class="panel-body container-items">
+                   <table style="background-color: white;border-width: medium;" class="table " id="item_table" >
+                    <tr>
+                      <th width="50">Stock/Property No.</th>
+                      <th width="100">Unit </th>
+                      <th width="200">Item</th>
+                      <th width="250">Description</th>
+                      <th width="100">Quantity</th>
+                      <th width="100">Unit Cost</th>
+                      <th width="150">Total Cost </th>
+                      <th width="100">Option</th>
+                    </tr>
+                    <tr>
+                      <?php 
+                      $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
+                      $pr_no = $_POST['pr_no'];
+                      $pmo = $_POST['pmo'];
+                      $pr_date = $_POST['pr_date'];
+                      $purpose = $_POST['purpose'];
+                      if ($pr_no == '') {
+                        $pr_no = $_GET['pr_no'];
+                      }
+                      $sql_items = $conn->query("SELECT a.sn,pa.id,pa.qty,pa.items,pa.app_id,pa.pr_no,pa.description,pa.unit,pa.abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' AND pmo = '$pmo' AND mac = '$macaddress' ");
+                      while ($row = $sql_items->fetch()) {
+                        $sn = $row['sn'];
+                        $id = $row['id'];
+                        $qty1 = $row['qty'];
+                        $items1 = $row['items'];
+                        $description1 = $row['description'];
+                        $unit1 = $row['unit'];
+                        $abc1 = $row['abc'];
+                        $procurement1 = $row['procurement'];
 
-                <div class="col-md-6">
-                  <p></p>
+                        if ($unit1 == "1") {
+                          $unit1a = "piece";
+                        }
 
-                
-                  <div class="form-group" hidden>
-                    <label>Existing QTY</label>
-                    <input class="form-control" type="number" readonly id="two" name="two">
-                  </div>
-                  <div class="form-group">
-                    <label>Unit <font style="color: Red;" >*</font></label>
-                    <input  type="text" name="unit" id="unit"  class="form-control" readonly>
-                   <!--  <select class="form-control select2" style="width: 100%;" name="unit" id="unit" >
-                      <option value="5">------------------------------SELECT UNIT------------------------------</option>
-                      <option value="16">book</option>
-                      <option value="11">bottle</option>
-                      <option value="2">box</option>
-                      <option value="14">bundle</option>
-                      <option value="10">can</option>
-                      <option value="21">cart</option>
-                      <option value="6">crtg</option>
-                      <option value="18">dozen</option>
-                      <option value="20">gallon</option>
-                      <option value="13">jar</option>
-                      
-                      <option value="4">lot</option>
-                      <option value="7">pack</option>
-                      <option value="15">pad</option>
-                      <option value="19">pair</option>
-                      <option value="22">pax</option>
-                      <option value="1">piece</option>
-                      <option value="17">pouch</option>
-                      <option value="3">ream</option>
-                      <option value="9">roll</option>
-                      <option value="12">set</option>
-                      <option value="8">tube</option>
-                      <option value="5">unit</option>
-                    </select> -->
-                  
-                  </div>
-                  <font id="p" hidden>&nbspasd</font>
-                  <div class="form-group" style="padding-top: 5px;" >
-                    <label >Quantity <font style="color: Red;" >*</font></label>
-                    <input  class="form-control" type="number" id="qty" name="qty" >
-                  </div>
-                  <div class="form-group">
-                    <label>Unit Cost <font style="color: Red;" >*</font></label>
-                    <input  class="form-control" type="text" id="abc"  name="abc" readonly>
-                  </div>
+                        if ($unit1 == "2") {
+                          $unit1a = "box";
+                        }
 
-                  <!-- /.box-body -->
-                </div>
-              </div>
-            <button class="btn btn-primary pull-right"  type="submit" name="add" onclick="/* return confirm('Are you sure you want to Add this item?'); */">Add Item</button>
-              
-            </div>
-          </div>
-        </div>  
+                        if ($unit1 == "3") {
+                          $unit1a = "ream";
+                        }
 
+                        if ($unit1 == "4") {
+                          $unit1a = "lot";
+                        }
 
-        <br>
-        <br>
-        <div class="form-group">
-        <label>Added PR Item/s.</label>
-        <div>
-        <div class="panel-body container-items">
-         <table style="background-color: white;border-width: medium;" class="table " id="item_table" >
-          <tr>
-          <th width="50">Stock/Property No.</th>
-          <th width="100">Unit </th>
-           <th width="200">Item</th>
-           <th width="250">Description</th>
-           <th width="100">Quantity</th>
-           <th width="100">Unit Cost</th>
-          <th width="150">Total Cost </th>
-           <th width="100">Option</th>
-         </tr>
-         <tr>
-          <?php 
-          $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
-          $pr_no = $_POST['pr_no'];
-          $pmo = $_POST['pmo'];
-          $pr_date = $_POST['pr_date'];
-          $purpose = $_POST['purpose'];
-          if ($pr_no == '') {
-            $pr_no = $_GET['pr_no'];
-          }
-          $sql_items = $conn->query("SELECT a.sn,pa.id,pa.qty,pa.items,pa.app_id,pa.pr_no,pa.description,pa.unit,pa.abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' AND pmo = '$pmo' AND mac = '$macaddress' ");
-          while ($row = $sql_items->fetch()) {
-            $sn = $row['sn'];
-            $id = $row['id'];
-            $qty1 = $row['qty'];
-            $items1 = $row['items'];
-            $description1 = $row['description'];
-            $unit1 = $row['unit'];
-            $abc1 = $row['abc'];
-            $procurement1 = $row['procurement'];
+                        if ($unit1 == "5") {
+                          $unit1a = "unit";
+                        }
 
-            if ($unit1 == "1") {
-              $unit1a = "piece";
-            }
+                        if ($unit1 == "6") {
+                          $unit1a = "crtg";
+                        }
 
-            if ($unit1 == "2") {
-              $unit1a = "box";
-            }
+                        if ($unit1 == "7") {
+                          $unit1a = "pack";
+                        }
+                        if ($unit1 == "8") {
+                          $unit1a = "tube";
+                        }
 
-            if ($unit1 == "3") {
-              $unit1a = "ream";
-            }
+                        if ($unit1 == "9") {
+                          $unit1a = "roll";
+                        }
 
-            if ($unit1 == "4") {
-              $unit1a = "lot";
-            }
+                        if ($unit1 == "10") {
+                          $unit1a = "can";
+                        }
 
-            if ($unit1 == "5") {
-              $unit1a = "unit";
-            }
+                        if ($unit1 == "11") {
+                          $unit1a = "bottle";
+                        }
 
-            if ($unit1 == "6") {
-              $unit1a = "crtg";
-            }
+                        if ($unit1 == "12") {
+                          $unit1a = "set";
+                        }
 
-            if ($unit1 == "7") {
-              $unit1a = "pack";
-            }
-            if ($unit1 == "8") {
-              $unit1a = "tube";
-            }
+                        if ($unit1 == "13") {
+                          $unit1a = "jar";
+                        }
 
-            if ($unit1 == "9") {
-              $unit1a = "roll";
-            }
+                        if ($unit1 == "14") {
+                          $unit1a = "bundle";
+                        }
 
-            if ($unit1 == "10") {
-              $unit1a = "can";
-            }
+                        if ($unit1 == "15") {
+                          $unit1a = "pad";
+                        }
 
-            if ($unit1 == "11") {
-              $unit1a = "bottle";
-            }
+                        if ($unit1 == "16") {
+                          $unit1a = "book";
+                        }
 
-            if ($unit1 == "12") {
-              $unit1a = "set";
-            }
+                        if ($unit1 == "17") {
+                          $unit1a = "pouch";
+                        }
 
-            if ($unit1 == "13") {
-              $unit1a = "jar";
-            }
+                        if ($unit1 == "18") {
+                          $unit1a = "dozen";
+                        }
 
-            if ($unit1 == "14") {
-              $unit1a = "bundle";
-            }
+                        if ($unit1 == "19") {
+                          $unit1a = "pair";
+                        }
+                        if ($unit1 == "20") {
+                          $unit1a = "gallon";
+                        }
 
-            if ($unit1 == "15") {
-              $unit1a = "pad";
-            }
+                        if ($unit1 == "21") {
+                          $unit1a = "cart";
+                        }
+                        if ($unit1 == "22") {
+                          $unit1a = "pax";
+                        }
+                        ?>
+                        
+                        <td id="tdvalue" hidden><?php echo $pr_no?> </td>
+                        <td><?php echo $sn ?></td>
+                        <td><input hidden type="text" name="unit1[]" value="<?php echo $unit1 ?>"><?php echo $unit1a?></td>
+                        <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php echo  $procurement1;?> </td>
+                        <td><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
+                        <td><input hidden type="text" name="qty1[]" value="<?php echo $qty1 ?>"><?php echo $qty1?></td>
+                        <td><input hidden type="text" name="abc1[]" value="<?php echo $abc1 ?>"><?php echo $abc1?></td>
+                        
+                        <td><?php  $ans = $abc1*$qty1;  echo $ans; ?></td>
+                        <td hidden><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
+                        <td>
+                         <!-- <?php echo '<a href="ViewEditPR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'" class="btn btn-primary btn-xs" ><i class="fa">&#xf044;</i></a>' ?> -->
 
-            if ($unit1 == "16") {
-              $unit1a = "book";
-            }
+                         <a onclick="return confirm('Are you sure you want to Delete?');" name="del"  href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> " class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                       </td>
+                     </tr>
+                   <?php } ?>
+                 </table>
+               </div>
+               <br>
+             </form>
+             <button class="btn btn-success" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
+           </div>  
+         </div>  
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>  
+         <br>
+       </body>
+       <script>
+        $(document).ready(function(){
+          $("#result").click(function(){
+            $("#main").hide();
+            $("#p").show();
+          });
+        });
+      </script>
 
-            if ($unit1 == "17") {
-              $unit1a = "pouch";
-            }
-
-            if ($unit1 == "18") {
-              $unit1a = "dozen";
-            }
-
-            if ($unit1 == "19") {
-              $unit1a = "pair";
-            }
-            if ($unit1 == "20") {
-              $unit1a = "gallon";
-            }
-
-            if ($unit1 == "21") {
-              $unit1a = "cart";
-            }
-            if ($unit1 == "22") {
-              $unit1a = "pax";
-            }
-            ?>
-            
-            <td id="tdvalue" hidden><?php echo $pr_no?> </td>
-            <td><?php echo $sn ?></td>
-            <td><input hidden type="text" name="unit1[]" value="<?php echo $unit1 ?>"><?php echo $unit1a?></td>
-            <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php echo  $procurement1;?> </td>
-            <td><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
-            <td><input hidden type="text" name="qty1[]" value="<?php echo $qty1 ?>"><?php echo $qty1?></td>
-            <td><input hidden type="text" name="abc1[]" value="<?php echo $abc1 ?>"><?php echo $abc1?></td>
-           
-            <td><?php  $ans = $abc1*$qty1;  echo $ans; ?></td>
-            <td hidden><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
-            <td>
-             <!-- <?php echo '<a href="ViewEditPR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'" class="btn btn-primary btn-xs" ><i class="fa">&#xf044;</i></a>' ?> -->
-
-             <a onclick="return confirm('Are you sure you want to Delete?');" name="del"  href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> " class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
-
-
-             <!-- <button class="btn btn-danger btn-xs"   type="submit" name="del" onclick="/* return confirm('Are you sure you want to Add this item?'); */"><i class="fa fa-trash-o"></i> Delete</button> -->
-           </td>
-         </tr>
-       <?php } ?>
-     </table>
-   </div>
-
-   
-   <br>
- </form>
-
- <button class="btn btn-success" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
-</div>  
-</div>  
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>  
-<br>
-</body>
-
-<script>
-$(document).ready(function(){
-  $("#result").click(function(){
-    $("#main").hide();
-    $("#p").show();
-  });
-});
-</script>
-
-<script>
-  $(function () {
+      <script>
+        $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
 
@@ -954,21 +818,21 @@ $(document).ready(function(){
     $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
     //Date range as a button
     $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
+    {
+      ranges   : {
+        'Today'       : [moment(), moment()],
+        'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+        'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
       },
-      function (start, end) {
-        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
+      startDate: moment().subtract(29, 'days'),
+      endDate  : moment()
+    },
+    function (start, end) {
+      $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+    }
     )
 
     //Date picker,
