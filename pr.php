@@ -21,9 +21,11 @@ $pmac = strpos($mycomsys, $find_mac);
 // Get Physical Address  
 
 $macaddress=substr($mycomsys,($pmac+36),17);  
-//Display Mac Address  
+//Display Mac Address
 
-echo $macaddress;
+$IP = $_SERVER['REMOTE_ADDR'];   
+
+echo $IP;
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
