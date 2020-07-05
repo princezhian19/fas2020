@@ -18,6 +18,7 @@ $pmac = strpos($mycomsys, $find_mac);
 
 $macaddress=substr($mycomsys,($pmac+36),17);  
 //Display Mac Address  
+$macaddress = $_SERVER['REMOTE_ADDR'];   
 
 
 if(!isset($_SESSION['username'])){
