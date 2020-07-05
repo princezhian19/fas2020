@@ -1,31 +1,63 @@
 <?php
 require('html_table.php');
+require('rpdf.php');
 
 $pdf = new PDF();
 $pdf->AliasNbPages();
-$pdf->AddPage();
+$pdf->AddPage('L', 'A4');
+// $pdf->AddPage('L');
 $pdf->Ln();
-$pdf->SetFont('Times','',11);
-$pdf->WriteHTML('Civil Service <br> Form No. 48');
-$pdf->Ln();
-$pdf->SetFont('Times','B',11);
-$pdf->Cell(185,10,'CHARLES ADRIAN T ODI',0,0,'C');
-$pdf->Ln(20);
-$pdf->SetFont('Times','',11);
-$pdf->WriteHTML('Civil Service <br> Form No. 48');
-$pdf->Ln();
-// $pdf->WriteHTML(0,10,'Civil Service <br> Form No. 48',0,1);
-$html='<table border="1">
-<tr>
-<td width="200" height="30">cell 1</td><td width="200" height="30" bgcolor="#D0D0FF">cell 2</td>
-</tr>
-<tr>
-<td width="200" height="30">cell </td><td width="200" height="30">cell 4</td>
-</tr>
-</table>';
+$pdf->SetFont('times', '', 6);
+$text = 'sample text here';
 
-for($i=1;$i<=40;$i++){
+// $pdf->WriteHTML(0,10,'Civil Service <br> Form No. 48',0,1);
+$html='
+<table cellspacing="0" cellpadding="1" border="1" width = "40%">
+<tr height="50" align="center">
+
+<td width="100" rowspan=""><b>Emp No</b></td>
+<td width="100"><b>Employee Name</b></td>
+<td width="80"><b>Office</b></td>
+<td width="100"><b>Position</b></td>
+<td width="47"><b>Pay Period</b></td>
+
+</tr>
+
+<tr align="center">
+
+<td width="100" rowspan="">F-123567</td>
+<td width="100">$full_name</td>
+<td width="80">$station</td>
+<td width="100">$position</td>
+<td width="47">$date_loan</td>
+
+</tr>
+
+<tr align="center">
+<td width="100" rowspan=""><b>Earnings</b></td>
+<td width="100" ><b>Net Pay (Break Down)</b></td>
+<td  width="227" ><b>Deduction</b></td>
+
+</tr>
+
+<tr>
+
+<td >cell </td>
+<td >cell 4</td>
+<td >'.$text.' 1</td>
+<td  bgcolor="#D0D0FF">cell 2</td>
+<td >'.$text.' 1</td>
+<td  bgcolor="#D0D0FF">cell 2</td>
+
+</tr>
+</table>
+
+';
+
+
+
+// for($i=1;$i<=40;$i++){
 $pdf->WriteHTML($html);
-}
+// }
 $pdf->Output();
 ?>

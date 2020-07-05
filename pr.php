@@ -373,6 +373,9 @@ if (isset($_POST['add'])) {
         echo "<div style='background-color:lightblue;color:red;'> <p> <b>Unit Cannot Be Blank</b> <p> <div>";
 
       } else{
+
+        echo 'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc,mac) 
+          VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'","'.$macaddress.'")';exit;
        
          $insert_items = mysqli_query($conn,'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc,mac) 
           VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'","'.$macaddress.'")');
