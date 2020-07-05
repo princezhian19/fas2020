@@ -23,7 +23,7 @@ $pmac = strpos($mycomsys, $find_mac);
 $macaddress=substr($mycomsys,($pmac+36),17);  
 //Display Mac Address  
 
-
+echo $macaddress;
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
