@@ -315,14 +315,19 @@ if (isset($_POST['stamp4'])) {
                 $date333 = new DateTime("08:00");
                 $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
                 $finalfinal = $date3333->diff($date333);
+                $dateZero = new DateTime("08:00");
+                $dateZero15 = new DateTime("00:00");
                 if($time_out == NULL){
 
                  echo ''; 
                }
                else{
-
+                 if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finaldate->format('%H'.':'.'%i') ==  $dateZero->format('H:I') || $finalfinal->format('%H') ==  $dateZero15->format('H')) {
+                 echo ''; 
+                }else{
                 echo $finalfinal->format('%H');  
 
+              }
               }
 
             }else{
@@ -344,6 +349,7 @@ if (isset($_POST['stamp4'])) {
                 $date333 = new DateTime("08:00"); 
                 $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
                 $finalfinal = $date3333->diff($date333);
+                $dateZero15 = new DateTime("00:00");
 
 
                 if($time_out == NULL){
@@ -351,7 +357,7 @@ if (isset($_POST['stamp4'])) {
                  echo ''; 
                }
                else{
-                  if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
+                 if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finaldate->format('%H'.':'.'%i') ==  $dateZero->format('H:I') || $finalfinal->format('%H') ==  $dateZero15->format('H')) {
                  echo ''; 
                 }else{
                 echo $finalfinal->format('%H');  
@@ -375,7 +381,7 @@ if (isset($_POST['stamp4'])) {
                  echo ''; 
                }
                else{
-                if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
+                 if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finaldate->format('%H'.':'.'%i') ==  $dateZero->format('H:I')) {
                  echo ''; 
                 }else{
                 echo $finalfinal->format('%i');  
