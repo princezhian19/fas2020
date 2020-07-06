@@ -33,7 +33,6 @@ $styleArray = array(
 );
 
 
-
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
 $user = $_GET['user'];
@@ -57,7 +56,8 @@ exit(); */
         $tono = $excelrow['tono'];
         $date1 = $excelrow['date'];
         $date = date('F d, Y', strtotime($date1));
-     
+
+        
         $office = $excelrow['office'];
         $name = $excelrow['name'];
         $purpose = $excelrow['purpose'];
@@ -102,10 +102,6 @@ exit(); */
           $lastdate = date('F d, Y', strtotime($lastdate1));
         }
       
-
-      
-       
-        
 
         $submittedby = $excelrow['submittedby'];
         $receivedby = $excelrow['receivedby'];
@@ -188,6 +184,6 @@ $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
 
   $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
   $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-  header('location: to_export.xlsx');
+  header('location: vr_export.xlsx');
 
 ?>
