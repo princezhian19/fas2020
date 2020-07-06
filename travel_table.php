@@ -1,5 +1,14 @@
 <?php
 session_start();
+if(!isset($_SESSION['username'])){
+  header('location:index.php');
+  }else{
+    error_reporting(0);
+  ini_set('display_errors', 0);
+  $username = $_SESSION['username'];
+  $_SESSION['unique_id'] = 1;
+  
+  }
 include('db.class.php'); // call db.class.php
 $mydb = new db(); // create a new object, class db()
 
@@ -24,7 +33,7 @@ $mydb = new db(); // create a new object, class db()
           
             <div>
                 <h1>Monitoring of Travel Claim Request</h1><br>
-           <a href = "CreateTravelClaim.php?ui=1" ><button class = "btn btn-md btn-success">Create</button></a><br><br><br>
+           <a href = "CreateTravelClaim.php?ui=1&username=<?php echo $username;?>" ><button class = "btn btn-md btn-success">Create</button></a><br><br><br>
                 
             </div>
             
@@ -128,7 +137,7 @@ $mydb = new db(); // create a new object, class db()
               
               $('#example tbody').on( 'click', '#view', function () {
                 var data = table.row( $(this).parents('tr') ).data();
-                window.location="CreateTravelClaim.php?ui=1&id="+data[0];
+                window.location="ViewTravelClaim.php?&ro_no="+data[0];
               } );
           });
               </script>
