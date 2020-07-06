@@ -368,7 +368,7 @@ function rowCount(){
                       <label>Entity Name: 
                         </td>
                           <td colspan = 10  >
-                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
+                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly name = "entity_name"/>
                       </td>
                   </tr>
           
@@ -378,22 +378,22 @@ function rowCount(){
                     <label>Fund Cluster:</label>
                       </td>
                         <td colspan = "4">
-                      <input type = "text" class = "form-control" readonly/>
+                      <input type = "text" class = "form-control" readonly name = "fund_cluster"/>
                     </td>
                   <td class = "label-text" colspan = 2>
                     <label>No:</label>
                       </td>
                         <td colspan = 4>
-                      <input type = "text" class = "form-control" readonly/>
+                      <input type = "text" class = "form-control" readonly name = "no"/>
                     </td>
                 </tr>
                 <tr>
                   <td class = "label-text">
                     <label>Name: 
                       </td>
-                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo getCompleteName();?>" readonly/></td>
+                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;" value = "<?php echo getCompleteName();?>" readonly name = "complete_name"/></td>
                   <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
+                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Position:</label></td>
@@ -416,6 +416,7 @@ function rowCount(){
                   <td colspan = 10>
                       <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
                       <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+                      <button class = "btn btn-success btn-md pull-right"> Submit </button>
                   </td>
               </tr>
               <tr>
@@ -440,8 +441,12 @@ function rowCount(){
                   <td colspan = 5 rowspan = 2>Approved By <CENTER><br>_____________________________________________<br> <b> ARIEL O. IGLESIA	</b> </CENTER> </td>
                 </tr>
                 <tr>
+                
                 </tr>
+            
+                
             </table>
+  
   
       
            
@@ -627,14 +632,7 @@ function rowCount(){
                           </div>
                       </div>
                     </div>
-                    <span class = "btn btn-success btn-md pull-right" id= "add_fare">Add Fare</span>
-                  </div>
-
-
-
-                  </div>
-
-                  <div class="well" style = "padding:10px;" id = "travelPanel">
+                    <div style = "padding:10px;" >
                     <div class="box-body myTemplate2">
                       <div class="row ">
                         <div class="col-md-6">
@@ -664,6 +662,17 @@ function rowCount(){
                         </div>
                       </div>
                     </div>
+                  </div>
+                    <span class = "btn btn-success btn-md pull-right" id= "add_fare">Add Fare</span>
+                  </div>
+
+
+
+                  </div>
+
+            
+
+                  <div class = "well" style = "padding:10px;" id = "travelPanel">
                   </div>
                   <button type = "submit" class = "btn btn-success btn-md pull-right">Save </button>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

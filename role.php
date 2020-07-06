@@ -1,18 +1,20 @@
  <?php 
  $id = $_GET['id'];
  $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
- $query = mysqli_query($conn,"SELECT ACCESSTYPE,TIN_N,APPROVEDBY,CONCAT(FIRST_M, ' ', MIDDLE_M, ' ', LAST_M) AS fullname FROM tblemployeeinfo WHERE EMP_N = $id");
+ $query = mysqli_query($conn,"SELECT ACCESSTYPE,TIN_N,ORD,APPROVEDBY,CONCAT(FIRST_M, ' ', MIDDLE_M, ' ', LAST_M) AS fullname FROM tblemployeeinfo WHERE EMP_N = $id");
  $row = mysqli_fetch_array($query);
  $role = $row['APPROVEDBY'];
  $ACCESSTYPE = $row['ACCESSTYPE'];
  $TIN_N = $row['TIN_N'];
+ $ORD = $row['ORD'];
  $fullname = $row['fullname'];
 
  if (isset($_POST['submit'])) {
   $UROLE = $_POST['UROLE'];
   $HR = $_POST['HR'];
   $TIN_N = $_POST['TIN_N'];
-  $updateQ = mysqli_query($conn,"UPDATE tblemployeeinfo SET APPROVEDBY = '$UROLE', ACCESSTYPE = '$HR',TIN_N = '$TIN_N' WHERE EMP_N = $id");
+  $ORD = $_POST['ORD'];
+  $updateQ = mysqli_query($conn,"UPDATE tblemployeeinfo SET APPROVEDBY = '$UROLE', ACCESSTYPE = '$HR',TIN_N = '$TIN_N',ORD = '$ORD' WHERE EMP_N = $id");
   if ($updateQ) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Assigned!')
@@ -110,9 +112,23 @@
    </select>
  </div>
  <div class="form-group">
-  <label>Supervisor </label>
+  <label>DTR Printing </label>
   <select class="form-control select2" name="TIN_N">
     <?php if ($TIN_N == '0' || $TIN_N == NULL): ?>
+     <option value="0">No</option>
+     <option value="1">Yes</option>
+     <?php else: ?>
+       <option value="1">Yes</option>
+       <option value="0">No</option>
+     <?php endif ?>
+
+   </select>
+ </div>
+
+ <div class="form-group">
+  <label>Asset Management </label>
+  <select class="form-control select2" name="ORD">
+    <?php if ($ORD == NULL || $ORD == '0'): ?>
      <option value="0">No</option>
      <option value="1">Yes</option>
      <?php else: ?>

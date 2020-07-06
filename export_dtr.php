@@ -60,7 +60,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('A6',$FNAME);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A8','For the Month of '.date('F Y',strtotime($this_date)));
 
 $sql_items = mysqli_query($conn, "SELECT id, UNAME,date_today,time_in, lunch_out,lunch_in,time_out,SUBTIME(time_out,'01:00:00') as time_out1 FROM dtr WHERE UNAME ='$username' AND  `date_today` LIKE '%$this_date%'
-");
+  ");
 
 
 
@@ -119,21 +119,25 @@ if (mysqli_num_rows($sql_items)>0) {
     $date333 = new DateTime("08:00");
     $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
     $finalfinal = $date3333->diff($date333);
-
+    $dateZero = new DateTime("00:00");
 
     if($time_out == NULL){
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
-   }
-   else{
-    if ($date3333 > $date333) {
+    }
+    else{
+     if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%H') ==  $dateZero->format('H')) {
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
-   }else{
+    }else{
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, $finalfinal->format('%H'));
+    }
+    if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%I') ==  $dateZero->format('I')) {
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, '');
+    }else{
       $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, $finalfinal->format('%i'));
+    }
   }
-}
     // echo $finalfinal->format('%i');
-  }else{
+}else{
     $lateD = date('H:i',strtotime($time_in)) < date('H:i',strtotime('07:00')); // pag 6 59 pbaba time ine
     if($lateD){ //morning late
     $datetime1 = new DateTime('07:00');//time in
@@ -141,29 +145,35 @@ if (mysqli_num_rows($sql_items)>0) {
     $datetime1 = new DateTime($time_in);//time in
   }
    $latePM = date('H:i',strtotime($time_out1)) > date('H:i',strtotime('17:00')); // pag 6 59 pbaba time ine
-  if ($latePM) {
-   $datetime2 = new DateTime('17:00');
-  }else{
+   if ($latePM) {
+     $datetime2 = new DateTime('17:00');
+   }else{
     $datetime2 = new DateTime($time_out1);//time
   }
-   
-   $finaldate = $datetime2->diff($datetime1); 
+
+  $finaldate = $datetime2->diff($datetime1); 
     $date333 = new DateTime("08:00"); // eto ung mminus sa time diff oks try mo
     $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
     $finalfinal = $date3333->diff($date333);
+    $dateZero = new DateTime("00:00");
 
 
     if($time_out == NULL){
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
-   }
-   else{
-    if ($date3333 > $date333) {
+    }
+    else{
+     if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%H') ==  $dateZero->format('H')) {
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
-   }else{
+    }else{
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, $finalfinal->format('%H'));
+    }
+    if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%I') ==  $dateZero->format('I')) {
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, '');
+    }else{
       $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, $finalfinal->format('%i'));
+    }
+
   }
-}
 
 
 

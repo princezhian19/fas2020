@@ -29,7 +29,7 @@ function countReceived()
 }
 function countForAction()
 {
-  include 'connection.php';
+  include 'connection.php'; 
   $a = ucwords(strtoupper($_SESSION['complete_name3']));
   $query = "SELECT count(*) as 'count_fa' FROM tbltechnical_assistance 
   where `STATUS_REQUEST` = 'For action' and `REQ_BY` = '".$a."' ";

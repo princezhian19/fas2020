@@ -64,6 +64,12 @@ if (isset($_POST['submit'])) {
                 <div>
                  <div class="col-xs-1">
                  </div>
+                 <div class="col-xs-2 " style="padding-top: 5px;" hidden>
+                <div >
+                <br>
+              <a href="javascript:void(0);" class="btn btn-success link2 pull-right" data-id="<=$data['id']?>">DTR</a>
+              </div>
+                 </div>
                   <div class="col-xs-2">
                 <div hidden>
                <label>Employement Status </label>
@@ -75,12 +81,7 @@ if (isset($_POST['submit'])) {
 
                </div>
                </div>
-               <div class="col-xs-2 " style="padding-top: 5px;" hidden>
-                <div >
-                <br>
-              <a href="javascript:void(0);" class="btn btn-success link2 pull-right" data-id="<=$data['id']?>">DTR</a>
-              </div>
-                 </div>
+               
                </div>
                 
                <div class="col-xs-2" hidden>
@@ -144,7 +145,7 @@ if (isset($_POST['submit'])) {
         </thead>
         <?php 
         $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-        $view_query = mysqli_query($conn, "SELECT tblemployee.LANDPHONE,tblemployee.REMARKS_M,tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.UNAME,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.ALTER_EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION ");
+        $view_query = mysqli_query($conn, "SELECT tblemployee.LANDPHONE,tblemployee.REMARKS_M,tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.UNAME,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.ALTER_EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION ORDER BY tblemployee.LAST_M ASC");
 
 
         while ($row = mysqli_fetch_assoc($view_query)) {
@@ -228,7 +229,7 @@ if (isset($_POST['submit'])) {
       var month = $('#month').val();
 
       window.location = 
-      'fpdf/tutorial/export_dtr.php?office='+office+'&month='+month+'&emp_status='+emp_status;
+      'pdf/examples/export_dtr.php?office='+office+'&month='+month+'&emp_status='+emp_status;
       // 'export_employee.php?office='+office+'&pr_no='+pr_no;
     });
   }) ;

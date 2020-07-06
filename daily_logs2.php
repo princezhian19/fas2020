@@ -225,12 +225,10 @@ if (isset($_POST['stamp4'])) {
         </div>
         <div class="box-body table-responsive no-padding">
           <div class="box-body">
-            <?php if ($ACCESSTYPE == 'admin'): ?>
              <a href="ViewEmployees.php?division=<?php echo $division?>&username=<?php echo $username?>" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
            <div style="float: right;padding:5px;">
             <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
           </div>
-           <?php endif ?>
           <br>
           <br>
           <br>
@@ -315,14 +313,18 @@ if (isset($_POST['stamp4'])) {
                 $date333 = new DateTime("08:00");
                 $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
                 $finalfinal = $date3333->diff($date333);
+                $dateZero = new DateTime("00:00");
                 if($time_out == NULL){
 
                  echo ''; 
                }
                else{
-
+                 if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%H') ==  $dateZero->format('H')) {
+                 echo ''; 
+                }else{
                 echo $finalfinal->format('%H');  
 
+              }
               }
 
             }else{
@@ -344,6 +346,7 @@ if (isset($_POST['stamp4'])) {
                 $date333 = new DateTime("08:00"); 
                 $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
                 $finalfinal = $date3333->diff($date333);
+                $dateZero = new DateTime("00:00");
 
 
                 if($time_out == NULL){
@@ -351,7 +354,7 @@ if (isset($_POST['stamp4'])) {
                  echo ''; 
                }
                else{
-                  if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
+                 if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%H') ==  $dateZero->format('H')) {
                  echo ''; 
                 }else{
                 echo $finalfinal->format('%H');  
@@ -375,7 +378,7 @@ if (isset($_POST['stamp4'])) {
                  echo ''; 
                }
                else{
-                if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i')) {
+                if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%I') ==  $dateZero->format('I')) {
                  echo ''; 
                 }else{
                 echo $finalfinal->format('%i');  
