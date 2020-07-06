@@ -64,14 +64,14 @@ if (isset($_POST['submit'])) {
                 <div>
                  <div class="col-xs-1">
                  </div>
-                 <div class="col-xs-2 " style="padding-top: 5px;" >
+                 <div class="col-xs-2 " style="padding-top: 5px;" hidden>
                 <div >
                 <br>
               <a href="javascript:void(0);" class="btn btn-success link2 pull-right" data-id="<=$data['id']?>">DTR</a>
               </div>
                  </div>
                   <div class="col-xs-2">
-                <div >
+                <div hidden>
                <label>Employement Status </label>
                 <select  class="form-control select2" name="emp_status" id="emp_status">
                   <option selected disabled></option>
@@ -84,7 +84,7 @@ if (isset($_POST['submit'])) {
                
                </div>
                 
-               <div class="col-xs-2" >
+               <div class="col-xs-2" hidden>
                 <div >
                 <label>Month </label>
                 <select  class="form-control select2" name="month" id="month">
