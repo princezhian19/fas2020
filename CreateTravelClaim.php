@@ -65,7 +65,15 @@ $_SESSION['unique_id'] = 1;
         <li class="active">Travel Claim</li>
       </ol><br>
      
-<?php include 'travelclaim.php';?>
+
+      <?php 
+          if($_GET['ui'] == 1)
+          {
+            include 'travelclaim.php';
+          }else{
+            include 'travel_table.php';
+          }
+          ?>
     </section>
   </div>
   <footer class="main-footer">
