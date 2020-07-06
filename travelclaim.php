@@ -43,12 +43,12 @@ div.pac-container {
     z-index: 99999999999 !important;
 }
 .border-disabled{
-  border: 2px solid gray;
+  border: 3px solid gray;
 }
 .box{
-        position: relative;
-        display: inline-block; /* Make the width of box same as image */
-    }
+  position: relative;
+  display: inline-block; /* Make the width of box same as image */
+}
     .box .text{
       padding:10%;
 
@@ -194,13 +194,8 @@ function showData()
         if(mysqli_num_rows($result) > 0)    
         {
           $rnums = mysqli_num_rows($result);
-            while($row = mysqli_fetch_array($result))
-            {
-              $rnums = mysqli_num_rows($result1);
-      
-              
-            ?>
-            <tr>
+          ?>
+ <tr>
             <thead class = "fixed-header">
                 <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2>
                   Date
@@ -220,10 +215,16 @@ function showData()
             </thead>
 
               </tr>
-<?php 
-// TBODY
-rowCount();
-?>
+          <?php
+            while($row = mysqli_fetch_array($result))
+            {
+              $rnums = mysqli_num_rows($result1);
+      
+              
+            ?>
+           
+              <!-- <tbody style = "margin-top:150%px;"> -->
+
             <tr>
                 <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?> </td>
             </tr>
@@ -292,45 +293,6 @@ rowCount();
 
     
 }
-function rowCount(){
-  include 'connection.php';
-  $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID";
-  $result1 = mysqli_query($conn, $query1);
-  $row_cnt = $result1->num_rows;
-  if($row_cnt == 1)
-  {
-    ?>
-              <tbody class = "scroll" style ="height:90px;">
-
-    <?php
-  }else if($row_cnt == 2) {
-    ?>
-              <tbody class = "scroll" style ="height:180px;">
-
-    <?php
-  }else if($row_cnt == 3) {
-    ?>
-              <tbody class = "scroll" style ="height:270px;">
-
-    <?php
-  }else if($row_cnt == 4) {
-    ?>
-              <tbody class = "scroll" style ="height:360px;">
-
-    <?php
-  }else if($row_cnt == 5) {
-    ?>
-              <tbody class = "scroll" style ="height:450px;">
-
-    <?php
-  }else{
-    ?>
-              <tbody class = "scroll" style ="height:540px;">
-
-    <?php
-
-  }
-}
 
         
     
@@ -368,7 +330,7 @@ function rowCount(){
                       <label>Entity Name: 
                         </td>
                           <td colspan = 10  >
-                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly name = "entity_name"/>
+                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
                       </td>
                   </tr>
           
@@ -378,22 +340,22 @@ function rowCount(){
                     <label>Fund Cluster:</label>
                       </td>
                         <td colspan = "4">
-                      <input type = "text" class = "form-control" readonly name = "fund_cluster"/>
+                      <input type = "text" class = "form-control" readonly/>
                     </td>
                   <td class = "label-text" colspan = 2>
                     <label>No:</label>
                       </td>
                         <td colspan = 4>
-                      <input type = "text" class = "form-control" readonly name = "no"/>
+                      <input type = "text" class = "form-control" readonly/>
                     </td>
                 </tr>
                 <tr>
                   <td class = "label-text">
                     <label>Name: 
                       </td>
-                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;" value = "<?php echo getCompleteName();?>" readonly name = "complete_name"/></td>
+                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo getCompleteName();?>" readonly/></td>
                   <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
+                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Position:</label></td>
@@ -416,7 +378,6 @@ function rowCount(){
                   <td colspan = 10>
                       <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
                       <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                      <button class = "btn btn-success btn-md pull-right"> Submit </button>
                   </td>
               </tr>
               <tr>
