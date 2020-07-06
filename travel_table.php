@@ -12,16 +12,7 @@ $mydb = new db(); // create a new object, class db()
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<style>
-th{
-  color:blue;
-  text-align:center;
-}
-/* .dataTables_wrapper .dataTables_paginate {
-    float: left;
-} */
 
-</style>
 </head>
 
 <body>
@@ -53,9 +44,6 @@ th{
                         <th>VENUE</th>
                         <th style = "text-align:center;max-width:20%;">ACTION</th>
                     </thead>
-                        
-                        
-
 
                 </table>
       
@@ -104,3 +92,43 @@ th{
 
 </body>
 </html>
+<script>
+          $(document).ready(function() {
+            
+        
+              var action = '';
+              var table = $('#example').DataTable( {
+        
+                'scrollX'     : true,
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true,   aLengthMenu: [ [10, 10, 20, -1], [10, 10, 20, "All"] ],
+                "bPaginate": false,
+                "bLengthChange": false,
+                "bFilter": true,
+                "bInfo": false,
+                "bAutoWidth": false,
+                  "processing": true,
+                  "serverSide": false,
+                  "ajax": "DATATABLE/travel_claim.php",
+                  "columnDefs": [ {
+                      "targets": 8,
+                      "render": function (data, type, row, meta ) {  
+                      action = "<button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>";
+                      return action;
+                      }
+                  }]
+                
+
+              } );
+
+              
+              $('#example tbody').on( 'click', '#view', function () {
+                var data = table.row( $(this).parents('tr') ).data();
+                window.location="CreateTravelClaim.php?ui=1&id="+data[0];
+              } );
+          });
+              </script>
