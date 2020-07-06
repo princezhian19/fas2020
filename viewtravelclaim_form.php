@@ -69,26 +69,13 @@ div.pac-container {
 
     }
  
-tbody{
-    display:block;
-    height:300px;
-    overflow:auto;
-    
-}
-
-.fixed-header{
-    display:table;
-    table-layout:fixed;
-    margin-top:-24.2%;
-    width:100%;
-
-}
 
 
 
 </style>
 <?php
 // PHP FUNCTION
+
 function aa($id)
 {
     include 'connection.php';
@@ -118,24 +105,34 @@ function aa($id)
                       }else
                       {
                           ?>
-                              <td style = "width:11%;"><input readonly id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+                              <td style = "width:9.8%;"><input readonly id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
                           <?php
                       }   
                       
                   }else{
         ?>
         
-        <tr>
+        <tr style =" display:table; table-layout:fixed; width:100%;">>
             <?php }?>
-            <td><textarea readonly cols = 13 style = "resize:none;background:#ECEFF1;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
+            <td ><textarea readonly cols = 13 style = "resize:none;background:#ECEFF1;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
             <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
-            <td style = "width:9.5%;"><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
-            <td style = "width:9.5%;"><input readonly type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
-            <td style = "width:9.5%;"><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
-            <td style = "width:9.5%;"><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['PERDIEM']);?>"/></td>
-            <td style = "width:9.5%;"><input readonly type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
-            <td style = "width:12%;"><input readonly type = "text" class = "form-control" style = "width:100%%;" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['PERDIEM']);?>"/></td>
+            <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
+            <td><input readonly type = "text" class = "form-control" style = "width:100%%;" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
+            <?php 
+if(basename($_SERVER['PHP_SELF']) == 'ViewTravelClaim.php')
+{
+}
+else{
+?>
             <td style = "width:9.5%;"><button class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['ID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</button></td>
+
+<?php
+}
+?>
 
         </tr>
         
@@ -189,7 +186,7 @@ function aa($id)
 function showData()
 {
         include 'connection.php';
-        $query = "SELECT * FROM tbltravel_claim_info2  WHERE `NAME` = '".$_GET['username']."'";
+        $query = "SELECT * FROM `tbltravel_claim_info2` WHERE `RO_TO_OB` LIKE '%".$_GET['ro_no']."%'";
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
@@ -200,8 +197,10 @@ function showData()
       
               
             ?>
+
+
             <tr>
-            <thead class = "fixed-header">
+            <thead style =" display:table; table-layout:fixed; width:100%;">
                 <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2>
                   Date
                 </th>
@@ -212,7 +211,17 @@ function showData()
                 <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Per Diem</th>
                 <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Others</th>
                 <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Total Amount</th>
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan =3W>Action</th>
+                <?php 
+if(basename($_SERVER['PHP_SELF']) == 'ViewTravelClaim.php')
+{
+
+}else{
+?>
+                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan =3>Action</th>
+
+<?php
+}
+                ?>
               </tr>
               <tr>
                 <th class = "table-header"  style = "text-align:center;">Arrival</th>
@@ -278,7 +287,17 @@ rowCount();
                 <td><input type = "text" class = "form-control" value = "<?php echo $row['PERDIEM'];?>"/></td>
                 <td><input type = "text" class = "form-control" value = "<?php echo $row['OTHERS'];?>"/></td>
                 <td><input type = "text" class = "form-control" value = "<?php echo $row['TOTAL_AMOUNT'];?>"/></td>
+                <?php 
+if(basename($_SERVER['PHP_SELF']) == 'ViewTravelClaim.php')
+{
+}
+else{
+?>
                 <td><button class = "btn btn-md btn-danger" id = "btnids" data-id = "<?php echo $row['ID'];?>" value = "<?php echo $row['ID'];?>"><i class = "fa fa-trash"></i>Delete</button></td>
+
+<?php
+}
+?>
             </tr>
         
             <?php
@@ -325,7 +344,7 @@ function rowCount(){
     <?php
   }else{
     ?>
-              <tbody class = "scroll" style ="height:540px;">
+              <tbody class = "scroll" style ="height:540px;display:block; height:300px; overflow:auto;">
 
     <?php
 
@@ -346,11 +365,11 @@ function rowCount(){
 
 <div class="box">
   <div class="box-body">
-    <h1 align="">&nbsp<b>Create Itinerary</b></h1>
+    <h1 align="">&nbsp<b>View Itinerary</b></h1>
     <div class="box-header with-border">
     </div>
     <br>
-    &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="home.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Back</a></li>
+    &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="CreateTravelClaim.php?username=<?php echo $username;?>&division=<?php echo $_SESSION['division'];?>" style="color:white;text-decoration: none;">Back</a></li>
 
     <br>
     <br>
@@ -368,7 +387,7 @@ function rowCount(){
                       <label>Entity Name: 
                         </td>
                           <td colspan = 10  >
-                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly name = "entity_name"/>
+                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
                       </td>
                   </tr>
           
@@ -378,28 +397,28 @@ function rowCount(){
                     <label>Fund Cluster:</label>
                       </td>
                         <td colspan = "4">
-                      <input type = "text" class = "form-control" readonly name = "fund_cluster"/>
+                      <input type = "text" class = "form-control" readonly/>
                     </td>
                   <td class = "label-text" colspan = 2>
                     <label>No:</label>
                       </td>
                         <td colspan = 4>
-                      <input type = "text" class = "form-control" readonly name = "no"/>
+                      <input type = "text" class = "form-control" readonly/>
                     </td>
                 </tr>
                 <tr>
                   <td class = "label-text">
                     <label>Name: 
                       </td>
-                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;" value = "<?php echo getCompleteName();?>" readonly name = "complete_name"/></td>
+                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo getCompleteName();?>" readonly/></td>
                   <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
+                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Position:</label></td>
                     <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly/></td>
                       <td colspan = 5 rowspan = 2>
-                        <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"></textarea></td>
+                        <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"><?php echo $_GET['ro_no'];?></textarea></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Official Station: </label></td>
@@ -416,7 +435,6 @@ function rowCount(){
                   <td colspan = 10>
                       <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
                       <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                      <button class = "btn btn-success btn-md pull-right"> Submit </button>
                   </td>
               </tr>
               <tr>
