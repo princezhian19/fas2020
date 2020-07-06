@@ -352,7 +352,7 @@ function app($connect)
                 
                 <div class="col-md-3">
                     <label>MFO/PPA</label>
-                    <input readonly required  type="text"  class="form-control" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa">
+                    <input  required  type="text"  class="form-control" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa">
                     <table class="table table-striped table-hover" id="main3">
                     <tbody id="result3">
                     </tbody>
