@@ -42,12 +42,12 @@ $html='
 
 <tr>
 
-<td >cell </td>
-<td >cell 4</td>
-<td >'.$text.' 1</td>
-<td  bgcolor="#D0D0FF">cell 2</td>
-<td >'.$text.' 1</td>
-<td  bgcolor="#D0D0FF">cell 2</td>
+<td width="50" style="text-align:center;">cell </td>
+<td width="50" valign="middle">cell </td>
+<td width="50" valign="middle">cell </td>
+<td width="50" valign="middle">cell </td>
+<td width="150">'.$text.' 1</td>
+<td width="77">'.$text.' 1</td>
 
 </tr>
 </table>
