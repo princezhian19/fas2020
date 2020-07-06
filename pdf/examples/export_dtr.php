@@ -47,7 +47,7 @@ $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 $pdf->SetFont('times', '', 11);
-$pdf->AddPage('L', 'A4');
+$pdf->AddPage('P', 'A4');
 // $pdf->Cell(0, 0, 'A4 LANDSCAPE', 1, 1, 'C');
 $space1 = str_repeat('&nbsp;', 5);
 $space2 = str_repeat('&nbsp;', 65);
@@ -84,21 +84,33 @@ $office = $_GET['office'];
 $emp_status = $_GET['emp_status'];
 $month = $_GET['month'];
 $year = '2020';
+$this_date = $year.'-'.$month;
 
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 if ($emp_status == '') {
-    $sql_items1 = mysqli_query($conn, "SELECT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME,te.LAST_M,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND dtr.date_today LIKE '%$this_date%' ");
-  # code...
+    $sql_items = mysqli_query($conn, "SELECT DISTINCT te.EMP_N FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND dtr.date_today LIKE '%$this_date%' ");
+    while ($allS = mysqli_fetch_assoc($sql_items)) {
+      $EMP_N[] = $allS['EMP_N'];
+  }
 }else{
-  $sql_items1 = mysqli_query($conn, "SELECT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME,te.LAST_M,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND te.ACTIVATED = '$emp_status' AND dtr.date_today LIKE '%$this_date%' ");
-
-
+  $sql_items = mysqli_query($conn, "SELECT DISTINCT te.EMP_N FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND te.ACTIVATED = '$emp_status' AND dtr.date_today LIKE '%$this_date%' ");
+  while ($allS = mysqli_fetch_assoc($sql_items)) {
+      $EMP_N[] = $allS['EMP_N'];
+  }
 }
 
+$implode1 = implode(',', $EMP_N);
+
+if ($emp_status == '') {
+    $sql_items1 = mysqli_query($conn, "SELECT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME,te.LAST_M,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND te.EMP_N in ($implode1) AND dtr.date_today LIKE '%$this_date%' ");
+}else{
+  $sql_items1 = mysqli_query($conn, "SELECT concat(te.LAST_M,',',te.FIRST_M,' ',te.MIDDLE_M) as FNAME,te.LAST_M,dtr.date_today,dtr.time_in, dtr.lunch_out,dtr.lunch_in,dtr.time_out,SUBTIME(dtr.time_out,'01:00:00') as time_out1 FROM tblemployeeinfo te LEFT JOIN dtr on dtr.UNAME = te.UNAME WHERE te.DIVISION_C = '$office' AND te.ACTIVATED = '$emp_status' AND  te.EMP_N in ($implode1) AND  dtr.date_today LIKE '%$this_date%' ");
+}
 
 while ($excelrow = mysqli_fetch_assoc($sql_items1)) {
 
-    $date = $excelrow['date_today'];
+    $date1 = $excelrow['date_today'];
+    $date = date('F d, Y',strtotime($date1));
     $time_in = $excelrow['time_in'];
     $lunch_in = $excelrow['lunch_in'];
     $lunch_out = $excelrow['lunch_out'];
@@ -112,20 +124,28 @@ while ($excelrow = mysqli_fetch_assoc($sql_items1)) {
     $space2 3/F Andenson Bldg. 1, Brgy. Parian City of Calamba, Laguna $space2 $space2 $space6 $space6 $space3 $space3 $space3 $space3 3/F Andenson Bldg. 1, Brgy. Parian City of Calamba, Laguna</p>
     <table cellspacing="0" cellpadding="1" border="1" width = "40%">
     <tr height="50" align="center">
-    <td ><b>Emp No</b></td>
-    <td ><b>Employee Name</b></td>
-    <td ><b>Office</b></td>
-    <td ><b>Position</b></td>
-    <td ><b>Pay Period</b></td>
+    <td width = "100" rowspan = "2"><b>Date</b></td>
+    <td width = "150" colspan ="2"><b>A.M</b></td>
+    <td width = "150" colspan ="2"><b>P.M</b></td>
+    <td width = "150" colspan ="2"><b>Undertime</b></td>
     </tr>
     <tr align="center">
-    <td>F-123567</td>
-    <td>asd</td>
-    <td>asd</td>
-    <td>asd</td>
-    <td>asd</td>
+    <td>Arrival</td>
+    <td>Departure</td>
+    <td>Arrival</td>
+    <td>Departure</td>
+    <td>Hours</td>
+    <td>Minutes</td>
     </tr>
-    
+    <tr align="center">
+    <td>$date</td>
+    <td>$time_in</td>
+    <td>$lunch_in</td>
+    <td>$lunch_out</td>
+    <td>$time_out</td>
+    <td>Minutes</td>
+    <td>Minutes</td>
+    </tr>
     </table>
     EOD;
 
@@ -134,7 +154,7 @@ while ($excelrow = mysqli_fetch_assoc($sql_items1)) {
     // $pdf->Image($image_file, 180, 10, 10, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 
     $pdf->writeHTML($tbl, true, false, false, false, '');
-    $pdf->AddPage('L', 'A4');
+    $pdf->AddPage('P', 'A4');
 
 }
 
