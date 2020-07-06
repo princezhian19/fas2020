@@ -311,6 +311,8 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
            
 
             </tr>
+
+           
             <tr>
            
             <td colspan = "2"><b><input  class='calFilter' type="checkbox" name = "drivers[]" value="0"  id = "all" ></label>
@@ -438,7 +440,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
             }
 
-            if($('input[id=LouieBlanco]').is(':checked') ){
+            else if($('input[id=LouieBlanco]').is(':checked') ){
 
             return ['0', calEvent.ad].indexOf($('#LouieBlanco').val()) >= 0 
 
@@ -450,15 +452,18 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
             }
 
-            if($('input[id=JoachimLacdang]').is(':checked') ){
+            else if($('input[id=JoachimLacdang]').is(':checked') ){
 
             return ['0', calEvent.ad].indexOf($('#JoachimLacdang').val()) >= 0 
 
             }
 
-            if($('input[id=MedelSaturno]').is(':checked') ){
+            else if($('input[id=MedelSaturno]').is(':checked') ){
 
             return ['0', calEvent.ad].indexOf($('#MedelSaturno').val()) >= 0 
+
+            }
+            else{
 
             }
               
