@@ -119,26 +119,25 @@ if (mysqli_num_rows($sql_items)>0) {
     $date333 = new DateTime("08:00");
     $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
     $finalfinal = $date3333->diff($date333);
-    $dateZero = new DateTime("08:00");
-    $dateZero15 = new DateTime("00:00");
+    $dateZero = new DateTime("00:00");
 
     if($time_out == NULL){
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
     }
     else{
-      if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finaldate->format('%H'.':'.'%i') ==  $dateZero->format('H:I') || $finalfinal->format('%H') ==  $dateZero15->format('H')) {
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
-      }else{
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, $finalfinal->format('%H'));
-      }
-      if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finaldate->format('%H'.':'.'%i') ==  $dateZero->format('H:I') || $finalfinal->format('%i') ==  $dateZero15->format('i')) {
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, '');
-      }else{
-        $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, $finalfinal->format('%i'));
-      }
+     if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%H') ==  $dateZero->format('H')) {
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
+    }else{
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, $finalfinal->format('%H'));
     }
+    if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%I') ==  $dateZero->format('I')) {
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, '');
+    }else{
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, $finalfinal->format('%i'));
+    }
+  }
     // echo $finalfinal->format('%i');
-  }else{
+}else{
     $lateD = date('H:i',strtotime($time_in)) < date('H:i',strtotime('07:00')); // pag 6 59 pbaba time ine
     if($lateD){ //morning late
     $datetime1 = new DateTime('07:00');//time in
@@ -156,19 +155,19 @@ if (mysqli_num_rows($sql_items)>0) {
     $date333 = new DateTime("08:00"); // eto ung mminus sa time diff oks try mo
     $date3333 = new DateTime($finaldate->format('%H'.':'.'%i'));
     $finalfinal = $date3333->diff($date333);
-    $dateZero15 = new DateTime("00:00");
+    $dateZero = new DateTime("00:00");
 
 
     if($time_out == NULL){
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
     }
     else{
-     if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finaldate->format('%H'.':'.'%i') ==  $dateZero->format('H:I') || $finalfinal->format('%H') ==  $dateZero15->format('H')) {
+     if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%H') ==  $dateZero->format('H')) {
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
     }else{
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, $finalfinal->format('%H'));
     }
-    if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finaldate->format('%H'.':'.'%i') ==  $dateZero->format('H:I') || $finalfinal->format('%i') ==  $dateZero15->format('i')) {
+    if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%I') ==  $dateZero->format('I')) {
       $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, '');
     }else{
       $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, $finalfinal->format('%i'));
