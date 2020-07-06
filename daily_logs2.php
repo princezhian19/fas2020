@@ -225,12 +225,10 @@ if (isset($_POST['stamp4'])) {
         </div>
         <div class="box-body table-responsive no-padding">
           <div class="box-body">
-            <?php if ($ACCESSTYPE == 'admin' || $TIN_N == 1): ?>
              <a href="ViewEmployees.php?division=<?php echo $division?>&username=<?php echo $username?>" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
            <div style="float: right;padding:5px;">
             <a href="javascript:void(0);" class="btn btn-success link" data-id="<=$data['id']?>"><i class="fa fa-fw fa-download"></i>Export</a>
           </div>
-           <?php endif ?>
           <br>
           <br>
           <br>
