@@ -112,7 +112,7 @@
    </select>
  </div>
  <div class="form-group">
-  <label>Supervisor </label>
+  <label>DTR Printing </label>
   <select class="form-control select2" name="TIN_N">
     <?php if ($TIN_N == '0' || $TIN_N == NULL): ?>
      <option value="0">No</option>
