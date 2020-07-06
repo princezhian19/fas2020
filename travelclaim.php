@@ -218,42 +218,23 @@ function showData()
           <?php
             while($row = mysqli_fetch_array($result))
             {
-              $rnums = mysqli_num_rows($result1);
-      
+                  ?>
+           <tr>    
+                <td colspan = 10 style = "background-color:#B0BEC5;">
+                    <!-- <input type = "checkbox"> -->
+                   <?php echo $row['RO_TO_OB']; ?>
+                </td>
+                </tr>
               
-            ?>
-           
-              <!-- <tbody style = "margin-top:150%px;"> -->
-
-            <tr>
-                <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?> </td>
-            </tr>
-        
+      
+          
             
         
             <?php
             aa($row['ID']);
             }
             ?>
-            <tr>
-                <!-- <td colspan = 10>
-                    <?php 
-                    if(mysqli_num_rows($result) > 0)
-                        {
-                            ?>
-                                <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                            <?php
-                        }else{
-                            ?>
-                                <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                            <?php
-                        }
-                        ?>
-                        
-                </td> -->
-            </tr>
+           
             <?php
         }else{
             $query = "SELECT * FROM tbltravel_claim_info2 WHERE `NAME` = '".$_GET['username']."'";
