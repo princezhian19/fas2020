@@ -112,7 +112,7 @@ function aa($id)
                   }else{
                   ?>
                   
-                  <tr style =" display:table; table-layout:fixed; width:100%;">>
+                  <tr style =" display:table; table-layout:fixed; width:100%;">
                       <?php }?>
                       <td ><textarea readonly cols = 13 style = "resize:none;background:#ECEFF1;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
                       <td><input readonly type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
@@ -140,42 +140,40 @@ function aa($id)
         $row1['DATE'] = '';
         ?>
         <script>
-            $(document).ready(function(){
-          
-
-        $( "#btnids<?php echo $row1['ID'];?>" ).click(function() {
-          swal({
-                title: "Are you sure?",
-                text: "Your will not be able to recover this travel date!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn btn-danger",
-                confirmButtonText: "Yes, delete it!",
-                closeOnConfirm: false
-                },
-                function(){
-                swal("Deleted!", "Your travel date  has been deleted.", "success");
-                    $.ajax({
-                        url:"travelclaim_functions.php",
-                        method:"POST",
-                        data:{
-                        function: 'deleteTravelOrder',
-                        id: <?php echo $row1['ID'];?>,
-                    },
-                    success:function(data)
-                    {
-                
-                          setTimeout(function () {
-                          window.location = "CreateTravelClaim.php?username=<?php echo $_GET['username'];?>&division=<?php echo $_GET['division'];?>";
-                          }, 1000);
-
+          $(document).ready(function(){
+              $( "#btnids<?php echo $row1['ID'];?>" ).click(function() {
+                swal({
+                      title: "Are you sure?",
+                      text: "Your will not be able to recover this travel date!",
+                      type: "warning",
+                      showCancelButton: true,
+                      confirmButtonClass: "btn btn-danger",
+                      confirmButtonText: "Yes, delete it!",
+                      closeOnConfirm: false
+                      },
+                      function(){
+                      swal("Deleted!", "Your travel date  has been deleted.", "success");
+                          $.ajax({
+                              url:"travelclaim_functions.php",
+                              method:"POST",
+                              data:{
+                              function: 'deleteTravelOrder',
+                              id: <?php echo $row1['ID'];?>,
+                          },
+                          success:function(data)
+                          {
                       
-                    }
-                    });
+                                setTimeout(function () {
+                                window.location = "CreateTravelClaim.php?username=<?php echo $_GET['username'];?>&division=<?php echo $_GET['division'];?>";
+                                }, 1000);
 
-                });
-        });
-        });
+                            
+                          }
+                          });
+
+                      });
+              });
+          });
         </script>
       <?php
                 }
@@ -191,75 +189,49 @@ function showData()
         if(mysqli_num_rows($result) > 0)    
         {
           $rnums = mysqli_num_rows($result);
+          ?>
+              <thead style =" display:table; table-layout:fixed; width:100%;">
+                <tr>
+                  <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2> Date </th>
+                  <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Places to be visited (Destination)</th>
+                  <th class = "table-header" style = "text-indent:10px;text-align:center;" colspan = 2>Time</th>
+                  <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Means of Transportation</th>
+                  <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Transportation</th>
+                  <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Per Diem</th>
+                  <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Others</th>
+                  <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Total Amount</th>
+                  <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan =3>Action</th>
+                </tr>
+                <tr>
+                  <th class = "table-header"  style = "text-align:center;">Arrival</th>
+                  <th class = "table-header"  style = "text-align:center;">Departure</th>
+                </tr>
+              </thead>
+          <?php
+          if($rnums>0){
+            
+            echo '<table class="scroll equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1" style = "height:300px;">';
+            
+          }else{rowCount();}
+          ?>
+
+            
+          <?php
             while($row = mysqli_fetch_array($result))
             {
-              $rnums = mysqli_num_rows($result1);
-      
               
             ?>
-
-
-            <tr>
-            <thead style =" display:table; table-layout:fixed; width:100%;">
-                <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2>
-                  Date
-                </th>
-                <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Places to be visited (Destination)</th>
-                <th class = "table-header" style = "text-indent:10px;text-align:center;" colspan = 2>Time</th>
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Means of Transportation</th>
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Transportation</th>
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Per Diem</th>
-                <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Others</th>
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Total Amount</th>
-
-                <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan =3>Action</th>
-
-              </tr>
-              <tr>
-                <th class = "table-header"  style = "text-align:center;">Arrival</th>
-                <th class = "table-header"  style = "text-align:center;">Departure</th>
-            </thead>
-
-              </tr>
-<?php 
-// TBODY
-if($rnums > 0)
-{
-
-}else{
-  rowCount();
-
-}
-?>
             <tr>
                 <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?> </td>
             </tr>
-        
             
-        
+            
             <?php
             aa($row['ID']);
             }
             ?>
-            <tr>
-                <!-- <td colspan = 10>
-                    <?php 
-                    if(mysqli_num_rows($result) > 0)
-                        {
-                            ?>
-                                <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                            <?php
-                        }else{
-                            ?>
-                                <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                            <?php
-                        }
-                        ?>
-                        
-                </td> -->
-            </tr>
+           </tbody>
+
             <?php
         }else{
             $query = "SELECT * FROM tbltravel_claim_info2 WHERE `NAME` = '".$_GET['username']."'";
@@ -268,13 +240,15 @@ if($rnums > 0)
             {
                 while($row = mysqli_fetch_array($result))
                 {
+                  
                     ?>
-            <tr>    
-                <td colspan = 10 style = "background-color:#B0BEC5;">
-                    <!-- <input type = "checkbox"> -->
-                    <input type = "text" style = "width:100%;padding:5px;border:1px solid gray;" value = "<?php echo $row['RO_TO_OB']; ?>" readonly />
-                </td>
-            </tr>
+
+                  <tr>    
+                      <td colspan = 10 style = "background-color:#B0BEC5;">
+                          <!-- <input type = "checkbox"> -->
+                          <input type = "text" style = "width:100%;padding:5px;border:1px solid gray;" value = "<?php echo $row['RO_TO_OB']; ?>" readonly />
+                      </td>
+                  </tr>
             <tr>
                 <td><input type = "text" class = "form-control" value = "<?php echo $row['DATE'];?>"/></td>
                 <td><textarea ><?php echo $row['PLACE'];?></textarea></td>
@@ -286,16 +260,16 @@ if($rnums > 0)
                 <td><input type = "text" class = "form-control" value = "<?php echo $row['OTHERS'];?>"/></td>
                 <td><input type = "text" class = "form-control" value = "<?php echo $row['TOTAL_AMOUNT'];?>"/></td>
                 <?php 
-if(basename($_SERVER['PHP_SELF']) == 'ViewTravelClaim.php')
-{
-}
-else{
-?>
-                <td><button class = "btn btn-md btn-danger" id = "btnids" data-id = "<?php echo $row['ID'];?>" value = "<?php echo $row['ID'];?>"><i class = "fa fa-trash"></i>Delete</button></td>
+                if(basename($_SERVER['PHP_SELF']) == 'ViewTravelClaim.php')
+                {
+                }
+                else{
+                ?>
+                                <td><button class = "btn btn-md btn-danger" id = "btnids" data-id = "<?php echo $row['ID'];?>" value = "<?php echo $row['ID'];?>"><i class = "fa fa-trash"></i>Delete</button></td>
 
-<?php
-}
-?>
+                <?php
+                }
+                ?>
             </tr>
         
             <?php
@@ -317,6 +291,7 @@ function rowCount(){
   if($row_cnt == 1)
   {
     ?>
+
               <tbody class = "scroll" style ="height:90px;">
 
     <?php
@@ -342,7 +317,7 @@ function rowCount(){
     <?php
   }else{
     ?>
-              <tbody class = "scroll" style ="height:540px;display:block; height:300px; overflow:auto;">
+              <tbody style ="height: 300px;display:block; overflow:auto;">
 
     <?php
 
