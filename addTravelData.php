@@ -84,5 +84,5 @@ function getDistance($addressFrom, $addressTo, $unit = ''){
     } else {
     }
  
-header("Location:CreateTravelClaim.php?username=".$_SESSION['username']."");
+header("Location:CreateTravelClaim.php?ui=1&username=".$_SESSION['username']."");
 ?>

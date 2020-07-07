@@ -1,4 +1,5 @@
 <?php
+session_start();
     function getCompleteName()
     {
         include 'connection.php';
@@ -125,10 +126,39 @@
         }
         echo $insert;
     }
-    if($_POST['function'] == 'deleteTravelOrder')
+    function add(){
+        include 'connection.php';
+
+        $query = "SELECT OFFICE_STATION   from tblemployeeinfo where UNAME = '".$_SESSION['username']."' ";
+        $result = mysqli_query($conn, $query);
+        $station = '';
+        if($row = mysqli_fetch_array($result))
+        {
+
+        $station = $row['OFFICE_STATION'];
+        
+        $insert ="INSERT INTO `tbltravel_claim`(`ID`, `ENTITY_NAME`, `FUND_CLASTER`, `NAME`, `NO`, `DATE_OF_TRAVEL`, `PURPOSE`, `POSITION`, `OFFICIAL_STATION`) VALUES 
+        (null,'".$_POST['entity_name']."','".$_POST['fund_cluster']."','".$_POST['complete_name']."','".$_POST['numero']."','".date('Y-m-d',strtotime($_POST['date_of_travel']))."','".$_POST['purpose']."','".$_POST['position']."','".$station ."')";
+      if (mysqli_query($conn, $insert)) {
+        } else {
+        }
+        echo $insert;
+        header('Location:CreateTravelClaim.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'');
+    }
+}
+$func = '';
+if(isset($_POST['function']))
+{
+    $func = $_POST['function'];
+}else{
+    $func = $_GET['function'];
+}
+    if($func == 'deleteTravelOrder')
     {
         deleteTravelOrder();
+    }else if($func== 'add')
+    {
+        add();
     }
-    
 
 ?>
