@@ -6,6 +6,7 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 $division = $_SESSION['division'];
+$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 ?>
 <!DOCTYPE html>
@@ -173,27 +174,7 @@ $division = $_SESSION['division'];
               'info'        : false,
               'autoWidth'   : false,
 
-              initComplete: function () {
-            this.api().columns(3).every( function () {
-                var column = this;
-                var select = $('<select class="form-control" style="width:100%"><option value=""></option></select>')
-                    .appendTo( $(column.header()) )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
-
-        }
+              
         
 
     } );

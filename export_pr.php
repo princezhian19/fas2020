@@ -204,8 +204,8 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('B65',strtoupper($pmo_contact_
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B66',$designation);
 }else{
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B37',$purpose);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B43',strtoupper($pmo_contact_person));
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B44',$designation);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B42',strtoupper($pmo_contact_person));
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B43',$designation);
 }
 
 

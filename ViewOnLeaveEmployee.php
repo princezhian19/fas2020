@@ -6,11 +6,12 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 $division = $_SESSION['division'];
+$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS | Payroll Resign Employees</title>
+<title>FAS | Payroll Onleave Employees</title>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" type="image/png" href="dilg.png">
@@ -63,7 +64,7 @@ $division = $_SESSION['division'];
       <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Payroll</li>
-        <li class="active">Payroll Resign Employee Directory</li>
+        <li class="active">Payroll Onleave Employee Directory</li>
       </ol>
       <br>
       <br>
@@ -173,27 +174,7 @@ $division = $_SESSION['division'];
               'info'        : false,
               'autoWidth'   : false,
 
-              initComplete: function () {
-            this.api().columns(3).every( function () {
-                var column = this;
-                var select = $('<select class="form-control" style="width:100%"><option value=""></option></select>')
-                    .appendTo( $(column.header()) )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
-
-        }
+              
         
 
     } );

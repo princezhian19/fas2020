@@ -52,8 +52,8 @@ $division = $_SESSION['division'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Personnel</li>
-        <li class="active">Employee Directory</li>
+        <li class="active">Payroll</li>
+        <li class="active">Deductions/Allowances</li>
       </ol>
       <br>
       <br>

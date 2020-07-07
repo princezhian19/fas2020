@@ -6,11 +6,12 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 $division = $_SESSION['division'];
+$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS | Payroll Retire Employees</title>
+<title>FAS | Payroll Loan Ledger</title>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" type="image/png" href="dilg.png">
@@ -63,7 +64,7 @@ $division = $_SESSION['division'];
       <ol class="breadcrumb">
         <li><a href="home.php"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Payroll</li>
-        <li class="active">Payroll Retire Employee Directory</li>
+        <li class="active">Payroll Loan Ledger</li>
       </ol>
       <br>
       <br>

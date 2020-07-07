@@ -61,8 +61,8 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="index.php" style="font-family: cambria; "><i class=""></i> Home</a></li>
-        <li class="active" style="font-family: cambria;">Personnel</li>
-        <li class="active" style="font-family: cambria;">Add Employee</li>
+        <li class="active" style="font-family: cambria;">Payroll</li>
+        <li class="active" style="font-family: cambria;">Employee Details</li>
       </ol>
       <br>
       <br>

@@ -170,9 +170,9 @@ $employment_date = $rowEmp['employment_date'];
 <body>
   <div class="box box-default">
     <div class="box-header with-border">
-      <h1 align="">&nbspCreate New Employee</h1>
+      <h1 align="">&nbspEmployee Details</h1>
       &nbsp &nbsp<li class="btn btn-success"><a href="ViewEmployee.php" style="color:white;text-decoration: none;">Back</a></li>
-      &nbsp &nbsp<li class="btn btn-info"><a href="CreateNewEmployee.php" style="color:white;text-decoration: none;">New</a></li>
+      <!-- &nbsp &nbsp<li class="btn btn-info"><a href="CreateNewEmployee.php" style="color:white;text-decoration: none;">New</a></li> -->
       <p></p>
       <form method="POST" >
         <div class="box-body">
@@ -371,7 +371,7 @@ $employment_date = $rowEmp['employment_date'];
                 </div>
               </div>
             </div>
-            <button class="btn btn-primary showMsg"   type="submit" name="submit" onclick="return confirm('Are you sure you want to update now?');">Update</button>
+            <!-- <button class="btn btn-primary showMsg"   type="submit" name="submit" onclick="return confirm('Are you sure you want to update now?');">Update</button> -->
             <br>
             <br>
             <br>
