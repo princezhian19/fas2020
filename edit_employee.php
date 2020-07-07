@@ -172,7 +172,7 @@ $employment_date = $rowEmp['employment_date'];
     <div class="box-header with-border">
       <h1 align="">&nbspCreate New Employee</h1>
       &nbsp &nbsp<li class="btn btn-success"><a href="ViewEmployee.php" style="color:white;text-decoration: none;">Back</a></li>
-      &nbsp &nbsp<li class="btn btn-info"><a href="CreateNewEmployee.php" style="color:white;text-decoration: none;">New</a></li>
+      <!-- &nbsp &nbsp<li class="btn btn-info"><a href="CreateNewEmployee.php" style="color:white;text-decoration: none;">New</a></li> -->
       <p></p>
       <form method="POST" >
         <div class="box-body">

@@ -12,7 +12,7 @@ $username = $_SESSION['username'];
 <html>
 <head>
   
-  <title>FAS | Awarding</title>
+  <title>FAS | Allowance</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
@@ -57,7 +57,8 @@ $username = $_SESSION['username'];
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="index.php" style="font-family: cambria; "><i class=""></i> Home</a></li>
-        <li class="active" style="font-family: cambria;">Add App</li>
+        <li class="active" style="font-family: cambria;">Payroll</li>
+        <li class="active" style="font-family: cambria;">Edit Allowance</li>
       </ol>
       <br>
       <br>

@@ -66,9 +66,9 @@ if (isset($_POST['delete'])) {
             <div class="box-header with-border">
             </div>
             <br>
-            &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="CreateNewEmployee.php" style="color:white;text-decoration: none;">New Employee</a></li>
-            <br>
-            <br>
+            <!-- &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="CreateNewEmployee.php" style="color:white;text-decoration: none;">New Employee</a></li> -->
+            <!-- <br> -->
+            <!-- <br> -->
             <form method="POST">
                 <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
                     <thead>
@@ -88,7 +88,6 @@ if (isset($_POST['delete'])) {
                         </tr>
                     </thead>
                     <?php 
-                    $conn=mysqli_connect("localhost","root","","payrollodi");
                     $view_query = mysqli_query($conn, "SELECT te.id,te.l_name,te.f_name,te.m_name,te.ext_name,te.designation,te.employment_date,td.bir,td.rlip,td.philhealth,td.pagibig_premium FROM tbl_employee te LEFT JOIN tbl_deductions td on te.emp_no = td.emp_no WHERE te.status = 1 order by te.l_name ASC ");
 
                     while ($row = mysqli_fetch_assoc($view_query)) {

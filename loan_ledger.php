@@ -1,6 +1,6 @@
 <?php 
-$connect = new PDO("mysql:host=localhost;dbname=payrollodi", "root", "");
-$conn = mysqli_connect("localhost","root","","payrollodi");
+$connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $date_loan = $_GET['date_loan'];
 
 function province($connect)
