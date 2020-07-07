@@ -598,6 +598,7 @@ $link == 'http://fas.calabarzon.dilg.gov.ph/obtableViewMain.php?getsaroID='.$_GE
     </ul>
   </li>
 </li>
+
 <li class="treeview">
   <a href="#" >
     <i class="fa fa-folder-open-o" style = "color:#black;"></i>
@@ -627,6 +628,54 @@ $link == 'http://fas.calabarzon.dilg.gov.ph/obtableViewMain.php?getsaroID='.$_GE
 <li><a href="PayrollEmployee.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Update Payroll Emp</a></li>
 </ul>
 </li>
+<?php if ($username == 'charlesodi'): ?>
+  <li class="treeview 
+<?php 
+if(
+$link == 'http://fas.calabarzon.dilg.gov.ph/ViewEmployee.php?division='.$_GET['division'].'' ||
+$link == 'http://fas.calabarzon.dilg.gov.ph/ViewRetireEmployee.php?division='.$_GET['division'].'' ||
+$link == 'http://fas.calabarzon.dilg.gov.ph/ViewResignEmployee.php?getntano='.$_GET['getntano'].'&getparticular='.$_GET['getparticular'].'' ||
+$link == 'http://fas.calabarzon.dilg.gov.ph/ViewOnLeaveEmployee.php?division='.$_GET['division'].'' ||
+$link == 'http://fas.calabarzon.dilg.gov.ph/nta.php?division='.$_GET['division'].'' ||
+$link == 'http://fas.calabarzon.dilg.gov.ph/obligation.php' ||
+$link == 'http://fas.calabarzon.dilg.gov.ph/saroupdate.php?getid='.$_GET['getid'].'' ||
+$link == 'http://fas.calabarzon.dilg.gov.ph/obupdate.php?getid='.$_GET['getid'].'' ||
+$link == 'http://fas.calabarzon.dilg.gov.ph/sarocreate.php' ||
+$link == 'http://fas.calabarzon.dilg.gov.ph/obtableViewMain.php?getsaroID='.$_GET['getsaroID'].'&getuacs='.$_GET['getuacs'].'' 
+){
+  echo 'active';
+}
+?>" 
+>
+<a href="" >
+  <i class="fa fa-money" style = "color:#black;"></i>
+  <span  style = "color:#black;font-weight:normal;">Payroll</span>
+  <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+</a>
+<ul class="treeview-menu" >
+  <li class="treeview">
+    <a href="#" >
+      <i class="fa fa-folder-open-o" style = "color:#black;"></i>
+      <span >Employees</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu" >
+      <li><a href="ViewEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> Employee List </a></li>
+      <li><a href="ViewRetireEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> Retire Employees</a></li>
+      <li><a href="ViewResignEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> Resign Employees</a></li>
+      <li><a href="ViewOnLeaveEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> On Leave Employees</a></li>
+    </ul>
+  </li>
+</li>
+<li><a href="ViewDeduction.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Manage Allowances</a></li>
+<li><a href="ViewGeneratePayroll.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Generate Payroll</a></li>
+<li><a href="CreateLoans.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Create Loan</a></li>
+<!-- <li><a href="PayrollEmployee.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Update Payroll Emp</a></li> -->
+</ul>
+</li>
+<?php endif ?>
 <li 
 <?PHP 
 if(
