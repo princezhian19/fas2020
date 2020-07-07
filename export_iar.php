@@ -26,6 +26,7 @@ $stylebottom = array(
     'bottom' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
   ),
 );
+$styleLabel = array('font'  => array('size'  => 11, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 
 $Getid="";
 
@@ -90,7 +91,7 @@ $pair = "pair";
 $gallon = "gallon";
 // if 2 different procurement title how to get ? 
 $row = 14;
-$row1 = 16;
+$row1 = 15;
 $row2 = 18;
 $row3 = 19;
 $row4 = 23;
@@ -237,15 +238,83 @@ if (mysqli_num_rows($sql_items)<10) {
 
 $selimg = mysqli_query($conn,"SELECT officer from iar where officer = '$officer'");
 $imgrow = mysqli_fetch_array($selimg);
-$officerIncharge = $imgrow['officer'];
-
+$iar = $imgrow['officer'];
+if ($iar == 1) {
+  $iofficer = 'Reschiel B. Veridiano';
+}
+if ($iar == 2) {
+  $iofficer = 'Leticia A. Delgado';
+}
+if ($iar == 3) {
+  $iofficer = 'Medel A. Saturno';
+}
+if ($iar == 4) {
+  $iofficer = 'Rafael M. Saturno';
+}
+if ($iar == 5) {
+  $iofficer = 'Camille T. Ronquillo';
+}
+if ($iar == 6) {
+  $iofficer = 'Art Brian G. Rubio';
+}
+if ($iar == 7) {
+  $iofficer = 'Hannah Grace P. Solis';
+}
+if ($iar == 8) {
+  $iofficer = 'Eunice A. Sales';
+}
 $objPHPExcel->getActiveSheet()->getStyle('B'.$row.':B'.$row6)->applyFromArray($styleRight);
 $objPHPExcel->getActiveSheet()->getStyle('E'.$row.':E'.$row6)->applyFromArray($styleRight);
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row.':A'.$row6)->applyFromArray($styleRight);
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row.':A'.$row6)->applyFromArray($styleLeft);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row6.':E'.$row6)->applyFromArray($stylebottom);
-$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleTop);
-$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLeft);
-$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
+$objDrawing = new PHPExcel_Worksheet_Drawing();
+$objDrawing->setName('test_img');
+$objDrawing->setDescription('test_img');
+$objDrawing->setPath('iar1.png');
+$objDrawing->setCoordinates('A'.$row1);                      
+//setOffsetX works properly
+$objDrawing->setOffsetX(5); 
+$objDrawing->setOffsetY(5);                
+//set width, height
+$objDrawing->setWidth(80); 
+$objDrawing->setHeight(80);  
+$objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
+
+$objDrawing = new PHPExcel_Worksheet_Drawing();
+$objDrawing->setName('test_img');
+$objDrawing->setDescription('test_img');
+$objDrawing->setPath('iar2.png');
+$objDrawing->setCoordinates('D'.$row1);                      
+//setOffsetX works properly
+$objDrawing->setOffsetX(5); 
+$objDrawing->setOffsetY(5);                
+//set width, height
+$objDrawing->setWidth(120); 
+$objDrawing->setHeight(90);  
+$objDrawing->setWorksheet($objPHPExcel->getActiveSheet());
+
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row4)->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->mergeCells('A'.$row4.':B'.$row4);
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row4)->applyFromArray($styleLabel);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row4,strtoupper($iofficer));
+
+$objPHPExcel->getActiveSheet()->mergeCells('A'.$row5.':B'.$row5);
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row5)->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row5)->applyFromArray($styleLabel);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row5,'Inspection Officer/Inspection Committee');
+
+$objPHPExcel->getActiveSheet()->getStyle('D'.$row4)->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->mergeCells('D'.$row4.':E'.$row4);
+$objPHPExcel->getActiveSheet()->getStyle('D'.$row4)->applyFromArray($styleLabel);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row4,'BEZALEEL O. SOLTURA');
+
+$objPHPExcel->getActiveSheet()->mergeCells('D'.$row5.':E'.$row5);
+$objPHPExcel->getActiveSheet()->getStyle('D'.$row5)->getFont()->setBold(true);
+$objPHPExcel->getActiveSheet()->getStyle('D'.$row5)->applyFromArray($styleLabel);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row5,'Supply and/or Property Custodian');
+// $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleTop);
+// $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLeft);
+// $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));

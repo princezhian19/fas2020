@@ -9,7 +9,8 @@
   }
 
   // $latest_pr_no = $getDate.'-'.$m.'-'.'0'.$idGet;
-  $latest_pr_no = $getDate.'-'.'0'.$idGet;
+  // $latest_pr_no = $getDate.'-'.'0'.$idGet;
+  $latest_pr_no = $getDate.'-'.$idGet;
 
 
   ?>
@@ -125,7 +126,7 @@
           <div class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </div>
-          <input autocomplete="new-password" required type="text" name="iar_date" class="form-control" id="datepicker" placeholder="Birth Date">
+          <input autocomplete="new-password" required type="text" name="iar_date" class="form-control" id="datepicker" placeholder="">
         </div>
             <!-- <input type="date" class="form-control" style="height: 40px;" id="iar_date" placeholder="" name="iar_date"> -->
           </div>
@@ -141,7 +142,7 @@
           <div class="input-group-addon">
             <i class="fa fa-calendar"></i>
           </div>
-          <input autocomplete="new-password" required type="text" name="invoice_date" class="form-control" id="datepicker2" placeholder="Birth Date">
+          <input autocomplete="new-password" required type="text" name="invoice_date" class="form-control" id="datepicker2" placeholder="">
         </div>
             <!-- <input type="date" class="form-control"  id="invoice_date" placeholder="" name="invoice_date"> -->
           </div>
