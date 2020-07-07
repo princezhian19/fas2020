@@ -90,6 +90,12 @@ $pair = "pair";
 $gallon = "gallon";
 // if 2 different procurement title how to get ? 
 $row = 14;
+$row1 = 16;
+$row2 = 18;
+$row3 = 19;
+$row4 = 23;
+$row5 = 24;
+$row6 = 26;
 if (mysqli_num_rows($sql_items)>0) {
 
   while($excelrow = mysqli_fetch_assoc($sql_items) ){
@@ -97,45 +103,45 @@ if (mysqli_num_rows($sql_items)>0) {
     $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['sn']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$excelrow['procurement'] ."\n".$excelrow['description']);
     if ($excelrow['unit_id'] == 1) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$piece);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$piece);
     }if ($excelrow['unit_id'] == 2) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$box);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$box);
     } if ($excelrow['unit_id'] == 3) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$ream);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$ream);
     } if ($excelrow['unit_id'] == 4) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$lot);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$lot);
     } if ($excelrow['unit_id'] == 5) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$unit);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$unit);
     } if ($excelrow['unit_id'] == 6) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$crtg);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$crtg);
     } if ($excelrow['unit_id'] == 7) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$pack);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$pack);
     } if ($excelrow['unit_id'] == 8) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$tube);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$tube);
     } if ($excelrow['unit_id'] == 9) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$roll);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$roll);
     } if ($excelrow['unit_id'] == 10) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$can);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$can);
     } if ($excelrow['unit_id'] == 11) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$bottle);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$bottle);
     } if ($excelrow['unit_id'] == 12) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$set);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$set);
     } if ($excelrow['unit_id'] == 13) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$jar);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$jar);
     } if ($excelrow['unit_id'] == 14) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$bundle);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$bundle);
     } if ($excelrow['unit_id'] == 15) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$pad);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$pad);
     } if ($excelrow['unit_id'] == 16) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$book);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$book);
     } if ($excelrow['unit_id'] == 17) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$pouch);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$pouch);
     } if ($excelrow['unit_id'] == 18) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$dozen);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$dozen);
     } if ($excelrow['unit_id'] == 19) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$pair);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$pair);
     } if ($excelrow['unit_id'] == 20) {
-    $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$gallon);
+      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$gallon);
     } 
 
     $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$excelrow['qty']);
@@ -163,176 +169,83 @@ if (mysqli_num_rows($sql_items)>0) {
     $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($stylebottom);
 
     $row++;
+    $row1++;
+    $row2++;
+    $row3++;
+    $row4++;
+    $row5++;
+    $row6++;
   }
 
 }
 if (mysqli_num_rows($sql_items)<10) {
 
-   $counter++;
-    $z=15;
-    for($i=0; $i<$z; $i++){
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,'');
+ $counter++;
+ $z=15;
+ for($i=0; $i<$z; $i++){
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,'');
 
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLeft);
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleRight);
 
-      $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleLeft);
 
-      $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleRight);
-
-
-      $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleLeft);
-      $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleRight);
 
 
-      $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleLeft);
-      $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleRight);
 
 
-      $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLeft);
-      $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleRight);
-      $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleRight);
 
-     
-      $row++;
-  }
+
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
+
+
+  $row++;
+  $row1++;
+  $row2++;
+  $row3++;
+  $row4++;
+  $row5++;
+  $row6++;
+}
 }
 
 $selimg = mysqli_query($conn,"SELECT officer from iar where officer = '$officer'");
 $imgrow = mysqli_fetch_array($selimg);
 $officerIncharge = $imgrow['officer'];
 
-if ($officerIncharge == 1) {
-  $objDrawing = new PHPExcel_Worksheet_Drawing();
-  $objDrawing->setName('test_img');
-  $objDrawing->setDescription('test_img');
-  $objDrawing->setPath('iar1.png');
-  $objDrawing->setCoordinates('A'.$row);                      
-//setOffsetX works properly
-  $objDrawing->setOffsetX(5); 
-  $objDrawing->setOffsetY(5);                
-//set width, height
-  $objDrawing->setWidth(241.5);
-  $objDrawing->setHeight(251.5);  
-  $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
-
-}elseif($officerIncharge == 2){
-
-  $objDrawing = new PHPExcel_Worksheet_Drawing();
-  $objDrawing->setName('test_img');
-  $objDrawing->setDescription('test_img');
-  $objDrawing->setPath('iar2.png');
-  $objDrawing->setCoordinates('A'.$row);                      
-//setOffsetX works properly
-  $objDrawing->setOffsetX(5);
-  $objDrawing->setOffsetY(5);                
-//set width, height
-  $objDrawing->setWidth(251.5); 
-  $objDrawing->setHeight(261.5); 
-  $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
-
-}elseif($officerIncharge == 3){
-  $objDrawing = new PHPExcel_Worksheet_Drawing();
-  $objDrawing->setName('test_img');
-  $objDrawing->setDescription('test_img');
-  $objDrawing->setPath('iar3.png');
-  $objDrawing->setCoordinates('A'.$row);                      
-//setOffsetX works properly
-  $objDrawing->setOffsetX(5); 
-  $objDrawing->setOffsetY(5);                
-//set width, height
-  $objDrawing->setWidth(241.5); 
-  $objDrawing->setHeight(251.5);  
-  $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
-
-}elseif($officerIncharge == 4){
-  $objDrawing = new PHPExcel_Worksheet_Drawing();
-  $objDrawing->setName('test_img');
-  $objDrawing->setDescription('test_img');
-  $objDrawing->setPath('iar4.png');
-  $objDrawing->setCoordinates('A'.$row);                      
-//setOffsetX works properly
-  $objDrawing->setOffsetX(5); 
-  $objDrawing->setOffsetY(5);                
-//set width, height
-  $objDrawing->setWidth(241.5); 
-  $objDrawing->setHeight(251.5);  
-  $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
-}elseif($officerIncharge == 5){
-  $objDrawing = new PHPExcel_Worksheet_Drawing();
-  $objDrawing->setName('test_img');
-  $objDrawing->setDescription('test_img');
-  $objDrawing->setPath('iar5.png');
-  $objDrawing->setCoordinates('A'.$row);                      
-//setOffsetX works properly
-  $objDrawing->setOffsetX(5); 
-  $objDrawing->setOffsetY(5);                
-//set width, height
-  $objDrawing->setWidth(241.5); 
-  $objDrawing->setHeight(251.5);  
-  $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
-}elseif($officerIncharge == 5){
-  $objDrawing = new PHPExcel_Worksheet_Drawing();
-  $objDrawing->setName('test_img');
-  $objDrawing->setDescription('test_img');
-  $objDrawing->setPath('iar6.png');
-  $objDrawing->setCoordinates('A'.$row);                      
-//setOffsetX works properly
-  $objDrawing->setOffsetX(5); 
-  $objDrawing->setOffsetY(5);                
-//set width, height
-  $objDrawing->setWidth(241.5); 
-  $objDrawing->setHeight(251.5);  
-  $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
-}elseif($officerIncharge == 5){
-  $objDrawing = new PHPExcel_Worksheet_Drawing();
-  $objDrawing->setName('test_img');
-  $objDrawing->setDescription('test_img');
-  $objDrawing->setPath('iar7.png');
-  $objDrawing->setCoordinates('A'.$row);                      
-//setOffsetX works properly
-  $objDrawing->setOffsetX(5); 
-  $objDrawing->setOffsetY(5);                
-//set width, height
-  $objDrawing->setWidth(241.5); 
-  $objDrawing->setHeight(251.5);  
-  $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
-}
-else{
-
-
-  $objDrawing = new PHPExcel_Worksheet_Drawing();
-  $objDrawing->setName('test_img');
-  $objDrawing->setDescription('test_img');
-  $objDrawing->setPath('iar.png');
-  $objDrawing->setCoordinates('A'.$row);                      
-//setOffsetX works properly
-  $objDrawing->setOffsetX(5); 
-  $objDrawing->setOffsetY(5);                
-//set width, height
-  $objDrawing->setWidth(241.5); 
-  $objDrawing->setHeight(251.5);  
-  $objDrawing->setWorksheet($objPHPExcel->getActiveSheet());    
-}
+$objPHPExcel->getActiveSheet()->getStyle('B'.$row.':B'.$row6)->applyFromArray($styleRight);
+$objPHPExcel->getActiveSheet()->getStyle('E'.$row.':E'.$row6)->applyFromArray($styleRight);
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row.':A'.$row6)->applyFromArray($styleRight);
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row6.':E'.$row6)->applyFromArray($stylebottom);
+$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleTop);
+$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLeft);
+$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));

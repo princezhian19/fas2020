@@ -31,15 +31,15 @@
                 </thead>
                 <?php 
                 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-                $view_query = mysqli_query($conn, "SELECT td.id,te.LAST_M,te.FIRST_M,te.MIDDLE_M,te.SUFFIX,te.EMP_NUMBER,td.bir,td.rlip,td.pagibig_premium,td.pagibig_mp2,td.philhealth,td.pera,td.rata FROM tblemployeeinfo te LEFT JOIN tbl_deductions td on td.emp_no = te.EMP_NUMBER WHERE te.EMP_NUMBER != '' ORDER BY te.LAST_M ASC  ");
+                $view_query = mysqli_query($conn, "SELECT te.id,te.l_name,te.f_name,te.m_name,te.ext_name,te.emp_no,td.bir,td.rlip,td.pagibig_premium,td.pagibig_mp2,td.philhealth,td.pera,td.rata FROM tbl_employee te LEFT JOIN tbl_deductions td on te.emp_no = td.emp_no ORDER BY te.id DESC  ");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
                     $id = $row["id"];
-                    $emp_no = $row["EMP_NUMBER"];
-                    $l_name = $row["LAST_M"];  
-                    $f_name = $row["FIRST_M"];
-                    $m_name = $row["MIDDLE_M"];
-                    $ext_name = $row["SUFFIX"];
+                    $emp_no = $row["emp_no"];
+                    $l_name = $row["l_name"];  
+                    $f_name = $row["f_name"];
+                    $m_name = $row["m_name"];
+                    $ext_name = $row["ext_name"];
                     $bir = $row["bir"];
                     $birA = number_format($bir,2);
                     $rlip = $row["rlip"];
