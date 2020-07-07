@@ -130,7 +130,7 @@ return $output;
             <td>$national_home</td>
             <td>$credit_union</td>
             <td>$station</td>
-            <td ><a href='tcpdf/examples/payslip2.php?id=$id&date_loan=$date_loan' class='btn btn-info'>Generate Payslip</a></td>
+            <td ><a href='pdf/examples/payslip2.php?id=$id&date_loan=$date_loan' class='btn btn-info'>Generate Payslip</a></td>
             </tr>"; 
         }
         echo "</table>";
