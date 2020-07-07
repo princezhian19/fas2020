@@ -221,10 +221,7 @@ function showData()
             </thead>
 
               </tr>
-<?php 
-// TBODY
-rowCount();
-?>
+
             <tr>
                 <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?> </td>
             </tr>
