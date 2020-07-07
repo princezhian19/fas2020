@@ -12,7 +12,7 @@ include 'travelclaim_functions.php';
   <script src="jquery.min.js"></script>
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
   <style>
-  button{
+  span{
     font-family:'Arial';
 
   }
@@ -128,7 +128,7 @@ function aa($id)
                           }
                           else{
                           ?>
-                                      <td style = "width:9.5%;"><button class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['ID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</button></td>
+                                      <td style = "width:9.5%;"><span class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['ID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span></td>
 
                           <?php
                           }
@@ -184,7 +184,7 @@ function aa($id)
 function showData()
 {
         include 'connection.php';
-        $query = "SELECT * FROM `tbltravel_claim_info2` WHERE `RO_TO_OB` LIKE '%".$_GET['ro_no']."%'";
+        $query = "SELECT * FROM `tbltravel_claim_info2` WHERE `NAME` LIKE '%".$_GET['username']."%'";
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
@@ -263,7 +263,7 @@ function showData()
                 }
                 else{
                 ?>
-                                <td><button class = "btn btn-md btn-danger" id = "btnids" data-id = "<?php echo $row['ID'];?>" value = "<?php echo $row['ID'];?>"><i class = "fa fa-trash"></i>Delete</button></td>
+                                <td><span class = "btn btn-md btn-danger" id = "btnids" data-id = "<?php echo $row['ID'];?>" value = "<?php echo $row['ID'];?>"><i class = "fa fa-trash"></i>Delete</span></td>
 
                 <?php
                 }
@@ -325,21 +325,13 @@ function rowCount(){
   }
 }
 
-        
-    
-
-        
-    
-
-
-
 ?>
 </head>
 
 
 <div class="box">
   <div class="box-body">
-    <h1 align="">&nbsp<b>View Itinerary</b></h1>
+    <h1 align="">&nbsp<b>Create Itinerary</b></h1>
     <div class="box-header with-border">
     </div>
     <br>
@@ -352,7 +344,7 @@ function rowCount(){
             <H5 style = "margin-left:1300px;"><i>Appendix 45</i></H5>
 
             <center>
-            
+            <form method = "POST" action = "travelclaim_functions.php?function=add">
             <h1>ITINERARY OF TRAVEL </h1>
             <table  cellpadding="0" cellspacing="0" width="80%" border="1">
               <thead>
@@ -361,7 +353,7 @@ function rowCount(){
                       <label>Entity Name: 
                         </td>
                           <td colspan = 10  >
-                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
+                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly name = "entity_name"/>
                       </td>
                   </tr>
           
@@ -371,26 +363,26 @@ function rowCount(){
                     <label>Fund Cluster:</label>
                       </td>
                         <td colspan = "4">
-                      <input type = "text" class = "form-control" readonly/>
+                      <input type = "text" class = "form-control" readonly name = "fund_cluster" />
                     </td>
                   <td class = "label-text" colspan = 2>
                     <label>No:</label>
                       </td>
                         <td colspan = 4>
-                      <input type = "text" class = "form-control" readonly/>
+                      <input type = "text" class = "form-control" readonly name = "numero"/>
                     </td>
                 </tr>
                 <tr>
                   <td class = "label-text">
                     <label>Name: 
                       </td>
-                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo getCompleteName();?>" readonly/></td>
+                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo getCompleteName();?>" readonly name = "complete_name"/></td>
                   <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
+                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Position:</label></td>
-                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly/></td>
+                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly name = "position"/></td>
                       <td colspan = 5 rowspan = 2>
                         <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"><?php echo $_GET['ro_no'];?></textarea></td>
                 </tr>
@@ -402,13 +394,13 @@ function rowCount(){
             </table>
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1" >
                <?php echo showData();?>
-          
             </table>
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
               <tr>
                   <td colspan = 10>
-                      <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                      <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+                      <span class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </span>
+                      <span class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </span>
+                      <button class = "btn btn-primary btn-md pull-right" type = "submit" style = "font-family:'Arial';"> Submit </button>
                   </td>
               </tr>
               <tr>
@@ -438,11 +430,7 @@ function rowCount(){
             
                 
             </table>
-  
-  
-      
-           
-            
+            <form>
             </center>
                 
 
@@ -470,8 +458,8 @@ function rowCount(){
             <div class="modal-content">
                 <div class="modal-header">
                 <h4 class="modal-title">Add Travel</h4>
-                <button type="button" class="close" data-dismiss="modal">&times; 
-                </button>
+                <span type="span" class="close" data-dismiss="modal">&times; 
+                </span>
                 </div>
                 <div class="modal-body">
                 <form method = "POST" action = "addTravelData.php">
@@ -531,7 +519,7 @@ function rowCount(){
           <div class="modal-content" >
             <div class="modal-header">
               <h4 class="modal-title">Add Travel Dates</h4>
-                <button type="button" class="close" data-dismiss="modal">&times; </button>
+                <span type="span" class="close" data-dismiss="modal">&times; </span>
             </div>
             <div class="modal-body" style = " max-height: calc(100vh - 200px); overflow-y: auto;">
               <div class="box-body">
@@ -666,7 +654,7 @@ function rowCount(){
 
                   <div class = "well" style = "padding:10px;" id = "travelPanel">
                   </div>
-                  <button type = "submit" class = "btn btn-success btn-md pull-right">Save </button>
+                  <span type = "submit" class = "btn btn-success btn-md pull-right">Save </span>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
               </form>

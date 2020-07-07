@@ -4,8 +4,8 @@ date_default_timezone_set("Asia/Manila");
 
 $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-		$fieldsName = '`ID`, `NAME`, `RO_TO_OB`, `TRAVEL_DAYS`, `START_DATE`, `END_DATE`, `ORIGIN`, `DESTINATION`, `DISTANCE`, `VENUE`';
-		$table = 'tbltravel_claim_info2';
+		$fieldsName = '`ID`, `ENTITY_NAME`, `FUND_CLASTER`, `NAME`, `NO`, `DATE_OF_TRAVEL`, `PURPOSE`, `POSITION`, `OFFICIAL_STATION`';
+		$table = 'tbltravel_claim';
 		$join = '';
 		$WHERE = "";
 
@@ -53,12 +53,12 @@ $division  = $_SESSION['division'];
 $columns = array(
 	array('db' => 'NAME', 'dt' => 0),
 	array(
-        'db'        => 'TRAVEL_DAYS',
+        'db'        => 'ENTITY_NAME',
         'dt'        => 1
 	    ),
 	
 	array(
-		'db' => 'START_DATE', 
+		'db' => 'DATE_OF_TRAVEL', 
 		'dt' => 2,
 		'formatter' => function( $d, $row ) {
 			if($d == '0000-00-00' || $d == null)
@@ -73,57 +73,35 @@ $columns = array(
         }
     ),
     	
+	
+    	
 	array(
-		'db' => 'END_DATE', 
-		'dt' => 3,
-		'formatter' => function( $d, $row ) {
-			if($d == '0000-00-00' || $d == null)
-			{
-				$d = '';
-				return $d;
-			}else{
-			return date( 'M d, Y', strtotime($d));
-			}
-
-
-        }
+		'db' => 'POSITION', 
+		'dt' => 3
     ),
     	
 	array(
-		'db' => 'ORIGIN', 
-		'dt' => 4
-    ),
-    	
-	array(
-		'db' => 'DESTINATION', 
-		'dt' => 5
-    ),
-    	
-	array(
-		'db' => 'DISTANCE', 
-		'dt' => 6
-    ),
-    	
-	array(
-		'db' => 'VENUE', 
-		'dt' => 7
-    ),
-    	
-	array(
-		'db' => 'END_DATE', 
-		'dt' => 3,
-		'formatter' => function( $d, $row ) {
-			if($d == '0000-00-00' || $d == null)
-			{
-				$d = '';
-				return $d;
-			}else{
-			return date( 'M d, Y', strtotime($d));
-			}
-
-
-        }
-    ),
+		'db' => 'OFFICIAL_STATION', 
+        'dt' => 4,
+        'formatter' => function($d, $row)
+        {
+            if($d == '1')
+            {
+                $d = 'Regional Office';
+            }else if($d == '2')
+            {
+                $d = 'Provincial/HUC Office';
+            }
+            else if($d == '3')
+            {
+                $d = 'cluster Office';
+            }
+            else if($d == '4')
+            {
+                $d = 'City/Municipal Office';
+            }
+            return $d;
+        } )
     
 
 
