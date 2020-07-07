@@ -43,13 +43,18 @@ $mydb = new db(); // create a new object, class db()
         
               <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
                     <thead>
-                        <th>PURPOSE OF TRAVEL</th>
+                        <th>NO</th>
                         <th>EMPLOYEE NAME</th>
-                        <th>ENTITY NAME</th>
-                        <th>DATE OF TRAVEL</th>
+                        <th>RO/OT/OB</th>
+                        <th>NO. OF TRAVEL DAYS</th>
 
-                        <th>POSITION</th>
-                        <th>OFFICIAL STATION</th>
+                        <th>START DATE</th>
+                        <th>END DATE</th>
+                        <th>ORIGIN</th>
+                        <th>DESTINATION</th>
+                        <th>DISTANCE</th>
+                        <th>VENUE</th>
+
                         
                         <th style = "text-align:center;max-width:20%;">ACTION</th>
                     </thead>
@@ -124,7 +129,7 @@ $mydb = new db(); // create a new object, class db()
                   "serverSide": false,
                   "ajax": "DATATABLE/travel_claim.php",
                   "columnDefs": [ {
-                      "targets":6,
+                      "targets":10,
                       "render": function (data, type, row, meta ) {  
                       action = "<button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>";
                       return action;
