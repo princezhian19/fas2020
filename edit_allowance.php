@@ -1,15 +1,15 @@
 <?php
 error_reporting(0);
 ini_set('display_errors', 0);
-$conn = mysqli_connect("localhost","root","","payrollodi");
+$conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 $id = $_GET['id'];
-$select = mysqli_query($conn,"SELECT te.EMP_NUMBER,te.FIRST_M,te.LAST_M,te.MIDDLE_M,td.pera,td.rata,td.bir,td.pagibig_premium,td.pagibig_mp2,td.philhealth FROM tblemployeeinfo te LEFT JOIN tbl_deductions td on te.emp_no = td.emp_no WHERE td.id = '$id' ");
+$select = mysqli_query($conn,"SELECT te.emp_no,te.f_name,te.l_name,te.m_name,td.pera,td.rata,td.bir,td.pagibig_premium,td.pagibig_mp2,td.philhealth FROM tbl_employee te LEFT JOIN tbl_deductions td on te.emp_no = td.emp_no WHERE td.id = '$id' ");
   $row = mysqli_fetch_array($select);
-  $emp_noA = $row['EMP_NUMBER'];
-  $f_nameA = $row['FIRST_M'];
-  $m_nameA = $row['LAST_M'];
-  $l_nameA = $row['MIDDLE_M'];
+  $emp_noA = $row['emp_no'];
+  $f_nameA = $row['f_name'];
+  $m_nameA = $row['m_name'];
+  $l_nameA = $row['l_name'];
   $peraA = $row['pera'];
   $rataA = $row['rata'];
   $birA = $row['bir'];

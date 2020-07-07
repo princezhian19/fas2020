@@ -43,7 +43,7 @@ $mydb = new db(); // create a new object, class db()
         
               <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;">
                     <thead>
-                        <th>RO/TO/OB No.</th>
+                        <th>EMPLOYEE NAME</th>
                         <th>TRAVEL DAYS</th>
                         <th>START DATE</th>
                         <th>END DATE</th>
@@ -137,7 +137,7 @@ $mydb = new db(); // create a new object, class db()
               
               $('#example tbody').on( 'click', '#view', function () {
                 var data = table.row( $(this).parents('tr') ).data();
-                window.location="ViewTravelClaim.php?&ro_no="+data[0];
+                window.location="ViewTravelClaim.php?&username="+data[0];
               } );
           });
               </script>

@@ -8,7 +8,8 @@
     $idGet = $row["a"];
   }
 
-  $latest_pr_no = $getDate.'-'.$m.'-'.'0'.$idGet;
+  // $latest_pr_no = $getDate.'-'.$m.'-'.'0'.$idGet;
+  $latest_pr_no = $getDate.'-'.'0'.$idGet;
 
 
   ?>
@@ -68,7 +69,7 @@
       <div class="box-body">
         <div class="well">
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-3">
               <label>Search PO No. : </label>
               <input type="text" class="form-control" name="search_text" id="search_text" placeholder="Search Code" class="" />
               <br>
