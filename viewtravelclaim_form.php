@@ -87,7 +87,8 @@ function aa($id)
         while($row = mysqli_fetch_array($result))
         {
             $date = $row['DATE'];
-            $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID WHERE tbltravel_claim_info.`TC_ID` = '".$id."' and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
+            // and tbltravel_claim_info.`DATE` = '".$date."' 
+            $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID WHERE tbltravel_claim_info.`TC_ID` = '".$id."' ORDER BY DATE";
             $result1 = mysqli_query($conn, $query1);
             $saved = array();
     
@@ -183,10 +184,11 @@ else{
         }
     }
 }
+
 function showData()
 {
         include 'connection.php';
-        $query = "SELECT * FROM `tbltravel_claim_info2` WHERE `NAME` LIKE '%".$_GET['username']."%'";
+        $query = "SELECT * FROM `tbltravel_claim_info2` WHERE `RO_TO_OB` = '".$_GET['ro']."'";
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
@@ -312,7 +314,7 @@ function rowCount(){
   $row_cnt = $result1->num_rows;
   if($row_cnt == 0)
   {
-      
+
   }
   else if($row_cnt == 1)
   {

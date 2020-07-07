@@ -184,7 +184,7 @@ function aa($id)
 function showData()
 {
         include 'connection.php';
-        $query = "SELECT * FROM `tbltravel_claim_info2` WHERE `NAME` = '".$_GET['username']."'";
+        $query = "SELECT * FROM `tbltravel_claim_info2`   inner join `tbltravel_claim_info` on  tbltravel_claim_info2.`ID` = tbltravel_claim_info.`TC_ID`  WHERE  `NAME`= '".$_GET['username']."'";
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
@@ -220,7 +220,7 @@ function showData()
               
             ?>
             <tr>
-                <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?> </td>
+                <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO'].'</b>'; ?> </td>
             </tr>
             
             
@@ -242,32 +242,9 @@ function showData()
                     ?>
 
                   <tr>    
-                      <td colspan = 10 style = "background-color:#B0BEC5;">
-                          <!-- <input type = "checkbox"> -->
-                          <input type = "text" style = "width:100%;padding:5px;border:1px solid gray;" value = "<?php echo $row['RO_TO_OB']; ?>" readonly />
-                      </td>
+                      
                   </tr>
             <tr>
-                <td><input type = "text" class = "form-control" value = "<?php echo $row['DATE'];?>"/></td>
-                <td><textarea ><?php echo $row['PLACE'];?></textarea></td>
-                <td><input type = "text" class = "form-control" value = "<?php echo $row['ARRIVAL'];?>"/></td>
-                <td><input type = "text" class = "form-control" value = "<?php echo $row['DEPARTURE'];?>"/></td>
-                <td><input type = "text" class = "form-control" value = "<?php echo $row['MOT'];?>"/></td>
-                <td><input type = "text" class = "form-control" value = "<?php echo $row['TRANSPORTATION'];?>"/></td>
-                <td><input type = "text" class = "form-control" value = "<?php echo $row['PERDIEM'];?>"/></td>
-                <td><input type = "text" class = "form-control" value = "<?php echo $row['OTHERS'];?>"/></td>
-                <td><input type = "text" class = "form-control" value = "<?php echo $row['TOTAL_AMOUNT'];?>"/></td>
-                <?php 
-                if(basename($_SERVER['PHP_SELF']) == 'ViewTravelClaim.php')
-                {
-                }
-                else{
-                ?>
-                                <td><span class = "btn btn-md btn-danger" id = "btnids" data-id = "<?php echo $row['ID'];?>" value = "<?php echo $row['ID'];?>"><i class = "fa fa-trash"></i>Delete</span></td>
-
-                <?php
-                }
-                ?>
             </tr>
         
             <?php
@@ -384,7 +361,9 @@ function rowCount(){
                   <td class = "label-text">  <label>Position:</label></td>
                     <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly name = "position"/></td>
                       <td colspan = 5 rowspan = 2>
-                        <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"><?php echo getPurposeTravel($_GET['username']);?></textarea></td>
+                        <label>Purpose of Travel:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or" ><?php echo getPurposeTravel($_GET['username']);?></textarea>
+                        <input type = "hidden" value="<?php echo getPurposeTravel($_GET['username']);?>" name = "purpose_of_travel"/>
+                         </td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Official Station: </label></td>
@@ -530,6 +509,13 @@ function rowCount(){
                     <div class = "row">
                       <div class = "col-sm-12 col-md-12 col-lg-12">
                           <div class = "col-sm-6 col-md-6 col-lg-6">
+                          <div class="col-md-12">
+                                <div class="form-group">
+                                  <label>Travel Info</label>
+                                   
+                                    <input type="text" name = "ro" class="form-control" />
+                                </div>
+                              </div>
                               <div class="col-md-12">
                                 <div class="form-group">
                                   <label>Date</label>

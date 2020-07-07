@@ -42,9 +42,10 @@ if(mysqli_num_rows($result) > 0)
             $mot = $_POST['mot'][$a];
 
             include 'connection.php';
-            $insert ="INSERT INTO `tbltravel_claim_info`(`TC_ID`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `OTHERS`, `TOTAL_AMOUNT`) 
+            $insert ="INSERT INTO `tbltravel_claim_info`(`TC_ID`, `RO`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `OTHERS`, `TOTAL_AMOUNT`) 
                     VALUES 
                     ('".$uid."',
+                    '".$_POST['ro']."',
                     '".date('Y-m-d',strtotime($_POST['date']))."',
                     '".$destination."',
                     '".date('H:i',strtotime($_POST['from1']))."',
