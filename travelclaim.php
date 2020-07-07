@@ -184,7 +184,7 @@ function aa($id)
 function showData()
 {
         include 'connection.php';
-        $query = "SELECT * FROM `tbltravel_claim_info2` WHERE `NAME` LIKE '%".$_GET['username']."%'";
+        $query = "SELECT * FROM `tbltravel_claim_info2` WHERE `NAME` = '".$_GET['username']."'";
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
