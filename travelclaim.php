@@ -384,7 +384,7 @@ function rowCount(){
                   <td class = "label-text">  <label>Position:</label></td>
                     <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly name = "position"/></td>
                       <td colspan = 5 rowspan = 2>
-                        <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"><?php echo $_GET['ro_no'];?></textarea></td>
+                        <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"><?php echo getPurposeTravel($_GET['username']);?></textarea></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Official Station: </label></td>
@@ -430,7 +430,7 @@ function rowCount(){
             
                 
             </table>
-            <form>
+            </form>
             </center>
                 
 
@@ -506,7 +506,7 @@ function rowCount(){
                         
                         </table>
                         <input type = "submit" class = "pull-right btn btn-success btn-md" value = "Save" name = "submit"/>
-                    </form>
+                </form>
                 </div>
                 <div class="modal-footer">
                 </div>
@@ -654,7 +654,7 @@ function rowCount(){
 
                   <div class = "well" style = "padding:10px;" id = "travelPanel">
                   </div>
-                  <span type = "submit" class = "btn btn-success btn-md pull-right">Save </span>
+                  <button type = "submit" class = "btn btn-success btn-md pull-right">Save </button>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
               </form>

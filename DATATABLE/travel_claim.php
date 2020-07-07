@@ -51,15 +51,16 @@ $primaryKey = 'ID';
 $division  = $_SESSION['division'];
 
 $columns = array(
-	array('db' => 'NAME', 'dt' => 0),
+    array('db' => 'PURPOSE', 'dt' => 0),
+	array('db' => 'NAME', 'dt' => 1),
 	array(
         'db'        => 'ENTITY_NAME',
-        'dt'        => 1
+        'dt'        => 2
 	    ),
 	
 	array(
 		'db' => 'DATE_OF_TRAVEL', 
-		'dt' => 2,
+		'dt' => 3,
 		'formatter' => function( $d, $row ) {
 			if($d == '0000-00-00' || $d == null)
 			{
@@ -77,12 +78,12 @@ $columns = array(
     	
 	array(
 		'db' => 'POSITION', 
-		'dt' => 3
+		'dt' => 4
     ),
     	
 	array(
 		'db' => 'OFFICIAL_STATION', 
-        'dt' => 4,
+        'dt' => 5,
         'formatter' => function($d, $row)
         {
             if($d == '1')
