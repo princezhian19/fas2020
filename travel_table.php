@@ -142,7 +142,7 @@ $mydb = new db(); // create a new object, class db()
               
               $('#example tbody').on( 'click', '#view', function () {
                 var data = table.row( $(this).parents('tr') ).data();
-                window.location="ViewTravelClaim.php?&ro="+data[0];
+                window.location="ViewTravelClaim.php?&ro="+data[2];
               } );
           });
               </script>
