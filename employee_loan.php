@@ -55,7 +55,6 @@ echo '<div  class="item panel panel-info"><div class="panel-heading"> <p style =
                         </tr>
                     </thead>
                     <?php 
-                    $conn=mysqli_connect("localhost","root","","payrollodi");
                     $sel = mysqli_query($conn,"SELECT emp_no FROM tbl_employee WHERE id = '$id'");
                     $rowsel = mysqli_fetch_array($sel);
                     $emp_no = $rowsel['emp_no'];

@@ -159,11 +159,11 @@
       $sql_insert_query     = mysqli_query($conn,"INSERT INTO tblemployeeinfo (EMP_NUMBER,LAST_M, FIRST_M,MIDDLE_M, BIRTH_D, SEX_C,REGION_C, PROVINCE_C, CITYMUN_C,POSITION_C,DESIGNATION,MOBILEPHONE, EMAIL, ALTER_EMAIL,UNAME, DATE_CREATED,LANDPHONE, OFFICE_STATION, DIVISION_C, PROFILE,SUFFIX,CIVIL_STATUS,ACTIVATED,REMARKS_M)
         VALUES ('$employee_number','$lname', '$fname', '$mname', '$birthdate', '$gender', '$region', '$province', '$municipality', '$position', '$designation', '$cellphone', '$email', '$alter_email','$username', '$date_created', '$office_contact', '$office', '$division','$target_file','$suffix','$status','$e_stats','$office_address')");
 
-      $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,pagibig,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date) VALUES('$emp_no','$pagibig','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date')");
+      if ($e_stats == 'Yes') {
+        # code...
+      $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,l_name,f_name,m_name,pagibig,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date) VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date')");
 
-      if ($sql_insert_query) 
-      { 
-        if ($insertqwe) {
+          if ($insertqwe) {
           $save_salary = $salaryS *.09;
           if ($salaryS > 59999) {
             $phil = 900;
@@ -173,6 +173,11 @@
             $insert_deduct = mysqli_query($conn,"INSERT INTO tbl_deductions(emp_no,monthly_salary,rlip,pera,philhealth) VALUES('$emp_no','$salaryS','$save_salary',2000,'$phil')");
           }
           }
+      }
+
+      if ($sql_insert_query) 
+      { 
+    
 
           if(!empty(basename($_FILES["image"]["name"])))
           {

@@ -38,6 +38,10 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 $date_loan = $_GET['date_loan'];
 $station = $_GET['station'];
 
+if ($station == 77) {
+$station = '';
+}
+
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A1',$station."  -  PAYROLL");
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A2',$date_loan);
@@ -46,7 +50,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('Z4',$date_loan." 16        -3
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D4',"Salary for the month of ".$date_loan);
 
 
-$sql = mysqli_query($conn, "SELECT tds.id,te.full_name,te.m_name,te.f_name,te.l_name,te.station,te.designation,td.monthly_salary,td.bir,td.rlip,td.philhealth,td.pera,td.rata,td.pagibig_premium,td.pagibig_mp2,tds.consolidated_loan,tds.optional_premium,tds.optional_policy_loan,tds.rel,tds.policy_regular_loan,tds.educational_assistance_loan,tds.emergency_calamity_loan,tds.multi_purpose_loan,tds.pag_ibig_housing,tds.calamity_loan,tds.amswlai,tds.credit_union,tds.national_home FROM  tbl_employee te  LEFT JOIN  tbl_deduction_loans_history tds on tds.emp_no = te.emp_no LEFT JOIN tbl_deductions td on td.emp_no = tds.emp_no WHERE tds.date_loan = '$date_loan' AND tds.station ='$station' AND te.status = 0 ORDER BY te.l_name ASC");
+$sql = mysqli_query($conn, "SELECT tds.id,te.full_name,te.m_name,te.f_name,te.l_name,te.station,te.designation,td.monthly_salary,td.bir,td.rlip,td.philhealth,td.pera,td.rata,td.pagibig_premium,td.pagibig_mp2,tds.consolidated_loan,tds.optional_premium,tds.optional_policy_loan,tds.rel,tds.policy_regular_loan,tds.educational_assistance_loan,tds.emergency_calamity_loan,tds.multi_purpose_loan,tds.pag_ibig_housing,tds.calamity_loan,tds.amswlai,tds.credit_union,tds.national_home FROM  tbl_employee te  LEFT JOIN  tbl_deduction_loans_history tds on tds.emp_no = te.emp_no LEFT JOIN tbl_deductions td on td.emp_no = tds.emp_no LEFT JOIN tblemployeeinfo tem on tem.EMP_NUMBER = te.emp_no WHERE tds.date_loan = '$date_loan' AND tem.PROVINCE_C ='$station' AND te.status = 0 ORDER BY te.l_name ASC");
 
 $row = 8;
 $rowA = 14;

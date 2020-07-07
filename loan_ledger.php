@@ -6,13 +6,13 @@ $date_loan = $_GET['date_loan'];
 function province($connect)
 { 
   $output = '';
-  $query = "SELECT LGU_M FROM `tbl_province`";
+  $query = "SELECT LGU_M,PROVINCE_C FROM `tbl_province`";
   $statement = $connect->prepare($query);
   $statement->execute();
   $result = $statement->fetchAll();
   foreach($result as $row)
   {
-    $output .= '<option text="text" value="'.$row["LGU_M"].'">'.$row["LGU_M"].'</option>';
+    $output .= '<option text="text" value="'.$row["PROVINCE_C"].'">'.$row["LGU_M"].'</option>';
 }
 return $output;
 }
@@ -83,7 +83,7 @@ return $output;
 
 
         while ($row = mysqli_fetch_assoc($view_query)) {
-            $id = $row["id"];
+            $id = $row["emp_no"];
             $full_name = $row["full_name"];  
             $designation = $row["designation"];
             $emp_no = $row["emp_no"];
