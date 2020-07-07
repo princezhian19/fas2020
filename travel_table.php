@@ -43,7 +43,7 @@ $mydb = new db(); // create a new object, class db()
         
               <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;">
                     <thead>
-                        <th>RO/TO/OB No.</th>
+                        <th>EMPLOYEE NAME</th>
                         <th>TRAVEL DAYS</th>
                         <th>START DATE</th>
                         <th>END DATE</th>

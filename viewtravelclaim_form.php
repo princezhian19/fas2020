@@ -191,19 +191,10 @@ function showData()
         if(mysqli_num_rows($result) > 0)    
         {
           $rnums = mysqli_num_rows($result);
-            while($row = mysqli_fetch_array($result))
-            {
-              $rnums = mysqli_num_rows($result1);
-      
-              
-            ?>
-
-
-            <tr>
+          ?>
             <thead style =" display:table; table-layout:fixed; width:100%;">
-                <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2>
-                  Date
-                </th>
+            <tr>
+                <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2> Date </th>
                 <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Places to be visited (Destination)</th>
                 <th class = "table-header" style = "text-indent:10px;text-align:center;" colspan = 2>Time</th>
                 <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Means of Transportation</th>
@@ -211,28 +202,31 @@ function showData()
                 <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Per Diem</th>
                 <th class = "table-header" style = "text-indent:10px;text-align:center;" rowspan = 2>Others</th>
                 <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan = 2>Total Amount</th>
-                <?php 
-if(basename($_SERVER['PHP_SELF']) == 'ViewTravelClaim.php')
-{
-
-}else{
-?>
+                <?php if(basename($_SERVER['PHP_SELF']) == 'ViewTravelClaim.php') { }else{ ?>
                 <th class = "table-header"  style = "text-indent:10px;text-align:center;" rowspan =3>Action</th>
-
-<?php
-}
+                <?php
+                }
                 ?>
-              </tr>
-              <tr>
-                <th class = "table-header"  style = "text-align:center;">Arrival</th>
-                <th class = "table-header"  style = "text-align:center;">Departure</th>
-            </thead>
+            </tr>
+            <tr>
+            <th class = "table-header"  style = "text-align:center;">Arrival</th>
+            <th class = "table-header"  style = "text-align:center;">Departure</th>
 
-              </tr>
-<?php 
-// TBODY
-rowCount();
-?>
+            </tr>
+            </thead>
+            <?php
+          if($rnums>0){
+            rowCount();
+          }else{rowCount();}
+          ?>
+
+          <?php
+            while($row = mysqli_fetch_array($result))
+            {
+      
+              
+            ?>
+
             <tr>
                 <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?> </td>
             </tr>
