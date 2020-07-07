@@ -188,7 +188,8 @@ else{
 function showData()
 {
         include 'connection.php';
-        $query = "SELECT * FROM `tbltravel_claim_info2` WHERE `RO_TO_OB` = '".$_GET['ro']."'";
+        $query = "SELECT * FROM `tbltravel_claim_info2`   inner join `tbltravel_claim_info` on  tbltravel_claim_info2.`ID` = tbltravel_claim_info.`TC_ID`  WHERE  `RO_TO_OB`= '".$_GET['ro']."'";
+
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
@@ -230,7 +231,7 @@ function showData()
             ?>
 
             <tr>
-                <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO_TO_OB'].'</b>'; ?> </td>
+                <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO'].'</b>'; ?> </td>
             </tr>
         
             
@@ -418,7 +419,7 @@ function rowCount(){
                   <td class = "label-text">  <label>Position:</label></td>
                     <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly/></td>
                       <td colspan = 5 rowspan = 2>
-                        <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"></textarea></td>
+                        <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"><?php echo getPurposeTravel($_GET['ro']);?></textarea></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Official Station: </label></td>

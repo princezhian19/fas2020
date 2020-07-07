@@ -129,7 +129,7 @@ session_start();
     function getPurposeTravel($username)
     {
         include 'connection.php';
-        $query1 = "SELECT RO_TO_OB FROM tbltravel_claim_info2  WHERE `NAME` = '".$username."'";
+        $query1 = "SELECT RO_TO_OB FROM tbltravel_claim_info2  WHERE `RO_TO_OB` = '".$username."'";
         $result1 = mysqli_query($conn, $query1);
         
             while($row1 = mysqli_fetch_array($result1))
