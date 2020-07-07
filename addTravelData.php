@@ -83,6 +83,6 @@ function getDistance($addressFrom, $addressTo, $unit = ''){
     if (mysqli_query($conn, $insert)) {
     } else {
     }
- 
-header("Location:CreateTravelClaim.php?ui=1&username=".$_SESSION['username']."");
+//  echo $insert;
+header("Location:CreateTravelClaim.php?ui=1);
 ?>
