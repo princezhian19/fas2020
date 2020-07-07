@@ -209,9 +209,7 @@ function showData()
               </thead>
           <?php
           if($rnums>0){
-            
-            echo '<table class="scroll equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1" style = "height:300px;">';
-            
+            rowCount();
           }else{rowCount();}
           ?>
 
@@ -288,7 +286,10 @@ function rowCount(){
   $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID";
   $result1 = mysqli_query($conn, $query1);
   $row_cnt = $result1->num_rows;
-  if($row_cnt == 1)
+  if($row_cnt == 0)
+  {
+  
+    }  else if($row_cnt == 1)
   {
     ?>
 

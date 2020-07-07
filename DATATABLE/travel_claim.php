@@ -51,7 +51,7 @@ $primaryKey = 'ID';
 $division  = $_SESSION['division'];
 
 $columns = array(
-	array('db' => 'RO_TO_OB', 'dt' => 0),
+	array('db' => 'NAME', 'dt' => 0),
 	array(
         'db'        => 'TRAVEL_DAYS',
         'dt'        => 1
