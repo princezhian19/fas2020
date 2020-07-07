@@ -131,7 +131,7 @@
     $office_address  = $_POST["office_address"];  
     $office_contact  = $_POST["office_contact"];  
     $repassword      = $_POST["repassword"];  
-    $e_stats      = $_POST["e_stats"];  
+    $e_stats         = $_POST["e_stats"];  
     $cluster         = "";       
     $access          = "";       
     $cellphone       = $_POST["cellphone"];
@@ -147,7 +147,8 @@
     $gsis            = $_POST["gsis"];
     $salary          = $_POST["salary"];
     $step            = $_POST["step"];
-    $employment_date = $_POST["employment_date"];
+    $employment_date11= $_POST["employment_date"];
+    $employment_date = date('Y-m-d',strtotime($employment_date11));
 
     $select = mysqli_query($conn,"SELECT $step FROM tbl_salary_grade WHERE salary_grade = '$salary' ");
     $rowES = mysqli_fetch_array($select);
@@ -161,7 +162,8 @@
 
       if ($e_stats == 'Yes') {
         # code...
-      $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,l_name,f_name,m_name,pagibig,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date) VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date')");
+      $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,pagibig,l_name,f_name,m_name,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date) 
+        VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date')");
 
           if ($insertqwe) {
           $save_salary = $salaryS *.09;

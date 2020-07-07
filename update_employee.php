@@ -126,6 +126,7 @@
   $gsis = $rowEmp['gsis'];
   $salary = $rowEmp['salary'];
   $step = $rowEmp['step'];
+  $bir = $rowEmp['bir'];
   $employment_date1 = $rowEmp['employment_date'];
   $employment_date = date('m/d/Y',strtotime($employment_date1));
 
@@ -174,9 +175,12 @@
     $step1            = $_POST["step"];
     $e_stats         = $_POST["e_stats"]; 
     $employee_number = $_POST["employee_number"];
-    $employment_date = $_POST["employment_date"];    
+    $employment_date11 = $_POST["employment_date"];    
+    $employment_date = date('Y-m-d',strtotime($employment_date11));
     $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeeinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
-    if (!ifRecordExist($sqlEMP_N)){
+    // if (!ifRecordExist($sqlEMP_N)){
+    $cont = true;
+    if ($cont == true){
       if(!empty(basename($_FILES["image"]["name"])))
       {
         if(!empty($_FILES["image"]["name"]))
@@ -270,7 +274,7 @@
 
       $selectPayrollEmp = mysqli_query($conn,"SELECT emp_no FROM tbl_employee WHERE emp_no = '$EMP_NUMBER1'");
       if (mysqli_num_rows($selectPayrollEmp)>0) {
-        $update_emp = mysqli_query($conn,"UPDATE tbl_employee SET pagibig = '$pagibig',pagibig_premium = '$pagibig_premium',tin = '$tin',bir = '$bir',philhealth = '$philhealth',gsis = '$gsis',salary = '$salary',step = '$step',l_name = '$lname',f_name = '$fname',m_name = '$mname',employment_date = '$employment_date' WHERE emp_no = '$EMP_NUMBER1'");
+        $update_emp = mysqli_query($conn,"UPDATE tbl_employee SET pagibig = '$pagibig',pagibig_premium = '$pagibig_premium',tin = '$tin',bir = '$bir',philhealth = '$philhealth',gsis = '$gsis',salary = '$salary1',step = '$step1',l_name = '$lname',f_name = '$fname',m_name = '$mname',employment_date = '$employment_date' WHERE emp_no = '$EMP_NUMBER1'");
       }else{
         $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,l_name,f_name,m_name,pagibig,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date) VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date')");
 
@@ -583,7 +587,7 @@
   <div class="form-group">
     <label>Designation<font style="color:red;">*</font></label>
     <select required class="form-control select2" style="width: 100%;" name="designation" id="" >
-      <option value="<?php echo $designation1;?>" selected><?php echo $designation1;?></option>
+      <option value="<?php echo $designation11;?>" selected><?php echo $designation1;?></option>
       <?php echo tbldesignation($connect)?>
     </select>
   </div>
