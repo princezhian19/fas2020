@@ -4,9 +4,9 @@ date_default_timezone_set("Asia/Manila");
 
 $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-		$fieldsName = 'tbltravel_claim.`ID`, `ENTITY_NAME`, `FUND_CLASTER`, tbltravel_claim.`NAME`, `NO`, `DATE_OF_TRAVEL`, `PURPOSE`, `POSITION`, `OFFICIAL_STATION`,`RO_TO_OB`';
-		$table = 'tbltravel_claim';
-		$join = 'INNER JOIN tbltravel_claim_info2';
+		$fieldsName = '`ID`, `NAME`, `RO_TO_OB`, `TRAVEL_DAYS`, `START_DATE`, `END_DATE`, `ORIGIN`, `DESTINATION`, `DISTANCE`, `VENUE`';
+		$table = 'tbltravel_claim_info2';
+		$join = '';
 		$WHERE = "";
 
 	
@@ -51,16 +51,30 @@ $primaryKey = 'ID';
 $division  = $_SESSION['division'];
 
 $columns = array(
-    array('db' => 'RO_TO_OB', 'dt' => 0),
+    array('db' => 'ID', 'dt' => 0),
 	array('db' => 'NAME', 'dt' => 1),
-	array(
-        'db'        => 'ENTITY_NAME',
-        'dt'        => 2
-	    ),
+	array( 'db' => 'RO_TO_OB', 'dt'=> 2),
+	array( 'db' => 'TRAVEL_DAYS', 'dt'=> 3 ),
+        
 	
 	array(
-		'db' => 'DATE_OF_TRAVEL', 
-		'dt' => 3,
+		'db' => 'START_DATE', 
+		'dt' => 4,
+		'formatter' => function( $d, $row ) {
+			if($d == '0000-00-00' || $d == null)
+			{
+				$d = '';
+				return $d;
+			}else{
+			return date( 'M d, Y', strtotime($d));
+			}
+
+
+        }
+    ),
+    array(
+		'db' => 'END_DATE', 
+		'dt' => 5,
 		'formatter' => function( $d, $row ) {
 			if($d == '0000-00-00' || $d == null)
 			{
@@ -77,32 +91,21 @@ $columns = array(
 	
     	
 	array(
-		'db' => 'POSITION', 
-		'dt' => 4
+		'db' => 'ORIGIN', 
+		'dt' => 6
     ),
-    	
-	array(
-		'db' => 'OFFICIAL_STATION', 
-        'dt' => 5,
-        'formatter' => function($d, $row)
-        {
-            if($d == '1')
-            {
-                $d = 'Regional Office';
-            }else if($d == '2')
-            {
-                $d = 'Provincial/HUC Office';
-            }
-            else if($d == '3')
-            {
-                $d = 'cluster Office';
-            }
-            else if($d == '4')
-            {
-                $d = 'City/Municipal Office';
-            }
-            return $d;
-        } )
+    array(
+		'db' => 'DESTINATION', 
+		'dt' => 7
+    ),
+    array(
+		'db' => 'DISTANCE', 
+		'dt' => 8
+    ),
+    array(
+		'db' => 'VENUE', 
+		'dt' => 9
+    )
     
 
 

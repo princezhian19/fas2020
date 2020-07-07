@@ -129,12 +129,12 @@ session_start();
     function getPurposeTravel($username)
     {
         include 'connection.php';
-        $query1 = "SELECT RO_TO_OB FROM tbltravel_claim_info2  WHERE `NAME` = '".$username."'";
+        $query1 = "SELECT RO_TO_OB FROM tbltravel_claim_info2  WHERE `RO_TO_OB` = '".$username."'";
         $result1 = mysqli_query($conn, $query1);
         
             while($row1 = mysqli_fetch_array($result1))
             {
-                echo substr($row1['RO_TO_OB'], 0,-62).','; // returns 'd'
+                echo $row1['RO_TO_OB']; // returns 'd'
             }
     }
     function add(){
@@ -149,11 +149,14 @@ session_start();
         $station = $row['OFFICE_STATION'];
         
         $insert ="INSERT INTO `tbltravel_claim`(`ID`, `ENTITY_NAME`, `FUND_CLASTER`, `NAME`, `NO`, `DATE_OF_TRAVEL`, `PURPOSE`, `POSITION`, `OFFICIAL_STATION`) VALUES 
-        (null,'".$_POST['entity_name']."','".$_POST['fund_cluster']."','".$_POST['complete_name']."','".$_POST['numero']."','".date('Y-m-d',strtotime($_POST['date_of_travel']))."','".$_POST['purpose']."','".$_POST['position']."','".$station ."')";
-      if (mysqli_query($conn, $insert)) {
+        (null,'".$_POST['entity_name']."','".$_POST['fund_cluster']."','".$_POST['complete_name']."','".$_POST['numero']."','".date('Y-m-d',strtotime($_POST['date_of_travel']))."','".$_POST['purpose_of_travel']."','".$_POST['position']."','".$station ."')";
+     
+     
+     
+     if (mysqli_query($conn, $insert)) {
         } else {
         }
-        echo $insert;
+    
         header('Location:CreateTravelClaim.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'');
     }
 }
