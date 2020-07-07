@@ -140,11 +140,7 @@ if (isset($_POST['submit'])) {
   </div>
   <?php if ($btn=="no"): ?>
     <?php else: ?>
-      <?php if ($status == 1 || $status == 2 || $status == 3|| $status == 4 || $status == 5): ?>
-        
-        <?php else: ?>
   <button class="btn btn-primary btn-s" style="float: right;" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Update</button>
-      <?php endif ?>
   <?php endif ?>
   <br>
 </form>
