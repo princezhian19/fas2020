@@ -84,6 +84,60 @@ table tr{
             <td> Body Temp. </td>
             <td> <input type ="text" class = "form-control" /> </td>
           </tr>
+          <tr>
+            <td>Email Address:</td>
+            <td> <input type ="text" class = "form-control" /> </td>
+            <td> Nationality: </td>
+            <td> <input type ="text" class = "form-control" /> </td>
+          </tr>
+          <tr>
+            <td rowspan = 2>Current Residention Address:</td>
+            <td rowspan = 2><textarea cols = 53 rows=3  style = "resize:none;"></textarea></td>
+            <td rowspan = 2>Sex:<br><br>Age</td>
+            <td> <input type ="text" class = "form-control" /> </td>
+          </tr>
+          <tr>
+          <td><input type ="text" class = "form-control" /> </td>
+          </tr>
+          <tr>
+            <td>Office/Unit:</td>
+            <td colspan = 3> <input type ="text" class = "form-control" /> </td>
+          </tr>
+          <tr>
+            <td>Reporting Dates/ Days at Regional Office:</td>
+            <td colspan = 3> <input type ="text" class = "form-control" /> </td>
+          </tr>
+          <tr>
+            <td>Did you have any of the following in the last 14 days: fever, cough, colds, sore throat, diarrhea or difficulty in breathing?</td>
+            <td>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Yes</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">No</label>
+            </div>
+            </td>
+            <td colspan = 2><textarea cols = 14 rows=3  style = "resize:none;">Please provide details:</textarea></td>
+          </tr>
+          <tr>
+            <td>Have you worked, visited or travelled to any foreign countries in the past 14 days?</td>
+            <td>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Yes</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">No</label>
+            </div>
+            </td>
+            <td colspan = 2><textarea cols = 14 rows=3  style = "resize:none;">Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)
+
+</textarea></td>
+          </tr>
+
         </tbody>
       </table>
         <!-- <form>
