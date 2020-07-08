@@ -46,7 +46,10 @@ $division = $_GET['division'];
  
     <style>
 table{
-  width:100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
 }
 
 table tr{ 
@@ -68,7 +71,7 @@ table tr{
 </head>
 
 <div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-  <div class="modal-dialog" role="document" style = "width:60%;">
+  <div class="modal-dialog modal-lg" role="document" style = "width:60%;">
     <div class="modal-content">
       <div class="modal-header" style = "background-color:#B0BEC5;">
         <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;text-align:center;font-size:30px;">HEALTH DECLARATION FORM</h5>
@@ -78,15 +81,25 @@ table tr{
       </div>
       <form method = "POST" action = "health_monitoring_functions.php?action=add">
       <div class="modal-body" >
-      <table border = 1>
+      <div style="overflow-x:auto;">
+
+      <table border = 1 id="classTable" class="table table-bordered">
         <tbody>
           <tr>
-            <td style = "background-color:#B0BEC5;width:40%;">Name:</td>
-            <td colspan = 3 style = "width:20%;"> <input style = "width:20%; border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getCompleteName();?>" readonly name = "complete_name"/> </td>
+            <td style = "background-color:#B0BEC5;width:20%;">Name:</td>
+            <td style = "width:10%;"> 
+              <input style = "width:10%;" type ="text" class = "form-control" value = "<?php getCompleteName();?>" readonly name = "complete_name"/> 
+            </td>
+            <td> 
+              <input style = "width:20%; border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getCompleteName();?>" readonly name = "complete_name"/> 
+            </td>
+            <td> 
+              <input style = "width:20%; border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getCompleteName();?>" readonly name = "complete_name"/> 
+            </td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Mobile Number:</td>
-            <td> <input style = " border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getContact();?>" readonly name = "contact_number" /> </td>
+            <td style = "width:10%;" > <input style = "width:10%;border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getContact();?>" readonly name = "contact_number" /> </td>
             <td style = "background-color:#B0BEC5;"> Body Temp. </td>
             <!-- id = "temp" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value) -->
             <td> <input type ="number" class = "form-control" required/> </td>
@@ -108,63 +121,61 @@ table tr{
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Office/Unit:</td>
-            <td colspan = 3> <input type ="text" style = " border: none;background: transparent;" class = "form-control" value = "<?php getOffice()?>" name= "office"/> </td>
-          </tr>
-          <tr>
+            <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" value = "<?php getOffice()?>" name= "office"/> </td>
             <td style = "background-color:#B0BEC5;">Reporting Dates/ Days at Regional Office:</td>
-            <td colspan = 2> 
+            <td> 
                 <select required class="form-control" style="width: 100%;" name="work_arrangement" id="sched" >
                     <option value="" selected></option>
                     <option value="SWF" >Skeletal Work Force</option>
                     <option value="AWA" >Alternate Work Arrangement</option>
                 </select>
-            </td>
-     <td>
                 <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control pull-right" id="reservation" name = "sched">
+                  <input type="text" class="form-control pull-right" id="reservation" name = "sched" required>
                 </div>
-                </td>
+            </td>
+
           </tr>
+         
           <tr>
             <td style = "background-color:#B0BEC5;">Did you have any of the following in the last 14 days: fever, cough, colds, sore throat, diarrhea or difficulty in breathing?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox1" id="cb1">
+              <input type="checkbox" class="form-check-input checkbox1" id="cb1" name = "ans1" value = "YES">
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox1" id="cb2">
+              <input type="checkbox" class="form-check-input checkbox1" id="cb2"  name = "ans1" value = "NO">
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;" id = "txt1">Please provide details:</textarea></td>
+            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;" id = "txt1" name = "ans1_details">Please provide details:</textarea></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to any foreign countries in the past 14 days?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox2" id="cb3">
+              <input type="checkbox" class="form-check-input checkbox2" id="cb3" name = "ans2" value = "YES">
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox2" id="cb4">
+              <input type="checkbox" class="form-check-input checkbox2" id="cb4" name = "ans2" value = "NO">
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2 rowspan = 2><textarea cols = 65 rows=6 style = "resize:none;" id = "txt2">Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)</textarea></td>
+            <td colspan = 2 rowspan = 2><textarea name = "ans2_details" cols = 65 rows=6 style = "resize:none;" id = "txt2">Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)</textarea></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to other places in the Philippines in the past 7 days?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox3" id="cb5">
+              <input type="checkbox" class="form-check-input checkbox3" id="cb5" name = "ans3" value = "YES">
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox3" id="cb6">
+              <input type="checkbox" class="form-check-input checkbox3" id="cb6" name = "ans3" value = "NO">
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
@@ -173,37 +184,41 @@ table tr{
           <td style = "background-color:#B0BEC5;">Have you been in close contact with farm animals or exposed to wild animals in the past 14 days?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox4" id="cb7">
+              <input type="checkbox" class="form-check-input checkbox4" id="cb7" name = "ans4" value = "YES">
               <label class="form-check-label" for="exampleCheck1 checkbox4">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox4" id="cb8">
+              <input type="checkbox" class="form-check-input checkbox4" id="cb8" name = "ans4" value = "NO">
               <label class="form-check-label" for="exampleCheck1 checkbox4">No</label>
             </div>
             </td>
-            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;" id = "txt3">Please provide details:</textarea></td>
+            <td colspan = 2><textarea name = "ans3_details" cols = 65 rows=5  style = "resize:none;" id = "txt3">Please provide details:</textarea></td>
           </tr>
           <tr>
           <td style = "background-color:#B0BEC5;">Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox5" id="cb9">
+              <input type="checkbox" class="form-check-input checkbox5" id="cb9" name = "ans5" value = "YES">
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox5" id="cb10">
+              <input type="checkbox" class="form-check-input checkbox5" id="cb10" name = "ans5" value = "NO">
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;" id = "txt4">Please provide details:</textarea></td>
+            <td colspan = 2><textarea name = "ans4_details" cols = 65 rows=5  style = "resize:none;" id = "txt4">Please provide details:</textarea></td>
           </tr>
           <tr>
-          <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input style = "width:20%;"type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
+          <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
           </tr>
           <tr>
           <td style = "text-align:justify;" colspan = 5>Declaration:<br><br>
             The information I have given herein is true, correct and complete, I understand that failure to answer any question or any falsified response may have serious consequences. (Article 171 and 172 of the revised Penal Code of the Philippines).
-            <span class = "pull-right" STYLE = "margin-left:50px;"> <br><u STYLE  = "font-weight:bold;"><?php echo date('F d, Y');?></u><br><center>DATE</center></span>                                            
+            <span class = "pull-right" STYLE = "margin-left:50px;"> 
+                <br><u STYLE  = "font-weight:bold;"><?php echo date('F d, Y');?></u><br>
+                <input type = "text" value="<?php echo date('F d, Y');?>" name = "date_today" />
+                <center>DATE</center>
+            </span>                                            
             <span class = "pull-right" > <br><u STYLE  = "font-weight:bold;"><?php echo $_SESSION['complete_name'];?></u><br>NAME AND SIGNATURE </span>                                            
           </td>
           </tr>
@@ -211,6 +226,7 @@ table tr{
         </tbody>
       </table>
       </div>
+      </div >
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>

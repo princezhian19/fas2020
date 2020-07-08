@@ -87,6 +87,42 @@
             echo $row['DIVISION_M'];
         }
     }
+    // ======================= inserting =====================
+    function add()
+    {
+          include 'connection.php';
+
+
+        $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `UNAME`, `WORK_ARRANGEMENT`, 
+        `REPORTING_DATES`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`) VALUES 
+        (null,
+        '".$_SESSION['username']."',
+        '".$_POST['work_arrangement']."',
+        '".$_POST['sched']."',
+        '".$_POST['ans1']."',
+        '".$_POST['ans2']."',
+        '".$_POST['ans3']."',
+        '".$_POST['ans4']."',
+        '".$_POST['ans5']."',
+        '".$_POST['ans1_details']."',
+        '".$_POST['ans2_details']."',
+        '".$_POST['ans2_details']."',
+        '".$_POST['ans4_details']."'
+        )";
+        echo $insert;
+        exit();
+     
+     
+     
+    }
+
+if(isset($_GET['action'])){
+    if($_GET['action'] == 'add')
+    {
+        add();
+    }
+}
+    
     
 
 ?>
