@@ -42,12 +42,7 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 </head>
 
-<script>
-$(document).ready(function() {
-  $('#welcome-modal').modal('show');
 
-});
-</script>
 <body class="hold-transition fixed skin-red-light sidebar-mini">
 <div class="wrapper">
    <?php 
