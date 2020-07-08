@@ -48,8 +48,9 @@ $division = $_GET['division'];
 table{
   border-collapse: collapse;
   border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
+  table-layout: fixed;
+  position:center;
+
 }
 
 table tr{ 
@@ -71,7 +72,7 @@ table tr{
 </head>
 
 <div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-  <div class="modal-dialog modal-lg" role="document" style = "width:60%;">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header" style = "background-color:#B0BEC5;">
         <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;text-align:center;font-size:30px;">HEALTH DECLARATION FORM</h5>
@@ -83,41 +84,44 @@ table tr{
       <div class="modal-body" >
       <div style="overflow-x:auto;">
 
-      <table border = 1 id="classTable" class="table table-bordered">
+      <table border =1 style = "width:100%;">
         <tbody>
           <tr>
-            <td style = "background-color:#B0BEC5;width:20%;">Name:</td>
-            <td style = "width:10%;"> 
-              <input style = "width:10%;" type ="text" class = "form-control" value = "<?php getCompleteName();?>" readonly name = "complete_name"/> 
+            <td style = "background-color:#B0BEC5;">Name:</td>
+            <td> 
+            <input style = "border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getLast();?>"  name = "complete_name"/> 
+              
             </td>
             <td> 
-              <input style = "width:20%; border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getCompleteName();?>" readonly name = "complete_name"/> 
+              <input style = "border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getFirst();?>"  name = "complete_name"/> 
             </td>
             <td> 
-              <input style = "width:20%; border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getCompleteName();?>" readonly name = "complete_name"/> 
+              <input style = "border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getMiddle();?>"  name = "complete_name"/> 
             </td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Mobile Number:</td>
-            <td style = "width:10%;" > <input style = "width:10%;border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getContact();?>" readonly name = "contact_number" /> </td>
-            <td style = "background-color:#B0BEC5;"> Body Temp. </td>
+            <td> <input style = "border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getContact();?>"  name = "contact_number" /> </td>
+            <td style = "background-color:#B0BEC5;"> Body Temp. </td> 
             <!-- id = "temp" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value) -->
-            <td> <input type ="number" class = "form-control" required/> </td>
+            <td> <input type ="number"  class = "form-control" required/> 
+
+            </td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Email Address:</td>
-            <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" value = "<?php getEmail();?>" readonly name = "email" /> </td>
+            <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" value = "<?php getEmail();?>"  name = "email" /> </td>
             <td style = "background-color:#B0BEC5;"> Nationality: </td>
-            <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" value = "Filipino" name = "nationality" readonly/> </td>
+            <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" value = "Filipino" name = "nationality" /> </td>
           </tr>
           <tr>
-            <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residention Address:</td>
-            <td rowspan = 2><textarea required cols = 53 rows=3  style = "resize:none; border: none;background: transparent;" name = "address"><?php getAddress();?></textarea></td>
+            <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residential Address:</td>
+            <td rowspan = 2><textarea required cols = 25 rows=3  style = "resize:none; border: none;background: transparent;" name = "address"><?php getAddress();?></textarea></td>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
-            <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" name = "gender" value = "<?php getGender(); ?>" readonly/> </td>
+            <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" name = "gender" value = "<?php getGender(); ?>" /> </td>
           </tr>
           <tr>
-          <td><input type ="text" style = " border: none;background: transparent;" class = "form-control" name = "age" VALUE = "<?php calculateAge();?>" name = "age" readonly/> </td>
+          <td><input type ="text" style = " border: none;background: transparent;" class = "form-control" name = "age" VALUE = "<?php calculateAge();?>" name = "age" /> </td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Office/Unit:</td>
@@ -151,7 +155,7 @@ table tr{
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;" id = "txt1" name = "ans1_details">Please provide details:</textarea></td>
+            <td colspan = 2>Please provide details:<textarea cols = 57 rows=5  style = "resize:none;" id = "txt1" name = "ans1_details"></textarea></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to any foreign countries in the past 14 days?</td>
@@ -165,7 +169,7 @@ table tr{
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2 rowspan = 2><textarea name = "ans2_details" cols = 65 rows=6 style = "resize:none;" id = "txt2">Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)</textarea></td>
+            <td colspan = 2 rowspan = 2>Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)<textarea name = "ans2_details" cols = 57 rows=6 style = "resize:none;" id = "txt2"></textarea></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to other places in the Philippines in the past 7 days?</td>
@@ -192,7 +196,7 @@ table tr{
               <label class="form-check-label" for="exampleCheck1 checkbox4">No</label>
             </div>
             </td>
-            <td colspan = 2><textarea name = "ans3_details" cols = 65 rows=5  style = "resize:none;" id = "txt3">Please provide details:</textarea></td>
+            <td colspan = 2>Please provide details:<textarea name = "ans3_details" cols = 57 rows=5  style = "resize:none;" id = "txt3"></textarea></td>
           </tr>
           <tr>
           <td style = "background-color:#B0BEC5;">Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
@@ -206,17 +210,17 @@ table tr{
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2><textarea name = "ans4_details" cols = 65 rows=5  style = "resize:none;" id = "txt4">Please provide details:</textarea></td>
+            <td colspan = 2>Please provide details:<textarea name = "ans4_details" cols = 57 rows=5  style = "resize:none;" id = "txt4"></textarea></td>
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
           </tr>
           <tr>
-          <td style = "text-align:justify;" colspan = 5>Declaration:<br><br>
+          <td style = "text-align:justify;" colspan = 4>Declaration:<br><br>
             The information I have given herein is true, correct and complete, I understand that failure to answer any question or any falsified response may have serious consequences. (Article 171 and 172 of the revised Penal Code of the Philippines).
-            <span class = "pull-right" STYLE = "margin-left:50px;"> 
+            <br><br><span class = "pull-right" STYLE = "margin-left:50px;"> 
                 <br><u STYLE  = "font-weight:bold;"><?php echo date('F d, Y');?></u><br>
-                <input type = "text" value="<?php echo date('F d, Y');?>" name = "date_today" />
+                <input type = "hidden" value="<?php echo date('F d, Y');?>" name = "date_today" />
                 <center>DATE</center>
             </span>                                            
             <span class = "pull-right" > <br><u STYLE  = "font-weight:bold;"><?php echo $_SESSION['complete_name'];?></u><br>NAME AND SIGNATURE </span>                                            
@@ -250,6 +254,10 @@ table tr{
 
 // }
 $(document).ready(function() {
+  $(':input[type="number"]').change(function(){
+     this.value = parseFloat(this.value).toFixed(2);
+});
+ 
     $("#reservation").prop('disabled', true);
 
 $('#sched').on('change',function(e){

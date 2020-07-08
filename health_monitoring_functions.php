@@ -1,12 +1,34 @@
 <?php
-    function getCompleteName()
+    function getLast()
     {
         include 'connection.php';
         $query = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$_SESSION['username']."' ";
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_array($result))
         {
-            $name = ucwords(strtoupper($row['FIRST_M'])).' '.ucfirst(strtoupper($row['LAST_M']));
+            $name = ucwords(ucfirst(strtoupper($row['LAST_M'])));
+            echo $name;
+        }
+    }
+    function getFirst()
+    {
+        include 'connection.php';
+        $query = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$_SESSION['username']."' ";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            $name = ucwords(ucfirst(strtoupper($row['FIRST_M'])));
+            echo $name;
+        }
+    }
+    function getMiddle()
+    {
+        include 'connection.php';
+        $query = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$_SESSION['username']."' ";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            $name = ucwords(ucfirst(strtoupper($row['MIDDLE_M'])));
             echo $name;
         }
     }
