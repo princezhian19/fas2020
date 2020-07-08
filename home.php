@@ -63,10 +63,10 @@ table tr{
 </head>
 
 <div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-  <div class="modal-dialog" role="document" style = "width:50%;">
+  <div class="modal-dialog" role="document" style = "width:60%;">
     <div class="modal-content">
       <div class="modal-header" style = "background-color:#B0BEC5;">
-        <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;">HEALTH DECLARATION FORM</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;text-align:center;font-size:30px;">HEALTH DECLARATION FORM</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -79,7 +79,7 @@ table tr{
             <td colspan = 3> <input type ="text" class = "form-control" /> </td>
           </tr>
           <tr>
-            <td>Mobile Number:</td>
+            <td style = "width:20%">Mobile Number:</td>
             <td> <input type ="text" class = "form-control" /> </td>
             <td> Body Temp. </td>
             <td> <input type ="text" class = "form-control" /> </td>
@@ -119,7 +119,7 @@ table tr{
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2><textarea cols = 14 rows=3  style = "resize:none;">Please provide details:</textarea></td>
+            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;">Please provide details:</textarea></td>
           </tr>
           <tr>
             <td>Have you worked, visited or travelled to any foreign countries in the past 14 days?</td>
@@ -133,9 +133,59 @@ table tr{
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2><textarea cols = 14 rows=3  style = "resize:none;">Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)
-
-</textarea></td>
+            <td colspan = 2 rowspan = 2><textarea cols = 65 rows=6 style = "resize:none;">Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)</textarea></td>
+          </tr>
+          <tr>
+            <td>Have you worked, visited or travelled to other places in the Philippines in the past 7 days?</td>
+            <td>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Yes</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">No</label>
+            </div>
+            </td>
+          </tr>
+          <tr>
+          <td>Have you been in close contact with farm animals or exposed to wild animals in the past 14 days?</td>
+            <td>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Yes</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">No</label>
+            </div>
+            </td>
+            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;">Please provide details:</textarea></td>
+          </tr>
+          <tr>
+          <td>Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
+            <td>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Yes</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">No</label>
+            </div>
+            </td>
+            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;">Please provide details:</textarea></td>
+          </tr>
+          <tr>
+          <td colspan = 2><b>FOR WOMEN:</b><br> When was your last menstruation period? </td>
+          <td colspan = 2> <input type ="text" class = "form-control" /> </td>
+          </tr>
+          <tr>
+          <td style = "text-align:justify;" colspan = 5>Declaration:<br><br>
+            The information I have given herein is true, correct and complete, I understand that failure to answer any question or any falsified response may have serious consequences. (Article 171 and 172 of the revised Penal Code of the Philippines).
+            <span class = "pull-right" STYLE = "margin-left:50px;"> <br>_________________________________ <br>DATE</span>                                            
+            <span class = "pull-right"> <br>_________________________________ <br>NAME AND SIGNATURE </span>                                            
+          </td>
           </tr>
 
         </tbody>
@@ -153,7 +203,7 @@ table tr{
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </div>
