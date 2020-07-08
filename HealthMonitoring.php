@@ -113,19 +113,18 @@ table tr{
           <tr>
             <td style = "background-color:#B0BEC5;">Reporting Dates/ Days at Regional Office:</td>
             <td colspan = 2> 
-                
-      <select required class="form-control" style="width: 100%;" name="division" id="sched" >
-        <option value="" selected></option>
-        <option value="SWF" >Skeletal Work Force</option>
-        <option value="AWA" >Alternate Work Arrangement</option>
-      </select>
-     </td>
+                <select required class="form-control" style="width: 100%;" name="work_arrangement" id="sched" >
+                    <option value="" selected></option>
+                    <option value="SWF" >Skeletal Work Force</option>
+                    <option value="AWA" >Alternate Work Arrangement</option>
+                </select>
+            </td>
      <td>
-     <div class="input-group">
+                <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control pull-right" id="reservation">
+                  <input type="text" class="form-control pull-right" id="reservation" name = "sched">
                 </div>
                 </td>
           </tr>
@@ -199,8 +198,7 @@ table tr{
             <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;" id = "txt4">Please provide details:</textarea></td>
           </tr>
           <tr>
-          <td colspan = 2><b>FOR WOMEN:</b><br> When was your last menstruation period? </td>
-          <td colspan = 2> <input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
+          <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input style = "width:20%;"type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
           </tr>
           <tr>
           <td style = "text-align:justify;" colspan = 5>Declaration:<br><br>
