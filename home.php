@@ -46,14 +46,24 @@ $username = $_SESSION['username'];
 <div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+      <div class="modal-header" style = "background-color:#B0BEC5;">
+        <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;">HEALTH DECLARATION FORM</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
+      <table border = 1>
+        <tbody>
+          <tr>
+            <td>Name:</td>
+            <td>
+            <input type ="text" class = "form-control"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+        <!-- <form>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Recipient:</label>
             <input type="text" class="form-control" id="recipient-name">
@@ -62,7 +72,7 @@ $username = $_SESSION['username'];
             <label for="message-text" class="col-form-label">Message:</label>
             <textarea class="form-control" id="message-text"></textarea>
           </div>
-        </form>
+        </form> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -77,9 +87,7 @@ $username = $_SESSION['username'];
 <script>
 $(document).ready(function() {
   $('#welcome-modal').modal('show');
-  setTimeout(function() {
-    $('#welcome-modal').modal('hide');
-  }, 2000);
+
 });
 </script>
 <body class="hold-transition fixed skin-red-light sidebar-mini">
