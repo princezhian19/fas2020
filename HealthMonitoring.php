@@ -97,7 +97,7 @@ table tr{
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residention Address:</td>
-            <td rowspan = 2><textarea cols = 53 rows=3  style = "resize:none;" name = "address"><?php getAddress();?></textarea></td>
+            <td rowspan = 2><textarea cols = 53 rows=3  style = "resize:none; border: none;background: transparent;" name = "address"readonly><?php getAddress();?></textarea></td>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
             <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" name = "gender" value = "<?php getGender(); ?>" readonly/> </td>
           </tr>
@@ -116,39 +116,39 @@ table tr{
             <td style = "background-color:#B0BEC5;">Did you have any of the following in the last 14 days: fever, cough, colds, sore throat, diarrhea or difficulty in breathing?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input checkbox1" id="cb1">
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input checkbox1" id="cb2">
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;">Please provide details:</textarea></td>
+            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;" id = "txt1">Please provide details:</textarea></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to any foreign countries in the past 14 days?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input checkbox2" id="cb3">
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input checkbox2" id="cb4">
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2 rowspan = 2><textarea cols = 65 rows=6 style = "resize:none;">Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)</textarea></td>
+            <td colspan = 2 rowspan = 2><textarea cols = 65 rows=6 style = "resize:none;" id = "txt2">Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)</textarea></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to other places in the Philippines in the past 7 days?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input checkbox3" id="cb5">
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input checkbox3" id="cb6">
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
@@ -157,29 +157,29 @@ table tr{
           <td style = "background-color:#B0BEC5;">Have you been in close contact with farm animals or exposed to wild animals in the past 14 days?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Yes</label>
+              <input type="checkbox" class="form-check-input checkbox4" id="cb7">
+              <label class="form-check-label" for="exampleCheck1 checkbox4">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">No</label>
+              <input type="checkbox" class="form-check-input checkbox4" id="cb8">
+              <label class="form-check-label" for="exampleCheck1 checkbox4">No</label>
             </div>
             </td>
-            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;">Please provide details:</textarea></td>
+            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;" id = "txt3">Please provide details:</textarea></td>
           </tr>
           <tr>
           <td style = "background-color:#B0BEC5;">Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input checkbox5" id="cb9">
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <input type="checkbox" class="form-check-input checkbox5" id="cb10">
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;">Please provide details:</textarea></td>
+            <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;" id = "txt4">Please provide details:</textarea></td>
           </tr>
           <tr>
           <td colspan = 2><b>FOR WOMEN:</b><br> When was your last menstruation period? </td>
@@ -217,7 +217,105 @@ table tr{
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script>
 $(document).ready(function() {
+    $("#txt1").prop('disabled', true);
+    $("#txt2").prop('disabled', true);
+    $("#txt3").prop('disabled', true);
+    $("#txt4").prop('disabled', true);
+
+
   $('#welcome-modal').modal('show');
+//   checkbox
+$('.checkbox1').on('change', function() { 
+      $('.checkbox1').not(this).prop('checked', false);  
+  });
+  $('.checkbox2').on('change', function() { 
+      $('.checkbox2').not(this).prop('checked', false);  
+  });
+  $('.checkbox3').on('change', function() { 
+      $('.checkbox3').not(this).prop('checked', false);  
+  });
+  $('.checkbox4').on('change', function() { 
+      $('.checkbox4').not(this).prop('checked', false);  
+  });
+  $('.checkbox5').on('change', function() { 
+      $('.checkbox5').not(this).prop('checked', false);  
+  });
+//   =================================
+    $('#cb1').click(function(){
+        if($(this).prop("checked") == true){
+            $("#txt1").prop('disabled', false);
+        }else{
+            $("#txt1").prop('disabled', true);
+        }
+    });
+    $('#cb2').click(function(){
+        if($(this).prop("checked") == true){
+            $("#txt1").prop('disabled', true);
+        }else{
+            $("#txt1").prop('disabled', false);
+        }
+    });
+// ========================================
+//   =================================
+$('#cb3').click(function(){
+        if($(this).prop("checked") == true){
+            $("#txt2").prop('disabled', false);
+        }else{
+            $("#txt2").prop('disabled', true);
+        }
+    });
+    $('#cb4').click(function(){
+        if($(this).prop("checked") == true){
+            $("#txt2").prop('disabled', true);
+        }else{
+            $("#txt2").prop('disabled', false);
+        }
+    });
+// ========================================
+$('#cb5').click(function(){
+        if($(this).prop("checked") == true){
+            $("#txt2").prop('disabled', false);
+        }else{
+            $("#txt2").prop('disabled', true);
+        }
+    });
+    $('#cb6').click(function(){
+        if($(this).prop("checked") == true){
+            $("#txt2").prop('disabled', true);
+        }else{
+            $("#txt2").prop('disabled', false);
+        }
+    });
+    // ===================================
+    $('#cb7').click(function(){
+        if($(this).prop("checked") == true){
+            $("#txt3").prop('disabled', false);
+        }else{
+            $("#txt3").prop('disabled', true);
+        }
+    });
+    $('#cb8').click(function(){
+        if($(this).prop("checked") == true){
+            $("#txt3").prop('disabled', true);
+        }else{
+            $("#txt3").prop('disabled', false);
+        }
+    });
+    // ===================================
+    $('#cb9').click(function(){
+        if($(this).prop("checked") == true){
+            $("#txt4").prop('disabled', false);
+        }else{
+            $("#txt4").prop('disabled', true);
+        }
+    });
+    $('#cb10').click(function(){
+        if($(this).prop("checked") == true){
+            $("#txt4").prop('disabled', true);
+        }else{
+            $("#txt4").prop('disabled', false);
+        }
+    });
 
 });
 </script>
