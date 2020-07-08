@@ -280,6 +280,22 @@
 
       }
 
+    }else{
+          $update_emp2 = mysqli_query($conn,"DELETE FROM tbl_employee  WHERE emp_no = '$EMP_NUMBER1'");
+      $update_tbl_deductions = mysqli_query($conn,"DELETE FROM tbl_deductions  WHERE emp_no = '$EMP_NUMBER1' ");
+      $update_tbl_deduction_loans = mysqli_query($conn,"UPDATE FROM tbl_deduction_loans  WHERE emp_no = '$EMP_NUMBER1' ");
+
+      $updateBir = mysqli_query($conn,"DELETE FROM bir  WHERE emp_no = '$EMP_NUMBER1' ");
+
+      $updateMp2 = mysqli_query($conn,"DELETE FROM mp2  WHERE emp_no = '$EMP_NUMBER1' ");
+
+      $updatePrem = mysqli_query($conn,"DELETE FROM pagibig_premium  WHERE emp_no = '$EMP_NUMBER1' ");
+
+      $updateHistory = mysqli_query($conn,"DELETE FROM tbl_deduction_loans_history  WHERE emp_no = '$EMP_NUMBER1' ");
+
+      $updateLoan = mysqli_query($conn,"DELETE FROM tbl_loan  WHERE emp_no = '$EMP_NUMBER1' ");
+
+      $updateLoanHistory = mysqli_query($conn,"DELETE FROM tbl_loan_history  WHERE emp_no = '$EMP_NUMBER1' ");
     }
 
     if ($query) 
