@@ -87,7 +87,7 @@ function aa($id)
         while($row = mysqli_fetch_array($result))
         {
             $date = $row['DATE'];
-            $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID WHERE tbltravel_claim_info.`TC_ID` = '".$id."' and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
+            $query1 = "SELECT * FROM tbltravel_claim_info INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID WHERE tbltravel_claim_info.`RO` = '".$id."' and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
             $result1 = mysqli_query($conn, $query1);
             $saved = array();
     
@@ -128,7 +128,10 @@ function aa($id)
                           }
                           else{
                           ?>
-                                      <td style = "width:9.5%;"><span class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['ID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span></td>
+                                      <td style = "width:12%;">
+                                        <span class = "btn btn-sm btn-primary"><i class = "fa fa-edit"></i>&nbsp;Edit</span>
+                                        <span class = "btn btn-sm btn-danger"  id = "btnids<?php echo $row1['ID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span>
+                                      </td>
 
                           <?php
                           }
@@ -184,7 +187,10 @@ function aa($id)
 function showData()
 {
         include 'connection.php';
-        $query = "SELECT * FROM `tbltravel_claim_info2`   inner join `tbltravel_claim_info` on  tbltravel_claim_info2.`ID` = tbltravel_claim_info.`TC_ID`  WHERE  `NAME`= '".$_GET['username']."'";
+        $query = "SELECT * FROM `tbltravel_claim_info` 
+        INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID
+        where `UNAME` = '".$_SESSION['username']."'
+        GROUP by tbltravel_claim_info.RO ";
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
@@ -220,7 +226,7 @@ function showData()
               
             ?>
             <tr>
-                <td colspan = 10 style = "background-color:#B0BEC5;"> <?php echo '<b>'.$row['RO'].'</b>'; ?> </td>
+                <td colspan = 10 style = "background-color:#B0BEC5;"><?php echo '<b>'.$row['RO_OT_OB'].'</b>'; ?> </td>
             </tr>
             
             
@@ -511,9 +517,8 @@ function rowCount(){
                           <div class = "col-sm-6 col-md-6 col-lg-6">
                           <div class="col-md-12">
                                 <div class="form-group">
-                                  <label>Travel Info</label>
-                                   
-                                    <input type="text" name = "ro" class="form-control" />
+                                  <label>Activity Title</label>
+                                 <?php showActivityTitle();?>
                                 </div>
                               </div>
                               <div class="col-md-12">

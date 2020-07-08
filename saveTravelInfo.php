@@ -23,15 +23,55 @@ if($receipt == 'Without Receipt')
 }
 $perdiem = $breakfast+$lunch+$dinner+$receipt;
 
-
 include 'connection.php';
+$query1 = "SELECT * FROM tbltravel_claim_ro order by id desc limit 1";
+$result1 = mysqli_query($conn, $query1);
+if(mysqli_num_rows($result1) > 0)    
+{
+    while($row1 = mysqli_fetch_array($result1))
+    {
+        if($row1['RO_OT_OB'] == $_POST['ro'])
+        {
+            
+
+        }else{
+            $insert_ro ="INSERT INTO `tbltravel_claim_ro`(`ID`, `RO_OT_OB`, `UNAME`) 
+            VALUES (null, '".$_POST['ro']."','".$_SESSION['username']."')";
+            if (mysqli_query($conn, $insert_ro)) {
+            } else {
+            }
+        }
+    }
+
+}else{
+    $insert_ro ="INSERT INTO `tbltravel_claim_ro`(`ID`, `RO_OT_OB`, `UNAME`) 
+    VALUES (null, '".$_POST['ro']."','".$_SESSION['username']."')";
+    if (mysqli_query($conn, $insert_ro)) {
+    } else {
+    }
+}
+
+
+
+
+
 $query = "SELECT ID as 'uid' FROM tbltravel_claim_info2  WHERE `NAME` = '".$_SESSION['username']."'  order by ID DESC limit 1  ";
 $result = mysqli_query($conn, $query);
 if(mysqli_num_rows($result) > 0)    
 {
     if($row = mysqli_fetch_array($result))
     {
+
+
+
         $uid = $row['uid'];
+    
+
+
+
+
+
+
         for($a=0;$a < count($_POST['mot']); $a++)
         {
             $from3  = $_POST['from3'][$a];
@@ -42,10 +82,19 @@ if(mysqli_num_rows($result) > 0)
             $mot = $_POST['mot'][$a];
 
             include 'connection.php';
+           
+            $query1 = "SELECT * FROM tbltravel_claim_ro order by id desc limit 1";
+            $result1 = mysqli_query($conn, $query1);
+            if(mysqli_num_rows($result1) > 0)    
+            {
+                if($row1 = mysqli_fetch_array($result1))
+                {
+          
+            // ===============================================================
             $insert ="INSERT INTO `tbltravel_claim_info`(`TC_ID`, `RO`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `OTHERS`, `TOTAL_AMOUNT`) 
                     VALUES 
                     ('".$uid."',
-                    '".$_POST['ro']."',
+                    '".$row1['ID']."',
                     '".date('Y-m-d',strtotime($_POST['date']))."',
                     '".$destination."',
                     '".date('H:i',strtotime($_POST['from1']))."',
@@ -59,6 +108,8 @@ if(mysqli_num_rows($result) > 0)
             if (mysqli_query($conn, $insert)) {
             } else {
             }
+        }
+    }
 
         
         }

@@ -40,23 +40,94 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+<style>
+table{
+  width:100%;
+}
+table tr{ 
+    font-family:'Cambria';
+  }
+  .table-header{
+    color:black;
+    background-color:#B0BEC5; 
 
+  }
+  td{
+    padding:5px;
+  }
+  td.label-text{ 
+    background-color:#B0BEC5; 
+
+  }
+  </style>
 </head>
+
+<div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" role="document" style = "width:50%;">
+    <div class="modal-content">
+      <div class="modal-header" style = "background-color:#B0BEC5;">
+        <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;">HEALTH DECLARATION FORM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+      <table border = 1>
+        <tbody>
+          <tr>
+            <td>Name:</td>
+            <td colspan = 3> <input type ="text" class = "form-control" /> </td>
+          </tr>
+          <tr>
+            <td>Mobile Number:</td>
+            <td> <input type ="text" class = "form-control" /> </td>
+            <td> Body Temp. </td>
+            <td> <input type ="text" class = "form-control" /> </td>
+          </tr>
+        </tbody>
+      </table>
+        <!-- <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function() {
+  $('#welcome-modal').modal('show');
+
+});
+</script>
 <body class="hold-transition fixed skin-red-light sidebar-mini">
 <div class="wrapper">
    <?php 
   if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'sglee') { 
     include('test1.php'); 
-    if($username == 'masacluti'){
-    ?>
+//     if($username == 'masacluti'){
+//     ?>
     
-    <script>
-window.location.href = 'DTR.php?division=<?php echo $_GET['division']; ?>&username=<?php echo $username;?>';
+//     <script>
+// window.location.href = 'DTR.php?division=<?php echo $_GET['division']; ?>&username=<?php echo $username;?>';
 
-</script>
+// </script>
 
-    <?php
-    }
+//     <?php
+//     }
 }else{ 
 
      if ($OFFICE_STATION == 1) {

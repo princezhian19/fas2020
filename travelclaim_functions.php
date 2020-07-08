@@ -137,7 +137,8 @@ session_start();
                 echo $row1['RO_TO_OB']; // returns 'd'
             }
     }
-    function add(){
+    function add()
+    {
         include 'connection.php';
 
         $query = "SELECT OFFICE_STATION   from tblemployeeinfo where UNAME = '".$_SESSION['username']."' ";
@@ -153,13 +154,36 @@ session_start();
      
      
      
-     if (mysqli_query($conn, $insert)) {
-        } else {
-        }
-    
-        header('Location:CreateTravelClaim.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'');
+        if (mysqli_query($conn, $insert)) {
+            } else {
+            }
+        
+            header('Location:CreateTravelClaim.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'');
+            }   
     }
-}
+    function showActivityTitle()
+    {
+        include 'connection.php';
+        $query = "SELECT RO_OT_OB FROM `tbltravel_claim_ro` WHERE UNAME = '".$_SESSION['username']."'  order by id desc limit 1 ";
+        $result = mysqli_query($conn, $query);
+        if(mysqli_num_rows($result) > 0)    
+        {
+        while($row = mysqli_fetch_array($result))
+        {
+            ?>
+                <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" />
+            <?php
+           
+       
+        }
+    }
+    else{
+        ?>
+        <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>"/>
+    <?php
+    }
+ 
+    }
 $func = '';
 if(isset($_POST['function']))
 {
