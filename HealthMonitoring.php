@@ -97,7 +97,7 @@ table tr{
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residention Address:</td>
-            <td rowspan = 2><textarea cols = 53 rows=3  style = "resize:none;" name = "address"><?php getAddress();?></textarea></td>
+            <td rowspan = 2><textarea cols = 53 rows=3  style = "resize:none; border: none;background: transparent;" name = "address"readonly><?php getAddress();?></textarea></td>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
             <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" name = "gender" value = "<?php getGender(); ?>" readonly/> </td>
           </tr>
@@ -218,7 +218,6 @@ table tr{
 <script>
 $(document).ready(function() {
   $('#welcome-modal').modal('show');
-
 });
 </script>
 <?php 
