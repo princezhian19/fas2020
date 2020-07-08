@@ -1,4 +1,5 @@
 <?php session_start();
+include 'health_monitoring_functions.php';
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }else{
@@ -6,6 +7,7 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 $division = $_GET['division'];
+
 }
 ?>
 <!DOCTYPE html>
@@ -46,6 +48,7 @@ $division = $_GET['division'];
 table{
   width:100%;
 }
+
 table tr{ 
     font-family:'Cambria';
   }
@@ -68,7 +71,7 @@ table tr{
   <div class="modal-dialog" role="document" style = "width:60%;">
     <div class="modal-content">
       <div class="modal-header" style = "background-color:#B0BEC5;">
-        <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;text-align:center;font-size:30px;">HEALTH DECLARATION FORM</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;text-align:center;font-size:30px;"><img src= "images/logo.png" style = "width:80px;margin-right:10px;"/>HEALTH DECLARATION FORM</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -77,40 +80,40 @@ table tr{
       <table border = 1>
         <tbody>
           <tr>
-            <td>Name:</td>
+            <td style = "background-color:#B0BEC5;width:40%;">Name:</td>
+            <td colspan = 3 style = "width:20%;"> <input style = "width:20%; border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getCompleteName();?>" readonly name = "complete_name"/> </td>
+          </tr>
+          <tr>
+            <td style = "background-color:#B0BEC5;">Mobile Number:</td>
+            <td> <input style = " border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getContact();?>" readonly name = "contact_number" /> </td>
+            <td style = "background-color:#B0BEC5;"> Body Temp. </td>
+            <td> <input type ="text" class = "form-control" /> </td>
+          </tr>
+          <tr>
+            <td style = "background-color:#B0BEC5;">Email Address:</td>
+            <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" value = "<?php getEmail();?>" readonly name = "email" /> </td>
+            <td style = "background-color:#B0BEC5;"> Nationality: </td>
+            <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" value = "Filipino" name = "nationality" readonly/> </td>
+          </tr>
+          <tr>
+            <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residention Address:</td>
+            <td rowspan = 2><textarea cols = 53 rows=3  style = "resize:none;" name = "address"><?php getAddress();?></textarea></td>
+            <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
+            <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" name = "gender" value = "<?php getGender(); ?>" readonly/> </td>
+          </tr>
+          <tr>
+          <td><input type ="text" style = " border: none;background: transparent;" class = "form-control" name = "age" VALUE = "<?php calculateAge();?>" name = "age" readonly/> </td>
+          </tr>
+          <tr>
+            <td style = "background-color:#B0BEC5;">Office/Unit:</td>
+            <td colspan = 3> <input type ="text" style = " border: none;background: transparent;" class = "form-control" value = "<?php getOffice()?>" name= "office"/> </td>
+          </tr>
+          <tr>
+            <td style = "background-color:#B0BEC5;">Reporting Dates/ Days at Regional Office:</td>
             <td colspan = 3> <input type ="text" class = "form-control" /> </td>
           </tr>
           <tr>
-            <td style = "width:20%">Mobile Number:</td>
-            <td> <input type ="text" class = "form-control" /> </td>
-            <td> Body Temp. </td>
-            <td> <input type ="text" class = "form-control" /> </td>
-          </tr>
-          <tr>
-            <td>Email Address:</td>
-            <td> <input type ="text" class = "form-control" /> </td>
-            <td> Nationality: </td>
-            <td> <input type ="text" class = "form-control" /> </td>
-          </tr>
-          <tr>
-            <td rowspan = 2>Current Residention Address:</td>
-            <td rowspan = 2><textarea cols = 53 rows=3  style = "resize:none;"></textarea></td>
-            <td rowspan = 2>Sex:<br><br>Age</td>
-            <td> <input type ="text" class = "form-control" /> </td>
-          </tr>
-          <tr>
-          <td><input type ="text" class = "form-control" /> </td>
-          </tr>
-          <tr>
-            <td>Office/Unit:</td>
-            <td colspan = 3> <input type ="text" class = "form-control" /> </td>
-          </tr>
-          <tr>
-            <td>Reporting Dates/ Days at Regional Office:</td>
-            <td colspan = 3> <input type ="text" class = "form-control" /> </td>
-          </tr>
-          <tr>
-            <td>Did you have any of the following in the last 14 days: fever, cough, colds, sore throat, diarrhea or difficulty in breathing?</td>
+            <td style = "background-color:#B0BEC5;">Did you have any of the following in the last 14 days: fever, cough, colds, sore throat, diarrhea or difficulty in breathing?</td>
             <td>
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -124,7 +127,7 @@ table tr{
             <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;">Please provide details:</textarea></td>
           </tr>
           <tr>
-            <td>Have you worked, visited or travelled to any foreign countries in the past 14 days?</td>
+            <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to any foreign countries in the past 14 days?</td>
             <td>
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -138,7 +141,7 @@ table tr{
             <td colspan = 2 rowspan = 2><textarea cols = 65 rows=6 style = "resize:none;">Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)</textarea></td>
           </tr>
           <tr>
-            <td>Have you worked, visited or travelled to other places in the Philippines in the past 7 days?</td>
+            <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to other places in the Philippines in the past 7 days?</td>
             <td>
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -151,7 +154,7 @@ table tr{
             </td>
           </tr>
           <tr>
-          <td>Have you been in close contact with farm animals or exposed to wild animals in the past 14 days?</td>
+          <td style = "background-color:#B0BEC5;">Have you been in close contact with farm animals or exposed to wild animals in the past 14 days?</td>
             <td>
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -165,7 +168,7 @@ table tr{
             <td colspan = 2><textarea cols = 65 rows=5  style = "resize:none;">Please provide details:</textarea></td>
           </tr>
           <tr>
-          <td>Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
+          <td style = "background-color:#B0BEC5;">Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
             <td>
             <div class="form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">

@@ -378,7 +378,8 @@ function getImage()
       $link == 'http://fas.calabarzon.dilg.gov.ph/TravelOrder.php?division='.$_GET['division'].'' ||
       $link == 'http://fas.calabarzon.dilg.gov.ph/TravelOrderCreate.php?division='.$_GET['division'].'' ||
       $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateEmployee.php?id='.$_GET['id'].'&view='.$_GET['view'].'' ||
-      $link == 'http://fas.calabarzon.dilg.gov.ph/OfficialBusinessUpdate.php?id='.$_GET['id'].''
+      $link == 'http://fas.calabarzon.dilg.gov.ph/OfficialBusinessUpdate.php?id='.$_GET['id'].'' ||
+      $link == 'http://http://fas.calabarzon.dilg.gov.ph/HealthMonitoring.php?username='.$username.'&division='.$_GET['division'].'' 
       )
       { echo 'active"';}?>"
       >
@@ -400,7 +401,7 @@ function getImage()
         <li><a href="ob.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Official Business</a></li>
         <li><a href="ROandROO.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>RO and ROO</a></li>
         <li><a href="TravelOrder.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Travel Order</a></li>
-        <li><a href="HealthMonitoring.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="	fa fa-medkit" style = "color:#black;"></i>Health Monitoring</a></li>
+        <li><a href="HealthMonitoring.php?username=<?php echo $username;?>&division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="	fa fa-medkit" style = "color:#black;"></i>Health Monitoring</a></li>
         
         
         
