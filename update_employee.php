@@ -276,12 +276,20 @@
       if (mysqli_num_rows($selectPayrollEmp)>0) {
         $update_emp = mysqli_query($conn,"UPDATE tbl_employee SET pagibig = '$pagibig',pagibig_premium = '$pagibig_premium',tin = '$tin',bir = '$bir',philhealth = '$philhealth',gsis = '$gsis',salary = '$salary1',step = '$step1',l_name = '$lname',f_name = '$fname',m_name = '$mname',employment_date = '$employment_date' WHERE emp_no = '$EMP_NUMBER1'");
       }else{
-        $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,l_name,f_name,m_name,pagibig,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date) VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date')");
+
+        if ($province == '') {
+          $province = 77;
+        }
+        $selectProvince = mysqli_query($conn, "SELECT LGU_M FROM tbl_province WHERE PROVINCE_C = '$province");
+        $rowP = mysqli_fetch_array($selectProvince);
+        $station = $rowP['LGU_M'];
+
+        $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,l_name,f_name,m_name,pagibig,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date,station) VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date','$station')");
 
       }
 
     }else{
-          $update_emp2 = mysqli_query($conn,"DELETE FROM tbl_employee  WHERE emp_no = '$EMP_NUMBER1'");
+      $update_emp2 = mysqli_query($conn,"DELETE FROM tbl_employee  WHERE emp_no = '$EMP_NUMBER1'");
       $update_tbl_deductions = mysqli_query($conn,"DELETE FROM tbl_deductions  WHERE emp_no = '$EMP_NUMBER1' ");
       $update_tbl_deduction_loans = mysqli_query($conn,"UPDATE FROM tbl_deduction_loans  WHERE emp_no = '$EMP_NUMBER1' ");
 
@@ -831,7 +839,7 @@
     </div>
   <?php endif ?>
 
-<!-- username and pw -->
+  <!-- username and pw -->
 </div>
 </div>
 

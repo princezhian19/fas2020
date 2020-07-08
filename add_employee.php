@@ -161,9 +161,15 @@
         VALUES ('$employee_number','$lname', '$fname', '$mname', '$birthdate', '$gender', '$region', '$province', '$municipality', '$position', '$designation', '$cellphone', '$email', '$alter_email','$username', '$date_created', '$office_contact', '$office', '$division','$target_file','$suffix','$status','$e_stats','$office_address')");
 
       if ($e_stats == 'Yes') {
+        if ($province == '') {
+          $province = 77;
+        }
+        $selectProvince = mysqli_query($conn, "SELECT LGU_M FROM tbl_province WHERE PROVINCE_C = '$province");
+        $rowP = mysqli_fetch_array($selectProvince);
+        $station = $rowP['LGU_M'];
         # code...
-      $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,pagibig,l_name,f_name,m_name,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date) 
-        VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date')");
+      $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,pagibig,l_name,f_name,m_name,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date,station) 
+        VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date','$station')");
 
           if ($insertqwe) {
           $save_salary = $salaryS *.09;
