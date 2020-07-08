@@ -2,7 +2,7 @@
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 if (isset($_POST['submit'])) {
   $date_acquired1 = $_POST['date_acquired'];
-  $date_acquired = date('Y-m-d', strtotime($date_aquired1)); 
+  $date_acquired = date('Y/m/d', strtotime($date_acquired1)); 
   $article = $_POST['article'];
   $description = $_POST['description'];
   $property_number = $_POST['property_number'];
@@ -16,6 +16,7 @@ if (isset($_POST['submit'])) {
   $status = $_POST['status'];
   $category = $_POST['category'];
   $office = $_POST['office'];
+
 
   $insert_rpcppe = mysqli_query($conn,"INSERT INTO rpcppe(article,description,property_number,date_acquired,unit,amount,property_card,physical_count,shortage_Q,shortage_V,remarks,status,category,office) VALUES('$article','$description','$property_number','$date_acquired','$unit','$amount','$property_card','$physical_count','$shortage_Q','$shortage_V','$remarks','$status','$category','$office')");
 
@@ -94,12 +95,12 @@ if (isset($_POST['submit'])) {
                       </div> -->
                       <div class="form-group">
                         <label>Unit of Measure</label>
-                        <input autocomplete = "false"  class="form-control" name="amount" type="text" id="unit">
+                        <input autocomplete = "false"  class="form-control" name="unit" type="text" id="unit">
 
                       </div>
                       <div class="form-group">
                         <label>Unit Value</label>
-                        <input autocomplete = "false"  class="form-control" name="unit" type="text" id="unit">
+                        <input autocomplete = "false"  class="form-control" name="amount" type="text" id="unit">
                       </div>
 
                       <div class="form-group">

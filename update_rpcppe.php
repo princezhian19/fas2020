@@ -8,7 +8,7 @@ $select = mysqli_query($conn,"SELECT * FROM rpcppe WHERE id = '$id' ");
 $row = mysqli_fetch_array($select);
 $article1 = $row['article'];
 $date_aquireda = $row['date_acquired'];
-$date_aquired1 = date('d-m-Y', strtotime($date_aquireda)); 
+$date_aquired1 = date('m/d/Y', strtotime($date_aquireda)); 
 $description1 = $row['description'];
 $property_number1 = $row['property_number'];
 $unit1 = $row['unit'];
