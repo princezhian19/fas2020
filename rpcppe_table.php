@@ -83,7 +83,7 @@
                         <td><?php echo $office;?></td>
                         <td><?php echo $property_number;?></td>
                         <td><?php echo $date_acquired;?></td>
-                        <td><?php echo $amount;?></td>
+                        <td><?php echo number_format($amount,2);?></td>
                         <td><?php echo $unit;?></td>
                         <td><?php echo $property_card;?></td>
                         <td><?php echo $physical_count;?></td>
