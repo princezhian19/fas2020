@@ -40,11 +40,30 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+<style>
+table{
+  width:100%;
+}
+table tr{ 
+    font-family:'Cambria';
+  }
+  .table-header{
+    color:black;
+    background-color:#B0BEC5; 
 
+  }
+  td{
+    padding:5px;
+  }
+  td.label-text{ 
+    background-color:#B0BEC5; 
+
+  }
+  </style>
 </head>
 
-<div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" role="document" style = "width:50%;">
     <div class="modal-content">
       <div class="modal-header" style = "background-color:#B0BEC5;">
         <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;">HEALTH DECLARATION FORM</h5>
@@ -52,14 +71,18 @@ $username = $_SESSION['username'];
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" >
       <table border = 1>
         <tbody>
           <tr>
             <td>Name:</td>
-            <td>
-            <input type ="text" class = "form-control"/>
-            </td>
+            <td colspan = 3> <input type ="text" class = "form-control" /> </td>
+          </tr>
+          <tr>
+            <td>Mobile Number:</td>
+            <td> <input type ="text" class = "form-control" /> </td>
+            <td> Body Temp. </td>
+            <td> <input type ="text" class = "form-control" /> </td>
           </tr>
         </tbody>
       </table>
