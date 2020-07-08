@@ -81,11 +81,11 @@ $space25 = str_repeat('&nbsp;', 88);
 $space26 = str_repeat('&nbsp;', 93);
 $space27 = str_repeat('&nbsp;', 86);
 
-$id = $_GET['id'];
+$id = $_GET['emp_no'];
 $date_loan = $_GET['date_loan'];
 
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$sql_items1 = mysqli_query($conn, "SELECT tds.id,te.emp_no,te.designation,te.salary,te.step,te.full_name,te.station,te.designation,td.monthly_salary,td.bir,td.rlip,td.philhealth,td.pera,td.rata,td.pagibig_premium,td.pagibig_mp2,tds.consolidated_loan,tds.optional_premium,tds.policy_regular_loan,tds.educational_assistance_loan,tds.emergency_calamity_loan,tds.multi_purpose_loan,tds.pag_ibig_housing,tds.calamity_loan,tds.amswlai,tds.credit_union,tds.national_home FROM tbl_deduction_loans_history tds LEFT JOIN tbl_employee te on te.emp_no = tds.emp_no LEFT JOIN tbl_deductions td on td.emp_no = tds.emp_no WHERE tds.date_loan = '$date_loan' and tds.id = '$id' ");
+$sql_items1 = mysqli_query($conn, "SELECT tds.id,te.emp_no,te.designation,te.salary,te.step,te.full_name,te.station,te.designation,td.monthly_salary,td.bir,td.rlip,td.philhealth,td.pera,td.rata,td.pagibig_premium,td.pagibig_mp2,tds.consolidated_loan,tds.optional_premium,tds.policy_regular_loan,tds.educational_assistance_loan,tds.emergency_calamity_loan,tds.multi_purpose_loan,tds.pag_ibig_housing,tds.calamity_loan,tds.amswlai,tds.credit_union,tds.national_home FROM tbl_deduction_loans_history tds LEFT JOIN tbl_employee te on te.emp_no = tds.emp_no LEFT JOIN tbl_deductions td on td.emp_no = tds.emp_no LEFT JOIN tblemployeeinfo tem on tem.EMP_NUMBER = te.emp_no WHERE tds.date_loan = '$date_loan' and tem.EMP_NUMBER = '$id' ");
 
 while ($row = mysqli_fetch_assoc($sql_items1)) {
 

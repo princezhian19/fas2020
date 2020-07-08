@@ -63,7 +63,7 @@ if (isset($_POST['delete'])) {
         <div class=""> 
           <div class="">
             <br>
-            <h1 align="">&nbspManage Employee List</h1>
+            <h1 align="">&nbspEmployee List</h1>
             <div class="box-header with-border">
             </div>
             <br>
@@ -115,7 +115,7 @@ if (isset($_POST['delete'])) {
 
                         echo "<tr align = ''>
                         <td align='center'><input type='checkbox' name='id[]' value='$id'></input></td>
-                        <td><a href='ViewEmpDetails.php?id=$id' style='text-decoration: underline;'>$l_name</a></td>
+                        <td>$l_name</td>
                         <td>$f_name</td>
                         <td>$m_name</td>
                         <td>$ext_name</td>

@@ -131,7 +131,7 @@
     $office_address  = $_POST["office_address"];  
     $office_contact  = $_POST["office_contact"];  
     $repassword      = $_POST["repassword"];  
-    $e_stats      = $_POST["e_stats"];  
+    $e_stats         = $_POST["e_stats"];  
     $cluster         = "";       
     $access          = "";       
     $cellphone       = $_POST["cellphone"];
@@ -147,7 +147,8 @@
     $gsis            = $_POST["gsis"];
     $salary          = $_POST["salary"];
     $step            = $_POST["step"];
-    $employment_date = $_POST["employment_date"];
+    $employment_date11= $_POST["employment_date"];
+    $employment_date = date('Y-m-d',strtotime($employment_date11));
 
     $select = mysqli_query($conn,"SELECT $step FROM tbl_salary_grade WHERE salary_grade = '$salary' ");
     $rowES = mysqli_fetch_array($select);
@@ -159,11 +160,18 @@
       $sql_insert_query     = mysqli_query($conn,"INSERT INTO tblemployeeinfo (EMP_NUMBER,LAST_M, FIRST_M,MIDDLE_M, BIRTH_D, SEX_C,REGION_C, PROVINCE_C, CITYMUN_C,POSITION_C,DESIGNATION,MOBILEPHONE, EMAIL, ALTER_EMAIL,UNAME, DATE_CREATED,LANDPHONE, OFFICE_STATION, DIVISION_C, PROFILE,SUFFIX,CIVIL_STATUS,ACTIVATED,REMARKS_M)
         VALUES ('$employee_number','$lname', '$fname', '$mname', '$birthdate', '$gender', '$region', '$province', '$municipality', '$position', '$designation', '$cellphone', '$email', '$alter_email','$username', '$date_created', '$office_contact', '$office', '$division','$target_file','$suffix','$status','$e_stats','$office_address')");
 
-      $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,pagibig,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date) VALUES('$emp_no','$pagibig','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date')");
+      if ($e_stats == 'Yes') {
+        if ($province == '') {
+          $province = 77;
+        }
+        $selectProvince = mysqli_query($conn, "SELECT LGU_M FROM tbl_province WHERE PROVINCE_C = '$province");
+        $rowP = mysqli_fetch_array($selectProvince);
+        $station = $rowP['LGU_M'];
+        # code...
+      $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,pagibig,l_name,f_name,m_name,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date,station) 
+        VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date','$station')");
 
-      if ($sql_insert_query) 
-      { 
-        if ($insertqwe) {
+          if ($insertqwe) {
           $save_salary = $salaryS *.09;
           if ($salaryS > 59999) {
             $phil = 900;
@@ -173,6 +181,11 @@
             $insert_deduct = mysqli_query($conn,"INSERT INTO tbl_deductions(emp_no,monthly_salary,rlip,pera,philhealth) VALUES('$emp_no','$salaryS','$save_salary',2000,'$phil')");
           }
           }
+      }
+
+      if ($sql_insert_query) 
+      { 
+    
 
           if(!empty(basename($_FILES["image"]["name"])))
           {
