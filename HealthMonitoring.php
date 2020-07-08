@@ -71,11 +71,12 @@ table tr{
   <div class="modal-dialog" role="document" style = "width:60%;">
     <div class="modal-content">
       <div class="modal-header" style = "background-color:#B0BEC5;">
-        <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;text-align:center;font-size:30px;"><img src= "images/logo.png" style = "width:80px;margin-right:10px;"/>HEALTH DECLARATION FORM</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;text-align:center;font-size:30px;">HEALTH DECLARATION FORM</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form method = "POST" action = "health_monitoring_functions.php?action=add">
       <div class="modal-body" >
       <table border = 1>
         <tbody>
@@ -87,7 +88,8 @@ table tr{
             <td style = "background-color:#B0BEC5;">Mobile Number:</td>
             <td> <input style = " border: none;background: transparent;" type ="text" class = "form-control" value = "<?php getContact();?>" readonly name = "contact_number" /> </td>
             <td style = "background-color:#B0BEC5;"> Body Temp. </td>
-            <td> <input type ="text" class = "form-control" /> </td>
+            <!-- id = "temp" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value) -->
+            <td> <input type ="number" class = "form-control" required/> </td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Email Address:</td>
@@ -97,7 +99,7 @@ table tr{
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residention Address:</td>
-            <td rowspan = 2><textarea cols = 53 rows=3  style = "resize:none; border: none;background: transparent;" name = "address"readonly><?php getAddress();?></textarea></td>
+            <td rowspan = 2><textarea required cols = 53 rows=3  style = "resize:none; border: none;background: transparent;" name = "address"><?php getAddress();?></textarea></td>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
             <td> <input type ="text" style = " border: none;background: transparent;" class = "form-control" name = "gender" value = "<?php getGender(); ?>" readonly/> </td>
           </tr>
@@ -110,7 +112,12 @@ table tr{
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Reporting Dates/ Days at Regional Office:</td>
-            <td colspan = 3> <input type ="text" class = "form-control" /> </td>
+            <td colspan = 3> 
+      <select required class="form-control" style="width: 25%;" name="division" id="" >
+        <option value="<?php echo $division1;?>" selected>Skeletal Work Force</option>
+        <option value="<?php echo $division1;?>" selected>Alternate Work Arrangement</option>
+      </select>
+     </td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Did you have any of the following in the last 14 days: fever, cough, colds, sore throat, diarrhea or difficulty in breathing?</td>
@@ -183,47 +190,53 @@ table tr{
           </tr>
           <tr>
           <td colspan = 2><b>FOR WOMEN:</b><br> When was your last menstruation period? </td>
-          <td colspan = 2> <input type ="text" class = "form-control" /> </td>
+          <td colspan = 2> <input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
           </tr>
           <tr>
           <td style = "text-align:justify;" colspan = 5>Declaration:<br><br>
             The information I have given herein is true, correct and complete, I understand that failure to answer any question or any falsified response may have serious consequences. (Article 171 and 172 of the revised Penal Code of the Philippines).
-            <span class = "pull-right" STYLE = "margin-left:50px;"> <br>_________________________________ <br>DATE</span>                                            
-            <span class = "pull-right"> <br>_________________________________ <br>NAME AND SIGNATURE </span>                                            
+            <span class = "pull-right" STYLE = "margin-left:50px;"> <br><u STYLE  = "font-weight:bold;"><?php echo date('F d, Y');?></u><br><center>DATE</center></span>                                            
+            <span class = "pull-right" > <br><u STYLE  = "font-weight:bold;"><?php echo $_SESSION['complete_name'];?></u><br>NAME AND SIGNATURE </span>                                            
           </td>
           </tr>
 
         </tbody>
       </table>
-        <!-- <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form> -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script>
+//     function temperatureConverter(valNum) {
+//   valNum = parseFloat(valNum);
+//   if(valNum <= 37.5){
+//     $('#temp').tooltip({'trigger':'focus', 'title': 'Normal Temperature'});
+
+//   }else if(valNum >= 37.5  || valNum <= 38.3){
+//     $('#temp').tooltip({'trigger':'focus', 'title': 'Fever'});
+
+
+//   }
+
+// }
 $(document).ready(function() {
+
     $("#txt1").prop('disabled', true);
     $("#txt2").prop('disabled', true);
     $("#txt3").prop('disabled', true);
     $("#txt4").prop('disabled', true);
 
 
-  $('#welcome-modal').modal('show');
+  $('#welcome-modal').modal({
+    backdrop: 'static',
+    keyboard: false
+  });
 //   checkbox
 $('.checkbox1').on('change', function() { 
       $('.checkbox1').not(this).prop('checked', false);  
