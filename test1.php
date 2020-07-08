@@ -628,7 +628,7 @@ $link == 'http://fas.calabarzon.dilg.gov.ph/obtableViewMain.php?getsaroID='.$_GE
 <li><a href="PayrollEmployee.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Update Payroll Emp</a></li>
 </ul>
 </li>
-<?php if ($username == 'charlesodi'): ?>
+<?php if ($username == 'charlesodi' || $username == 'mmmonteiro'): ?>
   <li class="treeview 
 <?php 
 if(
