@@ -1,4 +1,5 @@
 <?php
+session_start();
     function getLast()
     {
         include 'connection.php';
@@ -115,9 +116,10 @@
           include 'connection.php';
 
 
-        $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `UNAME`, `WORK_ARRANGEMENT`, 
+        $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `DATE`, `UNAME`, `WORK_ARRANGEMENT`, 
         `REPORTING_DATES`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`) VALUES 
         (null,
+        '".date('Y-m-d',strtotime($_POST['date_today']))."',
         '".$_SESSION['username']."',
         '".$_POST['work_arrangement']."',
         '".$_POST['sched']."',

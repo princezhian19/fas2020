@@ -1,4 +1,4 @@
-<?php session_start();
+<?php 
 include 'health_monitoring_functions.php';
 if(!isset($_SESSION['username'])){
 header('location:index.php');
@@ -72,7 +72,7 @@ table tr{
 </head>
 
 <div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content">
       <div class="modal-header" style = "background-color:#B0BEC5;">
         <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;text-align:center;font-size:30px;">HEALTH DECLARATION FORM</h5>
@@ -81,8 +81,9 @@ table tr{
         </button>
       </div>
       <form method = "POST" action = "health_monitoring_functions.php?action=add">
-      <div class="modal-body" >
-      <div style="overflow-x:auto;">
+      <div class="modal-body"  style = "max-height: calc(100vh - 210px);
+    overflow-y: auto;">
+      <div>
 
       <table border =1 style = "width:100%;">
         <tbody>
@@ -254,9 +255,9 @@ table tr{
 
 // }
 $(document).ready(function() {
-  $(':input[type="number"]').change(function(){
-     this.value = parseFloat(this.value).toFixed(2);
-});
+//   $(':input[type="number"]').change(function(){
+//      this.value = parseFloat(this.value).toFixed(2);
+// });
  
     $("#reservation").prop('disabled', true);
 
