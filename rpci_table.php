@@ -47,7 +47,7 @@
                         <td><?php echo $description;?></td>
                         <td><?php echo $stock_number;?></td>
                         <td><?php echo $unit;?></td>
-                        <td><?php echo $amount;?></td>
+                        <td><?php echo number_format($amount,2);?></td>
                         <td><?php echo $bpc;?></td>
                         <td><?php echo $opc;?></td>
                         <td><?php echo $shortage_Q;?></td>
