@@ -83,8 +83,8 @@
                         <td><?php echo $office;?></td>
                         <td><?php echo $property_number;?></td>
                         <td><?php echo $date_acquired;?></td>
-                        <td><?php echo $unit;?></td>
                         <td><?php echo $amount;?></td>
+                        <td><?php echo $unit;?></td>
                         <td><?php echo $property_card;?></td>
                         <td><?php echo $physical_count;?></td>
                         <td><?php echo $shortage_Q;?></td>
