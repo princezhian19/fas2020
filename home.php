@@ -42,21 +42,61 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
 </head>
+
+<div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function() {
+  $('#welcome-modal').modal('show');
+  setTimeout(function() {
+    $('#welcome-modal').modal('hide');
+  }, 2000);
+});
+</script>
 <body class="hold-transition fixed skin-red-light sidebar-mini">
 <div class="wrapper">
    <?php 
   if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'sglee') { 
     include('test1.php'); 
-    if($username == 'masacluti'){
-    ?>
+//     if($username == 'masacluti'){
+//     ?>
     
-    <script>
-window.location.href = 'DTR.php?division=<?php echo $_GET['division']; ?>&username=<?php echo $username;?>';
+//     <script>
+// window.location.href = 'DTR.php?division=<?php echo $_GET['division']; ?>&username=<?php echo $username;?>';
 
-</script>
+// </script>
 
-    <?php
-    }
+//     <?php
+//     }
 }else{ 
 
      if ($OFFICE_STATION == 1) {
