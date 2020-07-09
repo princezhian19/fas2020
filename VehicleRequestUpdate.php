@@ -6,6 +6,7 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 $division = $_GET['division'];
+$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 ?>
 <!DOCTYPE html>

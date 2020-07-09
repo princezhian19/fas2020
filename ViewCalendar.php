@@ -8,6 +8,7 @@ header('location:index.php');
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 $DEPT_ID = $_SESSION['DEPT_ID'];
+$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 $division = $_GET['division'];
 require_once 'calendar/sample/bdd.php';

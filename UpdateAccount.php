@@ -8,6 +8,7 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 $division = $_SESSION['division'];
 $DEPT_ID = $_SESSION['DEPT_ID'];
+$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 ?>
 <!DOCTYPE html>

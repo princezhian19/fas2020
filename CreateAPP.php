@@ -3,10 +3,11 @@ date_default_timezone_set('Asia/Manila');
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }else{
-  error_reporting(0);
+error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 $DEPT_ID = $_SESSION['DEPT_ID'];
+$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 ?>
 <!DOCTYPE html>
