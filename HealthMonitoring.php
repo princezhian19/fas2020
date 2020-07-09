@@ -274,7 +274,21 @@ only screen and (max-width: 760px),
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script>
   $(document).ready(function() {
-            
+             // Setup - add a text input to each footer cell
+    // $('#example thead tr').clone(true).appendTo( '#example thead' );
+    // $('#example thead tr:eq(1) th').each( function (i) {
+    //     var title = $(this).text();
+    //     $(this).html( '<input type="text" placeholder="'+title+'" />' );
+ 
+    //     $( 'input', this ).on( 'keyup change', function () {
+    //         if ( table.column(i).search() !== this.value ) {
+    //             table
+    //                 .column(i)
+    //                 .search( this.value )
+    //                 .draw();
+    //         }
+    //     } );
+    // } );
         
             var action = '';
             var table = $('#example').DataTable( {
@@ -483,17 +497,25 @@ $(document).ready(function()
                 <h1>Monitoring of Travel Claim Request</h1><br>
                 
             </div>
-            
+            <div class=" col-md-6"> &nbsp; </div>
+              <div class="well" style = "width:20%;margin-left:80%;">
+                <div class="row">
+                  <div class="col-md-8"> <?php echo getOfficeExport();?></div>
+                  <div class="col-md-4"> <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export</button></ol> </div>
+                </div>
+              </div>
             <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
               <thead>
               <th>NO</th>
               <th>DATE</th>
-              <th>NAME</th>
+              <th>EMPLOYEE NAME</th>
               <th>BODY TEMPERATURE</th>
               <th>RESIDENTIAL ADDRESS</th>
               <th>OFFICE STATION</th>
               <th>POSITION</th>
+              <th>DESIGNATION</th>
               <th>OFFICE/DIVISION</th>
+              <th>PERSONAL EMAIL ADDRESS</th>
               <th>WORK ARRANGEMENT</th>
               </thead>
             </table>

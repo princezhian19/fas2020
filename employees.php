@@ -145,7 +145,12 @@ if (isset($_POST['submit'])) {
         </thead>
         <?php 
         $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-        $view_query = mysqli_query($conn, "SELECT tblemployee.LANDPHONE,tblemployee.REMARKS_M,tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.UNAME,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.ALTER_EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M FROM tblemployeeinfo tblemployee LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION ORDER BY tblemployee.LAST_M ASC");
+        $view_query = mysqli_query($conn, "SELECT tblemployee.LANDPHONE,tblemployee.REMARKS_M,tblemployee.EMP_N,tblemployee.FIRST_M,tblemployee.MIDDLE_M,tblemployee.UNAME,tblemployee.LAST_M,tblemployee.BIRTH_D,tblemployee.EMAIL,tblemployee.ALTER_EMAIL,tblemployee.MOBILEPHONE,tblpersonneldivision.DIVISION_M,tbldilgposition.POSITION_M,tbldesignation.DESIGNATION_M 
+          FROM tblemployeeinfo tblemployee 
+          LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C 
+          LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C 
+          LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION 
+          ORDER BY tblemployee.LAST_M ASC");
 
 
         while ($row = mysqli_fetch_assoc($view_query)) {

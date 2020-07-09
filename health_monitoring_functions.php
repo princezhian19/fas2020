@@ -110,6 +110,23 @@ session_start();
             echo $row['DIVISION_M'];
         }
     }
+    function getOfficeExport()
+    {
+        include 'connection.php';
+        $query = "SELECT * FROM tblpersonneldivision  ";
+        $result = mysqli_query($conn, $query);
+        echo '<select class="form-control " id="selectYear" style="width: 100%;">';
+        
+        while($row = mysqli_fetch_array($result))
+        {
+            
+            echo '<option value = "'.$row['DIVISION_M'].'">'.$row['DIVISION_M'].'</option>';
+        }
+        echo ' </select> ';
+
+    }
+    
+
     // ======================= inserting =====================
     function add()
     {
