@@ -117,7 +117,7 @@ session_start();
 
 
         $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `DATE`, `UNAME`, `WORK_ARRANGEMENT`, 
-        `REPORTING_DATES`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`) VALUES 
+        `REPORTING_DATES`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`,`IS_SUBMIT`) VALUES 
         (null,
         '".date('Y-m-d',strtotime($_POST['date_today']))."',
         '".$_SESSION['username']."',
@@ -131,20 +131,24 @@ session_start();
         '".$_POST['ans1_details']."',
         '".$_POST['ans2_details']."',
         '".$_POST['ans2_details']."',
-        '".$_POST['ans4_details']."'
+        '".$_POST['ans4_details']."',
+        '1'
         )";
-        echo $insert;
-        exit();
-     
-     
+       
+       if (mysqli_query($conn, $insert)) {
+    } else {
+    }
      
     }
+
 
 if(isset($_GET['action'])){
     if($_GET['action'] == 'add')
     {
         add();
+        header('Location:HealthMonitoring.php?username="'.$_SESSION['username'].'"&division="'.$_SESSION['division'].'"');
     }
+    
 }
     
     
