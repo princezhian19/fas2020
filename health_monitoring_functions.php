@@ -144,6 +144,7 @@ if(isset($_GET['action'])){
     if($_GET['action'] == 'add')
     {
         add();
+        header('Location:HealthMonitoring.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'')
     }
     
 }

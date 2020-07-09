@@ -146,7 +146,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<textarea  required cols = 56 rows=5  style = "resize:none;" id = "txt1" name = "ans1_details"></textarea></td>
+            <td colspan = 2>Please provide details:<center><textarea  required cols = 56 rows=5  style = "resize:none;" id = "txt1" name = "ans1_details"></textarea></center></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to any foreign countries in the past 14 days?</td>
@@ -160,7 +160,8 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2 rowspan = 2>Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)<textarea required name = "ans2_details" cols = 56 rows=6 style = "resize:none;" id = "txt2"></textarea></td>
+            <td colspan = 2 rowspan = 2>Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)<center>
+            <textarea required name = "ans2_details" cols = 56 rows=6 style = "resize:none;" id = "txt2"></textarea></center></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to other places in the Philippines in the past 7 days?</td>
@@ -187,7 +188,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
               <label class="form-check-label" for="exampleCheck1 checkbox4">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<textarea required name = "ans3_details" cols = 56 rows=5  style = "resize:none;" id = "txt3"></textarea></td>
+            <td colspan = 2>Please provide details:<center><textarea required name = "ans3_details" cols = 56 rows=5  style = "resize:none;" id = "txt3"></textarea></center></td>
           </tr>
           <tr>
           <td style = "background-color:#B0BEC5;">Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
@@ -201,7 +202,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<textarea required name = "ans4_details" cols = 56 rows=5  style = "resize:none;" id = "txt4"></textarea></td>
+            <td colspan = 2>Please provide details:<center><textarea required name = "ans4_details" cols = 56 rows=5  style = "resize:none;" id = "txt4"></textarea></center></td>
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
