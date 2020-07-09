@@ -207,8 +207,10 @@
                                   $po_id = mysqli_fetch_array($query_4);
                                   $po_idget = $po_id['id'];
                                   $po_no = $po_id['po_no'];
+                                  $po_amount = $po_id['po_amount'];
                                   ?>
                                   <a class="" href='ViewPO.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>&pr_no=<?php echo $pr_no; ?>' title="View"> <?php echo $po_no; ?></a>
+                                  <?php echo number_format($po_amount,2) ?>
                                 <?php endif?> 
                               <?php endif?> 
                             <?php endif?>
