@@ -163,6 +163,12 @@ if ($unit == "21") {
 if ($unit == "22") {
   $unit = "cart";
 }
+if ($unit == "23") {
+  $unit = "liters";
+}
+if ($unit == "24") {
+  $unit = "meters";
+}
     $total = $excelrow['qty']*$excelrow['abc'];
     $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['sn']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$unit);
