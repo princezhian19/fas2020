@@ -402,7 +402,7 @@ function showRequest()
   </a>
 </li>
 <?php endif ?>
-<?php if ($ORD != NULL || $ORD == 1): ?>
+<?php if ($ORD == 1): ?>
   <li class="treeview
   <?php 
   if(
