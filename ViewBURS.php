@@ -5,6 +5,7 @@ header('location:index.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
+$DEPT_ID = $_SESSION['DEPT_ID'];
 }
 ?>
 <!DOCTYPE html>
@@ -44,7 +45,17 @@ $username = $_SESSION['username'];
 <body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
 <?php 
-    if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); }else{ include('sidebar2.php'); }
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
+}else{ 
+
+     if ($OFFICE_STATION == 1) {
+  include('sidebar2.php');
+           
+        }else{
+  include('sidebar3.php');
+         
+        } 
+}
  ?>
   <div class="content-wrapper">
     <section class="content-header">

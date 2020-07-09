@@ -1,3 +1,13 @@
+<?php session_start();
+if(!isset($_SESSION['username'])){
+header('location:index.php');
+}else{
+  error_reporting(0);
+ini_set('display_errors', 0);
+$username = $_SESSION['username'];
+$DEPT_ID = $_SESSION['DEPT_ID'];
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +28,19 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
- 
-  <?php include('sidebar.php');?>
+<?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
+}else{ 
 
+     if ($OFFICE_STATION == 1) {
+  include('sidebar2.php');
+           
+        }else{
+  include('sidebar3.php');
+         
+        } 
+}
+ ?>
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">

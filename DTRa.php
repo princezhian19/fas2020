@@ -8,6 +8,8 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 $division = $_SESSION['division'];
 $TIN_N = $_SESSION['TIN_N'];
+$DEPT_ID = $_SESSION['DEPT_ID'];
+$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 ?><!DOCTYPE html>
 <html>
@@ -47,8 +49,8 @@ $TIN_N = $_SESSION['TIN_N'];
 
 </head>
 <div class="wrapper">
- <?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); 
+<?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
 }else{ 
 
      if ($OFFICE_STATION == 1) {

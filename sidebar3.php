@@ -6,6 +6,7 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['complete_name'])){
   error_reporting(0);
   ini_set('display_errors', 0);
   $username = $_SESSION['username'];
+$DEPT_ID = $_SESSION['DEPT_ID'];
 }
 
 $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .   $_SERVER['REQUEST_URI']; 

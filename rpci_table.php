@@ -1,3 +1,16 @@
+<?php
+  $latitude= 26.754347; //latitude
+  $longitude= 81.001640; //longitude
+
+$geocodeFromLatLong = file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?latlng='.trim($latitude).','.trim($longitude).'&sensor=false'); 
+$output = json_decode($geocodeFromLatLong);
+$status = $output->status;
+$address = ($status=="OK")?$output->results[1]->formatted_address:'';
+
+echo $address;
+?>
+
+
 <div class="box">
   <div class="box-body">
         <div class=""> 
