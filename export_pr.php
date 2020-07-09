@@ -204,7 +204,7 @@ $rowP = mysqli_fetch_array($select_purpsoe);
 $pmo_contact_person = $rowP['pmo_contact_person'];
 $pmo_contact_person;
 $designation = $rowP['designation'];
-if (mysqli_num_rows($sql_items)>45) {
+if (mysqli_num_rows($sql_items)>30) {
   $objPHPExcel->setActiveSheetIndex()->setCellValue('B59',$purpose);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B65',strtoupper($pmo_contact_person));
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B66',$designation);
