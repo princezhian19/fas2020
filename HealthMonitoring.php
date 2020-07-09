@@ -75,7 +75,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     overflow-y: auto;">
       <div>
 
-      <table border =1 style = "width:100%;">
+      <table border =1 style = "width:100%;" class="table table-bordered table-hover">
         <tbody>
           <tr>
             <td style = "background-color:#B0BEC5;">Name:</td>
