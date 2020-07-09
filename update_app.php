@@ -912,7 +912,8 @@ if (isset($_POST['submit'])) {
                       <option value="8">tube</option>
                     </select>
                   </div>
-                    <?php endif ?><?php if ($unit_id == "pax"): ?>
+                    <?php endif ?>
+                    <?php if ($unit_id == "pax"): ?>
                       
                     <select class="form-control select2" style="width: 100%;" name="unit" id="unit" >
                       <option value="22">pax</option>
@@ -927,6 +928,67 @@ if (isset($_POST['submit'])) {
                       <option value="18">dozen</option>
                       <option value="20">gallon</option>
                       <option value="13">jar</option>
+                      <option value="4">lot</option>
+                      <option value="7">pack</option>
+                      <option value="15">pad</option>
+                      <option value="19">pair</option>
+                      <option value="1">piece</option>
+                      <option value="17">pouch</option>
+                      <option value="3">ream</option>
+                      <option value="9">roll</option>
+                      <option value="12">set</option>
+                      <option value="8">tube</option>
+                    </select>
+                  </div>
+                    <?php endif ?>
+
+                    <?php if ($unit_id == "liters"): ?>
+                      
+                    <select class="form-control select2" style="width: 100%;" name="unit" id="unit" >
+                      <option value="23">liters</option>
+                      <option value="22">pax</option>
+                      <option value="5">unit</option>
+                      <option value="16">book</option>
+                      <option value="11">bottle</option>
+                      <option value="2">box</option>
+                      <option value="14">bundle</option>
+                      <option value="10">can</option>
+                      <option value="21">cart</option>
+                      <option value="6">crtg</option>
+                      <option value="18">dozen</option>
+                      <option value="20">gallon</option>
+                      <option value="13">jar</option>
+                      <option value="4">lot</option>
+                      <option value="7">pack</option>
+                      <option value="15">pad</option>
+                      <option value="19">pair</option>
+                      <option value="1">piece</option>
+                      <option value="17">pouch</option>
+                      <option value="3">ream</option>
+                      <option value="9">roll</option>
+                      <option value="12">set</option>
+                      <option value="8">tube</option>
+                    </select>
+                  </div>
+                    <?php endif ?>
+
+                    <?php if ($unit_id == "meters"): ?>
+                      
+                    <select class="form-control select2" style="width: 100%;" name="unit" id="unit" >
+                      <option value="24">meters</option>
+                      <option value="22">pax</option>
+                      <option value="5">unit</option>
+                      <option value="16">book</option>
+                      <option value="11">bottle</option>
+                      <option value="2">box</option>
+                      <option value="14">bundle</option>
+                      <option value="10">can</option>
+                      <option value="21">cart</option>
+                      <option value="6">crtg</option>
+                      <option value="18">dozen</option>
+                      <option value="20">gallon</option>
+                      <option value="13">jar</option>
+                      <option value="23">liters</option>
                       <option value="4">lot</option>
                       <option value="7">pack</option>
                       <option value="15">pad</option>

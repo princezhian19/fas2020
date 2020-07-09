@@ -1,3 +1,12 @@
+<?php
+
+  include('Geocoding.php');
+  use myPHPnotes\Geocoding;
+  $geo = new Geocoding("AIzaSyDhwrxbj4AWSCel1yCqpujxUxr72g4WzgY");
+  $address = $geo->getAddress("48.858195","2.294432");
+  var_dump($address);
+?>
+
  <?php 
  $id = $_GET['id'];
  $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");

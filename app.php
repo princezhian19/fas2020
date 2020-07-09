@@ -166,7 +166,9 @@ if (isset($_POST['submit'])) {
                       <option value="dozen">dozen</option>
                       <option value="gallon">gallon</option>
                       <option value="jar">jar</option>
+                      <option value="liters">liters</option>
                       <option value="lot">lot</option>
+                      <option value="meters ">meters </option>
                       <option value="pack">pack</option>
                       <option value="pax">pax</option>
                       <option value="pad">pad</option>
