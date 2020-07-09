@@ -1,12 +1,35 @@
 <?php
-    function getCompleteName()
+session_start();
+    function getLast()
     {
         include 'connection.php';
         $query = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$_SESSION['username']."' ";
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_array($result))
         {
-            $name = ucwords(strtoupper($row['FIRST_M'])).' '.ucfirst(strtoupper($row['LAST_M']));
+            $name = ucwords(ucfirst(strtoupper($row['LAST_M'])));
+            echo $name;
+        }
+    }
+    function getFirst()
+    {
+        include 'connection.php';
+        $query = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$_SESSION['username']."' ";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            $name = ucwords(ucfirst(strtoupper($row['FIRST_M'])));
+            echo $name;
+        }
+    }
+    function getMiddle()
+    {
+        include 'connection.php';
+        $query = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$_SESSION['username']."' ";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            $name = ucwords(ucfirst(strtoupper($row['MIDDLE_M'])));
             echo $name;
         }
     }
@@ -87,6 +110,43 @@
             echo $row['DIVISION_M'];
         }
     }
+    // ======================= inserting =====================
+    function add()
+    {
+          include 'connection.php';
+
+
+        $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `DATE`, `UNAME`, `WORK_ARRANGEMENT`, 
+        `REPORTING_DATES`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`) VALUES 
+        (null,
+        '".date('Y-m-d',strtotime($_POST['date_today']))."',
+        '".$_SESSION['username']."',
+        '".$_POST['work_arrangement']."',
+        '".$_POST['sched']."',
+        '".$_POST['ans1']."',
+        '".$_POST['ans2']."',
+        '".$_POST['ans3']."',
+        '".$_POST['ans4']."',
+        '".$_POST['ans5']."',
+        '".$_POST['ans1_details']."',
+        '".$_POST['ans2_details']."',
+        '".$_POST['ans2_details']."',
+        '".$_POST['ans4_details']."'
+        )";
+        echo $insert;
+        exit();
+     
+     
+     
+    }
+
+if(isset($_GET['action'])){
+    if($_GET['action'] == 'add')
+    {
+        add();
+    }
+}
+    
     
 
 ?>
