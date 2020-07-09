@@ -340,10 +340,10 @@ $(document).ready(function()
  {
   $('#welcome-modal').modal('hide');
  }else{
-  $('#welcome-modal').modal({
-          backdrop: 'static',
-          keyboard: false
-        });
+  // $('#welcome-modal').modal({
+  //         backdrop: 'static',
+  //         keyboard: false
+  //       });
  }
     }
 });
