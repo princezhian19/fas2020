@@ -107,7 +107,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residential Address:</td>
-            <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none; border: none;" name = "address"><?php getAddress();?></textarea></td>
+            <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none; border: none;" name = "curraddress"><?php getAddress();?></textarea></td>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
             <td> <input type ="text" style = " border: none;" class = "form-control" name = "gender" value = "<?php getGender(); ?>" readonly /> </td>
           </tr>
@@ -456,6 +456,7 @@ $(document).ready(function()
               <th>NO</th>
               <th>DATE</th>
               <th>NAME</th>
+              <th>RESIDENTIAL ADDRESS</th>
               <th>OFFICE STATION</th>
               <th>POSITION</th>
               <th>OFFICE/DIVISION</th>
