@@ -39,6 +39,7 @@ $sql = mysqli_query($conn, "SELECT * FROM iar WHERE id = '$Getid' ");
 // echo "SELECT * FROM iar WHERE id = '$Getid'";
 // exit();
 $row = mysqli_fetch_array($sql);
+$pr_no = $row['pr_no'];
 $po_no = $row['po_no'];
 $rfq_id = $row['rfq_id'];
 $app_id = $row['app_id'];
@@ -64,8 +65,11 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('E9',$iar_date);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('E10',$invoice_no);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('E11',$invoice_date);
 
+if ($pr_no != NULL) {
+$sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit as unit_id,b.qty FROM pr_items b LEFT JOIN app a on a.id = b.items WHERE b.pr_no = '$pr_no' ");
+}else{
 $sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit_id,b.qty FROM rfq_items b LEFT JOIN app a on a.id = b.app_id WHERE b.rfq_id = '$rfq_id' ");
-
+}
 /* echo "SELECT sn,unit_id,qty,procurement,abc,description from rfq_items left join app on app.id = rfq_items.app_id where rfq_id = '$rfq_id'";
 exit(); */
 

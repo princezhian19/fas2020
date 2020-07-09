@@ -1,4 +1,5 @@
   <?php 
+  $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
   $idGet='';
   $getDate = date('Y');
   $m = date('m');
@@ -12,8 +13,66 @@
   // $latest_pr_no = $getDate.'-'.'0'.$idGet;
   $latest_pr_no = $getDate.'-'.$idGet;
 
-
+  function get_pr($connect)
+  { 
+    $output = '';
+    $query = "SELECT pr_no FROM pr WHERE type = 6 ";
+    $statement = $connect->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    foreach($result as $row)
+    {
+      $output .= '<option text="text" value="'.$row["pr_no"].'">'.$row["pr_no"].'</option>';
+    }
+    return $output;
+  }
   ?>
+
+  <?php
+  $conn = mysqli_connect("localhost", "fascalab_2020", "w]zYV6X9{*BN", "fascalab_2020");
+  if (isset($_POST['submit'])) 
+  {
+    $rfq_id = $_POST['rfq_id'];
+    $app_id = $_POST['app_id'];
+    $sup_id = $_POST['sup_id'];
+    $sup = $_POST['sup'];
+    $po = $_POST['po'];
+    $po_date = $_POST['po_date'];
+    $dept = $_POST['dept'];
+    $ccode = $_POST['ccode'];
+    $iar_no = $_POST['iar_no'];
+    $iar_date = $_POST['iar_date'];
+    $invoice = $_POST['invoice'];
+    $invoice_date = $_POST['invoice_date'];
+    $sn = $_POST['sn'];
+    $officer = $_POST['officer'];
+    $pr_no = $_POST['pr_no'];
+    
+      $sql = mysqli_query($conn,'INSERT INTO iar (rfq_id, app_id, sup_id,supplier,po_no,po_date,dept,ccode,iar_no,iar_date,invoice_no,invoice_date,stock_no,officer,pr_no
+    ) VALUES ("'.$rfq_id.'", "'.$app_id.'", "'.$sup_id.'", "'.$sup.'", "'.$po.'", "'.$po_date.'", "'.$dept.'", "'.$ccode.'", "'.$iar_no.'", "'.$iar_date.'", "'.$invoice.'", "'.$invoice_date.'", "'.$sn.'", "'.$officer.'", "'.$pr_no.'")');
+      $sql2 = mysqli_query($conn,'INSERT INTO iar_stock(rfq_id,app_id,procurement,description,unit_id,qty,abc,qty_original,abc_original) SELECT rfq_id,app_id,procurement,description,rfq_items.unit_id,rfq_items.qty,abc,rfq_items.qty,abc FROM rfq_items left join app on app.id = rfq_items.app_id where rfq_id = "'.$rfq_id.'"');
+      $selectt = mysqli_query($conn, " SELECT rfq_id  FROM iar_stock where po_no = '' ");
+      if (mysqli_num_rows($selectt)>0) {
+        $count = mysqli_num_rows($selectt);
+        for($i=0; $i<$count; $i++){
+          $sqlpo = mysqli_query($conn,"Update iar_stock set po_no ='$po'  WHERE rfq_id = '$rfq_id' and po_no='' ");
+        }
+      }
+      if ($sql) {
+        # code...
+      echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('IAR Created!')
+        window.location.href='ViewIAR.php';
+        </SCRIPT>");
+      }else{
+        echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Error Occured!')
+        </SCRIPT>");
+      }
+
+  }
+  ?>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript">
@@ -54,8 +113,6 @@
       document.getElementById("dept").value = x[6].innerHTML;
     }
   </script>
-</head>
-<body style="background: lightgray;">
   <div class="">
     <div class="panel panel-default">
       <br>
@@ -67,10 +124,12 @@
       &nbsp &nbsp &nbsp   <li class="btn btn-warning"><a href="ViewIAR.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
+          <form method="POST">
+      &nbsp &nbsp &nbsp   <input type="checkbox"  name="pety" id="pety" onclick='javascript:yesnoCheck();'> <strong>Petty Cash ?</strong>
       <div class="box-body">
         <div class="well">
           <div class="row">
-            <div class="col-xs-3">
+            <div class="col-xs-3 H1">
               <label>Search PO No. : </label>
               <input type="text" class="form-control" name="search_text" id="search_text" placeholder="Search Code" class="" />
               <br>
@@ -81,6 +140,13 @@
               </table></b>
             </div>
           </div>
+          <div class="col-xs-3 H2" hidden>
+            <label>PR NO. </label>
+            <select class="form-control select2" name="pr_no" id="pr_no" style="width: 100%;">
+              <option selected disabled></option>
+              <?php echo get_pr($connect); ?>
+            </select>
+          </div>
         </div>
       </div>
     </div>
@@ -88,27 +154,47 @@
     <div class="box-body">
       <div class="well">
         <div class="row">
-          <form method="POST">
            <div hidden>
-            <input    type="text"  class="form-control" id="rfq_id" required placeholder="rfq_id" name="rfq_id">
+            <input    type="text"  class="form-control" id="rfq_id"  placeholder="rfq_id" name="rfq_id">
             <input    type="text"  class="form-control" id="app_id"  placeholder="app_id" name="app_id">
-            <input    type="text"  class="form-control" id="sup_id" required placeholder="" name="sup_id">
+            <input    type="text"  class="form-control" id="sup_id"  placeholder="" name="sup_id">
           </div>
-          <div class="col-xs-3">
+          <div class="col-xs-3 H1">
             <label>Supplier : </label>
             <input readonly type="text" class="form-control" id="sup" placeholder="" name="sup">
           </div>
-          <div class="col-xs-3">
+          <div class="col-xs-3 H2" hidden>
+            <label>Supplier : </label>
+            <input  type="text" class="form-control" id="sup" placeholder="" name="sup">
+          </div>
+          <div class="col-xs-3 H1">
             <label>PO No. : </label>
             <input readonly type="text" class="form-control" id="po_no" placeholder="" name="po">
           </div>
-          <div class="col-xs-3">
+          <div class="col-xs-3 H2" hidden>
+            <label>PO No. : </label>
+            <input  type="text" class="form-control" id="po_no" placeholder="" name="po">
+          </div>
+          <div class="col-xs-3 H1">
             <label>PO Date : </label>
             <input readonly type="text" class="form-control" id="po_date" placeholder="" name="po_date">
           </div>
-          <div class="col-xs-3">
+          <div class="col-xs-3 H2" hidden>
+            <label>PO Date : </label>
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input autocomplete="new-password"  type="text" name="po_date" class="form-control" id="datepicker3" placeholder="">
+            </div>
+          </div>
+          <div class="col-xs-3 H1">
             <label>Requisition Dept. : </label>
             <input readonly type="text" class="form-control"  id="dept" placeholder="" name="dept">
+          </div>
+          <div class="col-xs-3 H2" hidden>
+            <label>Requisition Dept. : </label>
+            <input  type="text" class="form-control"  id="dept" placeholder="" name="dept">
           </div>
           <p>&nbsp</p>
           <p>&nbsp</p>
@@ -123,11 +209,11 @@
           <div class="col-xs-3">
             <label>IAR DATE : </label>
             <div class="input-group date">
-          <div class="input-group-addon">
-            <i class="fa fa-calendar"></i>
-          </div>
-          <input autocomplete="new-password" required type="text" name="iar_date" class="form-control" id="datepicker" placeholder="">
-        </div>
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input autocomplete="new-password" required type="text" name="iar_date" class="form-control" id="datepicker" placeholder="">
+            </div>
             <!-- <input type="date" class="form-control" style="height: 40px;" id="iar_date" placeholder="" name="iar_date"> -->
           </div>
           <div class="col-xs-3">
@@ -138,12 +224,12 @@
           <p>&nbsp</p>
           <div class="col-xs-3">
             <label>Invoice Date. : </label>
-             <div class="input-group date">
-          <div class="input-group-addon">
-            <i class="fa fa-calendar"></i>
-          </div>
-          <input autocomplete="new-password" required type="text" name="invoice_date" class="form-control" id="datepicker2" placeholder="">
-        </div>
+            <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input autocomplete="new-password" required type="text" name="invoice_date" class="form-control" id="datepicker2" placeholder="">
+            </div>
             <!-- <input type="date" class="form-control"  id="invoice_date" placeholder="" name="invoice_date"> -->
           </div>
           <div hidden class="col-xs-2">
@@ -172,50 +258,17 @@
   </form>
 </div>
 </div>
-</body>
-</html>
-<?php
-$conn = mysqli_connect("localhost", "fascalab_2020", "w]zYV6X9{*BN", "fascalab_2020");
-if (isset($_POST['submit'])) 
-{
-  $rfq_id = $_POST['rfq_id'];
-  $app_id = $_POST['app_id'];
-  $sup_id = $_POST['sup_id'];
-  $sup = $_POST['sup'];
-  $po = $_POST['po'];
-  $po_date = $_POST['po_date'];
-  $dept = $_POST['dept'];
-  $ccode = $_POST['ccode'];
-  $iar_no = $_POST['iar_no'];
-  $iar_date = $_POST['iar_date'];
-  $invoice = $_POST['invoice'];
-  $invoice_date = $_POST['invoice_date'];
-  $sn = $_POST['sn'];
-  $officer = $_POST['officer'];
-  $check = mysqli_query($conn,"SELECT rfq_id from iar_stock where rfq_id = '$rfq_id'");
-  if (mysqli_num_rows($check) == true) {
-
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Data Already Exist')
-      window.location.href='iar_create.php';
-      </SCRIPT>");
-  }else{
-    $sql = mysqli_query($conn,'INSERT INTO iar (rfq_id, app_id, sup_id,supplier,po_no,po_date,dept,ccode,iar_no,iar_date,invoice_no,invoice_date,stock_no,officer
-  ) VALUES ("'.$rfq_id.'", "'.$app_id.'", "'.$sup_id.'", "'.$sup.'", "'.$po.'", "'.$po_date.'", "'.$dept.'", "'.$ccode.'", "'.$iar_no.'", "'.$iar_date.'", "'.$invoice.'", "'.$invoice_date.'", "'.$sn.'", "'.$officer.'")');
-    $sql2 = mysqli_query($conn,'INSERT INTO iar_stock(rfq_id,app_id,procurement,description,unit_id,qty,abc,qty_original,abc_original) SELECT rfq_id,app_id,procurement,description,rfq_items.unit_id,rfq_items.qty,abc,rfq_items.qty,abc FROM rfq_items left join app on app.id = rfq_items.app_id where rfq_id = "'.$rfq_id.'"');
-    $selectt = mysqli_query($conn, " SELECT rfq_id  FROM iar_stock where po_no = '' ");
-    if (mysqli_num_rows($selectt)>0) {
-      $count = mysqli_num_rows($selectt);
-      for($i=0; $i<$count; $i++){
-        $sqlpo = mysqli_query($conn,"Update iar_stock set po_no ='$po'  WHERE rfq_id = '$rfq_id' and po_no='' ");
-      }
+<script>
+  function yesnoCheck() {
+    $(".H1").hide();
+    $(".H2").show();
+    if ($('#pety').is(':checked')) {
+    }else{
+    $(".H1").show();
+    $(".H2").hide();
     }
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('IAR Created!')
-      window.location.href='ViewIAR.php';
-      </SCRIPT>");
   }
-}
-?>
+
+</script>
 
 
