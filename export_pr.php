@@ -11,7 +11,7 @@ $pmo = $row['pmo'];
 $purpose = $row['purpose'];
 $pr_date = $row['pr_date'];
 $sql_items = mysqli_query($conn, "SELECT a.sn,a.id,a.procurement,pr.description,pr.unit,pr.qty,pr.abc FROM pr_items pr left join app a on a.id = pr.items WHERE pr.pr_no = '$pr_no' ");
-if (mysqli_num_rows($sql_items)>45) {
+if (mysqli_num_rows($sql_items)>30) {
   # code...
 $objPHPExcel = PHPExcel_IOFactory::load("library/export_pr15.xlsx");
 }else{
