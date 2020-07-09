@@ -289,7 +289,7 @@ $(document).ready(function()
     username:'<?php echo $username;?>'
   },
   success: function(data) {
- if(data ==1)
+ if(data == 1)
  {
   $('#welcome-modal').modal('hide');
  }else{
