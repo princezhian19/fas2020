@@ -2,6 +2,7 @@
 session_start();
 if(!isset($_SESSION['username'])){
 header('location:index.php');
+$DEPT_ID = $_SESSION['DEPT_ID'];
 }
 ?>
 <!DOCTYPE html>
