@@ -9,6 +9,7 @@ $username = $_SESSION['username'];
 ?><!DOCTYPE html>
 <html>
 <head>
+<title>FAS | PAR</title>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" type="image/png" href="dilg.png">
