@@ -126,7 +126,7 @@ only screen and (max-width: 760px),
             <td> <input style = "border: none;" type ="text" class = "form-control" value = "<?php getContact();?>"  name = "contact_number" readonly/> </td>
             <td style = "background-color:#B0BEC5;"> Body Temp. </td> 
             <!-- id = "temp" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value) -->
-            <td> <input type ="number"  class = "form-control" required/> 
+            <td> <input type ="number"  class = "form-control" required name = "body_temp"/> 
 
             </td>
           </tr>
@@ -173,7 +173,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox1" id="cb2"  name = "ans1" value = "NO" checked>
+              <input type="checkbox" class="form-check-input checkbox1" id="cb2"  name = "ans1" value = "NO" >
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
@@ -187,7 +187,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox2" id="cb4" name = "ans2" value = "NO" checked>
+              <input type="checkbox" class="form-check-input checkbox2" id="cb4" name = "ans2" value = "NO" >
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
@@ -202,7 +202,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox3" id="cb6" name = "ans3" value = "NO" checked>
+              <input type="checkbox" class="form-check-input checkbox3" id="cb6" name = "ans3" value = "NO" >
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
@@ -215,7 +215,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1 checkbox4">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox4" id="cb8" name = "ans4" value = "NO" checked>
+              <input type="checkbox" class="form-check-input checkbox4" id="cb8" name = "ans4" value = "NO" >
               <label class="form-check-label" for="exampleCheck1 checkbox4">No</label>
             </div>
             </td>
@@ -229,7 +229,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox5" id="cb10" name = "ans5" value = "NO" checked>
+              <input type="checkbox" class="form-check-input checkbox5" id="cb10" name = "ans5" value = "NO" >
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
@@ -383,7 +383,7 @@ $(document).ready(function()
               if($(this).prop("checked") == true){
                   $("#txt1").prop('disabled', true);
               }else{
-                  $("#txt1").prop('disabled', false);
+                  $("#txt1").prop('disabled', true);
               }
           });
       // ========================================
@@ -399,7 +399,7 @@ $(document).ready(function()
               if($(this).prop("checked") == true){
                   $("#txt2").prop('disabled', true);
               }else{
-                  $("#txt2").prop('disabled', false);
+                  $("#txt2").prop('disabled', true);
               }
           });
       // ========================================
@@ -414,7 +414,7 @@ $(document).ready(function()
               if($(this).prop("checked") == true){
                   $("#txt2").prop('disabled', true);
               }else{
-                  $("#txt2").prop('disabled', false);
+                  $("#txt2").prop('disabled', true);
               }
           });
           // ===================================
@@ -429,7 +429,7 @@ $(document).ready(function()
               if($(this).prop("checked") == true){
                   $("#txt3").prop('disabled', true);
               }else{
-                  $("#txt3").prop('disabled', false);
+                  $("#txt3").prop('disabled', true);
               }
           });
           // ===================================
@@ -444,7 +444,7 @@ $(document).ready(function()
               if($(this).prop("checked") == true){
                   $("#txt4").prop('disabled', true);
               }else{
-                  $("#txt4").prop('disabled', false);
+                  $("#txt4").prop('disabled', true);
               }
           });
 
@@ -487,6 +487,7 @@ $(document).ready(function()
               <th>NO</th>
               <th>DATE</th>
               <th>NAME</th>
+              <th>BODY TEMPERATURE</th>
               <th>RESIDENTIAL ADDRESS</th>
               <th>OFFICE STATION</th>
               <th>POSITION</th>
