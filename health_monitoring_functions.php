@@ -116,7 +116,7 @@ session_start();
           include 'connection.php';
 
 
-        $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `DATE`, `UNAME`,`BODY_TEMPERATURE`, `CURRENT_ADDRESS`, `WORK_ARRANGEMENT`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`,`IS_SUBMIT`) VALUES 
+        $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `DATE`, `UNAME`,`BODY_TEMPERATURE`, `CURRENT_ADDRESS`, `WORK_ARRANGEMENT`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`,`DETAILS_5`,`IS_SUBMIT`) VALUES 
         (null,
         '".date('Y-m-d',strtotime($_POST['date_today']))."',
         '".$_SESSION['username']."',
@@ -130,8 +130,9 @@ session_start();
         '".$_POST['ans5']."',
         '".$_POST['ans1_details']."',
         '".$_POST['ans2_details']."',
-        '".$_POST['ans2_details']."',
+        '".$_POST['ans3_details']."',
         '".$_POST['ans4_details']."',
+        '".$_POST['ans5_details']."',
         '1'
         )";
 

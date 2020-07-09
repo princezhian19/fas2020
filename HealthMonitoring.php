@@ -126,7 +126,7 @@ only screen and (max-width: 760px),
             <td> <input style = "border: none;" type ="text" class = "form-control" value = "<?php getContact();?>"  name = "contact_number" readonly/> </td>
             <td style = "background-color:#B0BEC5;"> Body Temp. </td> 
             <!-- id = "temp" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value) -->
-            <td> <input type ="number"  class = "form-control" required name = "body_temp"/> 
+            <td> <input type ="number"  class = "form-control" required name = "body_temp" pattern="^\d*(\.\d{0,2})?$" min = 0/> 
 
             </td>
           </tr>
@@ -191,7 +191,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2 rowspan = 2>Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)<center>
+            <td colspan = 2>Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)<center>
             <textarea required name = "ans2_details" cols = 56 rows=6 style = "resize:none;" id = "txt2"></textarea></center></td>
           </tr>
           <tr>
@@ -206,6 +206,8 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
+            <td colspan = 2>Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)<center>
+            <textarea required name = "ans3_details" cols = 56 rows=6 style = "resize:none;" id = "txt3"></textarea></center></td>
           </tr>
           <tr>
           <td style = "background-color:#B0BEC5;">Have you been in close contact with farm animals or exposed to wild animals in the past 14 days?</td>
@@ -219,7 +221,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1 checkbox4">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<center><textarea required name = "ans3_details" cols = 56 rows=5  style = "resize:none;" id = "txt3"></textarea></center></td>
+            <td colspan = 2>Please provide details:<center><textarea required name = "ans4_details" cols = 56 rows=5  style = "resize:none;" id = "txt4"></textarea></center></td>
           </tr>
           <tr>
           <td style = "background-color:#B0BEC5;">Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
@@ -233,7 +235,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<center><textarea required name = "ans4_details" cols = 56 rows=5  style = "resize:none;" id = "txt4"></textarea></center></td>
+            <td colspan = 2>Please provide details:<center><textarea required name = "ans5_details" cols = 56 rows=5  style = "resize:none;" id = "txt5 "></textarea></center></td>
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
@@ -405,27 +407,12 @@ $(document).ready(function()
       // ========================================
           $('#cb5').click(function(){
               if($(this).prop("checked") == true){
-                  $("#txt2").prop('disabled', false);
-              }else{
-                  $("#txt2").prop('disabled', true);
-              }
-          });
-          $('#cb6').click(function(){
-              if($(this).prop("checked") == true){
-                  $("#txt2").prop('disabled', true);
-              }else{
-                  $("#txt2").prop('disabled', true);
-              }
-          });
-          // ===================================
-          $('#cb7').click(function(){
-              if($(this).prop("checked") == true){
                   $("#txt3").prop('disabled', false);
               }else{
                   $("#txt3").prop('disabled', true);
               }
           });
-          $('#cb8').click(function(){
+          $('#cb6').click(function(){
               if($(this).prop("checked") == true){
                   $("#txt3").prop('disabled', true);
               }else{
@@ -433,18 +420,33 @@ $(document).ready(function()
               }
           });
           // ===================================
-          $('#cb9').click(function(){
+          $('#cb7').click(function(){
               if($(this).prop("checked") == true){
                   $("#txt4").prop('disabled', false);
               }else{
                   $("#txt4").prop('disabled', true);
               }
           });
-          $('#cb10').click(function(){
+          $('#cb8').click(function(){
               if($(this).prop("checked") == true){
                   $("#txt4").prop('disabled', true);
               }else{
                   $("#txt4").prop('disabled', true);
+              }
+          });
+          // ===================================
+          $('#cb9').click(function(){
+              if($(this).prop("checked") == true){
+                  $("#txt5").prop('disabled', false);
+              }else{
+                  $("#txt5").prop('disabled', true);
+              }
+          });
+          $('#cb10').click(function(){
+              if($(this).prop("checked") == true){
+                  $("#txt5").prop('disabled', true);
+              }else{
+                  $("#txt5").prop('disabled', true);
               }
           });
 
@@ -539,7 +541,18 @@ $(document).ready(function()
 
 <!-- Page script -->
 <script>
+$(document).on('keydown', 'input[pattern]', function(e){
+  var input = $(this);
+  var oldVal = input.val();
+  var regex = new RegExp(input.attr('pattern'), 'g');
 
+  setTimeout(function(){
+    var newVal = input.val();
+    if(!regex.test(newVal)){
+      input.val(oldVal); 
+    }
+  }, 0);
+});
 $(document).ready(function(){
   $('#datepicker1').datepicker({
       autoclose: true
