@@ -4,17 +4,18 @@ date_default_timezone_set("Asia/Manila");
 
 $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-		$fieldsName = 'CURRENT_ADDRESS,DIVISION_M,tblemployeeinfo.OFFICE_STATION, d.POSITION_M, `ID`,concat(FIRST_M, " ", LAST_M) as "fullname" , `DATE`, tblhealth_monitoring.`UNAME`, `WORK_ARRANGEMENT`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`, `IS_SUBMIT`';
+		$fieldsName = 'tbldesignation.DESIGNATION_M ,EMAIL, CURRENT_ADDRESS,DIVISION_M,`BODY_TEMPERATURE`,tblemployeeinfo.OFFICE_STATION, d.POSITION_M, `ID`,concat(FIRST_M, " ", LAST_M) as "fullname" , `DATE`, tblhealth_monitoring.`UNAME`, `WORK_ARRANGEMENT`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`, `IS_SUBMIT`';
 		$table = 'tblhealth_monitoring';
         $join = ' INNER JOIN  tblemployeeinfo ON tblhealth_monitoring.UNAME = tblemployeeinfo.UNAME 
-        INNER JOIN tblpersonneldivision on tblemployeeinfo.DIVISION_C = tblpersonneldivision.DIVISION_N
- LEFT JOIN tbldilgposition d on d.POSITION_ID = tblemployeeinfo.POSITION_C
+                  INNER JOIN tblpersonneldivision on tblemployeeinfo.DIVISION_C = tblpersonneldivision.DIVISION_N
+                  LEFT JOIN tbldilgposition d on d.POSITION_ID = tblemployeeinfo.POSITION_C
+                  LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeeinfo.DESIGNATION 
                   ';
 		$WHERE = "";
 
 	
     // }else{
-	// 	$fieldsName = '`DIVISION_N`, `DIVISION_M`, `DIVISION_COLOR`, `DIVISION_LONG_M`, `D_GROUP`, `GROUP_N`, `PGROUP_N`';
+	// 	$fieldsName = '`DIVISION_N`, `DIVISION_M`, `DIVISION_COLOR`, `DIVISION_LONG_M`, `D_GROUP`, `GROUP_N`, `PGROUP_N`';  
 	// 	$table = 'tblpersonneldivision';
 	// 	$join = 'INNER JOIN tbltechnical_assistance on tblpersonneldivision.DIVISION_M = tbltechnical_assistance.OFFICE';
 	// 	$WHERE = "WHERE tbltechnical_assistance.REQ_BY = '$complete_name'";
@@ -68,8 +69,9 @@ $columns = array(
     
             }),
 	array('db' => 'fullname', 'dt' => 2),
-	array('db' => 'CURRENT_ADDRESS', 'dt' => 3),
-    array('db' => 'OFFICE_STATION', 'dt' => 4,
+	array('db' => 'BODY_TEMPERATURE', 'dt' => 3),
+	array('db' => 'CURRENT_ADDRESS', 'dt' => 4),
+    array('db' => 'OFFICE_STATION', 'dt' => 5,
 
     'formatter' => function( $d, $row ) {
         switch ($d) {
@@ -95,9 +97,11 @@ $columns = array(
             break;
     }
     }),
-	array('db' => 'POSITION_M', 'dt' => 5),
-	array('db' => 'DIVISION_M', 'dt' => 6),
-    array( 'db' => 'WORK_ARRANGEMENT', 'dt'=> 7,
+	array('db' => 'POSITION_M', 'dt' => 6),
+	array('db' => 'DESIGNATION_M', 'dt' => 7),
+	array('db' => 'DIVISION_M', 'dt' => 8),
+	array('db' => 'EMAIL', 'dt' => 9),
+    array( 'db' => 'WORK_ARRANGEMENT', 'dt'=> 10,
 	'formatter' => function( $d, $row ) {
         if($d == 'AWA')
         {

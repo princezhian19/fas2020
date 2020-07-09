@@ -110,17 +110,34 @@ session_start();
             echo $row['DIVISION_M'];
         }
     }
+    function getOfficeExport()
+    {
+        include 'connection.php';
+        $query = "SELECT * FROM tblpersonneldivision  ";
+        $result = mysqli_query($conn, $query);
+        echo '<select class="form-control " id="selectYear" style="width: 100%;">';
+        
+        while($row = mysqli_fetch_array($result))
+        {
+            
+            echo '<option value = "'.$row['DIVISION_M'].'">'.$row['DIVISION_M'].'</option>';
+        }
+        echo ' </select> ';
+
+    }
+    
+
     // ======================= inserting =====================
     function add()
     {
           include 'connection.php';
 
 
-        $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `DATE`, `UNAME`,`CURRENT_ADDRESS`, `WORK_ARRANGEMENT`, 
-        , `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`,`IS_SUBMIT`) VALUES 
+        $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `DATE`, `UNAME`,`BODY_TEMPERATURE`, `CURRENT_ADDRESS`, `WORK_ARRANGEMENT`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`,`DETAILS_5`,`IS_SUBMIT`) VALUES 
         (null,
         '".date('Y-m-d',strtotime($_POST['date_today']))."',
         '".$_SESSION['username']."',
+        '".$_POST['body_temp']." &deg C',
         '".$_POST['curraddress']."',
         '".$_POST['work_arrangement']."',
         '".$_POST['ans1']."',
@@ -130,11 +147,12 @@ session_start();
         '".$_POST['ans5']."',
         '".$_POST['ans1_details']."',
         '".$_POST['ans2_details']."',
-        '".$_POST['ans2_details']."',
+        '".$_POST['ans3_details']."',
         '".$_POST['ans4_details']."',
+        '".$_POST['ans5_details']."',
         '1'
         )";
-    
+
        
        if (mysqli_query($conn, $insert)) {
     } else {

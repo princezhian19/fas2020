@@ -126,7 +126,7 @@ only screen and (max-width: 760px),
             <td> <input style = "border: none;" type ="text" class = "form-control" value = "<?php getContact();?>"  name = "contact_number" readonly/> </td>
             <td style = "background-color:#B0BEC5;"> Body Temp. </td> 
             <!-- id = "temp" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value) -->
-            <td> <input type ="number"  class = "form-control" required/> 
+            <td> <input type ="text"  class = "form-control" required name = "body_temp" pattern="^\d*(\.\d{0,2})?$" min = 0/> 
 
             </td>
           </tr>
@@ -173,7 +173,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox1" id="cb2"  name = "ans1" value = "NO" checked>
+              <input type="checkbox" class="form-check-input checkbox1" id="cb2"  name = "ans1" value = "NO" >
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
@@ -187,11 +187,11 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox2" id="cb4" name = "ans2" value = "NO" checked>
+              <input type="checkbox" class="form-check-input checkbox2" id="cb4" name = "ans2" value = "NO" >
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2 rowspan = 2>Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)<center>
+            <td colspan = 2>Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)<center>
             <textarea required name = "ans2_details" cols = 56 rows=6 style = "resize:none;" id = "txt2"></textarea></center></td>
           </tr>
           <tr>
@@ -202,10 +202,12 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox3" id="cb6" name = "ans3" value = "NO" checked>
+              <input type="checkbox" class="form-check-input checkbox3" id="cb6" name = "ans3" value = "NO" >
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
+            <td colspan = 2>Please provide specific details on the name of places and date of visit: (i.e. June 2- Mc Donald’s, Panay Ave, SM Hypermarket – Centris)<center>
+            <textarea required name = "ans3_details" cols = 56 rows=6 style = "resize:none;" id = "txt3"></textarea></center></td>
           </tr>
           <tr>
           <td style = "background-color:#B0BEC5;">Have you been in close contact with farm animals or exposed to wild animals in the past 14 days?</td>
@@ -215,11 +217,11 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1 checkbox4">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox4" id="cb8" name = "ans4" value = "NO" checked>
+              <input type="checkbox" class="form-check-input checkbox4" id="cb8" name = "ans4" value = "NO" >
               <label class="form-check-label" for="exampleCheck1 checkbox4">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<center><textarea required name = "ans3_details" cols = 56 rows=5  style = "resize:none;" id = "txt3"></textarea></center></td>
+            <td colspan = 2>Please provide details:<center><textarea required name = "ans4_details" cols = 56 rows=5  style = "resize:none;" id = "txt4"></textarea></center></td>
           </tr>
           <tr>
           <td style = "background-color:#B0BEC5;">Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
@@ -229,11 +231,11 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox5" id="cb10" name = "ans5" value = "NO" checked>
+              <input type="checkbox" class="form-check-input checkbox5" id="cb10" name = "ans5" value = "NO" >
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<center><textarea required name = "ans4_details" cols = 56 rows=5  style = "resize:none;" id = "txt4"></textarea></center></td>
+            <td colspan = 2>Please provide details:<center><textarea required name = "ans5_details" cols = 56 rows=5  style = "resize:none;" id = "txt5 "></textarea></center></td>
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
@@ -272,7 +274,21 @@ only screen and (max-width: 760px),
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script>
   $(document).ready(function() {
-            
+             // Setup - add a text input to each footer cell
+    // $('#example thead tr').clone(true).appendTo( '#example thead' );
+    // $('#example thead tr:eq(1) th').each( function (i) {
+    //     var title = $(this).text();
+    //     $(this).html( '<input type="text" placeholder="'+title+'" />' );
+ 
+    //     $( 'input', this ).on( 'keyup change', function () {
+    //         if ( table.column(i).search() !== this.value ) {
+    //             table
+    //                 .column(i)
+    //                 .search( this.value )
+    //                 .draw();
+    //         }
+    //     } );
+    // } );
         
             var action = '';
             var table = $('#example').DataTable( {
@@ -383,7 +399,7 @@ $(document).ready(function()
               if($(this).prop("checked") == true){
                   $("#txt1").prop('disabled', true);
               }else{
-                  $("#txt1").prop('disabled', false);
+                  $("#txt1").prop('disabled', true);
               }
           });
       // ========================================
@@ -399,52 +415,52 @@ $(document).ready(function()
               if($(this).prop("checked") == true){
                   $("#txt2").prop('disabled', true);
               }else{
-                  $("#txt2").prop('disabled', false);
+                  $("#txt2").prop('disabled', true);
               }
           });
       // ========================================
           $('#cb5').click(function(){
               if($(this).prop("checked") == true){
-                  $("#txt2").prop('disabled', false);
+                  $("#txt3").prop('disabled', false);
               }else{
-                  $("#txt2").prop('disabled', true);
+                  $("#txt3").prop('disabled', true);
               }
           });
           $('#cb6').click(function(){
               if($(this).prop("checked") == true){
-                  $("#txt2").prop('disabled', true);
+                  $("#txt3").prop('disabled', true);
               }else{
-                  $("#txt2").prop('disabled', false);
+                  $("#txt3").prop('disabled', true);
               }
           });
           // ===================================
           $('#cb7').click(function(){
               if($(this).prop("checked") == true){
-                  $("#txt3").prop('disabled', false);
+                  $("#txt4").prop('disabled', false);
               }else{
-                  $("#txt3").prop('disabled', true);
+                  $("#txt4").prop('disabled', true);
               }
           });
           $('#cb8').click(function(){
               if($(this).prop("checked") == true){
-                  $("#txt3").prop('disabled', true);
+                  $("#txt4").prop('disabled', true);
               }else{
-                  $("#txt3").prop('disabled', false);
+                  $("#txt4").prop('disabled', true);
               }
           });
           // ===================================
           $('#cb9').click(function(){
               if($(this).prop("checked") == true){
-                  $("#txt4").prop('disabled', false);
+                  $("#txt5").prop('disabled', false);
               }else{
-                  $("#txt4").prop('disabled', true);
+                  $("#txt5").prop('disabled', true);
               }
           });
           $('#cb10').click(function(){
               if($(this).prop("checked") == true){
-                  $("#txt4").prop('disabled', true);
+                  $("#txt5").prop('disabled', true);
               }else{
-                  $("#txt4").prop('disabled', false);
+                  $("#txt5").prop('disabled', true);
               }
           });
 
@@ -481,16 +497,25 @@ $(document).ready(function()
                 <h1>Monitoring of Travel Claim Request</h1><br>
                 
             </div>
-            
+            <div class=" col-md-6"> &nbsp; </div>
+              <div class="well" style = "width:20%;margin-left:80%;">
+                <div class="row">
+                  <div class="col-md-8"> <?php echo getOfficeExport();?></div>
+                  <div class="col-md-4"> <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export</button></ol> </div>
+                </div>
+              </div>
             <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
               <thead>
               <th>NO</th>
               <th>DATE</th>
-              <th>NAME</th>
+              <th>EMPLOYEE NAME</th>
+              <th>BODY TEMPERATURE</th>
               <th>RESIDENTIAL ADDRESS</th>
               <th>OFFICE STATION</th>
               <th>POSITION</th>
+              <th>DESIGNATION</th>
               <th>OFFICE/DIVISION</th>
+              <th>PERSONAL EMAIL ADDRESS</th>
               <th>WORK ARRANGEMENT</th>
               </thead>
             </table>
@@ -538,7 +563,18 @@ $(document).ready(function()
 
 <!-- Page script -->
 <script>
+$(document).on('keydown', 'input[pattern]', function(e){
+  var input = $(this);
+  var oldVal = input.val();
+  var regex = new RegExp(input.attr('pattern'), 'g');
 
+  setTimeout(function(){
+    var newVal = input.val();
+    if(!regex.test(newVal)){
+      input.val(oldVal); 
+    }
+  }, 0);
+});
 $(document).ready(function(){
   $('#datepicker1').datepicker({
       autoclose: true
