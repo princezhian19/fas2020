@@ -117,13 +117,12 @@ session_start();
 
 
         $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `DATE`, `UNAME`,`CURRENT_ADDRESS`, `WORK_ARRANGEMENT`, 
-        `REPORTING_DATES`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`,`IS_SUBMIT`) VALUES 
+        , `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`,`IS_SUBMIT`) VALUES 
         (null,
         '".date('Y-m-d',strtotime($_POST['date_today']))."',
         '".$_SESSION['username']."',
         '".$_POST['curraddress']."',
         '".$_POST['work_arrangement']."',
-        '".$_POST['sched']."',
         '".$_POST['ans1']."',
         '".$_POST['ans2']."',
         '".$_POST['ans3']."',

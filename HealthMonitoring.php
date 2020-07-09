@@ -148,19 +148,19 @@ only screen and (max-width: 760px),
           <tr>
             <td style = "background-color:#B0BEC5;">Office/Unit:</td>
             <td> <input type ="text" style = " border: none;" class = "form-control" value = "<?php getOffice()?>" name= "office" readonly/> </td>
-            <td style = "background-color:#B0BEC5;">Reporting Dates/ Days at Regional Office:</td>
+            <td style = "background-color:#B0BEC5;">Work Arrangement:</td>
             <td> 
                 <select required class="form-control" style="width: 100%;" name="work_arrangement" id="sched" >
                     <option value="" selected></option>
                     <option value="SWF" >Skeletal Work Force</option>
                     <option value="AWA" >Alternate Work Arrangement</option>
                 </select>
-                <div class="input-group">
+                <!-- <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
                   <input type="text" class="form-control pull-right" id="reservation" name = "sched" required>
-                </div>
+                </div> -->
             </td>
 
           </tr>
@@ -492,7 +492,6 @@ $(document).ready(function()
               <th>POSITION</th>
               <th>OFFICE/DIVISION</th>
               <th>WORK ARRANGEMENT</th>
-              <th>REPORTING DATES</th>
               </thead>
             </table>
     </section>
