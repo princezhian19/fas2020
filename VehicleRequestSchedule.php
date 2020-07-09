@@ -218,17 +218,18 @@ function viewEvents2()
       border: #c3e6c3 1px solid;
   }
     </style>
- <?php 
+<?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
+}else{ 
 
-if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
-
-      include('test1.php');
-}else{
+     if ($OFFICE_STATION == 1) {
   include('sidebar2.php');
-
+           
+        }else{
+  include('sidebar3.php');
+         
+        } 
 }
- 
-  
  ?>
 <?php include 'connection.php';?>
 

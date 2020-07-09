@@ -18,9 +18,19 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
- 
-  <?php include('sidebar.php');?>
+<?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
+}else{ 
 
+     if ($OFFICE_STATION == 1) {
+  include('sidebar2.php');
+           
+        }else{
+  include('sidebar3.php');
+         
+        } 
+}
+ ?>
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">

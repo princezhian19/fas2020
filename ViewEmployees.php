@@ -44,8 +44,8 @@ $division = $_SESSION['division'];
 </head>
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
- <?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); 
+<?php 
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
 }else{ 
 
      if ($OFFICE_STATION == 1) {

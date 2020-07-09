@@ -206,13 +206,18 @@ function viewEvents2()
   </head>
 <body >
 <?php 
-  if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-      include('test1.php');
-    }else{
-      include('sidebar2.php');
-    }
- ?>
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
+}else{ 
 
+     if ($OFFICE_STATION == 1) {
+  include('sidebar2.php');
+           
+        }else{
+  include('sidebar3.php');
+         
+        } 
+}
+ ?>
   <?php include('connection.php');?>
 <div class="wrapper">
     <div class="content-wrapper">

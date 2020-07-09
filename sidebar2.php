@@ -8,6 +8,7 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['complete_name'])){
   $username = $_SESSION['username'];
   $TIN_N = $_SESSION['TIN_N'];
   $ORD = $_SESSION['ORD'];
+  $DEPT_ID = $_SESSION['DEPT_ID'];
 }
 
 $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .   $_SERVER['REQUEST_URI']; 
@@ -347,7 +348,45 @@ function showRequest()
 
 
     <!-- Records -->
-
+    <?php if ($DEPT_ID == 1): ?>
+      <li  class = "treeview <?php 
+      if(
+      $link == 'http://fas.calabarzon.dilg.gov.ph/ViewApp.php' ||  
+      $link == 'http://fas.calabarzon.dilg.gov.ph/CreateSuppliers.php' || 
+      $link == 'http://fas.calabarzon.dilg.gov.ph/CreateAPP.php' || 
+      $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPR.php' || 
+      $link == 'http://fas.calabarzon.dilg.gov.ph/CreatePR.php' || 
+      $link == 'http://fas.calabarzon.dilg.gov.ph/ViewApp.php?division='.$_SESSION['division'].'' || 
+      $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPR.php?division='.$_SESSION['division'].'' || 
+      $link == 'http://fas.calabarzon.dilg.gov.ph/ViewRFQ.php?division='.$_SESSION['division'].'' ||
+      $link == 'http://fas.calabarzon.dilg.gov.ph/ViewSuppliers.php'  ||
+      $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateAPP.php?id='.$_GET['id'].'' ||
+      $link == 'http://fas.calabarzon.dilg.gov.ph/ViewApp_History.php?id='.$_GET['id'].'' ||
+      $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPRv.php?id='.$_GET['id'].'' ||
+      $link == 'http://fas.calabarzon.dilg.gov.ph/ViewRFQdetails.php?id='.$_GET['id'].'' ||
+      $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPRv.php?id='.$_GET['id'].'&username='.$_SESSION['username'].'' ||
+      $link == 'http://fas.calabarzon.dilg.gov.ph/ViewUpdateRFQ.php?id2='.$_GET['id2'].'&id='.$_GET['id'].'&id='.$_GET['id'].'' ||
+      $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateSuppliers.php?id='.$_GET['id'].'' ||
+      $link == 'http://fas.calabarzon.dilg.gov.ph/CreateUpdatePR.php?pr_no='.$_GET['pr_no'].'&id='.$_GET['id'].'&pmo='.$_GET['pmo'].'&pr_date='.$_GET['pr_date'].'&purpose='.$_GET['purpose'].''
+      )
+      {
+       echo 'active';
+     }
+     ?>
+     ">
+     <a  href="" >
+      <i class="fa fa-cart-arrow-down " style = "color:#black;"></i>
+      <span  style = "color:#black;font-weight:normal;">Procurement</span>
+      <span class="pull-right-container"><i class="fa fa-angle-left pull-right" style = "color:#black;"></i></span>
+    </a>
+    <ul class="treeview-menu" >
+      <li><a href="ViewApp.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> APP</a></li>
+      <li><a href="ViewPR.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> Purchase Request</a></li>
+      <li><a href="ViewRFQ.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> Request for Quotation</a></li>
+      <li><a href="ViewSuppliers.php"><i class="fa" style = "color:#black;">&#xf0f6;</i><span>Supplier</span></a></li>
+    </ul>
+  </li>
+  <?php else: ?>
 
     <li  <?php 
     if( $link == 'http://fas.calabarzon.dilg.gov.ph/ViewPR1.php'.$_GET['division'].'' )
@@ -362,6 +401,7 @@ function showRequest()
     <span class="pull-right-container"></span>
   </a>
 </li>
+<?php endif ?>
 <?php if ($ORD != NULL || $ORD == 1): ?>
   <li class="treeview
   <?php 
@@ -478,104 +518,104 @@ function showRequest()
     </ul>
   </li>
   <?php if ($username == 'lnmelanio'): ?>
-  <li class="treeview 
-<?php 
-if(
-$link == 'http://fas.calabarzon.dilg.gov.ph/ViewEmployee.php?division='.$_GET['division'].'' ||
-$link == 'http://fas.calabarzon.dilg.gov.ph/ViewRetireEmployee.php?division='.$_GET['division'].'' ||
-$link == 'http://fas.calabarzon.dilg.gov.ph/ViewResignEmployee.php?getntano='.$_GET['getntano'].'&getparticular='.$_GET['getparticular'].'' ||
-$link == 'http://fas.calabarzon.dilg.gov.ph/ViewOnLeaveEmployee.php?division='.$_GET['division'].'' ||
-$link == 'http://fas.calabarzon.dilg.gov.ph/nta.php?division='.$_GET['division'].'' ||
-$link == 'http://fas.calabarzon.dilg.gov.ph/obligation.php' ||
-$link == 'http://fas.calabarzon.dilg.gov.ph/saroupdate.php?getid='.$_GET['getid'].'' ||
-$link == 'http://fas.calabarzon.dilg.gov.ph/obupdate.php?getid='.$_GET['getid'].'' ||
-$link == 'http://fas.calabarzon.dilg.gov.ph/sarocreate.php' ||
-$link == 'http://fas.calabarzon.dilg.gov.ph/obtableViewMain.php?getsaroID='.$_GET['getsaroID'].'&getuacs='.$_GET['getuacs'].'' 
-){
-  echo 'active';
-}
-?>" 
->
-<a href="" >
-  <i class="fa fa-money" style = "color:#black;"></i>
-  <span  style = "color:#black;font-weight:normal;">Payroll</span>
-  <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
-</a>
-<ul class="treeview-menu" >
-  <li class="treeview">
-    <a href="#" >
-      <i class="fa fa-folder-open-o" style = "color:#black;"></i>
-      <span >Employees</span>
-      <span class="pull-right-container">
-        <i class="fa fa-angle-left pull-right"></i>
-      </span>
+    <li class="treeview 
+    <?php 
+    if(
+    $link == 'http://fas.calabarzon.dilg.gov.ph/ViewEmployee.php?division='.$_GET['division'].'' ||
+    $link == 'http://fas.calabarzon.dilg.gov.ph/ViewRetireEmployee.php?division='.$_GET['division'].'' ||
+    $link == 'http://fas.calabarzon.dilg.gov.ph/ViewResignEmployee.php?getntano='.$_GET['getntano'].'&getparticular='.$_GET['getparticular'].'' ||
+    $link == 'http://fas.calabarzon.dilg.gov.ph/ViewOnLeaveEmployee.php?division='.$_GET['division'].'' ||
+    $link == 'http://fas.calabarzon.dilg.gov.ph/nta.php?division='.$_GET['division'].'' ||
+    $link == 'http://fas.calabarzon.dilg.gov.ph/obligation.php' ||
+    $link == 'http://fas.calabarzon.dilg.gov.ph/saroupdate.php?getid='.$_GET['getid'].'' ||
+    $link == 'http://fas.calabarzon.dilg.gov.ph/obupdate.php?getid='.$_GET['getid'].'' ||
+    $link == 'http://fas.calabarzon.dilg.gov.ph/sarocreate.php' ||
+    $link == 'http://fas.calabarzon.dilg.gov.ph/obtableViewMain.php?getsaroID='.$_GET['getsaroID'].'&getuacs='.$_GET['getuacs'].'' 
+    ){
+      echo 'active';
+    }
+    ?>" 
+    >
+    <a href="" >
+      <i class="fa fa-money" style = "color:#black;"></i>
+      <span  style = "color:#black;font-weight:normal;">Payroll</span>
+      <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
     </a>
     <ul class="treeview-menu" >
-      <li><a href="ViewEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> Employee List </a></li>
-      <li><a href="ViewRetireEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> Retire Employees</a></li>
-      <li><a href="ViewResignEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> Resign Employees</a></li>
-      <li><a href="ViewOnLeaveEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> On Leave Employees</a></li>
-    </ul>
-  </li>
-</li>
-<li><a href="ViewDeduction.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Manage Allowances</a></li>
-<li><a href="ViewGeneratePayroll.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Generate Payroll</a></li>
-<li><a href="CreateLoans.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Create Loan</a></li>
-<!-- <li><a href="PayrollEmployee.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Update Payroll Emp</a></li> -->
-</ul>
-</li>
-<?php endif ?>
-
-  <?php else: ?>
-    <?php if ($username == 'rbnanez' || $username == 'lnpaquita' || $username == 'lnmelanio' || $username == 'jscubio' ): ?>
-
-      <?php else: ?>
-        
-        <li class="treeview">
-          <a href="#" 
-          <?php
-          if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewDV.php' || 
-            $link == 'http://fas.calabarzon.dilg.gov.ph/ViewBURS.php?division='.$_GET['division'].'')
-          { echo 'class = "active"';}?> 
-          >
-          <i class="fa fa-money"></i>
-          <span  style = "color:#black;font-weight:normal;">Financial</span>
-
+      <li class="treeview">
+        <a href="#" >
+          <i class="fa fa-folder-open-o" style = "color:#black;"></i>
+          <span >Employees</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu" >
-          <li><a href="ViewBURS.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> ORS/BURS</a></li>
-          <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
-          <li><a href="CreateTravelClaim.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Travel Claim</a></li>
-
+          <li><a href="ViewEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> Employee List </a></li>
+          <li><a href="ViewRetireEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> Retire Employees</a></li>
+          <li><a href="ViewResignEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> Resign Employees</a></li>
+          <li><a href="ViewOnLeaveEmployee.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-copy" style = "color:#black;"></i> On Leave Employees</a></li>
         </ul>
       </li>
-    <?php endif ?>
+    </li>
+    <li><a href="ViewDeduction.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Manage Allowances</a></li>
+    <li><a href="ViewGeneratePayroll.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Generate Payroll</a></li>
+    <li><a href="CreateLoans.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Create Loan</a></li>
+    <!-- <li><a href="PayrollEmployee.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Update Payroll Emp</a></li> -->
+  </ul>
+</li>
+<?php endif ?>
+
+<?php else: ?>
+  <?php if ($username == 'rbnanez' || $username == 'lnpaquita' || $username == 'lnmelanio' || $username == 'jscubio' ): ?>
+
+    <?php else: ?>
+      
+      <li class="treeview">
+        <a href="#" 
+        <?php
+        if($link == 'http://fas.calabarzon.dilg.gov.ph/ViewDV.php' || 
+          $link == 'http://fas.calabarzon.dilg.gov.ph/ViewBURS.php?division='.$_GET['division'].'')
+        { echo 'class = "active"';}?> 
+        >
+        <i class="fa fa-money"></i>
+        <span  style = "color:#black;font-weight:normal;">Financial</span>
+
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu" >
+        <li><a href="ViewBURS.php?division=<?php echo $_SESSION['division'];?>" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> ORS/BURS</a></li>
+        <li><a href="ViewDV.php" style="color:black;text-decoration: none;"><i class="fa">&#xf0f6;</i> DV</a></li>
+        <li><a href="CreateTravelClaim.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>" ><i class="fa fa-folder-open-o" style = "color:#black;"></i>Travel Claim</a></li>
+
+      </ul>
+    </li>
   <?php endif ?>
+<?php endif ?>
 
 
 
 
 
-  <li class="
-  <?PHP 
-  if(
-  $link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
-  $link == 'http://fas.calabarzon.dilg.gov.ph/techassistance.php?division='.$_GET['division'].'' ||
-  $link == 'http://fas.calabarzon.dilg.gov.ph/allTickets.php?division='.$_GET['division'].'&ticket_id=' 
-  ){
-    echo 'active';
-  }
-  ?>"
-  >
+<li class="
+<?PHP 
+if(
+$link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
+$link == 'http://fas.calabarzon.dilg.gov.ph/techassistance.php?division='.$_GET['division'].'' ||
+$link == 'http://fas.calabarzon.dilg.gov.ph/allTickets.php?division='.$_GET['division'].'&ticket_id=' 
+){
+  echo 'active';
+}
+?>"
+>
 
 
-  <a href="techassistance.php?division=<?php echo $_GET['division'];?>" >
-    <i class="fa fa-users" style = "color:#black;"></i>
-    <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
-  </a>
+<a href="techassistance.php?division=<?php echo $_GET['division'];?>" >
+  <i class="fa fa-users" style = "color:#black;"></i>
+  <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
+</a>
 
 </li>
 
