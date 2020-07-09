@@ -57,7 +57,38 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     
  
     <style>
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
 
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+
+	
+
+	
+	/*
+	Label the data
+	*/
+
+}
   </style>
 </head>
 
@@ -75,7 +106,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     overflow-y: auto;">
       <div>
 
-      <table border =1 style = "width:100%;">
+      <table border =1 style = "width:100%;" class="table table-bordered table-hover">
         <tbody>
           <tr>
             <td style = "background-color:#B0BEC5;">Name:</td>
@@ -117,19 +148,19 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
           <tr>
             <td style = "background-color:#B0BEC5;">Office/Unit:</td>
             <td> <input type ="text" style = " border: none;" class = "form-control" value = "<?php getOffice()?>" name= "office" readonly/> </td>
-            <td style = "background-color:#B0BEC5;">Reporting Dates/ Days at Regional Office:</td>
+            <td style = "background-color:#B0BEC5;">Work Arrangement:</td>
             <td> 
                 <select required class="form-control" style="width: 100%;" name="work_arrangement" id="sched" >
                     <option value="" selected></option>
                     <option value="SWF" >Skeletal Work Force</option>
                     <option value="AWA" >Alternate Work Arrangement</option>
                 </select>
-                <div class="input-group">
+                <!-- <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
                   <input type="text" class="form-control pull-right" id="reservation" name = "sched" required>
-                </div>
+                </div> -->
             </td>
 
           </tr>
@@ -461,7 +492,6 @@ $(document).ready(function()
               <th>POSITION</th>
               <th>OFFICE/DIVISION</th>
               <th>WORK ARRANGEMENT</th>
-              <th>REPORTING DATES</th>
               </thead>
             </table>
     </section>
