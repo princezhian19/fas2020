@@ -235,7 +235,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<center><textarea required name = "ans5_details" cols = 56 rows=5  style = "resize:none;" id = "txt5 "></textarea></center></td>
+            <td colspan = 2>Please provide details:<center><textarea required name = "ans5_details" cols = 56 rows=5  style = "resize:none;" id = "txt5"></textarea></center></td>
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "lastperiod"/></td>
@@ -484,8 +484,7 @@ $(document).ready(function()
     <section class="content-header"><br>
       <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Personnel</li>
-      <li class="active">Health Monitoring</li>
+      <li class="active">Dash Board</li>
       </ol><br>
 
     <div class="row">
@@ -495,31 +494,10 @@ $(document).ready(function()
             <div class="box-body"> 
           
             <div>
-                <h1>Monitoring of Travel Claim Request</h1><br>
                 
             </div>
-            <div class=" col-md-6"> &nbsp; </div>
-              <div class="well" style = "width:20%;margin-left:80%;">
-                <div class="row">
-                  <div class="col-md-8"> <?php echo getOfficeExport();?></div>
-                  <div class="col-md-4"> <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export</button></ol> </div>
-                </div>
-              </div>
-            <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
-              <thead>
-              <th>NO</th>
-              <th>DATE</th>
-              <th>EMPLOYEE NAME</th>
-              <th>BODY TEMPERATURE</th>
-              <th>RESIDENTIAL ADDRESS</th>
-              <th>OFFICE STATION</th>
-              <th>POSITION</th>
-              <th>DESIGNATION</th>
-              <th>OFFICE/DIVISION</th>
-              <th>PERSONAL EMAIL ADDRESS</th>
-              <th>WORK ARRANGEMENT</th>
-              </thead>
-            </table>
+              
+            <?php include 'dash_board.php';?>
     </section>
   </div>
 
