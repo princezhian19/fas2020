@@ -339,7 +339,6 @@ only screen and (max-width: 760px),
               "bAutoWidth": false,  
                 "processing": true,
                 "serverSide": false,
-                "order":[],
                 "ajax": {
                 "url": "DATATABLE/health_monitoring.php",
                 "type": "POST",
@@ -348,15 +347,15 @@ only screen and (max-width: 760px),
                     "date_filed":date_filed,
                     "division": division,
                     "position": position
-                }},
-                "columnDefs": [ {
-                    "targets":[2],
-                    "orderable":false
-                    // "render": function (data, type, row, meta ) {  
-                    // action = "<button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>";
-                    // return action;
-                    // }
-                }]
+                }}
+                // "columnDefs": [ {
+                //     "targets":[2],
+                //     "orderable":false
+                //     // "render": function (data, type, row, meta ) {  
+                //     // action = "<button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>";
+                //     // return action;
+                //     // }
+                // }]
               
 
             } );
