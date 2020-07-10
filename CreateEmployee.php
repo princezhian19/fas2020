@@ -92,6 +92,8 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 </div>
 </body>
 </html>
+<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
