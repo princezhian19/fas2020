@@ -598,9 +598,7 @@ $(document).ready(function()
               <thead>
               <th>NO</th>
               <th>DATE</th>
-              <th> 
-            
-              </th>
+              <th>EMPLOYEE NAME</th>
               <th>BODY TEMPERATURE</th>
               <th>RESIDENTIAL ADDRESS</th>
               <th>OFFICE STATION</th>
