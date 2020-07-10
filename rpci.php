@@ -19,8 +19,9 @@ if (isset($_POST['submit'])) {
   $shortage_V = $_POST['shortage_V'];
   $remarks = $_POST['remarks'];
   $office = $_POST['office'];
+  $yrs = $_POST['yrs'];
 
-  $insert_rpci = mysqli_query($conn,"INSERT INTO rpci(article,description,stock_number,unit,amount,bpc,opc,shortage_Q,shortage_V,remarks,office) VALUES('$article','$description','$stock_number','$unit','$amount','$bpc','$opc','$shortage_Q','$shortage_V','$remarks','$office')");
+  $insert_rpci = mysqli_query($conn,"INSERT INTO rpci(article,description,stock_number,unit,amount,bpc,opc,shortage_Q,shortage_V,remarks,office,yrs) VALUES('$article','$description','$stock_number','$unit','$amount','$bpc','$opc','$shortage_Q','$shortage_V','$remarks','$office','$yrs')");
 
   if ($insert_rpci) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -87,6 +88,10 @@ if (isset($_POST['submit'])) {
                 <div class="form-group">
                   <label>Unit Value</label>
                   <input autocomplete = "false"  class="form-control" name="amount" type="text" id="amount">
+                </div>
+                 <div class="form-group">
+                  <label>Estimated Years Life</label>
+                  <input autocomplete = "false"  class="form-control" name="yrs" type="number" id="yrs">
                 </div>
 
               </div>

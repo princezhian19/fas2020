@@ -68,7 +68,7 @@ echo $address;
                         <td><?php echo $remarks;?></td>
                         <td><?php echo $office;?></td>
                         <td>
-                       <a  href='UpdateRPCI.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf06e;</i> Edit</a> 
+                       <a  href='UpdateRPCI.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"><i class='fa'>&#xf044;</i>Edit</a> 
                         </td>
                         <td>
                         <a  onclick="return confirm('Are you sure you want to Delete this item?');" class="btn btn-danger btn-xs" href='delete_rpci.php?id=<?php echo $id; ?>  ' title="Delete"> 
