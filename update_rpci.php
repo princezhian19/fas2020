@@ -21,6 +21,7 @@ $shortage_Q1 = $row['shortage_Q'];
 $shortage_V1 = $row['shortage_V'];
 $remarks1 = $row['remarks'];
 $office1 = $row['office'];
+$yrs1 = $row['yrs'];
 
 if (isset($_POST['submit'])) {
   $article = $_POST['article'];
@@ -34,8 +35,9 @@ if (isset($_POST['submit'])) {
   $shortage_V = $_POST['shortage_V'];
   $remarks = $_POST['remarks'];
   $office = $_POST['office'];
+  $yrs = $_POST['yrs'];
 
-  $insert_rpci = mysqli_query($conn,"INSERT INTO rpci(article,description,stock_number,unit,amount,bpc,opc,shortage_Q,shortage_V,remarks,office) VALUES('$article','$description','$stock_number','$unit','$amount','$bpc','$opc','$shortage_Q','$shortage_V','$remarks,'$office'')");
+  $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office' WHERE id = $id");
 
   if ($insert_rpci) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -64,8 +66,9 @@ if (isset($_POST['submit'])) {
       <div class="box-header with-border">
       </div>
       <br>
-      &nbsp &nbsp &nbsp   <li class="btn btn-success"><a href="ViewRPCI.php" style="color:white;text-decoration: none;">Back</a></li>
-            &nbsp &nbsp &nbsp   <li class="btn btn-info"><a href="fpdf/tutorial/ics.php?id=<?php echo $id?>" style="color:white;text-decoration: none;">ICS Sticker</a></li>
+      &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="ViewRPCI.php" style="color:white;text-decoration: none;">Back</a></li>
+            &nbsp &nbsp &nbsp   <li class="btn btn-info"><i class="fa fa-fw fa-download"></i><a href="fpdf/tutorial/ics.php?id=<?php echo $id?>" style="color:white;text-decoration: none;">ICS Sticker</a></li>
+            &nbsp &nbsp &nbsp   <li class="btn btn-success"><i class="fa fa-fw fa-download"></i><a href="export_ics.php?id=<?php echo $id?>" style="color:white;text-decoration: none;">Export ICS</a></li>
 
       <br>
       <br>
@@ -97,6 +100,10 @@ if (isset($_POST['submit'])) {
                 <div class="form-group">
                   <label>Unit Value</label>
                   <input value="<?php echo $amount1?>"  class="form-control" name="amount" type="text" id="amount">
+                </div>
+                <div class="form-group">
+                  <label>Estimated Years Life</label>
+                  <input value="<?php echo $yrs1?>"  class="form-control" name="yrs" type="number" id="amount">
                 </div>
 
               </div>

@@ -20,6 +20,7 @@ $po_date = $row2['po_date'];
 $noa_date = $row2['noa_date'];
 $ntp_date = $row2['ntp_date'];
 $remarks = $row2['remarks'];
+$po_amount = $row2['po_amount'];
 
 $select3 = mysqli_query($conn,"SELECT mop.mode_of_proc_title,rfq.rfq_no,rfq.rfq_date,pr.pmo FROM rfq LEFT JOIN pr on pr.pr_no = rfq.pr_no LEFT JOIN mode_of_proc mop on mop.id = rfq.rfq_mode_id WHERE rfq.id = $rfq_id");
 $row3 = mysqli_fetch_array($select3);
@@ -42,7 +43,7 @@ $implode2 = implode(',', $rfq_items_id_abc);
 
 $select_tots = mysqli_query($conn,"SELECT sum(ppu*qty) as ABCtots FROM supplier_quote sq LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE rfq_item_id in($implode2) AND supplier_id = $supplier_id");
 while($rowppu = mysqli_fetch_array($select_tots)){
-    $po_amount = number_format($rowppu['ABCtots'],2);
+    // $po_amount = number_format($rowppu['ABCtots'],2);
     $po_amount2 = $rowppu['ABCtots'];
 }
 
@@ -292,7 +293,7 @@ while($rowppu = mysqli_fetch_array($select_tots)){
                     </tr>
                     <tr>
                         <th class="pull-left">PO Amount.</th>
-                        <td><?php echo $po_amount;?></td>
+                        <td><?php echo number_format($po_amount,2);?></td>
                     </tr>
                     <tr>
                         <th class="pull-left">Supplier</th>

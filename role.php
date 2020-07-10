@@ -1,11 +1,11 @@
-<?php
+<!-- <?php
 
   include('Geocoding.php');
   use myPHPnotes\Geocoding;
   $geo = new Geocoding("AIzaSyDhwrxbj4AWSCel1yCqpujxUxr72g4WzgY");
-  $address = $geo->getAddress("48.858195","2.294432");
+  $address = $geo->getAddress(48.858195,2.294432);
   var_dump($address);
-?>
+?> -->
 
  <?php 
  $id = $_GET['id'];

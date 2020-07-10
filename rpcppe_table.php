@@ -34,7 +34,7 @@
                 </div>
               <div class="col-md-3">
             <br>
-                <button class="btn btn-success"  name="search">Export</button>
+                <button class="btn btn-success"  name="search"><i class="fa fa-fw fa-download"></i>Export</button>
                 </div>
                 </div>
             <br>
@@ -91,7 +91,7 @@
                         <td><?php echo $shortage_V;?></td>
                         <td><?php echo $remarks;?></td>
                         <td>
-                        <a  href='ViewPPE.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i  class='fa'>&#xf06e;</i> Edit</a>
+                        <a  href='ViewPPE.php?id=<?php echo $id; ?>' title="Edit" class="btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>
                         </td>
                         <td>
                      <a  onclick="return confirm('Are you sure you want to Delete this item?');" class="btn btn-danger btn-xs" href='delete_rpcppe.php?id=<?php echo $id; ?>  ' title="Delete"> 
