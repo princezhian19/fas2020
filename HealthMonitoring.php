@@ -137,7 +137,7 @@ only screen and (max-width: 760px),
             <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residential Address:</td>
             <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none; border: none;" name = "curraddress"><?php getAddress();?></textarea></td>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
-            <td> <input type ="text" style = " border: none;" class = "form-control" name = "gender" value = "<?php getGender(); ?>" readonly /> </td>
+            <td> <input type ="text" style = " border: none;" class = "form-control" name = "gender"  id = "gender" value = "<?php getGender(); ?>" readonly /> </td>
           </tr>
           <tr>
           <td><input type ="text" style = " border: none;" class = "form-control" name = "age" VALUE = "<?php calculateAge();?>" name = "age" readonly/> </td>
@@ -235,7 +235,7 @@ only screen and (max-width: 760px),
             <td colspan = 2>Please provide details:<center><textarea required name = "ans5_details" cols = 56 rows=5  style = "resize:none;" id = "txt5"></textarea></center></td>
           </tr>
           <tr>
-          <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "lastperiod"/></td>
+          <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "lastperiod"/></td>
           </tr>
           <tr>
           <td style = "text-align:justify;" colspan = 4>Declaration:<br><br>
@@ -271,6 +271,14 @@ only screen and (max-width: 760px),
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script>
   $(document).ready(function() {
+    if($('#gender').val() == 'Male')
+    {
+      $(".period").prop('disabled', true);
+
+    }else{
+      $(".period").prop('disabled', false);
+ 
+    }
             //  Setup - add a text input to each footer cell
     // $('#example thead tr').clone(true).appendTo( '#example thead' );
     // $('#example thead tr:eq(1) th').each( function (i) {
