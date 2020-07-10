@@ -294,11 +294,13 @@ only screen and (max-width: 760px),
     //         }
     //     } );
     // } );
-        var filter_data ='';
-        var date_filed ='';
-        var division ='';
-        var position ='';
+            var filter_data ='';
+            var date_filed ='';
+            var division ='';
+            var position ='';
             var action = '';
+
+     
             $('#filter').on('change',function(){
               filter_data= $(this).val();
               $('#example').DataTable().destroy();
@@ -322,6 +324,13 @@ only screen and (max-width: 760px),
               $('#example').DataTable().destroy();
               dataT();
               });
+
+                     
+            $('#health').on('click', function()
+    {
+     
+      window.location = "export_healtmonitoring.php?name=";
+    });
             dataT();
   function dataT(){
             var table = $('#example').DataTable( {
@@ -539,7 +548,7 @@ $(document).ready(function()
             <div class="box-body"> 
           
             <div>
-                <h1>Monitoring of Travel Claim Request</h1><br>
+                <h1>Monitoring of Health Declaration</h1><br>
  
                 
             </div>
@@ -559,22 +568,23 @@ $(document).ready(function()
                     </select> 
                   </div>
                   <div class = "col-lg-3">
-                  <label>Division</label>
-                    <select class="form-control select2" style= "color:blue;text-align:center;" id = "division">
-                      <?php getOff();?>
-                    </select> 
-                  </div>
-                  <div class = "col-lg-2">
                   <label>Position</label>
 
                   <select class="form-control select2" style= "color:blue;text-align:center;" id = "position" >
                       <?php getPositionFilter();?>
                     </select> 
+                 
+                  </div>
+                  <div class = "col-lg-2">
+                  <label>Division</label>
+                    <select class="form-control select2" style= "color:blue;text-align:center;" id = "division">
+                      <?php getOff();?>
+                    </select> 
                   </div>
                   <div class = "col-lg-3">
 
                   
-                    <button class="btn btn-success " id = "fml" style = "margin-top:25px;width:40%;"> Export</button>
+                    <button class="btn btn-success " id = "health" style = "margin-top:25px;width:40%;"> Export</button>
 
                   </div>
                   
@@ -582,20 +592,7 @@ $(document).ready(function()
                 </div>
               </div>
              
-              <!-- <div class="row">
-                <div class = "col-md-12">
-                  <select class="form-control select2" style= "width:25%;color:blue;text-align:center;" >
-                  <?php getDateE();?>
-                    </select> 
-                    <select class="form-control select2" style= "width:30%;color:blue;text-align:center;" id = "filter">
-                  <?php getFullName();?>
-                  </select> 
-                  <?php echo getOfficeExport();?>
-                  <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export</button></ol> 
-                  
-                </div>
-               
-                </div> -->
+          
               
             <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
               <thead>
