@@ -514,21 +514,66 @@ $(document).ready(function()
  
                 
             </div>
-            <div class=" col-md-6"> &nbsp; </div>
-              <div class="well" style = "width:20%;margin-left:80%;">
-                <div class="row">
-                  <div class="col-md-8"> <?php echo getOfficeExport();?></div>
-                  <div class="col-md-4"> <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export</button></ol> </div>
+              <div class="well">
+              <div class = "row">
+                <div class = "col-sm-12 col-md-6 col-lg-12">
+                  <div class = "col-lg-2">
+                  <label>Date</label>
+                    <select class="form-control select2" style= "color:blue;text-align:center;" >
+                      <?php getDateE();?>
+                    </select> 
+                  </div>
+                  <div class = "col-lg-2">
+                  <label>Employee Name</label>
+                    <select class="form-control select2" style= "color:blue;text-align:center;"  id = "filter">
+                      <?php getFullName();?>
+                    </select> 
+                  </div>
+                  <div class = "col-lg-3">
+                  <label>Division</label>
+                    <select class="form-control select2" style= "color:blue;text-align:center;" >
+                      <?php getOff();?>
+                    </select> 
+                  </div>
+                  <div class = "col-lg-2">
+                  <label>Position</label>
+
+                  <select class="form-control select2" style= "color:blue;text-align:center;" >
+                      <?php getOff();?>
+                    </select> 
+                  </div>
+                  <div class = "col-lg-3">
+
+                  
+                    <button class="btn btn-success " id = "fml" style = "margin-top:25px;width:40%;"> Export</button>
+
+                  </div>
+                  
+                </div>
                 </div>
               </div>
-              <table class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
+             
+              <!-- <div class="row">
+                <div class = "col-md-12">
+                  <select class="form-control select2" style= "width:25%;color:blue;text-align:center;" >
+                  <?php getDateE();?>
+                    </select> 
+                    <select class="form-control select2" style= "width:30%;color:blue;text-align:center;" id = "filter">
+                  <?php getFullName();?>
+                  </select> 
+                  <?php echo getOfficeExport();?>
+                  <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export</button></ol> 
+                  
+                </div>
+               
+                </div> -->
+              
+            <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
               <thead>
               <th>NO</th>
               <th>DATE</th>
               <th> 
-              <select class="form-control select2" style= "color:blue;text-align:center;" id = "filter">
-                 <?php getFullName();?>
-                </select> 
+            
               </th>
               <th>BODY TEMPERATURE</th>
               <th>RESIDENTIAL ADDRESS</th>
@@ -538,23 +583,6 @@ $(document).ready(function()
               <th>OFFICE/DIVISION</th>
               <th>PERSONAL EMAIL ADDRESS</th>
               <th>WORK ARRANGEMENT</th>
-              </thead>
-             
-                </table>
-            <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
-              <thead>
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-              <th>&nbsp;</th>
-            
               </thead>
             </table>
     </section>

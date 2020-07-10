@@ -6,13 +6,41 @@ date_default_timezone_set('Asia/Manila');
         include 'connection.php';
         $query = "SELECT FIRST_M, concat(FIRST_M,' ', LAST_M) as 'fullname' from tblemployeeinfo  order by FIRST_M" ;
         $result = mysqli_query($conn, $query);
-        echo '<option VALUE = "">EMPLOYEE NAME</option>';
+        echo '<option VALUE = "">ALL</option>';
         while($row = mysqli_fetch_array($result))
         {
             echo '<option>'.$row['fullname'].'</option>';
             
       
         }
+    }
+    function getDateE()
+    {
+        include 'connection.php';
+        $query = "SELECT `DATE` from tblhealth_monitoring order by `DATE`" ;
+        $result = mysqli_query($conn, $query);
+        echo '<option VALUE = "">ALL</option>';
+        while($row = mysqli_fetch_array($result))
+        {
+            echo '<option>'.$row['DATE'].'</option>';
+            
+      
+        }
+    }
+
+    function getOff()
+    {
+        include 'connection.php';
+        $query = "SELECT * FROM tblpersonneldivision  ";
+        $result = mysqli_query($conn, $query);
+        echo '<option VALUE = "">ALL</option>';
+        while($row = mysqli_fetch_array($result))
+        {
+            echo '<option>'.$row['DIVISION_M'].'</option>';
+            
+      
+        }
+
     }
 
     function getLast()
@@ -130,7 +158,7 @@ date_default_timezone_set('Asia/Manila');
         include 'connection.php';
         $query = "SELECT * FROM tblpersonneldivision  ";
         $result = mysqli_query($conn, $query);
-        echo '<select class="form-control " id="selectYear" style="width: 100%;">';
+        echo '<select class="form-control " id="selectYear" style="width: 20%;">';
         
         while($row = mysqli_fetch_array($result))
         {
