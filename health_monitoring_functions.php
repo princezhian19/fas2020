@@ -1,7 +1,19 @@
 <?php
 session_start();
 date_default_timezone_set('Asia/Manila');
-
+    function getFullName()
+    {
+        include 'connection.php';
+        $query = "SELECT FIRST_M, concat(FIRST_M,' ', LAST_M) as 'fullname' from tblemployeeinfo  order by FIRST_M" ;
+        $result = mysqli_query($conn, $query);
+        echo '<option VALUE = "">EMPLOYEE NAME</option>';
+        while($row = mysqli_fetch_array($result))
+        {
+            echo '<option>'.$row['fullname'].'</option>';
+            
+      
+        }
+    }
 
     function getLast()
     {

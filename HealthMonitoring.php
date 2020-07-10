@@ -20,42 +20,34 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
   <link href="_includes/sweetalert2.min.css" rel="stylesheet"/>
 
  
-
-
-
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="shortcut icon" type="image/png" href="dilg.png">
-
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-        folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-    <!-- Morris chart -->
-    <link rel="stylesheet" href="bower_components/morris.js/morris.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
-    
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="shortcut icon" type="image/png" href="dilg.png">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/iCheck/all.css">
+  <!-- Bootstrap Color Picker -->
+  <link rel="stylesheet" href="bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="plugins/timepicker/bootstrap-timepicker.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <script src="_includes/sweetalert.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="_includes/sweetalert.css">
-    
- 
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
 /* 
 Max width before this PARTICULAR table gets nasty
@@ -108,6 +100,11 @@ only screen and (max-width: 760px),
 
       <table border =1 style = "width:100%;" class="table table-bordered table-hover">
         <tbody>
+        <tr>
+        <td colspan = 2></td>
+        <td style = "background-color:#B0BEC5;">Date:</td>
+        <td><input name = "monthly_period" type = "text" class = "form-control datepicker2" id = "datepicker2" value = "<?php echo date('F d, Y');?>" disabled/></td>
+        </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Name:</td>
             <td> 
@@ -235,7 +232,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<center><textarea required name = "ans5_details" cols = 56 rows=5  style = "resize:none;" id = "txt5 "></textarea></center></td>
+            <td colspan = 2>Please provide details:<center><textarea required name = "ans5_details" cols = 56 rows=5  style = "resize:none;" id = "txt5"></textarea></center></td>
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "lastperiod"/></td>
@@ -274,7 +271,7 @@ only screen and (max-width: 760px),
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script>
   $(document).ready(function() {
-             // Setup - add a text input to each footer cell
+            //  Setup - add a text input to each footer cell
     // $('#example thead tr').clone(true).appendTo( '#example thead' );
     // $('#example thead tr:eq(1) th').each( function (i) {
     //     var title = $(this).text();
@@ -289,11 +286,19 @@ only screen and (max-width: 760px),
     //         }
     //     } );
     // } );
-        
+        var filter_data ='';
             var action = '';
+            $('#filter').on('change',function(){
+              filter_data= $(this).val();
+              $('#example').DataTable().destroy();
+              dataT();
+              
+
+            });
+            dataT();
+  function dataT(){
             var table = $('#example').DataTable( {
-      
-              'scrollX'     : true,
+        'scrollX'     : true,
               'paging'      : true,
               'lengthChange': true,
               'searching'   : true,
@@ -304,26 +309,36 @@ only screen and (max-width: 760px),
               "bLengthChange": false,
               "bFilter": true,
               "bInfo": false,
-              "bAutoWidth": false,
+              "bAutoWidth": false,  
                 "processing": true,
                 "serverSide": false,
-                "ajax": "DATATABLE/health_monitoring.php"
-                // "columnDefs": [ {
-                //     "targets":10,
-                //     "render": function (data, type, row, meta ) {  
-                //     action = "<button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>";
-                //     return action;
-                //     }
-                // }]
+                "order":[],
+                "ajax": {
+                "url": "DATATABLE/health_monitoring.php",
+                "type": "POST",
+                "data": {
+                    "filter": filter_data
+                }},
+                "columnDefs": [ {
+                    "targets":[2],
+                    "orderable":false
+                    // "render": function (data, type, row, meta ) {  
+                    // action = "<button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>";
+                    // return action;
+                    // }
+                }]
               
 
             } );
+          }
 
             
             $('#example tbody').on( 'click', '#view', function () {
               var data = table.row( $(this).parents('tr') ).data();
               window.location="ViewTravelClaim.php?&ro="+data[2];
             } );
+
+          
         });
 
 
@@ -496,6 +511,7 @@ $(document).ready(function()
           
             <div>
                 <h1>Monitoring of Travel Claim Request</h1><br>
+ 
                 
             </div>
             <div class=" col-md-6"> &nbsp; </div>
@@ -505,11 +521,15 @@ $(document).ready(function()
                   <div class="col-md-4"> <ol style = "decoration:none;margin-left:-50px;"><button class="btn btn-success" id = "fml"> Export</button></ol> </div>
                 </div>
               </div>
-            <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
+              <table class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
               <thead>
               <th>NO</th>
               <th>DATE</th>
-              <th>EMPLOYEE NAME</th>
+              <th> 
+              <select class="form-control select2" style= "color:blue;text-align:center;" id = "filter">
+                 <?php getFullName();?>
+                </select> 
+              </th>
               <th>BODY TEMPERATURE</th>
               <th>RESIDENTIAL ADDRESS</th>
               <th>OFFICE STATION</th>
@@ -518,6 +538,23 @@ $(document).ready(function()
               <th>OFFICE/DIVISION</th>
               <th>PERSONAL EMAIL ADDRESS</th>
               <th>WORK ARRANGEMENT</th>
+              </thead>
+             
+                </table>
+            <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
+              <thead>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+            
               </thead>
             </table>
     </section>
@@ -540,29 +577,20 @@ $(document).ready(function()
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 
-
-
-
-<!-- jQuery 3 -->
 <!-- Bootstrap 3.3.7 -->
 <!-- Select2 -->
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="plugins/input-mask/jquery.inputmask.js"></script>
-<!-- date-range-picker -->
-<script src="bower_components/moment/min/moment.min.js"></script>
-<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- bootstrap color picker -->
-
-<!-- Page script -->
 <script>
 $(document).on('keydown', 'input[pattern]', function(e){
   var input = $(this);
@@ -590,66 +618,13 @@ $(document).ready(function(){
     //Initialize Select2 Elements
     $('.select2').select2()
 
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
-    $('[data-mask]').inputmask()
-
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
-      },
-      function (start, end) {
-        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
-    )
+    
 
     //Date picker
     $('#datepicker').datepicker({
       autoclose: true
     })
 
-    //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass   : 'iradio_minimal-blue'
-    })
-    //Red color scheme for iCheck
-    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass   : 'iradio_minimal-red'
-    })
-    //Flat red color scheme for iCheck
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass   : 'iradio_flat-green'
-    })
-
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
-
-    //Timepicker
-    $('.timepicker').timepicker({
-      showInputs: false
-    })
   })
 </script>
    
