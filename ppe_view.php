@@ -5,7 +5,7 @@ $select_rcppe = mysqli_query($conn,"SELECT * FROM rpcppe WHERE id = '$id' ");
 $row_ppe = mysqli_fetch_array($select_rcppe);
 $property_number1 = $row_ppe['property_number'];
 $select = mysqli_query($conn,"SELECT * FROM par_assign WHERE ppe_id = '$id' ");
-$select2 = mysqli_query($conn,"SELECT * FROM par_history WHERE ppe_id = '$id' ORDER BY id DESC ");
+$select2 = mysqli_query($conn,"SELECT concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) AS name,tp2.DIVISION_M,tp.POSITION_M,ph.par_date FROM par_history ph LEFT JOIN tblemployeeinfo te on te.EMP_N = ph.name LEFT JOIN tbldilgposition tp on tp.POSITION_ID = te.POSITION_C LEFT JOIN tblpersonneldivision tp2 on tp2.DIVISION_N = te.DIVISION_C WHERE ph.ppe_id = '$id' ORDER BY ph.id DESC ");
 $row = mysqli_fetch_array($select);
 $EMP_N = $row['EMP_N'];
 
@@ -55,9 +55,9 @@ $POSITION_M = $rowE['POSITION_M'];
                         <?php 
                         while ($row = mysqli_fetch_assoc($select2)) {
                             $nameE = $row["name"];  
-                            $acquired_dateE = $row["par_date"];
-                            $positionN = $row["position"];
-                            $officeE = $row["office"];
+                            $acquired_dateE = date('F d, Y',strtotime($row["par_date"]));
+                            $positionN = $row["POSITION_M"];
+                            $officeE = $row["DIVISION_M"];
 
                             echo "<tr align = ''>
                             <td>$nameE</td>
