@@ -367,8 +367,8 @@ if (isset($_POST['stamp4'])) {
               <th class="pull-left" >AM DEPARTURE</th>
               <?php if (mysqli_num_rows($check2)>0): ?>
                 <td ><?php echo date('h:i A',strtotime($lunch_inL))?>
-                <?php echo "<br>" ?>
-                <?php echo $l1 ?>
+                <!-- <?php echo "<br>" ?> -->
+                <!-- <?php echo $l1 ?> -->
               </td>
               <?php else: ?>
                 <td ><button class="btn btn-success " name="stamp2" id="" type="submit"><strong>Stamp</strong></button></td>
@@ -378,8 +378,8 @@ if (isset($_POST['stamp4'])) {
               <th class="pull-left">PM ARRIVAL</th>
               <?php if (mysqli_num_rows($check3)>0): ?>
                 <td ><?php echo date('h:i A',strtotime($lunch_outL))?>
-                <?php echo "<br>" ?>
-                <?php echo $l2 ?>
+                <!-- <?php echo "<br>" ?> -->
+                <!-- <?php echo $l2 ?> -->
               </td>
               <?php else: ?>
                 <td ><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
