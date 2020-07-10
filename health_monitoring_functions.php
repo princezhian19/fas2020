@@ -42,6 +42,18 @@ date_default_timezone_set('Asia/Manila');
         }
 
     }
+    function getPositionFilter(){
+        include 'connection.php';
+        $query = "SELECT * FROM tbldilgposition  ";
+        $result = mysqli_query($conn, $query);
+        echo '<option VALUE = "">ALL</option>';
+        while($row = mysqli_fetch_array($result))
+        {
+            echo '<option>'.$row['POSITION_M'].'</option>';
+            
+      
+        }
+    }
 
     function getLast()
     {

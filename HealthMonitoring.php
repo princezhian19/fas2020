@@ -287,14 +287,33 @@ only screen and (max-width: 760px),
     //     } );
     // } );
         var filter_data ='';
+        var date_filed ='';
+        var division ='';
+        var position ='';
             var action = '';
             $('#filter').on('change',function(){
               filter_data= $(this).val();
               $('#example').DataTable().destroy();
               dataT();
-              
+              });
 
-            });
+              $('#date_filed').on('change',function(){
+              date_filed= $(this).val();
+              $('#example').DataTable().destroy();
+              dataT();
+              });
+
+              $('#division').on('change',function(){
+              division= $(this).val();
+              $('#example').DataTable().destroy();
+              dataT();
+              });
+
+              $('#position').on('change',function(){
+              position= $(this).val();
+              $('#example').DataTable().destroy();
+              dataT();
+              });
             dataT();
   function dataT(){
             var table = $('#example').DataTable( {
@@ -317,7 +336,10 @@ only screen and (max-width: 760px),
                 "url": "DATATABLE/health_monitoring.php",
                 "type": "POST",
                 "data": {
-                    "filter": filter_data
+                    "filter": filter_data,
+                    "date_filed":date_filed,
+                    "division": division,
+                    "position": position
                 }},
                 "columnDefs": [ {
                     "targets":[2],
@@ -519,7 +541,7 @@ $(document).ready(function()
                 <div class = "col-sm-12 col-md-6 col-lg-12">
                   <div class = "col-lg-2">
                   <label>Date</label>
-                    <select class="form-control select2" style= "color:blue;text-align:center;" >
+                    <select class="form-control select2" style= "color:blue;text-align:center;" id = "date_filed" >
                       <?php getDateE();?>
                     </select> 
                   </div>
@@ -531,15 +553,15 @@ $(document).ready(function()
                   </div>
                   <div class = "col-lg-3">
                   <label>Division</label>
-                    <select class="form-control select2" style= "color:blue;text-align:center;" >
+                    <select class="form-control select2" style= "color:blue;text-align:center;" id = "division">
                       <?php getOff();?>
                     </select> 
                   </div>
                   <div class = "col-lg-2">
                   <label>Position</label>
 
-                  <select class="form-control select2" style= "color:blue;text-align:center;" >
-                      <?php getOff();?>
+                  <select class="form-control select2" style= "color:blue;text-align:center;" id = "position" >
+                      <?php getPositionFilter();?>
                     </select> 
                   </div>
                   <div class = "col-lg-3">

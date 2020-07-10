@@ -10,7 +10,12 @@ $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                   LEFT JOIN tbldilgposition d on d.POSITION_ID = tblemployeeinfo.POSITION_C
                   LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeeinfo.DESIGNATION 
                   ';
-        $WHERE = " WHERE concat(FIRST_M, ' ', LAST_M)  LIKE '%".$_POST['filter']."%'";
+		$WHERE = " WHERE 
+				   concat(FIRST_M, ' ', LAST_M)  LIKE '%".$_POST['filter']."%' and
+				   DIVISION_M LIKE '%".$_POST['division']."%' and
+				   POSITION_M LIKE '%".$_POST['position']."%' and
+				   DATE LIKE '%".$_POST['date_filed']."%'
+					";
        
 
 	
