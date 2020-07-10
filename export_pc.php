@@ -33,7 +33,9 @@ $styleLabel = array('font'  => array('size'  => 11, 'name'  => 'Calibri'),'align
 
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
-$sql = mysqli_query($conn, "SELECT ph.name,ppe.amount,ppe.remarks,ph.position,ph.office,ph.par_date,ppe.property_number FROM par_history ph LEFT JOIN rpcppe ppe on ppe.id = ph.ppe_id WHERE ph.ppe_id = '$id' ");
+$sql = mysqli_query($conn, "SELECT concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) AS name,ppe.amount,ppe.remarks,tp2.DIVISION_M as office,tp.POSITION_M as position,ph.par_date,ppe.property_number FROM par_history ph LEFT JOIN rpcppe ppe on ppe.id = ph.ppe_id LEFT JOIN tblemployeeinfo te on te.EMP_N = ph.name LEFT JOIN tbldilgposition tp on tp.POSITION_ID = te.POSITION_C LEFT JOIN tblpersonneldivision tp2 on tp2.DIVISION_N = te.DIVISION_C WHERE ph.ppe_id = '$id' ");
+
+
 $row = mysqli_fetch_array($sql);
 $name = $row['name'];
 $position = $row['position'];
@@ -43,7 +45,7 @@ $property_number = $row['property_number'];
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('I9',$property_number);
 
-$sql_items = mysqli_query($conn, "SELECT ph.name,ppe.amount,ppe.remarks,ph.position,ph.office,ph.par_date,ppe.property_number FROM par_history ph LEFT JOIN rpcppe ppe on ppe.id = ph.ppe_id WHERE ph.ppe_id = '$id' ");
+$sql_items = mysqli_query($conn, "SELECT concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) AS name,ppe.amount,ppe.remarks,tp2.DIVISION_M as office,tp.POSITION_M as position,ph.par_date,ppe.property_number FROM par_history ph LEFT JOIN rpcppe ppe on ppe.id = ph.ppe_id LEFT JOIN tblemployeeinfo te on te.EMP_N = ph.name LEFT JOIN tbldilgposition tp on tp.POSITION_ID = te.POSITION_C LEFT JOIN tblpersonneldivision tp2 on tp2.DIVISION_N = te.DIVISION_C WHERE ph.ppe_id = '$id' ");
 
 $row = 13;
 $rowA = 14;

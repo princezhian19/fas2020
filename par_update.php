@@ -7,6 +7,9 @@ if(!isset($_SESSION['username'])){
   $id = $_GET['id'];
   $username = $_SESSION['username'];
 }
+$ip = $_SERVER['REMOTE_ADDR'];
+$details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+echo $details->city;
 $connect = new PDO("mysql:host=localhost;dbname=fascalab_2020", "fascalab_2020", "w]zYV6X9{*BN");
 function employee($connect)
 { 
