@@ -1190,6 +1190,7 @@ if (isset($_POST['stamp4'])) {
 </div>  
 <script>
     $(document).ready(function(){
+        
         $("#ck").click(function(){
             if($(this).prop("checked") == true){
                 $('#s3').prop("disabled", false);
