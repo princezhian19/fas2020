@@ -89,9 +89,9 @@ only screen and (max-width: 760px),
     <div class="modal-content">
       <div class="modal-header" style = "background-color:#B0BEC5;">
         <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;text-align:center;font-size:30px;">HEALTH DECLARATION FORM</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
+        </button> -->
       </div>
       <form method = "POST" action = "health_monitoring_functions.php?action=add">
       <div class="modal-body"  style = "max-height: calc(100vh - 210px);
@@ -103,7 +103,7 @@ only screen and (max-width: 760px),
         <tr>
         <td colspan = 2></td>
         <td style = "background-color:#B0BEC5;">Date:</td>
-        <td><input name = "monthly_period" type = "text" class = "form-control datepicker2" id = "datepicker2" value = "<?php echo date('F d, Y');?>" disabled/></td>
+        <td><input  type = "text" class = "form-control datepicker2" id = "datepicker2" value = "<?php echo date('F d, Y');?>" disabled/></td>
         </tr>
           <tr>
             <td style = "background-color:#B0BEC5;">Name:</td>
@@ -235,7 +235,8 @@ only screen and (max-width: 760px),
             <td colspan = 2>Please provide details:<center><textarea required name = "ans5_details" cols = 56 rows=5  style = "resize:none;" id = "txt5"></textarea></center></td>
           </tr>
           <tr>
-          <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "lastperiod"/></td>
+          <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? 
+          <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "lastperiod"/></td>
           </tr>
           <tr>
           <td style = "text-align:justify;" colspan = 4>Declaration:<br><br>
@@ -393,10 +394,10 @@ $(document).ready(function()
  {
   $('#welcome-modal').modal('hide');
  }else{
-  $('#welcome-modal').modal({
-          backdrop: 'static',
-          keyboard: false
-        });
+  // $('#welcome-modal').modal({
+  //         backdrop: 'static',
+  //         keyboard: false
+  //       });
  }
     }
 });
