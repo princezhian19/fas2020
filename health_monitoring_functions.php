@@ -233,6 +233,16 @@ if(isset($_GET['action'])){
         add();
         header('Location:home.php?division='.$_SESSION['division'].'"&username="'.$_SESSION['username'].'"');
     }
+    if($_GET['action'] == 'add1')
+    {
+        add();
+        header('Location:home1.php?division='.$_SESSION['division'].'"&username="'.$_SESSION['username'].'"');
+    }
+    if($_GET['action'] == 'add2')
+    {
+        add();
+        header('Location:home2.php?division='.$_SESSION['division'].'"&username="'.$_SESSION['username'].'"');
+    }
     
 }
     

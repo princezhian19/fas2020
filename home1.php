@@ -101,7 +101,7 @@ only screen and (max-width: 760px),
           <span aria-hidden="true">&times;</span>
         </button> -->
       </div>
-      <form method = "POST" action = "health_monitoring_functions.php?action=add">
+      <form method = "POST" action = "health_monitoring_functions.php?action=add1">
       <div class="modal-body"  style = "max-height: calc(100vh - 210px);
     overflow-y: auto;">
       <div>
