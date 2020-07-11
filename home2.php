@@ -97,9 +97,9 @@ only screen and (max-width: 760px),
     <div class="modal-content">
       <div class="modal-header" style = "background-color:#B0BEC5;">
         <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;text-align:center;font-size:30px;">HEALTH DECLARATION FORM</h5>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button> -->
+        </button>
       </div>
       <form method = "POST" action = "health_monitoring_functions.php?action=add2">
       <div class="modal-body"  style = "max-height: calc(100vh - 210px);
