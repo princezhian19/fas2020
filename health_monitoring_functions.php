@@ -17,7 +17,7 @@ date_default_timezone_set('Asia/Manila');
     function getDateE()
     {
         include 'connection.php';
-        $query = "SELECT `DATE` from tblhealth_monitoring order by `DATE`" ;
+        $query = "SELECT `DATE` from tblhealth_monitoring GROUP BY `DATE` order by `DATE`" ;
         $result = mysqli_query($conn, $query);
         echo '<option VALUE = "">ALL</option>';
         while($row = mysqli_fetch_array($result))
