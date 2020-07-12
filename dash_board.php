@@ -460,16 +460,12 @@ if (isset($_POST['stamp4'])) {
         <?php endif ?>
           </div>
         </div>
-        <div class="" >
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
+        <div class="col-lg-12" >
+        <button class = "btn btn-danger btn-lg" style = "width:100%;">Don't forget to Accomplish the <br>ONLINE HEALTH DECLARATION FORM here.</button>
         </div>
+        <br>
+        <br>
+        <br>
 
         <div class="row" >
           <div class="col-md-12" >
