@@ -135,7 +135,8 @@ only screen and (max-width: 760px),
             <td> <input style = "border: none;" type ="text" class = "form-control" value = "<?php getContact();?>"  name = "contact_number" readonly/> </td>
             <td style = "background-color:#B0BEC5;"> Body Temp. </td> 
             <!-- id = "temp" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value) -->
-            <td> <input type ="text"  class = "form-control" required name = "body_temp" pattern="^\d*(\.\d{0,2})?$" min = 0 maxlength = 5/> 
+            <td> <input type ="text"  class = "form-control" required name = "body_temp" /> 
+            <!-- pattern="^\d*(\.\d{0,2})?$" min = 0 maxlength = 5 -->
 
             </td>
           </tr>

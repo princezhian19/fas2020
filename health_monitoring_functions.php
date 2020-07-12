@@ -212,7 +212,7 @@ $last_period = date('Y-m-d',strtotime($_POST['lastperiod']));
         '".$last_period."',
         '".$_SESSION['username']."',
         '".$_POST['gender']."',
-        '".$_POST['body_temp']." &deg C',
+        '".$_POST['body_temp']."',
         '".$_POST['curraddress']."',
         '".$_POST['work_arrangement']."',
         '".$_POST['ans1']."',
