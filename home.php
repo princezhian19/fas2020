@@ -361,13 +361,24 @@ $(document).ready(function()
  if(data == 1)
  {
   $('#welcome-modal').modal('hide');
+  $("#healthDec").html('Thank you for accomplishing the <br>Online Health Declaration Form.');
+  $(".btndisable").prop('disabled',true);
  }else{
   $('#welcome-modal').modal({
-          backdrop: 'static',
-          keyboard: false
-        });
+  backdrop: 'static',
+  keyboard: false
+  });
  }
     }
+});
+
+
+
+$('#healthDec').click(function(){
+  $('#welcome-modal').modal({
+  backdrop: 'static',
+  keyboard: false
+  });
 });
       //   $(':input[type="number"]').change(function(){
       //      this.value = parseFloat(this.value).toFixed(2);
