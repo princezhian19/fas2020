@@ -61,7 +61,7 @@ date_default_timezone_set('Asia/Manila');
         while($row = mysqli_fetch_array($result))
         {
             
-            echo $row['EMP_N'];
+            echo $row['EMP_NUMBER'];
         }
     }
     function getLast()
