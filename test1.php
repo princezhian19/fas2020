@@ -388,6 +388,7 @@ function getImage()
         <span  style = "color:#black;font-weight:normal;">Personnel</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
       </a>
       <ul class="treeview-menu" >
+      
         
         <li><a href="DTR.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $username;?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>DTR</a></li>
 
@@ -401,8 +402,20 @@ function getImage()
         <li><a href="ob.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;"><i class="fa fa-user" style = "color:#black;"></i>Official Business</a></li>
         <li><a href="ROandROO.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>RO and ROO</a></li>
         <li><a href="TravelOrder.php?division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="fa fa-archive" style = "color:#black;"></i>Travel Order</a></li>
-        <li><a href="HealthMonitoring.php?username=<?php echo $username;?>&division=<?php echo $_SESSION['division'];?>"  style = "color:#black;font-weight:normal;" ><i class="	fa fa-medkit" style = "color:#black;"></i>Health Monitoring</a></li>
-        
+        <li class="treeview">
+          <a href="#" >
+            <i class="	fa fa-medkit" style = "color:#black;"></i>
+              <span >Health</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" >
+            <li><a href="HealthMonitoring.php?action=show&username=<?php echo $username;?>&division=<?php echo $_SESSION['division'];?>"><i class="fa fa-copy" style = "color:#black;"></i>Health Declaration Form</a></li>
+            <li><a href="HealthMonitoring.php?username=<?php echo $username;?>&division=<?php echo $_SESSION['division'];?>"><i class="fa fa-copy" style = "color:#black;"></i>Health Monitoring</a></li>
+          </ul>
+        </li>
+        </li>
         
         
       </ul>

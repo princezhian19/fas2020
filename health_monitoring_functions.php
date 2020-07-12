@@ -11,7 +11,6 @@ date_default_timezone_set('Asia/Manila');
         {
             echo '<option>'.$row['fullname'].'</option>';
             
-      
         }
     }
     function getDateE()
@@ -54,7 +53,17 @@ date_default_timezone_set('Asia/Manila');
       
         }
     }
-
+    function getEmpNo()
+    {
+        include 'connection.php';
+        $query = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$_SESSION['username']."' ";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            
+            echo $row['EMP_N'];
+        }
+    }
     function getLast()
     {
         include 'connection.php';

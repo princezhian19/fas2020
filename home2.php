@@ -91,17 +91,17 @@ only screen and (max-width: 760px),
 }
   </style>
 </head>
-
 <div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog modal-lg" role="document" >
     <div class="modal-content">
       <div class="modal-header" style = "background-color:#B0BEC5;">
         <h5 class="modal-title" id="exampleModalLabel" style = "font-weight:bold;text-align:center;font-size:30px;">HEALTH DECLARATION FORM</h5>
+        To change your information (Employee No, Name, Mobile Number, Email Address, Current Residential Address, Sex, Birth Date and Office, please update your PROFILE.
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method = "POST" action = "health_monitoring_functions.php?action=add2">
+      <form method = "POST" action = "health_monitoring_functions.php?action=add">
       <div class="modal-body"  style = "max-height: calc(100vh - 210px);
     overflow-y: auto;">
       <div>
@@ -109,7 +109,11 @@ only screen and (max-width: 760px),
       <table border =1 style = "width:100%;" class="table table-bordered table-hover">
         <tbody>
         <tr>
-        <td colspan = 2></td>
+        <td style = "background-color:#B0BEC5;">Employee No.:</td>
+        <td>
+        <input style = "border: none;" type ="text" class = "form-control" value = "<?php getEmpNo();?>"   readonly/> 
+        
+        </td>
         <td style = "background-color:#B0BEC5;">Date:</td>
         <td><input  type = "text" class = "form-control datepicker2" id = "datepicker2" value = "<?php echo date('F d, Y');?>" disabled/></td>
         </tr>
@@ -131,7 +135,7 @@ only screen and (max-width: 760px),
             <td> <input style = "border: none;" type ="text" class = "form-control" value = "<?php getContact();?>"  name = "contact_number" readonly/> </td>
             <td style = "background-color:#B0BEC5;"> Body Temp. </td> 
             <!-- id = "temp" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value) -->
-            <td> <input type ="text"  class = "form-control" required name = "body_temp" pattern="^\d*(\.\d{0,2})?$" min = 0/> 
+            <td> <input type ="text"  class = "form-control" required name = "body_temp" pattern="^\d*(\.\d{0,2})?$" min = 0 maxlength = 5/> 
 
             </td>
           </tr>
@@ -143,7 +147,7 @@ only screen and (max-width: 760px),
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residential Address:</td>
-            <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none; border: none;" name = "curraddress"><?php getAddress();?></textarea></td>
+            <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none; border: none;background-color:#ECEFF1;" name = "curraddress" readonly></textarea></td>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
             <td> <input type ="text" style = " border: none;" class = "form-control" name = "gender" id = "gender" value = "<?php getGender(); ?>" readonly /> </td>
           </tr>
@@ -174,7 +178,7 @@ only screen and (max-width: 760px),
             <td style = "background-color:#B0BEC5;">Did you have any of the following in the last 14 days: fever, cough, colds, sore throat, diarrhea or difficulty in breathing?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox1" id="cb1" name = "ans1" value = "YES">
+              <input type="checkbox" class="form-check-input checkbox1" id="cb1" name = "ans1" value = "YES" required>
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
@@ -188,7 +192,7 @@ only screen and (max-width: 760px),
             <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to any foreign countries in the past 14 days?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox2" id="cb3" name = "ans2" value = "YES">
+              <input type="checkbox" class="form-check-input checkbox2" id="cb3" name = "ans2" value = "YES" required>
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
@@ -203,7 +207,7 @@ only screen and (max-width: 760px),
             <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to other places in the Philippines in the past 7 days?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox3" id="cb5" name = "ans3" value = "YES">
+              <input type="checkbox" class="form-check-input checkbox3" id="cb5" name = "ans3" value = "YES" required> 
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
@@ -218,7 +222,7 @@ only screen and (max-width: 760px),
           <td style = "background-color:#B0BEC5;">Have you been in close contact with farm animals or exposed to wild animals in the past 14 days?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox4" id="cb7" name = "ans4" value = "YES">
+              <input type="checkbox" class="form-check-input checkbox4" id="cb7" name = "ans4" value = "YES" required>
               <label class="form-check-label" for="exampleCheck1 checkbox4">Yes</label>
             </div>
             <div class="form-check">
@@ -232,7 +236,7 @@ only screen and (max-width: 760px),
           <td style = "background-color:#B0BEC5;">Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
             <td>
             <div class="form-check">
-              <input type="checkbox" class="form-check-input checkbox5" id="cb9" name = "ans5" value = "YES">
+              <input type="checkbox" class="form-check-input checkbox5" id="cb9" name = "ans5" value = "YES" required>
               <label class="form-check-label" for="exampleCheck1">Yes</label>
             </div>
             <div class="form-check">
@@ -244,7 +248,7 @@ only screen and (max-width: 760px),
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? 
-          <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "lastperiod"/></td>
+          <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" name = "lastperiod"/></td>
           </tr>
           <tr>
           <td style = "text-align:justify;" colspan = 4>Declaration:<br><br>
@@ -271,7 +275,7 @@ only screen and (max-width: 760px),
 </div>
 <!-- ============================== Health Monitoring ======================= -->
 
-        
+
 
 
 
@@ -283,9 +287,11 @@ only screen and (max-width: 760px),
     if($('#gender').val() == 'Male')
     {
       $(".period").prop('disabled', true);
+      $(".period").val('');
 
     }else{
       $(".period").prop('disabled', false);
+      $(".period").prop('required', true);
  
     }
              // Setup - add a text input to each footer cell
@@ -403,7 +409,7 @@ $(document).ready(function()
             $('.checkbox5').not(this).prop('checked', false);  
         });
       //   =================================
-          $('#cb1').click(function(){
+      $('#cb1').click(function(){
               if($(this).prop("checked") == true){
                   $("#txt1").prop('disabled', false);
               }else{
@@ -413,8 +419,11 @@ $(document).ready(function()
           $('#cb2').click(function(){
               if($(this).prop("checked") == true){
                   $("#txt1").prop('disabled', true);
+                  $("#cb1").prop('required', false);
               }else{
                   $("#txt1").prop('disabled', true);
+                  $("#cb1").prop('required', true);
+
               }
           });
       // ========================================
@@ -429,8 +438,12 @@ $(document).ready(function()
           $('#cb4').click(function(){
               if($(this).prop("checked") == true){
                   $("#txt2").prop('disabled', true);
+                  $("#cb3").prop('required', false);
+
               }else{
                   $("#txt2").prop('disabled', true);
+                  $("#cb3").prop('required', true);
+
               }
           });
       // ========================================
@@ -444,8 +457,12 @@ $(document).ready(function()
           $('#cb6').click(function(){
               if($(this).prop("checked") == true){
                   $("#txt3").prop('disabled', true);
+                  $("#cb5").prop('required', false);
+
               }else{
                   $("#txt3").prop('disabled', true);
+                  $("#cb5").prop('required', true);
+
               }
           });
           // ===================================
@@ -459,8 +476,12 @@ $(document).ready(function()
           $('#cb8').click(function(){
               if($(this).prop("checked") == true){
                   $("#txt4").prop('disabled', true);
+                  $("#cb7").prop('required', false);
+
               }else{
                   $("#txt4").prop('disabled', true);
+                  $("#cb7").prop('required', true);
+
               }
           });
           // ===================================
@@ -474,8 +495,12 @@ $(document).ready(function()
           $('#cb10').click(function(){
               if($(this).prop("checked") == true){
                   $("#txt5").prop('disabled', true);
+                  $("#cb9").prop('required', false);
+
               }else{
                   $("#txt5").prop('disabled', true);
+                  $("#cb9").prop('required', true);
+
               }
           });
 
