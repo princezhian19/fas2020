@@ -379,7 +379,8 @@ function getImage()
       $link == 'http://fas.calabarzon.dilg.gov.ph/TravelOrderCreate.php?division='.$_GET['division'].'' ||
       $link == 'http://fas.calabarzon.dilg.gov.ph/UpdateEmployee.php?id='.$_GET['id'].'&view='.$_GET['view'].'' ||
       $link == 'http://fas.calabarzon.dilg.gov.ph/OfficialBusinessUpdate.php?id='.$_GET['id'].'' ||
-      $link == 'http://http://fas.calabarzon.dilg.gov.ph/HealthMonitoring.php?username='.$username.'&division='.$_GET['division'].'' 
+      $link == 'http://fas.calabarzon.dilg.gov.ph/HealthMonitoring.php?action=show&username='.$username.'&division='.$_GET['division'].'' ||
+      $link == 'http://fas.calabarzon.dilg.gov.ph/HealthMonitoring.php?username='.$username.'&division='.$_GET['division'].'' 
       )
       { echo 'active"';}?>"
       >
