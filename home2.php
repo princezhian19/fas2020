@@ -148,7 +148,7 @@ only screen and (max-width: 760px),
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residential Address:</td>
-            <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none; border: none;background-color:#ECEFF1;" name = "curraddress" required><?php getAddress();?></textarea></td>
+            <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none;" name = "curraddress" required><?php getAddress();?></textarea></td>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
             <td> <input type ="text" style = " border: none;" class = "form-control" name = "gender" id = "gender" value = "<?php getGender(); ?>" readonly /> </td>
           </tr>
