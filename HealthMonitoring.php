@@ -339,7 +339,7 @@ only screen and (max-width: 760px),
             $('#health').on('click', function()
     {
      
-      window.location = "export_healtmonitoring.php?name=";
+      window.location = "export_healtmonitoring.php?datee="+date_filed+"&division="+division+"";
     });
             dataT();
   function dataT(){
