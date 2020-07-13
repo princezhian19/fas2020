@@ -130,7 +130,7 @@ if (mysqli_num_rows($sql_items)>0) {
     }else{
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, $finalfinal->format('%H'));
     }
-    if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%I') ==  $dateZero->format('I')) {
+    if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%I') ==  $dateZero->format('i')) {
       $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, '');
     }else{
       $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, $finalfinal->format('%i'));
@@ -162,12 +162,13 @@ if (mysqli_num_rows($sql_items)>0) {
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
     }
     else{
+
      if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%H') ==  $dateZero->format('H')) {
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, '');
     }else{
       $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row, $finalfinal->format('%H'));
     }
-    if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%I') ==  $dateZero->format('I')) {
+    if ($finaldate->format('%H'.':'.'%i') > $date333->format('H:i') || $finalfinal->format('%I') ==  $dateZero->format('i')) {
       $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, '');
     }else{
       $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row, $finalfinal->format('%i'));
