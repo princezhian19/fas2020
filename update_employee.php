@@ -106,6 +106,8 @@
       $status          = $row["CIVIL_STATUS"]; 
       $office_address = $row['REMARKS_M'];
       $office_contact = $row['LANDPHONE'];
+      $permanent_address = $row['PERMANENT_ADDRESS'];
+      $current_address = $row['CURRENT_ADDRESS'];
     }
   }
 
@@ -176,6 +178,8 @@
     $e_stats         = $_POST["e_stats"]; 
     $employee_number = $_POST["employee_number"];
     $employment_date11 = $_POST["employment_date"];    
+    $permanent_address = $_POST["permanent_address"];    
+    $current_address = $_POST["current_address"];    
     $employment_date = date('Y-m-d',strtotime($employment_date11));
     $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeeinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
     // if (!ifRecordExist($sqlEMP_N)){
@@ -228,7 +232,7 @@
 
     $query = mysqli_query($conn,"UPDATE $sqltable SET LAST_M='$lname', FIRST_M='$fname', MIDDLE_M='$mname', BIRTH_D='$birthdate', SEX_C='$gender',
       REGION_C='$region', PROVINCE_C='$province', CITYMUN_C='$municipality',
-      POSITION_C='$position',
+      POSITION_C='$position',PERMANENT_ADDRESS = '$permanent_address', CURRENT_ADDRESS = '$current_address'
       MOBILEPHONE='$cellphone', EMAIL='$email',
       ALTER_EMAIL='$alter_email',  LANDPHONE='$contact', OFFICE_STATION='$office', DIVISION_C='$division', ACTIVATED='".$e_stats."', UNAME='$username',DESIGNATION='$designation',SUFFIX='$suffix',LANDPHONE='$office_contact',REMARKS_M='$office_address' WHERE EMP_N = '$cid' LIMIT 1");
 
@@ -468,37 +472,46 @@
           </div>
 
           <div class="form-group">
-           <label>Birth Date<font style="color:red;">*</font></label>
-           <div class="input-group date">
-            <div class="input-group-addon">
-              <i class="fa fa-calendar"></i>
-            </div>
-            <input autocomplete="new-password" required type="text" value="<?php echo $bday1;?>" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="Birth Date">
-          </div>
-
-        </div>
-        <div class="form-group">
-          <label>Sex<font style="color:red;">*</font></label>
-          <select class="form-control select2" name="gender">
-            <?php if ($gender1 == 'Male'): ?>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <?php else: ?>
-                <option value="Female">Female</option>
+            <label>Sex<font style="color:red;">*</font></label>
+            <select class="form-control select2" name="gender">
+              <?php if ($gender1 == 'Male'): ?>
                 <option value="Male">Male</option>
-              <?php endif ?>
-            </select>
-          </div>
+                <option value="Female">Female</option>
+                <?php else: ?>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                <?php endif ?>
+              </select>
+            </div>
 
-          <div class="form-group">
-            <label>Employment Date &nbsp<b style="color:red;">*</b></label>
-            <div class="input-group date">
+            <div class="form-group">
+              <label>Civil Status<font style="color:red;">*</font></label>
+              <?php if ($status == 'Single'): ?>
+               <select class="form-control select2" name="status">
+                <option value="Single">Single</option>
+                <option value="Maried">Married</option>
+              </select>
+              <?php else: ?>
+                <select class="form-control select2" name="status">
+                  <option value="Maried">Married</option>
+                  <option value="Single">Single</option>
+                </select>
+              <?php endif ?>
+            </div>
+
+            <div class="form-group">
+             <label>Birth Date<font style="color:red;">*</font></label>
+             <div class="input-group date">
               <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
               </div>
-              <input autocomplete="new-password" required type="text"  name="employment_date" class="form-control pull-right" id="datepicker2" value="<?php echo $employment_date ?>" placeholder="Employment Date">
+              <input autocomplete="new-password" required type="text" value="<?php echo $bday1;?>" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="Birth Date">
             </div>
+
           </div>
+
+
+          
 
         </div>
 
@@ -617,19 +630,33 @@
   </div>
 
   <div class="form-group">
-    <label>Civil Status<font style="color:red;">*</font></label>
-    <?php if ($status == 'Single'): ?>
-     <select class="form-control select2" name="status">
-      <option value="Single">Single</option>
-      <option value="Maried">Married</option>
+    <label>Employment Status<font style="color:red;">*</font></label>
+    <?php if ($ACTIVATED == 'Yes'): ?>
+     <select class="form-control select2" name="e_stats">
+      <option value="Yes">Regular</option>
+      <option value="No">COS</option>
     </select>
     <?php else: ?>
-      <select class="form-control select2" name="status">
-        <option value="Maried">Married</option>
-        <option value="Single">Single</option>
-      </select>
-    <?php endif ?>
+     <select class="form-control select2" name="e_stats">
+      <option value="No">COS</option>
+      <option value="Yes">Regular</option>
+    </select>
+  <?php endif ?>
+</div>
+
+<div class="form-group">
+  <label>Employment Date &nbsp<b style="color:red;">*</b></label>
+  <div class="input-group date">
+    <div class="input-group-addon">
+      <i class="fa fa-calendar"></i>
+    </div>
+    <input autocomplete="new-password" required type="text"  name="employment_date" class="form-control pull-right" id="datepicker2" value="<?php echo $employment_date ?>" placeholder="Employment Date">
   </div>
+</div>
+
+
+
+
 
 </div>
 
@@ -645,25 +672,23 @@
     <label>Personal Email Address <font style="color:red;">*</font></label>
     <input value="<?php echo $email1;?>" type="text" name="email" class="form-control" placeholder="">
   </div>
-
   <div class="form-group">
-    <label>Office Contact No</label>
-    <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-2647-434">
+    <label>Permanent Residential <font style="color:red;">*</font></label>
+    <input value="<?php echo $permanent_address;?>" type="text" name="permanent_address" class="form-control" placeholder="">
   </div>
   <div class="form-group">
-    <label>Employement Status<font style="color:red;">*</font></label>
-    <?php if ($ACTIVATED == 'Yes'): ?>
-     <select class="form-control select2" name="e_stats">
-      <option value="Yes">Regular</option>
-      <option value="No">COS</option>
-    </select>
-    <?php else: ?>
-     <select class="form-control select2" name="e_stats">
-      <option value="No">COS</option>
-      <option value="Yes">Regular</option>
-    </select>
-  <?php endif ?>
-</div>
+    <label>Current Residential Address <font style="color:red;">*</font></label>
+    <input value="<?php echo $current_address;?>" type="text" name="current_address" class="form-control" placeholder="">
+  </div>
+  <div class="form-group">
+    <label>Office Landline</label>
+    <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="">
+  </div>
+  <div class="form-group">
+    <label>Office Mobile</label>
+    <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="">
+  </div>
+ 
 
 <div class="form-group">
   <label>Office Email Address <font style="color:red;">*</font></label>
@@ -675,17 +700,18 @@
   <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
 </div>
 
-<div class="form-group">
+
+
+</div>
+
+<div class="col-md-3">
+  <div class="form-group">
   <label>Salary Grade &nbsp<b style="color:red;">*</b></label>
   <select required class="form-control select2" style="width: 100%;" name="salary" id="salary" >
     <option value="<?php echo $salary;?>"><?php echo $salary;?></option>
     <?php echo fill_unit_select_box($connect);?>
   </select>
 </div>
-
-</div>
-
-<div class="col-md-3">
 
   <div class="form-group">
     <label>Step &nbsp<b style="color:red;">*</b></label>
