@@ -250,7 +250,7 @@ only screen and (max-width: 760px),
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? 
-          <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" name = "lastperiod"/></td>
+          <input style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" name = "lastperiod"/></td>
           </tr>
           <tr>
           <td style = "text-align:justify;" colspan = 4>Declaration:<br><br>
@@ -292,10 +292,13 @@ only screen and (max-width: 760px),
       $(".period").prop('disabled', true);
       $(".period").val('');
 
-    }else{
+    }else if($('#gender').val() == 'Female'){
       $(".period").prop('disabled', false);
       $(".period").prop('required', true);
  
+    }else{
+      $(".period").prop('disabled', true);
+      $(".period").val('');
     }
              // Setup - add a text input to each footer cell
     // $('#example thead tr').clone(true).appendTo( '#example thead' );
@@ -436,7 +439,7 @@ $('#healthDec').click(function(){
                   $("#cb1").prop('required', false);
               }else{
                   $("#txt1").prop('disabled', true);
-                  $("#cb1").prop('required', true);
+                  $("#cb1").prop('required', false);
 
               }
           });

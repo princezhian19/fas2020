@@ -197,8 +197,10 @@ if($gender == 'Male')
 $last_period = '';
 }else if($gender == 'Female'){
 $last_period = date('Y-m-d',strtotime($_POST['lastperiod']));
-// echo $last_period;
-// exit();
+
+
+}else{
+$last_period = '';
 
 }
 
