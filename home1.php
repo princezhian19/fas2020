@@ -517,7 +517,7 @@ $(document).ready(function()
 }else{ 
 
      if ($OFFICE_STATION == 1) {
-  include('sidebar.php');
+  include('sidebar2.php');
            
         }else{
   include('sidebar3.php');
