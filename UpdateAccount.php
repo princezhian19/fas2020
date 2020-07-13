@@ -56,7 +56,6 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 <body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
 <?php 
-<?php 
   if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
 }else{ 
 
