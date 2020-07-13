@@ -209,7 +209,7 @@ $last_period = date('Y-m-d',strtotime($_POST['lastperiod']));
         $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `DATE`,`LAST_PERIOD`, `UNAME`,`GENDER`,`BODY_TEMPERATURE`, `CURRENT_ADDRESS`, `WORK_ARRANGEMENT`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`,`DETAILS_5`,`IS_SUBMIT`) VALUES 
         (null,
         '".date('Y-m-d')."',
-        '".date('Y-m-d',strtotime($last_period))."',
+        '".$last_period."',
         '".$_SESSION['username']."',
         '".$_POST['gender']."',
         '".$_POST['body_temp']."',

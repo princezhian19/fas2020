@@ -240,7 +240,7 @@ only screen and (max-width: 760px),
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? 
-          <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" name = "lastperiod"/></td>
+          <input  style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" name = "lastperiod"/></td>
           </tr>
           <tr>
           <td style = "text-align:justify;" colspan = 4>Declaration:<br><br>
