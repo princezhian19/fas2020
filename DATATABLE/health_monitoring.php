@@ -75,7 +75,7 @@ $columns = array(
             }),
 	array('db' => 'fullname', 'dt' => 2),
 	array('db' => 'BODY_TEMPERATURE', 'dt' => 3),
-	array('db' => 'CURRENT_ADDRESS', 'dt' => 4),
+	array('db' => 'fullname', 'dt' => 4),
     array('db' => 'OFFICE_STATION', 'dt' => 5,
 
     'formatter' => function( $d, $row ) {
