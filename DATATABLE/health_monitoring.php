@@ -188,4 +188,4 @@ $sql_details = array(
 require('ssp.class.php');
 echo json_encode(
 	SSP::simple($_GET, $sql_details,$fieldsName, $table,$join, $primaryKey, $columns,$WHERE)
-);
+);	
