@@ -192,22 +192,22 @@ else{
             </script> -->
 
             <label>SR no.</label>
-            <input value="<?php echo $sr;?>" type="text" class="form-control" style="height: 35px;" id="sr" placeholder="Enter DV No." name="sr" readonly>
+            <input value="<?php echo $sr;?>" type="text" class="form-control" style="height: 35px;" id="sr" placeholder="Enter SR No." name="sr" readonly>
             <br>
             <label>PPA</label>
-            <input value="<?php echo $ppa;?>" type="text" class="form-control" style="height: 35px;" id="ppa" placeholder="Enter DV No." name="ppa" readonly>
+            <input value="<?php echo $ppa;?>" type="text" class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa" readonly>
             <br>
             <label>UACS</label>
-            <input value="<?php echo $uacs;?>" type="text" class="form-control" style="height: 35px;" id="uacs" placeholder="Enter DV No." name="uacs" readonly>
+            <input value="<?php echo $uacs;?>" type="text" class="form-control" style="height: 35px;" id="uacs" placeholder="Enter UACS" name="uacs" readonly>
             <br>
             <label>Payee</label>
-            <input value="<?php echo $supplier;?>"  type="text" class="form-control" style="height: 35px;" id="payee" placeholder="Enter DV No." name="payee" >
+            <input value="<?php echo $supplier;?>"  type="text" class="form-control" style="height: 35px;" id="payee" placeholder="Enter Payee" name="payee" >
             <br>  
             <label>Particular</label>
-            <input value="<?php echo $purpose;?>"  type="text" class="form-control" style="height: 35px;" id="particular" placeholder="Enter DV No." name="particular" >
-            <br>  
+            <input value="<?php echo $purpose;?>"  type="text" class="form-control" style="height: 35px;" id="particular" placeholder="Enter Particular" name="particular" >
+            <br>
             <label>Amount</label>
-            <input value="<?php echo $amount;?>"  type="text" class="form-control" style="height: 35px;" id="amount" placeholder="Enter DV No." name="amount" >
+            <input value="<?php echo $amount;?>"  type="text" class="form-control" style="height: 35px;" id="amount" placeholder="Enter Amount" name="amount" >
             <br>   
           </div>
           <div class="col-md-6">

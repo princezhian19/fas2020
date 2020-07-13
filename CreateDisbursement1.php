@@ -13,8 +13,6 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 /* $datenow = date('Y-m-d');
 echo $datenow; */
 ?>
-
-
 <?php
 if (isset($_POST['submit'])) {
 $dv = $_POST['dv'];
@@ -204,23 +202,23 @@ else{
             </script>
 
             <label>SR no.</label>
-            <input  type="text" class="form-control" style="height: 35px;" id="sr" placeholder="Enter DV No." name="sr" readonly>
+            <input value="<?php echo $sr;?>" type="text" class="form-control" style="height: 35px;" id="sr" placeholder="Enter SR No." name="sr" readonly>
             <br>
             <label>PPA</label>
-            <input  type="text" class="form-control" style="height: 35px;" id="ppa" placeholder="Enter DV No." name="ppa" readonly>
+            <input value="<?php echo $ppa;?>" type="text" class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa" readonly>
             <br>
             <label>UACS</label>
-            <input  type="text" class="form-control" style="height: 35px;" id="uacs" placeholder="Enter DV No." name="uacs" readonly>
+            <input value="<?php echo $uacs;?>" type="text" class="form-control" style="height: 35px;" id="uacs" placeholder="Enter UACS" name="uacs" readonly>
             <br>
             <label>Payee</label>
-            <input   type="text" class="form-control" style="height: 35px;" id="payee" placeholder="Enter DV No." name="payee" >
+            <input value="<?php echo $supplier;?>"  type="text" class="form-control" style="height: 35px;" id="payee" placeholder="Enter Payee" name="payee" >
             <br>  
             <label>Particular</label>
-            <input   type="text" class="form-control" style="height: 35px;" id="particular" placeholder="Enter DV No." name="particular" >
-            <br>  
+            <input value="<?php echo $purpose;?>"  type="text" class="form-control" style="height: 35px;" id="particular" placeholder="Enter Particular" name="particular" >
+            <br>
             <label>Amount</label>
-            <input   type="text" class="form-control" style="height: 35px;" id="amount" placeholder="Enter DV No." name="amount" >
-            <br>   
+            <input value="<?php echo $amount;?>"  type="text" class="form-control" style="height: 35px;" id="amount" placeholder="Enter Amount" name="amount" >
+            <br>    
           </div>
           <div class="col-md-6">
             <label>Date Received</label>
@@ -244,19 +242,19 @@ else{
             <br>
             <br>
             <label>Tax</label>
-            <input  type="Number" class="form-control" style="height: 35px;" id="tax" placeholder="Enter Tax" name="tax">
+            <input  type="Number" step="any" class="form-control" style="height: 35px;" id="tax" placeholder="Enter Tax" name="tax">
             <br> 
             <label>GSIS</label>
-            <input  type="Number" class="form-control" style="height: 35px;" id="gsis" placeholder="Enter GSIS" name="gsis">
+            <input  type="Number" step="any" class="form-control" style="height: 35px;" id="gsis" placeholder="Enter GSIS" name="gsis">
             <br> 
             <label>PAG IBIG</label>
-            <input  type="Number" class="form-control" style="height: 35px;" id="pagibig" placeholder="Enter Pag Ibig" name="pagibig">
+            <input  type="Number" step="any"  class="form-control" style="height: 35px;" id="pagibig" placeholder="Enter Pag Ibig" name="pagibig">
             <br> 
             <label>PhilHealth</label>
-            <input  type="Number" class="form-control" style="height: 35px;" id="philhealth" placeholder="Enter Phil Health" name="philhealth">
+            <input  type="Number" step="any" class="form-control" style="height: 35px;" id="philhealth" placeholder="Enter Phil Health" name="philhealth">
             <br>
             <label>Other Payables</label>
-            <input  type="Number" class="form-control" style="height: 35px;" id="other" placeholder="Enter Phil Health" name="other">
+            <input  type="Number" step="any" class="form-control" style="height: 35px;" id="other" placeholder="Enter Other Payables" name="other">
             <br>  
             <label>Remarks</label>
             <input  type="text" class="form-control" style="height: 35px;" id="remarks" placeholder="Enter Remarks" name="remarks">
@@ -289,7 +287,6 @@ else{
     <br>
   
 </section>
-
 
 </body>
 </html>

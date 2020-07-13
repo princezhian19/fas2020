@@ -1,11 +1,64 @@
-<!-- <?php
+<script type="text/javascript">
+  function askGoogle()
+{
+    $ch = curl_init();
 
-  include('Geocoding.php');
-  use myPHPnotes\Geocoding;
-  $geo = new Geocoding("AIzaSyDhwrxbj4AWSCel1yCqpujxUxr72g4WzgY");
-  $address = $geo->getAddress(48.858195,2.294432);
-  var_dump($address);
-?> -->
+    curl_setopt(
+        $ch,
+        CURLOPT_URL,
+        "https://www.googleapis.com/geolocation/v1/geolocate?key=[MYAPIKEY]"
+    );
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    $payloadArray = [
+        'considerIp' => false,
+        'wifiAccessPoints' => [
+            [
+                'macAddress'         => '00:25:9c:cf:1c:ac',
+                "signalStrength"     => -25,
+                "signalToNoiseRatio" => -101
+            ],
+            [
+                'macAddress'         => '00:25:9c:cf:1c:ad',
+                "signalStrength"     => -25,
+                "signalToNoiseRatio" => -101
+            ],
+        ],
+    ];
+
+    $payloadJson = json_encode($payloadArray);
+
+    curl_setopt(
+        $ch,
+        CURLOPT_HTTPHEADER,
+        ["Content-type: application/json", "Content-Length: ".strlen($payloadJson)]
+    );
+
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payloadJson);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+
+
+
+    $result = curl_exec($ch);
+    if (curl_errno($ch)) {
+        echo 'Error:' . curl_error($ch);
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    echo "The curl completion is ".$httpCode."<br>";
+
+    $message =  json_decode($result, true); //converts the returned JSON message into an array.
+
+    print_r($message);
+    echo "<br>";
+
+    curl_close($ch);
+}
+
+askGoogle();
+</script>
 
  <?php 
  $id = $_GET['id'];

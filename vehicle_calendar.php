@@ -12,12 +12,10 @@ ini_set('display_errors', 0);
 $username1 = $_SESSION['username'];
 $division = $_SESSION['division'];
 
-
-
 }
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-  //Get Office
+//Get Office
 $select_user = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username1'");
 $rowdiv = mysqli_fetch_array($select_user);
 $DIVISION_C = $rowdiv['DIVISION_C'];
@@ -55,9 +53,6 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 <?php
 //index.php
 
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,9 +73,6 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 
         <br>
         <br>
-            
-
-
             
             <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-12">
             <table  class="table" id='table' style="border-width: 3px;max-width:100%;">
