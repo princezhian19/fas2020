@@ -477,12 +477,12 @@
 
   <div class="form-group">
     <label>Office Landline</label>
-    <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-647-4342">
+    <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control cp" placeholder="">
   </div>
 
   <div class="form-group">
     <label>Office Mobile</label>
-    <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-647-4342">
+    <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control cp" placeholder="">
   </div>
 
 

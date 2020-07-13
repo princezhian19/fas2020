@@ -682,11 +682,11 @@
   </div>
   <div class="form-group">
     <label>Office Landline</label>
-    <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-2647-434">
+    <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="">
   </div>
   <div class="form-group">
-    <label>Office Contact No</label>
-    <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-2647-434">
+    <label>Office Mobile</label>
+    <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="">
   </div>
  
 
