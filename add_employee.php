@@ -149,6 +149,8 @@
     $step            = $_POST["step"];
     $employment_date11= $_POST["employment_date"];
     $employment_date = date('Y-m-d',strtotime($employment_date11));
+    $permanent_address = $_POST["permanent_address"];    
+    $current_address = $_POST["current_address"];    
 
     $select = mysqli_query($conn,"SELECT $step FROM tbl_salary_grade WHERE salary_grade = '$salary' ");
     $rowES = mysqli_fetch_array($select);
@@ -157,8 +159,8 @@
     $sqlUsername =  "SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
     $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeeinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
     if (!ifRecordExist($sqlEMP_N)){
-      $sql_insert_query     = mysqli_query($conn,"INSERT INTO tblemployeeinfo (EMP_NUMBER,LAST_M, FIRST_M,MIDDLE_M, BIRTH_D, SEX_C,REGION_C, PROVINCE_C, CITYMUN_C,POSITION_C,DESIGNATION,MOBILEPHONE, EMAIL, ALTER_EMAIL,UNAME, DATE_CREATED,LANDPHONE, OFFICE_STATION, DIVISION_C, PROFILE,SUFFIX,CIVIL_STATUS,ACTIVATED,REMARKS_M)
-        VALUES ('$employee_number','$lname', '$fname', '$mname', '$birthdate', '$gender', '$region', '$province', '$municipality', '$position', '$designation', '$cellphone', '$email', '$alter_email','$username', '$date_created', '$office_contact', '$office', '$division','$target_file','$suffix','$status','$e_stats','$office_address')");
+      $sql_insert_query     = mysqli_query($conn,"INSERT INTO tblemployeeinfo (EMP_NUMBER,LAST_M, FIRST_M,MIDDLE_M, BIRTH_D, SEX_C,REGION_C, PROVINCE_C, CITYMUN_C,POSITION_C,DESIGNATION,MOBILEPHONE, EMAIL, ALTER_EMAIL,UNAME, DATE_CREATED,LANDPHONE, OFFICE_STATION, DIVISION_C, PROFILE,SUFFIX,CIVIL_STATUS,ACTIVATED,REMARKS_M,CURRENT_ADDRESS,PERMANENT_ADDRESS)
+        VALUES ('$employee_number','$lname', '$fname', '$mname', '$birthdate', '$gender', '$region', '$province', '$municipality', '$position', '$designation', '$cellphone', '$email', '$alter_email','$username', '$date_created', '$office_contact', '$office', '$division','$target_file','$suffix','$status','$e_stats','$office_address','$current_address','$permanent_address')");
 
       if ($e_stats == 'Yes') {
         if ($province == '') {
@@ -168,10 +170,10 @@
         $rowP = mysqli_fetch_array($selectProvince);
         $station = $rowP['LGU_M'];
         # code...
-      $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,pagibig,l_name,f_name,m_name,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date,station) 
-        VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date','$station')");
+        $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,pagibig,l_name,f_name,m_name,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date,station) 
+          VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date','$station')");
 
-          if ($insertqwe) {
+        if ($insertqwe) {
           $save_salary = $salaryS *.09;
           if ($salaryS > 59999) {
             $phil = 900;
@@ -180,85 +182,85 @@
             $phil = $salaryS *.03 / 2;
             $insert_deduct = mysqli_query($conn,"INSERT INTO tbl_deductions(emp_no,monthly_salary,rlip,pera,philhealth) VALUES('$emp_no','$salaryS','$save_salary',2000,'$phil')");
           }
-          }
+        }
       }
 
       if ($sql_insert_query) 
       { 
-    
 
-          if(!empty(basename($_FILES["image"]["name"])))
+
+        if(!empty(basename($_FILES["image"]["name"])))
+        {
+          if(!empty($_FILES["image"]["name"]))
           {
-            if(!empty($_FILES["image"]["name"]))
-            {
             // Check if file already exists
-              if (file_exists($target_file)) 
-              {
+            if (file_exists($target_file)) 
+            {
                 // echo "Sorry, file already exists.";
-                $uploadOk = 0;
-              }
+              $uploadOk = 0;
+            }
             // Check file size
-              if ($_FILES["image"]["size"] > 9000000)
-              {
+            if ($_FILES["image"]["size"] > 9000000)
+            {
                 // echo "Sorry, your file is too large.";
-                $uploadOk = 0;
-              }
+              $uploadOk = 0;
+            }
             // Allow certain file formats
-              if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
-              {
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) 
+            {
                 // echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                $uploadOk = 0;
-              }
+              $uploadOk = 0;
+            }
             // Check if $uploadOk is set to 0 by an error
-              if ($uploadOk == 0) 
-              {
+            if ($uploadOk == 0) 
+            {
             // if everything is ok, try to upload file
-              } 
-              else 
+            } 
+            else 
+            {
+             if(!empty($_FILES["image"]["tmp_name"]))
+             {
+              if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) 
               {
-               if(!empty($_FILES["image"]["tmp_name"]))
-               {
-                if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) 
-                {
-                  echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
-                } else 
-                {
-                  echo "Sorry, there was an error uploading your file.";
-                }
+                echo "The file ". basename( $_FILES["image"]["name"]). " has been uploaded.";
+              } else 
+              {
+                echo "Sorry, there was an error uploading your file.";
               }
             }
-
           }
+
         }
+      }
 
-        echo ("<SCRIPT LANGUAGE='JavaScript'>
-          window.alert('Successfuly Added')
-          window.location.href = 'ViewEmployees.php?division=".$_GET['division']."&username=".$_GET['username']."';
-          </SCRIPT>");
-
-      }else{
-       echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.alert('Error Occured Uppon Saving!');
+      echo ("<SCRIPT LANGUAGE='JavaScript'>
+        window.alert('Successfuly Added')
+        window.location.href = 'ViewEmployees.php?division=".$_GET['division']."&username=".$_GET['username']."';
         </SCRIPT>");
-     }
 
-
-   }else{
+    }else{
      echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Employee Number Already Exist!');
+      window.alert('Error Occured Uppon Saving!');
       </SCRIPT>");
    }
+
+
+ }else{
+   echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Employee Number Already Exist!');
+    </SCRIPT>");
  }
+}
 
- ?>
+?>
 
 
- <script src="jquery-1.12.0.min.js" type="text/javascript"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>
- <script type="text/javascript">
+<script src="jquery-1.12.0.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>
+<script type="text/javascript">
   $(document).ready(function(){
 
     $("#sel_depart").change(function(){
@@ -337,6 +339,24 @@
           </div>
 
           <div class="form-group">
+            <label>Sex<font style="color:red;">*</font></label>
+            <select class="form-control select2" name="gender">
+              <option disabled selected></option>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Civil Status<font style="color:red;">*</font></label>
+            <select class="form-control select2" name="status">
+              <option disabled selected></option>
+              <option value="Single">Single</option>
+              <option value="Maried">Married</option>
+            </select>
+          </div>
+
+          <div class="form-group">
            <label>Birth Date<font style="color:red;">*</font></label>
            <div class="input-group date">
             <div class="input-group-addon">
@@ -346,24 +366,9 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label>Sex<font style="color:red;">*</font></label>
-          <select class="form-control select2" name="gender">
-            <option disabled selected></option>
-            <option value="1">Male</option>
-            <option value="2">Female</option>
-          </select>
-        </div>
+        
 
-        <div class="form-group">
-    <label>Employment Date &nbsp<b style="color:red;">*</b></label>
-    <div class="input-group date">
-      <div class="input-group-addon">
-        <i class="fa fa-calendar"></i>
-      </div>
-      <input autocomplete="new-password" required type="text"  name="employment_date" class="form-control pull-right" id="datepicker2" placeholder="Employment Date">
-    </div>
-  </div>
+        
 
 
       </div>
@@ -426,15 +431,26 @@
       <?php echo tbldesignation($connect)?>
     </select>
   </div>
-
   <div class="form-group">
-    <label>Civil Status<font style="color:red;">*</font></label>
-    <select class="form-control select2" name="status">
+    <label>Employment Status<font style="color:red;">*</font></label>
+    <select class="form-control select2" name="e_stats">
       <option disabled selected></option>
-      <option value="Single">Single</option>
-      <option value="Maried">Married</option>
+      <option value="Yes">Regular</option>
+      <option value="No">COS</option>
     </select>
   </div>
+
+  <div class="form-group">
+    <label>Employment Date &nbsp<b style="color:red;">*</b></label>
+    <div class="input-group date">
+      <div class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+      </div>
+      <input autocomplete="new-password" required type="text"  name="employment_date" class="form-control pull-right" id="datepicker2" placeholder="Employment Date">
+    </div>
+  </div>
+
+  
 
 </div>
 
@@ -450,18 +466,26 @@
   </div>
 
   <div class="form-group">
-    <label>Office Contact No</label>
+    <label>Permanent Residential Address <font style="color:red;">*</font></label>
+    <input   type="text" name="permanent_address" class="form-control" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label>Current Residential Address <font style="color:red;">*</font></label>
+    <input   type="text" name="current_address" class="form-control" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label>Office Landline</label>
     <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-647-4342">
   </div>
 
   <div class="form-group">
-    <label>Employement Status<font style="color:red;">*</font></label>
-    <select class="form-control select2" name="e_stats">
-      <option disabled selected></option>
-      <option value="Yes">Regular</option>
-      <option value="No">COS</option>
-    </select>
+    <label>Office Mobile</label>
+    <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control cp" placeholder="ex. 0995-647-4342">
   </div>
+
+
 
   <div class="form-group">
     <label>Office Email Address <font style="color:red;">*</font></label>
@@ -472,6 +496,10 @@
     <label>Office Address</label>
     <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
   </div>
+  
+</div>
+
+<div class="col-md-3">
   <div class="form-group">
 
     <label>Salary Grade<b style="color:red;">*</b></label>
@@ -481,9 +509,6 @@
     </select>
 
   </div>
-</div>
-
-<div class="col-md-3">
   <div class="form-group">
     <label>Step<b style="color:red;">*</b></label>
 
