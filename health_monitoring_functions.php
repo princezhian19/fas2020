@@ -122,15 +122,11 @@ date_default_timezone_set('Asia/Manila');
     function getAddress()
     {
         include 'connection.php';
-        $query = "SELECT c.province_id,m.city_title, c.province_title FROM tblemployeeinfo  a 
-        LEFT JOIN tblprovinse c on c.province_id = a.PROVINCE_C 
-        LEFT JOIN tblmunicipality m on a.CITYMUN_C = m.city_id AND m.province = c.province_id
-        
-        WHERE a.UNAME = '".$_SESSION['username']."' ";
+        $query = "SELECT CURRENT_ADDRESS FROM tblemployeeinfo where tblemployeeinfo.UNAME  =  '".$_SESSION['username']."' ";
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_array($result))
         {
-            $address = $row['city_title'].','.$row['province_title'];
+            $address = $row['CURRENT_ADDRESS'];
             echo $address;
         }
     }
@@ -233,7 +229,16 @@ $last_period = date('Y-m-d',strtotime($_POST['lastperiod']));
     } else {
     }
      
+    
+
+
+    $update = "UPDATE `tblemployeeinfo` SET `CURRENT_ADDRESS`= '".$_POST['curraddress']."' WHERE UNAME = '".$_SESSION['username']."' ";
+    if (mysqli_query($conn, $update)) {
+    } else {
     }
+     
+    }
+
 
 
 if(isset($_GET['action'])){
