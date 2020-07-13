@@ -122,15 +122,11 @@ date_default_timezone_set('Asia/Manila');
     function getAddress()
     {
         include 'connection.php';
-        $query = "SELECT c.province_id,m.city_title, c.province_title FROM tblemployeeinfo  a 
-        LEFT JOIN tblprovinse c on c.province_id = a.PROVINCE_C 
-        LEFT JOIN tblmunicipality m on a.CITYMUN_C = m.city_id AND m.province = c.province_id
-        
-        WHERE a.UNAME = '".$_SESSION['username']."' ";
+        $query = "SELECT CURRENT_ADDRESS FROM tblemployeeinfo where tblemployeeinfo.UNAME  =  '".$_SESSION['username']."' ";
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_array($result))
         {
-            $address = $row['city_title'].','.$row['province_title'];
+            $address = $row['CURRENT_ADDRESS'];
             echo $address;
         }
     }
@@ -203,13 +199,16 @@ $last_period = '';
 $last_period = date('Y-m-d',strtotime($_POST['lastperiod']));
 
 
+}else{
+$last_period = '';
+
 }
 
 
         $insert ="INSERT INTO `tblhealth_monitoring`(`ID`, `DATE`,`LAST_PERIOD`, `UNAME`,`GENDER`,`BODY_TEMPERATURE`, `CURRENT_ADDRESS`, `WORK_ARRANGEMENT`, `QUESTION_1`, `QUESTION_2`, `QUESTION_3`, `QUESTION_4`, `QUESTION_5`, `DETAILS_1`, `DETAILS_2`, `DETAILS_3`, `DETAILS_4`,`DETAILS_5`,`IS_SUBMIT`) VALUES 
         (null,
         '".date('Y-m-d')."',
-        '".date('Y-m-d',strtotime($last_period))."',
+        '".$last_period."',
         '".$_SESSION['username']."',
         '".$_POST['gender']."',
         '".$_POST['body_temp']."',
@@ -233,24 +232,33 @@ $last_period = date('Y-m-d',strtotime($_POST['lastperiod']));
     } else {
     }
      
+    
+
+
+    $update = "UPDATE `tblemployeeinfo` SET `CURRENT_ADDRESS`= '".$_POST['curraddress']."' WHERE UNAME = '".$_SESSION['username']."' ";
+    if (mysqli_query($conn, $update)) {
+    } else {
     }
+     
+    }
+
 
 
 if(isset($_GET['action'])){
     if($_GET['action'] == 'add')
     {
         add();
-        header('Location:home.php?division='.$_SESSION['division'].'"&username="'.$_SESSION['username'].'"');
+        header('Location:home.php?division='.$_SESSION['division'].'&username='.$_SESSION['username'].'');
     }
     if($_GET['action'] == 'add1')
     {
         add();
-        header('Location:home1.php?division='.$_SESSION['division'].'"&username="'.$_SESSION['username'].'"');
+        header('Location:home1.php?division='.$_SESSION['division'].'&username='.$_SESSION['username'].'');
     }
     if($_GET['action'] == 'add2')
     {
         add();
-        header('Location:home2.php?division='.$_SESSION['division'].'"&username="'.$_SESSION['username'].'"');
+        header('Location:home2.php?division='.$_SESSION['division'].'&username='.$_SESSION['username'].'');
     }
     
 }

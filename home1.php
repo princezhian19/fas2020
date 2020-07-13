@@ -148,7 +148,7 @@ only screen and (max-width: 760px),
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residential Address:</td>
-            <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none; border: none;background-color:#ECEFF1;" name = "curraddress" readonly></textarea></td>
+            <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none; border: none;background-color:#ECEFF1;" name = "curraddress" required><?php getAddress();?></textarea></td>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
             <td> <input type ="text" style = " border: none;" class = "form-control" name = "gender" id = "gender" value = "<?php getGender(); ?>" readonly /> </td>
           </tr>
@@ -249,7 +249,7 @@ only screen and (max-width: 760px),
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? 
-          <input name = "monthly_period" style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" name = "lastperiod"/></td>
+          <input style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" name = "lastperiod"/></td>
           </tr>
           <tr>
           <td style = "text-align:justify;" colspan = 4>Declaration:<br><br>
@@ -288,11 +288,15 @@ only screen and (max-width: 760px),
     if($('#gender').val() == 'Male')
     {
       $(".period").prop('disabled', true);
+      $(".period").val('');
 
-    }else{
+    }else if($('#gender').val() == 'Female'){
       $(".period").prop('disabled', false);
       $(".period").prop('required', true);
  
+    }else{
+      $(".period").prop('disabled', true);
+      $(".period").val('');
     }
              // Setup - add a text input to each footer cell
     // $('#example thead tr').clone(true).appendTo( '#example thead' );
@@ -513,7 +517,7 @@ $(document).ready(function()
 }else{ 
 
      if ($OFFICE_STATION == 1) {
-  include('sidebar.php');
+  include('sidebar2.php');
            
         }else{
   include('sidebar3.php');
