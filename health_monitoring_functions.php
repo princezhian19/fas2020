@@ -227,6 +227,9 @@ $last_period = '';
         '1'
         )";
 
+        echo $insert;
+        exit();
+
        
        if (mysqli_query($conn, $insert)) {
     } else {
