@@ -229,10 +229,9 @@
 
       }
     }
-
     $query = mysqli_query($conn,"UPDATE $sqltable SET LAST_M='$lname', FIRST_M='$fname', MIDDLE_M='$mname', BIRTH_D='$birthdate', SEX_C='$gender',
       REGION_C='$region', PROVINCE_C='$province', CITYMUN_C='$municipality',
-      POSITION_C='$position',PERMANENT_ADDRESS = '$permanent_address', CURRENT_ADDRESS = '$current_address'
+      POSITION_C='$position',PERMANENT_ADDRESS = '$permanent_address', CURRENT_ADDRESS = '$current_address',
       MOBILEPHONE='$cellphone', EMAIL='$email',
       ALTER_EMAIL='$alter_email',  LANDPHONE='$contact', OFFICE_STATION='$office', DIVISION_C='$division', ACTIVATED='".$e_stats."', UNAME='$username',DESIGNATION='$designation',SUFFIX='$suffix',LANDPHONE='$office_contact',REMARKS_M='$office_address' WHERE EMP_N = '$cid' LIMIT 1");
 
@@ -249,7 +248,7 @@
       $insert_deduct = mysqli_query($conn,"
         UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$EMP_NUMBER1'  ");
     }else{
-      $phil = $salaryS *.03 / 2;
+      $phil = $salaryS *0.03 / 2;
       $insert_deduct = mysqli_query($conn,"
         UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$EMP_NUMBER1'  ");
     }
@@ -688,17 +687,17 @@
     <label>Office Mobile</label>
     <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="">
   </div>
- 
 
-<div class="form-group">
-  <label>Office Email Address <font style="color:red;">*</font></label>
-  <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
-</div>
 
-<div class="form-group">
-  <label>Office Address</label>
-  <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
-</div>
+  <div class="form-group">
+    <label>Office Email Address <font style="color:red;">*</font></label>
+    <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
+  </div>
+
+  <div class="form-group">
+    <label>Office Address</label>
+    <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
+  </div>
 
 
 
@@ -706,12 +705,12 @@
 
 <div class="col-md-3">
   <div class="form-group">
-  <label>Salary Grade &nbsp<b style="color:red;">*</b></label>
-  <select required class="form-control select2" style="width: 100%;" name="salary" id="salary" >
-    <option value="<?php echo $salary;?>"><?php echo $salary;?></option>
-    <?php echo fill_unit_select_box($connect);?>
-  </select>
-</div>
+    <label>Salary Grade &nbsp<b style="color:red;">*</b></label>
+    <select required class="form-control select2" style="width: 100%;" name="salary" id="salary" >
+      <option value="<?php echo $salary;?>"><?php echo $salary;?></option>
+      <?php echo fill_unit_select_box($connect);?>
+    </select>
+  </div>
 
   <div class="form-group">
     <label>Step &nbsp<b style="color:red;">*</b></label>
