@@ -919,6 +919,32 @@ $(document).ready(function(){
   })
 </script>
    
+<script>
+  $(function () {
+    $('#example15').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : false,
+      'ordering'    : false,
+      'info'        : true,
+      'autoWidth'   : true,
+      aLengthMenu: [ [1, 10, 20, -1], [1, 10, 20, "All"] ],
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bInfo": false,
+      "bAutoWidth": false,
+      "pagingType": "simple",
+      "language": {
+      "paginate": {
+      "previous": "<",
+      "next":">"
+}
+}
+    })
+  })
+</script>
+   
   
    
   
