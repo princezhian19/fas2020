@@ -1,38 +1,85 @@
-<div>
-  <label>
-    <input type="checkbox" class="check1" /> Checkbox 1
-  </label>
-  <label>
-    <input type="checkbox" class="check2" /> Checkbox 2
-  </label>
-  <label>
-    <input type="checkbox" class="check3" /> Checkbox 3
-  </label>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
 
-<br />
-<div class="target"></div>
-<script>
-$(function() {
-  $('input[type="checkbox"]').on('change', function() {
-    var isCheck1Checked = $('.check1').prop('checked');
-    var isCheck2Checked = $('.check2').prop('checked');
-    var isCheck3Checked = $('.check3').prop('checked');
-    var text, c = 0;
-    if (!isCheck1Checked && !isCheck2Checked && !isCheck3Checked) {
-      text = '';
-    } else if (isCheck1Checked && isCheck2Checked && isCheck3Checked) {
-      text = "The height is 2500px";
-      c = 300;
-    } else if ((isCheck1Checked && isCheck2Checked) || (isCheck2Checked && isCheck3Checked) || (isCheck1Checked && isCheck3Checked) && !(    isCheck1Checked && isCheck2Checked && isCheck3Checked)) {
-      text = "The height is 2000px";
-      c = 200;
-    } else {
-      text = "The height is 1500px";
-      c = 50;
-    }
-  });
-});
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      (function(exports) {
+        "use strict";
 
+        // Note: This example requires that you consent to location sharing when
+        // prompted by your browser. If you see the error "The Geolocation service
+        // failed.", it means you probably did not give permission for the browser to
+        // locate you.
+        var infoWindow;
 
-</script>
+        function initMap() {
+          exports.map = new google.maps.Map(document.getElementById("map"), {
+            center: {
+              lat: -34.397,
+              lng: 150.644
+            },
+            zoom: 6
+          });
+          infoWindow = new google.maps.InfoWindow(); // Try HTML5 geolocation.
+
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              function(position) {
+                var pos = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
+                infoWindow.setPosition(pos);
+                infoWindow.setContent("Location found.");
+                infoWindow.open(exports.map);
+                exports.map.setCenter(pos);
+              },
+              function() {
+                handleLocationError(true, infoWindow, exports.map.getCenter());
+              }
+            );
+          } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, exports.map.getCenter());
+          }
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(
+            browserHasGeolocation
+              ? "Error: The Geolocation service failed."
+              : "Error: Your browser doesn't support geolocation."
+          );
+          infoWindow.open(exports.map);
+        }
+
+        exports.handleLocationError = handleLocationError;
+        exports.initMap = initMap;
+      })((this.window = this.window || {}));
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>
