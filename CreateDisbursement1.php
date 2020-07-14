@@ -13,6 +13,15 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 /* $datenow = date('Y-m-d');
 echo $datenow; */
 ?>
+
+<?php
+date_default_timezone_set('Asia/Manila');
+$timeNow = (new DateTime('now'))->format('Y-m-d');
+//Replace now() Variable
+echo $timeNow;
+
+?>
+
 <?php
 if (isset($_POST['submit'])) {
 $dv = $_POST['dv'];
@@ -51,11 +60,10 @@ $query = mysqli_query($conn,"INSERT INTO disbursement (dv,ors,sr,ppa,uacs,payee,
 if($query){
 $update = mysqli_query($conn,"Update disbursement set total = tax+gsis+pagibig+philhealth+other where dv = '$dv'");
 $update1 = mysqli_query($conn,"Update disbursement set net = amount - total where dv = '$dv' ");
-$update2 = mysqli_query($conn,"UPDATE disbursement SET date_proccess=now(), datereleased = now() WHERE dv ='$dv' ");
 
+$update2 = mysqli_query($conn,"UPDATE disbursement SET date_proccess='$timeNow', datereleased = '$timeNow' WHERE dv ='$dv' ");
 
-
-  echo ("<SCRIPT LANGUAGE='JavaScript'>
+echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Data Added Successfully!')
     window.location.href='disbursement.php';
     </SCRIPT>");
@@ -114,8 +122,7 @@ else{
            
         }else{
   include('sidebar3.php');
-         
-        } 
+        }
 }
  ?>
 <body class="hold-transition skin-red-light fixed sidebar-mini">

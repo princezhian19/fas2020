@@ -25,12 +25,12 @@
                 <!-- Header -->
                   <tr>
                   <td class="col-md-1">
-                  <li class="btn btn-success"><a href="CreateDisbursement1.php" style="color:white;text-decoration: none;">Create</a></li>
+                  <li class="btn btn-success"><a href="Disbursement_Create.php" style="color:white;text-decoration: none;">Create</a></li>
                   </td>
                       
                   <td class="col-md-7" >
 
-                    
+                  
                   </td>
                   <form method = "POST" action = "@Functions/ddateexport1.php">
                   <td class="col-md-1" style = "text-align:center;">
