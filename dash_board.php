@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
 
   $div = mysqli_query($conn,"SELECT DIVISION_M FROM tblpersonneldivision WHERE DIVISION_N = '$rDIVISION_C'");
   $rowdiv = mysqli_fetch_array($div);
-  $rDIVISION_M = $rowdiv['DIVISION_M'];
+  $rDIVISION_M = $rowdiv['DIVISION_M']; 
 
 
   $insert = mysqli_query($conn,"INSERT INTO announcementt(posted_by, division, title, content, date) VALUES('$posted_by','$rDIVISION_M','$title','$content','$date')");

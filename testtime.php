@@ -1,16 +1,38 @@
+<div>
+  <label>
+    <input type="checkbox" class="check1" /> Checkbox 1
+  </label>
+  <label>
+    <input type="checkbox" class="check2" /> Checkbox 2
+  </label>
+  <label>
+    <input type="checkbox" class="check3" /> Checkbox 3
+  </label>
+</div>
+
+<br />
+<div class="target"></div>
 <script>
-("#regForm").validate({
-      debug: true,
-      rules: {
-        agreeForm: "required",
-      },
-      messages: {
-        agreeForm: "Please accept our Terms and Conditions.",
-      }
-    });
+$(function() {
+  $('input[type="checkbox"]').on('change', function() {
+    var isCheck1Checked = $('.check1').prop('checked');
+    var isCheck2Checked = $('.check2').prop('checked');
+    var isCheck3Checked = $('.check3').prop('checked');
+    var text, c = 0;
+    if (!isCheck1Checked && !isCheck2Checked && !isCheck3Checked) {
+      text = '';
+    } else if (isCheck1Checked && isCheck2Checked && isCheck3Checked) {
+      text = "The height is 2500px";
+      c = 300;
+    } else if ((isCheck1Checked && isCheck2Checked) || (isCheck2Checked && isCheck3Checked) || (isCheck1Checked && isCheck3Checked) && !(    isCheck1Checked && isCheck2Checked && isCheck3Checked)) {
+      text = "The height is 2000px";
+      c = 200;
+    } else {
+      text = "The height is 1500px";
+      c = 50;
+    }
+  });
+});
+
+
 </script>
-<form id="regForm">
-<input type="radio" name="terms" id="terms1" value="Yes!" class="required" title="Must accept terms to continue" /> Yes
-<input type="radio" name="terms" id="terms2" value="No" class="required" title="Must accept terms to continue" /> No
-<input type = "submit" value = "a"/>
-</form>
