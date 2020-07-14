@@ -21,6 +21,10 @@ $pmac = strpos($mycomsys, $find_mac);
 // Get Physical Address  
 
 $macaddress=substr($mycomsys,($pmac+36),17);  
+
+echo $macaddress;
+echo "<br>";
+echo $pmac;
 //Display Mac Address
 
 $macaddress = $_SERVER['REMOTE_ADDR'];   
