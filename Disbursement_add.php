@@ -67,8 +67,15 @@ p.mix {border-style: dotted dashed solid double;} */
                                 <tbody id="result">
                                 </tbody>
                                 </table>
-                                
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                                <script>
+                                $(document).ready(function(){
+                                $("#result").click(function(){
+                                $("#main").hide();
+                                });
+                                });
+                                </script>
+                               
                                 <script type="text/javascript">
                                 $(document).ready(function(){
                                 function load_data(query)
@@ -91,11 +98,13 @@ p.mix {border-style: dotted dashed solid double;} */
                                 }
                                 else
                                 {
-                                load_data();
                                 
+                                $("#main").show();
+                                load_data();
                                 document.getElementById('payee').value = "";
                                 document.getElementById('particular').value = "";
                                 document.getElementById("amount").value = "";
+                                document.getElementById("orsdate").value = "";
 
                                 }
                                 });
@@ -103,7 +112,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 function showRow(row)
                                 {
                                 var x=row.cells;
-                               
+                                document.getElementById("orsdate").value = x[3].innerHTML;
                                 document.getElementById("payee").value = x[4].innerHTML;
                                 document.getElementById("particular").value = x[5].innerHTML;
                                 document.getElementById("amount").value = x[6].innerHTML;
@@ -147,7 +156,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 <tr>
                                 <td class="col-md-3"><b>ORS Date.<span style = "color:red;">*</span></b></td>
                                 <td class="col-md-7">
-                                <input required type="text" class="form-control input" style="height: 35px;" name="orsdate" id="datepicker1" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
+                                <input readonly required type="text" class="form-control input" style="height: 35px;" name="orsdate" id="orsdate" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
                                 </td>
                                 </tr>
 
