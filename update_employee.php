@@ -105,6 +105,7 @@
       $suffix  = $row["SUFFIX"];  
       $status          = $row["CIVIL_STATUS"]; 
       $office_address = $row['REMARKS_M'];
+      $office_landline  = $row["STATUS_OF_APP"]; // eto 
       $office_contact = $row['LANDPHONE'];
       $permanent_address = $row['PERMANENT_ADDRESS'];
       $current_address = $row['CURRENT_ADDRESS'];
@@ -160,6 +161,7 @@
     $activated       = "Yes";       
     $cellphone       = $_POST["cellphone"];
     $office_address  = $_POST["office_address"];  //eto
+    $office_landline  = $_POST["office_landline"]; // eto 
     $office_contact  = $_POST["office_contact"]; // eto 
     $suffix          = $_POST["suffix"]; //eto      
     $status          = $_POST["status"];  // eto
@@ -229,10 +231,10 @@
 
       }
     }
-
+    
     $query = mysqli_query($conn,"UPDATE $sqltable SET LAST_M='$lname', FIRST_M='$fname', MIDDLE_M='$mname', BIRTH_D='$birthdate', SEX_C='$gender',
       REGION_C='$region', PROVINCE_C='$province', CITYMUN_C='$municipality',
-      POSITION_C='$position',PERMANENT_ADDRESS = '$permanent_address', CURRENT_ADDRESS = '$current_address'
+      POSITION_C='$position',PERMANENT_ADDRESS = '$permanent_address', CURRENT_ADDRESS = '$current_address',STATUS_OF_APP = '$office_landline',
       MOBILEPHONE='$cellphone', EMAIL='$email',
       ALTER_EMAIL='$alter_email',  LANDPHONE='$contact', OFFICE_STATION='$office', DIVISION_C='$division', ACTIVATED='".$e_stats."', UNAME='$username',DESIGNATION='$designation',SUFFIX='$suffix',LANDPHONE='$office_contact',REMARKS_M='$office_address' WHERE EMP_N = '$cid' LIMIT 1");
 
@@ -249,7 +251,7 @@
       $insert_deduct = mysqli_query($conn,"
         UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$EMP_NUMBER1'  ");
     }else{
-      $phil = $salaryS *.03 / 2;
+      $phil = $salaryS *0.03 / 2;
       $insert_deduct = mysqli_query($conn,"
         UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$EMP_NUMBER1'  ");
     }
@@ -682,23 +684,23 @@
   </div>
   <div class="form-group">
     <label>Office Landline</label>
-    <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="">
+    <input value="<?php echo $office_landline;?>" type="text" name="office_landline" class="form-control cp" placeholder="">
   </div>
   <div class="form-group">
     <label>Office Mobile</label>
     <input value="<?php echo $office_contact;?>" type="text" name="office_contact" class="form-control cp" placeholder="">
   </div>
- 
 
-<div class="form-group">
-  <label>Office Email Address <font style="color:red;">*</font></label>
-  <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
-</div>
 
-<div class="form-group">
-  <label>Office Address</label>
-  <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
-</div>
+  <div class="form-group">
+    <label>Office Email Address <font style="color:red;">*</font></label>
+    <input  value="<?php echo $alter_email;?>" type="text" name="alter_email" class="form-control" >
+  </div>
+
+  <div class="form-group">
+    <label>Office Address</label>
+    <input value="<?php echo $office_address;?>" type="text" name="office_address" class="form-control" >
+  </div>
 
 
 
@@ -706,12 +708,12 @@
 
 <div class="col-md-3">
   <div class="form-group">
-  <label>Salary Grade &nbsp<b style="color:red;">*</b></label>
-  <select required class="form-control select2" style="width: 100%;" name="salary" id="salary" >
-    <option value="<?php echo $salary;?>"><?php echo $salary;?></option>
-    <?php echo fill_unit_select_box($connect);?>
-  </select>
-</div>
+    <label>Salary Grade &nbsp<b style="color:red;">*</b></label>
+    <select required class="form-control select2" style="width: 100%;" name="salary" id="salary" >
+      <option value="<?php echo $salary;?>"><?php echo $salary;?></option>
+      <?php echo fill_unit_select_box($connect);?>
+    </select>
+  </div>
 
   <div class="form-group">
     <label>Step &nbsp<b style="color:red;">*</b></label>

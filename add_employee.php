@@ -130,6 +130,7 @@
     $password        = $_POST["password"];  
     $office_address  = $_POST["office_address"];  
     $office_contact  = $_POST["office_contact"];  
+    $office_landline  = $_POST["office_landline"];  
     $repassword      = $_POST["repassword"];  
     $e_stats         = $_POST["e_stats"];  
     $cluster         = "";       
@@ -159,8 +160,8 @@
     $sqlUsername =  "SELECT * FROM tblemployeeinfo WHERE md5(UNAME) = '".md5($username)."' LIMIT 1";    
     $sqlEMP_N =  "SELECT EMP_NUMBER FROM tblemployeeinfo WHERE EMP_NUMBER = '".$employee_number."' LIMIT 1";    
     if (!ifRecordExist($sqlEMP_N)){
-      $sql_insert_query     = mysqli_query($conn,"INSERT INTO tblemployeeinfo (EMP_NUMBER,LAST_M, FIRST_M,MIDDLE_M, BIRTH_D, SEX_C,REGION_C, PROVINCE_C, CITYMUN_C,POSITION_C,DESIGNATION,MOBILEPHONE, EMAIL, ALTER_EMAIL,UNAME, DATE_CREATED,LANDPHONE, OFFICE_STATION, DIVISION_C, PROFILE,SUFFIX,CIVIL_STATUS,ACTIVATED,REMARKS_M,CURRENT_ADDRESS,PERMANENT_ADDRESS)
-        VALUES ('$employee_number','$lname', '$fname', '$mname', '$birthdate', '$gender', '$region', '$province', '$municipality', '$position', '$designation', '$cellphone', '$email', '$alter_email','$username', '$date_created', '$office_contact', '$office', '$division','$target_file','$suffix','$status','$e_stats','$office_address','$current_address','$permanent_address')");
+      $sql_insert_query     = mysqli_query($conn,"INSERT INTO tblemployeeinfo (EMP_NUMBER,LAST_M, FIRST_M,MIDDLE_M, BIRTH_D, SEX_C,REGION_C, PROVINCE_C, CITYMUN_C,POSITION_C,DESIGNATION,MOBILEPHONE, EMAIL, ALTER_EMAIL,UNAME, DATE_CREATED,LANDPHONE, OFFICE_STATION, DIVISION_C, PROFILE,SUFFIX,CIVIL_STATUS,ACTIVATED,REMARKS_M,CURRENT_ADDRESS,PERMANENT_ADDRESS,STATUS_OF_APP)
+        VALUES ('$employee_number','$lname', '$fname', '$mname', '$birthdate', '$gender', '$region', '$province', '$municipality', '$position', '$designation', '$cellphone', '$email', '$alter_email','$username', '$date_created', '$office_contact', '$office', '$division','$target_file','$suffix','$status','$e_stats','$office_address','$current_address','$permanent_address', '$office_landline')");
 
       if ($e_stats == 'Yes') {
         if ($province == '') {
@@ -177,10 +178,10 @@
           $save_salary = $salaryS *.09;
           if ($salaryS > 59999) {
             $phil = 900;
-            $insert_deduct = mysqli_query($conn,"INSERT INTO tbl_deductions(emp_no,monthly_salary,rlip,pera,philhealth) VALUES('$emp_no','$salaryS','$save_salary',2000,'$phil')");
+            $insert_deduct = mysqli_query($conn,"INSERT INTO tbl_deductions(emp_no,monthly_salary,rlip,pera,philhealth) VALUES('$employee_number','$salaryS','$save_salary',2000,'$phil')");
           }else{
             $phil = $salaryS *.03 / 2;
-            $insert_deduct = mysqli_query($conn,"INSERT INTO tbl_deductions(emp_no,monthly_salary,rlip,pera,philhealth) VALUES('$emp_no','$salaryS','$save_salary',2000,'$phil')");
+            $insert_deduct = mysqli_query($conn,"INSERT INTO tbl_deductions(emp_no,monthly_salary,rlip,pera,philhealth) VALUES('$employee_number','$salaryS','$save_salary',2000,'$phil')");
           }
         }
       }
@@ -377,7 +378,7 @@
 
         <div class="form-group">
           <label>Office Station<font style="color:red;">*</font></label>
-          <select required  class="form-control mySelect2" name="office">
+          <select required id="mySelect2" class="form-control mySelect2" name="office">
             <option disabled selected></option>
             <option value="1">Regional Office</option>
             <option value="2">Provincial/HUC Office</option>
@@ -477,7 +478,7 @@
 
   <div class="form-group">
     <label>Office Landline</label>
-    <input value="<?php echo $office_mobile;?>" type="text" name="office_contact" class="form-control cp" placeholder="">
+    <input value="<?php echo $office_landline;?>" type="text" name="office_landline" class="form-control cp" placeholder="">
   </div>
 
   <div class="form-group">
