@@ -226,7 +226,7 @@ if (isset($_POST['submit'])) {
               <td><input hidden type="text" name="abc[]" value="<?php echo $abc ?>"><?php echo $abc?></td>
               <td><input hidden type="text" name="description[]" value="<?php echo $description ?>"><?php echo $description?></td>
               <td>
-               <?php echo '<a href="ViewEditPR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?>
+               <?php echo '<a href="ViewEditPR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'&items='.$items.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?>
 
                <?php echo '<a href="deletePR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.' "><i style="font-size:24px" class="fa fa-trash-o"></i></a>'?>
              </td>
