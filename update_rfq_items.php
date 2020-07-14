@@ -132,6 +132,12 @@ if ($unit == "21") {
 if ($unit == "22") {
   $unit = "pax";
 } 
+if ($unit == "23") {
+  $unit = "liters";
+} 
+if ($unit == "24") {
+  $unit = "meters";
+} 
 if (isset($_POST['submit'])) {
 
   $qty1 = $_POST['qty'];
@@ -206,6 +212,12 @@ if (isset($_POST['submit'])) {
 
   if ($unit1 == "pax"){
     $uni1t = 22;
+  }
+  if ($unit == "liters"){
+    $unit = 23;
+  }
+  if ($unit == "meters"){
+    $unit = 24;
   }
 
 
