@@ -73,7 +73,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             </td>
                             </tr>
 
-                            <tr>
+                           <!--  <tr>
                             <td class="col-md-2"><b>DV Type<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
                             <select required class="form-control select 2 input" style="width: 100%;" name="dvtype" id="dvtype" >
@@ -84,7 +84,7 @@ p.mix {border-style: dotted dashed solid double;} */
 
                             </select>
                             </td>
-                            </tr>
+                            </tr> -->
 
                             </table>
 
@@ -110,68 +110,68 @@ p.mix {border-style: dotted dashed solid double;} */
                                 </td>
                                 </tr>
 
-
+                               
                                 </table>
 
                         </div>
 
                 </div>
 
+               
+
                 <div class="row">
                 <!-- Row 2 -->
-                    <div class="col-md-12">
-                                <!-- Partition II -->
-                            <table class="table"> 
+                   
+                        <div class="col-md-12">
 
+                            <table class="table">
 
                             <tr>
-                            <td colspan="2"><b>Payee<span style = "color:red;">*</span></b>
-                            <br>
-                            
-                            <input required value=""  class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="Enter ORS No." autocomplete="off">
-                        
+                            <td class="col-md-1"><b>PAYEE<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-7">
+                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="payee" id="payee" value = "" placeholder="Payee"  autocomplete="off">
                             </td>
-                            
                             </tr>
 
                             <tr>
-                            <td colspan="2"><b>Particular<span style = "color:red;">*</span></b>
-                            <br>
-                            
-                            <input required value=""  class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="Enter ORS No." autocomplete="off">
+                            <td class="col-md-1"><b>PARTICULARS<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-7">
+                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="particular" id="particular" value = "" placeholder="Particulars"  autocomplete="off">
                             </td>
-                            
                             </tr>
 
-                            
+                            <tr>
+                            <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-7">
+                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="amount" id="amount" value = "" placeholder="Amount"  autocomplete="off">
+                            </td>
+                            </tr>
+
 
                             </table>
 
-                            <br>
-                            <br>
-
+                        </div>
 
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="col-md-12">
                                         <!-- Table of Uacs -->
-                                        <table id="" class="table table-bordered " style="background-color: #A9A9A9; width:100%; text-align:left">
+                                        <table id="" class="table table-bordered " style="background-color: white; width:100%; text-align:left">
                                         <thead>
-                                        <tr style="background-color: #A9A9A9; text-align:left" class="tb">
+                                        <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
                                         <th width = ''>FUND SOURCE</th>
                                         <th width = ''>PAP  </th>
                                         <th width = ''>EXPENSE CLASS </th>
-
+                                        <th width = ''>AMOUNT </th>
 
                                         </tr>
                                         </thead>
 
-
-
                                         <tr align = ''>
 
 
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -184,96 +184,23 @@ p.mix {border-style: dotted dashed solid double;} */
 
                                 </div>
 
+                                
 
-                            </div>
-                            
-                            <br>
-                            <br>
-
-                            <div class="col-md-3">
-                            <tr>
-                            <td ><b>Net Amount<span style = "color:red;">*</span></b>
-                            <br>
-                            
-                            <input required value=""  class="form-control input" type="number" step="any" class="" style="width: 110%; height: 35px;" id="ors" name="ors" placeholder="Enter Amount" autocomplete="off">
-                        
-                            </td>
-                            
-                            </tr>
 
                             </div>
 
-                            <div class="col-md-3">
-                            <tr>
-                            <td ><b>Charge To<span style = "color:red;">*</span></b>
+
                             <br>
-                            <select required class="form-control select 2 input" style="width: 110%;" name="dvtype" id="dvtype" >
 
-                            <option value="">Select NTA/NCA</option>
-                            <option value="NCA">NCA</option>
-                            <option value="NTA">NCA</option>
 
-                            </select>
-                            
-                        
-                            </td>
-                            
-                            </tr>
-                            </div>
-
-                            <div class="col-md-3">
-                            <tr>
-                            <td ><b>NCA/NTA No.<span style = "color:red;">*</span></b>
-                            <br>
-                            
-                            <input required value=""  class="form-control input" type="text" class="" style="width: 110%; height: 35px;" id="nta" name="nta" placeholder="Enter NCA/NTA No." autocomplete="off">
-                        
-                            </td>
-                            
-                            </tr>
-                            </div>
-
-                            <div class="col-md-3">
-                            <tr>
-                            <td ><b>NCA/NTA Balance<span style = "color:red;">*</span></b>
-                            <br>
-                            
-                            <input readonly  value=""  class="form-control input" type="text" class="" style="width: 105%; height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off">
-                        
-                            </td>
-                            
-                            </tr>
-                            </div>
 
                             
 
                         </div>
                        
                 
-                </div>
-
                 
 
-                <div class="row">
-                <!-- Row 3 -->
-                    <div class="col-md-12">
-                                <!-- Partition II -->
-                            <table class="table"> 
-
-
-
-                            
-
-                            </table>
-                                
-
-                        </div>
-                
-                </div>
-                
-
-               
-            
          <!-- DV-->
          
 
@@ -283,24 +210,90 @@ p.mix {border-style: dotted dashed solid double;} */
         
         <div class="col-md-6 ">
         <!-- LD DAP -->
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br><br>
-        <br>
-        <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table"> 
+                        <tr>
+                        <td class="col-md-1"><b>TAX<span style = "color:red;"></span></b></td>
+                        <td class="col-md-7">
+                        <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="tax" name="tax" placeholder="Tax" autocomplete="off">
+                        </td>
+                        </tr>
+
+                        <tr>
+                        <td class="col-md-1"><b>GSIS<span style = "color:red;"></span></b></td>
+                        <td class="col-md-7">
+                        <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="gsis" name="gsis" placeholder="GSIS" autocomplete="off">
+                        </td>
+                        </tr>
+
+                        <tr>
+                        <td class="col-md-1"><b>PAG IBIG<span style = "color:red;"></span></b></td>
+                        <td class="col-md-7">
+                        <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="pagibig" name="pagibig" placeholder="Pag Ibig" autocomplete="off">
+                        </td>
+                        </tr>
+
+                        <tr>
+                        <td class="col-md-1"><b>PHILHEALTH<span style = "color:red;"></span></b></td>
+                        <td class="col-md-7">
+                        <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="philhealth" name="philhealth" placeholder="Philhealth" autocomplete="off">
+                        </td>
+                        </tr>
+
+                        <tr>
+                        <td class="col-md-1"><b>OTHER PAYABLES<span style = "color:red;"></span></b></td>
+                        <td class="col-md-7">
+                        <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="other" name="other" placeholder="Other Payables" autocomplete="off">
+                        </td>
+                        </tr>
+
+
+
+                    </table>
+
+
+                    <div class="col-md-4">
+
+                        <tr>
+                        <td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td>
+                        <td class="col-md-7">
+                        <select class="form-control select" style="width: 100%; height: 40px;" name="charge" id="charge" required >
+                        <option value = "">Select NCA/NTA</option>
+                        <option value = "NCA">NCA</option>
+                        <option value = "NTA">NTA</option>
+                        </select>
+                        </td>
+                        </tr>
+                 
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <tr>
+                        <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td>
+                        <td class="col-md-7">
+                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="nta" name="nta" placeholder="NCA/NTA" autocomplete="off">
+                        </td>
+                        </tr>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <tr>
+                        <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td>
+                        <td class="col-md-7">
+                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off">
+                        </td>
+                        </tr>
+
+                    </div>
+
+                </div>
+
+            </div>
         
         <!-- LD DAP -->
 
