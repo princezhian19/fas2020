@@ -214,35 +214,35 @@ p.mix {border-style: dotted dashed solid double;} */
                 <div class="col-md-12">
                     <table class="table"> 
                         <tr>
-                        <td class="col-md-1"><b>TAX<span style = "color:red;">*</span></b></td>
+                        <td class="col-md-1"><b>TAX<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
                         <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="tax" name="tax" placeholder="Tax" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
-                        <td class="col-md-1"><b>GSIS<span style = "color:red;">*</span></b></td>
+                        <td class="col-md-1"><b>GSIS<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
                         <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="gsis" name="gsis" placeholder="GSIS" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
-                        <td class="col-md-1"><b>PAG IBIG<span style = "color:red;">*</span></b></td>
+                        <td class="col-md-1"><b>PAG IBIG<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
                         <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="pagibig" name="pagibig" placeholder="Pag Ibig" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
-                        <td class="col-md-1"><b>PHILHEALTH<span style = "color:red;">*</span></b></td>
+                        <td class="col-md-1"><b>PHILHEALTH<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
                         <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="philhealth" name="philhealth" placeholder="Philhealth" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
-                        <td class="col-md-1"><b>OTHER PAYABLES<span style = "color:red;">*</span></b></td>
+                        <td class="col-md-1"><b>OTHER PAYABLES<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
                         <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="other" name="other" placeholder="Other Payables" autocomplete="off">
                         </td>
