@@ -49,7 +49,7 @@ p.mix {border-style: dotted dashed solid double;} */
         <div class="class"  >
             <form method="POST" action='' enctype="multipart/form-data" >
 
-        <div class="col-md-6" >
+        <div class="col-md-6 well" >
          <!-- DV-->
                 <div class="row" >
                 <!-- Row 1 -->
@@ -63,8 +63,56 @@ p.mix {border-style: dotted dashed solid double;} */
                             <td class="col-md-2"><b>ORS No.<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
                             <input required value=""  class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="Enter ORS No." autocomplete="off">
+                                <table id="main">
+                                <tbody id="result">
+                                </tbody>
+                                </table>
+                                
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                                <script type="text/javascript">
+                                $(document).ready(function(){
+                                function load_data(query)
+                                {
+                                $.ajax({
+                                url:"@disbursementvalue.php",
+                                method:"POST",
+                                data:{query:query},
+                                success:function(data)
+                                {
+                                $('#result').html(data);
+                                }
+                                });
+                                }
+                                $('#ors').keyup(function(){
+                                var search = $(this).val();
+                                if(search != '')
+                                {
+                                load_data(search);
+                                }
+                                else
+                                {
+                                load_data();
+                                
+                                document.getElementById('payee').value = "";
+                                document.getElementById('particular').value = "";
+                                document.getElementById("amount").value = "";
+
+                                }
+                                });
+                                });
+                                function showRow(row)
+                                {
+                                var x=row.cells;
+                               
+                                document.getElementById("payee").value = x[4].innerHTML;
+                                document.getElementById("particular").value = x[5].innerHTML;
+                                document.getElementById("amount").value = x[6].innerHTML;
+                                }
+                                </script>
                             </td>
                             </tr>
+
+                            
 
                             <tr>
                             <td class="col-md-2"><b>DV No.<span style = "color:red;">*</span></b></td>
@@ -102,6 +150,8 @@ p.mix {border-style: dotted dashed solid double;} */
                                 <input required type="text" class="form-control input" style="height: 35px;" name="orsdate" id="datepicker1" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
                                 </td>
                                 </tr>
+
+                                
 
                                 <tr>
                                 <td class="col-md-3"><b>DV Date.<span style = "color:red;">*</span></b></td>
@@ -212,7 +262,16 @@ p.mix {border-style: dotted dashed solid double;} */
         <!-- LD DAP -->
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table"> 
+                        
+                <div class="well ">
+                <div class="class-bordered">
+                <b><font style="font-size:25px; color:firebrick">DEDUCTIONS</font></b>  
+                </div>
+                
+             
+               
+                            
+                <table class="table"> 
                         <tr>
                         <td class="col-md-1"><b>TAX<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
@@ -248,9 +307,11 @@ p.mix {border-style: dotted dashed solid double;} */
                         </td>
                         </tr>
 
-
-
                     </table>
+
+ 
+                </div>
+                    
 
 
                     <div class="col-md-4">
@@ -274,7 +335,7 @@ p.mix {border-style: dotted dashed solid double;} */
                         <tr>
                         <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td>
                         <td class="col-md-7">
-                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="nta" name="nta" placeholder="NCA/NTA" autocomplete="off">
+                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="nta" name="nta" placeholder="NCA/NTA NO." autocomplete="off">
                         </td>
                         </tr>
 
@@ -312,8 +373,8 @@ p.mix {border-style: dotted dashed solid double;} */
 </div>
 <br>
 
-<button type="submit" name="cancel" style="margin-left: 10px;" class="btn btn-primary pull-left">Save Info</button>
-<button type="submit" name="cancel" style="margin-right: 10px;" class="btn btn-success pull-right">Disburse Voucher</button>
+<button type="submit" name="cancel" style="margin-left: 10px;" class="btn btn-primary pull-left">Save</button>
+<!-- <button type="submit" name="cancel" style="margin-right: 10px;" class="btn btn-success pull-right">Disburse Voucher</button> -->
 <br>
 <br>
 <br>
