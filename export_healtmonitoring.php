@@ -34,6 +34,7 @@ $styleArray = array(
     )
   )
 );
+
 $fontStyle = [
   'font' => [
       'size' => 8
@@ -41,20 +42,49 @@ $fontStyle = [
 ];
 
 
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-// $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-// $month = $_GET['month'];
-// $year = $_GET['year'];
 
-// $sql_q10 = mysqli_query($conn, "SELECT  MONTHNAME(`REQ_DATE`) AS 'month',`REQ_DATE`, COUNT(`REQ_DATE`) as 'count' FROM `tbltechnical_assistance` WHERE MONTH(`REQ_DATE`) = $month and YEAR(`REQ_DATE`) = $year GROUP BY `REQ_DATE` ORDER BY `REQ_DATE`");
-// if (mysqli_num_rows($sql_q10)>0) 
-// {
-//     $row = 18;
-//     $no = 1;
-//     $count = (mysqli_num_rows($sql_q10));
+$sql_q10 = mysqli_query($conn, "SELECT * from `tblhealth_monitoring` 
+INNER JOIN  tblemployeeinfo ON tblhealth_monitoring.UNAME = tblemployeeinfo.UNAME 
+INNER JOIN tblpersonneldivision on tblemployeeinfo.DIVISION_C = tblpersonneldivision.DIVISION_N
+LEFT JOIN tbldilgposition d on d.POSITION_ID = tblemployeeinfo.POSITION_C
+LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployeeinfo.DESIGNATION
+WHERE 
+DIVISION_M LIKE '%".$_GET['division']."%' and
+`DATE` LIKE '%".$_GET['datee']."%' ");
+
+if (mysqli_num_rows($sql_q10)>0) 
+{
+    $row = 9;
+    // $no = 1;
+    // $count = (mysqli_num_rows($sql_q10));
 //    $total = ($row + $count)+1;
-//     while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
-//     {
+    while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
+    {
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$excelrow['ID']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row,$excelrow['FIRST_M'].''.$excelrow['LAST_M']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C'.$row,$excelrow['BODY_TEMPERATURE']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$row,$excelrow['CURRENT_ADDRESS']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row,$excelrow['OFFICE_STATION']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row,$excelrow['POSITION_M']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row,$excelrow['DESIGNATION_M']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row,$excelrow['DIVISION_M']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row,$excelrow['EMAIL']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row,$excelrow['WORK_ARRANGEMENT']);
+                $objPHPExcel->getActiveSheet()->getStyle('B'.$row.':B'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
+                $objPHPExcel->getActiveSheet()->getStyle('D'.$row.':D'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
+                $objPHPExcel->getActiveSheet()->getStyle('F'.$row.':F'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
+                $objPHPExcel->getActiveSheet()->getStyle('G'.$row.':G'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
+                $objPHPExcel->getActiveSheet()->getStyle('H'.$row.':H'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
+                $objPHPExcel->getActiveSheet()->getStyle('I'.$row.':I'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
+
+
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':J'.$row)->applyFromArray($styleArray);
+
+                $row++;
+    }
+}
       
 //         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$excelrow['REQ_DATE']);
 //         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row,$excelrow['count']);

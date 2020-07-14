@@ -226,6 +226,7 @@ $last_period = '';
         '".$_POST['ans5_details']."',
         '1'
         )";
+        
 
        
        if (mysqli_query($conn, $insert)) {

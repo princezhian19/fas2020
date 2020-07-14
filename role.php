@@ -1,11 +1,28 @@
-<!-- <?php
+<?php
 
-  include('Geocoding.php');
-  use myPHPnotes\Geocoding;
-  $geo = new Geocoding("AIzaSyDhwrxbj4AWSCel1yCqpujxUxr72g4WzgY");
-  $address = $geo->getAddress(48.858195,2.294432);
-  var_dump($address);
-?> -->
+function grabIpInfo($ip)
+{
+
+  $curl = curl_init();
+
+  curl_setopt($curl, CURLOPT_URL, "https://api.ipgeolocationapi.com/geolocate/" . $ip);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+
+  $returnData = curl_exec($curl);
+
+  curl_close($curl);
+
+  return $returnData;
+
+}
+
+
+$ipInfo = grabIpInfo($_SERVER["REMOTE_ADDR"]);
+$ipJsonInfo = json_decode($ipInfo);
+
+echo $ipJsonInfo->name;
+
+?>
 
  <?php 
  $id = $_GET['id'];

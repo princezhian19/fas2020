@@ -259,6 +259,9 @@ if (isset($_POST['submit'])) {
                       <?php if ($type == "5"): ?>
                           <td><?php echo "Other Services";?></td>
                       <?php endif?>
+                      <?php if ($type == "6"): ?>
+                          <td><?php echo "Reimbursement and Petty Cash";?></td>
+                      <?php endif?>
                   </tr>
                   <tr>
                     <th class="pull-left">Purpose:</th>
