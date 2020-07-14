@@ -26,15 +26,21 @@ $results = $conn->prepare("SELECT * FROM saroob  WHERE ors LIKE '%".$q."%' LIMIT
 $results->execute();
 while($row = $results->fetch(PDO::FETCH_ASSOC))
 {
+
+    $datereleased = $row['datereleased'];
+    $dr = date('m/d/Y', strtotime($datereleased));
+
+    $amount = number_format($row['amount'],2);
+
      echo '<tr onclick="javascript:showRow(this);">' .
       
     '<td style="text-align: center;" >' . $row['ors'] . '</td>' . 
     '<td hidden>' . $row['saronumber'] .'</td>' . 
     '<td hidden>' . $row['ppa'] . '</td>' . 
-    '<td hidden>' . $row['uacs'] . '</td>' . 
+    '<td hidden>' . $dr . '</td>' . 
     '<td hidden>' . $row['payee'] . '</td>' . 
     '<td hidden>' . $row['particular'] . '</td>' .
-	'<td hidden>' . $row['amount'] . '</td>' .
+	'<td hidden>' . $amount . '</td>' .
     '</tr>';
     
     
