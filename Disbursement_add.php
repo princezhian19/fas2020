@@ -320,11 +320,18 @@ p.mix {border-style: dotted dashed solid double;} */
 
  
                 </div>
+                <button class="add_form_field pull-right btn btn-info btn-xs">Add NTA/NCA &nbsp; 
+                <span style="font-size:16px; font-weight:bold;">+ </span>
+              </button>
+              <br>
+              <br>
+                 <div class="container1">
+
                     
-
-
                     <div class="col-md-4">
 
+
+                        
                         <tr>
                         <td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td>
                         <td class="col-md-7">
@@ -360,6 +367,8 @@ p.mix {border-style: dotted dashed solid double;} */
                         </tr>
 
                     </div>
+
+                </div>
 
                 </div>
 
@@ -474,6 +483,42 @@ p.mix {border-style: dotted dashed solid double;} */
       showInputs: false
     })
   })
+</script>
+
+
+<script>
+  $(document).ready(function() {
+    var max_fields = 10;
+    var wrapper = $(".container1");
+    var add_button = $(".add_form_field");
+
+    var x = 1;
+    $(add_button).click(function(e) {
+      e.preventDefault();
+      if (x < max_fields) {
+        x++;
+            $(wrapper).append('<div ><br><br><br><br><a href="#" styl="margin-right:50px" class="delete btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i></a><br><br><div class="col-md-4"><tr><td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td><td class="col-md-7"><select class="form-control select" style="width: 100%; height: 40px;" name="charge" id="charge" required > <option value = "">Select NCA/NTA</option> <option value = "NCA">NCA</option> <option value = "NTA">NTA</option> </select> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="nta" name="nta" placeholder="NCA/NTA NO." autocomplete="off"> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off"> </td> </tr> </div></div>'); //add input box
+          } else {
+            alert('You Reached the limits')
+          }
+        });
+
+    $(wrapper).on("click", ".delete", function(e) {
+        if(confirm("Are you sure you want to delete this NCA/NTA?")){
+            
+        e.preventDefault();
+        $(this).parent('div').remove();
+        x--;
+        }
+        else{
+
+
+        }
+        
+
+        
+    })
+  });
 </script>
 
 
