@@ -40,6 +40,7 @@ $styleContent = array('font'  => array('size'  => 12, 'name'  => 'Arial'),'align
 $styleContent2 = array('font'  => array('size'  => 12, 'name'  => 'Arial','bold'  => true),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
 $styleContent3 = array('font'  => array('size'  => 12, 'name'  => 'Arial','bold'  => false),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
+$styleContent4 = array('font'  => array('size'  => 14, 'name'  => 'Arial','bold'  => false),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
 
 $getID="";
@@ -58,6 +59,8 @@ $division = $row['division'];
 $ccode = $row['ccode'];
 $ris_no = $row['ris_no'];
 $rfq_id = $row['rfq_id'];
+$pr_no = $row['pr_no'];
+$po_no = $row['po_no'];
 
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B8',$division);
@@ -66,7 +69,24 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('H8',$ccode);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('G9',$ris_no);
 
 // $sql_items = mysqli_query($conn, "SELECT unit_id,qty_original,procurement,abc,description,remarks from iar_stock LEFT JOIN ris_stock on ris_stock.rfq_id = iar_stock.rfq_id where ris_stock.rfq_id = '$rfq_id'");....
-$sql_items = mysqli_query($conn, "SELECT app.sn,ris_stock.procurement,description,ris_stock.unit_id,ris_stock.qty,qty_original,ris.remarks FROM `ris_stock` LEFT JOIN ris on ris.ris_no = ris_stock.ris_no left join app on app.id = ris_stock.app_id WHERE ris_stock.ris_no  LIKE '$ris_no'"); 
+if ($pr_no != NULL) {
+  $sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit as unit_id,b.qty FROM pr_items b LEFT JOIN app a on a.id = b.items WHERE b.pr_no = '$pr_no' ");
+}else{
+  $selectIDpo = mysqli_query($conn,"SELECT id FROM po WHERE po_no = '$po_no'");
+  $rowP = mysqli_fetch_array($selectIDpo);
+  $po_id = $rowP['id'];
+
+  $select_rfq = mysqli_query($conn,"SELECT rfq_id FROM selected_quote WHERE po_id = $po_id");
+  $rowR = mysqli_fetch_array($select_rfq);
+  $rfq_id = $rowR['rfq_id'];
+
+  $selectPR = mysqli_query($conn,"SELECT pr_no FROM rfq WHERE id = $rfq_id ");
+  $rowPR = mysqli_fetch_array($selectPR);
+  $pr_no = $rowPR['pr_no'];
+  
+  $sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit as unit_id,b.qty FROM pr_items b LEFT JOIN app a on a.id = b.items WHERE b.pr_no = '$pr_no' ");
+
+}
 
 
 
@@ -163,6 +183,12 @@ if (mysqli_num_rows($sql_items)>0) {
 
 
 
+    $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleContent4);
+    $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleContent4);
+    $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleContent4);
+    $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleContent4);
+    $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleContent4);
+    $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleContent4);
 
     // $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$excelrow['procurement']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$excelrow['procurement']." ".$excelrow['description']);
@@ -249,83 +275,83 @@ if (mysqli_num_rows($sql_items)>0) {
 }
 if (mysqli_num_rows($sql_items)<10) {
 
-   $counter++;
+ $counter++;
 
-   
  
-    $z=15;
-    for($i=0; $i<$z; $i++){
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,'');
-      $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,'');
+ 
+ $z=15;
+ for($i=0; $i<$z; $i++){
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,'');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,'');
 
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLeft);
-      $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleRight);
 
-      $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleLeft);
     // $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleRight);
     // $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($stylebottom);
 
-      $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleLeft);
-      $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleRight);
 
 
 
-      $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleLeft);
-      $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleRight);
 
 
 
-      $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleLeft);
-      $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleRight);
 
-      $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleLeft);
-      $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleRight);
 
-      $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleLeft);
-      $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleRight);
 
 
-      $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
-      $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleTop);
-      $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLeft);
-      $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleRight);
-      $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
-      $row++;
-      $rowA++;
-      $rowB++;
-      $rowC++;
-      $rowD++;
-      $rowE++;
-      $rowF++;
-      $rowG++;
-      $rowH++;
-      $rowI++;
-      $rowJ++;
-      $rowK++;
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleTop);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLeft);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleRight);
+  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($stylebottom);
+  $row++;
+  $rowA++;
+  $rowB++;
+  $rowC++;
+  $rowD++;
+  $rowE++;
+  $rowF++;
+  $rowG++;
+  $rowH++;
+  $rowI++;
+  $rowJ++;
+  $rowK++;
 
-    
+  
 
-  }
+}
 
 
 

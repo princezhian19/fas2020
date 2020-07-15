@@ -389,24 +389,24 @@ function checkAvailability() {
 
         </div>
       </div>
-      <div style="font-size: 13px;" class="well" hidden>
+      <div style="font-size: 13px;" class="well" >
         <label>Note(s)</label>
         <br>
         <?php
 
-        $selectNotes = mysqli_query($conn,"SELECT  * FROM notes");
+        $selectNotes = mysqli_query($conn,"SELECT  * FROM new_rfq_notes");
 
         while ($row = mysqli_fetch_assoc($selectNotes)) {
 
           $note_id = $row["id"];
           $note_desc = $row["note"];
           ?>
-          <input type="checkbox" checked name="note_id[]" value="<?php echo $note_id; ?>">&nbsp<b>**<?php echo $note_desc;?></b></input>
+          <input type="checkbox" name="note_id[]" value="<?php echo $note_id; ?>">&nbsp<b>**<?php echo $note_desc;?></b></input>
           <br>
 
         <?php } ?>
       </div>
-       <div style="font-size: 13px;" class="well" >
+       <!-- <div style="font-size: 13px;" class="well" >
         <input type="checkbox" id="select-all" onClick="toggle(this)" ><label>Note(s)</label>
         <br>
         <?php
@@ -422,7 +422,7 @@ function checkAvailability() {
           <br>
 
         <?php } ?>
-      </div>
+      </div> -->
       <!-- style="float: right;" -->
       <button type="submit" name="submit" class="btn btn-success"  onclick="return confirm('Are you sure you want to save now?');">Create</button>
     </form>
