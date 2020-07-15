@@ -21,6 +21,10 @@ $pmac = strpos($mycomsys, $find_mac);
 // Get Physical Address  
 
 $macaddress=substr($mycomsys,($pmac+36),17);  
+
+echo $macaddress;
+echo "<br>";
+echo $pmac;
 //Display Mac Address
 
 $macaddress = $_SERVER['REMOTE_ADDR'];   
@@ -198,6 +202,12 @@ if (isset($_POST['submit'])) {
   if ($unit == "pax"){
     $unit = 22;
   }
+  if ($unit == "liters"){
+    $unit = 23;
+  }
+  if ($unit == "meters"){
+    $unit = 24;
+  }
   
   $check = mysqli_query($conn,"SELECT pr_no FROM pr WHERE pr_no = '$pr_no1' ");
 
@@ -335,6 +345,12 @@ if (isset($_POST['add'])) {
 
   if ($unit == "pax"){
     $unit = 22;
+  }
+  if ($unit == "liters"){
+    $unit = 23;
+  }
+  if ($unit == "meters"){
+    $unit = 24;
   }
 
 
@@ -751,6 +767,12 @@ if (isset($_POST['add'])) {
                         if ($unit1 == "22") {
                           $unit1a = "pax";
                         }
+                        if ($unit == "23") {
+                          $unit = "liters";
+                        } 
+                        if ($unit == "24") {
+                          $unit = "meters";
+                        } 
                         ?>
                         
                         <td id="tdvalue" hidden><?php echo $pr_no?> </td>

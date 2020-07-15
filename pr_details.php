@@ -228,7 +228,7 @@ if (isset($_POST['submit'])) {
               <td>
                <?php echo '<a href="ViewEditPR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?>
 
-               <?php echo '<a href="deletePR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.' "><i style="font-size:24px" class="fa fa-trash-o"></i></a>'?>
+               <?php echo '<a href="deletePR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'&items='.$items.' "><i style="font-size:24px" class="fa fa-trash-o"></i></a>'?>
              </td>
            </tr>
          <?php } ?>
