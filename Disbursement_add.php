@@ -10,8 +10,23 @@ $DEPT_ID = $_SESSION['DEPT_ID'];
 $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 
+/* include('db.class.php'); // call db.class.php
+$mydb = new db(); // create a new object, class db()
+
+$conn = $mydb->connect(); */
+
 /* $datenow = date('Y-m-d');
 echo $datenow; */
+
+/* $results = $conn->prepare("SELECT sum(amount) as amount, payee, particular, datereleased,ors,saronumber,ppa  FROM saroob  WHERE ors LIKE '%0001%' ");
+
+$results->execute();
+while($row = $results->fetch(PDO::FETCH_ASSOC))
+{
+
+    echo $row['amount'];
+    
+} */ 
 ?>
 
 <style>
@@ -63,20 +78,32 @@ p.mix {border-style: dotted dashed solid double;} */
                             <td class="col-md-2"><b>ORS No.<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
                             <input required value=""  class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="Enter ORS No." autocomplete="off">
-                                <table id="main">
-                                <tbody id="result">
-                                </tbody>
-                                </table>
+                           
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                                <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+                                <div class="" id="main" style="text-align:center">
+                                <div id="result" style=" background-color:#A9A9A9; font-weight:bold; font-size:15px; margin-top:2px ">
+                                <div>
+                                </div>
                                 <script>
+                               
+
                                 $(document).ready(function(){
+
                                 $("#result").click(function(){
                                 $("#main").hide();
+                                // alert(filter_data);
+                               
+                                // alert(filter_data);
+
                                 });
                                 });
                                 </script>
                                
                                 <script type="text/javascript">
+                                //declare variable for filtering
+                                
+
                                 $(document).ready(function(){
                                 function load_data(query)
                                 {
@@ -95,12 +122,24 @@ p.mix {border-style: dotted dashed solid double;} */
                                 if(search != '')
                                 {
                                 load_data(search);
+
+                                filter_data = $(this).val();
+                                $('#example').DataTable().destroy();
+                                dataT();
+                                //  alert(filter_data);
+                                
+                                
                                 }
                                 else
                                 {
                                 
                                 $("#main").show();
                                 load_data();
+
+                                filter_data = '';
+                                $('#example').DataTable().destroy();
+                                dataE();
+
                                 document.getElementById('payee').value = "";
                                 document.getElementById('particular').value = "";
                                 document.getElementById("amount").value = "";
@@ -112,14 +151,87 @@ p.mix {border-style: dotted dashed solid double;} */
                                 function showRow(row)
                                 {
                                 var x=row.cells;
+                                document.getElementById("ors").value = x[0].innerHTML;
                                 document.getElementById("orsdate").value = x[3].innerHTML;
                                 document.getElementById("payee").value = x[4].innerHTML;
                                 document.getElementById("particular").value = x[5].innerHTML;
                                 document.getElementById("amount").value = x[6].innerHTML;
                                 }
+
+                                //function of table
+                                function dataT(){
+                                
+                                // var filter_data ='0001';
+                                
+                                var table = $('#example').DataTable( {
+                                'scrollX'     : true,
+                                'paging'      : true,
+                                'lengthChange': true,
+                                'searching'   : false,
+                                'ordering'    : true,
+                                'info'        : true,
+                                'autoWidth'   : true,   aLengthMenu: [ [10, 10, 20, -1], [10, 10, 20, "All"] ],
+                                "bPaginate": false,
+                                "bLengthChange": false,
+                                "bFilter": true,
+                                "bInfo": false,
+                                "bAutoWidth": false,  
+                                "processing": true,
+                                "serverSide": false,
+                                "ajax": {
+                                "url": "DATATABLE/Disbursement_data.php",
+                                "type": "POST",
+                                "data": {
+                                "filter_data": filter_data
+                                
+                                }}
+                                
+
+
+                                } );
+                                }
+
+                                /* Delete function */
+                                function dataE(){
+                                
+                                var filter_data ='';
+                                
+                                var table = $('#example').DataTable( {
+                                'scrollX'     : true,
+                                'paging'      : true,
+                                'lengthChange': true,
+                                'searching'   : false,
+                                'ordering'    : true,
+                                'info'        : true,
+                                'autoWidth'   : true,   aLengthMenu: [ [10, 10, 20, -1], [10, 10, 20, "All"] ],
+                                "bPaginate": false,
+                                "bLengthChange": false,
+                                "bFilter": true,
+                                "bInfo": false,
+                                "bAutoWidth": false,  
+                                "processing": true,
+                                "serverSide": false,
+                                "ajax": {
+                                "url": "DATATABLE/Disbursement_data_del.php",
+                                "type": "POST",
+                                "data": {
+                                "filter_data": filter_data
+                                
+                                }}
+                                
+
+
+                                } );
+                                }
+                                
+                                
+
+                                
                                 </script>
                             </td>
                             </tr>
+
+                            
 
                             
 
@@ -134,7 +246,6 @@ p.mix {border-style: dotted dashed solid double;} */
                             <td class="col-md-2"><b>DV Type<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
                             <select required class="form-control select 2 input" style="width: 100%;" name="dvtype" id="dvtype" >
-
                             <option value="">Select Type</option>
                             <option value="Fund Transfer">Fund Transfer</option>
                             <option value="Regular DV">Regular DV</option>
@@ -200,9 +311,23 @@ p.mix {border-style: dotted dashed solid double;} */
                             </tr>
 
                             <tr>
-                            <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-1"><b>OBLIGATED AMOUNT<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="amount" id="amount" value = "" placeholder="Amount"  autocomplete="off">
+                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="amount" id="amount" value = "" placeholder="Obligated Amount"  autocomplete="off">
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td class="col-md-1"><b>TOTAL DEDUCTIONS<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-7">
+                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="deductions" id="deductions" value = "" placeholder="Total Deductions"  autocomplete="off">
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td class="col-md-1"><b>NET AMOUNT<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-7">
+                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="net" id="net" value = "" placeholder="Net Amount"  autocomplete="off">
                             </td>
                             </tr>
 
@@ -216,24 +341,16 @@ p.mix {border-style: dotted dashed solid double;} */
                                 <div class="col-md-12">
                                     <div class="col-md-12">
                                         <!-- Table of Uacs -->
-                                        <table id="" class="table table-bordered " style="background-color: white; width:100%; text-align:left">
+                                        <table id="example" class="table table-bordered " style="background-color: white; width:100%; text-align:left">
                                         <thead>
                                         <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
-                                        <th width = ''>FUND SOURCE</th>
-                                        <th width = ''>PAP  </th>
-                                        <th width = ''>EXPENSE CLASS </th>
-                                        <th width = ''>AMOUNT </th>
+                                        <th width='500'>FUND SOURCE</th>
+                                        <th width='500'>PPA </th>
+                                        <th width='500'>UACS </th>
+                                        <th width='500'>AMOUNT </th>
 
-                                        </tr>
+                                        
                                         </thead>
-
-                                        <tr align = ''>
-
-
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
 
                                         </table>
 
@@ -406,7 +523,7 @@ p.mix {border-style: dotted dashed solid double;} */
 
 
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
   $(function () {
     //Initialize Select2 Elements
