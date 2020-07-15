@@ -27,6 +27,7 @@ $stylebottom = array(
   ),
 );
 $styleLabel = array('font'  => array('size'  => 11, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
+$styleLabel2 = array('font'  => array('size'  => 14, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 
 $Getid="";
 
@@ -104,6 +105,10 @@ $row6 = 26;
 if (mysqli_num_rows($sql_items)>0) {
 
   while($excelrow = mysqli_fetch_assoc($sql_items) ){
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLabel2);
+$objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleLabel2);
+$objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleLabel2);
+$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLabel2);
 
     $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['sn']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$excelrow['procurement'] ."\n".$excelrow['description']);

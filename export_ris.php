@@ -40,6 +40,7 @@ $styleContent = array('font'  => array('size'  => 12, 'name'  => 'Arial'),'align
 $styleContent2 = array('font'  => array('size'  => 12, 'name'  => 'Arial','bold'  => true),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
 $styleContent3 = array('font'  => array('size'  => 12, 'name'  => 'Arial','bold'  => false),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
+$styleContent4 = array('font'  => array('size'  => 14, 'name'  => 'Arial','bold'  => false),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
 
 $getID="";
@@ -163,6 +164,12 @@ if (mysqli_num_rows($sql_items)>0) {
 
 
 
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleContent4);
+$objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleContent4);
+$objPHPExcel->getActiveSheet()->getStyle('C'.$row)->applyFromArray($styleContent4);
+$objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleContent4);
+$objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleContent4);
+$objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleContent4);
 
     // $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$excelrow['procurement']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$excelrow['procurement']." ".$excelrow['description']);

@@ -32,7 +32,6 @@ $styleContent = array('font'  => array('size'  => 9, 'name'  => 'Cambria'),'alig
 $styleHeader = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 
 $styleLabel = array('font'  => array('size'  => 11, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
-$styleLabel2 = array('font'  => array('size'  => 14, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
@@ -86,15 +85,15 @@ while($rowA = mysqli_fetch_assoc($sql_items1) ){
 
 $sql_items = mysqli_query($conn, "SELECT pr.description,pr.id,item.item_unit_title,app.procurement,pr.unit,pr.qty,pr.abc FROM pr_items pr LEFT JOIN app on app.id = pr.items left join item_unit item on item.id = pr.unit WHERE pr_no = '$pr_no' ");
 $row        = 50;
-$rowssDD    = 68;
-$rowssE     = 69;
-$rowssE1    = 70;
-$rowssF     = 71;
-$rowssG     = 72;
-$rowssH     = 73;
-$rowssI     = 74;
-$rowssJ     = 75;
-$rowssK     = 76;
+$rowssDD    = 62;
+$rowssE     = 63;
+$rowssE1    = 64;
+$rowssF     = 65;
+$rowssG     = 66;
+$rowssH     = 67;
+$rowssI     = 68;
+$rowssJ     = 69;
+$rowssK     = 70;
 $countn     = 1;
 while($rowE = mysqli_fetch_assoc($sql_items) ){
 
@@ -107,11 +106,6 @@ while($rowE = mysqli_fetch_assoc($sql_items) ){
   $total_cost11 = number_format($total_cost,2);
 
   $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-  $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLabel2);
-  $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleLabel2);
-  $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleLabel2);
-  $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLabel2);
-  $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleLabel2);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$countn);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$unit);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$rowE['procurement'] ."\n".$rowE['description']);
@@ -204,12 +198,12 @@ $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$rowssDD)->applyFromArray
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 
 
-$select_notes = mysqli_query($conn,"SELECT n.note FROM rfq_notes rn LEFT JOIN new_rfq_notes n on n.id = rn.note_id WHERE rn.rfq_id = $id ");
+$select_notes = mysqli_query($conn,"SELECT n.note FROM rfq_notes rn LEFT JOIN notes n on n.id = rn.note_id WHERE rn.rfq_id = $id ");
 // echo "SELECT * FROM rfq_notes rn LEFT JOIN notes n on n.id = rn.note_id WHERE rn.rfq_id = $id AND n.id != 1 AND n.id != 6 AND n.id !=7";exit;
 
 while ($rowN = mysqli_fetch_assoc($select_notes)){
   $notes_group = $rowN['note'];
-  $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers\n   must submit together with the quotation/proposal the following\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3. Others:\n     a. Any documents to prove that the signatory of the quotation is\nautorized representative of the company, or eligibility requirements.\n     b. Photocopy of ID bearing the pictures/ signature of the\nrepresentatives.\n   ".$notes_group."\n\nOther Instruction:\n\n * Please submit Your quotation using our official Request for Quotation (RFQ) Form.\nYou can secure a copy of the said RFQ to \nGeneral Services and supply section, Finance and Administrative Division, DILG.\n\n\n *Please submit your quotations//s together with the Eligibility Documents on/or before June 23, 2020\n at 5:00pm addressed to the DILG\nthrough any of the following\n      a. Email us at dilg4a.bac@gmail.com\n      b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
+$objPHPExcel->getActiveSheet()->setCellValue('A'.$row,$notes_group."\nOther Instruction:");
   // echo $notes_group;
   // echo '<br>';
   $row++;
