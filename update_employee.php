@@ -705,7 +705,11 @@
 
 
 </div>
-
+<?php if ($ACTIVATED == 'No'): ?>
+<div hidden>
+  <?php else: ?>
+    <div>
+<?php endif ?>
 <div class="col-md-3">
   <div class="form-group">
     <label>Salary Grade &nbsp<b style="color:red;">*</b></label>
@@ -790,7 +794,7 @@
     <label>BIR Tax</label>
     <input class="form-control" type="text" name="bir" id="bir" autocomplete = "off" value="<?php echo $bir ?>">
   </div>
-
+</div>
 
 </div>
 </div>

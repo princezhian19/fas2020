@@ -67,9 +67,21 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('E10',$invoice_no);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('E11',$invoice_date);
 
 if ($pr_no != NULL) {
-$sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit as unit_id,b.qty FROM pr_items b LEFT JOIN app a on a.id = b.items WHERE b.pr_no = '$pr_no' ");
+  $sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit as unit_id,b.qty FROM pr_items b LEFT JOIN app a on a.id = b.items WHERE b.pr_no = '$pr_no' ");
 }else{
-$sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit_id,b.qty FROM rfq_items b LEFT JOIN app a on a.id = b.app_id WHERE b.rfq_id = '$rfq_id' ");
+  $selectIDpo = mysqli_query($conn,"SELECT id FROM po WHERE po_no = '$po_no'");
+  $rowP = mysqli_fetch_array($selectIDpo);
+  $po_id = $rowP['id'];
+
+  $select_rfq = mysqli_query($conn,"SELECT rfq_id FROM selected_quote WHERE po_id = $po_id");
+  $rowR = mysqli_fetch_array($select_rfq);
+  $rfq_id = $rowR['rfq_id'];
+
+  $selectPR = mysqli_query($conn,"SELECT pr_no FROM rfq WHERE id = $rfq_id ");
+  $rowPR = mysqli_fetch_array($selectPR);
+  $pr_no = $rowPR['pr_no'];
+  
+  $sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit as unit_id,b.qty FROM pr_items b LEFT JOIN app a on a.id = b.items WHERE b.pr_no = '$pr_no' ");
 }
 /* echo "SELECT sn,unit_id,qty,procurement,abc,description from rfq_items left join app on app.id = rfq_items.app_id where rfq_id = '$rfq_id'";
 exit(); */
@@ -105,10 +117,10 @@ $row6 = 26;
 if (mysqli_num_rows($sql_items)>0) {
 
   while($excelrow = mysqli_fetch_assoc($sql_items) ){
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLabel2);
-$objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleLabel2);
-$objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleLabel2);
-$objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLabel2);
+    $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLabel2);
+    $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleLabel2);
+    $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleLabel2);
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleLabel2);
 
     $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['sn']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$excelrow['procurement'] ."\n".$excelrow['description']);
