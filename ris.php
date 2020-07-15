@@ -214,12 +214,13 @@ if (isset($_POST['submit']))
 
             <div class="col-xs-3">
               <label>Requested by : </label>
-              <input type="text"  name="request_by" id="request_by" class="form-control" >
-              <!-- <select  name="request_by" id="request_by" class="form-control">
-                <option value="1">ELOISA G. ROZUL</option>
-                <option value="2">JOHN M. CEREZO</option>
-                <option value="3">DR. CARINA S. CRUZ</option>
-              </select> -->
+              <!-- <input type="text"  name="request_by" id="request_by" class="form-control" > -->
+              <select  name="request_by" id="request_by" class="form-control">
+                <option selected disabled></option>
+                <option value="JAY-AR T. BELTRAN">JAY-AR T. BELTRAN</option>
+                <option value="JOHN M. CEREZO">JOHN M. CEREZO</option>
+                <option value="DR. CARINA S. CRUZ">DR. CARINA S. CRUZ</option>
+              </select>
             </div>
 
             <div class="col-xs-3">
