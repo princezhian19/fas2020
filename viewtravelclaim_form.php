@@ -711,6 +711,13 @@ function rowCount(){
     
 
 <script>
+$(document).ready(function(){
+  if($('#or').val() != '')
+  {
+    $('#editbtn').prop('disabled',true);
+    $('#or').prop('readonly',true);
+  }
+})
  var myCounter = 1;
 
  $('#add_fare').click(function(){

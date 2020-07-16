@@ -89,9 +89,9 @@ if (isset($_POST['ob_to'])) {
   if (!empty($o_b)) {
     $insert = mysqli_query($conn,"UPDATE dtr SET o_b = '$remarksOBTO' WHERE `date_today` LIKE '%$date_now%'  AND `UNAME` = '$username'");
   }
- echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.location.href = 'home.php?division=$division';
-      </SCRIPT>");
+  echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.location.href = 'home.php?division=$division';
+    </SCRIPT>");
 }
 
 if (isset($_POST['stamp1'])) {
@@ -367,548 +367,603 @@ if (isset($_POST['stamp4'])) {
       <div class="panel-heading">
         <strong><a href="DTR.php">ONLINE DTR</a></strong>
         <?php if ($username == 'charlesodi' || $username = 'mmmonteiro'): ?>
-          
-        <?php if ($t_o != NULL || $o_b != NULL): ?>
 
-          <?php else: ?>
-        &nbsp &nbsp &nbsp   <input type="checkbox" value="t_o" name="to" id="to" onclick='javascript:yesnoCheck();'> <strong>TO</strong>
-        &nbsp &nbsp &nbsp   <input type="checkbox" value="o_b" name="ob" id="ob" onclick='javascript:yesnoCheck1();'> <strong>OB</strong>
-        <?php endif ?>
-        <?php else: ?>
-        <?php endif ?>
+          <?php if ($t_o != NULL || $o_b != NULL): ?>
 
-        <div class="pull-right">
-          <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-day</strong></font>
-        </div>
-      </div>
-      <div class="">
-        <?php if ($t_o != NULL): ?>
-           <label> &nbsp&nbspRemarks (Travel Order)</label>
-            <textarea class="form-control"><?php echo $t_o?></textarea>
-        <?php endif ?>
-        <?php if ($o_b != NULL): ?>
-           <label> &nbsp&nbspRemarks (Official Business)</label>
-            <textarea class="form-control"><?php echo $o_b?></textarea>
-        <?php endif ?>
-        <form method="POST">
-          <div class="H2" hidden>
-            <label> &nbsp&nbspRemarks</label>
-            <textarea class="form-control" name="remarksOBTO1"></textarea>
-            <br>
-            <input type="text" name="t_o" id="t_o" value="t_o" hidden disabled>
-            <button class="btn btn-primary" type="submit" name="ob_to" style="float: right;">Submit</button>
-            <br><br><br>
-          </div>
-          <div class="H22" hidden>
-            <label> &nbsp&nbspRemarks</label>
-            <textarea class="form-control" name="remarksOBTO"></textarea>
-            <br>
-            <input type="text" name="o_b" id="o_b" value="o_b" hidden disabled>
-            <button class="btn btn-primary" type="submit" name="ob_to" style="float: right;">Submit</button>
-            <br><br><br>
-          </div>
-        </form>
-        <?php if ($t_o != NULL || $o_b !=NULL): ?>
-          
-          <?php else: ?>
+            <?php else: ?>
+              &nbsp &nbsp &nbsp   <input type="checkbox" value="t_o" name="to" id="to" onclick='javascript:yesnoCheck();'> <strong>TO</strong>
+              &nbsp &nbsp &nbsp   <input type="checkbox" value="o_b" name="ob" id="ob" onclick='javascript:yesnoCheck1();'> <strong>OB</strong>
+            <?php endif ?>
+            <?php else: ?>
+            <?php endif ?>
 
-        <table id="example1" class="table table-striped H1" style="background-color: white;" >
-          <form method="POST">
-            <tr>
-              <th class="pull-left" >AM ARRIVAL</th>
-              <?php if (mysqli_num_rows($check1)>0): ?>
-                <td ><?php echo date('h:i A',strtotime($time_inL))?></td>
-
-
-                <?php else: ?>
-                  <td ><button class="btn btn-success " name="stamp1" id="" type="submit"><strong>Stamp</strong></button></td>
-                <?php endif ?>
-              </tr>
-              <tr>
-                <th class="pull-left" >AM DEPARTURE</th>
-                <?php if (mysqli_num_rows($check2)>0): ?>
-                  <td ><?php echo date('h:i A',strtotime($lunch_inL))?>
-                  <!-- <?php echo "<br>" ?> -->
-                  <!-- <?php echo $l1 ?> -->
-                </td>
-                <?php else: ?>
-                  <td ><button class="btn btn-success " name="stamp2" id="" type="submit"><strong>Stamp</strong></button></td>
-                <?php endif ?>
-              </tr>
-              <tr>
-                <th class="pull-left">PM ARRIVAL</th>
-                <?php if (mysqli_num_rows($check3)>0): ?>
-                  <td ><?php echo date('h:i A',strtotime($lunch_outL))?>
-                  <!-- <?php echo "<br>" ?> -->
-                  <!-- <?php echo $l2 ?> -->
-                </td>
-                <?php else: ?>
-                  <td ><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
-                <?php endif ?>
-              </tr>
-
-              <tr>
-                <th class="pull-left" >PM DEPARTURE</th>
-                <?php if (mysqli_num_rows($check4)>0): ?>
-                  <td ><?php echo date('h:i A',strtotime($time_outL))?></td>
-                  <?php else: ?>
-                    <td ><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
-                  <?php endif ?>
-                </tr>
-              </form>
-            </table>
-        <?php endif ?>
-          </div>
-        </div>
-        <div class="col-lg-12">
-        <button class = "btn btn-danger btn-lg btndisable" style = "width:100%;" id = "healthDec" value ="Don't forget to Accomplish the <br>ONLINE HEALTH DECLARATION FORM here">Don't forget to Accomplish the <br>ONLINE HEALTH DECLARATION FORM here.</button>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <div class="row" >
-          <div class="col-md-12" >
-            <div class="box"  style="width: 530px;padding-right: 10px;padding-left: 10px;border-left: 5px solid black;">
-              <!-- /.box-header -->
-              <div class="box-body">
-                <div class="row">
-                  <div class="col-md-5">
-
-                    <div style="padding-left: 10px;padding-right: 10px;">
-                      <strong style="font-size: 25px;" >Regular</strong>
-                      <strong style="font-size: 25px;" class="pull-right">COS</strong>
-                    </div>
-                    <br>
-                    <?php 
-                    $select_gender = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeeinfo WHERE SEX_C = 'Female' AND ACTIVATED = 'Yes' ");
-                    $rowG = mysqli_fetch_array($select_gender);
-                    $female = $rowG['female'];
-
-                    $select_genderB = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeeinfo WHERE SEX_C = 'Male' AND ACTIVATED = 'Yes' ");
-                    $rowGB = mysqli_fetch_array($select_genderB);
-                    $male = $rowGB['male'];
-
-                    $reg = $female + $male;
-
-                    $select_gender2 = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeeinfo WHERE SEX_C = 'Female' AND ACTIVATED = 'No' ");
-                    $rowG2 = mysqli_fetch_array($select_gender2);
-                    $female2 = $rowG2['female'];
-
-                    $select_genderB2 = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeeinfo WHERE SEX_C = 'Male' AND ACTIVATED = 'No' ");
-                    $rowGB2 = mysqli_fetch_array($select_genderB2);
-                    $male2 = $rowGB2['male'];
-
-                    $reg2 = $female2 + $male2;
-                    ?>
-                    <div style="font-size: 25px;">
-                      <i class="fa fa-fw fa-female"><?php echo $female?></i>
-                      <i class="fa fa-fw fa-female" style="float: right;padding-right: 70px;"><?php echo $female2?></i><br>
-                      <i class="fa fa-fw fa-male"><?php echo $male?></i>
-                      <i class="fa fa-fw fa-male" style="float: right;padding-right: 70px;"><?php echo $male2?></i><br><br>
-                      <i class="fa fa-fw fa-group"><?php echo $reg;?></i>
-                      <i class="fa fa-fw fa-group" style="float: right;padding-right: 70px;"><?php echo $reg2;?></i><br>
-                      <!-- /.chart-responsive -->
-                    </div>
-                  </div>
-                  <!-- /.col -->
-                  <?php 
-                  $count_region = mysqli_query($conn,"SELECT count(*) as region FROM tblemployeeinfo WHERE OFFICE_STATION = 1");
-                  $cregion = mysqli_fetch_array($count_region);
-                  $region = $cregion['region'];
-                  ?>
-                  <?php 
-                  $count_batangas = mysqli_query($conn,"SELECT count(*) as batangas FROM tblemployeeinfo WHERE DIVISION_C IN (19,28,29,30,44)");
-                  $cbatangas = mysqli_fetch_array($count_batangas);
-                  $batangas = $cbatangas['batangas'];
-                  ?>
-                  <?php 
-                  $count_cavite = mysqli_query($conn,"SELECT count(*) as cavite FROM tblemployeeinfo WHERE DIVISION_C IN (20,34,35,36,45)");
-                  $ccavite = mysqli_fetch_array($count_cavite);
-                  $cavite = $ccavite['cavite'];
-                  ?>
-                  <?php 
-                  $count_laguna = mysqli_query($conn,"SELECT count(*) as laguna FROM tblemployeeinfo WHERE DIVISION_C IN (21,40,41,42,47,51,52)");
-                  $claguna = mysqli_fetch_array($count_laguna);
-                  $laguna = $claguna['laguna'];
-                  ?> 
-                  <?php 
-                  $count_rizal = mysqli_query($conn,"SELECT count(*) as rizal FROM tblemployeeinfo WHERE DIVISION_C IN (23,37,38,39,46,50,52)");
-                  $crizal = mysqli_fetch_array($count_rizal);
-                  $rizal = $crizal['rizal'];
-                  ?> 
-                  <?php 
-                  $count_quezon = mysqli_query($conn,"SELECT count(*) as quezon FROM tblemployeeinfo WHERE DIVISION_C IN (22,31,32,33,48,49,53)");
-                  $cquezon = mysqli_fetch_array($count_quezon);
-                  $quezon = $cquezon['quezon'];
-                  ?> 
-                  <?php 
-                  $count_lucena = mysqli_query($conn,"SELECT count(*) as lucena FROM tblemployeeinfo WHERE DIVISION_C IN (24)");
-                  $clucena = mysqli_fetch_array($count_lucena);
-                  $lucena = $clucena['lucena'];
-                  ?> 
-                  <?php  
-                  $tots = $region + $batangas + $cavite + $laguna + $rizal + $quezon + $lucena;
-                  $region_percent = ($region*100)/$tots;
-                  $batangas_percent = ($batangas*100)/$tots;
-                  $cavite_percent = ($cavite*100)/$tots;
-                  $laguna_percent = ($laguna*100)/$tots;
-                  $rizal_percent = ($rizal*100)/$tots;
-                  $quezon_percent = ($quezon*100)/$tots;
-                  $lucena_percent = ($lucena*100)/$tots;
-
-                  ?>
-                  <div class="col-md-7">
-                   <div class="progress-group">
-                    <span class="progress-text">Region</span>
-                    <?php 
-                    $count_region = mysqli_query($conn,"SELECT count(*) as region FROM tblemployeeinfo WHERE OFFICE_STATION = 1");
-                    $cregion = mysqli_fetch_array($count_region);
-                    $region = $cregion['region'];
-                    ?>
-                    <span class="progress-number"><b><?php echo $region?></b></span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: <?php echo $region_percent?>%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Batangas</span>
-                    <?php 
-                    $count_batangas = mysqli_query($conn,"SELECT count(*) as batangas FROM tblemployeeinfo WHERE DIVISION_C IN (19,28,29,30,44)");
-                    $cbatangas = mysqli_fetch_array($count_batangas);
-                    $batangas = $cbatangas['batangas'];
-                    ?>
-                    <span class="progress-number"><b><?php echo $batangas?></b></span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: <?php echo $batangas_percent?>%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Cavite</span>
-                    <?php 
-                    $count_cavite = mysqli_query($conn,"SELECT count(*) as cavite FROM tblemployeeinfo WHERE DIVISION_C IN (20,34,35,36,45)");
-                    $ccavite = mysqli_fetch_array($count_cavite);
-                    $cavite = $ccavite['cavite'];
-                    ?>
-                    <span class="progress-number"><b><?php echo $cavite?></b></span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: <?php echo $cavite_percent?>%"></div>
-                    </div>
-                  </div>
-                  <!-- /.progress-group -->
-                  <div class="progress-group">
-                    <span class="progress-text">Laguna</span>
-                    <?php 
-                    $count_laguna = mysqli_query($conn,"SELECT count(*) as laguna FROM tblemployeeinfo WHERE DIVISION_C IN (21,40,41,42,47,51,52)");
-                    $claguna = mysqli_fetch_array($count_laguna);
-                    $laguna = $claguna['laguna'];
-                    ?>                
-                    <span class="progress-number"><b><?php echo $laguna?></b></span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: <?php echo $laguna_percent?>%"></div>
-                    </div>
-                  </div> 
-                  <div class="progress-group">
-                    <span class="progress-text">Rizal</span>
-                    <?php 
-                    $count_rizal = mysqli_query($conn,"SELECT count(*) as rizal FROM tblemployeeinfo WHERE DIVISION_C IN (23,37,38,39,46,50,52)");
-                    $crizal = mysqli_fetch_array($count_rizal);
-                    $rizal = $crizal['rizal'];
-                    ?> 
-                    <span class="progress-number"><b><?php echo $rizal?></b></span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: <?php echo $rizal_percent?>%"></div>
-                    </div>
-                  </div> 
-                  <div class="progress-group">
-                    <span class="progress-text">Quezon</span>
-                    <?php 
-                    $count_quezon = mysqli_query($conn,"SELECT count(*) as quezon FROM tblemployeeinfo WHERE DIVISION_C IN (22,31,32,33,48,49,53)");
-                    $cquezon = mysqli_fetch_array($count_quezon);
-                    $quezon = $cquezon['quezon'];
-                    ?> 
-                    <span class="progress-number"><b><?php echo $quezon?></b></span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: <?php echo $quezon_percent?>%"></div>
-                    </div>
-                  </div> 
-                  <div class="progress-group">
-                    <span class="progress-text">Lucena City</span>
-                    <?php 
-                    $count_lucena = mysqli_query($conn,"SELECT count(*) as lucena FROM tblemployeeinfo WHERE DIVISION_C IN (24)");
-                    $clucena = mysqli_fetch_array($count_lucena);
-                    $lucena = $clucena['lucena'];
-                    ?> 
-                    <span class="progress-number"><b><?php echo $lucena?></b></span>
-
-                    <div class="progress sm">
-                      <div class="progress-bar progress-bar-green" style="width: <?php echo $lucena_percent?>%"></div>
-                    </div>
-
-                    <!-- <?php echo $region + $batangas + $cavite + $laguna + $rizal + $quezon + $lucena?> -->
-                  </div> 
-                  <!-- /.progress-group -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
+            <div class="pull-right">
+              <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-day</strong></font>
             </div>
-            <!-- ./box-body -->
-
-            <!-- /.box-footer -->
           </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-
-      <div class="box" style="width: 400px;">
-        <div class="panel-heading">
-          <h3><strong>Quick Links</strong></h3>
-          <div class="box-header with-border">
-          </div>
-          <div class="clearfix"></div>
-        </div>
-        <div class="box-header">
-          <img class="direct-chat-img" src="images/LOGO.png" alt="message user image">
-          <b><a href="">&nbsp&nbsp&nbspDILG Official Website</a></b> <br>
-          <font class="pull-left">&nbsp&nbsp&nbspVisit the official website of Department of Interior...</font>
-          <br>
-          <br>
-          <br>
-          <img class="direct-chat-img" src="images/cbms.png" alt="message user image">
-          <b><a href="">&nbsp&nbsp&nbspCBMS Portal</a> </b> <br>
-          <font class="pull-left">&nbsp&nbsp&nbspCBMS portal is an organized of collecting...</font>
-          <br>
-          <br>
-          <br>
-
-
-
-
-        </div>
-      </div>
-
-    </div>
-    <div class="col-md-9">
-
-      <div class="row"> 
-        <div class="col-md-4" style="color:white;">
-
-          <div class="box" style="background-image: url('images/purple.jpg');border-radius: 20px;">
-           <div class="panel-heading">
-            <i class="fa fa-birthday-cake"></i>&nbsp&nbsp&nbsp<strong>Birthday Celebrants</strong>
-            <a href="" class="pull-right">View All</a>
-            <div class="box-header with-border">
+          <div class="">
+            <?php if ($t_o != NULL): ?>
+             <label> &nbsp&nbspRemarks (Travel Order)</label>
+             <textarea class="form-control"><?php echo $t_o?></textarea>
+           <?php endif ?>
+           <?php if ($o_b != NULL): ?>
+             <label> &nbsp&nbspRemarks (Official Business)</label>
+             <textarea class="form-control"><?php echo $o_b?></textarea>
+           <?php endif ?>
+           <form method="POST">
+            <div class="H2" hidden>
+              <label> &nbsp&nbspRemarks</label>
+              <textarea class="form-control" name="remarksOBTO1"></textarea>
+              <br>
+              <input type="text" name="t_o" id="t_o" value="t_o" hidden disabled>
+              <button class="btn btn-primary" type="submit" name="ob_to" style="float: right;">Submit</button>
+              <br><br><br>
             </div>
-            <div class="clearfix"></div>
-          </div>
-          <div class="box-header" style="color:white;">
-            <?php 
-            $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-            $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 5");
-            while ($row = mysqli_fetch_assoc($BDAY)) {
-              $FIRST_M1 = $row['FIRST_M'];
-              $FIRST_M = ucwords(strtolower($FIRST_M1));
-              $MIDDLE_M = $row['MIDDLE_M'];
-              $LAST_M1 = $row['LAST_M'];
-              $LAST_M = ucfirst(strtolower($LAST_M1));
-              $words = explode(" ", $MIDDLE_M);
-              $acronym = "";
-
-              foreach ($words as $w) {
-                $acronym .= $w[0];
-              }
-          //asd
-              $name = $FIRST_M.' '.$acronym.'.'.' '.$LAST_M;
-              $BIRTH_D = $row['BIRTH_D'];
-              $PROFILE = $row['PROFILE'];
-              $b_day = date('F d',strtotime($BIRTH_D));
-
-              ?>  
-              <img class="direct-chat-img" src="<?php echo $PROFILE; ?>" alt="message user image">
-              <b style="font-size: 13px;"><?php echo $name;?></b>
-              <font style="font-size: 10px;" class="pull-right"><?php echo $b_day?></font>
+            <div class="H22" hidden>
+              <label> &nbsp&nbspRemarks</label>
+              <textarea class="form-control" name="remarksOBTO"></textarea>
               <br>
-              <br>
-              <br>
+              <input type="text" name="o_b" id="o_b" value="o_b" hidden disabled>
+              <button class="btn btn-primary" type="submit" name="ob_to" style="float: right;">Submit</button>
+              <br><br><br>
+            </div>
+          </form>
+          <?php if ($t_o != NULL || $o_b !=NULL): ?>
 
+            <?php else: ?>
 
-            <?php } ?>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4" >
-        <div class="row">
-          <div class="col-md-12">
-            <div class="box" >
-              <div class="panel-heading" style="background-color:#964B00;">
-               <font style="color:white;"> ANNOUNCEMENT </font> <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-warning btn-xs pull-right">Add</button><!-- Item(s) -->
-               <form method="POST">
-                 <div class="modal fade" id="modal-default">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title">Default Modal</h4>
-                        </div>
-                        <div class="modal-body">
-                          <label style="padding-right: 20px;">Title <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 50 characters</i></font></label><input maxlength="50"  required class="form-control" type="text" name="title"><br>
-                          <label style="padding-right: 20px;">Content <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 500 characters</font></i></label><textarea maxlength="500" required class="form-control" type="text" name="content"></textarea><br>
-                          <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $username?>"><br>
-                          <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo date('Y-m-d')?>"><br>
-                        </div>
-                        <div class="modal-footer">
-                          <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> -->
-                          <button type="submit" class="btn btn-primary" name="submit">Save</button>
-                        </div>
-                      </div>
-                      <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                  </div>
-                </form>
-              </div>
-              <div style="padding-left: 10px;padding-right: 10px;background:#ee5;" class="table-responsive">
-
-               <table id="example15" class="table " style="background-color:#ee5;" >
-                <thead >
-                  <tr style="background-color:#ee5;" >
-                    <th style="background-color:#ee5;"hidden></th>
-                  </tr>
-                </thead>
-                <?php 
-                $view_query = mysqli_query($conn,"SELECT te.PROFILE,a.date,a.id,a.posted_by,a.content,a.title,concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) as fname  FROM announcementt a LEFT JOIN tblemployeeinfo te on te.UNAME = a.posted_by  ORDER BY id DESC");
-                while ($row = mysqli_fetch_assoc($view_query)) {
-                  $id = $row["id"];  
-                  $fname = $row["fname"];  
-                  $posted_by = $row["posted_by"];  
-                  $intent = $row["content"];  
-                  $title = $row["title"];  
-                  $profile = $row["PROFILE"];  
-                  $date1 = $row["date"];  
-                  $date = date('Y-m-d',strtotime($date1));  
-                  $extension = pathinfo($profile, PATHINFO_EXTENSION);
-                  ?>
+              <table id="example1" class="table table-striped H1" style="background-color: white;" >
+                <form method="POST">
                   <tr>
-                    <td width="300"><img class="direct-chat-img" src="
-                      <?php 
-                      if(file_exists($profile))
-                      {
-                        switch($extension)
-                        {
-                          case 'jpg':
-                          if($profile == '')
-                          {
-                            echo 'images/male-user.png';
-                          }
-                          else if ($profile == $profile)
-                          {
-                            echo $profile;   
-                          }
-                          else
-                          {
-                            echo'images/male-user.png';
-                          }
-                          break;
-                          case 'JPG':
-                          if($profile == '')
-                          {
-                            echo 'images/male-user.png';
-                          }
-                          else if ($profile == $profile)
-                          {
-                            echo $profile;   
-                          }
-                          else
-                          {
-                            echo'images/male-user.png';
-                          }
-                          break;
-                          case 'jpeg':
-                          if($profile == '')
-                          {
-                            echo 'images/male-user.png';
-                          }
-                          else if ($profile == $profile)
-                          {
-                            echo $profile;   
-                          }
-                          else
-                          {
-                            echo'images/male-user.png';
-                          }
-                          break;
-                          case 'png':
-                          if($profile == '')
-                          {
-                            echo'images/male-user.png';
-                          }
-                          else if ($profile == $profile)
-                          {
-                            echo $profile;   
-                          }
-                          else
-                          {
-                            echo'images/male-user.png';
-                          }
-                          break;
-                          default:
-                          echo'images/male-user.png';
-                          break;
-                        }
-                        }else{
-                         echo'images/male-user.png';
-                       }
+                    <th class="pull-left" >AM ARRIVAL</th>
+                    <?php if (mysqli_num_rows($check1)>0): ?>
+                      <td ><?php echo date('h:i A',strtotime($time_inL))?></td>
 
-                       ?>"  alt="message user image"><b style="font-size: 10px;"><?php echo $fname;?></b><br><font style="font-size: 10px;"><?php echo 'FAD';?></font><br><br><b><?php echo $title;?><br>
-                        <?php if ($username == $posted_by): ?>
-                          <a data-toggle="modal" data-target="#modal-info_<?php echo $row['id']; ?>" class="btn btn-success btn-xs"><i class="fa fa-edit"></i>Edit</a> | <a href="delete_announcement.php?id=<?php echo $id?>&username=<?php echo $username?>" class="btn btn-danger btn-xs "><i class="fa fa-trash"></i> Delete</a>
-                        <?php endif ?>
-                      </b><br><?php echo $intent;?></td>
+
+                      <?php else: ?>
+                        <td ><button class="btn btn-success " name="stamp1" id="" type="submit"><strong>Stamp</strong></button></td>
+                      <?php endif ?>
+                    </tr>
+                    <tr>
+                      <th class="pull-left" >AM DEPARTURE</th>
+                      <?php if (mysqli_num_rows($check2)>0): ?>
+                        <td ><?php echo date('h:i A',strtotime($lunch_inL))?>
+                        <!-- <?php echo "<br>" ?> -->
+                        <!-- <?php echo $l1 ?> -->
+                      </td>
+                      <?php else: ?>
+                        <td ><button class="btn btn-success " name="stamp2" id="" type="submit"><strong>Stamp</strong></button></td>
+                      <?php endif ?>
+                    </tr>
+                    <tr>
+                      <th class="pull-left">PM ARRIVAL</th>
+                      <?php if (mysqli_num_rows($check3)>0): ?>
+                        <td ><?php echo date('h:i A',strtotime($lunch_outL))?>
+                        <!-- <?php echo "<br>" ?> -->
+                        <!-- <?php echo $l2 ?> -->
+                      </td>
+                      <?php else: ?>
+                        <td ><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                      <?php endif ?>
                     </tr>
 
-                    <div class="modal modal-default fade" id="modal-info_<?php echo $row['id']; ?>">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span></button>
-                              <h4 class="modal-title">Edit Announcement</h4>
-                            </div>
-                            <div class="modal-body">
-                              <form method="POST" >
-                               <label style="padding-right: 20px;">Title <font style="color:red;">*</font></font>&nbsp&nbsp<i><font style="color:red;">should not exceed 50 characters</i></font></label><input value="<?php echo $title?>" class="form-control" type="text" name="title"><br>
-                               <input type="text" name="idC" hidden  value="<?php echo $id?>">
-                               <label style="padding-right: 20px;">Content <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 500 characters</font></i></label><textarea  class="form-control" type="text" name="content"><?php echo $intent?></textarea><br>
-                               <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $posted_by?>"><br>
-                               <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo $date?>"><br>
-                             </div>
-                             <div class="modal-footer">
-                              <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button> -->
-                              <button type="submit" class="btn btn-primary" name="update">Save changes</button>
-                            </div>
+                    <tr>
+                      <th class="pull-left" >PM DEPARTURE</th>
+                      <?php if (mysqli_num_rows($check4)>0): ?>
+                        <td ><?php echo date('h:i A',strtotime($time_outL))?></td>
+                        <?php else: ?>
+                          <td ><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
+                        <?php endif ?>
+                      </tr>
+                    </form>
+                  </table>
+                <?php endif ?>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <button class = "btn btn-danger btn-lg btndisable" style = "width:100%;" id = "healthDec" value ="Don't forget to Accomplish the <br>ONLINE HEALTH DECLARATION FORM here">Don't forget to Accomplish the <br>ONLINE HEALTH DECLARATION FORM here.</button>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="row" >
+              <div class="col-md-12" >
+                <div class="box"  style="width: 530px;padding-right: 10px;padding-left: 10px;border-left: 5px solid black;">
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                    <div class="row">
+                      <div class="col-md-5">
+
+                        <div style="padding-left: 10px;padding-right: 10px;">
+                          <strong style="font-size: 25px;" >Regular</strong>
+                          <strong style="font-size: 25px;" class="pull-right">COS</strong>
+                        </div>
+                        <br>
+                        <?php 
+                        $select_gender = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeeinfo WHERE SEX_C = 'Female' AND ACTIVATED = 'Yes' ");
+                        $rowG = mysqli_fetch_array($select_gender);
+                        $female = $rowG['female'];
+
+                        $select_genderB = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeeinfo WHERE SEX_C = 'Male' AND ACTIVATED = 'Yes' ");
+                        $rowGB = mysqli_fetch_array($select_genderB);
+                        $male = $rowGB['male'];
+
+                        $reg = $female + $male;
+
+                        $select_gender2 = mysqli_query($conn,"SELECT count(*) as female FROM tblemployeeinfo WHERE SEX_C = 'Female' AND ACTIVATED = 'No' ");
+                        $rowG2 = mysqli_fetch_array($select_gender2);
+                        $female2 = $rowG2['female'];
+
+                        $select_genderB2 = mysqli_query($conn,"SELECT count(*) as male FROM tblemployeeinfo WHERE SEX_C = 'Male' AND ACTIVATED = 'No' ");
+                        $rowGB2 = mysqli_fetch_array($select_genderB2);
+                        $male2 = $rowGB2['male'];
+
+                        $reg2 = $female2 + $male2;
+                        ?>
+                        <div style="font-size: 25px;">
+                          <i class="fa fa-fw fa-female"><?php echo $female?></i>
+                          <i class="fa fa-fw fa-female" style="float: right;padding-right: 70px;"><?php echo $female2?></i><br>
+                          <i class="fa fa-fw fa-male"><?php echo $male?></i>
+                          <i class="fa fa-fw fa-male" style="float: right;padding-right: 70px;"><?php echo $male2?></i><br><br>
+                          <i class="fa fa-fw fa-group"><?php echo $reg;?></i>
+                          <i class="fa fa-fw fa-group" style="float: right;padding-right: 70px;"><?php echo $reg2;?></i><br>
+                          <!-- /.chart-responsive -->
+                        </div>
+                      </div>
+                      <!-- /.col -->
+                      <?php 
+                      $count_region = mysqli_query($conn,"SELECT count(*) as region FROM tblemployeeinfo WHERE OFFICE_STATION = 1");
+                      $cregion = mysqli_fetch_array($count_region);
+                      $region = $cregion['region'];
+                      ?>
+                      <?php 
+                      $count_batangas = mysqli_query($conn,"SELECT count(*) as batangas FROM tblemployeeinfo WHERE DIVISION_C IN (19,28,29,30,44)");
+                      $cbatangas = mysqli_fetch_array($count_batangas);
+                      $batangas = $cbatangas['batangas'];
+                      ?>
+                      <?php 
+                      $count_cavite = mysqli_query($conn,"SELECT count(*) as cavite FROM tblemployeeinfo WHERE DIVISION_C IN (20,34,35,36,45)");
+                      $ccavite = mysqli_fetch_array($count_cavite);
+                      $cavite = $ccavite['cavite'];
+                      ?>
+                      <?php 
+                      $count_laguna = mysqli_query($conn,"SELECT count(*) as laguna FROM tblemployeeinfo WHERE DIVISION_C IN (21,40,41,42,47,51,52)");
+                      $claguna = mysqli_fetch_array($count_laguna);
+                      $laguna = $claguna['laguna'];
+                      ?> 
+                      <?php 
+                      $count_rizal = mysqli_query($conn,"SELECT count(*) as rizal FROM tblemployeeinfo WHERE DIVISION_C IN (23,37,38,39,46,50,52)");
+                      $crizal = mysqli_fetch_array($count_rizal);
+                      $rizal = $crizal['rizal'];
+                      ?> 
+                      <?php 
+                      $count_quezon = mysqli_query($conn,"SELECT count(*) as quezon FROM tblemployeeinfo WHERE DIVISION_C IN (22,31,32,33,48,49,53)");
+                      $cquezon = mysqli_fetch_array($count_quezon);
+                      $quezon = $cquezon['quezon'];
+                      ?> 
+                      <?php 
+                      $count_lucena = mysqli_query($conn,"SELECT count(*) as lucena FROM tblemployeeinfo WHERE DIVISION_C IN (24)");
+                      $clucena = mysqli_fetch_array($count_lucena);
+                      $lucena = $clucena['lucena'];
+                      ?> 
+                      <?php  
+                      $tots = $region + $batangas + $cavite + $laguna + $rizal + $quezon + $lucena;
+                      $region_percent = ($region*100)/$tots;
+                      $batangas_percent = ($batangas*100)/$tots;
+                      $cavite_percent = ($cavite*100)/$tots;
+                      $laguna_percent = ($laguna*100)/$tots;
+                      $rizal_percent = ($rizal*100)/$tots;
+                      $quezon_percent = ($quezon*100)/$tots;
+                      $lucena_percent = ($lucena*100)/$tots;
+
+                      ?>
+                      <div class="col-md-7">
+                       <div class="progress-group">
+                        <span class="progress-text">Region</span>
+                        <?php 
+                        $count_region = mysqli_query($conn,"SELECT count(*) as region FROM tblemployeeinfo WHERE OFFICE_STATION = 1");
+                        $cregion = mysqli_fetch_array($count_region);
+                        $region = $cregion['region'];
+                        ?>
+                        <span class="progress-number"><b><?php echo $region?></b></span>
+
+                        <div class="progress sm">
+                          <div class="progress-bar progress-bar-green" style="width: <?php echo $region_percent?>%"></div>
+                        </div>
+                      </div>
+                      <!-- /.progress-group -->
+                      <div class="progress-group">
+                        <span class="progress-text">Batangas</span>
+                        <?php 
+                        $count_batangas = mysqli_query($conn,"SELECT count(*) as batangas FROM tblemployeeinfo WHERE DIVISION_C IN (19,28,29,30,44)");
+                        $cbatangas = mysqli_fetch_array($count_batangas);
+                        $batangas = $cbatangas['batangas'];
+                        ?>
+                        <span class="progress-number"><b><?php echo $batangas?></b></span>
+
+                        <div class="progress sm">
+                          <div class="progress-bar progress-bar-green" style="width: <?php echo $batangas_percent?>%"></div>
+                        </div>
+                      </div>
+                      <!-- /.progress-group -->
+                      <div class="progress-group">
+                        <span class="progress-text">Cavite</span>
+                        <?php 
+                        $count_cavite = mysqli_query($conn,"SELECT count(*) as cavite FROM tblemployeeinfo WHERE DIVISION_C IN (20,34,35,36,45)");
+                        $ccavite = mysqli_fetch_array($count_cavite);
+                        $cavite = $ccavite['cavite'];
+                        ?>
+                        <span class="progress-number"><b><?php echo $cavite?></b></span>
+
+                        <div class="progress sm">
+                          <div class="progress-bar progress-bar-green" style="width: <?php echo $cavite_percent?>%"></div>
+                        </div>
+                      </div>
+                      <!-- /.progress-group -->
+                      <div class="progress-group">
+                        <span class="progress-text">Laguna</span>
+                        <?php 
+                        $count_laguna = mysqli_query($conn,"SELECT count(*) as laguna FROM tblemployeeinfo WHERE DIVISION_C IN (21,40,41,42,47,51,52)");
+                        $claguna = mysqli_fetch_array($count_laguna);
+                        $laguna = $claguna['laguna'];
+                        ?>                
+                        <span class="progress-number"><b><?php echo $laguna?></b></span>
+
+                        <div class="progress sm">
+                          <div class="progress-bar progress-bar-green" style="width: <?php echo $laguna_percent?>%"></div>
+                        </div>
+                      </div> 
+                      <div class="progress-group">
+                        <span class="progress-text">Rizal</span>
+                        <?php 
+                        $count_rizal = mysqli_query($conn,"SELECT count(*) as rizal FROM tblemployeeinfo WHERE DIVISION_C IN (23,37,38,39,46,50,52)");
+                        $crizal = mysqli_fetch_array($count_rizal);
+                        $rizal = $crizal['rizal'];
+                        ?> 
+                        <span class="progress-number"><b><?php echo $rizal?></b></span>
+
+                        <div class="progress sm">
+                          <div class="progress-bar progress-bar-green" style="width: <?php echo $rizal_percent?>%"></div>
+                        </div>
+                      </div> 
+                      <div class="progress-group">
+                        <span class="progress-text">Quezon</span>
+                        <?php 
+                        $count_quezon = mysqli_query($conn,"SELECT count(*) as quezon FROM tblemployeeinfo WHERE DIVISION_C IN (22,31,32,33,48,49,53)");
+                        $cquezon = mysqli_fetch_array($count_quezon);
+                        $quezon = $cquezon['quezon'];
+                        ?> 
+                        <span class="progress-number"><b><?php echo $quezon?></b></span>
+
+                        <div class="progress sm">
+                          <div class="progress-bar progress-bar-green" style="width: <?php echo $quezon_percent?>%"></div>
+                        </div>
+                      </div> 
+                      <div class="progress-group">
+                        <span class="progress-text">Lucena City</span>
+                        <?php 
+                        $count_lucena = mysqli_query($conn,"SELECT count(*) as lucena FROM tblemployeeinfo WHERE DIVISION_C IN (24)");
+                        $clucena = mysqli_fetch_array($count_lucena);
+                        $lucena = $clucena['lucena'];
+                        ?> 
+                        <span class="progress-number"><b><?php echo $lucena?></b></span>
+
+                        <div class="progress sm">
+                          <div class="progress-bar progress-bar-green" style="width: <?php echo $lucena_percent?>%"></div>
+                        </div>
+
+                        <!-- <?php echo $region + $batangas + $cavite + $laguna + $rizal + $quezon + $lucena?> -->
+                      </div> 
+                      <!-- /.progress-group -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- ./box-body -->
+
+                <!-- /.box-footer -->
+              </div>
+              <!-- /.box -->
+            </div>
+            <!-- /.col -->
+          </div>
+
+          <div class="box" style="width: 400px;" hidden>
+            <div class="panel-heading">
+              <h3><strong>Quick Links</strong></h3>
+              <div class="box-header with-border">
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="box-header">
+              <img class="direct-chat-img" src="images/LOGO.png" alt="message user image">
+              <b><a href="">&nbsp&nbsp&nbspDILG Official Website</a></b> <br>
+              <font class="pull-left">&nbsp&nbsp&nbspVisit the official website of Department of Interior...</font>
+              <br>
+              <br>
+              <br>
+              <img class="direct-chat-img" src="images/cbms.png" alt="message user image">
+              <b><a href="">&nbsp&nbsp&nbspCBMS Portal</a> </b> <br>
+              <font class="pull-left">&nbsp&nbsp&nbspCBMS portal is an organized of collecting...</font>
+              <br>
+              <br>
+              <br>
+
+
+
+
+            </div>
+          </div>
+
+        </div>
+        <form method="POST">
+         <div class="modal fade" id="modal-default1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title"><i class="fa fa-birthday-cake"></i>&nbsp&nbsp&nbsp<strong>Birthday Celebrants</strong></h4>
+
+                </div>
+                <div class="modal-body">
+                 <?php 
+                 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                 $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) = MONTH(NOW()) ORDER BY day(BIRTH_D)");
+                 while ($row = mysqli_fetch_assoc($BDAY)) {
+                  $FIRST_M1 = $row['FIRST_M'];
+                  $FIRST_M = ucwords(strtolower($FIRST_M1));
+                  $MIDDLE_M = $row['MIDDLE_M'];
+                  $LAST_M1 = $row['LAST_M'];
+                  $LAST_M = ucfirst(strtolower($LAST_M1));
+                  $words = explode(" ", $MIDDLE_M);
+                  $acronym = "";
+
+                  foreach ($words as $w) {
+                    $acronym .= $w[0];
+                  }
+          //asd
+                  $name = $FIRST_M.' '.$acronym.'.'.' '.$LAST_M;
+                  $BIRTH_D = $row['BIRTH_D'];
+                  $PROFILE = $row['PROFILE'];
+                  $b_day = date('F d',strtotime($BIRTH_D));
+                  if ($PROFILE == 'images/profile/') {
+                    $PROFILE = 'images/LOGO.png';
+
+                  }
+
+                  ?>  
+                  <img class="direct-chat-img" src="<?php echo $PROFILE; ?>" alt="message user image">
+                  <b style="font-size: 13px;"><?php echo $name;?></b>
+                  <font style="font-size: 10px;" class="pull-right"><?php echo $b_day?></font>
+                  <br>
+                  <br>
+                  <br>
+                <?php } ?>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="col-md-9">
+
+        <div class="row"> 
+          <div class="col-md-4" style="color:white;">
+
+            <div class="box" style="background-image: url('images/purple.jpg');border-radius: 20px;">
+             <div class="panel-heading">
+              <i class="fa fa-birthday-cake"></i>&nbsp&nbsp&nbsp<strong>Birthday Celebrants</strong>
+              <a data-toggle="modal" data-target="#modal-default1" class="btn btn-primary btn-xs pull-right">View All</a>
+              <div class="box-header with-border">
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="box-header" style="color:white;">
+              <?php 
+              $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+              $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) = MONTH(NOW()) ORDER BY day(BIRTH_D) LIMIT 4");
+              while ($row = mysqli_fetch_assoc($BDAY)) {
+                $FIRST_M1 = $row['FIRST_M'];
+                $FIRST_M = ucwords(strtolower($FIRST_M1));
+                $MIDDLE_M = $row['MIDDLE_M'];
+                $LAST_M1 = $row['LAST_M'];
+                $LAST_M = ucfirst(strtolower($LAST_M1));
+                $words = explode(" ", $MIDDLE_M);
+                $acronym = "";
+
+                foreach ($words as $w) {
+                  $acronym .= $w[0];
+                }
+          //asd
+                $name = $FIRST_M.' '.$acronym.'.'.' '.$LAST_M;
+                $BIRTH_D = $row['BIRTH_D'];
+                $PROFILE = $row['PROFILE'];
+                $b_day = date('F d',strtotime($BIRTH_D));
+                if ($PROFILE == 'images/profile/') {
+                  $PROFILE = 'images/LOGO.png';
+
+                }
+                ?>  
+                <img class="direct-chat-img" src="<?php echo $PROFILE; ?>" alt="message user image">
+                <b style="font-size: 13px;"><?php echo $name;?></b>
+                <font style="font-size: 10px;" class="pull-right"><?php echo $b_day?></font>
+                <br>
+                <br>
+                <br>
+
+
+              <?php } ?>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" >
+          <div class="row">
+            <div class="col-md-12">
+              <div class="box" >
+                <div class="panel-heading" style="background-color:#964B00;">
+                 <font style="color:white;"> ANNOUNCEMENT </font> <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-warning btn-xs pull-right">Add</button><!-- Item(s) -->
+                 <form method="POST">
+                   <div class="modal fade" id="modal-default">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Add Announcement</h4>
                           </div>
-                        </form>
+                          <div class="modal-body">
+                            <label style="padding-right: 20px;">Title <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 50 characters</i></font></label><input maxlength="50"  required class="form-control" type="text" name="title"><br>
+                            <label style="padding-right: 20px;">Content <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 500 characters</font></i></label><textarea maxlength="500" required class="form-control" type="text" name="content"></textarea><br>
+                            <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $username?>"><br>
+                            <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo date('Y-m-d')?>"><br>
+                          </div>
+                          <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> -->
+                            <button type="submit" class="btn btn-primary" name="submit">Save</button>
+                          </div>
+                        </div>
                         <!-- /.modal-content -->
                       </div>
                       <!-- /.modal-dialog -->
                     </div>
-                  <?php } ?>
-                </table>
+                  </form>
+                </div>
+                <div style="padding-left: 10px;padding-right: 10px;background:#ee5;" class="table-responsive">
+
+                 <table id="example15" class="table " style="background-color:#ee5;" >
+                  <thead >
+                    <tr style="background-color:#ee5;" >
+                      <th style="background-color:#ee5;"hidden></th>
+                    </tr>
+                  </thead>
+                  <?php 
+                  $view_query = mysqli_query($conn,"SELECT tp.DIVISION_M,te.PROFILE,a.date,a.id,a.posted_by,a.content,a.title,concat(te.FIRST_M,' ',te.MIDDLE_M,' ',te.LAST_M) as fname  FROM announcementt a LEFT JOIN tblemployeeinfo te on te.UNAME = a.posted_by  LEFT JOIN tblpersonneldivision tp on tp.DIVISION_N = te.DIVISION_C ORDER BY id DESC");
+                  while ($row = mysqli_fetch_assoc($view_query)) {
+                    $id = $row["id"];  
+                    $DIVISION_M = $row["DIVISION_M"];  
+                    $fname = $row["fname"];  
+                    $posted_by = $row["posted_by"];  
+                    $intent = $row["content"];  
+                    $title = $row["title"];  
+                    $profile = $row["PROFILE"];  
+                    $date1 = $row["date"];  
+                    $date = date('Y-m-d',strtotime($date1));  
+                    $extension = pathinfo($profile, PATHINFO_EXTENSION);
+                    ?>
+                    <tr>
+                      <td width="300"><img class="direct-chat-img" src="
+                        <?php 
+                        if(file_exists($profile))
+                        {
+                          switch($extension)
+                          {
+                            case 'jpg':
+                            if($profile == '')
+                            {
+                              echo 'images/male-user.png';
+                            }
+                            else if ($profile == $profile)
+                            {
+                              echo $profile;   
+                            }
+                            else
+                            {
+                              echo'images/male-user.png';
+                            }
+                            break;
+                            case 'JPG':
+                            if($profile == '')
+                            {
+                              echo 'images/male-user.png';
+                            }
+                            else if ($profile == $profile)
+                            {
+                              echo $profile;   
+                            }
+                            else
+                            {
+                              echo'images/male-user.png';
+                            }
+                            break;
+                            case 'jpeg':
+                            if($profile == '')
+                            {
+                              echo 'images/male-user.png';
+                            }
+                            else if ($profile == $profile)
+                            {
+                              echo $profile;   
+                            }
+                            else
+                            {
+                              echo'images/male-user.png';
+                            }
+                            break;
+                            case 'png':
+                            if($profile == '')
+                            {
+                              echo'images/male-user.png';
+                            }
+                            else if ($profile == $profile)
+                            {
+                              echo $profile;   
+                            }
+                            else
+                            {
+                              echo'images/male-user.png';
+                            }
+                            break;
+                            default:
+                            echo'images/male-user.png';
+                            break;
+                          }
+                          }else{
+                           echo'images/male-user.png';
+                         }
+
+                         ?>"  alt="message user image"><b style="font-size: 10px;"><?php echo $fname;?></b><br><font style="font-size: 10px;"><?php echo $DIVISION_M;?></font><br><br><b><?php echo $title;?><br>
+                          <?php if ($username == $posted_by): ?>
+                            <a data-toggle="modal" data-target="#modal-info_<?php echo $row['id']; ?>" class="btn btn-success btn-xs"><i class="fa fa-edit"></i>Edit</a> | <a href="delete_announcement.php?id=<?php echo $id?>&username=<?php echo $username?>" class="btn btn-danger btn-xs "><i class="fa fa-trash"></i> Delete</a>
+                          <?php endif ?>
+                        </b><br><?php echo $intent;?></td>
+                      </tr>
+
+                      <div class="modal modal-default fade" id="modal-info_<?php echo $row['id']; ?>">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Edit Announcement</h4>
+                              </div>
+                              <div class="modal-body">
+                                <form method="POST" >
+                                 <label style="padding-right: 20px;">Title <font style="color:red;">*</font></font>&nbsp&nbsp<i><font style="color:red;">should not exceed 50 characters</i></font></label><input value="<?php echo $title?>" class="form-control" type="text" name="title"><br>
+                                 <input type="text" name="idC" hidden  value="<?php echo $id?>">
+                                 <label style="padding-right: 20px;">Content <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 500 characters</font></i></label><textarea  class="form-control" type="text" name="content"><?php echo $intent?></textarea><br>
+                                 <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $posted_by?>"><br>
+                                 <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo $date?>"><br>
+                               </div>
+                               <div class="modal-footer">
+                                <!-- <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button> -->
+                                <button type="submit" class="btn btn-primary" name="update">Save changes</button>
+                              </div>
+                            </div>
+                          </form>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
+                    <?php } ?>
+                  </table>
 
              <!-- <img class="direct-chat-img" src="images/LOGO.png" alt="message user image"><a href="">Charles Adrian T. Odi</a>
              <p></p>

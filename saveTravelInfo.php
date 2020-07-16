@@ -128,6 +128,6 @@ if(mysqli_num_rows($result) > 0)
         }
     }
 
-header("Location:CreateTravelClaim.php?username=".$_SESSION['username']."");
+header("Location:CreateTravelClaim.php?ro=".$_GET['ro']."&username=".$_SESSION['username']."");
 
 ?>
