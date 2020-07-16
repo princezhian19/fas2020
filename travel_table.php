@@ -132,8 +132,7 @@ $mydb = new db(); // create a new object, class db()
                   "columnDefs": [ {
                       "targets":10,
                       "render": function (data, type, row, meta ) {  
-                      action = "";
-                      // <button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>
+                      action = "<button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>";
                       return action;
                       }
                   }]
@@ -144,7 +143,7 @@ $mydb = new db(); // create a new object, class db()
               
               $('#example tbody').on( 'click', '#view', function () {
                 var data = table.row( $(this).parents('tr') ).data();
-                window.location="ViewTravelClaim.php?&ro="+data[2];
+                window.location="ViewTravelClaim.php?ro="+data[2];
               } );
           });
               </script>

@@ -87,7 +87,9 @@ function aa($id)
         while($row = mysqli_fetch_array($result))
         {
             $date = $row['DATE'];
-            $query1 = "SELECT * FROM tbltravel_claim_info INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID WHERE tbltravel_claim_info.`RO` = '".$id."' and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
+            $query1 = "SELECT * FROM tbltravel_claim_info 
+            INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
+            WHERE tbltravel_claim_info.`RO` = '".$id."' and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
             $result1 = mysqli_query($conn, $query1);
             $saved = array();
     
@@ -191,6 +193,7 @@ function showData()
         INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID
         where `UNAME` = '".$_SESSION['username']."'
         GROUP by tbltravel_claim_info.RO ";
+        
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
@@ -265,6 +268,7 @@ function showData()
     
 }
 function rowCount(){
+  
   include 'connection.php';
   $query1 = "SELECT * FROM tbltravel_claim_info2 INNER JOIN tbltravel_claim_info on tbltravel_claim_info2.ID = tbltravel_claim_info.TC_ID";
   $result1 = mysqli_query($conn, $query1);
@@ -307,7 +311,33 @@ function rowCount(){
 
   }
 }
+isSubmit();
+function isSubmit()
+{
+  include 'connection.php';
+  $name = '';
+  $query1 = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$_SESSION['username']."' ";
+  $result1 = mysqli_query($conn, $query1);
+  if($row1 = mysqli_fetch_array($result1))
+  {
+      $name = ucwords(strtoupper($row1['FIRST_M'])).' '.ucfirst(strtoupper($row1['LAST_M']));
+        $query = "SELECT * FROM `tbltravel_claim` WHERE `IS_SUBMIT` = 1 AND `NAME` ='".$name."'";
+        $result = mysqli_query($conn, $query);
+        if(mysqli_num_rows($result) > 0)    
+        {
 
+          if($row = mysqli_fetch_array($result))
+          {
+            if($row['IS_SUBMIT'] == 1)
+            {
+
+            }else{
+              
+            }
+          }
+        }
+      }
+}
 ?>
 </head>
 
@@ -367,7 +397,7 @@ function rowCount(){
                   <td class = "label-text">  <label>Position:</label></td>
                     <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly name = "position"/></td>
                       <td colspan = 5 rowspan = 2>
-                        <label>Purpose of Travel:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or" ><?php echo getPurposeTravel($_GET['username']);?></textarea>
+                        <label>Purpose of Travel:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or" ><?php echo getPurposeTravel($_GET['ro']);?></textarea>
                         <input type = "hidden" value="<?php echo getPurposeTravel($_GET['username']);?>" name = "purpose_of_travel"/>
                          </td>
                 </tr>

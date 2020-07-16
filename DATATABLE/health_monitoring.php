@@ -102,11 +102,12 @@ $columns = array(
             break;
     }
     }),
-	array('db' => 'POSITION_M', 'dt' => 6),
-	array('db' => 'DESIGNATION_M', 'dt' => 7),
-	array('db' => 'DIVISION_M', 'dt' => 8),
-	array('db' => 'EMAIL', 'dt' => 9),
-    array( 'db' => 'WORK_ARRANGEMENT', 'dt'=> 10,
+	array('db' => 'QUESTION_1', 'dt' => 6),
+	array('db' => 'QUESTION_2', 'dt' => 7),
+	array('db' => 'QUESTION_3', 'dt' => 8),
+	array('db' => 'QUESTION_4', 'dt' => 9),
+	array('db' => 'QUESTION_5', 'dt' => 10),
+    array( 'db' => 'WORK_ARRANGEMENT', 'dt'=> 11,
 	'formatter' => function( $d, $row ) {
         if($d == 'AWA')
         {

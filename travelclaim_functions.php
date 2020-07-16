@@ -149,8 +149,8 @@ session_start();
 
         $station = $row['OFFICE_STATION'];
         
-        $insert ="INSERT INTO `tbltravel_claim`(`ID`, `ENTITY_NAME`, `FUND_CLASTER`, `NAME`, `NO`, `DATE_OF_TRAVEL`, `PURPOSE`, `POSITION`, `OFFICIAL_STATION`) VALUES 
-        (null,'".$_POST['entity_name']."','".$_POST['fund_cluster']."','".$_POST['complete_name']."','".$_POST['numero']."','".date('Y-m-d',strtotime($_POST['date_of_travel']))."','".$_POST['purpose_of_travel']."','".$_POST['position']."','".$station ."')";
+        $insert ="INSERT INTO `tbltravel_claim`(`ID`, `ENTITY_NAME`, `FUND_CLASTER`, `NAME`, `NO`, `DATE_OF_TRAVEL`, `PURPOSE`, `POSITION`, `OFFICIAL_STATION`,`IS_SUBMIT`) VALUES 
+        (null,'".$_POST['entity_name']."','".$_POST['fund_cluster']."','".$_POST['complete_name']."','".$_POST['numero']."','".date('Y-m-d',strtotime($_POST['date_of_travel']))."','".$_POST['purpose_of_travel']."','".$_POST['position']."','".$station ."',1)";
      
      
      
@@ -195,6 +195,7 @@ if(isset($_POST['function']))
     {
         deleteTravelOrder();
     }else if($func== 'add')
+    
     {
         add();
     }
