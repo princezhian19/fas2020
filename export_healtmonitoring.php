@@ -37,7 +37,7 @@ $styleArray = array(
 
 $fontStyle = [
   'font' => [
-      'size' => 8
+      'size' => 11
   ]
 ];
 
@@ -57,82 +57,78 @@ DIVISION_M LIKE '%".$_GET['division']."%' and
 if (mysqli_num_rows($sql_q10)>0) 
 {
     $row = 9;
-    // $no = 1;
+    $no = 1;
     // $count = (mysqli_num_rows($sql_q10));
 //    $total = ($row + $count)+1;
     while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
     {
-        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$excelrow['ID']);
+     
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$no++);
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row,$excelrow['FIRST_M'].''.$excelrow['LAST_M']);
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C'.$row,$excelrow['BODY_TEMPERATURE']);
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$row,$excelrow['CURRENT_ADDRESS']);
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row,$excelrow['OFFICE_STATION']);
-                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row,$excelrow['POSITION_M']);
-                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row,$excelrow['DESIGNATION_M']);
-                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row,$excelrow['DIVISION_M']);
-                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row,$excelrow['EMAIL']);
-                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row,$excelrow['WORK_ARRANGEMENT']);
+                if($excelrow['DETAILS_1'] == '' || $excelrow['DETAILS_1'] == null) 
+                {
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row,$excelrow['QUESTION_1']);
+                }else{
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row,$excelrow['QUESTION_1'].'  ('.$excelrow['DETAILS_1'].')');
+                }      
+                
+                if($excelrow['DETAILS_2'] == '' || $excelrow['DETAILS_2'] == null) 
+                {
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row,$excelrow['QUESTION_2']);
+                }else{
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row,$excelrow['QUESTION_2'].'  ('.$excelrow['DETAILS_2'].')');
+                } 
+
+                if($excelrow['DETAILS_3'] == '' || $excelrow['DETAILS_3'] == null) 
+                {
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row,$excelrow['QUESTION_3']);
+                }else{
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row,$excelrow['QUESTION_3'].'  ('.$excelrow['DETAILS_3'].')');
+                } 
+
+                if($excelrow['DETAILS_4'] == '' || $excelrow['DETAILS_4'] == null) 
+                {
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row,$excelrow['QUESTION_4']);
+                }else{
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row,$excelrow['QUESTION_4'].'  ('.$excelrow['DETAILS_4'].')');
+                } 
+
+                if($excelrow['DETAILS_5'] == '' || $excelrow['DETAILS_5'] == null) 
+                {
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row,$excelrow['QUESTION_5']);
+                }else{
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row,$excelrow['QUESTION_5'].'  ('.$excelrow['DETAILS_5'].')');
+                } 
+                
+                if($excelrow['WORK_ARRANGEMENT'] == 'SWF' )
+                {
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K'.$row,'Skeletal Work Force');
+                }else{
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K'.$row,'Alternate Work Arrangement');
+                } 
+                
+
                 $objPHPExcel->getActiveSheet()->getStyle('B'.$row.':B'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
                 $objPHPExcel->getActiveSheet()->getStyle('D'.$row.':D'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
                 $objPHPExcel->getActiveSheet()->getStyle('F'.$row.':F'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
                 $objPHPExcel->getActiveSheet()->getStyle('G'.$row.':G'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
                 $objPHPExcel->getActiveSheet()->getStyle('H'.$row.':H'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
                 $objPHPExcel->getActiveSheet()->getStyle('I'.$row.':I'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
+                $objPHPExcel->getActiveSheet()->getStyle('J'.$row.':J'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
+                $objPHPExcel->getActiveSheet()->getStyle('K'.$row.':K'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
 
 
-        $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':J'.$row)->applyFromArray($styleArray);
-
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':K'.$row)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':K'.$row)->applyFromArray($fontStyle);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':K'.$row)->getAlignment() ->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+    
                 $row++;
     }
 }
       
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$excelrow['REQ_DATE']);
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row,$excelrow['count']);
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row,$excelrow['count']);
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row,$excelrow['count']);
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row,$excelrow['count']);
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E13','Month of '.$excelrow['month'].' '.$year);
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row,$excelrow['count']);
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('N'.$row,$excelrow['count']);
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row,'100%');
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('M'.$row,'100%');
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$total,'Total');
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$total,'1');
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('M'.$total,'100%');
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$total,'100%');
-//         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('N'.$total,'1');
-
-//         $objPHPExcel->getActiveSheet(0) ->setCellValue('B'.$total,'=SUM(B18:B'.($row).')' );
-//         $objPHPExcel->getActiveSheet(0) ->setCellValue('E'.$total,'=SUM(E18:E'.($row).')' );
-//         $objPHPExcel->getActiveSheet(0) ->setCellValue('G'.$total,'=SUM(G18:G'.($row).')' );
-//         $objPHPExcel->getActiveSheet(0) ->setCellValue('H'.$total,'=SUM(H18:H'.($row).')' );
-
-//         $objPHPExcel->getActiveSheet()->getStyle('A'.$total)->getFont()->setBold( true );
-//         $objPHPExcel->getActiveSheet()->getStyle('B'.$total)->getFont()->setBold( true );
-//         $objPHPExcel->getActiveSheet()->getStyle('E'.$total)->getFont()->setBold( true );
-//         $objPHPExcel->getActiveSheet()->getStyle('G'.$total)->getFont()->setBold( true );
-//         $objPHPExcel->getActiveSheet()->getStyle('H'.$total)->getFont()->setBold( true );
-//         $objPHPExcel->getActiveSheet()->getStyle('I'.$total)->getFont()->setBold( true );
-//         $objPHPExcel->getActiveSheet()->getStyle('J'.$total)->getFont()->setBold( true );
-//         $objPHPExcel->getActiveSheet()->getStyle('M'.$total)->getFont()->setBold( true );
-//         $objPHPExcel->getActiveSheet()->getStyle('N'.$total)->getFont()->setBold( true );
-        
-//         $objPHPExcel->getActiveSheet()
-//         ->getStyle("A".$total.":Q".$total)
-//         ->applyFromArray($fontStyle);
-
-//         $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':Q'.$row)->applyFromArray($styleArray);
-//         $objPHPExcel->getActiveSheet()->getStyle('A'.$total.':Q'.$total)->applyFromArray($styleArray);
-        
-      
-   
-    
-
-//       $row++;
-//     }
-// }
-
-
 
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
