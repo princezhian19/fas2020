@@ -182,7 +182,7 @@ if (isset($_POST['stamp4'])) {
           <td class="col-md-0">
             <img class="direct-chat-img" src="images/ph.png" alt="message user image">
           </td>
-          
+
         </tr>
       </table>
       <!-- <div class="clearfix"></div> -->
@@ -240,7 +240,7 @@ if (isset($_POST['stamp4'])) {
   <div class="info-box bg-aqua">
     <span class="info-box-icon info-box-text"><?php echo '<h3>'.date('M',strtotime($start)).'<br>'.date('d',strtotime($start)).'</h3>';?></span>
     <div class="info-box-content">
-     
+
 
       <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
 
@@ -253,7 +253,7 @@ if (isset($_POST['stamp4'])) {
       </span>
       <b>Office : </b> <?php echo $DIVISION_M?>
 
-      
+
     </div>
     <!-- /.info-box-content -->
   </div>
@@ -275,7 +275,7 @@ if (isset($_POST['stamp4'])) {
   <div class="info-box bg-aqua">
     <span class="info-box-icon info-box-text "><?php echo '<h3>'.date('M',strtotime($start)).'<br>'.date('d',strtotime($start)).'</h3>';?></span>
     <div class="info-box-content">
-      
+
 
       <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
 
@@ -288,7 +288,7 @@ if (isset($_POST['stamp4'])) {
       </span>
       <b>Office : </b> <?php echo $DIVISION_M?>
 
-      
+
     </div>
     <!-- /.info-box-content -->
   </div>
@@ -310,7 +310,7 @@ if (isset($_POST['stamp4'])) {
   <div class="info-box bg-aqua">
     <span class="info-box-icon info-box-text"><?php echo '<h3>'.date('M',strtotime($start)).'<br>'.date('d',strtotime($start)).'</h3>';?></span>
     <div class="info-box-content">
-      
+
 
       <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
       <span class="info-box-number"></span>
@@ -322,7 +322,7 @@ if (isset($_POST['stamp4'])) {
       </span>
       <b>Office : </b> <?php echo $DIVISION_M?>
 
-      
+
     </div>
     <!-- /.info-box-content -->
   </div>
@@ -578,7 +578,7 @@ if (isset($_POST['stamp4'])) {
                       <div class="progress sm">
                         <div class="progress-bar progress-bar-green" style="width: <?php echo $lucena_percent?>%"></div>
                       </div>
-                      
+
                       <!-- <?php echo $region + $batangas + $cavite + $laguna + $rizal + $quezon + $lucena?> -->
                     </div> 
                     <!-- /.progress-group -->
@@ -632,7 +632,7 @@ if (isset($_POST['stamp4'])) {
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><i class="fa fa-birthday-cake"></i>&nbsp&nbsp&nbsp<strong>Birthday Celebrants</strong></h4>
-                
+
               </div>
               <div class="modal-body">
                <?php 
@@ -655,6 +655,10 @@ if (isset($_POST['stamp4'])) {
                 $BIRTH_D = $row['BIRTH_D'];
                 $PROFILE = $row['PROFILE'];
                 $b_day = date('F d',strtotime($BIRTH_D));
+                if ($PROFILE == 'images/profile/') {
+                $PROFILE = 'images/LOGO.png';
+
+                }
 
                 ?>  
                 <img class="direct-chat-img" src="<?php echo $PROFILE; ?>" alt="message user image">
@@ -705,6 +709,10 @@ if (isset($_POST['stamp4'])) {
                 $BIRTH_D = $row['BIRTH_D'];
                 $PROFILE = $row['PROFILE'];
                 $b_day = date('F d',strtotime($BIRTH_D));
+                if ($PROFILE == 'images/profile/') {
+                $PROFILE = 'images/LOGO.png';
+
+                }
 
                 ?>  
                 <img class="direct-chat-img" src="<?php echo $PROFILE; ?>" alt="message user image">
@@ -850,7 +858,7 @@ if (isset($_POST['stamp4'])) {
                           <?php endif ?>
                         </b><br><?php echo $intent;?></td>
                       </tr>
-                      
+
                       <div class="modal modal-default fade" id="modal-info_<?php echo $row['id']; ?>">
                         <div class="modal-dialog">
                           <div class="modal-content">
@@ -879,7 +887,7 @@ if (isset($_POST['stamp4'])) {
                       </div>
                     <?php } ?>
                   </table>
-                  
+
              <!-- <img class="direct-chat-img" src="images/LOGO.png" alt="message user image"><a href="">Charles Adrian T. Odi</a>
              <p></p>
 

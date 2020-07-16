@@ -710,7 +710,7 @@ if (isset($_POST['stamp4'])) {
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
                   <h4 class="modal-title"><i class="fa fa-birthday-cake"></i>&nbsp&nbsp&nbsp<strong>Birthday Celebrants</strong></h4>
-                  
+
                 </div>
                 <div class="modal-body">
                  <?php 
@@ -733,6 +733,10 @@ if (isset($_POST['stamp4'])) {
                   $BIRTH_D = $row['BIRTH_D'];
                   $PROFILE = $row['PROFILE'];
                   $b_day = date('F d',strtotime($BIRTH_D));
+                  if ($PROFILE == 'images/profile/') {
+                    $PROFILE = 'images/LOGO.png';
+
+                  }
 
                   ?>  
                   <img class="direct-chat-img" src="<?php echo $PROFILE; ?>" alt="message user image">
@@ -783,7 +787,10 @@ if (isset($_POST['stamp4'])) {
                 $BIRTH_D = $row['BIRTH_D'];
                 $PROFILE = $row['PROFILE'];
                 $b_day = date('F d',strtotime($BIRTH_D));
+                if ($PROFILE == 'images/profile/') {
+                  $PROFILE = 'images/LOGO.png';
 
+                }
                 ?>  
                 <img class="direct-chat-img" src="<?php echo $PROFILE; ?>" alt="message user image">
                 <b style="font-size: 13px;"><?php echo $name;?></b>
