@@ -750,7 +750,7 @@ if (isset($_POST['stamp4'])) {
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4" >
         <div class="row">
           <div class="col-md-12">
             <div class="box" >
@@ -782,9 +782,9 @@ if (isset($_POST['stamp4'])) {
                   </div>
                 </form>
               </div>
-              <div style="padding-left: 10px;padding-right: 10px;background:#ee5;">
+              <div style="padding-left: 10px;padding-right: 10px;background:#ee5;" class="table-responsive">
 
-               <table id="example15" class="table " style="background-color:#ee5;">
+               <table id="example15" class="table " style="background-color:#ee5;" >
                 <thead >
                   <tr style="background-color:#ee5;" >
                     <th style="background-color:#ee5;"hidden></th>
@@ -804,7 +804,7 @@ if (isset($_POST['stamp4'])) {
                   $extension = pathinfo($profile, PATHINFO_EXTENSION);
                   ?>
                   <tr>
-                    <td width="1000"><img class="direct-chat-img" src="
+                    <td width="300"><img class="direct-chat-img" src="
                       <?php 
                       if(file_exists($profile))
                       {
