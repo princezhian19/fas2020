@@ -63,6 +63,7 @@ if (isset($_POST['submit'])) {
 
                  <!-- <a href="ViewRFQdetails.php?id=<?php echo $pr_id; ?>" class="btn btn-primary">Update</a> |  -->
                  <a href="ViewRFQ.php" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a>
+                 <a href="UpdateRFQ.php?id=<?php echo $id?>" class="btn btn-primary"><i class="fa fa-fw fa-edit"></i>Edit</a>
                  <a href="export_rfq.php?id=<?php echo $id; ?>" class="btn btn-success pull-right"><i class="fa fa-fw fa-download"></i>Export</a> 
                  <br>
                  <br>

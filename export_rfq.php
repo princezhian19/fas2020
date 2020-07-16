@@ -40,7 +40,7 @@ $id = $_GET['id'];
 $sql = mysqli_query($conn, "SELECT rfq.rfq_mode_id,rfq.quotation_date,rfq.rfq_date,rfq.rfq_no,rfq.purpose,pr.pmo,rfq.pr_no,rfq.pr_received_date FROM rfq LEFT JOIN pr on pr.pr_no = rfq.pr_no WHERE rfq.id = '$id' ");
 $row = mysqli_fetch_array($sql);
 $pr_no = $row['pr_no'];
-$pmo = $row['pmo'];
+$pmo = $row['pmo']; 
 $rfq_no = $row['rfq_no'];
 $rfq_mode_id = $row['rfq_mode_id'];
 $rfq_date = $row['rfq_date'];
