@@ -139,6 +139,11 @@ $(document).ready(function(){
     })
 });
 
+$(document).ready(function(){
+  $('#datepicker4 ').datepicker({
+      autoclose: true
+    })
+});
 
 $(document).ready(function(){
   $('.timepicker1').datepicker({

@@ -119,7 +119,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 $('#ors1').prop('disabled', false);
                                 var ors = $("input[name='ors1']"); 
                                 ors.val('');
-                                
+
                                 $('#example').DataTable().destroy();
                                 dataT();
                                 // alert(filter_data1);
@@ -888,6 +888,16 @@ $('#ors').prop('disabled', false);
 var ors = $("input[name='ors']"); 
 ors.val('');
 
+var payee = $("input[name='payee']"); 
+payee.val('');
+var particular = $("input[name='particular']"); 
+particular.val('');
+var amount = $("input[name='amount']"); 
+amount.val('');
+var orsdate = $("input[name='orsdate']"); 
+orsdate.val('');
+
+
 
 }
 else{
@@ -898,6 +908,16 @@ ors.val('');
 $('#ors1').prop('disabled', false);
 var ors = $("input[name='ors1']"); 
 ors.val('');
+
+var payee = $("input[name='payee']"); 
+payee.val('');
+var particular = $("input[name='particular']"); 
+particular.val('');
+var amount = $("input[name='amount']"); 
+amount.val('');
+var orsdate = $("input[name='orsdate']"); 
+orsdate.val('');
+
 
 //dataEE();
 

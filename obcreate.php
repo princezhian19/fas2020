@@ -112,7 +112,7 @@ function app($connect)
                       <input required value=""  class="form-control input" type="text" class="" style="width: 100%; height: 35px;" id="ors" name="ors" placeholder="Enter BURS/ORS No." autocomplete="off">
                       <br>
                       <label>PO No.</label>
-                      <input  type="text" class="typeahead form-control input" style="width: 100%; height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum" value="<?php echo isset($_GET['ponum']) ? $_GET['ponum'] : '' ?>">
+                      <input autocomplete="off"  type="text" class="typeahead form-control input" style="width: 100%; height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum" value="<?php echo isset($_GET['ponum']) ? $_GET['ponum'] : '' ?>">
                       <table class="table table-striped table-hover" id="main">
                       <tbody id="result">
                       </tbody>
@@ -184,7 +184,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right input" id="datepicker1" placeholder='Enter Date' name="datereceived">
+                        <input autocomplete="off" value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right input" id="datepicker1" placeholder='Enter Date' name="datereceived">
                     </div>
                     <br>
                     
@@ -197,7 +197,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>"date rety required type="text" class="form-control pull-right input" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
+                        <input autocomplete="off" value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>"date rety required type="text" class="form-control pull-right input" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
                         <br>
                     </div>
                     
@@ -209,7 +209,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input  value ="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" type="text" class="form-control pull-right input" id="datepicker3" placeholder='Enter Date' name="datereturned">
+                        <input autocomplete="off" value ="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" type="text" class="form-control pull-right input" id="datepicker3" placeholder='Enter Date' name="datereturned">
                     </div>
                     <br>
                     
@@ -219,7 +219,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right input" id="datepicker4" placeholder='Enter Date' name="datereleased">
+                        <input autocomplete="off" value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right input" id="datepicker4" placeholder='Enter Date' name="datereleased">
                         
                     </div>
 
@@ -232,15 +232,15 @@ function app($connect)
              <!-- ORS -->
              <br>
               <label>Payee<span style = "color:red;">*</span></label>
-                    <input  type="text"  class="form-control input" style="height: 35px;" id="payee" placeholder="Payee" name="payee">
+                    <input autocomplete="off"  type="text"  class="form-control input" style="height: 35px;" id="payee" placeholder="Payee" name="payee">
                     <br>
 
                     <label>Supplier<span style = "color:red;">*</span></label>
-                    <input  type="text"  class="form-control input" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
+                    <input  autocomplete="off" type="text"  class="form-control input" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
                     <br>
 
                     <label>Particular/Purpose<span style = "color:red;">*</span></label>
-                    <input  type="text"   class="form-control input" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
+                    <input autocomplete="off"  type="text"   class="form-control input" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
 
 
             <div class="row">
@@ -310,7 +310,7 @@ function app($connect)
             <div class="row">
                 <div class="col-md-3">
                     <label>Fund Source<span style = "color:red;">*</span></label>
-                    <input required  type="text"  class="form-control input" style="height: 40px;" id="saronum" placeholder="Fund Source" name="saronum"class="typeahead"/>
+                    <input autocomplete="off" required  type="text"  class="form-control input" style="height: 40px;" id="saronum" placeholder="Fund Source" name="saronum"class="typeahead"/>
                     <!-- <input type="text" name="txtCountry" id="txtCountry" class="typeahead"/> -->
                       <table class="table table-striped table-hover" id="main1">
                       <tbody id="result1">
@@ -368,7 +368,7 @@ function app($connect)
                 
                 <div class="col-md-3">
                     <label>MFO/PPA<span style = "color:red;">*</span></label>
-                    <input  required  type="text"  class="form-control input" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa">
+                    <input autocomplete="off"  required  type="text"  class="form-control input" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa">
                     <table class="table table-striped table-hover" id="main3">
                     <tbody id="result3">
                     </tbody>
@@ -421,7 +421,7 @@ function app($connect)
                 <!-- UACS Search -->
                 <div class="col-md-3">
                     <label>UACS Object Code<span style = "color:red;">*</span></label>
-                    <input  required type="text"  class="form-control input" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs">
+                    <input autocomplete="off" required type="text"  class="form-control input" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs">
                     <table class="table table-striped table-hover" id="main2" name="main2">
                     <tbody id="result2">
                     </tbody>
@@ -473,7 +473,7 @@ function app($connect)
 
                 <div class="col-md-3">
                     <label>Amount<span style = "color:red;">*</span></label>
-                    <input required  type="number"  class="form-control input" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
+                    <input autocomplete="off" required  type="number"  class="form-control input" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
                 </div>
             </div>
             
@@ -491,7 +491,7 @@ function app($connect)
                     <!-- <option>Select Group</option> -->
                     <!-- <?php echo app($connect);?> -->
                     <!-- </select> -->
-                    <input   type="text"  class="form-control input" style="height: 40px;" id="sarogroup" placeholder="SARO Group" name="sarogroup" readonly>
+                    <input autocomplete="off"  type="text"  class="form-control input" style="height: 40px;" id="sarogroup" placeholder="SARO Group" name="sarogroup" readonly>
                 </div>
                 <div class="col-md-4">
                     <label>Status<span style = "color:red;">*</span></label>
