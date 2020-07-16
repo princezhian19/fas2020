@@ -64,50 +64,51 @@ if (mysqli_num_rows($sql_q10)>0)
     {
      
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$no++);
-                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row,$excelrow['FIRST_M'].''.$excelrow['LAST_M']);
-                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C'.$row,$excelrow['BODY_TEMPERATURE']);
-                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$row,$excelrow['CURRENT_ADDRESS']);
-                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row,$excelrow['OFFICE_STATION']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row,date('F d, Y',strtotime($excelrow['DATE'])));
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C'.$row,$excelrow['FIRST_M'].''.$excelrow['LAST_M']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$row,$excelrow['BODY_TEMPERATURE']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row,$excelrow['CURRENT_ADDRESS']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row,$excelrow['OFFICE_STATION']);
                 if($excelrow['DETAILS_1'] == '' || $excelrow['DETAILS_1'] == null) 
                 {
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row,$excelrow['QUESTION_1']);
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row,$excelrow['QUESTION_1']);
                 }else{
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row,$excelrow['QUESTION_1'].'  ('.$excelrow['DETAILS_1'].')');
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row,$excelrow['QUESTION_1'].'  ('.$excelrow['DETAILS_1'].')');
                 }      
                 
                 if($excelrow['DETAILS_2'] == '' || $excelrow['DETAILS_2'] == null) 
                 {
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row,$excelrow['QUESTION_2']);
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row,$excelrow['QUESTION_2']);
                 }else{
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row,$excelrow['QUESTION_2'].'  ('.$excelrow['DETAILS_2'].')');
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row,$excelrow['QUESTION_2'].'  ('.$excelrow['DETAILS_2'].')');
                 } 
 
                 if($excelrow['DETAILS_3'] == '' || $excelrow['DETAILS_3'] == null) 
                 {
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row,$excelrow['QUESTION_3']);
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row,$excelrow['QUESTION_3']);
                 }else{
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row,$excelrow['QUESTION_3'].'  ('.$excelrow['DETAILS_3'].')');
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row,$excelrow['QUESTION_3'].'  ('.$excelrow['DETAILS_3'].')');
                 } 
 
                 if($excelrow['DETAILS_4'] == '' || $excelrow['DETAILS_4'] == null) 
                 {
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row,$excelrow['QUESTION_4']);
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row,$excelrow['QUESTION_4']);
                 }else{
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row,$excelrow['QUESTION_4'].'  ('.$excelrow['DETAILS_4'].')');
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row,$excelrow['QUESTION_4'].'  ('.$excelrow['DETAILS_4'].')');
                 } 
 
                 if($excelrow['DETAILS_5'] == '' || $excelrow['DETAILS_5'] == null) 
                 {
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row,$excelrow['QUESTION_5']);
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K'.$row,$excelrow['QUESTION_5']);
                 }else{
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row,$excelrow['QUESTION_5'].'  ('.$excelrow['DETAILS_5'].')');
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K'.$row,$excelrow['QUESTION_5'].'  ('.$excelrow['DETAILS_5'].')');
                 } 
                 
                 if($excelrow['WORK_ARRANGEMENT'] == 'SWF' )
                 {
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K'.$row,'Skeletal Work Force');
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('L'.$row,'Skeletal Work Force');
                 }else{
-                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('K'.$row,'Alternate Work Arrangement');
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('L'.$row,'Alternate Work Arrangement');
                 } 
                 
 
@@ -121,9 +122,9 @@ if (mysqli_num_rows($sql_q10)>0)
                 $objPHPExcel->getActiveSheet()->getStyle('K'.$row.':K'.$objPHPExcel->getActiveSheet()->getHighestRow()) ->getAlignment()->setWrapText(true); 
 
 
-        $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':K'.$row)->applyFromArray($styleArray);
-        $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':K'.$row)->applyFromArray($fontStyle);
-        $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':K'.$row)->getAlignment() ->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+                $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':L'.$row)->applyFromArray($styleArray);
+                $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':L'.$row)->applyFromArray($fontStyle);
+                $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':L'.$row)->getAlignment() ->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
     
                 $row++;
     }
