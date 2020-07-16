@@ -102,7 +102,7 @@ $columns = array(
             break;
     }
     }),
-	array('db' => 'QUESTION_1'.''.'DETAILS_1', 'dt' => 6),
+	array('db' => 'QUESTION_1', 'dt' => 6),
 	array('db' => 'QUESTION_2', 'dt' => 7),
 	array('db' => 'QUESTION_3', 'dt' => 8),
 	array('db' => 'QUESTION_4', 'dt' => 9),
