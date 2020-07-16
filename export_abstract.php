@@ -80,7 +80,7 @@ $select_tc = mysqli_query($conn,"SELECT datetime_created FROM aoq_data WHERE id 
 $rowtc = mysqli_fetch_array($select_tc);
 $rtcdate = $rowtc['datetime_created'];
 $date1 = date('F d, Y',strtotime($rtcdate));
-$date2 = date('H:i a',strtotime($rtcdate));
+$date2 = date('h:i a',strtotime($rtcdate));
 
 // $abs_date = date("Y-m-d\TH:i:s",strtotime($abs_date1));
 

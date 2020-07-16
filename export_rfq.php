@@ -37,13 +37,14 @@ $styleLabel2 = array('font'  => array('size'  => 14, 'name'  => 'Calibri'),'alig
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $id = $_GET['id'];
 
-$sql = mysqli_query($conn, "SELECT rfq.rfq_mode_id,rfq.rfq_date,rfq.rfq_no,rfq.purpose,pr.pmo,rfq.pr_no,rfq.pr_received_date FROM rfq LEFT JOIN pr on pr.pr_no = rfq.pr_no WHERE rfq.id = '$id' ");
+$sql = mysqli_query($conn, "SELECT rfq.rfq_mode_id,rfq.quotation_date,rfq.rfq_date,rfq.rfq_no,rfq.purpose,pr.pmo,rfq.pr_no,rfq.pr_received_date FROM rfq LEFT JOIN pr on pr.pr_no = rfq.pr_no WHERE rfq.id = '$id' ");
 $row = mysqli_fetch_array($sql);
 $pr_no = $row['pr_no'];
-$pmo = $row['pmo'];
+$pmo = $row['pmo']; 
 $rfq_no = $row['rfq_no'];
 $rfq_mode_id = $row['rfq_mode_id'];
 $rfq_date = $row['rfq_date'];
+$quotation_date = $row['quotation_date'];
 $purpose = $row['purpose'];
 $pr_date = $row['pr_received_date'];
 
@@ -209,7 +210,7 @@ $select_notes = mysqli_query($conn,"SELECT n.note FROM rfq_notes rn LEFT JOIN ne
 
 while ($rowN = mysqli_fetch_assoc($select_notes)){
   $notes_group = $rowN['note'];
-  $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers\n   must submit together with the quotation/proposal the following\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3. Others:\n     a. Any documents to prove that the signatory of the quotation is\nautorized representative of the company, or eligibility requirements.\n     b. Photocopy of ID bearing the pictures/ signature of the\nrepresentatives.\n   ".$notes_group."\n\nOther Instruction:\n\n * Please submit Your quotation using our official Request for Quotation (RFQ) Form.\nYou can secure a copy of the said RFQ to \nGeneral Services and supply section, Finance and Administrative Division, DILG.\n\n\n *Please submit your quotations//s together with the Eligibility Documents on/or before June 23, 2020\n at 5:00pm addressed to the DILG\nthrough any of the following\n      a. Email us at dilg4a.bac@gmail.com\n      b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
+  $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers\n   must submit together with the quotation/proposal the following\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3. Others:\n     a. Any documents to prove that the signatory of the quotation is\nautorized representative of the company, or eligibility requirements.\n     b. Photocopy of ID bearing the pictures/ signature of the\nrepresentatives.\n   ".$notes_group."\n\nOther Instruction:\n\n * Please submit Your quotation using our official Request for Quotation (RFQ) Form.\nYou can secure a copy of the said RFQ to \nGeneral Services and supply section, Finance and Administrative Division, DILG.\n\n\n *Please submit your quotations//s together with the Eligibility Documents on/or before ".$quotation_date."\n at 5:00pm addressed to the DILG\nthrough any of the following\n      a. Email us at dilg4a.bac@gmail.com\n      b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
   // echo $notes_group;
   // echo '<br>';
   $row++;

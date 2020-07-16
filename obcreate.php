@@ -29,6 +29,17 @@ function app($connect)
 }
 
 ?>
+
+<style>
+
+.input {border-style: groove;}
+
+.tb {
+  
+  border: 1px solid black;
+}
+
+</style>
 <!-- <style>
   a:hover {
   color: blue;
@@ -41,64 +52,24 @@ function app($connect)
 }
 </style> -->
 <head>
-<link rel="shortcut icon" type="image/png" href="dilg.png">
 
-<!-- Tell the browser to be responsive to screen width -->
-<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<!-- Bootstrap 3.3.7 -->
-<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-<!-- Ionicons -->
-<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-<!-- Theme style -->
-<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-<!-- AdminLTE Skins. Choose a skin from the css/skins
-    folder instead of downloading all of them to reduce the load. -->
-<link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-<!-- Morris chart -->
-<link rel="stylesheet" href="bower_components/morris.js/morris.css">
-<!-- jvectormap -->
-<link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
-<!-- Date Picker -->
-<link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-<!-- Daterange picker -->
-<link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
-<!-- bootstrap wysihtml5 - text editor -->
-<link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-<link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-
-  <!-- Auto Complete -->
   
 </head>
 
      
-<body class="hold-transition skin-red-light sidebar-mini">
-<div class="wrapper">
-  <?php include('test1.php');?>
-  
-  <div class="content-wrapper">
-    <section class="content-header">
-      <ol class="breadcrumb">
-        <li><a href=""><i class=""></i> Home</a></li>
-        <li class="active">Budget</li>
-        <li class="active">Create Obligation</li>
-      </ol>
-      <br>
+
       
        
     <!-- Start Panel -->
-   <!--  <div class="panel panel-default">
- -->        <br>
-        <div class="box">
+         
+        <div class="box" style="border-style: groove;">
           <div class="box-body">
       
             <h1 align="">Create Obligation</h1>
          <!--    <div class="box-header with-border">
      -->
         <br>
-      <li class="btn btn-success"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-warning"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
 
@@ -112,15 +83,36 @@ function app($connect)
       <form id="fupForm" name="form1" Type="GET">
      <!--  <form class="" type='GET' action="@Functions/obcreatefunction.php" > -->
         <!-- Start Menu -->
-        <div class="class-bordered" >
+        <div class="class-bordered well" >
+          <div class="row">
+
+          <div class="col-md-6">
+               
+                </div>
+          </div>
             <div class="row">
+
+                
                 <div class="col-md-6">
-                      <label>ORS Serial No.</label>
-                      <input  type="text" class="form-control" style="height: 35px;" id="ors" placeholder="Enter ORS Number" name="ors" required>
+                      
+                            <tr>
+                            <td class="col-md-6">
+
+                        <label>Mode<span style = "color:red;">*</span></label>
+                      <select class="  input" style="width: 100%; height: 40px;" name="mode" id="mode" required style="border-style: groove;">
+                      <option value = "">SELECT BURS/ORS</option>
+                      <option value = "BURS">BURS</option>
+                      <option value = "ORS">ORS</option>
+                      </select>
+                      <br>
+                      <br>
+
+                            
+                      <label>ORS Serial No.<span style = "color:red;">*</span></label>
+                      <input required value=""  class="form-control input" type="text" class="" style="width: 100%; height: 35px;" id="ors" name="ors" placeholder="Enter ORS No." autocomplete="off">
                       <br>
                       <label>PO No.</label>
-                      <input  type="text" class="typeahead form-control" style="height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum" value="<?php echo isset($_GET['ponum']) ? $_GET['ponum'] : '' ?>">
-                      
+                      <input  type="text" class="typeahead form-control input" style="width: 100%; height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum" value="<?php echo isset($_GET['ponum']) ? $_GET['ponum'] : '' ?>">
                       <table class="table table-striped table-hover" id="main">
                       <tbody id="result">
                       </tbody>
@@ -169,48 +161,91 @@ function app($connect)
                 document.getElementById("ponum").value = x[2].innerHTML;
                 
               }
-            </script>   
+            </script> 
+
+                            </td>
+                            <td class="col-md-6">
+                            
+                            </td>
+                            </tr>
+                      
+
+             
                 </div>    
                 
                 <div class="col-md-6">
-                    <label>Date Received</label>
-                    <br>
+                   <!-- <label>Status</label> -->
+
+                   
+                   
+                    <label>Date Received <span style = "color:red;">*</span></label>
+                    
                     <div class="input-group date">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datereceived">
+                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right input" id="datepicker1" placeholder='Enter Date' name="datereceived">
                     </div>
                     <br>
                     
                     
-                    <label>Date Processed</label>
-                    <br>
+                    
+                    
+                    <label>Date Processed <span style = "color:red;">*</span></label>
+                    
                     <div class="input-group date">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>"date rety required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
+                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>"date rety required type="text" class="form-control pull-right input" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
                         <br>
                     </div>
+                    
+                    <br>
+                    
+                    <label>Date Returned </label>
+                    <br>
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input  value ="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" type="text" class="form-control pull-right input" id="datepicker3" placeholder='Enter Date' name="datereturned">
+                    </div>
+                    <br>
+                    
+                    <label>Date Released <span style = "color:red;">*</span></label>
+                    <br>
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right input" id="datepicker4" placeholder='Enter Date' name="datereleased">
+                        
+                    </div>
+
+                    
                 </div>
             </div>
         </div>
         
-        <div class="class">
+        <div class="class well">
              <!-- ORS -->
+             <br>
+              <label>Payee<span style = "color:red;">*</span></label>
+                    <input  type="text"  class="form-control input" style="height: 35px;" id="payee" placeholder="Payee" name="payee">
+                    <br>
+
+                    <label>Supplier<span style = "color:red;">*</span></label>
+                    <input  type="text"  class="form-control input" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
+                    <br>
+
+                    <label>Particular/Purpose<span style = "color:red;">*</span></label>
+                    <input  type="text"   class="form-control input" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
+
+
             <div class="row">
                 <div class="col-md-6">
-                    <label>Payee</label>
-                    <input  type="text"  class="form-control" style="height: 35px;" id="payee" placeholder="Payee" name="payee">
-                    <br>
-
-                    <label>Supplier</label>
-                    <input  type="text"  class="form-control" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
-                    <br>
-
-                    <label>Particular/Purpose</label>
-                    <input  type="text"   class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
+                    
                 </div>
 
               <!-- supplier -->
@@ -261,26 +296,7 @@ function app($connect)
 
 
                 <div class="col-md-6">
-                <label>Date Returned</label>
-                    <br>
-                    <div class="input-group date">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <input  value ="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="datereturned">
-                    </div>
-                    <br>
-                    
-                    <label>Date Released</label>
-                    <br>
-                    <div class="input-group date">
-                        <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right" id="datepicker4" placeholder='Enter Date' name="datereleased">
-                        
-                    </div>
-
+                
                    
                 </div>
                 <!-- @Funtions/obsearchvalue.php -->
@@ -294,7 +310,7 @@ function app($connect)
             <div class="row">
                 <div class="col-md-3">
                     <label>Fund Source</label>
-                    <input required  type="text"  class="form-control" style="height: 40px;" id="saronum" placeholder="Fund Source" name="saronum"class="typeahead"/>
+                    <input required  type="text"  class="form-control input" style="height: 40px;" id="saronum" placeholder="Fund Source" name="saronum"class="typeahead"/>
                     <!-- <input type="text" name="txtCountry" id="txtCountry" class="typeahead"/> -->
                       <table class="table table-striped table-hover" id="main1">
                       <tbody id="result1">
@@ -352,7 +368,7 @@ function app($connect)
                 
                 <div class="col-md-3">
                     <label>MFO/PPA</label>
-                    <input  required  type="text"  class="form-control" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa">
+                    <input  required  type="text"  class="form-control input" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa">
                     <table class="table table-striped table-hover" id="main3">
                     <tbody id="result3">
                     </tbody>
@@ -405,7 +421,7 @@ function app($connect)
                 <!-- UACS Search -->
                 <div class="col-md-3">
                     <label>UACS Object Code</label>
-                    <input  required type="text"  class="form-control" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs">
+                    <input  required type="text"  class="form-control input" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs">
                     <table class="table table-striped table-hover" id="main2" name="main2">
                     <tbody id="result2">
                     </tbody>
@@ -457,7 +473,7 @@ function app($connect)
 
                 <div class="col-md-3">
                     <label>Amount</label>
-                    <input required  type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
+                    <input required  type="number"  class="form-control input" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
                 </div>
             </div>
             
@@ -465,7 +481,7 @@ function app($connect)
             <div class="row">
                 <div class="col-md-4">
                     <label>Remarks</label>
-                    <textarea class="form-control" placeholder="Remarks" id="remarks" name="remarks" style="width: 100%; height: 40px;" ></textarea> 
+                    <textarea class="form-control input" placeholder="Remarks" id="remarks" name="remarks" style="width: 100%; height: 40px;" ></textarea> 
                 </div>
 
                 <div class="col-md-4">
@@ -475,12 +491,12 @@ function app($connect)
                     <!-- <option>Select Group</option> -->
                     <!-- <?php echo app($connect);?> -->
                     <!-- </select> -->
-                    <input   type="text"  class="form-control" style="height: 40px;" id="sarogroup" placeholder="SARO Group" name="sarogroup" readonly>
+                    <input   type="text"  class="form-control input" style="height: 40px;" id="sarogroup" placeholder="SARO Group" name="sarogroup" readonly>
                 </div>
                 <div class="col-md-4">
                     <label>Status</label>
                     <!-- <textarea class="form-control" placeholder="Remarks" name="remarks" ></textarea> --> 
-                    <select class="form-control select" style="width: 100%; height: 40px;" name="status" id="status" required >
+                    <select class="form-control select input" style="width: 100%; height: 40px;" name="status" id="status" required >
                    
                     <option value = "Obligated">Obligated</option>
                     <option value = "Pending">Pending</option>
@@ -501,10 +517,10 @@ function app($connect)
 
               <div class=""  style="overflow-x:auto;">
               <!-- Append -->
-          <table id="table1" name="table1" class="table table-bordered"  style="background-color: white;border-width: medium;">
+          <table id="table1" name="table1" class="table table-bordered"  style="background-color: white;border-width: medium; text-align:left; border-style: groove;">
          
           <tbody>
-          <tr>
+          <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; ">
         
           <th>DATE RECEIVED</th>
           <th>DATE OBLIGATED</th>
@@ -673,8 +689,7 @@ function app($connect)
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    <!-- &nbsp&nbsp&nbsp<button type="submit" name="submit" class="btn btn-success">Submit</button> -->
-  
+    
     <br>
     <br>
     </div>
@@ -682,97 +697,7 @@ function app($connect)
     <!--End Submit -->
   </div>
 
-    </section>
-  </div>
  
-</div>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-<!-- <script>
-/* AJAX */
-$(document).ready(function() {
-	$('#butsave').on('click', function() {
-		$("#butsave").attr("enabled", "enabled");
-
-		var datereceived = $('#datepicker1').val();
-		var datereprocessed = $('#datepicker2').val();
-		var datereturned = $('#datepicker3').val();
-		var datereleased = $('#datepicker4').val();
-    var ors = $('#ors').val();
-    var ponum = $('#ponum').val();
-    var payee = $('#payee').val();
-    var supplier = $('#supplier').val();
-    var particular = $('#particular').val();
-    var saronum = $('#saronum').val();
-    var ppa = $('#ppa').val();
-    var uacs = $('#uacs').val();
-    var amount = $('#amount').val();
-    var remarks = $('#remarks').val();
-    var sarogroup = $('#sarogroup').val();
-    var status = $('#status').val();
-		if(ors!="" ){
-			$.ajax({
-				url: "obcreatefunction.php",
-				type: "POST",
-				data: {
-					datereceived: datereceived,
-					datereprocessed: datereprocessed,
-					datereturned: datereturned,
-					datereleased: datereleased,
-          ors: ors,
-					ponum: ponum,
-					payee: payee,
-					supplier: supplier,
-          particular: particular,
-					saronum: saronum,
-					ppa: ppa,
-          uacs: uacs,
-					amount: amount,
-          remarks: remarks,
-					sarogroup: sarogroup,
-					status: status,
-					
-				},
-				cache: false,
-				success: function(dataResult){
-					var dataResult = JSON.parse(dataResult);
-					if(dataResult.statusCode==200){
-            
-						$("#butsave").removeAttr("disabled");
-					//$('#fupForm').find('input:text').val('');
-						$("#success").show();
-					//	$('#success').html('Data added successfully!');
-            alert("Data added successfully!");
-           						
-					}
-					else if(dataResult.statusCode==201){
-					   alert("Error occured !");
-					}
-					
-				}
-			});
-		}
-		else{
-			alert('Please fill all the field !');
-		}
-	});
-});
-</script> -->
-
-
-<script src="dist/js/demo.js">
-</script>
-<!-- <script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
 </script> -->
 
 <!-- jQuery 3 -->

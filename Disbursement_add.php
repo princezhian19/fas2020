@@ -49,7 +49,6 @@ p.mix {border-style: dotted dashed solid double;} */
 </style>
 
 
-
 <div class="box" style="border-style: groove;">
           <div class="box-body">
       
@@ -69,7 +68,7 @@ p.mix {border-style: dotted dashed solid double;} */
                 <div class="row" >
                 <!-- Row 1 -->
                         <div class="col-md-6 ">
-                            <!-- Partition 1        -->
+                            <!-- Partition 1 -->
                             
                             <table class="table"> 
 
@@ -186,11 +185,8 @@ p.mix {border-style: dotted dashed solid double;} */
                                 
                                 }}
                                 
-
-
                                 } );
                                 }
-
                                 /* Delete function */
                                 function dataE(){
                                 
