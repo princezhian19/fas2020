@@ -366,15 +366,17 @@ only screen and (max-width: 760px),
                     "date_filed":date_filed,
                     "division": division,
                     "position": position
-                }}
-                // "columnDefs": [ {
-                //     "targets":[2],
-                //     "orderable":false
-                //     // "render": function (data, type, row, meta ) {  
-                //     // action = "<button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>";
-                //     // return action;
-                //     // }
-                // }]
+                }},
+                
+                "columnDefs": [ {
+                   "width": "10%", "targets": 9
+                    // "targets":[2],
+                    // "orderable":false
+                    // // "render": function (data, type, row, meta ) {  
+                    // // action = "<button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>";
+                    // // return action;
+                    // // }
+                }]
               
 
             } );
@@ -848,11 +850,12 @@ if($_GET['action'] == 'show')
               <th>BODY TEMPERATURE</th>
               <th>RESIDENTIAL ADDRESS</th>
               <th>OFFICE STATION</th>
-              <th>POSITION</th>
-              <th>DESIGNATION</th>
-              <th>OFFICE/DIVISION</th>
-              <th>PERSONAL EMAIL ADDRESS</th>
-              <th>WORK ARRANGEMENT</th>
+              <th>Did you have any of the following in the last 14 days: fever, cough, colds, sore throat, diarrhea or difficulty in breathing?</th>
+              <th>Have you worked, visited or travelled to any foreign countries in the past 14 days?</th>
+              <th>Have you worked, visited or travelled to other places in the Philippines in the past 7 days?</th>
+              <th>Have you been in close contact with farm animals or exposed to wild animals in the past 14 days?</th>
+              <th>Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</th>
+              <th style = "width:1%;">WORK ARRANGEMENT</th>
               </thead>
             </table>
             <?php
