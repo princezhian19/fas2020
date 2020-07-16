@@ -149,7 +149,7 @@ only screen and (max-width: 760px),
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residential Address:</td>
-            <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none;background-color:#ECEFF1;border:none;`" name = "curraddress" readonly><?php getAddress();?></textarea></td>
+            <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none;background-color:#ECEFF1;border:none;" name = "curraddress" readonly><?php getAddress();?></textarea></td>
             <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
             <td> <input type ="text" style = " border: none;" class = "form-control" name = "gender" id = "gender" value = "<?php getGender(); ?>" readonly /> </td>
           </tr>
@@ -441,6 +441,8 @@ $('#healthDec').click(function(){
             case 'UNCHECK':
                   $("#txt1").prop('disabled', true);
             default:
+            $("#txt1").val('');
+
               break;
           }
       });
@@ -502,6 +504,8 @@ $('#healthDec').click(function(){
             case 'UNCHECK':
                   $("#txt2").prop('disabled', true);
             default:
+            $("#txt2").val('');
+
               break;
           }
       });
@@ -562,6 +566,8 @@ $('#healthDec').click(function(){
             case 'UNCHECK':
                   $("#txt3").prop('disabled', true);
             default:
+            $("#txt3").val('');
+
               break;
           }
       });
@@ -622,6 +628,8 @@ $('#healthDec').click(function(){
               case 'UNCHECK':
                     $("#txt4").prop('disabled', true);
               default:
+            $("#txt4").val('');
+
                 break;
             }
           });
@@ -682,6 +690,8 @@ $('#healthDec').click(function(){
               case 'UNCHECK':
                     $("#txt5").prop('disabled', true);
               default:
+            $("#txt").val('');
+
                 break;
             }
           });
