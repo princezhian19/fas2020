@@ -23,7 +23,7 @@ include('db.class.php'); // call db.class.php
                 <!-- Header -->
                   <tr>
                   <td class="col-md-1">
-                  <li class="btn btn-success"><a href="obcreate.php" style="color:white;text-decoration: none;">Create</a></li>
+                  <li class="btn btn-success"><a href="ObligationCreate.php" style="color:white;text-decoration: none;">Create</a></li>
 
 
                   
