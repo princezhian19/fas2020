@@ -82,9 +82,9 @@ if ($pr_no != NULL) {
 
   $selectPR = mysqli_query($conn,"SELECT pr_no FROM rfq WHERE id = $rfq_id ");
   $rowPR = mysqli_fetch_array($selectPR);
-  $pr_no = $rowPR['pr_no'];
-  
-  $sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit as unit_id,b.qty FROM pr_items b LEFT JOIN app a on a.id = b.items WHERE b.pr_no = '$pr_no' ");
+  $pr_no1 = $rowPR['pr_no'];
+
+  $sql_items = mysqli_query($conn, "SELECT a.sn,a.procurement,b.description,b.unit as unit_id,b.qty FROM pr_items b LEFT JOIN app a on a.id = b.items WHERE b.pr_no = '$pr_no1' ");
 
 }
 
@@ -277,7 +277,7 @@ if (mysqli_num_rows($sql_items)<10) {
 
  $counter++;
 
- 
+
  
  $z=15;
  for($i=0; $i<$z; $i++){
@@ -349,19 +349,23 @@ if (mysqli_num_rows($sql_items)<10) {
   $rowJ++;
   $rowK++;
 
-  
-
-}
-
 
 
 }
 
 
 
+}
 
 
-$sql_items1 = mysqli_query($conn, "SELECT * FROM ris where rfq_id = $rfq_id");
+
+
+if ($pr_no != '') {
+$sql_items1 = mysqli_query($conn, "SELECT * FROM ris where pr_no = '$pr_no'");
+}else{
+$sql_items1 = mysqli_query($conn, "SELECT * FROM ris where po_no = '$po_no'");
+}
+
 $rowP = mysqli_fetch_array($sql_items1);
 $purpose = $rowP['purpose'];
 $request_by = $rowP['request_by'];
@@ -408,19 +412,19 @@ $objPHPExcel->getActiveSheet()->getStyle('C'.$rowF)->applyFromArray($styleConten
 $objPHPExcel->getActiveSheet()->getStyle('C'.$rowF.':C'.$rowG)->applyFromArray($styleLeft);
 $objPHPExcel->getActiveSheet()->getStyle('C'.$rowF.':C'.$rowG)->applyFromArray($styleRight);
 
-if ($request_by == 'JAY-AR T. BELTRAN' ) {
+if ($request_by == 'ELOISA G. ROZUL' || $request_by == 1 || $request_by == 'JAY-AR T. BELTRAN') {
   $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowI,"JAY-AR T. BELTRAN");
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ," OIC-LGCDD Chief");
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ,"OIC - Chief, LGCDD ");
 
 }
-if ($request_by == 'GILBERTO L. TUMAMAC' ) {
+if ($request_by == 'GILBERTO L. TUMAMAC' || $request_by == 2) {
   $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowI,"GILBERTO L. TUMAMAC");
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ,"OIC-LGMED Chief");
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ,"OIC -  Chief, LGMED");
 
 }
-if ($request_by == 'DR. CARINA S. CRUZ' ) {
+if ($request_by == 'DR. CARINA S. CRUZ' || $request_by == 3) {
   $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowI,"DR. CARINA S. CRUZ");
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ,"FAD Chief");
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowJ,"Chief, FAD");
 }
 
 $objPHPExcel->getActiveSheet()->getStyle('C'.$rowI)->applyFromArray($styleContent3);

@@ -45,7 +45,8 @@ if (isset($_POST['submit'])) {
   $pr_no = $_POST['pr_no'];
   $rfq_date = $_POST['rfq_date'];
   $d1 = date('Y-m-d', strtotime($rfq_date));
-
+  $quotation_date = $_POST['quotation_date'];
+  $dd2 = date('Y-m-d', strtotime($quotation_date));
 
   $pr_date_received = $_POST['pr_date_received'];
   $purpose = $_POST['purpose'];
@@ -86,8 +87,8 @@ if (isset($_POST['submit'])) {
     //   $insert_rfq = mysqli_query($conn,'INSERT INTO rfq (rfq_no,rfq_mode_id,rfq_date,pr_received_date,action_officer)
     // VALUES("'.$_POST['rfq_no'].'","'.$_POST['mode'].'","'.$_POST['rfq_date'].'","'.$_POST['action_officer'].'") ');
 
-      $insert_rfq = mysqli_query($conn,'INSERT INTO rfq (rfq_no,purpose,rfq_mode_id,rfq_date,pr_no,pr_received_date,action_officer)
-          SELECT "'.$rfq_no.'",purpose,"'.$mode.'","'.$d1.'","'.$pr_no.'",pr_date,"'.$s.'" FROM pr WHERE pr_no = "'.$pr_no.'" ');
+      $insert_rfq = mysqli_query($conn,'INSERT INTO rfq (rfq_no,purpose,rfq_mode_id,rfq_date,pr_no,pr_received_date,action_officer,quotation_date)
+          SELECT "'.$rfq_no.'",purpose,"'.$mode.'","'.$d1.'","'.$pr_no.'",pr_date,"'.$s.'","'.$quotation_date.'" FROM pr WHERE pr_no = "'.$pr_no.'" ');
      // }
      $UpdatePR = mysqli_query($conn,'UPDATE pr set stat="1" WHERE pr_no = "'.$pr_no.'" ');
 
@@ -368,6 +369,16 @@ function checkAvailability() {
                   <option value="8">Not Applicable N/A</option>
                 </select>
               </div>
+
+              <div class="form-group">
+              <label>Quotation Date</label>
+              <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                        <input  type="text" class="form-control pull-right" name="quotation_date" id="datepicker2" value="<?php $now =  date("m/d/Y"); echo $now;  ?>">
+              </div>
+            </div>
 
 
             <div class="form-group" hidden>

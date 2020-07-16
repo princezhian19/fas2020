@@ -431,6 +431,8 @@ $(document).ready(function()
             case 'UNCHECK':
                   $("#txt1").prop('disabled', true);
             default:
+            $("#txt1").val('');
+
               break;
           }
       });
@@ -492,6 +494,8 @@ $(document).ready(function()
             case 'UNCHECK':
                   $("#txt2").prop('disabled', true);
             default:
+            $("#txt2").val('');
+
               break;
           }
       });
@@ -552,6 +556,8 @@ $(document).ready(function()
             case 'UNCHECK':
                   $("#txt3").prop('disabled', true);
             default:
+            $("#txt3").val('');
+
               break;
           }
       });
@@ -612,6 +618,8 @@ $(document).ready(function()
               case 'UNCHECK':
                     $("#txt4").prop('disabled', true);
               default:
+            $("#txt4").val('');
+
                 break;
             }
           });
@@ -672,6 +680,8 @@ $(document).ready(function()
               case 'UNCHECK':
                     $("#txt5").prop('disabled', true);
               default:
+            $("#txt5").val('');
+
                 break;
             }
           });
@@ -715,6 +725,7 @@ $(document).ready(function()
           //         $("#cb9").prop('required', true);
           //     }
           // });
+
 });
 </script>
 <?php 

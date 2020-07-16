@@ -63,28 +63,28 @@ ob_start();
               $sq = mysqli_query($conn,"SELECT request_by from ris where id ='".$_GET['id']."' ");
               while ($row = mysqli_fetch_assoc($sq)) {
                 $request_by = $row['request_by'];
-                if ($request_by == 1) {
+                if ($request_by == 'ELOISA G. ROZUL' || $request_by == 1 || $request_by == 'JAY-AR T. BELTRAN') {
                   echo ' <select name="request_by" class="form-control">
-                  <option value="1">ELOISA G. ROZUL</option>
+                  <option value="1">JAY-AR T. BELTRAN</option>
                   <option value="2">JOHN M. CEREZO</option>
                   <option value="3">DR. CARINA S. CRUZ</option>
                   </select>';   
                 }elseif ($request_by == 2) {
                   echo '<select name="request_by" class="form-control">
                   <option value="2">JOHN M. CEREZO</option>
-                  <option value="1">ELOISA G. ROZUL</option>
+                  <option value="1">JAY-AR T. BELTRAN</option>
                   <option value="3">DR. CARINA S. CRUZ</option>
                   </select>';   
                 }elseif ($request_by == 3) {
                   echo '<select name="request_by" class="form-control">
                   <option value="3">DR. CARINA S. CRUZ</option>
                   <option value="2">JOHN M. CEREZO</option>
-                  <option value="1">ELOISA G. ROZUL</option>
+                  <option value="1">JAY-AR T. BELTRAN</option>
                   </select>';   
                 }else{
                   echo ' <select name="request_by" class="form-control">
                   <option selected disabled>SELECT</option>
-                  <option value="1">ELOISA G. ROZUL</option>
+                  <option value="1">JAY-AR T. BELTRAN</option>
                   <option value="2">JOHN M. CEREZO</option>
                   <option value="3">DR. CARINA S. CRUZ</option>
                   </select>';
