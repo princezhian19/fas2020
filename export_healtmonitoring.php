@@ -62,13 +62,32 @@ if (mysqli_num_rows($sql_q10)>0)
 //    $total = ($row + $count)+1;
     while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
     {
+
+        switch ($excelrow['OFFICE_STATION']) {
+            case '1':
+                $office_station = 'Regional Office';
+
+            break;
+            case '2':
+                $office_station = 'HUC Office';
+
+            break;
+            case '3':
+                $office_station = 'Cluster Office';
+
+            break;
+            case '4':
+                $office_station = 'City/Municipal Office';
+
+            break;
+    }
      
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$no++);
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row,date('F d, Y',strtotime($excelrow['DATE'])));
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C'.$row,$excelrow['FIRST_M'].''.$excelrow['LAST_M']);
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$row,$excelrow['BODY_TEMPERATURE']);
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row,$excelrow['CURRENT_ADDRESS']);
-                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row,$excelrow['OFFICE_STATION']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row,$office_station);
                 if($excelrow['DETAILS_1'] == '' || $excelrow['DETAILS_1'] == null) 
                 {
                     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row,$excelrow['QUESTION_1']);
