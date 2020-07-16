@@ -127,11 +127,13 @@ $mydb = new db(); // create a new object, class db()
                 "bAutoWidth": false,
                   "processing": true,
                   "serverSide": false,
-                  "ajax": "DATATABLE/travel_claim.php",
+                  "ajax": "DATATABLE/travel_claim.php"
+                  ,
                   "columnDefs": [ {
                       "targets":10,
                       "render": function (data, type, row, meta ) {  
-                      action = "<button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>";
+                      action = "";
+                      // <button class = 'btn btn-md btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>&nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>
                       return action;
                       }
                   }]
