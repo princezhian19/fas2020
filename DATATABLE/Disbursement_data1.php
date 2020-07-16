@@ -3,18 +3,18 @@ session_start();
 date_default_timezone_set("Asia/Manila");
 $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-		$get = $_POST['filter_data'];
+		$get = $_POST['filter_data1'];
 
 		$fieldsName = 'saronumber,ppa,uacs,amount';
-		$table = 'saroob';
+		$table = 'saroobburs';
 		$join = '';
-		$WHERE = " WHERE ors = '$get' ";
+		$WHERE = " WHERE burs = '$get' ";
 
 		/* echo "select $fieldsName from $table $WHERE" ;
 		exit(); */
 
 				
-// Table's primary key54
+// Table's primary key
 $primaryKey = 'id';
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`

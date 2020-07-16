@@ -69,14 +69,29 @@ p.mix {border-style: dotted dashed solid double;} */
                 <!-- Row 1 -->
                         <div class="col-md-6 ">
                             <!-- Partition 1 -->
+                           
                             
                             <table class="table"> 
+                           
+                            <tr>
+                            <td class="col-md-2">
+                            <b>MODE<span style = "color:red;">*</span></b>
 
+                            </td>
+                            <td class="col-md-7">
+                            <select onchange="myFunctionORS()" class=" form-control select input" style="width: 100%; height: 40px;" name="mode" id="mode" required style="border-style: groove;">
+                            <option value = "">SELECT BURS/ORS</option>
+                            <option value = "BURS">BURS</option>
+                            <option value = "ORS">ORS</option>
+                            </select>
+                            </td>
+                            </tr>
+                            
 
                             <tr>
-                            <td class="col-md-2"><b>ORS No.<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-2"><b>BURS No.<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input required value=""  class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="Enter ORS No." autocomplete="off">
+                            <input required value=""  class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="Enter BURS No." autocomplete="off">
                            
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -84,16 +99,32 @@ p.mix {border-style: dotted dashed solid double;} */
                                 <div id="result" style=" background-color:#A9A9A9; font-weight:bold; font-size:15px; margin-top:2px ">
                                 <div>
                                 </div>
-                                <script>
-                               
 
+
+                                <script>
+
+                               
                                 $(document).ready(function(){
+                                //Set ors disabled
+
 
                                 $("#result").click(function(){
                                 $("#main").hide();
                                 // alert(filter_data);
                                
                                 // alert(filter_data);
+
+                                filter_data1 = $('#ors').val();
+                               
+                                $('#ors1').prop('disabled', false);
+                                var ors = $("input[name='ors1']"); 
+                                ors.val('');
+                                
+                                $('#example').DataTable().destroy();
+                                dataT();
+                                // alert(filter_data1);
+
+                             
 
                                 });
                                 });
@@ -104,12 +135,20 @@ p.mix {border-style: dotted dashed solid double;} */
                                 
 
                                 $(document).ready(function(){
+                                
+                               
                                 function load_data(query)
                                 {
+
+                               
                                 $.ajax({
-                                url:"@disbursementvalue.php",
+                                
+                                url:"@disbursementvalue1.php",
                                 method:"POST",
-                                data:{query:query},
+                                data:{query:query,
+                                },
+
+
                                 success:function(data)
                                 {
                                 $('#result').html(data);
@@ -122,11 +161,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 {
                                 load_data(search);
 
-                                filter_data = $(this).val();
-                                $('#example').DataTable().destroy();
-                                dataT();
-                                //  alert(filter_data);
-                                
+                               
                                 
                                 }
                                 else
@@ -162,6 +197,189 @@ p.mix {border-style: dotted dashed solid double;} */
                                 
                                 // var filter_data ='0001';
                                 
+
+                                var table = $('#example').DataTable( {
+                                'scrollX'     : true,
+                                'paging'      : true,
+                                'lengthChange': true,
+                                'searching'   : false,
+                                'ordering'    : true,
+                                'info'        : true,
+                                'autoWidth'   : true,   aLengthMenu: [ [10, 10, 20, -1], [10, 10, 20, "All"] ],
+                                "bPaginate": false,
+                                "bLengthChange": false,
+                                "bFilter": true,
+                                "bInfo": false,
+                                "bAutoWidth": false,  
+                                "processing": true,
+                                "serverSide": false,
+                                "ajax": {
+                                "url": "DATATABLE/Disbursement_data1.php",
+                                "type": "POST",
+                                "data": {
+                                "filter_data1": filter_data1,
+                               
+                                }}
+                                
+                                } );
+                                }
+                                /* Delete function */
+                                function dataE(){
+                                
+                                var filter_data ='';
+                                
+                                var table = $('#example').DataTable( {
+                                'scrollX'     : true,
+                                'paging'      : true,
+                                'lengthChange': true,
+                                'searching'   : false,
+                                'ordering'    : true,
+                                'info'        : true,
+                                'autoWidth'   : true,   aLengthMenu: [ [10, 10, 20, -1], [10, 10, 20, "All"] ],
+                                "bPaginate": false,
+                                "bLengthChange": false,
+                                "bFilter": true,
+                                "bInfo": false,
+                                "bAutoWidth": false,  
+                                "processing": true,
+                                "serverSide": false,
+                                "ajax": {
+                                "url": "DATATABLE/Disbursement_data_del1.php",
+                                "type": "POST",
+                                "data": {
+                                "filter_data": filter_data
+                                
+                                }}
+                                
+
+
+                                } );
+                                }
+                                
+                                
+
+                                
+                                </script>
+                            </td>
+                            </tr>
+
+
+
+
+                            <tr>
+                            <td class="col-md-2"><b>ORS No.<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-7">
+                            <input required value=""  class="form-control input" type="text" class="" style="height: 35px;" id="ors1" name="ors1" placeholder="Enter ORS No." autocomplete="off">
+                           
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                                <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+                                <div class="" id="main1" style="text-align:center">
+                                <div id="result1" style=" background-color:#A9A9A9; font-weight:bold; font-size:15px; margin-top:2px ">
+                                <div>
+                                </div>
+
+
+
+                                <script>
+
+                              
+                                $(document).ready(function(){
+                                //Set ors disabled
+
+
+
+                                $('#ors').prop('disabled', true);
+                                $('#ors1').prop('disabled', true);
+
+
+
+
+                                $("#result1").click(function(){
+                                $("#main1").hide();
+                                // alert(filter_data);
+                               
+                                // alert(filter_data);
+
+                                filter_data = $('#ors1').val();
+                              
+                                $('#example').DataTable().destroy();
+                                dataTE();
+
+                                //  alert(mode);
+                                
+
+                                });
+                                });
+                                </script>
+                               
+                                <script type="text/javascript">
+                                //declare variable for filtering
+                                
+
+                                $(document).ready(function(){
+                                
+                              
+                                function load_data(query)
+                                {
+
+                               
+                                $.ajax({
+                                
+                                url:"@disbursementvalue.php",
+                                method:"POST",
+                                data:{query:query,
+                                },
+
+
+                                success:function(data)
+                                {
+                                $('#result1').html(data);
+                                }
+                                });
+                                }
+                                $('#ors1').keyup(function(){
+                                var search = $(this).val();
+                                if(search != '')
+                                {
+                                load_data(search);
+
+                               
+                                
+                                }
+                                else
+                                {
+                                
+                                $("#main1").show();
+                                load_data();
+
+                                filter_data = '';
+                                $('#example').DataTable().destroy();
+                                dataEE();
+
+                                document.getElementById('payee').value = "";
+                                document.getElementById('particular').value = "";
+                                document.getElementById("amount").value = "";
+                                document.getElementById("orsdate").value = "";
+
+                                }
+                                });
+                                });
+                                function showRow(row)
+                                {
+                                var x=row.cells;
+                                document.getElementById("ors1").value = x[0].innerHTML;
+                                document.getElementById("orsdate").value = x[3].innerHTML;
+                                document.getElementById("payee").value = x[4].innerHTML;
+                                document.getElementById("particular").value = x[5].innerHTML;
+                                document.getElementById("amount").value = x[6].innerHTML;
+                                }
+
+                                //function of table
+                                function dataTE(){
+                                
+                                // var filter_data ='0001';
+                                
+
                                 var table = $('#example').DataTable( {
                                 'scrollX'     : true,
                                 'paging'      : true,
@@ -181,14 +399,15 @@ p.mix {border-style: dotted dashed solid double;} */
                                 "url": "DATATABLE/Disbursement_data.php",
                                 "type": "POST",
                                 "data": {
-                                "filter_data": filter_data
+                                "filter_data": filter_data,
+                               
                                 
                                 }}
                                 
                                 } );
                                 }
                                 /* Delete function */
-                                function dataE(){
+                                function dataEE(){
                                 
                                 var filter_data ='';
                                 
@@ -632,6 +851,60 @@ p.mix {border-style: dotted dashed solid double;} */
         
     })
   });
+
+
+
+function myFunctionORS()
+{
+var mode = document.getElementById("mode").value;
+
+if(mode==""){
+$('#ors').prop('disabled', true);
+var ors = $("input[name='ors']"); 
+ors.val('');
+
+$('#ors1').prop('disabled', true);
+var ors = $("input[name='ors1']"); 
+ors.val('');
+
+
+var payee = $("input[name='payee']"); 
+payee.val('');
+var particular = $("input[name='particular']"); 
+particular.val('');
+var amount = $("input[name='amount']"); 
+amount.val('');
+var orsdate = $("input[name='orsdate']"); 
+orsdate.val('');
+
+}
+else if(mode=="BURS"){
+
+$('#ors1').prop('disabled', true);
+var ors = $("input[name='ors1']");
+ors.val('');
+
+$('#ors').prop('disabled', false);
+var ors = $("input[name='ors']"); 
+ors.val('');
+
+
+}
+else{
+$('#ors').prop('disabled', true);
+var ors = $("input[name='ors']"); 
+ors.val('');
+
+$('#ors1').prop('disabled', false);
+var ors = $("input[name='ors1']"); 
+ors.val('');
+
+//dataEE();
+
+}
+
+}
+
 </script>
 
 

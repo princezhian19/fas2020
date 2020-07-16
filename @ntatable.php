@@ -18,7 +18,7 @@ $username = $_SESSION['username'];
 
 </head>
 <body>
-<div class="box">
+<div class="box" style="border-style: groove;">
   <div class="box-body">
             
   <div class="class"  style="overflow-x:auto;">
