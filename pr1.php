@@ -187,7 +187,7 @@ if (isset($_POST['submit'])) {
   $check = mysqli_query($conn,"SELECT pr_no FROM pr WHERE pr_no = '$pr_no1' ");
 
   if (mysqli_num_rows($check)>0) {
-    echo "<div style='background-color:lightblue;color:red;'> <p> <b>This PR_NO is already existing</b> <p> <div>";
+    echo "<div style='background-color:lightblue;color:red;'> <p> <b>This PR_NO is already existing</b> <p> </div>";
   }else{
     
     $today = date("Y-m-d h:i:sa");
@@ -339,18 +339,18 @@ if (isset($_POST['add'])) {
 
   if ($app_items == '')
   {
-    echo "<div style='background-color:lightblue;color:red;'> <p> <b>Please Select Item Field!</b> <p> <div>";
+    echo "<div style='background-color:lightblue;color:red;'> <p> <b>Please Select Item Field!</b> <p> </div>";
   }
   else
   {
     if ($pmo == 'Please Select') {
-      echo "<div style='background-color:lightblue;color:red;'> <p> <b>PMO field is Empty!</b> <p> <div>";
+      echo "<div style='background-color:lightblue;color:red;'> <p> <b>PMO field is Empty!</b> <p> </div>";
     }else{
       if ($app_items =="dummy") {
-        echo "<div style='background-color:lightblue;color:red;'> <p> <b>This PR_NO is already existing</b> <p> <div>";
+        echo "<div style='background-color:lightblue;color:red;'> <p> <b>This PR_NO is already existing</b> <p> </div>";
       }
       if($unit ==""){
-        echo "<div style='background-color:lightblue;color:red;'> <p> <b>Unit Cannot Be Blank</b> <p> <div>";
+        echo "<div style='background-color:lightblue;color:red;'> <p> <b>Unit Cannot Be Blank</b> <p> </div>";
 
       } else{
        
@@ -732,7 +732,7 @@ function confirmDelete(delUrl) {
                   <div class="row">
                     <div class="col-md-6" style="padding-left: 30px;padding-top:10px;">
                       <label>Item/s <font style="color: Red;" >*</font> </label>
-                      <input  type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
+                      <input onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
                       <font id="p" hidden>&nbsp</font>
                       <table class="table table-striped table-hover" id="main">
                         <tbody id="result">
