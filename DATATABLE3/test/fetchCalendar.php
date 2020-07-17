@@ -14,8 +14,9 @@ $col =array(
  
 );  //create column like table in database
 
+
 $sql ="SELECT * FROM events 
-left join tblemployee te ON events.postedby = te.emp_n  
+left join tblemployeeinfo te ON events.postedby = te.emp_n  
 left join tblpersonneldivision tp on tp.DIVISION_N = events.office";
 $query=mysqli_query($con,$sql);
 
@@ -24,7 +25,8 @@ $totalData=mysqli_num_rows($query);
 $totalFilter=$totalData;
 
 //Search
-$sql ="SELECT * FROM events left join tblemployee te ON events.postedby = te.emp_n  
+$sql ="SELECT * FROM events 
+left join tblemployeeinfo te ON events.postedby = te.emp_n  
 left join tblpersonneldivision tp on tp.DIVISION_N = events.office WHERE 1=1";
 if(!empty($request['search']['value'])){
     $sql.=" AND (id Like '".$request['search']['value']."%' ";
@@ -38,6 +40,29 @@ if(!empty($request['search']['value'])){
 $query=mysqli_query($con,$sql);
 $totalData=mysqli_num_rows($query);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Order
 $sql.=" ORDER BY ".$col[$request['order'][0]['column']]."   ".$request['order'][0]['dir']."  LIMIT ".
     $request['start']."  ,".$request['length']."  ";
@@ -48,8 +73,9 @@ $data=array();
 $i = 1;
 
 
+
 while($row=mysqli_fetch_array($query)){
-    $subdata=array();
+  $subdata=array();
     $subdata[]=$row['DIVISION_M']; 
     $subdata[]=$row['title']; 
     $subdata[]=date('F d, Y',strtotime($row['start']));          
