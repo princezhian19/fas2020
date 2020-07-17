@@ -224,7 +224,7 @@ else{
 ?>
 <!-- Insert Query -->
        
-<div class="box">
+<div class="box" style="border-style:groove">
           <div class="box-body">
       
             <h1 align="">Create Vehicle Request</h1>

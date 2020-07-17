@@ -22,8 +22,8 @@ $getUacs = $_GET['getuacs'];
 
 </head>
 <body>
-    <div class="" style="overflow-x:auto;">
-      <div class="panel panel-default " style="overflow-x:auto;">
+    <div class="box"style="border-style:groove" style="overflow-x:auto;">
+      <div class="box-body">
         <div class=""style="overflow-x:auto;"> 
           <div class=""style="overflow-x:auto;">
             <br>
@@ -52,7 +52,7 @@ $getUacs = $_GET['getuacs'];
             echo number_format($amount,2)?></label></h3>
            
 
-            <h3 align="" >&nbspTotal Obligation Amount :   <?php $getSaro = $_GET['getsaroID'];
+            <h3 align="" >&nbspTotal Obligation Amount :   <b><?php $getSaro = $_GET['getsaroID'];
           
             
             $servername = "localhost";
@@ -64,14 +64,43 @@ $getUacs = $_GET['getuacs'];
             $AmountAll = mysqli_query($conn, "SELECT sum(amount) as a FROM saroob where saronumber = '$getSaro' and uacs = '$getUacs' and status='Obligated' "); 
             $rowAmount = mysqli_fetch_array( $AmountAll);
 
-            echo  number_format($rowAmount['a'],2)?></h3>
+            echo  number_format($rowAmount['a'],2)?></b>
+            
+          
+          </h3>
+
+
+            <h3 align="" >&nbspBalance :   <b><?php $getSaro = $_GET['getsaroID'];
+          
+            
+            $servername = "localhost";
+            $username = "fascalab_2020";
+            $password = "w]zYV6X9{*BN";
+            $database = "fascalab_2020";
+            
+            $conn = new mysqli($servername, $username, $password,$database);
+            $AmountAll = mysqli_query($conn, "SELECT balance as a FROM saro where saronumber = '$getSaro' and uacs = '$getUacs' "); 
+            $rowAmount = mysqli_fetch_array( $AmountAll);
+
+            echo  number_format($rowAmount['a'],2)?></b>
+            
+          </h3>
+
+
              <input type="text" class="text" name="totalob" value="<?php echo $rowAmount['a'];?>" hidden>
 
 
             <br>
 
+            <li class="btn btn-warning"><a href="saro.php" style="color:white;text-decoration: none;">Back</a></li>
+
+            <br>
+            <br>
+            <br>
+
             <div class="class">
-          
+              
+            
             <div class="col-md-3">
                   <label for="">FROM</label>
                   <select class="form-control " name="datefrom" style="width: 100%;">

@@ -163,7 +163,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
       <br>
         
     <!-- Start Panel -->
-    <div class="panel panel-default">
+    <div class="box" style="border-style:groove">
         <br>
       
             <h1 align="">&nbspUpdate Obligation at ID: <label for=""><?php echo $getid;?></h1>
