@@ -28,6 +28,7 @@ $stylebottom = array(
 );
 
 $styleContent = array('font'  => array('size'  => 9, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
+$styleContent31 = array('font'  => array('size'  => 12, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
 $styleHeader = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER));
 
@@ -197,7 +198,7 @@ while($rowE = mysqli_fetch_assoc($sql_items) ){
 
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$rowssDD)->getAlignment()->setWrapText(true);
 $objPHPExcel->getActiveSheet()->mergeCells('A'.$row.':N'.$rowssDD);
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleContent);
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleContent31);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$rowssDD)->applyFromArray($styleRight);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$rowssDD)->applyFromArray($styleLeft);
 // $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getFont()->setBold(true);
@@ -210,15 +211,15 @@ $select_notes = mysqli_query($conn,"SELECT n.note FROM rfq_notes rn LEFT JOIN ne
 if (mysqli_num_rows($select_notes) > 0) {
   # code...
   while ($rowN = mysqli_fetch_assoc($select_notes)){
-  $notes_group = $rowN['note'];
-  $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers\n   must submit together with the quotation/proposal the following\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3. Others:\n     a. Any documents to prove that the signatory of the quotation is\nautorized representative of the company, or eligibility requirements.\n     b. Photocopy of ID bearing the pictures/ signature of the\nrepresentatives.\n   ".$notes_group."\n\nOther Instruction:\n\n * Please submit Your quotation using our official Request for Quotation (RFQ) Form.\nYou can secure a copy of the said RFQ to \nGeneral Services and supply section, Finance and Administrative Division, DILG.\n\n\n *Please submit your quotations//s together with the Eligibility Documents on/or before ".$quotation_date."\n at 5:00pm addressed to the DILG\nthrough any of the following\n      a. Email us at dilg4a.bac@gmail.com\n      b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
+    $notes_group = $rowN['note'];
+    $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers\n   must submit together with the quotation/proposal the following\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3. Others:\n     a. Any documents to prove that the signatory of the quotation is\nautorized representative of the company, or eligibility requirements.\n     b. Photocopy of ID bearing the pictures/ signature of the\nrepresentatives.\n   ".$notes_group."\n\nOther Instruction:\n\n * Please submit Your quotation using our official Request for Quotation (RFQ) Form.\nYou can secure a copy of the said RFQ to \nGeneral Services and supply section, Finance and Administrative Division, DILG.\n\n\n *Please submit your quotations//s together with the Eligibility Documents\nthrough any of the following : \n      a. Email us at dilg4a.bac@gmail.com\n      b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
   // echo $notes_group;
   // echo '<br>';
-  $row++;
+    $row++;
 
-}
+  }
 }else{
-   $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers\n   must submit together with the quotation/proposal the following\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3. Others:\n     a. Any documents to prove that the signatory of the quotation is\nautorized representative of the company, or eligibility requirements.\n     b. Photocopy of ID bearing the pictures/ signature of the\nrepresentatives.\n\nOther Instruction:\n\n * Please submit Your quotation using our official Request for Quotation (RFQ) Form.\nYou can secure a copy of the said RFQ to \nGeneral Services and supply section, Finance and Administrative Division, DILG.\n\n\n *Please submit your quotations//s together with the Eligibility Documents on/or before ".$quotation_date."\n at 5:00pm addressed to the DILG\nthrough any of the following\n      a. Email us at dilg4a.bac@gmail.com\n      b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
+ $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers\n   must submit together with the quotation/proposal the following\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3. Others:\n     a. Any documents to prove that the signatory of the quotation is\nautorized representative of the company, or eligibility requirements.\n     b. Photocopy of ID bearing the pictures/ signature of the\nrepresentatives.\n\nOther Instruction:\n\n * Please submit Your quotation using our official Request for Quotation (RFQ) Form.\nYou can secure a copy of the said RFQ to \nGeneral Services and supply section, Finance and Administrative Division, DILG.\n\n\n *Please submit your quotations//s together with the Eligibility Documents\nthrough any of the following : \n      a. Email us at dilg4a.bac@gmail.com\n      b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
 }
 
   // echo $notes_group;
@@ -245,6 +246,8 @@ $objPHPExcel->getActiveSheet()
             // $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssE)->applyFromArray($styleRight);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssE)->getFont()->setBold(true);
              // $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssE)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssE1)->setRowHeight(10);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssE)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssE,'Warranty:');
 
         $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowssE.':D'.$rowssE1);
@@ -276,6 +279,7 @@ $objPHPExcel->getActiveSheet()
             // $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssE)->applyFromArray($styleRight);
         $objPHPExcel->getActiveSheet()->getStyle('E'.$rowssE)->getFont()->setBold(true);
              // $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssE)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+        $objPHPExcel->getActiveSheet()->getStyle('E'.$rowssE)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('E'.$rowssE,'Price Validity:');
 
         $objPHPExcel->getActiveSheet()->mergeCells('H'.$rowssE.':J'.$rowssE1);
@@ -306,6 +310,7 @@ $objPHPExcel->getActiveSheet()
         $objPHPExcel->getActiveSheet()->getStyle('K'.$rowssE)->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->getStyle('L'.$rowssE)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
         $objPHPExcel->getActiveSheet()->getStyle('L'.$rowssE)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::VERTICAL_BOTTOM);
+        $objPHPExcel->getActiveSheet()->getStyle('K'.$rowssE)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('K'.$rowssE,'TOTAL');
 
         $objPHPExcel->getActiveSheet()->getStyle('N'.$rowssE1)->applyFromArray($styleLeft);
@@ -327,6 +332,8 @@ $objPHPExcel->getActiveSheet()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssG)->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->mergeCells('A'.$rowssG.':N'.$rowssG);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssG)->setRowHeight(30);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssG)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssG,'SUPPLIER');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssG.':N'.$rowssG)->applyFromArray($styleContent);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssG.':N'.$rowssG)->applyFromArray($styleRight);
@@ -343,6 +350,8 @@ $objPHPExcel->getActiveSheet()
         ->setRGB('b5b8bc');##b5b8bc
         // $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssH)->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->mergeCells('A'.$rowssH.':N'.$rowssH);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssH)->setRowHeight(30);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssH)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssH,'After having carefully read and accepted your General Conditions, I / WE quote on the item(s) at prices noted above.');
         // 
         $objPHPExcel->getActiveSheet()->getStyle('N'.$rowssF)->applyFromArray($styleRight);
@@ -359,6 +368,8 @@ $objPHPExcel->getActiveSheet()
         ->getStartColor()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssI)->getFont()->setBold(true);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssI)->setRowHeight(30);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssI)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssI,'Name:');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssI)->applyFromArray($styleRight);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssI)->applyFromArray($stylebottom);
@@ -381,6 +392,8 @@ $objPHPExcel->getActiveSheet()
         ->getStartColor()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssJ)->getFont()->setBold(true);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssJ)->setRowHeight(30);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssJ)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssJ,'Contact:');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssJ)->applyFromArray($styleRight);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssJ)->applyFromArray($stylebottom);
@@ -402,6 +415,8 @@ $objPHPExcel->getActiveSheet()
         ->getStartColor()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssK)->getFont()->setBold(true);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssK)->setRowHeight(30);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssK)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssK,'Signature');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssK)->applyFromArray($styleRight);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssK)->applyFromArray($stylebottom);
@@ -423,6 +438,7 @@ $objPHPExcel->getActiveSheet()
         ->getStartColor()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('I'.$rowssK)->getFont()->setBold(true);
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$rowssK)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('I'.$rowssK,'Date:');
         $objPHPExcel->getActiveSheet()->getStyle('I'.$rowssK)->applyFromArray($styleRight);
         $objPHPExcel->getActiveSheet()->getStyle('I'.$rowssK)->applyFromArray($stylebottom);
