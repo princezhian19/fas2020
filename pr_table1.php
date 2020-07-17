@@ -181,7 +181,7 @@ $mydb = new db(); // create a new object, class db()
 
                       <td>
                         <?php if ($submitted_date == NULL): ?>
-                          <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Submit this PR?');" href='submit_pr1.php?id=<?php echo $id; ?>&username=<?php echo $username;?>'title="Submit">Submit</a>
+                          <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Submit this PR?');" href='submit_pr1.php?id=<?php echo $id; ?>&username=<?php echo $username;?>'title="Submit"><i class="fa fa-fw fa-send-o"></i>Submit</a>
                           <?php else: ?>
                             <?php echo $submitted_date1?><br>
                           <strong><i><?php echo $submitted_by1?></i></strong>

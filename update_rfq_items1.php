@@ -346,7 +346,7 @@ if (isset($_POST['submit'])) {
 
 
                 <label>Item/s <label style="color: Red;" >*</label> </label>
-                  <input type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" value="<?php echo $procurement?>">
+                  <input onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" value="<?php echo $procurement?>">
                   <table class="table table-striped table-hover" id="main">
                     <tbody id="result">
                     </tbody>
