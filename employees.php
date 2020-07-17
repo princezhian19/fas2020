@@ -125,7 +125,7 @@ if (isset($_POST['submit'])) {
       </form>
       <br>
       <br>
-      <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
+      <table id="" class="table table-striped table-bordered" style="width:;background-color: white;">
         <thead>
           <tr style="background-color: white;color:blue;">
             <th>FIRST NAME</th>
