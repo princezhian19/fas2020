@@ -20,6 +20,8 @@ $purpose = $row['purpose'];
 $amount = $row['amount'];
 $doc_type = $row['doc_type'];
 $status = $row['status'];
+$date_submit = $row['date_submit'];
+$date_submit1 = date('F d, Y', strtotime($date_submit));
 
 if (isset($_POST['submit'])) {
   $po_no1 = $_POST['po_no'];
