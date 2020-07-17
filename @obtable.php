@@ -104,8 +104,7 @@ include('db.class.php'); // call db.class.php
               $conn = new mysqli($servername, $username, $password,$database);
               $view_query = mysqli_query($conn, "SELECT * FROM saroob order by date desc");
               while ($row = mysqli_fetch_assoc($view_query)) {
-                $id = $row["id"];  
-
+                $id = $row["id"];
                 $datereceived = $row["datereceived"];
                 if ($datereceived == '0000-00-00') {
                   $datereceived11 = '';

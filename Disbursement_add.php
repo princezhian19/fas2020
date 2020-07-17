@@ -529,14 +529,14 @@ p.mix {border-style: dotted dashed solid double;} */
                             <tr>
                             <td class="col-md-1"><b>TOTAL DEDUCTIONS<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="deductions" id="deductions" value = "" placeholder="Total Deductions"  autocomplete="off">
+                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="deductions" id="deductions" value = "0" placeholder="Total Deductions"  autocomplete="off">
                             </td>
                             </tr>
 
                             <tr>
                             <td class="col-md-1"><b>NET AMOUNT<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="net" id="net" value = "" placeholder="Net Amount"  autocomplete="off">
+                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="net" id="net" value = "0" placeholder="Net Amount"  autocomplete="off">
                             </td>
                             </tr>
 
@@ -610,35 +610,35 @@ p.mix {border-style: dotted dashed solid double;} */
                         <tr>
                         <td class="col-md-1"><b>TAX<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
-                        <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="tax" name="tax" placeholder="Tax" autocomplete="off">
+                        <input required value="0" onkeyup="myFunctiontax()"  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="tax" name="tax" placeholder="Tax" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
                         <td class="col-md-1"><b>GSIS<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
-                        <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="gsis" name="gsis" placeholder="GSIS" autocomplete="off">
+                        <input required value="0" onkeyup="myFunctiongsis()"  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="gsis" name="gsis" placeholder="GSIS" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
                         <td class="col-md-1"><b>PAG IBIG<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
-                        <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="pagibig" name="pagibig" placeholder="Pag Ibig" autocomplete="off">
+                        <input required value="0" onkeyup="myFunctionpagibig()" class="form-control input" type="number" step="any" class="" style="height: 35px;" id="pagibig" name="pagibig" placeholder="Pag Ibig" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
                         <td class="col-md-1"><b>PHILHEALTH<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
-                        <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="philhealth" name="philhealth" placeholder="Philhealth" autocomplete="off">
+                        <input required value="0" onkeyup="myFunctionphilhealth()"  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="philhealth" name="philhealth" placeholder="Philhealth" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
                         <td class="col-md-1"><b>OTHER PAYABLES<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
-                        <input required value=""  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="other" name="other" placeholder="Other Payables" autocomplete="off">
+                        <input required value="0" onkeyup="myFunctionother()" class="form-control input" type="number" step="any" class="" style="height: 35px;" id="other" name="other" placeholder="Other Payables" autocomplete="off">
                         </td>
                         </tr>
 
@@ -871,6 +871,34 @@ amount.val('');
 var orsdate = $("input[name='orsdate']"); 
 orsdate.val('');
 
+
+var deductions = $("input[name='deductions']"); 
+deductions.val('');
+
+var net = $("input[name='net']"); 
+net.val('');
+
+var tax = $("input[name='tax']"); 
+tax.val('');
+
+var gsis = $("input[name='gsis']"); 
+gsis.val('');
+
+
+var pagibig = $("input[name='pagibig']"); 
+pagibig.val('');
+
+var philhealth = $("input[name='philhealth']"); 
+philhealth.val('');
+
+var other = $("input[name='other']"); 
+other.val('');
+
+
+
+
+
+
 }
 else if(mode=="BURS"){
 
@@ -893,6 +921,28 @@ orsdate.val('');
 
 
 
+var deductions = $("input[name='deductions']"); 
+deductions.val('');
+
+var net = $("input[name='net']"); 
+net.val('');
+
+var tax = $("input[name='tax']"); 
+tax.val('');
+
+var gsis = $("input[name='gsis']"); 
+gsis.val('');
+
+
+var pagibig = $("input[name='pagibig']"); 
+pagibig.val('');
+
+var philhealth = $("input[name='philhealth']"); 
+philhealth.val('');
+
+var other = $("input[name='other']"); 
+other.val('');
+
 }
 else{
 $('#ors').prop('disabled', true);
@@ -912,7 +962,27 @@ amount.val('');
 var orsdate = $("input[name='orsdate']"); 
 orsdate.val('');
 
+var deductions = $("input[name='deductions']"); 
+deductions.val('');
 
+var net = $("input[name='net']"); 
+net.val('');
+
+var tax = $("input[name='tax']"); 
+tax.val('');
+
+var gsis = $("input[name='gsis']"); 
+gsis.val('');
+
+
+var pagibig = $("input[name='pagibig']"); 
+pagibig.val('');
+
+var philhealth = $("input[name='philhealth']"); 
+philhealth.val('');
+
+var other = $("input[name='other']"); 
+other.val('');
 //dataEE();
 
 }
@@ -920,5 +990,212 @@ orsdate.val('');
 }
 
 </script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<script>
+
+/* Functions for deductions */
+function myFunctiontax() {
+  var tax = document.getElementById("tax").value;
+  var gsis = document.getElementById("gsis").value;
+  var pagibig = document.getElementById("pagibig").value;
+  var philhealth = document.getElementById("philhealth").value;
+  var other = document.getElementById("other").value;
+
+
+  var deductions1 = $("input[name='deductions']");
+  var net1 = $("input[name='net']");
+  var tax1 = $("input[name='tax']");
+
+  if(tax==''){
+  net1.val('0');
+  deductions1.val('0');
+  //tax1.val('0');
+
+  }
+  else{
+  var allsum = parseFloat(tax) + parseFloat(gsis) + parseFloat(pagibig) + parseFloat(philhealth) + parseFloat(other);
+
+  var deductions1 = $("input[name='deductions']");
+  deductions1.val(allsum);
+
+  var amount = document.getElementById('amount').value;
+  var deductions = document.getElementById('deductions').value;
+  var result = parseFloat(amount).toFixed(2) - parseFloat(deductions).toFixed(2);
+  if (!isNaN(result)) {
+
+  document.getElementById('net').value = result.toFixed(2);
+
+  }
+  
+  }
+        
+
+}
+
+
+
+
+
+function myFunctiongsis() {
+  var tax = document.getElementById("tax").value;
+  var gsis = document.getElementById("gsis").value;
+  var pagibig = document.getElementById("pagibig").value;
+  var philhealth = document.getElementById("philhealth").value;
+  var other = document.getElementById("other").value;
+
+
+  var deductions1 = $("input[name='deductions']");
+  var net1 = $("input[name='net']");
+  var gsis1 = $("input[name='gsis']");
+
+  if(gsis==''){
+  net1.val('0');
+  deductions1.val('0');
+  //gsis1.val('0');
+
+  }
+  else{
+  var allsum = parseFloat(tax) + parseFloat(gsis) + parseFloat(pagibig) + parseFloat(philhealth) + parseFloat(other);
+
+  var deductions1 = $("input[name='deductions']");
+  deductions1.val(allsum);
+
+  var amount = document.getElementById('amount').value;
+  var deductions = document.getElementById('deductions').value;
+  var result = parseFloat(amount).toFixed(2) - parseFloat(deductions).toFixed(2);
+  if (!isNaN(result)) {
+
+  document.getElementById('net').value = result.toFixed(2);
+
+  }
+  
+  }
+        
+
+}
+
+
+function myFunctionpagibig() {
+  var tax = document.getElementById("tax").value;
+  var gsis = document.getElementById("gsis").value;
+  var pagibig = document.getElementById("pagibig").value;
+  var philhealth = document.getElementById("philhealth").value;
+  var other = document.getElementById("other").value;
+
+
+  var deductions1 = $("input[name='deductions']");
+  var net1 = $("input[name='net']");
+  var pagibig1 = $("input[name='pagibig']");
+
+  if(pagibig==''){
+  net1.val('0');
+  deductions1.val('0');
+  //pagibig1.val('0');
+
+  }
+  else{
+  var allsum = parseFloat(tax) + parseFloat(gsis) + parseFloat(pagibig) + parseFloat(philhealth) + parseFloat(other);
+
+  var deductions1 = $("input[name='deductions']");
+  deductions1.val(allsum);
+
+  var amount = document.getElementById('amount').value;
+  var deductions = document.getElementById('deductions').value;
+  var result = parseFloat(amount).toFixed(2) - parseFloat(deductions).toFixed(2);
+  if (!isNaN(result)) {
+
+  document.getElementById('net').value = result.toFixed(2);
+
+  }
+  
+  }
+        
+
+}
+
+function myFunctionphilhealth() {
+  var tax = document.getElementById("tax").value;
+  var gsis = document.getElementById("gsis").value;
+  var pagibig = document.getElementById("pagibig").value;
+  var philhealth = document.getElementById("philhealth").value;
+  var other = document.getElementById("other").value;
+
+
+  var deductions1 = $("input[name='deductions']");
+  var net1 = $("input[name='net']");
+  var philhealth1 = $("input[name='philhealth']");
+
+  if(philhealth==''){
+  net1.val('0');
+  deductions1.val('0');
+  //philhealth1.val('0');
+
+  }
+  else{
+  var allsum = parseFloat(tax) + parseFloat(gsis) + parseFloat(pagibig) + parseFloat(philhealth) + parseFloat(other);
+
+  var deductions1 = $("input[name='deductions']");
+  deductions1.val(allsum);
+
+  var amount = document.getElementById('amount').value;
+  var deductions = document.getElementById('deductions').value;
+  var result = parseFloat(amount).toFixed(2) - parseFloat(deductions).toFixed(2);
+  if (!isNaN(result)) {
+
+  document.getElementById('net').value = result.toFixed(2);
+
+  }
+  
+  }
+        
+
+}
+
+function myFunctionother() {
+  var tax = document.getElementById("tax").value;
+  var gsis = document.getElementById("gsis").value;
+  var pagibig = document.getElementById("pagibig").value;
+  var philhealth = document.getElementById("philhealth").value;
+  var other = document.getElementById("other").value;
+
+
+  var deductions1 = $("input[name='deductions']");
+  var net1 = $("input[name='net']");
+  var other1 = $("input[name='other']");
+
+  if(other==''){
+  net1.val('0');
+  deductions1.val('0');
+  //other1.val('0');
+
+  }
+  else{
+  var allsum = parseFloat(tax) + parseFloat(gsis) + parseFloat(pagibig) + parseFloat(philhealth) + parseFloat(other);
+
+  var deductions1 = $("input[name='deductions']");
+  deductions1.val(allsum);
+
+  var amount = document.getElementById('amount').value;
+  var deductions = document.getElementById('deductions').value;
+  var result = parseFloat(amount).toFixed(2) - parseFloat(deductions).toFixed(2);
+  if (!isNaN(result)) {
+
+  document.getElementById('net').value = result.toFixed(2);
+
+  }
+  
+  }
+        
+
+}
+
+
+</script>
+
+
+
 
 
