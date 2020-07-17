@@ -1,25 +1,4 @@
   
-<?php 
-UPDATE tbl_employee set emp_no = 'F-4453' WHERE emp_no ='F4453';
-UPDATE tbl_loan set emp_no = 'F-4453' WHERE emp_no ='F4453';
-UPDATE tbl_deductions set emp_no = 'F-4453' WHERE emp_no ='F4453';
-UPDATE  tbl_deduction_loans set emp_no = 'F-4453' WHERE emp_no ='F4453';
-UPDATE  tbl_loan_history set emp_no = 'F-4453' WHERE emp_no ='F4453';
-
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
   <?php 
   include "config.php";
   include "dbaseCon.php";
