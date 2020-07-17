@@ -80,7 +80,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
       </ol>
       <br>
       <br>
-        <?php include('obcreate.php');?>
+        <?php include('Obligation_create.php');?>
         <br>
         <br>
         <br>

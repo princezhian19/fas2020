@@ -556,7 +556,7 @@ function app($connect)
 
 
           var newid = id++; 
-         
+            
           var ors = $("#ors").val();
           var amount = $("#amount").val();
           var mode = $("#mode").val();
@@ -604,6 +604,9 @@ function app($connect)
           /*crating new click event for save button*/
           $("#butsave").click(function() {
 
+        
+
+
           
          
           var lastRowId = $('#table1 tr:last').attr("id"); /*finds id of the last row inside table*/
@@ -622,7 +625,7 @@ function app($connect)
           var uacs = new Array(); 
           var amount = new Array(); 
           var remarks = new Array(); 
-          var sarogroup = new Array(); 
+          var sarogroup = new Array();
           var status = new Array(); 
         
           for ( var i = 1; i <= lastRowId; i++) {
@@ -641,16 +644,19 @@ function app($connect)
          ppa.push($("#"+i+" .ppa"+i).html()); 
          uacs.push($("#"+i+" .uacs"+i).html()); 
          amount.push($("#"+i+" .amount"+i).html()); 
-         remarks.push($("#"+i+" .remarks"+i).html()); 
+         remarks.push($("#"+i+" .remarks"+i).html());
          sarogroup.push($("#"+i+" .sarogroup"+i).html()); 
          status.push($("#"+i+" .status"+i).html()); 
 		 
           }
+          var datereceived1 = $("#datepicker1").val();
+          var datereprocessed1 = $("#datepicker2").val();
+          var datereturned1 = $("#datepicker3").val();
+          var datereleased1 = $("#datepicker4").val();
+          
           var mode = $("#mode").val();
           
           var datereceived = JSON.stringify(datereceived);
-         
-
           var datereprocessed = JSON.stringify(datereprocessed);
           var datereturned = JSON.stringify(datereturned);   
           var datereleased = JSON.stringify(datereleased);
@@ -669,10 +675,10 @@ function app($connect)
           $.ajax({
           url: "obcreatefunction.php",
           type: "post",
-          data: {datereceived : datereceived , 
-            datereprocessed : datereprocessed, 
-            datereturned : datereturned, 
-            datereleased : datereleased, 
+          data: {datereceived : datereceived1 , 
+            datereprocessed : datereprocessed1, 
+            datereturned : datereturned1, 
+            datereleased : datereleased1, 
             ors : ors, 
             ponum : ponum, 
             payee : payee, 
