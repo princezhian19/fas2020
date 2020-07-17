@@ -207,8 +207,9 @@ $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setHorizonta
 
 $select_notes = mysqli_query($conn,"SELECT n.note FROM rfq_notes rn LEFT JOIN new_rfq_notes n on n.id = rn.note_id WHERE rn.rfq_id = $id ");
 // echo "SELECT * FROM rfq_notes rn LEFT JOIN notes n on n.id = rn.note_id WHERE rn.rfq_id = $id AND n.id != 1 AND n.id != 6 AND n.id !=7";exit;
-
-while ($rowN = mysqli_fetch_assoc($select_notes)){
+if (mysqli_num_rows($select_notes) > 0) {
+  # code...
+  while ($rowN = mysqli_fetch_assoc($select_notes)){
   $notes_group = $rowN['note'];
   $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers\n   must submit together with the quotation/proposal the following\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3. Others:\n     a. Any documents to prove that the signatory of the quotation is\nautorized representative of the company, or eligibility requirements.\n     b. Photocopy of ID bearing the pictures/ signature of the\nrepresentatives.\n   ".$notes_group."\n\nOther Instruction:\n\n * Please submit Your quotation using our official Request for Quotation (RFQ) Form.\nYou can secure a copy of the said RFQ to \nGeneral Services and supply section, Finance and Administrative Division, DILG.\n\n\n *Please submit your quotations//s together with the Eligibility Documents on/or before ".$quotation_date."\n at 5:00pm addressed to the DILG\nthrough any of the following\n      a. Email us at dilg4a.bac@gmail.com\n      b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
   // echo $notes_group;
@@ -216,6 +217,10 @@ while ($rowN = mysqli_fetch_assoc($select_notes)){
   $row++;
 
 }
+}else{
+   $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers\n   must submit together with the quotation/proposal the following\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3. Others:\n     a. Any documents to prove that the signatory of the quotation is\nautorized representative of the company, or eligibility requirements.\n     b. Photocopy of ID bearing the pictures/ signature of the\nrepresentatives.\n\nOther Instruction:\n\n * Please submit Your quotation using our official Request for Quotation (RFQ) Form.\nYou can secure a copy of the said RFQ to \nGeneral Services and supply section, Finance and Administrative Division, DILG.\n\n\n *Please submit your quotations//s together with the Eligibility Documents on/or before ".$quotation_date."\n at 5:00pm addressed to the DILG\nthrough any of the following\n      a. Email us at dilg4a.bac@gmail.com\n      b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
+}
+
   // echo $notes_group;
   // echo '<br>';
 // exit();
