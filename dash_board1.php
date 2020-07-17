@@ -691,7 +691,7 @@ if (isset($_POST['stamp4'])) {
             <div class="box-header" style="color:white;">
               <?php 
               $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-              $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) LIMIT 4");
+              $BDAY = mysqli_query($conn,"SELECT FIRST_M,MIDDLE_M,LAST_M,BIRTH_D,PROFILE FROM tblemployeeinfo WHERE MONTH(BIRTH_D) =MONTH(NOW()) ORDER BY day(BIRTH_D) LIMIT 4");
               while ($row = mysqli_fetch_assoc($BDAY)) {
                 $FIRST_M1 = $row['FIRST_M'];
                 $FIRST_M = ucwords(strtolower($FIRST_M1));
