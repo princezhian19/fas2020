@@ -10,7 +10,15 @@ $datereprocessed = $_POST["datereprocessed"];
 $d2 = date('Y-m-d', strtotime($datereprocessed));
 
 $datereturned = $_POST["datereturned"];
-$d3 = date('Y-m-d', strtotime($datereturned));
+if($datereturned==""){
+  $d3 = '0000-00-00';
+
+}
+else{
+  $d3 = date('Y-m-d', strtotime($datereturned));
+
+}
+
 
 $datereleased = $_POST["datereleased"];
 $d4 = date('Y-m-d', strtotime($datereleased));
