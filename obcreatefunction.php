@@ -3,23 +3,19 @@
 //include('../@classes/db.php');
 
 
-$datereceived = json_decode($_POST["datereceived"]);
+$datereceived = $_POST["datereceived"];
+$d1 = date('Y-m-d', strtotime($datereceived));
 
-$datereprocessed = json_decode($_POST["datereprocessed"]);
-//$d2 = date('Y-m-d', strtotime($datereprocessed));
+$datereprocessed = $_POST["datereprocessed"];
+$d2 = date('Y-m-d', strtotime($datereprocessed));
 
-$datereturned = json_decode($_POST["datereturned"]);
-/* $datereturned = $_GET['datereturned'];
-if($datereturned==''){
-    $d3 = "";
-}
-else{
-    $d3 =date('Y-m-d', strtotime($datereturned));
-} */
+$datereturned = $_POST["datereturned"];
+$d3 = date('Y-m-d', strtotime($datereturned));
+
+$datereleased = $_POST["datereleased"];
+$d4 = date('Y-m-d', strtotime($datereleased));
 
 
-$datereleased = json_decode($_POST["datereleased"]);
-//$d4 = date('Y-m-d', strtotime($datereleased));
 
 $ors = json_decode($_POST["ors"]);
 
@@ -47,14 +43,14 @@ echo "Failed to connect to MySQL: " . mysqli_connect_error();
 $mode = $_POST['mode'];
 
 if($mode=="BURS"){
-  for ($i = 0; $i < count($datereceived); $i++) {
+  for ($i = 0; $i < count($ors); $i++) {
     if($ors[$i] != ""){ /*not allowing empty values and the row which has been removed.*/ 
     
         if($supplier[$i]==""){
           /*   $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
             VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
            $sql = "INSERT INTO saroobburs (datereceived,datereprocessed,datereturned,datereleased,burs,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-           VALUES ('$datereceived',now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+           VALUES ('$d1','$d2','$d3','$d4','$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
            if (!mysqli_query($con,$sql))
            {
            die('Error: ' . mysqli_error($con));
@@ -79,7 +75,7 @@ if($mode=="BURS"){
            /*  $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
             VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
             $sql = "INSERT INTO saroobburs (datereceived,datereprocessed,datereturned,datereleased,burs,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-            VALUES (now(),now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+            VALUES ('$d1','$d2','$d3','$d4','$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
          if (!mysqli_query($con,$sql))
          {
          die('Error: ' . mysqli_error($con));
@@ -102,14 +98,14 @@ if($mode=="BURS"){
 }
 
 if($mode=="ORS"){
-  for ($i = 0; $i < count($datereceived); $i++) {
+  for ($i = 0; $i < count($ors); $i++) {
     if($ors[$i] != ""){ /*not allowing empty values and the row which has been removed.*/ 
     
         if($supplier[$i]==""){
           /*   $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
             VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
            $sql = "INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-           VALUES ('$datereceived',now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+           VALUES ('$d1','$d2','$d3','$d4','$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
            if (!mysqli_query($con,$sql))
            {
            die('Error: ' . mysqli_error($con));
@@ -134,7 +130,7 @@ if($mode=="ORS"){
            /*  $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
             VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
             $sql = "INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-            VALUES (now(),now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+            VALUES ('$d1','$d2','$d3','$d4','$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
          if (!mysqli_query($con,$sql))
          {
          die('Error: ' . mysqli_error($con));

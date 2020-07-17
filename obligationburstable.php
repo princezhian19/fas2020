@@ -134,7 +134,7 @@ include('db.class.php'); // call db.class.php
                 }else{
                   $datereleased11 = date('F d, Y', strtotime($datereleased));
                 }
-                $ors = $row["ors"];
+                $ors = $row["burs"];
                 $ponum = $row["ponum"];
                 $payee = $row["payee"];
                 $particular = $row["particular"];

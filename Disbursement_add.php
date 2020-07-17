@@ -95,10 +95,10 @@ p.mix {border-style: dotted dashed solid double;} */
                            
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-                                <div class="" id="main" style="text-align:center">
-                                <div id="result" style=" background-color:#A9A9A9; font-weight:bold; font-size:15px; margin-top:2px ">
-                                <div>
-                                </div>
+                                <table class="table table-striped table-hover" id="main" >
+                                <tbody id="result" style="font-weight:bold" >
+                                </tbody>
+                                </table>
 
 
                                 <script>
@@ -273,10 +273,10 @@ p.mix {border-style: dotted dashed solid double;} */
                            
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-                                <div class="" id="main1" style="text-align:center">
-                                <div id="result1" style=" background-color:#A9A9A9; font-weight:bold; font-size:15px; margin-top:2px ">
-                                <div>
-                                </div>
+                                <table class="table table-striped table-hover" id="main1" >
+                                <tbody id="result1">
+                                </tbody>
+                                </table>
 
 
 
@@ -438,17 +438,11 @@ p.mix {border-style: dotted dashed solid double;} */
 
                                 } );
                                 }
-                                
-                                
-
+                              
                                 
                                 </script>
                             </td>
                             </tr>
-
-                            
-
-                            
 
                             <tr>
                             <td class="col-md-2"><b>DV No.<span style = "color:red;">*</span></b></td>
