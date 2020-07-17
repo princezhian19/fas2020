@@ -98,21 +98,21 @@ function app($connect)
                             <tr>
                             <td class="col-md-6">
 
-                        <label>Mode<span style = "color:red;">*</span></label>
-                      <select class="  input" style="width: 100%; height: 40px;" name="mode" id="mode" required style="border-style: groove;">
+                      <label>Mode<span style = "color:red;">*</span></label>
+                      <select class=" form-control select input" style="width: 100%; height: 40px;" name="mode" id="mode" required style="border-style: groove;">
                       <option value = "">SELECT BURS/ORS</option>
                       <option value = "BURS">BURS</option>
                       <option value = "ORS">ORS</option>
                       </select>
                       <br>
-                      <br>
+                      
 
                             
-                      <label>ORS Serial No.<span style = "color:red;">*</span></label>
-                      <input required value=""  class="form-control input" type="text" class="" style="width: 100%; height: 35px;" id="ors" name="ors" placeholder="Enter ORS No." autocomplete="off">
+                      <label>BURS/ORS Serial No.<span style = "color:red;">*</span></label>
+                      <input required value=""  class="form-control input" type="text" class="" style="width: 100%; height: 35px;" id="ors" name="ors" placeholder="Enter BURS/ORS No." autocomplete="off">
                       <br>
                       <label>PO No.</label>
-                      <input  type="text" class="typeahead form-control input" style="width: 100%; height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum" value="<?php echo isset($_GET['ponum']) ? $_GET['ponum'] : '' ?>">
+                      <input autocomplete="off"  type="text" class="typeahead form-control input" style="width: 100%; height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum" value="<?php echo isset($_GET['ponum']) ? $_GET['ponum'] : '' ?>">
                       <table class="table table-striped table-hover" id="main">
                       <tbody id="result">
                       </tbody>
@@ -184,7 +184,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right input" id="datepicker1" placeholder='Enter Date' name="datereceived">
+                        <input autocomplete="off" value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right input" id="datepicker1" placeholder='Enter Date' name="datereceived">
                     </div>
                     <br>
                     
@@ -197,7 +197,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>"date rety required type="text" class="form-control pull-right input" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
+                        <input autocomplete="off" value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>"date rety required type="text" class="form-control pull-right input" id="datepicker2" placeholder='Enter Date' name="datereprocessed">
                         <br>
                     </div>
                     
@@ -209,7 +209,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input  value ="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" type="text" class="form-control pull-right input" id="datepicker3" placeholder='Enter Date' name="datereturned">
+                        <input autocomplete="off" value ="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" type="text" class="form-control pull-right input" id="datepicker3" placeholder='Enter Date' name="datereturned">
                     </div>
                     <br>
                     
@@ -219,7 +219,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right input" id="datepicker4" placeholder='Enter Date' name="datereleased">
+                        <input autocomplete="off" value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" required type="text" class="form-control pull-right input" id="datepicker4" placeholder='Enter Date' name="datereleased">
                         
                     </div>
 
@@ -232,15 +232,15 @@ function app($connect)
              <!-- ORS -->
              <br>
               <label>Payee<span style = "color:red;">*</span></label>
-                    <input  type="text"  class="form-control input" style="height: 35px;" id="payee" placeholder="Payee" name="payee">
+                    <input autocomplete="off"  type="text"  class="form-control input" style="height: 35px;" id="payee" placeholder="Payee" name="payee">
                     <br>
 
                     <label>Supplier<span style = "color:red;">*</span></label>
-                    <input  type="text"  class="form-control input" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
+                    <input  autocomplete="off" type="text"  class="form-control input" style="height: 35px;" id="supplier" placeholder="Supplier" name="supplier">
                     <br>
 
                     <label>Particular/Purpose<span style = "color:red;">*</span></label>
-                    <input  type="text"   class="form-control input" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
+                    <input autocomplete="off"  type="text"   class="form-control input" style="height: 35px;" id="particular" placeholder="Particular" name="particular">
 
 
             <div class="row">
@@ -309,8 +309,8 @@ function app($connect)
             <div class="well">
             <div class="row">
                 <div class="col-md-3">
-                    <label>Fund Source</label>
-                    <input required  type="text"  class="form-control input" style="height: 40px;" id="saronum" placeholder="Fund Source" name="saronum"class="typeahead"/>
+                    <label>Fund Source<span style = "color:red;">*</span></label>
+                    <input autocomplete="off" required  type="text"  class="form-control input" style="height: 40px;" id="saronum" placeholder="Fund Source" name="saronum"class="typeahead"/>
                     <!-- <input type="text" name="txtCountry" id="txtCountry" class="typeahead"/> -->
                       <table class="table table-striped table-hover" id="main1">
                       <tbody id="result1">
@@ -367,8 +367,8 @@ function app($connect)
               </script>
                 
                 <div class="col-md-3">
-                    <label>MFO/PPA</label>
-                    <input  required  type="text"  class="form-control input" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa">
+                    <label>MFO/PPA<span style = "color:red;">*</span></label>
+                    <input autocomplete="off"  required  type="text"  class="form-control input" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa">
                     <table class="table table-striped table-hover" id="main3">
                     <tbody id="result3">
                     </tbody>
@@ -420,8 +420,8 @@ function app($connect)
 
                 <!-- UACS Search -->
                 <div class="col-md-3">
-                    <label>UACS Object Code</label>
-                    <input  required type="text"  class="form-control input" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs">
+                    <label>UACS Object Code<span style = "color:red;">*</span></label>
+                    <input autocomplete="off" required type="text"  class="form-control input" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs">
                     <table class="table table-striped table-hover" id="main2" name="main2">
                     <tbody id="result2">
                     </tbody>
@@ -472,29 +472,29 @@ function app($connect)
             </script>
 
                 <div class="col-md-3">
-                    <label>Amount</label>
-                    <input required  type="number"  class="form-control input" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
+                    <label>Amount<span style = "color:red;">*</span></label>
+                    <input autocomplete="off" required  type="number"  class="form-control input" style="height: 40px;" id="amount" placeholder="Amount" name="amount">
                 </div>
             </div>
             
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <label>Remarks</label>
+                    <label>Remarks<span style = "color:red;">*</span></label>
                     <textarea class="form-control input" placeholder="Remarks" id="remarks" name="remarks" style="width: 100%; height: 40px;" ></textarea> 
                 </div>
 
                 <div class="col-md-4">
-                    <label>Group</label>
+                    <label>Group<span style = "color:red;">*</span></label>
                     <!-- <textarea class="form-control" placeholder="Remarks" name="remarks" ></textarea> --> 
                     <!-- <select class="form-control select" style="width: 100%; height: 40px;" name="sarogroup" id="sarogroup" required > -->
                     <!-- <option>Select Group</option> -->
                     <!-- <?php echo app($connect);?> -->
                     <!-- </select> -->
-                    <input   type="text"  class="form-control input" style="height: 40px;" id="sarogroup" placeholder="SARO Group" name="sarogroup" readonly>
+                    <input autocomplete="off"  type="text"  class="form-control input" style="height: 40px;" id="sarogroup" placeholder="SARO Group" name="sarogroup" readonly>
                 </div>
                 <div class="col-md-4">
-                    <label>Status</label>
+                    <label>Status<span style = "color:red;">*</span></label>
                     <!-- <textarea class="form-control" placeholder="Remarks" name="remarks" ></textarea> --> 
                     <select class="form-control select input" style="width: 100%; height: 40px;" name="status" id="status" required >
                    
@@ -526,7 +526,7 @@ function app($connect)
           <th>DATE OBLIGATED</th>
           <th>DATE RETURNED</th>
           <th>DATE RELEASED</th>
-          <th>ORS NUMBER</th>
+          <th>BURS/ORS NUMBER</th>
           <th>PO NUMBER</th>
           <th>PAYEE</th>
           <th>SUPPLIER</th>
@@ -552,24 +552,27 @@ function app($connect)
           var id = 1; 
           /*Assigning id and class for tr and td tags for separation.*/
           $("#butsend").click(function() {
+
+
+
           var newid = id++; 
-          /* 
-          var datereceived = $('#datepicker1').val();
-		      var datereprocessed = $('#datepicker2').val();
-          var datereturned = $('#datepicker3').val();
-          var datereleased = $('#datepicker4').val();
-          var ors = $('#ors').val();
-          var ponum = $('#ponum').val();
-          var payee = $('#payee').val();
-          var supplier = $('#supplier').val();
-          var particular = $('#particular').val();
-          var saronum = $('#saronum').val();
-          var ppa = $('#ppa').val();
-          var uacs = $('#uacs').val();
-          var amount = $('#amount').val();
-          var remarks = $('#remarks').val();
-          var sarogroup = $('#sarogroup').val();
-          var status = $('#status').val(); */
+         
+          var ors = $("#ors").val();
+          var amount = $("#amount").val();
+          var mode = $("#mode").val();
+
+          if(ors=="" || amount=="" || mode==""){
+            
+            alert('Required fields detected.');
+            document.getElementById("ors").style.border = "thin dotted red";
+            document.getElementById("amount").style.border = "thin dotted red";
+            document.getElementById("mode").style.border = "thin dotted red";
+          }
+
+          else{
+            document.getElementById("ors").style.border = "thin solid black";
+            document.getElementById("amount").style.border = "thin solid black";
+            document.getElementById("mode").style.border = "thin solid black";
 
           $("#table1").append('<tr valign="top" id="'+newid+'">\n\
           <td width="100px" class="datereceived'+newid+'">' + $("#datepicker1").val() + '</td>\n\
@@ -589,12 +592,20 @@ function app($connect)
           <td width="100px" class="sarogroup'+newid+'">' + $("#sarogroup").val() + '</td>\n\
           <td width="100px" class="status'+newid+'">' + $("#status").val() + '</td>\n\
           <td width="100px"><a href="javascript:void(0);" class="remCF">Remove</a></td>\n\ </tr>');
+            
+          }
+         
           });
+
+          
           $("#table1").on('click', '.remCF', function() {
           $(this).parent().parent().remove();
           });
           /*crating new click event for save button*/
           $("#butsave").click(function() {
+
+          
+         
           var lastRowId = $('#table1 tr:last').attr("id"); /*finds id of the last row inside table*/
 
           var datereceived = new Array();
@@ -615,8 +626,8 @@ function app($connect)
           var status = new Array(); 
         
           for ( var i = 1; i <= lastRowId; i++) {
-        // name.push($("#"+i+" .name"+i).html()); /*pushing all the names listed in the table*/
-        // email.push($("#"+i+" .email"+i).html()); /*pushing all the emails listed in the table*/
+        
+        /*pushing all the data listed in the table*/
          datereceived.push($("#"+i+" .datereceived"+i).html());
          datereprocessed.push($("#"+i+" .datereprocessed"+i).html()); 
          datereturned.push($("#"+i+" .datereturned"+i).html());
@@ -635,10 +646,11 @@ function app($connect)
          status.push($("#"+i+" .status"+i).html()); 
 		 
           }
-        /*   var sendName = JSON.stringify(name); 
-          var sendEmail = JSON.stringify(email); */
-
+          var mode = $("#mode").val();
+          
           var datereceived = JSON.stringify(datereceived);
+         
+
           var datereprocessed = JSON.stringify(datereprocessed);
           var datereturned = JSON.stringify(datereturned);   
           var datereleased = JSON.stringify(datereleased);
@@ -672,7 +684,8 @@ function app($connect)
             amount : amount, 
             remarks : remarks, 
             sarogroup : sarogroup, 
-            status : status},
+            status : status,
+            mode : mode},
           success : function(data){
           alert(data); /* alerts the response from php.*/
           window.location.href='obligation.php';

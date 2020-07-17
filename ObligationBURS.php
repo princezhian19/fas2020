@@ -5,14 +5,22 @@ header('location:index.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
-$division = $_GET['division'];
-$DEPT_ID = $_SESSION['DEPT_ID'];
-$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS | Disbursement</title>
+<!-- <style>
+  a:hover {
+  color: blue;
+}
+  .p:hover {
+  color: blue;
+}
+  span:hover {
+  color: blue;
+}
+</style> -->
+<title>FAS | Obligation</title>
 <head>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,59 +57,39 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     text-align:center;
   }
   td{
-    /* text-align:center; */
+    text-align:;
   }
   </style>
-</head>
-<?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
-}else{ 
-
-     if ($OFFICE_STATION == 1) {
-  include('sidebar2.php');
-           
-        }else{
-  include('sidebar3.php');
-         
-        } 
-}
- ?>
-
-<body class="hold-transition skin-red-light sidebar-mini">
+  </head>
+<body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
+  <?php include('test1.php');?>
   
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
-        <li class="active">Accounting</li>
-        <li class="active">Create Disbursement</li>
+        <li class="active">Budget</li>
+        <li class="active">Obligation</li>
       </ol>
       <br>
       <br>
-        <?php include('Disbursement_add.php');?>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        
+        <?php include('obligationburstable.php');?>
 
     </section>
   </div>
   <footer class="main-footer">
-  <br>
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0
-    </div>
-    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
-  </footer>
-  <br>
+    <br>
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0
+      </div>
+      <strong>DILG IV-A Regional Information and Communications Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+      
+    </footer>
+    <br>
 </div>
+
+
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -112,11 +100,19 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 <script src="dist/js/adminlte.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
-
-</body>
-</html>
-
-
+<script>
+  $(function () {
+    $('#example2').DataTable()
+    $('#example1').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : true,
+      'ordering'    : false,
+      'info'        : false,
+      'autoWidth'   : false
+    })
+  })
+</script>
 
 <script>
 
@@ -124,41 +120,11 @@ $(document).ready(function(){
   $('#datepicker1').datepicker({
       autoclose: true
     })
-});
-
-$(document).ready(function(){
-  $('#datepicker2').datepicker({
+    $('#datepicker2').datepicker({
       autoclose: true
     })
 });
-
-
-$(document).ready(function(){
-  $('#datepicker3 ').datepicker({
-      autoclose: true
-    })
-});
-
-$(document).ready(function(){
-  $('#datepicker4 ').datepicker({
-      autoclose: true
-    })
-});
-
-$(document).ready(function(){
-  $('.timepicker1').datepicker({
-      autoclose: true
-    })
-});
-
-$(document).ready(function(){
-  $('.timepicker2').datepicker({
-      autoclose: true
-    })
-});
-
-$( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-    $(".datePicker1").datepicker().datepicker("setDate", new Date());
-
-   
 </script>
+
+</body>
+</html>

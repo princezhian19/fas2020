@@ -5,7 +5,6 @@
 
 $datereceived = json_decode($_POST["datereceived"]);
 
-
 $datereprocessed = json_decode($_POST["datereprocessed"]);
 //$d2 = date('Y-m-d', strtotime($datereprocessed));
 
@@ -45,57 +44,122 @@ if (mysqli_connect_errno())
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-for ($i = 0; $i < count($datereceived); $i++) {
-if($ors[$i] != ""){ /*not allowing empty values and the row which has been removed.*/ 
+$mode = $_POST['mode'];
 
-    if($supplier[$i]==""){
-      /*   $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-        VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
-       $sql = "INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-       VALUES (now(),now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
-       if (!mysqli_query($con,$sql))
-       {
-       die('Error: ' . mysqli_error($con));
-      // Print "Error";
-       }
-       
-       else{
-       
-       
-      /*   Print "Data added Successfully !"; */
-         //updating obligation
-         $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
-         //updating balance
-         $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
-         $dvinsert = mysqli_query($con,"INSERT INTO disbursement (ors,sr,ppa,uacs,payee,particular,amount) VALUES ('$ors[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$payee[$i]','$particular[$i]','$amount[$i]')");
-
-       }
+if($mode=="BURS"){
+  for ($i = 0; $i < count($datereceived); $i++) {
+    if($ors[$i] != ""){ /*not allowing empty values and the row which has been removed.*/ 
+    
+        if($supplier[$i]==""){
+          /*   $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+            VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
+           $sql = "INSERT INTO saroobburs (datereceived,datereprocessed,datereturned,datereleased,burs,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+           VALUES ('$datereceived',now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+           if (!mysqli_query($con,$sql))
+           {
+           die('Error: ' . mysqli_error($con));
+          // Print "Error";
+           }
+           
+           else{
+           
+           
+          /*   Print "Data added Successfully !"; */
+             //updating obligation
+             $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+             //updating balance
+             $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+             $dvinsert = mysqli_query($con,"INSERT INTO disbursement (ors,sr,ppa,uacs,payee,particular,amount) VALUES ('$ors[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$payee[$i]','$particular[$i]','$amount[$i]')");
+    
+           }
+        }
+    
+        if($payee[$i]==""){
+        
+           /*  $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+            VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
+            $sql = "INSERT INTO saroobburs (datereceived,datereprocessed,datereturned,datereleased,burs,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+            VALUES (now(),now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+         if (!mysqli_query($con,$sql))
+         {
+         die('Error: ' . mysqli_error($con));
+         Print "Error";
+         }
+         
+         else{
+            
+           //updating obligation
+           $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+           //updating balance
+           $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+           $dvinsert = mysqli_query($con,"INSERT INTO disbursement (ors,sr,ppa,uacs,payee,particular,amount) VALUES ('$ors[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$supplier[$i]','$particular[$i]','$amount[$i]')");
+         }
+      
+        } 
+    }
     }
 
-    if($payee[$i]==""){
+}
+
+if($mode=="ORS"){
+  for ($i = 0; $i < count($datereceived); $i++) {
+    if($ors[$i] != ""){ /*not allowing empty values and the row which has been removed.*/ 
     
-       /*  $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-        VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
-        $sql = "INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
-        VALUES (now(),now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
-     if (!mysqli_query($con,$sql))
-     {
-     die('Error: ' . mysqli_error($con));
-     Print "Error";
-     }
-     
-     else{
+        if($supplier[$i]==""){
+          /*   $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+            VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
+           $sql = "INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+           VALUES ('$datereceived',now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$payee[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+           if (!mysqli_query($con,$sql))
+           {
+           die('Error: ' . mysqli_error($con));
+          // Print "Error";
+           }
+           
+           else{
+           
+           
+          /*   Print "Data added Successfully !"; */
+             //updating obligation
+             $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+             //updating balance
+             $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+             $dvinsert = mysqli_query($con,"INSERT INTO disbursement (ors,sr,ppa,uacs,payee,particular,amount) VALUES ('$ors[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$payee[$i]','$particular[$i]','$amount[$i]')");
+    
+           }
+        }
+    
+        if($payee[$i]==""){
         
-       //updating obligation
-       $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
-       //updating balance
-       $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
-       $dvinsert = mysqli_query($con,"INSERT INTO disbursement (ors,sr,ppa,uacs,payee,particular,amount) VALUES ('$ors[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$supplier[$i]','$particular[$i]','$amount[$i]')");
-     }
+           /*  $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+            VALUES ('$d1[$i]','$d2[$i]','$d3[$i]','$d4[$i]','$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')"; */
+            $sql = "INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
+            VALUES (now(),now(),'0000-00-00',now(),'$ors[$i]','$po[$i]','$supplier[$i]','$particular[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$amount[$i]','$remarks[$i]','$sarogroup[$i]','$status[$i]')";
+         if (!mysqli_query($con,$sql))
+         {
+         die('Error: ' . mysqli_error($con));
+         Print "Error";
+         }
+         
+         else{
+            
+           //updating obligation
+           $update = mysqli_query($con,"Update saro set obligated = obligated + $amount[$i] where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+           //updating balance
+           $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
+           $dvinsert = mysqli_query($con,"INSERT INTO disbursement (ors,sr,ppa,uacs,payee,particular,amount) VALUES ('$ors[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$supplier[$i]','$particular[$i]','$amount[$i]')");
+         }
+      
+        } 
+    }
+    }
   
-    } 
-}
-}
+  }
+  
+
+
+
+// Print $datestr;
 Print "Data added Successfully !";
 mysqli_close($con);
 ?>

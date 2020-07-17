@@ -12,7 +12,7 @@ include('db.class.php'); // call db.class.php
 <div class="box " style="border-style: groove;">
   <div class="box-body">
           
-          <h1 align="">&nbspObligation ORS</h1>
+          <h1 align="">&nbspObligation BURS</h1>
           
           <br>
 
@@ -23,9 +23,10 @@ include('db.class.php'); // call db.class.php
                 <!-- Header -->
                   <tr>
                   <td class="col-md-2">
+                  <li class="btn btn-warning"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
                   <li class="btn btn-success"><a href="ObligationCreate.php" style="color:white;text-decoration: none;">Create</a></li>
 
-                  <li class="btn btn-primary   "><a href="ObligationBURS.php" style="color:white;text-decoration: none;">View BURS</a></li>
+                  
 
 
                   
@@ -80,7 +81,7 @@ include('db.class.php'); // call db.class.php
                   <th>DATE OBLIGATED</th>
                   <th>DATE RETURNED</th>
                   <th>DATE RELEASED</th>
-                  <th>ORS NUMBER</th>
+                  <th>BURS NUMBER</th>
                   <th>PO NUMBER</th>
                   <th>PAYEE</th>
                   <th>PARTICULAR</th>
@@ -102,7 +103,7 @@ include('db.class.php'); // call db.class.php
               $password = "w]zYV6X9{*BN";
               $database = "fascalab_2020";
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT * FROM saroob order by date desc");
+              $view_query = mysqli_query($conn, "SELECT * FROM saroobburs order by date desc");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["id"];  
 
@@ -196,8 +197,8 @@ include('db.class.php'); // call db.class.php
                                   <?php endif ?>
                                 <?php endif ?>
                                 <td colspan="1" style="border-right: 0px; margin-left:0px">
-                                  <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> | 
-                                  <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a>
+                                  <!-- <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> |  -->
+                                  <!-- <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a> -->
                               </td>
                                
                               </tr> 

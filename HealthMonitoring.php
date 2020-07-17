@@ -369,7 +369,9 @@ only screen and (max-width: 760px),
                 }},
                 
                 "columnDefs": [ {
-                   "width": "10%", "targets": 9
+                   "width": "10%", "targets": 8,
+                   className: 'dt-body-right'
+
                     // "targets":[2],
                     // "orderable":false
                     // // "render": function (data, type, row, meta ) {  
@@ -842,7 +844,7 @@ if($_GET['action'] == 'show')
              
 
               
-            <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:center;">
+            <table id="example" class="table table-striped table-bordered table-responsive" style="width:;background-color: white;text-align:left;">
               <thead>
               <th>NO</th>
               <th>DATE</th>
