@@ -278,9 +278,9 @@
     }
     if ($e_stats == 'Yes') {
 
-      $selectPayrollEmp = mysqli_query($conn,"SELECT emp_no FROM tbl_employee WHERE emp_no = '$EMP_NUMBER1'");
+      $selectPayrollEmp = mysqli_query($conn,"SELECT emp_no FROM tbl_employee WHERE emp_no = '$employee_number'");
       if (mysqli_num_rows($selectPayrollEmp)>0) {
-        $update_emp = mysqli_query($conn,"UPDATE tbl_employee SET pagibig = '$pagibig',pagibig_premium = '$pagibig_premium',tin = '$tin',bir = '$bir',philhealth = '$philhealth',gsis = '$gsis',salary = '$salary1',step = '$step1',l_name = '$lname',f_name = '$fname',m_name = '$mname',employment_date = '$employment_date' WHERE emp_no = '$EMP_NUMBER1'");
+        $update_emp = mysqli_query($conn,"UPDATE tbl_employee SET pagibig = '$pagibig',pagibig_premium = '$pagibig_premium',tin = '$tin',bir = '$bir',philhealth = '$philhealth',gsis = '$gsis',salary = '$salary1',step = '$step1',l_name = '$lname',f_name = '$fname',m_name = '$mname',employment_date = '$employment_date' WHERE emp_no = '$employee_number'");
       }else{
 
         if ($province == '') {
