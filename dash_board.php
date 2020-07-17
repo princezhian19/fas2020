@@ -366,7 +366,7 @@ if (isset($_POST['stamp4'])) {
     <div class="box" >
       <div class="panel-heading">
         <strong><a href="DTR.php">ONLINE DTR</a></strong>
-        <?php if ($username == 'charlesodi' || $username = 'mmmonteiro'): ?>
+        <?php if ($username == 'charlesodi' || $username = ''): ?>
 
           <?php if ($t_o != NULL || $o_b != NULL): ?>
 
