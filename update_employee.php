@@ -133,6 +133,25 @@
   $employment_date1 = $rowEmp['employment_date'];
   $employment_date = date('m/d/Y',strtotime($employment_date1));
 
+
+   $select = mysqli_query($conn,"SELECT $step FROM tbl_salary_grade WHERE salary_grade = '$salary' ");
+    $row = mysqli_fetch_array($select);
+    $salaryS = $row[$step];
+
+    $save_salary = $salaryS *.09;
+
+    if ($salaryS > 59999) {
+
+      $phil = 900;
+      $insert_deduct = mysqli_query($conn,"
+        UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$EMP_NUMBER1'  ");
+    }else{
+      $phil = $salaryS *0.03 / 2;
+      $insert_deduct = mysqli_query($conn,"
+        UPDATE tbl_deductions SET  monthly_salary ='$salaryS',rlip = '$save_salary',philhealth = '$phil' WHERE emp_no = '$EMP_NUMBER1'  ");
+    }
+
+
   if (isset($_POST['submit'])) {
     $region          = '04';
     $province        = $_POST["province"];
