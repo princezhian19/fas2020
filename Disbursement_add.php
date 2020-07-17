@@ -871,6 +871,34 @@ amount.val('');
 var orsdate = $("input[name='orsdate']"); 
 orsdate.val('');
 
+
+var deductions = $("input[name='deductions']"); 
+deductions.val('');
+
+var net = $("input[name='net']"); 
+net.val('');
+
+var tax = $("input[name='tax']"); 
+tax.val('');
+
+var gsis = $("input[name='gsis']"); 
+gsis.val('');
+
+
+var pagibig = $("input[name='pagibig']"); 
+pagibig.val('');
+
+var philhealth = $("input[name='philhealth']"); 
+philhealth.val('');
+
+var other = $("input[name='other']"); 
+other.val('');
+
+
+
+
+
+
 }
 else if(mode=="BURS"){
 
@@ -893,6 +921,28 @@ orsdate.val('');
 
 
 
+var deductions = $("input[name='deductions']"); 
+deductions.val('');
+
+var net = $("input[name='net']"); 
+net.val('');
+
+var tax = $("input[name='tax']"); 
+tax.val('');
+
+var gsis = $("input[name='gsis']"); 
+gsis.val('');
+
+
+var pagibig = $("input[name='pagibig']"); 
+pagibig.val('');
+
+var philhealth = $("input[name='philhealth']"); 
+philhealth.val('');
+
+var other = $("input[name='other']"); 
+other.val('');
+
 }
 else{
 $('#ors').prop('disabled', true);
@@ -912,7 +962,27 @@ amount.val('');
 var orsdate = $("input[name='orsdate']"); 
 orsdate.val('');
 
+var deductions = $("input[name='deductions']"); 
+deductions.val('');
 
+var net = $("input[name='net']"); 
+net.val('');
+
+var tax = $("input[name='tax']"); 
+tax.val('');
+
+var gsis = $("input[name='gsis']"); 
+gsis.val('');
+
+
+var pagibig = $("input[name='pagibig']"); 
+pagibig.val('');
+
+var philhealth = $("input[name='philhealth']"); 
+philhealth.val('');
+
+var other = $("input[name='other']"); 
+other.val('');
 //dataEE();
 
 }
