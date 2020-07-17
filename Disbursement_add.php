@@ -252,13 +252,10 @@ p.mix {border-style: dotted dashed solid double;} */
                                 }}
                                 
 
-
                                 } );
                                 }
                                 
-                                
-
-                                
+      
                                 </script>
                             </td>
                             </tr>
@@ -274,7 +271,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
                                 <table class="table table-striped table-hover" id="main1" >
-                                <tbody id="result1">
+                                <tbody id="result1" style="font-weight:bold">
                                 </tbody>
                                 </table>
 
@@ -871,6 +868,34 @@ amount.val('');
 var orsdate = $("input[name='orsdate']"); 
 orsdate.val('');
 
+
+var deductions = $("input[name='deductions']"); 
+deductions.val('');
+
+var net = $("input[name='net']"); 
+net.val('');
+
+var tax = $("input[name='tax']"); 
+tax.val('');
+
+var gsis = $("input[name='gsis']"); 
+gsis.val('');
+
+
+var pagibig = $("input[name='pagibig']"); 
+pagibig.val('');
+
+var philhealth = $("input[name='philhealth']"); 
+philhealth.val('');
+
+var other = $("input[name='other']"); 
+other.val('');
+
+
+
+
+
+
 }
 else if(mode=="BURS"){
 
@@ -893,6 +918,28 @@ orsdate.val('');
 
 
 
+var deductions = $("input[name='deductions']"); 
+deductions.val('');
+
+var net = $("input[name='net']"); 
+net.val('');
+
+var tax = $("input[name='tax']"); 
+tax.val('');
+
+var gsis = $("input[name='gsis']"); 
+gsis.val('');
+
+
+var pagibig = $("input[name='pagibig']"); 
+pagibig.val('');
+
+var philhealth = $("input[name='philhealth']"); 
+philhealth.val('');
+
+var other = $("input[name='other']"); 
+other.val('');
+
 }
 else{
 $('#ors').prop('disabled', true);
@@ -912,7 +959,27 @@ amount.val('');
 var orsdate = $("input[name='orsdate']"); 
 orsdate.val('');
 
+var deductions = $("input[name='deductions']"); 
+deductions.val('');
 
+var net = $("input[name='net']"); 
+net.val('');
+
+var tax = $("input[name='tax']"); 
+tax.val('');
+
+var gsis = $("input[name='gsis']"); 
+gsis.val('');
+
+
+var pagibig = $("input[name='pagibig']"); 
+pagibig.val('');
+
+var philhealth = $("input[name='philhealth']"); 
+philhealth.val('');
+
+var other = $("input[name='other']"); 
+other.val('');
 //dataEE();
 
 }

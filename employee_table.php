@@ -47,7 +47,7 @@ if (isset($_POST['delete'])) {
         $delete = mysqli_query($conn,"DELETE FROM tbl_employee WHERE id = '$ids' ");
           echo ("<SCRIPT LANGUAGE='JavaScript'>
           window.alert('Success : Profile Successfuly Deleted!');
-          window.location.href='ViewOnLeaveEmployee.php';
+          window.location.href='ViewEmployee.php';
           </SCRIPT>");
     }
 }

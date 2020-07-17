@@ -123,7 +123,7 @@ while ($row = mysqli_fetch_assoc($view_query)) {
       <br>
        
     <!-- Start Panel -->
-    <div class="panel panel-default">
+    <div class="box" style="border-style:groove">
         <br>
       
             <h1 align="">&nbspUpdate SARO</h1>
