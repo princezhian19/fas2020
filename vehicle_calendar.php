@@ -311,27 +311,27 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             All Drivers</b></td>
             </tr>
               
-            <td style="background-color: #87CEFA; color:black; border-style:groove">
+            <td style="background-color: #1ba2c2; color:black; border-style:groove">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Daniel Narciso" id = "DanielNarciso"><label style = "margin-left:15%;">Daniel Narciso</label>
             <input hidden class='' type="text" name = "colorPicker5" value="#48BD0D" id = "colorPicker5">
             </td>
-            <td style="background-color: #87CEFA; color:black; border-style:groove">
+            <td style="background-color: #1ba2c2; color:black; border-style:groove">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Joachim Lacdang" id = "JoachimLacdang"><label style = "margin-left:15%;">Joachim Lacdang</label>
             <input hidden class='' type="text" name = "" value="#E60785;" id = "colorPicker3">
             </td>
             </tr>
             <tr>
-            <td style="background-color: #87CEFA; color:black;padding:9px; border-style:groove">
+            <td style="background-color: #1ba2c2; color:black;padding:9px; border-style:groove">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Louie Blanco" id = "LouieBlanco"><label style = "margin-left:15%;">Louie Blanco</label>
             <input hidden class='' type="text" name = "" value="#607D8B;" id = "colorPicker2">
             </td>
-            <td style="background-color:#87CEFA ; color:black; padding:9px; border-style:groove">
+            <td style="background-color:#1ba2c2 ; color:black; padding:9px; border-style:groove">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Medel Saturno" id = "MedelSaturno"><label style = "margin-left:15%;">Medel Saturno</label>
             <input hidden class='' type="text" name = "" value="#FF9800;" id = "colorPicker4">
             </td>
             </tr>
             <tr>
-            <td style="background-color: #87CEFA; color:black; border-style:groove">
+            <td style="background-color: #1ba2c2; color:black; border-style:groove">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Reynaldo Parale" id = "ReynaldoParale" ><label style = "margin-left:15%;">Reynaldo Parale</label>
             <input hidden class='' type="text" name = "" value="#D5D911;" id = "colorPicker1">
             </td>
