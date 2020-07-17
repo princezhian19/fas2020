@@ -1,3 +1,25 @@
+  
+<?php 
+UPDATE tbl_employee set emp_no = 'F-4453' WHERE emp_no ='F4453';
+UPDATE tbl_loan set emp_no = 'F-4453' WHERE emp_no ='F4453';
+UPDATE tbl_deductions set emp_no = 'F-4453' WHERE emp_no ='F4453';
+UPDATE  tbl_deduction_loans set emp_no = 'F-4453' WHERE emp_no ='F4453';
+UPDATE  tbl_loan_history set emp_no = 'F-4453' WHERE emp_no ='F4453';
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <?php 
   include "config.php";
   include "dbaseCon.php";
@@ -280,7 +302,11 @@
 
       $selectPayrollEmp = mysqli_query($conn,"SELECT emp_no FROM tbl_employee WHERE emp_no = '$employee_number'");
       if (mysqli_num_rows($selectPayrollEmp)>0) {
-        $update_emp = mysqli_query($conn,"UPDATE tbl_employee SET pagibig = '$pagibig',pagibig_premium = '$pagibig_premium',tin = '$tin',bir = '$bir',philhealth = '$philhealth',gsis = '$gsis',salary = '$salary1',step = '$step1',l_name = '$lname',f_name = '$fname',m_name = '$mname',employment_date = '$employment_date' WHERE emp_no = '$employee_number'");
+        $selectProvince = mysqli_query($conn, "SELECT LGU_M FROM tbl_province WHERE PROVINCE_C = '$province");
+        $rowP = mysqli_fetch_array($selectProvince);
+        $station = $rowP['LGU_M'];
+
+        $update_emp = mysqli_query($conn,"UPDATE tbl_employee SET pagibig = '$pagibig',pagibig_premium = '$pagibig_premium',tin = '$tin',station = '$station',bir = '$bir',philhealth = '$philhealth',gsis = '$gsis',salary = '$salary1',step = '$step1',l_name = '$lname',f_name = '$fname',m_name = '$mname',employment_date = '$employment_date' WHERE emp_no = '$employee_number'");
       }else{
 
         if ($province == '') {
@@ -292,6 +318,14 @@
 
         $insertqwe = mysqli_query($conn,"INSERT INTO tbl_employee(emp_no,l_name,f_name,m_name,pagibig,pagibig_premium,tin,bir,philhealth,gsis,salary,step,employment_date,station) VALUES('$employee_number','$pagibig','$lname','$fname','$mname','$pagibig_premium','$tin','$bir','$philhealth','$gsis','$salary','$step','$employment_date','$station')");
 
+         $save_salary = $salaryS *.09;
+          if ($salaryS > 59999) {
+            $phil = 900;
+            $insert_deduct = mysqli_query($conn,"INSERT INTO tbl_deductions(emp_no,monthly_salary,rlip,pera,philhealth) VALUES('$employee_number','$salaryS','$save_salary',2000,'$phil')");
+          }else{
+            $phil = $salaryS *0.03 / 2;
+            $insert_deduct = mysqli_query($conn,"INSERT INTO tbl_deductions(emp_no,monthly_salary,rlip,pera,philhealth) VALUES('$employee_number','$salaryS','$save_salary',2000,'$phil')");
+          }
       }
 
     }else{

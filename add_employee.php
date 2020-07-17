@@ -180,7 +180,7 @@
             $phil = 900;
             $insert_deduct = mysqli_query($conn,"INSERT INTO tbl_deductions(emp_no,monthly_salary,rlip,pera,philhealth) VALUES('$employee_number','$salaryS','$save_salary',2000,'$phil')");
           }else{
-            $phil = $salaryS *.03 / 2;
+            $phil = $salaryS *0.03 / 2;
             $insert_deduct = mysqli_query($conn,"INSERT INTO tbl_deductions(emp_no,monthly_salary,rlip,pera,philhealth) VALUES('$employee_number','$salaryS','$save_salary',2000,'$phil')");
           }
         }
