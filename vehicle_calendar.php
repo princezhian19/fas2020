@@ -58,7 +58,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 <html>
  <head>
  <title>FAS</title>
-<div class="box">
+<div class="box" style="border-style:groove">
 <div class="box-body">
 
 <h1>Trip Schedule</h1>
@@ -68,13 +68,13 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 <li class="btn btn-success"><a href="VehicleRequestCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a></li>  
 
 
-<div class="row">
-    <div class="col-md-4" id='modes'>
+<div class="row" >
+    <div class="col-md-4" id='modes' >
 
         <br>
         <br>
             
-            <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-12">
+            <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-12" style="border-style:groove">
             <table  class="table" id='table' style="border-width: 3px;max-width:100%;">
 
             <tr>
@@ -311,27 +311,27 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             All Drivers</b></td>
             </tr>
               
-            <td style="background-color: #48BD0D; color:white;">
+            <td style="background-color: #87CEFA; color:black; border-style:groove">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Daniel Narciso" id = "DanielNarciso"><label style = "margin-left:15%;">Daniel Narciso</label>
             <input hidden class='' type="text" name = "colorPicker5" value="#48BD0D" id = "colorPicker5">
             </td>
-            <td style="background-color: #E60785; color:white;">
+            <td style="background-color: #87CEFA; color:black; border-style:groove">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Joachim Lacdang" id = "JoachimLacdang"><label style = "margin-left:15%;">Joachim Lacdang</label>
             <input hidden class='' type="text" name = "" value="#E60785;" id = "colorPicker3">
             </td>
             </tr>
             <tr>
-            <td style="background-color: #607D8B; color:#fff;padding:9px;WIDTH:50%;">
+            <td style="background-color: #87CEFA; color:black;padding:9px; border-style:groove">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Louie Blanco" id = "LouieBlanco"><label style = "margin-left:15%;">Louie Blanco</label>
             <input hidden class='' type="text" name = "" value="#607D8B;" id = "colorPicker2">
             </td>
-            <td style="background-color:#FF9800 ; color:white;;padding:9px;">
+            <td style="background-color:#87CEFA ; color:black; padding:9px; border-style:groove">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Medel Saturno" id = "MedelSaturno"><label style = "margin-left:15%;">Medel Saturno</label>
             <input hidden class='' type="text" name = "" value="#FF9800;" id = "colorPicker4">
             </td>
             </tr>
             <tr>
-            <td style="background-color: #D5D911; color:white;WIDTH:50%;">
+            <td style="background-color: #87CEFA; color:black; border-style:groove">
             <input class='calFilter' type="checkbox" name = "drivers[]" value="Reynaldo Parale" id = "ReynaldoParale" ><label style = "margin-left:15%;">Reynaldo Parale</label>
             <input hidden class='' type="text" name = "" value="#D5D911;" id = "colorPicker1">
             </td>
@@ -635,7 +635,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
   <!-- <h2 align="center"><a href="#">Jquery Fullcalandar Integration with PHP and Mysql</a></h2> -->
   <br />
   <!-- <div class="container"> -->
-   <div id="calendar"></div>
+   <div id="calendar" style="border-style:groove"></div>
   <!-- </div> -->
 
 
