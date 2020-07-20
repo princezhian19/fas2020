@@ -14,7 +14,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS | Heath Monitoring</title>
+<title>FAS | Dashboard</title>
 <head>
 <link rel="stylesheet" href="_includes/sweetalert.css">
   <link href="_includes/sweetalert2.min.css" rel="stylesheet"/>

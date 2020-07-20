@@ -123,6 +123,7 @@ function aa($id)
     }
 }
 
+
 function showData()
 {
   include 'connection.php';
@@ -463,12 +464,13 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                 var data = table.row( $(this).parents('tr') ).data();
                 var RO = data[2];
                 $.ajax({
-  url: 'travel_table.php?func=showData',
-  type: 'POST',
-  data: 'ro=' + RO,
-  success: function(data) {
-  }
-});
+                  url: 'travel_table.php',
+                  type: 'POST',
+                  data: {'ro':RO},
+                  success: function(data) {
+
+                  }
+                });
                 $('#exampleModal').modal({
                 keyboard: false
                 });
