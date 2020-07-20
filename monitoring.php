@@ -418,9 +418,9 @@ $division = $_GET['division'];
 
               } );
             
-
+this
               $('#example tbody').on( 'click', '#edit', function () {
-                var data = table.row( $(this).parents('tr') ).data();
+                var data = table.row( $().parents('tr') ).data();
                 window.location="_editRequestTA.php?division=<?php echo $_GET['division'];?>&id="+data[0];
               } );
 

@@ -129,7 +129,7 @@ session_start();
     function getPurposeTravel($username)
     {
         include 'connection.php';
-        $query1 = "SELECT RO_TO_OB FROM tbltravel_claim_info2  WHERE `RO_TO_OB` = '".$username."'";
+        $query1 = "SELECT RO_TO_OB FROM tbltravel_claim_info2  WHERE `NAME` = '".$username."'";
         $result1 = mysqli_query($conn, $query1);
         
             while($row1 = mysqli_fetch_array($result1))
@@ -171,19 +171,20 @@ session_start();
         while($row = mysqli_fetch_array($result))
         {
             ?>
-                <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" />
+                <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" required/>
             <?php
            
        
         }
-    }
-    else{
-        ?>
-        <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>"/>
-    <?php
-    }
+        }
+        else{
+            ?>
+            <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" required/>
+        <?php
+        }
  
     }
+  
 $func = '';
 if(isset($_POST['function']))
 {

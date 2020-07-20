@@ -188,12 +188,19 @@ function aa($id)
 }
 function showData()
 {
-        include 'connection.php';
-        $query = "SELECT * FROM `tbltravel_claim_info` 
-        INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID
-        where `UNAME` = '".$_SESSION['username']."'
-        GROUP by tbltravel_claim_info.RO ";
+  include 'connection.php';
         
+  $query = "SELECT * FROM `tbltravel_claim_info` 
+ INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
+  inner join `tbltravel_claim_info2` on tbltravel_claim_info.`TC_ID`= tbltravel_claim_info2.`ID` 
+  WHERE  `RO_TO_OB`= '".$_GET['ro']."'
+  GROUP by tbltravel_claim_info.RO ";
+  
+// include 'connection.php';
+// $query = "SELECT * FROM `tbltravel_claim_info` 
+// INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID
+// where `UNAME` = '".$_SESSION['username']."'
+// GROUP by tbltravel_claim_info.RO ";
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
@@ -267,6 +274,7 @@ function showData()
 
     
 }
+
 function rowCount(){
   
   include 'connection.php';
@@ -311,33 +319,36 @@ function rowCount(){
 
   }
 }
-isSubmit();
 function isSubmit()
 {
   include 'connection.php';
   $name = '';
+  $query0 = "SELECT PURPOSE FROM `tbltravel_claim_info2` inner join tbltravel_claim on tbltravel_claim_info2.RO_TO_OB = tbltravel_claim.PURPOSE";
+  $result0 = mysqli_query($conn, $query0);
+  if($row0 = mysqli_fetch_array($result0))
+  {
+    $PURPOSE = $row0['PURPOSE'];
+
+
   $query1 = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$_SESSION['username']."' ";
   $result1 = mysqli_query($conn, $query1);
   if($row1 = mysqli_fetch_array($result1))
   {
       $name = ucwords(strtoupper($row1['FIRST_M'])).' '.ucfirst(strtoupper($row1['LAST_M']));
-        $query = "SELECT * FROM `tbltravel_claim` WHERE `IS_SUBMIT` = 1 AND `NAME` ='".$name."'";
+        $query = "SELECT * FROM `tbltravel_claim` WHERE `IS_SUBMIT` = 1 AND `NAME` ='".$name."' AND `PURPOSE` = '".$PURPOSE."' order by DATE_OF_TRAVEL DESC  LIMIT 1";
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
 
-          if($row = mysqli_fetch_array($result))
-          {
-            if($row['IS_SUBMIT'] == 1)
-            {
-
-            }else{
-              
-            }
+            
+          }else{
+            showData();
+            
           }
         }
       }
-}
+    }
+
 ?>
 </head>
 
@@ -397,7 +408,7 @@ function isSubmit()
                   <td class = "label-text">  <label>Position:</label></td>
                     <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly name = "position"/></td>
                       <td colspan = 5 rowspan = 2>
-                        <label>Purpose of Travel:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or" ><?php echo getPurposeTravel($_GET['ro']);?></textarea>
+                        <label>Purpose of Travel:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or" ><?php if($_GET['ro'] == 'null'){ }else{echo $_GET['ro'];}?></textarea>
                         <input type = "hidden" value="<?php echo getPurposeTravel($_GET['username']);?>" name = "purpose_of_travel"/>
                          </td>
                 </tr>
@@ -413,7 +424,7 @@ function isSubmit()
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
               <tr>
                   <td colspan = 10>
-                      <span class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </span>
+                      <button type = "button" class = "btn btn-success btn-md" style = "width:10.5%;font-family:Arial;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
                       <span class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </span>
                       <button class = "btn btn-primary btn-md pull-right" type = "submit" style = "font-family:'Arial';"> Submit </button>
                   </td>
@@ -539,6 +550,8 @@ function isSubmit()
             <div class="modal-body" style = " max-height: calc(100vh - 200px); overflow-y: auto;">
               <div class="box-body">
               <form method = "POST" action = "saveTravelInfo.php">
+            <input type = "hidden" name = "hidden_ro" value = "<?php echo $_GET['ro'];?>" />
+
                 <div class="well" style = "padding:10px;">
 
                   <div class="box-body">
@@ -558,7 +571,7 @@ function isSubmit()
                                       <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" name = "date" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask>
+                                    <input type="text" name = "date" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
                                   </div>
                                 </div>
                               </div>
@@ -693,7 +706,22 @@ function isSubmit()
     
 
 <script>
+$(document).ready(function(){
+  $('#or').prop('required',true);
+  var ro = "<?php echo $_GET['ro'];?>";
+  if(ro != '')
+  {
+    $("#editbtn").prop('disabled',true);
+
+  }else if(ro == 'null')
+  {
+    $("#editbtn").prop('disabled',false);
+
+  }
+
+})
  var myCounter = 1;
+
 
  $('#add_fare').click(function(){
     $('.myTemplate2')

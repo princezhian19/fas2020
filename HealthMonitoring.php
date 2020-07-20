@@ -250,7 +250,7 @@ only screen and (max-width: 760px),
                 <input type = "hidden" value="<?php echo date('F d, Y');?>" name = "date_today" />
                 <center>DATE</center>
             </span>                                            
-            <span class = "pull-right" > <br><u STYLE  = "font-weight:bold;"><?php echo $_SESSION['complete_name'];?></u><br>NAME AND SIGNATURE </span>                                            
+            <span class = "pull-right" > <br><u STYLE  = "font-weight:bold;"><?php getSignature();?></u><br>NAME AND SIGNATURE </span>                                            
           </td>
           </tr>
 
