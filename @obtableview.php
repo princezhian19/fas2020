@@ -67,8 +67,7 @@ $getUacs = $_GET['getuacs'];
             echo  number_format($rowAmount['a'],2)?></b>
             
           
-          </h3>
-
+            </h3>
 
             <h3 align="" >&nbspBalance :   <b><?php $getSaro = $_GET['getsaroID'];
           

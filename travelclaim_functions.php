@@ -11,6 +11,17 @@ session_start();
             echo $name;
         }
     }
+    function viewCompleteName($emp_name)
+    {
+        include 'connection.php';
+        $query = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$emp_name."'";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            $name = ucwords(strtoupper($row['FIRST_M'])).' '.ucfirst(strtoupper($row['LAST_M']));
+            echo $name;
+        }
+    }
     function getPosition()
     {
         include 'connection.php';
@@ -18,6 +29,19 @@ session_start();
                 INNER JOIN tblemployeeinfo on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C 
                 INNER JOIN tbldilgposition on tblemployeeinfo.POSITION_C = tbldilgposition.POSITION_ID
                 where tblemployeeinfo.UNAME = '".$_SESSION['username']."' ";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            echo $row['POSITION_M'];
+        }
+    }
+    function viewPosition($emp_name)
+    {
+        include 'connection.php';
+        $query = "SELECT POSITION_M FROM tblpersonneldivision 
+                INNER JOIN tblemployeeinfo on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C 
+                INNER JOIN tbldilgposition on tblemployeeinfo.POSITION_C = tbldilgposition.POSITION_ID
+                where tblemployeeinfo.UNAME = '".$emp_name."' ";
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_array($result))
         {
@@ -83,16 +107,75 @@ session_start();
             }
         }
     }
+    function viewOffice($emp_name)
+    {
+        include 'connection.php';
+        $query = "SELECT OFFICE_STATION   from tblemployeeinfo where UNAME = '".$emp_name."' ";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            switch ($row['OFFICE_STATION']) {
+                case '1':
+                    ?>
+                        <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" selected>Regional Office</option>
+                            <option value="2">Provincial/HUC Office</option>
+                            <option value="3">Cluster Office</option>
+                            <option value="4">City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                case '2':
+                    ?>
+                            <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" >Regional Office</option>
+                            <option value="2" selected>Provincial/HUC Office</option>
+                            <option value="3">Cluster Office</option>
+                            <option value="4">City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                case '3':
+                    ?>
+                            <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" >Regional Office</option>
+                            <option value="2" >Provincial/HUC Office</option>
+                            <option value="3" selected>Cluster Office</option>
+                            <option value="4">City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                case '4':
+                    ?>
+                            <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" >Regional Office</option>
+                            <option value="2" >Provincial/HUC Office</option>
+                            <option value="3" >Cluster Office</option>
+                            <option value="4" selected>City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
+        }
+    }
 
     function getTotal()
     {
         include 'connection.php';
-        $query1 = "SELECT * FROM tbltravel_claim_info2  WHERE `NAME` = '".$_GET['username']."'";
+        $query1 = "SELECT * FROM tbltravel_claim_info2  WHERE `NAME` = '".$_SESSION['username']."'  ORDER BY ID DESC LIMIT 1";
         $result1 = mysqli_query($conn, $query1);
         
             if($row1 = mysqli_fetch_array($result1))
             {
-                    $query2 = "SELECT sum(`TOTAL_AMOUNT`)AS 'total' FROM tbltravel_claim_info  WHERE `TC_ID` = '".$row1['ID']."'";
+                    $query2 = "SELECT sum(`TOTAL_AMOUNT`)AS 'total' FROM tbltravel_claim_info inner join tbltravel_claim_info2 on  tbltravel_claim_info.TC_ID = tbltravel_claim_info2.ID  WHERE `RO_TO_OB` = '".$_GET['ro']."'";
                 
                     $result2 = mysqli_query($conn, $query2);
                     if(mysqli_num_rows($result2) > 0)
@@ -171,7 +254,7 @@ session_start();
         while($row = mysqli_fetch_array($result))
         {
             ?>
-                <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" />
+                <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" required/>
             <?php
            
        
@@ -179,7 +262,7 @@ session_start();
         }
         else{
             ?>
-            <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>"/>
+            <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" required/>
         <?php
         }
  

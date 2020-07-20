@@ -10,69 +10,7 @@ include 'travelclaim_functions.php';
 <html>
 <head>
   <script src="jquery.min.js"></script>
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-  <style>
-  span{
-    font-family:'Arial';
-
-  }
-  table tr{ 
-    font-family:'Cambria';
-  }
-  .table-header{
-    color:black;
-    background-color:#B0BEC5; 
-
-  }
-  td{
-    padding:5px;
-  }
-  td.label-text{ 
-    background-color:#B0BEC5; 
-
-  }
-  .borderless {
-  outline: 0;
-  border-width: 0 0 2px;
-  border-color: blue
-}
-.borderless:focus {
-  border-color: green
-}
-div.pac-container {
-    z-index: 99999999999 !important;
-}
-.border-disabled{
-  border: 2px solid gray;
-}
-.box{
-        position: relative;
-        display: inline-block; /* Make the width of box same as image */
-    }
-    .box .text{
-      padding:10%;
-
-        position: absolute;
-        z-index: 999;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        top:0; /* Adjust this value to move the positioned div up and down */
-        width: 100%; /* Set the width of the positioned div */
-    }
-
-    .scroll{
-    height:300px;display:block;overflow-y:hidden; 
-    }
-    .scroll:hover{
-  overflow-y: scroll;
-
-    }
- 
-
-
-
-</style>
+  
 <?php
 // PHP FUNCTION
 
@@ -188,12 +126,14 @@ function aa($id)
 }
 function showData()
 {
-        include 'connection.php';
-        $query = "SELECT * FROM `tbltravel_claim_info` 
-        INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID
-        INNER JOIN tbltravel_claim_info2 on tbltravel_claim_info2.ID = tbltravel_claim_ro.ID
-        where `RO_TO_OB` = '".$_GET['ro']."'
-        GROUP by tbltravel_claim_info.RO ";
+  include 'connection.php';
+        
+  $query = "SELECT * FROM `tbltravel_claim_info2`
+  INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
+  INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
+  WHERE  `RO_TO_OB`= '".$_GET['ro']."'
+  GROUP by tbltravel_claim_info.RO ";
+  
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
@@ -417,8 +357,8 @@ function isSubmit()
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
               <tr>
                   <td colspan = 10>
-                      <span class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </span>
-                      <span class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </span>
+                      <button type = "button" class = "btn btn-success btn-md" style = "width:10.5%;font-family:Arial;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                      <button type = "button" class = "btn btn-primary btn-md" style = "font-family:Arial" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
                       <button class = "btn btn-primary btn-md pull-right" type = "submit" style = "font-family:'Arial';"> Submit </button>
                   </td>
               </tr>
@@ -564,7 +504,7 @@ function isSubmit()
                                       <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" name = "date" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask>
+                                    <input type="text" name = "date" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
                                   </div>
                                 </div>
                               </div>
@@ -698,166 +638,8 @@ function isSubmit()
     </div>
     
 
-<script>
-$(document).ready(function(){
-  $('#or').prop('required',true);
 
-})
- var myCounter = 1;
-
-
- $('#add_fare').click(function(){
-    $('.myTemplate2')
-   .clone()
-   .removeClass("myTemplate2")
-   .addClass("additionalDate")
-   .show()
-   .appendTo('#travelPanel');
-   
-  myCounter++;
-     
-  $(".datepicker6").on('focus', function(){
-      var $this = $(this);
-      if(!$this.data('datepicker')) {
-       $this.removeClass("hasDatepicker");
-       $this.datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-       $this.datepicker("show");
-      }
-  }); 
-
-  $(".datepicker5").on('focus', function(){
-      var $this = $(this);
-      if(!$this.data('datepicker')) {
-       $this.removeClass("hasDatepicker");
-       $this.datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-       $this.datepicker("show");
-      }
-  }); 
-
-
-});
-$(document).on('click','#editbtn',function(e){
- 
-
-var purpose = $('#or').val();
-$('#ro_txt').val(purpose);
-if(purpose == '' || purpose == null)
-{
-  
-  alert('Required Field:All fields with * are required!.');
-$('#editModal').modal().hide();
-
-}else{
-
-}
-});
-
-
-  $('.receipt').on('change', function() { 
-      $('.receipt').not(this).prop('checked', false);  
-  });
-  // checkbox validation
-  $(document).ready(function(){
-    $('#datepicker4').val($('#travel_date').val());
-        $('#wor').click(function(){
-            if($(this).prop("checked") == true){
-              
-        $("#wor_txt").prop('disabled',true);
-        $("#wor_txt").val('');
-
-            }
-            else if($(this).prop("checked") == false){
-              $("#wor_txt").prop('disabled',false);
-            }
-        });
-        $('#wa').click(function(){
-            if($(this).prop("checked") == true){
-        $("#wor_txt").prop('disabled',true);
-              
-            }
-        });
-        $('#wr').click(function(){
-            if($(this).prop("checked") == true){
-        $("#wor_txt").prop('disabled',false);
-              
-            }
-        });
-    });
-
-
-    
-      enable_cb1();
-      enable_cb2();
-  $("#cb1").click(enable_cb1);
-  $("#wa").click(enable_cb2);
-  function enable_cb1() {
-    if (this.checked) {
-      if($('.checkboxgroup').val() == 'breakfast')
-      {
-        $('#breakfast').not(this).prop('checked', true);  
-        $('#lunch').not(this).prop('checked', true);  
-        $('#dinner').not(this).prop('checked', true);  
-      }
-      $("#breakfast").removeAttr("disabled");
-      $("#lunch").removeAttr("disabled");
-      $("#dinner").removeAttr("disabled");
-    } else {
-
-      $('#breakfast').not(this).prop('checked', false);  
-      $('#lunch').not(this).prop('checked', false);  
-      $('#dinner').not(this).prop('checked', false);  
-
-      $("#breakfast").attr("disabled", true);
-      $("#lunch").attr("disabled", true);
-      $("#dinner").attr("disabled", true);
-      
-    }
-  }
-  function enable_cb2()
-  {
-    if (this.checked) {
-      if($('.receipt').val() == 'With Receipt')
-      {
-        $('#wr').not(this).prop('checked', true);  
-        $('#wor').not(this).prop('checked', true);  
-      }
-      $("#wr").removeAttr("disabled");
-      $("#wor").removeAttr("disabled");
-    }else{
-      $('#wr').not(this).prop('checked', false);  
-      $('#wor').not(this).prop('checked', false); 
-      
-      $("#wr").attr("disabled", true);
-      $("#wor").attr("disabled", true);
-    }
-
-  }
-  function disabledDIV()
-  {
-   var distance =  $('#distance').val();
-   distance = distance.replace('km', '');
-   console.log($('#distance').val());
-      if(distance > 50)
-   {
-   
-
-   }else{
-
-
-    $("#breakfast").attr("disabled", true);
-      $("#lunch").attr("disabled", true);
-      $("#dinner").attr("disabled", true);
-      $("#cb1").attr("disabled", true);
-      $("#wa").attr("disabled", true);
-      $('.perdiem').addClass('border-disabled');
-
-   }
-
-  }
-  disabledDIV();
-
-</script>
-
+<script src="travelclaim.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>

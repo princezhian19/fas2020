@@ -54,7 +54,8 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <script src="_includes/sweetalert.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="_includes/sweetalert.css">
+    <link rel="stylesheet" href="_includes/sweetalert.css">
+    <link rel="stylesheet" href="travelclaim.css">
 
 </head>
 
@@ -105,6 +106,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 <script src="bower_components/fastclick/lib/fastclick.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
 <script>
 
 $(document).ready(function(){

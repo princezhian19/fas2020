@@ -84,9 +84,9 @@ include('db.class.php'); // call db.class.php
                   <th>PO NUMBER</th>
                   <th>PAYEE</th>
                   <th>PARTICULAR</th>
-                  <th>SARO NUMBER</th>
+                 <!--  <th>SARO NUMBER</th>
                   <th>PPA</th>
-                  <th>UACS</th>
+                  <th>UACS</th> -->
                   <th>AMOUNT</th>
                   <th>REMARKS</th>
                   <th>GROUP</th>
@@ -102,7 +102,7 @@ include('db.class.php'); // call db.class.php
               $password = "w]zYV6X9{*BN";
               $database = "fascalab_2020";
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT * FROM saroob order by date desc");
+              $view_query = mysqli_query($conn, "SELECT datereceived, datereprocessed,datereturned, datereleased, ors, ponum, payee, particular, sum(amount) as amount, remarks, sarogroup, status  FROM saroob group by ors desc order by id desc ");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["id"];
                 $datereceived = $row["datereceived"];
@@ -136,10 +136,12 @@ include('db.class.php'); // call db.class.php
                 $ponum = $row["ponum"];
                 $payee = $row["payee"];
                 $particular = $row["particular"];
-                $saronumber = $row["saronumber"];
+                /* $saronumber = $row["saronumber"];
                 $ppa = $row["ppa"];
-                $uacs = $row["uacs"];
-                $amount = $row["amount"];
+                $uacs = $row["uacs"]; */
+                $amount1 = $row["amount"];
+
+                $amount = number_format( $amount1,2);
                 $date = $row["date"];
                 $remarks = $row["remarks"];
                 $sarogroup = $row["sarogroup"];
@@ -175,13 +177,13 @@ include('db.class.php'); // call db.class.php
                              <?php else: ?> 
                                <td></td>
                              <?php endif ?>
-                             <td><?php echo $ors;?></td>
+                             <td><a href="" onclick="myFunction(this)" data-ors="<?php echo $ors;?>" data-toggle="modal" data-target="#ors_data_Modal"><?php echo $ors;?></a></td>
                              <td><?php echo $ponum;?></td>
                              <td><?php echo $payee;?></td>
                              <td><?php echo $particular;?></td>
-                             <td><?php echo $saronumber;?></td>
+                             <!-- <td><?php echo $saronumber;?></td>
                              <td><?php echo $ppa;?></td>
-                             <td><?php echo $uacs;?></td>
+                             <td><?php echo $uacs;?></td> -->
                              <td><?php echo $amount;?></td>
                              <td><?php echo $remarks;?></td>
                              <td><?php echo $sarogroup;?></td>
@@ -195,7 +197,7 @@ include('db.class.php'); // call db.class.php
                                   <?php endif ?>
                                 <?php endif ?>
                                 <td colspan="1" style="border-right: 0px; margin-left:0px">
-                                  <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> | 
+                                  <!-- <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> |  -->
                                   <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a>
                               </td>
                                
@@ -322,5 +324,199 @@ include('db.class.php'); // call db.class.php
 </body>
 </html>
 
+<!--cancel modals -->
 
+<div id="ors_data_Modal" class="modal fade" role="dialog" >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">OBLIGATION</h4>
+            </div>
+            <div class="modal-body">
+              <!-- <form method="POST" action="ro_cancel.php" > -->
+              
+        
+              <div class="addmodal" >
+              <h4 class="modal-title">Breakdown for ORS No.&nbsp;<input style="border:none; font-weight:bolder"  type="text" name="ors11" id="ors11" value="" class=""/></h4>
+              
+
+             
+
+           
+              <br>
+
+            
+              <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <!-- Table of Uacs -->
+                                        <table id="example" class="table table-responsive table-bordered " style="background-color: white; width:100%; text-align:left">
+                                        <thead>
+                                        <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
+                                       
+                                        <th width=''>ID</th>
+                                        <th width=''>FUND SOURCE</th>
+                                        <th width=''>PPA </th>
+                                        <th width=''>UACS </th>
+                                        <th width=''>AMOUNT </th>
+                                        <th width=''>STATUS </th>
+                                        <th width='500'>MANAGE</th>
+                                        
+                                        
+
+                                        
+                                        </thead>
+
+                                        </table>
+
+                                        <!-- Table of Uacs -->
+
+                                    </div>
+
+                                </div>
+
+                                
+
+
+                            </div>
+
+
+
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+              <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+              <script type="text/javascript">
+              
+              </script>
+              <script>
+
+                  function myFunction(orsget) {
+                    
+                    //getting from data-id from link
+                    var ors = orsget.getAttribute("data-ors");
+                 
+                    var ors1 = $("input[name='ors1']");
+                    var ors11 = $("input[name='ors11']");
+                    
+                    ors1.val(ors);
+                    ors11.val(ors);
+
+
+                    $(document).ready(function(){
+
+                        var ors = orsget.getAttribute("data-ors");
+                       
+
+
+                        $('#example').DataTable().destroy();
+                        dataT();
+
+                        });
+
+                        function dataT(){
+
+                        // var filter_data ='0001';
+
+
+                        var table = $('#example').DataTable( {
+                          
+
+                      'paging'      : true,
+                      'lengthChange': false,
+                      'searching'   : true,
+                      'ordering'    : false,
+                      'info'        : false,
+                      'autoWidth'   : false,  
+                        "processing": true,
+                        "serverSide": false,
+                        "columnDefs": [{"render": createManageBtn, "data": null, "targets": [6]}],
+                        
+                        "ajax": {
+                        "url": "DATATABLE/Ors_data.php",
+                        "type": "POST",
+                        "data": {
+                        "filter_data": ors,
+
+
+                        }}
+
+                        } );
+
+
+                      $('#example tbody').on( 'click', '#editORS', function () {
+                      var data = table.row( $(this).parents('tr') ).data();
+                      window.location="obupdate.php?getid="+data[0];
+                      });
+
+                      $('#example tbody').on( 'click', '#delete', function () {
+                      var data = table.row( $(this).parents('tr') ).data();
+                      window.location="@Functions/obdeletefunction.php?getidDelete="+data[0];
+                      });
+                     
+                      
+                      function createManageBtn() {
+
+                      
+                      return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i> Edit</a> | <a  class="btn btn-danger btn-xs" onclick="myFunc()" onclick="" id="delete"><i class="fa fa-trash-o"></i>  Delete</a>';
+
+                      
+                      
+
+                      }
+                      function myFunc() {
+                      return confirm("Are you sure you want to delete this obligation?")
+                      console.log("Button was clicked!!!");
+                      // alert(data[0]);
+                      }
+
+                        
+                       
+
+
+                        }
+                
+                    
+                  }
+
+                   
+
+                
+
+                  </script>
+
+
+              <input hidden  type="text" name="ors1" id="ors1" value="" class=""/>
+              <br>
+              <input hidden  type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
+              <br>
+              <input hidden  type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+              </tr>
+              </table>
+                
+
+
+
+           
+                            
+              
+            
+                </div>
+           
+                <!-- </form> -->
+          </div>
+        </div>
+
+      
+    
+    </div>
+
+    </div>
+ 
+
+          
+              
+ 
+           
+        <!-- cancel modals -->
 
