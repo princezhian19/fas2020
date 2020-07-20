@@ -97,6 +97,21 @@ date_default_timezone_set('Asia/Manila');
             echo $name;
         }
     }
+
+    function getSignature()
+    {
+        include 'connection.php';
+        $query = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$_SESSION['username']."' ";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            $first = ucwords(ucfirst(strtoupper($row['FIRST_M'])));
+            $middle = ucwords(ucfirst(strtoupper($row['MIDDLE_M'])));
+            $last = ucwords(ucfirst(strtoupper($row['LAST_M'])));
+
+            echo $first.'&nbsp;&nbsp;'.$middle.'&nbsp;&nbsp;'.$last;
+        }
+    }
     function getContact()
     {
         include 'connection.php';

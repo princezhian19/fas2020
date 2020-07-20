@@ -188,12 +188,13 @@ function aa($id)
 }
 function showData()
 {
-        include 'connection.php';
-        $query = "SELECT * FROM `tbltravel_claim_info` 
-        INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID
-        INNER JOIN tbltravel_claim_info2 on tbltravel_claim_info2.ID = tbltravel_claim_ro.ID
-        where `RO_TO_OB` = '".$_GET['ro']."'
-        GROUP by tbltravel_claim_info.RO ";
+  include 'connection.php';
+        
+  $query = "SELECT * FROM `tbltravel_claim_info` 
+  INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID
+  inner join `tbltravel_claim_info` on  tbltravel_claim_info2.`ID` = tbltravel_claim_info.`TC_ID` 
+  WHERE  `RO_OT_OB`= '".$_GET['ro']."'
+  GROUP by tbltravel_claim_info.RO ";
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
