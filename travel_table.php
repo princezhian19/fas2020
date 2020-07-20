@@ -126,11 +126,10 @@ function aa($id)
 function showData()
 {
   include 'connection.php';
-        
   $query = "SELECT * FROM `tbltravel_claim_info2`
   INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
   INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
-  WHERE  `RO_TO_OB`= '".$_GET['ro']."'
+  WHERE  `RO_TO_OB`= '".$_POST['ro']."'
   GROUP by tbltravel_claim_info.RO ";
 
   
@@ -250,7 +249,12 @@ function rowCount(){
 
   }
 }
+$link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 
+                "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .  
+                $_SERVER['REQUEST_URI']; 
+  
 
+echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 ?>
 
 <!DOCTYPE html>
@@ -457,6 +461,14 @@ function rowCount(){
               
               $('#example tbody').on( 'click', '#view', function () {
                 var data = table.row( $(this).parents('tr') ).data();
+                var RO = data[2];
+                $.ajax({
+  url: 'travel_table.php?func=showData',
+  type: 'POST',
+  data: 'ro=' + RO,
+  success: function(data) {
+  }
+});
                 $('#exampleModal').modal({
                 keyboard: false
                 });
