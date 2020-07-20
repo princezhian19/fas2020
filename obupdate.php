@@ -182,16 +182,16 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
         <!-- getting ID for update function -->
 
         
-        <div class="class-bordered" >
+        <div class="class-bordered well" >
             <div class="row">
                 <div class="col-md-6">
                       <label>ORS Serial Number</label>
-                      <input  type="text" class="form-control" style="height: 35px;" id="" placeholder="Enter ORS Number" name="ors"  value="<?php echo $ors;?>">
+                      <input style="border-style: groove;  type="text" class="form-control" style="height: 35px;" id="" placeholder="Enter ORS Number" name="ors"  value="<?php echo $ors;?>">
                       
                       <br>
                     
                       <label>PO NO.</label>
-                      <input  type="text" class="typeahead form-control" style="height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum"  value="<?php echo $ponum;?>">
+                      <input style="border-style: groove;  type="text" class="typeahead form-control" style="height: 35px;" id="ponum" placeholder="Search PO Number" name="ponum"  value="<?php echo $ponum;?>">
                       <br>
                     
                 </div>    
@@ -203,7 +203,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datereceived" value="<?php echo $datereceived11;?>" required>
+                        <input style="border-style: groove; type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datereceived" value="<?php echo $datereceived11;?>" required>
                     </div>
                     <br>
                     
@@ -214,19 +214,19 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereprocessed" value="<?php echo $datereprocessed11;?>" required>
+                        <input style="border-style: groove; type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereprocessed" value="<?php echo $datereprocessed11;?>" required>
                         <br>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="class">
+        <div class="class well">
              <!-- ORS -->
             <div class="row">
                 <div class="col-md-6">
                     <label>Payee/Supplier</label>
-                    <input  type="text" class="form-control" style="height: 35px;" id="payee" placeholder="Payee" name="payee" value="<?php echo $payee;?>">
+                    <input style="border-style: groove;"  type="text" class="form-control" style="height: 35px;" id="payee" placeholder="Payee" name="payee" value="<?php echo $payee;?>">
                     <br>
 <!-- 
                     <label>Supplier</label>
@@ -239,7 +239,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
  -->
 
                     <label>Particular/Purpose</label>
-                    <input  type="text" readonly  class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular" value="<?php echo $particular;?>">
+                    <input style="border-style: groove;"  type="text" readonly  class="form-control" style="height: 35px;" id="particular" placeholder="Particular" name="particular" value="<?php echo $particular;?>">
                     
                 </div>
 
@@ -292,7 +292,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="datereturned" value="<?php echo $datereturned11;?>" >
+                        <input style="border-style: groove;" type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="datereturned" value="<?php echo $datereturned11;?>" >
                     </div>
                     <br>
                     
@@ -302,7 +302,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="datepicker4" placeholder='Enter Date' name="datereleased" value="<?php echo $datereleased11;?>" required>
+                        <input style="border-style: groove;" type="text" class="form-control pull-right" id="datepicker4" placeholder='Enter Date' name="datereleased" value="<?php echo $datereleased11;?>" required>
                         <br>
                     </div>
                    
@@ -316,7 +316,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                 <div class="row">
                 <div class="col-md-3">
                     <label>Fund Source</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="saronum" placeholder="Fund Source" name="saronum" value="<?php echo $saronumber;?>" class="typeahead"/>
+                    <input style="border-style: groove;" type="text"  class="form-control" style="height: 40px;" id="saronum" placeholder="Fund Source" name="saronum" value="<?php echo $saronumber;?>" class="typeahead"/>
                     <!-- <input type="text" name="txtCountry" id="txtCountry" class="typeahead"/> -->
                       <table class="table table-striped table-hover" id="main1">
                       <tbody id="result1">
@@ -379,19 +379,19 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
               </script>
                 <div class="col-md-3">
                     <label>PPA</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa" value="<?php echo $ppa;?>">
+                    <input style="border-style: groove;" type="text"  class="form-control" style="height: 40px;" id="ppa" placeholder="PPA" name="ppa" value="<?php echo $ppa;?>">
                 </div>
                 <div class="col-md-2">
                     <label>UACS Code</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs" value="<?php echo $uacs;?>"> 
+                    <input style="border-style: groove;" type="text"  class="form-control" style="height: 40px;" id="uacs" placeholder="UACS Code" name="uacs" value="<?php echo $uacs;?>"> 
                 </div>
                 <div class="col-md-2">
                     <label>Amount</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="" placeholder="Amount" name="amount" value="<?php echo $amount;?>" readonly>
+                    <input style="border-style: groove;" type="text"  class="form-control" style="height: 40px;" id="" placeholder="Amount" name="amount" value="<?php echo $amount;?>" readonly>
                 </div>
                 <div class="col-md-2">
                     <label>New Amount</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="" placeholder="New Amount" name="newamount" value="" required>
+                    <input style="border-style: groove;" type="text"  class="form-control" style="height: 40px;" id="" placeholder="New Amount" name="newamount" value="" required>
                 </div>
             </div>
             
@@ -399,7 +399,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
             <div class="row">
                 <div class="col-md-4">
                     <label>Remarks</label>
-                    <textarea style="width: 100%; height: 40px;" class="form-control" placeholder="Remarks" name="remarks"  ><?php echo $remarks;?></textarea> 
+                    <textarea style="border-style: groove;" style="width: 100%; height: 40px;" class="form-control" placeholder="Remarks" name="remarks"  ><?php echo $remarks;?></textarea> 
                 </div>
 
                 <div class="col-md-4">
@@ -409,13 +409,13 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
                     <option>Select Group</option>
                     <?php echo app($connect);?>
                     </select> -->
-                    <input  type="text"  class="form-control" style="height: 40px;" id="sarogroup" placeholder="" name="sarogroup" value="<?php echo $sarogroup;?>" readonly>
+                    <input style="border-style: groove;" type="text"  class="form-control" style="height: 40px;" id="sarogroup" placeholder="" name="sarogroup" value="<?php echo $sarogroup;?>" readonly>
                 </div>
 
                 <div class="col-md-4">
                     <label>Status</label>
                     <!-- <textarea class="form-control" placeholder="Remarks" name="remarks" ></textarea> --> 
-                    <select class="form-control select" style="width: 100%; height: 40px;" name="status" id="status" required >
+                    <select style="border-style: groove;" class="form-control select" style="width: 100%; height: 40px;" name="status" id="status" required >
                  
                     <option value = "Obligated">Obligated</option>
                     <option value = "Pending">Pending</option>
