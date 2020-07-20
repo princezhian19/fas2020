@@ -225,17 +225,11 @@ ob_start();
                  <option value="2">Leticia A. Delgado</option>
                  <option value="3">Medel A. Saturno</option>
                  <option value="4">Rafael M. Saturno</option>
+                 <option value="7">Hannah Grace P. Solis</option>
                  <option value="6">Art Brian G. Rubio</option>
                  
                  </select>';
-               }
-               <option value="1">Reschiel B. Veridiano</option>
-               <option value="2">Leticia A. Delgado</option>
-               <option value="3">Medel A. Saturno</option>
-               <option value="4">Rafael M. Saturno</option>
-               <option value="5">Camille T. Ronquillo</option>
-               else{
-
+               }else{
                 echo 
                 '<select name="officer" class="form-control">
                 
@@ -243,6 +237,10 @@ ob_start();
                 <option value="2">Leticia A. Delgado</option>
                 <option value="3">Medel A. Saturno</option>
                 <option value="4">Rafael M. Saturno</option>
+                 <option value="5">Camille T. Ronquillo</option>
+                 <option value="6">Art Brian G. Rubio</option>
+                 <option value="7">Hannah Grace P. Solis</option>
+                 <option value="8">Eunice A. Sales</option>
                 </select>';
 
               }
