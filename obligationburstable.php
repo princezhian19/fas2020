@@ -103,7 +103,7 @@ include('db.class.php'); // call db.class.php
               $password = "w]zYV6X9{*BN";
               $database = "fascalab_2020";
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT * FROM saroobburs order by date desc");
+              $view_query = mysqli_query($conn, "SELECT * FROM saroobburs order by ID desc");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["id"];  
 

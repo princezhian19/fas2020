@@ -354,11 +354,13 @@ include('db.class.php'); // call db.class.php
                                         <table id="example" class="table table-responsive table-bordered " style="background-color: white; width:100%; text-align:left">
                                         <thead>
                                         <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
+                                        <th width=''>MANAGE</th>
                                         <th width=''>FUND SOURCE</th>
                                         <th width=''>PPA </th>
                                         <th width=''>UACS </th>
                                         <th width=''>AMOUNT </th>
                                         <th width=''>STATUS </th>
+                                        
 
                                         
                                         </thead>
@@ -381,6 +383,14 @@ include('db.class.php'); // call db.class.php
               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
               <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+              <script type="text/javascript">
+              function createManageBtn() {
+              return '<button id="manageBtn" type="button" onclick="myFunc()" class="btn btn-primary btn-xs">Edit</button>';
+              }
+              function myFunc() {
+              console.log("Button was clicked!!!");
+              }
+              </script>
               <script>
 
                   function myFunction(orsget) {
@@ -412,6 +422,8 @@ include('db.class.php'); // call db.class.php
 
 
                         var table = $('#example').DataTable( {
+                          
+
                       'paging'      : true,
                       'lengthChange': false,
                       'searching'   : true,
@@ -420,6 +432,8 @@ include('db.class.php'); // call db.class.php
                       'autoWidth'   : false,  
                         "processing": true,
                         "serverSide": false,
+                        "columnDefs": [{"render": createManageBtn, "data": null, "targets": [0]}],
+                        
                         "ajax": {
                         "url": "DATATABLE/Ors_data.php",
                         "type": "POST",
@@ -430,6 +444,11 @@ include('db.class.php'); // call db.class.php
                         }}
 
                         } );
+
+                        
+                       
+
+
                         }
                 
                     
@@ -441,12 +460,6 @@ include('db.class.php'); // call db.class.php
 
                   </script>
 
-
-
-              
-              
-              
-           
 
               <input hidden  type="text" name="ors1" id="ors1" value="" class=""/>
               <br>
