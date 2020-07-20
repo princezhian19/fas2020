@@ -385,7 +385,7 @@ include('db.class.php'); // call db.class.php
 
               <script type="text/javascript">
               function createManageBtn() {
-              return '<button id="manageBtn" type="button" onclick="myFunc()" class="btn btn-primary btn-xs">Manage</button>';
+              return '<button id="manageBtn" type="button" onclick="myFunc()" class="btn btn-primary btn-xs">Edit</button>';
               }
               function myFunc() {
               console.log("Button was clicked!!!");
