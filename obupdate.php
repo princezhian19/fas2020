@@ -170,7 +170,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
              <div class="box-header with-border">
     
         <br>
-      <li class="btn btn-success"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-warning"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
       <!-- Start form -->
@@ -433,7 +433,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width: %;" class="btn btn-success mb-4">Update</button>
+    &nbsp&nbsp&nbsp<button type="submit" name="submit" style="width: %;" class="btn btn-primary mb-4">Save</button>
     <br>
     <br>
     
