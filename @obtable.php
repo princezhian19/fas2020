@@ -89,7 +89,7 @@ include('db.class.php'); // call db.class.php
                   <th>UACS</th> -->
                   <th>AMOUNT</th>
                   <th>REMARKS</th>
-                  <th>GROUP</th>
+                  <!-- <th>GROUP</th> -->
                   <th>STATUS</th>
                   <th width='130'  style="border-right: 0px; text-align: center;">ACTION</th>
                   
@@ -186,19 +186,19 @@ include('db.class.php'); // call db.class.php
                              <td><?php echo $uacs;?></td> -->
                              <td><?php echo $amount;?></td>
                              <td><?php echo $remarks;?></td>
-                             <td><?php echo $sarogroup;?></td>
+                             <!-- <td><?php echo $sarogroup;?></td> -->
                              <?php if ($status =='Pending'): ?>
                               <td style='background-color:red'><b>Pending</b></td>
                               <?php else: ?>
                                 <?php if ($status == 'Obligated'): ?>
-                                  <td style='background-color:green'><b>Obligated</b></td>
+                                  <td style=' color:black'>Obligated</td>
                                   <?php else: ?>
                                     <td></td>
                                   <?php endif ?>
                                 <?php endif ?>
                                 <td colspan="1" style="border-right: 0px; margin-left:0px">
-                                  <!-- <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> |  -->
-                                  <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a>
+                                  <a  class="btn btn-primary btn-xs" href=''> <i class='fa'>&#xf044;</i> Manage Data</a>
+                                  <!-- <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a> -->
                               </td>
                                
                               </tr> 
@@ -349,23 +349,20 @@ include('db.class.php'); // call db.class.php
             
               <div class="row">
                                 <div class="col-md-12">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12" >
                                         <!-- Table of Uacs -->
-                                        <table id="example" class="table table-responsive table-bordered " style="background-color: white; width:100%; text-align:left">
+                                        <table id="example" class="table table-responsive table-bordered " style="background-color: white; width:100%; text-align:left; border-style: groove;" >
                                         <thead>
                                         <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
                                        
-                                        <th width=''>ID</th>
-                                        <th width=''>FUND SOURCE</th>
-                                        <th width=''>PPA </th>
-                                        <th width=''>UACS </th>
-                                        <th width=''>AMOUNT </th>
-                                        <th width=''>STATUS </th>
-                                        <th width='500'>MANAGE</th>
-                                        
-                                        
-
-                                        
+                                        <th width='500'>ID</th>
+                                        <th width='500'>FUND SOURCE</th>
+                                        <th width='500'>PPA </th>
+                                        <th width='500'>UACS </th>
+                                        <th width='500'>AMOUNT </th>
+                                        <th width='500'>STATUS </th>
+                                        <th width='500'>ACTION</th>
+     
                                         </thead>
 
                                         </table>
@@ -458,14 +455,14 @@ include('db.class.php'); // call db.class.php
                       function createManageBtn() {
 
                       
-                      return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i> Edit</a> | <a  class="btn btn-danger btn-xs" onclick="myFunc()" onclick="" id="delete"><i class="fa fa-trash-o"></i>  Delete</a>';
+                      return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i>&nbsp;&nbsp;Edit&nbsp;&nbsp;</a> | <a  class="btn btn-danger btn-xs" onclick="myFunc()" onclick="" id="delete"><i class="fa fa-trash-o"></i>  Delete</a>';
 
                       
                       
 
                       }
                       function myFunc() {
-                      return confirm("Are you sure you want to delete this obligation?")
+                      confirm("Are you sure you want to delete this obligation?")
                       console.log("Button was clicked!!!");
                       // alert(data[0]);
                       }
