@@ -658,7 +658,7 @@ p.mix {border-style: dotted dashed solid double;} */
                         <tr>
                         <td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td>
                         <td class="col-md-7">
-                        <select class="form-control select" style="width: 100%; height: 40px;" name="charge" id="charge" required >
+                        <select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge[]" required >
                         <option value = "">Select NCA/NTA</option>
                         <option value = "NCA">NCA</option>
                         <option value = "NTA">NTA</option>
@@ -674,7 +674,7 @@ p.mix {border-style: dotted dashed solid double;} */
                         <tr>
                         <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td>
                         <td class="col-md-7">
-                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="nta" name="nta" placeholder="NCA/NTA NO." autocomplete="off">
+                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="nta[]" name="nta[]" placeholder="NCA/NTA NO." autocomplete="off">
                         </td>
                         </tr>
 
@@ -685,7 +685,7 @@ p.mix {border-style: dotted dashed solid double;} */
                         <tr>
                         <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td>
                         <td class="col-md-7">
-                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off">
+                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance[]" name="ntabalance[]" placeholder="0" autocomplete="off">
                         </td>
                         </tr>
 
