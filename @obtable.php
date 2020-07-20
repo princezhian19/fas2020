@@ -197,7 +197,7 @@ include('db.class.php'); // call db.class.php
                                   <?php endif ?>
                                 <?php endif ?>
                                 <td colspan="1" style="border-right: 0px; margin-left:0px">
-                                  <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> | 
+                                  <!-- <a  class="btn btn-primary btn-xs" href='obupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> |  -->
                                   <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a>
                               </td>
                                
@@ -354,12 +354,15 @@ include('db.class.php'); // call db.class.php
                                         <table id="example" class="table table-responsive table-bordered " style="background-color: white; width:100%; text-align:left">
                                         <thead>
                                         <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
-                                        <th width=''>MANAGE</th>
+                                       
+                                        <th width=''>ID</th>
                                         <th width=''>FUND SOURCE</th>
                                         <th width=''>PPA </th>
                                         <th width=''>UACS </th>
                                         <th width=''>AMOUNT </th>
                                         <th width=''>STATUS </th>
+                                        <th width=''>MANAGE</th>
+                                        
                                         
 
                                         
@@ -384,12 +387,7 @@ include('db.class.php'); // call db.class.php
               <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
               <script type="text/javascript">
-              function createManageBtn() {
-              return '<button id="manageBtn" type="button" onclick="myFunc()" class="btn btn-primary btn-xs">Edit</button>';
-              }
-              function myFunc() {
-              console.log("Button was clicked!!!");
-              }
+              
               </script>
               <script>
 
@@ -432,7 +430,7 @@ include('db.class.php'); // call db.class.php
                       'autoWidth'   : false,  
                         "processing": true,
                         "serverSide": false,
-                        "columnDefs": [{"render": createManageBtn, "data": null, "targets": [0]}],
+                        "columnDefs": [{"render": createManageBtn, "data": null, "targets": [6]}],
                         
                         "ajax": {
                         "url": "DATATABLE/Ors_data.php",
@@ -444,6 +442,25 @@ include('db.class.php'); // call db.class.php
                         }}
 
                         } );
+
+
+                      $('#example tbody').on( 'click', '#editORS', function () {
+                      var data = table.row( $(this).parents('tr') ).data();
+                      window.location="obupdate.php?getid="+data[0];
+                      });
+                     
+                      function createManageBtn() {
+
+                      
+                      return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i> Edit</a>';
+                      
+                      
+
+                      }
+                      function myFunc() {
+                      console.log("Button was clicked!!!");
+                      // alert(data[0]);
+                      }
 
                         
                        

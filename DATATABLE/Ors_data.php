@@ -5,7 +5,7 @@ $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
 		$get = $_POST['filter_data'];
 
-		$fieldsName = 'saronumber,ppa,uacs,amount,status';
+		$fieldsName = 'id,saronumber,ppa,uacs,amount,status';
 		$table = 'saroob';
 		$join = '';
 		$WHERE = " WHERE ors = '$get' ";
@@ -23,7 +23,7 @@ $primaryKey = 'id';
 
 
 $columns = array(
-    
+    array('db' => 'id', 'dt' => 0),
     array('db' => 'saronumber', 'dt' => 1),
 	array('db' => 'ppa', 'dt' => 2),
 	array('db' => 'uacs', 'dt' => 3),
