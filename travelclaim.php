@@ -418,7 +418,7 @@ function isSubmit()
             <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
               <tr>
                   <td colspan = 10>
-                      <span class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </span>
+                      <button type = "button" class = "btn btn-success btn-md" style = "width:10.5%;font-family:Arial;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
                       <span class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </span>
                       <button class = "btn btn-primary btn-md pull-right" type = "submit" style = "font-family:'Arial';"> Submit </button>
                   </td>
@@ -702,6 +702,12 @@ function isSubmit()
 <script>
 $(document).ready(function(){
   $('#or').prop('required',true);
+  var ro = "<?php echo $_GET['ro'];?>";
+  if(ro != '' || ro != null)
+  {
+    $("#editbtn").prop('disabled',true);
+
+  }
 
 })
  var myCounter = 1;
