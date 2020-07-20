@@ -171,7 +171,7 @@ session_start();
         while($row = mysqli_fetch_array($result))
         {
             ?>
-                <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" />
+                <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" required/>
             <?php
            
        
@@ -179,7 +179,7 @@ session_start();
         }
         else{
             ?>
-            <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>"/>
+            <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" required/>
         <?php
         }
  

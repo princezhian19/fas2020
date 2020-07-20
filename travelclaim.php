@@ -191,10 +191,16 @@ function showData()
   include 'connection.php';
         
   $query = "SELECT * FROM `tbltravel_claim_info` 
-  INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID
-  inner join `tbltravel_claim_info` on  tbltravel_claim_info2.`ID` = tbltravel_claim_info.`TC_ID` 
-  WHERE  `RO_OT_OB`= '".$_GET['ro']."'
+ INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
+  inner join `tbltravel_claim_info2` on tbltravel_claim_info.`TC_ID`= tbltravel_claim_info2.`ID` 
+  WHERE  `RO_TO_OB`= '".$_GET['ro']."'
   GROUP by tbltravel_claim_info.RO ";
+  
+// include 'connection.php';
+// $query = "SELECT * FROM `tbltravel_claim_info` 
+// INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID
+// where `UNAME` = '".$_SESSION['username']."'
+// GROUP by tbltravel_claim_info.RO ";
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
@@ -565,7 +571,7 @@ function isSubmit()
                                       <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" name = "date" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask>
+                                    <input type="text" name = "date" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
                                   </div>
                                 </div>
                               </div>
@@ -703,9 +709,13 @@ function isSubmit()
 $(document).ready(function(){
   $('#or').prop('required',true);
   var ro = "<?php echo $_GET['ro'];?>";
-  if(ro != '' || ro != null)
+  if(ro != '')
   {
     $("#editbtn").prop('disabled',true);
+
+  }else if(ro == 'null')
+  {
+    $("#editbtn").prop('disabled',false);
 
   }
 
