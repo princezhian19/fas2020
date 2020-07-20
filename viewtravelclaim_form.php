@@ -372,19 +372,19 @@ function rowCount(){
                   <td class = "label-text">
                     <label>Name: 
                       </td>
-                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo getCompleteName();?>" readonly/></td>
+                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo viewCompleteName($_GET['emp_name']);?>" readonly/></td>
                   <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
                   <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Position:</label></td>
-                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly/></td>
+                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo viewPosition($_GET['emp_name']);?>" readonly/></td>
                       <td colspan = 5 rowspan = 2>
                         <label>Purpose:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or"><?php echo $_GET['ro'];?></textarea></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Official Station: </label></td>
-                  <td colspan = 4> <?php echo getOffice(); ?> </td>
+                  <td colspan = 4> <?php echo viewOffice($_GET['emp_name']); ?> </td>
                 </tr>
               </thead>
             </table>

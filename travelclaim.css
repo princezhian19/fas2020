@@ -1,0 +1,57 @@
+span{
+    font-family:'Arial';
+
+  }
+  table tr{ 
+    font-family:'Cambria';
+  }
+  .table-header{
+    color:black;
+    background-color:#B0BEC5; 
+
+  }
+  td{
+    padding:5px;
+  }
+  td.label-text{ 
+    background-color:#B0BEC5; 
+
+  }
+  .borderless {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: blue
+}
+.borderless:focus {
+  border-color: green
+}
+div.pac-container {
+    z-index: 99999999999 !important;
+}
+.border-disabled{
+  border: 2px solid gray;
+}
+.box{
+        position: relative;
+        display: inline-block; /* Make the width of box same as image */
+    }
+    .box .text{
+      padding:10%;
+
+        position: absolute;
+        z-index: 999;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top:0; /* Adjust this value to move the positioned div up and down */
+        width: 100%; /* Set the width of the positioned div */
+    }
+
+    .scroll{
+    height:300px;display:block;overflow-y:hidden; 
+    }
+    .scroll:hover{
+  overflow-y: scroll;
+
+    }
+ 
