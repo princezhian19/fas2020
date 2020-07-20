@@ -190,17 +190,12 @@ function showData()
 {
   include 'connection.php';
         
-  $query = "SELECT * FROM `tbltravel_claim_info` 
- INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
-  inner join `tbltravel_claim_info2` on tbltravel_claim_info.`TC_ID`= tbltravel_claim_info2.`ID` 
+  $query = "SELECT * FROM `tbltravel_claim_info2`
+  INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
+  INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
   WHERE  `RO_TO_OB`= '".$_GET['ro']."'
   GROUP by tbltravel_claim_info.RO ";
   
-// include 'connection.php';
-// $query = "SELECT * FROM `tbltravel_claim_info` 
-// INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID
-// where `UNAME` = '".$_SESSION['username']."'
-// GROUP by tbltravel_claim_info.RO ";
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
@@ -425,7 +420,7 @@ function isSubmit()
               <tr>
                   <td colspan = 10>
                       <button type = "button" class = "btn btn-success btn-md" style = "width:10.5%;font-family:Arial;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                      <span class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </span>
+                      <button type = "button" class = "btn btn-primary btn-md" style = "font-family:Arial" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
                       <button class = "btn btn-primary btn-md pull-right" type = "submit" style = "font-family:'Arial';"> Submit </button>
                   </td>
               </tr>
@@ -708,16 +703,24 @@ function isSubmit()
 <script>
 $(document).ready(function(){
   $('#or').prop('required',true);
-  var ro = "<?php echo $_GET['ro'];?>";
-  if(ro != '')
-  {
-    $("#editbtn").prop('disabled',true);
+  $("#editbtn").prop('disabled',true);
 
-  }else if(ro == 'null')
-  {
-    $("#editbtn").prop('disabled',false);
+$( "#or" ).keyup(function() {
+  $("#editbtn").prop('disabled',false);
 
-  }
+  if($('#or').val() != '' ) {
+            $('#editbtn').attr('disabled', false);
+            $('#travelbtn').attr('disabled', false);
+
+        } else {
+            $('#editbtn').attr('disabled', true);
+            $('#travelbtn').attr('disabled', true);
+
+        }
+
+});
+
+
 
 })
  var myCounter = 1;
