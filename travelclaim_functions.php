@@ -87,12 +87,12 @@ session_start();
     function getTotal()
     {
         include 'connection.php';
-        $query1 = "SELECT * FROM tbltravel_claim_info2  WHERE `NAME` = '".$_GET['username']."'";
+        $query1 = "SELECT * FROM tbltravel_claim_info2  WHERE `NAME` = '".$_SESSION['username']."'  ORDER BY ID DESC LIMIT 1";
         $result1 = mysqli_query($conn, $query1);
         
             if($row1 = mysqli_fetch_array($result1))
             {
-                    $query2 = "SELECT sum(`TOTAL_AMOUNT`)AS 'total' FROM tbltravel_claim_info  WHERE `TC_ID` = '".$row1['ID']."'";
+                    $query2 = "SELECT sum(`TOTAL_AMOUNT`)AS 'total' FROM tbltravel_claim_info inner join tbltravel_claim_info2 on  tbltravel_claim_info.TC_ID = tbltravel_claim_info2.ID  WHERE `RO_TO_OB` = '".$_GET['ro']."'";
                 
                     $result2 = mysqli_query($conn, $query2);
                     if(mysqli_num_rows($result2) > 0)
