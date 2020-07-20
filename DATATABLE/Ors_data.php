@@ -24,10 +24,10 @@ $primaryKey = 'id';
 
 $columns = array(
     
-    array('db' => 'saronumber', 'dt' => 0),
-	array('db' => 'ppa', 'dt' => 1),
-	array('db' => 'uacs', 'dt' => 2),
-    array('db' => 'amount', 'dt' => 3,
+    array('db' => 'saronumber', 'dt' => 1),
+	array('db' => 'ppa', 'dt' => 2),
+	array('db' => 'uacs', 'dt' => 3),
+    array('db' => 'amount', 'dt' => 4,
    
 	'formatter' => function( $d, $row ) {
 		
@@ -35,11 +35,13 @@ $columns = array(
 		return $d1;
 		
         }),
-    array('db' => 'status', 'dt' => 4),
+    array('db' => 'status', 'dt' => 5),
     
-	
-	
+
+    // array('db' => 'status', 'dt' => 5),	
 );
+
+
 // SQL server connection information
 $sql_details = array(
 	'user' => 'fascalab_2020',
