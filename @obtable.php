@@ -326,8 +326,8 @@ include('db.class.php'); // call db.class.php
 
 <!--cancel modals -->
 
-<div id="ors_data_Modal" class="modal fade ">
-          <div class="modal-dialog">
+<div id="ors_data_Modal" class="modal fade" role="dialog" >
+          <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -361,7 +361,7 @@ include('db.class.php'); // call db.class.php
                                         <th width=''>UACS </th>
                                         <th width=''>AMOUNT </th>
                                         <th width=''>STATUS </th>
-                                        <th width=''>MANAGE</th>
+                                        <th width='500'>MANAGE</th>
                                         
                                         
 
@@ -448,16 +448,24 @@ include('db.class.php'); // call db.class.php
                       var data = table.row( $(this).parents('tr') ).data();
                       window.location="obupdate.php?getid="+data[0];
                       });
+
+                      $('#example tbody').on( 'click', '#delete', function () {
+                      var data = table.row( $(this).parents('tr') ).data();
+                      window.location="@Functions/obdeletefunction.php?getidDelete="+data[0];
+                      });
                      
+                      
                       function createManageBtn() {
 
                       
-                      return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i> Edit</a>';
+                      return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i> Edit</a> | <a  class="btn btn-danger btn-xs" onclick="myFunc()" onclick="" id="delete"><i class="fa fa-trash-o"></i>  Delete</a>';
+
                       
                       
 
                       }
                       function myFunc() {
+                      return confirm("Are you sure you want to delete this obligation?")
                       console.log("Button was clicked!!!");
                       // alert(data[0]);
                       }
