@@ -33,7 +33,7 @@ $mydb = new db(); // create a new object, class db()
           
             <div>
                 <h1>Monitoring of Travel Claim Request</h1><br>
-           <a href = "CreateTravelClaim.php?ro=null&ui=1&username=<?php echo $username;?>" ><button class = "btn btn-md btn-success">Create</button></a><br><br><br>
+           <a href = "CreateTravelClaim.php?ro=''&ui=1&username=<?php echo $username;?>" ><button class = "btn btn-md btn-success">Create</button></a><br><br><br>
                 
             </div>
             
