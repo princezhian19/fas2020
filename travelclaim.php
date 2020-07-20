@@ -293,7 +293,6 @@ function isSubmit()
     </div>
     <br>
     &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="CreateTravelClaim.php?username=<?php echo $username;?>&division=<?php echo $_SESSION['division'];?>" style="color:white;text-decoration: none;">Back</a></li>
-
     <br>
     <br>
         <div class="box-body">

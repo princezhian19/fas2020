@@ -60,12 +60,7 @@ $mydb = new db(); // create a new object, class db()
                     </thead>
 
                 </table>
-      
-<!-- 
 
-      <!-- jQuery 3 -->
-      <!-- Bootstrap 3.3.7 -->
-      <!-- Select2 -->
     
 
       <script src="jquery.min.js"></script>
@@ -106,7 +101,7 @@ $mydb = new db(); // create a new object, class db()
                   "columnDefs": [ {
                       "targets":10,
                       "render": function (data, type, row, meta ) {  
-                      action = "<button class = 'btn btn-sm btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>";
+                      action = "<button class = 'btn btn-sm btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button>";
                       // &nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>
                       return action;
                       }
