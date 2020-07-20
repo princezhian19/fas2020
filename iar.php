@@ -35,9 +35,9 @@
     $rfq_id = $_POST['rfq_id'];
     $app_id = $_POST['app_id'];
     $sup_id = $_POST['sup_id'];
-    $sup = $_POST['sup'];
-    $po = $_POST['po'];
-    $po_date = $_POST['po_date'];
+    $sup = $_POST['sup1'];
+    $po = $_POST['po1'];
+    $po_date = $_POST['po_date1'];
     $dept = $_POST['dept'];
     $ccode = $_POST['ccode'];
     $iar_no = $_POST['iar_no'];
@@ -47,19 +47,10 @@
     $sn = $_POST['sn'];
     $officer = $_POST['officer'];
     $pr_no = $_POST['pr_no'];
-    
-      $sql = mysqli_query($conn,'INSERT INTO iar (rfq_id, app_id, sup_id,supplier,po_no,po_date,dept,ccode,iar_no,iar_date,invoice_no,invoice_date,stock_no,officer,pr_no
+
+      $sql = mysqli_query($conn,'INSERT INTO iar(rfq_id, app_id, sup_id,supplier,po_no,po_date,dept,ccode,iar_no,iar_date,invoice_no,invoice_date,stock_no,officer,pr_no
     ) VALUES ("'.$rfq_id.'", "'.$app_id.'", "'.$sup_id.'", "'.$sup.'", "'.$po.'", "'.$po_date.'", "'.$dept.'", "'.$ccode.'", "'.$iar_no.'", "'.$iar_date.'", "'.$invoice.'", "'.$invoice_date.'", "'.$sn.'", "'.$officer.'", "'.$pr_no.'")');
-      $sql2 = mysqli_query($conn,'INSERT INTO iar_stock(rfq_id,app_id,procurement,description,unit_id,qty,abc,qty_original,abc_original) SELECT rfq_id,app_id,procurement,description,rfq_items.unit_id,rfq_items.qty,abc,rfq_items.qty,abc FROM rfq_items left join app on app.id = rfq_items.app_id where rfq_id = "'.$rfq_id.'"');
-      $selectt = mysqli_query($conn, " SELECT rfq_id  FROM iar_stock where po_no = '' ");
-      if (mysqli_num_rows($selectt)>0) {
-        $count = mysqli_num_rows($selectt);
-        for($i=0; $i<$count; $i++){
-          $sqlpo = mysqli_query($conn,"Update iar_stock set po_no ='$po'  WHERE rfq_id = '$rfq_id' and po_no='' ");
-        }
-      }
-      if ($sql) {
-        # code...
+           if ($sql) {
       echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('IAR Created!')
         window.location.href='ViewIAR.php';
@@ -69,6 +60,17 @@
         window.alert('Error Occured!')
         </SCRIPT>");
       }
+
+
+      // $sql2 = mysqli_query($conn,'INSERT INTO iar_stock(rfq_id,app_id,procurement,description,unit_id,qty,abc,qty_original,abc_original) SELECT rfq_id,app_id,procurement,description,rfq_items.unit_id,rfq_items.qty,abc,rfq_items.qty,abc FROM rfq_items left join app on app.id = rfq_items.app_id where rfq_id = "'.$rfq_id.'"');
+      // $selectt = mysqli_query($conn, " SELECT rfq_id  FROM iar_stock where po_no = '' ");
+      // if (mysqli_num_rows($selectt)>0) {
+      //   $count = mysqli_num_rows($selectt);
+      //   for($i=0; $i<$count; $i++){
+      //     $sqlpo = mysqli_query($conn,"Update iar_stock set po_no ='$po'  WHERE rfq_id = '$rfq_id' and po_no='' ");
+      //   }
+      // }
+ 
 
   }
   ?>
@@ -132,9 +134,8 @@
             <div class="col-xs-3 H1">
               <label>Search PO No. : </label>
               <input type="text" class="form-control" name="search_text" id="search_text" placeholder="Search Code" class="" />
-              <br>
               <div style="background-color:black;">
-               <b><table class="table table-striped table-hover" id="main" >
+               <b><table class="table table-striped table-hover" style="border:solid 1px;" id="main" >
                 <tbody id="result" style="color:black;">
                 </tbody>
               </table></b>
@@ -161,7 +162,7 @@
           </div>
           <div class="col-xs-3 H1">
             <label>Supplier : </label>
-            <input readonly type="text" class="form-control" id="sup" placeholder="" name="sup">
+            <input readonly type="text" class="form-control" id="sup" placeholder="" name="sup1">
           </div>
           <div class="col-xs-3 H2" hidden>
             <label>Supplier : </label>
@@ -169,7 +170,7 @@
           </div>
           <div class="col-xs-3 H1">
             <label>PO No. : </label>
-            <input readonly type="text" class="form-control" id="po_no" placeholder="" name="po">
+            <input readonly type="text" class="form-control" id="po_no" placeholder="" name="po1">
           </div>
           <div class="col-xs-3 H2" hidden>
             <label>PO No. : </label>
@@ -177,7 +178,7 @@
           </div>
           <div class="col-xs-3 H1">
             <label>PO Date : </label>
-            <input readonly type="text" class="form-control" id="po_date" placeholder="" name="po_date">
+            <input readonly type="text" class="form-control" id="po_date" placeholder="" name="po_date1">
           </div>
           <div class="col-xs-3 H2" hidden>
             <label>PO Date : </label>
