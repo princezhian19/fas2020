@@ -379,7 +379,7 @@
       <div class="box-header with-border">
         <div class="pull-left" >
           <div class = "center">
-            <img id="img"   style="overflow: hidden;width:300;height:250px;margin-left:50px;border:2px solid black;" 
+            <img id="img"  style="overflow: hidden;width:300;height:250px;margin-left:50px;border:2px solid black;" 
             src="
             <?php 
             if(file_exists($profile))

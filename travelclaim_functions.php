@@ -11,6 +11,17 @@ session_start();
             echo $name;
         }
     }
+    function viewCompleteName($emp_name)
+    {
+        include 'connection.php';
+        $query = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$emp_name."'";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            $name = ucwords(strtoupper($row['FIRST_M'])).' '.ucfirst(strtoupper($row['LAST_M']));
+            echo $name;
+        }
+    }
     function getPosition()
     {
         include 'connection.php';
@@ -24,10 +35,82 @@ session_start();
             echo $row['POSITION_M'];
         }
     }
+    function viewPosition($emp_name)
+    {
+        include 'connection.php';
+        $query = "SELECT POSITION_M FROM tblpersonneldivision 
+                INNER JOIN tblemployeeinfo on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C 
+                INNER JOIN tbldilgposition on tblemployeeinfo.POSITION_C = tbldilgposition.POSITION_ID
+                where tblemployeeinfo.UNAME = '".$emp_name."' ";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            echo $row['POSITION_M'];
+        }
+    }
     function getOffice()
     {
         include 'connection.php';
         $query = "SELECT OFFICE_STATION   from tblemployeeinfo where UNAME = '".$_SESSION['username']."' ";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            switch ($row['OFFICE_STATION']) {
+                case '1':
+                    ?>
+                        <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" selected>Regional Office</option>
+                            <option value="2">Provincial/HUC Office</option>
+                            <option value="3">Cluster Office</option>
+                            <option value="4">City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                case '2':
+                    ?>
+                            <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" >Regional Office</option>
+                            <option value="2" selected>Provincial/HUC Office</option>
+                            <option value="3">Cluster Office</option>
+                            <option value="4">City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                case '3':
+                    ?>
+                            <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" >Regional Office</option>
+                            <option value="2" >Provincial/HUC Office</option>
+                            <option value="3" selected>Cluster Office</option>
+                            <option value="4">City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                case '4':
+                    ?>
+                            <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" >Regional Office</option>
+                            <option value="2" >Provincial/HUC Office</option>
+                            <option value="3" >Cluster Office</option>
+                            <option value="4" selected>City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
+        }
+    }
+    function viewOffice($emp_name)
+    {
+        include 'connection.php';
+        $query = "SELECT OFFICE_STATION   from tblemployeeinfo where UNAME = '".$emp_name."' ";
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_array($result))
         {
