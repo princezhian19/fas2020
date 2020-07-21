@@ -128,8 +128,8 @@
                                   else{
                                   ?>
                                               <td style = "width:9%;">
-                                                <span class = "btn btn-sm btn-primary" style = "width:100%;"><i class = "fa fa-edit"></i>&nbsp;Edit</span>
-                                                <span class = "btn btn-sm btn-danger"  style = "width:100%;margin-top:10px;" id = "btnids<?php echo $row1['dID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span>
+                                                <!-- <span class = "btn btn-sm btn-primary" style = "width:100%;"><i class = "fa fa-edit"></i>&nbsp;Edit</span> -->
+                                                <span class = "btn btn-sm btn-danger"  style = "width:100%;" id = "btnids<?php echo $row1['dID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span>
                                               </td>
         
                                   <?php
@@ -166,7 +166,9 @@
                           success:function(data)
                           {
                       
-                               
+                            setTimeout(function () {
+                                window.location = "CreateTravelClaim.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>";
+                                }, 1000);
 
                             
                           }
