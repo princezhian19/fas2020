@@ -12,7 +12,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS | Issuances</title>
+<title>FAS | RO and ROO</title>
 <head>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

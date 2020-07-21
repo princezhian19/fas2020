@@ -77,7 +77,7 @@ $office = $excelrow['office'];
 
 $registeredby = $excelrow['registeredby'];
 
-
+$status = $excelrow['status'];
 $registereddate1 = $excelrow['registereddate'];
 $registereddate = date('F d, Y', strtotime($registereddate1));
 
@@ -91,6 +91,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$title);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$office);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$registeredby);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$row,$registereddate);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$row,$status);
 
 
 
