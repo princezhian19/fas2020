@@ -124,7 +124,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                   <td class = "label-text">
                     <label>Name: 
                       </td>
-                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo viewCompleteName($_GET['emp_name']);?>" readonly/></td>
+                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo viewCompleteName($_GET['username']);?>" /></td>
                   <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
                   <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
                 </tr>
@@ -240,7 +240,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                     $('#results').html(data);
 
                   }
-                })
+                });
                 $.ajax({
                   type: 'POST',
                   url: 'getTotal.php',
@@ -251,7 +251,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                     $('#total').html(data1);
 
                   }
-                })
+                });
 
 
 
@@ -263,3 +263,6 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
               });
           });
               </script>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+                  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

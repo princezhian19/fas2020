@@ -7,7 +7,7 @@
   INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
   WHERE  `RO_TO_OB`= '".$_POST['ro']."'
   GROUP by tbltravel_claim_info.RO ";
-
+  
   
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
@@ -56,12 +56,7 @@
 
             <?php
         }else{
-            $query = "SELECT * FROM tbltravel_claim_info2 WHERE `NAME` = '".$_GET['username']."'";
-            $result = mysqli_query($conn, $query);
-            if(mysqli_num_rows($result) > 0)
-            {
-                while($row = mysqli_fetch_array($result))
-                {
+      
                   
                     ?>
 
@@ -71,10 +66,7 @@
             <tr>
             </tr>
         
-            <?php
-                }
-            }
-            ?>
+          
           
 
             <?php
@@ -91,7 +83,8 @@
                 while($row = mysqli_fetch_array($result))
                 {
                     $date = $row['DATE'];
-                    $query1 = "SELECT * FROM tbltravel_claim_info 
+                    $query1 = "SELECT tbltravel_claim_info.`ID` as 'dID', `TC_ID`, `RO`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `OTHERS`, `TOTAL_AMOUNT`,
+                    tbltravel_claim_ro.`ID`, `RO_OT_OB`, `UNAME`  FROM tbltravel_claim_info 
                     INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
                     WHERE tbltravel_claim_info.`RO` = '".$id."' and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
                     $result1 = mysqli_query($conn, $query1);
@@ -136,7 +129,7 @@
                                   ?>
                                               <td style = "width:9%;">
                                                 <span class = "btn btn-sm btn-primary" style = "width:100%;"><i class = "fa fa-edit"></i>&nbsp;Edit</span>
-                                                <span class = "btn btn-sm btn-danger"  style = "width:100%;margin-top:10px;" id = "btnids" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span>
+                                                <span class = "btn btn-sm btn-danger"  style = "width:100%;margin-top:10px;" id = "btnids<?php echo $row1['dID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span>
                                               </td>
         
                                   <?php
@@ -148,43 +141,41 @@
                 <?php
                 $row1['DATE'] = '';
                 ?>
-                <script>
-                  $(document).ready(function(){
-                      $( "#btnids<?php echo $row1['ID'];?>" ).click(function() {
-                        alert('a');
-                        swal({
-                              title: "Are you sure?",
-                              text: "Your will not be able to recover this travel date!",
-                              type: "warning",
-                              showCancelButton: true,
-                              confirmButtonClass: "btn btn-danger",
-                              confirmButtonText: "Yes, delete it!",
-                              closeOnConfirm: false
-                              },
-                              function(){
-                              swal("Deleted!", "Your travel date  has been deleted.", "success");
-                                  $.ajax({
-                                      url:"travelclaim_functions.php",
-                                      method:"POST",
-                                      data:{
-                                      function: 'deleteTravelOrder',
-                                      id: <?php echo $row1['ID'];?>,
-                                  },
-                                  success:function(data)
-                                  {
-                              
-                                        setTimeout(function () {
-                                        window.location = "CreateTravelClaim.php?username=<?php echo $_GET['username'];?>&division=<?php echo $_GET['division'];?>";
-                                        }, 1000);
-        
-                                    
-                                  }
-                                  });
-        
-                              });
-                      });
-                  });
-                </script>
+                        <script>
+          $(document).ready(function(){
+              $( "#btnids<?php echo $row1['dID'];?>" ).click(function() {
+                swal({
+                      title: "Are you sure?",
+                      text: "Your will not be able to recover this travel date!",
+                      type: "warning",
+                      showCancelButton: true,
+                      confirmButtonClass: "btn btn-danger",
+                      confirmButtonText: "Yes, delete it!",
+                      closeOnConfirm: false
+                      },
+                      function(){
+                      swal("Deleted!", "Your travel date  has been deleted.", "success");
+                       
+                              $.ajax({
+                              url:"travelclaim_functions.php",
+                              method:"POST",
+                              data:{
+                              function: 'deleteTravelOrder',
+                              id: <?php echo $row1['dID'];?>,
+                          },
+                          success:function(data)
+                          {
+                      
+                               
+
+                            
+                          }
+                          });
+                      }
+                      );
+              });
+          });
+        </script>
               <?php
                         }
                     }
