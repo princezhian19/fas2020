@@ -233,7 +233,11 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                 $.ajax({
                   type: 'POST',
                   url: 'testtime.php',
-                  data: ({ro:RO}),
+                  data: (
+                    {
+                      ro:RO,
+                      uname:"<?php echo $username;?>"
+                    }),
                   cache: false,
                   success: function(data)
                   {
