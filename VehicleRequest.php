@@ -11,7 +11,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS | Travel Order</title>
+<title>FAS | Vehicle Request</title>
 <head>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
