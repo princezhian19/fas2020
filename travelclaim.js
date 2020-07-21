@@ -2,7 +2,6 @@
 $(document).ready(function(){
     $('#or').prop('required',true);
     $("#editbtn").prop('disabled',true);
-    $("#travelbtn").prop('disabled',true);
   var ro = "<?php echo $_GET['ro'];?>";
   $( "#or" ).keyup(function() {
     $("#editbtn").prop('disabled',false);

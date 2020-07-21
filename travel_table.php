@@ -86,6 +86,8 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
   <div class="modal-dialog" role="document" style = "width:60%;">
     <div class="modal-content">
       <div class="modal-header">
+      <span class = "pull-right"><i>Appendix 45 </i></span>
+
         <h2 class="modal-title" id="exampleModalLabel">ITINERARY OF TRAVEL</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -139,41 +141,41 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
               </thead>
       </table>
       <table id = "results" border="1" >
-            </table>
-            <table class="equalDivide" cellpadding="0" cellspacing="0" width="100%" border="1">
-              <tr>
-                  <td colspan = 10>
-                      <!-- <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                      <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button> -->
-                  </td>
-              </tr>
-              <tr>
-                  <td colspan = 10>TOTAL <?php getTotal(); ?></td>
-                </tr>
-              <tr>
-                  <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
-                  I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.   
-                  <CENTER><br>_____________________________________________<br>
-                  <b>DR. CARINA S. CRUZ</b></CENTER>
-                  </td>
-                  <br>
-                  <td colspan = 5 rowspan = 2>Prepared by:
-                  <CENTER><br>_____________________________________________<br>
-                  <?php echo '<b>'.getCompleteName().'</b>';?></CENTER>
-                  </td>
-                
-                </tr>
-                <tr>
-                </tr>
-                <tr>
-                  <td colspan = 5 rowspan = 2>Approved By <CENTER><br>_____________________________________________<br> <b> ARIEL O. IGLESIA	</b> </CENTER> </td>
-                </tr>
-                <tr>
-                
-                </tr>
-            
-                
-            </table>
+      </table>
+      <table class="equalDivide" cellpadding="0" cellspacing="0" width="100%" border="1">
+        <tr>
+            <!-- <td colspan = 10> -->
+                <!-- <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button> -->
+            <!-- </td> -->
+        </tr>
+        <tr>
+            <td colspan = 10>TOTAL <span id = "total"></span></td>
+          </tr>
+        <tr>
+            <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
+            I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.   
+            <CENTER><br>_____________________________________________<br>
+            <b>DR. CARINA S. CRUZ</b></CENTER>
+            </td>
+            <br>
+            <td colspan = 5 rowspan = 2>Prepared by:
+            <CENTER><br>_____________________________________________<br>
+            <?php echo '<b>'.getCompleteName().'</b>';?></CENTER>
+            </td>
+          
+          </tr>
+          <tr>
+          </tr>
+          <tr>
+            <td colspan = 5 rowspan = 2>Approved By <CENTER><br>_____________________________________________<br> <b> ARIEL O. IGLESIA	</b> </CENTER> </td>
+          </tr>
+          <tr>
+          
+          </tr>
+      
+          
+      </table>
   
       </div>
       <div class="modal-footer">
@@ -239,7 +241,25 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
                   }
                 })
-                return data;
-              } );
+                $.ajax({
+                  type: 'POST',
+                  url: 'getTotal.php',
+                  data: ({ro:RO}),
+                  cache: false,
+                  success: function(data1)
+                  {
+                    $('#total').html(data1);
+
+                  }
+                })
+
+
+
+          
+
+
+
+
+              });
           });
               </script>
