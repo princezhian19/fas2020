@@ -60,7 +60,7 @@ function app($connect)
     $d3 = "";
     $d4 = "";
 
-$query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
+$query = mysqli_query($conn,"SELECT * FROM saroobburs where id = '$getid' ");
     while ($row = mysqli_fetch_assoc($query)) 
     {
     $id = $row["id"]; 
@@ -80,7 +80,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
     $d4 = date('dd/mm/YYYY', strtotime($datereleased)); */
 
 
-    $ors = $row["ors"];
+    $ors = $row["burs"];
     $ponum = $row["ponum"];
     $payee = $row["payee"];
     //$supplier = $row["supplier"];
@@ -166,15 +166,15 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
     <div class="box" style="border-style:groove">
         <br>
       
-            <h1 align="">&nbspUpdate ORS at ID: <label for=""><?php echo $getid;?></h1>
+            <h1 align="">&nbspUpdate BURS at ID: <label for=""><?php echo $getid;?></h1>
              <div class="box-header with-border">
     
         <br>
-      <li class="btn btn-warning"><a href="obligation.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-warning"><a href="ObligationBURS.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
       <!-- Start form -->
-  <form class="" method='POST' action="@Functions/obupdatefunction.php" >
+  <form class="" method='POST' action="@Functions/obupdatefunction1.php" >
         <!-- Start Menu -->
         
         <!-- getting ID for update function -->
@@ -185,8 +185,8 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
         <div class="class-bordered well" >
             <div class="row">
                 <div class="col-md-6">
-                      <label>ORS Serial Number</label>
-                      <input style="border-style: groove;  type="text" class="form-control" style="height: 35px;" id="" placeholder="Enter ORS Number" name="ors"  value="<?php echo $ors;?>">
+                      <label>BURS Serial Number</label>
+                      <input style="border-style: groove;  type="text" class="form-control" style="height: 35px;" id="burs" placeholder="Enter ORS Number" name="burs"  value="<?php echo $ors;?>">
                       
                       <br>
                     

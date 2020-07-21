@@ -108,8 +108,9 @@ date_default_timezone_set('Asia/Manila');
             $first = ucwords(ucfirst(strtoupper($row['FIRST_M'])));
             $middle = ucwords(ucfirst(strtoupper($row['MIDDLE_M'])));
             $last = ucwords(ucfirst(strtoupper($row['LAST_M'])));
+            $m = $row['MIDDLE_M'];
 
-            echo $first.'&nbsp;&nbsp;'.$middle.'&nbsp;&nbsp;'.$last;
+            echo $first.'&nbsp;&nbsp;'.$m[0].'.'.'&nbsp;&nbsp;'.$last;
         }
     }
     function getContact()
@@ -241,7 +242,7 @@ $last_period = '';
         '".$_POST['ans5_details']."',
         '1'
         )";
-        
+        // echo $insert;
 
        
        if (mysqli_query($conn, $insert)) {

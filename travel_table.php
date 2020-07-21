@@ -10,8 +10,15 @@ if(!isset($_SESSION['username'])){
   
   }
 include('db.class.php'); // call db.class.php
+include('travelclaim_functions.php'); // call db.class.php
 $mydb = new db(); // create a new object, class db()
 
+$link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 
+                "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .  
+                $_SERVER['REQUEST_URI']; 
+  
+
+echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 ?>
 
 <!DOCTYPE html>
@@ -60,12 +67,7 @@ $mydb = new db(); // create a new object, class db()
                     </thead>
 
                 </table>
-      
-<!-- 
 
-      <!-- jQuery 3 -->
-      <!-- Bootstrap 3.3.7 -->
-      <!-- Select2 -->
     
 
       <script src="jquery.min.js"></script>
@@ -80,6 +82,109 @@ $mydb = new db(); // create a new object, class db()
 
 </body>
 </html>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style = "width:60%;">
+    <div class="modal-content">
+      <div class="modal-header">
+      <span class = "pull-right"><i>Appendix 45 </i></span>
+
+        <h2 class="modal-title" id="exampleModalLabel">ITINERARY OF TRAVEL</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <table  cellpadding="0" cellspacing="0" width="100%" border="1" >
+              <thead>
+                <tr>
+                    <td class = "label-text">
+                      <label>Entity Name: 
+                        </td>
+                          <td colspan = 10  >
+                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
+                      </td>
+                  </tr>
+          
+              
+                <tr>
+                  <td class = "label-text">
+                    <label>Fund Cluster:</label>
+                      </td>
+                        <td colspan = "4">
+                      <input type = "text" class = "form-control" readonly/>
+                    </td>
+                  <td class = "label-text" colspan = 2>
+                    <label>No:</label>
+                      </td>
+                        <td colspan = 4>
+                      <input type = "text" class = "form-control" readonly/>
+                    </td>
+                </tr>
+                <tr>
+                  <td class = "label-text">
+                    <label>Name: 
+                      </td>
+                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo viewCompleteName($_GET['username']);?>" /></td>
+                  <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
+                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
+                </tr>
+                <tr>
+                  <td class = "label-text">  <label>Position:</label></td>
+                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo viewPosition($_GET['username']);?>" readonly/></td>
+                      <td colspan = 5 rowspan = 2>
+                        <label>Purpose:</label> <label style="color: Red;" >*</label><textarea name = "ro" rows = 4 col=10 style = "width:100%;resize:none;" id = "or" disabled><?php echo $_GET['ro'];?></textarea></td>
+                </tr>
+                <tr>
+                  <td class = "label-text">  <label>Official Station: </label></td>
+                  <td colspan = 4> <?php echo viewOffice($_GET['username']); ?> </td>
+                </tr>
+              </thead>
+      </table>
+      <table id = "results" border="1" >
+      </table>
+      <table class="equalDivide" cellpadding="0" cellspacing="0" width="100%" border="1">
+        <tr>
+            <!-- <td colspan = 10> -->
+                <!-- <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button> -->
+            <!-- </td> -->
+        </tr>
+        <tr>
+            <td colspan = 10>TOTAL <span id = "total"></span></td>
+          </tr>
+        <tr>
+            <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
+            I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.   
+            <CENTER><br>_____________________________________________<br>
+            <b>DR. CARINA S. CRUZ</b></CENTER>
+            </td>
+            <br>
+            <td colspan = 5 rowspan = 2>Prepared by:
+            <CENTER><br>_____________________________________________<br>
+            <?php echo '<b>'.getCompleteName().'</b>';?></CENTER>
+            </td>
+          
+          </tr>
+          <tr>
+          </tr>
+          <tr>
+            <td colspan = 5 rowspan = 2>Approved By <CENTER><br>_____________________________________________<br> <b> ARIEL O. IGLESIA	</b> </CENTER> </td>
+          </tr>
+          <tr>
+          
+          </tr>
+      
+          
+      </table>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
           $(document).ready(function() {
             
@@ -106,7 +211,7 @@ $mydb = new db(); // create a new object, class db()
                   "columnDefs": [ {
                       "targets":10,
                       "render": function (data, type, row, meta ) {  
-                      action = "<button class = 'btn btn-sm btn-success' id = 'view'><i class = 'fa fa-eye'></i>View</button>";
+                      action = "<button  class = 'btn btn-sm btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button>";
                       // &nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>
                       return action;
                       }
@@ -115,10 +220,49 @@ $mydb = new db(); // create a new object, class db()
 
               } );
 
+
+
               
               $('#example tbody').on( 'click', '#view', function () {
                 var data = table.row( $(this).parents('tr') ).data();
-                window.location="ViewTravelClaim.php?emp_name="+data[1]+"&ro="+data[2];
-              } );
+                var RO = data[2];
+                $('#exampleModal').modal({ keyboard: false });
+                $('#or').val(data[2]);
+
+          
+                $.ajax({
+                  type: 'POST',
+                  url: 'testtime.php',
+                  data: ({ro:RO}),
+                  cache: false,
+                  success: function(data)
+                  {
+                    $('#results').html(data);
+
+                  }
+                });
+                $.ajax({
+                  type: 'POST',
+                  url: 'getTotal.php',
+                  data: ({ro:RO}),
+                  cache: false,
+                  success: function(data1)
+                  {
+                    $('#total').html(data1);
+
+                  }
+                });
+
+
+
+          
+
+
+
+
+              });
           });
               </script>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+                  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
