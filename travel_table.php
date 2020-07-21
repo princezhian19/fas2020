@@ -88,7 +88,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
       <div class="modal-header">
       <span class = "pull-right"><i>Appendix 45 </i></span>
 
-        <h2 class="modal-title" id="exampleModalLabel">ITINERARY OF TRAVEL</h2>
+        <h2 class="modal-title" id="exampleModalLabel" style = "text-align:center;">ITINERARY OF TRAVEL</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
