@@ -495,7 +495,7 @@ id1.val(idtomodal1);
                       </select>
                     
                     </td>
-                                </tr>
+                          </tr>
                     <tr>  
                         <td class="col-md-2"><b>Issuance No<span style = "color:red;">*</span></b></td>
                             <td class="col-md-5">
