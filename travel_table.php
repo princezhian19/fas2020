@@ -86,6 +86,8 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
   <div class="modal-dialog" role="document" style = "width:60%;">
     <div class="modal-content">
       <div class="modal-header">
+      <span class = "pull-right"><i>Appendix 45 </i></span>
+
         <h2 class="modal-title" id="exampleModalLabel">ITINERARY OF TRAVEL</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -122,58 +124,58 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                   <td class = "label-text">
                     <label>Name: 
                       </td>
-                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo viewCompleteName($_GET['emp_name']);?>" readonly/></td>
+                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo viewCompleteName($_SESSION['username']);?>" /></td>
                   <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
+                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" readonly/></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Position:</label></td>
-                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo viewPosition($_GET['emp_name']);?>" readonly/></td>
+                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo viewPosition($_GET['username']);?>" readonly/></td>
                       <td colspan = 5 rowspan = 2>
                         <label>Purpose:</label> <label style="color: Red;" >*</label><textarea name = "ro" rows = 4 col=10 style = "width:100%;resize:none;" id = "or" disabled><?php echo $_GET['ro'];?></textarea></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Official Station: </label></td>
-                  <td colspan = 4> <?php echo viewOffice($_GET['emp_name']); ?> </td>
+                  <td colspan = 4> <?php echo viewOffice($_GET['username']); ?> </td>
                 </tr>
               </thead>
       </table>
       <table id = "results" border="1" >
-            </table>
-            <table class="equalDivide" cellpadding="0" cellspacing="0" width="100%" border="1">
-              <tr>
-                  <td colspan = 10>
-                      <!-- <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                      <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button> -->
-                  </td>
-              </tr>
-              <tr>
-                  <td colspan = 10>TOTAL <?php getTotal(); ?></td>
-                </tr>
-              <tr>
-                  <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
-                  I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.   
-                  <CENTER><br>_____________________________________________<br>
-                  <b>DR. CARINA S. CRUZ</b></CENTER>
-                  </td>
-                  <br>
-                  <td colspan = 5 rowspan = 2>Prepared by:
-                  <CENTER><br>_____________________________________________<br>
-                  <?php echo '<b>'.getCompleteName().'</b>';?></CENTER>
-                  </td>
-                
-                </tr>
-                <tr>
-                </tr>
-                <tr>
-                  <td colspan = 5 rowspan = 2>Approved By <CENTER><br>_____________________________________________<br> <b> ARIEL O. IGLESIA	</b> </CENTER> </td>
-                </tr>
-                <tr>
-                
-                </tr>
-            
-                
-            </table>
+      </table>
+      <table class="equalDivide" cellpadding="0" cellspacing="0" width="100%" border="1">
+        <tr>
+            <!-- <td colspan = 10> -->
+                <!-- <button class = "btn btn-success btn-md" style = "width:10.5%;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                <button class = "btn btn-primary btn-md" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button> -->
+            <!-- </td> -->
+        </tr>
+        <tr>
+            <td colspan = 10>TOTAL <span id = "total"></span></td>
+          </tr>
+        <tr>
+            <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
+            I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.   
+            <CENTER><br>_____________________________________________<br>
+            <b>DR. CARINA S. CRUZ</b></CENTER>
+            </td>
+            <br>
+            <td colspan = 5 rowspan = 2>Prepared by:
+            <CENTER><br>_____________________________________________<br>
+            <?php echo '<b>'.getCompleteName().'</b>';?></CENTER>
+            </td>
+          
+          </tr>
+          <tr>
+          </tr>
+          <tr>
+            <td colspan = 5 rowspan = 2>Approved By <CENTER><br>_____________________________________________<br> <b> ARIEL O. IGLESIA	</b> </CENTER> </td>
+          </tr>
+          <tr>
+          
+          </tr>
+      
+          
+      </table>
   
       </div>
       <div class="modal-footer">
@@ -231,15 +233,40 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                 $.ajax({
                   type: 'POST',
                   url: 'testtime.php',
-                  data: ({ro:RO}),
+                  data: (
+                    {
+                      ro:RO,
+                      uname:"<?php echo $username;?>"
+                    }),
                   cache: false,
                   success: function(data)
                   {
                     $('#results').html(data);
 
                   }
-                })
-                return data;
-              } );
+                });
+                $.ajax({
+                  type: 'POST',
+                  url: 'getTotal.php',
+                  data: ({ro:RO}),
+                  cache: false,
+                  success: function(data1)
+                  {
+                    $('#total').html(data1);
+
+                  }
+                });
+
+
+
+          
+
+
+
+
+              });
           });
               </script>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+                  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

@@ -822,7 +822,7 @@ if (isset($_POST['stamp4'])) {
                           <div class="modal-body">
                             <label style="padding-right: 20px;">Title <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 50 characters</i></font></label><input maxlength="50"  required class="form-control" type="text" name="title"><br>
                             <label style="padding-right: 20px;">Content <font style="color:red;">*</font>&nbsp&nbsp<i><font style="color:red;">should not exceed 500 characters</font></i></label><textarea maxlength="500" required class="form-control" type="text" name="content"></textarea><br>
-                            <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $username?>"><br>
+                            <label style="padding-right: 20px;">Posted By</label><input readonly class="form-control" type="text" name="posted_by" value="<?php echo $_SESSION['username']?>"><br>
                             <label style="padding-right: 20px;">Posted Date</label><input readonly class="form-control" type="text" name="date" value="<?php echo date('Y-m-d')?>"><br>
                           </div>
                           <div class="modal-footer">
@@ -859,7 +859,7 @@ if (isset($_POST['stamp4'])) {
                     $extension = pathinfo($profile, PATHINFO_EXTENSION);
                     ?>
                     <tr>
-                      <td width="300"><img class="direct-chat-img" src="
+                      <td width="250"><img class="direct-chat-img" src="
                         <?php 
                         if(file_exists($profile))
                         {

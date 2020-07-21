@@ -2,18 +2,21 @@
 $(document).ready(function(){
     $('#or').prop('required',true);
     $("#editbtn").prop('disabled',true);
-    $("#travelbtn").prop('disabled',true);
-  var ro = "<?php echo $_GET['ro'];?>";
+    if($("#or").val() != '')
+    {
+              $('#travelbtn').attr('disabled', false);
+
+    }
   $( "#or" ).keyup(function() {
     $("#editbtn").prop('disabled',false);
   
     if($('#or').val() != '') {
               $('#editbtn').attr('disabled', false);
-              $('#travelbtn').attr('disabled', false);
+              // $('#travelbtn').attr('disabled', false);
   
           } else {
               $('#editbtn').attr('disabled', true);
-              $('#travelbtn').attr('disabled', true);
+              // $('#travelbtn').attr('disabled', true);
   
           }
   
