@@ -130,13 +130,13 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Position:</label></td>
-                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo viewPosition($_GET['emp_name']);?>" readonly/></td>
+                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo viewPosition($_GET['username']);?>" readonly/></td>
                       <td colspan = 5 rowspan = 2>
                         <label>Purpose:</label> <label style="color: Red;" >*</label><textarea name = "ro" rows = 4 col=10 style = "width:100%;resize:none;" id = "or" disabled><?php echo $_GET['ro'];?></textarea></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Official Station: </label></td>
-                  <td colspan = 4> <?php echo viewOffice($_GET['emp_name']); ?> </td>
+                  <td colspan = 4> <?php echo viewOffice($_GET['username']); ?> </td>
                 </tr>
               </thead>
       </table>
