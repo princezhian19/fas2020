@@ -1,4 +1,7 @@
 <?PHP
+session_start();
+$username = $_SESSION['username'];
+
 
   include 'connection.php';
   
@@ -24,7 +27,14 @@
                   <th class = "table-header"  style = "text-align:center;" rowspan = 2>Per Diem</th>
                   <th class = "table-header" style = "text-align:center;" rowspan = 2>Others</th>
                   <th class = "table-header"  style = "text-align:center;" rowspan = 2>Total Amount</th>
+                  <?php 
+                               if ($username == $_POST['uname'] || $username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') 
+                               {
+
+
+                  ?>
                   <th class = "table-header"  style = "text-align:center;" rowspan =3>Action</th>
+                               <?php }?>
                 </tr>
                 <tr>
                   <th class = "table-header"  style = "text-align:center;">Arrival</th>
@@ -122,18 +132,19 @@
                               <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
                               <td><input readonly type = "text" class = "form-control" style = "width:100%%;" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
                                                         <?php 
-                                  if(basename($_SERVER['PHP_SELF']) == 'ViewTravelClaim.php')
-                                  {
-                                  }
-                                  else{
-                                  ?>
+                                             if ($username == $_row1['UNAME'] || $username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') 
+                                             {
+
+                                               
+                                              ?>
                                               <td style = "width:9%;">
-                                                <!-- <span class = "btn btn-sm btn-primary" style = "width:100%;"><i class = "fa fa-edit"></i>&nbsp;Edit</span> -->
-                                                <span class = "btn btn-sm btn-danger"  style = "width:100%;" id = "btnids<?php echo $row1['dID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span>
+                                              <!-- <span class = "btn btn-sm btn-primary" style = "width:100%;"><i class = "fa fa-edit"></i>&nbsp;Edit</span> -->
+                                              <span class = "btn btn-sm btn-danger"  style = "width:100%;" id = "btnids<?php echo $row1['dID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span>
                                               </td>
-        
-                                  <?php
-                                  }
+                                              <?php
+                                               
+                                              }
+                                              
                                   ?>
         
                 </tr>
