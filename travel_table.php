@@ -94,51 +94,8 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
         </button>
       </div>
       <div class="modal-body">
-      <table  cellpadding="0" cellspacing="0" width="100%" border="1" >
-              <thead>
-                <tr>
-                    <td class = "label-text">
-                      <label>Entity Name: 
-                        </td>
-                          <td colspan = 10  >
-                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly/>
-                      </td>
-                  </tr>
-          
+      <table id = "table1" border="1"  width="100%" >
               
-                <tr>
-                  <td class = "label-text">
-                    <label>Fund Cluster:</label>
-                      </td>
-                        <td colspan = "4">
-                      <input type = "text" class = "form-control" readonly/>
-                    </td>
-                  <td class = "label-text" colspan = 2>
-                    <label>No:</label>
-                      </td>
-                        <td colspan = 4>
-                      <input type = "text" class = "form-control" readonly/>
-                    </td>
-                </tr>
-                <tr>
-                  <td class = "label-text">
-                    <label>Name: 
-                      </td>
-                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo viewCompleteName($_SESSION['username']);?>" /></td>
-                  <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" readonly/></td>
-                </tr>
-                <tr>
-                  <td class = "label-text">  <label>Position:</label></td>
-                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo viewPosition($_GET['username']);?>" readonly/></td>
-                      <td colspan = 5 rowspan = 2>
-                        <label>Purpose:</label> <label style="color: Red;" >*</label><textarea name = "ro" rows = 4 col=10 style = "width:100%;resize:none;" id = "or" disabled><?php echo $_GET['ro'];?></textarea></td>
-                </tr>
-                <tr>
-                  <td class = "label-text">  <label>Official Station: </label></td>
-                  <td colspan = 4> <?php echo viewOffice($_GET['username']); ?> </td>
-                </tr>
-              </thead>
       </table>
       <table id = "results" border="1" >
       </table>
@@ -226,6 +183,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
               $('#example tbody').on( 'click', '#view', function () {
                 var data = table.row( $(this).parents('tr') ).data();
                 var RO = data[2];
+                var username = data[1];
                 $('#exampleModal').modal({ keyboard: false });
                 $('#or').val(data[2]);
 
@@ -253,6 +211,21 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                   success: function(data1)
                   {
                     $('#total').html(data1);
+
+                  }
+                });
+
+                $.ajax({
+                  type: 'POST',
+                  url: 'getTable1.php',
+                  data: ({
+                    "username":username,
+                    "purpose":RO
+                    }),
+                  cache: false,
+                  success: function(data2)
+                  {
+                    $('#table1').html(data2);
 
                   }
                 });
