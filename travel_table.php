@@ -126,7 +126,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                       </td>
                   <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo viewCompleteName($_SESSION['username']);?>" /></td>
                   <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>"/></td>
+                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" readonly/></td>
                 </tr>
                 <tr>
                   <td class = "label-text">  <label>Position:</label></td>
