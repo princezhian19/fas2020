@@ -1,6 +1,6 @@
 <?PHP
 session_start();
-$username = $_SESSION['username'];
+$username = $_SESSION['complete_name2'];
 
 
   include 'connection.php';
@@ -160,7 +160,7 @@ $username = $_SESSION['username'];
                               <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
                               <td><input readonly type = "text" class = "form-control" style = "width:100%%;" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
                                                         <?php 
-                                             if ( $_SESSION['username']  == $_POST['uname'] || $username == 'nrbartolabac' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') 
+                                             if ( $_SESSION['complete_name2']  == $_POST['uname'] || $username == 'nrbartolabac' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') 
                                              {
 
                                                
