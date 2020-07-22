@@ -10,16 +10,18 @@ $username = $_SESSION['username'];
   INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
   WHERE  `RO_TO_OB`= '".$_POST['ro']."'
   GROUP by tbltravel_claim_info.RO ";
-  
+
+
   
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result) > 0)    
         {
           $rnums = mysqli_num_rows($result);
+        
           ?>
               <thead style =" display:table; table-layout:fixed; width:100%;">
                 <tr>
-                  <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2> Date </th>
+                  <th class = "table-header" style = "text-align:center;width:11%;" rowspan = 2>Date</th>
                   <th class = "table-header" style = "text-align:center;" rowspan = 2>Places to be visited (Destination)</th>
                   <th class = "table-header" style = "text-align:center;" colspan = 2>Time</th>
                   <th class = "table-header"  style = "text-align:center;" rowspan = 2>Means of Transportation</th>
@@ -28,13 +30,39 @@ $username = $_SESSION['username'];
                   <th class = "table-header" style = "text-align:center;" rowspan = 2>Others</th>
                   <th class = "table-header"  style = "text-align:center;" rowspan = 2>Total Amount</th>
                   <?php 
-                               if ($username == $_POST['uname'] || $username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') 
-                               {
+
+                  $query1 = "SELECT * FROM `tbltravel_claim_info2`
+                  INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
+                  INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
+                  WHERE  `RO_TO_OB`= '".$_POST['ro']."'
+                  GROUP by tbltravel_claim_info.RO ";
+
+
+
+                  $result1 = mysqli_query($conn, $query1);
+                  if(mysqli_num_rows($result1) > 0)    
+                  {
+                  $name1 = '';
+                  while($row1 = mysqli_fetch_array($result1))
+                  {
+                  $name1 = $row1['NAME'];
+                  echo $name1;
+                  if ($username == $_POST['uname'] || $username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') 
+                  {
+                      
+
+     ?>
+     <th class = "table-header"  style = "text-align:center;" rowspan =3>Action</th>
+     <?php
+                  }
+
+                  }
+                }
+
+
 
 
                   ?>
-                  <th class = "table-header"  style = "text-align:center;" rowspan =3>Action</th>
-                               <?php }?>
                 </tr>
                 <tr>
                   <th class = "table-header"  style = "text-align:center;">Arrival</th>
@@ -132,7 +160,7 @@ $username = $_SESSION['username'];
                               <td><input readonly type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
                               <td><input readonly type = "text" class = "form-control" style = "width:100%%;" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
                                                         <?php 
-                                             if ($username == $_row1['UNAME'] || $username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') 
+                                             if ( $_SESSION['username']  == $_POST['uname'] || $username == 'nrbartolabac' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') 
                                              {
 
                                                
@@ -143,9 +171,13 @@ $username = $_SESSION['username'];
                                               </td>
                                               <?php
                                                
-                                              }
+                                              }else{
+                                                ?>
+                                      
                                               
-                                  ?>
+                                <?php
+                                              }
+                                              ?>
         
                 </tr>
                 

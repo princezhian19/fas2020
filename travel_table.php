@@ -165,7 +165,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                   data: (
                     {
                       ro:RO,
-                      uname:"<?php echo $username;?>"
+                      uname:username
                     }),
                   cache: false,
                   success: function(data)
