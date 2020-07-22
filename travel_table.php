@@ -107,8 +107,8 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
   
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-primary" data-dismiss = "modal">Close</button>
       </div>
     </div>
   </div>
@@ -144,7 +144,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                         if(row[1] == "<?php echo $_SESSION['complete_name2'];?>"){
                           action = "<button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button> &nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button> ";
                         }else{
-                          action = "<button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button> ";
+                          action = "<center><button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button></center>";
                         }
                           return action;
                       }

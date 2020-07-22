@@ -271,17 +271,19 @@ session_start();
 $func = '';
 if(isset($_POST['action']))
 {
-    if($_POST['action'] == 'deleteTravelOrder' )
+    $action = $_POST['action'];
+    if($action == 'deleteTravelOrder' )
     {
         deleteTravelOrder();
     }
-     if($_POST['action'] == 'add')
+}else if(isset($_GET['action'])){
+$action2 = $_GET['action'];
+    if($_GET['action']  == 'add')
     
     {
         add();
+        // echo 'a';
     }
-}else{
-
 }
   
 
