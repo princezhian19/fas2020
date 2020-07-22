@@ -138,10 +138,15 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                   ,
                   "columnDefs": [ {
                       "targets":10,
+                      "width": "15%", "targets": 10,
+
                       "render": function (data, type, row, meta ) {  
-                      action = "<button  class = 'btn btn-sm btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button>";
-                      // &nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>
-                      return action;
+                        if(row[1] == "<?php echo $_SESSION['complete_name2'];?>"){
+                          action = "<button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button> &nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button> ";
+                        }else{
+                          action = "<button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button> ";
+                        }
+                          return action;
                       }
                   }]
                 
