@@ -142,7 +142,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
                       "render": function (data, type, row, meta ) {  
                         if(row[1] == "<?php echo $_SESSION['complete_name2'];?>"){
-                          action = "<button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button> &nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button> ";
+                          action = "<button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button> &nbsp;<button class = 'btn btn-md btn-primary' style = 'font-family:Arial' id = 'edit'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button> ";
                         }else{
                           action = "<center><button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button></center>";
                         }
@@ -155,15 +155,13 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
 
 
-              
+              // when users click view button
               $('#example tbody').on( 'click', '#view', function () {
                 var data = table.row( $(this).parents('tr') ).data();
                 var RO = data[2];
                 var username = data[1];
                 $('#exampleModal').modal({ keyboard: false });
                 $('#or').val(data[2]);
-
-          
                 $.ajax({
                   type: 'POST',
                   url: 'testtime.php',
@@ -190,7 +188,6 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
                   }
                 });
-
                 $.ajax({
                   type: 'POST',
                   url: 'getTable1.php',
@@ -205,7 +202,6 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
                   }
                 });
-
                 $.ajax({
                   type: 'POST',
                   url: 'getTable3.php',
@@ -220,17 +216,74 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
                   }
                 });
-
-
-
-          
-
-
-
-
               });
+              // when users click edit button
+              $('#example tbody').on( 'click', '#edit', function () {
+                var data = table.row( $(this).parents('tr') ).data();
+                var RO = data[2];
+                var username = data[1];
+                $('#exampleModal').modal({ keyboard: false });
+                $('#or').val(data[2]);
+                $.ajax({
+                  type: 'POST',
+                  url: 'testtime.php',
+                  data: (
+                    {
+                      ro:RO,
+                      uname:username
+                    }),
+                  cache: false,
+                  success: function(data)
+                  {
+                    $('#results').html(data);
+
+                  }
+                });
+                $.ajax({
+                  type: 'POST',
+                  url: 'getTotal.php',
+                  data: ({ro:RO}),
+                  cache: false,
+                  success: function(data1)
+                  {
+                    $('#total').html(data1);
+
+                  }
+                });
+                $.ajax({
+                  type: 'POST',
+                  url: 'getTable1.php',
+                  data: ({
+                    "username":username,
+                    "purpose":RO
+                    }),
+                  cache: false,
+                  success: function(data2)
+                  {
+                    $('#table1').html(data2);
+
+                  }
+                });
+                $.ajax({
+                  type: 'POST',
+                  url: 'getTable3.php',
+                  data: ({
+                    "username":username,
+                    "purpose":RO
+                    }),
+                  cache: false,
+                  success: function(data3)
+                  {
+                    $('#table3').html(data3);
+
+                  }
+                });
+              });
+
+
+
+
           });
               </script>
-                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-                  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+              <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
