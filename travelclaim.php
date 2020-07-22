@@ -100,8 +100,8 @@ function aa($id)
                               url:"travelclaim_functions.php",
                               method:"POST",
                               data:{
-                              function: 'deleteTravelOrder',
-                              id: <?php echo $row1['ID'];?>,
+                              'action': 'deleteTravelOrder',
+                              "id": <?php echo $row1['ID'];?>,
                           },
                           success:function(data)
                           {

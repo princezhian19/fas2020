@@ -14,9 +14,9 @@ session_start();
     function viewCompleteName($emp_name)
     {
         include 'connection.php';
-        $query = "SELECT * FROM tblemployeeinfo where tblemployeeinfo.UNAME  = '".$emp_name."'";
+        $query = "SELECT * FROM tblemployeeinfo inner join tbltravel_claim_info2 on tblemployeeinfo.UNAME = tbltravel_claim_info2.NAME where tblemployeeinfo.UNAME  = '".$emp_name."'";
         $result = mysqli_query($conn, $query);
-        while($row = mysqli_fetch_array($result))
+        if($row = mysqli_fetch_array($result))
         {
             $name = ucwords(strtoupper($row['FIRST_M'])).' '.ucfirst(strtoupper($row['LAST_M']));
             echo $name;
@@ -267,21 +267,22 @@ session_start();
         }
  
     }
-  
+ 
 $func = '';
-if(isset($_POST['function']))
+if(isset($_POST['action']))
 {
-    $func = $_POST['function'];
-}else{
-    $func = $_GET['function'];
-}
-    if($func == 'deleteTravelOrder')
+    if($_POST['action'] == 'deleteTravelOrder' )
     {
         deleteTravelOrder();
-    }else if($func== 'add')
+    }
+     if($_POST['action'] == 'add')
     
     {
         add();
     }
+}else{
+
+}
+  
 
 ?>

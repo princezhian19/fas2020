@@ -171,8 +171,8 @@ $username = $_SESSION['username'];
                               url:"travelclaim_functions.php",
                               method:"POST",
                               data:{
-                              function: 'deleteTravelOrder',
-                              id: <?php echo $row1['dID'];?>,
+                              "action": 'deleteTravelOrder',
+                              "id": <?php echo $row1['dID'];?>,
                           },
                           success:function(data)
                           {
