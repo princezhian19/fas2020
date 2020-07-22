@@ -134,7 +134,7 @@ $username = $_SESSION['username'];
                 <div class="col-md-6">
                     <label>Expense Class</label>
                     <select style="border-style: groove;"  requried class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
-                    <option value=""> Please Select </option>
+                    <option value="">Select Expense class</option>
                     <option value = "PS">Personnel Service</option>
                     <option value = "MOOE">Maintenance and Other Operating Expenses</option>
                     <option value = "FE">Financial Expenses</option>
