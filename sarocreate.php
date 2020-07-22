@@ -93,35 +93,35 @@ $username = $_SESSION['username'];
             <div class="row">
                 <div class="col-md-6">
 
-                <label>Date</label>
+                <label>Date<span style = "color:red;">*</span></label>
                     <br>
                     <div class="input-group date">
-                        <div class="input-group-addon">
+                        <div class="input-group-addon" style="border-style: groove;">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input style="border-style: groove;" type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="date">
+                        <input required style="border-style: groove;" type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="date" value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>">
                     </div>
                     <br>
-                    <label>Source No. <label style="color: Red;" >*</label></label>
-                      <input  style="border-style: groove;" type="text" class="typeahead form-control" style="height: 35px;" id="saronumber" placeholder="Enter Source" name="saronumber">
+                    <label>Source No. <span style = "color:red;">*</span></label>
+                      <input required style="border-style: groove;" type="text" class="typeahead form-control" style="height: 35px;" id="saronumber" placeholder="Enter Source" name="saronumber">
                       <br>
-                      <label>PPA</label>
-                    <input style="border-style: groove;"  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa">
+                      <label>PPA<span style = "color:red;">*</span></label>
+                    <input required style="border-style: groove;"  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa">
                     <br>
                     
                 </div>    
                 
                 <div class="col-md-6">
                     
-                    <label>Fund</label>
-                      <input style="border-style: groove;"  type="text" class="form-control" style="height: 35px;" id="fund" placeholder="Enter Fund" name="fund">
+                    <label>Fund<span style = "color:red;">*</span></label>
+                      <input required style="border-style: groove;"  type="text" class="form-control" style="height: 35px;" id="fund" placeholder="Enter Fund" name="fund">
                     <br>
-                    <label>Legal Basis</label>
-                      <input style="border-style: groove;" type="text" class="form-control" style="height: 35px;" id="legalbasis" placeholder="Enter Legal Basis" name="legalbasis">
+                    <label>Legal Basis<span style = "color:red;">*</span></label>
+                      <input required style="border-style: groove;" type="text" class="form-control" style="height: 35px;" id="legalbasis" placeholder="Enter Legal Basis" name="legalbasis">
                     <br>
                   
-                    <label>Particulars</label>
-                    <input style="border-style: groove;" type="text"   class="form-control" style="height: 35px;" id="particulars" placeholder="Enter Particulars" name="particulars">
+                    <label>Particulars<span style = "color:red;">*</span></label>
+                    <input required style="border-style: groove;" type="text"   class="form-control" style="height: 35px;" id="particulars" placeholder="Enter Particulars" name="particulars">
                     <br>
                     
                 </div>
@@ -132,7 +132,7 @@ $username = $_SESSION['username'];
              <!-- ORS -->
             <div class="row">
                 <div class="col-md-6">
-                    <label>Expense Class</label>
+                    <label>Expense Class<span style = "color:red;">*</span></label>
                     <select style="border-style: groove;"  requried class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
                     <option value="">Select Expense class</option>
                     <option value = "PS">Personnel Service</option>
@@ -147,8 +147,8 @@ $username = $_SESSION['username'];
                 <div class="col-md-6">
               
                     
-                    <label>UACS</label>
-                    <input style="border-style: groove;"  type="text"   class="form-control" style="height: 35px;" id="uacs" placeholder="Enter UACS" name="uacs">
+                    <label>UACS <span style = "color:red;">*</span></label>
+                    <input required style="border-style: groove;"  type="text"   class="form-control" style="height: 35px;" id="uacs" placeholder="Enter UACS" name="uacs">
                     <br>
                    
                 </div>
@@ -161,21 +161,21 @@ $username = $_SESSION['username'];
             <div class="row">
 
             <div class="col-md-3">
-                    <label>Group</label>
-                    <input style="border-style: groove;" type="text"  class="form-control" style="height: 40px;" id="group" placeholder="" name="group">
+                    <label>Group<span style = "color:red;">*</span></label>
+                    <input required style="border-style: groove;" type="text"  class="form-control" style="height: 40px;" id="group" placeholder="" name="group">
                    
                 </div>
 
 
                 <div class="col-md-3">
-                    <label>Amount <label style="color: Red;" >*</label></label>
-                    <input style="border-style: groove;" type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" name="amount">
+                    <label>Allotment Amount <span style = "color:red;">*</span></label>
+                    <input required style="border-style: groove;" type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" name="amount">
                    
                 </div>
 
               
                 <div class="col-md-3">
-                    <label>Disbursement</label>
+                    <label>Obligated</label>
                     <input style="border-style: groove;"  type="text" readonly  class="form-control" style="height: 40px;" id="obligated" placeholder="" name="obligated" value="0">
                     
                 </div>
