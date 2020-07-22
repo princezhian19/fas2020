@@ -82,8 +82,6 @@ $registereddate1 = $excelrow['registereddate'];
 $registereddate = date('F d, Y', strtotime($registereddate1));
 
 
-
-
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$category);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$issuanceno);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$issuancedate);

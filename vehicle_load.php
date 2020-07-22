@@ -19,7 +19,7 @@ foreach($result as $row)
 {
  $data[] = array(
   'id'   => $row["id"],
-  'title'   => $row["destination"],
+  'title'   => $row["destination"] + 'aaa',
   'purpose'   => $row["purpose"],
   'assigneddate'   => $row["assigneddate"],
   'assignedtime'   => $row["assignedtime"],
