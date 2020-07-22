@@ -82,14 +82,14 @@ $username = $_SESSION['username'];
             <div class="box-header with-border">
     
         <br>
-      <li class="btn btn-success"><a href="saro.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-warning"><a href="saro.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
       <!-- Start form -->
   <!-- <form class="" type='GET' action="@Functions/sarocreatefunction.php" > -->
   <form id="fupForm" name="form1" Type="GET">
         <!-- Start Menu -->
-        <div class="class-bordered" >
+        <div class="class-bordered well" >
             <div class="row">
                 <div class="col-md-6">
 
@@ -99,14 +99,14 @@ $username = $_SESSION['username'];
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="date">
+                        <input style="border-style: groove;" type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="date">
                     </div>
                     <br>
                     <label>Source No. <label style="color: Red;" >*</label></label>
-                      <input  type="text" class="typeahead form-control" style="height: 35px;" id="saronumber" placeholder="Enter Source" name="saronumber">
+                      <input  style="border-style: groove;" type="text" class="typeahead form-control" style="height: 35px;" id="saronumber" placeholder="Enter Source" name="saronumber">
                       <br>
                       <label>PPA</label>
-                    <input  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa">
+                    <input style="border-style: groove;"  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa">
                     <br>
                     
                 </div>    
@@ -114,16 +114,15 @@ $username = $_SESSION['username'];
                 <div class="col-md-6">
                     
                     <label>Fund</label>
-                      <input  type="text" class="form-control" style="height: 35px;" id="fund" placeholder="Enter Fund" name="fund">
+                      <input style="border-style: groove;"  type="text" class="form-control" style="height: 35px;" id="fund" placeholder="Enter Fund" name="fund">
                     <br>
                     <label>Legal Basis</label>
-                      <input  type="text" class="form-control" style="height: 35px;" id="legalbasis" placeholder="Enter Legal Basis" name="legalbasis">
+                      <input style="border-style: groove;" type="text" class="form-control" style="height: 35px;" id="legalbasis" placeholder="Enter Legal Basis" name="legalbasis">
                     <br>
                   
                     <label>Particulars</label>
-                    <input  type="text"   class="form-control" style="height: 35px;" id="particulars" placeholder="Enter Particulars" name="particulars">
+                    <input style="border-style: groove;" type="text"   class="form-control" style="height: 35px;" id="particulars" placeholder="Enter Particulars" name="particulars">
                     <br>
-                     
                     
                 </div>
             </div>
@@ -134,8 +133,8 @@ $username = $_SESSION['username'];
             <div class="row">
                 <div class="col-md-6">
                     <label>Expense Class</label>
-                    <select  requried class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
-                    <option selected disabled> Please Select </option>
+                    <select style="border-style: groove;"  requried class="form-control" style="width: 100%; height: 40px;" name="expenseclass" id="expenseclass"  >
+                    <option value=""> Please Select </option>
                     <option value = "PS">Personnel Service</option>
                     <option value = "MOOE">Maintenance and Other Operating Expenses</option>
                     <option value = "FE">Financial Expenses</option>
@@ -149,7 +148,7 @@ $username = $_SESSION['username'];
               
                     
                     <label>UACS</label>
-                    <input  type="text"   class="form-control" style="height: 35px;" id="uacs" placeholder="Enter UACS" name="uacs">
+                    <input style="border-style: groove;"  type="text"   class="form-control" style="height: 35px;" id="uacs" placeholder="Enter UACS" name="uacs">
                     <br>
                    
                 </div>
@@ -163,27 +162,27 @@ $username = $_SESSION['username'];
 
             <div class="col-md-3">
                     <label>Group</label>
-                    <input  type="text"  class="form-control" style="height: 40px;" id="group" placeholder="" name="group">
+                    <input style="border-style: groove;" type="text"  class="form-control" style="height: 40px;" id="group" placeholder="" name="group">
                    
                 </div>
 
 
                 <div class="col-md-3">
                     <label>Amount <label style="color: Red;" >*</label></label>
-                    <input  type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" name="amount">
+                    <input style="border-style: groove;" type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" name="amount">
                    
                 </div>
 
               
                 <div class="col-md-3">
                     <label>Disbursement</label>
-                    <input  type="text" readonly  class="form-control" style="height: 40px;" id="obligated" placeholder="" name="obligated" value="0">
+                    <input style="border-style: groove;"  type="text" readonly  class="form-control" style="height: 40px;" id="obligated" placeholder="" name="obligated" value="0">
                     
                 </div>
 
                 <div class="col-md-3">
                     <label>Balance</label>
-                    <input  type="text" readonly  class="form-control" style="height: 40px;" id="balance" placeholder="0" name="balance" value="0" >
+                    <input style="border-style: groove;" type="text" readonly  class="form-control" style="height: 40px;" id="balance" placeholder="0" name="balance" value="0" >
                 </div>
 
             
@@ -200,10 +199,10 @@ $username = $_SESSION['username'];
 
               <div class=""  style="overflow-x:auto;">
               <!-- Append -->
-          <table id="table1" name="table1" class="table table-bordered"  style="background-color: white;border-width: medium;">
+          <table id="table1" name="table1" class="table table-bordered"  style="border-style: groove;background-color: white;border-width: medium;">
          
           <tbody>
-          <tr>
+          <tr style="border-style: groove;">
         
           <th width="">DATE</th>
           <th width="">SOURCE</th>

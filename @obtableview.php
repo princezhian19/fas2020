@@ -212,7 +212,7 @@ $getUacs = $_GET['getuacs'];
                         <th style="text-align:center" width="900">PAYEE</th>
                         <th style="text-align:center" width="800">PARTICULAR</th>
                         <th style="text-align:center" width="800">AMOUNT</th>
-                        <th style="text-align:center" width="800">STATUS</th>
+                        <!-- <th style="text-align:center" width="800">STATUS</th> -->
                         <!-- <th style="text-align:center" width="800">ACTION</th> -->
                        
                     </tr>
@@ -279,7 +279,7 @@ $getUacs = $_GET['getuacs'];
                       
                         <td align = 'center'>$amount1</td>
                      
-                        <td style='background-color:green' align = 'center'><b>$status</b></td>
+                        
     
                       
     
@@ -288,7 +288,7 @@ $getUacs = $_GET['getuacs'];
                     
                 }
                 echo "</table>";
-            ?>       
+            ?>        <!-- <td style='background-color:green' align = 'center'><b>$status</b></td>  -->
             </table>
        
       </div>

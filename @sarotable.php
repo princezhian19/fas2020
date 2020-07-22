@@ -92,8 +92,8 @@ th {
                 <th width="">EXPENSE CLASS</th>
                 <th width="">PARTICULARS</th>
                 <th width="">UACS</th>
-                <th width="">AMOUNT</th>
-                <th width="">DISBURSEMENT</th>
+                <th width="">ALLOTMENT</th>
+                <th width="">OBLIGATED</th>
                 <th width="">BALANCE</th>
                 <th width="">GROUP</th>
                 <th colspan="" width='200' style="border-right: 0px; text-align: center;" >ACTION</th>
