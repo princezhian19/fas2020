@@ -102,8 +102,8 @@ $username = $_SESSION['username'];
                         <input required style="border-style: groove;" type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="date" value="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>">
                     </div>
                     <br>
-                    <label>Source No. <span style = "color:red;">*</span></label>
-                      <input required style="border-style: groove;" type="text" class="typeahead form-control" style="height: 35px;" id="saronumber" placeholder="Enter Source" name="saronumber">
+                    <label>Fund Source No. <span style = "color:red;">*</span></label>
+                      <input required style="border-style: groove;" type="text" class="typeahead form-control" style="height: 35px;" id="saronumber" placeholder="Enter Fund Source" name="saronumber">
                       <br>
                       <label>PPA<span style = "color:red;">*</span></label>
                     <input required style="border-style: groove;"  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter PPA" name="ppa">
@@ -162,14 +162,14 @@ $username = $_SESSION['username'];
 
             <div class="col-md-3">
                     <label>Group<span style = "color:red;">*</span></label>
-                    <input required style="border-style: groove;" type="text"  class="form-control" style="height: 40px;" id="group" placeholder="" name="group">
+                    <input required style="border-style: groove;" type="text"  class="form-control" style="height: 40px;" id="group" placeholder="Enter Group" name="group">
                    
                 </div>
 
 
                 <div class="col-md-3">
                     <label>Allotment Amount <span style = "color:red;">*</span></label>
-                    <input required style="border-style: groove;" type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" name="amount">
+                    <input required style="border-style: groove;" type="number" step="any"  class="form-control"  style="height: 40px;" id="amount" placeholder="Enter Allotment amount" name="amount">
                    
                 </div>
 
@@ -196,7 +196,6 @@ $username = $_SESSION['username'];
               <input type="button" name="send" class="btn btn-primary pull-right" value="Add Expense Class" id="butsend">
               <br>
               <br>
-
               <div class=""  style="overflow-x:auto;">
               <!-- Append -->
           <table id="table1" name="table1" class="table table-bordered"  style="border-style: groove;background-color: white;border-width: medium;">
@@ -241,7 +240,7 @@ $username = $_SESSION['username'];
             alert("Required Fields Detected!");
           }else
           {
-             /* 
+          /* 
           var datereceived = $('#datepicker1').val();
 		      var datereprocessed = $('#datepicker2').val();
           var datereturned = $('#datepicker3').val();
@@ -315,7 +314,7 @@ $username = $_SESSION['username'];
         group.push($("#"+i+" .group"+i).html()); 
         
           }
-        /*   var sendName = JSON.stringify(name); 
+          /*var sendName = JSON.stringify(name); 
           var sendEmail = JSON.stringify(email); */
 
           var date = JSON.stringify(date);

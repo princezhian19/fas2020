@@ -37,7 +37,7 @@ while($row = $results->fetch(PDO::FETCH_ASSOC))
 
      $amount = number_format($row['amount'],2,'.', '');
 
-     echo '<tr onclick="javascript:showRow(this);">' .
+     echo '<tr onclick="javascript:showRow1(this);">' .
       
     '<td style="text-align: center;" >' . $row['burs'] . '</td>' . 
     '<td hidden>' . $row['saronumber'] .'</td>' . 

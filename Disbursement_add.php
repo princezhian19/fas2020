@@ -182,7 +182,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 }
                                 });
                                 });
-                                function showRow(row)
+                                function showRow1(row)
                                 {
                                 var x=row.cells;
                                 document.getElementById("ors").value = x[0].innerHTML;
@@ -663,6 +663,8 @@ p.mix {border-style: dotted dashed solid double;} */
                         <option value = "NCA">NCA</option>
                         <option value = "NTA">NTA</option>
                         </select>
+
+                        
                         </td>
                         </tr>
                  
@@ -674,7 +676,89 @@ p.mix {border-style: dotted dashed solid double;} */
                         <tr>
                         <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td>
                         <td class="col-md-7">
-                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="nta[]" name="nta[]" placeholder="NCA/NTA NO." autocomplete="off">
+                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntano" name="ntano[]" placeholder="NCA/NTA NO." autocomplete="off">
+
+                        
+                        <table class="table table-striped table-hover" id="main2" >
+                                <tbody id="result2" style="font-weight:bold" >
+                                </tbody>
+                                </table>
+
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+                                <script>
+
+                               
+                                $(document).ready(function(){
+                                //Set ors disabled
+
+
+                                $("#result2").click(function(){
+                                $("#main2").hide();
+                                
+
+
+                                });
+                                });
+                                </script>
+                               
+                                <script type="text/javascript">
+                                //declare variable for filtering
+                                
+
+                                $(document).ready(function(){
+                                
+                               
+                                function load_data(query)
+                                {
+
+                               
+                                $.ajax({
+                                
+                                url:"@ntavalue.php",
+                                method:"POST",
+                                data:{query:query,
+                                },
+
+
+                                success:function(data)
+                                {
+                                $('#result2').html(data);
+                                }
+                                });
+                                }
+                                $('#ntano').keyup(function(){
+                                var search = $(this).val();
+                                if(search != '')
+                                {
+                                load_data(search);
+
+                                
+                                }
+                                else
+                                {
+                                
+                                $("#main2").show();
+                                load_data();
+
+                                document.getElementById('ntano').value = "";
+                                document.getElementById('ntabalance').value = "";
+                              
+
+                                }
+                                });
+                                });
+                                function showRow2(row)
+                                {
+                                var x=row.cells;
+                                document.getElementById("ntano").value = x[0].innerHTML;
+                                document.getElementById("ntabalance").value = x[1].innerHTML;
+                               
+                                }
+
+                             
+      
+                                </script>
                         </td>
                         </tr>
 

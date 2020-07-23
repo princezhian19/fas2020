@@ -157,7 +157,7 @@ $username = $_SESSION['username'];
                     
                     <a  class = "btn btn-primary btn-xs"  href='ntaupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> | 
                     <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This NTA/NCA Item?');" href='ntadelete.php?id=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a> | 
-                    <a  class = "btn btn-info btn-xs"  href='ntatableViewMain.php?getntano=<?php echo $ntano?>&getparticular=<?php echo $particular?>'><i class='fa'>&#xf06e;</i> Export</a>
+                    <a  class = "btn btn-info btn-xs"  href='ntatableViewMain.php?getntano=<?php echo $ntano?>&getparticular=<?php echo $particular?>'><i class='fa'>&#xf06e;</i> View</a>
                 
                     </td>
                    
