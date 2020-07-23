@@ -122,7 +122,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
             </div>
             <div class="modal-body" style = " max-height: calc(100vh - 200px); overflow-y: auto;">
               <div class="box-body">
-              <form method = "POST" action = "saveTravelInfo.php">
+              <form method = "POST" action = "">
             <input type = "hidden" name = "hidden_ro" value = "<?php echo $_GET['ro'];?>" />
 
                 <div class="well" style = "padding:10px;">
