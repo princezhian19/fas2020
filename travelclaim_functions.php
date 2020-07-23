@@ -181,7 +181,7 @@ session_start();
                     {
                         if($row2 = mysqli_fetch_array($result2))
                         {
-                ECHO '<span style = "margin-left:84%;color:red;font-weight:bold;">₱ &nbsp;'.sprintf("%.2f",$row2['total']).'</span>';
+                ECHO '<span style = "margin-left:79%;color:red;font-weight:bold;">₱ &nbsp;'.sprintf("%.2f",$row2['total']).'</span>';
                         }
                     }else{
                     }
