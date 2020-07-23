@@ -191,7 +191,7 @@ session_start();
     function getDistance()
     {
         include 'connection.php';
-        $query1 = "SELECT DISTANCE FROM tbltravel_claim_info2  WHERE `NAME` = '".$_GET['username']."'";
+        $query1 = "SELECT DISTANCE FROM tbltravel_claim_info2  WHERE `RO_TO_OB` = '".$_GET['ro']."'";
         $result1 = mysqli_query($conn, $query1);
         
             if($row1 = mysqli_fetch_array($result1))
@@ -267,13 +267,21 @@ session_start();
         }
  
     }
+
+    function editTravelData()
+    {
+        for($a=0;$a < count($_POST['mot']); $a++)
+        {
+            echo $_POST['mot'][$a];
+        }
+    }
  
 $func = '';
 if(isset($_POST['action']))
 {
     $action = $_POST['action'];
     if($action == 'deleteTravelOrder' )
-    {
+    {   
         deleteTravelOrder();
     }
 }else if(isset($_GET['action'])){
@@ -284,7 +292,10 @@ $action2 = $_GET['action'];
         add();
         // echo 'a';
     }
+    else if($_GET['action'] == 'modify')
+    {
+        editTravelData();   
+    }
 }
-  
 
 ?>
