@@ -40,12 +40,9 @@ th {
 
               <td class="col-md-7">
                
-
               </td>
                 
-              
                 <form method = "POST" action = "@Functions/sarodateexport.php">
-               
                
                 <td class="col-md-1">
                 <input autocomplete="off" type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
@@ -65,12 +62,7 @@ th {
                </td>
 
                 </form>
-                
-
               
-
-
-
                 </tr>
                 <!-- Header -->
         </table>
@@ -97,8 +89,7 @@ th {
                 <th width="">BALANCE</th>
                 <th width="">GROUP</th>
                 <th colspan="" width='200' style="border-right: 0px; text-align: center;" >ACTION</th>
-                <!-- <th width=''  style="border-right: 0px; text-align: center;" ></th>
-                <th width='' ></th> -->
+                
                 
               </tr>
               </thead>
@@ -142,14 +133,11 @@ th {
                   <td><?php echo $balance?></td>
                   <td><?php echo $sarogroup?></td>
                   <td style="border-right: 0px; margin-left:0px" colspan="" style="text-align: center;"> 
-                  <a class="btn btn-info btn-xs" href='obtableViewMain.php?getsaroID=<?php echo $saronumber?>&getuacs=<?php echo $uacs?>'> <i class='fa'>&#xf06e;</i> View</a> | 
                   <a class="btn btn-primary btn-xs"href='saroupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> | 
-                  <a onclick="return confirm('Are you sure you want to delete this record?');" name=""  href="dis.php?id=<?php echo $id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                  <a onclick="return confirm('Are you sure you want to delete this record?');" name=""  href="dis.php?id=<?php echo $id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a> | 
+                  <a class="btn btn-info btn-xs" href='obtableViewMain.php?getsaroID=<?php echo $saronumber?>&getuacs=<?php echo $uacs?>'> <i class='fa'>&#xf06e;</i> View</a>
                   </td>
 
-               
-                    
-                 
                 </tr>
               <?php }?>
             
@@ -157,9 +145,7 @@ th {
           </div>
           </div>
           </div>
-         
-        
-          
+                
   </body>
   </html>
 
