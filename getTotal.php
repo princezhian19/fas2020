@@ -7,13 +7,14 @@ session_start();
     
         if($row1 = mysqli_fetch_array($result1))
         {
-                $query2 = "SELECT sum(`TOTAL_AMOUNT`)AS 'total' FROM tbltravel_claim_info inner join tbltravel_claim_info2 on  tbltravel_claim_info.TC_ID = tbltravel_claim_info2.ID  WHERE `RO_TO_OB` = '".$_POST['ro']."'";
+                $query2 = "SELECT sum(`TOTAL_AMOUNT`)AS 'total' FROM tbltravel_claim_info inner join tbltravel_claim_info2 on  tbltravel_claim_info.TC_ID = tbltravel_claim_info2.ID  
+                WHERE `RO_TO_OB` = '".$_POST['ro']."'";
                 $result2 = mysqli_query($conn, $query2);
                 if(mysqli_num_rows($result2) > 0)
                 {
                     if($row2 = mysqli_fetch_array($result2))
                     {
-            ECHO '<span style = "margin-left:79%;color:red;font-weight:bold;">₱ &nbsp;'.sprintf("%.2f",$row2['total']).'</span>';
+            ECHO '₱ &nbsp;'.sprintf("%.2f",$row2['total']);
                     }
                 }
             }

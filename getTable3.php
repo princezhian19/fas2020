@@ -1,6 +1,36 @@
 <?php 
-
 include 'travelclaim_functions.php';
+
+include 'connection.php';
+$query1 = "SELECT * FROM tbltravel_claim_info2  WHERE `NAME` = '".$_SESSION['username']."'  ORDER BY ID DESC LIMIT 1";
+$result1 = mysqli_query($conn, $query1);
+$a = '';
+    if($row1 = mysqli_fetch_array($result1))
+    {
+            $query2 = "SELECT sum(`TOTAL_AMOUNT`)AS 'total' FROM tbltravel_claim_info inner join tbltravel_claim_info2 on  tbltravel_claim_info.TC_ID = tbltravel_claim_info2.ID  
+            WHERE `RO_TO_OB` = '".$_POST['purpose']."'";
+            $result2 = mysqli_query($conn, $query2);
+            if(mysqli_num_rows($result2) > 0)
+            {
+                if($row2 = mysqli_fetch_array($result2))
+                {
+                  switch ($_POST['action']) {
+                    case 'edit':
+                      $a = '<span style = "color:blue;margin-left:86%;font-weight:bold;" >₱ &nbsp;'.sprintf("%.2f",$row2['total']).'</span>';
+
+                      break;
+                    
+                    case 'view':
+                    $a = '<span style = "color:red;margin-left:80%;font-weight:bold;" >₱ &nbsp;'.sprintf("%.2f",$row2['total']).'</span>';
+
+                      break;
+                  }
+                  
+                }
+            }
+        }
+
+
 ?>
 <tr>
             <!-- <td colspan = 10> -->
@@ -9,7 +39,7 @@ include 'travelclaim_functions.php';
             <!-- </td> -->
         </tr>
         <tr>
-            <td colspan = 10>TOTAL <span id = "total"></span></td>
+            <td colspan = 10>TOTAL<?php echo $a;?></td>
           </tr>
         <tr>
             <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
