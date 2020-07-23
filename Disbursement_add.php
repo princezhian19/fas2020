@@ -27,6 +27,32 @@ while($row = $results->fetch(PDO::FETCH_ASSOC))
     echo $row['amount'];
     
 } */ 
+
+/* function getnta()
+{
+    include 'connection.php';
+    $query = "SELECT FIRST_M, concat(FIRST_M,' ', LAST_M) as 'fullname' from tblemployeeinfo  order by FIRST_M" ;
+    $result = mysqli_query($conn, $query);
+    echo '<option VALUE = "">ALL</option>';
+    while($row = mysqli_fetch_array($result))
+    {
+        echo '<option>'.$row['fullname'].'</option>';
+        
+    }
+} */
+
+function getNta()
+    {
+        include 'connection.php';
+        $query = "SELECT particular from nta  order by id desc" ;
+        $result = mysqli_query($conn, $query);
+        echo '<option VALUE = "">NTA/NCA No.</option>';
+        while($row = mysqli_fetch_array($result))
+        {
+            echo '<option>'.$row['particular'].'</option>';
+            
+        }
+    }
 ?>
 
 <style>
@@ -48,7 +74,7 @@ p.hidden {border-style: hidden;}
 p.mix {border-style: dotted dashed solid double;} */
 </style>
 
-
+<!-- <script src="bower_components/select2/dist/js/select2.full.min.js"></script> -->
 <div class="box" style="border-style: groove;">
           <div class="box-body">
       
@@ -75,7 +101,7 @@ p.mix {border-style: dotted dashed solid double;} */
                            
                             <tr>
                             <td class="col-md-2">
-                            <b>MODE<span style = "color:red;">*</span></b>
+                            <b>TYPE<span style = "color:red;">*</span></b>
 
                             </td>
                             <td class="col-md-7">
@@ -106,7 +132,9 @@ p.mix {border-style: dotted dashed solid double;} */
                                
                                 $(document).ready(function(){
                                 //Set ors disabled
-
+                             
+                                // $('#ors').prop('disabled', true);
+                                $('#ors1').prop('disabled', true);
 
                                 $("#result").click(function(){
                                 $("#main").hide();
@@ -116,9 +144,11 @@ p.mix {border-style: dotted dashed solid double;} */
 
                                 filter_data1 = $('#ors').val();
                                
-                                $('#ors1').prop('disabled', false);
+                               
                                 var ors = $("input[name='ors1']"); 
                                 ors.val('');
+
+                                $('#ors1').prop('disabled', true);
 
                                 $('#example').DataTable().destroy();
                                 dataT();
@@ -182,7 +212,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 }
                                 });
                                 });
-                                function showRow(row)
+                                function showRow1(row)
                                 {
                                 var x=row.cells;
                                 document.getElementById("ors").value = x[0].innerHTML;
@@ -304,7 +334,6 @@ p.mix {border-style: dotted dashed solid double;} */
 
                                 //  alert(mode);
                                 
-
                                 });
                                 });
                                 </script>
@@ -651,7 +680,7 @@ p.mix {border-style: dotted dashed solid double;} */
                  <div class="container1">
 
                     
-                    <div class="col-md-4">
+                    <div class="col-md-3">
 
 
                         
@@ -663,6 +692,8 @@ p.mix {border-style: dotted dashed solid double;} */
                         <option value = "NCA">NCA</option>
                         <option value = "NTA">NTA</option>
                         </select>
+
+                        
                         </td>
                         </tr>
                  
@@ -674,18 +705,117 @@ p.mix {border-style: dotted dashed solid double;} */
                         <tr>
                         <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td>
                         <td class="col-md-7">
-                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="nta[]" name="nta[]" placeholder="NCA/NTA NO." autocomplete="off">
+
+                        <!-- <label>Employee Name</label>
+                        <select class="form-control select2" style= "color:blue;text-align:center;"  id = "ntano">
+
+                        
+                        </select>  -->
+                        <!-- <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntano" name="ntano[]" placeholder="NCA/NTA NO." autocomplete="off"> -->
+
+                        <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano"> <?php getNta();?> </select>
+                        
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                            <table class="table table-striped table-hover" id="main2" >
+                                <tbody id="result2" style="font-weight:bold" >
+                                </tbody>
+                                </table>
+
+                           
+
+                                <script>
+
+                               
+                                $(document).ready(function(){
+                                //Set ors disabled
+
+
+                                $("#result2").click(function(){
+                                $("#main2").hide();
+                                
+                                });
+                                });
+                                </script>
+                               
+                                <script type="text/javascript">
+                                //declare variable for filtering
+                                
+
+                                $(document).ready(function(){
+                                
+                               
+                                function load_data(query)
+                                {
+
+                               
+                                $.ajax({
+                                
+                                url:"@ntavalue.php",
+                                method:"POST",
+                                data:{query:query,
+                                },
+
+
+                                success:function(data)
+                                {
+                                $('#result2').html(data);
+                                }
+                                });
+                                }
+
+                                $('#ntano').keyup(function(){
+                                var search = $(this).val();
+                                if(search != '')
+                                {
+                                load_data(search);
+
+                                
+                                }
+                                else
+                                {
+                                
+                                $("#main2").show();
+                                load_data();
+                                
+                                document.getElementById('ntano').value = "";
+                                document.getElementById('ntabalance').value = "";
+                              
+
+                                }
+                                });
+                                });
+                                function showRow2(row)
+                                {
+                                var x=row.cells;
+                                document.getElementById("ntano").value = x[0].innerHTML;
+                                document.getElementById("ntabalance").value = x[1].innerHTML;
+                               
+                                }
+
+                             
+      
+                                </script>
                         </td>
                         </tr>
 
                     </div>
+                  <div class="col-md-2">
 
-                    <div class="col-md-4">
+                  <tr>
+                  <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td>
+                  <td class="col-md-7">
+                  <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="amount" name="amount[]" placeholder="0" autocomplete="off">
+                  </td>
+                  </tr>
+
+                  </div>
+
+                    <div class="col-md-3">
 
                         <tr>
                         <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td>
                         <td class="col-md-7">
-                        <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance[]" name="ntabalance[]" placeholder="0" autocomplete="off">
+                        <input readonly required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance[]" placeholder="0" autocomplete="off">
                         </td>
                         </tr>
 
@@ -820,11 +950,15 @@ p.mix {border-style: dotted dashed solid double;} */
       e.preventDefault();
       if (x < max_fields) {
         x++;
-            $(wrapper).append('<div ><br><br><br><br><a href="#" styl="margin-right:50px" class="delete btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i></a><br><br><div class="col-md-4"><tr><td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td><td class="col-md-7"><select class="form-control select" style="width: 100%; height: 40px;" name="charge" id="charge" required > <option value = "">Select NCA/NTA</option> <option value = "NCA">NCA</option> <option value = "NTA">NTA</option> </select> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="nta" name="nta" placeholder="NCA/NTA NO." autocomplete="off"> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off"> </td> </tr> </div></div>'); //add input box
+        var list = "Hello";
+            $(wrapper).append('<div ><br><br><br><br><a href="#" style="margin-right:50px" class="delete btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i></a><br><br><div class="col-md-3"><tr><td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td><td class="col-md-7"><select class="form-control select" style="width: 100%; height: 40px;" name="charge" id="charge" required > <option value = "">Select NCA/NTA</option> <option value = "NCA">NCA</option> <option value = "NTA">NTA</option> </select> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td> <td class="col-md-7">  <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano"> <?php getNta();?> </select>  </td> </tr> </div><div class="col-md-2"> <tr> <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="amount" name="amount[]" placeholder="0" autocomplete="off"> </td> </tr> </div>  <div class="col-md-3"> <tr> <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off"> </td> </tr> </div></div>'); //add input box
           } else {
             alert('You Reached the limits')
           }
         });
+
+       
+                   
 
     $(wrapper).on("click", ".delete", function(e) {
         if(confirm("Are you sure you want to delete this NCA/NTA?")){
@@ -876,20 +1010,20 @@ var net = $("input[name='net']");
 net.val('');
 
 var tax = $("input[name='tax']"); 
-tax.val('');
+tax.val('0');
 
 var gsis = $("input[name='gsis']"); 
-gsis.val('');
+gsis.val('0');
 
 
 var pagibig = $("input[name='pagibig']"); 
-pagibig.val('');
+pagibig.val('0');
 
 var philhealth = $("input[name='philhealth']"); 
-philhealth.val('');
+philhealth.val('0');
 
 var other = $("input[name='other']"); 
-other.val('');
+other.val('0');
 
 
 
@@ -925,20 +1059,20 @@ var net = $("input[name='net']");
 net.val('');
 
 var tax = $("input[name='tax']"); 
-tax.val('');
+tax.val('0');
 
 var gsis = $("input[name='gsis']"); 
-gsis.val('');
+gsis.val('0');
 
 
 var pagibig = $("input[name='pagibig']"); 
-pagibig.val('');
+pagibig.val('0');
 
 var philhealth = $("input[name='philhealth']"); 
-philhealth.val('');
+philhealth.val('0');
 
 var other = $("input[name='other']"); 
-other.val('');
+other.val('0');
 
 }
 else{
@@ -966,20 +1100,20 @@ var net = $("input[name='net']");
 net.val('');
 
 var tax = $("input[name='tax']"); 
-tax.val('');
+tax.val('0');
 
 var gsis = $("input[name='gsis']"); 
-gsis.val('');
+gsis.val('0');
 
 
 var pagibig = $("input[name='pagibig']"); 
-pagibig.val('');
+pagibig.val('0');
 
 var philhealth = $("input[name='philhealth']"); 
-philhealth.val('');
+philhealth.val('0');
 
 var other = $("input[name='other']"); 
-other.val('');
+other.val('0');
 //dataEE();
 
 }

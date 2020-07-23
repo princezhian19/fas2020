@@ -4,9 +4,9 @@ date_default_timezone_set("Asia/Manila");
 
 $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-		$fieldsName = '`ID`, `NAME`, `RO_TO_OB`, `TRAVEL_DAYS`, `START_DATE`, `END_DATE`, `ORIGIN`, `DESTINATION`, `DISTANCE`, `VENUE`';
+		$fieldsName = '`ID`, CONCAT(`FIRST_M`," ",`LAST_M`) AS "cname",`NAME`, `RO_TO_OB`, `TRAVEL_DAYS`, `START_DATE`, `END_DATE`, `ORIGIN`, `DESTINATION`, `DISTANCE`, `VENUE`';
 		$table = 'tbltravel_claim_info2';
-		$join = '';
+		$join = ' inner join tblemployeeinfo on tbltravel_claim_info2.NAME = tblemployeeinfo.UNAME';
 		$WHERE = "";
 
 	
@@ -52,7 +52,7 @@ $division  = $_SESSION['division'];
 
 $columns = array(
     array('db' => 'ID', 'dt' => 0),
-	array('db' => 'NAME', 'dt' => 1),
+	array('db' => 'cname', 'dt' => 1),
 	array( 'db' => 'RO_TO_OB', 'dt'=> 2),
 	array( 'db' => 'TRAVEL_DAYS', 'dt'=> 3 ),
         

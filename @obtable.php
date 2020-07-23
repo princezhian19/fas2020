@@ -197,7 +197,7 @@ include('db.class.php'); // call db.class.php
                                   <?php endif ?>
                                 <?php endif ?>
                                 <td colspan="1" style="border-right: 0px; margin-left:0px">
-                                  <!-- <a  class="btn btn-primary btn-xs" href=''> <i class='fa'>&#xf044;</i> Manage Data</a> -->
+                                  <a  class="btn btn-primary btn-xs" href=''> <i class='fa'>&#xf044;</i> Manage Data</a>
                                   <!-- <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This Obligated Item?');" href='@Functions/obdeletefunction.php?getidDelete=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a> -->
                               </td>
                                

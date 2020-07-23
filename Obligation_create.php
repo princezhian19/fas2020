@@ -98,7 +98,7 @@ function app($connect)
                             <tr>
                             <td class="col-md-6">
 
-                      <label>Mode<span style = "color:red;">*</span></label>
+                      <label>Type<span style = "color:red;">*</span></label>
                       <select class=" form-control select input" style="width: 100%; height: 40px;" name="mode" id="mode" required style="border-style: groove;">
                       <option value = "">SELECT BURS/ORS</option>
                       <option value = "BURS">BURS</option>
@@ -520,7 +520,7 @@ function app($connect)
           <table id="table1" name="table1" class="table table-bordered"  style="background-color: white;border-width: medium; text-align:left; border-style: groove;">
          
           <tbody>
-          <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; ">
+          <tr style=" border-style: groove; ">
         
           <th>DATE RECEIVED</th>
           <th>DATE OBLIGATED</th>
@@ -545,16 +545,12 @@ function app($connect)
           </table>
           </div>
 
-
-
           <script>
           $(document).ready(function() {
           var id = 1; 
           /*Assigning id and class for tr and td tags for separation.*/
           $("#butsend").click(function() {
-
-
-
+          
           var newid = id++; 
             
           var ors = $("#ors").val();
@@ -563,7 +559,7 @@ function app($connect)
 
           if(ors=="" || amount=="" || mode==""){
             
-            alert('Required fields detected.');
+            alert('Required Fields Detected.');
             document.getElementById("ors").style.border = "thin dotted red";
             document.getElementById("amount").style.border = "thin dotted red";
             document.getElementById("mode").style.border = "thin dotted red";
@@ -602,17 +598,21 @@ function app($connect)
           $(this).parent().parent().remove();
           });
           /*crating new click event for save button*/
+
+
+
           $("#butsave").click(function() {
 
-        
+          if(id==1){
+            alert('Required Fields Detected.');
 
+          }
+          else{
 
-          
-         
           var lastRowId = $('#table1 tr:last').attr("id"); /*finds id of the last row inside table*/
 
           var datereceived = new Array();
-		      var datereprocessed = new Array();
+          var datereprocessed = new Array();
           var datereturned = new Array(); 
           var datereleased = new Array(); 
           var ors = new Array(); 
@@ -627,35 +627,35 @@ function app($connect)
           var remarks = new Array(); 
           var sarogroup = new Array();
           var status = new Array(); 
-        
+
           for ( var i = 1; i <= lastRowId; i++) {
-        
-        /*pushing all the data listed in the table*/
-         datereceived.push($("#"+i+" .datereceived"+i).html());
-         datereprocessed.push($("#"+i+" .datereprocessed"+i).html()); 
-         datereturned.push($("#"+i+" .datereturned"+i).html());
-         datereleased.push($("#"+i+" .datereleased"+i).html()); 
-         ors.push($("#"+i+" .ors"+i).html()); 
-         ponum.push($("#"+i+" .ponum"+i).html()); 
-         payee.push($("#"+i+" .payee"+i).html()); 
-         supplier.push($("#"+i+" .supplier"+i).html()); 
-         particular.push($("#"+i+" .particular"+i).html()); 
-         saronum.push($("#"+i+" .saronum"+i).html()); 
-         ppa.push($("#"+i+" .ppa"+i).html()); 
-         uacs.push($("#"+i+" .uacs"+i).html()); 
-         amount.push($("#"+i+" .amount"+i).html()); 
-         remarks.push($("#"+i+" .remarks"+i).html());
-         sarogroup.push($("#"+i+" .sarogroup"+i).html()); 
-         status.push($("#"+i+" .status"+i).html()); 
-		 
+
+          /*pushing all the data listed in the table*/
+          datereceived.push($("#"+i+" .datereceived"+i).html());
+          datereprocessed.push($("#"+i+" .datereprocessed"+i).html()); 
+          datereturned.push($("#"+i+" .datereturned"+i).html());
+          datereleased.push($("#"+i+" .datereleased"+i).html()); 
+          ors.push($("#"+i+" .ors"+i).html()); 
+          ponum.push($("#"+i+" .ponum"+i).html()); 
+          payee.push($("#"+i+" .payee"+i).html()); 
+          supplier.push($("#"+i+" .supplier"+i).html()); 
+          particular.push($("#"+i+" .particular"+i).html()); 
+          saronum.push($("#"+i+" .saronum"+i).html()); 
+          ppa.push($("#"+i+" .ppa"+i).html()); 
+          uacs.push($("#"+i+" .uacs"+i).html()); 
+          amount.push($("#"+i+" .amount"+i).html()); 
+          remarks.push($("#"+i+" .remarks"+i).html());
+          sarogroup.push($("#"+i+" .sarogroup"+i).html()); 
+          status.push($("#"+i+" .status"+i).html()); 
+
           }
           var datereceived1 = $("#datepicker1").val();
           var datereprocessed1 = $("#datepicker2").val();
           var datereturned1 = $("#datepicker3").val();
           var datereleased1 = $("#datepicker4").val();
-          
+
           var mode = $("#mode").val();
-          
+
           var datereceived = JSON.stringify(datereceived);
           var datereprocessed = JSON.stringify(datereprocessed);
           var datereturned = JSON.stringify(datereturned);   
@@ -676,27 +676,34 @@ function app($connect)
           url: "obcreatefunction.php",
           type: "post",
           data: {datereceived : datereceived1 , 
-            datereprocessed : datereprocessed1, 
-            datereturned : datereturned1, 
-            datereleased : datereleased1, 
-            ors : ors, 
-            ponum : ponum, 
-            payee : payee, 
-            supplier : supplier, 
-            particular : particular, 
-            saronum : saronum, 
-            ppa : ppa, 
-            uacs : uacs, 
-            amount : amount, 
-            remarks : remarks, 
-            sarogroup : sarogroup, 
-            status : status,
-            mode : mode},
+          datereprocessed : datereprocessed1, 
+          datereturned : datereturned1, 
+          datereleased : datereleased1, 
+          ors : ors, 
+          ponum : ponum, 
+          payee : payee, 
+          supplier : supplier, 
+          particular : particular, 
+          saronum : saronum, 
+          ppa : ppa, 
+          uacs : uacs, 
+          amount : amount, 
+          remarks : remarks, 
+          sarogroup : sarogroup, 
+          status : status,
+          mode : mode},
           success : function(data){
           alert(data); /* alerts the response from php.*/
           window.location.href='obligation.php';
           }
           });
+
+          }
+
+
+          
+         
+         
           });
           });
           </script>

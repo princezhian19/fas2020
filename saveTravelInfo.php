@@ -70,7 +70,29 @@ if(mysqli_num_rows($result) > 0)
 
 
 
+        $meals = '';
+        $accomodation = '';
 
+        if(isset($_POST['breakfast']))
+        {
+            $meals = $_POST['breakfast'];
+        }
+        if(isset($_POST['lunch']))
+        {
+            $meals = $_POST['lunch'];
+        }
+        if(isset($_POST['dinner']))
+        {
+            $meals = $_POST['dinner'];
+        }
+        if(isset($_POST['with_receipt']))
+        {
+            $accomodation = $_POST['with_receipt'];
+        }
+        if(isset($_POST['wor_txt']))
+        {
+            $accomodation = $_POST['wor_txt'];
+        }
 
         for($a=0;$a < count($_POST['mot']); $a++)
         {
@@ -89,9 +111,12 @@ if(mysqli_num_rows($result) > 0)
             {
                 if($row1 = mysqli_fetch_array($result1))
                 {
+
+                    
+
           
             // ===============================================================
-            $insert ="INSERT INTO `tbltravel_claim_info`(`TC_ID`, `RO`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `OTHERS`, `TOTAL_AMOUNT`) 
+            $insert ="INSERT INTO `tbltravel_claim_info`(`TC_ID`, `RO`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`,  `MEALS`, `ACCOMODATION`, `RECEIPT`, `PERDIEM`, `OTHERS`, `TOTAL_AMOUNT`) 
                     VALUES 
                     ('".$uid."',
                     '".$row1['ID']."',
@@ -101,10 +126,14 @@ if(mysqli_num_rows($result) > 0)
                     '".date('H:i',strtotime($_POST['to1']))."',
                     '".$mot."',
                     '".$transpo_fare."',
+                    '".$meals."',
+                    '".$accomodation."',
                     '".$perdiem."',
                     '".$_POST['others']."',
                     '".$totalamount."'
                     )";
+
+                    echo $insert.'<br>';
             if (mysqli_query($conn, $insert)) {
             } else {
             }
@@ -113,6 +142,7 @@ if(mysqli_num_rows($result) > 0)
 
         
         }
+        exit();
         // ========================================================
         // for($b=0;$b < count($_POST['mot'])+1; $b++)
         // {
@@ -128,6 +158,6 @@ if(mysqli_num_rows($result) > 0)
         }
     }
 
-header("Location:CreateTravelClaim.php?ui=1&ro=".$_POST['hidden_ro']."&username=".$_SESSION['username']."");
+// header("Location:CreateTravelClaim.php?ui=1&ro=".$_POST['hidden_ro']."&username=".$_SESSION['username']."");
 
 ?>

@@ -99,20 +99,56 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
       </table>
       <table id = "results" border="1" >
       </table>
-      <table id = "table3" class="equalDivide" width="100%" border="1">
-        
-      
-          
+      <table id = "table3" class="equalDivide" width="100%" border="1">          
       </table>
   
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-primary" data-dismiss = "modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+
+
+
+<div class="modal fade" id="add_travel_dates">
+  <div class="modal-dialog" style = "width:50%;">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Travel Dates</h4>
+        <span type="span" class="close" data-dismiss="modal">&times; </span>
+      </div>
+        <div class="modal-body" style = " max-height: calc(100vh - 200px); overflow-y: auto;">
+          <div class="box-body">
+            <form method = "POST" action = "">
+              <input type = "hidden" name = "hidden_ro" value = "<?php echo $_GET['ro'];?>" />
+               <div id = "travelDate_panel">
+               </div>
+                
+
+            
+<!-- 
+                  <div class = "well" style = "padding:10px;" id = "travelPanel">
+                  </div> -->
+
+                  <button type = "submit" class = "btn btn-success btn-md pull-right">Save Changes</button>
+                  <button class = "btn btn-primary btn-md pull-right" id= "add_fare" style = "margin-right:10px">Add Fare</button>
+
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+              </form>
+                  </div>
+                </div>
+                 
+              </div>
+              
+            </div>
+          
+          
+        </div>
+      </div>
 <script>
           $(document).ready(function() {
             
@@ -138,10 +174,15 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                   ,
                   "columnDefs": [ {
                       "targets":10,
+                      "width": "15%", "targets": 10,
+
                       "render": function (data, type, row, meta ) {  
-                      action = "<button  class = 'btn btn-sm btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button>";
-                      // &nbsp;<button class = 'btn btn-md btn-primary'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button>
-                      return action;
+                        if(row[1] == "<?php echo $_SESSION['complete_name2'];?>"){
+                          action = "<button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button> &nbsp;<button class = 'btn btn-md btn-primary' style = 'font-family:Arial' id = 'edit'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button> ";
+                        }else{
+                          action = "<center><button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button></center>";
+                        }
+                          return action;
                       }
                   }]
                 
@@ -150,22 +191,21 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
 
 
-              
+              // when users click view button
               $('#example tbody').on( 'click', '#view', function () {
                 var data = table.row( $(this).parents('tr') ).data();
                 var RO = data[2];
                 var username = data[1];
                 $('#exampleModal').modal({ keyboard: false });
                 $('#or').val(data[2]);
-
-          
                 $.ajax({
                   type: 'POST',
                   url: 'testtime.php',
                   data: (
                     {
                       ro:RO,
-                      uname:username
+                      uname:username,
+                      action:"view",
                     }),
                   cache: false,
                   success: function(data)
@@ -174,18 +214,6 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
                   }
                 });
-                $.ajax({
-                  type: 'POST',
-                  url: 'getTotal.php',
-                  data: ({ro:RO}),
-                  cache: false,
-                  success: function(data1)
-                  {
-                    $('#total').html(data1);
-
-                  }
-                });
-
                 $.ajax({
                   type: 'POST',
                   url: 'getTable1.php',
@@ -200,13 +228,13 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
                   }
                 });
-
                 $.ajax({
                   type: 'POST',
                   url: 'getTable3.php',
                   data: ({
                     "username":username,
-                    "purpose":RO
+                    "purpose":RO,
+                    "action":"view",
                     }),
                   cache: false,
                   success: function(data3)
@@ -215,17 +243,65 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
                   }
                 });
-
-
-
-          
-
-
-
-
               });
+              // when users click edit button
+              $('#example tbody').on( 'click', '#edit', function () {
+                var data = table.row( $(this).parents('tr') ).data();
+                var RO = data[2];
+                var username = data[1];
+                $('#add_travel_dates').modal({ keyboard: false });
+                $('#or').val(data[2]);
+                $.ajax({
+                  type: 'POST',
+                  url: 'editTravelData.php',
+                  data: (
+                    {
+                      ro:RO,
+                      uname:username,
+                    }),
+                  cache: false,
+                  success: function(data)
+                  {
+                    $('#travelDate_panel').html(data);
+
+                  }
+                });
+              
+                // $.ajax({
+                //   type: 'POST',
+                //   url: 'getTable1.php',
+                //   data: ({
+                //     "username":username,
+                //     "purpose":RO
+                //     }),
+                //   cache: false,
+                //   success: function(data2)
+                //   {
+                //     $('#tbl1').html(data2);
+
+                //   }
+                // });
+                // $.ajax({
+                //   type: 'POST',
+                //   url: 'getTable3.php',
+                //   data: ({
+                //     "username":username,
+                //     "purpose":RO,
+                //     "action":"edit"
+                //     }),
+                //   cache: false,
+                //   success: function(data3)
+                //   {
+                //     $('#tbl3').html(data3);
+
+                //   }
+                // });
+              });
+
+
+
+
           });
               </script>
-                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-                  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+              <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

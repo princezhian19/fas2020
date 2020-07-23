@@ -1,54 +1,91 @@
-<?php
 
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="jquery.min.js"></script>
 
-namespace myPHPnotes;
 
-/**
- * Geocoding
- * @Author: Adnan Hussain Turki
- * @Website: www.myphpnotes.com
-=====================================
-   PROPERTY OF WWW.MYPHPNOTES.COM
- */
+    <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 6
+        });
+        infoWindow = new google.maps.InfoWindow;
 
-class Geocoding
-{
-    protected $api_key;
-    protected $debug;
-    protected $callurl = "https://maps.googleapis.com/maps/api/geocode/json";
-    function __construct($api_key, $debug = 0)
-    {
-        $this->api_key = $api_key;
-        $this->debug = $debug;    
-    }
-    public function request($url, $parameters)
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url . "?" . http_build_query($parameters));
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        $result = curl_exec($ch);
-        return $result;
-    }
-    public function getAddress($latitude, $longitude)
-    {
-        $data = [
-            'latlng' => "$latitude,$longitude",
-            'key' => $this->api_key
-        ];
-        $addressData = $this->request($this->callurl, $data);
-        return (json_decode($addressData)->results[0]->formatted_address);
-    }
-    public function getCoordinates($address)
-    {
-        $data = [
-            'address' => $address,
-            'key' => $this->api_key
-        ];
-        $addressData = $this->request($this->callurl, $data);
-        $location = json_decode($addressData)->results[0]->geometry->location;
-        return [ 'latitude' => $location->lat, 'longitude' => $location->lng];
-    }
-}
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+     
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+               
+            $.ajax({
+                  type: 'POST',
+                  url: 'sample.php',
+                  data: (
+                    {
+                      lati:position.coords.latitude,
+                      long:position.coords.longitude,
+                    }),
+                  cache: false,
+                  success: function(data)
+                  {
+console.log(data);
+                  }
+                });
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0&callback=initMap">
+    </script>
+  </body>
+</html>
