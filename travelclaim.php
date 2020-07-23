@@ -301,7 +301,7 @@ function isSubmit()
             <H5 style = "margin-left:1300px;"><i>Appendix 45</i></H5>
 
             <center>
-            <form method = "POST" action = "travelclaim_functions.php?function=add">
+            <form method = "POST" action = "travelclaim_functions.php?action=add">
             <h1>ITINERARY OF TRAVEL </h1>
             <table  cellpadding="0" cellspacing="0" width="80%" border="1">
               <thead>
@@ -639,7 +639,7 @@ function isSubmit()
     
 
 
-<script src="travelclaim.js"></script>
+<script src="travelclaim.js"></script>  
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>

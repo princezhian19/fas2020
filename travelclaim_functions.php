@@ -14,7 +14,7 @@ session_start();
     function viewCompleteName($emp_name)
     {
         include 'connection.php';
-        $query = "SELECT * FROM tblemployeeinfo inner join tbltravel_claim_info2 on tblemployeeinfo.UNAME = tbltravel_claim_info2.NAME where tblemployeeinfo.UNAME  = '".$emp_name."'";
+        $query = "SELECT * FROM tblemployeeinfo inner join tbltravel_claim_info2 on tblemployeeinfo.UNAME = tbltravel_claim_info2.NAME where CONCAT(tblemployeeinfo.FIRST_M,' ',tblemployeeinfo.LAST_M) = '".$emp_name."'";
         $result = mysqli_query($conn, $query);
         if($row = mysqli_fetch_array($result))
         {
@@ -41,7 +41,7 @@ session_start();
         $query = "SELECT POSITION_M FROM tblpersonneldivision 
                 INNER JOIN tblemployeeinfo on tblpersonneldivision.DIVISION_N = tblemployeeinfo.DIVISION_C 
                 INNER JOIN tbldilgposition on tblemployeeinfo.POSITION_C = tbldilgposition.POSITION_ID
-                where tblemployeeinfo.UNAME = '".$emp_name."' ";
+                where CONCAT(tblemployeeinfo.FIRST_M,' ',tblemployeeinfo.LAST_M) = '".$emp_name."' ";
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_array($result))
         {
@@ -110,7 +110,7 @@ session_start();
     function viewOffice($emp_name)
     {
         include 'connection.php';
-        $query = "SELECT OFFICE_STATION   from tblemployeeinfo where UNAME = '".$emp_name."' ";
+        $query = "SELECT OFFICE_STATION   from tblemployeeinfo where CONCAT(tblemployeeinfo.FIRST_M,' ',tblemployeeinfo.LAST_M) ='".$emp_name."' ";
         $result = mysqli_query($conn, $query);
         while($row = mysqli_fetch_array($result))
         {
@@ -271,17 +271,19 @@ session_start();
 $func = '';
 if(isset($_POST['action']))
 {
-    if($_POST['action'] == 'deleteTravelOrder' )
+    $action = $_POST['action'];
+    if($action == 'deleteTravelOrder' )
     {
         deleteTravelOrder();
     }
-     if($_POST['action'] == 'add')
+}else if(isset($_GET['action'])){
+$action2 = $_GET['action'];
+    if($_GET['action']  == 'add')
     
     {
         add();
+        // echo 'a';
     }
-}else{
-
 }
   
 
