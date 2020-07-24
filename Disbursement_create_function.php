@@ -1,6 +1,8 @@
 
 <?php
 //include('../@classes/db.php');
+//nta
+
 
 
 $mode = $_POST["mode"];
@@ -37,6 +39,7 @@ echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
 
+    
 
 if($mode=="BURS"){
   
@@ -50,7 +53,25 @@ if($mode=="BURS"){
     
     else{
     
-    
+        for($i=0;$i < count($_POST['charge']); $i++)
+        {
+            /* https://stackoverflow.com/questions/7856980/jquery-input-array-form-ajax */
+
+            $charge  = $_POST['charge'][$i];
+            $ntano  = $_POST['ntano'][$i];
+            $amount  = $_POST['amount'][$i];
+           
+            include 'connection.php';
+           
+            // ===============================================================
+            $insert ="INSERT INTO dv_nta (dv, type, accno, amount) values ('$dv','$charge','$ntano','$amount')";
+            if (mysqli_query($con, $insert)) {
+            } else {
+                
+            }
+        
+        }  
+   
       $update = mysqli_query($con,"Update saroobburs set dvstatus = 'Disbursed'  where burs = '$burs'");
       /* //updating balance
       $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");

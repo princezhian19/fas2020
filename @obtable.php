@@ -351,7 +351,7 @@ include('db.class.php'); // call db.class.php
                                 <div class="col-md-12">
                                     <div class="col-md-12" >
                                         <!-- Table of Uacs -->
-                                        <table id="example" class="table table-responsive table-bordered " style="background-color: white; width:100%; text-align:left; border-style: groove;" >
+                                        <table id="example" class="table table-responsive table-stripped table-bordered " style="background-color: white; width:100%; text-align:left; border-style: groove;" >
                                         <thead>
                                         <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
                                        

@@ -699,7 +699,7 @@ p.mix {border-style: dotted dashed solid double;} */
                         <tr>
                         <td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td>
                         <td class="col-md-7">
-                        <select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge[]" required >
+                        <select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge" required >
                         <option value = "">Select NCA/NTA</option>
                         <option value = "NCA">NCA</option>
                         <option value = "NTA">NTA</option>
@@ -725,7 +725,7 @@ p.mix {border-style: dotted dashed solid double;} */
                         </select>  -->
                         <!-- <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntano" name="ntano[]" placeholder="NCA/NTA NO." autocomplete="off"> -->
 
-                        <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano"> <?php getNta();?> </select>
+                        <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano" name = "ntano[]"> <?php getNta();?> </select>
                         
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                             <table class="table table-striped table-hover" id="main2" >
@@ -965,7 +965,7 @@ p.mix {border-style: dotted dashed solid double;} */
       if (x < max_fields) {
         x++;
         var list = "Hello";
-            $(wrapper).append('<div ><br><br><br><br><a href="#" style="margin-right:50px" class="delete btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i></a><br><br><div class="col-md-3"><tr><td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td><td class="col-md-7"><select class="form-control select" style="width: 100%; height: 40px;" name="charge" id="charge" required > <option value = "">Select NCA/NTA</option> <option value = "NCA">NCA</option> <option value = "NTA">NTA</option> </select> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td> <td class="col-md-7">  <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano"> <?php getNta();?> </select>  </td> </tr> </div><div class="col-md-2"> <tr> <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="amount" name="amount[]" placeholder="0" autocomplete="off"> </td> </tr> </div>  <div class="col-md-3"> <tr> <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off"> </td> </tr> </div></div>'); //add input box
+            $(wrapper).append('<div ><br><br><br><br><a href="#" style="margin-right:50px" class="delete btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i></a><br><br><div class="col-md-3"><tr><td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td><td class="col-md-7"><select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge" required > <option value = "">Select NCA/NTA</option> <option value = "NCA">NCA</option> <option value = "NTA">NTA</option> </select> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td> <td class="col-md-7">  <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano" name="ntano[]"> <?php getNta();?> </select>  </td> </tr> </div><div class="col-md-2"> <tr> <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="amount" name="amount[]" placeholder="0" autocomplete="off"> </td> </tr> </div>  <div class="col-md-3"> <tr> <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off"> </td> </tr> </div></div>'); //add input box
           } else {
             alert('You Reached the limits')
           }
@@ -1362,6 +1362,12 @@ function myFunctionother() {
     var remarks = $('#remarks').val(); 
     var status = $('#status').val(); 
 
+
+    var charge = $("input[name='charge[]']").val();
+    var ntano = $("input[name='ntano[]']").val();
+    var amount = $("input[name='amount[]']").val();
+   
+
     $.ajax({
     url: "Disbursement_create_function.php",
     type: "post",
@@ -1382,7 +1388,10 @@ function myFunctionother() {
     philhealth : philhealth,
     other : other,
     remarks : remarks,
-    status : status},
+    status : status,
+    charge : charge,
+    ntano : ntano,
+    amount : amount},
     success : function(data){
     alert(data); /* alerts the response from php.*/
     window.location.href='disbursement.php';
