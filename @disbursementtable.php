@@ -107,14 +107,19 @@
                 $timereceived = $row["timereceived"];
                 $payee = $row["payee"];
                 $particular = $row["particular"];
-                $amount = $row["amount"];
+                $amount1 = $row["amount"];
+                $amount = number_format($amount1,2);
                 $tax = $row["tax"];
                 $gsis = $row["gsis"];
                 $pagibig  = $row["pagibig"];
                 $philhealth = $row["philhealth"];
                 $other = $row["other"];
-                $total = $row["total"];
-                $net = $row["net"];
+
+                $total1 = $row["total"];
+                $total = number_format($total1,2);
+
+                $net1 = $row["net"];
+                $net = number_format($net1,2);
                 $remarks = $row["remarks"];
                 $status = $row["status"];
                 $date_proccess = $row["date_proccess"];
