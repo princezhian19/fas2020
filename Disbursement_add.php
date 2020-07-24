@@ -63,7 +63,7 @@ p.double {border-style: double;} */
 .input {border-style: groove;}
 
 .tb {
-  
+
   border: 1px solid black;
 }
 /* p.ridge {border-style: ridge;}
@@ -135,7 +135,6 @@ p.mix {border-style: dotted dashed solid double;} */
                              
                                 // $('#ors').prop('disabled', true);
                                 $('#ors1').prop('disabled', true);
-
                                 $("#result").click(function(){
                                 $("#main").hide();
                                 // alert(filter_data);
@@ -290,9 +289,6 @@ p.mix {border-style: dotted dashed solid double;} */
                             </td>
                             </tr>
 
-
-
-
                             <tr>
                             <td class="col-md-2"><b>ORS No.<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
@@ -347,7 +343,6 @@ p.mix {border-style: dotted dashed solid double;} */
                               
                                 function load_data(query)
                                 {
-
                                
                                 $.ajax({
                                 
@@ -844,7 +839,7 @@ p.mix {border-style: dotted dashed solid double;} */
 </div>
 <br>
 
-<button type="submit" name="cancel" style="margin-left: 10px;" class="btn btn-primary pull-left">Save</button>
+<button type="submit" name="savediv" style="margin-left: 10px;" class="btn btn-primary pull-left">Save</button>
 <!-- <button type="submit" name="cancel" style="margin-right: 10px;" class="btn btn-success pull-right">Disburse Voucher</button> -->
 <br>
 <br>
@@ -1319,6 +1314,47 @@ function myFunctionother() {
   }
   
   }
+        
+
+}
+
+
+
+//Save Data
+function SaveData() {
+
+  var mode = document.getElementById("mode").value;
+
+
+
+
+
+payee
+particular
+amount
+deductions
+net
+
+  var ors = document.getElementById("ors").value;
+  var ors = document.getElementById("ors1").value;
+  var orsdate = document.getElementById("orsdate").value;
+  var dv = document.getElementById("dv").value;
+  var dvdate = document.getElementById("dvdate").value;
+
+  var tax = document.getElementById("tax").value;
+  var gsis = document.getElementById("gsis").value;
+  var pagibig = document.getElementById("pagibig").value;
+  var philhealth = document.getElementById("philhealth").value;
+  var other = document.getElementById("other").value;
+
+
+
+
+  
+
+  }
+  
+  
         
 
 }

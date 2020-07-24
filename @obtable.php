@@ -457,8 +457,7 @@ include('db.class.php'); // call db.class.php
                       
                       return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i>&nbsp;&nbsp;Edit&nbsp;&nbsp;</a> | <a  class="btn btn-danger btn-xs" onclick="myFunc()" onclick="" id="delete"><i class="fa fa-trash-o"></i>  Delete</a>';
 
-                      
-                      
+                    
 
                       }
                       function myFunc() {
@@ -476,10 +475,6 @@ include('db.class.php'); // call db.class.php
                     
                   }
 
-                   
-
-                
-
                   </script>
 
 
@@ -490,14 +485,7 @@ include('db.class.php'); // call db.class.php
               <input hidden  type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
               </tr>
               </table>
-                
-
-
-
-           
-                            
-              
-            
+     
                 </div>
            
                 <!-- </form> -->
