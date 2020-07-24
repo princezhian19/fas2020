@@ -561,6 +561,23 @@ p.mix {border-style: dotted dashed solid double;} */
                             </td>
                             </tr>
 
+                            <tr>
+                            <td class="col-md-1"><b>Remarks<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-7">
+                            <textarea class="form-control input" placeholder="Remarks" id="remarks" name="remarks" style="width: 100%; height: 40px;" ></textarea> 
+                            </td>
+                            </tr>
+
+                            <tr>
+                            <td class="col-md-1"><b>Status<span style = "color:red;">*</span></b></td>
+                            <td class="col-md-7">
+                            <select class="form-control select input" style="width: 100%; height: 40px;" name="status" id="status" required >
+                            
+                            <option value = "Disbursed">Disbursed</option>
+                            <option value = "Pending">Pending</option>
+                            </td>
+                            </tr>
+
 
                             </table>
 
@@ -839,7 +856,9 @@ p.mix {border-style: dotted dashed solid double;} */
 </div>
 <br>
 
-<button type="submit" name="savediv" style="margin-left: 10px;" class="btn btn-primary pull-left">Save</button>
+<!-- <button type="" onclick="SaveData()" name="savediv" style="margin-left: 10px;" class="btn btn-primary pull-left">Save</button> -->
+
+<a  id="savediv" style="margin-right: 10px;" class="btn btn-primary pull-right">&nbsp;&nbsp;Save&nbsp;&nbsp;</a>
 <!-- <button type="submit" name="cancel" style="margin-right: 10px;" class="btn btn-success pull-right">Disburse Voucher</button> -->
 <br>
 <br>
@@ -1318,48 +1337,61 @@ function myFunctionother() {
 
 }
 
+</script>
 
+<script>
+  $( "#savediv" ).click(function() {
+    
+    var mode = $('#mode').val();
+    var ors = $('#ors').val();
+    var ors1 = $('#ors1').val();
+    var orsdate = $('#orsdate').val();
+    var dv = $('#dv').val();
+    var dvdate = $('#datepicker2').val();
+    var payee = $('#payee').val();
+    var particular = $('#particular').val();
+    var net = $('#net').val();
+    var amount = $('#amount').val();
+    var deductions = $('#deductions').val();
 
-//Save Data
-function SaveData() {
+    var tax = $('#tax').val();
+    var gsis = $('#gsis').val();
+    var pagibig = $('#pagibig').val();
+    var philhealth = $('#philhealth').val();
+    var other = $('#other').val(); 
+    var remarks = $('#remarks').val(); 
+    var status = $('#status').val(); 
 
-  var mode = document.getElementById("mode").value;
+    $.ajax({
+    url: "Disbursement_create_function.php",
+    type: "post",
+    data: {mode : mode , 
+    ors : ors, 
+    ors1 : ors1, 
+    orsdate : orsdate, 
+    dv : dv, 
+    dvdate : dvdate, 
+    payee : payee, 
+    particular : particular, 
+    net : net, 
+    amount : amount, 
+    deductions : deductions,
+    tax : tax, 
+    gsis : gsis, 
+    pagibig : pagibig, 
+    philhealth : philhealth,
+    other : other,
+    remarks : remarks,
+    status : status},
+    success : function(data){
+    alert(data); /* alerts the response from php.*/
+    window.location.href='disbursement.php';
+    }
+    });
 
+    // alert(mode);
 
-
-
-
-payee
-particular
-amount
-deductions
-net
-
-  var ors = document.getElementById("ors").value;
-  var ors = document.getElementById("ors1").value;
-  var orsdate = document.getElementById("orsdate").value;
-  var dv = document.getElementById("dv").value;
-  var dvdate = document.getElementById("dvdate").value;
-
-  var tax = document.getElementById("tax").value;
-  var gsis = document.getElementById("gsis").value;
-  var pagibig = document.getElementById("pagibig").value;
-  var philhealth = document.getElementById("philhealth").value;
-  var other = document.getElementById("other").value;
-
-
-
-
-  
-
-  }
-  
-  
-        
-
-}
-
-
+});
 </script>
 
 

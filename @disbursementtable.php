@@ -69,7 +69,7 @@
                   <!-- <th style="text-align:center" width="">SR No.</th>
                   <th style="text-align:center" width="">PPA</th>
                   <th style="text-align:center" width="">UACS</th> -->
-                  <th style="text-align:center" width="">DATE RECEIVED</th>
+                  <th style="text-align:center" width="">ORS DATE</th>
                   <th style="text-align:center" width="">DATE DISBURSED</th>
                   <th style="text-align:center" width="">DATE RELEASED</th>
                   <th style="text-align:center" width="">PAYEE</th>
@@ -114,7 +114,6 @@
                 $pagibig  = $row["pagibig"];
                 $philhealth = $row["philhealth"];
                 $other = $row["other"];
-
                 $total1 = $row["total"];
                 $total = number_format($total1,2);
 
@@ -124,7 +123,8 @@
                 $status = $row["status"];
                 $date_proccess = $row["date_proccess"];
                 $date_proccess1 = date('F d, Y', strtotime($date_proccess));
-                $datereleased = $row["datereleased"];
+                $datereleased1 = $row["datereleased"];
+                $datereleased = date('F d, Y', strtotime($datereleased1));
                 ?>
                 <tr>
                 <td><a href="" onclick="myFunction(this)" data-dv="<?php echo $dv;?>" data-toggle="modal" data-target="#dv_data_Modal"><?php echo $dv;?></a></td>
@@ -186,9 +186,11 @@
                                         <?php endif ?>
                                       <?php endif ?>
                                       <td>
-                                        <a  class = "btn btn-primary btn-xs" href='disbursementupdate.php?getid=<?php echo $id;?>' > <i class='fa'>&#xf044;</i> Edit</a> | 
+
+                                      <a  class="btn btn-primary btn-xs" href=''> <i class='fa'>&#xf044;</i> Manage Data</a>
+                                        <!-- <a  class = "btn btn-primary btn-xs" href='disbursementupdate.php?getid=<?php echo $id;?>' > <i class='fa'>&#xf044;</i> Edit</a> | 
                                       
-                                        <a onclick="return confirm('Are you sure you want to delete this record?');" name=""  href="@Functions/ddeletefunction.php?getid=<?php echo $id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>                                     
+                                        <a onclick="return confirm('Are you sure you want to delete this record?');" name=""  href="@Functions/ddeletefunction.php?getid=<?php echo $id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>                                      -->
                                       </td>
                                     </tr>
                                   <?php } ?>    
