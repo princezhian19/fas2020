@@ -64,7 +64,7 @@
                   cache: false,
                   success: function(data)
                   {
-console.log(data);
+console.log(data)
                   }
                 });
           }, function() {

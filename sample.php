@@ -12,7 +12,7 @@
 function getAddress($latitude,$longitude){
     if(!empty($latitude) && !empty($longitude)){
         //Send request and receive json data by address
-        $geocodeFromLatLong = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?latlng='.$latitude.','.$longitude.'&sensor=true_or_false&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0');
+        $geocodeFromLatLong = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?latlng='.trim($latitude).','.trim($longitude).'&sensor=true&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0');
                 $output = json_decode($geocodeFromLatLong);
         $status = $output->status;
         //Get address from json data

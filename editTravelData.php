@@ -25,10 +25,10 @@ session_start();
      $result = mysqli_query($conn, $query);
      if(mysqli_num_rows($result) > 0)    
      {
-        while($row = mysqli_fetch_array($result))
+        if($row1 = mysqli_fetch_array($result))
         {
-            ?>
-             <div class="well" style = "padding:10px;">
+         ?>
+         <div class="well" style = "padding:10px;">
                   <div class="box-body">
                     <div class = "row">
                       <div class = "col-sm-12 col-md-12 col-lg-12">
@@ -37,7 +37,7 @@ session_start();
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Activity Title</label>
-                              <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" required/>
+                              <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row1['RO_OT_OB']?>" required/>
                             </div>
                           </div>
                           <div class="col-md-12">
@@ -47,7 +47,7 @@ session_start();
                                   <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" name = "date" class="form-control datepicker4" value = "<?php echo $row['DATE'];?>" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
+                                <input type="text" name = "date" class="form-control datepicker4" value = "<?php echo $row1['DATE'];?>" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
                               </div>
                             </div>
                           </div>
@@ -78,7 +78,7 @@ session_start();
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Others</label>
-                                <input type="text" name = "others" value = "<?php echo $row['OTHERS'];?>" class="form-control" >
+                                <input type="text" name = "others" value = "<?php echo $row1['OTHERS'];?>" class="form-control" >
                             </div>
                           </div>
                           </div>
@@ -88,8 +88,8 @@ session_start();
                                 <div class="form-group">
                                     <label> Per Diem </label>
                                     <label class = "pull-right">
-                                    <input type ="hidden" value = "<?php echo $row['PLACE'];?>" id = "distance"/>
-                                    <?php echo $row['DISTANCE'];?>
+                                    <input type ="hidden" value = "<?php echo $row1['PLACE'];?>" id = "distance"/>
+                                    <?php echo $row1['DISTANCE'];?>
                                     </label>
                                 </div>
                                 <div class="form-group">
@@ -114,13 +114,26 @@ session_start();
                           </div>
                       </div>
                     </div>
+                    </div>
+                    </div>
+         <?php
+        }
+        while($row = mysqli_fetch_array($result))
+        {
+            $parts = explode('to', $row['PLACE']);
+            $filename_arr = $data['my_slider'];
+            $file_coma = implode(',', $filename_arr);
+            ?>
+                <div class="well" style = "padding:10px;">
+                  <div class="box-body">
+                   
                       <div style = "padding:10px;" >
-                      <!-- <div class="box-body myTemplate2">
+                      <div class="box-body myTemplate2">
                         <div class="row ">
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>From</label>
-                                <input type="text" name = "from3[]" class="form-control">
+                                <input type="text" name = "from3[]" class="form-control" value = "<?php echo $parts;?>">
                               </div>
                           </div>
                           <div class="col-md-6">
@@ -143,7 +156,7 @@ session_start();
                             </div>
                           </div>
                         </div>
-                      </div> -->
+                      </div>
                       </div>
                   </div>
                 </div>
