@@ -209,7 +209,7 @@ function app($connect)
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input autocomplete="off" value ="<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" type="text" class="form-control pull-right input" id="datepicker3" placeholder='Enter Date' name="datereturned">
+                        <input autocomplete="off" value ="" type="text" class="form-control pull-right input" id="datepicker3" placeholder='Enter Date' name="datereturned">
                     </div>
                     <br>
                     

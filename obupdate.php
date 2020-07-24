@@ -102,7 +102,7 @@ $query = mysqli_query($conn,"SELECT * FROM saroob where id = '$getid' ");
     $datereturned = $row["datereturned"];
    
     if($datereturned=='0000-00-00'){
-    $datereturned11 = date('m/d/Y');
+    $datereturned11 = '';
     }
     else{
     $datereturned11 = date('m/d/Y', strtotime($datereturned));
