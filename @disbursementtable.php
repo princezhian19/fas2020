@@ -66,22 +66,22 @@
                 <tr style="background-color: white;color:blue;">
                   <th style="text-align:center" width="">DVs No.</th>
                   <th style="text-align:center" width="">ORS/BURS No.</th>
-                  <th style="text-align:center" width="">SR No.</th>
+                  <!-- <th style="text-align:center" width="">SR No.</th>
                   <th style="text-align:center" width="">PPA</th>
-                  <th style="text-align:center" width="">UACS</th>
+                  <th style="text-align:center" width="">UACS</th> -->
                   <th style="text-align:center" width="">DATE RECEIVED</th>
                   <th style="text-align:center" width="">DATE DISBURSED</th>
                   <th style="text-align:center" width="">DATE RELEASED</th>
                   <th style="text-align:center" width="">PAYEE</th>
                   <th style="text-align:center" width="">PARTICULAR</th>
-                  <th style="text-align:center" width="">AMOUNT</th>
-                  <th style="text-align:center" width="">TAX</th>
+                  <th style="text-align:center" width="">GROSS AMOUNT</th>
+                 <!--  <th style="text-align:center" width="">TAX</th>
                   <th style="text-align:center" width="">GSIS</th>
                   <th style="text-align:center" width="">PAGIBIG</th>
                   <th style="text-align:center" width="">PHILHEALTH</th>
-                  <th style="text-align:center" width="">OTHER PAYABLES</th>
+                  <th style="text-align:center" width="">OTHER PAYABLES</th> -->
                   <th style="text-align:center" width="">TOTAL DEDUCTIONS</th>
-                  <th style="text-align:center" width="">NET</th>
+                  <th style="text-align:center" width="">NET AMOUNT</th>
                   <th style="text-align:center" width="">REMARKS</th>
                   <th style="text-align:center" width="">STATUS</th>
                   <th style="text-align:center" width="150">ACTION</th>
@@ -94,7 +94,7 @@
               $database = "fascalab_2020";
             // Create connection
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT * FROM disbursement order by ID desc");
+              $view_query = mysqli_query($conn, "SELECT dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount, sum(total) as total, sum(net) as net, remarks, status  FROM disbursement group by ors order by ID desc");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["ID"]; 
                 $dv = $row["dv"];
@@ -122,11 +122,11 @@
                 $datereleased = $row["datereleased"];
                 ?>
                 <tr>
-                  <td><?php echo $dv;?></td>
+                <td><a href="" onclick="myFunction(this)" data-dv="<?php echo $dv;?>" data-toggle="modal" data-target="#dv_data_Modal"><?php echo $dv;?></a></td>
                   <td><?php echo $ors;?></td>
-                  <td><?php echo $sr;?></td>
+                <!--   <td><?php echo $sr;?></td>
                   <td><?php echo $ppa;?></td>
-                  <td><?php echo $uacs;?></td>
+                  <td><?php echo $uacs;?></td> -->
                   <?php if ($datereceived == '1970-01-01' || $datereceived =='0000-00-00'): ?>
                     <td><a href="received_dv.php?id=<?php echo $id;?>" class="btn btn-primary btn-xs">Receive</a></td>
                     <?php else: ?>
@@ -163,16 +163,16 @@
                                   <td><?php echo $payee;?></td>
                                   <td><?php echo $particular;?></td>
                                   <td><?php echo $amount;?></td>
-                                  <td><?php echo $tax;?></td>
+                                 <!--  <td><?php echo $tax;?></td>
                                   <td><?php echo $gsis;?></td>
                                   <td><?php echo $pagibig;?></td>
                                   <td><?php echo $philhealth;?></td>
-                                  <td><?php echo $other;?></td>
+                                  <td><?php echo $other;?></td> -->
                                   <td><?php echo $total;?></td>
                                   <td><?php echo $net;?></td>
                                   <td><?php echo $remarks;?></td>
                                   <?php if ($status=='Disbursed'): ?>
-                                    <td style='background-color:green'><b>Disbursed</b></td>
+                                    <td style='background-color:white'>Disbursed</td>
                                     <?php else: ?>
                                       <?php if ($status=='Pending'): ?>
                                         <td style='background-color:red'><b>Pending</b></td>

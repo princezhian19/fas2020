@@ -63,7 +63,7 @@ p.double {border-style: double;} */
 .input {border-style: groove;}
 
 .tb {
-  
+
   border: 1px solid black;
 }
 /* p.ridge {border-style: ridge;}
@@ -135,7 +135,6 @@ p.mix {border-style: dotted dashed solid double;} */
                              
                                 // $('#ors').prop('disabled', true);
                                 $('#ors1').prop('disabled', true);
-
                                 $("#result").click(function(){
                                 $("#main").hide();
                                 // alert(filter_data);
@@ -290,9 +289,6 @@ p.mix {border-style: dotted dashed solid double;} */
                             </td>
                             </tr>
 
-
-
-
                             <tr>
                             <td class="col-md-2"><b>ORS No.<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
@@ -347,7 +343,6 @@ p.mix {border-style: dotted dashed solid double;} */
                               
                                 function load_data(query)
                                 {
-
                                
                                 $.ajax({
                                 
