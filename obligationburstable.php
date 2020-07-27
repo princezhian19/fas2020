@@ -438,7 +438,6 @@ include('db.class.php'); // call db.class.php
 
                         } );
 
-
                       $('#example tbody').on( 'click', '#editORS', function () {
                       var data = table.row( $(this).parents('tr') ).data();
                       window.location="obupdate1.php?getid="+data[0];
