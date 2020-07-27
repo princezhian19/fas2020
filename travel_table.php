@@ -178,7 +178,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
                       "render": function (data, type, row, meta ) {  
                         if(row[1] == "<?php echo $_SESSION['complete_name2'];?>"){
-                          action = "<button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button> &nbsp;<button class = 'btn btn-md btn-primary' style = 'font-family:Arial' id = 'edit'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger'><i class = 'fa fa-trash'></i> Delete</button> ";
+                          action = "<button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button> &nbsp;<button class = 'btn btn-md btn-primary' style = 'font-family:Arial' id = 'edit'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger' id = 'delete' style = 'font-family:Arial;'><i class = 'fa fa-trash'></i> Delete</button> ";
                         }else{
                           action = "<center><button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button></center>";
                         }
@@ -297,6 +297,48 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                 //   }
                 // });
               });
+              // when users click delete button
+              $('#example tbody').on( 'click', '#delete', function () {
+                var data = table.row( $(this).parents('tr') ).data();
+                var RO = data[2];
+                var username = data[1];
+                var id = data[0];
+                
+                swal({
+                      title: "Are you sure?",
+                      text: "Your will not be able to recover this entry!",
+                      type: "warning",
+                      showCancelButton: true,
+                      confirmButtonClass: "btn btn-danger",
+                      confirmButtonText: "Yes, delete it!",
+                      closeOnConfirm: false
+                      },
+                      function(){
+                      swal("Deleted!", "Your travel date  has been deleted.", "success");
+                          $.ajax({
+                              url:"travelclaim_fuddnctions.php",
+                              method:"POST",
+                              data:{
+                              'action': 'deleteAll',
+                              "ro": RO,
+                              "id":id,
+                          },
+                          success:function(data)
+                          {
+                      
+                                setTimeout(function () {
+                                window.location = "CreateTravelClaim.php?username=<?php echo $_GET['username'];?>&division=<?php echo $_GET['division'];?>";
+                                }, 1000);
+
+                            
+                          }
+                          });
+
+                      }
+                      );
+             
+              });
+
 
 
 

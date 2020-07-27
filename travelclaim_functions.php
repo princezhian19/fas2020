@@ -207,7 +207,25 @@ session_start();
         if (mysqli_query($conn, $insert)) {
         } else {
         }
-        echo $insert;
+    }
+    function deleteAll()
+    {
+        
+        include 'connection.php';
+        $del1 ="DELETE FROM `tbltravel_claim_info2` WHERE `RO_TO_OB` = '".$_POST['ro']."' ";
+        if (mysqli_query($conn, $insert)) {
+        } else {
+        }
+
+        $del2 ="DELETE FROM `tbltravel_claim_info` WHERE `RO`= '".$_POST['id']."' ";
+        if (mysqli_query($conn, $insert)) {
+        } else {
+        }
+
+        $del3 ="DELETE FROM `tbltravel_claim_ro` WHERE `ID`= '".$_POST['id']."' ";
+        if (mysqli_query($conn, $insert)) {
+        } else {
+        }
     }
     function getPurposeTravel($username)
     {
