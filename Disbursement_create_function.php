@@ -37,14 +37,12 @@ if (mysqli_connect_errno())
 {
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-
-
     
 
 if($mode=="BURS"){
   
-    $sql = "INSERT INTO disbursement (dv,ors,datereceived,date_proccess,payee,particular,amount,tax,gsis,pagibig,philhealth,other,total,net,datereleased,remarks,status) 
-    VALUES ('$dv','$burs','$orsdate','$dvdate','$payee','$particular','$amount','$tax','$gsis','$pagibig','$philhealth','$other','$deductions','$net','$dvdate','$remarks','$status')";
+    $sql = "INSERT INTO disbursement (dv,ors,datereceived,date_proccess,payee,particular,amount,tax,gsis,pagibig,philhealth,other,total,net,datereleased,remarks,status,flag) 
+    VALUES ('$dv','$burs','$orsdate','$dvdate','$payee','$particular','$amount','$tax','$gsis','$pagibig','$philhealth','$other','$deductions','$net','$dvdate','$remarks','$status','BURS')";
     if (!mysqli_query($con,$sql))
     {
     die('Error: ' . mysqli_error($con));
@@ -52,25 +50,29 @@ if($mode=="BURS"){
     }
     
     else{
-    
-        for($i=0;$i < count($_POST['charge']); $i++)
-        {
-            /* https://stackoverflow.com/questions/7856980/jquery-input-array-form-ajax */
 
-            $charge  = $_POST['charge'][$i];
-            $ntano  = $_POST['ntano'][$i];
-            $amount  = $_POST['amount'][$i];
-           
-            include 'connection.php';
-           
-            // ===============================================================
-            $insert ="INSERT INTO dv_nta (dv, type, accno, amount) values ('$dv','$charge','$ntano','$amount')";
-            if (mysqli_query($con, $insert)) {
-            } else {
-                
-            }
+      /*   if(isset($_POST["charge"]))
+        { */
+    
+            for($i=0;$i < count($_POST['charge']); $i++)
+            {
+                /* https://stackoverflow.com/questions/7856980/jquery-input-array-form-ajax */
+
+                $charge  = $_POST['charge'][$i];
+                $ntano  = $_POST['ntano'][$i];
+                $ntaamount  = $_POST['ntaamount'][$i];
+              
+                include 'connection.php';
+              
+                // ===============================================================
+                $insert ="INSERT INTO dv_nta (dv, type, accno, amount) values ('$dv',".$_POST['charge'][$i].",".$_POST['ntano'][$i].",".$_POST['ntaamount'][$i].")";
+                if (mysqli_query($con, $insert)) {
+                } else {
+                    
+                }
+              }
         
-        }  
+        // }  
    
       $update = mysqli_query($con,"Update saroobburs set dvstatus = 'Disbursed'  where burs = '$burs'");
       /* //updating balance
@@ -80,8 +82,8 @@ if($mode=="BURS"){
 
 }
 else{
-    $sql = "INSERT INTO disbursement (dv,ors,datereceived,date_proccess,payee,particular,amount,tax,gsis,pagibig,philhealth,other,total,net,datereleased,remarks,status) 
-    VALUES ('$dv','$ors','$orsdate','$dvdate','$payee','$particular','$amount','$tax','$gsis','$pagibig','$philhealth','$other','$deductions','$net','$dvdate','$remarks','$status')";
+    $sql = "INSERT INTO disbursement (dv,ors,datereceived,date_proccess,payee,particular,amount,tax,gsis,pagibig,philhealth,other,total,net,datereleased,remarks,status,flag) 
+    VALUES ('$dv','$ors','$orsdate','$dvdate','$payee','$particular','$amount','$tax','$gsis','$pagibig','$philhealth','$other','$deductions','$net','$dvdate','$remarks','$status','ORS')";
     if (!mysqli_query($con,$sql))
     {
     die('Error: ' . mysqli_error($con));
@@ -89,6 +91,25 @@ else{
     }
     
     else{
+
+
+      for($i=0;$i < count($_POST['charge']); $i++)
+      {
+          /* https://stackoverflow.com/questions/7856980/jquery-input-array-form-ajax */
+
+          $charge  = $_POST['charge'][$i];
+          $ntano  = $_POST['ntano'][$i];
+          $ntaamount  = $_POST['ntaamount'][$i];
+        
+          include 'connection.php';
+        
+          // ===============================================================
+          $insert ="INSERT INTO dv_nta (dv, type, accno, amount) values ('$dv',".$_POST['charge'][$i].",".$_POST['ntano'][$i].",".$_POST['ntaamount'][$i].")";
+          if (mysqli_query($con, $insert)) {
+          } else {
+              
+          }
+        }
     
     
       $update = mysqli_query($con,"Update saroob set dvstatus = 'Disbursed'  where ors = '$ors'");

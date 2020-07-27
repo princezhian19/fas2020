@@ -3,12 +3,23 @@ session_start();
 date_default_timezone_set("Asia/Manila");
 $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-		$get = $_POST['filter_data'];
+        $get = $_POST['filter_data'];
+        $flag = $_POST['flag'];
+        
+        if($flag=="BURS"){
+            $fieldsName = 'id,saronumber,ppa,uacs,amount,dvstatus';
+            $table = 'saroobburs';
+            $join = '';
+            $WHERE = " WHERE burs = '$get' ";
+        }
+        else{
+            $fieldsName = 'id,saronumber,ppa,uacs,amount,dvstatus';
+            $table = 'saroob';
+            $join = '';
+            $WHERE = " WHERE ors = '$get' ";
+        }
 
-		$fieldsName = 'id,saronumber,ppa,uacs,amount,dvstatus';
-		$table = 'saroob';
-		$join = '';
-		$WHERE = " WHERE ors = '$get' ";
+		
 
 		/* echo "select $fieldsName from $table $WHERE" ;
 		exit(); */
