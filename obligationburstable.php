@@ -415,7 +415,6 @@ include('db.class.php'); // call db.class.php
 
                         // var filter_data ='0001';
 
-
                         var table = $('#example').DataTable( {
                           
 
@@ -434,7 +433,6 @@ include('db.class.php'); // call db.class.php
                         "type": "POST",
                         "data": {
                         "filter_data": burs,
-
 
                         }}
 
