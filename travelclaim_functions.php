@@ -213,17 +213,17 @@ session_start();
         
         include 'connection.php';
         $del1 ="DELETE FROM `tbltravel_claim_info2` WHERE `RO_TO_OB` = '".$_POST['ro']."' ";
-        if (mysqli_query($conn, $insert)) {
+        if (mysqli_query($conn, $del1)) {
         } else {
         }
-
+echo $del1;
         $del2 ="DELETE FROM `tbltravel_claim_info` WHERE `RO`= '".$_POST['id']."' ";
-        if (mysqli_query($conn, $insert)) {
+        if (mysqli_query($conn, $del2)) {
         } else {
         }
 
         $del3 ="DELETE FROM `tbltravel_claim_ro` WHERE `ID`= '".$_POST['id']."' ";
-        if (mysqli_query($conn, $insert)) {
+        if (mysqli_query($conn, $del3)) {
         } else {
         }
     }
@@ -301,6 +301,9 @@ if(isset($_POST['action']))
     if($action == 'deleteTravelOrder' )
     {   
         deleteTravelOrder();
+    }else if($action == 'deleteAll')
+    {
+        deleteAll();
     }
 }else if(isset($_GET['action'])){
 $action2 = $_GET['action'];

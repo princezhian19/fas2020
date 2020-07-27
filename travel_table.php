@@ -316,12 +316,12 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                       function(){
                       swal("Deleted!", "Your travel date  has been deleted.", "success");
                           $.ajax({
-                              url:"travelclaim_fuddnctions.php",
+                              url:"travelclaim_functions.php",
                               method:"POST",
                               data:{
                               'action': 'deleteAll',
                               "ro": RO,
-                              "id":id,
+                              "id":id
                           },
                           success:function(data)
                           {
