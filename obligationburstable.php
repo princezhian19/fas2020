@@ -102,7 +102,7 @@ include('db.class.php'); // call db.class.php
               $password = "w]zYV6X9{*BN";
               $database = "fascalab_2020";
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT datereceived, datereprocessed,datereturned, datereleased, burs, ponum, payee, particular, sum(amount) as amount, remarks, sarogroup, status  FROM saroobburs group by burs desc order by id desc ");
+              $view_query = mysqli_query($conn, "SELECT datereceived, datereprocessed,datereturned, datereleased, burs, ponum, payee, particular, sum(amount) as amount, remarks, sarogroup, status,dvstatus  FROM saroobburs group by burs desc order by id desc ");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["id"];
                 $datereceived = $row["datereceived"];
@@ -146,6 +146,7 @@ include('db.class.php'); // call db.class.php
                 $remarks = $row["remarks"];
                 $sarogroup = $row["sarogroup"];
                 $status = $row["status"];
+                $dvstatus = $row["dvstatus"];
                 ?>
                 <tr>
                   <?php if ($datereceived !='0000-00-00' ): ?>
@@ -176,7 +177,7 @@ include('db.class.php'); // call db.class.php
                              <?php else: ?> 
                                <td></td>
                              <?php endif ?>
-                             <td><a href="" onclick="myFunction(this)" data-burs="<?php echo $burs;?>" data-toggle="modal" data-target="#ors_data_Modal"><?php echo $burs;?></a></td>
+                             <td><a href="" onclick="myFunction(this)" data-dvstatus="<?php echo $dvstatus;?>" data-burs="<?php echo $burs;?>" data-toggle="modal" data-target="#ors_data_Modal"><?php echo $burs;?></a></td>
                              <td><?php echo $ponum;?></td>
                              <td><?php echo $payee;?></td>
                              <td><?php echo $particular;?></td>
@@ -390,6 +391,7 @@ include('db.class.php'); // call db.class.php
                     
                     //getting from data-id from link
                     var burs = orsget.getAttribute("data-burs");
+                    var dvstatus = orsget.getAttribute("data-dvstatus");
                  
                     var burs1 = $("input[name='ors1']");
                     var burs11 = $("input[name='ors11']");
@@ -402,7 +404,7 @@ include('db.class.php'); // call db.class.php
 
                         var ors = orsget.getAttribute("data-burs");
                        
-
+                        // alert(dvstatus);
 
                         $('#example').DataTable().destroy();
                         dataT();
@@ -453,7 +455,12 @@ include('db.class.php'); // call db.class.php
                       function createManageBtn() {
 
                       
+                      if(dvstatus=='Paid'){
+                      return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i>&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>';
+                      }
+                      else{
                       return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i>&nbsp;&nbsp;Edit&nbsp;&nbsp;</a> | <a  class="btn btn-danger btn-xs" onclick="myFunc()" onclick="" id="delete"><i class="fa fa-trash-o"></i>  Delete</a>';
+                      }
 
                       
                       
