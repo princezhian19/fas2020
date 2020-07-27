@@ -78,7 +78,7 @@ p.mix {border-style: dotted dashed solid double;} */
 <div class="box" style="border-style: groove;">
           <div class="box-body">
       
-            <h2 align="">Add Disbursement</h2>
+            <h2 align="">Update Disbursement</h2>
          
         <br>
       <li class="btn btn-warning"><a href="disbursement.php" style="color:white;text-decoration: none;">Back</a></li>
@@ -87,7 +87,7 @@ p.mix {border-style: dotted dashed solid double;} */
       <br>
         <!-- start of fields -->
         <div class="class"  >
-            <form method="POST" action='Disbursement_create_function.php' >
+            <form method="POST" action='' enctype="multipart/form-data" >
 
         <div class="col-md-6 well" >
          <!-- DV-->
@@ -820,7 +820,7 @@ p.mix {border-style: dotted dashed solid double;} */
                   <tr>
                   <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td>
                   <td class="col-md-7">
-                  <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="ntaamount" name="ntaamount[]" placeholder="0" autocomplete="off">
+                  <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="amount" name="amount[]" placeholder="0" autocomplete="off">
                   </td>
                   </tr>
 
@@ -862,9 +862,8 @@ p.mix {border-style: dotted dashed solid double;} */
 
 <!-- <button type="" onclick="SaveData()" name="savediv" style="margin-left: 10px;" class="btn btn-primary pull-left">Save</button> -->
 
-<!-- <a  id="savediv" type="submit" style="margin-right: 10px;" class="btn btn-primary pull-right">&nbsp;&nbsp;Save&nbsp;&nbsp;</a> -->
-<!-- <button type="submit" name="cancel" style="margin-right: 10px;" class="btn btn-success pull-right">&nbsp;&nbsp;Save&nbsp;&nbsp;</button> -->
-<input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave" style="margin-left:10px">
+<a  id="savediv" style="margin-right: 10px;" class="btn btn-primary pull-right">&nbsp;&nbsp;Save&nbsp;&nbsp;</a>
+<!-- <button type="submit" name="cancel" style="margin-right: 10px;" class="btn btn-success pull-right">Disburse Voucher</button> -->
 <br>
 <br>
 <br>
@@ -970,7 +969,7 @@ p.mix {border-style: dotted dashed solid double;} */
       if (x < max_fields) {
         x++;
         var list = "Hello";
-            $(wrapper).append('<div ><br><br><br><br><a href="#" style="margin-right:50px" class="delete btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i></a><br><br><div class="col-md-3"><tr><td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td><td class="col-md-7"><select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge" required > <option value = "">Select NCA/NTA</option> <option value = "NCA">NCA</option> <option value = "NTA">NTA</option> </select> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td> <td class="col-md-7">  <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano" name="ntano[]"> <?php getNta();?> </select>  </td> </tr> </div><div class="col-md-2"> <tr> <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="ntaamount" name="ntaamount[]" placeholder="0" autocomplete="off"> </td> </tr> </div>  <div class="col-md-3"> <tr> <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input readonly value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off"> </td> </tr> </div></div>'); //add input box
+            $(wrapper).append('<div ><br><br><br><br><a href="#" style="margin-right:50px" class="delete btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i></a><br><br><div class="col-md-3"><tr><td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td><td class="col-md-7"><select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge" required > <option value = "">Select NCA/NTA</option> <option value = "NCA">NCA</option> <option value = "NTA">NTA</option> </select> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td> <td class="col-md-7">  <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano" name="ntano[]"> <?php getNta();?> </select>  </td> </tr> </div><div class="col-md-2"> <tr> <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="amount" name="amount[]" placeholder="0" autocomplete="off"> </td> </tr> </div>  <div class="col-md-3"> <tr> <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off"> </td> </tr> </div></div>'); //add input box
           } else {
             alert('You Reached the limits')
           }
@@ -1345,7 +1344,7 @@ function myFunctionother() {
 </script>
 
 <script>
-  $( "#" ).click(function() {
+  $( "#savediv" ).click(function() {
     
     var mode = $('#mode').val();
     var ors = $('#ors').val();
@@ -1367,18 +1366,7 @@ function myFunctionother() {
     var remarks = $('#remarks').val(); 
     var status = $('#status').val(); 
 
-
-    var charge1 = $('#charge').val(); 
-    var charge = JSON.stringify(charge1);
-
-    var ntano1 = $('#ntano').val(); 
-    var ntano = JSON.stringify(ntano1);
-
-    var ntaamount1 = $('#ntaamount').val(); 
-    var ntaamount = JSON.stringify(ntaamount1);
-    // alert(charge);
-
-    /* var users = $('input[name="charge[]"]').map(function(){ 
+    var users = $('input[name="charge[]"]').map(function(){ 
     return this.value; 
     }).get();
     var users = $('input[name="ntano[]"]').map(function(){ 
@@ -1386,51 +1374,43 @@ function myFunctionother() {
     }).get();
     var users = $('input[name="amount[]"]').map(function(){ 
     return this.value; 
-    }).get(); */
+    }).get();
 
 
 
-    if(dv==""){
-      alert('DV no. is a required field.');
+
+    $.ajax({
+    url: "Disbursement_create_function.php",
+    type: "post",
+    data: {mode : mode,
+    'charge[]' : charge,
+    'ntano[]' : ntano, 
+    'amount[]' : amount, 
+    ors : ors, 
+    ors1 : ors1, 
+    orsdate : orsdate, 
+    dv : dv, 
+    dvdate : dvdate, 
+    payee : payee, 
+    particular : particular, 
+    net : net, 
+    amount : amount, 
+    deductions : deductions,
+    tax : tax, 
+    gsis : gsis, 
+    pagibig : pagibig, 
+    philhealth : philhealth,
+    other : other,
+    remarks : remarks,
+    status : status,
+    charge : charge,
+    ntano : ntano,
+    amount : amount},
+    success : function(data){
+    alert(data); /* alerts the response from php.*/
+    window.location.href='disbursement.php';
     }
-    else{
-      $.ajax({
-        url: "Disbursement_create_function.php",
-        type: "post",
-        data: {mode : mode,
-        charge : charge,
-        ntano : ntano,
-        ntaamount : ntaamount,
-        ors : ors, 
-        ors1 : ors1, 
-        orsdate : orsdate, 
-        dv : dv, 
-        dvdate : dvdate, 
-        payee : payee, 
-        particular : particular, 
-        net : net, 
-        amount : amount, 
-        deductions : deductions,
-        tax : tax, 
-        gsis : gsis, 
-        pagibig : pagibig, 
-        philhealth : philhealth,
-        other : other,
-        remarks : remarks,
-        status : status,
-        charge : charge,
-        ntano : ntano,
-        amount : amount},
-        success : function(data){
-        alert(data); /* alerts the response from php.*/
-        window.location.href='disbursement.php';
-        }
-        });
-
-    }
-
-
-   
+    });
 
     // alert(mode);
 

@@ -102,7 +102,7 @@ include('db.class.php'); // call db.class.php
               $password = "w]zYV6X9{*BN";
               $database = "fascalab_2020";
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT datereceived, datereprocessed,datereturned, datereleased, ors, ponum, payee, particular, sum(amount) as amount, remarks, sarogroup, status  FROM saroob group by ors desc order by id desc ");
+              $view_query = mysqli_query($conn, "SELECT datereceived, datereprocessed,datereturned, datereleased, ors, ponum, payee, particular, sum(amount) as amount, remarks, sarogroup, status,dvstatus  FROM saroob group by ors desc order by id desc ");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["id"];
                 $datereceived = $row["datereceived"];
@@ -146,6 +146,8 @@ include('db.class.php'); // call db.class.php
                 $remarks = $row["remarks"];
                 $sarogroup = $row["sarogroup"];
                 $status = $row["status"];
+                $dvstatus = $row["dvstatus"];
+
                 ?>
                 <tr>
                  
@@ -177,7 +179,7 @@ include('db.class.php'); // call db.class.php
                              <?php else: ?> 
                                <td></td>
                              <?php endif ?>
-                             <td><a href="" onclick="myFunction(this)" data-ors="<?php echo $ors;?>" data-toggle="modal" data-target="#ors_data_Modal"><?php echo $ors;?></a></td>
+                             <td><a href="" onclick="myFunction(this)" data-dvstatus="<?php echo $dvstatus;?>" data-ors="<?php echo $ors;?>" data-toggle="modal" data-target="#ors_data_Modal"><?php echo $ors;?></a></td>
                              <td><?php echo $ponum;?></td>
                              <td><?php echo $payee;?></td>
                              <td><?php echo $particular;?></td>
@@ -351,7 +353,7 @@ include('db.class.php'); // call db.class.php
                                 <div class="col-md-12">
                                     <div class="col-md-12" >
                                         <!-- Table of Uacs -->
-                                        <table id="example" class="table table-responsive table-bordered " style="background-color: white; width:100%; text-align:left; border-style: groove;" >
+                                        <table id="example" class="table table-responsive table-stripped table-bordered " style="background-color: white; width:100%; text-align:left; border-style: groove;" >
                                         <thead>
                                         <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
                                        
@@ -392,9 +394,13 @@ include('db.class.php'); // call db.class.php
                     
                     //getting from data-id from link
                     var ors = orsget.getAttribute("data-ors");
+
+                     var dvstatus = orsget.getAttribute("data-dvstatus");
                  
                     var ors1 = $("input[name='ors1']");
                     var ors11 = $("input[name='ors11']");
+
+                    
                     
                     ors1.val(ors);
                     ors11.val(ors);
@@ -404,7 +410,7 @@ include('db.class.php'); // call db.class.php
 
                         var ors = orsget.getAttribute("data-ors");
                        
-
+                        // alert(dvstatus);
 
                         $('#example').DataTable().destroy();
                         dataT();
@@ -453,9 +459,17 @@ include('db.class.php'); // call db.class.php
                      
                       
                       function createManageBtn() {
-
+                        // var dvstatus = orsget.getAttribute("data-dvstatus");
+                        
                       
-                      return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i>&nbsp;&nbsp;Edit&nbsp;&nbsp;</a> | <a  class="btn btn-danger btn-xs" onclick="myFunc()" onclick="" id="delete"><i class="fa fa-trash-o"></i>  Delete</a>';
+                      if(dvstatus=='Paid'){
+                        return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i>&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>';
+                      }
+                      else{
+                        return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i>&nbsp;&nbsp;Edit&nbsp;&nbsp;</a> | <a  class="btn btn-danger btn-xs" onclick="myFunc()" onclick="" id="delete"><i class="fa fa-trash-o"></i>  Delete</a>';
+                      }
+                      
+                      
 
                     
 
@@ -477,8 +491,9 @@ include('db.class.php'); // call db.class.php
 
                   </script>
 
-
+              <!-- <input   type="text" name="dvstatus" id="dvstatus" value="" class=""/> -->
               <input hidden  type="text" name="ors1" id="ors1" value="" class=""/>
+
               <br>
               <input hidden  type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
               <br>
