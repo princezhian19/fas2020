@@ -74,7 +74,7 @@ if($mode=="BURS"){
         
         // }  
    
-      $update = mysqli_query($con,"Update saroobburs set dvstatus = 'Disbursed'  where burs = '$burs'");
+      $update = mysqli_query($con,"Update saroobburs set dvstatus = 'Paid'  where burs = '$burs'");
       /* //updating balance
       $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
       $dvinsert = mysqli_query($con,"INSERT INTO disbursement (ors,sr,ppa,uacs,payee,particular,amount) VALUES ('$ors[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$payee[$i]','$particular[$i]','$amount[$i]')"); */
@@ -112,7 +112,7 @@ else{
         }
     
     
-      $update = mysqli_query($con,"Update saroob set dvstatus = 'Disbursed'  where ors = '$ors'");
+      $update = mysqli_query($con,"Update saroob set dvstatus = 'Paid'  where ors = '$ors'");
       /* //updating balance
       $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
       $dvinsert = mysqli_query($con,"INSERT INTO disbursement (ors,sr,ppa,uacs,payee,particular,amount) VALUES ('$ors[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$payee[$i]','$particular[$i]','$amount[$i]')"); */
