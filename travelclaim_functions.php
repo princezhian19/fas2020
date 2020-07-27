@@ -254,7 +254,7 @@ session_start();
         while($row = mysqli_fetch_array($result))
         {
             ?>
-                <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" required/>
+                <input type = "text" name = "ro[]" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" required/>
             <?php
            
        

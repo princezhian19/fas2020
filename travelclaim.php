@@ -221,34 +221,27 @@ function rowCount(){
     }  else if($row_cnt == 1)
   {
     ?>
-
               <tbody class = "scroll" style ="height:90px;">
-
     <?php
   }else if($row_cnt == 2) {
     ?>
               <tbody class = "scroll" style ="height:180px;">
-
     <?php
   }else if($row_cnt == 3) {
     ?>
               <tbody class = "scroll" style ="height:270px;">
-
     <?php
   }else if($row_cnt == 4) {
     ?>
               <tbody class = "scroll" style ="height:360px;">
-
     <?php
   }else if($row_cnt == 5) {
     ?>
-              <tbody class = "scroll" style ="height:450px;">
-
+              <tbody class = "scroll" style ="height:200px;">
     <?php
   }else{
     ?>
               <tbody style ="height: 300px;display:block; overflow:auto;">
-
     <?php
 
   }
@@ -485,7 +478,7 @@ function isSubmit()
               <form method = "POST" action = "saveTravelInfo.php">
             <input type = "hidden" name = "hidden_ro" value = "<?php echo $_GET['ro'];?>" />
 
-                <div class="well" style = "padding:10px;">
+                <div class="well myTemplate2" style = "padding:10px;">
 
                   <div class="box-body">
                     <div class = "row">
@@ -504,7 +497,7 @@ function isSubmit()
                                       <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" name = "date" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
+                                    <input type="text" style = "border:3px solid red;" name = "date[]" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
                                   </div>
                                 </div>
                               </div>
@@ -580,7 +573,7 @@ function isSubmit()
                       </div>
                     </div>
                     <div style = "padding:10px;" >
-                    <div class="box-body myTemplate2">
+                    <div class="box-body ">
                       <div class="row ">
                         <div class="col-md-6">
                           <div class="form-group">
@@ -610,8 +603,7 @@ function isSubmit()
                       </div>
                     </div>
                   </div>
-                    <span class = "btn btn-success btn-md pull-right" id= "add_fare">Add Fare</span>
-                  </div>
+                    </div>
 
 
 
@@ -619,9 +611,11 @@ function isSubmit()
 
             
 
-                  <div class = "well" style = "padding:10px;" id = "travelPanel">
+                  <div  style = "padding:10px;" id = "travelPanel">
                   </div>
-                  <button type = "submit" class = "btn btn-success btn-md pull-right">Save </button>
+                  <span class = "btn btn-primary btn-md pull-right" id= "add_fare" style = "margin-left:10px;"><i class = "fa fa-plus"></i>&nbsp;Add Fare</span>
+
+                  <button type = "submit" class = "btn btn-success btn-md pull-right"><i class = "fa fa-save"></i>&nbsp;Save </button>
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
               </form>
@@ -642,6 +636,15 @@ function isSubmit()
 <script src="travelclaim.js"></script>  
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+    if("<?php echo $_GET['step']?>" == "1")
+    {
+      $('#travelbtn').prop('disabled',true);
+    }else{
+      $('#travelbtn').prop('disabled',false);
+      
+    }
+    </script>
     <script>
     var searchInput = 'search_input';
     var searchInput2 = 'search_input2';
