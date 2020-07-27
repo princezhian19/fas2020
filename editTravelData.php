@@ -7,7 +7,6 @@ session_start();
      INNER JOIN `tbltravel_claim_info2` on `tbltravel_claim_info`.TC_ID = `tbltravel_claim_info2`.ID 
      INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.ID = `tbltravel_claim_ro`.ID
      where `RO_TO_OB` = '".$_POST['ro']."' ";
-     ECHO $query1;
      $result1 = mysqli_query($conn, $query1);
      if(mysqli_num_rows($result1) > 0)    
      {
