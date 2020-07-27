@@ -120,39 +120,42 @@ session_start();
         }
         while($row = mysqli_fetch_array($result))
         {
-            $parts = explode('to', $row['PLACE']);
-            $filename_arr = $data['my_slider'];
-            $file_coma = implode(',', $filename_arr);
+            // $parts = explode('to', $row['PLACE']);
+            // $filename_arr = $data['my_slider'];
+            // $file_coma = implode(',', $filename_arr);
+            $places = preg_split("/[\s]+/", $row['PLACE']);
+            list($from, $number2,$to) = $places;
+
             ?>
+            
                 <div class="well" style = "padding:10px;">
                   <div class="box-body">
-                   
                       <div style = "padding:10px;" >
                       <div class="box-body myTemplate2">
                         <div class="row ">
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>From</label>
-                                <input type="text" name = "from3[]" class="form-control" value = "<?php echo $parts;?>">
+                                <input type="text" name = "from3[]" class="form-control" value = "<?php echo $from;?>">
                               </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>To</label>
-                                <input type = "text" name = "to3[]" class = "form-control"/>
+                                <input type = "text" name = "to3[]" class = "form-control" value = "<?php echo $to; ?>"/>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>Means of Transportation</label>
                                 
-                                <input type="text" name = "mot[]" class="form-control">
+                                <input type="text" name = "mot[]" class="form-control" value = "<?php echo $row['MOT'];?>">
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>Transportation Fare</label>
-                                <input type = "text" name = "transpo_fare[]" class = "form-control"  />
+                                <input type = "text" name = "transpo_fare[]" class = "form-control"  value = "<?php echo $row['TRANSPORTATION'];?>" />
                             </div>
                           </div>
                         </div>

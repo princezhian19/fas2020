@@ -84,5 +84,5 @@ function getDistance($addressFrom, $addressTo, $unit = ''){
     } else {
     }
 //  echo $insert;
-header("Location:CreateTravelClaim.php?ro=".$_POST['rto']."&ui=1&username=".$_SESSION['username']."");
+header("Location:CreateTravelClaim.php?step=2&ro=".$_POST['rto']."&ui=1&username=".$_SESSION['username']."");
 ?>

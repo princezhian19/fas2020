@@ -32,32 +32,7 @@ $receipt = $_POST['wor_txt'];
 }
 
 include 'connection.php';
-$query1 = "SELECT * FROM tbltravel_claim_ro order by id desc limit 1";
-$result1 = mysqli_query($conn, $query1);
-if(mysqli_num_rows($result1) > 0)    
-{
-    while($row1 = mysqli_fetch_array($result1))
-    {
-        if($row1['RO_OT_OB'] == $_POST['ro'])
-        {
-            
 
-        }else{
-            $insert_ro ="INSERT INTO `tbltravel_claim_ro`(`ID`, `RO_OT_OB`, `UNAME`) 
-            VALUES (null, '".$_POST['ro']."','".$_SESSION['username']."')";
-            if (mysqli_query($conn, $insert_ro)) {
-            } else {
-            }
-        }
-    }
-
-}else{
-    $insert_ro ="INSERT INTO `tbltravel_claim_ro`(`ID`, `RO_OT_OB`, `UNAME`) 
-    VALUES (null, '".$_POST['ro']."','".$_SESSION['username']."')";
-    if (mysqli_query($conn, $insert_ro)) {
-    } else {
-    }
-}
 
 
 
@@ -111,7 +86,7 @@ if(mysqli_num_rows($result) > 0)
             $receipt2 = '';
         }
         
-        for($a=0;$a < count($_POST['mot']); $a++)
+        for($a=0;$a < count($_POST['date']); $a++)
         {
             $from3  = $_POST['from3'][$a];
             $to3 = $_POST['to3'][$a];
@@ -119,8 +94,40 @@ if(mysqli_num_rows($result) > 0)
             $transpo_fare = $_POST['transpo_fare'][$a];
             $totalamount = $_POST['transpo_fare'][$a]+$perdiem;
             $mot = $_POST['mot'][$a];
+            $ro = $_POST['ro'][$a];
+            $date = $_POST['date'][$a];
+            echo $_POST['date'][$a].'<br>';
 
             include 'connection.php';
+            $query11 = "SELECT * FROM tbltravel_claim_ro order by id desc limit 1";
+            $result11 = mysqli_query($conn, $query11);
+            if(mysqli_num_rows($result1) > 0)    
+            {
+                while($row11 = mysqli_fetch_array($result11))
+                {
+                    if($row11['RO_OT_OB'] == $ro)
+                    {
+                        
+
+                    }else{
+                        $insert_ro ="INSERT INTO `tbltravel_claim_ro`(`ID`, `RO_OT_OB`, `UNAME`) 
+                        VALUES (null, '".$ro."','".$_SESSION['username']."')";
+                        if (mysqli_query($conn, $insert_ro)) {
+                        } else {
+                        }
+                    }
+                }
+
+            }else{
+                $insert_ro ="INSERT INTO `tbltravel_claim_ro`(`ID`, `RO_OT_OB`, `UNAME`) 
+                VALUES (null, '".$ro."','".$_SESSION['username']."')";
+                if (mysqli_query($conn, $insert_ro)) {
+                } else {
+                }
+            }
+
+
+
            
             $query1 = "SELECT * FROM tbltravel_claim_ro order by id desc limit 1";
             $result1 = mysqli_query($conn, $query1);
@@ -137,7 +144,7 @@ if(mysqli_num_rows($result) > 0)
                     VALUES 
                     ('".$uid."',
                     '".$row1['ID']."',
-                    '".date('Y-m-d',strtotime($_POST['date']))."',
+                    '".date('Y-m-d',strtotime($date))."',
                     '".$destination."',
                     '".date('H:i',strtotime($_POST['from1']))."',
                     '".date('H:i',strtotime($_POST['to1']))."',

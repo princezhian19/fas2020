@@ -207,7 +207,25 @@ session_start();
         if (mysqli_query($conn, $insert)) {
         } else {
         }
-        echo $insert;
+    }
+    function deleteAll()
+    {
+        
+        include 'connection.php';
+        $del1 ="DELETE FROM `tbltravel_claim_info2` WHERE `RO_TO_OB` = '".$_POST['ro']."' ";
+        if (mysqli_query($conn, $del1)) {
+        } else {
+        }
+echo $del1;
+        $del2 ="DELETE FROM `tbltravel_claim_info` WHERE `RO`= '".$_POST['id']."' ";
+        if (mysqli_query($conn, $del2)) {
+        } else {
+        }
+
+        $del3 ="DELETE FROM `tbltravel_claim_ro` WHERE `ID`= '".$_POST['id']."' ";
+        if (mysqli_query($conn, $del3)) {
+        } else {
+        }
     }
     function getPurposeTravel($username)
     {
@@ -254,7 +272,7 @@ session_start();
         while($row = mysqli_fetch_array($result))
         {
             ?>
-                <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" required/>
+                <input type = "text" name = "ro[]" class = "form-control " value = "<?php echo $row['RO_OT_OB']?>" required/>
             <?php
            
        
@@ -283,6 +301,9 @@ if(isset($_POST['action']))
     if($action == 'deleteTravelOrder' )
     {   
         deleteTravelOrder();
+    }else if($action == 'deleteAll')
+    {
+        deleteAll();
     }
 }else if(isset($_GET['action'])){
 $action2 = $_GET['action'];
