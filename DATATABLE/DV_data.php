@@ -19,8 +19,6 @@ $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
             $WHERE = " WHERE ors = '$get' ";
         }
 
-		
-
 		/* echo "select $fieldsName from $table $WHERE" ;
 		exit(); */
 
@@ -31,7 +29,6 @@ $primaryKey = 'id';
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
-
 
 $columns = array(
     array('db' => 'id', 'dt' => 0),

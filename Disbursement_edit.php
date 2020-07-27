@@ -577,17 +577,14 @@ p.mix {border-style: dotted dashed solid double;} */
                             <td class="col-md-7">
                             <select class="form-control select input" style="width: 100%; height: 40px;" name="status" id="status" required >
                             
-                            <option value = "Disbursed">Disbursed</option>
+                            <option value = "Disbursed">Paid</option>
                             <option value = "Pending">Pending</option>
                             </td>
                             </tr>
 
-
                             </table>
 
                         </div>
-
-
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="col-md-12">
@@ -600,7 +597,6 @@ p.mix {border-style: dotted dashed solid double;} */
                                         <th width='500'>UACS </th>
                                         <th width='500'>AMOUNT </th>
 
-                                        
                                         </thead>
 
                                         </table>
@@ -618,10 +614,6 @@ p.mix {border-style: dotted dashed solid double;} */
 
 
                             <br>
-
-
-
-                            
 
                         </div>
                        

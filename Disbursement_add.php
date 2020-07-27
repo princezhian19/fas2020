@@ -577,7 +577,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             <td class="col-md-7">
                             <select class="form-control select input" style="width: 100%; height: 40px;" name="status" id="status" required >
                             
-                            <option value = "Disbursed">Disbursed</option>
+                            <option value = "Disbursed">Paid</option>
                             <option value = "Pending">Pending</option>
                             </td>
                             </tr>
