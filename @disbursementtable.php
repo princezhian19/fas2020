@@ -72,8 +72,8 @@
                   <th style="text-align:center" width="">ORS DATE</th>
                   <th style="text-align:center" width="">DATE DISBURSED</th>
                   <th style="text-align:center" width="">DATE RELEASED</th>
-                  <th style="text-align:center" width="">PAYEE</th>
-                  <th style="text-align:center" width="">PARTICULAR</th>
+                  <th style="text-align:center" width="400">PAYEE</th>
+                  <th style="text-align:center" width="400">PARTICULAR</th>
                   <th style="text-align:center" width="">GROSS AMOUNT</th>
                  <!--  <th style="text-align:center" width="">TAX</th>
                   <th style="text-align:center" width="">GSIS</th>
@@ -84,7 +84,7 @@
                   <th style="text-align:center" width="">NET AMOUNT</th>
                   <th style="text-align:center" width="">REMARKS</th>
                   <th style="text-align:center" width="">STATUS</th>
-                  <th style="text-align:center" width="150">ACTION</th>
+                  <th style="text-align:center" width="50">ACTION</th>
                   <!-- <th style="text-align:center" width="150">FLAG</th> -->
                 </tr>
               </thead>
@@ -193,7 +193,7 @@
                                       <?php endif ?>
                                       <td>
 
-                                      <a  class="btn btn-primary btn-xs" href='Disbursement_Update.php?id=<?php echo $ors?>'> <i class='fa'>&#xf044;</i> Manage Data</a>
+                                      <a  class="btn btn-primary btn-xs" href='Disbursement_Update.php?id=<?php echo $ors?>'> <i class='fa'>&#xf044;</i>  Edit </a>
                                         <!-- <a  class = "btn btn-primary btn-xs" href='disbursementupdate.php?getid=<?php echo $id;?>' > <i class='fa'>&#xf044;</i> Edit</a> | 
                                       
                                         <a onclick="return confirm('Are you sure you want to delete this record?');" name=""  href="@Functions/ddeletefunction.php?getid=<?php echo $id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>                                      -->

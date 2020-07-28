@@ -55,13 +55,13 @@ $datereceived = date('m/d/Y', strtotime($datereceived1));
 $payee = $row["payee"];
 $particular = $row["particular"];
 
-$amount1 = $row["amount"];
-$amount = number_format($amount1,2);
-$total1 = $row["total"];
-$total = number_format($total1,2);
+$amount = $row["amount"];
+// $amount = number_format($amount1,2);
+$total = $row["total"];
+// $total = number_format($total1,2);
 
-$net1 = $row["net"];
-$net = number_format($net1,2);
+$net = $row["net"];
+// $net = number_format($net1,2);
 $remarks = $row["remarks"];
 $status = $row["status"];
 
@@ -135,7 +135,7 @@ p.mix {border-style: dotted dashed solid double;} */
       <br>
         <!-- start of fields -->
         <div class="class"  >
-            <form method="POST" action='' enctype="multipart/form-data" >
+            <form method="POST" action='Disbursement_edit_function.php' enctype="multipart/form-data" >
 
         <div class="col-md-6 well" >
          <!-- DV-->
@@ -275,7 +275,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 document.getElementById("payee").value = x[4].innerHTML;
                                 document.getElementById("particular").value = x[5].innerHTML;
                                 document.getElementById("amount").value = x[6].innerHTML;
-                                document.getElementById("deductions").value = "0";
+                                document.getElementById("total").value = "0";
                                 document.getElementById("net").value = x[6].innerHTML;
                                 }
 
@@ -452,7 +452,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 document.getElementById("payee").value = x[4].innerHTML;
                                 document.getElementById("particular").value = x[5].innerHTML;
                                 document.getElementById("amount").value = x[6].innerHTML;
-                                document.getElementById("deductions").value = "0";
+                                document.getElementById("total").value = "0";
                                 document.getElementById("net").value = x[6].innerHTML;
                                 }
 
@@ -611,7 +611,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             <tr>
                             <td class="col-md-1"><b>TOTAL DEDUCTIONS<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input value="<?php echo $total?>" readonly required type="text" class="form-control input" style="height: 35px;" name="deductions" id="deductions"  placeholder="Total Deductions"  autocomplete="off">
+                            <input value="<?php echo $total?>" readonly required type="text" class="form-control input" style="height: 35px;" name="total" id="total"  placeholder=""  autocomplete="off">
                             </td>
                             </tr>
 
@@ -691,7 +691,7 @@ p.mix {border-style: dotted dashed solid double;} */
                         
                 <div class="well ">
                 <div class="class-bordered">
-                <b><font style="font-size:25px; color:firebrick">DEDUCTIONS</font></b>  
+                <b><font style="font-size:25px; color:firebrick">total</font></b>  
                 </div>
                 
              
@@ -869,7 +869,7 @@ p.mix {border-style: dotted dashed solid double;} */
                   <tr>
                   <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td>
                   <td class="col-md-7">
-                  <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="amount" name="amount[]" placeholder="0" autocomplete="off">
+                  <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="ntaamount" name="ntaamount[]" placeholder="0" autocomplete="off">
                   </td>
                   </tr>
 
@@ -1094,7 +1094,7 @@ p.mix {border-style: dotted dashed solid double;} */
       if (x < max_fields) {
         x++;
         var list = "Hello";
-            $(wrapper).append('<div ><br><br><br><br><a href="#" style="margin-right:50px" class="delete btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i></a><br><br><div class="col-md-3"><tr><td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td><td class="col-md-7"><select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge" required > <option value = "">Select NCA/NTA</option> <option value = "NCA">NCA</option> <option value = "NTA">NTA</option> </select> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td> <td class="col-md-7">  <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano" name="ntano[]"> <?php getNta();?> </select>  </td> </tr> </div><div class="col-md-2"> <tr> <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="amount" name="amount[]" placeholder="0" autocomplete="off"> </td> </tr> </div>  <div class="col-md-3"> <tr> <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off"> </td> </tr> </div></div>'); //add input box
+            $(wrapper).append('<div ><br><br><br><br><a href="#" style="margin-right:50px" class="delete btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i></a><br><br><div class="col-md-3"><tr><td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td><td class="col-md-7"><select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge" required > <option value = "">Select NCA/NTA</option> <option value = "NCA">NCA</option> <option value = "NTA">NTA</option> </select> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td> <td class="col-md-7">  <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano" name="ntano[]"> <?php getNta();?> </select>  </td> </tr> </div><div class="col-md-2"> <tr> <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="ntaamount" name="ntaamount[]" placeholder="0" autocomplete="off"> </td> </tr> </div>  <div class="col-md-3"> <tr> <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input  value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off"> </td> </tr> </div></div>'); //add input box
           } else {
             alert('You Reached the limits')
           }
@@ -1151,8 +1151,8 @@ var orsdate = $("input[name='orsdate']");
 orsdate.val('');
 
 
-var deductions = $("input[name='deductions']"); 
-deductions.val('');
+var total = $("input[name='total']"); 
+total.val('');
 
 var net = $("input[name='net']"); 
 net.val('');
@@ -1200,8 +1200,8 @@ orsdate.val('');
 
 
 
-var deductions = $("input[name='deductions']"); 
-deductions.val('');
+var total = $("input[name='total']"); 
+total.val('');
 
 var net = $("input[name='net']"); 
 net.val('');
@@ -1241,8 +1241,8 @@ amount.val('');
 var orsdate = $("input[name='orsdate']"); 
 orsdate.val('');
 
-var deductions = $("input[name='deductions']"); 
-deductions.val('');
+var total = $("input[name='total']"); 
+total.val('');
 
 var net = $("input[name='net']"); 
 net.val('');
@@ -1275,7 +1275,7 @@ other.val('0');
 
 <script>
 
-/* Functions for deductions */
+/* Functions for total */
 function myFunctiontax() {
   var tax = document.getElementById("tax").value;
   var gsis = document.getElementById("gsis").value;
@@ -1284,7 +1284,7 @@ function myFunctiontax() {
   var other = document.getElementById("other").value;
 
 
-  var deductions1 = $("input[name='deductions']");
+  var deductions1 = $("input[name='total']");
   var net1 = $("input[name='net']");
   var tax1 = $("input[name='tax']");
 
@@ -1297,12 +1297,12 @@ function myFunctiontax() {
   else{
   var allsum = parseFloat(tax) + parseFloat(gsis) + parseFloat(pagibig) + parseFloat(philhealth) + parseFloat(other);
 
-  var deductions1 = $("input[name='deductions']");
+  var deductions1 = $("input[name='total']");
   deductions1.val(allsum);
 
   var amount = document.getElementById('amount').value;
-  var deductions = document.getElementById('deductions').value;
-  var result = parseFloat(amount).toFixed(2) - parseFloat(deductions).toFixed(2);
+  var total = document.getElementById('total').value;
+  var result = parseFloat(amount).toFixed(2) - parseFloat(total).toFixed(2);
   if (!isNaN(result)) {
 
   document.getElementById('net').value = result.toFixed(2);
@@ -1326,7 +1326,7 @@ function myFunctiongsis() {
   var other = document.getElementById("other").value;
 
 
-  var deductions1 = $("input[name='deductions']");
+  var deductions1 = $("input[name='total']");
   var net1 = $("input[name='net']");
   var gsis1 = $("input[name='gsis']");
 
@@ -1339,12 +1339,12 @@ function myFunctiongsis() {
   else{
   var allsum = parseFloat(tax) + parseFloat(gsis) + parseFloat(pagibig) + parseFloat(philhealth) + parseFloat(other);
 
-  var deductions1 = $("input[name='deductions']");
+  var deductions1 = $("input[name='total']");
   deductions1.val(allsum);
 
   var amount = document.getElementById('amount').value;
-  var deductions = document.getElementById('deductions').value;
-  var result = parseFloat(amount).toFixed(2) - parseFloat(deductions).toFixed(2);
+  var total = document.getElementById('total').value;
+  var result = parseFloat(amount).toFixed(2) - parseFloat(total).toFixed(2);
   if (!isNaN(result)) {
 
   document.getElementById('net').value = result.toFixed(2);
@@ -1365,7 +1365,7 @@ function myFunctionpagibig() {
   var other = document.getElementById("other").value;
 
 
-  var deductions1 = $("input[name='deductions']");
+  var deductions1 = $("input[name='total']");
   var net1 = $("input[name='net']");
   var pagibig1 = $("input[name='pagibig']");
 
@@ -1378,12 +1378,12 @@ function myFunctionpagibig() {
   else{
   var allsum = parseFloat(tax) + parseFloat(gsis) + parseFloat(pagibig) + parseFloat(philhealth) + parseFloat(other);
 
-  var deductions1 = $("input[name='deductions']");
+  var deductions1 = $("input[name='total']");
   deductions1.val(allsum);
 
   var amount = document.getElementById('amount').value;
-  var deductions = document.getElementById('deductions').value;
-  var result = parseFloat(amount).toFixed(2) - parseFloat(deductions).toFixed(2);
+  var total = document.getElementById('total').value;
+  var result = parseFloat(amount).toFixed(2) - parseFloat(total).toFixed(2);
   if (!isNaN(result)) {
 
   document.getElementById('net').value = result.toFixed(2);
@@ -1403,7 +1403,7 @@ function myFunctionphilhealth() {
   var other = document.getElementById("other").value;
 
 
-  var deductions1 = $("input[name='deductions']");
+  var deductions1 = $("input[name='total']");
   var net1 = $("input[name='net']");
   var philhealth1 = $("input[name='philhealth']");
 
@@ -1416,12 +1416,12 @@ function myFunctionphilhealth() {
   else{
   var allsum = parseFloat(tax) + parseFloat(gsis) + parseFloat(pagibig) + parseFloat(philhealth) + parseFloat(other);
 
-  var deductions1 = $("input[name='deductions']");
+  var deductions1 = $("input[name='total']");
   deductions1.val(allsum);
 
   var amount = document.getElementById('amount').value;
-  var deductions = document.getElementById('deductions').value;
-  var result = parseFloat(amount).toFixed(2) - parseFloat(deductions).toFixed(2);
+  var total = document.getElementById('total').value;
+  var result = parseFloat(amount).toFixed(2) - parseFloat(total).toFixed(2);
   if (!isNaN(result)) {
 
   document.getElementById('net').value = result.toFixed(2);
@@ -1441,7 +1441,7 @@ function myFunctionother() {
   var other = document.getElementById("other").value;
 
 
-  var deductions1 = $("input[name='deductions']");
+  var deductions1 = $("input[name='total']");
   var net1 = $("input[name='net']");
   var other1 = $("input[name='other']");
 
@@ -1454,12 +1454,12 @@ function myFunctionother() {
   else{
   var allsum = parseFloat(tax) + parseFloat(gsis) + parseFloat(pagibig) + parseFloat(philhealth) + parseFloat(other);
 
-  var deductions1 = $("input[name='deductions']");
+  var deductions1 = $("input[name='total']");
   deductions1.val(allsum);
 
   var amount = document.getElementById('amount').value;
-  var deductions = document.getElementById('deductions').value;
-  var result = parseFloat(amount).toFixed(2) - parseFloat(deductions).toFixed(2);
+  var total = document.getElementById('total').value;
+  var result = parseFloat(amount).toFixed(2) - parseFloat(total).toFixed(2);
   if (!isNaN(result)) {
   
   document.getElementById('net').value = result.toFixed(2);
@@ -1486,7 +1486,7 @@ function myFunctionother() {
     var particular = $('#particular').val();
     var net = $('#net').val();
     var amount = $('#amount').val();
-    var deductions = $('#deductions').val();
+    var total = $('#total').val();
 
     var tax = $('#tax').val();
     var gsis = $('#gsis').val();
@@ -1525,7 +1525,7 @@ function myFunctionother() {
     particular : particular, 
     net : net, 
     amount : amount, 
-    deductions : deductions,
+    total : total,
     tax : tax, 
     gsis : gsis, 
     pagibig : pagibig, 
