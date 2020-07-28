@@ -25,7 +25,7 @@ function aa($id)
         while($row = mysqli_fetch_array($result))
         {
             $date = $row['DATE'];
-            $query1 = "SELECT * FROM tbltravel_claim_info 
+            $query1 = "SELECT *,tbltravel_claim_info.ID AS 'PID'FROM tbltravel_claim_info 
             INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
             WHERE tbltravel_claim_info.`RO` = '".$id."' and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
             $result1 = mysqli_query($conn, $query1);
@@ -70,7 +70,7 @@ function aa($id)
                           ?>
                                       <td style = "width:10%;text-align:center;">
                                         <!-- <span class = "btn btn-sm btn-primary"><i class = "fa fa-edit"></i>&nbsp;Edit</span> -->
-                                        <span class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['ID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span>
+                                        <span class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['PID']; ?>" data-id = "<?php echo $row1['PID'];?>" value = "<?php echo $row1['PID'];?>"><i class = "fa fa-trash"></i>&nbsp;<?php echo $row1['PID'];?>Delete</span>
                                       </td>
 
                           <?php
@@ -84,7 +84,7 @@ function aa($id)
         ?>
         <script>
           $(document).ready(function(){
-              $( "#btnids<?php echo $row1['ID'];?>" ).click(function() {
+              $( "#btnids<?php echo $row1['PID'];?>" ).click(function() {
                 swal({
                       title: "Are you sure?",
                       text: "Your will not be able to recover this travel date!",
@@ -101,15 +101,15 @@ function aa($id)
                               method:"POST",
                               data:{
                               'action': 'deleteTravelOrder',
-                              "id": <?php echo $row1['ID'];?>,
+                              "id": <?php echo $row1['PID'];?>,
                           },
                           success:function(data)
                           {
                       
                                 setTimeout(function () {
-                                window.location = "CreateTravelClaim.php?username=<?php echo $_GET['username'];?>&division=<?php echo $_GET['division'];?>";
+                                window.location = "CreateTravelClaim.php?step=1&ro=<?php echo $_GET['ro'];?>&ui=1username=<?php echo $_GET['username'];?>&division=<?php echo $_GET['division'];?>";
                                 }, 1000);
-
+                                ui=1&ro=test%2035&username=masacluti
                             
                           }
                           });
