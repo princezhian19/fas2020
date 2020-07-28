@@ -247,7 +247,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
               // when users click edit button
               $('#example tbody').on( 'click', '#edit', function () {
                 var data = table.row( $(this).parents('tr') ).data();
-                var RO = data[2];
+                var RO = data[0];
                 var username = data[1];
                 $('#add_travel_dates').modal({ keyboard: false });
                 $('#or').val(data[2]);

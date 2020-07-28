@@ -53,18 +53,7 @@ only screen and (max-width: 760px),
 }
   </style>
      <?php
-    //  INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.ID = `tbltravel_claim_ro`.ID
 
-     $query1 = "
-     SELECT * FROM `tbltravel_claim_info` 
-     INNER JOIN `tbltravel_claim_info2` on `tbltravel_claim_info`.TC_ID = `tbltravel_claim_info2`.ID 
-     where `RO_TO_OB` = '".$_POST['ro']."' ";
-
-     $result1 = mysqli_query($conn, $query1);
-     if(mysqli_num_rows($result1) > 0)    
-     {
-        while($row1 = mysqli_fetch_array($result1))
-        {
 
 
     
@@ -72,15 +61,14 @@ only screen and (max-width: 760px),
           INNER JOIN `tbltravel_claim_info2` on `tbltravel_claim_info`.TC_ID = `tbltravel_claim_info2`.ID 
           INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID
 
-     WHERE `TC_ID` ='".$row1['ID']."' ";
-     
+     WHERE `TC_ID` ='".$_POST['ro']."' ";
      $result = mysqli_query($conn, $query);
      if(mysqli_num_rows($result) > 0)    
      {
-        if($row1 = mysqli_fetch_array($result))
+        while($row1 = mysqli_fetch_array($result))
         {
          ?>
-                <div class="well" style = "padding:10px;">
+                <div class="well box-success box" style = "padding:10px;background:#ECEFF1;">
                   <div class="box-body">
                     <div class = "row">
                       <div class = "col-sm-12 col-md-12 col-lg-12">
@@ -129,6 +117,12 @@ only screen and (max-width: 760px),
                           </div>
                           <div class="col-md-12">
                             <div class="form-group">
+                              <label>Means of Transportation</label>
+                                <input type="text" name = "others" value = "<?php echo $row1['OTHERS'];?>" class="form-control" >
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
                               <label>Others</label>
                                 <input type="text" name = "others" value = "<?php echo $row1['OTHERS'];?>" class="form-control" >
                             </div>
@@ -163,6 +157,25 @@ only screen and (max-width: 760px),
                                 </div>
                               </div>
                             </div>
+                            
+                            <div class="col-md-6" style = "margin-top:20px;"> 
+                            <div class="form-group">
+                              <label>From</label>
+                                <input type = "time" name = "from1" class = "form-control "/>
+                            </div>
+                          </div>
+                          <div class="col-md-6" style = "margin-top:20px;">
+                            <div class="form-group">
+                              <label>To</label>
+                              <input type = "time" name = "to1" class = "form-control"/>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label>Transportation Fare</label>
+                                <input type="text" name = "others" value = "<?php echo $row1['OTHERS'];?>" class="form-control" >
+                            </div>
+                          </div>
                           </div>
                       </div>
                     </div>
@@ -170,38 +183,9 @@ only screen and (max-width: 760px),
                 </div>
          <?php
         }
-        echo '<table border =1 style = "width:100%;" class="table table-hover" >';
-        echo '<thead class="table-header">';
-        echo '<th>FROM</th>';
-        echo '<th>TO</th>';
-        echo '<th>MEANS OF TRANSPORTATION</th>';
-        echo '<th>TRANPORTATION FARE</th>';
-        echo '</thead>';
-
         
-        while($row = mysqli_fetch_array($result))
-        {
-            // $parts = explode('to', $row['PLACE']);
-            // $filename_arr = $data['my_slider'];
-            // $file_coma = implode(',', $filename_arr);
-            $places = preg_split("/[\s]+/", $row['PLACE']);
-            list($from, $number2,$to) = $places;
-            
-
-            ?>
-            <tr>
-              <td><?php echo $places[0];?></td>
-              <td><?php echo $places[2];?></td>
-              <td><?php echo $row['MOT'];?></td>
-              <td><?php echo $row['TRANSPORTATION'];?></td>
-            </tr>
-             
-            <?php
-        }
-        echo '</table>';
     }
-        }
-    }
+      
  
 ?>
 
@@ -240,4 +224,35 @@ only screen and (max-width: 760px),
                       </div>
                   </div>
                 </div>
-                -->
+
+
+                echo '<table border =1 style = "width:100%;" class="table table-hover" >';
+        echo '<thead class="table-header">';
+        echo '<th>FROM</th>';
+        echo '<th>TO</th>';
+        echo '<th>MEANS OF TRANSPORTATION</th>';
+        echo '<th>TRANPORTATION FARE</th>';
+        echo '</thead>';
+
+        
+        while($row = mysqli_fetch_array($result))
+        {
+            // $parts = explode('to', $row['PLACE']);
+            // $filename_arr = $data['my_slider'];
+            // $file_coma = implode(',', $filename_arr);
+            $places = preg_split("/[\s]+/", $row['PLACE']);
+            list($from, $number2,$to) = $places;
+            
+
+            ?>
+            <tr>
+              <td><?php echo $places[0];?></td>
+              <td><?php echo $places[2];?></td>
+              <td><?php echo $row['MOT'];?></td>
+              <td><?php echo $row['TRANSPORTATION'];?></td>
+            </tr>
+             
+            <?php
+        // }
+        // echo '</table>';
+        //         -->
