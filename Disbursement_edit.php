@@ -10,36 +10,7 @@ $DEPT_ID = $_SESSION['DEPT_ID'];
 $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 
-/* include('db.class.php'); // call db.class.php
-$mydb = new db(); // create a new object, class db()
 
-$conn = $mydb->connect(); */
-
-/* $datenow = date('Y-m-d');
-echo $datenow; */
-
-/* $results = $conn->prepare("SELECT sum(amount) as amount, payee, particular, datereleased,ors,saronumber,ppa  FROM saroob  WHERE ors LIKE '%0001%' ");
-
-$results->execute();
-while($row = $results->fetch(PDO::FETCH_ASSOC))
-{
-
-    echo $row['amount'];
-    
-} */ 
-
-/* function getnta()
-{
-    include 'connection.php';
-    $query = "SELECT FIRST_M, concat(FIRST_M,' ', LAST_M) as 'fullname' from tblemployeeinfo  order by FIRST_M" ;
-    $result = mysqli_query($conn, $query);
-    echo '<option VALUE = "">ALL</option>';
-    while($row = mysqli_fetch_array($result))
-    {
-        echo '<option>'.$row['fullname'].'</option>';
-        
-    }
-} */
 
 function getNta()
     {
@@ -53,6 +24,83 @@ function getNta()
             
         }
     }
+?>
+
+<?php
+
+$idget = $_GET['id'];
+// echo $idget;
+
+$servername ="localhost";
+$username = "fascalab_2020";
+$password = "w]zYV6X9{*BN";
+$database = "fascalab_2020";
+// Create connection
+$conn = new mysqli($servername, $username, $password,$database);
+
+
+
+$view_query = mysqli_query($conn, "SELECT ID,dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount,tax,gsis,pagibig,philhealth,other, sum(total) as total, sum(net) as net, remarks, status,flag  FROM disbursement   where ors = '$idget' group by ors");
+/* echo "SELECT ID,dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount, sum(total) as total, sum(net) as net, remarks, status,flag  FROM disbursement   where ors = '$idget' group by ors";
+exit();
+ */
+while ($row = mysqli_fetch_assoc($view_query)) {
+$id = $row["ID"]; 
+$dv = $row["dv"];
+// $ors = $row["ors"];
+
+$datereceived1 = $row["datereceived"];
+$datereceived = date('m/d/Y', strtotime($datereceived1));
+
+$payee = $row["payee"];
+$particular = $row["particular"];
+
+$amount1 = $row["amount"];
+$amount = number_format($amount1,2);
+$total1 = $row["total"];
+$total = number_format($total1,2);
+
+$net1 = $row["net"];
+$net = number_format($net1,2);
+$remarks = $row["remarks"];
+$status = $row["status"];
+
+
+$tax = $row["tax"];
+$gsis = $row["gsis"];
+$pagibig  = $row["pagibig"];
+$philhealth = $row["philhealth"];
+$other = $row["other"];
+
+//Getting Flag
+$flag = $row["flag"];
+/* echo $flag;
+exit(); */
+
+$date_proccess = $row["date_proccess"];
+$date_proccess1 = date('m/d/Y', strtotime($date_proccess));
+
+$datereleased1 = $row["datereleased"];
+$datereleased = date('m/d/Y', strtotime($datereleased1));
+}
+
+/* $no = ""; */
+
+if($flag=='BURS'){
+$view_burs = mysqli_query($conn, "SELECT burs from saroobburs where burs = '$idget'");
+$row1 = mysqli_fetch_array($view_burs);
+$bursget = $row1["burs"]; 
+/* echo $bursget; */
+
+}
+else if ($flag=='ORS'){
+$view_ors = mysqli_query($conn, "SELECT ors from saroob where ors = '$idget'");
+$row2 = mysqli_fetch_assoc($view_ors);
+$orsget = $row2["ors"]; 
+/* echo $orsget; */
+
+
+}
 ?>
 
 <style>
@@ -92,6 +140,12 @@ p.mix {border-style: dotted dashed solid double;} */
         <div class="col-md-6 well" >
          <!-- DV-->
                 <div class="row" >
+                <?php 
+                
+                
+                ?>
+                <input hidden readonly required value="<?php echo $flag?>"  class=" input" type="text" class="" style="height: 35px;" id="mode" name="mode" placeholder="" autocomplete="off">
+                
                 <!-- Row 1 -->
                         <div class="col-md-6 ">
                             <!-- Partition 1 -->
@@ -105,11 +159,12 @@ p.mix {border-style: dotted dashed solid double;} */
 
                             </td>
                             <td class="col-md-7">
-                            <select onchange="myFunctionORS()" class=" form-control select input" style="width: 100%; height: 40px;" name="mode" id="mode" required style="border-style: groove;">
-                            <option value = "">SELECT BURS/ORS</option>
+                            <!-- <select onchange="myFunctionORS()" class=" form-control select input" style="width: 100%; height: 40px;" name="mode" id="mode" required style="border-style: groove;"> -->
+                            <input readonly required value="<?php echo $flag?>"  class="form-control input" type="text" class="" style="height: 35px;" id="mode" name="mode" placeholder="" autocomplete="off">
+                            <!-- <option value = "">SELECT BURS/ORS</option>
                             <option value = "BURS">BURS</option>
                             <option value = "ORS">ORS</option>
-                            </select>
+                            </select> -->
                             </td>
                             </tr>
                             
@@ -117,7 +172,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             <tr>
                             <td class="col-md-2"><b>BURS No.<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input required value=""  class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="Enter BURS No." autocomplete="off">
+                            <input required value="<?php if($flag=='BURS'){echo $bursget;}else{}?>"  class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="Enter BURS No." autocomplete="off">
                            
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -134,7 +189,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 //Set ors disabled
                              
                                 // $('#ors').prop('disabled', true);
-                                $('#ors1').prop('disabled', true);
+                                // $('#ors1').prop('disabled', true);
                                 $("#result").click(function(){
                                 $("#main").hide();
                                 // alert(filter_data);
@@ -294,7 +349,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             <tr>
                             <td class="col-md-2"><b>ORS No.<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input required value=""  class="form-control input" type="text" class="" style="height: 35px;" id="ors1" name="ors1" placeholder="Enter ORS No." autocomplete="off">
+                            <input required value="<?php if($flag=='ORS'){echo $orsget;}else{}?>"  class="form-control input" type="text" class="" style="height: 35px;" id="ors1" name="ors1" placeholder="Enter ORS No." autocomplete="off">
                            
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -313,11 +368,11 @@ p.mix {border-style: dotted dashed solid double;} */
 
 
 
-                                $('#ors').prop('disabled', true);
+                             /*    $('#ors').prop('disabled', true);
                                 $('#ors1').prop('disabled', true);
+ */
 
-
-
+                                
 
                                 $("#result1").click(function(){
                                 $("#main1").hide();
@@ -472,7 +527,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             <tr>
                             <td class="col-md-2"><b>DV No.<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input required value=""  class="form-control input" type="text" class="" style="height: 35px;" id="dv" name="dv" placeholder="Enter DV No." autocomplete="off">
+                            <input required value="<?php echo $dv?>"  class="form-control input" type="text" class="" style="height: 35px;" id="dv" name="dv" placeholder="Enter DV No." autocomplete="off">
                             </td>
                             </tr>
 
@@ -501,7 +556,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 <tr>
                                 <td class="col-md-3"><b>ORS Date.<span style = "color:red;">*</span></b></td>
                                 <td class="col-md-7">
-                                <input readonly required type="text" class="form-control input" style="height: 35px;" name="orsdate" id="orsdate" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
+                                <input value="<?php echo $datereceived?>" readonly required type="text" class="form-control input" style="height: 35px;" name="orsdate" id="orsdate" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
                                 </td>
                                 </tr>
 
@@ -510,7 +565,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 <tr>
                                 <td class="col-md-3"><b>DV Date.<span style = "color:red;">*</span></b></td>
                                 <td class="col-md-7">
-                                <input required type="text" class="form-control input" style="height: 35px;" name="dvdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
+                                <input value="<?php echo $datereleased?>" required type="text" class="form-control input" style="height: 35px;" name="dvdate" id="datepicker2" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
                                 </td>
                                 </tr>
 
@@ -533,42 +588,42 @@ p.mix {border-style: dotted dashed solid double;} */
                             <tr>
                             <td class="col-md-1"><b>PAYEE<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="payee" id="payee" value = "" placeholder="Payee"  autocomplete="off">
+                            <input value="<?php echo $payee?>" readonly required type="text" class="form-control input" style="height: 35px;" name="payee" id="payee" value = "" placeholder="Payee"  autocomplete="off">
                             </td>
                             </tr>
 
                             <tr>
                             <td class="col-md-1"><b>PARTICULARS<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="particular" id="particular" value = "" placeholder="Particulars"  autocomplete="off">
+                            <input value="<?php echo $particular?>"  required type="text" class="form-control input" style="height: 70px;" name="particular" id="particular" value = "" placeholder="Particulars"  autocomplete="off">
                             </td>
                             </tr>
 
                             <tr>
                             <td class="col-md-1"><b>OBLIGATED AMOUNT<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="amount" id="amount" value = "" placeholder="Obligated Amount"  autocomplete="off">
+                            <input value="<?php echo $amount?>" readonly required type="text" class="form-control input" style="height: 35px;" name="amount" id="amount" value = "" placeholder="Obligated Amount"  autocomplete="off">
                             </td>
                             </tr>
 
                             <tr>
                             <td class="col-md-1"><b>TOTAL DEDUCTIONS<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="deductions" id="deductions" value = "0" placeholder="Total Deductions"  autocomplete="off">
+                            <input value="<?php echo $total?>" readonly required type="text" class="form-control input" style="height: 35px;" name="deductions" id="deductions" value = "0" placeholder="Total Deductions"  autocomplete="off">
                             </td>
                             </tr>
 
                             <tr>
                             <td class="col-md-1"><b>NET AMOUNT<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="net" id="net" value = "0" placeholder="Net Amount"  autocomplete="off">
+                            <input value="<?php echo $net?>" readonly required type="text" class="form-control input" style="height: 35px;" name="net" id="net" value = "0" placeholder="Net Amount"  autocomplete="off">
                             </td>
                             </tr>
 
                             <tr>
                             <td class="col-md-1"><b>Remarks<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <textarea class="form-control input" placeholder="Remarks" id="remarks" name="remarks" style="width: 100%; height: 40px;" ></textarea> 
+                            <textarea class="form-control input" placeholder="Remarks" id="remarks" name="remarks" style="width: 100%; height: 40px;" ><?php echo $remarks?></textarea>
                             </td>
                             </tr>
 
@@ -644,35 +699,35 @@ p.mix {border-style: dotted dashed solid double;} */
                         <tr>
                         <td class="col-md-1"><b>TAX<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
-                        <input required value="0" onkeyup="myFunctiontax()"  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="tax" name="tax" placeholder="Tax" autocomplete="off">
+                        <input value="<?php echo $tax?>" required value="0" onkeyup="myFunctiontax()"  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="tax" name="tax" placeholder="Tax" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
                         <td class="col-md-1"><b>GSIS<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
-                        <input required value="0" onkeyup="myFunctiongsis()"  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="gsis" name="gsis" placeholder="GSIS" autocomplete="off">
+                        <input value="<?php echo $gsis?>" required value="0" onkeyup="myFunctiongsis()"  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="gsis" name="gsis" placeholder="GSIS" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
                         <td class="col-md-1"><b>PAG IBIG<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
-                        <input required value="0" onkeyup="myFunctionpagibig()" class="form-control input" type="number" step="any" class="" style="height: 35px;" id="pagibig" name="pagibig" placeholder="Pag Ibig" autocomplete="off">
+                        <input value="<?php echo $pagibig?>" required value="0" onkeyup="myFunctionpagibig()" class="form-control input" type="number" step="any" class="" style="height: 35px;" id="pagibig" name="pagibig" placeholder="Pag Ibig" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
                         <td class="col-md-1"><b>PHILHEALTH<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
-                        <input required value="0" onkeyup="myFunctionphilhealth()"  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="philhealth" name="philhealth" placeholder="Philhealth" autocomplete="off">
+                        <input value="<?php echo $philhealth?>" required value="0" onkeyup="myFunctionphilhealth()"  class="form-control input" type="number" step="any" class="" style="height: 35px;" id="philhealth" name="philhealth" placeholder="Philhealth" autocomplete="off">
                         </td>
                         </tr>
 
                         <tr>
                         <td class="col-md-1"><b>OTHER PAYABLES<span style = "color:red;"></span></b></td>
                         <td class="col-md-7">
-                        <input required value="0" onkeyup="myFunctionother()" class="form-control input" type="number" step="any" class="" style="height: 35px;" id="other" name="other" placeholder="Other Payables" autocomplete="off">
+                        <input value="<?php echo $other?>" required value="0" onkeyup="myFunctionother()" class="form-control input" type="number" step="any" class="" style="height: 35px;" id="other" name="other" placeholder="Other Payables" autocomplete="off">
                         </td>
                         </tr>
 
@@ -854,8 +909,9 @@ p.mix {border-style: dotted dashed solid double;} */
 
 <!-- <button type="" onclick="SaveData()" name="savediv" style="margin-left: 10px;" class="btn btn-primary pull-left">Save</button> -->
 
-<a  id="savediv" style="margin-right: 10px;" class="btn btn-primary pull-right">&nbsp;&nbsp;Save&nbsp;&nbsp;</a>
+<!-- <a  id="savediv" style="margin-right: 10px;" class="btn btn-primary pull-right">&nbsp;&nbsp;Save&nbsp;&nbsp;</a> -->
 <!-- <button type="submit" name="cancel" style="margin-right: 10px;" class="btn btn-success pull-right">Disburse Voucher</button> -->
+<input type="submit" name="submit" class="btn btn-primary pull-right" value="Save" id="butsave" style="margin-right:10px">
 <br>
 <br>
 <br>
@@ -951,6 +1007,83 @@ p.mix {border-style: dotted dashed solid double;} */
 
 <script>
   $(document).ready(function() {
+    var mode = $("input[name='mode']").val();
+    // alert(mode);
+    var Fill = $("#mode").val();
+    // var Fill = $("input[name='mode']").val();
+    // alert(Fill);
+    
+
+    if(Fill=='BURS'){
+            var bursno = '<?php echo $bursget?>';
+            // alert(bursno);
+            function dataTT(){
+
+            var table = $('#example').DataTable( {
+            'paging'      : true,
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : false,
+            'info'        : true,
+            'autoWidth'   : true,
+            "scrollX": true,
+            "processing": true,
+            "serverSide": false,
+            "ajax": {
+            "url": "DATATABLE/Disbursement_data1.php",
+            "type": "POST",
+            "data": {
+            "filter_data1": bursno,
+
+            }}
+
+            } );
+            }
+
+            $('#example').DataTable().destroy();
+            dataTT();
+            
+
+    }
+    else if(Fill=='ORS'){
+
+            var orsno = '<?php echo $orsget?>';
+            // alert(orsno);
+        function dataTTE(){
+          
+        var table = $('#example').DataTable( {
+        'paging'      : true,
+        'lengthChange': true,
+        'searching'   : true,
+        'ordering'    : false,
+        'info'        : true,
+        'autoWidth'   : true,
+        "scrollX": true,  
+        "processing": true,
+        "serverSide": false,
+        "ajax": {
+        "url": "DATATABLE/Disbursement_data.php",
+        "type": "POST",
+        "data": {
+        "filter_data": orsno,
+
+
+        }}
+
+        } );
+        }
+
+        
+        $('#example').DataTable().destroy();
+        dataTTE();
+
+    }
+    else{
+
+
+    }
+    
+    //APPEND
     var max_fields = 10;
     var wrapper = $(".container1");
     var add_button = $(".add_form_field");
@@ -985,6 +1118,11 @@ p.mix {border-style: dotted dashed solid double;} */
 
         
     })
+
+    //setting data
+
+
+
   });
 
 

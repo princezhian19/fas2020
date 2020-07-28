@@ -540,7 +540,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             <tr>
                             <td class="col-md-1"><b>PARTICULARS<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input readonly required type="text" class="form-control input" style="height: 35px;" name="particular" id="particular" value = "" placeholder="Particulars"  autocomplete="off">
+                            <input  required type="text" class="form-control input" style="height: 70px;" name="particular" id="particular" value = "" placeholder="Particulars"  autocomplete="off">
                             </td>
                             </tr>
 
@@ -864,7 +864,7 @@ p.mix {border-style: dotted dashed solid double;} */
 
 <!-- <a  id="savediv" type="submit" style="margin-right: 10px;" class="btn btn-primary pull-right">&nbsp;&nbsp;Save&nbsp;&nbsp;</a> -->
 <!-- <button type="submit" name="cancel" style="margin-right: 10px;" class="btn btn-success pull-right">&nbsp;&nbsp;Save&nbsp;&nbsp;</button> -->
-<input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave" style="margin-left:10px">
+<input type="submit" name="submit" class="btn btn-primary pull-right" value="Save" id="butsave" style="margin-right:10px">
 <br>
 <br>
 <br>
