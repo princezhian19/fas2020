@@ -2,11 +2,64 @@
 session_start();
 
      include 'connection.php';
+     ?>
+<style>
+th{
+    font-family: Arial;
+    color:black;
+}
+span{
+    font-family:'Arial';
+
+  }
+  table tr{ 
+    font-family:'Cambria';
+  }
+  .table-header{
+    color:black;
+    background-color:#B0BEC5; 
+
+  }
+  td.label-text{ 
+    background-color:#B0BEC5; 
+
+  }
+  @media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+
+	
+
+	
+	/*
+	Label the data
+	*/
+
+}
+  </style>
+     <?php
+    //  INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.ID = `tbltravel_claim_ro`.ID
+
      $query1 = "
      SELECT * FROM `tbltravel_claim_info` 
      INNER JOIN `tbltravel_claim_info2` on `tbltravel_claim_info`.TC_ID = `tbltravel_claim_info2`.ID 
-     INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.ID = `tbltravel_claim_ro`.ID
      where `RO_TO_OB` = '".$_POST['ro']."' ";
+
      $result1 = mysqli_query($conn, $query1);
      if(mysqli_num_rows($result1) > 0)    
      {
@@ -17,7 +70,6 @@ session_start();
     
      $query = "SELECT * FROM `tbltravel_claim_info` 
           INNER JOIN `tbltravel_claim_info2` on `tbltravel_claim_info`.TC_ID = `tbltravel_claim_info2`.ID 
-
           INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID
 
      WHERE `TC_ID` ='".$row1['ID']."' ";
@@ -28,7 +80,7 @@ session_start();
         if($row1 = mysqli_fetch_array($result))
         {
          ?>
-         <div class="well" style = "padding:10px;">
+                <div class="well" style = "padding:10px;">
                   <div class="box-body">
                     <div class = "row">
                       <div class = "col-sm-12 col-md-12 col-lg-12">
@@ -114,10 +166,19 @@ session_start();
                           </div>
                       </div>
                     </div>
-                    </div>
-                    </div>
+                  </div>
+                </div>
          <?php
         }
+        echo '<table border =1 style = "width:100%;" class="table table-bordered table-hover" >';
+        echo '<thead class="table-header">';
+        echo '<th>FROM</th>';
+        echo '<th>TO</th>';
+        echo '<th>MEANS OF TRANSPORTATION</th>';
+        echo '<th>TRANPORTATION FARE</th>';
+        echo '</thead>';
+
+        
         while($row = mysqli_fetch_array($result))
         {
             // $parts = explode('to', $row['PLACE']);
@@ -125,10 +186,26 @@ session_start();
             // $file_coma = implode(',', $filename_arr);
             $places = preg_split("/[\s]+/", $row['PLACE']);
             list($from, $number2,$to) = $places;
+            
 
             ?>
-            
-                <div class="well" style = "padding:10px;">
+            <tr>
+              <td><?php echo $places[0];?></td>
+              <td><?php echo $places[2];?></td>
+              <td><?php echo $row['MOT'];?></td>
+              <td><?php echo $row['TRANSPORTATION'];?></td>
+            </tr>
+             
+            <?php
+        }
+        echo '</table>';
+    }
+        }
+    }
+ 
+?>
+
+<!-- <div class="well" style = "padding:10px;">
                   <div class="box-body">
                       <div style = "padding:10px;" >
                       <div class="box-body myTemplate2">
@@ -163,11 +240,4 @@ session_start();
                       </div>
                   </div>
                 </div>
-            <?php
-        }
-    }
-        }
-    }
- 
-?>
-
+                -->

@@ -96,7 +96,6 @@ if(mysqli_num_rows($result) > 0)
             $mot = $_POST['mot'][$a];
             $ro = $_POST['ro'][$a];
             $date = $_POST['date'][$a];
-            echo $_POST['date'][$a].'<br>';
 
             include 'connection.php';
             $query11 = "SELECT * FROM tbltravel_claim_ro order by id desc limit 1";
