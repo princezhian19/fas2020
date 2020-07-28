@@ -497,7 +497,7 @@ function isSubmit()
                                       <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" style = "border:3px solid red;" name = "date[]" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
+                                    <input type="text" style = "border:3px;" name = "date[]" class="form-control datepicker4" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
                                   </div>
                                 </div>
                               </div>
