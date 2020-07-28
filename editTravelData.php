@@ -170,7 +170,7 @@ only screen and (max-width: 760px),
                 </div>
          <?php
         }
-        echo '<table border =1 style = "width:100%;" class="table table-bordered table-hover" >';
+        echo '<table border =1 style = "width:100%;" class="table table-hover" >';
         echo '<thead class="table-header">';
         echo '<th>FROM</th>';
         echo '<th>TO</th>';
