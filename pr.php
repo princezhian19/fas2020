@@ -46,6 +46,20 @@ function app($connect)
   return $output;
 }
 
+function pmo($connect)
+{ 
+  $output = '';
+  $query = "SELECT id,pmo_title FROM `pmo` ";
+  $statement = $connect->prepare($query);
+  $statement->execute();
+  $result = $statement->fetchAll();
+  foreach($result as $row)
+  {
+    $output .= '<option text="text" value="'.$row["pmo_title"].'">'.$row["pmo_title"].'</option>';
+  }
+  return $output;
+}
+
 
 $idGet='';
 $getDate = date('Y');
@@ -471,8 +485,13 @@ if (isset($_POST['add'])) {
                 </div>
                 <div class="form-group">
                   <label>Office <label style="color: Red;" >*</label></label>
-                  
+                  <?php if ($username == 'ctronquillo'): ?>
+                    <select class="form-control select2" name="pmo">
+                    <option><?php echo pmo($connect)?></option>
+                  </select>
+                  <?php else: ?>
                   <input type="text" class="form-control" style="width: 100%;" name="pmo" id="pmo" readonly value="FAD" >
+                  <?php endif ?>
                 </div>
                 <div class="form-group">
                   <label>Type <label style="color: Red;" >*</label></label>
