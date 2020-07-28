@@ -158,7 +158,6 @@ if(mysqli_num_rows($result) > 0)
                     '".$_POST['others']."',
                     '".$totalamount."'
                     )";
-                    echo $insert.'<br>';
             if (mysqli_query($conn, $insert)) {
             } else {
             }
