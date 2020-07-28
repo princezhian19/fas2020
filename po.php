@@ -76,7 +76,7 @@ $auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM po order by id desc limit
 while ($row = mysqli_fetch_assoc($auto)) {
   $idGet = $row["a"];
 }
-$autoNo = $getDate.'-'.$m.'-'.'00'.$idGet;
+$autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
 
 
 ?>
