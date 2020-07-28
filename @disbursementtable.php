@@ -193,7 +193,7 @@
                                       <?php endif ?>
                                       <td>
 
-                                      <a  class="btn btn-primary btn-xs" href=''> <i class='fa'>&#xf044;</i> Manage Data</a>
+                                      <a  class="btn btn-primary btn-xs" href='Disbursement_Update.php?id=<?php echo $ors?>'> <i class='fa'>&#xf044;</i> Manage Data</a>
                                         <!-- <a  class = "btn btn-primary btn-xs" href='disbursementupdate.php?getid=<?php echo $id;?>' > <i class='fa'>&#xf044;</i> Edit</a> | 
                                       
                                         <a onclick="return confirm('Are you sure you want to delete this record?');" name=""  href="@Functions/ddeletefunction.php?getid=<?php echo $id;?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>                                      -->
