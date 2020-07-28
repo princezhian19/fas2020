@@ -172,7 +172,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             <tr>
                             <td class="col-md-2"><b>BURS No.<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input required value="<?php if($flag=='BURS'){echo $bursget;}else{}?>"  class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="Enter BURS No." autocomplete="off">
+                            <input readonly required value="<?php if($flag=='BURS'){echo $bursget;}else{}?>"  class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="" autocomplete="off">
                            
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -262,6 +262,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 document.getElementById('particular').value = "";
                                 document.getElementById("amount").value = "";
                                 document.getElementById("orsdate").value = "";
+                                document.getElementById("net").value = "0";
 
                                 }
                                 });
@@ -275,7 +276,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 document.getElementById("particular").value = x[5].innerHTML;
                                 document.getElementById("amount").value = x[6].innerHTML;
                                 document.getElementById("deductions").value = "0";
-                                document.getElementById("net").value = "0";
+                                document.getElementById("net").value = x[6].innerHTML;
                                 }
 
                                 //function of table
@@ -349,7 +350,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             <tr>
                             <td class="col-md-2"><b>ORS No.<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input required value="<?php if($flag=='ORS'){echo $orsget;}else{}?>"  class="form-control input" type="text" class="" style="height: 35px;" id="ors1" name="ors1" placeholder="Enter ORS No." autocomplete="off">
+                            <input readonly required value="<?php if($flag=='ORS'){echo $orsget;}else{}?>"  class="form-control input" type="text" class="" style="height: 35px;" id="ors1" name="ors1" placeholder="" autocomplete="off">
                            
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -438,6 +439,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 document.getElementById('particular').value = "";
                                 document.getElementById("amount").value = "";
                                 document.getElementById("orsdate").value = "";
+                                document.getElementById("net").value = "0";
 
                                 }
                                 });
@@ -451,7 +453,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 document.getElementById("particular").value = x[5].innerHTML;
                                 document.getElementById("amount").value = x[6].innerHTML;
                                 document.getElementById("deductions").value = "0";
-                                document.getElementById("net").value = "0";
+                                document.getElementById("net").value = x[6].innerHTML;
                                 }
 
                                 //function of table
@@ -602,21 +604,21 @@ p.mix {border-style: dotted dashed solid double;} */
                             <tr>
                             <td class="col-md-1"><b>OBLIGATED AMOUNT<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input value="<?php echo $amount?>" readonly required type="text" class="form-control input" style="height: 35px;" name="amount" id="amount" value = "" placeholder="Obligated Amount"  autocomplete="off">
+                            <input value="<?php echo $amount?>" readonly required type="text" class="form-control input" style="height: 35px;" name="amount" id="amount"  placeholder="Obligated Amount"  autocomplete="off">
                             </td>
                             </tr>
 
                             <tr>
                             <td class="col-md-1"><b>TOTAL DEDUCTIONS<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input value="<?php echo $total?>" readonly required type="text" class="form-control input" style="height: 35px;" name="deductions" id="deductions" value = "0" placeholder="Total Deductions"  autocomplete="off">
+                            <input value="<?php echo $total?>" readonly required type="text" class="form-control input" style="height: 35px;" name="deductions" id="deductions"  placeholder="Total Deductions"  autocomplete="off">
                             </td>
                             </tr>
 
                             <tr>
                             <td class="col-md-1"><b>NET AMOUNT<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input value="<?php echo $net?>" readonly required type="text" class="form-control input" style="height: 35px;" name="net" id="net" value = "0" placeholder="Net Amount"  autocomplete="off">
+                            <input value="<?php echo $net?>" readonly required type="text" class="form-control input" style="height: 35px;" name="net" id="net"  placeholder="Net Amount"  autocomplete="off">
                             </td>
                             </tr>
 

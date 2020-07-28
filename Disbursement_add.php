@@ -207,6 +207,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 document.getElementById('particular').value = "";
                                 document.getElementById("amount").value = "";
                                 document.getElementById("orsdate").value = "";
+                                document.getElementById("net").value = "0";
 
                                 }
                                 });
@@ -220,7 +221,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 document.getElementById("particular").value = x[5].innerHTML;
                                 document.getElementById("amount").value = x[6].innerHTML;
                                 document.getElementById("deductions").value = "0";
-                                document.getElementById("net").value = "0";
+                                document.getElementById("net").value = x[6].innerHTML;
                                 }
 
                                 //function of table
@@ -383,7 +384,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 document.getElementById('particular').value = "";
                                 document.getElementById("amount").value = "";
                                 document.getElementById("orsdate").value = "";
-
+                                document.getElementById("net").value = "0";
                                 }
                                 });
                                 });
@@ -396,7 +397,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 document.getElementById("particular").value = x[5].innerHTML;
                                 document.getElementById("amount").value = x[6].innerHTML;
                                 document.getElementById("deductions").value = "0";
-                                document.getElementById("net").value = "0";
+                                document.getElementById("net").value = x[6].innerHTML;
                                 }
 
                                 //function of table
