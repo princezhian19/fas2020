@@ -121,7 +121,7 @@ if($mode=="BURS"){
 
 }
 else{
-   $sql = "UPDATE disbursement set dv='$dv',ors='$ors',datereceived='$orsdate',date_proccess='$dvdate',payee='$payee',particular='$particular',amount='$amount',tax='$tax',gsis='$gsis',pagibig='$pagibig',philhealth='$philhealth',other='$other',total='$total',net='$net',datereleased='$dvdate',remarks='$remarks',status='$status',flag='BURS' where dv = '$dv' ";
+   $sql = "UPDATE disbursement set dv='$dv',ors='$ors',datereceived='$orsdate',date_proccess='$dvdate',payee='$payee',particular='$particular',amount='$amount',tax='$tax',gsis='$gsis',pagibig='$pagibig',philhealth='$philhealth',other='$other',total='$total',net='$net',datereleased='$dvdate',remarks='$remarks',status='$status',flag='ORS' where dv = '$dv' ";
     if (!mysqli_query($con,$sql))
     {
     die('Error: ' . mysqli_error($con));
