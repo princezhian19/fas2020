@@ -67,6 +67,9 @@ only screen and (max-width: 760px),
      {
         while($row1 = mysqli_fetch_array($result))
         {
+          
+            $places = preg_split("/[\s]+/", $row1['PLACE']);
+            list($from, $number2,$to) = $places;
          ?>
                 <div class="well box-success box" style = "padding:10px;background:#ECEFF1;">
                   <div class="box-body">
@@ -94,7 +97,7 @@ only screen and (max-width: 760px),
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>Time Going to Venue</label>
-                                <input type = "time" name = "from1" class = "form-control "/>
+                                <input type = "time" name = "from1" class = "form-control ">
                             </div>
                           </div>
                           <div class="col-md-6">
@@ -118,7 +121,7 @@ only screen and (max-width: 760px),
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Means of Transportation</label>
-                                <input type="text" name = "others" value = "<?php echo $row1['OTHERS'];?>" class="form-control" >
+                                <input type="text" name = "others" value = "<?php echo $row1['MOT'];?>" class="form-control" >
                             </div>
                           </div>
                           <div class="col-md-12">
@@ -161,19 +164,19 @@ only screen and (max-width: 760px),
                             <div class="col-md-6" style = "margin-top:20px;"> 
                             <div class="form-group">
                               <label>From</label>
-                                <input type = "time" name = "from1" class = "form-control "/>
+                                <input type = "time" name = "from1" class = "form-control " value = "<?php echo $places[0];?>"/>
                             </div>
                           </div>
                           <div class="col-md-6" style = "margin-top:20px;">
                             <div class="form-group">
                               <label>To</label>
-                              <input type = "time" name = "to1" class = "form-control"/>
+                              <input type = "time" name = "to1" class = "form-control"  value = "<?php echo $places[2];?>"/>
                             </div>
                           </div>
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Transportation Fare</label>
-                                <input type="text" name = "others" value = "<?php echo $row1['OTHERS'];?>" class="form-control" >
+                                <input type="text" name = "others" value = "<?php echo $row1['TRANSPORTATION'];?>" class="form-control" >
                             </div>
                           </div>
                           </div>
