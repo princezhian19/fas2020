@@ -70,7 +70,7 @@ function aa($id)
                           ?>
                                       <td style = "width:10%;text-align:center;">
                                         <!-- <span class = "btn btn-sm btn-primary"><i class = "fa fa-edit"></i>&nbsp;Edit</span> -->
-                                        <span class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['PID']; ?>" data-id = "<?php echo $row1['PID'];?>" value = "<?php echo $row1['PID'];?>"><i class = "fa fa-trash"></i>&nbsp;<?php echo $row1['PID'];?>Delete</span>
+                                        <span class = "btn btn-md btn-danger"  id = "btnids<?php echo $row1['PID']; ?>" data-id = "<?php echo $row1['PID'];?>" value = "<?php echo $row1['PID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span>
                                       </td>
 
                           <?php
