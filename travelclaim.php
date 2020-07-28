@@ -478,9 +478,9 @@ function isSubmit()
               <form method = "POST" action = "saveTravelInfo.php">
             <input type = "hidden" name = "hidden_ro" value = "<?php echo $_GET['ro'];?>" />
 
-                <div class="well myTemplate2" style = "padding:10px;">
+                <div class="well box box-success myTemplate2" style = "padding:10px;background:#ECEFF1">
 
-                  <div class="box-body">
+                  <div class="box-body ">
                     <div class = "row">
                       <div class = "col-sm-12 col-md-12 col-lg-12">
                           <div class = "col-sm-6 col-md-6 col-lg-6">
@@ -537,7 +537,7 @@ function isSubmit()
                             <div class="col-md-12 well perdiem">
                             <div>
         <!-- <img src="images/50km.png" alt="Flying Kites" style = "width:100%;height:auto;"> -->
-        <div class="form-group">
+        <div class="form-group" id = "perdiem">
                                   <label>
                                   Per Diem
                                   </label>
