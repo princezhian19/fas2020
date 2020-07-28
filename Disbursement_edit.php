@@ -1021,12 +1021,11 @@ p.mix {border-style: dotted dashed solid double;} */
 
             var table = $('#example').DataTable( {
             'paging'      : true,
-            'lengthChange': true,
+            'lengthChange': false,
             'searching'   : true,
             'ordering'    : false,
-            'info'        : true,
-            'autoWidth'   : true,
-            "scrollX": true,
+            'info'        : false,
+            'autoWidth'   : false,  
             "processing": true,
             "serverSide": false,
             "ajax": {
@@ -1053,12 +1052,11 @@ p.mix {border-style: dotted dashed solid double;} */
           
         var table = $('#example').DataTable( {
         'paging'      : true,
-        'lengthChange': true,
+        'lengthChange': false,
         'searching'   : true,
         'ordering'    : false,
-        'info'        : true,
-        'autoWidth'   : true,
-        "scrollX": true,  
+        'info'        : false,
+        'autoWidth'   : false,  
         "processing": true,
         "serverSide": false,
         "ajax": {
