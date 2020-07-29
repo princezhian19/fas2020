@@ -735,153 +735,35 @@ p.mix {border-style: dotted dashed solid double;} */
 
  
                 </div>
-                <button class="add_form_field pull-right btn btn-info btn-xs">Add NTA/NCA &nbsp; 
-                <span style="font-size:16px; font-weight:bold;">+ </span>
+                <!-- <button class="add_form_field pull-right btn btn-info btn-xs">Add NTA/NCA &nbsp;  -->
+               <!--  <span style="font-size:16px; font-weight:bold;">+ </span> -->
               </button>
               <br>
               <br>
-                 <div class="container1">
+                 <div class="container1 well">
 
-                    
-                    <div class="col-md-3">
-                        
-                        <tr>
-                        <td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td>
-                        <td class="col-md-7">
-                        <select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge" required >
-                        <option value = "">Select NCA/NTA</option>
-                        <option value = "NCA">NCA</option>
-                        <option value = "NTA">NTA</option>
-                        </select>
+                 <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <!-- Table of Uacs -->
+                                        <table id="example1" class="table table-bordered " style="background-color: white; width:100%; text-align:left">
+                                        <thead>
+                                        <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
+                                        <th width='500'>TYPE</th>
+                                        <th width='500'>PARTICULAR</th>
+                                        <th width='500'>AMOUNT </th>
 
-                        
-                        </td>
-                        </tr>
-                 
+                                        
+                                        </thead>
 
-                    </div>
+                                        </table>
 
-                    <div class="col-md-4">
+                                        <!-- Table of Uacs -->
 
-                        <tr>
-                        <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td>
-                        <td class="col-md-7">
+                                    </div>
 
-                        <!-- <label>Employee Name</label>
-                        <select class="form-control select2" style= "color:blue;text-align:center;"  id = "ntano">
-
-                        
-                        </select>  -->
-                        <!-- <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntano" name="ntano[]" placeholder="NCA/NTA NO." autocomplete="off"> -->
-
-                        <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano" name = "ntano[]"> <?php getNta();?> </select>
-                        
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                            <table class="table table-striped table-hover" id="main2" >
-                                <tbody id="result2" style="font-weight:bold" >
-                                </tbody>
-                                </table>
-
-                           
-
-                                <script>
-
-                               
-                                $(document).ready(function(){
-                                //Set ors disabled
-
-
-                                $("#result2").click(function(){
-                                $("#main2").hide();
-                                
-                                });
-                                });
-                                </script>
-                               
-                                <script type="text/javascript">
-                                //declare variable for filtering
-                                
-
-                                $(document).ready(function(){
-                                
-                               
-                                function load_data(query)
-                                {
-
-                               
-                                $.ajax({
-                                
-                                url:"@ntavalue.php",
-                                method:"POST",
-                                data:{query:query,
-                                },
-
-
-                                success:function(data)
-                                {
-                                $('#result2').html(data);
-                                }
-                                });
-                                }
-
-                                $('#ntano').keyup(function(){
-                                var search = $(this).val();
-                                if(search != '')
-                                {
-                                load_data(search);
-
-                                
-                                }
-                                else
-                                {
-                                
-                                $("#main2").show();
-                                load_data();
-                                
-                                document.getElementById('ntano').value = "";
-                                document.getElementById('ntabalance').value = "";
-                              
-
-                                }
-                                });
-                                });
-                                function showRow2(row)
-                                {
-                                var x=row.cells;
-                                document.getElementById("ntano").value = x[0].innerHTML;
-                                document.getElementById("ntabalance").value = x[1].innerHTML;
-                               
-                                }
-
-                             
-      
-                                </script>
-                        </td>
-                        </tr>
-
-                    </div>
-                  <div class="col-md-2">
-
-                  <tr>
-                  <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td>
-                  <td class="col-md-7">
-                  <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="ntaamount" name="ntaamount[]" placeholder="0" autocomplete="off">
-                  </td>
-                  </tr>
-
-                  </div>
-
-                    <div class="col-md-3">
-
-                        <tr>
-                        <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td>
-                        <td class="col-md-7">
-                        <input readonly required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance[]" placeholder="0" autocomplete="off">
-                        </td>
-                        </tr>
-
-                    </div>
-
+                                </div>
+                            </div>
                 </div>
 
                 </div>
@@ -1010,6 +892,8 @@ p.mix {border-style: dotted dashed solid double;} */
     var Fill = $("#mode").val();
 
     var status = $("#status").val();
+
+    
     // var Fill = $("input[name='mode']").val();
     // alert(status);
     
@@ -1096,6 +980,38 @@ p.mix {border-style: dotted dashed solid double;} */
 
 
     }
+
+    var dv = '<?php echo $dv?>';
+    // alert(dv);
+    function dataTTTE(){
+          
+          var table = $('#example1').DataTable( {
+          'paging'      : true,
+          'lengthChange': false,
+          'searching'   : true,
+          'ordering'    : false,
+          'info'        : false,
+          'autoWidth'   : false,  
+          "processing": true,
+          "serverSide": false,
+          "ajax": {
+          "url": "DATATABLE/Nta_data.php",
+          "type": "POST",
+          "data": {
+          "filter_data": dv,
+  
+  
+          }}
+  
+          } );
+          }
+  
+          
+          $('#example1').DataTable().destroy();
+          dataTTTE();
+
+
+
 
     /* LOADING of DATA TABLES */
     

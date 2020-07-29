@@ -613,10 +613,6 @@ p.mix {border-style: dotted dashed solid double;} */
                                     </div>
 
                                 </div>
-
-                                
-
-
                             </div>
 
 
