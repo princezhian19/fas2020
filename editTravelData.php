@@ -69,7 +69,6 @@ only screen and (max-width: 760px),
      {
         while($row1 = mysqli_fetch_array($result))
         {
-          
             $places = preg_split("/[\s]+/", $row1['PLACE']);
             list($from, $number2,$to) = $places;
          ?>
@@ -99,13 +98,13 @@ only screen and (max-width: 760px),
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>Departure</label>
-                                <input type = "time" name = "from1" class = "form-control ">
+                                <input type = "time" name = "from1" class = "form-control " value = "<?php echo $row1['DEPARTURE'];?>">
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>Arrival</label>
-                              <input type = "time" name = "to1" class = "form-control"/>
+                              <input type = "time" name = "to1" class = "form-control" value = "<?php echo $row1['ARRIVAL'];?>"/>
                             </div>
                           </div>
                           <!-- <div class="col-md-6">
