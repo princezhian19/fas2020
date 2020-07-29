@@ -36,8 +36,8 @@ $(document).ready(function(){
      .addClass("additionalDate")
      .show()
      .appendTo('#travelPanel');
-     
     myCounter++;
+    
        
     $(".datepicker4").on('focus', function(){
         var $this = $(this);

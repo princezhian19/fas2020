@@ -478,9 +478,9 @@ function isSubmit()
               <form method = "POST" action = "saveTravelInfo.php">
             <input type = "hidden" name = "hidden_ro" value = "<?php echo $_GET['ro'];?>" />
 
-                <div class="well myTemplate2" style = "padding:10px;">
+                <div class="well box box-success myTemplate2" style = "padding:10px;background:#ECEFF1">
 
-                  <div class="box-body">
+                  <div class="box-body ">
                     <div class = "row">
                       <div class = "col-sm-12 col-md-12 col-lg-12">
                           <div class = "col-sm-6 col-md-6 col-lg-6">
@@ -503,17 +503,18 @@ function isSubmit()
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label>Time Going to Venue</label>
+                                  <!-- <label>Time Going to Venue</label> -->
+                                  <label>Departure</label>
                                     <input type = "time" name = "from1" class = "form-control "/>
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label>&nbsp;</label>
+                                  <label>Arrival</label>
                                   <input type = "time" name = "to1" class = "form-control"/>
                                 </div>
                               </div>
-                              <div class="col-md-6">
+                              <!-- <div class="col-md-6">
                                 <div class="form-group">
                                   <label style = "font-size:13px;">Time Going Home or back to Official Station</label>
                                     <input type = "time" name = "from2" class = "form-control"/>
@@ -524,7 +525,7 @@ function isSubmit()
                                   <label>&nbsp;</label>
                                   <input type = "time" name = "to2" class = "form-control" style = "margin-top:15px;"/>
                                 </div>
-                              </div>
+                              </div> -->
                               <div class="col-md-12">
                                 <div class="form-group">
                                   <label>Others</label>
@@ -536,7 +537,7 @@ function isSubmit()
                             <div class="col-md-12 well perdiem">
                             <div>
         <!-- <img src="images/50km.png" alt="Flying Kites" style = "width:100%;height:auto;"> -->
-        <div class="form-group">
+        <div class="form-group" id = "perdiem">
                                   <label>
                                   Per Diem
                                   </label>
