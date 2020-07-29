@@ -895,29 +895,11 @@ p.mix {border-style: dotted dashed solid double;} */
     var status = $("#status").val();
 
     
-    // var Fill = $("input[name='mode']").val();
-    // alert(status);
-    
-    /* Select default value of select option */
-    if(status=='Draft'){
-      $("#status option[value=Draft]").attr('selected', 'selected');
-    }
-    else if(status=='Paid'){
-      $("#status option[value=Paid]").attr('selected', 'selected');
-    }
-    else if(status=='Returned'){
-      $("#status option[value=Returned]").attr('selected', 'selected');
-    }
-    else {
-      $("#status option[value=]").attr('selected', 'selected');
-    }
-    /* Select default value of select option */
-
     /* LOADING of DATA TABLES */
 
     if(Fill=='BURS'){
             var bursno = '<?php echo $bursget?>';
-            alert(bursno);
+            // alert(bursno);
             function dataTT(){
 
             var table = $('#example').DataTable( {
@@ -948,7 +930,7 @@ p.mix {border-style: dotted dashed solid double;} */
     else if(Fill=='ORS'){
 
             var orsno = '<?php echo $orsget?>';
-            alert(orsno);
+            // alert(orsno);
         function dataTTE(){
           
         var table = $('#example').DataTable( {
@@ -983,7 +965,7 @@ p.mix {border-style: dotted dashed solid double;} */
     }
 
     var dv = '<?php echo $dv?>';
-    alert(dv);
+    // alert(dv);
     function dataTTTE(){
           
           var table = $('#example1').DataTable( {
