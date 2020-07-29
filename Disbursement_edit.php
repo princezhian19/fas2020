@@ -983,7 +983,7 @@ p.mix {border-style: dotted dashed solid double;} */
     }
 
     var dv = '<?php echo $dv?>';
-    // alert(dv);
+    alert(dv);
     function dataTTTE(){
           
           var table = $('#example1').DataTable( {
