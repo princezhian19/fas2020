@@ -94,7 +94,7 @@ only screen and (max-width: 760px),
                                   <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" name = "date" class="form-control datepicker4" value = "<?php echo $row1['DATE'];?>" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
+                                <input type="text" name = "date[]" class="form-control datepicker4" value = "<?php echo $row1['DATE'];?>" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
                               </div>
                             </div>
                           </div>
@@ -192,6 +192,8 @@ only screen and (max-width: 760px),
                 </div>
                 <div  style = "padding:10px;" id = "travelPanel">
                   </div>
+                  <button type = "submit" class = "btn btn-success btn-md pull-right" ><i class = "fa fa-save"></i>&nbsp;Save Changes</button>
+
          <?php
         }
         

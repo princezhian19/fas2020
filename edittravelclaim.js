@@ -19,19 +19,22 @@ $(document).ready(function()
    var myCounter = 1;
   
    $('#add_fare').click(function(){
-     
       $('.myTemplate2')
      .clone()
      .removeClass("myTemplate2")
      .addClass("additionalDate")
      .show()
      .appendTo('#travelPanel');
-
-
     myCounter++;
  
-   
-  
+    $(".datepicker4").on('focus', function(){
+        var $this = $(this);
+        if(!$this.data('datepicker')) {
+         $this.removeClass("hasDatepicker");
+         $this.datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+         $this.datepicker("show");
+        }
+    });   
   });
   $(document).on('click','#editbtn',function(e){
    
@@ -53,32 +56,7 @@ $(document).ready(function()
    
     // checkbox validation
     $(document).ready(function(){
-      // $('#datepicker4').val($('#travel_date').val());
       $( ".datepicker4" ).datepicker( "setDate", new Date());
-
-        //   $('.wor').click(function(){
-        //       if($(this).prop("checked") == true){
-                
-        //   $(".wor_txt").prop('disabled',true);
-        //   $(".wor_txt").val('');
-  
-        //       }
-        //       else if($(this).prop("checked") == false){
-        //         $(".wor_txt").prop('disabled',false);
-        //       }
-        //   });
-        //   $('.wa').click(function(){
-        //       if($(this).prop("checked") == true){
-        //   $(".wor_txt").prop('disabled',true);
-                
-        //       }
-        //   });
-        //   $('.wr').click(function(){
-        //       if($(this).prop("checked") == true){
-        //   $(".wor_txt").prop('disabled',false);
-                
-        //       }
-        //   });
       });
   
   
@@ -90,38 +68,12 @@ $(document).ready(function()
     $("body").on('click', '.wr', disableTxt2);
     $("body").on('change', '.receipt', groupCheck);
 
-function  groupCheck() {
-    const receipt = $(this).siblings('.receipt');
-
-    receipt.not(this).prop('checked', false);  
-}
-      
-    
-    
+    function  groupCheck(){
+        const receipt = $(this).siblings('.receipt');
+        receipt.not(this).prop('checked', false);  
+    }
     function enable_cb1() {
-        //paikliin natin to kim 
-    
-    //   if (this.checked) {
-    //     if($('.checkboxgroup').val() == 'breakfast')
-    //     {
-    //       $('.breakfast').not(this).prop('checked', true);  
-    //       $('.lunch').not(this).prop('checked', true);  
-    //       $('.dinner').not(this).prop('checked', true);  
-    //     }
-    //     $(".breakfast").removeAttr("disabled");
-    //     $(".lunch").removeAttr("disabled");
-    //     $(".dinner").removeAttr("disabled");
-    //   } else {
-  
-    //     $('.breakfast').not(this).prop('checked', false);  
-    //     $('.lunch').not(this).prop('checked', false);  
-    //     $('.dinner').not(this).prop('checked', false);  
-  
-    //     $(".breakfast").attr("disabled", true);
-    //     $(".lunch").attr("disabled", true);
-    //     $(".dinner").attr("disabled", true);
         
-    //   }
         const bf = $(this).siblings('.breakfast');
         const ln = $(this).siblings('.lunch');
         const dn = $(this).siblings('.dinner');
@@ -157,24 +109,6 @@ function  groupCheck() {
 
         wr.attr('disable', !this.checked);
         wor.attr('disable', !this.checked);
-
-
-    //   if (this.checked) {
-    //     if($('.receipt').val() == 'With Receipt')
-    //     {
-    //       $('.wr').not(this).prop('checked', true);  
-    //       $('.wor').not(this).prop('checked', true);  
-    //     }
-    //     $(".wr").removeAttr("disabled");
-    //     $(".wor").removeAttr("disabled");
-    //   }else{
-    //     $('.wr').not(this).prop('checked', false);  
-    //     $('.wor').not(this).prop('checked', false); 
-        
-    //     $(".wr").attr("disabled", true);
-    //     $(".wor").attr("disabled", true);
-    //   }
-  
     }
     disabledDIV();
 

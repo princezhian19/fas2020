@@ -166,7 +166,6 @@ session_start();
             }
         }
     }
-
     function getTotal()
     {
         include 'connection.php';
@@ -199,7 +198,6 @@ session_start();
                 echo $row1['DISTANCE'];
             }
     }
-
     function deleteTravelOrder()
     {
         include 'connection.php';
@@ -216,7 +214,7 @@ session_start();
         if (mysqli_query($conn, $del1)) {
         } else {
         }
-echo $del1;
+        echo $del1;
         $del2 ="DELETE FROM `tbltravel_claim_info` WHERE `RO`= '".$_POST['id']."' ";
         if (mysqli_query($conn, $del2)) {
         } else {
@@ -285,7 +283,6 @@ echo $del1;
         }
  
     }
-
     function editTravelData()
     {
         for($a=0;$a < count($_POST['mot']); $a++)
@@ -293,30 +290,41 @@ echo $del1;
             echo $_POST['mot'][$a];
         }
     }
- 
-$func = '';
-if(isset($_POST['action']))
-{
-    $action = $_POST['action'];
-    if($action == 'deleteTravelOrder' )
-    {   
-        deleteTravelOrder();
-    }else if($action == 'deleteAll')
+    function modifyTravelDate()
     {
-        deleteAll();
+        for($a=0;$a < count($_POST['date']); $a++)
+        {
+            $date = $_POST['date'][$a];
+            
+            echo $date;
+        }
     }
-}else if(isset($_GET['action'])){
-$action2 = $_GET['action'];
-    if($_GET['action']  == 'add')
-    
+    $func = '';
+    if(isset($_POST['action']))
     {
-        add();
-        // echo 'a';
+        $action = $_POST['action'];
+        if($action == 'deleteTravelOrder' )
+        {   
+            deleteTravelOrder();
+        }else if($action == 'deleteAll')
+        {
+            deleteAll();
+        }
+    }else if(isset($_GET['action'])){
+        $action2 = $_GET['action'];
+        if($_GET['action']  == 'add')
+        
+        {
+            add();
+            // echo 'a';
+        }
+        else if($_GET['action'] == 'modify')
+        {
+            editTravelData();   
+        }
+        else if($_GET['action'] == 'modifyTravelDate')
+        {
+            modifyTravelDate();
+        }
     }
-    else if($_GET['action'] == 'modify')
-    {
-        editTravelData();   
-    }
-}
-
 ?>
