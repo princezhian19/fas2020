@@ -220,7 +220,7 @@ $username = $_SESSION['username'];
           <tr>
           </tbody>
           </table>
-              <input type="button" name="save" class="btn btn-success " value="Save Data" id="butsave">
+              <input type="button" name="save" class="btn btn-primary " value="Save" id="butsave">
 
           </div>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -281,6 +281,14 @@ $username = $_SESSION['username'];
           });
           /*crating new click event for save button*/
           $("#butsave").click(function() {
+
+          if(id==1){
+            alert('Fields cannot be empty.');
+          }
+        else{
+
+          
+        }
           var lastRowId = $('#table1 tr:last').attr("id"); /*finds id of the last row inside table*/
 
           var date = new Array();

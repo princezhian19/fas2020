@@ -16,7 +16,7 @@ $username1 = $_SESSION['username'];
 date_default_timezone_set('Asia/Manila');
 $timeNow = (new DateTime('now'))->format('Y-m-d');
 //Replace now() Variable
-echo $timeNow;
+// echo $timeNow;
 
 ?>
 <?php
@@ -30,6 +30,10 @@ $mode = $_POST["mode"];
 
 $burs = $_POST["ors"];
 $ors = $_POST["ors1"];
+$orsget = $_POST["orsget"];
+// echo $orsget;
+
+// exit();
 
 $orsdate1= $_POST["orsdate"];
 $orsdate = date('Y-m-d', strtotime($orsdate1));
@@ -68,8 +72,47 @@ echo "Failed to connect to MySQL: " . mysqli_connect_error();
 
 if($mode=="BURS"){
   
-    $sql = "INSERT INTO disbursement (dv,ors,datereceived,date_proccess,payee,particular,amount,tax,gsis,pagibig,philhealth,other,total,net,datereleased,remarks,status,flag,orsdate) 
-    VALUES ('$dv','$burs','$timeNow','$dvdate','$payee','$particular','$amount','$tax','$gsis','$pagibig','$philhealth','$other','$deductions','$net','$dvdate','$remarks','$status','BURS','$orsdate')";
+    $sql = "UPDATE disbursement set dv='$dv',
+    ors='$orsget',
+    datereceived='$timeNow',
+    date_proccess='$dvdate',
+    payee='$payee',
+    particular='$particular',
+    amount='$amount',
+    tax='$tax',
+    gsis='$gsis',
+    pagibig='$pagibig',
+    philhealth='$philhealth',
+    other='$other',
+    total='$deductions',
+    net='$net',
+    datereleased='$dvdate',
+    remarks='$remarks',
+    status='$status',
+    flag='BURS',
+    orsdate='$orsdate' where ors = '$orsget'";
+
+    echo "UPDATE disbursement set dv='$dv',
+    ors='$orsget',
+    datereceived='$timeNow',
+    date_proccess='$dvdate',
+    payee='$payee',
+    particular='$particular',
+    amount='$amount',
+    tax='$tax',
+    gsis='$gsis',
+    pagibig='$pagibig',
+    philhealth='$philhealth',
+    other='$other',
+    total='$deductions',
+    net='$net',
+    datereleased='$dvdate',
+    remarks='$remarks',
+    status='$status',
+    flag='BURS',
+    orsdate='$orsdate' where ors = '$orsget'";
+    exit();
+
     if (!mysqli_query($con,$sql))
     {
     die('Error: ' . mysqli_error($con));
@@ -121,8 +164,48 @@ if($mode=="BURS"){
 
 }
 else{
-    $sql = "INSERT INTO disbursement (dv,ors,datereceived,date_proccess,payee,particular,amount,tax,gsis,pagibig,philhealth,other,total,net,datereleased,remarks,status,flag,orsdate) 
-    VALUES ('$dv','$ors','$timeNow','$dvdate','$payee','$particular','$amount','$tax','$gsis','$pagibig','$philhealth','$other','$deductions','$net','$dvdate','$remarks','$status','ORS','$orsdate')";
+    $sql = "UPDATE disbursement set dv='$dv',
+    ors='$orsget',
+    datereceived='$timeNow',
+    date_proccess='$dvdate',
+    payee='$payee',
+    particular='$particular',
+    amount='$amount',
+    tax='$tax',
+    gsis='$gsis',
+    pagibig='$pagibig',
+    philhealth='$philhealth',
+    other='$other',
+    total='$deductions',
+    net='$net',
+    datereleased='$dvdate',
+    remarks='$remarks',
+    status='$status',
+    flag='BURS',
+    orsdate='$orsdate' where ors = '$orsget'";
+
+
+echo "UPDATE disbursement set dv='$dv',
+ors='$orsget',
+datereceived='$timeNow',
+date_proccess='$dvdate',
+payee='$payee',
+particular='$particular',
+amount='$amount',
+tax='$tax',
+gsis='$gsis',
+pagibig='$pagibig',
+philhealth='$philhealth',
+other='$other',
+total='$deductions',
+net='$net',
+datereleased='$dvdate',
+remarks='$remarks',
+status='$status',
+flag='BURS',
+orsdate='$orsdate' where ors = '$orsget'";
+exit();
+
     if (!mysqli_query($con,$sql))
     {
     die('Error: ' . mysqli_error($con));

@@ -22,7 +22,7 @@ $username = $_SESSION['username'];
   <div class="box-body">
             
   <div class="class"  style="overflow-x:auto;">
-            <h1 align="">&nbspNTA/NCA</h1>
+            <h1 align="">&nbspNCA/NTA</h1>
      <br>
                 <table class="table" > 
 
@@ -102,7 +102,7 @@ $username = $_SESSION['username'];
             
             // Create connection
             $conn = new mysqli($servername, $username, $password,$database);
-            $view_query = mysqli_query($conn, "SELECT * FROM nta order by id asc");
+            $view_query = mysqli_query($conn, "SELECT * FROM nta order by id desc");
 
                 while ($row = mysqli_fetch_assoc($view_query)) {
                   $id = $row["id"];
@@ -156,8 +156,8 @@ $username = $_SESSION['username'];
                     <td  > 
                     
                     <a  class = "btn btn-primary btn-xs"  href='ntaupdate.php?getid=<?php echo $id?>'> <i class='fa'>&#xf044;</i> Edit</a> | 
-                    <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This NTA/NCA Item?');" href='ntadelete.php?id=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a> | 
-                    <a  class = "btn btn-info btn-xs"  href='ntatableViewMain.php?getntano=<?php echo $ntano?>&getparticular=<?php echo $particular?>'><i class='fa'>&#xf06e;</i> View</a>
+                    <a  class="btn btn-danger btn-xs" onclick="return confirm('Delete This NCA/NTA Item?');" href='ntadelete.php?id=<?php echo $id?>'><i class='fa fa-trash-o'> Delete</i></a> | 
+                    <a  class = "btn btn-info btn-xs"  href='ntatableViewMain.php?getntano=<?php echo $ntano?>&getparticular=<?php echo $particular?>&disbursed=<?php echo $obligated?>'><i class='fa'>&#xf06e;</i> View</a>
                 
                     </td>
                    

@@ -40,15 +40,16 @@ $conn = new mysqli($servername, $username, $password,$database);
 
 
 
-$view_query = mysqli_query($conn, "SELECT ID,dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount,tax,gsis,pagibig,philhealth,other, sum(total) as total, sum(net) as net, remarks, status,flag  FROM disbursement   where ors = '$idget' group by ors");
+$view_query = mysqli_query($conn, "SELECT ID,dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount,tax,gsis,pagibig,philhealth,other, sum(total) as total, sum(net) as net, remarks, status,flag,orsdate  FROM disbursement   where ors = '$idget' group by ors");
 /* echo "SELECT ID,dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount, sum(total) as total, sum(net) as net, remarks, status,flag  FROM disbursement   where ors = '$idget' group by ors";
 exit();
  */
 while ($row = mysqli_fetch_assoc($view_query)) {
 $id = $row["ID"]; 
 $dv = $row["dv"];
-// $ors = $row["ors"];
-
+/* echo $dv; */
+$ors = $row["ors"];
+/* echo $ors; */
 $datereceived1 = $row["datereceived"];
 $datereceived = date('m/d/Y', strtotime($datereceived1));
 
@@ -63,6 +64,8 @@ $total = $row["total"];
 $net = $row["net"];
 // $net = number_format($net1,2);
 $remarks = $row["remarks"];
+
+
 $status = $row["status"];
 
 
@@ -74,6 +77,8 @@ $other = $row["other"];
 
 //Getting Flag
 $flag = $row["flag"];
+$orsdate1 = $row["orsdate"];
+$orsdate = date('m/d/Y', strtotime($orsdate1));
 /* echo $flag;
 exit(); */
 
@@ -145,6 +150,7 @@ p.mix {border-style: dotted dashed solid double;} */
                 
                 ?>
                 <input hidden readonly required value="<?php echo $flag?>"  class=" input" type="text" class="" style="height: 35px;" id="mode" name="mode" placeholder="" autocomplete="off">
+                <input hidden readonly required value="<?php echo $status?>"  class=" input" type="text" class="" style="height: 35px;" id="status" name="status" placeholder="" autocomplete="off">
                 
                 <!-- Row 1 -->
                         <div class="col-md-6 ">
@@ -558,7 +564,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 <tr>
                                 <td class="col-md-3"><b>ORS Date.<span style = "color:red;">*</span></b></td>
                                 <td class="col-md-7">
-                                <input value="<?php echo $datereceived?>" readonly required type="text" class="form-control input" style="height: 35px;" name="orsdate" id="orsdate" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
+                                <input value="<?php echo $orsdate?>" readonly required type="text" class="form-control input" style="height: 35px;" name="orsdate" id="orsdate" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
                                 </td>
                                 </tr>
 
@@ -633,7 +639,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             <td class="col-md-1"><b>Status<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
                             <select class="form-control select input" style="width: 100%; height: 40px;" name="status" id="status" required >
-                            
+                            <option value = "">Select Status</option>
                             <option value = "Draft">Draft</option>
                             <option value = "Paid">Paid</option>
                             <option value = "Returned">Returned</option>
@@ -674,13 +680,9 @@ p.mix {border-style: dotted dashed solid double;} */
                             <br>
 
                         </div>
-                       
-                
-                
-
+         
          <!-- DV-->
          
-
         </div>
         
         
@@ -694,8 +696,6 @@ p.mix {border-style: dotted dashed solid double;} */
                 <div class="class-bordered">
                 <b><font style="font-size:25px; color:firebrick">DEDUCTIONS</font></b>  
                 </div>
-                
-             
                
                             
                 <table class="table"> 
@@ -738,155 +738,35 @@ p.mix {border-style: dotted dashed solid double;} */
 
  
                 </div>
-                <button class="add_form_field pull-right btn btn-info btn-xs">Add NTA/NCA &nbsp; 
-                <span style="font-size:16px; font-weight:bold;">+ </span>
+                <!-- <button class="add_form_field pull-right btn btn-info btn-xs">Add NTA/NCA &nbsp;  -->
+               <!--  <span style="font-size:16px; font-weight:bold;">+ </span> -->
               </button>
               <br>
               <br>
-                 <div class="container1">
+                 <div class="container1 well">
 
-                    
-                    <div class="col-md-3">
+                 <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <!-- Table of Uacs -->
+                                        <table id="example1" class="table table-bordered " style="background-color: white; width:100%; text-align:left">
+                                        <thead>
+                                        <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
+                                        <th width='500'>TYPE</th>
+                                        <th width='500'>PARTICULAR</th>
+                                        <th width='500'>AMOUNT </th>
 
+                                        
+                                        </thead>
 
-                        
-                        <tr>
-                        <td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td>
-                        <td class="col-md-7">
-                        <select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge" required >
-                        <option value = "">Select NCA/NTA</option>
-                        <option value = "NCA">NCA</option>
-                        <option value = "NTA">NTA</option>
-                        </select>
+                                        </table>
 
-                        
-                        </td>
-                        </tr>
-                 
+                                        <!-- Table of Uacs -->
 
-                    </div>
+                                    </div>
 
-                    <div class="col-md-4">
-
-                        <tr>
-                        <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td>
-                        <td class="col-md-7">
-
-                        <!-- <label>Employee Name</label>
-                        <select class="form-control select2" style= "color:blue;text-align:center;"  id = "ntano">
-
-                        
-                        </select>  -->
-                        <!-- <input required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntano" name="ntano[]" placeholder="NCA/NTA NO." autocomplete="off"> -->
-
-                        <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano" name = "ntano[]"> <?php getNta();?> </select>
-                        
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                            <table class="table table-striped table-hover" id="main2" >
-                                <tbody id="result2" style="font-weight:bold" >
-                                </tbody>
-                                </table>
-
-                           
-
-                                <script>
-
-                               
-                                $(document).ready(function(){
-                                //Set ors disabled
-
-
-                                $("#result2").click(function(){
-                                $("#main2").hide();
-                                
-                                });
-                                });
-                                </script>
-                               
-                                <script type="text/javascript">
-                                //declare variable for filtering
-                                
-
-                                $(document).ready(function(){
-                                
-                               
-                                function load_data(query)
-                                {
-
-                               
-                                $.ajax({
-                                
-                                url:"@ntavalue.php",
-                                method:"POST",
-                                data:{query:query,
-                                },
-
-
-                                success:function(data)
-                                {
-                                $('#result2').html(data);
-                                }
-                                });
-                                }
-
-                                $('#ntano').keyup(function(){
-                                var search = $(this).val();
-                                if(search != '')
-                                {
-                                load_data(search);
-
-                                
-                                }
-                                else
-                                {
-                                
-                                $("#main2").show();
-                                load_data();
-                                
-                                document.getElementById('ntano').value = "";
-                                document.getElementById('ntabalance').value = "";
-                              
-
-                                }
-                                });
-                                });
-                                function showRow2(row)
-                                {
-                                var x=row.cells;
-                                document.getElementById("ntano").value = x[0].innerHTML;
-                                document.getElementById("ntabalance").value = x[1].innerHTML;
-                               
-                                }
-
-                             
-      
-                                </script>
-                        </td>
-                        </tr>
-
-                    </div>
-                  <div class="col-md-2">
-
-                  <tr>
-                  <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td>
-                  <td class="col-md-7">
-                  <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="ntaamount" name="ntaamount[]" placeholder="0" autocomplete="off">
-                  </td>
-                  </tr>
-
-                  </div>
-
-                    <div class="col-md-3">
-
-                        <tr>
-                        <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td>
-                        <td class="col-md-7">
-                        <input readonly required value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance[]" placeholder="0" autocomplete="off">
-                        </td>
-                        </tr>
-
-                    </div>
-
+                                </div>
+                            </div>
                 </div>
 
                 </div>
@@ -1013,9 +893,22 @@ p.mix {border-style: dotted dashed solid double;} */
     var mode = $("input[name='mode']").val();
     // alert(mode);
     var Fill = $("#mode").val();
-    // var Fill = $("input[name='mode']").val();
-    // alert(Fill);
-    
+
+    var status = $("#status").val();
+
+    if(status=='Draft'){
+      $("#status option[value=Draft]").attr('selected', 'selected');
+    }
+    else if(status=='Paid'){
+      $("#status option[value=Paid]").attr('selected', 'selected');
+    }
+    else if(status=='Returned'){
+      $("#status option[value=Returned]").attr('selected', 'selected');
+    }
+    else {
+      $("#status option[value=]").attr('selected', 'selected');
+    }
+    /* LOADING of DATA TABLES */
 
     if(Fill=='BURS'){
             var bursno = '<?php echo $bursget?>';
@@ -1025,7 +918,7 @@ p.mix {border-style: dotted dashed solid double;} */
             var table = $('#example').DataTable( {
             'paging'      : true,
             'lengthChange': false,
-            'searching'   : true,
+            'searching'   : false,
             'ordering'    : false,
             'info'        : false,
             'autoWidth'   : false,  
@@ -1056,7 +949,7 @@ p.mix {border-style: dotted dashed solid double;} */
         var table = $('#example').DataTable( {
         'paging'      : true,
         'lengthChange': false,
-        'searching'   : true,
+        'searching'   : false,
         'ordering'    : false,
         'info'        : false,
         'autoWidth'   : false,  
@@ -1083,6 +976,40 @@ p.mix {border-style: dotted dashed solid double;} */
 
 
     }
+
+    var dv = '<?php echo $dv?>';
+    // alert(dv);
+    function dataTTTE(){
+          
+          var table = $('#example1').DataTable( {
+          'paging'      : true,
+          'lengthChange': false,
+          'searching'   : false,
+          'ordering'    : false,
+          'info'        : false,
+          'autoWidth'   : false,  
+          "processing": true,
+          "serverSide": false,
+          "ajax": {
+          "url": "DATATABLE/Nta_data.php",
+          "type": "POST",
+          "data": {
+          "filter_data": dv,
+  
+  
+          }}
+  
+          } );
+          }
+  
+          
+          $('#example1').DataTable().destroy();
+          dataTTTE();
+
+
+
+
+    /* LOADING of DATA TABLES */
     
     //APPEND
     var max_fields = 10;

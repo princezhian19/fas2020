@@ -4,6 +4,9 @@
 
 $getntano = $_GET['getntano'];
 $getparticular = $_GET['getparticular'];
+$disbursed = $_GET['disbursed'];
+// echo $disbursed;
+
 
 ?>
 
@@ -27,7 +30,7 @@ $getparticular = $_GET['getparticular'];
 </head>
 <body>
 
-<div class="box">
+<div class="box" style="border-style: groove;">
   <div class="box-body">
             
   <div class="class"  style="overflow-x:auto;">
@@ -58,24 +61,7 @@ $getparticular = $_GET['getparticular'];
             echo number_format($amount,2)?></label></h1>
             -->
 
-            <h3 align="" >&nbspDisbursed Amount :   <?php $getntano = $_GET['getntano'];
-          
-            
-            $servername = "localhost";
-
-            $username = "fascalab_2020";
-            $password = "w]zYV6X9{*BN";
-
-            $username = "fascalab_2020";
-            $password = "w]zYV6X9{*BN";
-
-            $database = "fascalab_2020";
-            
-            $conn = new mysqli($servername, $username, $password,$database);
-            $AmountAll = mysqli_query($conn, "SELECT sum(net) as a FROM disbursement where nta = '$getntano' and ntaparticular = '$getparticular' and status='Disbursed' "); 
-            $rowAmount = mysqli_fetch_array( $AmountAll);
-
-            echo  number_format($rowAmount['a'],2)?></h3>
+            <h3 align="" >&nbspDisbursed Amount :   <b><?php echo  number_format($disbursed,2)?></b></h3>
             <input type="text" class="text" name="totaldisbursed" value="<h><?php echo $rowAmount['a'];?>" hidden>
 
 
@@ -86,29 +72,20 @@ $getparticular = $_GET['getparticular'];
       <table id="example1" class="table table-striped table-bordered " style="background-color: white; overflow-x:auto;" >
               <thead>
                 <tr style="background-color: white;color:blue;">
-                  <th style="text-align:center" width="800"></th>
-                  <th style="text-align:center" width="800">DVs No.</th>
-                  <th style="text-align:center" width="800">ORS/BURS No.</th>
-                  <th style="text-align:center" width="800">SR No.</th>
-                  <th style="text-align:center" width="800">PPA</th>
-                  <th style="text-align:center" width="800">UACS</th>
-                  <th style="text-align:center" width="800">DATE RECEIVED</th>
-                  <th style="text-align:center" width="800">DATE DISBURSE</th>
-                  <th style="text-align:center" width="800">DATE RELEASE</th>
-                  <th style="text-align:center" width="800">PAYEE</th>
-                  <th style="text-align:center" width="800">PARTICULAR</th>
-                  <th style="text-align:center" width="800">AMOUNT</th>
-                  <th style="text-align:center" width="800">TAX</th>
-                  <th style="text-align:center" width="800">GSIS</th>
-                  <th style="text-align:center" width="800">PAGIBIG</th>
-                  <th style="text-align:center" width="800">PHILHEALTH</th>
-                  <th style="text-align:center" width="800">OTHER PAYABLES</th>
-                  <th style="text-align:center" width="800">TOTAL DEDUCTIONS</th>
-                  <th style="text-align:center" width="800">NET</th>
-                  <th style="text-align:center" width="800">REMARKS</th>
-                  <th style="text-align:center" width="800">STATUS</th>
-                  <!-- <th style="text-align:center" width="800">ACTION</th> -->
-                  <th style="text-align:center" width="800"></th>
+                <th style="text-align:center" width="">DVs No.</th>
+                  <th style="text-align:center" width="">ORS/BURS No.</th>
+              
+                  <th style="text-align:center" width="">ORS DATE</th>
+                  <th style="text-align:center" width="">DATE DISBURSED</th>
+                  <th style="text-align:center" width="">DATE RELEASED</th>
+                  <th style="text-align:center" width="400">PAYEE</th>
+                  <th style="text-align:center" width="400">PARTICULAR</th>
+                  <th style="text-align:center" width="">GROSS AMOUNT</th>
+               
+                  <th style="text-align:center" width="">TOTAL DEDUCTIONS</th>
+                  <th style="text-align:center" width="">NET AMOUNT</th>
+                  <th style="text-align:center" width="">REMARKS</th>
+                  <th style="text-align:center" width="">STATUS</th>
                   
                 </tr>
               </thead>
@@ -119,7 +96,10 @@ $getparticular = $_GET['getparticular'];
               $database = "fascalab_2020";
             // Create connection
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT * FROM disbursement where nta='$getntano' and ntaparticular = '$getparticular' order by datereleased asc");
+              $view_query = mysqli_query($conn, "SELECT a.ID,a.dv,a.ors,a.datereceived,a.date_proccess,a.datereleased,a.payee,a.particular, a.remarks, a.status,a.flag,a.amount,a.total,a.net,b.dv,b.accno  FROM disbursement as a inner join dv_nta as b ON a.dv = b.dv   where b.accno = '$getparticular' group by ors order by a.ID desc");
+              /* echo "SELECT a.ID,a.dv,a.ors,a.datereceived,a.date_proccess,a.datereleased,a.payee,a.particular, a.remarks, a.status,a.flag,b.dv,b.accno  FROM disbursement as a inner join dv_nta as b ON a.dv = b.dv   where b.accno = '$getparticular' group by ors order by a.ID desc";
+              exit(); */
+              
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["ID"]; 
                 $dv = $row["dv"];
@@ -148,14 +128,13 @@ $getparticular = $_GET['getparticular'];
                 $datereleased = date('F d, Y', strtotime($datereleased1));
                 ?>
                 <tr>
-                  <td>&nbsp</td>
-                  <td><?php echo $dv;?></td>
+                <td><a href="" onclick="myFunction(this)" data-flag="<?php echo $flag;?>" data-ors="<?php echo $ors;?>" data-toggle="modal" data-target="#dv_data_Modal"><?php echo $dv;?></a></td>
                   <td><?php echo $ors;?></td>
-                  <td><?php echo $sr;?></td>
+                <!--   <td><?php echo $sr;?></td>
                   <td><?php echo $ppa;?></td>
-                  <td><?php echo $uacs;?></td>
+                  <td><?php echo $uacs;?></td> -->
                   <?php if ($datereceived == '1970-01-01' || $datereceived =='0000-00-00'): ?>
-                    <td><a href="received_dv.php?id=<?php echo $id;?>" class="btn btn-primary btn-xs">Received</a></td>
+                    <td><a href="received_dv.php?id=<?php echo $id;?>" class="btn btn-primary btn-xs">Receive</a></td>
                     <?php else: ?>
                       <td><?php echo $datereceived11;?></td>
                     <?php endif ?>
@@ -173,7 +152,7 @@ $getparticular = $_GET['getparticular'];
                             <td><?php echo $date_proccess1;?></td>
                             <?php else: ?>
                               <?php if ($datereceived != '0000-00-00'): ?>
-                                <td><a class="btn btn-success btn-xs" href='@disbursementcreate.php?createid=<?php echo $id; ?>&stat=1' >Proccess</a> </td>
+                                <td><a class="btn btn-success btn-xs" href='CreateDisbursement.php?id=<?php echo $id; ?>&stat=1' >Proccess</a> </td>
                                 <?php else: ?>
                                   <td></td>
                                 <?php endif ?>
@@ -190,30 +169,18 @@ $getparticular = $_GET['getparticular'];
                                   <td><?php echo $payee;?></td>
                                   <td><?php echo $particular;?></td>
                                   <td><?php echo $amount;?></td>
-                                  <td><?php echo $tax;?></td>
+                                 <!--  <td><?php echo $tax;?></td>
                                   <td><?php echo $gsis;?></td>
                                   <td><?php echo $pagibig;?></td>
                                   <td><?php echo $philhealth;?></td>
-                                  <td><?php echo $other;?></td>
+                                  <td><?php echo $other;?></td> -->
                                   <td><?php echo $total;?></td>
                                   <td><?php echo $net;?></td>
                                   <td><?php echo $remarks;?></td>
-                                 
-                                  <?php if ($status=='Disbursed'): ?>
-                                    <td style='background-color:green'><b>Disbursed</b></td>
-                                    <?php else: ?>
-                                      <?php if ($status=='Pending'): ?>
-                                        <td style='background-color:red'><b>Pending</b></td>
-                                        <?php else: ?>
-                                          <td></td>
-                                        <?php endif ?>
-                                          <td></td>
-                                      <?php endif ?>
-                                     <!--  <td>
-                                        <a href='@disbursementupdate.php?getid=<?php echo $id;?>'> <i style='font-size:24px' class='fa'>&#xf044;</i> </a>
-                                        <a href='@Functions/ddeletefunction.php?getid=<?php echo $id;?>'> <i style='font-size:24px'> <i class='fa fa-trash-o'></i></i> </a>
-                                      </td> -->
-                                      <td>&nbsp</td>
+                                
+                                  <td><?php echo $status;?></td>
+                                       
+                                   
                                     </tr>
                                   <?php } ?>    
                                 </table>
@@ -309,8 +276,188 @@ $getparticular = $_GET['getparticular'];
 </script>
 
 
+<div id="dv_data_Modal" class="modal fade" role="dialog" >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">DISBURSEMENT</h4>
+            </div>
+            <div class="modal-body">
+              <!-- <form method="POST" action="ro_cancel.php" > -->
+              
+        
+              <div class="addmodal" >
+              <h4 class="modal-title">Breakdown for BURS/ORS No.&nbsp;<input style="border:none; font-weight:bolder"  type="text" name="ors11" id="ors11" value="" class=""/></h4>
+              
+
+             
+
+           
+              <br>
+
+            
+              <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-12" >
+                                        <!-- Table of Uacs -->
+                                        <table id="example" class="table table-responsive table-stripped table-bordered " style="background-color: white; width:100%; text-align:left; border-style: groove;" >
+                                        <thead>
+                                        <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
+                                       
+                                        <th width='500'>ID</th>
+                                        <th width='500'>FUND SOURCE</th>
+                                        <th width='500'>PPA </th>
+                                        <th width='500'>UACS </th>
+                                        <th width='500'>AMOUNT </th>
+                                        <th width='500'>STATUS </th>
+                                        <!-- <th width='500'>ACTION</th> -->
+     
+                                        </thead>
+
+                                        </table>
+
+                                        <!-- Table of Uacs -->
+
+                                    </div>
+
+                                </div>
+
+                                
+
+
+                            </div>
+
+
+
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+              <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+              <script type="text/javascript">
+              
+              </script>
+              <script>
+
+                  function myFunction(orsget) {
+                    
+                    //getting from data-id from link
+                    var ors = orsget.getAttribute("data-ors");
+                    var flag = orsget.getAttribute("data-flag");
+                 
+                    var ors1 = $("input[name='ors1']");
+                    var ors11 = $("input[name='ors11']");
+                    
+                    ors1.val(flag);
+                    ors11.val(ors);
+
+
+                    $(document).ready(function(){
+
+                        var ors = orsget.getAttribute("data-ors");
+                        var flag = $('#ors1').val();
+                        // alert(flag);
+
+
+
+                        $('#example').DataTable().destroy();
+                        dataT();
+
+                        });
+
+                        function dataT(){
+
+                        // var filter_data ='0001';
+
+
+                        var table = $('#example').DataTable( {
+                          
+
+                      'paging'      : true,
+                      'lengthChange': false,
+                      'searching'   : true,
+                      'ordering'    : false,
+                      'info'        : false,
+                      'autoWidth'   : false,  
+                        "processing": true,
+                        "serverSide": false,
+                        // "columnDefs": [{"render": createManageBtn, "data": null, "targets": [6]}],
+                        
+                        "ajax": {
+                        "url": "DATATABLE/DV_data.php",
+                        "type": "POST",
+                        "data": {
+                        "filter_data": ors,
+                        "flag": flag,
+
+
+                        }}
+
+                        } );
+
+
+                      $('#example tbody').on( 'click', '#editORS', function () {
+                      var data = table.row( $(this).parents('tr') ).data();
+                      window.location="obupdate.php?getid="+data[0];
+                      });
+
+                      $('#example tbody').on( 'click', '#delete', function () {
+                      var data = table.row( $(this).parents('tr') ).data();
+                      window.location="@Functions/obdeletefunction.php?getidDelete="+data[0];
+                      });
+                     
+                      
+                      function createManageBtn() {
+
+                      
+                      return '<a  class="btn btn-primary btn-xs" onclick="myFunc()" id="editORS"><i class="fa">&#xf044;</i>&nbsp;&nbsp;Edit&nbsp;&nbsp;</a> | <a  class="btn btn-danger btn-xs" onclick="myFunc()" onclick="" id="delete"><i class="fa fa-trash-o"></i>  Delete</a>';
+
+                    
+
+                      }
+                      function myFunc() {
+                      confirm("Are you sure you want to delete this obligation?")
+                      console.log("Button was clicked!!!");
+                      // alert(data[0]);
+                      }
+
+                        
+                       
+
+
+                        }
+                
+                    
+                  }
+
+                  </script>
+
+
+              <input hidden   type="text" name="ors1" id="ors1" value="" class=""/>
+              <br>
+              <input hidden  type="text" name="user" id="user" value="<?php echo $username1?>" class=""/>
+              <br>
+              <input hidden  type="text" name="now" id="now" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+              </tr>
+              </table>
+     
+                </div>
+           
+                <!-- </form> -->
+          </div>
+        </div>
+
+      
+    
+    </div>
+
+    </div>
+
+
+
 </body>
 </html>
+
+
 
 
 

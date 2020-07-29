@@ -120,7 +120,20 @@ if (isset($_POST['add'])) {
     if ($unit == "0") {
       echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:red;font-size:16px;"> Unit Cannot be NULL!  </p> </div></div>  ';
     }else{
-      $insert_items = mysqli_query($conn,"INSERT INTO pr_items(pr_no,items,description,unit,qty,abc) VALUES ('$pr_no1','$app_items','$description','$unit','$qty','$abc') ");
+      $selectRid = mysqli_query($conn,"SELECT id FROM rfq WHERE pr_no = '$pr_no1");
+      $rowrid = mysqli_fetch_array($selectRid);
+      $rid = $rowrid['id'];
+      
+      if (mysqli_num_rows($selectRid)>0) {
+        $insert_items = mysqli_query($conn,"INSERT INTO pr_items(pr_no,items,description,unit,qty,abc) VALUES ('$pr_no1','$app_items','$description','$unit','$qty','$abc') ");
+        $total_amount = $qty * $abc;
+        $insert_Ritems = mysqli_query($conn,"INSERT INTO rfq_items(rfq_id,pr_no,app_id,description,unit_id,qty,abc,total_amount) VALUES ('$rid','$pr_no1','$app_items','$description','$unit','$qty','$abc','$total_amount') ");
+      }else{
+        $insert_items = mysqli_query($conn,"INSERT INTO pr_items(pr_no,items,description,unit,qty,abc) VALUES ('$pr_no1','$app_items','$description','$unit','$qty','$abc') ");
+
+      }
+
+
 
       echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Successfuly Saved!  </p> </div></div>  ';
 
@@ -226,7 +239,7 @@ if (isset($_POST['add'])) {
                   <div class="col-md-6" style="padding-left: 30px;padding-top:10px;">
                     <label>Item/s <label style="color: Red;" >*</label> </label>
                     <div style="padding-bottom: 8px;">
-                    <input type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
+                      <input type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
                     </div>
                     <p id="d" hidden >&nbsp</p>
                     <table class="table table-striped table-hover" id="main" >

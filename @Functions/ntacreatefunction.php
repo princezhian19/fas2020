@@ -21,6 +21,11 @@
     $amount = $_GET["amount"];
     $obligated = $_GET["obligated"];
     $balance = $_GET["balance"];
+
+    $quarter = $_GET["quarter"];
+
+    $duration1 = $_GET["duration"];
+    $duration = date('Y-m-d', strtotime($duration1));
   
 
 $servername = "localhost";
@@ -45,8 +50,12 @@ if ($conn->connect_error) {
 //$query = mysqli_query($conn,"INSERT INTO  saro values (default,'$date','$saronumber ','$fund','$legalbasis','$ppa','$expenseclass','$particulars','$uacs','$amount','$obligated','$balance')");
 //$query = mysqli_query($conn,"INSERT INTO  saro values (default,'$date','$saronumber ','$fund','$legalbasis','$ppa','$expenseclass','$particulars','$uacs','$amount','$obligated','$amount')");
 //updating obligation
-$query = mysqli_query($conn,"INSERT INTO nta (datenta,datereceived,accountno,ntano,saronumber,particular,amount,obligated,balance) 
-VALUES ('$datenta','$datereceived','$accountno','$ntano','$saronumber','$particular','$amount','$obligated','$amount')");
+$query = mysqli_query($conn,"INSERT INTO nta (datenta,datereceived,accountno,ntano,saronumber,particular,amount,obligated,balance,quarter,duration) 
+VALUES ('$datenta','$datereceived','$accountno','$ntano','$saronumber','$particular','$amount','$obligated','$amount','$quarter','$duration')");
+
+/* echo "INSERT INTO nta (datenta,datereceived,accountno,ntano,saronumber,particular,amount,obligated,balance,quarter,duration) 
+VALUES ('$datenta','$datereceived','$accountno','$ntano','$saronumber','$particular','$amount','$obligated','$amount','$quarter','$duration')";
+exit(); */
 
 mysqli_close($conn);
 
@@ -56,7 +65,7 @@ if($query){
     
     //if query is successful
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Data Added Successfully!')
+    window.alert('NCA/NTA Added Successfully!')
     window.location.href='../nta.php';
     </SCRIPT>");
 

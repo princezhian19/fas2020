@@ -70,7 +70,7 @@ $username = $_SESSION['username'];
       <ol class="breadcrumb">
         <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
         <li class="active">Accounting</li>
-        <li class="active">Create NTA/NCA</li>
+        <li class="active">Create NCA/NTA</li>
       </ol>
       <br>
       <br>
@@ -79,11 +79,11 @@ $username = $_SESSION['username'];
     <div class="box" style="border-style:groove">
         <br>
       
-            <h1 align="">&nbspCreate NTA/NCA</h1>
+            <h1 align="">&nbspCreate NCA/NTA</h1>
             <div class="box-header with-border">
     
         <br>
-      <li class="btn btn-success"><a href="nta.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-warning"><a href="nta.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
       <!-- Start form -->
@@ -93,39 +93,72 @@ $username = $_SESSION['username'];
             <div class="row">
                 <div class="col-md-6">
 
-                <label>Date NTA </label>
+                <label>NCA/NTA Date <span style = "color:red;">*</span> </label>
                     <br>
                     <div class="input-group date">
-                        <div class="input-group-addon">
+                        <div class="input-group-addon" style="border-style: groove;">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input required value="<?php echo date('m/d/Y')?>" type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datenta">
+                        <input required value="<?php echo date('m/d/Y')?>" type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="datenta" style="border-style: groove;">
                     </div>
                     <br>
 
-                    <label>Date Received </label>
-                    <div class="input-group date">
-                        <div class="input-group-addon">
+                    <label>Received Date <span style = "color:red;">*</span> </label>
+                    <div class="input-group date" >
+                        <div class="input-group-addon" style="border-style: groove;">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input required value="<?php echo date('m/d/Y')?>" type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereceived">
+                        <input required value="<?php echo date('m/d/Y')?>" type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' name="datereceived" style="border-style: groove;">
                     </div>
                     <br>
                     <!-- <label>Source No.</label>
                       <input  type="text" class="typeahead form-control" style="height: 35px;" id="saronumber" placeholder="Enter Source" name="saronumber">
                       <br> -->
+
+                      <label>NCA/NTA No <span style = "color:red;">*</span></label>
+                      <input  required  type="text" class="form-control" style="height: 35px; border-style: groove;" id="legalbasis" placeholder="Enter NTA No" name="ntano" >
+                    <br>
+                   
+                    <label>SARO Number </label>
+                    <input  type="text"  class="form-control" style="height: 35px; border-style: groove;" id="ppa" placeholder="Enter SARO Number" name="saronumber">
+                    <br>
+
+                    <label>Account No <span style = "color:red;">*</span></label>
+                      <input style="border-style: groove;" required  type="text" class="form-control" style="height: 35px;" id="fund" placeholder="Enter Account No" name="accountno" required>
+                    <br>
+                    <label>NCA/NTA Particular <span style = "color:red;">*</span></label>
+                    <input style="border-style: groove;"  type="text"   class="form-control" style="height: 35px;" id="expenseclass" placeholder="Enter Particular" name="particular" required>
                     
                 </div>    
                 
                 <div class="col-md-6">
-
-                    <label>NTA No</label>
-                      <input required  type="text" class="form-control" style="height: 35px;" id="legalbasis" placeholder="Enter NTA No" name="ntano">
+                
+                <label>NTA/NCA Quarters <span style = "color:red;">*</span></label>
+                <select class="form-control select input" style="width: 100%; height: 35px; border-style: groove;" name="quarter" id="quarter" required >
+                <option value = "">Select Quarter</option>
+                <option value = "1st Quarter">1st Quarter</option>
+                <option value = "2nd Quarter">2nd Quarter</option>
+                <option value = "3rd Quarter">3rd Quarter</option>
+                <option value = "4th Quarter">4th Quarter</option>
+                </select>
+                <br>
+                <label>NCA/NTA DURATION <span style = "color:red;">*</span> </label>
                     <br>
-                   
-                    <label>SARO Number</label>
-                    <input  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter SARO Number" name="saronumber">
+                    <div class="input-group date">
+                        <div class="input-group-addon" style="border-style: groove;">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input required value="<?php echo date('m/d/Y')?>" type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="duration" style="border-style: groove;">
+                    </div>
                     <br>
+                    <label>Amount <span style = "color:red;">*</span></label>
+                    <input required  type="number"  class="form-control" style="height: 35x; border-style: groove;" id="amount" placeholder="Enter amount" name="amount">
+                    <br>
+                    <label>Disbursement </label>
+                    <input  type="text" readonly  class="form-control" style="height: 35px; border-style: groove;" id="obligated" placeholder="Enter Obligated" name="obligated" value="0">
+                    <br>
+                    <label>Balance</label>
+                    <input  type="text" readonly  class="form-control" style="height: 35px; border-style: groove;" id="balance" placeholder="Balance is from original Amount - Obligated" name="balance" >
                   
                    
                      
@@ -139,15 +172,13 @@ $username = $_SESSION['username'];
             <div class="row">
                 <div class="col-md-6">
                      
-                    <label>Account No</label>
-                      <input required  type="text" class="form-control" style="height: 35px;" id="fund" placeholder="Enter Account No" name="accountno">
-                    <br>
+                     
+
                    
                     
                 </div>
                 <div class="col-md-6">
-                <label>NTA/NCA Particular</label>
-                    <input  type="text"   class="form-control" style="height: 35px;" id="expenseclass" placeholder="Enter Particular" name="particular">
+               
                    
 
 
@@ -158,32 +189,7 @@ $username = $_SESSION['username'];
              
              <br>
            
-            <div class="row">
-
-          
-
-                <div class="col-md-4">
-                    <label>Amount</label>
-                    <input required  type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" name="amount">
-                   
-                </div>
-
-                
-             
-                
-                <div class="col-md-4">
-                    <label>Disbursement</label>
-                    <input  type="text" readonly  class="form-control" style="height: 40px;" id="obligated" placeholder="Enter Obligated" name="obligated" value="0">
-                    
-                </div>
-
-                <div class="col-md-4">
-                    <label>Balance</label>
-                    <input  type="text" readonly  class="form-control" style="height: 40px;" id="balance" placeholder="Balance is from original Amount - Obligated" name="balance" >
-                </div>
-
-            
-            </div>
+         
             <!-- END SARO -->
             <br>
             
@@ -192,7 +198,8 @@ $username = $_SESSION['username'];
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Create</button>
+    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-primary pull-right" style="margin-right:10px;">Save</button>
+    <br>
     <br>
     <br>
     </div>

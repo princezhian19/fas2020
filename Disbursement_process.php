@@ -5,21 +5,14 @@ header('location:index.php');
   error_reporting(0);
 ini_set('display_errors', 0);
 $username = $_SESSION['username'];
+$division = $_GET['division'];
+$DEPT_ID = $_SESSION['DEPT_ID'];
+$OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html>
-<!-- <style>
-  a:hover {
-  color: blue;
-}
-  .p:hover {
-  color: blue;
-}
-  span:hover {
-  color: blue;
-}
-</style> -->
-<title>FAS | NTA/NCA</title>
+<title>FAS | Disbursement</title>
 <head>
 <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,44 +43,69 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+
+    <!-- <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css"> -->
     <style>
-  
+  th{
+    color:#a9242d;
+    text-align:center;
+  }
+  td{
+    /* text-align:center; */
+  }
   </style>
 </head>
-
 <?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'magonzales' || $username == 'seolivar' || $username == 'jamonteiro' || $username == 'ctronquillo' || $username == 'rlsegunial') { include('test1.php'); }else{ include('sidebar2.php'); }
+  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
+}else{ 
+
+     if ($OFFICE_STATION == 1) {
+  include('sidebar2.php');
+           
+        }else{
+  include('sidebar3.php');
+         
+        } 
+}
  ?>
-<body class="hold-transition skin-red-light fixed sidebar-mini">
+
+<body class="hold-transition skin-red-light sidebar-mini">
 <div class="wrapper">
- 
   
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
         <li class="active">Accounting</li>
-        <li class="active">NCA/NTA View</li>
+        <li class="active">Create Disbursement</li>
       </ol>
       <br>
       <br>
-      <?php include('@ntatableview.php');?>
+        <?php include('Disbursement_user.php');?>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
 
-      <br>
-     
-   
     </section>
-    </div>
+  </div>
   <footer class="main-footer">
-    <br>
-      <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0
-      </div>
-      <strong>DILG IV-A Regional Information and Communications Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
-      
-    </footer>
-    <br>
+  <br>
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 1.0
+    </div>
+    <strong>DILG IV-A Regional Information and Communication Technology Unit (RICTU) © 2019 All Right Reserved .</strong>
+  </footer>
+  <br>
 </div>
+
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -98,35 +116,57 @@ $username = $_SESSION['username'];
 <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 
-<script>
-    $(document).ready(function(){
-      //Date picker,
-      $('#datepicker1').datepicker({
-      autoclose: true
-    })
 
-    $('#datepicker2').datepicker({
-      autoclose: true
-    })
-    $('#datepicker3').datepicker({
-      autoclose: true
-    })
-    $('#datepicker4').datepicker({
-      autoclose: true
-    })
-  })
-  $(function () {
-    $('#example2').DataTable()
-    $('#example1').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : true,
-      'ordering'    : false,
-      'info'        : false,
-      'autoWidth'   : false
-    })
-  })
-</script>
+
+<!-- <script src="bower_components/select2/dist/js/select2.full.min.js"></script> -->
+
 
 </body>
 </html>
+
+
+
+<script>
+
+$(document).ready(function(){
+  $('#datepicker1').datepicker({
+      autoclose: true
+    })
+});
+
+$(document).ready(function(){
+  $('#datepicker2').datepicker({
+      autoclose: true
+    })
+});
+
+
+$(document).ready(function(){
+  $('#datepicker3 ').datepicker({
+      autoclose: true
+    })
+});
+
+$(document).ready(function(){
+  $('#datepicker4 ').datepicker({
+      autoclose: true
+    })
+});
+
+$(document).ready(function(){
+  $('.timepicker1').datepicker({
+      autoclose: true
+    })
+});
+
+$(document).ready(function(){
+  $('.timepicker2').datepicker({
+      autoclose: true
+    })
+});
+
+$( ".datePicker1" ).datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    $(".datePicker1").datepicker().datepicker("setDate", new Date());
+
+   
+</script>
