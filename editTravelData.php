@@ -52,6 +52,8 @@ only screen and (max-width: 760px),
 
 }
   </style>
+<script src="travelclaim.js"></script>  
+
      <?php
 
 
@@ -118,17 +120,24 @@ only screen and (max-width: 760px),
                               <input type = "time" name = "to2" class = "form-control" style = "margin-top:15px;"/>
                             </div>
                           </div> -->
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label>Means of Transportation</label>
-                                <input type="text" name = "others" value = "<?php echo $row1['MOT'];?>" class="form-control" >
-                            </div>
-                          </div>
+                   
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Others</label>
                                 <input type="text" name = "others" value = "<?php echo $row1['OTHERS'];?>" class="form-control" >
                             </div>
+                          </div>
+                          <div class="col-md-12"> 
+                              <div class="form-group">
+                                <label>From</label>
+                                  <input type = "text" name = "from1" class = "form-control " value = "<?php echo $places[0];?>"/>
+                              </div>
+                          </div>
+                          <div class="col-md-12"> 
+                              <div class="form-group">
+                                <label>Means of Transportation</label>
+                                  <input type = "text" name = "from1" class = "form-control " value = "<?php echo $places[0];?>"/>
+                              </div>
                           </div>
                           </div>
                           <div class = "col-sm-6 col-md-6 col-lg-6">
@@ -161,16 +170,11 @@ only screen and (max-width: 760px),
                               </div>
                             </div>
                             
-                            <div class="col-md-6" style = "margin-top:20px;"> 
-                            <div class="form-group">
-                              <label>From</label>
-                                <input type = "time" name = "from1" class = "form-control " value = "<?php echo $places[0];?>"/>
-                            </div>
-                          </div>
-                          <div class="col-md-6" style = "margin-top:20px;">
+                         
+                          <div class="col-md-12">
                             <div class="form-group">
                               <label>To</label>
-                              <input type = "time" name = "to1" class = "form-control"  value = "<?php echo $places[2];?>"/>
+                              <input type = "text" name = "to1" class = "form-control"  value = "<?php echo $places[2];?>"/>
                             </div>
                           </div>
                           <div class="col-md-12">

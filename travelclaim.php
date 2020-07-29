@@ -535,41 +535,38 @@ function isSubmit()
                           </div>
                           <div class = "col-sm-6 col-md-6 col-lg-6">
                             <div class="col-md-12 well perdiem">
-                            <div>
-        <!-- <img src="images/50km.png" alt="Flying Kites" style = "width:100%;height:auto;"> -->
-        <div class="form-group" id = "perdiem">
-                                  <label>
-                                  Per Diem
-                                  </label>
-                                  <label class = "pull-right">
-                                  <input type ="hidden" value = "<?php echo getDistance();?>" id = "distance"/>
-                                  Distance: <?php echo getDistance();?>
-                                  </label>
-                              </div>
-                              <div class="form-group">
-                                <label>
-                                Meals
-                                </label><br>
-                                <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1" id = "cb1"> <b>Will Claim Meals</b><br>
+                              <div>
+                                <div class="form-group" id = "perdiem">
+                                                          <label>
+                                                          Per Diem
+                                                          </label>
+                                                          <label class = "pull-right">
+                                                          <input type ="hidden" value = "<?php echo getDistance();?>" id = "distance"/>
+                                                          Distance: <?php echo getDistance();?>
+                                                          </label>
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <label>
+                                                        Meals
+                                                        </label><br>
+                                                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1" id = "cb1"> <b>Will Claim Meals</b><br>
 
-                                <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" id = "breakfast" value = "breakfast"> Breakfast
-                                <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" id= "lunch" value = "lunch"> Lunch
-                                <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" id="dinner" value = "dinner"> Dinner
+                                                        <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" id = "breakfast" value = "breakfast"> Breakfast
+                                                        <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" id= "lunch" value = "lunch"> Lunch
+                                                        <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" id="dinner" value = "dinner"> Dinner
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <label>
+                                                        Accomodation
+                                                        </label><br>
+                                                        <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
+                                                        <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt" id = "wr" value ="With Receipt"> With Receipt
+                                                        <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
+                                                        <br>
+                                                        <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt" id = "wor" value ="Without Receipt"> Without Receipt
+                                                      </div>
+                                </div>
                               </div>
-                              <div class="form-group">
-                                <label>
-                                Accomodation
-                                </label><br>
-                                <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
-                                <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt" id = "wr" value ="With Receipt"> With Receipt
-                                <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
-                                <br>
-                                <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt" id = "wor" value ="Without Receipt"> Without Receipt
-                              </div>
-        </div>
-                            
-                             
-                            </div>
                           </div>
                       </div>
                     </div>
