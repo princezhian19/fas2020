@@ -71,35 +71,34 @@ if($mode=="BURS"){
  
     else{
 
-        $dv_nta = mysqli_query($con,"DELETE from dv_nta where dv = '$dv' ");
+        // $dv_nta = mysqli_query($con,"DELETE from dv_nta where dv = '$dv' ");
         
 
-      if(isset($_POST["submit"]))
+      /* if(isset($_POST["submit"]))
       {
       
     
             for($i=0;$i < count($_POST['charge']); $i++)
             {
-                /* https://stackoverflow.com/questions/7856980/jquery-input-array-form-ajax */
+               
 
                 $charge  = $_POST['charge'][$i];
                 $ntano  = $_POST['ntano'][$i];
                 $ntaamount  = $_POST['ntaamount'][$i];
                 $insert = mysqli_query($con,"INSERT INTO dv_nta (dv, type, accno, amount) values ('$dv','".$_POST['charge'][$i]."','".$_POST['ntano'][$i]."','".$_POST['ntaamount'][$i]."')"); 
-                // $nta = mysqli_query($con,"UPDATE nta set obligated = obligated-".$_POST['ntaamount'][$i].", balance = amount-obligated where particular = '".$_POST['ntano'][$i]."' ");
                 
                 $nta1 = mysqli_query($con,"UPDATE nta set obligated = obligated+".$_POST['ntaamount'][$i].", balance = amount-obligated where particular = '".$_POST['ntano'][$i]."' ");
 
                
             }
         
-        }  
+        }   */
    
       $update = mysqli_query($con,"Update saroobburs set dvstatus = '$status'  where burs = '$burs'");
      
     }
         mysqli_close($con);
-        if($insert){
+        if($update){
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Disbursement Added Successfully!')
         window.location.href='disbursement.php';
@@ -115,8 +114,6 @@ if($mode=="BURS"){
         </SCRIPT>");
         }
 
-
-
 }
 else{
    $sql = "UPDATE disbursement set dv='$dv',ors='$ors',datereceived='$orsdate',date_proccess='$dvdate',payee='$payee',particular='$particular',amount='$amount',tax='$tax',gsis='$gsis',pagibig='$pagibig',philhealth='$philhealth',other='$other',total='$total',net='$net',datereleased='$dvdate',remarks='$remarks',status='$status',flag='ORS' where dv = '$dv' ";
@@ -129,7 +126,7 @@ else{
  
     else{
 
-        $dv_nta = mysqli_query($con,"DELETE from dv_nta where dv = '$dv' ");
+      /*   $dv_nta = mysqli_query($con,"DELETE from dv_nta where dv = '$dv' ");
         
 
       if(isset($_POST["submit"]))
@@ -138,25 +135,25 @@ else{
     
             for($i=0;$i < count($_POST['charge']); $i++)
             {
-                /* https://stackoverflow.com/questions/7856980/jquery-input-array-form-ajax */
+               
 
                 $charge  = $_POST['charge'][$i];
                 $ntano  = $_POST['ntano'][$i];
                 $ntaamount  = $_POST['ntaamount'][$i];
                 $insert = mysqli_query($con,"INSERT INTO dv_nta (dv, type, accno, amount) values ('$dv','".$_POST['charge'][$i]."','".$_POST['ntano'][$i]."','".$_POST['ntaamount'][$i]."')"); 
                 
-                // $nta = mysqli_query($con,"UPDATE nta set obligated = obligated-".$_POST['ntaamount'][$i].", balance = amount-obligated where particular = '".$_POST['ntano'][$i]."' ");
+              
                 $nta1 = mysqli_query($con,"UPDATE nta set obligated = obligated+".$_POST['ntaamount'][$i].", balance = amount-obligated where particular = '".$_POST['ntano'][$i]."' ");
 
             }
         
-        }  
+        }   */
    
       $update = mysqli_query($con,"Update saroobburs set dvstatus = '$status'  where burs = '$burs'");
      
     }
         mysqli_close($con);
-        if($insert){
+        if($update){
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Disbursement Added Successfully!')
         window.location.href='disbursement.php';
