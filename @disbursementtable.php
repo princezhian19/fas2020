@@ -182,15 +182,10 @@
                                   <td><?php echo $total;?></td>
                                   <td><?php echo $net;?></td>
                                   <td><?php echo $remarks;?></td>
-                                  <?php if ($status=='Disbursed'): ?>
-                                    <td style='background-color:white'>Disbursed</td>
-                                    <?php else: ?>
-                                      <?php if ($status=='Pending'): ?>
-                                        <td style='background-color:red'><b>Pending</b></td>
-                                        <?php else: ?>
-                                          <td></td>
-                                        <?php endif ?>
-                                      <?php endif ?>
+                                
+                                  <td><?php echo $status;?></td>
+                                       
+                                    
                                       <td>
 
                                       <a  class="btn btn-primary btn-xs" href='Disbursement_Update.php?id=<?php echo $ors?>'> <i class='fa'>&#xf044;</i>  Edit </a>

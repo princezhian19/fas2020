@@ -63,6 +63,8 @@ $total = $row["total"];
 $net = $row["net"];
 // $net = number_format($net1,2);
 $remarks = $row["remarks"];
+
+
 $status = $row["status"];
 
 
@@ -145,6 +147,7 @@ p.mix {border-style: dotted dashed solid double;} */
                 
                 ?>
                 <input hidden readonly required value="<?php echo $flag?>"  class=" input" type="text" class="" style="height: 35px;" id="mode" name="mode" placeholder="" autocomplete="off">
+                <input hidden readonly required value="<?php echo $status?>"  class=" input" type="text" class="" style="height: 35px;" id="status" name="status" placeholder="" autocomplete="off">
                 
                 <!-- Row 1 -->
                         <div class="col-md-6 ">
@@ -633,7 +636,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             <td class="col-md-1"><b>Status<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
                             <select class="form-control select input" style="width: 100%; height: 40px;" name="status" id="status" required >
-                            
+                            <option value = "">Select Status</option>
                             <option value = "Draft">Draft</option>
                             <option value = "Paid">Paid</option>
                             <option value = "Returned">Returned</option>
@@ -674,13 +677,9 @@ p.mix {border-style: dotted dashed solid double;} */
                             <br>
 
                         </div>
-                       
-                
-                
-
+         
          <!-- DV-->
          
-
         </div>
         
         
@@ -694,8 +693,6 @@ p.mix {border-style: dotted dashed solid double;} */
                 <div class="class-bordered">
                 <b><font style="font-size:25px; color:firebrick">DEDUCTIONS</font></b>  
                 </div>
-                
-             
                
                             
                 <table class="table"> 
@@ -747,8 +744,6 @@ p.mix {border-style: dotted dashed solid double;} */
 
                     
                     <div class="col-md-3">
-
-
                         
                         <tr>
                         <td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td>
@@ -1013,9 +1008,27 @@ p.mix {border-style: dotted dashed solid double;} */
     var mode = $("input[name='mode']").val();
     // alert(mode);
     var Fill = $("#mode").val();
+
+    var status = $("#status").val();
     // var Fill = $("input[name='mode']").val();
-    // alert(Fill);
+    // alert(status);
     
+    /* Select default value of select option */
+    if(status=='Draft'){
+      $("#status option[value=Draft]").attr('selected', 'selected');
+    }
+    else if(status=='Paid'){
+      $("#status option[value=Paid]").attr('selected', 'selected');
+    }
+    else if(status=='Returned'){
+      $("#status option[value=Returned]").attr('selected', 'selected');
+    }
+    else {
+      $("#status option[value=]").attr('selected', 'selected');
+    }
+    /* Select default value of select option */
+
+    /* LOADING of DATA TABLES */
 
     if(Fill=='BURS'){
             var bursno = '<?php echo $bursget?>';
@@ -1083,6 +1096,8 @@ p.mix {border-style: dotted dashed solid double;} */
 
 
     }
+
+    /* LOADING of DATA TABLES */
     
     //APPEND
     var max_fields = 10;

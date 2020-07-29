@@ -67,17 +67,15 @@ $username = $_SESSION['username'];
       <ol class="breadcrumb">
         <li><a href="home.php"><i class=""></i> Home</a></li>
         <li class="active">Accounting</li>
-        <li class="active">NTA/NCA view</li>
+        <li class="active">NCA/NTA View</li>
       </ol>
       <br>
       <br>
       <?php include('@ntatableview.php');?>
 
       <br>
-      <br>
-      <br>
-      <br>
-      <br>
+     
+   
     </section>
     </div>
   <footer class="main-footer">

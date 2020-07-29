@@ -52,6 +52,13 @@ while ($row = mysqli_fetch_assoc($view_query)) {
     $amount = $row["amount"];
     $obligated = $row["obligated"];
     $balance = $row["balance"];
+
+    $duration1 = $row["duration"];
+    $duration = date('m/d/Y', strtotime($duration1));
+
+
+    $quarter = $row["quarter"];
+  
    
 }
 ?>
@@ -107,7 +114,7 @@ while ($row = mysqli_fetch_assoc($view_query)) {
       <ol class="breadcrumb">
         <li><a href="../frontend/web/"><i class=""></i> Home</a></li>
         <li class="active">Accounting</li>
-        <li class="active">Edit NTA/NCA</li>
+        <li class="active">Edit NCA/NTA</li>
       </ol>
       <br>
       <br>
@@ -116,9 +123,9 @@ while ($row = mysqli_fetch_assoc($view_query)) {
     <div class="box" style="border-style:groove">
         <br>
       
-            <h1 align="">&nbspEdit NTA/NCA</h1>
+            <h1 align="">&nbspEdit NCA/NTA</h1>
             <div class="box-header with-border">
-            <li class="btn btn-success"><a href="nta.php" style="color:white;text-decoration: none;">Back</a></li>
+            <li class="btn btn-warning"><a href="nta.php" style="color:white;text-decoration: none;">Back</a></li>
         <br>
         <br>
         <br>
@@ -128,48 +135,80 @@ while ($row = mysqli_fetch_assoc($view_query)) {
 
   <!-- getting ID for update function -->
   <input type="hidden" name="requestid" value = "<?php echo $getid;?>" >
+
+  <input type="hidden" name="quarter1" id="quarter1" value = "<?php echo $quarter;?>" >
     <!-- getting ID for update function -->
         <!-- Start Menu -->
         <div class="class-bordered" >
             <div class="row">
                 <div class="col-md-6">
 
-                <label>Date NTA </label>
+                <label>Date NTA <span style = "color:red;">*</span> </label>
                     <br>
                     <div class="input-group date">
-                        <div class="input-group-addon">
+                        <div class="input-group-addon" style="border-style: groove;">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input required type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' value="<?php echo $datenta ?>" name="datenta">
+                        <input required type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' value="<?php echo $datenta ?>" name="datenta" style="border-style: groove;">
                     </div>
                     <br>
 
-                    <label>Date Received </label>
+                    <label>Date Received <span style = "color:red;">*</span> </label>
                     <div class="input-group date">
-                        <div class="input-group-addon">
+                        <div class="input-group-addon" style="border-style: groove;">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' value="<?php echo $datereceived ?>" name="datereceived">
+                        <input required type="text" class="form-control pull-right" id="datepicker2" placeholder='Enter Date' value="<?php echo $datereceived ?>" name="datereceived" style="border-style: groove;">
                     </div>
                     <br>
-                    <!-- <label>Source No.</label>
-                      <input  type="text" class="typeahead form-control" style="height: 35px;" id="saronumber" placeholder="Enter Source" name="saronumber">
-                      <br> -->
+
+                    <label>NTA No <span style = "color:red;">*</span></label>
+                      <input required  type="text" class="form-control" style="height: 35px; border-style: groove;" id="legalbasis" value="<?php echo $ntano ?>" placeholder="Enter NTA No" name="ntano">
+                    <br>
+                   
+                    <label>SARO Number</label>
+                    <input  type="text"  class="form-control" style="height: 35px; border-style: groove;" id="ppa" placeholder="Enter SARO Number" value="<?php echo $saronumber ?>" name="saronumber">
+                    <br>
+                    
+                    <label>Account No <span style = "color:red;">*</span></label>
+                      <input required  type="text" class="form-control" style="height: 35px; border-style: groove;" id="fund" placeholder="Enter Account No" value="<?php echo $accountno ?>" name="accountno">
+                    <br>
+
+                 
+                    <label>Particular <span style = "color:red;">*</span></label>
+                    <input required  type="text"   class="form-control" style="height: 35px; border-style: groove;" id="expenseclass" placeholder="Enter Particular" value="<?php echo $particular ?>" name="particular">
+                    <br>
+                    
                     
                 </div>    
                 
                 <div class="col-md-6">
-
-                    <label>NTA No</label>
-                      <input required  type="text" class="form-control" style="height: 35px;" id="legalbasis" value="<?php echo $ntano ?>" placeholder="Enter NTA No" name="ntano">
+                <label>NTA/NCA Quarters <span style = "color:red;">*</span></label>
+                <select class="form-control select input" style="width: 100%; height: 35px;" name="quarter" id="quarter" required >
+                <option value = "">Select Quarter</option>
+                <option value = "1stQuarter">1st Quarter</option>
+                <option value = "2ndQuarter">2nd Quarter</option>
+                <option value = "3rdQuarter">3rd Quarter</option>
+                <option value = "4thQuarter">4th Quarter</option>
+                </select>
+                <br>
+                <label>NCA/NTA DURATION <span style = "color:red;">*</span> </label>
                     <br>
-                   
-                    <label>SARO Number</label>
-                    <input  type="text"  class="form-control" style="height: 35px;" id="ppa" placeholder="Enter SARO Number" value="<?php echo $saronumber ?>" name="saronumber">
+                    <div class="input-group date">
+                        <div class="input-group-addon" style="border-style: groove;">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input required value="<?php echo $duration?>" type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="duration" style="border-style: groove;">
+                    </div>
                     <br>
-                  
-                   
-                     
+                    <label>Amount <span style = "color:red;">*</span></label>
+                    <input required  type="number"  class="form-control" style="height: 35px; border-style: groove;" id="amount" placeholder="Enter amount" value="<?php echo $amount ?>" name="amount">
+                    <br>
+                    <label>Obligated</label>
+                    <input  type="text"   class="form-control" style="height: 35px; border-style: groove;" id="obligated" placeholder="Enter Obligated" name="obligated" value="<?php echo $obligated ?>"  value="0">
+                    <br>
+                    <label>Balance</label>
+                    <input  type="text"   class="form-control " style="height: 35px; border-style: groove; " id="balance" value="<?php echo $balance ?>" name="balance" >
                     
                 </div>
             </div>
@@ -180,15 +219,13 @@ while ($row = mysqli_fetch_assoc($view_query)) {
             <div class="row">
                 <div class="col-md-6">
                      
-                    <label>Account No</label>
-                      <input required  type="text" class="form-control" style="height: 35px;" id="fund" placeholder="Enter Account No" value="<?php echo $accountno ?>" name="accountno">
-                    <br>
+                     
+
                    
                     
                 </div>
                 <div class="col-md-6">
-                <label>Particular</label>
-                    <input  type="text"   class="form-control" style="height: 35px;" id="expenseclass" placeholder="Enter Particular" value="<?php echo $particular ?>" name="particular">
+               
                    
 
 
@@ -199,32 +236,7 @@ while ($row = mysqli_fetch_assoc($view_query)) {
              
              <br>
            
-            <div class="row">
-
-          
-
-                <div class="col-md-4">
-                    <label>Amount</label>
-                    <input required  type="number"  class="form-control" style="height: 40px;" id="amount" placeholder="Enter amount" value="<?php echo $amount ?>" name="amount">
-                   
-                </div>
-
-                
-             
-                
-                <div class="col-md-4">
-                    <label>Obligated</label>
-                    <input  type="text"   class="form-control" style="height: 40px;" id="obligated" placeholder="Enter Obligated" name="obligated" value="<?php echo $obligated ?>"  value="0">
-                    
-                </div>
-
-                <div class="col-md-4">
-                    <label>Balance</label>
-                    <input  type="text"   class="form-control" style="height: 40px;" id="balance" value="<?php echo $balance ?>" name="balance" >
-                </div>
-
-            
-            </div>
+         
             <!-- END SARO -->
             <br>
             
@@ -233,7 +245,8 @@ while ($row = mysqli_fetch_assoc($view_query)) {
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Update</button>
+    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-primary pull-right" style="margin-right:10px;">Save</button>
+    <br>
     <br>
     <br>
     </div>
@@ -381,6 +394,36 @@ while ($row = mysqli_fetch_assoc($view_query)) {
       showInputs: false
     })
   })
+</script>
+
+
+<script>
+  $(document).ready(function() {
+   
+    var quarter1 = $("#quarter1").val();
+   
+    //  alert(quarter1);
+    /* Select default value of select option */
+    if(quarter1=='1stQuarter'){
+      $("#quarter option[value=1stQuarter]").attr('selected', 'selected');
+    }
+    else if(quarter1=='2ndQuarter'){
+      $("#quarter option[value=2ndQuarter]").attr('selected', 'selected');
+    }
+    else if(quarter1=='3rdQuarter'){
+      $("#quarter option[value=3rdQuarter]").attr('selected', 'selected');
+    }
+    else if(quarter1=='4thQuarter'){
+      $("#quarter option[value=4thQuarter]").attr('selected', 'selected');
+    }
+    else {
+      $("#quarter option[value=]").attr('selected', 'selected');
+    }
+    /* Select default value of select option */
+    /* LOADING of DATA TABLES */
+
+  });
+
 </script>
 
 

@@ -117,7 +117,7 @@ p.mix {border-style: dotted dashed solid double;} */
                             <tr>
                             <td class="col-md-2"><b>BURS No.<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
-                            <input required value=""  class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="Enter BURS No." autocomplete="off">
+                            <input required value="" class="form-control input" type="text" class="" style="height: 35px;" id="ors" name="ors" placeholder="Enter BURS No." autocomplete="off">
                            
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -577,9 +577,11 @@ p.mix {border-style: dotted dashed solid double;} */
                             <td class="col-md-1"><b>Status<span style = "color:red;">*</span></b></td>
                             <td class="col-md-7">
                             <select class="form-control select input" style="width: 100%; height: 40px;" name="status" id="status" required >
+                            <option value = "">Select Status</option>
                             <option value = "Draft">Draft</option>
                             <option value = "Paid">Paid</option>
                             <option value = "Returned">Returned</option>
+                            </select>
                             </td>
                             </tr>
 
@@ -960,6 +962,11 @@ p.mix {border-style: dotted dashed solid double;} */
 
 
 <script>
+
+
+
+
+
   $(document).ready(function() {
     var max_fields = 10;
     var wrapper = $(".container1");

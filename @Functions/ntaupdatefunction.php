@@ -44,6 +44,12 @@ if (isset($_POST['submit']))
     $balance = $_POST["balance"];
 
 
+    $quarter = $_POST["quarter"];
+
+    $duration1 = $_POST["duration"];
+    $duration = date('Y-m-d', strtotime($duration1));
+
+
 // Perform queries
 
 $do = "UPDATE nta set datenta='$datenta',
@@ -54,7 +60,9 @@ saronumber='$saronumber',
 particular='$particular',
 amount='$amount',
 obligated='$obligated',
-balance='$balance'
+balance='$balance',
+quarter='$quarter',
+duration='$duration'
 where id = ".$requestid."";
 
 /* echo "UPDATE nta set datenta='$datenta',
@@ -96,7 +104,7 @@ if($query){
 
     //if query is successful
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Data Updated Successfully!')
+    window.alert('NCA/NTA Updated Successfully!')
     window.location.href='../nta.php';
     </SCRIPT>"); 
     
