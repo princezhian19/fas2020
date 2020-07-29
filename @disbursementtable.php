@@ -69,7 +69,9 @@
                   <!-- <th style="text-align:center" width="">SR No.</th>
                   <th style="text-align:center" width="">PPA</th>
                   <th style="text-align:center" width="">UACS</th> -->
-                  <th style="text-align:center" width="">ORS DATE</th>
+                  <th style="text-align:center" width="">ORS/BURS DATE</th>
+                  <th style="text-align:center" width="">DATE RECEIVED</th>
+                  
                   <th style="text-align:center" width="">DATE DISBURSED</th>
                   <th style="text-align:center" width="">DATE RELEASED</th>
                   <th style="text-align:center" width="400">PAYEE</th>
@@ -95,7 +97,7 @@
               $database = "fascalab_2020";
             // Create connection
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount, sum(total) as total, sum(net) as net, remarks, status,flag  FROM disbursement group by ors order by ID desc");
+              $view_query = mysqli_query($conn, "SELECT dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount, sum(total) as total, sum(net) as net, remarks, status,flag,orsdate  FROM disbursement group by ors order by ID desc");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["ID"]; 
                 $dv = $row["dv"];
@@ -131,15 +133,25 @@
                 $date_proccess1 = date('F d, Y', strtotime($date_proccess));
                 $datereleased1 = $row["datereleased"];
                 $datereleased = date('F d, Y', strtotime($datereleased1));
+
+
+                $orsdate1 = $row["orsdate"];
+                // echo $orsdate1;
+            
+                $orsdate = date('F d, Y', strtotime($orsdate1));
                 ?>
                 <tr>
                 <td><a href="" onclick="myFunction(this)" data-flag="<?php echo $flag;?>" data-ors="<?php echo $ors;?>" data-toggle="modal" data-target="#dv_data_Modal"><?php echo $dv;?></a></td>
-                  <td><?php echo $ors;?></td>
-                <!--   <td><?php echo $sr;?></td>
-                  <td><?php echo $ppa;?></td>
-                  <td><?php echo $uacs;?></td> -->
+                <td><?php echo $ors;?></td>
+                
+                  <?php if ( $orsdate1 =='0000-00-00' || $orsdate1 == '1970-01-01' ): ?>
+                    <td></td>
+                    <?php else: ?>
+                      <td><?php echo $orsdate;?></td>
+                    <?php endif ?>
+
                   <?php if ($datereceived == '1970-01-01' || $datereceived =='0000-00-00'): ?>
-                    <td><a href="received_dv.php?id=<?php echo $id;?>" class="btn btn-primary btn-xs">Receive</a></td>
+                    <td><a href="received_dv.php?ors=<?php echo $ors;?>" class="btn btn-primary btn-xs">Receive</a></td>
                     <?php else: ?>
                       <td><?php echo $datereceived11;?></td>
                     <?php endif ?>
@@ -153,11 +165,11 @@
                           <?php endif ?>
                           <td></td>
                           <?php endif ?> -->
-                          <?php if ($date_proccess != NULL): ?>
+                          <?php if ($date_proccess != NULL  ): ?>
                             <td><?php echo $date_proccess1;?></td>
                             <?php else: ?>
                               <?php if ($datereceived != '0000-00-00'): ?>
-                                <td><a class="btn btn-success btn-xs" href='CreateDisbursement.php?id=<?php echo $id; ?>&stat=1' >Proccess</a> </td>
+                                <td><a class="btn btn-success btn-xs" href='Disbursement_process.php?ors=<?php echo $ors;?>&flag=<?php echo $flag;?>&payee=<?php echo $payee;?>&particular=<?php echo $particular;?>&amount=<?php echo $amount;?>&orsdate=<?php echo $orsdate;?>'>Process</a> </td>
                                 <?php else: ?>
                                   <td></td>
                                 <?php endif ?>
@@ -165,10 +177,10 @@
                               <?php if ($datereleased != '0000-00-00'): ?>
                                 <td><?php echo $datereleased;?></td>
                                 <?php else: ?>
-                                  <?php if ($date_proccess == NULL): ?>
+                                  <?php if ($date_proccess == NULL ): ?>
                                     <td></td>
                                     <?php else: ?>
-                                      <td><a class="btn btn-success btn-xs" href='release_dv.php?id=<?php echo $id; ?>&stat=1' >Release</a> </td>
+                                      <td><a class="btn btn-success btn-xs" href='release_dv.php?id=<?php echo $id; ?>' >Release</a> </td>
                                     <?php endif ?>
                                   <?php endif ?>
                                   <td><?php echo $payee;?></td>

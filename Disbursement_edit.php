@@ -40,7 +40,7 @@ $conn = new mysqli($servername, $username, $password,$database);
 
 
 
-$view_query = mysqli_query($conn, "SELECT ID,dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount,tax,gsis,pagibig,philhealth,other, sum(total) as total, sum(net) as net, remarks, status,flag  FROM disbursement   where ors = '$idget' group by ors");
+$view_query = mysqli_query($conn, "SELECT ID,dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount,tax,gsis,pagibig,philhealth,other, sum(total) as total, sum(net) as net, remarks, status,flag,orsdate  FROM disbursement   where ors = '$idget' group by ors");
 /* echo "SELECT ID,dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount, sum(total) as total, sum(net) as net, remarks, status,flag  FROM disbursement   where ors = '$idget' group by ors";
 exit();
  */
@@ -77,6 +77,8 @@ $other = $row["other"];
 
 //Getting Flag
 $flag = $row["flag"];
+$orsdate1 = $row["orsdate"];
+$orsdate = date('m/d/Y', strtotime($orsdate1));
 /* echo $flag;
 exit(); */
 
@@ -562,7 +564,7 @@ p.mix {border-style: dotted dashed solid double;} */
                                 <tr>
                                 <td class="col-md-3"><b>ORS Date.<span style = "color:red;">*</span></b></td>
                                 <td class="col-md-7">
-                                <input value="<?php echo $datereceived?>" readonly required type="text" class="form-control input" style="height: 35px;" name="orsdate" id="orsdate" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
+                                <input value="<?php echo $orsdate?>" readonly required type="text" class="form-control input" style="height: 35px;" name="orsdate" id="orsdate" value = "" placeholder="mm/dd/yyyy"  autocomplete="off">
                                 </td>
                                 </tr>
 
@@ -916,7 +918,7 @@ p.mix {border-style: dotted dashed solid double;} */
             var table = $('#example').DataTable( {
             'paging'      : true,
             'lengthChange': false,
-            'searching'   : true,
+            'searching'   : false,
             'ordering'    : false,
             'info'        : false,
             'autoWidth'   : false,  
@@ -947,7 +949,7 @@ p.mix {border-style: dotted dashed solid double;} */
         var table = $('#example').DataTable( {
         'paging'      : true,
         'lengthChange': false,
-        'searching'   : true,
+        'searching'   : false,
         'ordering'    : false,
         'info'        : false,
         'autoWidth'   : false,  
@@ -982,7 +984,7 @@ p.mix {border-style: dotted dashed solid double;} */
           var table = $('#example1').DataTable( {
           'paging'      : true,
           'lengthChange': false,
-          'searching'   : true,
+          'searching'   : false,
           'ordering'    : false,
           'info'        : false,
           'autoWidth'   : false,  

@@ -5,6 +5,7 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
 // echo $timeNow;
 
 ?>
+
 <?php session_start();
 date_default_timezone_set('Asia/Manila');
 if(!isset($_SESSION['username'])){
@@ -17,37 +18,6 @@ $DEPT_ID = $_SESSION['DEPT_ID'];
 $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 }
 
-/* include('db.class.php'); // call db.class.php
-$mydb = new db(); // create a new object, class db()
-
-$conn = $mydb->connect(); */
-
-/* $datenow = date('Y-m-d');
-echo $datenow; */
-
-/* $results = $conn->prepare("SELECT sum(amount) as amount, payee, particular, datereleased,ors,saronumber,ppa  FROM saroob  WHERE ors LIKE '%0001%' ");
-
-$results->execute();
-while($row = $results->fetch(PDO::FETCH_ASSOC))
-{
-
-    echo $row['amount'];
-    
-} */ 
-
-/* function getnta()
-{
-    include 'connection.php';
-    $query = "SELECT FIRST_M, concat(FIRST_M,' ', LAST_M) as 'fullname' from tblemployeeinfo  order by FIRST_M" ;
-    $result = mysqli_query($conn, $query);
-    echo '<option VALUE = "">ALL</option>';
-    while($row = mysqli_fetch_array($result))
-    {
-        echo '<option>'.$row['fullname'].'</option>';
-        
-    }
-} */
-
 function getNta()
     {
         include 'connection.php';
@@ -59,7 +29,30 @@ function getNta()
             echo '<option>'.$row['particular'].'</option>';
             
         }
+
     }
+
+$ors = $_GET['ors'];    
+$flag = $_GET['flag'];
+
+    if($flag=='BURS'){
+        $view_burs = mysqli_query($conn, "SELECT sum(amount) as amount, payee, particular, datereleased from saroobburs where burs = '$ors'");
+        $row1 = mysqli_fetch_array($view_burs);
+        $bursdatereleased = $row1["datereleased"]; 
+        $burspayee = $row1["payee"]; 
+        $bursparticular = $row1["particular"]; 
+        $bursamount = $row1["amount"]; 
+        /* echo $bursget; */
+        
+        }
+        else if ($flag=='ORS'){
+        $view_burs = mysqli_query($conn, "SELECT sum(amount) as amount, payee, particular, datereleased from saroob where burs = '$ors'");
+        $row1 = mysqli_fetch_array($view_burs);
+        $orsdatereleased = $row1["datereleased"]; 
+        $orspayee = $row1["payee"]; 
+        $orsparticular = $row1["particular"]; 
+        $orsamount = $row1["amount"]; 
+        }
 ?>
 
 <style>
@@ -94,7 +87,7 @@ p.mix {border-style: dotted dashed solid double;} */
       <br>
         <!-- start of fields -->
         <div class="class"  >
-            <form method="POST" action='Disbursement_create_function.php' >
+            <form method="POST" action='Disbursement_user_function.php' >
 
         <div class="col-md-6 well" >
          <!-- DV-->
@@ -102,7 +95,7 @@ p.mix {border-style: dotted dashed solid double;} */
                 <!-- Row 1 -->
                         <div class="col-md-6 ">
                             <!-- Partition 1 -->
-                           
+                            <input hidden  value="<?php echo $_GET['ors']?>" class=" input" type="text" class="" style="height: 35px;" id="orsget" name="orsget" placeholder="" autocomplete="off">
                             
                             <table class="table"> 
                            
@@ -112,10 +105,10 @@ p.mix {border-style: dotted dashed solid double;} */
 
                             </td>
                             <td class="col-md-7">
-                            <select onchange="myFunctionORS()" class=" form-control select input" style="width: 100%; height: 40px;" name="mode" id="mode" required style="border-style: groove;">
-                            <option value = "">SELECT BURS/ORS</option>
-                            <option value = "BURS">BURS</option>
-                            <option value = "ORS">ORS</option>
+                            <select onchange="" class=" form-control select input" style="width: 100%; height: 40px;" name="mode" id="mode" required style="border-style: groove;">
+                            <option value ="">SELECT BURS/ORS</option>
+                            <option value ="BURS">BURS</option>
+                            <option value ="ORS">ORS</option>
                             </select>
                             </td>
                             </tr>
@@ -971,6 +964,156 @@ p.mix {border-style: dotted dashed solid double;} */
 
 
   $(document).ready(function() {
+
+    var orsget = '<?php echo $_GET['ors']; ?>'; 
+    var Fill = '<?php echo $_GET['flag']; ?>';
+    var payee = '<?php echo $_GET['payee']; ?>';
+    var particular = '<?php echo $_GET['particular']; ?>';
+    var amount = '<?php echo $_GET['amount']; ?>';
+    var orsdate = '<?php echo $orsdate = date('m/d/Y', strtotime($_GET['orsdate'])); ?>';
+    
+    /* alert(Fill);
+    alert(payee);
+    alert(particular);
+    alert(amount); */
+
+
+    if(Fill=='BURS'){
+      $("#mode option[value=BURS]").attr('selected', 'selected');
+    }
+    else if(Fill=='ORS'){
+      $("#mode option[value=ORS]").attr('selected', 'selected');
+    }
+    $('#mode').prop('disabled', true);
+
+
+    if(Fill=='BURS'){
+        var a = $("input[name='ors']"); 
+        a.val(orsget);
+
+        var payee1 = $("input[name='payee']"); 
+        payee1.val(payee);
+
+        var particular1 = $("input[name='particular']"); 
+        particular1.val(particular);
+
+        var amount1 = $("input[name='amount']"); 
+        amount1.val(amount);
+
+        var orsdate1 = $("input[name='orsdate']"); 
+        orsdate1.val(orsdate);
+
+    }
+    else{
+        var b = $("input[name='ors1']"); 
+        b.val(orsget);
+
+
+        // alert(orsget);
+        
+        var payee11 = $("input[name='payee']"); 
+        payee11.val(payee);
+
+        var particular11 = $("input[name='particular']"); 
+        particular11.val(particular);
+
+        var amount11 = $("input[name='amount']"); 
+        amount11.val(amount);
+
+        var orsdate11 = $("input[name='orsdate']"); 
+        orsdate11.val(orsdate);
+
+    }
+  
+
+    // alert(orsget);
+
+    if(Fill=='BURS'){
+          
+            function dataTT(){
+
+            var table = $('#example').DataTable( {
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : true,
+            'ordering'    : false,
+            'info'        : false,
+            'autoWidth'   : false,  
+            "processing": true,
+            "serverSide": false,
+            "ajax": {
+            "url": "DATATABLE/Disbursement_data1.php",
+            "type": "POST",
+            "data": {
+            "filter_data1": orsget,
+
+            }}
+
+            } );
+            }
+
+            $('#example').DataTable().destroy();
+            dataTT();
+            
+
+    }
+    else if(Fill=='ORS'){
+
+           
+          
+        function dataTTE(){
+          
+        var table = $('#example').DataTable( {
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : true,
+        'ordering'    : false,
+        'info'        : false,
+        'autoWidth'   : false,  
+        "processing": true,
+        "serverSide": false,
+        "ajax": {
+        "url": "DATATABLE/Disbursement_data.php",
+        "type": "POST",
+        "data": {
+        "filter_data": orsget,
+
+
+        }}
+
+        } );
+        }
+
+        
+        $('#example').DataTable().destroy();
+        dataTTE();
+
+    }
+    else{
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     var max_fields = 10;
     var wrapper = $(".container1");
     var add_button = $(".add_form_field");
@@ -1439,10 +1582,6 @@ function myFunctionother() {
         });
 
     }
-
-
-   
-
     // alert(mode);
 
 });
