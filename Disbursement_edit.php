@@ -894,7 +894,18 @@ p.mix {border-style: dotted dashed solid double;} */
 
     var status = $("#status").val();
 
-    
+    if(status=='Draft'){
+      $("#status option[value=Draft]").attr('selected', 'selected');
+    }
+    else if(status=='Paid'){
+      $("#status option[value=Paid]").attr('selected', 'selected');
+    }
+    else if(status=='Returned'){
+      $("#status option[value=Returned]").attr('selected', 'selected');
+    }
+    else {
+      $("#status option[value=]").attr('selected', 'selected');
+    }
     /* LOADING of DATA TABLES */
 
     if(Fill=='BURS'){
