@@ -40,7 +40,7 @@ $target_date = $_GET['target_date'];
 //   $unit1 = $_POST['unit1'];
 //   $pr_no1 = $_POST['pr_no'];
 
-  
+
 //   $check = mysqli_query($conn,"SELECT pr_no FROM pr WHERE pr_no = '$pr_no1' ");
 
 //   // if (mysqli_num_rows($check)>0) {
@@ -149,18 +149,29 @@ if (isset($_POST['add'])) {
 
 
 
-if ($app_items == "------------------------------SELECT ITEM------------------------------") {
-  echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:red;font-size:16px;"> Item Cannot be NULL!  </p> </div></div>  ';
+  if ($app_items == "------------------------------SELECT ITEM------------------------------") {
+    echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:red;font-size:16px;"> Item Cannot be NULL!  </p> </div></div>  ';
 
-}else{
-
-
-  if ($unit == "0") {
-  echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:red;font-size:16px;"> Unit Cannot be NULL!  </p> </div></div>  ';
   }else{
-  $insert_items = mysqli_query($conn,"INSERT INTO pr_items(pr_no,items,description,unit,qty,abc) VALUES ('$pr_no1','$app_items','$description','$unit','$qty','$abc') ");
 
-  echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Successfuly Saved!  </p> </div></div>  ';
+
+    if ($unit == "0") {
+      echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:red;font-size:16px;"> Unit Cannot be NULL!  </p> </div></div>  ';
+    }else{
+     $selectRid = mysqli_query($conn,"SELECT id FROM rfq WHERE pr_no = '$pr_no1");
+     $rowrid = mysqli_fetch_array($selectRid);
+     $rid = $rowrid['id'];
+     
+     if (mysqli_num_rows($selectRid)>0) {
+      $insert_items = mysqli_query($conn,"INSERT INTO pr_items(pr_no,items,description,unit,qty,abc) VALUES ('$pr_no1','$app_items','$description','$unit','$qty','$abc') ");
+      $total_amount = $qty * $abc;
+      $insert_Ritems = mysqli_query($conn,"INSERT INTO rfq_items(rfq_id,pr_no,app_id,description,unit_id,qty,abc,total_amount) VALUES ('$rid','$pr_no1','$app_items','$description','$unit','$qty','$abc','$total_amount') ");
+    }else{
+      $insert_items = mysqli_query($conn,"INSERT INTO pr_items(pr_no,items,description,unit,qty,abc) VALUES ('$pr_no1','$app_items','$description','$unit','$qty','$abc') ");
+
+    }
+
+    echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Successfuly Saved!  </p> </div></div>  ';
 
    // header('location: ViewRFQdetails.php?id='.$id.' ');
    //  echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -193,58 +204,58 @@ if ($app_items == "------------------------------SELECT ITEM--------------------
 <input type="text" name="pmo" id="pmo" value="<?php echo $get_pmo?>" hidden>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
-  <script type="text/javascript">
-    $(document).ready(function(){
-      function load_data(query)
-      {
-        $.ajax({
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+<script type="text/javascript">
+  $(document).ready(function(){
+    function load_data(query)
+    {
+      $.ajax({
         
 
-          url:"fetch_pr1.php",
-          method:"POST",
-          data:{query:query,
+        url:"fetch_pr1.php",
+        method:"POST",
+        data:{query:query,
           name: $('#pmo').val()
-          },
-          success:function(data)
-          {
-            $('#result').html(data);
-            console.log( $('#pmo').val());
-          }
-        });
-      }
-      $('#app_items').keyup(function(){
-        var search = $(this).val();
-        if(search != '')
+        },
+        success:function(data)
         {
-          load_data(search);
-        }
-        else
-        {
-          
-          load_data();
-          /* document.getElementById("code").value = ""; */
-          document.getElementById("stocknumber").value = "";
-          document.getElementById("abc").value="";
-          document.getElementById("unit").value="";
-          $("#main").show();
+          $('#result').html(data);
+          console.log( $('#pmo').val());
         }
       });
+    }
+    $('#app_items').keyup(function(){
+      var search = $(this).val();
+      if(search != '')
+      {
+        load_data(search);
+      }
+      else
+      {
+        
+        load_data();
+        /* document.getElementById("code").value = ""; */
+        document.getElementById("stocknumber").value = "";
+        document.getElementById("abc").value="";
+        document.getElementById("unit").value="";
+        $("#main").show();
+      }
     });
-    function showRow(row)
-    {
-      var x=row.cells;
-      document.getElementById("id").value = x[0].innerHTML;
-      document.getElementById("abc").value = x[1].innerHTML;
-      document.getElementById("stocknumber").value = x[2].innerHTML;
-      document.getElementById("abc").value = x[3].innerHTML;
-      document.getElementById("app_items").value = x[4].innerHTML;
-      document.getElementById("unit").value = x[5].innerHTML;
+  });
+  function showRow(row)
+  {
+    var x=row.cells;
+    document.getElementById("id").value = x[0].innerHTML;
+    document.getElementById("abc").value = x[1].innerHTML;
+    document.getElementById("stocknumber").value = x[2].innerHTML;
+    document.getElementById("abc").value = x[3].innerHTML;
+    document.getElementById("app_items").value = x[4].innerHTML;
+    document.getElementById("unit").value = x[5].innerHTML;
       //document.getElementById("abc").value = x[6].innerHTML;
     }
   </script>
   
-<body>
+  <body>
 <!-- <script>
 function confirmDelete(delUrl) {
   if (confirm("Are you sure you want to delete")) {
@@ -271,8 +282,8 @@ function confirmDelete(delUrl) {
         <div class="well">
           <div class="row">
             <div class="col-md-6">
-            <div class="form-group">
-            <!-- <input class="form-control" type="text"  name="pr_no" value="<?php echo $pr_no;?>" > -->
+              <div class="form-group">
+                <!-- <input class="form-control" type="text"  name="pr_no" value="<?php echo $pr_no;?>" > -->
                   <!-- <label>PR No.</label>
                   
                 </div>
@@ -283,7 +294,7 @@ function confirmDelete(delUrl) {
                   <input class="form-control" type="text"  name="pmo" id="pmo" value="<?php echo $pmo;?>" readonly>
                  
               </div>
- -->
+            -->
               <!-- <div class="form-group">
                   <label>Type <label style="color: Red;" >*</label></label>
                   <?php if ($type == 1): ?>
@@ -346,10 +357,10 @@ function confirmDelete(delUrl) {
                     </select>
                   <?php endif ?>
                  
-              </div> -->
+                </div> -->
 
 
-          </div>
+              </div>
               
               <div class="col-md-6">
 
@@ -405,7 +416,7 @@ function confirmDelete(delUrl) {
             <div class=""><!-- widgetBody -->
               <div class="row">
                 <div class="col-md-6" style="padding-left: 30px;padding-top:10px;">
-                <label>Item/s <label style="color: Red;" >*</label> </label>
+                  <label>Item/s <label style="color: Red;" >*</label> </label>
                   <input type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="">
                   <table class="table table-striped table-hover" id="main">
                     <tbody id="result">
@@ -413,84 +424,84 @@ function confirmDelete(delUrl) {
                   </table>
 
                   <script type="text/javascript">
-                  $(document).ready(function(){
-                  function load_data(query)
-                  {
-                  $.ajax({
+                    $(document).ready(function(){
+                      function load_data(query)
+                      {
+                        $.ajax({
 
 
-                    url:"fetch_pr1.php",
-                    method:"POST",
-                    data:{query:query,
-                    name: $('#pmo').val()
-                    },
-                    success:function(data)
+                          url:"fetch_pr1.php",
+                          method:"POST",
+                          data:{query:query,
+                            name: $('#pmo').val()
+                          },
+                          success:function(data)
+                          {
+                            $('#result').html(data);
+                            console.log( $('#pmo').val());
+                          }
+                        });
+                      }
+                      $('#app_items').keyup(function(){
+                        var search = $(this).val();
+                        if(search != '')
+                        {
+                          load_data(search);
+                        }
+                        else
+                        {
+                          
+                          load_data();
+                          /* document.getElementById("code").value = ""; */
+                          document.getElementById("stocknumber").value = "";
+                          document.getElementById("abc").value="";
+                          document.getElementById("unit").value="";
+                          $("#main").show();
+                        }
+                      });
+                    });
+                    function showRow(row)
                     {
-                      $('#result').html(data);
-                      console.log( $('#pmo').val());
-                    }
-                  });
-                  }
-                  $('#app_items').keyup(function(){
-                  var search = $(this).val();
-                  if(search != '')
-                  {
-                    load_data(search);
-                  }
-                  else
-                  {
-                    
-                    load_data();
-                    /* document.getElementById("code").value = ""; */
-                    document.getElementById("stocknumber").value = "";
-                    document.getElementById("abc").value="";
-                    document.getElementById("unit").value="";
-                    $("#main").show();
-                  }
-                  });
-                  });
-                  function showRow(row)
-                  {
-                  var x=row.cells;
-                  document.getElementById("id").value = x[0].innerHTML;
-                  document.getElementById("abc").value = x[1].innerHTML;
-                  document.getElementById("stocknumber").value = x[2].innerHTML;
-                  document.getElementById("abc").value = x[3].innerHTML;
-                  document.getElementById("app_items").value = x[4].innerHTML;
-                  document.getElementById("unit").value = x[5].innerHTML;
+                      var x=row.cells;
+                      document.getElementById("id").value = x[0].innerHTML;
+                      document.getElementById("abc").value = x[1].innerHTML;
+                      document.getElementById("stocknumber").value = x[2].innerHTML;
+                      document.getElementById("abc").value = x[3].innerHTML;
+                      document.getElementById("app_items").value = x[4].innerHTML;
+                      document.getElementById("unit").value = x[5].innerHTML;
                   //document.getElementById("abc").value = x[6].innerHTML;
-                  }
-                  </script>
-                  <br>
-                  <br>
-                  
-                  <div hidden>
-                    <input type="text" name="app_items" id="id" class="form-control"/>
-
-                  
-                  </div>
-                  <div class="form-group">
-                    <label>Stock/Property No.  <label style="color: Red;" >*</label> </label>
-                    <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
-                  </div>
-                  <div class="form-group">
-                    <label>Description/Specification</label>
-                    <textarea class="form-control" rows="3" name="description" ></textarea>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <p></p>
+                }
+              </script>
+              <br>
+              <br>
+              
+              <div hidden>
+                <input type="text" name="app_items" id="id" class="form-control"/>
 
                 
-                  <div class="form-group" hidden>
-                    <label>Existing QTY</label>
-                    <input class="form-control" type="number" readonly id="two" name="two">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label>Unit <label style="color: Red;" >*</label></label>
-                    <input type="text" name="unit" id="unit"  class="form-control" readonly>
+              </div>
+              <div class="form-group">
+                <label>Stock/Property No.  <label style="color: Red;" >*</label> </label>
+                <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
+              </div>
+              <div class="form-group">
+                <label>Description/Specification</label>
+                <textarea class="form-control" rows="3" name="description" ></textarea>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <p></p>
+
+              
+              <div class="form-group" hidden>
+                <label>Existing QTY</label>
+                <input class="form-control" type="number" readonly id="two" name="two">
+              </div>
+              
+              <div class="form-group">
+                <label>Unit <label style="color: Red;" >*</label></label>
+                <input type="text" name="unit" id="unit"  class="form-control" readonly>
                     <!-- <select class="form-control select2" style="width: 100%;" name="unit" id="unit" >
                       <option value="5">------------------------------SELECT UNIT------------------------------</option>
                       <option value="16">book</option>
@@ -516,17 +527,17 @@ function confirmDelete(delUrl) {
                       <option value="5">unit</option>
                     </select> -->
                     <table class="table table-striped table-hover" id="main">
-                    <tbody id="result">
-                    </tbody>
-                  </table>
-                  <br>
-                  
-                   
-                  
-                 
+                      <tbody id="result">
+                      </tbody>
+                    </table>
+                    <br>
+                    
+                    
+                    
+                    
                   </div>
                   
-                 
+                  
                   <div class="form-group">
                     <label>Quantity <label style="color: Red;" >*</label></label>
                     <input class="form-control" type="number" id="qty" name="qty">
@@ -548,65 +559,65 @@ function confirmDelete(delUrl) {
         <br>
         <div class="panel-body container-items">
          
-   </div>
-   <br>
- </form>
-</div>  
-</div>  
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>  
-<br>
+        </div>
+        <br>
+      </form>
+    </div>  
+  </div>  
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>  
+  <br>
 </body>
 
 
 
 <script>
-$(document).ready(function(){
-  $("#result").click(function(){
-    $("#main").hide();
+  $(document).ready(function(){
+    $("#result").click(function(){
+      $("#main").hide();
+    });
   });
-});
 </script>
 
 
 <script>
-   
+ 
   $(document).ready(function(){
    table = document.getElementById("item_table");
 
    tr = table.getElementsByTagName("th");
    var td = document.getElementById("tdvalue");
 
-    if(td <= 0){
-        $('#finalizeButton').attr('disabled','disabled');
-    } else {
-        $('#finalizeButton').attr('enabled','enabled');
-    }
+   if(td <= 0){
+    $('#finalizeButton').attr('disabled','disabled');
+  } else {
+    $('#finalizeButton').attr('enabled','enabled');
+  }
 
-    $('.link').click(function(){
+  $('.link').click(function(){
 
-      var f = $(this);
-      var id = f.data('id');
+    var f = $(this);
+    var id = f.data('id');
 
-      var pr_no = $('#pr_no').val();
-      var pr_date = $('#pr_date').val();
-      var pmo = $('#pmo').val();
-      var purpose = $('#purpose').val();
+    var pr_no = $('#pr_no').val();
+    var pr_date = $('#pr_date').val();
+    var pmo = $('#pmo').val();
+    var purpose = $('#purpose').val();
 
-      window.location = 
-      'ViewPRdetails.php?data='+id+'&pr_no='+pr_no+'&pr_date='+pr_date+'&pmo='+pmo+'&purpose='+purpose;
-    });
-  }) ;
+    window.location = 
+    'ViewPRdetails.php?data='+id+'&pr_no='+pr_no+'&pr_date='+pr_date+'&pmo='+pmo+'&purpose='+purpose;
+  });
+}) ;
 </script>
 
 <!-- jQuery 3 -->
@@ -657,21 +668,21 @@ $(document).ready(function(){
     $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, locale: { format: 'MM/DD/YYYY hh:mm A' }})
     //Date range as a button
     $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
+    {
+      ranges   : {
+        'Today'       : [moment(), moment()],
+        'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+        'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
       },
-      function (start, end) {
-        $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
+      startDate: moment().subtract(29, 'days'),
+      endDate  : moment()
+    },
+    function (start, end) {
+      $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+    }
     )
 
     //Date picker,
