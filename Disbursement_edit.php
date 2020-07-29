@@ -47,8 +47,9 @@ exit();
 while ($row = mysqli_fetch_assoc($view_query)) {
 $id = $row["ID"]; 
 $dv = $row["dv"];
-// $ors = $row["ors"];
-
+/* echo $dv; */
+$ors = $row["ors"];
+/* echo $ors; */
 $datereceived1 = $row["datereceived"];
 $datereceived = date('m/d/Y', strtotime($datereceived1));
 
@@ -916,7 +917,7 @@ p.mix {border-style: dotted dashed solid double;} */
 
     if(Fill=='BURS'){
             var bursno = '<?php echo $bursget?>';
-            // alert(bursno);
+            alert(bursno);
             function dataTT(){
 
             var table = $('#example').DataTable( {
@@ -947,7 +948,7 @@ p.mix {border-style: dotted dashed solid double;} */
     else if(Fill=='ORS'){
 
             var orsno = '<?php echo $orsget?>';
-            // alert(orsno);
+            alert(orsno);
         function dataTTE(){
           
         var table = $('#example').DataTable( {
