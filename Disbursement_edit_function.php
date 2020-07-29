@@ -86,18 +86,16 @@ if($mode=="BURS"){
                 $ntano  = $_POST['ntano'][$i];
                 $ntaamount  = $_POST['ntaamount'][$i];
                 $insert = mysqli_query($con,"INSERT INTO dv_nta (dv, type, accno, amount) values ('$dv','".$_POST['charge'][$i]."','".$_POST['ntano'][$i]."','".$_POST['ntaamount'][$i]."')"); 
-                
                 // $nta = mysqli_query($con,"UPDATE nta set obligated = obligated-".$_POST['ntaamount'][$i].", balance = amount-obligated where particular = '".$_POST['ntano'][$i]."' ");
-                
                 
                 $nta1 = mysqli_query($con,"UPDATE nta set obligated = obligated+".$_POST['ntaamount'][$i].", balance = amount-obligated where particular = '".$_POST['ntano'][$i]."' ");
 
                
-              }
+            }
         
         }  
    
-      $update = mysqli_query($con,"Update saroobburs set dvstatus = 'Paid'  where burs = '$burs'");
+      $update = mysqli_query($con,"Update saroobburs set dvstatus = '$status'  where burs = '$burs'");
      
     }
         mysqli_close($con);
@@ -150,11 +148,11 @@ else{
                 // $nta = mysqli_query($con,"UPDATE nta set obligated = obligated-".$_POST['ntaamount'][$i].", balance = amount-obligated where particular = '".$_POST['ntano'][$i]."' ");
                 $nta1 = mysqli_query($con,"UPDATE nta set obligated = obligated+".$_POST['ntaamount'][$i].", balance = amount-obligated where particular = '".$_POST['ntano'][$i]."' ");
 
-              }
+            }
         
         }  
    
-      $update = mysqli_query($con,"Update saroobburs set dvstatus = 'Paid'  where burs = '$burs'");
+      $update = mysqli_query($con,"Update saroobburs set dvstatus = '$status'  where burs = '$burs'");
      
     }
         mysqli_close($con);

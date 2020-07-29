@@ -96,17 +96,17 @@ only screen and (max-width: 760px),
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label>Time Going to Venue</label>
+                              <label>Departure</label>
                                 <input type = "time" name = "from1" class = "form-control ">
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label>&nbsp;</label>
+                              <label>Arrival</label>
                               <input type = "time" name = "to1" class = "form-control"/>
                             </div>
                           </div>
-                          <div class="col-md-6">
+                          <!-- <div class="col-md-6">
                             <div class="form-group">
                               <label style = "font-size:13px;">Time Going Home or back to Official Station</label>
                                 <input type = "time" name = "from2" class = "form-control"/>
@@ -117,7 +117,7 @@ only screen and (max-width: 760px),
                               <label>&nbsp;</label>
                               <input type = "time" name = "to2" class = "form-control" style = "margin-top:15px;"/>
                             </div>
-                          </div>
+                          </div> -->
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Means of Transportation</label>

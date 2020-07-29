@@ -132,9 +132,9 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 <!-- 
                   <div class = "well" style = "padding:10px;" id = "travelPanel">
                   </div> -->
+                  <button type = "button" class = "btn btn-primary btn-md pull-right" id= "add_fare"><i class = "fa fa-plus"></i>&nbsp;Add Fare</button>
 
-                  <button type = "submit" class = "btn btn-success btn-md pull-right">Save Changes</button>
-                  <button class = "btn btn-primary btn-md pull-right" id= "add_fare" style = "margin-right:10px">Add Fare</button>
+                  <button type = "submit" class = "btn btn-success btn-md pull-right" style = "margin-right:10px"><i class = "fa fa-save"></i>&nbsp;Save Changes</button>
 
                   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
