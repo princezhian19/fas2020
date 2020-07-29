@@ -36,10 +36,10 @@ $(document).ready(function(){
      .addClass("additionalDate")
      .show()
      .appendTo('#travelPanel');
+     
     myCounter++;
-    
        
-    $(".datepicker4").on('focus', function(){
+    $(".datepicker6").on('focus', function(){
         var $this = $(this);
         if(!$this.data('datepicker')) {
          $this.removeClass("hasDatepicker");
@@ -81,9 +81,7 @@ $(document).ready(function(){
     });
     // checkbox validation
     $(document).ready(function(){
-      // $('#datepicker4').val($('#travel_date').val());
-      $( ".datepicker4" ).datepicker( "setDate", new Date());
-
+      $('#datepicker4').val($('#travel_date').val());
           $('#wor').click(function(){
               if($(this).prop("checked") == true){
                 

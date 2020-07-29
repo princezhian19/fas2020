@@ -51,8 +51,11 @@ only screen and (max-width: 760px),
 	*/
 
 }
+.border-disabled{
+  border: 2px solid gray;
+}
   </style>
-<script src="travelclaim.js"></script>  
+<script src="edittravelclaim.js"></script>  
 
      <?php
 
@@ -72,7 +75,7 @@ only screen and (max-width: 760px),
             $places = preg_split("/[\s]+/", $row1['PLACE']);
             list($from, $number2,$to) = $places;
          ?>
-                <div class="well box-success box" style = "padding:10px;background:#ECEFF1;">
+                <div class="well box-success box myTemplate2" style = "padding:10px;background:#ECEFF1;">
                   <div class="box-body">
                     <div class = "row">
                       <div class = "col-sm-12 col-md-12 col-lg-12">
@@ -145,26 +148,26 @@ only screen and (max-width: 760px),
                                 <div class="form-group">
                                     <label> Per Diem </label>
                                     <label class = "pull-right">
-                                    <input type ="hidden" value = "<?php echo $row1['PLACE'];?>" id = "distance"/>
+                                    <input type ="hidden" value = "<?php echo $row1['DISTANCE'];?>" class = "distance"/>
                                     <?php echo $row1['DISTANCE'];?>
                                     </label>
                                 </div>
                                 <div class="form-group">
                                   <label> Meals </label><br>
-                                  <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1" id = "cb1"> <b>Will Claim Meals</b><br>
-                                  <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" id = "breakfast" value = "breakfast"> Breakfast
-                                  <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" id= "lunch" value = "lunch"> Lunch
-                                  <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" id="dinner" value = "dinner"> Dinner
+                                  <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1"> <b>Will Claim Meals</b><br>
+                                  <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup breakfast"  value = "breakfast"> Breakfast
+                                  <input type="checkbox" name="lunch" class="minimal-red checkboxgroup lunch"  value = "lunch"> Lunch
+                                  <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup dinner"  value = "dinner"> Dinner
                                 </div>
                                 <div class="form-group">
                                   <label>
                                   Accomodation
                                   </label><br>
-                                  <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
-                                  <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt" id = "wr" value ="With Receipt"> With Receipt
-                                  <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
+                                  <input type="checkbox"  name = "accomodation" class="minimal-red wa"  value = "With Accomodation accomodation_chkbox "><b> Will Claim Accomodation</b><br>
+                                  <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt wr" value ="With Receipt"> With Receipt
+                                  <input type="text" disabled name="wor_txt"  class = "borderless wor_txt" style = "width:50%;"/>
                                   <br>
-                                  <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt" id = "wor" value ="Without Receipt"> Without Receipt
+                                  <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt wor" value ="Without Receipt"> Without Receipt
                                 </div>
                               </div>
                             </div>
@@ -187,6 +190,8 @@ only screen and (max-width: 760px),
                     </div>
                   </div>
                 </div>
+                <div  style = "padding:10px;" id = "travelPanel">
+                  </div>
          <?php
         }
         
@@ -262,3 +267,4 @@ only screen and (max-width: 760px),
         // }
         // echo '</table>';
         //         -->
+        
