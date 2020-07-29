@@ -189,12 +189,13 @@ function  groupCheck() {
   
      }else{
   
-  console.log($('.wa').val());
       $(".breakfast").attr("disabled", true);
         $(".lunch").attr("disabled", true);
         $(".dinner").attr("disabled", true);
         $(".cb1").attr("disabled", true);
         $(".wa").attr("disabled", true);
+        $(".wor").attr("disabled", true);
+        $(".wr").attr("disabled", true);
         $('.perdiem').addClass('border-disabled');
      }
   
