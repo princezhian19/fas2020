@@ -231,7 +231,9 @@ if (isset($_POST['submit'])) {
   $rowP = mysqli_fetch_array($selectRfqNO);
   $rfqid = $rowP['id'];
 
-  $UpdateRFQItems = mysqli_query($conn,"UPDATE rfq_items set app_id = '$idApp', unit_id = '$unit1', description = '$description1', qty ='$qty1', abc = '$abc1' WHERE rfq_id = '$rfqid' AND app_id = '$procurement");
+  $total_amount = $qty1 * $abc1;
+
+  $UpdateRFQItems = mysqli_query($conn,"UPDATE rfq_items set app_id = '$idApp', unit_id = '$unit1', description = '$description1', qty ='$qty1', abc = '$abc1',total_amount = '$total_amount' WHERE rfq_id = '$rfqid' AND app_id = '$procurement");
   
   if ($UpdateItems) {
     echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Successfuly Updated!  </p> </div></div>  ';

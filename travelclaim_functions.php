@@ -166,7 +166,6 @@ session_start();
             }
         }
     }
-
     function getTotal()
     {
         include 'connection.php';
@@ -199,7 +198,6 @@ session_start();
                 echo $row1['DISTANCE'];
             }
     }
-
     function deleteTravelOrder()
     {
         include 'connection.php';
@@ -216,7 +214,7 @@ session_start();
         if (mysqli_query($conn, $del1)) {
         } else {
         }
-echo $del1;
+        echo $del1;
         $del2 ="DELETE FROM `tbltravel_claim_info` WHERE `RO`= '".$_POST['id']."' ";
         if (mysqli_query($conn, $del2)) {
         } else {
@@ -285,7 +283,6 @@ echo $del1;
         }
  
     }
-
     function editTravelData()
     {
         for($a=0;$a < count($_POST['mot']); $a++)
@@ -293,30 +290,138 @@ echo $del1;
             echo $_POST['mot'][$a];
         }
     }
- 
-$func = '';
-if(isset($_POST['action']))
-{
-    $action = $_POST['action'];
-    if($action == 'deleteTravelOrder' )
-    {   
-        deleteTravelOrder();
-    }else if($action == 'deleteAll')
+    function mealsCheckBoxes($breakfast,$lunch,$dinner)
     {
-        deleteAll();
-    }
-}else if(isset($_GET['action'])){
-$action2 = $_GET['action'];
-    if($_GET['action']  == 'add')
     
-    {
-        add();
-        // echo 'a';
+        if($breakfast == 200 && $lunch == 200 && $dinner == 200 )
+        {
+        ?>
+        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1" checked> <b>Will Claim Meals</b><br>
+        <input style = "margin-left:14px" type="checkbox" name="breakfast[]" class="minimal-red checkboxgroup breakfast"  value = "breakfast" checked> Breakfast
+        <input type="checkbox" name="lunch[]" class="minimal-red checkboxgroup lunch"  value = "lunch" checked> Lunch
+        <input type="checkbox" name="dinner[]"  class="minimal-red checkboxgroup dinner"  value = "dinner" checked> Dinner
+        <?php
+        }
+        else if($breakfast != 200 && $lunch == 200 && $dinner == 200 ){
+          ?>
+          <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1" checked> <b>Will Claim Meals</b><br>
+          <input style = "margin-left:14px" type="checkbox" name="breakfast[]" class="minimal-red checkboxgroup breakfast"  value = "breakfast" > Breakfast
+          <input type="checkbox" name="lunch[]" class="minimal-red checkboxgroup lunch"  value = "lunch" checked> Lunch
+          <input type="checkbox" name="dinner[]"  class="minimal-red checkboxgroup dinner"  value = "dinner" checked> Dinner
+          <?php
+        }
+        else if($breakfast== 200 && $lunch != 200 && $dinner == 200 ){
+          ?>
+          <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1" checked> <b>Will Claim Meals</b><br>
+          <input style = "margin-left:14px" type="checkbox" name="breakfast[]" class="minimal-red checkboxgroup breakfast"  value = "breakfast" checked > Breakfast
+          <input type="checkbox" name="lunch[]" class="minimal-red checkboxgroup lunch"  value = "lunch" > Lunch
+          <input type="checkbox" name="dinner[]"  class="minimal-red checkboxgroup dinner"  value = "dinner" checked> Dinner
+          <?php
+        }
+        else if($breakfast== 200 && $lunch == 200 && $dinner != 200 ){
+          ?>
+          <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1" checked> <b>Will Claim Meals</b><br>
+          <input style = "margin-left:14px" type="checkbox" name="breakfast[]" class="minimal-red checkboxgroup breakfast"  value = "breakfast" checked > Breakfast
+          <input type="checkbox" name="lunch[]" class="minimal-red checkboxgroup lunch"  value = "lunch" checked > Lunch
+          <input type="checkbox" name="dinner[]"  class="minimal-red checkboxgroup dinner"  value = "dinner" > Dinner
+          <?php
+        }
+        else if($breakfast== 200 && $lunch != 200 && $dinner != 200 ){
+          ?>
+          <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1" checked> <b>Will Claim Meals</b><br>
+          <input style = "margin-left:14px" type="checkbox" name="breakfast[]" class="minimal-red checkboxgroup breakfast"  value = "breakfast" checked > Breakfast
+          <input type="checkbox" name="lunch[]" class="minimal-red checkboxgroup lunch"  value = "lunch"  > Lunch
+          <input type="checkbox" name="dinner[]"  class="minimal-red checkboxgroup dinner"  value = "dinner" > Dinner
+          <?php
+        }
+        else if($breakfast!= 200 && $lunch == 200 && $dinner != 200 ){
+          ?>
+          <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1" checked> <b>Will Claim Meals</b><br>
+          <input style = "margin-left:14px" type="checkbox" name="breakfast[]" class="minimal-red checkboxgroup breakfast"  value = "breakfast"  > Breakfast
+          <input type="checkbox" name="lunch[]" class="minimal-red checkboxgroup lunch"  value = "lunch" checked> Lunch
+          <input type="checkbox" name="dinner[]"  class="minimal-red checkboxgroup dinner"  value = "dinner" > Dinner
+          <?php
+        }
+        else if($breakfast!= 200 && $lunch != 200 && $dinner == 200 ){
+          ?>
+          <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1" checked> <b>Will Claim Meals</b><br>
+          <input style = "margin-left:14px" type="checkbox" name="breakfast[]" class="minimal-red checkboxgroup breakfast"  value = "breakfast"  > Breakfast
+          <input type="checkbox" name="lunch[]" class="minimal-red checkboxgroup lunch"  value = "lunch" > Lunch
+          <input type="checkbox" name="dinner[]"  class="minimal-red checkboxgroup dinner"  value = "dinner" checked> Dinner
+          <?php
+        }else{
+          ?>
+          <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1" > <b>Will Claim Meals</b><br>
+          <input style = "margin-left:14px" type="checkbox" name="breakfast[]" class="minimal-red checkboxgroup breakfast"  value = "breakfast"  > Breakfast
+          <input type="checkbox" name="lunch[]" class="minimal-red checkboxgroup lunch"  value = "lunch" > Lunch
+          <input type="checkbox" name="dinner[]"  class="minimal-red checkboxgroup dinner"  value = "dinner" > Dinner
+          <?php
+        }
+        
+        
+        
     }
-    else if($_GET['action'] == 'modify')
+    function modifyTravelDate()
     {
-        editTravelData();   
+        for($a=0;$a < count($_POST['date']); $a++)
+        {
+            if(isset($_POST['breakfast'][$a]) || isset($_POST['lunch'][$a]) || isset($_POST['dinner'][$a]) || isset($_POST['wor_txt'][$a])) { $breakfast = $_POST['breakfast'][$a]; $lunch = $_POST['lunch'][$a]; $dinner = $_POST['dinner'][$a]; $receipt = $_POST['wor_txt'][$a]; if($breakfast == 'breakfast') { $breakfast = 200; } if($lunch == 'lunch') { $lunch = 200; } if($dinner == 'dinner') { $dinner = 200; } if($receipt == 'Without Receipt') { $receipt = 1100; } $perdiem = $breakfast+$lunch+$dinner+$receipt; }else{ $perdiem = 0; }
+            $title = $_POST['ro'][$a];
+            $date = $_POST['date'][$a];
+            $departure = $_POST['departure'][$a];
+            $arrival = $_POST['arrival'][$a];
+            $others = $_POST['others'][$a];
+            $from = $_POST['from1'][$a];
+            $to = $_POST['to1'][$a];
+            $mot = $_POST['mot'][$a];
+            $fare = $_POST['fare'][$a];
+        
+            // UPDATE `tbltravel_claim_info` SET 
+            // `TC_ID`=[value-2],
+            // `RO`=[value-3],
+            // `DATE`=[value-4],
+            // `PLACE`=[value-5],
+            // `ARRIVAL`=[value-6],
+            // `DEPARTURE`=[value-7],
+            // `MOT`=[value-8],
+            // `TRANSPORTATION`=[value-9],
+            // `BREAKFAST`=[value-10],
+            // `LUNCH`=[value-11],
+            // `DINNER`=[value-12],
+            // `ACCOMODATION`=[value-13],
+            // `RECEIPT`=[value-14],
+            // `PERDIEM`=[value-15],
+            // `OTHERS`=[value-16],
+            // `TOTAL_AMOUNT`=[value-17] WHERE 1
+            
+        }
     }
-}
-
+    $func = '';
+    if(isset($_POST['action']))
+    {
+        $action = $_POST['action'];
+        if($action == 'deleteTravelOrder' )
+        {   
+            deleteTravelOrder();
+        }else if($action == 'deleteAll')
+        {
+            deleteAll();
+        }
+    }else if(isset($_GET['action'])){
+        $action2 = $_GET['action'];
+        if($_GET['action']  == 'add')
+        
+        {
+            add();
+            // echo 'a';
+        }
+        else if($_GET['action'] == 'modify')
+        {
+            editTravelData();   
+        }
+        else if($_GET['action'] == 'modifyTravelDate')
+        {
+            modifyTravelDate();
+        }
+    }
 ?>

@@ -1,7 +1,7 @@
 <?php 
-session_start();
 
      include 'connection.php';
+     include 'travelclaim_functions.php';
      ?>
 <style>
 th{
@@ -51,8 +51,11 @@ only screen and (max-width: 760px),
 	*/
 
 }
+.border-disabled{
+  border: 2px solid gray;
+}
   </style>
-<script src="travelclaim.js"></script>  
+<script src="edittravelclaim.js"></script>  
 
      <?php
 
@@ -72,7 +75,7 @@ only screen and (max-width: 760px),
             $places = preg_split("/[\s]+/", $row1['PLACE']);
             list($from, $number2,$to) = $places;
          ?>
-                <div class="well box-success box" style = "padding:10px;background:#ECEFF1;">
+                <div class="well box-success box myTemplate2" style = "padding:10px;background:#ECEFF1;">
                   <div class="box-body">
                     <div class = "row">
                       <div class = "col-sm-12 col-md-12 col-lg-12">
@@ -81,7 +84,8 @@ only screen and (max-width: 760px),
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Activity Title</label>
-                              <input type = "text" name = "ro" class = "form-control " value = "<?php echo $row1['RO_OT_OB']?>" required/>
+                              <input type = "text" name = "ro[]" class = "form-control " value = "<?php echo $row1['RO_OT_OB']?>" required/>
+                              <input type = "hidden" name = "TC_ID" class = "form-control " value = "<?php echo $_POST['ro']?>" required/>
                             </div>
                           </div>
                           <div class="col-md-12">
@@ -91,20 +95,20 @@ only screen and (max-width: 760px),
                                   <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" name = "date" class="form-control datepicker4" value = "<?php echo $row1['DATE'];?>" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
+                                <input type="text" name = "date[]" class="form-control datepicker4" value = "<?php echo $row1['DATE'];?>" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
                               </div>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>Departure</label>
-                                <input type = "time" name = "from1" class = "form-control " value = "<?php echo $row1['DEPARTURE'];?>">
+                                <input type = "time" name = "departure[]" class = "form-control " value = "<?php echo $row1['DEPARTURE'];?>">
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
                               <label>Arrival</label>
-                              <input type = "time" name = "to1" class = "form-control" value = "<?php echo $row1['ARRIVAL'];?>"/>
+                              <input type = "time" name = "arrival[]" class = "form-control" value = "<?php echo $row1['ARRIVAL'];?>"/>
                             </div>
                           </div>
                           <!-- <div class="col-md-6">
@@ -123,19 +127,19 @@ only screen and (max-width: 760px),
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Others</label>
-                                <input type="text" name = "others" value = "<?php echo $row1['OTHERS'];?>" class="form-control" >
+                                <input type="text" name = "others[]" value = "<?php echo $row1['OTHERS'];?>" class="form-control" >
                             </div>
                           </div>
                           <div class="col-md-12"> 
                               <div class="form-group">
                                 <label>From</label>
-                                  <input type = "text" name = "from1" class = "form-control " value = "<?php echo $places[0];?>"/>
+                                  <input type = "text" name = "from1[]" class = "form-control " value = "<?php echo $places[0];?>"/>
                               </div>
                           </div>
                           <div class="col-md-12"> 
                               <div class="form-group">
                                 <label>Means of Transportation</label>
-                                  <input type = "text" name = "from1" class = "form-control " value = "<?php echo $places[0];?>"/>
+                                  <input type = "text" name = "mot[]" class = "form-control " value = "<?php echo $places[0];?>"/>
                               </div>
                           </div>
                           </div>
@@ -145,26 +149,49 @@ only screen and (max-width: 760px),
                                 <div class="form-group">
                                     <label> Per Diem </label>
                                     <label class = "pull-right">
-                                    <input type ="hidden" value = "<?php echo $row1['PLACE'];?>" id = "distance"/>
+                                    <input type ="hidden" value = "<?php echo $row1['DISTANCE'];?>" class = "distance"/>
                                     <?php echo $row1['DISTANCE'];?>
                                     </label>
                                 </div>
                                 <div class="form-group">
                                   <label> Meals </label><br>
-                                  <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1" id = "cb1"> <b>Will Claim Meals</b><br>
-                                  <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" id = "breakfast" value = "breakfast"> Breakfast
-                                  <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" id= "lunch" value = "lunch"> Lunch
-                                  <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" id="dinner" value = "dinner"> Dinner
+                                 <?php echo mealsCheckBoxes($row1['BREAKFAST'],$row1['LUNCH'],$row1['DINNER']);?>  
                                 </div>
                                 <div class="form-group">
                                   <label>
                                   Accomodation
                                   </label><br>
-                                  <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
-                                  <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt" id = "wr" value ="With Receipt"> With Receipt
-                                  <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
-                                  <br>
-                                  <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt" id = "wor" value ="Without Receipt"> Without Receipt
+                                  <?php 
+                                  if($row1['ACCOMODATION'] == 1100)
+                                  {
+                                  ?>
+                                    <input type="checkbox"  name = "accomodation[]" class="minimal-red wa"  value = "With Accomodation accomodation_chkbox " checked><b> Will Claim Accomodation</b><br>
+                                    <input style = "margin-left:14px" type="checkbox"  name = "with_receipt[]" class="minimal-red receipt wr" value ="With Receipt"> With Receipt
+                                    <input type="text" disabled name="wor_txt[]"  class = "borderless wor_txt" style = "width:50%;"/>
+                                    <br>
+                                    <input style = "margin-left:14px"type="checkbox"  name = "wor_txt[]" class="minimal-red receipt wor" value ="Without Receipt" checked> Without Receipt
+                                  <?php
+                                  }
+                                  else if ($row1['ACCOMODATION'] != 1100 && $row1['RECEIPT'] != '' )
+                                  {
+                                    ?>
+                                    <input type="checkbox"  name = "accomodation[]" class="minimal-red wa"  value = "With Accomodation accomodation_chkbox " checked><b> Will Claim Accomodation</b><br>
+                                    <input style = "margin-left:14px" type="checkbox"  name = "with_receipt[]" class="minimal-red receipt wr" value ="With Receipt" checked> With Receipt
+                                    <input type="text" disabled name="wor_txt[]"  class = "borderless wor_txt" style = "width:50%;" value = "<?php echo $row1['RECEIPT']; ?>"/>
+                                    <br>
+                                    <input style = "margin-left:14px"type="checkbox"  name = "wor_txt[]" class="minimal-red receipt wor" value ="Without Receipt" > Without Receipt
+                                  <?php
+                                  }else{
+                                    ?>
+                                    <input type="checkbox"  name = "accomodation[]" class="minimal-red wa"  value = "With Accomodation accomodation_chkbox " ><b> Will Claim Accomodation</b><br>
+                                    <input style = "margin-left:14px" type="checkbox"  name = "with_receipt[]" class="minimal-red receipt wr" value ="With Receipt" > With Receipt
+                                    <input type="text" disabled name="wor_txt[]"  class = "borderless wor_txt" style = "width:50%;" value = "<?php echo $row1['RECEIPT']; ?>"/>
+                                    <br>
+                                    <input style = "margin-left:14px"type="checkbox"  name = "wor_txt[]" class="minimal-red receipt wor" value ="Without Receipt" > Without Receipt
+                                  <?php
+                                  }
+                                  ?>
+                                  
                                 </div>
                               </div>
                             </div>
@@ -173,13 +200,13 @@ only screen and (max-width: 760px),
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>To</label>
-                              <input type = "text" name = "to1" class = "form-control"  value = "<?php echo $places[2];?>"/>
+                              <input type = "text" name = "to1[]" class = "form-control"  value = "<?php echo $places[2];?>"/>
                             </div>
                           </div>
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Transportation Fare</label>
-                                <input type="text" name = "others" value = "<?php echo $row1['TRANSPORTATION'];?>" class="form-control" >
+                                <input type="text" name = "fare[]" value = "<?php echo $row1['TRANSPORTATION'];?>" class="form-control" >
                             </div>
                           </div>
                           </div>
@@ -187,6 +214,9 @@ only screen and (max-width: 760px),
                     </div>
                   </div>
                 </div>
+                <div  style = "padding:10px;" id = "travelPanel">
+                  </div>
+
          <?php
         }
         
@@ -194,71 +224,4 @@ only screen and (max-width: 760px),
       
  
 ?>
-
-<!-- <div class="well" style = "padding:10px;">
-                  <div class="box-body">
-                      <div style = "padding:10px;" >
-                      <div class="box-body myTemplate2">
-                        <div class="row ">
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label>From</label>
-                                <input type="text" name = "from3[]" class="form-control" value = "<?php echo $from;?>">
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label>To</label>
-                                <input type = "text" name = "to3[]" class = "form-control" value = "<?php echo $to; ?>"/>
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label>Means of Transportation</label>
-                                
-                                <input type="text" name = "mot[]" class="form-control" value = "<?php echo $row['MOT'];?>">
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label>Transportation Fare</label>
-                                <input type = "text" name = "transpo_fare[]" class = "form-control"  value = "<?php echo $row['TRANSPORTATION'];?>" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-                  </div>
-                </div>
-
-
-                echo '<table border =1 style = "width:100%;" class="table table-hover" >';
-        echo '<thead class="table-header">';
-        echo '<th>FROM</th>';
-        echo '<th>TO</th>';
-        echo '<th>MEANS OF TRANSPORTATION</th>';
-        echo '<th>TRANPORTATION FARE</th>';
-        echo '</thead>';
-
-        
-        while($row = mysqli_fetch_array($result))
-        {
-            // $parts = explode('to', $row['PLACE']);
-            // $filename_arr = $data['my_slider'];
-            // $file_coma = implode(',', $filename_arr);
-            $places = preg_split("/[\s]+/", $row['PLACE']);
-            list($from, $number2,$to) = $places;
-            
-
-            ?>
-            <tr>
-              <td><?php echo $places[0];?></td>
-              <td><?php echo $places[2];?></td>
-              <td><?php echo $row['MOT'];?></td>
-              <td><?php echo $row['TRANSPORTATION'];?></td>
-            </tr>
-             
-            <?php
-        // }
-        // echo '</table>';
-        //         -->
+                  <button type = "submit" class = "btn btn-success btn-md pull-right" ><i class = "fa fa-save"></i>&nbsp;Save Changes</button>
