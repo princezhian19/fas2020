@@ -984,7 +984,7 @@ p.mix {border-style: dotted dashed solid double;} */
     else if(Fill=='ORS'){
       $("#mode option[value=ORS]").attr('selected', 'selected');
     }
-    $('#mode').prop('disabled', true);
+    // $('#mode').prop('disabled', true);
 
 
     if(Fill=='BURS'){
@@ -1000,6 +1000,9 @@ p.mix {border-style: dotted dashed solid double;} */
         var amount1 = $("input[name='amount']"); 
         amount1.val(amount);
 
+        var net1 = $("input[name='net']"); 
+        net1.val(amount);
+
         var orsdate1 = $("input[name='orsdate']"); 
         orsdate1.val(orsdate);
 
@@ -1007,7 +1010,6 @@ p.mix {border-style: dotted dashed solid double;} */
     else{
         var b = $("input[name='ors1']"); 
         b.val(orsget);
-
 
         // alert(orsget);
         
@@ -1019,6 +1021,9 @@ p.mix {border-style: dotted dashed solid double;} */
 
         var amount11 = $("input[name='amount']"); 
         amount11.val(amount);
+
+        var net1 = $("input[name='net']"); 
+        net1.val(amount);
 
         var orsdate11 = $("input[name='orsdate']"); 
         orsdate11.val(orsdate);
