@@ -1,3 +1,12 @@
+<?php
+date_default_timezone_set('Asia/Manila');
+$timeNow = (new DateTime('now'))->format('m/d/Y');
+//Replace now() Variable
+// echo $timeNow;
+/* value = "<?php echo $timeNow;?>" */
+?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -45,11 +54,11 @@ th {
                 <form method = "POST" action = "@Functions/sarodateexport.php">
                
                 <td class="col-md-1">
-                <input autocomplete="off" type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px">
+                <input autocomplete="off" type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 200px" value = "<?php echo $timeNow;?>">
 
                </td>
                <td class="col-md-1">
-               <input autocomplete="off" type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px">
+               <input autocomplete="off" type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 200px" value = "<?php echo $timeNow;?>">
 
                </td>
                <td class="col-md-1">

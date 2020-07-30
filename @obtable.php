@@ -1,6 +1,15 @@
 <?php
 include('db.class.php'); // call db.class.php
 ?>
+
+<?php
+date_default_timezone_set('Asia/Manila');
+$timeNow = (new DateTime('now'))->format('m/d/Y');
+//Replace now() Variable
+// echo $timeNow;
+/* value = "<?php echo $timeNow;?>" */
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,11 +49,11 @@ include('db.class.php'); // call db.class.php
 
                   <form method = "POST" action = "@Functions/obdateexport.php">
                   <td class="col-md-1">
-                  <input type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 250px" autocomplete="off">
+                  <input type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 250px" autocomplete="off" value = "<?php echo $timeNow;?>">
 
                   </td>
                   <td class="col-md-1">
-                  <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 250px" autocomplete="off">
+                  <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 250px" autocomplete="off" value = "<?php echo $timeNow;?>">
 
                   </td>
                   <td class="col-md-1">

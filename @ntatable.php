@@ -7,7 +7,13 @@ ini_set('display_errors', 0);
 $username = $_SESSION['username'];
 }
 ?>
-
+<?php
+date_default_timezone_set('Asia/Manila');
+$timeNow = (new DateTime('now'))->format('m/d/Y');
+//Replace now() Variable
+// echo $timeNow;
+/* value = "<?php echo $timeNow;?>" */
+?>
 
 <!DOCTYPE html>
 <html>
@@ -43,11 +49,11 @@ $username = $_SESSION['username'];
                
                 <form method = "POST" action = "@Functions/ntadateexport.php">
                 <td class="col-md-1" >
-                <input type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 250px">
+                <input type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 250px" value = "<?php echo $timeNow;?>">
                   
                 </td>
                   <td class="col-md-1" >
-                  <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 250px">
+                  <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 250px" value = "<?php echo $timeNow;?>">
                   
                 </td>
                 <td class="col-md-1" >

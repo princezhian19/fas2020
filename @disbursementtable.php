@@ -1,4 +1,10 @@
-
+<?php
+date_default_timezone_set('Asia/Manila');
+$timeNow = (new DateTime('now'))->format('m/d/Y');
+//Replace now() Variable
+// echo $timeNow;
+/* value = "<?php echo $timeNow;?>" */
+?>
 
 
 <!DOCTYPE html>
@@ -34,10 +40,10 @@
                   </td>
                   <form method = "POST" action = "@Functions/ddateexport1.php">
                   <td class="col-md-1" style = "text-align:center;">
-                  <input type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 220px">
+                  <input type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 220px" value = "<?php echo $timeNow;?>">
                 
                  <td class="col-md-1" >
-                <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 220px">
+                <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 220px" value = "<?php echo $timeNow;?>">
                 
                 </td>
                 <td class="col-md-1" >
