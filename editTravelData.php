@@ -192,7 +192,6 @@ only screen and (max-width: 760px),
                 </div>
                 <div  style = "padding:10px;" id = "travelPanel">
                   </div>
-                  <button type = "submit" class = "btn btn-success btn-md pull-right" ><i class = "fa fa-save"></i>&nbsp;Save Changes</button>
 
          <?php
         }
@@ -201,72 +200,4 @@ only screen and (max-width: 760px),
       
  
 ?>
-
-<!-- <div class="well" style = "padding:10px;">
-                  <div class="box-body">
-                      <div style = "padding:10px;" >
-                      <div class="box-body myTemplate2">
-                        <div class="row ">
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label>From</label>
-                                <input type="text" name = "from3[]" class="form-control" value = "<?php echo $from;?>">
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label>To</label>
-                                <input type = "text" name = "to3[]" class = "form-control" value = "<?php echo $to; ?>"/>
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label>Means of Transportation</label>
-                                
-                                <input type="text" name = "mot[]" class="form-control" value = "<?php echo $row['MOT'];?>">
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label>Transportation Fare</label>
-                                <input type = "text" name = "transpo_fare[]" class = "form-control"  value = "<?php echo $row['TRANSPORTATION'];?>" />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-                  </div>
-                </div>
-
-
-                echo '<table border =1 style = "width:100%;" class="table table-hover" >';
-        echo '<thead class="table-header">';
-        echo '<th>FROM</th>';
-        echo '<th>TO</th>';
-        echo '<th>MEANS OF TRANSPORTATION</th>';
-        echo '<th>TRANPORTATION FARE</th>';
-        echo '</thead>';
-
-        
-        while($row = mysqli_fetch_array($result))
-        {
-            // $parts = explode('to', $row['PLACE']);
-            // $filename_arr = $data['my_slider'];
-            // $file_coma = implode(',', $filename_arr);
-            $places = preg_split("/[\s]+/", $row['PLACE']);
-            list($from, $number2,$to) = $places;
-            
-
-            ?>
-            <tr>
-              <td><?php echo $places[0];?></td>
-              <td><?php echo $places[2];?></td>
-              <td><?php echo $row['MOT'];?></td>
-              <td><?php echo $row['TRANSPORTATION'];?></td>
-            </tr>
-             
-            <?php
-        // }
-        // echo '</table>';
-        //         -->
-        
+                  <button type = "submit" class = "btn btn-success btn-md pull-right" ><i class = "fa fa-save"></i>&nbsp;Save Changes</button>
