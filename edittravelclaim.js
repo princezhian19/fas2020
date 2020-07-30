@@ -61,7 +61,7 @@ $(document).ready(function()
   
   
       
-      
+    
     $("body").on('click', '.cb1', enable_cb1);
     $("body").on('click', '.wa', enable_cb2);
     $("body").on('click', '.wor', disableTxt1);
@@ -91,7 +91,10 @@ $(document).ready(function()
 
         wor_txt.prop('disabled', false);
         wor_txt.attr('disabled', true);
+        wor_txt.val('');
+
     }
+   
     function disableTxt2() {
         const wor_txt = $(this).siblings('.wor_txt');
 
