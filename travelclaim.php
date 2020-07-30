@@ -551,19 +551,19 @@ function isSubmit()
                                                         </label><br>
                                                         <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1"> <b>Will Claim Meals</b><br>
 
-                                                        <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup breakfast" value = "breakfast"> Breakfast
-                                                        <input type="checkbox" name="lunch" class="minimal-red checkboxgroup lunch" value = "lunch"> Lunch
-                                                        <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup dinner" value = "dinner"> Dinner
+                                                        <input style = "margin-left:14px" type="checkbox" name="breakfast[]" class="minimal-red checkboxgroup breakfast" value = "breakfast"> Breakfast
+                                                        <input type="checkbox" name="lunch[]" class="minimal-red checkboxgroup lunch" value = "lunch"> Lunch
+                                                        <input type="checkbox" name="dinner[]"  class="minimal-red checkboxgroup dinner" value = "dinner"> Dinner
                                                       </div>
                                                       <div class="form-group">
                                                         <label>
                                                         Accomodation
                                                         </label><br>
-                                                        <input type="checkbox"  name = "accomodation" class="minimal-red wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
-                                                        <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt wr" value ="With Receipt"> With Receipt
-                                                        <input type="text" disabled name="wor_txt"  class = "borderless wor_txt" style = "width:50%;"/>
+                                                        <input type="checkbox"  name = "accomodation[]" class="minimal-red wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
+                                                        <input style = "margin-left:14px" type="checkbox"  name = "with_receipt[]" class="minimal-red receipt wr" value ="With Receipt"> With Receipt
+                                                        <input type="text" disabled name="wor_txt[]"  class = "borderless wor_txt" style = "width:50%;"/>
                                                         <br>
-                                                        <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt wor" value ="Without Receipt"> Without Receipt
+                                                        <input style = "margin-left:14px"type="checkbox"  name = "wor_txt[]" class="minimal-red receipt wor" value ="Without Receipt"> Without Receipt
                                                       </div>
                                 </div>
                               </div>
