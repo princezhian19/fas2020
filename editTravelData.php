@@ -181,6 +181,14 @@ only screen and (max-width: 760px),
                                     <br>
                                     <input style = "margin-left:14px"type="checkbox"  name = "wor_txt[]" class="minimal-red receipt wor" value ="Without Receipt" > Without Receipt
                                   <?php
+                                  }else{
+                                    ?>
+                                    <input type="checkbox"  name = "accomodation[]" class="minimal-red wa"  value = "With Accomodation accomodation_chkbox " ><b> Will Claim Accomodation</b><br>
+                                    <input style = "margin-left:14px" type="checkbox"  name = "with_receipt[]" class="minimal-red receipt wr" value ="With Receipt" > With Receipt
+                                    <input type="text" disabled name="wor_txt[]"  class = "borderless wor_txt" style = "width:50%;" value = "<?php echo $row1['RECEIPT']; ?>"/>
+                                    <br>
+                                    <input style = "margin-left:14px"type="checkbox"  name = "wor_txt[]" class="minimal-red receipt wor" value ="Without Receipt" > Without Receipt
+                                  <?php
                                   }
                                   ?>
                                   
