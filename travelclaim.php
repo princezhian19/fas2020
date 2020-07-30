@@ -541,7 +541,7 @@ function isSubmit()
                                                           Per Diem
                                                           </label>
                                                           <label class = "pull-right">
-                                                          <input type ="hidden" value = "<?php echo getDistance();?>" id = "distance"/>
+                                                          <input type ="hidden" value = "<?php echo getDistance();?>" class = "distance"/>
                                                           Distance: <?php echo getDistance();?>
                                                           </label>
                                                       </div>
@@ -549,21 +549,21 @@ function isSubmit()
                                                         <label>
                                                         Meals
                                                         </label><br>
-                                                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1" id = "cb1"> <b>Will Claim Meals</b><br>
+                                                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1"> <b>Will Claim Meals</b><br>
 
-                                                        <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup" id = "breakfast" value = "breakfast"> Breakfast
-                                                        <input type="checkbox" name="lunch" class="minimal-red checkboxgroup" id= "lunch" value = "lunch"> Lunch
-                                                        <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup" id="dinner" value = "dinner"> Dinner
+                                                        <input style = "margin-left:14px" type="checkbox" name="breakfast" class="minimal-red checkboxgroup breakfast" value = "breakfast"> Breakfast
+                                                        <input type="checkbox" name="lunch" class="minimal-red checkboxgroup lunch" value = "lunch"> Lunch
+                                                        <input type="checkbox" name="dinner"  class="minimal-red checkboxgroup dinner" value = "dinner"> Dinner
                                                       </div>
                                                       <div class="form-group">
                                                         <label>
                                                         Accomodation
                                                         </label><br>
-                                                        <input type="checkbox"  name = "accomodation" class="minimal-red" id = "wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
-                                                        <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt" id = "wr" value ="With Receipt"> With Receipt
-                                                        <input type="text" disabled name="wor_txt"  id = "wor_txt" class = "borderless" style = "width:50%;"/>
+                                                        <input type="checkbox"  name = "accomodation" class="minimal-red wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
+                                                        <input style = "margin-left:14px" type="checkbox"  name = "with_receipt" class="minimal-red receipt wr" value ="With Receipt"> With Receipt
+                                                        <input type="text" disabled name="wor_txt"  class = "borderless wor_txt" style = "width:50%;"/>
                                                         <br>
-                                                        <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt" id = "wor" value ="Without Receipt"> Without Receipt
+                                                        <input style = "margin-left:14px"type="checkbox"  name = "wor_txt" class="minimal-red receipt wor" value ="Without Receipt"> Without Receipt
                                                       </div>
                                 </div>
                               </div>
@@ -631,7 +631,188 @@ function isSubmit()
     
 
 
-<script src="travelclaim.js"></script>  
+<script>
+
+  
+$(document).ready(function(){
+  $('#or').prop('required',true);
+  $("#editbtn").prop('disabled',true);
+    if($("#or").val() != '')
+    {
+      $('#travelbtn').attr('disabled', false);
+    }
+  $( "#or" ).keyup(function() 
+  {
+    $("#editbtn").prop('disabled',false);
+    if($('#or').val() != '')
+    {
+      $('#editbtn').attr('disabled', false);
+    } else
+    {
+      $('#editbtn').attr('disabled', true);
+    }
+  });
+})
+   var myCounter = 1;
+  
+  
+   $('#add_fare').click(function(){
+     
+      $('.myTemplate2')
+     .clone()
+     .removeClass("myTemplate2")
+     .addClass("additionalDate")
+     .show()
+     .appendTo('#travelPanel');
+     
+    myCounter++;
+       
+    $(".datepicker4").on('focus', function(){
+        var $this = $(this);
+        if(!$this.data('datepicker')) {
+         $this.removeClass("hasDatepicker");
+         $this.datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+         $this.datepicker("show");
+        }
+    }); 
+  
+    // $(".datepicker5").on('focus', function(){
+    //     var $this = $(this);
+    //     if(!$this.data('datepicker')) {
+    //      $this.removeClass("hasDatepicker");
+    //      $this.datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+    //      $this.datepicker("show");
+    //     }
+    // }); 
+  
+  
+  });
+  $(document).on('click','#editbtn',function(e){
+   
+  
+  var purpose = $('#or').val();
+  $('#ro_txt').val(purpose);
+  if(purpose == '' || purpose == null)
+  {
+    
+    alert('Required Field:All fields with * are required!.');
+  $('#editModal').modal().hide();
+  
+  }else{
+  
+  }
+  });
+  
+  
+    // $('.receipt').on('change', function() { 
+    //     $('.receipt').not(this).prop('checked', false);  
+    // });
+    // checkbox validation
+    // $(document).ready(function(){
+    //   $('#datepicker4').val($('#travel_date').val());
+    //       $('#wor').click(function(){
+    //           if($(this).prop("checked") == true){
+                
+    //       $("#wor_txt").prop('disabled',true);
+    //       $("#wor_txt").val('');
+  
+    //           }
+    //           else if($(this).prop("checked") == false){
+    //             $("#wor_txt").prop('disabled',false);
+    //           }
+    //       });
+    //       $('#wa').click(function(){
+    //           if($(this).prop("checked") == true){
+    //       $("#wor_txt").prop('disabled',true);
+                
+    //           }
+    //       });
+    //       $('#wr').click(function(){
+    //           if($(this).prop("checked") == true){
+    //       $("#wor_txt").prop('disabled',false);
+                
+    //           }
+    //       });
+    //   });
+  
+  
+      
+    $("body").on('click', '.cb1', enable_cb1);
+    $("body").on('click', '.wa', enable_cb2);
+    $("body").on('click', '.wor', disableTxt1);
+    $("body").on('click', '.wr', disableTxt2);
+    $("body").on('change', '.receipt', groupCheck);
+
+    function  groupCheck(){
+        const receipt = $(this).siblings('.receipt');
+        receipt.not(this).prop('checked', false);  
+    }
+    function enable_cb1() {
+        
+        const bf = $(this).siblings('.breakfast');
+        const ln = $(this).siblings('.lunch');
+        const dn = $(this).siblings('.dinner');
+
+        bf.prop('checked', this.checked);
+        ln.prop('checked', this.checked);
+        dn.prop('checked', this.checked);
+
+        bf.attr('disabled', !this.checked);
+        ln.attr('disabled', !this.checked);
+        dn.attr('disabled', !this.checked);
+    }
+    function disableTxt1() {
+        const wor_txt = $(this).siblings('.wor_txt');
+
+        wor_txt.prop('disabled', false);
+        wor_txt.attr('disabled', true);
+        wor_txt.val('');
+
+    }
+   
+    function disableTxt2() {
+        const wor_txt = $(this).siblings('.wor_txt');
+
+        wor_txt.prop('disabled', true);
+        wor_txt.attr('disabled', false);   
+    }
+    function enable_cb2()
+    {
+        const wr = $(this).siblings('.wr');
+        const wor = $(this).siblings('.wor');
+
+        wr.prop('checked', this.checked);
+
+        wor.prop('checked', this.checked);
+
+        wr.attr('disable', !this.checked);
+        wor.attr('disable', !this.checked);
+    }
+    disabledDIV();
+
+    function disabledDIV()
+    {
+     var distance =  $('.distance').val();
+     distance = distance.replace('km', '');
+
+        if(distance > 50)
+     {
+     
+  
+     }else{
+  
+      $(".breakfast").attr("disabled", true);
+        $(".lunch").attr("disabled", true);
+        $(".dinner").attr("disabled", true);
+        $(".cb1").attr("disabled", true);
+        $(".wa").attr("disabled", true);
+        $(".wor").attr("disabled", true);
+        $(".wr").attr("disabled", true);
+        $('.perdiem').addClass('border-disabled');
+     }
+  
+    }
+</script>  
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
