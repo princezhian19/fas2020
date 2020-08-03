@@ -198,7 +198,7 @@ while ($row = mysqli_fetch_assoc($view_query)) {
                         <div class="input-group-addon" style="border-style: groove;">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input readonly required value="" type="text" class="form-control pull-right" id="" placeholder='Enter Date' name="duration" style="border-style: groove;">
+                        <input readonly required value="<?php echo $duration ?>" type="text" class="form-control pull-right" id="" placeholder='Enter Date' name="duration" style="border-style: groove;">
                     </div>
                     <br>
                     <label>Amount <span style = "color:red;">*</span></label>
@@ -404,17 +404,17 @@ while ($row = mysqli_fetch_assoc($view_query)) {
    
     //  alert(quarter1);
     /* Select default value of select option */
-    if(quarter1=='1stQuarter'){
-      $("#quarter option[value=1stQuarter]").attr('selected', 'selected');
+    if(quarter1=='1Q'){
+      $("#quarter option[value=1Q]").attr('selected', 'selected');
     }
-    else if(quarter1=='2ndQuarter'){
-      $("#quarter option[value=2ndQuarter]").attr('selected', 'selected');
+    else if(quarter1=='2Q'){
+      $("#quarter option[value=2Q]").attr('selected', 'selected');
     }
-    else if(quarter1=='3rdQuarter'){
-      $("#quarter option[value=3rdQuarter]").attr('selected', 'selected');
+    else if(quarter1=='3Q'){
+      $("#quarter option[value=3Q]").attr('selected', 'selected');
     }
-    else if(quarter1=='4thQuarter'){
-      $("#quarter option[value=4thQuarter]").attr('selected', 'selected');
+    else if(quarter1=='4Q'){
+      $("#quarter option[value=4Q]").attr('selected', 'selected');
     }
     else {
       $("#quarter option[value=]").attr('selected', 'selected');
