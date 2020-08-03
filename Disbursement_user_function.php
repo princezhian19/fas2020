@@ -25,8 +25,9 @@ $timeNow = (new DateTime('now'))->format('Y-m-d');
 if(isset($_POST["submit"]))
 {
 
-
 $mode = $_POST["mode"];
+/* echo $mode;
+exit(); */
 
 $burs = $_POST["ors"];
 $ors = $_POST["ors1"];
@@ -92,26 +93,7 @@ if($mode=="BURS"){
     flag='BURS',
     orsdate='$orsdate' where ors = '$orsget'";
 
-    echo "UPDATE disbursement set dv='$dv',
-    ors='$orsget',
-    datereceived='$timeNow',
-    date_proccess='$dvdate',
-    payee='$payee',
-    particular='$particular',
-    amount='$amount',
-    tax='$tax',
-    gsis='$gsis',
-    pagibig='$pagibig',
-    philhealth='$philhealth',
-    other='$other',
-    total='$deductions',
-    net='$net',
-    datereleased='$dvdate',
-    remarks='$remarks',
-    status='$status',
-    flag='BURS',
-    orsdate='$orsdate' where ors = '$orsget'";
-    exit();
+  
 
     if (!mysqli_query($con,$sql))
     {
@@ -181,30 +163,11 @@ else{
     datereleased='$dvdate',
     remarks='$remarks',
     status='$status',
-    flag='BURS',
+    flag='ORS',
     orsdate='$orsdate' where ors = '$orsget'";
 
 
-echo "UPDATE disbursement set dv='$dv',
-ors='$orsget',
-datereceived='$timeNow',
-date_proccess='$dvdate',
-payee='$payee',
-particular='$particular',
-amount='$amount',
-tax='$tax',
-gsis='$gsis',
-pagibig='$pagibig',
-philhealth='$philhealth',
-other='$other',
-total='$deductions',
-net='$net',
-datereleased='$dvdate',
-remarks='$remarks',
-status='$status',
-flag='BURS',
-orsdate='$orsdate' where ors = '$orsget'";
-exit();
+
 
     if (!mysqli_query($con,$sql))
     {

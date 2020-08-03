@@ -130,9 +130,8 @@ if($mode=="ORS"){
              $update = mysqli_query($con,"Update saro set balance = amount - obligated where saronumber = '$saronum[$i]' and uacs = '$uacs[$i]' ");
              $dvinsert = mysqli_query($con,"INSERT INTO disbursement (ors,sr,ppa,uacs,payee,particular,amount,orsdate,flag) VALUES ('$ors[$i]','$saronum[$i]','$ppa[$i]','$uacs[$i]','$payee[$i]','$particular[$i]','$amount[$i]','$d2','$mode')");
     
-           }
+          }
         }
-    
         if($payee[$i]==""){
         
            /*  $sql ="INSERT INTO saroob (datereceived,datereprocessed,datereturned,datereleased,ors,ponum,payee,particular,saronumber,ppa,uacs,amount,remarks,sarogroup,status) 
@@ -144,7 +143,6 @@ if($mode=="ORS"){
          die('Error: ' . mysqli_error($con));
          Print "Error";
          }
-         
          else{
             
            //updating obligation
