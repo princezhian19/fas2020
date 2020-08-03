@@ -182,7 +182,8 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
                                 <?php if ($datereleased1 != '0000-00-00'): ?>
                                   <td><?php echo $datereleased;?></td>
                                 <?php else: ?>
-                                <td><a class="btn btn-success btn-xs" href='release_dv.php?id=<?php echo $id; ?>' >Release</a> </td>
+
+                                <!-- <td><a class="btn btn-success btn-xs" href='release_dv.php?id=<?php echo $id; ?>' >Release</a> </td> -->
                                <?php endif ?>
 
                               <?php endif ?>
