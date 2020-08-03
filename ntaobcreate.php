@@ -85,7 +85,7 @@ $username = $_SESSION['username'];
             <div class="box-header with-border">
     
         <br>
-      <li class="btn btn-success"><a href="ntaobligation.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-warning"><a href="ntaobligation.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
       <!-- Start form -->
@@ -299,7 +299,8 @@ $username = $_SESSION['username'];
     <!-- End Panel -->
     <!-- Submit -->
     </div>
-    &nbsp&nbsp&nbsp<button type="submit" name="submit"  class="btn btn-success">Submit</button>
+    &nbsp&nbsp&nbsp<button type="submit" name="submit"  style="margin-right:10px;" class="btn btn-primary pull-right">Save</button>
+    <br>
     <br>
     <br>
     </div>

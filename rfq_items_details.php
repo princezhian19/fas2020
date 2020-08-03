@@ -19,7 +19,19 @@ $type = $row['type'];
 $target_date = $row['target_date'];
 $d22 = date('m/d/Y', strtotime($target_date));
 
-
+function pmo($connect)
+{ 
+  $output = '';
+  $query = "SELECT id,pmo_title FROM `pmo` ";
+  $statement = $connect->prepare($query);
+  $statement->execute();
+  $result = $statement->fetchAll();
+  foreach($result as $row)
+  {
+    $output .= '<option text="text" value="'.$row["pmo_title"].'">'.$row["pmo_title"].'</option>';
+  }
+  return $output;
+}
 
 if (isset($_POST['submit'])) {
   $purpose1 = $_POST['purpose'];
@@ -94,91 +106,24 @@ if ($update) {
                   <label>PR No.<label style="color: Red;" >*</label></label>
                   <input class="form-control" type="text"  name="pr" value="<?php echo $pr_no;?>" readonly>
                 </div>
-
-
                 <div class="form-group">
-                
-                  <label>Office<label style="color: Red;" >*</label></label>
-                  <input class="form-control" type="text"  name="pmo" id="pmo" value="<?php echo $pmo;?>" readonly>
-                  <!-- <?php if ($pmo == 'ORD'): ?>
-                   <select class="form-control select2" style="width: 100%;" name="pmo" id="pmo" >
-                    <option value="ORD">ORD</option>
-                    <option value="LGMED">LGMED</option>
-                    <option value="LGCDD">LGCDD</option>
-                    <option value="FAD">FAD</option>
-                    <option value="LGMED-PDMU">LGMED-PDMU</option>
-                    <option value="LGCDD-MBRTG">LGCDD-MBRTG</option>
+                  <label>Office <label style="color: Red;" >*</label></label>
+                  <?php if ($username == 'ctronquillo' || $username == 'sglee' || $username == 'jamonteiro'): ?>  
+                    <?php if ($pmo == ''): ?>
+                      <select class="form-control select2" name="pmo">
+                    <option><?php echo pmo($connect)?></option>
                   </select>
-                <?php endif ?>
-
-
-                <?php if ($pmo == 'LGMED'): ?>
-                  <select class="form-control select2" style="width: 100%;" name="pmo" id="pmo" >
-                    <option value="LGMED">LGMED</option>
-                    <option value="ORD">ORD</option>
-                    <option value="LGCDD">LGCDD</option>
-                    <option value="FAD">FAD</option>
-                    <option value="LGMED-PDMU">LGMED-PDMU</option>
-                    <option value="LGCDD-MBRTG">LGCDD-MBRTG</option>
+                  <?php else: ?>
+                    <select class="form-control select2" name="pmo">
+                      <option><?php echo $pmo?></option>
+                    <option><?php echo pmo($connect)?></option>
                   </select>
-                <?php endif ?>
-
-                <?php if ($pmo == 'LGCDD'): ?>
-                  <select class="form-control select2" style="width: 100%;" name="pmo" id="pmo" >
-                    <option value="LGCDD">LGCDD</option>
-                    <option value="LGMED">LGMED</option>
-                    <option value="ORD">ORD</option>
-                    <option value="FAD">FAD</option>
-                    <option value="LGMED-PDMU">LGMED-PDMU</option>
-                    <option value="LGCDD-MBRTG">LGCDD-MBRTG</option>
-                  </select>
-                <?php endif ?>
-
-                <?php if ($pmo == 'FAD'): ?>
-                  <select class="form-control select2" style="width: 100%;" name="pmo" id="pmo" >
-                    <option value="FAD">FAD</option>
-                    <option value="LGCDD">LGCDD</option>
-                    <option value="LGMED">LGMED</option>
-                    <option value="ORD">ORD</option>
-                    <option value="LGMED-PDMU">LGMED-PDMU</option>
-                    <option value="LGCDD-MBRTG">LGCDD-MBRTG</option>
-                  </select>
-                <?php endif ?>
-
-                <?php if ($pmo == 'LGMED-PDMU'): ?>
-                  <select class="form-control select2" style="width: 100%;" name="pmo" id="pmo" >
-                    <option value="LGMED-PDMU">LGMED-PDMU</option>
-                    <option value="FAD">FAD</option>
-                    <option value="LGCDD">LGCDD</option>
-                    <option value="LGMED">LGMED</option>
-                    <option value="ORD">ORD</option>
-                    <option value="LGCDD-MBRTG">LGCDD-MBRTG</option>
-                  </select>
-                <?php endif ?>
-
-                <?php if ($pmo == 'LGCDD-MBRTG'): ?>
-                  <select class="form-control select2" style="width: 100%;" name="pmo" id="pmo" >
-                    <option value="LGCDD-MBRTG">LGCDD-MBRTG</option>
-                    <option value="LGMED-PDMU">LGMED-PDMU</option>
-                    <option value="FAD">FAD</option>
-                    <option value="LGCDD">LGCDD</option>
-                    <option value="LGMED">LGMED</option>
-                    <option value="ORD">ORD</option>
-                  </select>
-                <?php endif ?>
-
-                <?php if ($pmo == ''): ?>
-                  <select class="form-control select2" style="width: 100%;" name="pmo" id="pmo" value="asdasd">
-                    <option >Please Select</option>
-                    <option value="ORD" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'ORD') ? 'selected="selected"' : ''; ?>>ORD</option>
-                    <option value="LGMED" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGMED') ? 'selected="selected"' : ''; ?>>LGMED</option>
-                    <option value="LGCDD" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGCDD') ? 'selected="selected"' : ''; ?>>LGCDD</option>
-                    <option value="FAD" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'FAD') ? 'selected="selected"' : ''; ?>>FAD</option>
-                    <option value="LGMED-PDMU" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGMED-PDMU') ? 'selected="selected"' : ''; ?>>LGMED-PDMU</option>
-                    <option value="LGCDD-MBRTG" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGCDD-MBRTG') ? 'selected="selected"' : ''; ?>>LGCDD-MBRTG</option>
-                  </select>
-                <?php endif ?> -->
-              </div>
+                    <?php endif ?>
+                    
+                  <?php else: ?>
+                  <input type="text" class="form-control" style="width: 100%;" name="pmo" id="pmo" readonly value="<?php echo $pmo?>" >
+                  <?php endif ?>
+                </div>
 
               <div class="form-group">
                   <label>Type <label style="color: Red;" >*</label></label>

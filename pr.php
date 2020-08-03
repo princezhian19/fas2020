@@ -485,7 +485,7 @@ if (isset($_POST['add'])) {
                 </div>
                 <div class="form-group">
                   <label>Office <label style="color: Red;" >*</label></label>
-                  <?php if ($username == 'ctronquillo'): ?>
+                  <?php if ($username == 'ctronquillo' || $username == 'sglee' || $username == 'jamonteiro'): ?>
                     <?php if ($pmo == ''): ?>
                       <select class="form-control select2" name="pmo">
                     <option><?php echo pmo($connect)?></option>

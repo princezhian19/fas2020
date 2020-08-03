@@ -2,6 +2,14 @@
 
 ?>
 
+<?php
+date_default_timezone_set('Asia/Manila');
+$timeNow = (new DateTime('now'))->format('m/d/Y');
+//Replace now() Variable
+// echo $timeNow;
+/* value = "<?php echo $timeNow;?>" */
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
