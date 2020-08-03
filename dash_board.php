@@ -273,7 +273,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,30).'...'; echo $string;?> </span>
 
       <span class="info-box-number"></span>
 
@@ -308,7 +308,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,30).'...'; echo $string;?> </span>
 
       <span class="info-box-number"></span>
 
@@ -343,7 +343,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,30).'...'; echo $string;?> </span>
       <span class="info-box-number"></span>
 
       <div class="progress">
@@ -377,7 +377,7 @@ if (isset($_POST['stamp4'])) {
             <?php else: ?>
             <?php endif ?>
 
-            <div class="pull-right">
+            <div class="pull-right" hidden>
               <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-day</strong></font>
             </div>
           </div>

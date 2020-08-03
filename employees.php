@@ -104,7 +104,7 @@ if (isset($_POST['submit'])) {
                 </select>
               </div>
               </div>
-              <div class="col-xs-2">
+              <div class="col-xs-2 pull-right">
                 <label>Office </label>
                 <select required class="form-control select2" name="office" id="office">
                  <option disabled selected ></option>
@@ -113,7 +113,7 @@ if (isset($_POST['submit'])) {
                </select>
              </div>
 
-             <div class="col-xs-1" style="padding-top: 5px;">
+             <div class="col-xs-1 pull-right" style="padding-top: 5px;">
               <br>
               <a href="javascript:void(0);" class="btn btn-primary link" data-id="<=$data['id']?>">Export</a>
               <br>  
@@ -150,7 +150,7 @@ if (isset($_POST['submit'])) {
           LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C 
           LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C 
           LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION 
-          ORDER BY tblemployee.LAST_M ASC");
+          GROUP BY tblemployee.LAST_M ASC");
 
 
         while ($row = mysqli_fetch_assoc($view_query)) {
@@ -192,11 +192,11 @@ if (isset($_POST['submit'])) {
              <?php else: ?>
             <?php if ($TIN_N == 1): ?>
               <td>
-               <a href='UpdateEmployee.php?id=<?php echo $id; ?>&view=1' title="View" class="btn btn-info btn-xs">View</a> <a href='DTRa.php?id=<?php echo $id; ?>&division=<?php echo $_GET['division']; ?>&username=<?php echo $UNAME; ?>' title="dtr" class="btn btn-warning btn-xs"> <i class='fa fa-fw fa-clock-o'></i>DTR</a>
+              <!--  <a href='UpdateEmployee.php?id=<?php echo $id; ?>&view=1' title="View" class="btn btn-info btn-xs">View</a> --> <a href='DTRa.php?id=<?php echo $id; ?>&division=<?php echo $_GET['division']; ?>&username=<?php echo $UNAME; ?>' title="dtr" class="btn btn-warning btn-xs"> <i class='fa fa-fw fa-clock-o'></i>DTR</a>
              </td>
              <?php else: ?>
               <td>
-               <a href='UpdateEmployee.php?id=<?php echo $id; ?>&view=1' title="View" class="btn btn-info btn-xs">View</a> 
+               <!-- <a href='UpdateEmployee.php?id=<?php echo $id; ?>&view=1' title="View" class="btn btn-info btn-xs">View</a>  -->
              </td>
            <?php endif ?>
              <td></td>

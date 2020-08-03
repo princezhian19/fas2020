@@ -22,9 +22,9 @@ $pmac = strpos($mycomsys, $find_mac);
 
 $macaddress=substr($mycomsys,($pmac+36),17);  
 
-echo $macaddress;
-echo "<br>";
-echo $pmac;
+// echo $macaddress;
+// echo "<br>";
+// echo $pmac;
 //Display Mac Address
 
 $macaddress = $_SERVER['REMOTE_ADDR'];   
@@ -436,7 +436,7 @@ if (isset($_POST['add'])) {
       }
       else
       {
-        
+
         load_data();
         /* document.getElementById("code").value = ""; */
         document.getElementById("stocknumber").value = "";
@@ -488,369 +488,370 @@ if (isset($_POST['add'])) {
                   <?php if ($username == 'ctronquillo' || $username == 'sglee' || $username == 'jamonteiro'): ?>
                     <?php if ($pmo == ''): ?>
                       <select class="form-control select2" name="pmo">
-                    <option><?php echo pmo($connect)?></option>
-                  </select>
-                  <?php else: ?>
-                    <select class="form-control select2" name="pmo">
-                      <option><?php echo $pmo?></option>
-                    <option><?php echo pmo($connect)?></option>
-                  </select>
-                    <?php endif ?>
-                    
-                  <?php else: ?>
-                  <input type="text" class="form-control" style="width: 100%;" name="pmo" id="pmo" readonly value="FAD" >
-                  <?php endif ?>
-                </div>
-                <div class="form-group">
-                  <label>Type <label style="color: Red;" >*</label></label>
-                  <?php if ($type == 1): ?>
-                    <select class="form-control " style="width: 100%;" name="type" id="type" >
-                      <option value="1">Catering Services</option>
-                      <option value="2">Meals, Venue and Accommodation</option>
-                      <option value="5">Other Services</option>
-                      <option value="3">Repair and Maintenance</option>
-                      <option value="6">Reimbursement and Petty Cash</option>
-                      <option value="4">Supplies, Materials and Devices</option>
-                    </select>
-                  <?php endif ?>
-                  <?php if ($type == 2): ?>
-                    <select class="form-control " style="width: 100%;" name="type" id="type" >
-                      <option value="2">Meals, Venue and Accommodation</option>
-                      <option value="1">Catering Services</option>
-                      <option value="3">Repair and Maintenance</option>
-                      <option value="4">Supplies, Materials and Devices</option>
-                      <option value="5">Other Services</option>
-                      <option value="6">Reimbursement and Petty Cash</option>
-                    </select>
-                  <?php endif ?>
-                  <?php if ($type == 3): ?>
-                    <select class="form-control " style="width: 100%;" name="type" id="type" >
-                      <option value="3">Repair and Maintenance</option>
-                      <option value="1">Catering Services</option>
-                      <option value="2">Meals, Venue and Accommodation</option>
-                      <option value="4">Supplies, Materials and Devices</option>
-                      <option value="5">Other Services</option>
-                      <option value="6">Reimbursement and Petty Cash</option>
-                    </select>
-                  <?php endif ?>
-                  <?php if ($type == 4): ?>
-                    <select class="form-control " style="width: 100%;" name="type" id="type" >
-                      <option value="4">Supplies, Materials and Devices</option>
-                      <option value="1">Catering Services</option>
-                      <option value="2">Meals, Venue and Accommodation</option>
-                      <option value="3">Repair and Maintenance</option>
-                      <option value="5">Other Services</option>
-                      <option value="6">Reimbursement and Petty Cash</option>
-                    </select>
-                  <?php endif ?>
-                  <?php if ($type == 5): ?>
-                    <select class="form-control " style="width: 100%;" name="type" id="type" >
-                      <option value="5">Other Services</option>
-                      <option value="1">Catering Services</option>
-                      <option value="2">Meals, Venue and Accommodation</option>
-                      <option value="3">Repair and Maintenance</option>
-                      <option value="4">Supplies, Materials and Devices</option>
-                      <option value="6">Reimbursement and Petty Cash</option>
-                    </select>
-                  <?php endif ?>
-                  <?php if ($type == 6): ?>
-                    <select class="form-control " style="width: 100%;" name="type" id="type" >
-                      <option value="6">Reimbursement and Petty Cash</option>
-                      <option value="1">Catering Services</option>
-                      <option value="2">Meals, Venue and Accommodation</option>
-                      <option value="3">Repair and Maintenance</option>
-                      <option value="4">Supplies, Materials and Devices</option>
-                      <option value="5">Other Services</option>
-                    </select>
-                  <?php endif ?>
-                  <?php if ($type == ''): ?>
-                    <select class="form-control " style="width: 100%;" name="type" id="type" >
-                      <option value="1">Catering Services</option>
-                      <option value="2">Meals, Venue and Accommodation</option>
-                      <option value="5">Other Services</option>
-                      <option value="3">Repair and Maintenance</option>
-                      <option value="6">Reimbursement and Petty Cash</option>
-                      <option value="4">Supplies, Materials and Devices</option>
-                    </select>
-                  <?php endif ?>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>PR Date <label style="color: red;" >*</label></label>
-                  <div class="input-group date">
-                    <div class="input-group-addon">
-                      <i class="fa fa-calendar"></i>
-                    </div>
-                    <?php if ($pr_date ==''): ?>
-                      <input required  type="text" class="form-control pull-right" name="pr_date" id="datepicker1" value="<?php $now = date("m/d/Y"); echo $now;  ?>">
+                        <option><?php echo pmo($connect)?></option>
+                      </select>
                       <?php else: ?>
-                        <input required  type="text" class="form-control pull-right" name="pr_date" id="datepicker1" value="<?php $now =  date("m/d/Y"); echo $now;  ?>">
+                        <select class="form-control select2" name="pmo">
+                          <option><?php echo $pmo?></option>
+                          <option><?php echo pmo($connect)?></option>
+                        </select>
+                      <?php endif ?>
+
+                      <?php else: ?>
+                        <input type="text" class="form-control" style="width: 100%;" name="pmo" id="pmo" readonly value="FAD" >
+                      <?php endif ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Type <label style="color: Red;" >*</label></label>
+                      <?php if ($type == 1): ?>
+                        <select class="form-control " style="width: 100%;" name="type" id="type" >
+                          <option value="1">Catering Services</option>
+                          <option value="2">Meals, Venue and Accommodation</option>
+                          <option value="5">Other Services</option>
+                          <option value="3">Repair and Maintenance</option>
+                          <option value="6">Reimbursement and Petty Cash</option>
+                          <option value="4">Supplies, Materials and Devices</option>
+                        </select>
+                      <?php endif ?>
+                      <?php if ($type == 2): ?>
+                        <select class="form-control " style="width: 100%;" name="type" id="type" >
+                          <option value="2">Meals, Venue and Accommodation</option>
+                          <option value="1">Catering Services</option>
+                          <option value="3">Repair and Maintenance</option>
+                          <option value="4">Supplies, Materials and Devices</option>
+                          <option value="5">Other Services</option>
+                          <option value="6">Reimbursement and Petty Cash</option>
+                        </select>
+                      <?php endif ?>
+                      <?php if ($type == 3): ?>
+                        <select class="form-control " style="width: 100%;" name="type" id="type" >
+                          <option value="3">Repair and Maintenance</option>
+                          <option value="1">Catering Services</option>
+                          <option value="2">Meals, Venue and Accommodation</option>
+                          <option value="4">Supplies, Materials and Devices</option>
+                          <option value="5">Other Services</option>
+                          <option value="6">Reimbursement and Petty Cash</option>
+                        </select>
+                      <?php endif ?>
+                      <?php if ($type == 4): ?>
+                        <select class="form-control " style="width: 100%;" name="type" id="type" >
+                          <option value="4">Supplies, Materials and Devices</option>
+                          <option value="1">Catering Services</option>
+                          <option value="2">Meals, Venue and Accommodation</option>
+                          <option value="3">Repair and Maintenance</option>
+                          <option value="5">Other Services</option>
+                          <option value="6">Reimbursement and Petty Cash</option>
+                        </select>
+                      <?php endif ?>
+                      <?php if ($type == 5): ?>
+                        <select class="form-control " style="width: 100%;" name="type" id="type" >
+                          <option value="5">Other Services</option>
+                          <option value="1">Catering Services</option>
+                          <option value="2">Meals, Venue and Accommodation</option>
+                          <option value="3">Repair and Maintenance</option>
+                          <option value="4">Supplies, Materials and Devices</option>
+                          <option value="6">Reimbursement and Petty Cash</option>
+                        </select>
+                      <?php endif ?>
+                      <?php if ($type == 6): ?>
+                        <select class="form-control " style="width: 100%;" name="type" id="type" >
+                          <option value="6">Reimbursement and Petty Cash</option>
+                          <option value="1">Catering Services</option>
+                          <option value="2">Meals, Venue and Accommodation</option>
+                          <option value="3">Repair and Maintenance</option>
+                          <option value="4">Supplies, Materials and Devices</option>
+                          <option value="5">Other Services</option>
+                        </select>
+                      <?php endif ?>
+                      <?php if ($type == ''): ?>
+                        <select required class="form-control " style="width: 100%;" name="type" id="type" >
+                          <option selected disabled></option>
+                          <option value="1">Catering Services</option>
+                          <option value="2">Meals, Venue and Accommodation</option>
+                          <option value="5">Other Services</option>
+                          <option value="3">Repair and Maintenance</option>
+                          <option value="6">Reimbursement and Petty Cash</option>
+                          <option value="4">Supplies, Materials and Devices</option>
+                        </select>
                       <?php endif ?>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label>Target Date <label style="color: Red;" >*</label></label>
-                    <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                      </div>
-                      <?php if ($target_date ==''): ?>
-                        <input type="text" class="form-control pull-right" name="target_date" id="datepicker2" value="<?php echo isset($_POST['target_date']) ? $_POST['target_date'] : '' ?>" required placeholder="mm/dd/yyyy">
-                        <?php else: ?>
-                          <input type="text" class="form-control pull-right" name="target_date" id="datepicker2" value="<?php echo $target_date ?>" required placeholder="mm/dd/yyyy">
-                        <?php endif ?>
-                      </div>
-                    </div>
-                    <div class="form-group" >
-                      <label>Purpose <label style="color: Red;" >*</label></label>
-                      <?php if ($purpose ==''): ?>
-                        <input required type="text" style="height: 60px" class="form-control pull-right" name="purpose" id="purpose" value="<?php echo isset($_POST['purpose']) ? $_POST['purpose'] : '' ?>" required placeholder="Purpose">
-                        <?php else: ?>
-                          <input required type="text" style="height: 60px" class="form-control pull-right" name="purpose" id="purpose"  required placeholder="Purpose">
-                        <?php endif ?>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <?php 
-                if ($insert_items) {
-                  echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Item Added!  </p> </div></div>  '; 
-                }
-                ?> 
-                <div class="panel panel-success" id="item_table">
-                 <div class="panel-heading">
-                  <i class="fa fa-list-alt"></i>&nbsp&nbsp&nbspPR Items <!-- Item(s) -->
-                  <div class="clearfix"></div>
-                </div>
-                <div class="panel-body container-items">
-                  <div class=""><!-- widgetBody -->
-                    <div class="row">
-                      <div class="col-md-6" style="padding-left: 30px;padding-top:10px;">
-                        <label>Item/s <font style="color: Red;" >*</font> </label>
-                        <input onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
-                        <font id="p" hidden>&nbsp</font>
-                        <table class="table table-striped table-hover" id="main">
-                          <tbody id="result">
-                          </tbody>
-                        </table>
-                        
-                        <div hidden>
-                          <input type="text" name="app_items" id="id" class="form-control"/>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>PR Date <label style="color: red;" >*</label></label>
+                      <div class="input-group date">
+                        <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
                         </div>
-                        <div class="form-group">
-                          <label>Stock/Property No.  <font style="color: Red;" >*</font> </label>
-                          <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
-                        </div>
-                        <div class="form-group">
-                          <label>Description/Specification </label>
-                          <input type="text" name="description" class="form-control">
+                        <?php if ($pr_date ==''): ?>
+                          <input required  type="text" class="form-control pull-right" name="pr_date" id="datepicker1" value="<?php $now = date("m/d/Y"); echo $now;  ?>">
+                          <?php else: ?>
+                            <input required  type="text" class="form-control pull-right" name="pr_date" id="datepicker1" value="<?php $now =  date("m/d/Y"); echo $now;  ?>">
+                          <?php endif ?>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <p></p>
-                        <div class="form-group" hidden>
-                          <label>Existing QTY</label>
-                          <input class="form-control" type="number" readonly id="two" name="two">
+                      <div class="form-group">
+                        <label>Target Date <label style="color: Red;" >*</label></label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <?php if ($target_date ==''): ?>
+                            <input type="text" class="form-control pull-right" name="target_date" id="datepicker2" value="<?php echo isset($_POST['target_date']) ? $_POST['target_date'] : '' ?>" required placeholder="mm/dd/yyyy">
+                            <?php else: ?>
+                              <input type="text" class="form-control pull-right" name="target_date" id="datepicker2" value="<?php echo $target_date ?>" required placeholder="mm/dd/yyyy">
+                            <?php endif ?>
+                          </div>
                         </div>
-                        <div class="form-group">
-                          <label>Unit <font style="color: Red;" >*</font></label>
-                          <input  type="text" name="unit" id="unit"  class="form-control" readonly>
-                        </div>
-                        <font id="p" hidden>&nbspasd</font>
-                        <div class="form-group" style="padding-top: 5px;" >
-                          <label >Quantity <font style="color: Red;" >*</font></label>
-                          <input  class="form-control" type="number" id="qty" name="qty" >
-                        </div>
-                        <div class="form-group">
-                          <label>Unit Cost <font style="color: Red;" >*</font></label>
-                          <input  class="form-control" type="text" id="abc"  name="abc" readonly>
+                        <div class="form-group" >
+                          <label>Purpose <label style="color: Red;" >*</label></label>
+                          <?php if ($purpose ==''): ?>
+                            <input required type="text" style="height: 60px" class="form-control pull-right" name="purpose" id="purpose" value="<?php echo isset($_POST['purpose']) ? $_POST['purpose'] : '' ?>" required placeholder="Purpose">
+                            <?php else: ?>
+                              <input required type="text" style="height: 60px" class="form-control pull-right" name="purpose" id="purpose"  required placeholder="Purpose">
+                            <?php endif ?>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <button class="btn btn-primary pull-right"  type="submit" name="add" onclick="/* return confirm('Are you sure you want to Add this item?'); */">Add Item</button>
-                  </div>
-                </div>
-              </div>  
-              <br>
-              <br>
-              <div class="form-group">
-                <label>Added PR Item/s.</label>
-                <div>
-                  <div class="panel-body container-items">
-                   <table style="background-color: white;border-width: medium;" class="table " id="item_table" >
-                    <tr>
-                      <th width="50">Stock/Property No.</th>
-                      <th width="100">Unit </th>
-                      <th width="200">Item</th>
-                      <th width="250">Description</th>
-                      <th width="100">Quantity</th>
-                      <th width="100">Unit Cost</th>
-                      <th width="150">Total Cost </th>
-                      <th width="100">Option</th>
-                    </tr>
-                    <tr>
-                      <?php 
-                      $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
-                      $pr_no = $_POST['pr_no'];
-                      $pmo = $_POST['pmo'];
-                      $pr_date = $_POST['pr_date'];
-                      $purpose = $_POST['purpose'];
-                      if ($pr_no == '') {
-                        $pr_no = $_GET['pr_no'];
-                      }
-                      $sql_items = $conn->query("SELECT a.sn,pa.id,pa.qty,pa.items,pa.app_id,pa.pr_no,pa.description,pa.unit,pa.abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' AND pmo = '$pmo' AND mac = '$macaddress' ");
-                      while ($row = $sql_items->fetch()) {
-                        $sn = $row['sn'];
-                        $id = $row['id'];
-                        $qty1 = $row['qty'];
-                        $items1 = $row['items'];
-                        $description1 = $row['description'];
-                        $unit1 = $row['unit'];
-                        $abc1 = $row['abc'];
-                        $procurement1 = $row['procurement'];
+                    <div class="item panel panel-info"><div class="panel-heading"> <p style = "color:red;font-size:16px;"> <b> NOTE : </b> Please do not include this characters <b>( ' and " and & ) </b> the system will not accept this characters.Applicable to all fields. </p> </div></div>
+                    <?php 
+                    if ($insert_items) {
+                      echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Item Added!  </p> </div></div>  '; 
+                    }
+                    ?> 
+                    <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-info pull-right">Add Items</button>
+                    <br>
+                    <br>
+                    <!-- start of modal add items -->
+                    <form method="POST">
+                     <div class="modal fade" id="modal-default">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title">Add Items</h4>
+                            </div>
+                            <div class="modal-body">
+                              <label>Item/s <font style="color: Red;" >*</font> </label>
+                              <input onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
+                              <font id="p" hidden>&nbsp</font>
+                              <table class="table table-striped table-hover" id="main">
+                                <tbody id="result">
+                                </tbody>
+                              </table>
+                              <div hidden>
+                                <input type="text" name="app_items" id="id" class="form-control"/>
+                              </div>
+                              <br>
+                              <label>Stock/Property No.  <font style="color: Red;" >*</font> </label>
+                              <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
+                              <br>
+                              <label>Description/Specification </label>
+                              <input type="text" name="description" class="form-control">
+                              <br>
+                              <label>Unit <font style="color: Red;" >*</font></label>
+                              <input  type="text" name="unit" id="unit"  class="form-control" readonly>
+                              <br>
+                              <label >Quantity <font style="color: Red;" >*</font></label>
+                              <br>
+                              <input  class="form-control" type="number" id="qty" name="qty" >
+                              <br>
+                              <label>Unit Cost <font style="color: Red;" >*</font></label>
+                              <br>
+                              <input  class="form-control" type="text" id="abc"  name="abc" readonly>
+                            </div>
+                            <div class="modal-footer">
+                              <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> -->
+                              <button type="submit" class="btn btn-primary" name="add">Add Item</button>
+                            </div>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
+                    </form>
+                    <!-- end of modal add items -->
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <label>Added PR Item/s.</label>
+                      <div>
+                        <div class="panel-body container-items">
+                         <table style="background-color: white;border-width: medium;" class="table " id="item_table" >
+                          <tr>
+                            <th width="50">Stock/Property No.</th>
+                            <th width="100">Unit </th>
+                            <th width="200">Item</th>
+                            <th width="250">Description</th>
+                            <th width="100">Quantity</th>
+                            <th width="100">Unit Cost</th>
+                            <th width="150">Total Cost </th>
+                            <th width="100">Option</th>
+                          </tr>
+                          <tr>
+                            <?php 
+                            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
+                            $pr_no = $_POST['pr_no'];
+                            $pmo = $_POST['pmo'];
+                            $pr_date = $_POST['pr_date'];
+                            $purpose = $_POST['purpose'];
+                            if ($pr_no == '') {
+                              $pr_no = $_GET['pr_no'];
+                            }
+                            $sql_items = $conn->query("SELECT a.sn,pa.id,pa.qty,pa.items,pa.app_id,pa.pr_no,pa.description,pa.unit,pa.abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' AND pmo = '$pmo' AND mac = '$macaddress' ");
+                            while ($row = $sql_items->fetch()) {
+                              $sn = $row['sn'];
+                              $id = $row['id'];
+                              $qty1 = $row['qty'];
+                              $items1 = $row['items'];
+                              $description1 = $row['description'];
+                              $unit1 = $row['unit'];
+                              $abc1 = $row['abc'];
+                              $procurement1 = $row['procurement'];
 
-                        if ($unit1 == "1") {
-                          $unit1a = "piece";
-                        }
+                              if ($unit1 == "1") {
+                                $unit1a = "piece";
+                              }
 
-                        if ($unit1 == "2") {
-                          $unit1a = "box";
-                        }
+                              if ($unit1 == "2") {
+                                $unit1a = "box";
+                              }
 
-                        if ($unit1 == "3") {
-                          $unit1a = "ream";
-                        }
+                              if ($unit1 == "3") {
+                                $unit1a = "ream";
+                              }
 
-                        if ($unit1 == "4") {
-                          $unit1a = "lot";
-                        }
+                              if ($unit1 == "4") {
+                                $unit1a = "lot";
+                              }
 
-                        if ($unit1 == "5") {
-                          $unit1a = "unit";
-                        }
+                              if ($unit1 == "5") {
+                                $unit1a = "unit";
+                              }
 
-                        if ($unit1 == "6") {
-                          $unit1a = "crtg";
-                        }
+                              if ($unit1 == "6") {
+                                $unit1a = "crtg";
+                              }
 
-                        if ($unit1 == "7") {
-                          $unit1a = "pack";
-                        }
-                        if ($unit1 == "8") {
-                          $unit1a = "tube";
-                        }
+                              if ($unit1 == "7") {
+                                $unit1a = "pack";
+                              }
+                              if ($unit1 == "8") {
+                                $unit1a = "tube";
+                              }
 
-                        if ($unit1 == "9") {
-                          $unit1a = "roll";
-                        }
+                              if ($unit1 == "9") {
+                                $unit1a = "roll";
+                              }
 
-                        if ($unit1 == "10") {
-                          $unit1a = "can";
-                        }
+                              if ($unit1 == "10") {
+                                $unit1a = "can";
+                              }
 
-                        if ($unit1 == "11") {
-                          $unit1a = "bottle";
-                        }
+                              if ($unit1 == "11") {
+                                $unit1a = "bottle";
+                              }
 
-                        if ($unit1 == "12") {
-                          $unit1a = "set";
-                        }
+                              if ($unit1 == "12") {
+                                $unit1a = "set";
+                              }
 
-                        if ($unit1 == "13") {
-                          $unit1a = "jar";
-                        }
+                              if ($unit1 == "13") {
+                                $unit1a = "jar";
+                              }
 
-                        if ($unit1 == "14") {
-                          $unit1a = "bundle";
-                        }
+                              if ($unit1 == "14") {
+                                $unit1a = "bundle";
+                              }
 
-                        if ($unit1 == "15") {
-                          $unit1a = "pad";
-                        }
+                              if ($unit1 == "15") {
+                                $unit1a = "pad";
+                              }
 
-                        if ($unit1 == "16") {
-                          $unit1a = "book";
-                        }
+                              if ($unit1 == "16") {
+                                $unit1a = "book";
+                              }
 
-                        if ($unit1 == "17") {
-                          $unit1a = "pouch";
-                        }
+                              if ($unit1 == "17") {
+                                $unit1a = "pouch";
+                              }
 
-                        if ($unit1 == "18") {
-                          $unit1a = "dozen";
-                        }
+                              if ($unit1 == "18") {
+                                $unit1a = "dozen";
+                              }
 
-                        if ($unit1 == "19") {
-                          $unit1a = "pair";
-                        }
-                        if ($unit1 == "20") {
-                          $unit1a = "gallon";
-                        }
+                              if ($unit1 == "19") {
+                                $unit1a = "pair";
+                              }
+                              if ($unit1 == "20") {
+                                $unit1a = "gallon";
+                              }
 
-                        if ($unit1 == "21") {
-                          $unit1a = "cart";
-                        }
-                        if ($unit1 == "22") {
-                          $unit1a = "pax";
-                        }
-                        if ($unit == "23") {
-                          $unit = "liters";
-                        } 
-                        if ($unit == "24") {
-                          $unit = "meters";
-                        } 
-                        ?>
-                        
-                        <td id="tdvalue" hidden><?php echo $pr_no?> </td>
-                        <td><?php echo $sn ?></td>
-                        <td><input hidden type="text" name="unit1[]" value="<?php echo $unit1 ?>"><?php echo $unit1a?></td>
-                        <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php echo  $procurement1;?> </td>
-                        <td><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
-                        <td><input hidden type="text" name="qty1[]" value="<?php echo $qty1 ?>"><?php echo $qty1?></td>
-                        <td><input hidden type="text" name="abc1[]" value="<?php echo $abc1 ?>"><?php echo $abc1?></td>
-                        
-                        <td><?php  $ans = $abc1*$qty1;  echo $ans; ?></td>
-                        <td hidden><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
-                        <td>
-                         <!-- <?php echo '<a href="ViewEditPR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'" class="btn btn-primary btn-xs" ><i class="fa">&#xf044;</i></a>' ?> -->
+                              if ($unit1 == "21") {
+                                $unit1a = "cart";
+                              }
+                              if ($unit1 == "22") {
+                                $unit1a = "pax";
+                              }
+                              if ($unit == "23") {
+                                $unit = "liters";
+                              } 
+                              if ($unit == "24") {
+                                $unit = "meters";
+                              } 
+                              ?>
 
-                         <a onclick="return confirm('Are you sure you want to Delete?');" name="del"  href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> " class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
-                       </td>
-                     </tr>
-                   <?php } ?>
-                 </table>
-               </div>
+                              <td id="tdvalue" hidden><?php echo $pr_no?> </td>
+                              <td><?php echo $sn ?></td>
+                              <td><input hidden type="text" name="unit1[]" value="<?php echo $unit1 ?>"><?php echo $unit1a?></td>
+                              <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php echo  $procurement1;?> </td>
+                              <td><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
+                              <td><input hidden type="text" name="qty1[]" value="<?php echo $qty1 ?>"><?php echo $qty1?></td>
+                              <td><input hidden type="text" name="abc1[]" value="<?php echo $abc1 ?>"><?php echo $abc1?></td>
+
+                              <td><?php  $ans = $abc1*$qty1;  echo $ans; ?></td>
+                              <td hidden><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
+                              <td>
+                               <!-- <?php echo '<a href="ViewEditPR.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'" class="btn btn-primary btn-xs" ><i class="fa">&#xf044;</i></a>' ?> -->
+
+                               <a onclick="return confirm('Are you sure you want to Delete?');" name="del"  href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> " class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                             </td>
+                           </tr>
+                         <?php } ?>
+                       </table>
+                     </div>
+                     <br>
+                   </form>
+                   <button class="btn btn-success" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
+                 </div>  
+               </div>  
                <br>
-             </form>
-             <button class="btn btn-success" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
-           </div>  
-         </div>  
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>
-         <br>  
-         <br>
-       </body>
-       <script>
-        $(document).ready(function(){
-          $("#result").click(function(){
-            $("#main").hide();
-            $("#p").show();
-          });
-        });
-      </script>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>  
+               <br>
+             </body>
+             <script>
+              $(document).ready(function(){
+                $("#result").click(function(){
+                  $("#main").hide();
+                  $("#p").show();
+                });
+              });
+            </script>
 
-      <script>
-        $(function () {
+            <script>
+              $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
 
