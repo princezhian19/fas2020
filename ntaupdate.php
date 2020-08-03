@@ -186,10 +186,10 @@ while ($row = mysqli_fetch_assoc($view_query)) {
                 <label>NTA/NCA Quarters <span style = "color:red;">*</span></label>
                 <select class="form-control select input" style="width: 100%; height: 35px;" name="quarter" id="quarter" required >
                 <option value = "">Select Quarter</option>
-                <option value = "1stQuarter">1st Quarter</option>
-                <option value = "2ndQuarter">2nd Quarter</option>
-                <option value = "3rdQuarter">3rd Quarter</option>
-                <option value = "4thQuarter">4th Quarter</option>
+                <option value = "1Q">1st Quarter</option>
+                <option value = "2Q">2nd Quarter</option>
+                <option value = "3Q">3rd Quarter</option>
+                <option value = "4Q">4th Quarter</option>
                 </select>
                 <br>
                 <label>NCA/NTA DURATION <span style = "color:red;">*</span> </label>
@@ -198,7 +198,7 @@ while ($row = mysqli_fetch_assoc($view_query)) {
                         <div class="input-group-addon" style="border-style: groove;">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input required value="<?php echo $duration?>" type="text" class="form-control pull-right" id="datepicker3" placeholder='Enter Date' name="duration" style="border-style: groove;">
+                        <input readonly required value="" type="text" class="form-control pull-right" id="" placeholder='Enter Date' name="duration" style="border-style: groove;">
                     </div>
                     <br>
                     <label>Amount <span style = "color:red;">*</span></label>
@@ -425,6 +425,41 @@ while ($row = mysqli_fetch_assoc($view_query)) {
   });
 
 </script>
+
+<script>
+$(document).ready(function(){
+  $("#quarter").change(function (){
+
+
+    quarter = document.getElementById("quarter").value;
+    var duration = $("input[name='duration']"); 
+
+   
+    if(quarter=='1Q'){
+    duration.val('04/01/2020');
+    }
+    
+    else if(quarter=='2Q'){
+    duration.val('07/01/2020');
+    }
+    
+    else if(quarter=='3Q'){
+    duration.val('10/01/2020');
+    }
+    
+    else if(quarter=='4Q'){
+    duration.val('01/01/2021');
+    }
+    else{
+      duration.val('');
+
+    }
+  
+
+  });
+});
+</script>
+
 
 
 </body>
