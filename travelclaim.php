@@ -109,7 +109,6 @@ function aa($id)
                                 setTimeout(function () {
                                 window.location = "CreateTravelClaim.php?step=1&ro=<?php echo $_GET['ro'];?>&ui=1username=<?php echo $_GET['username'];?>&division=<?php echo $_GET['division'];?>";
                                 }, 1000);
-                                ui=1&ro=test%2035&username=masacluti
                             
                           }
                           });
@@ -294,8 +293,10 @@ function isSubmit()
             <H5 style = "margin-left:1300px;"><i>Appendix 45</i></H5>
 
             <center>
+              
             <form method = "POST" action = "travelclaim_functions.php?action=add">
             <h1>ITINERARY OF TRAVEL </h1>
+            
             <table  cellpadding="0" cellspacing="0" width="80%" border="1">
               <thead>
                 <tr>
@@ -534,37 +535,37 @@ function isSubmit()
                               </div>
                           </div>
                           <div class = "col-sm-6 col-md-6 col-lg-6">
+
                             <div class="col-md-12 well perdiem">
                               <div>
-                                <div class="form-group" id = "perdiem">
-                                                          <label>
-                                                          Per Diem
-                                                          </label>
-                                                          <label class = "pull-right">
-                                                          <input type ="hidden" value = "<?php echo getDistance();?>" class = "distance"/>
-                                                          Distance: <?php echo getDistance();?>
-                                                          </label>
-                                                      </div>
-                                                      <div class="form-group">
-                                                        <label>
-                                                        Meals
-                                                        </label><br>
-                                                        <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1"> <b>Will Claim Meals</b><br>
+                                
+                                  <div class="form-group" id = "perdiem"><br>
+                                    <label>
+                                      Per Diem
+                                    </label>
+                                    <label class = "pull-right">
+                                      <input type ="hidden" value = "<?php echo getDistance();?>" class = "distance"/> Distance: <?php echo getDistance();?>
+                                    </label>
+                                  </div>
+                                  <div class="form-group">
+                                    <input class="toggle-event" type="checkbox"><span class = "wpd">With Perdiem</span><br><br>
+                                    <label> Meals </label><br>
 
-                                                        <input style = "margin-left:14px" type="checkbox" name="breakfast[]" class="minimal-red checkboxgroup breakfast" value = "breakfast"> Breakfast
-                                                        <input type="checkbox" name="lunch[]" class="minimal-red checkboxgroup lunch" value = "lunch"> Lunch
-                                                        <input type="checkbox" name="dinner[]"  class="minimal-red checkboxgroup dinner" value = "dinner"> Dinner
-                                                      </div>
-                                                      <div class="form-group">
-                                                        <label>
-                                                        Accomodation
-                                                        </label><br>
-                                                        <input type="checkbox"  name = "accomodation[]" class="minimal-red wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
-                                                        <input style = "margin-left:14px" type="checkbox"  name = "with_receipt[]" class="minimal-red receipt wr" value ="With Receipt"> With Receipt
-                                                        <input type="text" disabled name="wor_txt[]"  class = "borderless wor_txt" style = "width:50%;"/>
-                                                        <br>
-                                                        <input style = "margin-left:14px"type="checkbox"  name = "wor_txt[]" class="minimal-red receipt wor" value ="Without Receipt"> Without Receipt
-                                                      </div>
+                                    <input type="checkbox" name="meals"  class="minimal-red checkboxgroup1 cb1"> <b>Will Claim Meals</b><br>
+                                    <input style = "margin-left:14px" type="checkbox" name="breakfast[]" class="minimal-red checkboxgroup breakfast" value = "breakfast"> Breakfast
+                                    <input type="checkbox" name="lunch[]" class="minimal-red checkboxgroup lunch" value = "lunch"> Lunch
+                                    <input type="checkbox" name="dinner[]"  class="minimal-red checkboxgroup dinner" value = "dinner"> Dinner
+                                    <br>
+                                    <label>
+                                    Accomodation
+                                    </label><br>
+                                    <input type="checkbox"  name = "accomodation[]" class="minimal-red wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
+                                    <input style = "margin-left:14px" type="checkbox"  name = "with_receipt[]" class="minimal-red receipt wr" value ="With Receipt"> With Receipt
+                                    <input type="text" disabled name="wor_txt[]"  class = "borderless wor_txt" style = "width:50%;"/>
+                                    <br>
+                                    <input style = "margin-left:14px"type="checkbox"  name = "wor_txt[]" class="minimal-red receipt wor" value ="Without Receipt"> Without Receipt
+                                  </div>
+
                                 </div>
                               </div>
                           </div>
@@ -632,9 +633,10 @@ function isSubmit()
 
 
 <script>
-
+  
   
 $(document).ready(function(){
+
   $('#or').prop('required',true);
   $("#editbtn").prop('disabled',true);
     if($("#or").val() != '')
@@ -704,37 +706,6 @@ $(document).ready(function(){
   });
   
   
-    // $('.receipt').on('change', function() { 
-    //     $('.receipt').not(this).prop('checked', false);  
-    // });
-    // checkbox validation
-    // $(document).ready(function(){
-    //   $('#datepicker4').val($('#travel_date').val());
-    //       $('#wor').click(function(){
-    //           if($(this).prop("checked") == true){
-                
-    //       $("#wor_txt").prop('disabled',true);
-    //       $("#wor_txt").val('');
-  
-    //           }
-    //           else if($(this).prop("checked") == false){
-    //             $("#wor_txt").prop('disabled',false);
-    //           }
-    //       });
-    //       $('#wa').click(function(){
-    //           if($(this).prop("checked") == true){
-    //       $("#wor_txt").prop('disabled',true);
-                
-    //           }
-    //       });
-    //       $('#wr').click(function(){
-    //           if($(this).prop("checked") == true){
-    //       $("#wor_txt").prop('disabled',false);
-                
-    //           }
-    //       });
-    //   });
-  
   
       
     $("body").on('click', '.cb1', enable_cb1);
@@ -742,7 +713,73 @@ $(document).ready(function(){
     $("body").on('click', '.wor', disableTxt1);
     $("body").on('click', '.wr', disableTxt2);
     $("body").on('change', '.receipt', groupCheck);
+    $("body").on('change', '.toggle-event', controlPD_on);
+    $("body").on('click', '.wo_pdiem', controlPD_off);
 
+    function controlPD_on()
+      {
+        const cb1 = $(this).siblings('.cb1');
+        const wa = $(this).siblings('.wa');
+
+        const bf = $(this).siblings('.breakfast');
+        const ln = $(this).siblings('.lunch');
+        const dn = $(this).siblings('.dinner');
+        const withpd = $(this).siblings('.wpd');
+        const wr = $(this).siblings('.wr');
+        const wor = $(this).siblings('.wor');
+
+      
+        
+        cb1.prop('disabled', this.checked);
+        wa.prop('disabled', this.checked);
+        bf.prop('disabled', this.checked);
+        ln.prop('disabled', this.checked);
+        dn.prop('disabled', this.checked);
+        wr.prop('disabled', this.checked);
+        wor.prop('disabled', this.checked);
+
+        cb1.attr('disabled', !this.checked);
+        wa.attr('disabled', !this.checked);
+        bf.attr('disabled', !this.checked);
+        ln.attr('disabled', !this.checked);
+        dn.attr('disabled', !this.checked);
+        wr.attr('disabled', !this.checked);
+        wor.attr('disabled', !this.checked);
+
+        wor.attr('checked', !this.checked);
+        cb1.attr('checked', !this.checked);
+        wa.attr('checked', !this.checked);
+        bf.attr('checked', !this.checked);
+        ln.attr('checked', !this.checked);
+        dn.attr('checked', !this.checked);
+        wr.attr('checked', !this.checked);
+
+
+
+
+
+        if($(this).is(':checked')) {
+        $(this).next('.wpd').text('With Per Diem');
+        }else{
+        $(this).next('.wpd').text('Without Per Diem');
+        }
+      }
+  
+    function controlPD_off()
+    {
+      const bf = $(this).siblings('.breakfast');
+            const ln = $(this).siblings('.lunch');
+            const dn = $(this).siblings('.dinner');
+            const wr = $(this).siblings('.wr');
+            const wor = $(this).siblings('.wor');
+
+            wr.prop('disabled', true);
+            wor.prop('disabled', true);
+            bf.prop('disabled', true);
+            ln.prop('disabled', true);
+            dn.prop('disabled', true); 
+
+    }
     function  groupCheck(){
         const receipt = $(this).siblings('.receipt');
         receipt.not(this).prop('checked', false);  
@@ -813,8 +850,11 @@ $(document).ready(function(){
   
     }
 </script>  
+
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
     <script>
     if("<?php echo $_GET['step']?>" == "1")
     {
