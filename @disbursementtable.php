@@ -135,8 +135,8 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
                 //Getting Flag
                 $flag = $row["flag"];
 
-                $date_proccess = $row["date_proccess"];
-                $date_proccess1 = date('F d, Y', strtotime($date_proccess));
+                $date_proccess1 = $row["date_proccess"];
+                $date_proccess = date('F d, Y', strtotime($date_proccess1));
                 $datereleased1 = $row["datereleased"];
                 $datereleased = date('F d, Y', strtotime($datereleased1));
 
@@ -164,8 +164,8 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
                    
 
                     
-                          <?php if ($date_proccess != NULL  ): ?>
-                            <td><?php echo $date_proccess1;?></td>
+                          <?php if ($date_proccess1 != NULL  ): ?>
+                            <td><?php echo $date_proccess;?></td>
                             <?php else: ?>
                               <?php if ($datereceived != '0000-00-00'): ?>
                                 <td><a class="btn btn-success btn-xs" href='Disbursement_process.php?ors=<?php echo $ors;?>&flag=<?php echo $flag;?>&payee=<?php echo $payee;?>&particular=<?php echo $particular;?>&amount=<?php echo $amount;?>&orsdate=<?php echo $orsdate;?>'>Process</a> </td>
@@ -175,14 +175,18 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
                               <?php endif ?> 
 
 
-                              <?php if ($date_proccess != '0000-00-00'): ?>
-                                <td><?php echo $datereleased;?></td>
-                                <?php else: ?>
-                                <?php if ($datereceived == '0000-00-00' ): ?>
-                                <td></td>
+                              <?php if ($date_proccess1 == '0000-00-00'): ?>
+                                <td>
+                                  
+
+                                </td>
+                               <?php else: ?>
+                                <?php if ($datereleased1 != '0000-00-00'): ?>
+                                  <td><?php echo $datereleased;?></td>
                                 <?php else: ?>
                                 <td><a class="btn btn-success btn-xs" href='release_dv.php?id=<?php echo $id; ?>' >Release</a> </td>
                                <?php endif ?>
+
                               <?php endif ?>
 
 
