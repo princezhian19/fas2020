@@ -835,7 +835,7 @@ $(document).ready(function(){
         if(distance > 50)
      {
      
-  
+  $('.toggle-event').attr('checked',true)
      }else{
   
       $(".breakfast").attr("disabled", true);
