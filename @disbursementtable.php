@@ -161,16 +161,9 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
                     <?php else: ?>
                       <td><?php echo $datereceived11;?></td>
                     <?php endif ?>
-                    <!-- <?php if ($datereceived != '0000-00-00'): ?>
-                      <td><a class="btn btn-success btn-xs" href='CreateDisbursement.php?id=<?php echo $id; ?>&stat=1' >Proccess</a> </td>
-                      <?php else: ?>
-                        <?php if ($datereleased != '0000-00-00'): ?>
-                          <td><?php echo $datereleased;?></td>
-                          <?php else: ?>
-                            <td></td>
-                          <?php endif ?>
-                          <td></td>
-                          <?php endif ?> -->
+                   
+
+                    
                           <?php if ($date_proccess != NULL  ): ?>
                             <td><?php echo $date_proccess1;?></td>
                             <?php else: ?>
@@ -180,30 +173,29 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
                                   <td></td>
                                 <?php endif ?>
                               <?php endif ?> 
-                              <?php if ($datereleased != '0000-00-00'): ?>
+
+
+                              <?php if ($date_proccess != '0000-00-00'): ?>
                                 <td><?php echo $datereleased;?></td>
                                 <?php else: ?>
-                                  <?php if ($date_proccess == NULL ): ?>
-                                    <td></td>
-                                    <?php else: ?>
-                                      <td><a class="btn btn-success btn-xs" href='release_dv.php?id=<?php echo $id; ?>' >Release</a> </td>
-                                    <?php endif ?>
-                                  <?php endif ?>
+                                <?php if ($datereceived == '0000-00-00' ): ?>
+                                <td></td>
+                                <?php else: ?>
+                                <td><a class="btn btn-success btn-xs" href='release_dv.php?id=<?php echo $id; ?>' >Release</a> </td>
+                               <?php endif ?>
+                              <?php endif ?>
+
+
+
                                   <td><?php echo $payee;?></td>
                                   <td><?php echo $particular;?></td>
                                   <td><?php echo $amount;?></td>
-                                 <!--  <td><?php echo $tax;?></td>
-                                  <td><?php echo $gsis;?></td>
-                                  <td><?php echo $pagibig;?></td>
-                                  <td><?php echo $philhealth;?></td>
-                                  <td><?php echo $other;?></td> -->
                                   <td><?php echo $total;?></td>
                                   <td><?php echo $net;?></td>
                                   <td><?php echo $remarks;?></td>
                                 
                                   <td><?php echo $status;?></td>
                                        
-                                    
                                       <td>
 
                                       <a  class="btn btn-primary btn-xs" href='Disbursement_Update.php?id=<?php echo $ors?>'> <i class='fa'>&#xf044;</i>  Edit </a>
@@ -217,13 +209,10 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
                                     </tr>
                                   <?php } ?>    
                                 </table>
-               
                           </div>
 
                           </div>
                           </div>
-
-
 </body>
 
 
