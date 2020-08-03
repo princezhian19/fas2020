@@ -142,6 +142,8 @@ p.mix {border-style: dotted dashed solid double;} */
                              
                                 // $('#ors').prop('disabled', true);
                                 $('#ors1').prop('disabled', true);
+
+                                
                                 $("#result").click(function(){
                                 $("#main").hide();
                                 // alert(filter_data);
@@ -161,7 +163,6 @@ p.mix {border-style: dotted dashed solid double;} */
                                 // alert(filter_data1);
 
                              
-
                                 });
                                 });
                                 </script>
@@ -183,7 +184,6 @@ p.mix {border-style: dotted dashed solid double;} */
                                 method:"POST",
                                 data:{query:query,
                                 },
-
 
                                 success:function(data)
                                 {
@@ -208,7 +208,7 @@ p.mix {border-style: dotted dashed solid double;} */
 
                                 filter_data = '';
                                 $('#example').DataTable().destroy();
-                                dataE();
+                                dataE();z
 
                                 document.getElementById('payee').value = "";
                                 document.getElementById('particular').value = "";

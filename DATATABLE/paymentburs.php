@@ -28,7 +28,6 @@ $columns = array(
 	array('db' => 'uacs', 'dt' => 2),
 	array('db' => 'amount', 'dt' => 3,
 	'formatter' => function( $d, $row ) {
-		
 		$d1 = number_format($d,2);
 		return $d1;
 		

@@ -35,26 +35,20 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
                   <li class="btn btn-success"><a href="ObligationCreate.php" style="color:white;text-decoration: none;">Create</a></li>
 
                   <li class="btn btn-primary   "><a href="ObligationBURS.php" style="color:white;text-decoration: none;">View BURS</a></li>
-
-
                   
                   </td>
                       
                   <td class="col-md-7" >
 
-                    
                   </td>
-
-          
 
                   <form method = "POST" action = "@Functions/obdateexport.php">
                   <td class="col-md-1">
                   <input type="text" class="" id="datepicker1" placeholder='From Date' name="datefrom" style="height: 35px; width: 250px" autocomplete="off" value = "<?php echo $timeNow;?>">
-
+                  
                   </td>
                   <td class="col-md-1">
                   <input type="text" class="" id="datepicker2" placeholder='To Date' name="dateto" style="height: 35px; width: 250px" autocomplete="off" value = "<?php echo $timeNow;?>">
-
                   </td>
                   <td class="col-md-1">
                   <button type="submit" name="submit"  class="btn btn-success pull-right">Filter/Export Data</button>
@@ -65,12 +59,7 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
 
                   </td>
                  
-           
                 </form>
-                  
-
-               
-
                   </tr>
                   <!-- Header -->
                 </table>
