@@ -188,7 +188,7 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
               "type": "POST",
               "data": {
               "filter_data1": orsno,
-
+                
               }}
 
               });

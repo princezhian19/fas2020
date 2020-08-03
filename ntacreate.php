@@ -151,14 +151,14 @@ $username = $_SESSION['username'];
                         <input readonly required value="" type="text" class="form-control pull-right" id="duration" placeholder='Enter Duration Date' name="duration" style="border-style: groove;">
                     </div>
                     <br>
-                    <label>Amount <span style = "color:red;">*</span></label>
-                    <input required  type="number"  class="form-control" style="height: 35x; border-style: groove;" id="amount" placeholder="Enter amount" name="amount">
+                    <label>Allotment Amount <span style = "color:red;">*</span></label>
+                    <input required  type="number"  class="form-control" style="height: 35x; border-style: groove;" id="amount" placeholder="Enter Amount" name="amount">
                     <br>
                     <label>Disbursement </label>
                     <input  type="text" readonly  class="form-control" style="height: 35px; border-style: groove;" id="obligated" placeholder="Enter Obligated" name="obligated" value="0">
                     <br>
                     <label>Balance</label>
-                    <input  type="text" readonly  class="form-control" style="height: 35px; border-style: groove;" id="balance" placeholder="Balance is from original Amount - Obligated" name="balance" >
+                    <input  type="text" readonly  class="form-control" style="height: 35px; border-style: groove;" id="balance" placeholder="Balance is from Allotment Amount - Disbursed Amount" name="balance" >
                   
                    
                      
