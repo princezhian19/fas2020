@@ -493,7 +493,6 @@ p.mix {border-style: dotted dashed solid double;} */
 
                         </div>
 
-
                         <div class="col-md-6">
                                 <!-- Partition II -->
 

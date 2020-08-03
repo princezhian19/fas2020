@@ -521,6 +521,8 @@ p.mix {border-style: dotted dashed solid double;} */
                                 <input required type="text" class="form-control input" style="height: 35px;" name="dvdate" id="datepicker2" value = "<?php echo $timeNow;?>" placeholder="mm/dd/yyyy"  autocomplete="off">
                                 </td>
                                 </tr>
+                                <br>
+                              
 
                                
                                 </table>
