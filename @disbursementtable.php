@@ -177,8 +177,6 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
 
                               <?php if ($date_proccess1 == '0000-00-00'): ?>
                                 <td>
-                                  
-
                                 </td>
                                <?php else: ?>
                                 <?php if ($datereleased1 != '0000-00-00'): ?>
