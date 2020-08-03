@@ -8,7 +8,13 @@ $username = $_SESSION['username'];
 }
 ?>
 
+<?php
+date_default_timezone_set('Asia/Manila');
+$timeNow = (new DateTime('now'))->format('m/d/Y');
+//Replace now() Variable
+// echo $timeNow;
 
+?>
 <!DOCTYPE html>
 <html>
 <!-- <style>
@@ -94,13 +100,14 @@ $username = $_SESSION['username'];
         <div class="class-bordered" >
             <div class="row">
                 <div class="col-md-7">
-                <label>Account No.</label>
-                      <input  type="text" class="form-control" style="height: 35px;" id="" placeholder="Enter Account No." name="accountno" required>
+              <!--   <label>Account No.</label> -->
+                
+                    <!--   <input hidden  type="text" class="" style="height: 35px; border-style: groove;" id="" placeholder="Enter Account No." name="accountno" required>
                       <table class="table table-striped table-hover" id="main1">
                       <tbody id="result1">
                       </tbody>
                       </table>
-                      <br>
+                      
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script type="text/javascript">
               $(document).ready(function(){
@@ -133,28 +140,91 @@ $username = $_SESSION['username'];
               {
                 var x=row.cells;
                 document.getElementById("accountno").value = x[0].innerHTML;
-               
-                
               }
             </script>
-
+            -->
 
                       <label>DV No.</label>
-                      <input  type="text" class="form-control" style="height: 35px;" id="dvno" placeholder="Enter DV No." name="dvno" required>
-                      <br>
-                    
-                      
+                      <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="dvno" placeholder="Enter DV No." name="dvno" required>
                       <table class="table table-striped table-hover" id="main">
                       <tbody id="result">
                       </tbody>
                       </table>
-                      <br>
+                      
+                     
                   <!-- Getting PO NUmber -->      
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           <script>
           $(document).ready(function(){
             $("#result").click(function(){
               $("#main").hide();
+             
+
+
+             
+              // alert('Horay');
+              var type = $("input[name='type']").val();
+              var orsno = $("input[name='ors']").val();
+              alert(orsno);
+
+              var Fill = $("#type").val();
+              var ors1 = $("#ors").val();
+              alert(Fill);
+
+              if(Fill=='BURS'){
+              function dataTT(){
+              var orsno = $("input[name='ors']").val();
+              var table = $('#example').DataTable( {
+              'paging'      : true,
+              'lengthChange': false,
+              'searching'   : false,
+              'ordering'    : false,
+              'info'        : false,
+              'autoWidth'   : false,  
+              "processing": true,
+              "serverSide": false,
+              "ajax": {
+              "url": "DATATABLE/paymentburs.php",
+              "type": "POST",
+              "data": {
+              "filter_data1": orsno,
+
+              }}
+
+              });
+              $('#example').DataTable().destroy();
+              dataTT();
+              }
+              
+              }
+              else{
+                function dataTTE(){
+              var orsno = $("input[name='ors']").val();
+
+              var table = $('#example').DataTable( {
+              'paging'      : true,
+              'lengthChange': false,
+              'searching'   : false,
+              'ordering'    : false,
+              'info'        : false,
+              'autoWidth'   : false,  
+              "processing": true,
+              "serverSide": false,
+              "ajax": {
+              "url": "DATATABLE/paymentors.php",
+              "type": "POST",
+              "data": {
+              "filter_data": orsno,
+              }}
+
+              });
+              $('#example').DataTable().destroy();
+              dataTTE();
+              }
+             
+              }
+              
+
             });
           });
           </script>
@@ -177,96 +247,128 @@ $username = $_SESSION['username'];
                   if(search != '')
                   {
                     load_data(search);
+                    
+
                   }
                   else
                   {
                     $("#main").show();
                     load_data();
                     document.getElementById('dvno').value = "";
-                    document.getElementById('orsno').value = "";
-                    document.getElementById('payee').value = "";
-                    document.getElementById('particular').value = "";
-                    document.getElementById('ppa').value = "";
-                    document.getElementById('uacs').value = "";
+                    document.getElementById('type').value = "";
+                    document.getElementById('ors').value = "";
                     document.getElementById("gross").value = "";
                     document.getElementById("totaldeduc").value = "";
                     document.getElementById("net").value = "";
                     
                   }
                 });
+
+                   
               });
               function showRow(row)
               {
                 var x=row.cells;
                 document.getElementById("dvno").value = x[0].innerHTML;
-                document.getElementById("orsno").value = x[1].innerHTML;
-                document.getElementById("payee").value = x[2].innerHTML;
-                document.getElementById("particular").value = x[3].innerHTML;
-                document.getElementById("ppa").value = x[4].innerHTML;
-                document.getElementById("uacs").value = x[5].innerHTML;
-                document.getElementById("gross").value = x[6].innerHTML;
-                document.getElementById("totaldeduc").value = x[7].innerHTML;
-                document.getElementById("net").value = x[8].innerHTML;
-                
+                document.getElementById("ors").value = x[1].innerHTML;
+                document.getElementById("type").value = x[2].innerHTML;
+                document.getElementById("gross").value = x[3].innerHTML;
+                document.getElementById("totaldeduc").value = x[4].innerHTML;
+                document.getElementById("net").value = x[5].innerHTML;
               }
+
+             
+             
+           
             </script>
-             <label>ORS No.</label>
-             <input readonly  type="text" class="typeahead form-control" style="height: 35px;" id="orsno" placeholder=" ORS Number" name="orsno">
+           
+           <label>TYPE</label>
+             <input readonly   value="" type="text" class=" form-control" style="height: 35px; border-style: groove;" id="type" placeholder="" name="type">
              <br>
-             <label>Payee</label>
-             <input  type="text" class="form-control" style="height: 35px;" id="payee" placeholder=" Payee" name="payee" readonly>
-             <br>  
-             <label>Particular</label>
-             <input  type="text" class="form-control" style="height: 35px;" id="particular" placeholder=" Particular" name="particular" readonly>
-             <br>  
-             <label>PPA</label>
-             <input  type="text" class="form-control" style="height: 35px;" id="ppa" placeholder=" PPA" name="ppa" readonly>
+
+            <label>ORS No.</label>
+             <input readonly  type="text" class=" form-control" style="height: 35px; border-style: groove;" id="ors" placeholder=" ORS Number" name="ors">
              <br>
-             <label>UACS</label>
-             <input  type="text" class="form-control" style="height: 35px;" id="uacs" placeholder=" UACS" name="uacs" readonly>
-             <br>
-            
              <label>Gross</label>
-             <input  type="text" class="form-control" style="height: 35px;" id="gross" placeholder=" Amount" name="gross" readonly>
+             <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="gross" placeholder=" Amount" name="gross" readonly>
              <br>  
 
              <label>Total Deductions</label>
-             <input  type="text" class="form-control" style="height: 35px;" id="totaldeduc" placeholder=" Total Deduction" name="totaldeduc" readonly>
+             <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="totaldeduc" placeholder=" Total Deduction" name="totaldeduc" readonly>
              <br>   
 
              <label>Net</label>
-             <input  type="text" class="form-control" style="height: 35px;" id="net" placeholder=" Net" name="net" readonly>
+             <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="net" placeholder=" Net" name="net" readonly>
+             <br> 
+             <!-- <label>ORS No.</label>
+             <input readonly  type="text" class="typeahead form-control" style="height: 35px; border-style: groove;" id="orsno" placeholder=" ORS Number" name="orsno">
+             <br>
+             <label>Payee</label>
+             <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="payee" placeholder=" Payee" name="payee" readonly>
+             <br>  
+             <label>Particular</label>
+             <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="particular" placeholder=" Particular" name="particular" readonly>
+             <br>  
+             <label>PPA</label>
+             <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="ppa" placeholder=" PPA" name="ppa" readonly>
+             <br>
+             <label>UACS</label>
+             <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="uacs" placeholder=" UACS" name="uacs" readonly>
+             <br>
+             <label>Gross</label>
+             <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="gross" placeholder=" Amount" name="gross" readonly>
+             <br>  
+
+             <label>Total Deductions</label>
+             <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="totaldeduc" placeholder=" Total Deduction" name="totaldeduc" readonly>
              <br>   
+
+             <label>Net</label>
+             <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="net" placeholder=" Net" name="net" readonly>
+             <br>  -->  
+
+               <!-- Table of Uacs -->
+               <table id="example" class="table table-bordered " style="background-color: white; width:100%; text-align:left">
+                                        <thead>
+                                        <tr style="background-color: #A9A9A9;  text-align:left; border-style: groove; " >
+                                        <th width='500'>FUND SOURCE</th>
+                                        <th width='500'>PPA </th>
+                                        <th width='500'>UACS </th>
+                                        <th width='500'>AMOUNT </th>
+                                        </thead>
+
+                                        </table>
+
+                                        <!-- Table of Uacs -->
             </div>
+            
 
             <div class="col-md-5">
 
             <label>Date</label>
             <br>
             <div class="input-group date">
-                <div class="input-group-addon">
+                <div class="input-group-addon " style="height: 35px; border-style: groove;" >
                     <i class="fa fa-calendar"></i>
                 </div>
-                <input type="text" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="date">
+                <input value="<?php echo $timeNow?>" type="text" style="border-style: groove;" class="form-control pull-right" id="datepicker1" placeholder='Enter Date' name="date">
             </div>
             <br>
-            <br> 
+            
             
 
             <label>LDDAP-ADA/Check</label>
-             <input  type="text" class="form-control" style="height: 35px;" id="lddap" placeholder="Enter LDDAP-ADA/Check" name="lddap">
+             <input  type="text" class="form-control" style="height: 35px; border-style: groove;" id="lddap" placeholder="Enter LDDAP-ADA/Check" name="lddap">
              <br> 
-             <br>
-            <br> 
-            
-        
 
              <label>Remarks</label>
-             <input  type="text" class="form-control" style="height: 80px;" id="remarks" placeholder="Enter Remarks" name="remarks">
+             <input  type="text" class="form-control" style="height: 120px; border-style: groove;" id="remarks" placeholder="Enter Remarks" name="remarks">
              <br>
+              
+              
              
              <label>Status</label>
-             <select class="form-control select" style="width: 100%; height: 40px;" name="status" id="status" required >
+             <select class="form-control select" style="width: 100%; height: 40px; border-style: groove;" name="status" id="status" required >
              <option value = "Paid">Paid</option>
              <option value = "Unpaid">Unpaid</option>
              <!-- <option value = "Pending">Pending</option> -->
@@ -438,6 +540,18 @@ $username = $_SESSION['username'];
   })
 </script>
 
+
+
+<script>
+
+                               
+$(document).ready(function(){
+
+
+});
+//Set ors disabled
+
+</script>
 
 </body>
 </html>
