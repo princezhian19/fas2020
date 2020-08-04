@@ -3,6 +3,7 @@ error_reporting(0);
 ini_set('display_errors', 0);
 
 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+$check = mysqli_query($conn,"SELECT * FROM names ");
 
 if (isset($_POST['submit'])) {
 	function randomName() {
@@ -73,5 +74,7 @@ if (isset($_POST['res'])) {
 	<input type="text" name="name">									
 	<button type="submit" name="add" >Add names</button>
 	<br>	<br>	<br>	<br>	<br>	<br>	<br>	<br>	
+	<?php if (mysqli_num_rows($check)>0): ?>
 	<button type="submit" name="res" >Shuffle again?</button>
+	<?php endif ?>
 </form>
