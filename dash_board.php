@@ -858,8 +858,8 @@ if (isset($_POST['stamp4'])) {
                     $date = date('Y-m-d',strtotime($date1));  
                     $extension = pathinfo($profile, PATHINFO_EXTENSION);
                     ?>
-                    <tr>
-                      <td width="180"><img class="direct-chat-img" src="
+                    <tr width="100">
+                      <td ><img class="direct-chat-img" src="
                         <?php 
                         if(file_exists($profile))
                         {
