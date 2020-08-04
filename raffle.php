@@ -21,7 +21,9 @@ if (isset($_POST['submit'])) {
 
 	$UpdateName = randomName();
 	if ($UpdateName == '') {
-		echo 'Sorry No more name can display';
+		echo ("<SCRIPT LANGUAGE='JavaScript'>
+				window.alert('No Available Name!');
+				</SCRIPT>");
 	# code...
 	}
 	$update = mysqli_query($conn,"UPDATE names SET stats = 1 WHERE names = '$UpdateName'");
