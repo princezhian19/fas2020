@@ -22,8 +22,8 @@ if (isset($_POST['submit'])) {
 	$UpdateName = randomName();
 	if ($UpdateName == '') {
 		echo ("<SCRIPT LANGUAGE='JavaScript'>
-				window.alert('No Available Name!');
-				</SCRIPT>");
+			window.alert('No Available Name!');
+			</SCRIPT>");
 	# code...
 	}
 	$update = mysqli_query($conn,"UPDATE names SET stats = 1 WHERE names = '$UpdateName'");
@@ -37,9 +37,9 @@ if (isset($_POST['add'])) {
 	$names = $_POST['name'];
 	$check = mysqli_query($conn,"SELECT * FROM names WHERE names = '$names' ");
 	if (mysqli_num_rows($check)>0) {
-			echo ("<SCRIPT LANGUAGE='JavaScript'>
-				window.alert('Duplicated Name!');
-				</SCRIPT>");
+		echo ("<SCRIPT LANGUAGE='JavaScript'>
+			window.alert('Duplicated Name!');
+			</SCRIPT>");
 	}else{
 		$insert = mysqli_query($conn,"INSERT INTO names(names) VALUES('$names') ");
 		if ($insert) {
@@ -52,13 +52,18 @@ if (isset($_POST['add'])) {
 
 if (isset($_POST['res'])) {
 
-
-		$insert = mysqli_query($conn,"UPDATE names SET stats = NULL ");
-		if ($insert) {
-			echo ("<SCRIPT LANGUAGE='JavaScript'>
-				window.alert('You can now raffle again!');
-				</SCRIPT>");
-		}
+	$check = mysqli_query($conn,"SELECT * FROM names ");
+	if (mysqli_num_rows($check)>0) {
+		echo ("<SCRIPT LANGUAGE='JavaScript'>
+			window.alert('Please Insert Atleast 1 Data First!');
+			</SCRIPT>");
+	}
+	$insert = mysqli_query($conn,"UPDATE names SET stats = NULL ");
+	if ($insert) {
+		echo ("<SCRIPT LANGUAGE='JavaScript'>
+			window.alert('You can now raffle again!');
+			</SCRIPT>");
+	}
 }
 ?>
 <form method="POST">
