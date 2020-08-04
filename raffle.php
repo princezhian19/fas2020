@@ -49,6 +49,17 @@ if (isset($_POST['add'])) {
 		}
 	}
 }
+
+if (isset($_POST['res'])) {
+
+
+		$insert = mysqli_query($conn,"UPDATE names SET stats = NULL ");
+		if ($insert) {
+			echo ("<SCRIPT LANGUAGE='JavaScript'>
+				window.alert('You can now raffle again!');
+				</SCRIPT>");
+		}
+}
 ?>
 <form method="POST">
 	<button type="submit" name="submit" onclick="randomName()">Shuffle</button>
@@ -56,4 +67,6 @@ if (isset($_POST['add'])) {
 	<br>	
 	<input type="text" name="name">									
 	<button type="submit" name="add" >Add names</button>
+	<br>	<br>	<br>	<br>	<br>	<br>	<br>	<br>	
+	<button type="submit" name="res" >Shuffle again?</button>
 </form>
