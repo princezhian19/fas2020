@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
 
            <a href="ViewPR.php?division=<?php echo $division?>" class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i>Back</a> 
            <?php if ($submitted_date == NULL): ?>
-            <a class="btn btn-success btn-xs" onclick="return confirm('Are you sure you want to Submit this PR?');" href='submit_pr.php?id=<?php echo $id; ?>&username=<?php echo $username;?>'title="Submit"><i class="fa fa-fw fa-send-o"></i>Submit</a>
+            <a class="btn btn-success " onclick="return confirm('Are you sure you want to Submit this PR?');" href='submit_pr.php?id=<?php echo $id; ?>&username=<?php echo $username;?>'title="Submit"><i class="fa fa-fw fa-send-o"></i>Submit</a>
             <?php else: ?>
               <strong style="color:green;"><i class="fa fa-fw fa-check"></i>submitted date : </strong><?php echo $submitted_date1?> 
               <strong><i>by : <?php echo $submitted_by1?></i></strong>
@@ -284,7 +284,7 @@ if (isset($_POST['submit'])) {
                 }
                 ?>
                 <th class="pull-left">ABC:</th>
-                <td><?php echo number_format($abc1,2);?></td>
+                <td>PHP <?php echo number_format($abc1,2);?></td>
               </tr>
             </table>
 

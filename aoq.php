@@ -395,7 +395,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
             </tr>
             <tr>
               <th class="pull-left text-black"  >PR Date Received</th>
-              <td width="250"><?php echo $pr_date;?></td>
+              <td width="200"><?php echo $pr_date;?></td>
             </tr>
             <tr>
               <th  class="pull-left text-black" >ABC</th>
@@ -408,9 +408,6 @@ $rfq_id1 = $rowRFQ['rfq_id'];
   </div>
   <div class="col-md-12" >
     <div class="box box-success">
-      <div class="box-header with-border" align="left">
-        <h4>Suppliers Quotations</h4>
-      </div>
       <div class="box-body table-responsive no-padding">
         <div class="box-body">
           <form method="POST">

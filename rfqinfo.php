@@ -6,7 +6,7 @@ $id = $_GET['id'];
 function supplier($connect)
 { 
   $output = '';
-  $query = "SELECT * FROM supplier GROUP BY id DESC ";
+  $query = "SELECT * FROM supplier ORDER BY supplier_title ASC ";
   $statement = $connect->prepare($query);
   $statement->execute();
   $result = $statement->fetchAll();

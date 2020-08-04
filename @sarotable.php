@@ -6,23 +6,13 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
 /* value = "<?php echo $timeNow;?>" */
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FAS</title>
-
+<title>FAS</title>
 
 </head>
 
-<!-- <style>
-th {
-  column-width: 500px;
-}
-
-</style>
- -->
 <body>
 
 <div class="box " style="border-style: groove;">

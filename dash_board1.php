@@ -242,7 +242,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,65).'...'; echo $string;?> </span>
 
       <span class="info-box-number"></span>
 
@@ -277,7 +277,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,65).'...'; echo $string;?> </span>
 
       <span class="info-box-number"></span>
 
@@ -312,7 +312,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,65).'...'; echo $string;?> </span>
       <span class="info-box-number"></span>
 
       <div class="progress">
@@ -335,7 +335,7 @@ if (isset($_POST['stamp4'])) {
     <div class="box" >
       <div class="panel-heading">
         <strong><a href="DTR.php">ONLINE DTR</a></strong>
-        <div class="pull-right">
+        <div class="pull-right" hidden>
           <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-day</strong></font>
         </div>
       </div>
@@ -782,7 +782,7 @@ if (isset($_POST['stamp4'])) {
                     $extension = pathinfo($profile, PATHINFO_EXTENSION);
                     ?>
                     <tr>
-                      <td width="250"><img class="direct-chat-img" src="
+                      <td width="200"><img class="direct-chat-img" src="
                         <?php 
                         if(file_exists($profile))
                         {
@@ -949,7 +949,7 @@ if (isset($_POST['stamp4'])) {
             $user_id = 'FAD';
 
 
-          }else if($DIVISION_C == '3' || $DIVISION_C == '5'){
+          }else if($DIVISION_C == '3' || $DIVISION_C == '5' || $DIVISION_C == '1'){
 
             $user_id = 'ORD';
 

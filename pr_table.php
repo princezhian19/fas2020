@@ -23,18 +23,6 @@ if (isset($_POST['submit'])) {
 
   }
   ?>
-
-
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <title>Procurement</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
-  </head>
-
   <div class="row">
     <div class="col-md-12">
       <div class="box">

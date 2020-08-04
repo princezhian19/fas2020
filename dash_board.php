@@ -273,7 +273,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,65).'...'; echo $string;?> </span>
 
       <span class="info-box-number"></span>
 
@@ -308,7 +308,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,65).'...'; echo $string;?> </span>
 
       <span class="info-box-number"></span>
 
@@ -343,7 +343,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,10).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,65).'...'; echo $string;?> </span>
       <span class="info-box-number"></span>
 
       <div class="progress">
@@ -377,7 +377,7 @@ if (isset($_POST['stamp4'])) {
             <?php else: ?>
             <?php endif ?>
 
-            <div class="pull-right">
+            <div class="pull-right" hidden>
               <input type="checkbox" id="ck"><font style="color:blue;"><strong>PM Half-day</strong></font>
             </div>
           </div>
@@ -836,9 +836,9 @@ if (isset($_POST['stamp4'])) {
                     </div>
                   </form>
                 </div>
-                <div style="padding-left: 10px;padding-right: 10px;background:#ee5;" class="table-responsive">
+                <div style="padding-left: 10px;padding-right: 18px;background:#ee5;" class="table-responsive">
 
-                 <table id="example15" class="table " style="background-color:#ee5;" >
+                 <table id="example15" class="table table-bordered " style="background-color:#ee5;border:#ee5;" >
                   <thead >
                     <tr style="background-color:#ee5;" >
                       <th style="background-color:#ee5;"hidden></th>
@@ -858,8 +858,8 @@ if (isset($_POST['stamp4'])) {
                     $date = date('Y-m-d',strtotime($date1));  
                     $extension = pathinfo($profile, PATHINFO_EXTENSION);
                     ?>
-                    <tr>
-                      <td width="250"><img class="direct-chat-img" src="
+                    <tr width="200">
+                      <td ><img class="direct-chat-img" src="
                         <?php 
                         if(file_exists($profile))
                         {
@@ -929,11 +929,19 @@ if (isset($_POST['stamp4'])) {
                            echo'images/male-user.png';
                          }
 
-                         ?>"  alt="message user image"><b style="font-size: 10px;"><?php echo $fname;?></b><br><font style="font-size: 10px;"><?php echo $DIVISION_M;?></font><br><br><b><?php echo $title;?><br>
+                         ?>"  alt="message user image">
+                         <b style="font-size: 10px;"><?php echo $fname;?></b>
+                         <br>
+                         <font style="font-size: 10px;"><?php echo $DIVISION_M;?></font><br><br>
+                         <b><?php echo $title;?>
+                         <br>
                           <?php if ($username == $posted_by): ?>
                             <a data-toggle="modal" data-target="#modal-info_<?php echo $row['id']; ?>" class="btn btn-success btn-xs"><i class="fa fa-edit"></i>Edit</a> | <a href="delete_announcement.php?id=<?php echo $id?>&username=<?php echo $username?>" class="btn btn-danger btn-xs "><i class="fa fa-trash"></i> Delete</a>
                           <?php endif ?>
-                        </b><br><?php echo $intent;?></td>
+                        </b>
+                        <br>
+                        <p><?php echo $intent;?></p>
+                        </td>
                       </tr>
 
                       <div class="modal modal-default fade" id="modal-info_<?php echo $row['id']; ?>">
@@ -1033,7 +1041,7 @@ if (isset($_POST['stamp4'])) {
             $user_id = 'FAD';
 
 
-          }else if($DIVISION_C == '3' || $DIVISION_C == '5'){
+          }else if($DIVISION_C == '3' || $DIVISION_C == '5' || $DIVISION_C == '1'){
 
             $user_id = 'ORD';
 
