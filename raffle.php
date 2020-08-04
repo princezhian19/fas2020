@@ -56,6 +56,8 @@ if (isset($_POST['res'])) {
 
 	$check = mysqli_query($conn,"SELECT * FROM names ");
 	if (mysqli_num_rows($check)>0) {
+		
+	}else{
 		echo ("<SCRIPT LANGUAGE='JavaScript'>
 			window.alert('Please Insert Atleast 1 Data First!');
 			</SCRIPT>");
