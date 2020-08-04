@@ -46,6 +46,7 @@ if (isset($_POST['add'])) {
 		if ($insert) {
 			echo ("<SCRIPT LANGUAGE='JavaScript'>
 				window.alert('Successfuly Saved!');
+      			window.location.href='raffle.php';
 				</SCRIPT>");
 		}
 	}
@@ -63,6 +64,7 @@ if (isset($_POST['res'])) {
 	if ($insert) {
 		echo ("<SCRIPT LANGUAGE='JavaScript'>
 			window.alert('You can now raffle again!');
+      		window.location.href='raffle.php';
 			</SCRIPT>");
 	}
 }
