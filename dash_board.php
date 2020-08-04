@@ -859,7 +859,7 @@ if (isset($_POST['stamp4'])) {
                     $extension = pathinfo($profile, PATHINFO_EXTENSION);
                     ?>
                     <tr>
-                      <td width="200"><img class="direct-chat-img" src="
+                      <td width="180"><img class="direct-chat-img" src="
                         <?php 
                         if(file_exists($profile))
                         {
