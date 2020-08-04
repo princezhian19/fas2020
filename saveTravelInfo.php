@@ -29,70 +29,14 @@ if(mysqli_num_rows($result) > 0)
         $meals = '';
         $accomodation = '';
 
-        if(isset($_POST['breakfast']))
-        {
-            $breakfast2 = 1;
-        }else{
-            $breakfast2 = 0;
-            
-        }
-        if(isset($_POST['lunch']))
-        {
-            $lunch2 = 1;
-        }else{
-            $lunch2 = 0;
-        }
-        if(isset($_POST['dinner']))
-        {
-            $dinner2 = 1;
-        }else{
-            $dinner2 = 0;
-        }
-        if(isset($_POST['with_receipt']))
-        {
-            $accomodation = $_POST['with_receipt'];
-        }
-        if(isset($_POST['wor_txt']))
-        {
-            $receipt2 = $_POST['wor_txt'];
-        }else{
-            $receipt2 = '';
-        }
+        if(isset($_POST['breakfast'])) { $breakfast2 = 1; }else{ $breakfast2 = 0; } if(isset($_POST['lunch'])) { $lunch2 = 1; }else{ $lunch2 = 0; } if(isset($_POST['dinner'])) { $dinner2 = 1; }else{ $dinner2 = 0; } if(!isset($_POST['with_receipt'])) { $accomodation = $_POST['with_receipt']; }else{ $accomodation = ''; } if($_POST['wor_txt'] == '') { $receipt2 = ''; }else{ $receipt2 = $_POST['wor_txt']; }
+
+
+       
         
         for($a=0;$a < count($_POST['date']); $a++)
         {
-            if(isset($_POST['breakfast'][$a]) || isset($_POST['lunch'][$a]) || isset($_POST['dinner'][$a]) || isset($_POST['wor_txt'][$a]))
-{
-    $breakfast = $_POST['breakfast'][$a];
-$lunch = $_POST['lunch'][$a];
-$dinner = $_POST['dinner'][$a];
-$receipt = $_POST['wor_txt'][$a];
-
-    if($breakfast == 'breakfast')
-    {
-        $breakfast = 200;
-    }
-    if($lunch == 'lunch')
-    {
-        $lunch = 200;
-    }
-    if($dinner == 'dinner')
-    {
-        $dinner = 200;
-    }
-    if($receipt == 'Without Receipt')
-    {
-        $receipt = 1100;
-    }
-    $perdiem = $breakfast+$lunch+$dinner+$receipt;
-}else{
-    $perdiem = 0;
-
-}
-
-
-
-
+            if(isset($_POST['breakfast'][$a]) || isset($_POST['lunch'][$a]) || isset($_POST['dinner'][$a]) || isset($_POST['wor_txt'][$a])) { $breakfast = $_POST['breakfast'][$a]; $lunch = $_POST['lunch'][$a]; $dinner = $_POST['dinner'][$a]; $receipt = $_POST['wor_txt'][$a]; if($breakfast == 'breakfast') { $breakfast = 200; } if($lunch == 'lunch') { $lunch = 200; } if($dinner == 'dinner') { $dinner = 200; } if($receipt == 'Without Receipt') { $receipt = 1100; } $perdiem = $breakfast+$lunch+$dinner+$receipt; }else{ $perdiem = 0; }
             $from3  = $_POST['from3'][$a];
             $to3 = $_POST['to3'][$a];
             $destination = $from3.' to '.$to3;
@@ -158,19 +102,22 @@ $receipt = $_POST['wor_txt'][$a];
                     '".$lunch2."',
                     '".$dinner2."',
                     '".$accomodation."',
-                    '".$receipt2."',
+                    '".$receipt."',
                     '".$perdiem."',
                     '".$_POST['others']."',
                     '".$totalamount."'
                     )";
+                    echo $insert;
             if (mysqli_query($conn, $insert)) {
             } else {
             }
         }
     }
+    echo $insert;
 
         
         }
+        exit();
         // ========================================================
         // for($b=0;$b < count($_POST['mot'])+1; $b++)
         // {
