@@ -836,7 +836,7 @@ if (isset($_POST['stamp4'])) {
                     </div>
                   </form>
                 </div>
-                <div style="padding-left: 10px;padding-right: 10px;background:#ee5;" class="table-responsive">
+                <div style="padding-left: 10px;padding-right: 10px;background:#ee5;" class="">
 
                  <table id="example15" class="table " style="background-color:#ee5;" >
                   <thead >
@@ -859,7 +859,7 @@ if (isset($_POST['stamp4'])) {
                     $extension = pathinfo($profile, PATHINFO_EXTENSION);
                     ?>
                     <tr>
-                      <td width="100"><img class="direct-chat-img" src="
+                      <td width="200"><img class="direct-chat-img" src="
                         <?php 
                         if(file_exists($profile))
                         {
