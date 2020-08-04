@@ -242,7 +242,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,45).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,65).'...'; echo $string;?> </span>
 
       <span class="info-box-number"></span>
 
@@ -277,7 +277,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,45).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,65).'...'; echo $string;?> </span>
 
       <span class="info-box-number"></span>
 
@@ -312,7 +312,7 @@ if (isset($_POST['stamp4'])) {
     <div class="info-box-content">
 
 
-      <span class="info-box-number"><?php $string = substr($title,0,45).'...'; echo $string;?> </span>
+      <span class="info-box-number"><?php $string = substr($title,0,65).'...'; echo $string;?> </span>
       <span class="info-box-number"></span>
 
       <div class="progress">
