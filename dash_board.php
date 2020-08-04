@@ -836,7 +836,7 @@ if (isset($_POST['stamp4'])) {
                     </div>
                   </form>
                 </div>
-                <div style="padding-left: 10px;padding-right: 10px;background:#ee5;" class="">
+                <div style="padding-left: 10px;padding-right: 10px;background:#ee5;" class="table-responsive">
 
                  <table id="example15" class="table " style="background-color:#ee5;" >
                   <thead >
