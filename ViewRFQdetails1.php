@@ -73,7 +73,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
         echo '<p class="message"> <h1>'.$message.'<h1></p>';
         }
         ?>
-        <?php include('rfq_items_details.php');?>
+        <?php include('rfq_items_details1.php');?>
     </section>
   </div>
   <footer class="main-footer">

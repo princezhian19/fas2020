@@ -520,9 +520,6 @@ function confirmDelete(delUrl) {
                 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
                 
-
-                $username = $_SESSION['username'];
-                
                 /*   echo "SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'"; */
                 $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'");
                 $rowdiv = mysqli_fetch_array($select_user);
@@ -531,8 +528,7 @@ function confirmDelete(delUrl) {
 
                   $user_id = 'FAD';
                   
-                  
-                }else if($DIVISION_C == '3' || $DIVISION_C == '5'){
+                }else if($DIVISION_C == '3' || $DIVISION_C == '5' || $DIVISION_C == '1'  || $DIVISION_C == '2'){
 
                   $user_id = 'ORD';
 
