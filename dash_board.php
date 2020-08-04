@@ -858,7 +858,7 @@ if (isset($_POST['stamp4'])) {
                     $date = date('Y-m-d',strtotime($date1));  
                     $extension = pathinfo($profile, PATHINFO_EXTENSION);
                     ?>
-                    <tr width="100">
+                    <tr width="200">
                       <td ><img class="direct-chat-img" src="
                         <?php 
                         if(file_exists($profile))
@@ -929,11 +929,19 @@ if (isset($_POST['stamp4'])) {
                            echo'images/male-user.png';
                          }
 
-                         ?>"  alt="message user image"><b style="font-size: 10px;"><?php echo $fname;?></b><br><font style="font-size: 10px;"><?php echo $DIVISION_M;?></font><br><br><b><?php echo $title;?><br>
+                         ?>"  alt="message user image">
+                         <b style="font-size: 10px;"><?php echo $fname;?></b>
+                         <br>
+                         <font style="font-size: 10px;"><?php echo $DIVISION_M;?></font><br><br>
+                         <b><?php echo $title;?>
+                         <br>
                           <?php if ($username == $posted_by): ?>
                             <a data-toggle="modal" data-target="#modal-info_<?php echo $row['id']; ?>" class="btn btn-success btn-xs"><i class="fa fa-edit"></i>Edit</a> | <a href="delete_announcement.php?id=<?php echo $id?>&username=<?php echo $username?>" class="btn btn-danger btn-xs "><i class="fa fa-trash"></i> Delete</a>
                           <?php endif ?>
-                        </b><br><?php echo $intent;?></td>
+                        </b>
+                        <br>
+                        <p><?php echo $intent;?></p>
+                        </td>
                       </tr>
 
                       <div class="modal modal-default fade" id="modal-info_<?php echo $row['id']; ?>">
@@ -1033,7 +1041,7 @@ if (isset($_POST['stamp4'])) {
             $user_id = 'FAD';
 
 
-          }else if($DIVISION_C == '3' || $DIVISION_C == '5'){
+          }else if($DIVISION_C == '3' || $DIVISION_C == '5' || $DIVISION_C == '1'){
 
             $user_id = 'ORD';
 
