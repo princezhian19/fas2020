@@ -212,14 +212,14 @@ if (mysqli_num_rows($select_notes) > 0) {
   # code...
   while ($rowN = mysqli_fetch_assoc($select_notes)){
     $notes_group = $rowN['note'];
-    $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers must submit together with the quotation the following Eligibility Documents:\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3.a. Any documents to prove that the signatory of the quotation is autorized representative of the company.\n     b. Photocopy of ID bearing the pictures/ signature of the representatives.\n   ".$notes_group."\n * Please submit Your quotation using our official Request for Quotation (RFQ) Form. You can secure a copy of the RFQ \nfrom the General Services and Supply Section, Finance and Administrative Division. \n *Please submit your quotation together with the Eligibility Documents through any of the following : \n      a. Email us at dilg4a.bac@gmail.com\n      b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
+    $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers must submit together with the quotation the following Eligibility Documents:\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3.a. Any documents to prove that the signatory of the quotation is autorized representative of the company.\n       b. Photocopy of ID bearing the pictures/ signature of the representatives.\n   ".$notes_group."\n * Please submit your quotation using our official Request for Quotation (RFQ) Form. You can secure a copy of the \nRFQ from the General Services and Supply Section, Finance and Administrative Division. \n *Please submit your quotation together with the Eligibility Documents through any of the following : \n       a. Email us at dilg4a.bac@gmail.com\n       b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
   // echo $notes_group;
   // echo '<br>';
     $row++;
 
   }
 }else{
- $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers must submit together with the quotation the following Eligibility Documents:\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3. a. Any documents to prove that the signatory of the quotation is autorized representative of the company.\n     b. Photocopy of ID bearing the pictures/ signature of the representatives.\n * Please submit Your quotation using our official Request for Quotation (RFQ) Form. You can secure a copy of the RFQ \nfrom the General Services and Supply Section, Finance and Administrative Division.\n *Please submit your quotation together with the Eligibility Documents through any of the following : \n      a. Email us at dilg4a.bac@gmail.com\n      b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
+ $objPHPExcel->getActiveSheet()->setCellValue('A'.$row,"NOTE:\n*In order to be eligible for this procurement, suppliers/service providers must submit together with the quotation the following Eligibility Documents:\n   1. Valid Business Peromit 2020 ( Application for renewal with Official Receipt 2020)\n   2. PhilGEPS Registration No. (Please indicate on the space provided above)\n   3. a. Any documents to prove that the signatory of the quotation is autorized representative of the company.\n     b. Photocopy of ID bearing the pictures/ signature of the representatives.\n * Please submit your quotation using our official Request for Quotation (RFQ) Form. You can secure a copy of the \nRFQ from the General Services and Supply Section, Finance and Administrative Division.\n *Please submit your quotation together with the Eligibility Documents through any of the following : \n       a. Email us at dilg4a.bac@gmail.com\n         b. Deliver on hand at the receiving area of DILG IV-A CALABARZON, Andenson Bldg1. National Highway, Parian, Calamba City, Laguna");
 }
 
   // echo $notes_group;
@@ -332,7 +332,7 @@ $objPHPExcel->getActiveSheet()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssG)->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->mergeCells('A'.$rowssG.':N'.$rowssG);
-        $objPHPExcel->getActiveSheet()->getRowDimension($rowssG)->setRowHeight(15);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssG)->setRowHeight(15.75);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssG)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssG,'SUPPLIER');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssG.':N'.$rowssG)->applyFromArray($styleContent);
@@ -350,7 +350,7 @@ $objPHPExcel->getActiveSheet()
         ->setRGB('b5b8bc');##b5b8bc
         // $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssH)->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->mergeCells('A'.$rowssH.':N'.$rowssH);
-        $objPHPExcel->getActiveSheet()->getRowDimension($rowssH)->setRowHeight(15);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssH)->setRowHeight(15.75);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssH)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssH,'After having carefully read and accepted your General Conditions, I / WE quote on the item(s) at prices noted above.');
         // 
@@ -368,7 +368,7 @@ $objPHPExcel->getActiveSheet()
         ->getStartColor()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssI)->getFont()->setBold(true);
-        $objPHPExcel->getActiveSheet()->getRowDimension($rowssI)->setRowHeight(15);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssI)->setRowHeight(15.75);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssI)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssI,'Name:');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssI)->applyFromArray($styleRight);
@@ -392,7 +392,7 @@ $objPHPExcel->getActiveSheet()
         ->getStartColor()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssJ)->getFont()->setBold(true);
-        $objPHPExcel->getActiveSheet()->getRowDimension($rowssJ)->setRowHeight(15);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssJ)->setRowHeight(15.75);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssJ)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssJ,'Contact:');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssJ)->applyFromArray($styleRight);
@@ -415,7 +415,7 @@ $objPHPExcel->getActiveSheet()
         ->getStartColor()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssK)->getFont()->setBold(true);
-        $objPHPExcel->getActiveSheet()->getRowDimension($rowssK)->setRowHeight(15);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssK)->setRowHeight(15.75);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssK)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssK,'Signature');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssK)->applyFromArray($styleRight);
