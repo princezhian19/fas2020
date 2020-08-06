@@ -246,7 +246,7 @@ $objPHPExcel->getActiveSheet()
             // $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssE)->applyFromArray($styleRight);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssE)->getFont()->setBold(true);
              // $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssE)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-        $objPHPExcel->getActiveSheet()->getRowDimension($rowssE1)->setRowHeight(10);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssE1)->setRowHeight(6);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssE)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssE,'Warranty:');
 
@@ -332,7 +332,7 @@ $objPHPExcel->getActiveSheet()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssG)->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->mergeCells('A'.$rowssG.':N'.$rowssG);
-        $objPHPExcel->getActiveSheet()->getRowDimension($rowssG)->setRowHeight(30);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssG)->setRowHeight(15);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssG)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssG,'SUPPLIER');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssG.':N'.$rowssG)->applyFromArray($styleContent);
@@ -350,7 +350,7 @@ $objPHPExcel->getActiveSheet()
         ->setRGB('b5b8bc');##b5b8bc
         // $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssH)->getFont()->setBold(true);
         $objPHPExcel->getActiveSheet()->mergeCells('A'.$rowssH.':N'.$rowssH);
-        $objPHPExcel->getActiveSheet()->getRowDimension($rowssH)->setRowHeight(30);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssH)->setRowHeight(15);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssH)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssH,'After having carefully read and accepted your General Conditions, I / WE quote on the item(s) at prices noted above.');
         // 
@@ -368,7 +368,7 @@ $objPHPExcel->getActiveSheet()
         ->getStartColor()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssI)->getFont()->setBold(true);
-        $objPHPExcel->getActiveSheet()->getRowDimension($rowssI)->setRowHeight(30);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssI)->setRowHeight(15);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssI)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssI,'Name:');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssI)->applyFromArray($styleRight);
@@ -392,7 +392,7 @@ $objPHPExcel->getActiveSheet()
         ->getStartColor()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssJ)->getFont()->setBold(true);
-        $objPHPExcel->getActiveSheet()->getRowDimension($rowssJ)->setRowHeight(30);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssJ)->setRowHeight(15);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssJ)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssJ,'Contact:');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssJ)->applyFromArray($styleRight);
@@ -415,7 +415,7 @@ $objPHPExcel->getActiveSheet()
         ->getStartColor()
         ->setRGB('b5b8bc');##b5b8bc
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssK)->getFont()->setBold(true);
-        $objPHPExcel->getActiveSheet()->getRowDimension($rowssK)->setRowHeight(30);
+        $objPHPExcel->getActiveSheet()->getRowDimension($rowssK)->setRowHeight(15);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssK)->applyFromArray($styleContent31);
         $objPHPExcel->getActiveSheet()->setCellValue('A'.$rowssK,'Signature');
         $objPHPExcel->getActiveSheet()->getStyle('A'.$rowssK)->applyFromArray($styleRight);
