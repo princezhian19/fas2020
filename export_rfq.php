@@ -71,32 +71,31 @@ if ($rfq_mode_id == 8) {
   $rfq_mode_id = "Not Applicable N/A";
 }
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('F13',$rfq_mode_id);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('L12',$rfq_no);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('L13',date('F d, Y',strtotime($rfq_date)));
-$objPHPExcel->setActiveSheetIndex()->setCellValue('E15',$pmo);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('E16',$purpose);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('D12',$rfq_mode_id);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('J11',$rfq_no);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('J12',date('F d, Y',strtotime($rfq_date)));
+$objPHPExcel->setActiveSheetIndex()->setCellValue('C14',$pmo);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('C15',$purpose);
 
 $sql_items1 = mysqli_query($conn, "SELECT sum(pr.qty*pr.abc) as totalABC,pr.id,item.item_unit_title,app.procurement,pr.unit,pr.qty,pr.abc FROM pr_items pr LEFT JOIN app on app.id = pr.items left join item_unit item on item.id = pr.unit WHERE pr_no = '$pr_no' ");
 while($rowA = mysqli_fetch_assoc($sql_items1) ){
 
   $totalABC = $rowA["totalABC"];
   $totalABC1 = number_format($totalABC,2);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('E38',$totalABC1);
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('C33',$totalABC1);
 }
 
 
 $sql_items = mysqli_query($conn, "SELECT pr.description,pr.id,item.item_unit_title,app.procurement,pr.unit,pr.qty,pr.abc FROM pr_items pr LEFT JOIN app on app.id = pr.items left join item_unit item on item.id = pr.unit WHERE pr_no = '$pr_no' ");
-$row        = 50;
-$rowssDD    = 68;
-$rowssE     = 51;
-$rowssE1    = 52;
-$rowssF     = 53;
-$rowssG     = 54;
-$rowssH     = 55;
-$rowssI     = 56;
-$rowssJ     = 57;
-$rowssK     = 58;
+$row        = 45;
+$rowssE     = 46;
+$rowssE1    = 47;
+$rowssF     = 48;
+$rowssG     = 49;
+$rowssH     = 50;
+$rowssI     = 51;
+$rowssJ     = 52;
+$rowssK     = 53;
 $countn     = 1;
 while($rowE = mysqli_fetch_assoc($sql_items) ){
 
