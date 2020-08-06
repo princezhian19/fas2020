@@ -196,11 +196,11 @@ while($rowE = mysqli_fetch_assoc($sql_items) ){
   $rowssK++;
 }
 
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$rowssDD)->getAlignment()->setWrapText(true);
-$objPHPExcel->getActiveSheet()->mergeCells('A'.$row.':N'.$rowssDD);
+// $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$rowssDD)->getAlignment()->setWrapText(true);
+$objPHPExcel->getActiveSheet()->mergeCells('A'.$row.':N'.$row);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleContent31);
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$rowssDD)->applyFromArray($styleRight);
-$objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$rowssDD)->applyFromArray($styleLeft);
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$row)->applyFromArray($styleRight);
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$row)->applyFromArray($styleLeft);
 // $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getFont()->setBold(true);
 // $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getFont()->setItalic(true);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
