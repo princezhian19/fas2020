@@ -196,7 +196,7 @@ while($rowE = mysqli_fetch_assoc($sql_items) ){
   $rowssK++;
 }
 
-// $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$rowssDD)->getAlignment()->setWrapText(true);
+$objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$row)->getAlignment()->setWrapText(true);
 $objPHPExcel->getActiveSheet()->mergeCells('A'.$row.':N'.$row);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleContent31);
 $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':N'.$row)->applyFromArray($styleRight);
