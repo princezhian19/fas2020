@@ -89,14 +89,14 @@ while($rowA = mysqli_fetch_assoc($sql_items1) ){
 $sql_items = mysqli_query($conn, "SELECT pr.description,pr.id,item.item_unit_title,app.procurement,pr.unit,pr.qty,pr.abc FROM pr_items pr LEFT JOIN app on app.id = pr.items left join item_unit item on item.id = pr.unit WHERE pr_no = '$pr_no' ");
 $row        = 50;
 $rowssDD    = 68;
-$rowssE     = 69;
-$rowssE1    = 70;
-$rowssF     = 71;
-$rowssG     = 72;
-$rowssH     = 73;
-$rowssI     = 74;
-$rowssJ     = 75;
-$rowssK     = 76;
+$rowssE     = 51;
+$rowssE1    = 52;
+$rowssF     = 53;
+$rowssG     = 54;
+$rowssH     = 55;
+$rowssI     = 56;
+$rowssJ     = 57;
+$rowssK     = 58;
 $countn     = 1;
 while($rowE = mysqli_fetch_assoc($sql_items) ){
 
@@ -208,7 +208,7 @@ $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setHorizonta
 
 $select_notes = mysqli_query($conn,"SELECT n.note FROM rfq_notes rn LEFT JOIN new_rfq_notes n on n.id = rn.note_id WHERE rn.rfq_id = $id ");
 // echo "SELECT * FROM rfq_notes rn LEFT JOIN notes n on n.id = rn.note_id WHERE rn.rfq_id = $id AND n.id != 1 AND n.id != 6 AND n.id !=7";exit;
-        $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(230.25);
+        $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(206.25);
 if (mysqli_num_rows($select_notes) > 0) {
   # code...
   while ($rowN = mysqli_fetch_assoc($select_notes)){
