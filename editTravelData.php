@@ -181,6 +181,7 @@ only screen and (max-width: 760px),
                                     <br>
                                     <input style = "margin-left:14px"type="checkbox"  name = "wor_txt[]" class="minimal-red receipt wor" value ="Without Receipt" > Without Receipt
                                   <?php
+                                  }
                                   else if ($row1['PERDIEM'] != 0 && $row1['RECEIPT'] != '' )
                                   {
                                     ?>
