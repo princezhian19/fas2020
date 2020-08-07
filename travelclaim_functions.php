@@ -195,7 +195,7 @@ session_start();
         
             if($row1 = mysqli_fetch_array($result1))
             {
-                echo $row1['DISTANCE'];
+                echo str_replace('km', '', $row1['DISTANCE']);
             }
     }
     function deleteTravelOrder()

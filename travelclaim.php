@@ -544,7 +544,7 @@ function isSubmit()
                                       Per Diem
                                     </label>
                                     <label class = "pull-right">
-                                      <input type ="hidden" value = "<?php echo getDistance();?>" class = "distance"/> Distance: <?php echo getDistance();?>
+                                      <input type ="hidden" name = "distance" value = "<?php echo getDistance();?>" class = "distance"/> Distance: <?php echo getDistance(). 'km.';?>
                                     </label>
                                   </div>
                                   <div class="form-group">
