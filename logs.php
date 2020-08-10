@@ -352,6 +352,11 @@ if (isset($_POST['stamp4'])) {
 
           <tr>
             <td><?php 
+            echo $FNAME;
+
+
+            ?></td> 
+            <td><?php 
             echo date('F d, Y',strtotime($date_today));
 
 
