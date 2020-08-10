@@ -150,7 +150,7 @@ if (isset($_POST['submit'])) {
           LEFT JOIN tblpersonneldivision on tblpersonneldivision.DIVISION_N = tblemployee.DIVISION_C 
           LEFT JOIN tbldilgposition on tbldilgposition.POSITION_ID = tblemployee.POSITION_C 
           LEFT JOIN tbldesignation on tbldesignation.DESIGNATION_ID = tblemployee.DESIGNATION 
-          GROUP BY tblemployee.LAST_M ASC");
+          ORDER BY tblemployee.LAST_M ASC");
 
 
         while ($row = mysqli_fetch_assoc($view_query)) {
