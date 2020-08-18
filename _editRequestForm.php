@@ -1040,7 +1040,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input disabled type="text" name = "started_date"  class="datePicker1" value="<?PHP echo setStartDate();?>" required>
+                          <input  type="text" name = "started_date"  class="datePicker1" value="<?PHP echo setStartDate();?>" required>
 
                           </div>
                           </td>
@@ -1063,7 +1063,7 @@ switch ($row['STATUS']) {
                           <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                           </div>
-                          <input style = "width:100%;" id= "timepicker" type="time" name = "started_time"  value="<?php echo setStartTime(); ?>" disabled>
+                          <input style = "width:100%;" id= "timepicker" type="time" name = "started_time"  value="<?php echo setStartTime(); ?>" required>
 
                           </div>
                           </td>

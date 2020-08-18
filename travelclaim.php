@@ -544,7 +544,7 @@ function isSubmit()
                                       Per Diem
                                     </label>
                                     <label class = "pull-right">
-                                      <input type ="hidden" value = "<?php echo getDistance();?>" class = "distance"/> Distance: <?php echo getDistance();?>
+                                      <input type ="hidden" name = "distance" value = "<?php echo getDistance();?>" class = "distance"/> Distance: <?php echo getDistance(). 'km.';?>
                                     </label>
                                   </div>
                                   <div class="form-group">
@@ -559,7 +559,7 @@ function isSubmit()
                                     <label>
                                     Accomodation
                                     </label><br>
-                                    <input type="checkbox"  name = "accomodation[]" class="minimal-red wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
+                                    <input type="checkbox"   class="minimal-red wa" value = "With Accomodation accomodation_chkbox"><b> Will Claim Accomodation</b><br>
                                     <input style = "margin-left:14px" type="checkbox"  name = "with_receipt[]" class="minimal-red receipt wr" value ="With Receipt"> With Receipt
                                     <input type="text" disabled name="wor_txt[]"  class = "borderless wor_txt" style = "width:50%;"/>
                                     <br>

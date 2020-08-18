@@ -91,7 +91,7 @@ $mydb = new db(); // create a new object, class db()
                   $user_id = 'FAD';
 
 
-                }else if($DIVISION_C == '3' || $DIVISION_C == '5'){
+                }else if($DIVISION_C == '3' || $DIVISION_C == '5' || $DIVISION_C == '1' || $DIVISION_C == '2'){
 
                   $user_id = 'ORD';
 
@@ -201,7 +201,7 @@ $mydb = new db(); // create a new object, class db()
                             <?php if ($submitted_date == NULL): ?>
 
                               <a  href='ViewPRv.php?id=<?php echo $id;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> View</a> |
-                              <a href='ViewRFQdetails.php?id=<?php echo $getID;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>  
+                              <a href='ViewRFQdetails1.php?id=<?php echo $getID;?>'  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i> Edit</a>  
                               <?php if ($canceled == NULL): ?>
                                | <a data-toggle="modal"  data-target="#modal-info_<?php echo $row['id']; ?>"   class = "btn btn-warning btn-xs"><i class="fa fa-fw fa-close"></i>Cancel</a>  
                                <?php else: ?>

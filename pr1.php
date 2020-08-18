@@ -189,7 +189,7 @@ if (isset($_POST['submit'])) {
   if (mysqli_num_rows($check)>0) {
     echo "<div style='background-color:lightblue;color:red;'> <p> <b>This PR_NO is already existing</b> <p> </div>";
   }else{
-    
+
     $today = date("Y-m-d h:i:sa");
 
     $insert_pr = mysqli_query($conn,"INSERT INTO pr(pr_no,pmo,purpose,pr_date,type,target_date) VALUES('$latest_pr_no','$pmo1','$purpose1','$d1','$type','$d2')");
@@ -353,7 +353,7 @@ if (isset($_POST['add'])) {
         echo "<div style='background-color:lightblue;color:red;'> <p> <b>Unit Cannot Be Blank</b> <p> </div>";
 
       } else{
-       
+
        $insert_items = mysqli_query($conn,'INSERT INTO pr_approved(pr_no,items,pmo,description,unit,qty,abc,mac) 
         VALUES("'.$latest_pr_no.'","'.$_POST['app_items'].'","'.$_POST['pmo'].'","'.$_POST['description'].'","'.$unit.'","'.$_POST['qty'].'","'.$_POST['abc'].'","'.$macaddress.'")');
        echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Successfuly Saved!  </p> </div></div>  '; 
@@ -384,7 +384,7 @@ if (isset($_POST['add'])) {
       function load_data(query)
       {
         $.ajax({
-          
+
 
           url:"fetch_pr1.php",
           method:"POST",
@@ -406,7 +406,7 @@ if (isset($_POST['add'])) {
         }
         else
         {
-          
+
          load_data();
          /* document.getElementById("code").value = ""; */
          document.getElementById("stocknumber").value = "";
@@ -520,9 +520,6 @@ function confirmDelete(delUrl) {
                 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
                 
-
-                $username = $_SESSION['username'];
-                
                 /*   echo "SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'"; */
                 $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'");
                 $rowdiv = mysqli_fetch_array($select_user);
@@ -531,8 +528,7 @@ function confirmDelete(delUrl) {
 
                   $user_id = 'FAD';
                   
-                  
-                }else if($DIVISION_C == '3' || $DIVISION_C == '5'){
+                }else if($DIVISION_C == '3' || $DIVISION_C == '5' || $DIVISION_C == '1'  || $DIVISION_C == '2'){
 
                   $user_id = 'ORD';
 
@@ -635,8 +631,9 @@ function confirmDelete(delUrl) {
                 <?php endif ?>
                 <?php if ($type == ''): ?>
 
-                  <select class="form-control " style="width: 100%;" name="type" id="type" >
+                  <select required class="form-control " style="width: 100%;" name="type" id="type" >
                     <!--   <option value="5">------------------------SELECT TYPE------------------------</option> -->
+                    <option selected disabled ></option>
                     <option value="1">Catering Services</option>
                     <option value="2">Meals, Venue and Accommodation</option>
                     <option value="5">Other Services</option>
@@ -712,325 +709,280 @@ function confirmDelete(delUrl) {
                 </div>
                 <!-- /.col -->
               </div>
-              <div class="item panel panel-info"><div class="panel-heading"> <p style = "color:red;font-size:16px;"> <b> <!-- NOTE : </b> Please do not include this characters <b>( ' and " ) </b> the system will not accept this characters.Applicable to all fields. </p> --> </div></div>
+              <div class="item panel panel-info"><div class="panel-heading"> <p style = "color:red;font-size:16px;"> <b> NOTE : </b> Please do not include this characters <b>( ' and " and & ) </b> the system will not accept this characters.Applicable to all fields. </p> </div></div>
               <?php 
               if ($insert_items) {
                 echo '<div class="item panel panel-info"><div class="panel-heading"> <p style = "color:green;font-size:16px;"> Item Added!  </p> </div></div>  '; 
               }
-
               ?> 
-              <div class="panel panel-success" id="item_table">
-               <?php
-               $output = '';
-               ?>
-               <div class="panel-heading">
-                <i class="fa fa-list-alt"></i>&nbsp&nbsp&nbspPR Items<!-- Item(s) -->
-                <div class="clearfix"></div>
-              </div>
-              <div class="panel-body container-items">
-                <div class=""><!-- widgetBody -->
-                  <div class="row">
-                    <div class="col-md-6" style="padding-left: 30px;padding-top:10px;">
-                      <label>Item/s <font style="color: Red;" >*</font> </label>
-                      <input onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
-                      <font id="p" hidden>&nbsp</font>
-                      <table class="table table-striped table-hover" id="main">
-                        <tbody id="result">
-                        </tbody>
-                      </table>
-                      
-                      <div hidden>
-                        <input type="text" name="app_items" id="id" class="form-control"/>
+              <button type="button" data-toggle="modal" data-target="#modal-default" class="btn btn-info pull-right">Add Items</button>
+              <!-- start of modal add items -->
+              <form method="POST">
+               <div class="modal fade" id="modal-default">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Add Items</h4>
                       </div>
-                      <div class="form-group">
+                      <div class="modal-body">
+                        <label>Item/s <font style="color: Red;" >*</font> </label>
+                        <input onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" type="text" class="form-control" name="app" id="app_items" placeholder="Search" class="" />
+                        <font id="p" hidden>&nbsp</font>
+                        <table class="table table-striped table-hover" id="main">
+                          <tbody id="result">
+                          </tbody>
+                        </table>
+                        <div hidden>
+                          <input type="text" name="app_items" id="id" class="form-control"/>
+                        </div>
+                        <br>
                         <label>Stock/Property No.  <font style="color: Red;" >*</font> </label>
                         <input type="text" name="stocknumber" id="stocknumber" class="form-control" readonly>
-                      </div>
-                      <div class="form-group">
+                        <br>
                         <label>Description/Specification </label>
                         <input type="text" name="description" class="form-control">
+                        <br>
+                        <label>Unit <font style="color: Red;" >*</font></label>
+                        <input  type="text" name="unit" id="unit"  class="form-control" readonly>
+                        <br>
+                        <label >Quantity <font style="color: Red;" >*</font></label>
+                        <br>
+                        <input  class="form-control" type="number" id="qty" name="qty" >
+                        <br>
+                        <label>Unit Cost <font style="color: Red;" >*</font></label>
+                        <br>
+                        <input  class="form-control" type="text" id="abc"  name="abc" readonly>
+                      </div>
+                      <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> -->
+                        <button type="submit" class="btn btn-primary" name="add">Add Item</button>
                       </div>
                     </div>
-
-                    <div class="col-md-6">
-                      <p></p>
-
-                      
-                      <div class="form-group" hidden>
-                        <label>Existing QTY</label>
-                        <input class="form-control" type="number" readonly id="two" name="two">
-                      </div>
-                      <div class="form-group">
-                        <label>Unit <font style="color: Red;" >*</font></label>
-                        <input type="text" name="unit" id="unit"  class="form-control" readonly>
-                   <!--  <select class="form-control select2" style="width: 100%;" name="unit" id="unit" >
-                      <option value="5">------------------------------SELECT UNIT------------------------------</option>
-                      <option value="16">book</option>
-                      <option value="11">bottle</option>
-                      <option value="2">box</option>
-                      <option value="14">bundle</option>
-                      <option value="10">can</option>
-                      <option value="21">cart</option>
-                      <option value="6">crtg</option>
-                      <option value="18">dozen</option>
-                      <option value="20">gallon</option>
-                      <option value="13">jar</option>
-                      
-                      <option value="4">lot</option>
-                      <option value="7">pack</option>
-                      <option value="15">pad</option>
-                      <option value="19">pair</option>
-                      <option value="22">pax</option>
-                      <option value="1">piece</option>
-                      <option value="17">pouch</option>
-                      <option value="3">ream</option>
-                      <option value="9">roll</option>
-                      <option value="12">set</option>
-                      <option value="8">tube</option>
-                      <option value="5">unit</option>
-                    </select> -->
-                    <table class="table table-striped table-hover" id="main">
-                      <tbody id="result">
-                      </tbody>
-                    </table>
+                    <!-- /.modal-content -->
                   </div>
-                  
-                  
-                  <div class="form-group" >
-                    <label>Quantity <font style="color: Red;" >*</font></label>
-                    <input class="form-control" type="number" id="qty" name="qty" >
-                  </div>
-                  <div class="form-group">
-                    <label>Unit Cost <font style="color: Red;" >*</font></label>
-                    <input class="form-control" type="text" id="abc"  name="abc" readonly>
-                  </div>
-
-                  <!-- /.box-body -->
+                  <!-- /.modal-dialog -->
                 </div>
-              </div>
-              <button class="btn btn-primary pull-right"  type="submit" name="add" onclick="/* return confirm('Are you sure you want to Add this item?'); */">Add Item</button>
-              
-            </div>
-          </div>
-        </div>  
+              </form>
+              <!-- end of modal add items -->
+              <br>
+              <br>
+              <div class="form-group">
+                <label>Added PR Item/s.</label>
+                <div>
+                  <div class="panel-body container-items">
+                   <table style="background-color: white;border-width: medium;" class="table " id="item_table" >
+                    <tr>
+                      <th width="50">Stock/Property No.</th>
+                      <th width="100">Unit </th>
+                      <th width="200">Item</th>
+                      <th width="250">Description</th>
+                      <th width="100">Quantity</th>
+                      <th width="100">Unit Cost</th>
+                      <th width="150">Total Cost </th>
+                      <th width="100">Option</th>
+                    </tr>
+                    <tr>
+                      <?php 
+                      $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
+                      $pr_no = $_POST['pr_no'];
+                      $pmo = $_POST['pmo'];
+                      $pr_date = $_POST['pr_date'];
+                      $purpose = $_POST['purpose'];
+                      if ($pr_no == '') {
+                        $pr_no = $_GET['pr_no'];
+                      }
+                      $sql_items = $conn->query("SELECT a.sn,pa.id,pa.qty,pa.items,pa.app_id,pa.pr_no,pa.description,pa.unit,pa.abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' AND pmo = '$pmo' AND mac = '$macaddress'");
+                      while ($row = $sql_items->fetch()) {
+                        $sn = $row['sn'];
+                        $id = $row['id'];
+                        $qty1 = $row['qty'];
+                        $items1 = $row['items'];
+                        $description1 = $row['description'];
+                        $unit1 = $row['unit'];
+                        $abc1 = $row['abc'];
+                        $procurement1 = $row['procurement'];
 
-        <br>
-        <br>
-        <div class="form-group">
-          <label>Added PR Item/s.</label>
-          <div>
-            <div class="panel-body container-items">
-             <table style="background-color: white;border-width: medium;" class="table " id="item_table" >
-              <tr>
-                <th width="50">Stock/Property No.</th>
-                <th width="100">Unit </th>
-                <th width="200">Item</th>
-                <th width="250">Description</th>
-                <th width="100">Quantity</th>
-                <th width="100">Unit Cost</th>
-                <th width="150">Total Cost </th>
-                <th width="100">Option</th>
-              </tr>
-              <tr>
-                <?php 
-                $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
-                $pr_no = $_POST['pr_no'];
-                $pmo = $_POST['pmo'];
-                $pr_date = $_POST['pr_date'];
-                $purpose = $_POST['purpose'];
-                if ($pr_no == '') {
-                  $pr_no = $_GET['pr_no'];
-                }
-                $sql_items = $conn->query("SELECT a.sn,pa.id,pa.qty,pa.items,pa.app_id,pa.pr_no,pa.description,pa.unit,pa.abc,a.procurement FROM pr_approved pa left join app a on a.id = pa.items  WHERE pa.pr_no = '$pr_no' AND pmo = '$pmo' AND mac = '$macaddress'");
-                while ($row = $sql_items->fetch()) {
-                  $sn = $row['sn'];
-                  $id = $row['id'];
-                  $qty1 = $row['qty'];
-                  $items1 = $row['items'];
-                  $description1 = $row['description'];
-                  $unit1 = $row['unit'];
-                  $abc1 = $row['abc'];
-                  $procurement1 = $row['procurement'];
+                        if ($unit1 == "1") {
+                          $unit1a = "piece";
+                        }
 
-                  if ($unit1 == "1") {
-                    $unit1a = "piece";
-                  }
+                        if ($unit1 == "2") {
+                          $unit1a = "box";
+                        }
 
-                  if ($unit1 == "2") {
-                    $unit1a = "box";
-                  }
+                        if ($unit1 == "3") {
+                          $unit1a = "ream";
+                        }
 
-                  if ($unit1 == "3") {
-                    $unit1a = "ream";
-                  }
+                        if ($unit1 == "4") {
+                          $unit1a = "lot";
+                        }
 
-                  if ($unit1 == "4") {
-                    $unit1a = "lot";
-                  }
+                        if ($unit1 == "5") {
+                          $unit1a = "unit";
+                        }
 
-                  if ($unit1 == "5") {
-                    $unit1a = "unit";
-                  }
+                        if ($unit1 == "6") {
+                          $unit1a = "crtg";
+                        }
 
-                  if ($unit1 == "6") {
-                    $unit1a = "crtg";
-                  }
+                        if ($unit1 == "7") {
+                          $unit1a = "pack";
+                        }
+                        if ($unit1 == "8") {
+                          $unit1a = "tube";
+                        }
 
-                  if ($unit1 == "7") {
-                    $unit1a = "pack";
-                  }
-                  if ($unit1 == "8") {
-                    $unit1a = "tube";
-                  }
+                        if ($unit1 == "9") {
+                          $unit1a = "roll";
+                        }
 
-                  if ($unit1 == "9") {
-                    $unit1a = "roll";
-                  }
+                        if ($unit1 == "10") {
+                          $unit1a = "can";
+                        }
 
-                  if ($unit1 == "10") {
-                    $unit1a = "can";
-                  }
+                        if ($unit1 == "11") {
+                          $unit1a = "bottle";
+                        }
 
-                  if ($unit1 == "11") {
-                    $unit1a = "bottle";
-                  }
+                        if ($unit1 == "12") {
+                          $unit1a = "set";
+                        }
 
-                  if ($unit1 == "12") {
-                    $unit1a = "set";
-                  }
+                        if ($unit1 == "13") {
+                          $unit1a = "jar";
+                        }
 
-                  if ($unit1 == "13") {
-                    $unit1a = "jar";
-                  }
+                        if ($unit1 == "14") {
+                          $unit1a = "bundle";
+                        }
 
-                  if ($unit1 == "14") {
-                    $unit1a = "bundle";
-                  }
+                        if ($unit1 == "15") {
+                          $unit1a = "pad";
+                        }
 
-                  if ($unit1 == "15") {
-                    $unit1a = "pad";
-                  }
+                        if ($unit1 == "16") {
+                          $unit1a = "book";
+                        }
 
-                  if ($unit1 == "16") {
-                    $unit1a = "book";
-                  }
+                        if ($unit1 == "17") {
+                          $unit1a = "pouch";
+                        }
 
-                  if ($unit1 == "17") {
-                    $unit1a = "pouch";
-                  }
+                        if ($unit1 == "18") {
+                          $unit1a = "dozen";
+                        }
 
-                  if ($unit1 == "18") {
-                    $unit1a = "dozen";
-                  }
+                        if ($unit1 == "19") {
+                          $unit1a = "pair";
+                        }
+                        if ($unit1 == "20") {
+                          $unit1a = "gallon";
+                        }
 
-                  if ($unit1 == "19") {
-                    $unit1a = "pair";
-                  }
-                  if ($unit1 == "20") {
-                    $unit1a = "gallon";
-                  }
+                        if ($unit1 == "21") {
+                          $unit1a = "cart";
+                        }
+                        if ($unit1 == "22") {
+                          $unit1a = "pax";
+                        }
+                        if ($unit == "23") {
+                          $unit = "liters";
+                        } 
+                        if ($unit == "24") {
+                          $unit = "meters";
+                        } 
 
-                  if ($unit1 == "21") {
-                    $unit1a = "cart";
-                  }
-                  if ($unit1 == "22") {
-                    $unit1a = "pax";
-                  }
-                  if ($unit == "23") {
-                    $unit = "liters";
-                  } 
-                  if ($unit == "24") {
-                    $unit = "meters";
-                  } 
-                  
-                  ?>
-                  
-                  <td id="tdvalue" hidden><?php echo $pr_no?> </td>
-                  <td><?php echo $sn ?></td>
-                  <td><input hidden type="text" name="unit1[]" value="<?php echo $unit1 ?>"><?php echo $unit1a?></td>
-                  <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php echo  $procurement1;?> </td>
-                  <td><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
-                  <!-- <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php $itemconcat = $procurement1." ".$description1; echo  $itemconcat;   ?> </td> -->
-                  <td><input hidden type="text" name="qty1[]" value="<?php echo $qty1 ?>"><?php echo $qty1?></td>
-                  <td><input hidden type="text" name="abc1[]" value="<?php echo $abc1 ?>"><?php echo $abc1?></td>
-                  
-                  <td><?php  $ans = $abc1*$qty1;  echo $ans; ?></td>
-                  <td hidden><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
-                  <td>
-                   <!-- <?php echo '<a href="ViewEditPR1.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?>  -->
+                        ?>
 
-                   <!-- <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR1.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> "><i style="font-size:24px" class="fa fa-trash-o"></i></a> -->
-                   <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> " class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
-                 </td>
-               </tr>
-             <?php } ?>
-           </table>
-         </div>
-       </form>
-       
-       <button class="btn btn-success" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
-       
-       
-       <br>
+                        <td id="tdvalue" hidden><?php echo $pr_no?> </td>
+                        <td><?php echo $sn ?></td>
+                        <td><input hidden type="text" name="unit1[]" value="<?php echo $unit1 ?>"><?php echo $unit1a?></td>
+                        <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php echo  $procurement1;?> </td>
+                        <td><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
+                        <!-- <td><input hidden type="text" name="items1[]" value="<?php echo $items1 ?>"><?php $itemconcat = $procurement1." ".$description1; echo  $itemconcat;   ?> </td> -->
+                        <td><input hidden type="text" name="qty1[]" value="<?php echo $qty1 ?>"><?php echo $qty1?></td>
+                        <td><input hidden type="text" name="abc1[]" value="<?php echo $abc1 ?>"><?php echo $abc1?></td>
 
-     </div>  
-   </div>  
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>  
-   <br>
- </body>
+                        <td><?php  $ans = $abc1*$qty1;  echo $ans; ?></td>
+                        <td hidden><input hidden type="text" name="description1[]" value="<?php echo $description1 ?>"><?php echo $description1?></td>
+                        <td>
+                         <!-- <?php echo '<a href="ViewEditPR1.php?id='.$id.'&pr_no='.$pr_no.'&pmo='.$pmo.'&pr_date='.$pr_date.'&purpose='.$purpose.'  " ><i style="font-size:24px" class="fa">&#xf044;</i></a>' ?>  -->
 
- <script>
-  $(document).ready(function(){
-    $("#result").click(function(){
-      $("#main").hide();
-      $("#p").show();
-    });
-  });
-</script>
+                         <!-- <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR1.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> "><i style="font-size:24px" class="fa fa-trash-o"></i></a> -->
+                         <a onclick="return confirm('Are you sure you want to Delete?');" href="deletePR.php?id=<?php echo $id; ?>&pr_no=<?php echo $pr_no; ?>&pmo=<?php echo $pmo; ?>&pr_date=<?php echo $pr_date; ?>&purpose=<?php echo $purpose; ?> " class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</a>
+                       </td>
+                     </tr>
+                   <?php } ?>
+                 </table>
+               </div>
+             </form>
 
-<!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Select2 -->
-<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="plugins/input-mask/jquery.inputmask.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="bower_components/moment/min/moment.min.js"></script>
-<script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- bootstrap color picker -->
-<script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- SlimScroll -->
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="plugins/iCheck/icheck.min.js"></script>
-<!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- Page script -->
-<script>
-  $(document).ready(function(){
+             <button class="btn btn-success" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
+
+
+             <br>
+
+           </div>  
+         </div>  
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>  
+         <br>
+       </body>
+
+       <script>
+        $(document).ready(function(){
+          $("#result").click(function(){
+            $("#main").hide();
+            $("#p").show();
+          });
+        });
+      </script>
+
+      <!-- jQuery 3 -->
+      <script src="bower_components/jquery/dist/jquery.min.js"></script>
+      <!-- Bootstrap 3.3.7 -->
+      <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+      <!-- Select2 -->
+      <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+      <!-- InputMask -->
+      <script src="plugins/input-mask/jquery.inputmask.js"></script>
+      <script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+      <script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+      <!-- date-range-picker -->
+      <script src="bower_components/moment/min/moment.min.js"></script>
+      <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+      <!-- bootstrap datepicker -->
+      <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+      <!-- bootstrap color picker -->
+      <script src="bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+      <!-- bootstrap time picker -->
+      <script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>
+      <!-- SlimScroll -->
+      <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+      <!-- iCheck 1.0.1 -->
+      <script src="plugins/iCheck/icheck.min.js"></script>
+      <!-- FastClick -->
+      <script src="bower_components/fastclick/lib/fastclick.js"></script>
+      <!-- AdminLTE App -->
+      <script src="dist/js/adminlte.min.js"></script>
+      <!-- AdminLTE for demo purposes -->
+      <script src="dist/js/demo.js"></script>
+      <!-- Page script -->
+      <script>
+        $(document).ready(function(){
         //Date picker,
         $('#datepicker1').datepicker({
           autoclose: true
@@ -1046,7 +998,7 @@ function confirmDelete(delUrl) {
           autoclose: true
         })
       })
-  $(function () {
+        $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()
 

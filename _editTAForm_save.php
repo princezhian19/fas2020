@@ -37,6 +37,8 @@ $COM = $_POST['isComplete'];
 // }
 $insert ="UPDATE `tbltechnical_assistance` SET 
 `STATUS_DESC` = '".$STATUS_DESC."',
+`START_DATE` = '".$started_date."',
+`START_TIME` = '".$started_time."',
 `COMPLETED_DATE`= '".$completed_date."',
 `COMPLETED_TIME`= '".$completed_time."',
 `STATUS_REQUEST`='Completed',

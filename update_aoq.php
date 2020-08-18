@@ -380,49 +380,40 @@ $totsppu44 = $rowtots44['totalppu'];
             <h4>RFQ Details</h4>
         </div>
         <div class="box-body table-responsive no-padding">
-            <div class="box-body">
-                <table id="example1" class="table table-striped table-bordered" style="background-color: white;">
-                    <tr>
-                        <th width="100">RFQ Date</th>
-                        <td><?php echo $rfq_date;?></td>
-                    </tr>
-                    <tr>
-                        <th>Purpose</th>
-                        <td><?php echo $purpose;?></td>
-                    </tr>
-                    <tr>
-                        <th>Office</th>
-                        <td><?php echo $pmo;?></td>
-                    </tr>
+        <div class="box-body">
+          <table id="" class="table table-striped " style="background-color: white;">
+            <tr>
+              <th  class="pull-left text-black">RFQ Date</th>
+              <td><?php echo $rfq_date;?></td>
+            </tr>
+            <tr>
+              <th class="pull-left text-black">Purpose</th>
+              <td><?php echo $purpose;?></td>
+            </tr>
+            <tr>
+              <th class="pull-left text-black">Office</th>
+              <td><?php echo $pmo;?></td>
+            </tr>
 
-                    <tr>
-                        <th>PR No.</th>
-                        <td><?php echo $pr_no;?></td>
-                    </tr>
-                    <tr>
-                        <th width="150" >PR Date Received</th>
-                        <td><?php echo $pr_date;?></td>
-                    </tr>
-                     <!-- <tr>
-                        <?php 
-                    $view_query1 = mysqli_query($conn, "SELECT  sum(abc*qty) as aa from pr_items WHERE pr_no = '$pr_no' ");
-                      while ($row = mysqli_fetch_assoc($view_query1)) {
-                        $abc1 = $row["aa"];
-                                }
-                        ?>
-                        <th>ABC:</th>
-                        <td><?php echo number_format($abc1,2);?></td>
-                    </tr> -->
-                </table>
-            </div>
+            <tr>
+              <th class="pull-left text-black">PR No.</th>
+              <td><?php echo $pr_no;?></td>
+            </tr>
+            <tr>
+              <th class="pull-left text-black"  >PR Date Received</th>
+              <td width="200"><?php echo $pr_date;?></td>
+            </tr>
+            <tr>
+              <th  class="pull-left text-black" >ABC</th>
+              <td><?php echo number_format($abc111,2);?></td>
+            </tr>
+          </table>
         </div>
+      </div>
     </div>
 </div>
 <div class="col-md-12" disabled>
     <div class="box box-success">
-      <div class="box-header with-border" align="left">
-        <h4>Suppliers Quotations</h4>
-      </div>
       <div class="box-body table-responsive no-padding">
         <div class="box-body">
           <form method="POST">

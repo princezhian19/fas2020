@@ -262,40 +262,40 @@ if (isset($_POST['stamp4'])) {
               ?>
 
               <tr>
-                <td><?php 
-                echo date('F d, Y',strtotime($date_today));
+            <td><?php 
+            echo date('F d, Y',strtotime($date_today));
 
 
-                ?></td>
-                <td><?php 
-                if ($time_in == NULL) {
-                  echo '&nbsp.';
-                }else{
-                  echo date('h:i A',strtotime($time_in));
-                }
-                ?></td>
-                <td><?php 
-                if ($lunch_in == NULL) {
-                  echo '&nbsp.';
-                }else{
-                  echo date('h:i A',strtotime($lunch_in));
-                }
-                ?></td>
-                <td><?php 
-                if ($lunch_out == NULL) {
-                  echo '&nbsp.';
-                }else{
-                  echo date('h:i A',strtotime($lunch_out));
-                }
-                ?></td>
-                <td><?php 
-                if ($time_out == NULL) {
-                  echo '&nbsp.';
-                }else{
-                  echo date('h:i A',strtotime($time_out));
-                }
-                ?></td>
-               <td>
+            ?></td>
+            <td><?php 
+            if ($time_in == NULL) {
+              echo '&nbsp.';
+            }else{
+              echo date('h:i A',strtotime($time_in));
+            }
+            ?></td>
+            <td><?php 
+            if ($lunch_in == NULL) {
+              echo '&nbsp.';
+            }else{
+              echo date('h:i A',strtotime($lunch_in));
+            }
+            ?></td>
+            <td><?php 
+            if ($lunch_out == NULL) {
+              echo '&nbsp.';
+            }else{
+              echo date('h:i A',strtotime($lunch_out));
+            }
+            ?></td>
+            <td><?php 
+            if ($time_out == NULL) {
+              echo '&nbsp.';
+            }else{
+              echo date('h:i A',strtotime($time_out));
+            }
+            ?></td>
+            <td>
              <?php 
              if(date('D',strtotime($date_today)) == 'Mon'){ 
                   $lateD = date('h:i',strtotime($time_in)) < date('h:i',strtotime('08:00'));
@@ -389,7 +389,8 @@ if (isset($_POST['stamp4'])) {
           ?>
 
         </td>
-              </tr>
+
+      </tr>
             <?php } ?>
           </table>
         </div>
