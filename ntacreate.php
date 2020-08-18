@@ -158,11 +158,7 @@ $username = $_SESSION['username'];
                     <input  type="text" readonly  class="form-control" style="height: 35px; border-style: groove;" id="obligated" placeholder="Enter Obligated" name="obligated" value="0">
                     <br>
                     <label>Balance</label>
-                    <input  type="text" readonly  class="form-control" style="height: 35px; border-style: groove;" id="balance" placeholder="Balance is from Allotment Amount - Disbursed Amount" name="balance" >
-                  
-                   
-                     
-                    
+                    <input  type="text" readonly  class="form-control" style="height: 35px; border-style: groove;" id="balance" placeholder="Balance is from Allotment Amount - Disbursed Amount" name="balance" >                    
                 </div>
             </div>
         </div>
@@ -172,15 +168,8 @@ $username = $_SESSION['username'];
             <div class="row">
                 <div class="col-md-6">
                      
-                     
-
-                   
-                    
                 </div>
                 <div class="col-md-6">
-               
-                   
-
 
                 </div>
                

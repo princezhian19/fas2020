@@ -1,4 +1,4 @@
-  <div class="box box-default">
+  <div class="box box-default" style="border-style: groove;">
     <div class="box-header with-border">
      <div class="box-body">
       <div class="row">

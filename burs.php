@@ -53,7 +53,6 @@ if (isset($_POST['submit'])) {
     </SCRIPT>");
  }
 
-
 }
 ?>
 
@@ -98,18 +97,18 @@ if (isset($_POST['submit'])) {
     }
   </script>
 
-  <div class="box box-default">
+  <div class="box box-default" style="border-style: groove;">
     <div class="box-header with-border">
       <h1 align="">&nbspCreate ORS/BURS</h1>
       <div class="box-header with-border">
       </div>
       <br>
-      &nbsp &nbsp &nbsp   <li class="btn btn-success btn-s"><a href="ViewBURS.php" style="color:white;text-decoration: none;">Back</a></li>
+      &nbsp &nbsp &nbsp   <li class="btn btn-warning btn-s"><a href="ViewBURS.php" style="color:white;text-decoration: none;">Back</a></li>
 
       <br>
       <br>
       <form method="POST" autocomplete="off" >
-        <div class="box-body">
+        <div class="box-body" >
           <div class="well">
             <div class="row">
               <div class="col-md-6">
@@ -159,9 +158,7 @@ if (isset($_POST['submit'])) {
               <input onKeyPress='return dec(event)' required autocomplete = "false"  class="form-control" name="amount" type="number" id="amount">
 
             </div>
-
           </div>
-
 
         </div>
       </div>

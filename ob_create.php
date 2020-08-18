@@ -558,7 +558,7 @@ mysqli_close($conn);
                 <br>
               <br>
                 
-                    <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
+                    <input type="submit" name="submit" class="btn btn-primary pull-right" value="Save" id="butsave">
 
                     <br>
                     <br>
