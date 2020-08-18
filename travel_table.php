@@ -173,11 +173,11 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                   ,
                   "columnDefs": [ {
                       "targets":10,
-                      "width": "15%", "targets": 10,
+                      "width": "22%", "targets": 10,
 
                       "render": function (data, type, row, meta ) {  
                         if(row[1] == "<?php echo $_SESSION['complete_name2'];?>"){
-                          action = "<button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button> &nbsp;<button class = 'btn btn-md btn-primary' style = 'font-family:Arial' id = 'edit'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger' id = 'delete' style = 'font-family:Arial;'><i class = 'fa fa-trash'></i> Delete</button> ";
+                          action = "<button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button> &nbsp;<button class = 'btn btn-md btn-primary' style = 'font-family:Arial' id = 'edit'><i class = 'fa fa-edit'></i>Edit</button>&nbsp;<button class = 'btn btn-md btn-danger' id = 'delete' style = 'font-family:Arial;'><i class = 'fa fa-trash'></i> Delete</button>&nbsp;<button  class = 'btn btn-md btn-warning' id = 'export' style = 'font-family:Arial'><i class = 'fa fa-fw fa-download'></i>Export</button>  ";
                         }else{
                           action = "<center><button  class = 'btn btn-md btn-success' id = 'view' style = 'font-family:Arial'><i class = 'fa fa-eye'></i>View</button></center>";
                         }
@@ -336,6 +336,14 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                       }
                       );
              
+              });
+              //when users click export button
+              $('#example tbody').on( 'click', '#export', function () {
+                var data = table.row( $(this).parents('tr') ).data();
+                var RO = data[2];
+                var username = data[1];
+                $('#or').val(data[2]);
+               window.location = "export_travelclaim.php";
               });
 
 

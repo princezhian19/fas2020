@@ -51,7 +51,7 @@ if(mysqli_num_rows($result) > 0)
                 $dinner = $_POST['dinner'][$a]; 
                 $receipt = $_POST['wor_txt'][$a]; 
                 
-                if($breakfast == 'breakfast') 
+                if($breakfast == 'breakfast')   
                 { $breakfast = 220; } 
                 if($lunch == 'lunch') 
                 { $lunch = 220; } 
