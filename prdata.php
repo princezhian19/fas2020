@@ -14,6 +14,8 @@
                   <th width="100">PR NO</th>
                   <th width="100">PR DATE</th>
                   <th width="100">OFFICE</th>
+                  <th width="100">MODE OF PROCUREMENT</th>
+
                   <th width="100">RFQ NO</th>
                   <th width="100">RFQ DATE</th>
                   <th width="100">ABC</th>
@@ -60,6 +62,7 @@
                   </td>
                   <td><?php echo $pr_date1;?></td>
                   <td><?php echo $pmo;?></td>
+                  <td><?php echo $mode_of_proc_title;?></td>
                 
                           <td>
                             <!-- <a href="ViewPRv.php?id=<?php echo $id ?>"><?php echo $rfq_no;?></a> -->
