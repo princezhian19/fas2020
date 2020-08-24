@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="595" pageHeight="842" columnWidth="451" leftMargin="72" rightMargin="72" topMargin="72" bottomMargin="72" uuid="30dd5ff4-71e5-473c-8d86-008bd800a8c8">
 	<property name="ireport.zoom" value="1.464100000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="480"/>
+	<property name="ireport.y" value="288"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#FFFFFF"/>
@@ -595,7 +595,7 @@ Ng Marso 1984
 				<text><![CDATA[Lugar :]]></text>
 			</staticText>
 			<image>
-				<reportElement x="1" y="50" width="450" height="591" uuid="26199b17-87e4-4166-83ed-eadad6f6cc08"/>
+				<reportElement x="-56" y="99" width="549" height="475" uuid="26199b17-87e4-4166-83ed-eadad6f6cc08"/>
 				<imageExpression><![CDATA[$P{cancelled}]]></imageExpression>
 			</image>
 		</band>
