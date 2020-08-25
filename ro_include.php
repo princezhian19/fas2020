@@ -1,4 +1,15 @@
 <form method = "POST" action = "ro_export_date.php">
+
+<td class="col-md-1" >
+<b>TYPE</b>
+<select class="" required id="type" name="type" style="width: 150px; Height:30px;">
+<option value="">Select Type</option>
+<option value="ro">Regional Order</option>
+<option value="roo">Regional Office Order</option>
+
+</select>
+
+</td>
 <td class="col-md-1">
 <b>Month</b>
 
