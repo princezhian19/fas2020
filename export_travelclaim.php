@@ -98,19 +98,19 @@ $styleArray = array(
       // $objPHPExcel->getActiveSheet()->getHighestRow()-10;
       while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
     {
-      $saved[] = $excelrow["DATE"]; // you are missing []
-        if($excelrow['DATE'] == $excelrow['DATE'])
-          {
-            if($excelrow['DATE'] == $saved[1])
-            {
-              $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,'');
+      // $saved[] = $excelrow["DATE"]; // you are missing []
+      //   if($excelrow['DATE'] == $excelrow['DATE'])
+      //     {
+      //       if($excelrow['DATE'] == $saved[1])
+      //       {
+      //         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,'');
 
-            }else
-            {
+      //       }else
+      //       {
               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$excelrow['DATE']);
-            }   
-        }else{
-        }
+        //     }   
+        // }else{
+        // }
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row,$excelrow['PLACE']);
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$row,date('g:i A',strtotime($excelrow['ARRIVAL'])));
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row,date('g:i A',strtotime($excelrow['DEPARTURE'])));
