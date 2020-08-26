@@ -188,7 +188,7 @@ mysqli_close($conn);
 ?>
 <!-- Insert Query -->
        
-<div class="box">
+<div class="box" >
           <div class="box-body">
       
             <h1 align="">Official Business</h1>

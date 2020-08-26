@@ -67,12 +67,12 @@ while ($row = mysqli_fetch_assoc($auto)) {
   echo $idget;
 }
   
-if($idGet<9){
+if($idGet<=9){
   $vrcount =$getDate.'-'.'00'.$idGet;
   
   
   }
-  else if($idGet<99){
+  else if($idGet<=99){
   
   $vrcount =$getDate.'-'.'0'.$idGet;
   

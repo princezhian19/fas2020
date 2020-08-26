@@ -76,13 +76,12 @@ $edit="edit";
 
 </head>
 <body>
-<div class="box">
+<div class="box" style="border-style: groove;">
   <div class="box-body">
           
-          <h1 align="">Regional Order and Regional Office Order</h1>
+          <h1 align=""> Regional Order and Regional Office Order</h1>
           
-          <br>
-          
+          <br>         
 <table class="table" > 
 
 <!-- Header -->
@@ -119,9 +118,9 @@ else{
                 <thead>
                     <tr style="background-color: white;color:blue; text-align:center">
                   <th width = '300'>CATEGORY</th>
-                  <th width = '200'>ISSUANCE NO  </th>
-                  <th width = '200'>ISSUANCE DATE  </th>
-                  <th width = '700'>TITLE/SUBJECT  </th>
+                  <th width = '200'>ISSUANCE NO</th>
+                  <th width = '200'>ISSUANCE DATE</th>
+                  <th width = '700'>TITLE/SUBJECT</th>
                   <th width = '250'>OFFICE</th>
                   <th width = '200'>REGISTERED BY </th>
                   <th width = '200'>REGISTERED DATE  </th>
