@@ -103,7 +103,8 @@ $styleArray = array(
           {
             if($excelrow['DATE'] == $saved[1])
             {
-              echo '';
+              $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,'');
+
             }else
             {
               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$excelrow['DATE']);
