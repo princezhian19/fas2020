@@ -343,7 +343,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                 var RO = data[2];
                 var username = data[1];
                 $('#or').val(data[2]);
-               window.location = "export_travelclaim.php";
+               window.location = "export_travelclaim.php?id="+RO+"&&username="+username+"";
               });
 
 
