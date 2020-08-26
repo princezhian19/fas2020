@@ -227,7 +227,7 @@ mysqli_close($conn);
 
 
 <!-- Upadte Queries -->
-<div class="box">
+<div class="box" >
           <div class="box-body">
       
             <h1 align="">Edit Official Business</h1>

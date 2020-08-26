@@ -152,7 +152,7 @@ else{
 ?>
 <!-- Insert Query -->
        
-<div class="box">
+<div class="box" style="border-style: groove;">
           <div class="box-body">
       
             <h1 align="">Add Official Business</h1>

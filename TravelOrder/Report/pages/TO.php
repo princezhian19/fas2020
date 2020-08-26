@@ -111,7 +111,7 @@ $status = $row['status'];
 $stat="";
 
 if($status=='cancelled'){
-$stat='Cancelled';
+$stat='cancelled.png';
 }
 else{
 $stat='';

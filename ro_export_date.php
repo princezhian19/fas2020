@@ -43,17 +43,37 @@ $month1 = $_POST['month'];
 $month = date('m', strtotime($month1));
 $year = $_POST['year'];
 
+$type = $_POST['type'];
 $office = $_POST['office'];
 
 
-
 if($office=='ALL'){
-$sql_q10 = mysqli_query($conn, "SELECT * FROM ro_roo WHERE issuancedate like  '%".$year."-".$month1."%'  order by issuancedate asc" );
+
+if($type=='ro'){
+$ro = 'Regional Order';
+    
+$sql_q10 = mysqli_query($conn, "SELECT * FROM ro_roo WHERE issuancedate like  '%".$year."-".$month1."%' and category like '%".$ro."%'   order by issuancedate asc" );
+}
+else{
+$roo = 'Regional Office Order';
+$sql_q10 = mysqli_query($conn, "SELECT * FROM ro_roo WHERE issuancedate like  '%".$year."-".$month1."%' and category like '%".$roo."%'   order by issuancedate asc" );
+
+}
 
 
 }
 else{
-$sql_q10 = mysqli_query($conn, "SELECT * FROM ro_roo WHERE issuancedate like  '%".$year."-".$month1."%' and office = '$office' order by issuancedate asc" );
+if($type=='ro'){
+$ro = 'Regional Order';
+
+$sql_q10 = mysqli_query($conn, "SELECT * FROM ro_roo WHERE issuancedate like  '%".$year."-".$month1."%' and category like '%".$ro."%' and office = '$office'  order by issuancedate asc" );
+}
+else{
+$roo = 'Regional Office Order';
+$sql_q10 = mysqli_query($conn, "SELECT * FROM ro_roo WHERE issuancedate like  '%".$year."-".$month1."%' and category like '%".$roo."%'  and office = '$office'  order by issuancedate asc" );
+
+}
+// $sql_q10 = mysqli_query($conn, "SELECT * FROM ro_roo WHERE issuancedate like  '%".$year."-".$month1."%' and office = '$office' order by issuancedate asc" );
 
 }
 

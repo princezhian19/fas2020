@@ -53,7 +53,6 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
 $checked = "";
 
 
-
 //count ob
 $idGet='';
 $getDate = date('Y');
@@ -65,15 +64,14 @@ while ($row = mysqli_fetch_assoc($auto)) {
   echo $idget;
 }
   
-if($idGet<9){
+if($idGet<=9){
   $vrcount =$getDate.'-'.'00'.$idGet;
   
   
   }
-  else if($idGet<99){
+  else if($idGet<=99){
   
   $vrcount =$getDate.'-'.'0'.$idGet;
-  
   
   }
   else{
@@ -81,7 +79,6 @@ if($idGet<9){
   
   }
   $vrcount11 =''.$idGet;
-  
 
 ?>
 
