@@ -108,6 +108,7 @@ $styleArray = array(
       //       }else
       //       {
               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$excelrow['DATE']);
+              
         //     }   
         // }else{
         // }
