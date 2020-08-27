@@ -25,11 +25,10 @@ $query = mysqli_query($conn, "UPDATE vr set receiveddate ='$date',receivedby='$u
 if($query){
 
     
-   
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert(' Vehicle Request has been successfully received.')
     window.location.href='VehicleRequest.php';
-    </SCRIPT>"); 
+    </SCRIPT>");
 
 }
 else{

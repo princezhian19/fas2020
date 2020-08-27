@@ -254,10 +254,7 @@ mysqli_close($conn);
               <tr>
               <td class="col-md-1"></td>
                   
-              <td class="col-md-2" >
-
-             
-                 
+              <td class="col-md-2" >   
               </td>
 
               <td class="col-md-6" style = "text-align:center; color:gray;">
@@ -265,8 +262,6 @@ mysqli_close($conn);
               <h3>PERMIT TO LEAVE THE OFFICE</h3>
 
               </td>
-
-             
 
               <td class="col-md-2" >
               

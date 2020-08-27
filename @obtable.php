@@ -15,7 +15,7 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
 <head>
   <title>Financial Management System</title>
 
-
+  
 </head>
 <body>
 <div class="box " style="border-style: groove;">

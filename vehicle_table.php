@@ -375,6 +375,9 @@ $edit="edit";
                                 <?php else: ?>
                                 <td>
                                 <?php if ($recommenddate1 != '0000-00-00'): ?>
+                                <a name="edit" value="" id="edit" onclick="myFunction2(this)" data-editID="<?php echo $id;?>" data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class='fa'></i> Edit</a> 
+                                <br>
+                                
                                 <?php echo $av.'<br>'.$ad?>
                                 <br>
                                 <?php echo ' '?>
@@ -384,7 +387,12 @@ $edit="edit";
                                 <?php echo ' '?>
                                 <br>
                                 <?php echo $av2.'<br>'.$ad2?>
+                                
+                                
+
                                 <?php else: ?>
+                                  <!-- <a name="edit" value="" id="edit" onclick="myFunction2(this)" data-editID="<?php echo $id;?>" data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class='fa'></i> Edit</a> 
+                                  <br> -->
                                   <?php echo $av.'<br>'.$ad?>
                                   <br>
                                 <?php echo ' '?>
@@ -405,6 +413,8 @@ $edit="edit";
                           
                             <?php else: ?>
                             <td >
+                               <!--  <a name="edit" value="" id="edit" onclick="myFunction2(this)" data-editID="<?php echo $id;?>" data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class='fa'></i> Edit</a> 
+                                <br> -->
                                 <?php echo $av.'<br>'.$ad?>
                                 <br>
                                 <?php echo ' '?>
@@ -414,6 +424,8 @@ $edit="edit";
                                 <?php echo ' '?>
                                 <br>
                                 <?php echo $av2.'<br>'.$ad2?>
+
+
                             </td>
                             <?php endif ?>
 
@@ -991,6 +1003,228 @@ $edit="edit";
           </div>
           </div>
   <!-- assign -->
+
+
+
+<!-- Update Assign -->
+
+<div id="edit_data_Modal" class="modal fade">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Edit Assigned Vehicle Request</h4>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="insert_form" action="vehicle_assign.php">
+              
+            
+              
+              <table class="table">
+                  <tr>
+                  <td >
+                  <label> Assigned Date <span style = "color:red;">*</span></label>  
+                 </td>
+
+                  <td class="" colspan="2" >
+                  <input  required type="text" class="form-control" name="assigneddate" id="datepicker1" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('m/d/Y') ?>" >
+
+                  </td>
+                  </tr>
+                  
+                  <tr>
+                  <td >  <label> Assigned Time <span style = "color:red;">*</span></label>  </td>
+                  
+                  <td class="" colspan="2" >
+                  <input  required type="time" class="form-control" name="assignedtime" id="assignedtime" value = "<?php date_default_timezone_set('Asia/Manila'); echo date('H:i') ?>" >
+
+                  </td>
+                  </tr>
+
+                  <tr>
+                  <td>   <label> Dispatcher <span style = "color:red;">*</span></label>  </td>
+                  
+                  <td class=""  colspan="2">
+                  <input readonly required type="text" class="form-control" name="dispatcher" id="dispatcher" value="<?php echo $username1?>" >
+
+                  </td>
+                  </tr>
+
+
+                  <tr>
+                  <td ><label>  No. of Assigned Vehicle <span style = "color:red;">*</span></label> </td>
+                  
+                  <td class="" colspan="2">
+                  <input  required onkeyup="myFunctionED()" type="number" class="form-control" name="nov" id="nov" value = "" >
+
+                  </td>
+                  </tr>
+
+
+              <tr>
+
+                  <td class="col-md-4" >
+
+                  <div class="div" id="div1">
+                 <!--   Driver 1 -->
+           
+          <label>Assigned Vehicle 1 <span style = "color:red;">*</span></label> 
+                
+                <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
+                <select required class="form-control" style="width: 100%;" name="av" id="av" >
+                    <option value="">Select Vehicle</option>
+                    <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
+                    <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
+                    <option value="Isuzu Pick-up">Isuzu Pick-up</option>
+                   
+                </select>
+               
+             
+              
+              
+             <label>Assigned Driver 1 <span style = "color:red;">*</span></label>
+                <select required class="form-control" style="width: 100%;" name="ad" id="ad" >
+                    <option value="">Select Driver</option>
+                    <option value="Daniel Narciso">Daniel Narciso</option>
+                    <option value="Joachim Lacdang">Joachim Lacdang</option>
+                    <option value="Louie Blanco">Louie Blanco</option>
+                    <option value="Medel Saturno">Medel Saturno</option>
+                    <option value="Reynaldo Parale">Reynaldo Parale</option>
+                   
+                </select>
+               
+              
+              
+                <label>Plate Number <span style = "color:red;">*</span></label>
+                <input readonly required type="Text" class="form-control" name="plate" id="plate" value = "" >
+               
+              
+                <!--   Driver 1 -->
+                </div>
+                  </td>
+
+                  <td class="col-md-4" >
+                 
+        <div class="div" id="div2">
+                  <!--   Driver 2 -->
+           
+          <label>Assigned Vehicle 2 <span style = "color:red;"></span></label> 
+                
+                <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
+                <select  class="form-control" style="width: 100%;" name="av1" id="av1" >
+                    <option value="">Select Vehicle</option>
+                    <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
+                    <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
+                    <option value="Isuzu Pick-up">Isuzu Pick-up</option>
+                   
+                </select>
+               
+             
+              
+              
+             <label>Assigned Driver 2 <span style = "color:red;"></span></label>
+                <select  class="form-control" style="width: 100%;" name="ad1" id="ad1" >
+                    <option value="">Select Driver</option>
+                    <option value="Daniel Narciso">Daniel Narciso</option>
+                    <option value="Joachim Lacdang">Joachim Lacdang</option>
+                    <option value="Louie Blanco">Louie Blanco</option>
+                    <option value="Medel Saturno">Medel Saturno</option>
+                    <option value="Reynaldo Parale">Reynaldo Parale</option>
+                   
+                   
+                </select>
+               
+              
+              
+                <label>Plate Number <span style = "color:red;"></span></label>
+                <input readonly required type="Text" class="form-control" name="plate1" id="plate1" value = "" >
+               
+              
+                <!--   Driver 2 -->
+                </div>
+
+                  </td>
+
+                  <td class="col-md-4" >
+                 
+
+                <div class="div" id="div3">
+                  <!--   Driver 3 -->
+
+                <label>Assigned Vehicle 3 <span style = "color:red;"></span></label> 
+                
+                <!-- <input  required type="Text" class="form-control" name="assignvehicle" id="assignvehicle" value = "" > -->
+                <select  class="form-control" style="width: 100%;" name="av2" id="av2" >
+                    <option value="">Select Vehicle</option>
+                    <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
+                    <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
+                    <option value="Isuzu Pick-up">Isuzu Pick-up</option>
+                   
+                </select>
+               
+             
+              
+              
+             <label>Assigned Driver 3 <span style = "color:red;"></span></label>
+                <select  class="form-control" style="width: 100%;" name="ad2" id="ad2" >
+                    <option value="">Select Driver</option>
+                    <option value="Daniel Narciso">Daniel Narciso</option>
+                    <option value="Joachim Lacdang">Joachim Lacdang</option>
+                    <option value="Louie Blanco">Louie Blanco</option>
+                    <option value="Medel Saturno">Medel Saturno</option>
+                    <option value="Reynaldo Parale">Reynaldo Parale</option>
+                   
+                   
+                </select>
+               
+              
+              
+                <label>Plate Number <span style = "color:red;"></span></label>
+                <input readonly required type="Text" class="form-control" name="plate2" id="plate2" value = "" >
+               
+              
+                <!--   Driver 3 -->
+                </div>
+                  </td>
+            
+              </tr>
+
+                  <tr>
+                  <td > <label>Remarks <span style = "color:red;"></span></label></td>
+                  
+                  <td class="" colspan="2" >
+                  <input  type="text" class="form-control" style="height: 70px; width:100%;" name="vremarks" id="vremarks" value = "" >
+
+                  </td>
+                  </tr>
+
+              </table>
+
+
+              <br>
+            
+              
+              
+              <button type="submit" name="assign" class="btn btn-primary pull-right">Save</button>
+
+
+              <input hidden type="text" name="editID" id="editID" value="" class=""/>
+              <br>
+              <input  hidden type="text" name="userv" id="userv" value="<?php echo $username1?>" class=""/>
+              <br>
+              <input hidden  type="text" name="nowv" id="nowv" value=" <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y') ?>" class=""/>
+        </form>
+        
+            </div>
+           
+            </div>
+            </div>
+          </div>
+          </div>
+
+
+<!-- Update Assign -->
+
 
 
 
