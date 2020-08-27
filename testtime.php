@@ -19,7 +19,6 @@ function aa($id)
             WHERE tbltravel_claim_info.`RO` = '".$id."' and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
             $result1 = mysqli_query($conn, $query1);
             $saved = array();
-
             if(mysqli_num_rows($result1) > 0)
             {
                 while($row1 = mysqli_fetch_array($result1))
