@@ -36,7 +36,7 @@ foreach($result as $row)
   'plate2'   => $row["plate2"],
   'vremarks'   => $row["vremarks"],
   'start'   => $row["assigneddate"],
-  'end'   => $row["assigneddateend"]
+  'end'   => $row["assigneddate"]
  );
 }
 
