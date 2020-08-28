@@ -82,7 +82,6 @@ if($idGet<=9){
 
 ?>
 
-
 <?php
 
 $id=$_GET['id'];
@@ -292,19 +291,15 @@ else{
       <br>
       <br>
      
-      
-
-
+    
       <div class="class" >
         <form method="POST" action='' enctype="multipart/form-data" >
                 <table class="table"> 
-              
+            
                 <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check"  value ="<?php echo $type?>">
                 <input  hidden class="" type="text" class="" style="height: 35px;" id="vr_c" name="vr_c" placeholder="" value ="<?php echo $vrcount11?>">
                 
                 
-            
-        
                 <!-- Header -->
                 <tr>
                 <td class="col-md-1">
@@ -554,8 +549,6 @@ else{
                        
                         </td>
 
-                      
-
                         <td class="col-md-1">
 
                         </td> 
@@ -613,6 +606,8 @@ else{
                         <td colspan=3 style=" border:1px solid black; text-align:center; ">
                         <input readonly  type="text"   class="" style=" text-align:left; border:none; border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 40px; width:100%;" id="mobile" placeholder="" name="mobile" value = "<?php echo $mobile?>">
                         </td>
+
+
 
 
                         <td class="col-md-1">
@@ -1381,7 +1376,7 @@ else{
                
 
                 
-                    <input type="submit" name="submit" class="btn btn-primary pull-left" value="Save" id="butsave">
+                    <input type="submit" name="submit" class="btn btn-primary pull-right" value="Save" id="butsave">
 
                     <br>
                     <br>  

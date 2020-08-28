@@ -82,7 +82,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             <form method = "POST" action = "vr_export_date.php">
             <td class="col-md-1" >
 
-            <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' ):?>
+          <!--   <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' ):?>
           
             <select class="" name="month" id = "selectMonth" style="width: 150px; Height:30px;">
             <?php 
@@ -271,13 +271,13 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             }
             ?>
 
-            </select>
+            </select> -->
             </td>
 
             <td class="col-md-1" >
          
-            <select class="pull-right" id="year" name="year" style="width: 150px; Height:30px;">
-            <!-- <option value="">Year</option> -->
+            <!-- <select class="pull-right" id="year" name="year" style="width: 150px; Height:30px;">
+            <option value="">Year</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
@@ -290,7 +290,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             <option value="2029">2029</option>
             <option value="2030">2030</option>
 
-            </select>
+            </select> -->
 
             </td>
            
@@ -344,7 +344,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial' ):?>
             
             <br>
-            <button class="btn btn-success pull-left"><a style = "color:#fff; "  id = "export"  >Export</a></button>
+            <!-- <button class="btn btn-success pull-left"><a style = "color:#fff; "  id = "export"  >Export</a></button> -->
 
             <?php else: ?>
 
@@ -458,9 +458,7 @@ $DIVISION_M = $rowdiv1['DIVISION_M'];
             else{
 
             }
-              
             
-
           }
             return  filter(calEvent) ;
              
