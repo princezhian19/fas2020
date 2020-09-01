@@ -134,7 +134,7 @@ $style = array(
 $space1 = str_repeat('&nbsp;', 5);
 
 $pdf->Ln(45);
-$pdf->Cell(0, 0, '              DILG IV - A ICS', 0, 1);
+$pdf->Cell(0, 0, '              '.$pn, 0, 1);
 $pdf->write1DBarcode($pn2, 'C128', 'L', '', '48', 20, 0.6, $style, 'N');
 // $pdf->Rotate(-60);
 // $pdf->Cell(30,0,'','',"<b>Recieve Mode:</b><br/>",0,0);
