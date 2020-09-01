@@ -135,87 +135,103 @@ $styleFont = array(
         $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':J'.$row)->applyFromArray($styleArray);
 
 
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleFont2);
+        $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleFont2);
+        $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleFont2);
+        $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleFont2);
+        $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleFont2);
+        $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleFont2);
+        $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleFont2);
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleFont2);
+        $objPHPExcel->getActiveSheet()->getStyle('J'.$row)->applyFromArray($styleFont2);
+       
 
 
           $row++;
    
     }
-    $lastRow = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+2;
-    $TOTAL = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+1;
-    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$TOTAL,'TOTAL');
-    $objPHPExcel->getActiveSheet()->getStyle('E'.$TOTAL)->applyFromArray($styleFont);
-    $objPHPExcel->getActiveSheet()->getStyle('A'.$TOTAL.':J'.$TOTAL)->applyFromArray($stylebottom);
-    $objPHPExcel->getActiveSheet()->getStyle('A'.$TOTAL)->applyFromArray($styleLeft);
-    $objPHPExcel->getActiveSheet()->getStyle('J'.$TOTAL)->applyFromArray($styleRight);
-
-
-
-    $merge = $lastRow+3;
     
+    $row1 = $row+1;
+    $row2 = $row+3;
+    $row3 = $row+5;
+    $row4 = $row+6;
+    $row5 = $row+10;
+    $row6 = $row+11;
+    $row7 = $row+12;
+    $row8 = $row+13;
+    $row9 = $row+14;
+    $row10 = $row+3;
+    $row11 = $row+7;
 
-    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$lastRow,'Prepared by:');
-    $objPHPExcel->getActiveSheet()->getStyle('E'.$lastRow)->applyFromArray($styleFont);
+    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row,'TOTAL');
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleFont);
+    $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':J'.$row)->applyFromArray($stylebottom);
+    $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleLeft);
+    $objPHPExcel->getActiveSheet()->getStyle('J'.$row)->applyFromArray($styleRight);
 
-    $PREPARED = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+2;
-    $APPROVED = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+5;
-    $SIGNATORY = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+9;
-    $border = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+4;
-    $certify = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+2;
+    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row1,'Prepared by:');
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$row1)->applyFromArray($styleFont);
 
-    $objPHPExcel->getActiveSheet()->mergeCells("E".$PREPARED."".":J".$PREPARED);
-    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$PREPARED,'______________________________________________________');
-    $objPHPExcel->getActiveSheet()->getStyle('E'.$PREPARED)->applyFromArray($center);
-    $objPHPExcel->getActiveSheet()->getStyle('E'.$border.':J'.$border)->applyFromArray($stylebottom);
+    $objPHPExcel->getActiveSheet()->mergeCells("E".$row2."".":J".$row2);
+    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row2,'______________________________________________________');
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$row2)->applyFromArray($center);
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$row3.':J'.$row3)->applyFromArray($stylebottom);
 
-    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$APPROVED,'Approved by:');
-    $objPHPExcel->getActiveSheet()->getStyle('E'.$APPROVED)->applyFromArray($styleFont);
+    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row4,'Approved by:');
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$row4)->applyFromArray($styleFont);
 
-    $objPHPExcel->getActiveSheet()->mergeCells("E".$SIGNATORY."".":J".$SIGNATORY);
-    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$SIGNATORY,'______________________________________________________');
-    $objPHPExcel->getActiveSheet()->getStyle('E'.$SIGNATORY)->applyFromArray($center);
-    $PIPIRMA = $SIGNATORY+1;
-    $POSITION = $PIPIRMA+1;
-    $objPHPExcel->getActiveSheet()->mergeCells("E".$PIPIRMA."".":J".$PIPIRMA);
-    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$PIPIRMA,'NOEL R. BARTOLABAC, CESO V');
-    $objPHPExcel->getActiveSheet()->getStyle('E'.$PIPIRMA)->applyFromArray($center);
-    $objPHPExcel->getActiveSheet()->getStyle('E'.$PIPIRMA)->applyFromArray($styleFont);
+    $objPHPExcel->getActiveSheet()->mergeCells("E".$row5."".":J".$row5);
+    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row5,'______________________________________________________');
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$row5)->applyFromArray($center);
 
-    $objPHPExcel->getActiveSheet()->mergeCells("E".$POSITION."".":J".$POSITION);
-    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$POSITION,'OIC-Regional Director');
-    $objPHPExcel->getActiveSheet()->getStyle('E'.$POSITION)->applyFromArray($center);
-    $objPHPExcel->getActiveSheet()->getStyle('E'.$POSITION)->applyFromArray($styleFont2);
+    $objPHPExcel->getActiveSheet()->mergeCells("E".$row6."".":J".$row6);
+    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row6,'NOEL R. BARTOLABAC, CESO V');
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$row6)->applyFromArray($center);
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$row6)->applyFromArray($styleFont);
 
+    $objPHPExcel->getActiveSheet()->mergeCells("E".$row7."".":J".$row7);
+    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row7,'OIC-Regional Director');
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$row7)->applyFromArray($center);
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$row7)->applyFromArray($styleFont2);
+    $objPHPExcel->getActiveSheet()->getStyle('A'.$row8.':J'.$row8)->applyFromArray($stylebottom);
+  
 
-    for($i = 0; $i <= 5; $i++)
-    {
-    $objPHPExcel->getActiveSheet()->mergeCells("A".$certify."".":D".$certify);
-    $certify++;
+   
 
-    }
-    $objPHPExcel->getActiveSheet()->unmergeCells('A26:D27');
-    $objPHPExcel->getActiveSheet()->mergeCells("A26:D27");
-
-
-
-
-
-
-
-
+   
 
 
-    for($merge = 24; $merge <= 36; $merge++)
+    $objPHPExcel->getActiveSheet()->mergeCells("A".$row10.":"."D".$row11);
+    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row10,'I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.');
+    $objPHPExcel->getActiveSheet()->getStyle("A".$row10.":"."D".$row11) ->getAlignment()->setWrapText(true); 
+    $objPHPExcel->getActiveSheet()->getStyle("A".$row10.":"."D".$row11)->applyFromArray($styleFont2);
+
+    // $certify++;
+
+    // }
+    // $objPHPExcel->getActiveSheet()->unmergeCells('A26:D27');
+    // $objPHPExcel->getActiveSheet()->mergeCells("A26:D27");
+
+
+
+  
+
+
+
+
+    $aa = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
+    $bb = $aa-14;
+
+
+    for($merge = $aa; $merge >= $bb; $merge--)
     {
         $objPHPExcel->getActiveSheet()->getStyle('A'.$merge.':J'.$merge)->applyFromArray($styleRight);
         $objPHPExcel->getActiveSheet()->getStyle('A'.$merge.':J'.$merge)->applyFromArray($styleLeft);
         $objPHPExcel->getActiveSheet()->getStyle('E'.$merge)->applyFromArray($styleLeft);
     }
     $lastRow1 = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
-    $objPHPExcel->getActiveSheet()->getStyle('A'.$lastRow1.':J'.$lastRow1)->applyFromArray($stylebottom);
 
-
-
-     
+ 
 
     }else{
       exit();
