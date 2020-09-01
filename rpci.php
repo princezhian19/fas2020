@@ -102,7 +102,7 @@ if (isset($_POST['submit'])) {
                 </div>
                  <div class="form-group">
                   <label>Received By : </label>
-                  <input autocomplete = "false"  class="form-control" name="received_by" type="number" id="received_by">
+                  <input autocomplete = "false"  class="form-control" name="received_by" type="text" id="received_by">
                 </div>
 
               </div>

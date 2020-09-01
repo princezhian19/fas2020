@@ -13,6 +13,7 @@ $row = mysqli_fetch_array($select);
 $article1 = $row['article'];
 $description1 = $row['description'];
 $stock_number1 = $row['stock_number'];
+$inventory_item_no = $row['inventory_item_no'];
 $unit1 = $row['unit'];
 $amount1 = $row['amount'];
 $bpc1 = $row['bpc'];
@@ -21,12 +22,14 @@ $shortage_Q1 = $row['shortage_Q'];
 $shortage_V1 = $row['shortage_V'];
 $remarks1 = $row['remarks'];
 $office1 = $row['office'];
+  $received_by = $row['received_by'];
 $yrs1 = $row['yrs'];
 
 if (isset($_POST['submit'])) {
   $article = $_POST['article'];
   $description = $_POST['description'];
   $stock_number = $_POST['stock_number'];
+  $inventory_item_no = $_POST['inventory_item_no'];
   $unit = $_POST['unit'];
   $amount = $_POST['amount'];
   $bpc = $_POST['bpc'];
@@ -35,9 +38,10 @@ if (isset($_POST['submit'])) {
   $shortage_V = $_POST['shortage_V'];
   $remarks = $_POST['remarks'];
   $office = $_POST['office'];
+  $received_by = $_POST['received_by'];
   $yrs = $_POST['yrs'];
 
-  $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office' WHERE id = $id");
+  $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office',`inventory_item_no`='$inventory_item_no',`received_by`='$received_by' WHERE id = $id");
 
   if ($insert_rpci) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -92,6 +96,11 @@ if (isset($_POST['submit'])) {
                   <input value="<?php echo $stock_number1?>"  class="form-control" name="stock_number" type="text" id="stock_number">
                 </div>
 
+                 <div class="form-group">
+                  <label>Inventory Item Number</label>
+                  <input value="<?php echo $inventory_item_no?>"  class="form-control" name="inventory_item_no" type="text" id="inventory_item_no">
+                </div>
+
                 <div class="form-group">
                   <label>Unit of Measure</label>
                   <input value="<?php echo $unit1?>"  class="form-control" name="unit" type="text" id="unit">
@@ -104,6 +113,10 @@ if (isset($_POST['submit'])) {
                 <div class="form-group">
                   <label>Estimated Years Life</label>
                   <input value="<?php echo $yrs1?>"  class="form-control" name="yrs" type="number" id="amount">
+                </div>
+                 <div class="form-group">
+                  <label>Received by : </label>
+                  <input value="<?php echo $received_by?>"  class="form-control" name="received_by" type="text" id="received_by">
                 </div>
 
               </div>
