@@ -47,7 +47,7 @@ $received_by = $row['received_by'];
 $position = $row['position'];
 $ics_no = $row['ics_no'];
 
-$objPHPExcel->setActiveSheetIndex()->setCellValue('G6','ICS No : '.$opc);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('G6','ICS No : '.$ics_no);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A11',$opc);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B11',$unit);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C11',$amount);
