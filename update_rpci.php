@@ -23,6 +23,7 @@ $shortage_V1 = $row['shortage_V'];
 $remarks1 = $row['remarks'];
 $office1 = $row['office'];
   $received_by = $row['received_by'];
+  $position = $row['position'];
 $yrs1 = $row['yrs'];
   $ics_no = $row['ics_no'];
 
@@ -41,14 +42,15 @@ if (isset($_POST['submit'])) {
   $office = $_POST['office'];
   $received_by = $_POST['received_by'];
   $yrs = $_POST['yrs'];
+  $position = $_POST['position'];
   $ics_no = $_POST['ics_no'];
 
-  $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `ics_no`='$ics_no',`article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office',`inventory_item_no`='$inventory_item_no',`received_by`='$received_by' WHERE id = $id");
+  $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `position`='$position',`ics_no`='$ics_no',`article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office',`inventory_item_no`='$inventory_item_no',`received_by`='$received_by' WHERE id = $id");
 
   if ($insert_rpci) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Saved!')
-      window.location.href = 'ViewRPCI.php';
+      window.location.href = 'UpdateRPCI.php?id=$id';
       </SCRIPT>");
 
   }  else{
@@ -126,6 +128,11 @@ if (isset($_POST['submit'])) {
                   <input value="<?php echo $received_by?>"  class="form-control" name="received_by" type="text" id="received_by">
                 </div>
 
+                <div class="form-group">
+                  <label>Position/Office</label>
+                  <input value="<?php echo $position?>"  class="form-control" name="position" type="text" id="position">
+                </div>
+
               </div>
               <div class="col-md-6">
                <div class="form-group">
@@ -174,7 +181,7 @@ if (isset($_POST['submit'])) {
               </div>
             </div>
           </div>
-          <button class="btn btn-success" style="float: right;" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Create</button>
+          <button class="btn btn-primary" style="float: right;" id="finalizeButton" type="submit" name="submit" onclick="return confirm('Are you sure you want to save now?');">Update</button>
           <br>
         </form>
       </div>  

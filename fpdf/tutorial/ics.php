@@ -17,7 +17,7 @@ $pn2 = strtolower($pn1);
 
 
 //A set
-$pdf->Cell(0, 0, '                                                                 DILG IV - A ICS', 0, 1);
+$pdf->Cell(0, 0, '                                                                 '.$pn, 0, 1);
 $pdf->Code128(50,20,$pn2,80,20);
 $pdf->SetXY(50,45);
 // $pdf->Write(5,$pn2);

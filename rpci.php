@@ -22,9 +22,10 @@ if (isset($_POST['submit'])) {
   $remarks = $_POST['remarks'];
   $office = $_POST['office'];
   $received_by = $_POST['received_by'];
+  $position = $_POST['position'];
   $yrs = $_POST['yrs'];
 
-  $insert_rpci = mysqli_query($conn,"INSERT INTO rpci(article,description,stock_number,unit,amount,bpc,opc,shortage_Q,shortage_V,remarks,office,yrs,inventory_item_no,received_by,ics_no) VALUES('$article','$description','$stock_number','$unit','$amount','$bpc','$opc','$shortage_Q','$shortage_V','$remarks','$office','$yrs','$inventory_item_no','$received_by','$ics_no')");
+  $insert_rpci = mysqli_query($conn,"INSERT INTO rpci(article,description,stock_number,unit,amount,bpc,opc,shortage_Q,shortage_V,remarks,office,yrs,inventory_item_no,received_by,ics_no,position) VALUES('$article','$description','$stock_number','$unit','$amount','$bpc','$opc','$shortage_Q','$shortage_V','$remarks','$office','$yrs','$inventory_item_no','$received_by','$ics_no','$position')");
 
   if ($insert_rpci) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -109,6 +110,10 @@ if (isset($_POST['submit'])) {
                  <div class="form-group">
                   <label>Received By : </label>
                   <input autocomplete = "false"  class="form-control" name="received_by" type="text" id="received_by">
+                </div>
+                <div class="form-group">
+                  <label>Position/Office : </label>
+                  <input autocomplete = "false"  class="form-control" name="position" type="text" id="position">
                 </div>
 
               </div>
