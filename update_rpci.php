@@ -24,6 +24,7 @@ $remarks1 = $row['remarks'];
 $office1 = $row['office'];
   $received_by = $row['received_by'];
 $yrs1 = $row['yrs'];
+  $ics_no = $row['ics_no'];
 
 if (isset($_POST['submit'])) {
   $article = $_POST['article'];
@@ -40,8 +41,9 @@ if (isset($_POST['submit'])) {
   $office = $_POST['office'];
   $received_by = $_POST['received_by'];
   $yrs = $_POST['yrs'];
+  $ics_no = $_POST['ics_no'];
 
-  $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office',`inventory_item_no`='$inventory_item_no',`received_by`='$received_by' WHERE id = $id");
+  $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `ics_no`='$ics_no',`article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office',`inventory_item_no`='$inventory_item_no',`received_by`='$received_by' WHERE id = $id");
 
   if ($insert_rpci) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -89,6 +91,11 @@ if (isset($_POST['submit'])) {
                 <div class="form-group">
                   <label>Description</label>
                   <input value="<?php echo $description1?>"  class="form-control" name="description" type="text" id="description">
+                </div>
+
+                  <div class="form-group">
+                  <label>ICS Number</label>
+                  <input value="<?php echo $ics_no?>"  autocomplete = "false"  class="form-control" name="ics_no" type="text" id="ics_no">
                 </div>
 
                 <div class="form-group">

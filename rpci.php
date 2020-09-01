@@ -10,6 +10,7 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 if (isset($_POST['submit'])) {
   $article = $_POST['article'];
   $description = $_POST['description'];
+  $ics_no = $_POST['ics_no'];
   $stock_number = $_POST['stock_number'];
   $inventory_item_no = $_POST['inventory_item_no'];
   $unit = $_POST['unit'];
@@ -23,7 +24,7 @@ if (isset($_POST['submit'])) {
   $received_by = $_POST['received_by'];
   $yrs = $_POST['yrs'];
 
-  $insert_rpci = mysqli_query($conn,"INSERT INTO rpci(article,description,stock_number,unit,amount,bpc,opc,shortage_Q,shortage_V,remarks,office,yrs,inventory_item_no,received_by) VALUES('$article','$description','$stock_number','$unit','$amount','$bpc','$opc','$shortage_Q','$shortage_V','$remarks','$office','$yrs','$inventory_item_no','$received_by')");
+  $insert_rpci = mysqli_query($conn,"INSERT INTO rpci(article,description,stock_number,unit,amount,bpc,opc,shortage_Q,shortage_V,remarks,office,yrs,inventory_item_no,received_by,ics_no) VALUES('$article','$description','$stock_number','$unit','$amount','$bpc','$opc','$shortage_Q','$shortage_V','$remarks','$office','$yrs','$inventory_item_no','$received_by','$ics_no')");
 
   if ($insert_rpci) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -78,6 +79,11 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="form-group">
+                  <label>ICS Number</label>
+                  <input autocomplete = "false"  class="form-control" name="ics_no" type="text" id="ics_no">
+                </div>
+
+                 <div class="form-group">
                   <label>Stock Number</label>
                   <input autocomplete = "false"  class="form-control" name="stock_number" type="text" id="stock_number">
                 </div>
@@ -89,7 +95,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="form-group">
                   <label>Unit of Measure</label>
-                  <input autocomplete = "false"  class="form-control" name="unit" type="number" id="unit">
+                  <input autocomplete = "false"  class="form-control" name="unit" type="text" id="unit">
 
                 </div>
                 <div class="form-group">

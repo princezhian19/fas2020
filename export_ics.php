@@ -43,7 +43,10 @@ $unit = $row['unit'];
 $amount = $row['amount'];
 $opc = $row['opc'];
 $yrs = $row['yrs'];
+$received_by = $row['received_by'];
+$ics_no = $row['ics_no'];
 
+$objPHPExcel->setActiveSheetIndex()->setCellValue('G6','ICS No : '.$opc);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A11',$opc);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B11',$unit);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C11',$amount);
@@ -52,6 +55,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('E11',$article);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('E12',$description);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('G11',$inventory_item_no);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('H1',$yrs);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('F32',$received_by);
 
 
 
