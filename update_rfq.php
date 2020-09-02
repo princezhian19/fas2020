@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
         $insert_notes = mysqli_query($conn,"INSERT INTO rfq_notes(rfq_id,note_id) VALUES ('$rfq_id','$note_idd')");
       }
   }
-  
+  // rfq
   if ($rfq) {
    echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Successful!');
