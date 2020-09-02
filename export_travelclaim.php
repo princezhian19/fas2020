@@ -95,7 +95,9 @@ $styleFont = array(
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B9',$_GET['username']);
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B10',$excelrow1['POSITION_M']);
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C11','Regional Office');
-            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F10','Purpose of Travel: '.$_GET['id']);
+            $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F10','Purpose of Travel: '.$excelrow1['RO_TO_OB']);
+            $objPHPExcel->getActiveSheet()->getStyle("F10") ->getAlignment()->setWrapText(true); 
+
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G9',$excelrow1['DATE']);
           }
     //======================================================//             
@@ -114,12 +116,12 @@ $styleFont = array(
 
     if (mysqli_num_rows($sql_q10)>0) {
       $row = 16;
+      $travel_title = 15;
       // $row_cnt = mysqli_num_rows($sql_q10)+1;
 
 
       while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
     {
-        
      
         $perdiem = $excelrow['a'];
 
@@ -148,8 +150,12 @@ $styleFont = array(
 
 
           $row++;
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$travel_title,$excelrow['RO_OT_OB']);     
+
+          $travel_title++;
    
     }
+
     
     $row1 = $row+1;
     $row2 = $row+3;
@@ -206,18 +212,7 @@ $styleFont = array(
     $objPHPExcel->getActiveSheet()->getStyle("A".$row10.":"."D".$row11) ->getAlignment()->setWrapText(true); 
     $objPHPExcel->getActiveSheet()->getStyle("A".$row10.":"."D".$row11)->applyFromArray($styleFont2);
 
-    // $certify++;
-
-    // }
-    // $objPHPExcel->getActiveSheet()->unmergeCells('A26:D27');
-    // $objPHPExcel->getActiveSheet()->mergeCells("A26:D27");
-
-
-
-  
-
-
-
+   
 
     $aa = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
     $bb = $aa-14;
