@@ -46,7 +46,11 @@ $yrs = $row['yrs'];
 $received_by = $row['received_by'];
 $position = $row['position'];
 $ics_no = $row['ics_no'];
-
+  $date_from = $_POST['date_from'];
+  $d1 = date('Y-m-d', strtotime($date_from));
+  $date_to = $_POST['date_to'];
+  $d2 = date('Y-m-d', strtotime($date_to));
+  
 $objPHPExcel->setActiveSheetIndex()->setCellValue('G6','ICS No : '.$ics_no);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('A11',$opc);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B11',$unit);
@@ -58,6 +62,8 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('G11',$inventory_item_no);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('H11',$yrs.' Years');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('F32',$received_by);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('F35',$position);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('A38',$d1);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('F38',$d2);
 
 
 

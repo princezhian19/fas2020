@@ -26,6 +26,10 @@ $office1 = $row['office'];
   $position = $row['position'];
 $yrs1 = $row['yrs'];
   $ics_no = $row['ics_no'];
+  $date_from = $_POST['date_from'];
+  $d1 = date('Y-m-d', strtotime($date_from));
+  $date_to = $_POST['date_to'];
+  $d2 = date('Y-m-d', strtotime($date_to));
 
 if (isset($_POST['submit'])) {
   $article = $_POST['article'];
@@ -44,8 +48,12 @@ if (isset($_POST['submit'])) {
   $yrs = $_POST['yrs'];
   $position = $_POST['position'];
   $ics_no = $_POST['ics_no'];
+  $date_from = $_POST['date_from'];
+  $d1 = date('Y-m-d', strtotime($date_from));
+  $date_to = $_POST['date_to'];
+  $d2 = date('Y-m-d', strtotime($date_to));
 
-  $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `position`='$position',`ics_no`='$ics_no',`article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office',`inventory_item_no`='$inventory_item_no',`received_by`='$received_by' WHERE id = $id");
+  $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `date_from`='$d1',`date_to`='$d2',`position`='$position',`ics_no`='$ics_no',`article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office',`inventory_item_no`='$inventory_item_no',`received_by`='$received_by' WHERE id = $id");
 
   if ($insert_rpci) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -129,6 +137,16 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="form-group">
+                        <label>Received Date <label style="color: Red;" >*</label></label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                            <input type="text" class="form-control pull-right" value="<?php echo $d1; ?>" name="date_from" id="datepicker2" placeholder="mm/dd/yyyy">
+                          </div>
+                        </div>
+
+                <div class="form-group">
                   <label>Position/Office</label>
                   <input value="<?php echo $position?>"  class="form-control" name="position" type="text" id="position">
                 </div>
@@ -165,19 +183,20 @@ if (isset($_POST['submit'])) {
                 <textarea class="form-control" type="text" id="remarks" name="remarks"> <?php echo $remarks1?></textarea> 
               </div>
 
-              <div class="form-group" hidden>
-                <label>PR Date</label>
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <?php if ($pr_date ==''): ?>
-                    <input type="date" class="form-control pull-right" name="pr_date" id="pr_date" value="<?php echo isset($_POST['pr_date']) ? $_POST['pr_date'] : '' ?>">
-                    <?php else: ?>
-                      <input type="date" class="form-control pull-right" name="pr_date" id="pr_date" value="<?php echo $pr_date ?>">
-                    <?php endif ?>
-                  </div>
+               <div class="form-group">
+                  <label>Received From : </label>
+                  <input autocomplete = "false"  class="form-control" disabled value="BEZALEEL O. SOLTURA" type="text" id="received_by">
                 </div>
+
+              <div class="form-group">
+                        <label>Received Date <label style="color: Red;" >*</label></label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                            <input type="text" class="form-control pull-right" value="<?php echo $d2; ?>" name="date_to" id="datepicker1" placeholder="mm/dd/yyyy">
+                          </div>
+                        </div>
               </div>
             </div>
           </div>

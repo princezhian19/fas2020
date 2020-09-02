@@ -24,8 +24,12 @@ if (isset($_POST['submit'])) {
   $received_by = $_POST['received_by'];
   $position = $_POST['position'];
   $yrs = $_POST['yrs'];
+  $date_from = $_POST['date_from'];
+  $d1 = date('Y-m-d', strtotime($date_from));
+  $date_to = $_POST['date_to'];
+  $d2 = date('Y-m-d', strtotime($date_to));
 
-  $insert_rpci = mysqli_query($conn,"INSERT INTO rpci(article,description,stock_number,unit,amount,bpc,opc,shortage_Q,shortage_V,remarks,office,yrs,inventory_item_no,received_by,ics_no,position) VALUES('$article','$description','$stock_number','$unit','$amount','$bpc','$opc','$shortage_Q','$shortage_V','$remarks','$office','$yrs','$inventory_item_no','$received_by','$ics_no','$position')");
+  $insert_rpci = mysqli_query($conn,"INSERT INTO rpci(article,description,stock_number,unit,amount,bpc,opc,shortage_Q,shortage_V,remarks,office,yrs,inventory_item_no,received_by,ics_no,position,date_from,date_to) VALUES('$article','$description','$stock_number','$unit','$amount','$bpc','$opc','$shortage_Q','$shortage_V','$remarks','$office','$yrs','$inventory_item_no','$received_by','$ics_no','$position','$d1','$d2')");
 
   if ($insert_rpci) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -111,6 +115,16 @@ if (isset($_POST['submit'])) {
                   <label>Received By : </label>
                   <input autocomplete = "false"  class="form-control" name="received_by" type="text" id="received_by">
                 </div>
+              
+                <div class="form-group">
+                        <label>Received Date <label style="color: Red;" >*</label></label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                            <input type="text" class="form-control pull-right" name="date_from" id="datepicker2" placeholder="mm/dd/yyyy">
+                          </div>
+                        </div>
                 <div class="form-group">
                   <label>Position/Office : </label>
                   <input autocomplete = "false"  class="form-control" name="position" type="text" id="position">
@@ -148,19 +162,21 @@ if (isset($_POST['submit'])) {
                 <textarea class="form-control" type="text" id="remarks" name="remarks"></textarea> 
               </div>
 
-              <div class="form-group" hidden>
-                <label>PR Date</label>
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <?php if ($pr_date ==''): ?>
-                    <input type="date" class="form-control pull-right" name="pr_date" id="pr_date" value="<?php echo isset($_POST['pr_date']) ? $_POST['pr_date'] : '' ?>">
-                    <?php else: ?>
-                      <input type="date" class="form-control pull-right" name="pr_date" id="pr_date" value="<?php echo $pr_date ?>">
-                    <?php endif ?>
-                  </div>
+              <div class="form-group">
+                  <label>Received From : </label>
+                  <input autocomplete = "false"  class="form-control" disabled value="BEZALEEL O. SOLTURA" type="text" id="received_by">
                 </div>
+
+              <div class="form-group">
+                        <label>Received Date <label style="color: Red;" >*</label></label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                            <input type="text" class="form-control pull-right" name="date_to" id="datepicker1" placeholder="mm/dd/yyyy">
+                          </div>
+                        </div>
+             
               </div>
             </div>
           </div>
