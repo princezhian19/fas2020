@@ -75,7 +75,7 @@ if (isset($_POST['submit'])) {
       </div>
       <br>
       &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="ViewRPCI.php" style="color:white;text-decoration: none;">Back</a></li>
-            &nbsp &nbsp &nbsp   <li class="btn btn-info"><i class="fa fa-fw fa-download"></i><a href="fpdf/tutorial/ics.php?id=<?php echo $id?>" style="color:white;text-decoration: none;">ICS Sticker</a></li>
+            &nbsp &nbsp &nbsp   <li class="btn btn-info"><i class="fa fa-fw fa-download"></i><a href="barcode.php?id=<?php echo $id?>" style="color:white;text-decoration: none;">ICS Sticker</a></li>
             &nbsp &nbsp &nbsp   <li class="btn btn-success"><i class="fa fa-fw fa-download"></i><a href="export_ics.php?id=<?php echo $id?>" style="color:white;text-decoration: none;">Export ICS</a></li>
 
       <br>
