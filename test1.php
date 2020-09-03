@@ -707,14 +707,14 @@ if(
 <?php
 if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial'){
   ?>
-  <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
+  <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" hidden>
     <i class="fa fa-users" style = "color:#black;"></i>
     <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
   </a>
   <?php
 }else{
   ?>
-  <a href="processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
+  <a href="processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" hidden>
     <i class="fa fa-users" style = "color:#black;"></i>
     <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
   </a>
