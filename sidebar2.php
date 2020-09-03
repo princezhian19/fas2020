@@ -600,7 +600,7 @@ function showRequest()
 
 
 
-<li class="
+<li hidden class="
 <?PHP 
 if(
 $link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
