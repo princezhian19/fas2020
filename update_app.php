@@ -243,7 +243,7 @@ if (isset($_POST['submit'])) {
    $qty = $_POST["qty"][$count];
    $id1 = $_POST["id1"][$count];
 
-   // $update_app = mysqli_query($conn,"UPDATE app SET  qty='$qty',pmo_id=$pmo2  WHERE id = $id1");
+   $update_app = mysqli_query($conn,"UPDATE app SET  pmo_id=$pmo2  WHERE id = $id1");
    $update_app2 = mysqli_query($conn,"UPDATE app_items SET  qty='$qty',pmo_id=$pmo2  WHERE id = $id1");
  }
 

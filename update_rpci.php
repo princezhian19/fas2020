@@ -26,10 +26,11 @@ $office1 = $row['office'];
   $position = $row['position'];
 $yrs1 = $row['yrs'];
   $ics_no = $row['ics_no'];
-  $date_from = $_POST['date_from'];
+  $date_from = $row['date_from'];
   $d1 = date('Y-m-d', strtotime($date_from));
-  $date_to = $_POST['date_to'];
+  $date_to = $row['date_to'];
   $d2 = date('Y-m-d', strtotime($date_to));
+  echo $d1;exit;
 
 if (isset($_POST['submit'])) {
   $article = $_POST['article'];
@@ -52,7 +53,6 @@ if (isset($_POST['submit'])) {
   $d1 = date('Y-m-d', strtotime($date_from));
   $date_to = $_POST['date_to'];
   $d2 = date('Y-m-d', strtotime($date_to));
-
   $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `date_from`='$d1',`date_to`='$d2',`position`='$position',`ics_no`='$ics_no',`article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office',`inventory_item_no`='$inventory_item_no',`received_by`='$received_by' WHERE id = $id");
 
   if ($insert_rpci) {
