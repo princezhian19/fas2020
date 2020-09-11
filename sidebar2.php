@@ -600,7 +600,7 @@ function showRequest()
 
 
 
-<li class="
+<li hidden class="
 <?PHP 
 if(
 $link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
@@ -613,7 +613,7 @@ $link == 'http://fas.calabarzon.dilg.gov.ph/allTickets.php?division='.$_GET['div
 >
 
 
-<a href="techassistance.php?division=<?php echo $_GET['division'];?>" >
+<a href="techassistance.php?division=<?php echo $_GET['division'];?>"  hidden>
   <i class="fa fa-users" style = "color:#black;"></i>
   <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
 </a>

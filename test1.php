@@ -692,7 +692,7 @@ $link == 'http://fas.calabarzon.dilg.gov.ph/obtableViewMain.php?getsaroID='.$_GE
 </ul>
 </li>
 <?php endif ?>
-<li 
+<li hidden
 <?PHP 
 if(
   $link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
@@ -714,7 +714,7 @@ if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlseg
   <?php
 }else{
   ?>
-  <a href="processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
+  <a href="processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" hidden>
     <i class="fa fa-users" style = "color:#black;"></i>
     <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
   </a>

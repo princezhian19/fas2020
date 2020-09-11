@@ -38,7 +38,7 @@ $POSITION_M = $rowE['POSITION_M'];
                            <a href="Reassign_PAR.php?id=<?php echo $id; ?>" class="btn btn-success">Re-Assign Par</a>
                        <?php endif ?>
                        <a href="export_par_receipt.php?id=<?php echo $id;?>" class="btn btn-warning"><i class="fa fa-fw fa-download"></i>Par Receipt</a>
-                       <a href="fpdf/tutorial/par.php?id=<?php echo $id;?>" class="btn btn-info"><i class="fa fa-fw fa-download"></i>Par Sticker</a>
+                       <a href="barcode2.php?id=<?php echo $id;?>" class="btn btn-info"><i class="fa fa-fw fa-download"></i>Par Sticker</a>
                        <a href="export_pc.php?id=<?php echo $id;?>" class="btn btn-success"><i class="fa fa-fw fa-download"></i>Export PC</a>
 
 

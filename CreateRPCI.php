@@ -105,6 +105,16 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     })
   })
 </script>
+<script>
 
+$(document).ready(function(){
+  $('#datepicker1').datepicker({
+      autoclose: true
+    })
+    $('#datepicker2').datepicker({
+      autoclose: true
+    })
+});
+</script>
 </body>
 </html>
