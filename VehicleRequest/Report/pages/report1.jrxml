@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
-	<property name="ireport.zoom" value="1.7715610000000044"/>
-	<property name="ireport.x" value="135"/>
-	<property name="ireport.y" value="45"/>
+	<property name="ireport.zoom" value="1.6105100000000039"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="obno" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$F{obno}]]></defaultValueExpression>
 	</parameter>
@@ -233,6 +233,84 @@ Region IV-A (CALABARZON)
 				</textElement>
 				<text><![CDATA[Office:]]></text>
 			</staticText>
+			<rectangle>
+				<reportElement x="20" y="18" width="93" height="136" backcolor="#CCCCCC" uuid="9c71d126-8816-4b6b-8d05-d72dbee54323"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="28" y="35" width="65" height="45" uuid="65a1f08d-980a-4179-82c2-4386b82091ee"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remarks/
+Instructions:
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="113" y="18" width="142" height="136" uuid="072a52d1-08fb-474f-891c-8e3211a9a7b1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="255" y="18" width="76" height="31" backcolor="#CCCCCC" uuid="de9f57f8-4d26-4e17-9648-54b09bf1352a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="261" y="22" width="69" height="17" uuid="2377de90-9400-4dad-b592-1c51cfd8ede1"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Destination/s:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="255" y="49" width="76" height="31" backcolor="#CCCCCC" uuid="97d76377-e495-4f50-913e-5533d9ffd697"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="261" y="53" width="69" height="17" uuid="7458a9e9-b8a6-4491-b9b5-05b4f20c4f3e"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Passengers/:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="255" y="80" width="76" height="47" backcolor="#CCCCCC" uuid="6698db99-0313-4cbf-a737-688f5a3bbde4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="261" y="85" width="64" height="28" uuid="2bf23e02-a1b3-4a35-8a64-bcc1c2f1ef44"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No of
+Passengers:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="255" y="123" width="76" height="31" backcolor="#CCCCCC" uuid="3cbabc57-c577-447c-84ee-77fed4dfdc44"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="255" y="127" width="82" height="26" uuid="35b0ac34-50b4-49a9-8dd2-b5d62a842f8a"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Departure Date:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="331" y="18" width="224" height="31" uuid="5abd2c73-d921-41d1-bc02-8ddfca7b551e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="331" y="49" width="224" height="74" uuid="b83c41d6-03cb-46a9-b9c7-cde0b830b4b2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="331" y="123" width="76" height="31" uuid="4e559a19-97fb-47ad-91b9-22bbacd9d835"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="407" y="123" width="76" height="31" backcolor="#CCCCCC" uuid="c34a06b6-e26d-4429-b797-d6c82b2ccbe6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="407" y="127" width="82" height="26" uuid="b3e673d7-c54e-4397-adfd-9a09c4fedad8"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Departure Time:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="483" y="123" width="72" height="31" uuid="7f48da0a-84e9-4bf7-b9c5-e143ef2ebc6e"/>
+			</rectangle>
 		</band>
 	</columnHeader>
 	<detail>
