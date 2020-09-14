@@ -215,9 +215,6 @@ else{
    
 }
 }
-
-
-
 }
 
 
@@ -234,8 +231,6 @@ else{
       <br>
       <br>
      
-      
-
 
       <div class="class" >
         <form method="POST" action='' enctype="multipart/form-data" >
@@ -244,8 +239,6 @@ else{
                 <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
                 <input  hidden class="" type="text" class="" style="height: 35px;" id="vr_c" name="vr_c" placeholder="" value ="<?php echo $vrcount11?>">
                 
-                
-            
         
                 <!-- Header -->
                 <tr>
@@ -282,8 +275,6 @@ else{
                 <td class="col-md-2" >
                 <img id="img" class="pull-right"  style="margin-top:0px; margin-bottom:0px; width:100;height:120px;" src='vehicle.PNG' title = "" />
                 </td>
-
-               
 
                 <td class="col-md-1">
                 

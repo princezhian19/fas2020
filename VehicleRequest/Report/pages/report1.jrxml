@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
+	<property name="ireport.zoom" value="1.7715610000000044"/>
+	<property name="ireport.x" value="135"/>
+	<property name="ireport.y" value="45"/>
+	<parameter name="obno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{obno}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="purpose" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="place" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{place}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="obdate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{obdate}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="field" class="java.lang.String"/>
+	<parameter name="divpos" class="java.lang.String"/>
+	<parameter name="timefrom" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{timefrom}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="timeto" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{timeto}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="place1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{date}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="place2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{place1}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="yes" class="java.lang.String"/>
+	<parameter name="no" class="java.lang.String"/>
+	<parameter name="cancelled" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * from ob]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="office" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="purpose" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="place" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obdate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="timefrom" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="timeto" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="submitteddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="receiveddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="uc" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="submittedby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="receivedby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cancelledby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cancelleddate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reason" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="place1" class="java.lang.String"/>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<staticText>
+				<reportElement x="92" y="21" width="148" height="20" uuid="f0fd3eb2-44cc-4364-b0a2-ba88b9715047"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="93" y="35" width="238" height="32" uuid="54399e2c-27b6-4c89-a06a-d865353551b4"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Department of the Interior and Local Government
+Region IV-A (CALABARZON)
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="18" y="5" width="73" height="72" uuid="ef21869e-b0bc-488c-b466-c36ea5658e78"/>
+				<imageExpression><![CDATA["l.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="70" y="77" width="329" height="23" uuid="d6faa6ae-aed3-47ab-972c-8f75b2cb7ae0"/>
+				<textElement>
+					<font fontName="Cambria" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VEHICLE REQUEST FORM (VRF)]]></text>
+			</staticText>
+			<image>
+				<reportElement x="370" y="4" width="185" height="63" uuid="798d7dcb-4337-4e34-900c-572df466db66"/>
+				<imageExpression><![CDATA["C:\\xampp\\htdocs\\fas\\Vehicle.png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="370" y="77" width="105" height="20" backcolor="#CCCCCC" uuid="fe573fe2-2b55-4ce4-adb1-d4d8825bb6eb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="475" y="77" width="80" height="20" uuid="cbbdddd6-6c96-49db-83d2-20fb9960d57a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="373" y="80" width="102" height="15" uuid="ab9683af-071a-440c-bbd2-e9aa111cb68d"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Control Number:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="20" y="97" width="535" height="11" backcolor="#CCCCCC" uuid="12bd12a5-3712-4322-a2fe-0200a333b207"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="108" width="535" height="19" backcolor="#CCCCCC" uuid="54592abd-84ef-4c8b-bbf8-d518f4b13959"/>
+			</rectangle>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="113" y="-1" width="350" height="17" backcolor="#CCCCCC" uuid="dce62683-2a01-40f4-82ad-432e60bce645"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A. REQUEST FOR VEHICLE (To be Accomplished by Requesting Personnel)]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="20" y="16" width="93" height="20" backcolor="#CCCCCC" uuid="2c290742-4962-4d5a-99ab-2b74c9857618"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="27" y="19" width="89" height="17" uuid="bcebbe22-b606-4152-8df6-38f60470a005"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Requested Date:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="113" y="16" width="142" height="20" uuid="53fce6a9-d041-4298-af4c-9bf59dfd0e21"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="255" y="16" width="76" height="20" uuid="e975c414-6c8d-4044-b878-e23577a9db44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="407" y="16" width="76" height="20" uuid="4228b399-50ad-4c6f-b93e-91e8ebfa0ec9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="331" y="16" width="76" height="20" uuid="22d714d3-0596-41ef-ac98-d2ee21cbeb2e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="479" y="16" width="76" height="20" uuid="8332a769-933b-498a-abb6-326ec9aa6376"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="36" width="93" height="37" backcolor="#CCCCCC" uuid="8e4cf2f2-ef1c-4d7b-9a28-13b418179c2b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="27" y="46" width="86" height="17" uuid="28baeb55-5f48-4cdf-bb9d-84f4929f97b7"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Requested By:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="113" y="36" width="142" height="37" uuid="e4115077-ca7c-40fe-afd5-5de48057c291"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="255" y="36" width="76" height="55" backcolor="#CCCCCC" uuid="f3fd7957-fb42-4d23-9eb8-36960b891ee7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="263" y="54" width="48" height="17" uuid="77da092a-278c-42d2-b77f-9551b15b9d1f"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Purpose:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="331" y="36" width="224" height="55" uuid="c2076494-1807-4a13-9efc-28c448cbdb97"/>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="618" splitType="Stretch">
+			<rectangle>
+				<reportElement x="113" y="-2" width="142" height="20" uuid="0875e693-8f4d-46bf-a624-e59bc714a307"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="-2" width="93" height="20" backcolor="#CCCCCC" uuid="56d46d5c-e092-448c-ae51-89abdaab3cf6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="27" y="0" width="59" height="17" uuid="650f7de2-b60b-4609-84bb-ae765387cdc1"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Office:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
