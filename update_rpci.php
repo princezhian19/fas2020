@@ -30,7 +30,7 @@ $yrs1 = $row['yrs'];
   $d1 = date('Y-m-d', strtotime($date_from));
   $date_to = $row['date_to'];
   $d2 = date('Y-m-d', strtotime($date_to));
-  echo $d1;exit;
+
 
 if (isset($_POST['submit'])) {
   $article = $_POST['article'];
