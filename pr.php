@@ -498,7 +498,11 @@ if (isset($_POST['add'])) {
                       <?php endif ?>
 
                       <?php else: ?>
-                        <input type="text" class="form-control" style="width: 100%;" name="pmo" id="pmo" readonly value="FAD" >
+                        <select class="form-control select2" name="pmo">
+                        <option><?php echo $pmo?></option>
+                          <option><?php echo pmo($connect)?></option>
+                      </select>
+                        <!-- <input type="text" class="form-control" style="width: 100%;" name="pmo" id="pmo" readonly value="FAD" > -->
                       <?php endif ?>
                     </div>
                     <div class="form-group">

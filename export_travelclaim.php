@@ -18,7 +18,6 @@ function countEntry($id,$date)
       if($row1 = mysqli_fetch_array($result1))
       {
      $row1['count'];
-     echo $query1;
       }
 }
 
@@ -101,11 +100,11 @@ $styleFont = array(
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G9',$excelrow1['DATE']);
           }
     //======================================================//             
-    
+
     //============ table 2 ============================//
   
     $sql_q10 = mysqli_query($conn, "
-    SELECT *, PERDIEM + RECEIPT AS 'a' FROM `tbltravel_claim_info2`
+    SELECT *, PERDIEM + RECEIPT AS 'a', tbltravel_claim_info.RO as 'tcf_id' ,  tbltravel_claim_ro.ID as 'tcr_id' FROM `tbltravel_claim_info2`
     INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
     INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
     INNER join tblemployeeinfo ON tbltravel_claim_info2.NAME = tblemployeeinfo.UNAME
@@ -119,11 +118,32 @@ $styleFont = array(
       $travel_title = 15;
       // $row_cnt = mysqli_num_rows($sql_q10)+1;
 
-
+      // SELECT *, RO_OT_OB FROM `tbltravel_claim_info` INNER JOIN tbltravel_claim_ro  ON tbltravel_claim_ro.ID = tbltravel_claim_info.RO WHERE RO = 38
       while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
     {
      
         $perdiem = $excelrow['a'];
+
+  $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$travel_title,$excelrow['RO_OT_OB']);     
+  echo $excelrow['RO_OT_OB'];
+
+  $query1 = "SELECT PERDIEM + RECEIPT AS 'a' ,tbltravel_claim_info.`ID` as 'dID', `TC_ID`, `RO`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `RECEIPT`,`OTHERS`, `TOTAL_AMOUNT`,
+  tbltravel_claim_ro.`ID`, `RO_OT_OB`, `UNAME`  FROM tbltravel_claim_info 
+  INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
+  WHERE tbltravel_claim_info.`RO` = '".$excelrow['ID']."' and tbltravel_claim_info.`DATE` = '".$excelrow['DATE']."' ORDER BY DATE";
+  $result1 = mysqli_query($conn, $query1);
+  $saved = array();
+
+  
+    if(mysqli_num_rows($result1) > 0)
+    {
+      while($row1 = mysqli_fetch_array($result1))
+      {
+
+      }
+    }
+
+
 
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$excelrow['DATE']);     
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row,$excelrow['PLACE']);
@@ -150,13 +170,13 @@ $styleFont = array(
 
 
           $row++;
-        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$travel_title,$excelrow['RO_OT_OB']);     
+    $aa = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+1;
 
-          $travel_title++;
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$aa,$excelrow['RO_OT_OB']);     
+
    
     }
-
-    
+    exit();
     $row1 = $row+1;
     $row2 = $row+3;
     $row3 = $row+5;
