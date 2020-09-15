@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
-	<property name="ireport.zoom" value="1.2100000000000044"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="135"/>
-	<parameter name="obno" class="java.lang.String">
+	<property name="ireport.zoom" value="1.6105100000000077"/>
+	<property name="ireport.x" value="15"/>
+	<property name="ireport.y" value="257"/>
+	<parameter name="vrno" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$F{obno}]]></defaultValueExpression>
 	</parameter>
-	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="vrdate" class="java.lang.String"/>
 	<parameter name="date" class="java.lang.String"/>
 	<parameter name="name" class="java.lang.String"/>
 	<parameter name="purpose" class="java.lang.String">
@@ -35,6 +35,13 @@
 	<parameter name="yes" class="java.lang.String"/>
 	<parameter name="no" class="java.lang.String"/>
 	<parameter name="cancelled" class="java.lang.String"/>
+	<parameter name="sign" class="java.lang.String"/>
+	<parameter name="pos" class="java.lang.String"/>
+	<parameter name="n" class="java.lang.String"/>
+	<parameter name="office" class="java.lang.String"/>
+	<parameter name="nop" class="java.lang.String"/>
+	<parameter name="remarks" class="java.lang.String"/>
+	<parameter name="destination" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * from ob]]>
 	</queryString>
@@ -154,6 +161,13 @@ Region IV-A (CALABARZON)
 			<rectangle>
 				<reportElement x="20" y="108" width="535" height="19" backcolor="#CCCCCC" uuid="54592abd-84ef-4c8b-bbf8-d518f4b13959"/>
 			</rectangle>
+			<textField>
+				<reportElement x="484" y="80" width="77" height="20" forecolor="#FF0000" uuid="87d1d01b-d3b7-4ab7-8d76-b65834f048cd"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vrno}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -216,6 +230,27 @@ Region IV-A (CALABARZON)
 			<rectangle>
 				<reportElement x="331" y="36" width="224" height="55" uuid="c2076494-1807-4a13-9efc-28c448cbdb97"/>
 			</rectangle>
+			<textField>
+				<reportElement x="116" y="19" width="120" height="20" uuid="39dd29a4-9dc5-411b-a804-b2bd02c5991b"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vrdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="45" width="131" height="27" uuid="8d8422de-cec7-4416-98cf-076667efae4c"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="40" width="208" height="48" uuid="6104a011-191a-42c3-8391-914caf3d6413"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{purpose}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -281,7 +316,7 @@ Instructions:
 				<reportElement x="255" y="80" width="76" height="47" backcolor="#CCCCCC" uuid="6698db99-0313-4cbf-a737-688f5a3bbde4"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="261" y="85" width="64" height="28" uuid="2bf23e02-a1b3-4a35-8a64-bcc1c2f1ef44"/>
+				<reportElement x="261" y="85" width="56" height="32" uuid="2bf23e02-a1b3-4a35-8a64-bcc1c2f1ef44"/>
 				<textElement>
 					<font fontName="Cambria" size="10" isBold="true"/>
 				</textElement>
@@ -622,10 +657,65 @@ Passengers:]]></text>
 				</textElement>
 				<text><![CDATA[Served To:]]></text>
 			</staticText>
-			<image>
-				<reportElement x="10" y="-22" width="555" height="522" uuid="5661057e-f935-43e8-b5c5-9ed76fc61cb0"/>
-				<imageExpression><![CDATA[$P{cancelled}]]></imageExpression>
-			</image>
+			<staticText>
+				<reportElement x="53" y="419" width="201" height="41" uuid="820c8f9b-8c24-49d4-a10a-a32eb59c3cdf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_______________________________________
+BEZALEEL O. SOLTURA
+Chief GSS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="419" width="201" height="41" uuid="17f27eca-e52b-4366-ae5f-21e69b4283e3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_______________________________________]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="358" y="431" width="136" height="12" uuid="d052dbfe-dafd-4a91-bd3f-7293e10b20a6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sign}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="442" width="136" height="14" uuid="fdc53840-917a-4f21-9d89-d28a11f37afb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="1" width="130" height="20" uuid="58244547-4740-435b-a942-b4b83add3f33"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{office}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="27" width="138" height="116" uuid="38627255-299a-4cec-b70d-0ecab8a0428d"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{remarks}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="22" width="210" height="27" uuid="b6400b7f-d118-4cf3-a7d6-ce297b3d4c05"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{destination}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="317" y="98" width="39" height="20" uuid="d7cf9240-8ade-456b-b3b4-8a3d4ace589d"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nop}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>

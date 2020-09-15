@@ -60,6 +60,18 @@ $view_query = mysqli_query($conn, "SELECT * from vr where id = '$id'");
 while ($row = mysqli_fetch_assoc($view_query)) {
 
 $id=$row['id'];
+$vrno=$row['vrno'];
+$name=$row['name'];
+$office=$row['office'];
+$purpose=$row['purpose'];
+$remarks=$row['remarks'];
+$destination=$row['destination'];
+$nop=$row['nop'];
+// $vrdate=$row['vrdate'];
+
+$vrdate = date('F d, Y',strtotime($row['vrdate']));
+
+
 
 $status = $row['status'];
 $stat="";
@@ -71,11 +83,25 @@ else{
 $stat='';
 }
 
+
+$sign = "DR. CARINA S. CRUZ";
+$pos = "Chief FAD";
+
+
 $PHPJasperXML = new PHPJasperXML(); 
 
 /* if($status=='cancelled'){ */
-    $PHPJasperXML->arrayParameter=array(
-       "cancelled"=>$stat);
+    $PHPJasperXML->arrayParameter=array("vrno"=>$vrno,
+    "n"=>$name,
+    "office"=>$office,
+    "vrdate"=>$vrdate,
+    "purpose"=>$purpose,
+    "remarks"=>$remarks,
+    "destination"=>$destination,
+    "nop"=>$nop,
+    "sign"=>$sign,
+    "pos"=>$pos,
+    "cancelled"=>$stat);
 // }
 /* else if ($uc=='no'){
     $PHPJasperXML->arrayParameter=array(
