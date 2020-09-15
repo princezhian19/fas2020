@@ -54,32 +54,12 @@ $divchief = '';
 }
     
 
-$view_query = mysqli_query($conn, "SELECT * from ob where id = '$id'");
+$view_query = mysqli_query($conn, "SELECT * from vr where id = '$id'");
 
 
 while ($row = mysqli_fetch_assoc($view_query)) {
 
 $id=$row['id'];
-
-$obno = $row['obno'];
-
-
-$date = date('F d, Y',strtotime($row['date']));
-$office = $row['office'];
-$name = $row['name'];
-$purpose = $row['purpose'];
-$place = $row['place'];
-$obdate = date('F d, Y',strtotime($row['obdate']));
-
-
-$timefrom = date('g:i A',strtotime($row['timefrom']));
-
-$timeto = date('g:i A',strtotime($row['timeto']));
-
-
-
-$uc = $row['uc'];
-$place1 = $row['place1'];
 
 $status = $row['status'];
 $stat="";
