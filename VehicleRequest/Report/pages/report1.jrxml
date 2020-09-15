@@ -696,7 +696,7 @@ Chief GSS
 				<textFieldExpression><![CDATA[$P{office}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="116" y="27" width="138" height="116" uuid="38627255-299a-4cec-b70d-0ecab8a0428d"/>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="22" width="138" height="120" uuid="38627255-299a-4cec-b70d-0ecab8a0428d"/>
 				<textElement>
 					<font fontName="Cambria"/>
 				</textElement>
