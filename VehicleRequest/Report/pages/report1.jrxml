@@ -133,7 +133,7 @@ Region IV-A (CALABARZON)
 			</staticText>
 			<image>
 				<reportElement x="370" y="4" width="185" height="63" uuid="798d7dcb-4337-4e34-900c-572df466db66"/>
-				<imageExpression><![CDATA["C:\\xampp\\htdocs\\fas\\Vehicle.png"]]></imageExpression>
+				<imageExpression><![CDATA["Vehicle.png"]]></imageExpression>
 			</image>
 			<rectangle>
 				<reportElement x="370" y="77" width="105" height="20" backcolor="#CCCCCC" uuid="fe573fe2-2b55-4ce4-adb1-d4d8825bb6eb"/>

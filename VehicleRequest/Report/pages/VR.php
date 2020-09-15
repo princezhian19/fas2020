@@ -54,7 +54,7 @@ $divchief = '';
 }
     
 
-/* $view_query = mysqli_query($conn, "SELECT * from ob where id = '$id'");
+$view_query = mysqli_query($conn, "SELECT * from ob where id = '$id'");
 
 
 while ($row = mysqli_fetch_assoc($view_query)) {
@@ -120,7 +120,7 @@ else{
 
 
     
-} */
+}
 
 $PHPJasperXML->load_xml_file("report1.jrxml");
 $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
