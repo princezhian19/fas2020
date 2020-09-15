@@ -558,10 +558,7 @@ $edit="edit";
                           <?php endif ?>
 
                           <!--   Serve -->
-                        
              
-
-
                   <td>
                     <?php if ($submitteddate1 == 0000-00-00): ?>
                           <!--  -->
