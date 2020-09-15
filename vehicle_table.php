@@ -331,7 +331,7 @@ $edit="edit";
                   <?php endif ?>
 
                 <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
-                  <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
+                  <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == 'sglee' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
                               <?php if ($status=='cancelled'):?>
                               <td></td>
                               <?php else: ?>
