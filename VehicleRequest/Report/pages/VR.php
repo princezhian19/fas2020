@@ -95,10 +95,7 @@ $PHPJasperXML = new PHPJasperXML();
 
 /* if($status=='cancelled'){ */
     $PHPJasperXML->arrayParameter=array(
-        "obno"=>$obno,"date"=>$date,
-        "name"=>$name,"purpose"=>$purpose,
-        "place"=>$place,"obdate"=>$obdate,
-        "timefrom"=>$timefrom,"timeto"=>$timeto,"field"=>$divchief,"divpos"=>$divpos,"place1"=>$place1,"yes"=>'correct.png',"no"=>'check1.png',"cancelled"=>$stat);
+       "cancelled"=>$stat);
 // }
 /* else if ($uc=='no'){
     $PHPJasperXML->arrayParameter=array(
