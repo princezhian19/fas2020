@@ -386,7 +386,7 @@ if (isset($_POST['add'])) {
         $.ajax({
 
 
-          url:"fetch_pr1.php",
+          url:"fetch_pr.php",
           method:"POST",
           data:{query:query,
             name: $('#pmo').val()
