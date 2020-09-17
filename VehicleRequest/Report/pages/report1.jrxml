@@ -954,10 +954,6 @@ Chief GSS
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ad2}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="139" y="62" width="100" height="80" isPrintWhenDetailOverflows="true" uuid="ee405a56-268f-4a56-b137-1276dd792ac4"/>
-				<textFieldExpression><![CDATA[$P{passengers}]]></textFieldExpression>
-			</textField>
 		</band>
 	</columnHeader>
 	<detail>

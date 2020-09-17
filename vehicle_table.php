@@ -369,7 +369,7 @@ $edit="edit";
                                 <?php else: ?>
                                 <td>
                                 <?php if ($recommenddate1 != '0000-00-00'): ?>
-                                <a name="edit" value="" id="edit" onclick="myFunction2(this)" data-editID="<?php echo $id;?>" data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class='fa'></i> Edit</a> 
+                                <!-- <a name="edit" value="" id="edit" onclick="myFunction2(this)" data-editID="<?php echo $id;?>" data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class='fa'></i> Edit</a>  -->
                                 <br>
                                 
                                 <?php echo $av.'<br>'.$ad?>
