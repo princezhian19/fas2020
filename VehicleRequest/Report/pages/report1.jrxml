@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
-	<property name="ireport.zoom" value="1.6105100000000077"/>
-	<property name="ireport.x" value="15"/>
-	<property name="ireport.y" value="257"/>
+	<property name="ireport.zoom" value="2.143588810000011"/>
+	<property name="ireport.x" value="253"/>
+	<property name="ireport.y" value="185"/>
 	<parameter name="vrno" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$F{obno}]]></defaultValueExpression>
 	</parameter>
@@ -42,6 +42,16 @@
 	<parameter name="nop" class="java.lang.String"/>
 	<parameter name="remarks" class="java.lang.String"/>
 	<parameter name="destination" class="java.lang.String"/>
+	<parameter name="passengers" class="java.lang.String"/>
+	<parameter name="dtime" class="java.lang.String"/>
+	<parameter name="ddate" class="java.lang.String"/>
+	<parameter name="rdate" class="java.lang.String"/>
+	<parameter name="rtime" class="java.lang.String"/>
+	<parameter name="nod" class="java.lang.String"/>
+	<parameter name="choice" class="java.lang.String"/>
+	<parameter name="choice1" class="java.lang.String"/>
+	<parameter name="choice2" class="java.lang.String"/>
+	<parameter name="choice3" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * from ob]]>
 	</queryString>
@@ -172,6 +182,9 @@ Region IV-A (CALABARZON)
 	</title>
 	<pageHeader>
 		<band height="73" splitType="Stretch">
+			<rectangle>
+				<reportElement x="331" y="16" width="76" height="20" uuid="22d714d3-0596-41ef-ac98-d2ee21cbeb2e"/>
+			</rectangle>
 			<staticText>
 				<reportElement x="113" y="-1" width="350" height="17" backcolor="#CCCCCC" uuid="dce62683-2a01-40f4-82ad-432e60bce645"/>
 				<textElement textAlignment="Justified">
@@ -197,9 +210,6 @@ Region IV-A (CALABARZON)
 			</rectangle>
 			<rectangle>
 				<reportElement x="407" y="16" width="76" height="20" uuid="4228b399-50ad-4c6f-b93e-91e8ebfa0ec9"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="331" y="16" width="76" height="20" uuid="22d714d3-0596-41ef-ac98-d2ee21cbeb2e"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="479" y="16" width="76" height="20" uuid="8332a769-933b-498a-abb6-326ec9aa6376"/>
@@ -251,6 +261,71 @@ Region IV-A (CALABARZON)
 				</textElement>
 				<textFieldExpression><![CDATA[$P{purpose}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="284" y="19" width="45" height="17" uuid="bafa6d6f-1476-4b1a-b9bc-a132854c3cd9"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Drop Off]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="19" width="43" height="17" uuid="1c7fe212-52fd-4927-88cd-cb3eeeb72006"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Pick-Up]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="19" width="55" height="17" uuid="46eff509-aa67-4fd6-8ee3-87fa37941afc"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Whole Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="19" width="55" height="17" uuid="46eff509-aa67-4fd6-8ee3-87fa37941afc"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Whole Day]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="507" y="19" width="39" height="20" uuid="ac9b35cf-e3e0-473d-b06c-d4013cc29ef3"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nod}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="522" y="19" width="38" height="17" uuid="ad1d8fe7-b44a-4d42-bb90-0e81fd261939"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Day/s]]></text>
+			</staticText>
+			<image scaleImage="Clip">
+				<reportElement stretchType="RelativeToBandHeight" x="262" y="19" width="16" height="13" uuid="49307d26-c369-4dad-ad47-ba12a1b7098b"/>
+				<imageExpression><![CDATA[$P{choice}]]></imageExpression>
+			</image>
+			<image scaleImage="Clip">
+				<reportElement stretchType="RelativeToBandHeight" x="340" y="19" width="16" height="13" uuid="4359f7f1-a301-498e-bb4f-0a8a671602f5"/>
+				<imageExpression><![CDATA[$P{choice1}]]></imageExpression>
+			</image>
+			<image scaleImage="Clip">
+				<reportElement stretchType="RelativeToBandHeight" x="409" y="19" width="16" height="13" uuid="2a4de14b-8f17-4a2b-825e-b92779ce8872"/>
+				<imageExpression><![CDATA[$P{choice2}]]></imageExpression>
+			</image>
+			<image scaleImage="Clip">
+				<reportElement stretchType="RelativeToBandHeight" x="483" y="19" width="16" height="13" uuid="32a4427b-bd24-4ded-83e8-d7ee1e577285"/>
+				<imageExpression><![CDATA[$P{choice3}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="503" y="19" width="33" height="17" uuid="7e4b7583-72ac-469b-9094-ac172c912678"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[___]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -696,13 +771,6 @@ Chief GSS
 				<textFieldExpression><![CDATA[$P{office}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToBandHeight" x="116" y="22" width="138" height="120" uuid="38627255-299a-4cec-b70d-0ecab8a0428d"/>
-				<textElement>
-					<font fontName="Cambria"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{remarks}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="337" y="22" width="210" height="27" uuid="b6400b7f-d118-4cf3-a7d6-ce297b3d4c05"/>
 				<textElement>
 					<font fontName="Cambria"/>
@@ -715,6 +783,48 @@ Chief GSS
 					<font fontName="Cambria" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="54" width="207" height="63" uuid="1b34506b-90e3-4902-ac29-9fb55b17e085"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{passengers}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="128" width="100" height="20" uuid="0234ab22-3066-43e7-b79c-60d5c4a85ff1"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ddate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="128" width="100" height="20" uuid="e7f294d0-5be6-4664-be0e-609b80c14e19"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dtime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="156" width="100" height="20" uuid="a33ec6a5-4b8e-4346-9917-66ce3f20938c"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="156" width="100" height="20" uuid="282b4b7e-f9ff-466a-9bf1-6a2db9f40725"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rtime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="22" width="150" height="120" uuid="38627255-299a-4cec-b70d-0ecab8a0428d"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{remarks}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
