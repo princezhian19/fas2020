@@ -19,6 +19,9 @@
                   <th width="100">RFQ NO</th>
                   <th width="100">RFQ DATE</th>
                   <th width="100">ABC</th>
+                  <th width="100">SUPPLIER</th>
+                  <th width="100">PO NO.</th>
+                  <th width="100">PO Amount</th>
 
                 </tr>
               </thead>
@@ -51,6 +54,27 @@
                 $select_tots = mysqli_query($conn,"SELECT sum(total_amount) as abc FROM rfq_items WHERE rfq_id = $rfqID");
                 $rowtots = mysqli_fetch_array($select_tots);
                 $totsabc = $rowtots['abc'];
+
+                $selectaoq = mysqli_query($conn,"SELECT supplier_quote_id,po_id FROM selected_quote WHERE rfq_id = $rfqID");
+                $rowaq = mysqli_fetch_array($selectaoq);
+                $supplierQ_id = $rowaq['supplier_quote_id'];
+                $po_id = $rowaq['po_id'];
+
+                $selectpo = mysqli_query($conn,"SELECT po_no,po_amount FROM po WHERE id = $po_id");
+                $rowpo = mysqli_fetch_array($selectpo);
+                $po_no = $rowpo['po_no'];
+                $po_amount = $rowpo['po_amount'];
+
+                $selectSupplier = mysqli_query($conn,"SELECT supplier_id FROM supplier_quote WHERE id = $supplierQ_id");
+                $suprow = mysqli_fetch_array($selectSupplier);
+                $supid = $suprow['supplier_id'];
+
+                $selectSup = mysqli_query($conn,"SELECT supplier_title FROM supplier WHERE id = $supid");
+                $suplierrow = mysqli_fetch_array($selectSup);
+                $supp_name = $suplierrow['supplier_title'];
+
+
+
                 /* getting values for flags */
                 $sq = $row["sq"];
                 $aoq = $row["aoq"];
@@ -93,6 +117,15 @@
                         <td>
                     <?php echo number_format($totsabc,2) ?>
                           
+                        </td> 
+                        <td>
+                          <?php echo $supp_name;?>
+                        </td>
+                        <td>
+                          <?php echo $po_no;?>
+                        </td>
+                        <td>
+                          <?php echo number_format($po_amount,2);?>
                         </td>
                         </tr>
                       <?php } ?>

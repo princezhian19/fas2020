@@ -1108,11 +1108,11 @@ if (isset($_POST['submit'])) {
               }
 
               if ($pmo == 6 ) {
-                $pmo1 = "LGMED-PDMU";
+                $pmo1 = "LGCDD-PDMU";
               }
 
               if ($pmo == 7 ) {
-                $pmo1 = "LGCDD-MBRTG";
+                $pmo1 = "LGMED-MBRTG";
               }
 
               ?>
@@ -1131,8 +1131,8 @@ if (isset($_POST['submit'])) {
                           <option value="3">LGMED</option>
                           <option value="4">LGCDD</option>
                           <option value="5">FAD</option>
-                          <option value="6">LGMED-PDMU</option>
-                          <option value="7">LGCDD-MBRTG</option>
+                          <option value="6">LGCDD-PDMU</option>
+                          <option value="7">LGMED-MBRTG</option>
                         </select>
                       <?php endif ?>
 
@@ -1142,8 +1142,8 @@ if (isset($_POST['submit'])) {
                         <option value="3" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGMED') ? 'selected="selected"' : ''; ?>>LGMED</option>
                         <option value="4" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGCDD') ? 'selected="selected"' : ''; ?>>LGCDD</option>
                         <option value="5" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'FAD') ? 'selected="selected"' : ''; ?>>FAD</option>
-                        <option value="6" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGMED-PDMU') ? 'selected="selected"' : ''; ?>>LGMED-PDMU</option>
-                        <option value="7" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGCDD-MBRTG') ? 'selected="selected"' : ''; ?>>LGCDD-MBRTG</option>
+                        <option value="6" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGCDD-PDMU') ? 'selected="selected"' : ''; ?>>LGMED-PDMU</option>
+                        <option value="7" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGMED-MBRTG') ? 'selected="selected"' : ''; ?>>LGCDD-MBRTG</option>
                       </select>
                     </div>
 
@@ -1166,8 +1166,8 @@ if (isset($_POST['submit'])) {
                             <option value="3">LGMED</option>
                             <option value="4">LGCDD</option>
                             <option value="5">FAD</option>
-                            <option value="6">LGMED-PDMU</option>
-                            <option value="7">LGCDD-MBRTG</option>
+                            <option value="6">LGCDD-PDMU</option>
+                            <option value="7">LGMED-MBRTG</option>
                           </select>
                         <?php endif ?>
 
@@ -1177,8 +1177,8 @@ if (isset($_POST['submit'])) {
                           <option value="3" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGMED') ? 'selected="selected"' : ''; ?>>LGMED</option>
                           <option value="4" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGCDD') ? 'selected="selected"' : ''; ?>>LGCDD</option>
                           <option value="5" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'FAD') ? 'selected="selected"' : ''; ?>>FAD</option>
-                          <option value="6" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGMED-PDMU') ? 'selected="selected"' : ''; ?>>LGMED-PDMU</option>
-                          <option value="7" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGCDD-MBRTG') ? 'selected="selected"' : ''; ?>>LGCDD-MBRTG</option>
+                          <option value="6" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGCDD-PDMU') ? 'selected="selected"' : ''; ?>>LGMED-PDMU</option>
+                          <option value="7" <?php echo (isset($_POST['pmo']) && $_POST['pmo'] == 'LGMED-MBRTG') ? 'selected="selected"' : ''; ?>>LGCDD-MBRTG</option>
                         </select>
                       </div>
 
@@ -1269,7 +1269,7 @@ if (isset($_POST['submit'])) {
       e.preventDefault();
       if (x < max_fields) {
         x++;
-            $(wrapper).append('<div><a href="#" class="delete btn btn-danger">Delete</a> <div class="form-group "><label>Office </label><select required class="form-control  select2" style="width: 100%;" name="pmo[]" id="pmo[]" ><option selected disabled >Select Office</option><option value="1">ORD</option><option value="3">LGMED</option><option value="4">LGCDD</option><option value="5">FAD</option><option value="6">LGMED-PDMU</option><option value="7">LGCDD-MBRTG</option></select></div><div class="form-group"><label>Quantity</label> <input required autocomplete = "off" onkeypress="return CheckNumeric()" onkeyup="FormatCurrency(this)" value="<?php echo isset($_POST['qty[]']) ? $_POST['qty[]'] : '' ?>" class="form-control" name="qty[]" type="text" id="qty[]" > </div></div>'); //add input box
+            $(wrapper).append('<div><a href="#" class="delete btn btn-danger">Delete</a> <div class="form-group "><label>Office </label><select required class="form-control  select2" style="width: 100%;" name="pmo[]" id="pmo[]" ><option selected disabled >Select Office</option><option value="1">ORD</option><option value="3">LGMED</option><option value="4">LGCDD</option><option value="5">FAD</option><option value="6">LGCDD-PDMU</option><option value="7">LGMED-MBRTG</option></select></div><div class="form-group"><label>Quantity</label> <input required autocomplete = "off" onkeypress="return CheckNumeric()" onkeyup="FormatCurrency(this)" value="<?php echo isset($_POST['qty[]']) ? $_POST['qty[]'] : '' ?>" class="form-control" name="qty[]" type="text" id="qty[]" > </div></div>'); //add input box
           } else {
             alert('You Reached the limits')
           }
