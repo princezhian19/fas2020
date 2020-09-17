@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
-	<property name="ireport.zoom" value="2.143588810000011"/>
-	<property name="ireport.x" value="257"/>
-	<property name="ireport.y" value="336"/>
+	<property name="ireport.zoom" value="1.7715610000000088"/>
+	<property name="ireport.x" value="27"/>
+	<property name="ireport.y" value="364"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#000000"/>
@@ -77,6 +77,17 @@
 	<parameter name="choice1" class="java.lang.String"/>
 	<parameter name="choice2" class="java.lang.String"/>
 	<parameter name="choice3" class="java.lang.String"/>
+	<parameter name="receiveddate" class="java.lang.String"/>
+	<parameter name="receivedby" class="java.lang.String"/>
+	<parameter name="av" class="java.lang.String"/>
+	<parameter name="ad" class="java.lang.String"/>
+	<parameter name="plate" class="java.lang.String"/>
+	<parameter name="av1" class="java.lang.String"/>
+	<parameter name="ad1" class="java.lang.String"/>
+	<parameter name="plate1" class="java.lang.String"/>
+	<parameter name="av2" class="java.lang.String"/>
+	<parameter name="ad2" class="java.lang.String"/>
+	<parameter name="plate2" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * from ob]]>
 	</queryString>
@@ -505,22 +516,22 @@ Passengers:]]></text>
 				<text><![CDATA[B. RECEIVED AND ASSIGNED VEHICLE REQUEST (To be Accomplished by GSS Staff)]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="224" y="198" width="59" height="21" uuid="20ecd9c1-03d5-4e25-92d0-5b6cda9fb004"/>
+				<reportElement x="240" y="198" width="50" height="21" uuid="20ecd9c1-03d5-4e25-92d0-5b6cda9fb004"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="96" y="198" width="52" height="21" uuid="11a2ae6d-a7a1-497e-a5be-f15bd03237d6"/>
+				<reportElement x="96" y="198" width="72" height="21" uuid="11a2ae6d-a7a1-497e-a5be-f15bd03237d6"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="148" y="198" width="76" height="21" backcolor="#CCCCCC" uuid="55b7566f-216d-49af-986b-8a9f586f080c"/>
+				<reportElement x="168" y="198" width="72" height="21" backcolor="#CCCCCC" uuid="55b7566f-216d-49af-986b-8a9f586f080c"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="20" y="198" width="76" height="21" backcolor="#CCCCCC" uuid="7a56dd45-fa54-4c3c-8d4a-e9a820ac1cc7"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="358" y="198" width="72" height="21" uuid="b91c0fdc-eb50-4d61-8da1-3bb05ed81adc"/>
+				<reportElement x="358" y="198" width="81" height="21" uuid="b91c0fdc-eb50-4d61-8da1-3bb05ed81adc"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="282" y="198" width="76" height="21" backcolor="#CCCCCC" uuid="22646b13-e6e7-479d-924b-a56c5b6fc0af"/>
+				<reportElement x="290" y="198" width="68" height="21" backcolor="#CCCCCC" uuid="22646b13-e6e7-479d-924b-a56c5b6fc0af"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="24" y="201" width="78" height="17" uuid="b9370911-ae9b-442e-9cb2-d2c0b2d52c93"/>
@@ -530,14 +541,14 @@ Passengers:]]></text>
 				<text><![CDATA[Received Date:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="151" y="201" width="79" height="17" uuid="d118c1ba-b3d8-4a8b-bcd8-d6d0e013062e"/>
+				<reportElement x="168" y="201" width="76" height="17" uuid="d118c1ba-b3d8-4a8b-bcd8-d6d0e013062e"/>
 				<textElement>
 					<font fontName="Cambria" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Received Time:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="286" y="202" width="76" height="19" uuid="ac9ed564-e67c-47a0-8605-9248980a30f6"/>
+				<reportElement x="294" y="201" width="62" height="19" uuid="ac9ed564-e67c-47a0-8605-9248980a30f6"/>
 				<textElement>
 					<font fontName="Cambria" size="10" isBold="true"/>
 				</textElement>
@@ -547,10 +558,10 @@ Passengers:]]></text>
 				<reportElement x="494" y="198" width="61" height="21" uuid="f8162925-fc15-4dc4-b1c6-f33318b0af6b"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="430" y="198" width="64" height="21" backcolor="#CCCCCC" uuid="7d201e00-523f-4078-993b-d471b6cfdb91"/>
+				<reportElement x="439" y="198" width="55" height="21" backcolor="#CCCCCC" uuid="7d201e00-523f-4078-993b-d471b6cfdb91"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="434" y="201" width="60" height="19" uuid="81863e9c-0704-4080-9821-c42ee646bee2"/>
+				<reportElement x="441" y="201" width="60" height="19" uuid="81863e9c-0704-4080-9821-c42ee646bee2"/>
 				<textElement>
 					<font fontName="Cambria" size="10" isBold="true"/>
 				</textElement>
@@ -810,7 +821,7 @@ Chief GSS
 				<textFieldExpression><![CDATA[$P{nop}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="338" y="128" width="100" height="20" uuid="0234ab22-3066-43e7-b79c-60d5c4a85ff1"/>
+				<reportElement x="338" y="130" width="100" height="20" uuid="0234ab22-3066-43e7-b79c-60d5c4a85ff1"/>
 				<textElement>
 					<font fontName="Cambria"/>
 				</textElement>
@@ -859,6 +870,90 @@ Chief GSS
 				</textElement>
 				<text><![CDATA[___]]></text>
 			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="99" y="202" width="71" height="20" uuid="b3b97a42-6ece-41e3-99b3-62d27d83a3ce"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receiveddate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="311" y="97" width="33" height="17" uuid="301d2f5e-8430-4318-baeb-6f49faa5abfb"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[___]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="363" y="201" width="100" height="20" uuid="5ae482fd-b6ff-45a6-860d-5bf80a4058a7"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receivedby}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="55" y="249" width="100" height="20" uuid="6b828157-9360-4224-bf15-dcf2703ba02c"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{av}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="248" width="100" height="20" uuid="f82030ce-3e59-465c-b086-b4fffdecfc57"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="249" width="100" height="20" uuid="211c84c8-0fcb-40ec-a476-f0a2df85073e"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{plate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="270" width="100" height="20" uuid="085ba974-d78e-48ce-8774-a1ace92877d3"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{av1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="291" width="100" height="20" uuid="13a7221d-4bf8-4300-a92b-22d57dfb1759"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{av2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="269" width="100" height="20" uuid="2ef2f34d-1545-4414-bb82-4ba17b988095"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{plate1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="291" width="100" height="20" uuid="a923f206-f23f-4495-8de0-5223bae2fd36"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{plate2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="270" width="100" height="20" uuid="bcd984af-c320-4287-bbd1-198b88a1b84e"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ad1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="291" width="100" height="20" uuid="d70d8236-a54a-4311-9a0b-7cd77868b97f"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ad2}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>

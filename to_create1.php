@@ -187,13 +187,13 @@ else{
 ?>
 <!-- Insert Query -->
        
-<div class="box">
+<div class="box" style="border-style: groove;">
           <div class="box-body">
       
             <h1 align="">Travel Order</h1>
          
         <br>
-      <li class="btn btn-success"><a href="TravelOrder.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-warning"><a href="TravelOrder.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       
 

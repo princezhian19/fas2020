@@ -95,14 +95,32 @@ $nop=$row['nop'];
 
 $vrdate = date('F d, Y',strtotime($row['vrdate']));
 
-$departuredate = date('F d, Y',strtotime($row['departuredate']));
+$departuredate = date('M d, Y',strtotime($row['departuredate']));
 $departuretime = date('H:i A',strtotime($row['departuretime']));
 
-$returndate = date('F d, Y',strtotime($row['returndate']));
+$returndate = date('M d, Y',strtotime($row['returndate']));
 $returntime = date('H:i A',strtotime($row['returntime']));
 
 $nod=$row['nod'];
 $type=$row['type'];
+
+
+$receiveddate = date('M d, Y',strtotime($row['receiveddate']));
+$receivedby = $row['receivedby'];
+
+$av = $row['av'];
+$ad = $row['ad'];
+$plate = $row['plate'];
+
+$av1 = $row['av1'];
+$ad1 = $row['ad1'];
+$plate1 = $row['plate1'];
+
+$av2 = $row['av2'];
+$ad2 = $row['ad2'];
+$plate2 = $row['plate2'];
+
+$flag = $row['flag'];
 
 $status = $row['status'];
 $stat="";
@@ -114,8 +132,18 @@ else{
 $stat='';
 }
 
+
+if($flag=="Calamba"){
 $sign = "DR. CARINA S. CRUZ";
 $pos = "Chief FAD";
+
+}
+else{
+$sign = "ARIEL O. IGLESIA";
+$pos = "Regional Director";
+
+}
+
 
 
 
@@ -143,6 +171,17 @@ if($type=="Drop Off"){
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
     "rtime"=>$returntime,
+    "receiveddate"=>$receiveddate,
+    "receivedby"=>$receivedby,
+    "av"=>$av,
+    "ad"=>$ad,
+    "plate"=>$plate,
+    "av1"=>$av1,
+    "ad1"=>$ad1,
+    "plate1"=>$plate1,
+    "av2"=>$av2,
+    "ad2"=>$ad2,
+    "plate2"=>$plate2,
     "sign"=>$sign,
     "pos"=>$pos,
     "cancelled"=>$stat);
@@ -166,6 +205,17 @@ else if($type=="Pick-Up"){
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
     "rtime"=>$returntime,
+    "receiveddate"=>$receiveddate,
+    "receivedby"=>$receivedby,
+    "av"=>$av,
+    "ad"=>$ad,
+    "plate"=>$plate,
+    "av1"=>$av1,
+    "ad1"=>$ad1,
+    "plate1"=>$plate1,
+    "av2"=>$av2,
+    "ad2"=>$ad2,
+    "plate2"=>$plate2,
     "sign"=>$sign,
     "pos"=>$pos,
     "cancelled"=>$stat);
@@ -189,6 +239,17 @@ else if($type=="Whole Day"){
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
     "rtime"=>$returntime,
+    "receiveddate"=>$receiveddate,
+    "receivedby"=>$receivedby,
+    "av"=>$av,
+    "ad"=>$ad,
+    "plate"=>$plate,
+    "av1"=>$av1,
+    "ad1"=>$ad1,
+    "plate1"=>$plate1,
+    "av2"=>$av2,
+    "ad2"=>$ad2,
+    "plate2"=>$plate2,
     "sign"=>$sign,
     "pos"=>$pos,
     "cancelled"=>$stat);
@@ -213,6 +274,17 @@ else{
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
     "rtime"=>$returntime,
+    "receiveddate"=>$receiveddate,
+    "receivedby"=>$receivedby,
+    "av"=>$av,
+    "ad"=>$ad,
+    "plate"=>$plate,
+    "av1"=>$av1,
+    "ad1"=>$ad1,
+    "plate1"=>$plate1,
+    "av2"=>$av2,
+    "ad2"=>$ad2,
+    "plate2"=>$plate2,
     "sign"=>$sign,
     "pos"=>$pos,
     "cancelled"=>$stat);

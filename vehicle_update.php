@@ -137,6 +137,10 @@ $view_query = mysqli_query($conn, "SELECT * from vr where id = '$id'");
         $reason = $row['reason'];
         $status=$row['status'];
         $pos=$row['pos'];
+        $flag = $row['flag'];
+        
+
+
     }
 
 ?>
@@ -213,6 +217,8 @@ $returndate1 = date('Y-m-d', strtotime($returndate11));
 
 $returntime1 = $_POST['returntime'];
 
+$flag = $_POST['flag'];
+
 
 
 $servername = "localhost";
@@ -250,7 +256,7 @@ else
   }
 
   /* insert to vr table */
-  $query = mysqli_query($conn,"UPDATE vr set vrno='$vrno1',vrdate='$vrdate1',vrtime='$vrtime1',type='$type1',nod='$nod1',name='$name1',office='$office1',position='$pos1',mobile='$mobile1',purpose='$purpose1',destination='$destination1',nop='$nop1',departuredate='$departuredate1',departuretime='$departuretime1',returndate='$returndate1',returntime='$returntime1',pos='$pos1' where id = '$id'");
+  $query = mysqli_query($conn,"UPDATE vr set vrno='$vrno1',vrdate='$vrdate1',vrtime='$vrtime1',type='$type1',nod='$nod1',name='$name1',office='$office1',position='$pos1',mobile='$mobile1',purpose='$purpose1',destination='$destination1',nop='$nop1',departuredate='$departuredate1',departuretime='$departuretime1',returndate='$returndate1',returntime='$returntime1',pos='$pos1',flag='$flag' where id = '$id'");
 
  /*  echo "UPDATE vr set vrno='$vrno1',vrdate='$vrdate1',vrtime='$vrtime1',type='$type1',name='$name1',office='$office1',position='$pos1',mobile='$mobile1',purpose='$purpose1',destination='$destination1',nop='$nop1',departuredate='$departuredate1',departuretime='$departuretime1',returndate='$returndate1',returntime='$returntime1',pos='$pos1' where id = '$id'";
   exit();
@@ -395,7 +401,36 @@ else{
                         </td> 
 
                         <td colspan=8 class=" label-text" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
-                      
+                        
+                        
+                          <select required class="pull-left" style="width: 22%; height: 35px;" name="flag" id="flag" > 
+                          
+        
+
+
+    
+                          <?php 
+                          switch($flag){
+                          case 'Calamba':
+                          echo '
+                          <option value="">Select Route</option>
+                          <option value="Calamba" selected>Calamba</option>
+                          <option value="Outside">Outside Calamba</option>';
+                          break;
+
+                          case 'Outside':
+                          echo '
+                          <option value="">Select Route</option>
+                          <option value="Calamba" selected>Calamba</option>
+                          <option value="Outside" selected>Outside Calamba</option>';
+                          break;
+                          }
+                          ?>
+                          
+                          </select>
+
+                        
+                        
                         <input readonly required type="text" class="" style="text-align:center; border:none; font-size:20px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="" id="" value = "A. REQUEST FOR VEHICLE (To be Accomplished by Requesting Personnel)" >
                         </td>
 
@@ -1369,12 +1404,6 @@ else{
                 <br>
                 <br>
                
-
-               
-
-
-               
-
                 
                     <input type="submit" name="submit" class="btn btn-primary pull-right" value="Save" id="butsave">
 

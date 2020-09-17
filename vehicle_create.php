@@ -157,6 +157,8 @@ $returndate = date('Y-m-d', strtotime($returndate1));
 $returntime = $_POST['returntime'];
 $remarks = $_POST['remarks'];
 
+$flag = $_POST['flag'];
+
 
 
 $servername = "localhost";
@@ -190,8 +192,8 @@ else{
   }
 
   /* insert to vr table */
-  $query = mysqli_query($conn,"INSERT INTO vr (vrno,vrdate,vrtime,type,nod,name,office,position,mobile,purpose,destination,nop,departuredate,departuretime,returndate,returntime,pos,remarks) 
-  VALUES ('$vrno','$vrdate','$vrtime','$type','$nod','$name','$office','$pos','$mobile','$purpose','$destination','$nop','$departuredate','$departuretime','$returndate','$returntime','$pos','$remarks')");
+  $query = mysqli_query($conn,"INSERT INTO vr (vrno,vrdate,vrtime,type,nod,name,office,position,mobile,purpose,destination,nop,departuredate,departuretime,returndate,returntime,pos,remarks,flag) 
+  VALUES ('$vrno','$vrdate','$vrtime','$type','$nod','$name','$office','$pos','$mobile','$purpose','$destination','$nop','$departuredate','$departuretime','$returndate','$returntime','$pos','$remarks','$flag')");
 
 
 
@@ -332,6 +334,11 @@ else{
                         </td> 
 
                         <td colspan=8 class=" label-text" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                        <select required class="pull-left" style="width: 22%; height: 35px;" name="flag" id="flag" > 
+                          <option value="">Select Route</option>
+                          <option value="Calamba">Calamba</option>
+                          <option value="Outside">Outside Calamba</option>
+                        </select>
                       
                         <input readonly required type="text" class="" style="text-align:center; border:none; font-size:20px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="" id="" value = "A. REQUEST FOR VEHICLE (To be Accomplished by Requesting Personnel)" >
                         </td>
@@ -1258,9 +1265,9 @@ else{
                 </table>
                 <br>
                 <br>
-
+                
                     <input type="submit" name="submit" class="btn btn-primary pull-right" value="Save" id="butsave">
-
+                  
                     <br>
                     <br>  
                 </div>

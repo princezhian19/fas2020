@@ -169,7 +169,7 @@ else{
             <h1 align="">Edit Travel Order</h1>
          
         <br>
-      <li class="btn btn-success"><a href="TravelOrder.php" style="color:white;text-decoration: none;">Back</a></li>
+      <li class="btn btn-warning"><a href="TravelOrder.php" style="color:white;text-decoration: none;">Back</a></li>
       <br>
       <br>
 
