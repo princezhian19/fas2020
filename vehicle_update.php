@@ -421,9 +421,16 @@ else{
                           case 'Outside':
                           echo '
                           <option value="">Select Route</option>
-                          <option value="Calamba" selected>Calamba</option>
+                          <option value="Calamba" >Calamba</option>
                           <option value="Outside" selected>Outside Calamba</option>';
                           break;
+
+                          case '':
+                            echo '
+                            <option value="">Select Route</option>
+                            <option value="Calamba" >Calamba</option>
+                            <option value="Outside" >Outside Calamba</option>';
+                            break;
                           }
                           ?>
                           
