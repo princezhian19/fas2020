@@ -3,6 +3,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+include('../../../db.class.php'); // call db.class.php
+$mydb = new db(); 
+
+$conn1 = $mydb->connect();
+
+
 include_once("../PHPJasperXML.inc.php");
 
 
@@ -57,9 +63,21 @@ $divchief = '';
 
 // exit();
 
-                
+//exit();     
+
+        
 
 $view_query = mysqli_query($conn, "SELECT * from vr where id = '$id'");
+
+
+$results = $conn1->prepare("SELECT name from vr_passengers where vrid = '$vrno' order by id asc");
+$results->execute();
+while($row1 = $results->fetch(PDO::FETCH_ASSOC))
+{
+    $pname = $row1['name'].'';
+    
+  /*   echo  $pname.'<br>'; */
+
 
 
 while ($row = mysqli_fetch_assoc($view_query)) {
@@ -99,17 +117,13 @@ $stat='';
 $sign = "DR. CARINA S. CRUZ";
 $pos = "Chief FAD";
 
-$passengers = mysqli_query($conn, "SELECT name from vr_passengers where vrid = '$vrno' order by id asc");
-while ($row1 = mysqli_fetch_assoc($passengers)) {
-$pname = $row1['name'];
-
-$pname1 = $pname;
-// echo  $pname;
-}
 
 
 
-$PHPJasperXML = new PHPJasperXML(); 
+$PHPJasperXML = new PHPJasperXML();
+
+
+
 
 if($type=="Drop Off"){
     $PHPJasperXML->arrayParameter=array("vrno"=>$vrno,
@@ -124,7 +138,7 @@ if($type=="Drop Off"){
     "choice1"=>'check1.png',
     "choice2"=>'check1.png',
     "choice3"=>'check1.png',
-    "passengers"=>$pname1,
+    "passengers"=>$pname,
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -147,7 +161,7 @@ else if($type=="Pick-Up"){
     "choice1"=>'correct.png',
     "choice2"=>'check1.png',
     "choice3"=>'check1.png',
-    "passengers"=>$pname1,
+    "passengers"=>$pname,
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -170,7 +184,7 @@ else if($type=="Whole Day"){
     "choice1"=>'check1.png',
     "choice2"=>'correct.png',
     "choice3"=>'check1.png',
-    "passengers"=>$pname1,
+    "passengers"=>$pname,
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -194,7 +208,7 @@ else{
     "choice2"=>'check1.png',
     "choice3"=>'correct.png',
     "nod"=>$nod,
-    "passengers"=>$pname1,
+    "passengers"=>$pname,
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -203,13 +217,13 @@ else{
     "pos"=>$pos,
     "cancelled"=>$stat);
 
-
-}
-
 }
 
 
 
+}
+
+}
 
 
 

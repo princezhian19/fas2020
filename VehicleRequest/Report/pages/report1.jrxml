@@ -1,8 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
 	<property name="ireport.zoom" value="2.143588810000011"/>
-	<property name="ireport.x" value="253"/>
-	<property name="ireport.y" value="185"/>
+	<property name="ireport.x" value="257"/>
+	<property name="ireport.y" value="336"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="0e63eaa1-e227-4c4e-b6c6-55fac8e6cc9a"/>
 	<parameter name="vrno" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$F{obno}]]></defaultValueExpression>
 	</parameter>
@@ -172,9 +197,9 @@ Region IV-A (CALABARZON)
 				<reportElement x="20" y="108" width="535" height="19" backcolor="#CCCCCC" uuid="54592abd-84ef-4c8b-bbf8-d518f4b13959"/>
 			</rectangle>
 			<textField>
-				<reportElement x="484" y="80" width="77" height="20" forecolor="#FF0000" uuid="87d1d01b-d3b7-4ab7-8d76-b65834f048cd"/>
+				<reportElement x="486" y="80" width="77" height="20" forecolor="#FF0000" uuid="87d1d01b-d3b7-4ab7-8d76-b65834f048cd"/>
 				<textElement>
-					<font isBold="true"/>
+					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vrno}]]></textFieldExpression>
 			</textField>
@@ -778,18 +803,11 @@ Chief GSS
 				<textFieldExpression><![CDATA[$P{destination}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="317" y="98" width="39" height="20" uuid="d7cf9240-8ade-456b-b3b4-8a3d4ace589d"/>
+				<reportElement x="316" y="97" width="39" height="20" uuid="d7cf9240-8ade-456b-b3b4-8a3d4ace589d"/>
 				<textElement>
 					<font fontName="Cambria" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nop}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="337" y="54" width="207" height="63" uuid="1b34506b-90e3-4902-ac29-9fb55b17e085"/>
-				<textElement>
-					<font fontName="Cambria"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{passengers}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="338" y="128" width="100" height="20" uuid="0234ab22-3066-43e7-b79c-60d5c4a85ff1"/>
@@ -826,6 +844,21 @@ Chief GSS
 				</textElement>
 				<textFieldExpression><![CDATA[$P{remarks}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="337" y="55" width="206" height="59" uuid="6cfdd52c-31e4-4aaa-b86f-88134305e659"/>
+				<textElement>
+					<font fontName="Cambria" isStrikeThrough="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{passengers}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="311" y="97" width="33" height="17" uuid="301d2f5e-8430-4318-baeb-6f49faa5abfb"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[___]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
