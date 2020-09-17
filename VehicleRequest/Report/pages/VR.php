@@ -74,9 +74,10 @@ $results = $conn1->prepare("SELECT name from vr_passengers where vrid = '$vrno' 
 $results->execute();
 while($row1 = $results->fetch(PDO::FETCH_ASSOC))
 {
-    $pname = $row1['name'].'';
-    
-  /*   echo  $pname.'<br>'; */
+    $pname = $row1['name'];
+    /* echo $pname; */
+
+
 
 
 
@@ -296,6 +297,7 @@ else{
 }
 
 }
+
 
 
 

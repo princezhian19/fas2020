@@ -406,9 +406,6 @@ else{
                           <select required class="pull-left" style="width: 22%; height: 35px;" name="flag" id="flag" > 
                           
         
-
-
-    
                           <?php 
                           switch($flag){
                           case 'Calamba':
