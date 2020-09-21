@@ -134,16 +134,17 @@ $pos = "Regional Director";
 
 $PHPJasperXML = new PHPJasperXML();
 
-
+$pname = array();
 $results = $conn1->prepare("SELECT name from vr_passengers where vrid = '$vrno' order by id asc");
 $results->execute();
 while($row1 = $results->fetch(PDO::FETCH_ASSOC))
 {
-    $pname = $row1['name'];
-    /* echo $pname; */
+    $pname[] = $row1['name'];
+    // var_dump($pname);
+    
 
 }
-
+//  exit();
 if($type=="Drop Off"){
     $PHPJasperXML->arrayParameter=array("vrno"=>$vrno,
     "n"=>$name,
@@ -158,7 +159,7 @@ if($type=="Drop Off"){
     "choice2"=>'check1.png',
     "choice3"=>'check1.png',
     "nod"=>$nod,
-    "passengers"=>$pname,
+    "passengers"=>implode('; ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -193,7 +194,7 @@ else if($type=="Pick-Up"){
     "choice2"=>'check1.png',
     "choice3"=>'check1.png',
     "nod"=>$nod,
-    "passengers"=>$pname,
+    "passengers"=>implode('; ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -228,7 +229,7 @@ else if($type=="Whole Day"){
     "choice2"=>'correct.png',
     "choice3"=>'check1.png',
     "nod"=>$nod,
-    "passengers"=>$pname,
+    "passengers"=>implode('; ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -263,7 +264,7 @@ else{
     "choice2"=>'check1.png',
     "choice3"=>'correct.png',
     "nod"=>$nod,
-    "passengers"=>$pname,
+    "passengers"=>implode('; ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
