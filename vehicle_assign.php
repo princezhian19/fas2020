@@ -39,8 +39,8 @@ if ($conn->connect_error) {
      
 
 $query = mysqli_query($conn, "UPDATE vr set assigneddate='$assigneddate', assignedtime='$assignedtime',dispatcher='$dispatcher',nov='$nov',av='$av',ad='$ad',plate='$plate',av1='$av1',ad1='$ad1',plate1='$plate1',av2='$av2',ad2='$ad2',plate2='$plate2',vremarks='$vremarks' where id = '$id'");
-echo "UPDATE vr set assigneddate='$assigneddate', assignedtime='$assignedtime',dispatcher='$dispatcher',nov='$nov',av='$av',ad='$ad',plate='$plate',av1='$av1',ad1='$ad1',plate1='$plate1',av2='$av2',ad2='$ad2',plate2='$plate2',vremarks='$vremarks' where id = '$id'";
-exit();
+/* echo "UPDATE vr set assigneddate='$assigneddate', assignedtime='$assignedtime',dispatcher='$dispatcher',nov='$nov',av='$av',ad='$ad',plate='$plate',av1='$av1',ad1='$ad1',plate1='$plate1',av2='$av2',ad2='$ad2',plate2='$plate2',vremarks='$vremarks' where id = '$id'";
+exit(); */
 
 
 /* echo "UPDATE vr set assigneddate='$assigndate', assignedtime='$assigntime',dispatcher='$dispatcher',nov='$nov',av='$av',ad='$ad',plate='$plate',vremarks='$vremarks' where id = '$id'";

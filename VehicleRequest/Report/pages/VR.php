@@ -82,10 +82,10 @@ $nop=$row['nop'];
 $vrdate = date('F d, Y',strtotime($row['vrdate']));
 
 $departuredate = date('M d, Y',strtotime($row['departuredate']));
-$departuretime = date('H:i A',strtotime($row['departuretime']));
+$departuretime = date('h:i A',strtotime($row['departuretime']));
 
 $returndate = date('M d, Y',strtotime($row['returndate']));
-$returntime = date('H:i A',strtotime($row['returntime']));
+$returntime = date('h:i A',strtotime($row['returntime']));
 
 $nod=$row['nod'];
 $type=$row['type'];
@@ -284,14 +284,7 @@ else{
 
 }
 
-
-
 }
-
-
-
-
-
 
 $PHPJasperXML->load_xml_file("report1.jrxml");
 $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
-	<property name="ireport.zoom" value="1.6105100000000088"/>
+	<property name="ireport.zoom" value="1.6105100000000092"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="48"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#000000"/>
@@ -331,7 +331,7 @@ Region IV-A (CALABARZON)
 				<textFieldExpression><![CDATA[$P{n}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="336" y="40" width="208" height="48" uuid="6104a011-191a-42c3-8391-914caf3d6413"/>
+				<reportElement x="335" y="40" width="208" height="48" uuid="6104a011-191a-42c3-8391-914caf3d6413"/>
 				<textElement>
 					<font fontName="Cambria"/>
 				</textElement>
@@ -946,14 +946,14 @@ Chief GSS
 				<textFieldExpression><![CDATA[$P{plate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="54" y="270" width="100" height="20" uuid="085ba974-d78e-48ce-8774-a1ace92877d3"/>
+				<reportElement x="55" y="270" width="100" height="20" uuid="085ba974-d78e-48ce-8774-a1ace92877d3"/>
 				<textElement>
 					<font fontName="Cambria"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{av1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="54" y="291" width="100" height="20" uuid="13a7221d-4bf8-4300-a92b-22d57dfb1759"/>
+				<reportElement x="55" y="291" width="100" height="20" uuid="13a7221d-4bf8-4300-a92b-22d57dfb1759"/>
 				<textElement>
 					<font fontName="Cambria"/>
 				</textElement>
@@ -995,7 +995,7 @@ Chief GSS
 				<textFieldExpression><![CDATA[$P{remarks}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement stretchType="RelativeToBandHeight" x="0" y="-84" width="560" height="602" uuid="1c95dc53-3e71-4e6a-88bf-44d41259ff8e"/>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="-87" width="560" height="605" uuid="1c95dc53-3e71-4e6a-88bf-44d41259ff8e"/>
 				<imageExpression><![CDATA[$P{cancelled}]]></imageExpression>
 			</image>
 		</band>
