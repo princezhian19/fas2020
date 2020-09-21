@@ -11,8 +11,6 @@ $conn1 = $mydb->connect();
 
 include_once("../PHPJasperXML.inc.php");
 
-
-
 $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
 
 
@@ -59,27 +57,14 @@ else{
 $divchief = '';
 
 }
-    
+
 
 // exit();
 
 //exit();     
 
-        
 
 $view_query = mysqli_query($conn, "SELECT * from vr where id = '$id'");
-
-
-$results = $conn1->prepare("SELECT name from vr_passengers where vrid = '$vrno' order by id asc");
-$results->execute();
-while($row1 = $results->fetch(PDO::FETCH_ASSOC))
-{
-    $pname = $row1['name'];
-    /* echo $pname; */
-
-
-
-
 
 while ($row = mysqli_fetch_assoc($view_query)) {
 
@@ -91,8 +76,8 @@ $purpose=$row['purpose'];
 $remarks=$row['remarks'];
 $destination=$row['destination'];
 $nop=$row['nop'];
-//$vrdate=$row['vrdate'];
 
+//$vrdate=$row['vrdate'];
 
 $vrdate = date('F d, Y',strtotime($row['vrdate']));
 
@@ -147,12 +132,17 @@ $pos = "Regional Director";
 
 
 
-
-
 $PHPJasperXML = new PHPJasperXML();
 
 
+$results = $conn1->prepare("SELECT name from vr_passengers where vrid = '$vrno' order by id asc");
+$results->execute();
+while($row1 = $results->fetch(PDO::FETCH_ASSOC))
+{
+    $pname = $row1['name'];
+    /* echo $pname; */
 
+}
 
 if($type=="Drop Off"){
     $PHPJasperXML->arrayParameter=array("vrno"=>$vrno,
@@ -167,6 +157,7 @@ if($type=="Drop Off"){
     "choice1"=>'check1.png',
     "choice2"=>'check1.png',
     "choice3"=>'check1.png',
+    "nod"=>$nod,
     "passengers"=>$pname,
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
@@ -201,6 +192,7 @@ else if($type=="Pick-Up"){
     "choice1"=>'correct.png',
     "choice2"=>'check1.png',
     "choice3"=>'check1.png',
+    "nod"=>$nod,
     "passengers"=>$pname,
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
@@ -235,6 +227,7 @@ else if($type=="Whole Day"){
     "choice1"=>'check1.png',
     "choice2"=>'correct.png',
     "choice3"=>'check1.png',
+    "nod"=>$nod,
     "passengers"=>$pname,
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
@@ -296,7 +289,7 @@ else{
 
 }
 
-}
+
 
 
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
-	<property name="ireport.zoom" value="1.7715610000000088"/>
-	<property name="ireport.x" value="27"/>
-	<property name="ireport.y" value="144"/>
+	<property name="ireport.zoom" value="1.6105100000000088"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="480"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#000000"/>
@@ -27,7 +27,44 @@
 			<bottomPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
 	<subDataset name="Table Dataset 1" uuid="0e63eaa1-e227-4c4e-b6c6-55fac8e6cc9a"/>
+	<subDataset name="New Dataset 1" uuid="04188677-b784-4190-acc8-1ae75c74d1fc">
+		<queryString language="SQL">
+			<![CDATA[SELECT * from vr_passengers]]>
+		</queryString>
+		<field name="id" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="vrid" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<group name="vrid">
+			<groupExpression><![CDATA[$F{vrid}]]></groupExpression>
+		</group>
+	</subDataset>
 	<parameter name="vrno" class="java.lang.String">
 		<defaultValueExpression><![CDATA[$F{obno}]]></defaultValueExpression>
 	</parameter>
@@ -88,6 +125,9 @@
 	<parameter name="av2" class="java.lang.String"/>
 	<parameter name="ad2" class="java.lang.String"/>
 	<parameter name="plate2" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\xampp\\htdocs\\fas\\VehicleRequest\\Report\\pages\\"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT * from ob]]>
 	</queryString>
@@ -421,13 +461,13 @@ Instructions:
 				<textElement>
 					<font fontName="Cambria" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Passengers/:]]></text>
+				<text><![CDATA[Passenger/s:]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement x="255" y="80" width="76" height="47" backcolor="#CCCCCC" uuid="6698db99-0313-4cbf-a737-688f5a3bbde4"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="261" y="85" width="56" height="32" uuid="2bf23e02-a1b3-4a35-8a64-bcc1c2f1ef44"/>
+				<reportElement x="259" y="85" width="56" height="32" uuid="2bf23e02-a1b3-4a35-8a64-bcc1c2f1ef44"/>
 				<textElement>
 					<font fontName="Cambria" size="10" isBold="true"/>
 				</textElement>
@@ -849,13 +889,6 @@ Chief GSS
 				<textFieldExpression><![CDATA[$P{rtime}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToBandHeight" x="116" y="22" width="150" height="120" uuid="38627255-299a-4cec-b70d-0ecab8a0428d"/>
-				<textElement>
-					<font fontName="Cambria"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{remarks}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="337" y="55" width="206" height="59" uuid="6cfdd52c-31e4-4aaa-b86f-88134305e659"/>
 				<textElement>
 					<font fontName="Cambria" isStrikeThrough="false"/>
@@ -954,6 +987,17 @@ Chief GSS
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ad2}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="22" width="150" height="120" uuid="38627255-299a-4cec-b70d-0ecab8a0428d"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{remarks}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="-87" width="560" height="605" uuid="1c95dc53-3e71-4e6a-88bf-44d41259ff8e"/>
+				<imageExpression><![CDATA[$P{cancelled}]]></imageExpression>
+			</image>
 		</band>
 	</columnHeader>
 	<detail>
