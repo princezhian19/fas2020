@@ -502,6 +502,9 @@ if (isset($_POST['add'])) {
                         <option><?php echo $pmo?></option>
                           <option><?php echo pmo($connect)?></option>
                       </select>
+                      <!-- Change by: Mark Kim A. Sacluti
+                      Date: Sept 10, 2020
+                      Requestes by: Shaira Glee -->
                         <!-- <input type="text" class="form-control" style="width: 100%;" name="pmo" id="pmo" readonly value="FAD" > -->
                       <?php endif ?>
                     </div>
