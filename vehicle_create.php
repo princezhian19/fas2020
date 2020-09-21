@@ -157,6 +157,8 @@ $returndate = date('Y-m-d', strtotime($returndate1));
 $returntime = $_POST['returntime'];
 $remarks = $_POST['remarks'];
 
+$flag = $_POST['flag'];
+
 
 
 $servername = "localhost";
@@ -190,8 +192,8 @@ else{
   }
 
   /* insert to vr table */
-  $query = mysqli_query($conn,"INSERT INTO vr (vrno,vrdate,vrtime,type,nod,name,office,position,mobile,purpose,destination,nop,departuredate,departuretime,returndate,returntime,pos,remarks) 
-  VALUES ('$vrno','$vrdate','$vrtime','$type','$nod','$name','$office','$pos','$mobile','$purpose','$destination','$nop','$departuredate','$departuretime','$returndate','$returntime','$pos','$remarks')");
+  $query = mysqli_query($conn,"INSERT INTO vr (vrno,vrdate,vrtime,type,nod,name,office,position,mobile,purpose,destination,nop,departuredate,departuretime,returndate,returntime,pos,remarks,flag) 
+  VALUES ('$vrno','$vrdate','$vrtime','$type','$nod','$name','$office','$pos','$mobile','$purpose','$destination','$nop','$departuredate','$departuretime','$returndate','$returntime','$pos','$remarks','$flag')");
 
 
 
@@ -215,11 +217,7 @@ else{
    
 }
 }
-
-
-
 }
-
 
 ?>
 <!-- Insert Query -->
@@ -234,8 +232,6 @@ else{
       <br>
       <br>
      
-      
-
 
       <div class="class" >
         <form method="POST" action='' enctype="multipart/form-data" >
@@ -244,8 +240,6 @@ else{
                 <input hidden  class="" type="text" class="" style="height: 35px;" id="check" name="check" placeholder="check" >
                 <input  hidden class="" type="text" class="" style="height: 35px;" id="vr_c" name="vr_c" placeholder="" value ="<?php echo $vrcount11?>">
                 
-                
-            
         
                 <!-- Header -->
                 <tr>
@@ -282,8 +276,6 @@ else{
                 <td class="col-md-2" >
                 <img id="img" class="pull-right"  style="margin-top:0px; margin-bottom:0px; width:100;height:120px;" src='vehicle.PNG' title = "" />
                 </td>
-
-               
 
                 <td class="col-md-1">
                 
@@ -342,6 +334,11 @@ else{
                         </td> 
 
                         <td colspan=8 class=" label-text" style=" border:1px solid black; text-align:center; background-color:#CFD8DC;">
+                        <select required class="pull-left" style="width: 22%; height: 35px;" name="flag" id="flag" > 
+                          <option value="">Select Route</option>
+                          <option value="Calamba">Calamba</option>
+                          <option value="Outside">Outside Calamba</option>
+                        </select>
                       
                         <input readonly required type="text" class="" style="text-align:center; border:none; font-size:20px; background-color:#CFD8DC; font-weight:bold; height: 30px; width:100%;" name="" id="" value = "A. REQUEST FOR VEHICLE (To be Accomplished by Requesting Personnel)" >
                         </td>
@@ -1268,9 +1265,9 @@ else{
                 </table>
                 <br>
                 <br>
-
+                
                     <input type="submit" name="submit" class="btn btn-primary pull-right" value="Save" id="butsave">
-
+                  
                     <br>
                     <br>  
                 </div>

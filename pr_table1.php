@@ -102,12 +102,12 @@ $mydb = new db(); // create a new object, class db()
                 }
                 else if($DIVISION_C == '9'){
 
-                  $user_id = 'LGMED-PDMU';
+                  $user_id = 'LGCDD-PDMU';
 
                 }
                 else if($DIVISION_C == '7'){
 
-                  $user_id = 'LGCDD-MBTRG';
+                  $user_id = 'LGMED-MBRTG';
 
                 }
                 else if($DIVISION_C == '18'){

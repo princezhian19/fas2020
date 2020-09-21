@@ -79,7 +79,7 @@ $edit="edit";
 <li class="btn btn-success"><a href="VehicleRequestCreate.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Create</a></li>  
 &nbsp;&nbsp;
 
-<li class="btn btn-success"><a href="VehicleRequestSchedule.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Trip Schedule</a></li>  
+<li class="btn btn-primary"><a href="VehicleRequestSchedule.php?division=<?php echo $_GET['division'];?>" style="color:white;text-decoration: none;">Trip Schedule</a></li>  
 
 
 
@@ -330,14 +330,8 @@ $edit="edit";
                   <td><?php echo $submitteddate .'<br>'.$submittedby.''?></td>
                   <?php endif ?>
 
-                  
-
-
-
-
-
                 <?php if ($receiveddate1 == '0000-00-00' && $submitteddate1!='0000-00-00'): ?>
-                  <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
+                  <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == 'sglee' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
                               <?php if ($status=='cancelled'):?>
                               <td></td>
                               <?php else: ?>
@@ -375,7 +369,7 @@ $edit="edit";
                                 <?php else: ?>
                                 <td>
                                 <?php if ($recommenddate1 != '0000-00-00'): ?>
-                                <a name="edit" value="" id="edit" onclick="myFunction2(this)" data-editID="<?php echo $id;?>" data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class='fa'></i> Edit</a> 
+                                <!-- <a name="edit" value="" id="edit" onclick="myFunction2(this)" data-editID="<?php echo $id;?>" data-toggle="modal" data-target="#edit_data_Modal" title="Edit" class = "btn btn-primary btn-xs" > <i class='fa'></i> Edit</a>  -->
                                 <br>
                                 
                                 <?php echo $av.'<br>'.$ad?>
@@ -564,28 +558,23 @@ $edit="edit";
                           <?php endif ?>
 
                           <!--   Serve -->
-                        
              
-
-
                   <td>
                     <?php if ($submitteddate1 == 0000-00-00): ?>
                           <!--  -->
                               <?php if ($status!='cancelled'):?>
                                 
-                              
-                              
-                                <a   title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i>&nbsp; Export&nbsp;</a>
+                                <a  href='/VehicleRequest/Report/pages/VR.php?id=<?php echo $id;?>&division=<?php echo $division?>&vrno=<?php echo $vrno;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i>&nbsp; Export&nbsp;</a>
                                 <br>
-                             
+                                  <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
                                   <a href='VehicleRequestUpdate.php?id=<?php echo $id;?>&pos=<?php echo $pos;?>&vrno=<?php echo $vrno;?>&type=<?php echo $type;?>' onclick="myFunctionPassengers()" data-vrno = <?php echo $vrno?>  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>&nbsp;&nbsp;&nbsp; Edit &nbsp;&nbsp;&nbsp;</a>
                                   <br>
+                                  <?php endif ?>    
                                   
-                                
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#cancel_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php else: ?>
                                
-                                <a href='' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
+                                <a href='/VehicleRequest/Report/pages/VR.php?id=<?php echo $id;?>&division=<?php echo $division?>&vrno=<?php echo $vrno;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i> Export</a>
                                 
                                 <label style="color:red">Cancelled</label> 
                                 <br>
@@ -598,7 +587,7 @@ $edit="edit";
                               <?php if ($status=='cancelled'):?>
                                
 
-                                <a   href='' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i>&nbsp; Export&nbsp;</a>
+                                <a   href='/VehicleRequest/Report/pages/VR.php?id=<?php echo $id;?>&division=<?php echo $division?>&vrno=<?php echo $vrno;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i>&nbsp; Export&nbsp;</a>
                                 
                                 <label style="color:red">Cancelled</label>
                                 <br>
@@ -607,8 +596,12 @@ $edit="edit";
                               <?php else: ?>
                             
                              
-                                  <a  href='' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i>&nbsp; Export&nbsp;</a>
+                                  <a  href='/VehicleRequest/Report/pages/VR.php?id=<?php echo $id;?>&division=<?php echo $division?>&vrno=<?php echo $vrno;?>' title="View" class = "btn btn-info btn-xs"> <i class='fa'>&#xf06e;</i>&nbsp; Export&nbsp;</a>
                                   <br>
+                                  <?php if ($username1 == 'cvferrer' || $username1 == 'bosoltura' || $username1 == '' || $username1 == 'bosoltura' || $username1 == 'ctronquillo'|| $username1 == 'jamonteiro'|| $username1 == 'rlsegunial'):?>
+                                  <a href='VehicleRequestUpdate.php?id=<?php echo $id;?>&pos=<?php echo $pos;?>&vrno=<?php echo $vrno;?>&type=<?php echo $type;?>' onclick="myFunctionPassengers()" data-vrno = <?php echo $vrno?>  class = "btn btn-primary btn-xs"> <i class='fa'>&#xf044;</i>&nbsp;&nbsp;&nbsp; Edit &nbsp;&nbsp;&nbsp;</a>
+                                  <br>
+                                  <?php endif ?> 
                                  <a name="Cancel" value="" id="Cancel" onclick="myFunction(this)" data-idtomodal="<?php echo $id;?>" data-toggle="modal" data-target="#cancel_data_Modal" title="cancel" class = "btn btn-warning btn-xs" > <i class='fa fa-fw fa-close'></i> Cancel</a> 
                               <?php endif ?>
                     <?php endif ?>
@@ -658,8 +651,6 @@ $edit="edit";
           var assignID = $("input[name='assignID']");
           assignID.val(assignID1);
 
-         
-       
         }
         </script>
           <!-- //Setting assign ID -->
@@ -1060,7 +1051,6 @@ $edit="edit";
                   </td>
                   </tr>
 
-
               <tr>
 
                   <td class="col-md-4" >
@@ -1076,12 +1066,9 @@ $edit="edit";
                     <option value="Isuzu Cross Wind-8974">Isuzu Cross Wind-8974</option>
                     <option value="Isuzu Cross Wind-8994">Isuzu Cross Wind-8994</option>
                     <option value="Isuzu Pick-up">Isuzu Pick-up</option>
-                   
+                  
                 </select>
-               
-             
-              
-              
+
              <label>Assigned Driver 1 <span style = "color:red;">*</span></label>
                 <select required class="form-control" style="width: 100%;" name="ad" id="ad" >
                     <option value="">Select Driver</option>
@@ -1089,16 +1076,13 @@ $edit="edit";
                     <option value="Joachim Lacdang">Joachim Lacdang</option>
                     <option value="Louie Blanco">Louie Blanco</option>
                     <option value="Medel Saturno">Medel Saturno</option>
-                    <option value="Reynaldo Parale">Reynaldo Parale</option>
-                   
+                    <option value="Reynaldo Parale">Reynaldo Parale</option>    
                 </select>
                
-              
               
                 <label>Plate Number <span style = "color:red;">*</span></label>
                 <input readonly required type="Text" class="form-control" name="plate" id="plate" value = "" >
                
-              
                 <!--   Driver 1 -->
                 </div>
                   </td>
@@ -1119,8 +1103,6 @@ $edit="edit";
                    
                 </select>
                
-             
-              
               
              <label>Assigned Driver 2 <span style = "color:red;"></span></label>
                 <select  class="form-control" style="width: 100%;" name="ad1" id="ad1" >
@@ -1131,10 +1113,8 @@ $edit="edit";
                     <option value="Medel Saturno">Medel Saturno</option>
                     <option value="Reynaldo Parale">Reynaldo Parale</option>
                    
-                   
                 </select>
                
-              
               
                 <label>Plate Number <span style = "color:red;"></span></label>
                 <input readonly required type="Text" class="form-control" name="plate1" id="plate1" value = "" >
@@ -1147,7 +1127,6 @@ $edit="edit";
 
                   <td class="col-md-4" >
                  
-
                 <div class="div" id="div3">
                   <!--   Driver 3 -->
 
@@ -1162,9 +1141,6 @@ $edit="edit";
                    
                 </select>
                
-             
-              
-              
              <label>Assigned Driver 3 <span style = "color:red;"></span></label>
                 <select  class="form-control" style="width: 100%;" name="ad2" id="ad2" >
                     <option value="">Select Driver</option>
@@ -1177,7 +1153,6 @@ $edit="edit";
                    
                 </select>
                
-              
               
                 <label>Plate Number <span style = "color:red;"></span></label>
                 <input readonly required type="Text" class="form-control" name="plate2" id="plate2" value = "" >
@@ -1202,8 +1177,6 @@ $edit="edit";
 
 
               <br>
-            
-              
               
               <button type="submit" name="assign" class="btn btn-primary pull-right">Save</button>
 
@@ -1224,6 +1197,7 @@ $edit="edit";
 
 
 <!-- Update Assign -->
+
 
 
 

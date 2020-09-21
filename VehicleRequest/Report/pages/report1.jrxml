@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
+	<property name="ireport.zoom" value="1.7715610000000088"/>
+	<property name="ireport.x" value="27"/>
+	<property name="ireport.y" value="144"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="0e63eaa1-e227-4c4e-b6c6-55fac8e6cc9a"/>
+	<parameter name="vrno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{obno}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="vrdate" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="purpose" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="place" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{place}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="obdate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{obdate}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="field" class="java.lang.String"/>
+	<parameter name="divpos" class="java.lang.String"/>
+	<parameter name="timefrom" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{timefrom}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="timeto" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{timeto}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="place1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{date}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="place2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{place1}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="yes" class="java.lang.String"/>
+	<parameter name="no" class="java.lang.String"/>
+	<parameter name="cancelled" class="java.lang.String"/>
+	<parameter name="sign" class="java.lang.String"/>
+	<parameter name="pos" class="java.lang.String"/>
+	<parameter name="n" class="java.lang.String"/>
+	<parameter name="office" class="java.lang.String"/>
+	<parameter name="nop" class="java.lang.String"/>
+	<parameter name="remarks" class="java.lang.String"/>
+	<parameter name="destination" class="java.lang.String"/>
+	<parameter name="passengers" class="java.lang.String"/>
+	<parameter name="dtime" class="java.lang.String"/>
+	<parameter name="ddate" class="java.lang.String"/>
+	<parameter name="rdate" class="java.lang.String"/>
+	<parameter name="rtime" class="java.lang.String"/>
+	<parameter name="nod" class="java.lang.String"/>
+	<parameter name="choice" class="java.lang.String"/>
+	<parameter name="choice1" class="java.lang.String"/>
+	<parameter name="choice2" class="java.lang.String"/>
+	<parameter name="choice3" class="java.lang.String"/>
+	<parameter name="receiveddate" class="java.lang.String"/>
+	<parameter name="receivedby" class="java.lang.String"/>
+	<parameter name="av" class="java.lang.String"/>
+	<parameter name="ad" class="java.lang.String"/>
+	<parameter name="plate" class="java.lang.String"/>
+	<parameter name="av1" class="java.lang.String"/>
+	<parameter name="ad1" class="java.lang.String"/>
+	<parameter name="plate1" class="java.lang.String"/>
+	<parameter name="av2" class="java.lang.String"/>
+	<parameter name="ad2" class="java.lang.String"/>
+	<parameter name="plate2" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * from ob]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="office" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="purpose" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="place" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="obdate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="timefrom" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="timeto" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="submitteddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="receiveddate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="uc" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="submittedby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="receivedby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cancelledby" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cancelleddate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reason" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="place1" class="java.lang.String"/>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<staticText>
+				<reportElement x="92" y="21" width="148" height="20" uuid="f0fd3eb2-44cc-4364-b0a2-ba88b9715047"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="93" y="35" width="238" height="32" uuid="54399e2c-27b6-4c89-a06a-d865353551b4"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Department of the Interior and Local Government
+Region IV-A (CALABARZON)
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="18" y="5" width="73" height="72" uuid="ef21869e-b0bc-488c-b466-c36ea5658e78"/>
+				<imageExpression><![CDATA["l.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="70" y="77" width="329" height="23" uuid="d6faa6ae-aed3-47ab-972c-8f75b2cb7ae0"/>
+				<textElement>
+					<font fontName="Cambria" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VEHICLE REQUEST FORM (VRF)]]></text>
+			</staticText>
+			<image>
+				<reportElement x="370" y="4" width="185" height="63" uuid="798d7dcb-4337-4e34-900c-572df466db66"/>
+				<imageExpression><![CDATA["Vehicle.png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="370" y="77" width="105" height="20" backcolor="#CCCCCC" uuid="fe573fe2-2b55-4ce4-adb1-d4d8825bb6eb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="475" y="77" width="80" height="20" uuid="cbbdddd6-6c96-49db-83d2-20fb9960d57a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="373" y="80" width="102" height="15" uuid="ab9683af-071a-440c-bbd2-e9aa111cb68d"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Control Number:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="20" y="97" width="535" height="11" backcolor="#CCCCCC" uuid="12bd12a5-3712-4322-a2fe-0200a333b207"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="108" width="535" height="19" backcolor="#CCCCCC" uuid="54592abd-84ef-4c8b-bbf8-d518f4b13959"/>
+			</rectangle>
+			<textField>
+				<reportElement x="486" y="80" width="77" height="20" forecolor="#FF0000" uuid="87d1d01b-d3b7-4ab7-8d76-b65834f048cd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vrno}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="73" splitType="Stretch">
+			<rectangle>
+				<reportElement x="331" y="16" width="76" height="20" uuid="22d714d3-0596-41ef-ac98-d2ee21cbeb2e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="113" y="-1" width="350" height="17" backcolor="#CCCCCC" uuid="dce62683-2a01-40f4-82ad-432e60bce645"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[A. REQUEST FOR VEHICLE (To be Accomplished by Requesting Personnel)]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="20" y="16" width="93" height="20" backcolor="#CCCCCC" uuid="2c290742-4962-4d5a-99ab-2b74c9857618"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="27" y="19" width="89" height="17" uuid="bcebbe22-b606-4152-8df6-38f60470a005"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Requested Date:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="113" y="16" width="142" height="20" uuid="53fce6a9-d041-4298-af4c-9bf59dfd0e21"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="255" y="16" width="76" height="20" uuid="e975c414-6c8d-4044-b878-e23577a9db44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="407" y="16" width="76" height="20" uuid="4228b399-50ad-4c6f-b93e-91e8ebfa0ec9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="479" y="16" width="76" height="20" uuid="8332a769-933b-498a-abb6-326ec9aa6376"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="36" width="93" height="37" backcolor="#CCCCCC" uuid="8e4cf2f2-ef1c-4d7b-9a28-13b418179c2b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="27" y="46" width="86" height="17" uuid="28baeb55-5f48-4cdf-bb9d-84f4929f97b7"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Requested By:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="113" y="36" width="142" height="37" uuid="e4115077-ca7c-40fe-afd5-5de48057c291"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="255" y="36" width="76" height="55" backcolor="#CCCCCC" uuid="f3fd7957-fb42-4d23-9eb8-36960b891ee7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="263" y="54" width="48" height="17" uuid="77da092a-278c-42d2-b77f-9551b15b9d1f"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Purpose:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="331" y="36" width="224" height="55" uuid="c2076494-1807-4a13-9efc-28c448cbdb97"/>
+			</rectangle>
+			<textField>
+				<reportElement x="116" y="19" width="120" height="20" uuid="39dd29a4-9dc5-411b-a804-b2bd02c5991b"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vrdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="45" width="131" height="27" uuid="8d8422de-cec7-4416-98cf-076667efae4c"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="40" width="208" height="48" uuid="6104a011-191a-42c3-8391-914caf3d6413"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{purpose}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="284" y="19" width="45" height="17" uuid="bafa6d6f-1476-4b1a-b9bc-a132854c3cd9"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Drop Off]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="366" y="19" width="43" height="17" uuid="1c7fe212-52fd-4927-88cd-cb3eeeb72006"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Pick-Up]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="19" width="55" height="17" uuid="46eff509-aa67-4fd6-8ee3-87fa37941afc"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Whole Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="19" width="55" height="17" uuid="46eff509-aa67-4fd6-8ee3-87fa37941afc"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Whole Day]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="507" y="19" width="39" height="20" uuid="ac9b35cf-e3e0-473d-b06c-d4013cc29ef3"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nod}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="522" y="19" width="38" height="17" uuid="ad1d8fe7-b44a-4d42-bb90-0e81fd261939"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Day/s]]></text>
+			</staticText>
+			<image scaleImage="Clip">
+				<reportElement stretchType="RelativeToBandHeight" x="262" y="19" width="16" height="13" uuid="49307d26-c369-4dad-ad47-ba12a1b7098b"/>
+				<imageExpression><![CDATA[$P{choice}]]></imageExpression>
+			</image>
+			<image scaleImage="Clip">
+				<reportElement stretchType="RelativeToBandHeight" x="340" y="19" width="16" height="13" uuid="4359f7f1-a301-498e-bb4f-0a8a671602f5"/>
+				<imageExpression><![CDATA[$P{choice1}]]></imageExpression>
+			</image>
+			<image scaleImage="Clip">
+				<reportElement stretchType="RelativeToBandHeight" x="409" y="19" width="16" height="13" uuid="2a4de14b-8f17-4a2b-825e-b92779ce8872"/>
+				<imageExpression><![CDATA[$P{choice2}]]></imageExpression>
+			</image>
+			<image scaleImage="Clip">
+				<reportElement stretchType="RelativeToBandHeight" x="483" y="19" width="16" height="13" uuid="32a4427b-bd24-4ded-83e8-d7ee1e577285"/>
+				<imageExpression><![CDATA[$P{choice3}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="503" y="19" width="33" height="17" uuid="7e4b7583-72ac-469b-9094-ac172c912678"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[___]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="617" splitType="Stretch">
+			<rectangle>
+				<reportElement x="148" y="542" width="76" height="21" backcolor="#CCCCCC" uuid="e040ffe8-7e24-4ba7-9546-f19ae80f0bba"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="283" y="476" width="54" height="42" backcolor="#CCCCCC" uuid="bc9d61cf-e180-45c4-841d-eef8b14bafb7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="333" width="535" height="19" backcolor="#CCCCCC" uuid="878248ee-51d1-4d57-b4d6-7732e39b795f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="113" y="-2" width="142" height="20" uuid="0875e693-8f4d-46bf-a624-e59bc714a307"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="-2" width="93" height="20" backcolor="#CCCCCC" uuid="56d46d5c-e092-448c-ae51-89abdaab3cf6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="27" y="0" width="59" height="17" uuid="650f7de2-b60b-4609-84bb-ae765387cdc1"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Office:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="20" y="18" width="93" height="135" backcolor="#CCCCCC" uuid="9c71d126-8816-4b6b-8d05-d72dbee54323"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="28" y="35" width="65" height="45" uuid="65a1f08d-980a-4179-82c2-4386b82091ee"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remarks/
+Instructions:
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="113" y="18" width="142" height="135" uuid="072a52d1-08fb-474f-891c-8e3211a9a7b1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="255" y="18" width="76" height="31" backcolor="#CCCCCC" uuid="de9f57f8-4d26-4e17-9648-54b09bf1352a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="261" y="22" width="69" height="17" uuid="2377de90-9400-4dad-b592-1c51cfd8ede1"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Destination/s:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="255" y="49" width="76" height="31" backcolor="#CCCCCC" uuid="97d76377-e495-4f50-913e-5533d9ffd697"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="261" y="53" width="69" height="17" uuid="7458a9e9-b8a6-4491-b9b5-05b4f20c4f3e"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Passengers/:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="255" y="80" width="76" height="47" backcolor="#CCCCCC" uuid="6698db99-0313-4cbf-a737-688f5a3bbde4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="261" y="85" width="56" height="32" uuid="2bf23e02-a1b3-4a35-8a64-bcc1c2f1ef44"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No of
+Passengers:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="255" y="123" width="76" height="31" backcolor="#CCCCCC" uuid="3cbabc57-c577-447c-84ee-77fed4dfdc44"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="255" y="127" width="82" height="26" uuid="35b0ac34-50b4-49a9-8dd2-b5d62a842f8a"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Departure Date:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="331" y="18" width="224" height="31" uuid="5abd2c73-d921-41d1-bc02-8ddfca7b551e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="331" y="49" width="224" height="74" uuid="b83c41d6-03cb-46a9-b9c7-cde0b830b4b2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="331" y="123" width="76" height="31" uuid="4e559a19-97fb-47ad-91b9-22bbacd9d835"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="407" y="123" width="76" height="31" backcolor="#CCCCCC" uuid="c34a06b6-e26d-4429-b797-d6c82b2ccbe6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="407" y="127" width="82" height="26" uuid="b3e673d7-c54e-4397-adfd-9a09c4fedad8"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Departure Time:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="483" y="123" width="72" height="31" uuid="7f48da0a-84e9-4bf7-b9c5-e143ef2ebc6e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="153" width="93" height="21" backcolor="#CCCCCC" uuid="d2bc6a40-cef3-4808-ab4d-f1fdbf9ab235"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="27" y="155" width="59" height="18" uuid="b0139fd5-b083-43b9-ba16-515e2b990c50"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Signature:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="113" y="153" width="142" height="21" uuid="9be68f58-f3d5-4ee4-9316-03e349dae421"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="407" y="153" width="76" height="21" backcolor="#CCCCCC" uuid="60470a45-6e11-4b59-ac1a-88b832e36af7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="483" y="153" width="72" height="21" uuid="da7af59e-a4bb-4fb1-8d5a-bb2473056dd7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="408" y="154" width="76" height="19" uuid="bced62b2-bbd2-42cc-8cc0-371a2b56a4ff"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Return Time:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="331" y="153" width="76" height="21" uuid="b15cde0f-3736-48d2-b31a-96243564c832"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="255" y="153" width="76" height="21" backcolor="#CCCCCC" uuid="9b8857f1-32f3-4748-a7b2-5509afb3abed"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="256" y="155" width="67" height="17" uuid="295bea40-2935-436f-a47a-4e0f08cd917f"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Return Date:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="20" y="179" width="535" height="19" backcolor="#CCCCCC" uuid="15a18e20-ad56-4f44-9dcd-28fbec011971"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="85" y="182" width="406" height="17" backcolor="#CCCCCC" uuid="d10b8f22-9c22-4a1e-98c5-f54ac9582930"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[B. RECEIVED AND ASSIGNED VEHICLE REQUEST (To be Accomplished by GSS Staff)]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="240" y="198" width="50" height="21" uuid="20ecd9c1-03d5-4e25-92d0-5b6cda9fb004"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="96" y="198" width="72" height="21" uuid="11a2ae6d-a7a1-497e-a5be-f15bd03237d6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="168" y="198" width="72" height="21" backcolor="#CCCCCC" uuid="55b7566f-216d-49af-986b-8a9f586f080c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="198" width="76" height="21" backcolor="#CCCCCC" uuid="7a56dd45-fa54-4c3c-8d4a-e9a820ac1cc7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="358" y="198" width="81" height="21" uuid="b91c0fdc-eb50-4d61-8da1-3bb05ed81adc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="290" y="198" width="68" height="21" backcolor="#CCCCCC" uuid="22646b13-e6e7-479d-924b-a56c5b6fc0af"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="24" y="201" width="78" height="17" uuid="b9370911-ae9b-442e-9cb2-d2c0b2d52c93"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Received Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="201" width="76" height="17" uuid="d118c1ba-b3d8-4a8b-bcd8-d6d0e013062e"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Received Time:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="201" width="62" height="19" uuid="ac9ed564-e67c-47a0-8605-9248980a30f6"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Received By:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="494" y="198" width="61" height="21" uuid="f8162925-fc15-4dc4-b1c6-f33318b0af6b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="439" y="198" width="55" height="21" backcolor="#CCCCCC" uuid="7d201e00-523f-4078-993b-d471b6cfdb91"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="441" y="201" width="60" height="19" uuid="81863e9c-0704-4080-9821-c42ee646bee2"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Signature:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="20" y="224" width="181" height="21" backcolor="#CCCCCC" uuid="ef192ce0-a3e2-4668-acb6-2f814436c3a2"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="66" y="228" width="87" height="18" uuid="23bba414-3aee-4251-af54-78c392382d98"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Assigned Vehicle]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="201" y="224" width="172" height="21" backcolor="#CCCCCC" uuid="4e8e541d-7afe-4955-9383-e830eeaafba7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="224" width="182" height="21" backcolor="#CCCCCC" uuid="b0f7960d-8b39-4dbf-a4fe-7e39a10fe070"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="247" y="227" width="87" height="18" uuid="46123f58-ea46-4a4a-8321-8249f90c9a71"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Assigned Driver]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="227" width="122" height="18" uuid="8dc8e47e-08b8-4f8a-9cac-b4f859e7239c"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vehicle's  Plate Number]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="20" y="245" width="181" height="21" uuid="fba8dbcf-3c6d-4e90-b598-1ca405aa2173"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="245" width="172" height="21" uuid="44c76004-c390-4b97-9d5a-aedc04dd1ebf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="245" width="182" height="21" uuid="effe2ce8-5f5f-4528-885d-bb749f0606b6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="266" width="172" height="21" uuid="7818c857-bd03-4a4a-a8a7-abdfd69c22ec"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="266" width="181" height="21" uuid="b73db394-4565-4d96-9ca2-5c961e33eab2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="266" width="182" height="21" uuid="a352fd0e-4df9-48e9-8a60-99d41e1aeb72"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="287" width="172" height="21" uuid="ab4f8684-c988-40c8-852c-c44bc4cd4675"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="287" width="181" height="21" uuid="736624c8-9d67-4d53-b35b-ddad21c2acd2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="287" width="182" height="21" uuid="26fe0699-05a7-4c1f-826e-ec32e1bef5fa"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="308" width="535" height="21" uuid="e56e6317-5611-4ba3-b5a1-3793c23e9de8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="24" y="311" width="61" height="18" uuid="cface3fe-64e5-4167-a15f-dddc7e8af41f"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remarks:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="335" width="154" height="17" backcolor="#CCCCCC" uuid="570e4b84-9ea9-4f2a-806f-ff442ca51462"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C. APPROVAL/DISAPPROVAL]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="20" y="352" width="535" height="21" uuid="cc88d52a-1e2e-4eeb-8827-4b4fcd905cc5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="373" width="263" height="21" backcolor="#CCCCCC" uuid="aa939ade-6a3f-43c9-a1d7-7ba0bdf32251"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="283" y="373" width="272" height="21" backcolor="#CCCCCC" uuid="db3e82f1-9fe0-4d59-9b5f-bbdfc32f4090"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="394" width="263" height="82" uuid="d722cde5-e31a-4a97-ad3d-c2bb7b823f3f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="283" y="394" width="272" height="82" uuid="dc2fa4df-d8aa-47d0-9a25-e9b999cae6e9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="72" y="377" width="154" height="17" backcolor="#CCCCCC" uuid="863006ca-520f-4775-823c-643c5448aca8"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECOMMENDING APPROVAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="377" width="83" height="17" backcolor="#CCCCCC" uuid="f6d7a897-3ebe-4699-b7e7-31829bbcbb45"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APPROVED BY:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="20" y="476" width="263" height="21" uuid="188f9437-5155-4235-ba6f-cd7b292076ff"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="497" width="76" height="21" backcolor="#CCCCCC" uuid="ba03b34d-7270-41e1-b73f-f6fe3b53aa47"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="24" y="500" width="47" height="18" uuid="719c4cfe-3568-422b-8aee-b294b47b8624"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="96" y="497" width="72" height="21" uuid="5a965dec-b27b-4e90-93de-d3f00166988a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="224" y="497" width="59" height="21" uuid="b69b3155-d3a4-4d57-ae83-7d2ef48d254c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="168" y="497" width="56" height="21" backcolor="#CCCCCC" uuid="f08c136e-f6ae-46a1-a979-5aff8cabaf23"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="170" y="500" width="47" height="18" uuid="79285025-35f7-4252-9bed-4eac0fed8d1f"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Time:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="490" width="47" height="18" uuid="e3e7e088-0390-4179-a56a-4b977315dde4"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reason/s:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="337" y="476" width="218" height="42" uuid="de6ff88a-ca97-4297-bac1-ac866274cf01"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="523" width="535" height="19" backcolor="#CCCCCC" uuid="fc564fb5-01ae-42c2-9c66-abdd0e8e8086"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="186" y="526" width="218" height="17" backcolor="#CCCCCC" uuid="3d55d5c3-5e60-4b36-9835-6466e2d11a70"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[D. SERVED COPY TO REQUESTING OFFICE ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="494" y="542" width="61" height="21" uuid="accfcb2b-ff73-4512-9576-a34b3396c99d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="152" y="546" width="79" height="17" uuid="99c3f007-9420-4894-8527-ca49caf28020"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Served Time:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="96" y="542" width="52" height="21" uuid="acc6fcde-1746-47c8-b332-45e1545feeb6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="224" y="542" width="59" height="21" uuid="9a56ceb5-23a2-4ec7-bad4-56bd5d92526a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="282" y="542" width="76" height="21" backcolor="#CCCCCC" uuid="ce88af87-3fa2-4067-ba0d-6b24080fafa2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="542" width="76" height="21" backcolor="#CCCCCC" uuid="c6355dbd-c999-4e4e-b92e-8fab083de95b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="430" y="542" width="64" height="21" backcolor="#CCCCCC" uuid="ba638aa4-d816-436a-9ef2-8ba71c0144a4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="358" y="542" width="72" height="21" uuid="f91c6cc0-9148-4450-a853-decdc65f5c0d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="24" y="546" width="78" height="17" uuid="54260a12-c09e-4dd1-a695-80f121d2a134"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Served Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="434" y="546" width="60" height="19" uuid="06c146fa-6a95-4954-81d0-a17f0ddf2350"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Signature:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="546" width="61" height="19" uuid="2482d30e-d092-496d-b86a-5fc1bc2bd13e"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Served To:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="419" width="201" height="41" uuid="820c8f9b-8c24-49d4-a10a-a32eb59c3cdf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_______________________________________
+BEZALEEL O. SOLTURA
+Chief GSS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="419" width="201" height="41" uuid="17f27eca-e52b-4366-ae5f-21e69b4283e3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[_______________________________________]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="358" y="431" width="136" height="12" uuid="d052dbfe-dafd-4a91-bd3f-7293e10b20a6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sign}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="442" width="136" height="14" uuid="fdc53840-917a-4f21-9d89-d28a11f37afb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="1" width="130" height="20" uuid="58244547-4740-435b-a942-b4b83add3f33"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{office}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="22" width="210" height="27" uuid="b6400b7f-d118-4cf3-a7d6-ce297b3d4c05"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{destination}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="97" width="39" height="20" uuid="d7cf9240-8ade-456b-b3b4-8a3d4ace589d"/>
+				<textElement>
+					<font fontName="Cambria" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nop}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="130" width="100" height="20" uuid="0234ab22-3066-43e7-b79c-60d5c4a85ff1"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ddate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="128" width="100" height="20" uuid="e7f294d0-5be6-4664-be0e-609b80c14e19"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dtime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="156" width="100" height="20" uuid="a33ec6a5-4b8e-4346-9917-66ce3f20938c"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rdate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="156" width="100" height="20" uuid="282b4b7e-f9ff-466a-9bf1-6a2db9f40725"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rtime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="22" width="150" height="120" uuid="38627255-299a-4cec-b70d-0ecab8a0428d"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{remarks}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="55" width="206" height="59" uuid="6cfdd52c-31e4-4aaa-b86f-88134305e659"/>
+				<textElement>
+					<font fontName="Cambria" isStrikeThrough="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{passengers}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="311" y="97" width="33" height="17" uuid="301d2f5e-8430-4318-baeb-6f49faa5abfb"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[___]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="99" y="202" width="71" height="20" uuid="b3b97a42-6ece-41e3-99b3-62d27d83a3ce"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receiveddate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="311" y="97" width="33" height="17" uuid="301d2f5e-8430-4318-baeb-6f49faa5abfb"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[___]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="363" y="201" width="100" height="20" uuid="5ae482fd-b6ff-45a6-860d-5bf80a4058a7"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receivedby}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="55" y="249" width="100" height="20" uuid="6b828157-9360-4224-bf15-dcf2703ba02c"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{av}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="248" width="100" height="20" uuid="f82030ce-3e59-465c-b086-b4fffdecfc57"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="249" width="100" height="20" uuid="211c84c8-0fcb-40ec-a476-f0a2df85073e"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{plate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="270" width="100" height="20" uuid="085ba974-d78e-48ce-8774-a1ace92877d3"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{av1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="291" width="100" height="20" uuid="13a7221d-4bf8-4300-a92b-22d57dfb1759"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{av2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="269" width="100" height="20" uuid="2ef2f34d-1545-4414-bb82-4ba17b988095"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{plate1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="291" width="100" height="20" uuid="a923f206-f23f-4495-8de0-5223bae2fd36"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{plate2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="270" width="100" height="20" uuid="bcd984af-c320-4287-bbd1-198b88a1b84e"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ad1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="291" width="100" height="20" uuid="d70d8236-a54a-4311-9a0b-7cd77868b97f"/>
+				<textElement>
+					<font fontName="Cambria"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ad2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
