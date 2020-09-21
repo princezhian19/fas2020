@@ -141,8 +141,6 @@ while($row1 = $results->fetch(PDO::FETCH_ASSOC))
 {
     $pname[] = $row1['name'];
     // var_dump($pname);
-    
-
 }
 //  exit();
 if($type=="Drop Off"){
