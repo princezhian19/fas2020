@@ -530,10 +530,9 @@ else{
                         <input readonly  type="text"   class="" style=" text-align:left; border:none; border-bottom:1px solid black; font-weight:bold; font-size:15px; height: 40px; width:100%;" id="mobile" placeholder="" name="mobile" value = "<?php echo $MOBILEPHONE?>">
                         </td>
 
-
                         <td class="col-md-1">
 
-                        </td> 
+                        </td>
 
                         </tr>
                         <!-- body details3 -->

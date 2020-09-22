@@ -13,7 +13,6 @@ include_once("../PHPJasperXML.inc.php");
 
 $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
 
-
 if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 $id = $_GET['id'];
 $division = $_GET['division'];
@@ -76,7 +75,6 @@ $purpose=$row['purpose'];
 $remarks=$row['remarks'];
 $destination=$row['destination'];
 $nop=$row['nop'];
-
 //$vrdate=$row['vrdate'];
 
 $vrdate = date('F d, Y',strtotime($row['vrdate']));
@@ -142,7 +140,9 @@ while($row1 = $results->fetch(PDO::FETCH_ASSOC))
     $pname[] = $row1['name'];
     // var_dump($pname);
 }
-//  exit();
+
+/* echo implode('<br>',$pname );
+exit(); */
 if($type=="Drop Off"){
     $PHPJasperXML->arrayParameter=array("vrno"=>$vrno,
     "n"=>$name,
@@ -157,7 +157,7 @@ if($type=="Drop Off"){
     "choice2"=>'check1.png',
     "choice3"=>'check1.png',
     "nod"=>$nod,
-    "passengers"=>implode('; ',$pname ),
+    "passengers"=>implode(', ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -192,7 +192,7 @@ else if($type=="Pick-Up"){
     "choice2"=>'check1.png',
     "choice3"=>'check1.png',
     "nod"=>$nod,
-    "passengers"=>implode('; ',$pname ),
+    "passengers"=>implode(', ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -227,7 +227,7 @@ else if($type=="Whole Day"){
     "choice2"=>'correct.png',
     "choice3"=>'check1.png',
     "nod"=>$nod,
-    "passengers"=>implode('; ',$pname ),
+    "passengers"=>implode(', ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -262,7 +262,7 @@ else{
     "choice2"=>'check1.png',
     "choice3"=>'correct.png',
     "nod"=>$nod,
-    "passengers"=>implode('; ',$pname ),
+    "passengers"=>implode(', ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -281,7 +281,6 @@ else{
     "sign"=>$sign,
     "pos"=>$pos,
     "cancelled"=>$stat);
-
 }
 
 }
