@@ -11,8 +11,6 @@ $conn1 = $mydb->connect();
 
 include_once("../PHPJasperXML.inc.php");
 
-
-
 $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
 
 
@@ -59,27 +57,14 @@ else{
 $divchief = '';
 
 }
-    
+
 
 // exit();
 
 //exit();     
 
-        
 
 $view_query = mysqli_query($conn, "SELECT * from vr where id = '$id'");
-
-
-$results = $conn1->prepare("SELECT name from vr_passengers where vrid = '$vrno' order by id asc");
-$results->execute();
-while($row1 = $results->fetch(PDO::FETCH_ASSOC))
-{
-    $pname = $row1['name'];
-    /* echo $pname; */
-
-
-
-
 
 while ($row = mysqli_fetch_assoc($view_query)) {
 
@@ -91,16 +76,16 @@ $purpose=$row['purpose'];
 $remarks=$row['remarks'];
 $destination=$row['destination'];
 $nop=$row['nop'];
-//$vrdate=$row['vrdate'];
 
+//$vrdate=$row['vrdate'];
 
 $vrdate = date('F d, Y',strtotime($row['vrdate']));
 
 $departuredate = date('M d, Y',strtotime($row['departuredate']));
-$departuretime = date('H:i A',strtotime($row['departuretime']));
+$departuretime = date('h:i A',strtotime($row['departuretime']));
 
 $returndate = date('M d, Y',strtotime($row['returndate']));
-$returntime = date('H:i A',strtotime($row['returntime']));
+$returntime = date('h:i A',strtotime($row['returntime']));
 
 $nod=$row['nod'];
 $type=$row['type'];
@@ -147,13 +132,17 @@ $pos = "Regional Director";
 
 
 
-
-
 $PHPJasperXML = new PHPJasperXML();
 
-
-
-
+$pname = array();
+$results = $conn1->prepare("SELECT name from vr_passengers where vrid = '$vrno' order by id asc");
+$results->execute();
+while($row1 = $results->fetch(PDO::FETCH_ASSOC))
+{
+    $pname[] = $row1['name'];
+    // var_dump($pname);
+}
+//  exit();
 if($type=="Drop Off"){
     $PHPJasperXML->arrayParameter=array("vrno"=>$vrno,
     "n"=>$name,
@@ -167,7 +156,8 @@ if($type=="Drop Off"){
     "choice1"=>'check1.png',
     "choice2"=>'check1.png',
     "choice3"=>'check1.png',
-    "passengers"=>$pname,
+    "nod"=>$nod,
+    "passengers"=>implode('; ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -201,7 +191,8 @@ else if($type=="Pick-Up"){
     "choice1"=>'correct.png',
     "choice2"=>'check1.png',
     "choice3"=>'check1.png',
-    "passengers"=>$pname,
+    "nod"=>$nod,
+    "passengers"=>implode('; ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -235,7 +226,8 @@ else if($type=="Whole Day"){
     "choice1"=>'check1.png',
     "choice2"=>'correct.png',
     "choice3"=>'check1.png',
-    "passengers"=>$pname,
+    "nod"=>$nod,
+    "passengers"=>implode('; ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -270,7 +262,7 @@ else{
     "choice2"=>'check1.png',
     "choice3"=>'correct.png',
     "nod"=>$nod,
-    "passengers"=>$pname,
+    "passengers"=>implode('; ',$pname ),
     "ddate"=>$departuredate,
     "dtime"=>$departuretime,
     "rdate"=>$returndate,
@@ -292,14 +284,7 @@ else{
 
 }
 
-
-
 }
-
-}
-
-
-
 
 $PHPJasperXML->load_xml_file("report1.jrxml");
 $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
