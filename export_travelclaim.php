@@ -77,7 +77,18 @@ function aa($id)
 }
 
 
-
+function arr_unique($arr) {
+  sort($arr);
+  $curr = $arr[0];
+  $uni_arr[] = $arr[0];
+  for($i=0; $i<count($arr);$i++){
+      if($curr != $arr[$i]) {
+        $uni_arr[] = $arr[$i];
+        $curr = $arr[$i];
+      }
+  }
+  return $uni_arr;
+}
 
 
 
@@ -151,7 +162,6 @@ function aa($id)
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('C11','Regional Office');
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F10','Purpose of Travel: '.$excelrow1['RO_TO_OB']);
             $objPHPExcel->getActiveSheet()->getStyle("F10") ->getAlignment()->setWrapText(true); 
-
             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G9',$excelrow1['DATE']);
           }
     //======================================================//             
@@ -168,38 +178,88 @@ if(mysqli_num_rows($result) > 0)
   $title1 = 15;
   $data = 16;
   $tc_id = '';
+  $array = array();
 
   while($row1 = mysqli_fetch_array($result))
   {
-   
+    $array[] = $row1[1];
     $tc_id = $row1[0];
     $travel_title[] = $row1[2];
 
     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$title1,$row1['RO_OT_OB']);
     
-        
-        $SQL = "SELECT PERDIEM + RECEIPT AS 'a', tbltravel_claim_info.`ID` as 'dID', `TC_ID`, `RO`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `RECEIPT`,`OTHERS`, `TOTAL_AMOUNT`,
-        tbltravel_claim_ro.`ID`, `RO_OT_OB`, `UNAME`  FROM tbltravel_claim_info 
-        INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
-        WHERE tbltravel_claim_info.RO = '".$row1[1]."' ";
-        
-        $result1 = mysqli_query($conn, $SQL);
-        $rnums = '';
-        $search = array();
-            while($row = mysqli_fetch_array($result1))
+  }
+  $SQL = "SELECT PERDIEM + RECEIPT AS 'a', tbltravel_claim_info.`ID` as 'dID', `TC_ID`, `RO`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `RECEIPT`,`OTHERS`, `TOTAL_AMOUNT`,
+  tbltravel_claim_ro.`ID`, `RO_OT_OB`, `UNAME`  FROM tbltravel_claim_info 
+  INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
+  WHERE tbltravel_claim_info.RO IN (" . implode( ',', $array ) . ")  ";
+  $result1 = mysqli_query($conn, $SQL);
+  $rnums = '';
+  $search = array();
+  $title = array();
+  $AA = array();
+      while($row = mysqli_fetch_array($result1))
+      {
+
+       
+            $search[] = $row["DATE"]; 
+            $title[] = $row['RO_OT_OB'];
+            $rnums = mysqli_num_rows($result1);
+            $perdiem = $row['a'];
+            $arr = array($row['RO_OT_OB']);
+
+         
+// FOR SAME DATE
+        if($row['DATE'] === $search[0])
             {
-              $rnums = mysqli_num_rows($result1);
-              $perdiem = $row['a'];
-
-              
-              
-            
-            
-
-
-
-              $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$title1,$row['RO_OT_OB']);
+              if($rnums === 4)
+              {
+                $objPHPExcel->getActiveSheet()->mergeCells("A16:A18");
+              }else if($rnums === 5)
+              {
+                $objPHPExcel->getActiveSheet()->mergeCells("A16:A19");
+              }else if ($rnums ===  6){
+                $objPHPExcel->getActiveSheet()->mergeCells("A16:A20");
+              }else if ($rnums === 7 )
+              {
+                $objPHPExcel->getActiveSheet()->mergeCells("A16:A21");
+              }else if ($rnums === 8 )
+              {
+                $objPHPExcel->getActiveSheet()->mergeCells("A16:A22");
+              }else if ($rnums === 9 )
+              {
+                $objPHPExcel->getActiveSheet()->mergeCells("A16:A23");
+              }else if ($rnums === 10 )
+              {
+                $objPHPExcel->getActiveSheet()->mergeCells("A16:A24");
+              }
               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$data,$row['DATE']);
+
+            }else
+            {
+              $data = $data+1;
+              $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$data,$row['DATE']);
+            }
+            // FOR TRAVEL TITLE
+            if($row['RO_OT_OB'] === $title[0])
+            {
+          
+
+            }else{
+              $title1 = $title1 +1;
+              $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$title1,$row['RO_OT_OB']);
+              $objPHPExcel->getActiveSheet()->mergeCells("A".$title1."".":J".$title1);
+              $objPHPExcel->getActiveSheet()->getStyle('A'.$title1.':J'.$title1)->applyFromArray($styleArray);
+              $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleLeft);
+              $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleRight);
+            }
+            
+            
+
+
+
+       
+
               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$data,$row['PLACE']);
               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$data,date('g:i A',strtotime($row['ARRIVAL'])));
               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$data,date('g:i A',strtotime($row['DEPARTURE'])));
@@ -208,11 +268,6 @@ if(mysqli_num_rows($result) > 0)
               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$data,$perdiem);
               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$data,$row['OTHERS']);
               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$data,sprintf("%.2f",$row['TOTAL_AMOUNT']));
-
-              $objPHPExcel->getActiveSheet()->mergeCells("A".$title1."".":J".$title1);
-              $objPHPExcel->getActiveSheet()->getStyle('A'.$title1.':J'.$title1)->applyFromArray($styleArray);
-              $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleLeft);
-              $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleRight);
 
               $objPHPExcel->getActiveSheet()->mergeCells("B".$data."".":C".$data);
               $objPHPExcel->getActiveSheet()->getStyle('B'.$data.':C'.$data)->applyFromArray($styleArray);
@@ -225,7 +280,6 @@ if(mysqli_num_rows($result) > 0)
               $objPHPExcel->getActiveSheet()->getStyle('H'.$data)->applyFromArray($styleArray);
               $objPHPExcel->getActiveSheet()->getStyle('I'.$data)->applyFromArray($styleArray);
               $objPHPExcel->getActiveSheet()->getStyle('J'.$data)->applyFromArray($styleArray);
-     
 
               $objPHPExcel->getActiveSheet()->getStyle('A'.$title1)->applyFromArray($styleFont);
               $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleFont2);
@@ -238,26 +292,28 @@ if(mysqli_num_rows($result) > 0)
               $objPHPExcel->getActiveSheet()->getStyle('I'.$title1)->applyFromArray($styleFont);
               $objPHPExcel->getActiveSheet()->getStyle('J'.$title1)->applyFromArray($styleFont);
               // }
-
-            }
             if($rnums > 0)
             {
-              $title1= $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
-              $data = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+1;
+        
+          
+            // $data = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
+            // $title1= $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
+
+
               $title1++;
+
               $data++;
             }else{
               $title1++;
               $data++;
             }
-  }
+            // $data++;
+            // $title++;
+
+      }
+      
 }
-
-
-
-  
-
-
+// exit();
 // TABLE 2 - ALL SIGNATORIES
 $lastRow= $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+1;
 $row1 = $lastRow+1;
