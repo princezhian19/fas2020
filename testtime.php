@@ -265,7 +265,7 @@ function rowCount(){
 
 switch ($_POST['action']) {
   case 'view':
-      include 'connection.php';
+        include 'connection.php';
       $query = "SELECT * FROM `tbltravel_claim_info2`
       INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
       INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
