@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3d2b8ad2-8ecf-458c-b484-fc0aa36c9a54">
 	<property name="ireport.zoom" value="1.6105100000000092"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#000000"/>
@@ -889,7 +889,7 @@ Chief GSS
 				<textFieldExpression><![CDATA[$P{rtime}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="337" y="55" width="206" height="59" uuid="6cfdd52c-31e4-4aaa-b86f-88134305e659"/>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="337" y="55" width="210" height="59" uuid="6cfdd52c-31e4-4aaa-b86f-88134305e659"/>
 				<textElement>
 					<font fontName="Cambria" isStrikeThrough="false"/>
 					<paragraph lineSpacing="1_1_2"/>
@@ -995,7 +995,7 @@ Chief GSS
 				<textFieldExpression><![CDATA[$P{remarks}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement stretchType="RelativeToBandHeight" x="0" y="-87" width="560" height="605" uuid="1c95dc53-3e71-4e6a-88bf-44d41259ff8e"/>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="-104" width="560" height="622" uuid="1c95dc53-3e71-4e6a-88bf-44d41259ff8e"/>
 				<imageExpression><![CDATA[$P{cancelled}]]></imageExpression>
 			</image>
 		</band>
