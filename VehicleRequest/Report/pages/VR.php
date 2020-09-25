@@ -30,7 +30,7 @@ if($division==1){
 
 $divchief = 'NOEL R. BARTOLABAC';
 $divpos="ASST. REGIONAL DIRECTOR";
-   
+
 }
 
 else if($division==18){
@@ -57,12 +57,6 @@ $divchief = '';
 
 }
 
-
-// exit();
-
-//exit();     
-
-
 $view_query = mysqli_query($conn, "SELECT * from vr where id = '$id'");
 
 while ($row = mysqli_fetch_assoc($view_query)) {
@@ -87,7 +81,6 @@ $returntime = date('h:i A',strtotime($row['returntime']));
 
 $nod=$row['nod'];
 $type=$row['type'];
-
 
 $receiveddate = date('M d, Y',strtotime($row['receiveddate']));
 $receivedby = $row['receivedby'];

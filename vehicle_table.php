@@ -976,7 +976,6 @@ $edit="edit";
               <br>
             
               
-              
               <button type="submit" name="assign" class="btn btn-primary pull-right">Assign</button>
 
 
@@ -994,11 +993,6 @@ $edit="edit";
           </div>
           </div>
   <!-- assign -->
-
-
-
-
-
 
   <!-- recommending -->
 
