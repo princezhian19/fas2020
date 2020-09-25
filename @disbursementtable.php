@@ -103,7 +103,7 @@ $timeNow = (new DateTime('now'))->format('m/d/Y');
               $database = "fascalab_2020";
             // Create connection
               $conn = new mysqli($servername, $username, $password,$database);
-              $view_query = mysqli_query($conn, "SELECT dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount, total, net, remarks, status,flag,orsdate  FROM disbursement group by ors order by datereceived asc");
+              $view_query = mysqli_query($conn, "SELECT dv,ors,datereceived,date_proccess,datereleased,payee,particular,sum(amount) as amount, total, net, remarks, status,flag,orsdate  FROM disbursement group by ors order by datereceived desc");
               while ($row = mysqli_fetch_assoc($view_query)) {
                 $id = $row["ID"]; 
                 $dv = $row["dv"];
