@@ -724,7 +724,7 @@ p.mix {border-style: dotted dashed solid double;} */
 
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
 
                         <tr>
                         <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td>
@@ -823,12 +823,12 @@ p.mix {border-style: dotted dashed solid double;} */
                         </tr>
 
                     </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
 
                   <tr>
                   <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td>
                   <td class="col-md-7">
-                  <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="ntaamount" name="ntaamount[]" placeholder="0" autocomplete="off">
+                  <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px; width:100" id="ntaamount" name="ntaamount[]" placeholder="0" autocomplete="off">
                   </td>
                   </tr>
 
@@ -983,7 +983,7 @@ p.mix {border-style: dotted dashed solid double;} */
       if (x < max_fields) {
         x++;
         var list = "Hello";
-            $(wrapper).append('<div ><br><br><br><br><a href="#" style="margin-right:50px" class="delete btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i></a><br><br><div class="col-md-3"><tr><td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td><td class="col-md-7"><select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge" required > <option value = "">Select NCA/NTA</option> <option value = "NCA">NCA</option> <option value = "NTA">NTA</option> </select> </td> </tr> </div> <div class="col-md-4"> <tr> <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td> <td class="col-md-7">  <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano" name="ntano[]"> <?php getNta();?> </select>  </td> </tr> </div><div class="col-md-2"> <tr> <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="ntaamount" name="ntaamount[]" placeholder="0" autocomplete="off"> </td> </tr> </div>  <div class="col-md-3"> <tr> <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input readonly value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off"> </td> </tr> </div></div>'); //add input box
+            $(wrapper).append('<div ><br><br><br><br><a href="#" style="margin-right:50px" class="delete btn btn-danger btn-xs pull-right"><i class="fa fa-trash-o"></i></a><br><br><div class="col-md-3"><tr><td class="col-md-1"><b>CHARGE TO<span style = "color:red;">*</span></b></td><td class="col-md-7"><select class="form-control select" style="width: 100%; height: 40px;" name="charge[]" id="charge" required > <option value = "">Select NCA/NTA</option> <option value = "NCA">NCA</option> <option value = "NTA">NTA</option> </select> </td> </tr> </div> <div class="col-md-3"> <tr> <td class="col-md-1"><b>NCA/NTA NO.<span style = "color:red;">*</span></b></td> <td class="col-md-7">  <select class="form-control select2" style= "color:black;text-align:center;"  id = "ntano" name="ntano[]"> <?php getNta();?> </select>  </td> </tr> </div><div class="col-md-3"> <tr> <td class="col-md-1"><b>AMOUNT<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input required value=""  class="form-control input" type="number" step="any"  class="" style="height: 35px;" id="ntaamount" name="ntaamount[]" placeholder="0" autocomplete="off"> </td> </tr> </div>  <div class="col-md-3"> <tr> <td class="col-md-1"><b>NCA/NTA BALANCE<span style = "color:red;">*</span></b></td> <td class="col-md-7"> <input readonly value=""  class="form-control input" type="text"  class="" style="height: 35px;" id="ntabalance" name="ntabalance" placeholder="0" autocomplete="off"> </td> </tr> </div></div>'); //add input box
           } else {
             alert('You Reached the limits')
           }

@@ -152,7 +152,7 @@ $username = $_SESSION['username'];
                     </div>
                     <br>
                     <label>Allotment Amount <span style = "color:red;">*</span></label>
-                    <input required  type="number"  class="form-control" style="height: 35x; border-style: groove;" id="amount" placeholder="Enter Amount" name="amount">
+                    <input required  type="number"  class="form-control" style="height: 35x; border-style: groove;" id="amount" step="any" placeholder="Enter Amount" name="amount">
                     <br>
                     <label>Disbursement </label>
                     <input  type="text" readonly  class="form-control" style="height: 35px; border-style: groove;" id="obligated" placeholder="Enter Obligated" name="obligated" value="0">
