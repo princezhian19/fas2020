@@ -201,7 +201,7 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide specific details on the name of places and date of visit: (i.e. SM/Walter Mart Calamba, Bank, Fast Food Chain)<center>
+            <td colspan = 2>Please provide specific details on the name of places and date of visit: (i.e. USA, Singapore, Italy, etc.)<center>
             <textarea required name = "ans2_details" cols = 56 rows=6 style = "resize:none;" id = "txt2"></textarea></center></td>
           </tr>
           <tr>
