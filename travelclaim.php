@@ -615,7 +615,7 @@ function isSubmit()
                   <span class = "btn btn-primary btn-md pull-right" id= "add_fare" style = "margin-left:10px;"><i class = "fa fa-plus"></i>&nbsp;Add Fare</span>
 
                   <button type = "submit" class = "btn btn-success btn-md pull-right"><i class = "fa fa-save"></i>&nbsp;Save </button>
-                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                  <script src="js/jquery.min.js"></script>
 
               </form>
                   </div>
@@ -851,8 +851,8 @@ $(document).ready(function(){
     }
 </script>  
 
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<link href="css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="js/bootstrap-toggle.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCivQZ8zHOKTj3mi7L7pzmebaWY0FF_yr0"></script>
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
     <script>
