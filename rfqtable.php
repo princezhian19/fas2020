@@ -180,26 +180,20 @@
                             $view_queryrfq = mysqli_query($conn, "SELECT * FROM rfq where pr_no = '$pr_no' ");
                             $rowrfq = mysqli_fetch_array($view_queryrfq);
                             $rfqid = $rowrfq['id'];
-                            $query_3 = mysqli_query($conn,"SELECT * FROM  selected_quote WHERE rfq_id = '$rfqid'");
+                            $query_3 = mysqli_query($conn,"SELECT po_id FROM  selected_quote WHERE rfq_id = $rfqid ORDER BY id DESC" );
                             $rowpoid = mysqli_fetch_array($query_3);
                             $rowpo_id = $rowpoid['po_id'];
                             ?>
-                            <?php if (mysqli_num_rows($query_3) > 0): ?>
-                              <?php if ($rowpo_id==NULL): ?>
-                                <?php if (mysqli_num_rows($selectABS) > 0): ?>
-                                 <a class="btn btn-success btn-xs"  href='CreatePO.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>' title="View"> Create </a>
-                                 <?php else : ?>
-                                  <a class="" href='ViewPO.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>' title="View"> <?php echo $po_no; ?></a>
-                                <?php endif?> 
-                                <?php else : ?>
-                                  <?php
+                            <?php
                                   $query_4 = mysqli_query($conn,"SELECT * FROM  po WHERE id = '$rowpo_id'");
                                   $po_id = mysqli_fetch_array($query_4);
                                   $po_idget = $po_id['id'];
                                   $po_no = $po_id['po_no'];
-                                  ?>
+                            ?>
+                            <?php if ($rowpo_id == NULL): ?>
+                                 <a class="btn btn-success btn-xs"  href='CreatePO.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>' title="View"> Create </a>
+                                 <?php else: ?>
                                   <a class="" href='ViewPO.php?rfq_id=<?php echo $rfqid; ?>&supplier_id=<?php echo $supplier_id; ?>&pr_no=<?php echo $pr_no; ?>' title="View"> <?php echo $po_no; ?></a>
-                                <?php endif?> 
                               <?php endif?> 
                             <?php endif?>
                             <?php if ($stat == "0"): ?>
