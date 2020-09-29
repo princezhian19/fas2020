@@ -1,8 +1,22 @@
 <?php
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
-$objPHPExcel = PHPExcel_IOFactory::load("library/export_pr.xlsx");
+$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+$id = $_GET['id'];
 
+$sql = mysqli_query($conn, "SELECT * FROM pr WHERE id = '$id' ");
+$row = mysqli_fetch_array($sql);
+$pr_no = $row['pr_no'];
+$pmo = $row['pmo'];
+$purpose = $row['purpose'];
+$pr_date = $row['pr_date'];
+$sql_items = mysqli_query($conn, "SELECT a.sn,a.id,a.procurement,pr.description,pr.unit,pr.qty,pr.abc FROM pr_items pr left join app a on a.id = pr.items WHERE pr.pr_no = '$pr_no' ");
+if (mysqli_num_rows($sql_items)>30) {
+  # code...
+$objPHPExcel = PHPExcel_IOFactory::load("library/export_pr15.xlsx");
+}else{
+$objPHPExcel = PHPExcel_IOFactory::load("library/export_pr.xlsx");
+}
 $styleTop = array(
   'borders' => array(
     'top' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
@@ -31,35 +45,24 @@ $styleHeader = array('font'  => array('bold'  => true, 'size'  => 11, 'name'  =>
 
  $styleLabel = array('font'  => array('size'  => 11, 'name'  => 'Calibri'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
-$conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-$id = $_GET['id'];
-$sql = mysqli_query($conn, "SELECT * FROM pr WHERE id = '$id' ");
-$row = mysqli_fetch_array($sql);
-$pr_no = $row['pr_no'];
-$pmo = $row['pmo'];
-$purpose = $row['purpose'];
-$pr_date = $row['pr_date'];
+
 
 $d1 = date('F d, Y', strtotime($pr_date));
-
-
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B7',$pmo);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C7','PR No.:  '.$pr_no);
-/* if($pr_date == '0000-00-00'){ */
-$objPHPExcel->setActiveSheetIndex()->setCellValue('F7',"");  
-/* 
-}
-else{ */ 
-  
+if($pr_date == '0000-00-00'){
 $objPHPExcel->setActiveSheetIndex()->setCellValue('F7',"");  
 
+}
+else{
+  
+
+$objPHPExcel->setActiveSheetIndex()->setCellValue('F7',$d1);  
+}
 
 $totalcount = mysqli_query($conn, "SELECT sum(pr.qty) as first ,sum(pr.abc) as second FROM pr_items pr left join app a on a.id = pr.items WHERE pr.pr_no = '$pr_no' "); 
 
 
-
-
-$sql_items = mysqli_query($conn, "SELECT a.sn,a.id,a.procurement,pr.description,pr.unit,pr.qty,pr.abc FROM pr_items pr left join app a on a.id = pr.items WHERE pr.pr_no = '$pr_no' ");
 
  
 $row = 11;
@@ -68,9 +71,6 @@ $rowB = 13;
 $rowC = 14;
 $rowD = 15;
 $rowE = 16;
-
-
-
 
   while($excelrow = mysqli_fetch_assoc($sql_items) ){
 
@@ -160,26 +160,34 @@ if ($unit == "21") {
   $unit = "cart";
 }
 
-      $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(-1);
-
+if ($unit == "22") {
+  $unit = "cart";
+}
+if ($unit == "23") {
+  $unit = "liters";
+}
+if ($unit == "24") {
+  $unit = "meters";
+}
     $total = $excelrow['qty']*$excelrow['abc'];
     $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$row,$excelrow['sn']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$row,$unit);
 
-
+    $objPHPExcel->getActiveSheet()->getRowDimension($row)->setRowHeight(-1);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$row,$excelrow['procurement'] ."\n".$excelrow['description']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$row,$excelrow['qty']);
     $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$row,$excelrow['abc']);
-    //$objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,number_format($total,2));
     $objPHPExcel->setActiveSheetIndex()->setCellValue('F'.$row,$total);
 
-    
+
     $objPHPExcel->getActiveSheet()->getProtection()->setSheet(true);
     $objPHPExcel->getActiveSheet()->getProtection()->setSort(true);
     $objPHPExcel->getActiveSheet()->getProtection()->setInsertRows(true);
     $objPHPExcel->getActiveSheet()->getProtection()->setFormatCells(true);
+       
 
     $objPHPExcel->getActiveSheet()->getProtection()->setPassword('fas2020');
+
 
 
     
@@ -191,30 +199,26 @@ if ($unit == "21") {
     $rowE++;
   }
 
-if (mysqli_num_rows($sql_items)<10) {
-
- $counter++;
- 
-
-
-$select_purpsoe = mysqli_query($conn,"SELECT pr.purpose,pr.pmo,pmo.pmo_contact_person,pmo.designation FROM pr left join pmo on pmo.pmo_title = pr.pmo WHERE pr.id = '$id' ");
+  $select_purpsoe = mysqli_query($conn,"SELECT pr.purpose,pr.pmo,pmo.pmo_contact_person,pmo.designation FROM pr left join pmo on pmo.pmo_title = pr.pmo WHERE pr.id = $id ");
 $rowP = mysqli_fetch_array($select_purpsoe);
-$purpose = $rowP['purpose'];
 $pmo_contact_person = $rowP['pmo_contact_person'];
+$pmo_contact_person;
 $designation = $rowP['designation'];
-
-
-
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B37',$purpose);
+if (mysqli_num_rows($sql_items)>30) {
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('B59',$purpose);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B65',strtoupper($pmo_contact_person));
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B66',$designation);
+}else{
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B36',$purpose);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B42',strtoupper($pmo_contact_person));
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B43',$designation);
-
 }
- 
+
+
 
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
-header('location: export_pr1.xlsx');
+header('location: export_pr.xlsx');
 
 ?>
