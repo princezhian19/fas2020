@@ -84,7 +84,7 @@ only screen and (max-width: 760px),
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Activity Title</label>
-                              <input type = "text" name = "ro[]" class = "form-control " value = "<?php echo $row1['date']?>" required/>
+                              <input type = "text" name = "ro[]" class = "form-control " value = "<?php echo $row1['RO_OT_OB']?>" required/>
                               <input type = "hidden" name = "ID[]" class = "form-control " value = "<?php echo $row1['PID']?>" required/>
                               <input type = "hidden" name = "TC_ID[]" class = "form-control " value = "<?php echo $_POST['ro']?>" required/>
                               <input type = "hidden" name = "RO[]" class = "form-control " value = "<?php echo $row1['RO']?>" required/>
@@ -97,7 +97,7 @@ only screen and (max-width: 760px),
                                   <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" name = "date[]" class="form-control datepicker4" value = "<?php echo $row1['DATE'];?>" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
+                                <input type="text" name = "date[]" class="form-control datepicker4" value = "<?php echo date('F d, Y',strtotime($row1['DATE']));?>" data-inputmask="'alias': 'dd/mm/yyyy'" id = "datepicker4" data-mask required>
                               </div>
                             </div>
                           </div>

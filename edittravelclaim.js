@@ -56,7 +56,7 @@ $(document).ready(function()
    
     // checkbox validation
     $(document).ready(function(){
-      $( ".datepicker4" ).datepicker( "setDate", new Date());
+      // $( ".datepicker4" ).datepicker( "setDate", new Date());
       });
   
   
