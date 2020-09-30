@@ -156,29 +156,11 @@ if(mysqli_num_rows($result) > 0)
               // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$data,$row['OTHERS']);
               // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$data,sprintf("%.2f",$row['TOTAL_AMOUNT']));
 
-              // $objPHPExcel->getActiveSheet()->mergeCells("B".$data."".":C".$data);
-              // $objPHPExcel->getActiveSheet()->getStyle('B'.$data.':C'.$data)->applyFromArray($styleArray);
-              // $objPHPExcel->getActiveSheet()->getStyle('B'.$data.''.':C'.$data) ->getAlignment()->setWrapText(true);
+              $objPHPExcel->getActiveSheet()->mergeCells("B".$data."".":C".$data);
+              $objPHPExcel->getActiveSheet()->getStyle('B'.$data.':C'.$data)->applyFromArray($styleArray);
+              $objPHPExcel->getActiveSheet()->getStyle('B'.$data.''.':C'.$data) ->getAlignment()->setWrapText(true);
 
-              // $objPHPExcel->getActiveSheet()->getStyle('D'.$data)->applyFromArray($styleArray);
-              // $objPHPExcel->getActiveSheet()->getStyle('E'.$data)->applyFromArray($styleArray);
-              // $objPHPExcel->getActiveSheet()->getStyle('F'.$data)->applyFromArray($styleArray);
-              // $objPHPExcel->getActiveSheet()->getStyle('G'.$data)->applyFromArray($styleArray);
-              // $objPHPExcel->getActiveSheet()->getStyle('H'.$data)->applyFromArray($styleArray);
-              // $objPHPExcel->getActiveSheet()->getStyle('I'.$data)->applyFromArray($styleArray);
-              // $objPHPExcel->getActiveSheet()->getStyle('J'.$data)->applyFromArray($styleArray);
-
-              // $objPHPExcel->getActiveSheet()->getStyle('A'.$title1)->applyFromArray($styleFont);
-              // $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleFont2);
-              // $objPHPExcel->getActiveSheet()->getStyle('B'.$title1)->applyFromArray($styleFont);
-              // $objPHPExcel->getActiveSheet()->getStyle('D'.$title1)->applyFromArray($styleFont);
-              // $objPHPExcel->getActiveSheet()->getStyle('E'.$title1)->applyFromArray($styleFont);
-              // $objPHPExcel->getActiveSheet()->getStyle('F'.$title1)->applyFromArray($styleFont);
-              // $objPHPExcel->getActiveSheet()->getStyle('G'.$title1)->applyFromArray($styleFont);
-              // $objPHPExcel->getActiveSheet()->getStyle('H'.$title1)->applyFromArray($styleFont);
-              // $objPHPExcel->getActiveSheet()->getStyle('I'.$title1)->applyFromArray($styleFont);
-              // $objPHPExcel->getActiveSheet()->getStyle('J'.$title1)->applyFromArray($styleFont);
-              
+           
             if($rnums > 0)
             {
         
@@ -199,21 +181,32 @@ if(mysqli_num_rows($result) > 0)
             // $title++;
 
       }
-      // DATES
-      $data = 16;
-        
-      for($i = 0; $i < count($pieces); $i++)
-      {
-        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$data,$pieces[$i]);
-        $rnums = $rnums - 2;
-        $data = $rnums+$data;
-        $data++;
-      }
+     
       $data = 16;
 
       for($i = 0; $i < count($places); $i++)
       {
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$data,$places[$i]);
+        $objPHPExcel->getActiveSheet()->getStyle('B'.$data)->applyFromArray($styleArray);
+
+        $objPHPExcel->getActiveSheet()->getStyle('D'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('E'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('F'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('G'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('H'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('J'.$data)->applyFromArray($styleArray);
+
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleFont2);
+        $objPHPExcel->getActiveSheet()->getStyle('B'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('D'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('E'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('F'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('G'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('H'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('J'.$title1)->applyFromArray($styleFont);
         $data++;
       }
 
@@ -227,7 +220,7 @@ if(mysqli_num_rows($result) > 0)
             {
               $rnums11 = mysqli_num_rows($result1);
               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$title1,$row['RO_OT_OB']);
-              $objPHPExcel->getActiveSheet()->mergeCells("A".$title1."".":J".$title1);
+              // $objPHPExcel->getActiveSheet()->mergeCells("A".$title1."".":J".$title1);
               $objPHPExcel->getActiveSheet()->getStyle('A'.$title1.':J'.$title1)->applyFromArray($styleArray);
               // $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleLeft);
               // $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleRight);
@@ -235,6 +228,20 @@ if(mysqli_num_rows($result) > 0)
               $title1++;
             }
       }
+       // DATES
+       $data = 16;
+       $lastRow= $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
+    
+
+       for($i = 0; $i < count($pieces); $i++)
+       {
+         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$data,$pieces[$i]);
+         $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleFont2);
+         // $rnums = $rnums - 2;
+         $data = ($lastRow-$rnums)+count($pieces);
+         $data++;
+         $title1++;
+       }
 }
 
 

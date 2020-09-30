@@ -365,36 +365,89 @@ session_start();
     {
         for($a=0;$a < count($_POST['date']); $a++)
         {
-            if(isset($_POST['breakfast'][$a]) || isset($_POST['lunch'][$a]) || isset($_POST['dinner'][$a]) || isset($_POST['wor_txt'][$a])) { $breakfast = $_POST['breakfast'][$a]; $lunch = $_POST['lunch'][$a]; $dinner = $_POST['dinner'][$a]; $receipt = $_POST['wor_txt'][$a]; if($breakfast == 'breakfast') { $breakfast = 1; } if($lunch == 'lunch') { $lunch = 1; } if($dinner == 'dinner') { $dinner = 1; } if($receipt == 'Without Receipt') { $receipt = 1100; } $perdiem = $breakfast+$lunch+$dinner+$receipt; }else{ $perdiem = 0; }
+            if(isset($_POST['breakfast'][$a]) || isset($_POST['lunch'][$a]) || isset($_POST['dinner'][$a]) || isset($_POST['wor_txt'][$a])) 
+                { 
+                    $breakfast = $_POST['breakfast'][$a]; 
+                    $lunch = $_POST['lunch'][$a]; 
+                    $dinner = $_POST['dinner'][$a]; 
+                    $receipt = $_POST['wor_txt'][$a]; 
+                    $distance = $_POST['distance'][$a];
+                    $distance_value = 0;
+                    
+                    if($breakfast == 'breakfast') 
+                    { 
+                        $breakfast = 1; 
+                    } 
+                    if($lunch == 'lunch') 
+                    { 
+                        $lunch = 1; 
+                    } 
+                    if($dinner == 'dinner') 
+                    { 
+                        $dinner = 1; 
+                    } 
+                    if($receipt == 'Without Receipt') 
+                    { 
+                        $receipt = 1100; 
+                    } 
+                    if($distance > 50)
+                    {
+                        $distance_value = 440;
+                    }
+                    else{
+                        $distance_value = 0.00;
+                    }
+                    $perdiem = $breakfast+$lunch+$dinner+$receipt+$distance_value; 
+                    $transpo = $_POST['fare'][$a];
+                    $total_amount = $breakfast+$lunch+$dinner+$receipt+$distance_value+$transpo; 
+                }else
+                { 
+                    $perdiem = 0; 
+                    $breakfast = 0.00;
+                    $lunch = 0.00;
+                    $dinner = 0.00;
+                    $receipt = 0.00;
+                    $total_amount = 0.00;
+                }
+            $id = $_POST['ID'][$a];
+            $tc_id = $_POST['TC_ID'][$a];
+            $ro = $_POST['RO'][$a];
             $title = $_POST['ro'][$a];
-            $date = $_POST['date'][$a];
-            $departure = $_POST['departure'][$a];
-            $arrival = $_POST['arrival'][$a];
+            $date = date('Y-m-d',strtotime($_POST['date'][$a]));
+            $departure = date('h:m:s',strtotime($_POST['departure'][$a]));
+            $arrival = date('h:m:s',strtotime($_POST['arrival'][$a]));
             $others = $_POST['others'][$a];
             $from = $_POST['from1'][$a];
             $to = $_POST['to1'][$a];
             $mot = $_POST['mot'][$a];
             $fare = $_POST['fare'][$a];
-        
-            // UPDATE `tbltravel_claim_info` SET 
-            // `TC_ID`=[value-2],
-            // `RO`=[value-3],
-            // `DATE`=[value-4],
-            // `PLACE`=[value-5],
-            // `ARRIVAL`=[value-6],
-            // `DEPARTURE`=[value-7],
-            // `MOT`=[value-8],
-            // `TRANSPORTATION`=[value-9],
-            // `BREAKFAST`=[value-10],
-            // `LUNCH`=[value-11],
-            // `DINNER`=[value-12],
-            // `ACCOMODATION`=[value-13],
-            // `RECEIPT`=[value-14],
-            // `PERDIEM`=[value-15],
-            // `OTHERS`=[value-16],
-            // `TOTAL_AMOUNT`=[value-17] WHERE 1
+            include 'connection.php';
+
+            $UPDATE =" UPDATE `tbltravel_claim_info` SET 
+            `TC_ID`='".$tc_id."',
+            `RO`='".$ro."',
+            `DATE`='".$date."',
+            `PLACE`='".$from." to ".$to."',
+            `ARRIVAL`='".$arrival."',
+            `DEPARTURE`='".$departure."',
+            `MOT`='".$mot."',
+            `TRANSPORTATION`='".$fare."',
+            `BREAKFAST`='".$breakfast."',
+            `LUNCH`='".$lunch."',
+            `DINNER`='".$dinner."',
+            `ACCOMODATION`='',
+            `RECEIPT`='".$receipt."',
+            `PERDIEM`='".$perdiem."',
+            `OTHERS`='".$others."',
+            `TOTAL_AMOUNT`='".$total_amount."' WHERE  `ID` = '".$id."'";
+            if (mysqli_query($conn, $UPDATE)) {
+            } else {
+            }
+            // echo $UPDATE.'<BR>';
+            header('Location:CreateTravelClaim.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'');
             
         }
+
     }
     $func = '';
     if(isset($_POST['action']))

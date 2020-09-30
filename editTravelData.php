@@ -62,7 +62,7 @@ only screen and (max-width: 760px),
 
 
     
-     $query = "SELECT * FROM `tbltravel_claim_info` 
+     $query = "SELECT  *, tbltravel_claim_info.`ID` AS 'PID' FROM `tbltravel_claim_info` 
           INNER JOIN `tbltravel_claim_info2` on `tbltravel_claim_info`.TC_ID = `tbltravel_claim_info2`.ID 
           INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID
 
@@ -84,8 +84,10 @@ only screen and (max-width: 760px),
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Activity Title</label>
-                              <input type = "text" name = "ro[]" class = "form-control " value = "<?php echo $row1['RO_OT_OB']?>" required/>
-                              <input type = "hidden" name = "TC_ID" class = "form-control " value = "<?php echo $_POST['ro']?>" required/>
+                              <input type = "text" name = "ro[]" class = "form-control " value = "<?php echo $row1['date']?>" required/>
+                              <input type = "hidden" name = "ID[]" class = "form-control " value = "<?php echo $row1['PID']?>" required/>
+                              <input type = "hidden" name = "TC_ID[]" class = "form-control " value = "<?php echo $_POST['ro']?>" required/>
+                              <input type = "hidden" name = "RO[]" class = "form-control " value = "<?php echo $row1['RO']?>" required/>
                             </div>
                           </div>
                           <div class="col-md-12">
@@ -149,7 +151,7 @@ only screen and (max-width: 760px),
                                 <div class="form-group">
                                     <label> Per Diem </label>
                                     <label class = "pull-right">
-                                    <input type ="hidden" value = "<?php echo $row1['DISTANCE'];?>" class = "distance"/>
+                                    <input type ="hidden" name = "distance[]" value = "<?php echo $row1['DISTANCE'];?>" class = "distance"/>
                                     <?php echo $row1['DISTANCE'];?>
                                     </label>
                                 </div>
