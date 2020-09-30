@@ -120,7 +120,9 @@ if(mysqli_num_rows($result) > 0)
             $search[] = $row["DATE"]; 
             $title[] = $row['RO_OT_OB'];
             $places_format[] = $row['PLACE'];
-
+            $departure[] = $row['DEPARTURE'];
+            $arrival[] = $row['ARRIVAL'];
+            $mot[] = $row['MOT'];
 
             $rnums = mysqli_num_rows($result1);
             $perdiem = $row['a'];
@@ -133,8 +135,16 @@ if(mysqli_num_rows($result) > 0)
             // $array3 = array_unique($places_format);
             $c = implode(',', $places_format);
             $places = explode(",", $c);
-            // echo $row['PLACE'].'<BR>';
-         
+
+            
+            $d = implode(',',$departure);
+            $departure_format = explode(",",$d);
+
+            $e = implode(',',$arrival);
+            $arrival_format = explode(",",$e);
+
+            $f = implode(',',$mot);
+            $mot_format = explode(",",$f);
 
             $array2 = array_unique($title);
             $b = implode(',',$array2);
@@ -167,7 +177,6 @@ if(mysqli_num_rows($result) > 0)
           
             $data = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
 
-            // $title1= $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
 
 
               $title1++;
@@ -177,8 +186,7 @@ if(mysqli_num_rows($result) > 0)
               $title1++;
               $data++;
             }
-            // $data++;
-            // $title++;
+ 
 
       }
      
@@ -187,6 +195,9 @@ if(mysqli_num_rows($result) > 0)
       for($i = 0; $i < count($places); $i++)
       {
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$data,$places[$i]);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$data,date('g:H A',strtotime($departure_format[$i])));
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$data,date('g:H A',strtotime($arrival_format[$i])));
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$data,$mot_format[$i]);
         $objPHPExcel->getActiveSheet()->getStyle('B'.$data)->applyFromArray($styleArray);
 
         $objPHPExcel->getActiveSheet()->getStyle('D'.$data)->applyFromArray($styleArray);
@@ -209,6 +220,12 @@ if(mysqli_num_rows($result) > 0)
         $objPHPExcel->getActiveSheet()->getStyle('J'.$title1)->applyFromArray($styleFont);
         $data++;
       }
+      // $data = 16;
+      // for ($i=0; $i < count($departure_format); $i++)
+      // { 
+      //   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$data,date('g:H A',strtotime($departure_format[$i])));
+      //     $data++;
+      // }
 
       // TRAVEL TITLE
       $title1 = 15;
