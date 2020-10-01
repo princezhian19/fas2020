@@ -123,6 +123,10 @@ if(mysqli_num_rows($result) > 0)
             $departure[] = $row['DEPARTURE'];
             $arrival[] = $row['ARRIVAL'];
             $mot[] = $row['MOT'];
+            $transpo[] = $row['TRANSPORTATION'];
+            $perdiem[] = $row['PERDIEM'];
+            $others[] = $row['OTHERS'];
+            $total_amount[] = $row['TOTAL_AMOUNT']
 
             $rnums = mysqli_num_rows($result1);
             $perdiem = $row['a'];
@@ -145,6 +149,18 @@ if(mysqli_num_rows($result) > 0)
 
             $f = implode(',',$mot);
             $mot_format = explode(",",$f);
+
+            $g = implode(',',$transpo);
+            $transpo_format = explode(",",$g);
+
+            $h = implode(',',$perdiem);
+            $perdiem_transpo = explode(",",$h);
+
+            $i = implode(',',$others);
+            $others_format = explode(",",$i);
+
+            $j = implode(',',$total_amount);
+            $total_amount_format = explode(",",$j);
 
             $array2 = array_unique($title);
             $b = implode(',',$array2);
@@ -198,6 +214,10 @@ if(mysqli_num_rows($result) > 0)
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$data,date('g:H A',strtotime($departure_format[$i])));
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$data,date('g:H A',strtotime($arrival_format[$i])));
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$data,$mot_format[$i]);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$data,$transpo_format[$i]);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$data,$perdiem_transpo[$i]);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$data,$others_format[$i]);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$data,sprintf("%.2f",$total_amount_format[$i]));
         $objPHPExcel->getActiveSheet()->getStyle('B'.$data)->applyFromArray($styleArray);
 
         $objPHPExcel->getActiveSheet()->getStyle('D'.$data)->applyFromArray($styleArray);
