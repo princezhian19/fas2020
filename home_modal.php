@@ -157,7 +157,7 @@
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? 
-          <input style = "width:50%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" name = "lastperiod" autocomplete = "off"/></td>
+          <input style = "width:50%;"type = "text" class = "form-control datepicker1 period" name = "lastperiod" autocomplete = "off"/></td>
           </tr>
           <tr>
           <td style = "text-align:justify;" colspan = 4>Declaration:<br><br>
