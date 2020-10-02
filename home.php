@@ -620,11 +620,7 @@ $(document).on('keydown', 'input[pattern]', function(e){
     }
   }, 0);
 });
-$(document).ready(function(){
-  $('#datepicker1').datepicker({
-      autoclose: true
-    })
-});
+
 </script>
 
 
