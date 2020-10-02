@@ -84,7 +84,7 @@ only screen and (max-width: 760px),
 	}
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr { 
+	#thead_name tr { 
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
