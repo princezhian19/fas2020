@@ -14,7 +14,7 @@
     overflow-y: auto;">
       <div>
 
-      <table border =1 style = "width:100%;" class="table table-bordered table-hover">
+      <table border =1 style = "width:100%;" id = "tbl"   class="table table-bordered table-hover">
         <tbody>
         <tr>
         <td style = "background-color:#B0BEC5;">Employee No.:</td>
@@ -157,7 +157,7 @@
           </tr>
           <tr>
           <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? 
-          <input style = "width:50%;"type = "text" class = "form-control datepicker1 period" name = "lastperiod" autocomplete = "off"/></td>
+          <input style = "width:100%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" name = "lastperiod" autocomplete = "off"/></td>
           </tr>
           <tr>
           <td style = "text-align:justify;" colspan = 4>Declaration:<br><br>

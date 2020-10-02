@@ -67,18 +67,18 @@ only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 
 	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
+	#tbl { 
 		display: block; 
 	}
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
-	/* thead tr { 
+	#tbl thead tr { 
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
-	} */
+	}
 	
-	tr { border: 1px solid #ccc; }
+	#tbl tr { border: 1px solid #ccc; }
 	
 
 	
@@ -620,7 +620,11 @@ $(document).on('keydown', 'input[pattern]', function(e){
     }
   }, 0);
 });
-
+$(document).ready(function(){
+  $('#datepicker1').datepicker({
+      autoclose: true
+    })
+});
 </script>
 
 
@@ -708,10 +712,9 @@ $(document).on('keydown', 'input[pattern]', function(e){
   }, 0);
 });
 $(document).ready(function(){
-  $('.datepicker1').datepicker({
+  $('#datepicker1').datepicker({
       autoclose: true
     })
-    
 });
 </script>
 
