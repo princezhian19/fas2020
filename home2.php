@@ -55,8 +55,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     <script src="_includes/sweetalert.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="_includes/sweetalert.css">
     
- 
-    <style>
+<style>
 /* 
 Max width before this PARTICULAR table gets nasty
 This query will take effect for any screen smaller than 760px
@@ -67,12 +66,24 @@ only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 
 	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
+	#table_name { 
+		display: block; 
+	}
+  #thead_name{ 
+		display: block; 
+	}
+  #tbody_name { 
+		display: block; 
+	}
+  #th_name{ 
+		display: block; 
+	}
+  #td_name{ 
 		display: block; 
 	}
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr { 
+	#thead_name tr { 
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
@@ -106,60 +117,60 @@ only screen and (max-width: 760px),
     overflow-y: auto;">
       <div>
 
-      <table border =1 style = "width:100%;" class="table table-bordered table-hover">
-        <tbody>
+      <table border =1 style = "width:100%;" id = "table_name" class="table table-bordered table-hover">
+        <tbody id  = "tbody_name">
         <tr>
-        <td style = "background-color:#B0BEC5;">Employee No.:</td>
-        <td>
+        <td id  = "td_name" style = "background-color:#B0BEC5;">Employee No.:</td>
+        <td id  = "td_name">
         <input style = "border: none;" type ="text" class = "form-control" value = "<?php getEmpNo();?>"   readonly/> 
         
         </td>
-        <td style = "background-color:#B0BEC5;">Date:</td>
-        <td><input  type = "text" class = "form-control datepicker2" id = "datepicker2" value = "<?php echo date('F d, Y');?>" disabled/></td>
+        <td id  = "td_name" style = "background-color:#B0BEC5;">Date:</td>
+        <td id  = "td_name"><input  type = "text" class = "form-control datepicker2" id = "datepicker2" value = "<?php echo date('F d, Y');?>" disabled/></td>
         </tr>
           <tr>
-            <td style = "background-color:#B0BEC5;">Name:</td>
-            <td> 
+            <td id  = "td_name" style = "background-color:#B0BEC5;">Name:</td>
+            <td id  = "td_name"> 
             <input style = "border: none;" type ="text" class = "form-control" value = "<?php getLast();?>"  name = "lastname" readonly/> 
               
             </td>
-            <td> 
+            <td id  = "td_name"> 
               <input style = "border: none;" type ="text" class = "form-control" value = "<?php getFirst();?>"  name = "firstname" readonly/> 
             </td>
-            <td> 
+            <td id  = "td_name"> 
               <input style = "border: none;" type ="text" class = "form-control" value = "<?php getMiddle();?>"  name = "middlename" readonly/> 
             </td>
           </tr>
           <tr>
-            <td style = "background-color:#B0BEC5;">Mobile Number:</td>
-            <td> <input style = "border: none;" type ="text" class = "form-control" value = "<?php getContact();?>"  name = "contact_number" readonly/> </td>
-            <td style = "background-color:#B0BEC5;"> Body Temp. </td> 
+            <td id  = "td_name" style = "background-color:#B0BEC5;">Mobile Number:</td>
+            <td id  = "td_name"> <input style = "border: none;" type ="text" class = "form-control" value = "<?php getContact();?>"  name = "contact_number" readonly/> </td>
+            <td id  = "td_name" style = "background-color:#B0BEC5;"> Body Temp. </td> 
             <!-- id = "temp" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value) -->
-            <td> <input type ="text"  class = "form-control" required name = "body_temp" /> 
+            <td id  = "td_name"> <input type ="text"  class = "form-control" required name = "body_temp" /> 
             <!-- pattern="^\d*(\.\d{0,2})?$" min = 0 maxlength = 5 -->
 
             </td>
           </tr>
           <tr>
-            <td style = "background-color:#B0BEC5;">Email Address:</td>
-            <td> <input type ="text" style = " border: none;" class = "form-control" value = "<?php getEmail();?>"  name = "email" readonly/> </td>
-            <td style = "background-color:#B0BEC5;"> Nationality: </td>
-            <td> <input type ="text" style = " border: none;" class = "form-control" value = "Filipino" name = "nationality" readonly/> </td>
+            <td id  = "td_name" style = "background-color:#B0BEC5;">Email Address:</td>
+            <td id  = "td_name"> <input type ="text" style = " border: none;" class = "form-control" value = "<?php getEmail();?>"  name = "email" readonly/> </td>
+            <td id  = "td_name" style = "background-color:#B0BEC5;"> Nationality: </td>
+            <td id  = "td_name"> <input type ="text" style = " border: none;" class = "form-control" value = "Filipino" name = "nationality" readonly/> </td>
           </tr>
           <tr>
-            <td style = "background-color:#B0BEC5;" rowspan = 2>Current Residential Address:</td>
-            <td rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none;background-color:#ECEFF1;border:none;" name = "curraddress" readonly><?php getAddress();?></textarea></td>
-            <td style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
-            <td> <input type ="text" style = " border: none;" class = "form-control" name = "gender" id = "gender" value = "<?php getGender(); ?>" readonly /> </td>
+            <td id  = "td_name" style = "background-color:#B0BEC5;" rowspan = 2>Current Residential Address:</td>
+            <td id  = "td_name" rowspan = 2><textarea   cols = 25 rows=3  style = "resize:none;background-color:#ECEFF1;border:none;" name = "curraddress" readonly><?php getAddress();?></textarea></td>
+            <td id  = "td_name" style = "background-color:#B0BEC5;" rowspan = 2>Sex:<br><br>Age</td>
+            <td id  = "td_name"> <input type ="text" style = " border: none;" class = "form-control" name = "gender" id = "gender" value = "<?php getGender(); ?>" readonly /> </td>
           </tr>
           <tr>
-          <td><input type ="text" style = " border: none;" class = "form-control" name = "age" VALUE = "<?php calculateAge();?>" name = "age" readonly/> </td>
+          <td id  = "td_name"><input type ="text" style = " border: none;" class = "form-control" name = "age" VALUE = "<?php calculateAge();?>" name = "age" readonly/> </td>
           </tr>
           <tr>
-            <td style = "background-color:#B0BEC5;">Office/Unit:</td>
-            <td> <input type ="text" style = " border: none;" class = "form-control" value = "<?php getOffice()?>" name= "office" readonly/> </td>
-            <td style = "background-color:#B0BEC5;">Work Arrangement:</td>
-            <td> 
+            <td id  = "td_name" style = "background-color:#B0BEC5;">Office/Unit:</td>
+            <td id  = "td_name"> <input type ="text" style = " border: none;" class = "form-control" value = "<?php getOffice()?>" name= "office" readonly/> </td>
+            <td id  = "td_name" style = "background-color:#B0BEC5;">Work Arrangement:</td>
+            <td id  = "td_name"> 
                 <select required class="form-control" style="width: 100%;" name="work_arrangement" id="sched" >
                     <option value="" selected></option>
                     <option value="SWF" >Skeletal Work Force</option>
@@ -176,8 +187,8 @@ only screen and (max-width: 760px),
           </tr>
          
           <tr>
-            <td style = "background-color:#B0BEC5;">Did you have any of the following in the last 14 days: fever, cough, colds, sore throat, diarrhea or difficulty in breathing?</td>
-            <td>
+            <td id  = "td_name" style = "background-color:#B0BEC5;">Did you have any of the following in the last 14 days: fever, cough, colds, sore throat, diarrhea or difficulty in breathing?</td>
+            <td id  = "td_name">
             <div class="form-check">
               <input type="checkbox" class="form-check-input checkbox1" id="cb1" name = "ans1" value = "YES" required>
               <label class="form-check-label" for="exampleCheck1">Yes</label>
@@ -187,11 +198,11 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<center><textarea  required cols = 56 rows=5  style = "resize:none;" id = "txt1" name = "ans1_details"></textarea></center></td>
+            <td id  = "td_name" colspan = 2>Please provide details:<center><textarea  required cols = 56 rows=5  style = "resize:none;" id = "txt1" name = "ans1_details"></textarea></center></td>
           </tr>
           <tr>
-            <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to any foreign countries in the past 14 days?</td>
-            <td>
+            <td id  = "td_name" style = "background-color:#B0BEC5;">Have you worked, visited or travelled to any foreign countries in the past 14 days?</td>
+            <td id  = "td_name">
             <div class="form-check">
               <input type="checkbox" class="form-check-input checkbox2" id="cb3" name = "ans2" value = "YES" required>
               <label class="form-check-label" for="exampleCheck1">Yes</label>
@@ -201,12 +212,12 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide specific details on the name of places and date of visit: (i.e. USA, Singapore, Italy, etc.)<center>
+            <td id  = "td_name" colspan = 2>Please provide specific details on the name of places and date of visit: (i.e. USA, Singapore, Italy, etc.)<center>
             <textarea required name = "ans2_details" cols = 56 rows=6 style = "resize:none;" id = "txt2"></textarea></center></td>
           </tr>
           <tr>
-            <td style = "background-color:#B0BEC5;">Have you worked, visited or travelled to other places in the Philippines in the past 7 days?</td>
-            <td>
+            <td id  = "td_name" style = "background-color:#B0BEC5;">Have you worked, visited or travelled to other places in the Philippines in the past 7 days?</td>
+            <td id  = "td_name">
             <div class="form-check">
               <input type="checkbox" class="form-check-input checkbox3" id="cb5" name = "ans3" value = "YES" required> 
               <label class="form-check-label" for="exampleCheck1">Yes</label>
@@ -216,12 +227,12 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide specific details on the name of places and date of visit: (i.e. SM/Walter Mart Calamba, Bank, Fast Food Chain)<center>
+            <td id  = "td_name" colspan = 2>Please provide specific details on the name of places and date of visit: (i.e. SM/Walter Mart Calamba, Bank, Fast Food Chain)<center>
             <textarea required name = "ans3_details" cols = 56 rows=6 style = "resize:none;" id = "txt3"></textarea></center></td>
           </tr>
           <tr>
-          <td style = "background-color:#B0BEC5;">Have you been in close contact with farm animals or exposed to wild animals in the past 14 days?</td>
-            <td>
+          <td id  = "td_name" style = "background-color:#B0BEC5;">Have you been in close contact with farm animals or exposed to wild animals in the past 14 days?</td>
+            <td id  = "td_name">
             <div class="form-check">
               <input type="checkbox" class="form-check-input checkbox4" id="cb7" name = "ans4" value = "YES" required>
               <label class="form-check-label" for="exampleCheck1 checkbox4">Yes</label>
@@ -231,11 +242,11 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1 checkbox4">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<center><textarea required name = "ans4_details" cols = 56 rows=5  style = "resize:none;" id = "txt4"></textarea></center></td>
+            <td id  = "td_name" colspan = 2>Please provide details:<center><textarea required name = "ans4_details" cols = 56 rows=5  style = "resize:none;" id = "txt4"></textarea></center></td>
           </tr>
           <tr>
-          <td style = "background-color:#B0BEC5;">Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
-            <td>
+          <td id  = "td_name" style = "background-color:#B0BEC5;">Have you been exposed to a person with COVID-19 or person under investigation for COVID-19?</td>
+            <td id  = "td_name">
             <div class="form-check">
               <input type="checkbox" class="form-check-input checkbox5" id="cb9" name = "ans5" value = "YES" required>
               <label class="form-check-label" for="exampleCheck1">Yes</label>
@@ -245,14 +256,14 @@ only screen and (max-width: 760px),
               <label class="form-check-label" for="exampleCheck1">No</label>
             </div>
             </td>
-            <td colspan = 2>Please provide details:<center><textarea required name = "ans5_details" cols = 56 rows=5  style = "resize:none;" id = "txt5"></textarea></center></td>
+            <td id  = "td_name" colspan = 2>Please provide details:<center><textarea required name = "ans5_details" cols = 56 rows=5  style = "resize:none;" id = "txt5"></textarea></center></td>
           </tr>
           <tr>
-          <td colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? 
-          <input style = "width:20%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" name = "lastperiod"/></td>
+          <td id  = "td_name" colspan = 4><b>FOR WOMEN:</b><br> When was your last menstruation period? 
+          <input style = "width:80%;"type = "text" class = "form-control datepicker1 period" id = "datepicker1" name = "lastperiod" autocomplete = "off"/></td>
           </tr>
           <tr>
-          <td style = "text-align:justify;" colspan = 4>Declaration:<br><br>
+          <td id  = "td_name" style = "text-align:justify;" colspan = 4>Declaration:<br><br>
             The information I have given herein is true, correct and complete, I understand that failure to answer any question or any falsified response may have serious consequences. (Article 171 and 172 of the revised Penal Code of the Philippines).
             <br><br><span class = "pull-right" STYLE = "margin-left:50px;"> 
                 <br><u STYLE  = "font-weight:bold;"><?php echo date('F d, Y');?></u><br>
