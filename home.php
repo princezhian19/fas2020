@@ -67,7 +67,19 @@ only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 
 	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
+	#table_name { 
+		display: block; 
+	}
+  #thead_name{ 
+		display: block; 
+	}
+  #tbody_name { 
+		display: block; 
+	}
+  #th_name{ 
+		display: block; 
+	}
+  #td_name{ 
 		display: block; 
 	}
 	
