@@ -598,10 +598,10 @@ function showRequest()
     if($username == 'rmsaturno')
     {
       ?>
-<li class="treeview" tyle="background-color: lightgray;">
+    <li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
             <i class="fa fa-cogs"style="text-decoration: none;"></i>
-            <span style="color:black;text-decoration: none;">Setting</span>
+            <span style="text-decoration: none;">Setting</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
