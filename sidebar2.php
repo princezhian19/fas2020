@@ -593,6 +593,20 @@ function showRequest()
 
       </ul>
     </li>
+    <li class="treeview" tyle="background-color: lightgray;">
+          <a href="" style="color:black;text-decoration: none;">
+            <i class="fa fa-cogs"style="color:black;text-decoration: none;"></i>
+            <span style="color:black;text-decoration: none;">Setting</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" >
+            <li><a style="color:black;text-decoration: none;" href="Accounts.php"><i class = "fa fa-fw fa-user-md"></i>USER MANAGEMENT</li>
+            <li><a style="color:black;text-decoration: none;" href="Approval.php"><i class = "fa fa-fw fa-check-square-o"></i>FOR APPROVAL</li>
+
+          </ul>
+        </li>
   <?php endif ?>
 <?php endif ?>
 
