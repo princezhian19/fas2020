@@ -9,8 +9,6 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['complete_name'])){
   $TIN_N = $_SESSION['TIN_N'];
   $ORD = $_SESSION['ORD'];
   $DEPT_ID = $_SESSION['DEPT_ID'];
-  echo $_SESSION['isPersonnel'];
-  exit();
 }
 
 $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .   $_SERVER['REQUEST_URI']; 
@@ -597,7 +595,7 @@ function showRequest()
     </li>
     <?php
 
-    if($_SESSION['isPersonnel'] == 1)
+    if($username == 'rmsaturno')
     {
       ?>
 <li class="treeview" tyle="background-color: lightgray;">
