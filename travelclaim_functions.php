@@ -443,11 +443,12 @@ session_start();
             if (mysqli_query($conn, $UPDATE)) {
             } else {
             }
+            echo $UPDATE.'<BR>';
             // echo $UPDATE.'<BR>';
             header('Location:CreateTravelClaim.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'');
             
         }
-
+exit();
     }
     $func = '';
     if(isset($_POST['action']))
