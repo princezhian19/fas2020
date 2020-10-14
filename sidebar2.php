@@ -594,6 +594,8 @@ function showRequest()
       </ul>
     </li>
     <?php
+    echo $_SESSION['isPersonnel'];
+    exit();
     if($_SESSION['isPersonnel'] == 1)
     {
       ?>
