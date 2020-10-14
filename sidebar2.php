@@ -593,9 +593,13 @@ function showRequest()
 
       </ul>
     </li>
-    <li class="treeview" tyle="background-color: lightgray;">
+    <?php
+    if($_SESSION['isPersonnel'] == 1)
+    {
+      ?>
+<li class="treeview" tyle="background-color: lightgray;">
           <a href="" style="color:black;text-decoration: none;">
-            <i class="fa fa-cogs"style="color:black;text-decoration: none;"></i>
+            <i class="fa fa-cogs"style="text-decoration: none;"></i>
             <span style="color:black;text-decoration: none;">Setting</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -607,6 +611,14 @@ function showRequest()
 
           </ul>
         </li>
+      <?php
+      
+    }else{
+
+    }
+
+?>
+    
   <?php endif ?>
 <?php endif ?>
 
