@@ -372,7 +372,9 @@ session_start();
                     $dinner = $_POST['dinner'][$a]; 
                     $receipt = $_POST['wor_txt'][$a]; 
                     $distance = $_POST['distance'][$a];
+
                     $distance_value = 0;
+                    #
                     
                     if($breakfast == 'breakfast') 
                     { 
@@ -407,7 +409,8 @@ session_start();
                     $lunch = 0.00;
                     $dinner = 0.00;
                     $receipt = 0.00;
-                    $total_amount = 0.00;
+                    $transpo = $_POST['fare'][$a];
+                    $total_amount = $breakfast+$lunch+$dinner+$receipt+$distance_value+$transpo; 
                 }
             $id = $_POST['ID'][$a];
             $RO = $_POST['RO'][$a];
