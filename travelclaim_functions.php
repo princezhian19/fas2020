@@ -449,6 +449,7 @@ session_start();
             if (mysqli_query($conn, $UPDATE2)) {
             } else {
             }
+            echo $UPDATE.'<BR>';
             echo $UPDATE2;
             exit();
             header('Location:CreateTravelClaim.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'');
