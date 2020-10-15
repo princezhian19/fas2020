@@ -442,6 +442,8 @@ session_start();
             `PERDIEM`='".$perdiem."',
             `OTHERS`='".$others."',
             `TOTAL_AMOUNT`='".$total_amount."' WHERE  `ID` = '".$id."'";
+            echo $mot.'<br>';
+            exit();
             if (mysqli_query($conn, $UPDATE)) {
             } else {
             }
