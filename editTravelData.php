@@ -67,8 +67,7 @@ only screen and (max-width: 760px),
           INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID
 
      WHERE `TC_ID` ='".$_POST['ro']."' ";
-   echo $query;
-   exit();
+
 
      $result = mysqli_query($conn, $query);
      if(mysqli_num_rows($result) > 0)    
