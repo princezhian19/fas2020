@@ -509,7 +509,7 @@ $row11 = $lastRow+7;
     //
 
 
-exit();
+
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace('.php', '.xlsx', __FILE__));
