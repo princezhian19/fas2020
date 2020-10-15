@@ -446,6 +446,9 @@ session_start();
             }
 
             $UPDATE2 = "UPDATE `tbltravel_claim_ro` SET `RO_OT_OB`='".$title."' WHERE  `ID` = '".$id."'";
+            if (mysqli_query($conn, $UPDATE2)) {
+            } else {
+            }
             header('Location:CreateTravelClaim.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'');
             
         }
