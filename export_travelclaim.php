@@ -110,8 +110,7 @@ if(mysqli_num_rows($result) > 0)
   tbltravel_claim_ro.`ID`, `RO_OT_OB`, `UNAME`  FROM tbltravel_claim_info 
   INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
   WHERE tbltravel_claim_info.RO IN (" . implode( ',', $array ) . ")  ";
-  echo $SQL;
-  exit();
+
   $result1 = mysqli_query($conn, $SQL);
   $rnums = '';
   $search = array();
@@ -269,7 +268,8 @@ if(mysqli_num_rows($result) > 0)
        }
 }
 
-
+echo $query;
+exit();
 
 
 
