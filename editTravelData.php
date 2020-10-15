@@ -67,7 +67,7 @@ only screen and (max-width: 760px),
           INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID
 
      WHERE `TC_ID` ='".$_POST['ro']."' ";
-
+   
 
      $result = mysqli_query($conn, $query);
      if(mysqli_num_rows($result) > 0)    
@@ -86,7 +86,7 @@ only screen and (max-width: 760px),
                           <div class="col-md-12">
                             <div class="form-group">
                               <label>Activity Title</label>
-                              <input type = "text" name = "ro[]" class = "form-control " value = "<?php echo $query;?>" required/>
+                              <input type = "text" name = "ro[]" class = "form-control " value = "<?php echo $row1['RO_OT_OB']?>" required/>
                               <input type = "hidden" name = "ID[]" class = "form-control " value = "<?php echo $row1['PID']?>" required/>
                               <input type = "hidden" name = "TC_ID[]" class = "form-control " value = "<?php echo $_POST['ro']?>" required/>
                               <input type = "hidden" name = "RO[]" class = "form-control " value = "<?php echo $row1['RO']?>" required/>
