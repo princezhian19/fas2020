@@ -421,6 +421,7 @@ session_start();
             $to = $_POST['to1'][$a];
             $mot = $_POST['mot'][$a];
             $fare = $_POST['fare'][$a];
+
             include 'connection.php';
 
             $UPDATE =" UPDATE `tbltravel_claim_info` SET 
@@ -443,12 +444,11 @@ session_start();
             if (mysqli_query($conn, $UPDATE)) {
             } else {
             }
-            echo $UPDATE.'<BR>';
-            // echo $UPDATE.'<BR>';
+
+            $UPDATE2 = "UPDATE `tbltravel_claim_ro` SET `RO_OT_OB`='".$title."' WHERE  `ID` = '".$id."'";
             header('Location:CreateTravelClaim.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'');
             
         }
-exit();
     }
     $func = '';
     if(isset($_POST['action']))
