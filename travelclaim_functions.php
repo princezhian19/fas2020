@@ -410,6 +410,7 @@ session_start();
                     $total_amount = 0.00;
                 }
             $id = $_POST['ID'][$a];
+            $RO = $_POST['RO'][$a];
             $tc_id = $_POST['TC_ID'][$a];
             $ro = $_POST['RO'][$a];
             $title = $_POST['ro'][$a];
@@ -445,7 +446,7 @@ session_start();
             } else {
             }
 
-            $UPDATE2 = "UPDATE `tbltravel_claim_ro` SET `RO_OT_OB`='".$title."' WHERE  `ID` = '".$tc_id."'";
+            $UPDATE2 = "UPDATE `tbltravel_claim_ro` SET `RO_OT_OB`='".$title."' WHERE  `ID` = '".$RO."'";
             if (mysqli_query($conn, $UPDATE2)) {
             } else {
             }
