@@ -143,7 +143,7 @@ only screen and (max-width: 760px),
                           <div class="col-md-12"> 
                               <div class="form-group">
                                 <label>Means of Transportation</label>
-                                  <input type = "text" name = "mot[]" class = "form-control " value = "<?php echo $places[0];?>"/>
+                                  <input type = "text" name = "mot[]" class = "form-control " value = "<?php echo $places[1];?>"/>
                               </div>
                           </div>
                           </div>
