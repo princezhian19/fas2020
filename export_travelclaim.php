@@ -49,7 +49,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
         'size'  => 11,
         'name' => 'Times New Roman'
     ));
-
+    
     $styleFont2 = array(
         'font'  => array(
             'bold' => false,
@@ -84,7 +84,209 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
           }
     //======================================================//             
 
-   
+    //============ table 2 ============================//
+
+$query = "SELECT TC_ID, tbltravel_claim_info.RO, RO_OT_OB FROM `tbltravel_claim_info2`
+INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
+INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
+WHERE  `RO_TO_OB`= '".$_GET['id']."' ";
+$result = mysqli_query($conn, $query);
+if(mysqli_num_rows($result) > 0)    
+{
+  $title1 = 15;
+  $data = 16;
+  $tc_id = '';
+  $array = array();
+
+  while($row1 = mysqli_fetch_array($result))
+  {
+    $array[] = $row1[1];
+    $tc_id = $row1[0];
+    $travel_title[] = $row1[2];
+
+    // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$title1,$row1['RO_OT_OB']);
+    
+  }
+  $SQL = "SELECT PERDIEM + RECEIPT AS 'a', tbltravel_claim_info.`ID` as 'dID', `TC_ID`, `RO`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `RECEIPT`,`OTHERS`, `TOTAL_AMOUNT`,
+  tbltravel_claim_ro.`ID`, `RO_OT_OB`, `UNAME`  FROM tbltravel_claim_info 
+  INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
+  WHERE tbltravel_claim_info.RO IN (" . implode( ',', $array ) . ")  ";
+  $result1 = mysqli_query($conn, $SQL);
+  $rnums = '';
+  $search = array();
+  $title = array();
+  $AA = array();
+      while($row = mysqli_fetch_array($result1))
+      {
+
+       
+            $search[] = $row["DATE"]; 
+            $title[] = $row['RO_OT_OB'];
+            $places_format[] = $row['PLACE'];
+            $departure[] = $row['DEPARTURE'];
+            $arrival[] = $row['ARRIVAL'];
+            $mot[] = $row['MOT'];
+            $transpo[] = $row['TRANSPORTATION'];
+            $perdiem[] = $row['PERDIEM'];
+            $others[] = $row['OTHERS'];
+            $total_amount[] = $row['TOTAL_AMOUNT']
+
+            $rnums = mysqli_num_rows($result1);
+            $perdiem = $row['a'];
+            $arr = array($row['RO_OT_OB']);
+
+            $array = array_unique($search);
+            $a = implode(',', $array);
+            $pieces = explode(",", $a);
+
+            // $array3 = array_unique($places_format);
+            $c = implode(',', $places_format);
+            $places = explode(",", $c);
+
+            
+            $d = implode(',',$departure);
+            $departure_format = explode(",",$d);
+
+            $e = implode(',',$arrival);
+            $arrival_format = explode(",",$e);
+
+            $f = implode(',',$mot);
+            $mot_format = explode(",",$f);
+
+            $g = implode(',',$transpo);
+            $transpo_format = explode(",",$g);
+
+            $h = implode(',',$perdiem);
+            $perdiem_transpo = explode(",",$h);
+
+            $i = implode(',',$others);
+            $others_format = explode(",",$i);
+
+            $j = implode(',',$total_amount);
+            $total_amount_format = explode(",",$j);
+
+            $array2 = array_unique($title);
+            $b = implode(',',$array2);
+            $title_format = explode(",", $b);
+
+
+
+
+
+
+        
+        //     // FOR TRAVEL TITLE
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$data,$row['PLACE']);
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$data,date('g:i A',strtotime($row['ARRIVAL'])));
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$data,date('g:i A',strtotime($row['DEPARTURE'])));
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$data,$row['MOT']);
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$data,sprintf("%.2f",$row['TRANSPORTATION']));
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$data,$perdiem);
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$data,$row['OTHERS']);
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$data,sprintf("%.2f",$row['TOTAL_AMOUNT']));
+
+              $objPHPExcel->getActiveSheet()->mergeCells("B".$data."".":C".$data);
+              $objPHPExcel->getActiveSheet()->getStyle('B'.$data.':C'.$data)->applyFromArray($styleArray);
+              $objPHPExcel->getActiveSheet()->getStyle('B'.$data.''.':C'.$data) ->getAlignment()->setWrapText(true);
+
+           
+            if($rnums > 0)
+            {
+        
+          
+            $data = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
+
+
+
+              $title1++;
+
+              $data++;
+            }else{
+              $title1++;
+              $data++;
+            }
+ 
+
+      }
+     
+      $data = 16;
+
+      for($i = 0; $i < count($places); $i++)
+      {
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$data,$places[$i]);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$data,date('g:H A',strtotime($departure_format[$i])));
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$data,date('g:H A',strtotime($arrival_format[$i])));
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$data,$mot_format[$i]);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$data,$transpo_format[$i]);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$data,$perdiem_transpo[$i]);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$data,$others_format[$i]);
+        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$data,sprintf("%.2f",$total_amount_format[$i]));
+        $objPHPExcel->getActiveSheet()->getStyle('B'.$data)->applyFromArray($styleArray);
+
+        $objPHPExcel->getActiveSheet()->getStyle('D'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('E'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('F'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('G'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('H'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$data)->applyFromArray($styleArray);
+        $objPHPExcel->getActiveSheet()->getStyle('J'.$data)->applyFromArray($styleArray);
+
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleFont2);
+        $objPHPExcel->getActiveSheet()->getStyle('B'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('D'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('E'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('F'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('G'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('H'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('I'.$title1)->applyFromArray($styleFont);
+        $objPHPExcel->getActiveSheet()->getStyle('J'.$title1)->applyFromArray($styleFont);
+        $data++;
+      }
+      // $data = 16;
+      // for ($i=0; $i < count($departure_format); $i++)
+      // { 
+      //   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$data,date('g:H A',strtotime($departure_format[$i])));
+      //     $data++;
+      // }
+
+      // TRAVEL TITLE
+      $title1 = 15;
+      for($i = 0; $i < count($title_format); $i++)
+      {
+        $SQL = "SELECT * FROM `tbltravel_claim_ro` WHERE RO_OT_OB = '".$title_format[$i]."'";
+        $result1 = mysqli_query($conn, $SQL);
+            if($row = mysqli_fetch_array($result1))
+            {
+              $rnums11 = mysqli_num_rows($result1);
+              $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$title1,$row['RO_OT_OB']);
+              // $objPHPExcel->getActiveSheet()->mergeCells("A".$title1."".":J".$title1);
+              $objPHPExcel->getActiveSheet()->getStyle('A'.$title1.':J'.$title1)->applyFromArray($styleArray);
+              // $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleLeft);
+              // $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleRight);
+              $title1 = ($title1+$rnums11);
+              $title1++;
+            }
+      }
+       // DATES
+       $data = 16;
+       $lastRow= $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
+    
+
+       for($i = 0; $i < count($pieces); $i++)
+       {
+         $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$data,$pieces[$i]);
+         $objPHPExcel->getActiveSheet()->getStyle('A'.$data)->applyFromArray($styleFont2);
+         // $rnums = $rnums - 2;
+         $data = ($lastRow-$rnums)+count($pieces);
+         $data++;
+         $title1++;
+       }
+}
+
+
+
+
 
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
