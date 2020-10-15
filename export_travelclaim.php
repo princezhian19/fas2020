@@ -2,6 +2,13 @@
 define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 require_once 'library/PHPExcel/Classes/PHPExcel/IOFactory.php';
 $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
+$query = "SELECT TC_ID, tbltravel_claim_info.RO, RO_OT_OB FROM `tbltravel_claim_info2`
+INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
+INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
+WHERE  `RO_TO_OB`= '".$_GET['id']."' ";
+$result = mysqli_query($conn, $query);
+echo $query;
+exit();
 //---- PHP FUNCTIONS --------//
 
 
@@ -91,8 +98,7 @@ INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_c
 INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
 WHERE  `RO_TO_OB`= '".$_GET['id']."' ";
 $result = mysqli_query($conn, $query);
-echo $query;
-exit();
+
 if(mysqli_num_rows($result) > 0)    
 {
   $title1 = 15;
