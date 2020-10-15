@@ -91,6 +91,8 @@ INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_c
 INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
 WHERE  `RO_TO_OB`= '".$_GET['id']."' ";
 $result = mysqli_query($conn, $query);
+echo $query;
+exit();
 if(mysqli_num_rows($result) > 0)    
 {
   $title1 = 15;
@@ -268,8 +270,7 @@ if(mysqli_num_rows($result) > 0)
        }
 }
 
-echo $query;
-exit();
+
 
 
 
