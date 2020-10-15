@@ -102,15 +102,16 @@ if(mysqli_num_rows($result) > 0)
   {
     $array[] = $row1[1];
     $tc_id = $row1[0];
-    $travel_title[] = $row1[2];
-
-    // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$title1,$row1['RO_OT_OB']);
-    
+    $travel_title[] = $row1[2];    
   }
+
+
   $SQL = "SELECT PERDIEM + RECEIPT AS 'a', tbltravel_claim_info.`ID` as 'dID', `TC_ID`, `RO`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `RECEIPT`,`OTHERS`, `TOTAL_AMOUNT`,
   tbltravel_claim_ro.`ID`, `RO_OT_OB`, `UNAME`  FROM tbltravel_claim_info 
   INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
   WHERE tbltravel_claim_info.RO IN (" . implode( ',', $array ) . ")  ";
+  echo $SQL;
+  exit();
   $result1 = mysqli_query($conn, $SQL);
   $rnums = '';
   $search = array();
@@ -118,8 +119,6 @@ if(mysqli_num_rows($result) > 0)
   $AA = array();
       while($row = mysqli_fetch_array($result1))
       {
-
-       
             $search[] = $row["DATE"]; 
             $title[] = $row['RO_OT_OB'];
             $places_format[] = $row['PLACE'];
@@ -139,7 +138,6 @@ if(mysqli_num_rows($result) > 0)
             $a = implode(',', $array);
             $pieces = explode(",", $a);
 
-            // $array3 = array_unique($places_format);
             $c = implode(',', $places_format);
             $places = explode(",", $c);
 
@@ -174,27 +172,14 @@ if(mysqli_num_rows($result) > 0)
 
 
 
-        
-        //     // FOR TRAVEL TITLE
-              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$data,$row['PLACE']);
-              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$data,date('g:i A',strtotime($row['ARRIVAL'])));
-              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$data,date('g:i A',strtotime($row['DEPARTURE'])));
-              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$data,$row['MOT']);
-              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$data,sprintf("%.2f",$row['TRANSPORTATION']));
-              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$data,$perdiem);
-              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$data,$row['OTHERS']);
-              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$data,sprintf("%.2f",$row['TOTAL_AMOUNT']));
+      
 
               $objPHPExcel->getActiveSheet()->mergeCells("B".$data."".":C".$data);
               $objPHPExcel->getActiveSheet()->getStyle('B'.$data.':C'.$data)->applyFromArray($styleArray);
               $objPHPExcel->getActiveSheet()->getStyle('B'.$data.''.':C'.$data) ->getAlignment()->setWrapText(true);
-
-           
-            if($rnums > 0)
-            {
-        
-          
-            $data = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
+              if($rnums > 0)
+              {
+              $data = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
 
 
 
