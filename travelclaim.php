@@ -290,101 +290,245 @@ function isSubmit()
     <br>
         <div class="box-body">
             <div class="well" style = "padding:20px;">
-            <H5 style = "margin-left:1300px;"><i>Appendix 45</i></H5>
+          
 
             <center>
               
-            <form method = "POST" action = "travelclaim_functions.php?action=add">
-            <h1>ITINERARY OF TRAVEL </h1>
-            
-            <table  cellpadding="0" cellspacing="0" width="80%" border="1">
-              <thead>
-                <tr>
-                    <td class = "label-text">
-                      <label>Entity Name: 
+          
+            <!-- START CUSTOM TABS -->
+
+<div class="row">
+  <div class="col-md-12">
+    <!-- Custom Tabs -->
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab_1" data-toggle="tab">Itinerary</a></li>
+        <li><a href="#tab_2" data-toggle="tab">ORS</a></li>
+        <li><a href="#tab_3" data-toggle="tab">DV</a></li>
+      
+        
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active " id="tab_1">
+        <H5 style = "margin-left:1300px;font-weight:bold;"><i>Appendix 45</i></H5>
+        <form method = "POST" action = "travelclaim_functions.php?action=add">
+              <h1>ITINERARY OF TRAVEL </h1>
+              
+              <table  cellpadding="0" cellspacing="0" width="80%" border="1">
+                <thead>
+                  <tr>
+                      <td class = "label-text">
+                        <label>Entity Name: 
+                          </td>
+                            <td colspan = 10  >
+                          <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly name = "entity_name"/>
                         </td>
-                          <td colspan = 10  >
-                        <input type = "text" class = "form-control" value = "DILG Region IV-A" readonly name = "entity_name"/>
+                    </tr>
+            
+                
+                  <tr>
+                    <td class = "label-text">
+                      <label>Fund Cluster:</label>
+                        </td>
+                          <td colspan = "4">
+                        <input type = "text" class = "form-control" readonly name = "fund_cluster" />
+                      </td>
+                    <td class = "label-text" colspan = 2>
+                      <label>No:</label>
+                        </td>
+                          <td colspan = 4>
+                        <input type = "text" class = "form-control" readonly name = "numero"/>
                       </td>
                   </tr>
-          
+                  <tr>
+                    <td class = "label-text">
+                      <label>Name: 
+                        </td>
+                    <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo getCompleteName();?>" readonly name = "complete_name"/></td>
+                    <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
+                    <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
+                  </tr>
+                  <tr>
+                    <td class = "label-text">  <label>Position:</label></td>
+                      <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly name = "position"/></td>
+                        <td colspan = 5 rowspan = 2>
+                          <label>Purpose of Travel:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or" ><?php if($_GET['ro'] == 'null'){ }else{echo $_GET['ro'];}?></textarea>
+                          <input type = "hidden" value="<?php echo getPurposeTravel($_GET['username']);?>" name = "purpose_of_travel"/>
+                          </td>
+                  </tr>
+                  <tr>
+                    <td class = "label-text">  <label>Official Station: </label></td>
+                    <td colspan = 4> <?php echo getOffice(); ?> </td>
+                  </tr>
+                </thead>
+              </table>
+              <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1" >
+                <?php echo showData();?>
+              </table>
+              <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
+                <tr>
+                    <td colspan = 10>
+                        <button type = "button" class = "btn btn-success btn-md" style = "width:10.5%;font-family:Arial;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
+                        <button type = "button" class = "btn btn-primary btn-md" style = "font-family:Arial" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
+                        <button class = "btn btn-primary btn-md pull-right" type = "submit" style = "font-family:'Arial';"> Submit </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan = 10>TOTAL <?php getTotal(); ?></td>
+                  </tr>
+                <tr>
+                    <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
+                    I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.   
+                    <CENTER><br>_____________________________________________<br>
+                    <b>DR. CARINA S. CRUZ</b></CENTER>
+                    </td>
+                    <br>
+                    <td colspan = 5 rowspan = 2>Prepared by:
+                    <CENTER><br>_____________________________________________<br>
+                    <?php echo '<b>'.getCompleteName().'</b>';?></CENTER>
+                    </td>
+                  
+                  </tr>
+                  <tr>
+                  </tr>
+                  <tr>
+                    <td colspan = 5 rowspan = 2>Approved By <CENTER><br>_____________________________________________<br> <b> ARIEL O. IGLESIA	</b> </CENTER> </td>
+                  </tr>
+                  <tr>
+                  
+                  </tr>
               
-                <tr>
-                  <td class = "label-text">
-                    <label>Fund Cluster:</label>
-                      </td>
-                        <td colspan = "4">
-                      <input type = "text" class = "form-control" readonly name = "fund_cluster" />
-                    </td>
-                  <td class = "label-text" colspan = 2>
-                    <label>No:</label>
-                      </td>
-                        <td colspan = 4>
-                      <input type = "text" class = "form-control" readonly name = "numero"/>
-                    </td>
-                </tr>
-                <tr>
-                  <td class = "label-text">
-                    <label>Name: 
-                      </td>
-                  <td colspan = 4><input type = "text" class = "form-control" style = "font-weight:bold;"value = "<?php echo getCompleteName();?>" readonly name = "complete_name"/></td>
-                  <td colspan = 2 class = "label-text"><label>Date of Travel: <label style="color: Red;" >*</label> </label></td>
-                  <td colspan = 4><input type = "text" class = "form-control datepicker1" id = "datepicker1" value = "<?php echo date('F d, Y');?>" name = "date_of_travel"/></td>
-                </tr>
-                <tr>
-                  <td class = "label-text">  <label>Position:</label></td>
-                    <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly name = "position"/></td>
-                      <td colspan = 5 rowspan = 2>
-                        <label>Purpose of Travel:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or" ><?php if($_GET['ro'] == 'null'){ }else{echo $_GET['ro'];}?></textarea>
-                        <input type = "hidden" value="<?php echo getPurposeTravel($_GET['username']);?>" name = "purpose_of_travel"/>
-                         </td>
-                </tr>
-                <tr>
-                  <td class = "label-text">  <label>Official Station: </label></td>
-                  <td colspan = 4> <?php echo getOffice(); ?> </td>
-                </tr>
-              </thead>
-            </table>
-            <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1" >
-               <?php echo showData();?>
-            </table>
-            <table class="equalDivide" cellpadding="0" cellspacing="0" width="80%" border="1">
-              <tr>
-                  <td colspan = 10>
-                      <button type = "button" class = "btn btn-success btn-md" style = "width:10.5%;font-family:Arial;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
-                      <button type = "button" class = "btn btn-primary btn-md" style = "font-family:Arial" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                      <button class = "btn btn-primary btn-md pull-right" type = "submit" style = "font-family:'Arial';"> Submit </button>
-                  </td>
-              </tr>
-              <tr>
-                  <td colspan = 10>TOTAL <?php getTotal(); ?></td>
-                </tr>
-              <tr>
-                  <td rowspan = 5 colspan = 5 style = "text-align:justify;"> 
-                  I certify that : (1) I have reviewed the foregoing  itinerary,    (2)  the  travel  is necessary to  the service, (3) the period covered   is   reasonable   and   (4)  the expenses claimed are proper.   
-                  <CENTER><br>_____________________________________________<br>
-                  <b>DR. CARINA S. CRUZ</b></CENTER>
-                  </td>
-                  <br>
-                  <td colspan = 5 rowspan = 2>Prepared by:
-                  <CENTER><br>_____________________________________________<br>
-                  <?php echo '<b>'.getCompleteName().'</b>';?></CENTER>
-                  </td>
-                
-                </tr>
-                <tr>
-                </tr>
-                <tr>
-                  <td colspan = 5 rowspan = 2>Approved By <CENTER><br>_____________________________________________<br> <b> ARIEL O. IGLESIA	</b> </CENTER> </td>
-                </tr>
-                <tr>
-                
-                </tr>
-            
-                
-            </table>
+                  
+              </table>
             </form>
+        </div>
+        <!-- /.tab-pane -->
+        <div class="tab-pane " id="tab_2">
+        <H5 style = "margin-left:1300px;font-weight:bold;"><i>Appendix 11</i></H5>
+
+         <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "border:1px solid black;">
+          <tr>
+            <td style = "width:60%;">
+              <h3 style = "text-align:center;font-family:Times New Roman;font-weight:bold;">
+               OBLIGATION REQUEST AND STATUS<br><u>DILG IV-A</u><br><span style = "font-size:20px;font-family:Times New Roamn;">Entity Name</span>
+              </h3>
+            </td>
+            <td style = "background-color:#B0BEC5;font-family:Times New Roman;font-family:Times New Roman;">Serial No:<br>Date:<br>Fund Cluster:</td>
+          </tr>
+         </table>
+         <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "font-family:Times New Roamn;border:1px solid black;">
+          <tr>
+            <td style = "background-color:#B0BEC5;">a</td>
+            <td colspan = 8>MARK KIM A. SACLUTI</td>
+          </tr>
+          <tr>
+            <td style = "background-color:#B0BEC5;">Office</td>
+            <td colspan = 8></td>
+          </tr>
+          <tr>
+            <td style = "background-color:#B0BEC5;">Address</td>
+            <td colspan = 8></td>
+          </tr>
+          <tr>
+            <td style = "background-color:#B0BEC5;">Responsibility Center</td>
+            <td colspan = 4 style = "background-color:#B0BEC5;">Particulars</td>
+            <td style = "background-color:#B0BEC5;">MFO/PAP</td>
+            <td style = "background-color:#B0BEC5;">UACS Object Code</td>
+            <td style = "background-color:#B0BEC5;" >Amount</td>
+          </tr>
+          <tr>
+            <td><input type="text" name="q" class="form-control" disabled></td>
+            <td colspan = 4><input type="text" name="q" class="form-control"></td>
+            <td><input type="text" name="q" class="form-control" disabled></td>
+            <td><input type="text" name="q" class="form-control" disabled></td>
+            <td><input type="text" name="q" class="form-control"></td>
+          </tr>
+          <tr>
+            <td colspan = 3>
+              <span style = "font-family: Times New Roman;margin-right:15px;font-weight:bold;">A.</span> 
+              <span style = "font-style:justify;font-family: Times New Roman; text-margin:3px;"><b>Certified:</b> 
+              Changes to appropriation/allotment are necessary, lawful and under 
+              my direct supervision; and supporting documents valid, proper and legal 
+              </span>
+              <br>
+              <br>
+              Signature: _________________________________________________<br>
+              Printed Name: <b>DR. CARINA S. CRUZ</b><br><br>
+              Position: Chief, FAD
+              <BR>
+              <BR>
+              Date: ________________________________________________________
+            </td>
+            <td colspan = 5>
+            <span style = "font-family: Times New Roman;margin-right:15px;font-weight:bold;">B.</span> 
+              <span style = "font-style:justify;font-family: Times New Roman; text-margin:3px;"><b>Certified:</b> 
+              Allotment available and obligated for the purpose/adjustment necessary as indicared above 
+              </span>
+              <br>
+              <br>
+              Signature: _________________________________________________<br>
+              Printed Name: <b>JORIELYN S. CUBIO</b><br><br>
+              Position: OIC, Budget Section
+              <BR>
+              <BR>
+              Date: ________________________________________________________
+            </td>
+          </tr>
+          <tr>
+          <td colspan = 8></td>
+          </tr>
+          <tr>
+            <td style = "font-weight:bold;font-family:Times New Roman;">C.</td>
+            <td colspan = 7 style = "text-align:center;font-weight:bold;"> STATUS OF OBLIGATION</td>
+          </tr>
+          <tr>
+            <td  colspan = 2 style = "background-color:#B0BEC5;text-align:center;font-weight:bold;font-family: Times New Roman;"> Reference </td>
+            <td colspan = 8 style = "background-color:#B0BEC5;text-align:center;font-weight:bold;font-family: Times New Roman;"> Amount </td>
+         </tr>
+         <tr>
+          <td rowspan = 2 style = "width:20%;">Date</td>
+          <td rowspan = 2>Particulars</td>
+          <td rowspan = 2>ORS/JEV/Check/ADA/TRA No.</td>
+          <td>Obligation</td>
+          <td>Payable</td>
+          <td>Payment</td>
+          <td  colspan = 2 style = "text-align:center;">Balance</td>
+        </tr>
+        <tr>
+          <td>(a)</td>
+          <td>(b)</td>
+          <td>(c)</td>
+          <td>Not Yet Due</td>
+          <td>Due and Demandable</td>
+        </tr>
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        </tr>
+       
+
+         </table>
+        </div>
+        <!-- /.tab-pane -->
+        <div class="tab-pane" id="tab_3">
+        
+        </div>
+        <!-- /.tab-pane -->
+      </div>
+      <!-- /.tab-content -->
+    </div>
+    <!-- nav-tabs-custom -->
+  </div>
+  
+</div>
             </center>
+            
                 
 
 </div>  
