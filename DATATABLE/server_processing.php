@@ -4,7 +4,7 @@ date_default_timezone_set("Asia/Manila");
 
 $con=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
-$return_arr = array();
+$return_arr = array();	
 $name = $_SESSION['username'];
 $division  = $_SESSION['division'];
 $complete_name = $_SESSION['complete_name'];
@@ -63,7 +63,7 @@ if($row = mysqli_fetch_array($result))
 
 
 
-				
+
 				
 // Table's primary key
 $primaryKey = 'ID';

@@ -124,7 +124,6 @@ only screen and (max-width: 760px),
         <td id  = "td_name" style = "background-color:#B0BEC5;">Employee No.:</td>
         <td id  = "td_name">
         <input style = "border: none;" type ="text" class = "form-control" value = "<?php getEmpNo();?>"   readonly/> 
-        
         </td>
         <td id  = "td_name" style = "background-color:#B0BEC5;">Date:</td>
         <td id  = "td_name"><input  type = "text" class = "form-control datepicker2" id = "datepicker2" value = "<?php echo date('F d, Y');?>" disabled/></td>

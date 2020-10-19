@@ -21,7 +21,8 @@ echo $address;
             <div class="well">
               <div class = "row">
                 <div class = "col-sm-12 col-md-6 col-lg-12">
-            <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;">Create</a></li>
+                <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;"><i class = "fa fa-plus"></i>Create</a></li>
+                <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;"><i class = "fa fa-plus"></i>Generate Barcode</a></li>
 
                 </div>
               </div>
