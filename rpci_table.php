@@ -7,7 +7,8 @@ $output = json_decode($geocodeFromLatLong);
 $status = $output->status;
 $address = ($status=="OK")?$output->results[1]->formatted_address:'';
 
-echo $address;
+$office = $_POST['office'];
+
 ?>
 
 
@@ -21,9 +22,12 @@ echo $address;
             <div class="well">
               <div class = "row">
                 <div class = "col-sm-12 col-md-6 col-lg-12">
+                <form method = "POST" action = "report/BARCODE/pages/genBarcode.php">
                 <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;"><i class = "fa fa-plus"></i>&nbsp;Create</a></li>
-                <li class="btn btn-success"><a href="report/BARCODE/pages/genBarcode.php" style="color:white;text-decoration: none;"><i class = "fa fa-barcode"></i>&nbsp;Generate Barcode</a></li>
 
+                <button type = "submit" class="btn btn-success"><a style="color:white;text-decoration: none;"><i class = "fa fa-barcode"></i>&nbsp;Generate Barcode</a></button>
+                <input type = "hidden" name = "office" id = "office" />
+</form>
                 </div>
               </div>
             </div>

@@ -111,7 +111,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
               initComplete: function () {
             this.api().columns(11).every( function () {
                 var column = this;
-                var select = $('<select class="form-control" style="width:100%"><option value=""></option></select>')
+                var select = $('<select class="form-control" style="width:100%"  ><option value=""></option></select>')
                     .appendTo( $(column.header()) )
                     .on( 'change', function () {
                         var val = $.fn.dataTable.util.escapeRegex(
@@ -124,7 +124,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
                     } );
  
                 column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                    select.append( '<option value="'+d+'" >'+d+'</option>' )
                 } );
             } );
 
@@ -133,7 +133,10 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 
     } );
 
-  
+$('select').on('change', function() {
+  $('#office').val(this.value);
+
+});
 } );
 
 
