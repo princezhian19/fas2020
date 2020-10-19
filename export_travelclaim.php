@@ -34,7 +34,6 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
         'bottom' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
     ),
     );
-    
     $styleArray = array(
     'borders' => array(
         'allborders' => array(
@@ -127,7 +126,7 @@ if(mysqli_num_rows($result) > 0)
             $transpo[] = $row['TRANSPORTATION'];
             $perdiem[] = $row['PERDIEM'];
             $others[] = $row['OTHERS'];
-            $total_amount[] = $row['TOTAL_AMOUNT'];
+            $total_amount[] = $row['TOTAL_AMOUNT']
 
             $rnums = mysqli_num_rows($result1);
             $perdiem = $row['a'];
@@ -174,14 +173,21 @@ if(mysqli_num_rows($result) > 0)
 
         
         //     // FOR TRAVEL TITLE
-             
-
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$data,$row['PLACE']);
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$data,date('g:i A',strtotime($row['ARRIVAL'])));
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$data,date('g:i A',strtotime($row['DEPARTURE'])));
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$data,$row['MOT']);
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$data,sprintf("%.2f",$row['TRANSPORTATION']));
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$data,$perdiem);
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$data,$row['OTHERS']);
+              // $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$data,sprintf("%.2f",$row['TOTAL_AMOUNT']));
+ 
               $objPHPExcel->getActiveSheet()->mergeCells("B".$data."".":C".$data);
               $objPHPExcel->getActiveSheet()->getStyle('B'.$data.':C'.$data)->applyFromArray($styleArray);
               $objPHPExcel->getActiveSheet()->getStyle('B'.$data.''.':C'.$data) ->getAlignment()->setWrapText(true);
 
            
-            if($rnums > 0)
+            if($rnums > 0) 
             {
         
           
@@ -234,7 +240,13 @@ if(mysqli_num_rows($result) > 0)
         $objPHPExcel->getActiveSheet()->getStyle('J'.$title1)->applyFromArray($styleFont);
         $data++;
       }
-     
+      // $data = 16;
+      // for ($i=0; $i < count($departure_format); $i++)
+      // { 
+      //   $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$data,date('g:H A',strtotime($departure_format[$i])));
+      //     $data++;
+      // }
+
       // TRAVEL TITLE
       $title1 = 15;
       for($i = 0; $i < count($title_format); $i++)
@@ -368,7 +380,133 @@ $row11 = $lastRow+7;
     }
     $lastRow1 = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
 
-    $objPHPExcel->setActiveSheetIndex(1)->setCellValue('D16',$_GET['username']);
+
+
+
+      // $title2 = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
+      // $data = 16;
+      // $row3 = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+2;
+
+
+// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$data,$row1['DATE']);
+
+
+
+// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row3,$row1['DATE']);
+// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row3,$row1['PLACE']);
+// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$title2,$row1['RO_OT_OB']);
+// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$row3,date('g:i A',strtotime($row1['ARRIVAL'])));
+// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row3,date('g:i A',strtotime($row1['DEPARTURE'])));
+// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row3,$row1['MOT']);
+// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row3,sprintf("%.2f",$row1['TRANSPORTATION']));
+// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row3,$perdiem);
+// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row3,$row1['OTHERS']);
+// $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row3,sprintf("%.2f",$row1['TOTAL_AMOUNT']));
+
+
+
+// $data++;
+
+
+// $query = "SELECT distinct(DATE) from tbltravel_claim_info";
+// $result = mysqli_query($conn, $query);
+// $date = array();
+// if(mysqli_num_rows($result) > 0)
+// {
+//   while($a= mysqli_fetch_array($result))
+//   { 
+//     $date = $a['DATE'];
+//     $query1 = "SELECT PERDIEM + RECEIPT AS 'a' ,tbltravel_claim_info.`ID` as 'dID', `TC_ID`, `RO`, `DATE`, `PLACE`, `ARRIVAL`, `DEPARTURE`, `MOT`, `TRANSPORTATION`, `PERDIEM`, `RECEIPT`,`OTHERS`, `TOTAL_AMOUNT`,
+//     tbltravel_claim_ro.`ID`, `RO_OT_OB`, `UNAME`  FROM tbltravel_claim_info 
+//     INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
+//     WHERE tbltravel_claim_info.`RO` = '".$id."'  and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
+//     // ECHO $query1;
+//     $result1 = mysqli_query($conn, $query1);
+//     $saved = array();
+//       if(mysqli_num_rows($result1) > 0)
+//       {
+//         while($b = mysqli_fetch_array($result1))
+//         {
+//           $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$data,$b['DATE']);
+//           echo $b['UNAME'];
+//           $data++;
+
+//         }
+//       }
+//     }
+//   }
+// }
+// exit();
+
+
+// exit();
+
+    // $sql_q10 = mysqli_query($conn, "
+    // SELECT *, PERDIEM + RECEIPT AS 'a' FROM `tbltravel_claim_info2`
+    // INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
+    // INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
+    // INNER join tblemployeeinfo ON tbltravel_claim_info2.NAME = tblemployeeinfo.UNAME
+    // INNER JOIN tbldilgposition on tblemployeeinfo.POSITION_C = tbldilgposition.POSITION_ID
+    // WHERE `RO_TO_OB`= '".$_GET['id']."'
+    // ");
+    // $saved = array();
+
+    // if (mysqli_num_rows($sql_q10)>0) {
+    //   $row = 16;
+    //   $travel_title = 15;
+    //   // $row_cnt = mysqli_num_rows($sql_q10)+1;
+
+
+    //   while($excelrow= mysqli_fetch_assoc($sql_q10) ) 
+    // {
+     
+    //     $perdiem = $excelrow['a'];
+    //     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$travel_title,$excelrow['RO_OT_OB']);     
+
+    //     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row,$excelrow['DATE']);     
+    //     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row,$excelrow['PLACE']);
+    //     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$row,date('g:i A',strtotime($excelrow['ARRIVAL'])));
+    //     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row,date('g:i A',strtotime($excelrow['DEPARTURE'])));
+    //     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row,$excelrow['MOT']);
+    //     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row,sprintf("%.2f",$excelrow['TRANSPORTATION']));
+    //     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row,$perdiem);
+    //     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row,$excelrow['OTHERS']);
+    //     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row,sprintf("%.2f",$excelrow['TOTAL_AMOUNT']));
+    //     $objPHPExcel->getActiveSheet()->getStyle('A'.$row.':J'.$row)->applyFromArray($styleArray);
+
+
+    //     $objPHPExcel->getActiveSheet()->getStyle('A'.$row)->applyFromArray($styleFont2);
+    //     $objPHPExcel->getActiveSheet()->getStyle('B'.$row)->applyFromArray($styleFont2);
+    //     $objPHPExcel->getActiveSheet()->getStyle('D'.$row)->applyFromArray($styleFont2);
+    //     $objPHPExcel->getActiveSheet()->getStyle('E'.$row)->applyFromArray($styleFont2);
+    //     $objPHPExcel->getActiveSheet()->getStyle('F'.$row)->applyFromArray($styleFont2);
+    //     $objPHPExcel->getActiveSheet()->getStyle('G'.$row)->applyFromArray($styleFont2);
+    //     $objPHPExcel->getActiveSheet()->getStyle('H'.$row)->applyFromArray($styleFont2);
+    //     $objPHPExcel->getActiveSheet()->getStyle('I'.$row)->applyFromArray($styleFont2);
+    //     $objPHPExcel->getActiveSheet()->getStyle('J'.$row)->applyFromArray($styleFont2);
+       
+
+
+    //       $row++;
+
+    //     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$aa,$excelrow['RO_OT_OB']);     
+
+   
+    // }
+
+    // $row1 = $row+1;
+    // $data = $row+3;
+    // $row3 = $row+5;
+    // $row4 = $row+6;
+    // $row5 = $row+10;
+    // $row6 = $row+11;
+    // $row7 = $row+12;
+    // $row8 = $row+13;
+    // $row9 = $row+14;
+    // $row10 = $row+3;
+    // $row11 = $row+7;
+
+    //
 
 
 
