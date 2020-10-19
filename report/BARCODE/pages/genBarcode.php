@@ -59,7 +59,7 @@ if(mysqli_connect_errno()){echo mysqli_connect_error();}
      
 
     
-                                    $PHPJasperXML->load_xml_file("barcode.jrxml");
+                                    $PHPJasperXML->load_xml_file("barcodde.jrxml");
                                     $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
                                         $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
                                     
