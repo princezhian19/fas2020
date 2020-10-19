@@ -21,8 +21,8 @@ echo $address;
             <div class="well">
               <div class = "row">
                 <div class = "col-sm-12 col-md-6 col-lg-12">
-                <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;"><i class = "fa fa-plus"></i>Create</a></li>
-                <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;"><i class = "fa fa-plus"></i>Generate Barcode</a></li>
+                <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;"><i class = "fa fa-plus"></i>&nbsp;Create</a></li>
+                <li class="btn btn-success"><a href="report/BARCODE/pages/genBarcode.php" style="color:white;text-decoration: none;"><i class = "fa fa-barcode"></i>&nbsp;Generate Barcode</a></li>
 
                 </div>
               </div>
@@ -39,6 +39,7 @@ echo $address;
                     <tr style="background-color: white;color:blue;">
                         <th>ARTICLE</th>
                         <th width = "200">DESCRIPTION</th>
+                        <th width = "200">PROPERTY NO.</th>
                         <th width = "200">STOCK NO.</th>
                         <th width = "100">UNIT OF MEASURE</th>
                         <th>UNIT VALUE</th>
@@ -59,6 +60,7 @@ echo $address;
                     $article = $row["article"];  
                     $description = $row["description"];
                     $stock_number = $row["stock_number"];
+                    $property_number = $row["inventory_item_no"];
                     $unit = $row["unit"];
                     $amount = $row["amount"];
                     $bpc = $row["bpc"];
@@ -71,6 +73,7 @@ echo $address;
                     <tr>
                         <td><?php echo $article;?></td>
                         <td><?php echo $description;?></td>
+                        <td><?php echo $property_number;?></td>
                         <td><?php echo $stock_number;?></td>
                         <td><?php echo $unit;?></td>
                         <td><?php echo number_format($amount,2);?></td>

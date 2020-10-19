@@ -1,27 +1,531 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="671bd83a-4643-4945-8d74-61b9e0b19bd1">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" language="groovy" pageWidth="820" pageHeight="573" orientation="Landscape" columnWidth="820" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="671bd83a-4643-4945-8d74-61b9e0b19bd1">
+	<property name="ireport.zoom" value="1.2100000000000193"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from tbltravel_claim_info]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TC_ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DATE" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PLACE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ARRIVAL" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DEPARTURE" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MOT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TRANSPORTATION" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BREAKFAST" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LUNCH" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DINNER" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ACCOMODATION" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RECEIPT" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PERDIEM" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OTHERS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TOTAL_AMOUNT" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="79" splitType="Stretch"/>
-	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch"/>
-	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="186" splitType="Stretch">
+			<line>
+				<reportElement x="13" y="5" width="188" height="1" uuid="121995a0-0426-4d08-bb10-b8a05e6df0aa"/>
+			</line>
+			<line>
+				<reportElement x="13" y="174" width="188" height="1" uuid="6750e73a-6e75-42d1-8c28-17e12d22a150"/>
+			</line>
+			<line>
+				<reportElement x="200" y="5" width="1" height="170" uuid="ee2934f0-9f64-4c95-9114-d7bd0207af99"/>
+			</line>
+			<line>
+				<reportElement x="13" y="5" width="1" height="169" uuid="0507eb73-520c-4171-acb3-dddabea57484"/>
+			</line>
+			<line>
+				<reportElement x="13" y="53" width="188" height="1" uuid="5cff14eb-8642-42d4-ad60-8c5e07acc1d4"/>
+			</line>
+			<staticText>
+				<reportElement x="45" y="6" width="151" height="13" uuid="2b0d3a02-0559-466e-83ef-2e4c975a8f76"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="13" width="151" height="26" uuid="0f0d1c82-6e52-4892-99ea-1c7de4348872"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DILG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="26" width="151" height="13" uuid="5b2f0472-629c-4041-975f-753bd1d4fe57"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<text><![CDATA[Region IV-A (Calabarzon)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="37" width="151" height="18" uuid="5c1d1586-e71b-41a1-b722-d1a763d4e9a3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Property Inventory Sticker]]></text>
+			</staticText>
+			<line>
+				<reportElement x="13" y="73" width="188" height="1" uuid="5b02018d-94dc-40f1-8587-e95fa0ea5720"/>
+			</line>
+			<line>
+				<reportElement x="14" y="86" width="187" height="1" uuid="8b1eb410-bf02-43c1-b221-9af62dd00cdf"/>
+			</line>
+			<line>
+				<reportElement x="13" y="112" width="188" height="1" uuid="2d069435-79fd-4fb6-8400-3ac55a886e30"/>
+			</line>
+			<line>
+				<reportElement x="13" y="126" width="187" height="1" uuid="8515e388-c460-4219-9b30-c48a324ba710"/>
+			</line>
+			<line>
+				<reportElement x="13" y="139" width="188" height="1" uuid="2fd40e0b-32c9-4799-bc27-f33568925233"/>
+			</line>
+			<line>
+				<reportElement x="14" y="98" width="187" height="1" uuid="ff8bee33-78ec-4c6a-99ff-5e668a389e33"/>
+			</line>
+			<line>
+				<reportElement x="65" y="53" width="1" height="74" uuid="e25aee27-2f4c-4a23-8949-3b8a361d270e"/>
+			</line>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="17" y="53" width="46" height="20" uuid="29f8eaae-dafb-42f4-93e2-cae5875eaa35"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Article & Description:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="17" y="73" width="71" height="13" uuid="1e4a6900-5ede-43d7-b899-62bcdcac1ccd"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Property No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="17" y="85" width="71" height="13" uuid="e426f18b-dc48-4db3-b30f-2b3383287bff"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Serial No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="17" y="100" width="71" height="13" uuid="d0ba2d0c-8159-4327-a504-110bd3ae609e"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Location:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="17" y="114" width="71" height="13" uuid="f1809186-c84f-4bc0-b856-5bac2d4b2beb"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Remarks]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="126" width="187" height="12" uuid="2dfae7bf-20f2-40e5-a0d1-e7ee4cd9a322"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Note: Please do not remove]]></text>
+			</staticText>
+			<image>
+				<reportElement x="21" y="10" width="28" height="28" uuid="fc442ca3-84ce-4104-8a48-f6415f219b00"/>
+				<imageExpression><![CDATA["C:\\xampp\\htdocs\\fas\\images\\logo.png"]]></imageExpression>
+			</image>
+			<componentElement>
+				<reportElement x="16" y="145" width="181" height="27" uuid="14fc758a-47bd-43d7-8901-4ef367507402"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["FAD-1013-20-198"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<line>
+				<reportElement x="214" y="5" width="188" height="1" uuid="164790a8-84e9-4122-8357-9ddbcd56e164"/>
+			</line>
+			<line>
+				<reportElement x="214" y="174" width="188" height="1" uuid="f3d546f8-52c1-43de-9c5e-a68e75d54aba"/>
+			</line>
+			<line>
+				<reportElement x="401" y="5" width="1" height="170" uuid="dcbed969-5dd7-4c72-97cb-856729e1cbdd"/>
+			</line>
+			<line>
+				<reportElement x="214" y="5" width="1" height="169" uuid="bf55108e-0dc8-474f-b7b9-5b9a73340d7c"/>
+			</line>
+			<line>
+				<reportElement x="214" y="53" width="188" height="1" uuid="69b9e4ac-9433-4474-b887-c3d228e3fe59"/>
+			</line>
+			<staticText>
+				<reportElement x="246" y="6" width="151" height="13" uuid="1c7c6e1d-4806-4532-8c9d-5cb6a18f64fd"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="13" width="151" height="26" uuid="200419b1-4da7-4875-9720-82fe26265089"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DILG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="26" width="151" height="13" uuid="09fec86c-5fc3-4517-bcde-2bff52c65db4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<text><![CDATA[Region IV-A (Calabarzon)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="37" width="151" height="18" uuid="6b174ce9-0fc6-4162-8e57-b61937d8b37e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Property Inventory Sticker]]></text>
+			</staticText>
+			<line>
+				<reportElement x="214" y="73" width="188" height="1" uuid="576992c6-cae9-4a3d-b33f-e3ff1e4e856a"/>
+			</line>
+			<line>
+				<reportElement x="215" y="86" width="187" height="1" uuid="13ab0351-02ab-4091-adc0-a102bc395ad1"/>
+			</line>
+			<line>
+				<reportElement x="214" y="112" width="188" height="1" uuid="574159ba-1acb-4a2b-b936-19be77eed31a"/>
+			</line>
+			<line>
+				<reportElement x="214" y="126" width="187" height="1" uuid="cd86b1e8-3451-49d5-a666-8cce9b81d1c0"/>
+			</line>
+			<line>
+				<reportElement x="214" y="139" width="188" height="1" uuid="1b91429d-b184-440b-ad97-d380fd1aee9c"/>
+			</line>
+			<line>
+				<reportElement x="215" y="98" width="187" height="1" uuid="a0181a4c-e2ed-43c2-908e-3fbf2f231a33"/>
+			</line>
+			<line>
+				<reportElement x="266" y="53" width="1" height="74" uuid="3d74e443-4f77-46f7-9d73-ea4b6a3d9dc8"/>
+			</line>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="218" y="53" width="46" height="20" uuid="fe38c6ab-c029-4598-8c9b-5a0b109ab9e3"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Article & Description:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="218" y="73" width="71" height="13" uuid="2a611493-7252-44e8-a205-4dd0ad87c363"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Property No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="218" y="85" width="71" height="13" uuid="5c5a1427-e77c-4056-8f46-8cc2326ad29a"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Serial No.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="218" y="100" width="71" height="13" uuid="483690a8-e727-4d29-8eec-ff8fe2389438"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Location:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="218" y="114" width="71" height="13" uuid="e4444f55-099e-4caf-992a-4aada888106d"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Remarks]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="214" y="126" width="187" height="12" uuid="c67f72e2-8aba-455e-b6be-80b4331320e4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Note: Please do not remove]]></text>
+			</staticText>
+			<image>
+				<reportElement x="222" y="10" width="28" height="28" uuid="f54f5671-a659-490a-8b24-9d3ba874c9cd"/>
+				<imageExpression><![CDATA["C:\\xampp\\htdocs\\fas\\images\\logo.png"]]></imageExpression>
+			</image>
+			<componentElement>
+				<reportElement x="217" y="145" width="181" height="27" uuid="3b0df2e7-c88d-45c6-b354-539859090e33"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["FAD-1013-20-198"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<line>
+				<reportElement x="418" y="5" width="1" height="169" uuid="6200cb48-bd69-42cc-af6e-295ac11a84b1"/>
+			</line>
+			<line>
+				<reportElement x="418" y="53" width="188" height="1" uuid="e25bfaf2-8ca5-488e-b390-7273e25a3853"/>
+			</line>
+			<image>
+				<reportElement x="426" y="10" width="28" height="28" uuid="f49e9520-564b-47f1-a4bf-b3cd38a3eeea"/>
+				<imageExpression><![CDATA["C:\\xampp\\htdocs\\fas\\images\\logo.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="419" y="86" width="187" height="1" uuid="2dbbeb22-bbc3-4682-bb28-ee4a522b699b"/>
+			</line>
+			<componentElement>
+				<reportElement x="421" y="145" width="181" height="27" uuid="0a6dffba-c815-4a5b-9f41-a83d6ed1ebe5"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["FAD-1013-20-198"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<line>
+				<reportElement x="418" y="139" width="188" height="1" uuid="ad7b8978-d53e-405f-ba09-c072b552820d"/>
+			</line>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="422" y="53" width="46" height="20" uuid="cb7cbe52-d920-4363-9097-eb2d19397a1e"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Article & Description:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="422" y="73" width="71" height="13" uuid="f612b7ff-6884-46b1-8444-abd950910bb1"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Property No.:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="418" y="112" width="188" height="1" uuid="087e7315-1e5e-4721-8c09-901ce1bd3e3b"/>
+			</line>
+			<line>
+				<reportElement x="418" y="73" width="188" height="1" uuid="de08ab43-9545-4726-8cd0-6545a8dac752"/>
+			</line>
+			<staticText>
+				<reportElement x="451" y="13" width="151" height="26" uuid="e83a728c-5f83-491a-a705-6a6f99abef4f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DILG]]></text>
+			</staticText>
+			<line>
+				<reportElement x="419" y="98" width="187" height="1" uuid="fc53416d-6ec0-48cf-8bd9-594dc5151731"/>
+			</line>
+			<line>
+				<reportElement x="605" y="5" width="1" height="170" uuid="b7a378c4-023f-4fbe-bd1c-48ea0eca8598"/>
+			</line>
+			<staticText>
+				<reportElement x="418" y="126" width="187" height="12" uuid="3af21fea-6029-47d4-b0b4-82267fa00fe8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Note: Please do not remove]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="422" y="100" width="71" height="13" uuid="514160b4-eb3c-4e14-8b64-2d18561bc43e"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Location:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="26" width="151" height="13" uuid="a60c53a1-7d54-4724-96a9-5befcc10be9b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<text><![CDATA[Region IV-A (Calabarzon)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="418" y="174" width="188" height="1" uuid="1ed40d95-35a1-4f1c-af46-e3478a42e1b8"/>
+			</line>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="422" y="85" width="71" height="13" uuid="504605e3-38f2-4808-aa5b-40e9350801a3"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Serial No.:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="418" y="126" width="187" height="1" uuid="3574d943-fde4-4b46-8189-e53da643f1bf"/>
+			</line>
+			<line>
+				<reportElement x="470" y="53" width="1" height="74" uuid="0eb79897-7f34-4256-859c-f5dd313775e8"/>
+			</line>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="422" y="114" width="71" height="13" uuid="853193b0-97d3-44e8-83f1-bebceb98788e"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Remarks]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="37" width="151" height="18" uuid="e29f95fc-3a35-49ba-aa99-26dc698031cf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Property Inventory Sticker]]></text>
+			</staticText>
+			<line>
+				<reportElement x="418" y="5" width="188" height="1" uuid="841ad6a0-daa0-4a0c-a4be-0172a82afc16"/>
+			</line>
+			<staticText>
+				<reportElement x="450" y="6" width="151" height="13" uuid="dc6fafc5-305a-4ae3-81bb-982e06871efe"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+			</staticText>
+			<line>
+				<reportElement x="622" y="6" width="1" height="169" uuid="f17faf5b-76bd-441e-ad8f-1400ddd64691"/>
+			</line>
+			<line>
+				<reportElement x="622" y="54" width="188" height="1" uuid="5b0d20c5-6656-4a4b-934c-52d9f6fa15cc"/>
+			</line>
+			<image>
+				<reportElement x="630" y="11" width="28" height="28" uuid="7d858787-93fd-44d6-838d-3fe3bea3d29f"/>
+				<imageExpression><![CDATA["C:\\xampp\\htdocs\\fas\\images\\logo.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="623" y="87" width="187" height="1" uuid="09dae857-d1b0-433d-91ec-26ca03e3193d"/>
+			</line>
+			<componentElement>
+				<reportElement x="625" y="145" width="181" height="27" uuid="502a423a-6d07-402d-a978-23b64a55edee"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["FAD-1013-20-198"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<line>
+				<reportElement x="622" y="140" width="188" height="1" uuid="7b5ec352-e394-4d5a-b5cd-ad175edc81ee"/>
+			</line>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="626" y="54" width="46" height="20" uuid="674674c6-afc1-4edd-9463-ba2b69279f8f"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Article & Description:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="626" y="74" width="71" height="13" uuid="083f0760-9174-4f27-adce-176dc8ad8b20"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Property No.:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="622" y="113" width="188" height="1" uuid="87846608-4a2e-4ed8-9b8d-03486146f881"/>
+			</line>
+			<line>
+				<reportElement x="622" y="74" width="188" height="1" uuid="3ca0409d-2ab0-4fc2-913f-5bbaffaba7d5"/>
+			</line>
+			<staticText>
+				<reportElement x="655" y="14" width="151" height="26" uuid="f6be6e66-328f-45d8-b6bb-21be1f52f6a3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DILG]]></text>
+			</staticText>
+			<line>
+				<reportElement x="623" y="99" width="187" height="1" uuid="565e2360-605f-4c31-a334-f882c7894c5c"/>
+			</line>
+			<line>
+				<reportElement x="809" y="6" width="1" height="170" uuid="67e6fbe8-5e2d-489e-8bd4-5da80944a3d5"/>
+			</line>
+			<staticText>
+				<reportElement x="622" y="127" width="187" height="12" uuid="bb8ce0ac-4b1a-4be3-9fe5-2a3e472c156d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Note: Please do not remove]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="626" y="101" width="71" height="13" uuid="d3a4c165-f335-4aa9-81fc-2d9e849c77ff"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Location:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="655" y="27" width="151" height="13" uuid="8b5e2ea7-7a7f-4964-abb3-33484ff87394"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<text><![CDATA[Region IV-A (Calabarzon)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="622" y="175" width="188" height="1" uuid="1ea399b0-2b45-4fa8-ae73-101a5da1b1f8"/>
+			</line>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="626" y="86" width="71" height="13" uuid="8e3b515e-6946-4fa7-9e37-f92fc55d2290"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Serial No.:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="622" y="127" width="187" height="1" uuid="cf4f6b6a-7049-4245-af66-4b576453dcff"/>
+			</line>
+			<line>
+				<reportElement x="674" y="54" width="1" height="74" uuid="82b9553a-58fa-4e19-9dc4-768ddf56aae8"/>
+			</line>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="626" y="115" width="71" height="13" uuid="f863296f-4720-4368-82cd-14dfe9fc5f4e"/>
+				<textElement>
+					<font fontName="Calibri" size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Remarks]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="655" y="38" width="151" height="18" uuid="151df890-5a41-42f0-9d16-e0b5fca6b948"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Property Inventory Sticker]]></text>
+			</staticText>
+			<line>
+				<reportElement x="622" y="6" width="188" height="1" uuid="2995450e-b699-40ba-8cba-4fdcecd0ef62"/>
+			</line>
+			<staticText>
+				<reportElement x="654" y="7" width="151" height="13" uuid="3d8ab8e4-c31d-4125-8813-1399bfbcce1d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="8"/>
+				</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+			</staticText>
+		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
