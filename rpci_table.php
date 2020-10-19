@@ -18,7 +18,19 @@ echo $address;
             <h1 align="">Report On The Physical Count Of Inventories</h1>
             <div class="box-header">
             </div>
+            <div class="well">
+              <div class = "row">
+                <div class = "col-sm-12 col-md-6 col-lg-12">
             <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;">Create</a></li>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
             <br>
             <br>
             <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">
