@@ -5,10 +5,13 @@
  */
 include_once("../PHPJasperXML.inc.php");
 $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
+    $PHPJasperXML = new PHPJasperXML();
+
 if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
-// $office = $_POST['office'];
-                $query = "SELECT * FROM rpci ORDER BY office ASC ";
+$office = $_POST['office'];
+                $query = "SELECT * FROM rpci where office = '".$office."'";
+            
                 $name = '';
                 $result = mysqli_query($conn, $query);
                 $val = array();
@@ -28,7 +31,7 @@ if(mysqli_connect_errno()){echo mysqli_connect_error();}
                     $shortage_Q = $row["shortage_Q"];
                     $shortage_V = $row["shortage_V"];
                     $remarks = $row["remarks"];
-                    $office = $row["office"];
+                    $office2 = $row["office"];
                    
                     if (strpos($remarks, 'unserviceable') !== false) {
                        $status = 'unserviceable';
@@ -43,14 +46,13 @@ if(mysqli_connect_errno()){echo mysqli_connect_error();}
                     $date_to = date('F d, Y',strtotime($row['date_to']));
                     $inventory_date = $date_from.' to '.$date_to.'';
 
-                    $PHPJasperXML = new PHPJasperXML();
 
        
                 $PHPJasperXML->arrayParameter=array(
+                    "sql"=>$query,
                                     "article"=>$art_des,
                                     "property_no"=>$property_number,
-                                    "serial_no"=>'',
-                                    "location"=>$office,
+                                    "office"=>$office2,
                                     "status"=>$status,
                                     "inventory_date"=>$inventory_date,
                                     "remarks"=>$remarks);
@@ -59,7 +61,7 @@ if(mysqli_connect_errno()){echo mysqli_connect_error();}
      
 
     
-                                    $PHPJasperXML->load_xml_file("barcodde.jrxml");
+                                    $PHPJasperXML->load_xml_file("barcode.jrxml");
                                     $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
                                         $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
                                     
