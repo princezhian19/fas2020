@@ -109,7 +109,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
               'autoWidth'   : false,
 
               initComplete: function () {
-            this.api().columns(11).every( function () {
+            this.api().columns(12).every( function () {
                 var column = this;
                 var select = $('<select class="form-control" style="width:100%"  ><option value=""></option></select>')
                     .appendTo( $(column.header()) )
