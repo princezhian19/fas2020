@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" language="groovy" columnCount="3" printOrder="Horizontal" pageWidth="820" pageHeight="573" orientation="Landscape" columnWidth="273" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="671bd83a-4643-4945-8d74-61b9e0b19bd1">
-	<property name="ireport.zoom" value="1.4641000000000355"/>
+	<property name="ireport.zoom" value="3.1384283767210785"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="article" class="java.lang.String"/>
@@ -9,6 +9,7 @@
 	<parameter name="remarks" class="java.lang.String"/>
 	<parameter name="inventory_date" class="java.lang.String"/>
 	<parameter name="sql" class="java.lang.String"/>
+	<parameter name="image_path" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[$P{sql}]]>
 	</queryString>
@@ -84,7 +85,7 @@
 				<reportElement x="17" y="53" width="232" height="20" backcolor="#CCCCCC" uuid="1678aa44-e16e-46fd-8bfc-83b79e396583"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="38" y="19" width="211" height="40" uuid="2b0d3a02-0559-466e-83ef-2e4c975a8f76"/>
+				<reportElement x="38" y="13" width="211" height="27" uuid="2b0d3a02-0559-466e-83ef-2e4c975a8f76"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri" size="7" isBold="true"/>
 				</textElement>
@@ -102,7 +103,7 @@
 			</staticText>
 			<image>
 				<reportElement stretchType="RelativeToBandHeight" x="31" y="15" width="35" height="35" uuid="fc442ca3-84ce-4104-8a48-f6415f219b00"/>
-				<imageExpression><![CDATA["C:\\xampp\\htdocs\\fas\\images\\logo.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{image_path}]]></imageExpression>
 			</image>
 			<rectangle>
 				<reportElement x="76" y="73" width="173" height="10" uuid="408f7ded-6775-4737-b00a-85e5ba8e18e7"/>
@@ -272,6 +273,13 @@
 			<line>
 				<reportElement x="4" y="235" width="816" height="1" uuid="bb160df6-d4a6-4046-8987-856d1b9268ee"/>
 			</line>
+			<staticText>
+				<reportElement x="151" y="45" width="123" height="10" uuid="0920bcfd-1e54-43b6-9130-805fd99b386d"/>
+				<textElement>
+					<font fontName="Cambria" size="5" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ FM-QP-R4A-FAD-GSS-48-02/ REV00/10.01.17]]></text>
+			</staticText>
 		</band>
 	</detail>
 </jasperReport>

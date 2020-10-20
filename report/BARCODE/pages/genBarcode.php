@@ -49,7 +49,8 @@ $office = $_POST['office'];
 
        
                 $PHPJasperXML->arrayParameter=array(
-                    "sql"=>$query,
+                                    "sql"=>$query,
+                                    "image_path"=>"logo.png",
                                     "article"=>$art_des,
                                     "property_no"=>$property_number,
                                     "office"=>$office2,
