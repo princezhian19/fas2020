@@ -10,7 +10,7 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
 if(mysqli_connect_errno()){echo mysqli_connect_error();}  
 
 $office = $_POST['office'];
-                $query = "SELECT * FROM rpci ";
+                $query = "SELECT * FROM rpci where office = '".$office."'";
             
                 $name = '';
                 $result = mysqli_query($conn, $query);

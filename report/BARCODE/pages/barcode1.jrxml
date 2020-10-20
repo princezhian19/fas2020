@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" language="javascript" columnCount="2" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="297" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="671bd83a-4643-4945-8d74-61b9e0b19bd1">
-	<property name="ireport.zoom" value="1.948717100000051"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="2.593742460100068"/>
+	<property name="ireport.x" value="76"/>
+	<property name="ireport.y" value="23"/>
 	<parameter name="article" class="java.lang.String"/>
 	<parameter name="property_no" class="java.lang.String"/>
 	<parameter name="office" class="java.lang.String"/>
@@ -223,7 +223,7 @@
 				<text><![CDATA[NOTE: PLEASE DO NOT REMOVE]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="96" y="82" width="173" height="10" uuid="43e439ae-a71d-43a2-8312-debba0827ff2"/>
+				<reportElement x="96" y="83" width="173" height="10" uuid="43e439ae-a71d-43a2-8312-debba0827ff2"/>
 				<textElement>
 					<font fontName="Calibri" size="7"/>
 				</textElement>
@@ -231,8 +231,8 @@
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement stretchType="RelativeToBandHeight" x="97" y="94" width="170" height="24" uuid="5e119129-248b-46d6-af6a-00a3b13a1659"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Calibri" size="5"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{article}+", "+$F{description}]]></textFieldExpression>
 			</textField>
