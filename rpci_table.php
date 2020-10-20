@@ -43,6 +43,7 @@ $office = $_POST['office'];
                     <tr style="background-color: white;color:blue;">
                         <th>ARTICLE</th>
                         <th width = "200">DESCRIPTION</th>
+                        <th width = "200">SERIAL NO.</th>
                         <th width = "200">PROPERTY NO.</th>
                         <th width = "200">STOCK NO.</th>
                         <th width = "100">UNIT OF MEASURE</th>
@@ -63,6 +64,7 @@ $office = $_POST['office'];
                     $id = $row["id"];
                     $article = $row["article"];  
                     $description = $row["description"];
+                    $serial_no = $row["serial_no"];
                     $stock_number = $row["stock_number"];
                     $property_number = $row["inventory_item_no"];
                     $unit = $row["unit"];
@@ -77,6 +79,7 @@ $office = $_POST['office'];
                     <tr>
                         <td><?php echo $article;?></td>
                         <td><?php echo $description;?></td>
+                        <td><?php echo $serial_no;?></td>
                         <td><?php echo $property_number;?></td>
                         <td><?php echo $stock_number;?></td>
                         <td><?php echo $unit;?></td>
