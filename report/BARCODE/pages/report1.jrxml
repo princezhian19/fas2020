@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" columnCount="3" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="267" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="40feb251-9349-4e85-b91c-7ae2f31b2669">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     rpci.`id` AS rpci_id,
+     rpci.`article` AS rpci_article,
+     rpci.`description` AS rpci_description,
+     rpci.`ics_no` AS rpci_ics_no,
+     rpci.`stock_number` AS rpci_stock_number,
+     rpci.`inventory_item_no` AS rpci_inventory_item_no,
+     rpci.`unit` AS rpci_unit,
+     rpci.`amount` AS rpci_amount,
+     rpci.`bpc` AS rpci_bpc,
+     rpci.`opc` AS rpci_opc,
+     rpci.`shortage_Q` AS rpci_shortage_Q,
+     rpci.`shortage_V` AS rpci_shortage_V,
+     rpci.`remarks` AS rpci_remarks,
+     rpci.`office` AS rpci_office,
+     rpci.`received_by` AS rpci_received_by,
+     rpci.`position` AS rpci_position,
+     rpci.`yrs` AS rpci_yrs,
+     rpci.`date_from` AS rpci_date_from,
+     rpci.`date_to` AS rpci_date_to
+FROM
+     `rpci` rpci]]>
+	</queryString>
+	<field name="rpci_id" class="java.lang.Integer"/>
+	<field name="rpci_article" class="java.lang.String"/>
+	<field name="rpci_description" class="java.lang.String"/>
+	<field name="rpci_ics_no" class="java.lang.String"/>
+	<field name="rpci_stock_number" class="java.lang.String"/>
+	<field name="rpci_inventory_item_no" class="java.lang.String"/>
+	<field name="rpci_unit" class="java.lang.String"/>
+	<field name="rpci_amount" class="java.lang.Double"/>
+	<field name="rpci_bpc" class="java.lang.Integer"/>
+	<field name="rpci_opc" class="java.lang.Integer"/>
+	<field name="rpci_shortage_Q" class="java.lang.Integer"/>
+	<field name="rpci_shortage_V" class="java.lang.Integer"/>
+	<field name="rpci_remarks" class="java.lang.String"/>
+	<field name="rpci_office" class="java.lang.String"/>
+	<field name="rpci_received_by" class="java.lang.String"/>
+	<field name="rpci_position" class="java.lang.String"/>
+	<field name="rpci_yrs" class="java.lang.String"/>
+	<field name="rpci_date_from" class="java.sql.Date"/>
+	<field name="rpci_date_to" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement x="130" y="49" width="100" height="20" uuid="26ef7848-9a14-41bc-a409-29f0f1fe53f7"/>
+				<text><![CDATA[Static text]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

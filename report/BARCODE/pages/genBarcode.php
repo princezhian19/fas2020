@@ -21,6 +21,7 @@ $office = $_POST['office'];
                     $id = $row["id"];
                     $article = $row["article"];  
                     $description = $row["description"];
+                    
                     $art_des = $article.",".$description;
                     $stock_number = $row["stock_number"];
                     $property_number = $row["inventory_item_no"];
@@ -36,7 +37,7 @@ $office = $_POST['office'];
                     if (strpos($remarks, 'unserviceable') !== false) {
                        $status = 'unserviceable';
                     }else{
-                      $status = "serviceable";
+                       $status = "serviceable";
                     }
 
                      
@@ -46,7 +47,8 @@ $office = $_POST['office'];
                     $date_to = date('F d, Y',strtotime($row['date_to']));
                     $inventory_date = $date_from.' to '.$date_to.'';
 
-
+                    // $art_len = strlen($art_des);
+                    // if($art_len > )
        
                 $PHPJasperXML->arrayParameter=array(
                                     "sql"=>$query,
