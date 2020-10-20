@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" language="groovy" columnCount="3" printOrder="Horizontal" columnDirection="RTL" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="280" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="671bd83a-4643-4945-8d74-61b9e0b19bd1">
-	<property name="ireport.zoom" value="1.7715610000000448"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" language="groovy" columnCount="3" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="280" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="671bd83a-4643-4945-8d74-61b9e0b19bd1">
+	<property name="ireport.zoom" value="1.464100000000037"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="article" class="java.lang.String"/>
@@ -241,7 +241,7 @@
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement stretchType="RelativeToBandHeight" x="67" y="78" width="170" height="24" uuid="5e119129-248b-46d6-af6a-00a3b13a1659"/>
-				<textElement>
+				<textElement verticalAlignment="Middle">
 					<font size="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{article}+", "+$F{description}]]></textFieldExpression>
