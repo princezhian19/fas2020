@@ -25,7 +25,7 @@ $office = $_POST['office'];
                 <form method = "POST" action = "report/BARCODE/pages/genBarcode.php">
                 <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;"><i class = "fa fa-plus"></i>&nbsp;Create</a></li>
 
-                <button type = "submit" class="btn btn-success"><a style="color:white;text-decoration: none;"><i class = "fa fa-barcode"></i>&nbsp;Generate Barcode</a></button>
+                <button type = "submit" class="btn btn-primary"><a style="color:white;text-decoration: none;"><i class = "fa fa-barcode"></i>&nbsp;Generate ICS Sticker</a></button>
                 <input type = "hidden" name = "office" id = "office" />
 </form>
                 </div>
@@ -50,8 +50,8 @@ $office = $_POST['office'];
                         <th>UNIT VALUE</th>
                         <th>BALANCE PER CARD</th>
                         <th>ON HAND PER COUNT</th>
-                        <th width = "100">SHORTAGE(QUANTITY)</th>
-                        <th width = "100">SHORTAGE(VALUE)</th>
+                        <th style = "width:1%;">SHORTAGE(QUANTITY)</th>
+                        <th width = "50">SHORTAGE(VALUE)</th>
                         <th>REMARKS</th>
                         <th>OFFICE</th>
                         <th width = "">ACTION</th>

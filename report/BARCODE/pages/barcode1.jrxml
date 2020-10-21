@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" language="groovy" printOrder="Horizontal" pageWidth="297" pageHeight="842" columnWidth="297" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="671bd83a-4643-4945-8d74-61b9e0b19bd1">
-	<property name="ireport.zoom" value="2.143588810000061"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="3.79749833583252"/>
+	<property name="ireport.x" value="86"/>
+	<property name="ireport.y" value="419"/>
 	<parameter name="article" class="java.lang.String"/>
 	<parameter name="property_no" class="java.lang.String"/>
 	<parameter name="office" class="java.lang.String"/>
@@ -111,26 +111,26 @@
 				<imageExpression><![CDATA[$P{image_path}]]></imageExpression>
 			</image>
 			<rectangle>
-				<reportElement x="90" y="92" width="173" height="10" uuid="408f7ded-6775-4737-b00a-85e5ba8e18e7"/>
+				<reportElement x="90" y="92" width="173" height="15" uuid="408f7ded-6775-4737-b00a-85e5ba8e18e7"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="31" y="92" width="59" height="10" backcolor="#CCCCCC" uuid="c68b8b15-3c95-428f-b917-29dc59ab1ff9"/>
+				<reportElement x="31" y="92" width="59" height="15" backcolor="#CCCCCC" uuid="c68b8b15-3c95-428f-b917-29dc59ab1ff9"/>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="33" y="93" width="57" height="10" uuid="8ca90026-5b9e-4122-a3d1-d48e89fed6b9"/>
+				<reportElement stretchType="RelativeToTallestObject" x="35" y="95" width="57" height="13" uuid="8ca90026-5b9e-4122-a3d1-d48e89fed6b9"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Property No.:]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="90" y="102" width="173" height="25" uuid="4dd73be4-dfe2-44f5-a377-c45d3b38ab40"/>
+				<reportElement x="90" y="107" width="173" height="25" uuid="4dd73be4-dfe2-44f5-a377-c45d3b38ab40"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="31" y="102" width="59" height="25" backcolor="#CCCCCC" uuid="40096fb7-d24e-4e20-9442-f6a5427dcda5"/>
+				<reportElement x="31" y="107" width="59" height="25" backcolor="#CCCCCC" uuid="40096fb7-d24e-4e20-9442-f6a5427dcda5"/>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="33" y="109" width="57" height="21" uuid="33f64868-6afe-46bb-9497-51de0115bd84"/>
+				<reportElement stretchType="RelativeToTallestObject" x="35" y="113" width="57" height="21" uuid="33f64868-6afe-46bb-9497-51de0115bd84"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true"/>
 				</textElement>
@@ -143,7 +143,7 @@
 				<reportElement x="90" y="147" width="173" height="15" uuid="556cc2af-237a-420a-9679-83e5db4e5db4"/>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="33" y="152" width="57" height="12" uuid="0457f2fe-c926-4fa5-8235-7d2c85a107fe"/>
+				<reportElement stretchType="RelativeToTallestObject" x="35" y="152" width="57" height="12" uuid="0457f2fe-c926-4fa5-8235-7d2c85a107fe"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true"/>
 				</textElement>
@@ -156,7 +156,7 @@
 				<reportElement x="90" y="162" width="173" height="19" uuid="51d52915-7df3-4293-8e05-7aa8f4d74848"/>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="33" y="171" width="57" height="9" uuid="82893722-2574-49da-8799-330663def5b1"/>
+				<reportElement stretchType="RelativeToTallestObject" x="36" y="172" width="57" height="9" uuid="82893722-2574-49da-8799-330663def5b1"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true"/>
 				</textElement>
@@ -189,7 +189,7 @@
 				<reportElement x="31" y="181" width="59" height="16" backcolor="#CCCCCC" uuid="5b6a4ba3-daec-4a17-ae66-5922cebe2877"/>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="33" y="187" width="57" height="13" uuid="3988b193-0fd5-4a35-81b4-58b158a3b6d9"/>
+				<reportElement stretchType="RelativeToTallestObject" x="35" y="187" width="57" height="13" uuid="3988b193-0fd5-4a35-81b4-58b158a3b6d9"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true"/>
 				</textElement>
@@ -205,7 +205,7 @@
 				<reportElement x="31" y="197" width="59" height="16" backcolor="#CCCCCC" uuid="c4d29fa4-ae07-452a-96ae-f026811e239b"/>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="33" y="200" width="57" height="16" uuid="768d8b1b-4f53-4118-9abb-3bbe53c20fdd"/>
+				<reportElement stretchType="RelativeToTallestObject" x="35" y="200" width="57" height="16" uuid="768d8b1b-4f53-4118-9abb-3bbe53c20fdd"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true"/>
 				</textElement>
@@ -225,37 +225,30 @@
 				<text><![CDATA[NOTE: PLEASE DO NOT REMOVE]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="90" y="93" width="173" height="10" uuid="43e439ae-a71d-43a2-8312-debba0827ff2"/>
+				<reportElement x="92" y="95" width="173" height="15" uuid="43e439ae-a71d-43a2-8312-debba0827ff2"/>
 				<textElement>
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{inventory_item_no}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToBandHeight" x="91" y="104" width="170" height="31" uuid="5e119129-248b-46d6-af6a-00a3b13a1659"/>
+				<reportElement stretchType="RelativeToBandHeight" x="91" y="108" width="170" height="18" uuid="5e119129-248b-46d6-af6a-00a3b13a1659"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{article}+", "+$F{description}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="88" y="200" width="173" height="15" uuid="1f04aec5-4977-4dfd-a952-acc4d4eaeabe"/>
+				<reportElement x="93" y="202" width="173" height="15" uuid="1f04aec5-4977-4dfd-a952-acc4d4eaeabe"/>
 				<textElement>
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{remarks}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="90" y="183" width="173" height="15" uuid="11fd71b6-8845-491f-93c7-2a714b34ed79"/>
-				<textElement>
-					<font fontName="Calibri" size="7"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{inventory_date}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="92" y="152" width="163" height="12" uuid="8bb69138-39b8-4053-bcb2-82f4caf7b62c"/>
-				<textElement>
-					<font fontName="Calibri" size="7"/>
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="147" width="91" height="12" uuid="8bb69138-39b8-4053-bcb2-82f4caf7b62c"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{office}]]></textFieldExpression>
 			</textField>
@@ -276,13 +269,13 @@
 				<reportElement x="297" y="0" width="1" height="259" uuid="4200eba7-edfd-4c33-aa9b-aae733c228f5"/>
 			</line>
 			<rectangle>
-				<reportElement x="90" y="127" width="173" height="20" uuid="038ac099-392c-40b3-b971-399a5d933583"/>
+				<reportElement x="90" y="132" width="173" height="15" uuid="038ac099-392c-40b3-b971-399a5d933583"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="31" y="127" width="59" height="20" backcolor="#CCCCCC" uuid="0c5fc563-ecb7-4733-bf56-9725e7561575"/>
+				<reportElement x="31" y="132" width="59" height="15" backcolor="#CCCCCC" uuid="0c5fc563-ecb7-4733-bf56-9725e7561575"/>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="34" y="135" width="57" height="15" uuid="6f668b34-fddc-4abe-84fe-4ce4a01d923d"/>
+				<reportElement stretchType="RelativeToTallestObject" x="35" y="137" width="57" height="12" uuid="6f668b34-fddc-4abe-84fe-4ce4a01d923d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true"/>
 				</textElement>
@@ -291,7 +284,7 @@
 			<textField>
 				<reportElement stretchType="RelativeToBandHeight" x="92" y="137" width="173" height="15" uuid="a3c98419-5d74-4116-9068-a1c867970379"/>
 				<textElement>
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{serial_no}]]></textFieldExpression>
 			</textField>

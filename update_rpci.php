@@ -154,7 +154,7 @@ if (isset($_POST['submit'])) {
               </div>
               <div class="col-md-6">
                <div class="form-group">
-                <label>Balance Per Card</label>
+                <label>Office</label>
                 <input value="<?php echo $office1?>"  class="form-control" name="office" type="text" id="office">
               </div>
 
