@@ -90,7 +90,7 @@
 				<reportElement x="31" y="72" width="232" height="20" backcolor="#CCCCCC" uuid="1678aa44-e16e-46fd-8bfc-83b79e396583"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="52" y="32" width="211" height="27" uuid="2b0d3a02-0559-466e-83ef-2e4c975a8f76"/>
+				<reportElement x="52" y="37" width="211" height="27" uuid="2b0d3a02-0559-466e-83ef-2e4c975a8f76"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri" size="7" isBold="true"/>
 				</textElement>

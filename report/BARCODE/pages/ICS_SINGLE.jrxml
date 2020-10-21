@@ -204,7 +204,7 @@
 				<reportElement x="28" y="203" width="232" height="16" uuid="60b60cee-efe8-4bc4-bab5-fce12464cbf7"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="49" y="22" width="211" height="27" uuid="a1571b4e-545a-450a-80bf-2e50217f040e"/>
+				<reportElement x="49" y="27" width="211" height="27" uuid="a1571b4e-545a-450a-80bf-2e50217f040e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Calibri" size="7" isBold="true"/>
 				</textElement>
