@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" language="javascript" columnCount="2" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="297" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="671bd83a-4643-4945-8d74-61b9e0b19bd1">
-	<property name="ireport.zoom" value="2.3579476910000645"/>
-	<property name="ireport.x" value="45"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="barcode" language="groovy" printOrder="Horizontal" pageWidth="297" pageHeight="842" columnWidth="297" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="671bd83a-4643-4945-8d74-61b9e0b19bd1">
+	<property name="ireport.zoom" value="1.3310000000000368"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="article" class="java.lang.String"/>
 	<parameter name="property_no" class="java.lang.String"/>
@@ -80,7 +80,7 @@
 		<band/>
 	</pageHeader>
 	<detail>
-		<band height="259" splitType="Stretch">
+		<band height="260" splitType="Stretch">
 			<rectangle>
 				<reportElement x="37" y="30" width="232" height="41" backcolor="#CCCCCC" uuid="0c019b5f-dc53-4262-a7a5-4d8abbd0078f"/>
 			</rectangle>
@@ -128,7 +128,7 @@
 				<reportElement x="37" y="101" width="59" height="25" backcolor="#CCCCCC" uuid="40096fb7-d24e-4e20-9442-f6a5427dcda5"/>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="39" y="105" width="57" height="25" uuid="33f64868-6afe-46bb-9497-51de0115bd84"/>
+				<reportElement stretchType="RelativeToTallestObject" x="39" y="108" width="57" height="21" uuid="33f64868-6afe-46bb-9497-51de0115bd84"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true"/>
 				</textElement>
@@ -141,7 +141,7 @@
 				<reportElement x="96" y="146" width="173" height="15" uuid="556cc2af-237a-420a-9679-83e5db4e5db4"/>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="39" y="150" width="57" height="12" uuid="0457f2fe-c926-4fa5-8235-7d2c85a107fe"/>
+				<reportElement stretchType="RelativeToTallestObject" x="39" y="151" width="57" height="12" uuid="0457f2fe-c926-4fa5-8235-7d2c85a107fe"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true"/>
 				</textElement>
@@ -154,7 +154,7 @@
 				<reportElement x="96" y="161" width="173" height="19" uuid="51d52915-7df3-4293-8e05-7aa8f4d74848"/>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="39" y="171" width="57" height="9" uuid="82893722-2574-49da-8799-330663def5b1"/>
+				<reportElement stretchType="RelativeToTallestObject" x="39" y="170" width="57" height="9" uuid="82893722-2574-49da-8799-330663def5b1"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true"/>
 				</textElement>
@@ -230,7 +230,7 @@
 				<textFieldExpression><![CDATA[$F{inventory_item_no}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement stretchType="RelativeToBandHeight" x="97" y="103" width="170" height="24" uuid="5e119129-248b-46d6-af6a-00a3b13a1659"/>
+				<reportElement stretchType="RelativeToBandHeight" x="97" y="103" width="170" height="31" uuid="5e119129-248b-46d6-af6a-00a3b13a1659"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Calibri" size="7"/>
 				</textElement>
@@ -280,7 +280,7 @@
 				<reportElement x="37" y="126" width="59" height="20" backcolor="#CCCCCC" uuid="0c5fc563-ecb7-4733-bf56-9725e7561575"/>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" x="40" y="131" width="57" height="21" uuid="6f668b34-fddc-4abe-84fe-4ce4a01d923d"/>
+				<reportElement stretchType="RelativeToTallestObject" x="40" y="134" width="57" height="15" uuid="6f668b34-fddc-4abe-84fe-4ce4a01d923d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true"/>
 				</textElement>
@@ -293,6 +293,9 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{serial_no}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="259" width="298" height="1" uuid="66529fe5-fe5f-422b-87f3-aada27f8ba0d"/>
+			</line>
 		</band>
 	</detail>
 </jasperReport>
