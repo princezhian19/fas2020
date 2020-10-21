@@ -84,6 +84,9 @@
 	<detail>
 		<band height="260" splitType="Stretch">
 			<rectangle>
+				<reportElement x="31" y="162" width="59" height="19" backcolor="#CCCCCC" uuid="786b8aac-5865-48e1-a1a5-5a6a7f7e9925"/>
+			</rectangle>
+			<rectangle>
 				<reportElement x="31" y="31" width="232" height="41" backcolor="#CCCCCC" uuid="0c019b5f-dc53-4262-a7a5-4d8abbd0078f"/>
 			</rectangle>
 			<rectangle>
@@ -149,9 +152,6 @@
 				</textElement>
 				<text><![CDATA[Location:]]></text>
 			</staticText>
-			<rectangle>
-				<reportElement x="31" y="162" width="59" height="19" backcolor="#CCCCCC" uuid="786b8aac-5865-48e1-a1a5-5a6a7f7e9925"/>
-			</rectangle>
 			<rectangle>
 				<reportElement x="90" y="162" width="173" height="19" uuid="51d52915-7df3-4293-8e05-7aa8f4d74848"/>
 			</rectangle>
