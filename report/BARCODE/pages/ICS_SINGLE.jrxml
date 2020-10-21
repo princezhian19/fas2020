@@ -159,13 +159,6 @@
 				<text><![CDATA[Location:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="154" y="55" width="123" height="10" uuid="13c17769-2a49-421b-8e51-385abb35e440"/>
-				<textElement>
-					<font fontName="Cambria" size="5" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[ FM-QP-R4A-FAD-GSS-48-02/ REV00/10.01.17]]></text>
-			</staticText>
-			<staticText>
 				<reportElement stretchType="RelativeToTallestObject" x="32" y="190" width="57" height="16" uuid="35a86089-6860-4b6e-9ba3-a9f6e7a650fa"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Cambria" size="7" isBold="true"/>

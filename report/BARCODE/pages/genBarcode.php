@@ -77,7 +77,7 @@ $office = $_POST['office'];
      
 
     
-                                    $PHPJasperXML->load_xml_file("barcode1.jrxml");
+                                    $PHPJasperXML->load_xml_file("ICS_BATCH.jrxml");
                                     $PHPJasperXML->transferDBtoArray('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020');
                                         $PHPJasperXML->outpage("I");    //page output method I:standard output  D:Download file
                                     
