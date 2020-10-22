@@ -108,7 +108,7 @@ switch ($_POST['option']) {
                     $remarks = $row["remarks"];
                     $office2 = $row["office"];
                    
-                    if (strpos($remarks, 'unserviceable') !== false) {
+                    if (strpos($remarks, 'For repair') !== false) {
                         $status = 'unserviceable';
                         $status2 = 'correct.png';
                         $status1 = '';
