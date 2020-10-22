@@ -107,6 +107,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
               'ordering'    : false,
               'info'        : false,
               'autoWidth'   : false,
+          
 
               initComplete: function () {
             this.api().columns(12).every( function () {
@@ -132,6 +133,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
         
 
     } );
+    
 
 $('select').on('change', function() {
   $('#office').val(this.value);

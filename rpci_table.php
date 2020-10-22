@@ -1,3 +1,13 @@
+<style>
+th{
+  width:auto;
+}
+.sq{
+  width:100%;
+}
+ 
+
+    </style>
 <?php
   $latitude= 26.754347; //latitude
   $longitude= 81.001640; //longitude
@@ -42,16 +52,16 @@ $office = $_POST['office'];
                 <thead>
                     <tr style="background-color: white;color:blue;">
                         <th>ARTICLE</th>
-                        <th width = "200">DESCRIPTION</th>
-                        <th width = "200">SERIAL NO.</th>
-                        <th width = "200">PROPERTY NO.</th>
-                        <th width = "200">STOCK NO.</th>
-                        <th width = "100">UNIT OF MEASURE</th>
+                        <th >DESCRIPTION</th>
+                        <th >SERIAL NO.</th>
+                        <th >PROPERTY NO.</th>
+                        <th >STOCK NO.</th>
+                        <th >UNIT OF MEASURE</th>
                         <th>UNIT VALUE</th>
                         <th>BALANCE PER CARD</th>
                         <th>ON HAND PER COUNT</th>
-                        <th style = "width:1%;">SHORTAGE(QUANTITY)</th>
-                        <th width = "50">SHORTAGE(VALUE)</th>
+                        <th>SHORTAGE<br>(QUANTITY)</th>
+                        <th>SHORTAGE<br>(VALUE)</th>
                         <th>REMARKS</th>
                         <th>OFFICE</th>
                         <th width = "">ACTION</th>
