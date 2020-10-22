@@ -10,6 +10,7 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 if (isset($_POST['submit'])) {
   $article = $_POST['article'];
   $description = $_POST['description'];
+  $serial_no = $_POST['serial_no'];
   $ics_no = $_POST['ics_no'];
   $stock_number = $_POST['stock_number'];
   $inventory_item_no = $_POST['inventory_item_no'];
@@ -29,7 +30,7 @@ if (isset($_POST['submit'])) {
   $date_to = $_POST['date_to'];
   $d2 = date('Y-m-d', strtotime($date_to));
 
-  $insert_rpci = mysqli_query($conn,"INSERT INTO rpci(article,description,stock_number,unit,amount,bpc,opc,shortage_Q,shortage_V,remarks,office,yrs,inventory_item_no,received_by,ics_no,position,date_from,date_to) VALUES('$article','$description','$stock_number','$unit','$amount','$bpc','$opc','$shortage_Q','$shortage_V','$remarks','$office','$yrs','$inventory_item_no','$received_by','$ics_no','$position','$d1','$d2')");
+  $insert_rpci = mysqli_query($conn,"INSERT INTO rpci(article,description,serial_no, stock_number,unit,amount,bpc,opc,shortage_Q,shortage_V,remarks,office,yrs,inventory_item_no,received_by,ics_no,position,date_from,date_to) VALUES('$article','$description','$serial_no','$stock_number','$unit','$amount','$bpc','$opc','$shortage_Q','$shortage_V','$remarks','$office','$yrs','$inventory_item_no','$received_by','$ics_no','$position','$d1','$d2')");
 
   if ($insert_rpci) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -81,6 +82,11 @@ if (isset($_POST['submit'])) {
                 <div class="form-group">
                   <label>Description</label>
                   <input autocomplete = "false"  class="form-control" name="description" type="text" id="description">
+                </div>
+
+                <div class="form-group">
+                  <label>Serial No.:</label>
+                  <input autocomplete = "false"  class="form-control" name="serial_no" type="text" id="serial_no">
                 </div>
 
                 <div class="form-group">
