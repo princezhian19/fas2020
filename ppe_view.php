@@ -31,16 +31,28 @@ $POSITION_M = $rowE['POSITION_M'];
             </div>
             <div class="box-body table-responsive no-padding">
                 <div class="box-body">
+                <div class="well">
+              <div class = "row">
+                <div class = "col-sm-12 col-md-6 col-lg-12">
+                <form method = "POST" action = "report/BARCODE/pages/genBarcode.php">
                     <a href="UpdateRPCPPE.php?id=<?php echo $id; ?>" class="btn btn-primary"><i class='fa'>&#xf044;</i>Update</a>
                    <?php if (empty($EMP_N)): ?>
                        <a href="Assign_PAR.php?id=<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-fw fa-user-md"></i>Assign Par</a>
                        <?php else: ?>
                            <a href="Reassign_PAR.php?id=<?php echo $id; ?>" class="btn btn-success">Re-Assign Par</a>
                        <?php endif ?>
-                       <a href="export_par_receipt.php?id=<?php echo $id;?>" class="btn btn-warning"><i class="fa fa-fw fa-download"></i>Par Receipt</a>
-                       <a href="barcode2.php?id=<?php echo $id;?>" class="btn btn-info"><i class="fa fa-fw fa-download"></i>Par Sticker</a>
+                       
+                      
+               
+                <a href="export_par_receipt.php?id=<?php echo $id;?>" class="btn btn-warning"><i class="fa fa-fw fa-download"></i>Par Receipt</a>
+                       <button href="report/BARCODE/pages/genBarcode.php?id=<?php echo $id;?>" class="btn btn-info"><i class="fa fa-fw fa-download"></i>Par Sticker</button>
+                       <input type = "hidden" name = "par_id" value = "<?php echo $id;?>" />
+                       <input type = "hidden" name = "option" value = "par_single" />
                        <a href="export_pc.php?id=<?php echo $id;?>" class="btn btn-success"><i class="fa fa-fw fa-download"></i>Export PC</a>
-
+</form>
+                </div>
+              </div>
+            </div>
 
                        <h4>Item(s)</h4>
                        <table id="example1" class="table table-striped table-bordered" style="width:;background-color: white;">

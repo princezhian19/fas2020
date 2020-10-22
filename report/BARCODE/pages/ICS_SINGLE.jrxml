@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="singlebarcode" language="groovy" pageWidth="297" pageHeight="842" columnWidth="297" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2090b128-1e83-4a8a-9876-20ad52a1b988">
-	<property name="ireport.zoom" value="2.357947691000007"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="5.054470284992956"/>
+	<property name="ireport.x" value="118"/>
+	<property name="ireport.y" value="528"/>
 	<parameter name="article" class="java.lang.String"/>
 	<parameter name="property_no" class="java.lang.String"/>
 	<parameter name="office" class="java.lang.String"/>
@@ -226,6 +226,13 @@
 				<reportElement stretchType="RelativeToBandHeight" x="42" y="24" width="35" height="35" uuid="3ba5f222-8196-40bc-bd05-0c12ea6179f3"/>
 				<imageExpression><![CDATA[$P{image_path}]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="32" y="160" width="57" height="12" uuid="ec2a62c6-1dec-4cc1-952e-b9523f294c7e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status:]]></text>
+			</staticText>
 		</band>
 	</detail>
 </jasperReport>

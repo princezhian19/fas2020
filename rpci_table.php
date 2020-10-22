@@ -33,6 +33,7 @@ $office = $_POST['office'];
               <div class = "row">
                 <div class = "col-sm-12 col-md-6 col-lg-12">
                 <form method = "POST" action = "report/BARCODE/pages/genBarcode.php">
+                <input type = "hidden" name = "option" value = "rpci_batch" />
                 <li class="btn btn-success"><a href="CreateRPCI.php" style="color:white;text-decoration: none;"><i class = "fa fa-plus"></i>&nbsp;Create</a></li>
 
                 <button type = "submit" class="btn btn-primary"><a style="color:white;text-decoration: none;"><i class = "fa fa-barcode"></i>&nbsp;Generate ICS Sticker</a></button>

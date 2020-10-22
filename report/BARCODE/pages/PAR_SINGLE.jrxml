@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="singlebarcode" language="groovy" pageWidth="297" pageHeight="842" columnWidth="297" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2090b128-1e83-4a8a-9876-20ad52a1b988">
-	<property name="ireport.zoom" value="2.357947691000007"/>
+	<property name="ireport.zoom" value="4.177248169415665"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="319"/>
 	<parameter name="article" class="java.lang.String"/>
 	<parameter name="property_no" class="java.lang.String"/>
 	<parameter name="office" class="java.lang.String"/>
@@ -15,6 +15,54 @@
 	<queryString>
 		<![CDATA[$P{sql}]]>
 	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="article" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="serial_no" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="property_number" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_acquired" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="unit" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="amount" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="property_card" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="physical_count" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="shortage_Q" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="shortage_V" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="remarks" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="category" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="office" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -174,7 +222,7 @@
 				<textElement>
 					<font fontName="Calibri" size="9" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{inventory_item_no}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{property_number}]]></textFieldExpression>
 			</textField>
 			<rectangle>
 				<reportElement x="28" y="122" width="59" height="15" backcolor="#CCCCCC" uuid="7814e5d3-f1cb-428c-9692-fce4bb88bb06"/>
@@ -219,13 +267,20 @@
 			<componentElement>
 				<reportElement x="28" y="200" width="232" height="22" uuid="081fdbc4-10a0-4675-9fe3-6f955ada82e3"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false">
-					<jr:codeExpression><![CDATA[$F{inventory_item_no}]]></jr:codeExpression>
+					<jr:codeExpression><![CDATA[$F{property_number}]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<image>
 				<reportElement stretchType="RelativeToBandHeight" x="42" y="24" width="35" height="35" uuid="3ba5f222-8196-40bc-bd05-0c12ea6179f3"/>
 				<imageExpression><![CDATA[$P{image_path}]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="33" y="159" width="57" height="12" uuid="8bedd852-bb36-494f-b2f0-b3b5b92ca30c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status:]]></text>
+			</staticText>
 		</band>
 	</detail>
 </jasperReport>
