@@ -12,6 +12,7 @@ $select = mysqli_query($conn,"SELECT * FROM rpci WHERE id = '$id' ");
 $row = mysqli_fetch_array($select);
 $article1 = $row['article'];
 $description1 = $row['description'];
+$serial_no1 = $row['serial_no'];
 $stock_number1 = $row['stock_number'];
 $inventory_item_no = $row['inventory_item_no'];
 $unit1 = $row['unit'];
@@ -35,6 +36,8 @@ $yrs1 = $row['yrs'];
 if (isset($_POST['submit'])) {
   $article = $_POST['article'];
   $description = $_POST['description'];
+  $serial_no = $_POST['serial_no'];
+
   $stock_number = $_POST['stock_number'];
   $inventory_item_no = $_POST['inventory_item_no'];
   $unit = $_POST['unit'];
@@ -53,7 +56,7 @@ if (isset($_POST['submit'])) {
   $d1 = date('Y-m-d', strtotime($date_from));
   $date_to = $_POST['date_to'];
   $d2 = date('Y-m-d', strtotime($date_to));
-  $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `date_from`='$d1',`date_to`='$d2',`position`='$position',`ics_no`='$ics_no',`article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office',`inventory_item_no`='$inventory_item_no',`received_by`='$received_by' WHERE id = $id");
+  $insert_rpci = mysqli_query($conn,"UPDATE `rpci` SET `serial_no` = '$serial_no', `date_from`='$d1',`date_to`='$d2',`position`='$position',`ics_no`='$ics_no',`article`='$article',`description`='$description',`stock_number`='$stock_number',`unit`='$unit',`amount`='$amount',`yrs`='$yrs',`bpc`='$bpc',`opc`='$opc',`shortage_Q`='$shortage_Q',`shortage_V`='$shortage_V',`remarks`='$remarks',`office`='$office',`inventory_item_no`='$inventory_item_no',`received_by`='$received_by' WHERE id = $id");
 
   if ($insert_rpci) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -101,6 +104,11 @@ if (isset($_POST['submit'])) {
                 <div class="form-group">
                   <label>Description</label>
                   <input value="<?php echo $description1?>"  class="form-control" name="description" type="text" id="description">
+                </div>
+
+                <div class="form-group">
+                  <label>Serial No.:</label>
+                  <input value="<?php echo $serial_no1?>"  class="form-control" name="serial_no" type="text" id="serial_no">
                 </div>
 
                   <div class="form-group">
