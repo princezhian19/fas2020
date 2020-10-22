@@ -428,27 +428,27 @@ session_start();
 
             include 'connection.php';
 
-            $UPDATE =" UPDATE `tbltravel_claim_info` SET 
-            `TC_ID`='".$tc_id."',
-            `RO`='".$ro."',
-            `DATE`='".$date."',
-            `PLACE`='".$from." to ".$to."',
-            `ARRIVAL`='".$arrival."',
-            `DEPARTURE`='".$departure."',
-            `MOT`='".$mot."',
-            `TRANSPORTATION`='".$fare."',
-            `BREAKFAST`='".$breakfast."',
-            `LUNCH`='".$lunch."',
-            `DINNER`='".$dinner."',
-            `ACCOMODATION`='',
-            `RECEIPT`='".$receipt."',
-            `PERDIEM`='".$perdiem."',
-            `OTHERS`='".$others."',
-            `TOTAL_AMOUNT`='".$total_amount."' WHERE  `ID` = '".$id."'";
-          
-            if (mysqli_query($conn, $UPDATE)) {
-            } else {
-            }
+                $UPDATE =" UPDATE `tbltravel_claim_info` SET 
+                `TC_ID`='".$tc_id."',
+                `RO`='".$ro."',
+                `DATE`='".$date."',
+                `PLACE`='".$from." to ".$to."',
+                `ARRIVAL`='".$arrival."',
+                `DEPARTURE`='".$departure."',
+                `MOT`='".$mot."',
+                `TRANSPORTATION`='".$fare."',
+                `BREAKFAST`='".$breakfast."',
+                `LUNCH`='".$lunch."',
+                `DINNER`='".$dinner."',
+                `ACCOMODATION`='',
+                `RECEIPT`='".$receipt."',
+                `PERDIEM`='".$perdiem."',
+                `OTHERS`='".$others."',
+                `TOTAL_AMOUNT`='".$total_amount."' WHERE  `ID` = '".$id."'";
+            
+                if (mysqli_query($conn, $UPDATE)) {
+                } else {
+                }
 
             $UPDATE2 = "UPDATE `tbltravel_claim_ro` SET `RO_OT_OB`='".$title."' WHERE  `ID` = '".$RO."'";
             if (mysqli_query($conn, $UPDATE2)) {

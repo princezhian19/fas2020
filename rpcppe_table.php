@@ -55,8 +55,7 @@
                         <th>SHORTAGE(QUANTITY)</th>
                         <th>SHORTAGE(VALUE)</th>
                         <th>REMARKS</th>
-                        <th>ACTION</th>
-                        <th></th>
+                        <th colspan = 2>ACTION</th>
                     </tr>
                 </thead>
                 <?php 

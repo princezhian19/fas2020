@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="singlebarcode" language="groovy" pageWidth="297" pageHeight="842" columnWidth="297" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2090b128-1e83-4a8a-9876-20ad52a1b988">
+	<property name="ireport.zoom" value="2.357947691000007"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="article" class="java.lang.String"/>
+	<parameter name="property_no" class="java.lang.String"/>
+	<parameter name="office" class="java.lang.String"/>
+	<parameter name="remarks" class="java.lang.String"/>
+	<parameter name="inventory_date" class="java.lang.String"/>
+	<parameter name="sql" class="java.lang.String"/>
+	<parameter name="image_path" class="java.lang.String"/>
+	<parameter name="serv" class="java.lang.String"/>
+	<parameter name="unserv" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[$P{sql}]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="261" splitType="Stretch">
+			<rectangle>
+				<reportElement x="28" y="187" width="59" height="16" backcolor="#CCCCCC" uuid="eedc9b77-7c5c-4f3d-8905-744e15dc5682"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="87" y="187" width="173" height="16" uuid="13da3d9b-5999-4281-9b73-16580728f0ff"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="87" y="171" width="173" height="16" uuid="f86b834c-6f6f-450d-95a2-c8188a8b3620"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="87" y="152" width="173" height="19" uuid="a58cce50-ed55-4c05-abc8-2dffb3e1a40a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="87" y="137" width="173" height="15" uuid="4c1c7ce7-d327-4a45-9fbd-d025508484ae"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="87" y="122" width="173" height="15" uuid="648fb7c8-bb12-49e2-9702-0c28d9306976"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="87" y="97" width="173" height="25" uuid="06518d4b-5512-488b-bee5-d7779419a44c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="87" y="82" width="173" height="15" uuid="08ba0ebf-36eb-4f14-b15c-218264543bf3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="28" y="97" width="59" height="25" backcolor="#CCCCCC" uuid="b5cb6386-28c4-4ea2-9ff5-2196fbc59966"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="28" y="62" width="232" height="20" backcolor="#CCCCCC" uuid="7941830e-5263-469d-96c7-da5d49329efc"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="88" y="98" width="170" height="18" uuid="c987309e-490c-4bc9-af24-974f839c9ce0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{article}+", "+$F{description}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="65" width="230" height="18" uuid="3b79d7d2-ef94-4d55-aadc-899d1632ab47"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROPERTY INVENTORY STICKER]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="28" y="137" width="59" height="15" backcolor="#CCCCCC" uuid="543678b5-914f-4dd8-a061-bf02bd27c2ed"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="28" y="171" width="59" height="16" backcolor="#CCCCCC" uuid="52ed7b21-2a0c-4ca8-8e93-fc70bc8e1c80"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="99" y="156" width="12" height="12" uuid="a3416e84-8975-4a86-b735-f9052e7fb2c4"/>
+			</rectangle>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="89" y="137" width="91" height="12" uuid="fab4950e-9cea-4c1f-b492-1536ef6cb528"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{office}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="32" y="177" width="57" height="13" uuid="402247f4-18d1-46d0-8631-ef0b9615481e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Inventory Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="115" y="157" width="65" height="16" uuid="9b161729-9f4f-4877-bfbd-51c94a5432f3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Serviceable]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="28" y="219" width="232" height="16" uuid="53f3acf5-33dc-4544-a3bc-0ad604a460b9"/>
+			</rectangle>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="89" y="127" width="173" height="15" uuid="c77d570b-685d-4ecd-be5d-416ec0dcb0f6"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{serial_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="222" width="230" height="16" uuid="dacb7990-c1f5-4cea-8230-ef5c5c7a8395"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="9" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[NOTE: PLEASE DO NOT REMOVE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="33" y="162" width="57" height="9" uuid="a4392b1e-473c-4568-af21-9647bf1d959e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="200" y="157" width="60" height="16" uuid="b46efa39-7775-49ad-8a33-28554dc4c2da"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Unserviceable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="32" y="103" width="57" height="21" uuid="a3c64294-2db0-49a1-9f07-8f3ee63e6a0d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Article & Description:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="192" width="173" height="15" uuid="d3406ece-a2b1-455c-8066-920d32493268"/>
+				<textElement>
+					<font fontName="Arial" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{remarks}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="28" y="21" width="232" height="41" backcolor="#CCCCCC" uuid="833bda7b-e44a-4025-a949-36c4db5e5072"/>
+			</rectangle>
+			<line>
+				<reportElement x="180" y="152" width="1" height="19" uuid="f22dc8b0-2386-4e1a-a3c9-f28643678c3c"/>
+			</line>
+			<rectangle>
+				<reportElement x="28" y="82" width="59" height="15" backcolor="#CCCCCC" uuid="6421934b-07d3-48d8-833d-4ccb6c388d04"/>
+			</rectangle>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="32" y="142" width="57" height="12" uuid="0e8efa49-105d-4b3e-934f-f0d050ba3fcc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Location:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="32" y="190" width="57" height="16" uuid="35a86089-6860-4b6e-9ba3-a9f6e7a650fa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remarks:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="100" y="157" width="11" height="11" uuid="ee013802-7804-473b-bbc9-4f774fbce8ee"/>
+				<imageExpression><![CDATA[$P{serv}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="89" y="85" width="173" height="15" uuid="b906f169-aee9-4eda-ad26-c85b4c204396"/>
+				<textElement>
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inventory_item_no}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="28" y="122" width="59" height="15" backcolor="#CCCCCC" uuid="7814e5d3-f1cb-428c-9692-fce4bb88bb06"/>
+			</rectangle>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="32" y="85" width="57" height="13" uuid="80731d41-5fb0-4f6f-84ab-d68ef877c6cf"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="7" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Property No.:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="185" y="157" width="11" height="11" uuid="723fb9fc-86d5-4cb8-86dc-4c75f57c7bc5"/>
+				<imageExpression><![CDATA[$P{unserv}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="32" y="127" width="57" height="12" uuid="933a5f48-ea09-4c0b-b1fe-fe218cc7289a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Serial No.:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="184" y="156" width="12" height="12" uuid="b65ca5f4-df61-48c5-9a79-4c037af70cdf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="28" y="203" width="232" height="16" uuid="60b60cee-efe8-4bc4-bab5-fce12464cbf7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="49" y="27" width="211" height="27" uuid="a1571b4e-545a-450a-80bf-2e50217f040e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[     Republic of the Philippines
+     Department of the Interior and Local Government
+            Region IV-A (CALABARZON)
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="28" y="152" width="59" height="19" backcolor="#CCCCCC" uuid="2f6abd57-3534-413a-a53b-1621f6e679b6"/>
+			</rectangle>
+			<componentElement>
+				<reportElement x="28" y="200" width="232" height="22" uuid="081fdbc4-10a0-4675-9fe3-6f955ada82e3"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{inventory_item_no}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<image>
+				<reportElement stretchType="RelativeToBandHeight" x="42" y="24" width="35" height="35" uuid="3ba5f222-8196-40bc-bd05-0c12ea6179f3"/>
+				<imageExpression><![CDATA[$P{image_path}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

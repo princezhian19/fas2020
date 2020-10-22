@@ -10,6 +10,7 @@ $article1 = $row['article'];
 $date_aquireda = $row['date_acquired'];
 $date_aquired1 = date('m/d/Y', strtotime($date_aquireda)); 
 $description1 = $row['description'];
+$serial_no1 = $row['serial_no'];
 $property_number1 = $row['property_number'];
 $unit1 = $row['unit'];
 $amount1 = $row['amount'];
@@ -27,6 +28,8 @@ if (isset($_POST['submit'])) {
   // $dateAq = date('Y-m-d', strtotime($date_aquired)); 
   $article = $_POST['article'];
   $description = $_POST['description'];
+  $serial_no = $_POST['serial_no'];
+
   $property_number = $_POST['property_number'];
   $unit = $_POST['unit'];
   $amount = $_POST['amount'];
@@ -39,7 +42,7 @@ if (isset($_POST['submit'])) {
   $office = $_POST['office'];
 
   
-  $update = mysqli_query($conn,"UPDATE rpcppe SET article ='$article',description ='$description',property_number ='$property_number',unit ='$unit',amount ='$amount',property_card ='$property_card',physical_count ='$physical_count',shortage_Q ='$shortage_Q',shortage_V ='$shortage_V',remarks ='$remarks',date_acquired ='$date_aquired', status = '$status', office = '$office' WHERE property_number = '$property_number'");
+  $update = mysqli_query($conn,"UPDATE rpcppe SET serial_no = '$serial_no', article ='$article',description ='$description',property_number ='$property_number',unit ='$unit',amount ='$amount',property_card ='$property_card',physical_count ='$physical_count',shortage_Q ='$shortage_Q',shortage_V ='$shortage_V',remarks ='$remarks',date_acquired ='$date_aquired', status = '$status', office = '$office' WHERE property_number = '$property_number'");
 
   if ($update) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -90,6 +93,11 @@ if (isset($_POST['submit'])) {
                 <div class="form-group">
                   <label>Description</label>
                   <input autocomplete = "false" value="<?php echo $description1?>"  class="form-control" name="description" type="text" id="description">
+                </div>
+
+                <div class="form-group">
+                  <label>Serial No.:</label>
+                  <input autocomplete = "false" value="<?php echo $serial_no1?>"  class="form-control" name="serial_no" type="text" id="serial_no">
                 </div>
 
                 <div class="form-group">

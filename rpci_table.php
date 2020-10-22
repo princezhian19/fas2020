@@ -54,7 +54,7 @@ $office = $_POST['office'];
                         <th>ARTICLE</th>
                         <th >DESCRIPTION</th>
                         <th >SERIAL NO.</th>
-                        <th >PROPERTY NO.</th>
+                        <th >INVENTORY ITEM NO.</th>
                         <th >STOCK NO.</th>
                         <th >UNIT OF MEASURE</th>
                         <th>UNIT VALUE</th>
@@ -64,8 +64,7 @@ $office = $_POST['office'];
                         <th>SHORTAGE<br>(VALUE)</th>
                         <th>REMARKS</th>
                         <th>OFFICE</th>
-                        <th width = "">ACTION</th>
-                        <th width = ""></th>
+                        <th colspan = 2>ACTION</th>
                 </thead>
                 <?php 
                 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
