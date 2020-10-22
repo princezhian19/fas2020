@@ -64,7 +64,8 @@ $office = $_POST['office'];
                         <th>SHORTAGE<br>(VALUE)</th>
                         <th>REMARKS</th>
                         <th>OFFICE</th>
-                        <th colspan = 2>ACTION</th>
+                        <th >ACTION</th>
+                        <th width = ""></th>
                 </thead>
                 <?php 
                 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
