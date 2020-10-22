@@ -41,20 +41,27 @@ if (isset($_POST['submit'])) {
   $status = $_POST['status'];
   $office = $_POST['office'];
 
-  
-  $update = mysqli_query($conn,"UPDATE rpcppe SET  article ='$article',description ='$description', serial_no = '$serial_no', property_number ='$property_number',unit ='$unit',amount ='$amount',property_card ='$property_card',physical_count ='$physical_count',shortage_Q ='$shortage_Q',shortage_V ='$shortage_V',remarks ='$remarks',date_acquired ='$date_aquired', status = '$status', office = '$office' WHERE property_number = '$property_number'");
+  $FileName = str_replace( "'", "", $description );
 
-  if ($update) {
+  $UPDATE =" UPDATE rpcppe 
+  SET  
+  article ='$article',
+  description ='$FileName', 
+  serial_no = '$serial_no', 
+  property_number ='$property_number',
+  unit ='$unit',amount ='$amount',property_card ='$property_card',physical_count ='$physical_count',shortage_Q ='$shortage_Q',shortage_V ='$shortage_V',remarks ='$remarks',date_acquired ='$date_aquired', status = '$status', office = '$office' WHERE property_number = '$property_number'";
+
+  if (mysqli_query($conn, $UPDATE)) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
       window.alert('Successfuly Updated!')
       window.location.href = 'ViewPPE.php?id=$id';
       </SCRIPT>");
-
-  }  else{
-     echo ("<SCRIPT LANGUAGE='JavaScript'>
-      window.alert('Error Occured in Saving');
-      </SCRIPT>");
+  } else {
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+    window.alert('Error Occured in Saving');
+    </SCRIPT>");
   }
+ 
 
 
 }
