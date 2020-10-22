@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
   $office = $_POST['office'];
 
   
-  $update = mysqli_query($conn,"UPDATE rpcppe SET serial_no = '$serial_no', article ='$article',description ='$description',property_number ='$property_number',unit ='$unit',amount ='$amount',property_card ='$property_card',physical_count ='$physical_count',shortage_Q ='$shortage_Q',shortage_V ='$shortage_V',remarks ='$remarks',date_acquired ='$date_aquired', status = '$status', office = '$office' WHERE property_number = '$property_number'");
+  $update = mysqli_query($conn,"UPDATE rpcppe SET  article ='$article',description ='$description', serial_no = '$serial_no', property_number ='$property_number',unit ='$unit',amount ='$amount',property_card ='$property_card',physical_count ='$physical_count',shortage_Q ='$shortage_Q',shortage_V ='$shortage_V',remarks ='$remarks',date_acquired ='$date_aquired', status = '$status', office = '$office' WHERE property_number = '$property_number'");
 
   if ($update) {
     echo ("<SCRIPT LANGUAGE='JavaScript'>
