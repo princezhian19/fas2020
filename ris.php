@@ -9,6 +9,8 @@ $rowqwe = mysqli_fetch_array($auto);
 $idGet1 = $rowqwe["ris_no"];
 
 $idGet  = str_replace('2020-0','', $idGet1)+1;
+echo $idGet;
+exit();
 
 
 $ris_latest = $getDate.'-'.'0'.$idGet;
