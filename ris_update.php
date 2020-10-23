@@ -160,7 +160,7 @@ ob_start();
            </tr>
            <tr>
             <?php 
-            $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
+            // $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
             $con = mysqli_connect("localhost", "fascalab_2020", "w]zYV6X9{*BN", "fascalab_2020");
            
            
@@ -177,7 +177,7 @@ ob_start();
 
 
           $query = "SELECT * FROM ris_stock WHERE ris_no = '$ris_noo' ";
-        $result = mysqli_query($conn, $query);
+        $result = mysqli_query($con, $query);
        
         while($row = mysqli_fetch_array($result))
         {
