@@ -8,9 +8,8 @@ $auto = mysqli_query($conn,"SELECT id, ris_no FROM ris order by id desc limit 1"
 $rowqwe = mysqli_fetch_array($auto);
 $idGet1 = $rowqwe["ris_no"];
 
-$idGet  = str_replace('2020-0','', $idGet1)+1;
-echo $idGet;
-exit();
+$idGet  = str_replace('2020-','', $idGet1)+1;
+
 
 
 $ris_latest = $getDate.'-'.'0'.$idGet;
