@@ -162,13 +162,25 @@ ob_start();
             <?php 
             $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
             $con = mysqli_connect("localhost", "fascalab_2020", "w]zYV6X9{*BN", "fascalab_2020");
-            $selectRISno = mysqli_query($con,"SELECT ris_no FROM ris WHERE id = '".$_GET['id']."' ");
-            $rowRIS = mysqli_fetch_array($selectRISno);
-            $ris_noo = $rowRIS['ris_no'];
-            $id2 = $_GET['id'];
+           
+           
 
-            $sql_items = $conn->query("SELECT * FROM ris_stock WHERE ris_no = '$ris_noo'");
-            while ($row = $sql_items->fetch()) {
+
+
+
+        $query = "SELECT ris_no FROM ris WHERE id = '".$_GET['id']."'  ";
+        $result = mysqli_query($con, $query);
+        if($rowRIS = mysqli_fetch_array($result))
+        {
+          $ris_noo = $rowRIS['ris_no'];
+          $id2 = $_GET['id'];
+
+
+          $query = "SELECT * FROM ris_stock WHERE ris_no = '$ris_noo' ";
+        $result = mysqli_query($conn, $query);
+       
+        while($row = mysqli_fetch_array($result))
+        {
               $id = $row['id'];
               $qty = $row['qty'];
               $procurement1 = $row['procurement'];
@@ -186,7 +198,7 @@ ob_start();
               <td align="center"><a href="delete_ris_items.php?id=<?php echo $id?>"><i style="font-size:24px" class="fa fa-trash-o"></i></a></td>
 
             </tr>
-          <?php } ?>
+          <?php } }?>
         </table>
        
       </div>
