@@ -50,9 +50,36 @@ if (isset($_POST['submit']))
   $iar_row=mysqli_fetch_array($query_insert_iar);
   $qty = $iar_row['qty'];
 
-  $insert_ris_stock = mysqli_query($conn,"INSERT INTO ris_stock(rfq_id,ris_no,app_id,procurement,description,qty,unit_id,abc) 
-    SELECT rfq_id,'$ris_no',app_id,procurement,description,qty,unit_id,abc FROM iar_stock WHERE rfq_id = $rfq_id");
+  // $insert_ris_stock = mysqli_query($conn,"INSERT INTO ris_stock(rfq_id,ris_no,app_id,procurement,description,qty,unit_id,abc) VALUES (");
 
+ 
+
+$sql1 = "SELECT id,rfq_id,'$ris_no',app_id,procurement,description,qty,unit_id,abc FROM iar_stock WHERE rfq_id = $rfq_id";
+
+$result = mysqli_query($conn, $sql1);
+
+while($row = mysqli_fetch_array($result))
+{
+  $insert = "INSERT INTO ris_stock(id,rfq_id,ris_no,app_id,procurement,description,unit_id,qty,abc) values
+  (null,
+  '".$row['rfq_id']."',
+  '".$ris_no."',
+  '".$row['app_id']."',
+  '".$row['procurement']."',
+  '".$row['description']."',
+  '".$row['qty']."',
+  '".$row['unit_id']."',
+  '".$row['abc']."')";
+  if (mysqli_query($conn, $insert)) { 
+  } else {
+  }
+}
+
+
+
+
+ 
+  
   // $update_qty_from_iar = mysqli_query($conn,"UPDATE iar_stock SET qty = qty - qty WHERE rfq_id = $rfq_id");
   
   $sql = mysqli_query($conn,"INSERT INTO ris(
