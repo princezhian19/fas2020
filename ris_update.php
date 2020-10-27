@@ -158,47 +158,45 @@ ob_start();
              <th>Option</th>
              <th>&nbsp</th>
            </tr>
-           <tr>
-            <?php 
-            // $conn = new PDO('mysql:host=localhost;dbname=fascalab_2020;charset=utf8', 'fascalab_2020', 'w]zYV6X9{*BN');
-            $con = mysqli_connect("localhost", "fascalab_2020", "w]zYV6X9{*BN", "fascalab_2020");
+           <?php
+           include 'connection.php';
+            $query = "SELECT ris_no FROM ris WHERE id = '".$_GET['id']."'  ";
+            $result = mysqli_query($conn, $query);
+              if($rowRIS = mysqli_fetch_array($result))
+                {
+                  $ris_noo = $rowRIS['ris_no'];
+                  $id2 = $_GET['id'];
+
+                  $query = "SELECT * FROM ris_stock  ";
+                  $result = mysqli_query($conn, $query);
+
+                  while($row = mysqli_fetch_array($result))
+                  {
+                    $id = $row['id'];
+                    $qty = $row['qty'];
+                    $procurement1 = $row['procurement'];
+                    $rfq_id1 = $row['rfq_id'];
+                    $app_id1 = $row['app_id'];
+                    $description1 = $row['description'];
+                    $unit_id1 = $row['unit_id'];
+                    $abc1 = $row['abc'];
+                    echo '
+                    <tr>
+                      <td hidden>'.$id.'</td>
+                      <td>'.$procurement1.'</td>
+                      <td><a href="UpdateRISitems.php?id='.$id.'&id2='.$id2.'&ris_no='.$ris_noo.'"><i style="font-size:20px" class="fa">&#xf044;</i></a></td>
+                      <td align="center"><a href="delete_ris_items.php?id='.$id.'"><i style="font-size:24px" class="fa fa-trash-o"></i></a></td>
+
+                      </tr>';
+                  }
+            }
+
+
+
+
+          ?>
            
-           
-
-
-
-
-        $query = "SELECT ris_no FROM ris WHERE id = '".$_GET['id']."'  ";
-        $result = mysqli_query($con, $query);
-        if($rowRIS = mysqli_fetch_array($result))
-        {
-          $ris_noo = $rowRIS['ris_no'];
-          $id2 = $_GET['id'];
-
-
-          $query = "SELECT * FROM ris_stock WHERE ris_no = '$ris_noo' ";
-        $result = mysqli_query($con, $query);
-       
-        while($row = mysqli_fetch_array($result))
-        {
-              $id = $row['id'];
-              $qty = $row['qty'];
-              $procurement1 = $row['procurement'];
-              $rfq_id1 = $row['rfq_id'];
-              $app_id1 = $row['app_id'];
-              $description1 = $row['description'];
-              $unit_id1 = $row['unit_id'];
-              $abc1 = $row['abc'];
-              ?>
-              <td hidden><?php echo $id; ?> </td>
-              
-              <td> <?php echo $procurement1; ?></label></td>
-              <td> <?php echo $qty; ?></label></td>
-              <td align="center"><?php echo '<a href="UpdateRISitems.php?id='.$id.'&id2='.$id2.'&ris_no='.$ris_noo.'">'?><i style='font-size:20px' class='fa'>&#xf044;</i></a></td>
-              <td align="center"><a href="delete_ris_items.php?id=<?php echo $id?>"><i style="font-size:24px" class="fa fa-trash-o"></i></a></td>
-
-            </tr>
-          <?php } }?>
+            
         </table>
        
       </div>
