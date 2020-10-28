@@ -63,6 +63,32 @@ $GrayStyle = array(
 
 $styleSam = array('font'  => array('size'  => 9, 'name'  => 'Cambria'),'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT));
 
+$setCenter = array(
+  'font'  => array(
+    'bold' => true,
+    'size'  => 18, 
+    'name'  => 'Cambria'
+  ),
+  'alignment' => array(
+      'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+  )
+);
+
+$setFont = array(
+  'font'  => array(
+    'bold' => true,
+    'size'  => 11, 
+    'name'  => 'Cambria'
+  ),
+);
+
+$setFontnotBold = array(
+  'font'  => array(
+    'bold' => false,
+    'size'  => 12, 
+    'name'  => 'Cambria'
+  ),
+);
 
 
 
@@ -118,13 +144,17 @@ $qty = $row['qty'];
 $abc = $row['abc'];
 $item_unit_title = $row['item_unit_title'];
 
-$all_selected_suppliers1 = mysqli_query($conn, "SELECT s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  ");
-
+$all_selected_suppliers1 = mysqli_query($conn, "SELECT count(*) as 'count_supplier', s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  ");
+$count_supplier = '';
 while ($allS = mysqli_fetch_assoc($all_selected_suppliers1)) {
   $Asupplier[] = $allS['sid'];
+  $count_supplier = $allS['count_supplier'];
+
 }
 
+
 $implode = implode(',', $Asupplier);
+
 
 $abc_for_winner = mysqli_query($conn,"SELECT supplier_id FROM abstract_of_quote WHERE supplier_id in($implode) AND rfq_id = $rfq_id AND abstract_no IS NOT NULL");
 $abcrow = mysqli_fetch_array($abc_for_winner);
@@ -155,6 +185,16 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('C12',$abc12);
 
 
 
+
+
+
+
+
+
+
+
+
+// ============///////////////////////////////////////////////////////////////////////      WIN 1        ///////////////////////////////////
 $suppliers1 = mysqli_query($conn, "SELECT s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  ");
 $rowS1 = mysqli_fetch_assoc($suppliers1);
 $supplier_title1 = $rowS1['supplier_title'];
@@ -170,15 +210,17 @@ if ($rowabsno1 != NULL) {
   $objPHPExcel->getActiveSheet()->getStyle('I15')->applyFromArray($SelectedStyle);
   $objPHPExcel->getActiveSheet()->getStyle('J15')->applyFromArray($SelectedStyle);
 }
-
-
-
 $objPHPExcel->setActiveSheetIndex()->setCellValue('I14',$supplier_title1);
+//==============///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+//=============///////////////////////////////////////////////////////////////////////     WIN 2     ////////////////////////////////////////////////////////////////////////////////////////
 $suppliers2 = mysqli_query($conn, "SELECT s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  AND s.supplier_title != '$supplier_title1' ");
 $rowS2 = mysqli_fetch_assoc($suppliers2);
 $supplier_title2 = $rowS2['supplier_title'];
 $sid2 = $rowS2['sid'];
+
 
 $select_ifwin2 = mysqli_query($conn,"SELECT abstract_no FROM abstract_of_quote WHERE supplier_id = $sid2 AND rfq_id = $rfq_id");
 $rowWin2 = mysqli_fetch_array($select_ifwin2);
@@ -193,7 +235,9 @@ if ($rowabsno2 != NULL) {
 }
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('K14',$supplier_title2);
+//====================//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//====================////////////////////////////////////////////////////////////////////   WIN 3 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $suppliers3 = mysqli_query($conn, "SELECT s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  AND s.supplier_title != '$supplier_title1' AND s.supplier_title != '$supplier_title2' ");
 $rowS3 = mysqli_fetch_assoc($suppliers3);
 $supplier_title3 = $rowS3['supplier_title'];
@@ -212,6 +256,322 @@ if ($rowabsno3 != NULL) {
 }
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('M14',$supplier_title3);
+//=================///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+if($count_supplier > 2)
+{
+  $objWorkSheet = $objPHPExcel->createSheet(1); //Setting index when creating
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('C3','Republic of the Philippines');
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('C4','Department of the Interior and Local Government');
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('C5','Region IV-A (CALABARZON)');
+  $objPHPExcel->getActiveSheet(1)->getStyle('C3')->applyFromArray($setFont);
+  $objPHPExcel->getActiveSheet(1)->getStyle('C4')->applyFromArray($setFont);
+  $objPHPExcel->getActiveSheet(1)->getStyle('C5')->applyFromArray($setFont);
+
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('F8','ABSTRACT OF QUOTATIONS');
+  $objPHPExcel->getActiveSheet()->mergeCells("F8:K8");
+  $objPHPExcel->getActiveSheet(1)->getStyle('F8')->applyFromArray($setCenter);
+
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('F9','For the quotation opened on'.' '.$date1.' '.'at'.' '.$date2);
+  $objPHPExcel->getActiveSheet(1)->getStyle('F9')->applyFromArray($setFontnotBold);
+
+  // set border
+  $objPHPExcel->getActiveSheet(1)->getStyle("A10:N10")->applyFromArray(
+      array(
+          'borders' => array(
+              'allborders' => array(
+                  'style' => PHPExcel_Style_Border::BORDER_THIN,
+                  'color' => array('rgb' => '(0,0,0)')
+              )
+          )
+      )
+  );
+  $objPHPExcel->getActiveSheet(1)->getStyle("A11:N11")->applyFromArray(
+    array(
+        'borders' => array(
+            'allborders' => array(
+                'style' => PHPExcel_Style_Border::BORDER_THIN,
+                'color' => array('rgb' => '(0,0,0)')
+            )
+        )
+    )
+  );
+  $objPHPExcel->getActiveSheet(1)->getStyle("A12:N12")->applyFromArray(
+    array(
+        'borders' => array(
+            'allborders' => array(
+                'style' => PHPExcel_Style_Border::BORDER_THIN,
+                'color' => array('rgb' => '(0,0,0)')
+            )
+        )
+    )
+  );
+  //merge
+  $objPHPExcel->getActiveSheet(1)->mergeCells("A10:B10");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("A11:B11");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("A12:B12");
+
+  $objPHPExcel->getActiveSheet(1)->mergeCells("C10:D10");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("C11:D11");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("C12:D12");
+
+  $objPHPExcel->getActiveSheet(1)->mergeCells("E10:F10");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("E11:F11");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("E12:F12");
+
+  $objPHPExcel->getActiveSheet(1)->mergeCells("H10:I10");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("H11:I11");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("H12:I12");
+
+  $objPHPExcel->getActiveSheet(1)->mergeCells("J10:K10");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("J11:K11");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("J12:K12");
+
+  $objPHPExcel->getActiveSheet(1)->mergeCells("L10:N10");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("L11:N11");
+  $objPHPExcel->getActiveSheet(1)->mergeCells("L12:N12");
+
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('A10','PR No.:');
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('A11','RFQ No.:');
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('A12','ABC:');
+
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('E10','PR Date:');
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('E11','RFQ Date:');
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('E12','Office:');
+
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('J10','Mode of Procurement:');
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('J11','Purpose:');
+
+
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('C10',$pr_no);
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('C11',$rfq_no);
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('H10',$pr_date);
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('H11',$rfq_date);
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('H12',$pmo);
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('L10',$mode_of_proc_title);
+  $objPHPExcel->setActiveSheetIndex(1)->setCellValue('L11',$purpose);
+
+
+  //=============///////////////////////////////////////////////////////////////////////     WIN 4     ////////////////////////////////////////////////////////////////////////////////////////
+$suppliers4 = mysqli_query($conn, "SELECT s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  AND s.supplier_title != '$supplier_title1' AND s.supplier_title != '$supplier_title2' AND s.supplier_title != '$supplier_title3'");
+$rowS4 = mysqli_fetch_assoc($suppliers4);
+$supplier_title4 = $rowS4['supplier_title'];
+$sid4 = $rowS4['sid'];
+
+
+$select_ifwin4 = mysqli_query($conn,"SELECT abstract_no FROM abstract_of_quote WHERE supplier_id = $sid4 AND rfq_id = $rfq_id");
+$rowWin4 = mysqli_fetch_array($select_ifwin4);
+$rowabsno4 = $rowWin4['abstract_no'];
+
+
+
+if ($rowabsno4 != NULL) {
+  $objPHPExcel->getActiveSheet()->getStyle('K14')->applyFromArray($SelectedStyle);
+  $objPHPExcel->getActiveSheet()->getStyle('K15')->applyFromArray($SelectedStyle);
+  $objPHPExcel->getActiveSheet()->getStyle('L15')->applyFromArray($SelectedStyle);
+}
+
+$objPHPExcel->setActiveSheetIndex()->setCellValue('K14',$supplier_title4);
+//====================//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+  $objPHPExcel->getActiveSheet(1)->getStyle('A10')->applyFromArray(
+    array(
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => 'D6CFD5')
+        ),
+        'font'  => array(
+          'bold' => true,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+  $objPHPExcel->getActiveSheet(1)->getStyle('A11')->applyFromArray(
+    array(
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => 'D6CFD5')
+        ),
+        'font'  => array(
+          'bold' => true,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+  $objPHPExcel->getActiveSheet(1)->getStyle('A12')->applyFromArray(
+    array(
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => 'D6CFD5')
+        ),
+        'font'  => array(
+          'bold' => true,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+
+  $objPHPExcel->getActiveSheet(1)->getStyle('C10')->applyFromArray(
+    array(
+        'font'  => array(
+          'bold' => false,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+
+  $objPHPExcel->getActiveSheet(1)->getStyle('C11')->applyFromArray(
+    array(
+        'font'  => array(
+          'bold' => false,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+
+  $objPHPExcel->getActiveSheet(1)->getStyle('H10')->applyFromArray(
+    array(
+        'font'  => array(
+          'bold' => false,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+  $objPHPExcel->getActiveSheet(1)->getStyle('H11')->applyFromArray(
+    array(
+        'font'  => array(
+          'bold' => false,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+  $objPHPExcel->getActiveSheet(1)->getStyle('H12')->applyFromArray(
+    array(
+        'font'  => array(
+          'bold' => false,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+  $objPHPExcel->getActiveSheet(1)->getStyle('L10')->applyFromArray(
+    array(
+        'font'  => array(
+          'bold' => false,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+  $objPHPExcel->getActiveSheet(1)->getStyle('L11')->applyFromArray(
+    array(
+        'font'  => array(
+          'bold' => false,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+
+
+
+
+
+  $objPHPExcel->getActiveSheet(1)->getStyle('E10')->applyFromArray(
+    array(
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => 'D6CFD5')
+        ),
+        'font'  => array(
+          'bold' => true,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+  $objPHPExcel->getActiveSheet(1)->getStyle('E11')->applyFromArray(
+    array(
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => 'D6CFD5')
+        ),
+        'font'  => array(
+          'bold' => true,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+  $objPHPExcel->getActiveSheet(1)->getStyle('E12')->applyFromArray(
+    array(
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => 'D6CFD5')
+        ),
+        'font'  => array(
+          'bold' => true,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+
+  $objPHPExcel->getActiveSheet(1)->getStyle('J10')->applyFromArray(
+    array(
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => 'D6CFD5')
+        ),
+        'font'  => array(
+          'bold' => true,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+  $objPHPExcel->getActiveSheet(1)->getStyle('J11')->applyFromArray(
+    array(
+        'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => 'D6CFD5')
+        ),
+        'font'  => array(
+          'bold' => true,
+          'size'  => 9, 
+          'name'  => 'Cambria'
+        )
+    )
+  );
+
+
+
+}
+
+
+///  IF SUPPLIER IS GREATER THAN 3, TURN INTO NEXT SHEET ////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
 $rowOne = 16;
 $rowA = 18;
 $rowB = 19;
@@ -278,24 +638,25 @@ while($excelrow = mysqli_fetch_assoc($sql_items) ){
 $rowFirst = 16;
 
 $select_rfid1 = mysqli_query($conn,"SELECT ppu,qty FROM supplier_quote sq LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.supplier_id = $sid1 AND rq.rfq_id = $rfq_id");
-while ($rowrfid1 = mysqli_fetch_assoc($select_rfid1)) {
-  $ppu1 = $rowrfid1['ppu'];
-  $qty1 = $rowrfid1['qty'];
-  $price_per_item1 = $ppu1 * $qty1;
+while ($rowrfid1 = mysqli_fetch_assoc($select_rfid1)) 
+{
+    $ppu1 = $rowrfid1['ppu'];
+    $qty1 = $rowrfid1['qty'];
+    $price_per_item1 = $ppu1 * $qty1;
 
-  if ($rowabsno1 != NULL) {
-  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($SelectedStyle);
-  $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($SelectedStyle);
-}
-  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($border);
-  $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($border);
-  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($styleContent);
-  $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($styleContent);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$rowFirst,number_format($ppu1,2));
-  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($ALIGNRIGHT);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowFirst,number_format($price_per_item1,2));
-  $rowFirst++;
+    if ($rowabsno1 != NULL) {
+    $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($SelectedStyle);
+    $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($SelectedStyle);
+  }
+    $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($border);
+    $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($border);
+    $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($styleContent);
+    $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($styleContent);
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$rowFirst,number_format($ppu1,2));
+    $objPHPExcel->getActiveSheet()->getStyle('I'.$rowFirst)->applyFromArray($ALIGNRIGHT);
+    $objPHPExcel->getActiveSheet()->getStyle('J'.$rowFirst)->applyFromArray($ALIGNRIGHT);
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowFirst,number_format($price_per_item1,2));
+    $rowFirst++;
 
 
 }
@@ -397,6 +758,8 @@ if ($rowabsno3 != NULL) {
   $objPHPExcel->getActiveSheet()->getStyle('M'.$rowthird)->applyFromArray($GrayStyle);
   
 }
+
+// =====================================================================================================================================================================================
   $objPHPExcel->setActiveSheetIndex()->setCellValue('M'.$rowthird,'GRANDTOTAL');
   $objPHPExcel->getActiveSheet()->getStyle('M'.$rowthird)->applyFromArray($border);
   $objPHPExcel->getActiveSheet()->getStyle('N'.$rowthird)->applyFromArray($styleContent);
