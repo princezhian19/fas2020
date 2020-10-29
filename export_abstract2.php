@@ -130,7 +130,7 @@ $objPHPExcel->setActiveSheetIndex()->setCellValue('I10',$pr_no);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('I11',$rfq_no);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('L10',$pr_date);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('L11',$rfq_date);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('I12',$pmo);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('L12',$pmo);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('P10',$mode_of_proc_title);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('P11',$purpose);
 
