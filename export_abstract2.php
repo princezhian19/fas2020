@@ -673,7 +673,6 @@ $objPHPExcel->getActiveSheet()->getStyle('T'.$rowsix)->applyFromArray($border);
 
 
   if ($abc12 > 49999) {
-      ECHO $rowC;
   $objPHPExcel->getActiveSheet()->getStyle('D'.$rowC)->applyFromArray($styleContent2);
   $objPHPExcel->getActiveSheet()->getStyle('D'.$rowD)->applyFromArray($styleContent21);
   $objPHPExcel->getActiveSheet()->mergeCells('D'.$rowC.':'.'G'.$rowC);
