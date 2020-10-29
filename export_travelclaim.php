@@ -126,7 +126,7 @@ if(mysqli_num_rows($result) > 0)
             $transpo[] = $row['TRANSPORTATION'];
             $perdiem[] = $row['PERDIEM'];
             $others[] = $row['OTHERS'];
-            $total_amount[] = $row['TOTAL_AMOUNT']
+            $total_amount[] = $row['TOTAL_AMOUNT'];
 
             $rnums = mysqli_num_rows($result1);
             $perdiem = $row['a'];
