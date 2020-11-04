@@ -413,32 +413,34 @@ function isSubmit()
                OBLIGATION REQUEST AND STATUS<br><u>DILG IV-A</u><br><span style = "font-size:20px;font-family:Times New Roamn;">Entity Name</span>
               </h3>
             </td>
-            <td style = "background-color:#B0BEC5;font-family:Times New Roman;font-family:Times New Roman;">Serial No:<br>Date:<br>Fund Cluster:</td>
+            <td style = "background-color:#B0BEC5;font-family:Times New Roman;font-family:Times New Roman;font-weight:bold;">Serial No:<br>Date:<br>Fund Cluster:</td>
           </tr>
          </table>
          <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "font-family:Times New Roamn;border:1px solid black;">
           <tr>
-            <td style = "background-color:#B0BEC5;">a</td>
+            <td style = "background-color:#B0BEC5;font-weight:bold;">a</td>
             <td colspan = 8>MARK KIM A. SACLUTI</td>
           </tr>
           <tr>
-            <td style = "background-color:#B0BEC5;">Office</td>
+            <td style = "background-color:#B0BEC5;font-weight:bold;">Office</td>
             <td colspan = 8></td>
           </tr>
           <tr>
-            <td style = "background-color:#B0BEC5;">Address</td>
+            <td style = "background-color:#B0BEC5;font-weight:bold;">Address</td>
             <td colspan = 8></td>
           </tr>
           <tr>
-            <td style = "background-color:#B0BEC5;">Responsibility Center</td>
-            <td colspan = 4 style = "background-color:#B0BEC5;">Particulars</td>
-            <td style = "background-color:#B0BEC5;">MFO/PAP</td>
-            <td style = "background-color:#B0BEC5;">UACS Object Code</td>
-            <td style = "background-color:#B0BEC5;" >Amount</td>
+            <td style = "background-color:#B0BEC5;font-weight:bold;">Responsibility Center</td>
+            <td colspan = 4 style = "background-color:#B0BEC5;font-weight:bold;">Particulars</td>
+            <td style = "background-color:#B0BEC5;font-weight:bold;">MFO/PAP</td>
+            <td style = "background-color:#B0BEC5;font-weight:bold;">UACS Object Code</td>
+            <td style = "background-color:#B0BEC5;font-weight:bold;" >Amount</td>
           </tr>
           <tr>
             <td><input type="text" name="q" class="form-control" disabled></td>
-            <td colspan = 4><input type="text" name="q" class="form-control"></td>
+            <td colspan = 4>
+            <textarea style = "resize:none" rows = "4" cols = "70"></textarea>
+            </td>
             <td><input type="text" name="q" class="form-control" disabled></td>
             <td><input type="text" name="q" class="form-control" disabled></td>
             <td><input type="text" name="q" class="form-control"></td>
