@@ -21,12 +21,20 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
     'borders' => array(
         'left' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
     ),
+    'font'  => array(
+        'size'  => 11,
+        'name' => 'Times New Roman'
+    )
     );
 
     $styleRight = array(
     'borders' => array(
         'right' => array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
     ),
+    'font'  => array(
+        'size'  => 11,
+        'name' => 'Times New Roman'
+    )
     );
 
     $stylebottom = array(
@@ -152,7 +160,16 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
 
 
                 $objPHPExcel->getActiveSheet(0)->getStyle('A'.$row_title)->applyFromArray($styleArray);
-                $objPHPExcel->getActiveSheet(0)->getStyle('A'.$row_title)->applyFromArray($styleRight);
+                $objPHPExcel->getActiveSheet(0)->getStyle('B'.$row_title)->applyFromArray($styleArray);
+                $objPHPExcel->getActiveSheet(0)->getStyle('C'.$row_title)->applyFromArray($styleArray);
+                $objPHPExcel->getActiveSheet(0)->getStyle('D'.$row_title)->applyFromArray($styleArray);
+                $objPHPExcel->getActiveSheet(0)->getStyle('E'.$row_title)->applyFromArray($styleArray);
+                $objPHPExcel->getActiveSheet(0)->getStyle('F'.$row_title)->applyFromArray($styleArray);
+                $objPHPExcel->getActiveSheet(0)->getStyle('G'.$row_title)->applyFromArray($styleArray);
+                $objPHPExcel->getActiveSheet(0)->getStyle('H'.$row_title)->applyFromArray($styleArray);
+                $objPHPExcel->getActiveSheet(0)->getStyle('I'.$row_title)->applyFromArray($styleArray);
+                $objPHPExcel->getActiveSheet(0)->getStyle('J'.$row_title)->applyFromArray($styleArray);
+                $objPHPExcel->getActiveSheet(0)->getStyle('J'.$row_title)->applyFromArray($styleRight);
 
                   // border
                  
@@ -172,33 +189,44 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
         }
 
 
-        
+        $rowZero = '';
       for ($i=0; $i < $tc_id; $i++)
        { 
             if($i == 0)
             {
-                $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                    $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
                     $query1 = "SELECT  tbltravel_claim_ro.RO_OT_OB as 'title' , PLACE, DEPARTURE, TOTAL_AMOUNT, ARRIVAL, MOT, TRANSPORTATION, PERDIEM, OTHERS, tbltravel_claim_ro.ID, TC_ID, tbltravel_claim_info.RO FROM `tbltravel_claim_info2`
                     INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
                     INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
                     WHERE  `tbltravel_claim_ro`.RO_OT_OB= '".$title[0]."'  ";
                     $result1 = mysqli_query($conn, $query1);
+                    $rowZero = mysqli_num_rows($result1); 
+
                     if(mysqli_num_rows($result1) > 0)    
                     {
                         $row_data = 16;
                         while($row11 = mysqli_fetch_array($result1))
                         {
                             $objPHPExcel->getActiveSheet()->mergeCells("B".$row_data."".":C".$row_data);
-                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleArray);
+                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleLeft);
                             // border
-                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleArray);
+                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleLeft);
+
+                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleRight);
 
 
                             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row_data,$row11['PLACE']);
@@ -214,7 +242,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
                             if(strlen($row1['PLACE']) > 20)
                             {
                                 $objPHPExcel->getActiveSheet()->mergeCells("B".$row_data."".":C".$row_data);
-                                $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleArray);
+                                $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleLeft);
                                 $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.''.':C'.$row_data) ->getAlignment()->setWrapText(true);
                                 $objPHPExcel->getActiveSheet()->getRowDimension($row_data)->setRowHeight(28);
                             }
@@ -222,9 +250,11 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
                             $row_data++;
                         
                         }
-
+                        $r = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
+                   
                     }
             }else if($i == 1){
+               
                 $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 
                     $query1 = "SELECT  tbltravel_claim_ro.RO_OT_OB as 'title' , PLACE, DEPARTURE, TOTAL_AMOUNT, ARRIVAL, MOT, TRANSPORTATION, PERDIEM, OTHERS, tbltravel_claim_ro.ID, TC_ID, tbltravel_claim_info.RO FROM `tbltravel_claim_info2`
@@ -235,7 +265,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
                 $row = mysqli_num_rows($result1); 
                 if($tc_id >= 2)
                 {
-                    $r = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()-$row;
+                    $r = ($objPHPExcel->setActiveSheetIndex(0)->getHighestRow()-$rowZero)-1;
                 }else{
                     $r = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()-1;
                 }
@@ -246,16 +276,17 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
                         while($row11 = mysqli_fetch_array($result1))
                         {
                             $objPHPExcel->getActiveSheet()->mergeCells("B".$row_data."".":C".$row_data);
-                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleArray);
+                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleLeft);
                             // border
-                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleArray);
+                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleLeft);
+                            
 
                             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row_data,$row11['PLACE']);
                             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$row_data,$row11['ARRIVAL']);
@@ -267,24 +298,23 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
                             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row_data,$row11['TOTAL_AMOUNT']);
 
                              // border
-                             $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleArray);
+                             $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleRight);
+                             $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleRight);
+                             $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleRight);
+                             $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleRight);
+                             $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleRight);
+                             $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleRight);
+                             $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleRight);
+                             $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleRight);
 
                              if(strlen($row1['PLACE']) > 20)
                              {
                                  $objPHPExcel->getActiveSheet()->mergeCells("B".$row_data."".":C".$row_data);
-                                 $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleArray);
+                                 $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleLeft);
                                  $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.''.':C'.$row_data) ->getAlignment()->setWrapText(true);
                                  $objPHPExcel->getActiveSheet()->getRowDimension($row_data)->setRowHeight(28);
                              }
  
-                
                             $row_data++;
                         }
                     }
@@ -301,7 +331,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
                     $row = mysqli_num_rows($result1); 
                     if($tc_id >= 2)
                     {
-                        $r = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+1;
+                        $r = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()-$row;
                     }else{
                         $r = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()-1;
                     }
@@ -312,16 +342,16 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
                         while($row11 = mysqli_fetch_array($result1))
                         {
                              $objPHPExcel->getActiveSheet()->mergeCells("B".$row_data."".":C".$row_data);
-                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleArray);
+                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleLeft);
                             // border
-                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleArray);
-                            $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleArray);
+                            $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleLeft);
+                            $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleLeft);
 
                             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row_data,$row11['PLACE']);
                             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$row_data,$row11['ARRIVAL']);
@@ -333,33 +363,96 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
                             $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row_data,$row11['TOTAL_AMOUNT']);      
                             
                              // border
-                             $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleArray);
-                             $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleArray);
+                             $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleRight);
+                            $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleRight);
 
                              if(strlen($row1['PLACE']) > 20)
                              {
                                  $objPHPExcel->getActiveSheet()->mergeCells("B".$row_data."".":C".$row_data);
-                                 $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleArray);
+                                 $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleLeft);
                                  $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.''.':C'.$row_data) ->getAlignment()->setWrapText(true);
                                  $objPHPExcel->getActiveSheet()->getRowDimension($row_data)->setRowWidth(28);
                              }
- 
                             $row_data++;
                         }
                     }
+            }else if($i == 3){
+              
+                $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+                $query1 = "SELECT  tbltravel_claim_ro.RO_OT_OB as 'title' , PLACE, DEPARTURE, TOTAL_AMOUNT, ARRIVAL, MOT, TRANSPORTATION, PERDIEM, OTHERS, tbltravel_claim_ro.ID, TC_ID, tbltravel_claim_info.RO FROM `tbltravel_claim_info2`
+                INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
+                INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
+                WHERE  `tbltravel_claim_ro`.RO_OT_OB= '".$title[3]."'  ";
+
+
+                $result1 = mysqli_query($conn, $query1);
+                $row = mysqli_num_rows($result1); 
+                if($tc_id >= 2)
+                {
+                    $r = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+1;
+                }else{
+                    $r = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()-1;
+                }
+                if(mysqli_num_rows($result1) > 0)    
+                {
+                   
+                    $row_data = $r;
+                    while($row11 = mysqli_fetch_array($result1))
+                    {
+                         $objPHPExcel->getActiveSheet()->mergeCells("B".$row_data."".":C".$row_data);
+                        $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleLeft);
+                        // border
+                        $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleLeft);
+                        $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleLeft);
+                        $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleLeft);
+                        $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleLeft);
+                        $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleLeft);
+                        $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleLeft);
+                        $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleLeft);
+                        $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleLeft);
+
+                        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('B'.$row_data,$row11['PLACE']);
+                        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('D'.$row_data,$row11['ARRIVAL']);
+                        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$row_data,$row11['DEPARTURE']);
+                        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('F'.$row_data,$row11['MOT']);
+                        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('G'.$row_data,$row11['TRANSPORTATION']);
+                        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('H'.$row_data,$row11['PERDIEM']);
+                        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('I'.$row_data,$row11['OTHERS']);
+                        $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$row_data,$row11['TOTAL_AMOUNT']);      
+                        
+                         // border
+                         $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data)->applyFromArray($styleRight);
+                        $objPHPExcel->getActiveSheet()->getStyle('D'.$row_data)->applyFromArray($styleRight);
+                        $objPHPExcel->getActiveSheet()->getStyle('E'.$row_data)->applyFromArray($styleRight);
+                        $objPHPExcel->getActiveSheet()->getStyle('F'.$row_data)->applyFromArray($styleRight);
+                        $objPHPExcel->getActiveSheet()->getStyle('G'.$row_data)->applyFromArray($styleRight);
+                        $objPHPExcel->getActiveSheet()->getStyle('H'.$row_data)->applyFromArray($styleRight);
+                        $objPHPExcel->getActiveSheet()->getStyle('I'.$row_data)->applyFromArray($styleRight);
+                        $objPHPExcel->getActiveSheet()->getStyle('J'.$row_data)->applyFromArray($styleRight);
+
+                         if(strlen($row1['PLACE']) > 20)
+                         {
+                             $objPHPExcel->getActiveSheet()->mergeCells("B".$row_data."".":C".$row_data);
+                             $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleLeft);
+                             $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.''.':C'.$row_data) ->getAlignment()->setWrapText(true);
+                             $objPHPExcel->getActiveSheet()->getRowDimension($row_data)->setRowWidth(28);
+                         }
+                        $row_data++;
+                    }
+                }
             }
        }
-
        $SQL = "SELECT DISTINCT(RO_OT_OB),DATE, PLACE, DEPARTURE, ARRIVAL, MOT, TRANSPORTATION, PERDIEM, OTHERS, tbltravel_claim_ro.ID, TC_ID, tbltravel_claim_info.RO FROM `tbltravel_claim_info2`
        INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
        INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
        WHERE  `RO_TO_OB`= '".$_GET['id']."' group by RO_OT_OB ";
+       echo $SQL;
 
        $result5 = mysqli_query($conn, $SQL);
        if(mysqli_num_rows($result5) > 0)    
@@ -369,15 +462,13 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
            {
 
                $forDate = countTravelDetails($row5['ID']);
-               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row_date,date(strtotime('F d, Y',$row5['DATE'])));
-
+               $objPHPExcel->setActiveSheetIndex(0)->setCellValue('A'.$row_date,$row5['DATE']);
                $row_date += $forDate;
                $row_date++;
            }
     
        }
-
-    $lastRow= $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+2;
+    $lastRow= $objPHPExcel->setActiveSheetIndex(0)->getHighestRow()+1;
     $row1 = $lastRow+1;
     $row2 = $lastRow+3;
     $row33 = $lastRow+4;
@@ -393,6 +484,28 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
 
 
     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$lastRow,'TOTAL');
+    $objPHPExcel->getActiveSheet()->getStyle('A'.$lastRow)->applyFromArray($styleTop);
+    $objPHPExcel->getActiveSheet()->getStyle('B'.$lastRow)->applyFromArray($styleTop);
+    $objPHPExcel->getActiveSheet()->getStyle('C'.$lastRow)->applyFromArray($styleTop);
+    $objPHPExcel->getActiveSheet()->getStyle('D'.$lastRow)->applyFromArray($styleTop);
+    $objPHPExcel->getActiveSheet()->getStyle('A'.$lastRow)->applyFromArray($stylebottom);
+    $objPHPExcel->getActiveSheet()->getStyle('B'.$lastRow)->applyFromArray($stylebottom);
+    $objPHPExcel->getActiveSheet()->getStyle('C'.$lastRow)->applyFromArray($stylebottom);
+    $objPHPExcel->getActiveSheet()->getStyle('D'.$lastRow)->applyFromArray($stylebottom);
+
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$lastRow)->applyFromArray($styleTop);
+    $objPHPExcel->getActiveSheet()->getStyle('F'.$lastRow)->applyFromArray($styleTop);
+    $objPHPExcel->getActiveSheet()->getStyle('G'.$lastRow)->applyFromArray($styleTop);
+    $objPHPExcel->getActiveSheet()->getStyle('H'.$lastRow)->applyFromArray($styleTop);
+    $objPHPExcel->getActiveSheet()->getStyle('I'.$lastRow)->applyFromArray($styleTop);
+    $objPHPExcel->getActiveSheet()->getStyle('J'.$lastRow)->applyFromArray($styleTop);
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$lastRow)->applyFromArray($stylebottom);
+    $objPHPExcel->getActiveSheet()->getStyle('F'.$lastRow)->applyFromArray($stylebottom);
+    $objPHPExcel->getActiveSheet()->getStyle('G'.$lastRow)->applyFromArray($stylebottom);
+    $objPHPExcel->getActiveSheet()->getStyle('H'.$lastRow)->applyFromArray($stylebottom);
+    $objPHPExcel->getActiveSheet()->getStyle('I'.$lastRow)->applyFromArray($stylebottom);
+    $objPHPExcel->getActiveSheet()->getStyle('J'.$lastRow)->applyFromArray($stylebottom);
+
     $objPHPExcel->getActiveSheet()->getStyle('E'.$lastRow)->applyFromArray($styleFont);
     $objPHPExcel->getActiveSheet()->getStyle('A'.$lastRow.':J'.$lastRow)->applyFromArray($stylebottom);
     $objPHPExcel->getActiveSheet()->getStyle('A'.$lastRow)->applyFromArray($styleLeft);
