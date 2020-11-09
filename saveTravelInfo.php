@@ -43,6 +43,7 @@ if(mysqli_num_rows($result) > 0)
         
         for($a=0;$a < count($_POST['date']); $a++)
         {
+
             if(isset($_POST['breakfast'][$a]) || isset($_POST['lunch'][$a]) || isset($_POST['dinner'][$a]) || isset($_POST['wor_txt'][$a])) 
             { 
               
@@ -92,7 +93,6 @@ if(mysqli_num_rows($result) > 0)
                         if (mysqli_query($conn, $insert_ro)) {
                         } else {
                         }
-                        echo $insert_ro.'<br>';
                     }
                 }
 
@@ -103,7 +103,6 @@ if(mysqli_num_rows($result) > 0)
                 if (mysqli_query($conn, $insert_ro)) {
                 } else {
                 }
-                echo $insert_ro.'<br>';
                 
             }
 
