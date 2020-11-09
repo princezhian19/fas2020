@@ -190,6 +190,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
 
 
         $rowZero = '';
+        $TOTAL = '';
       for ($i=0; $i < $tc_id; $i++)
        { 
             if($i == 0)
@@ -207,6 +208,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
                         $row_data = 16;
                         while($row11 = mysqli_fetch_array($result1))
                         {
+                            $TOTAL = $row11['TOTAL_AMOUNT'];
                             $objPHPExcel->getActiveSheet()->mergeCells("B".$row_data."".":C".$row_data);
                             $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleLeft);
                             // border
@@ -547,6 +549,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
 
 
     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$lastRow,'TOTAL');
+    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J19','TOTAL');
     $objPHPExcel->getActiveSheet()->getStyle('A'.$lastRow)->applyFromArray($styleTop);
     $objPHPExcel->getActiveSheet()->getStyle('B'.$lastRow)->applyFromArray($styleTop);
     $objPHPExcel->getActiveSheet()->getStyle('C'.$lastRow)->applyFromArray($styleTop);
