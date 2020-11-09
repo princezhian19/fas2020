@@ -71,7 +71,7 @@ if(mysqli_num_rows($result) > 0)
             $totalamount = $_POST['transpo_fare'][$a]+$perdiem;
             $mot = $_POST['mot'][$a];
             $ro = $_POST['ro'][$a];
-            $ro_format = mysql_real_escape_string($ro);
+            $ro_format = htmlspecialchars($ro);
 
             $date = $_POST['date'][$a];
 
@@ -92,6 +92,7 @@ if(mysqli_num_rows($result) > 0)
                         if (mysqli_query($conn, $insert_ro)) {
                         } else {
                         }
+                        echo $insert_ro.'<br>';
                     }
                 }
 
@@ -102,6 +103,8 @@ if(mysqli_num_rows($result) > 0)
                 if (mysqli_query($conn, $insert_ro)) {
                 } else {
                 }
+                echo $insert_ro.'<br>';
+                
             }
 
 
