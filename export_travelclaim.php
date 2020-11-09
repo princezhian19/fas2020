@@ -353,7 +353,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
                         $row_data = $r;
                         while($row11 = mysqli_fetch_array($result1))
                         {
-                            $TOTAL2 = $row11['TOTAL_AMOUNT'];
+                            $TOTAL3 = $row11['TOTAL_AMOUNT'];
 
                             $objPHPExcel->getActiveSheet()->mergeCells("B".$row_data."".":C".$row_data);
                             $objPHPExcel->getActiveSheet()->getStyle('B'.$row_data.':C'.$row_data)->applyFromArray($styleLeft);
