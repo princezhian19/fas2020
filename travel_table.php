@@ -262,7 +262,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
                   cache: false,
                   success: function(data)
                   {
-                    $('#travelDate_panel').html(data);
+                    $('#travelDate_panel').html(data);  
 
                   }
                 });

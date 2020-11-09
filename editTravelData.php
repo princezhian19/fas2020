@@ -87,9 +87,9 @@ only screen and (max-width: 760px),
                             <div class="form-group">
                               <label>Activity Title</label>
                               <input type = "text" name = "ro[]" class = "form-control " value = "<?php echo $row1['RO_OT_OB']?>" required/>
-                              <input type = "hidden" name = "ID[]" class = "form-control " value = "<?php echo $row1['PID']?>" required/>
-                              <input type = "hidden" name = "TC_ID[]" class = "form-control " value = "<?php echo $_POST['ro']?>" required/>
-                              <input type = "hidden" name = "RO[]" class = "form-control " value = "<?php echo $row1['RO']?>" required/>
+                              <input type = "text" name = "ID[]" class = "form-control " value = "<?php echo $row1['PID']?>" required/>
+                              <input type = "text" name = "TC_ID[]" class = "form-control " value = "<?php echo $_POST['ro']?>" required/>
+                              <input type = "text" name = "RO[]" class = "form-control " value = "<?php echo $row1['RO']?>" required/>
                             </div>
                           </div>
                           <div class="col-md-12">

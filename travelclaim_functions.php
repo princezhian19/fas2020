@@ -445,15 +445,20 @@ session_start();
                 `PERDIEM`='".$perdiem."',
                 `OTHERS`='".$others."',
                 `TOTAL_AMOUNT`='".$total_amount."' WHERE  `ID` = '".$id."'";
+
+              
             
                 if (mysqli_query($conn, $UPDATE)) {
                 } else {
                 }
 
-            $UPDATE2 = "UPDATE `tbltravel_claim_ro` SET `RO_OT_OB`='".$title."' WHERE  `ID` = '".$RO."'";
+            $UPDATE2 = "UPDATE `tbltravel_claim_ro` SET `RO_TO_OB`='".$title."' WHERE  `ID` = '".$tc_id."'";
             if (mysqli_query($conn, $UPDATE2)) {
             } else {
             }
+
+            echo $UPDATE2;
+            EXIT();
 
             header('Location:CreateTravelClaim.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'');
             
