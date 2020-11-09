@@ -549,7 +549,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
 
 
     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('E'.$lastRow,'TOTAL');
-    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$lastRow,'TOTAL');
+    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J'.$lastRow,$TOTAL);
     $objPHPExcel->getActiveSheet()->getStyle('A'.$lastRow)->applyFromArray($styleTop);
     $objPHPExcel->getActiveSheet()->getStyle('B'.$lastRow)->applyFromArray($styleTop);
     $objPHPExcel->getActiveSheet()->getStyle('C'.$lastRow)->applyFromArray($styleTop);
