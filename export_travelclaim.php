@@ -470,6 +470,8 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
        }
   
        $TOT = $TOTAL1 + $TOTAL2 + $TOTAL3 + $TOTAL4 + $TOTAL5;
+       echo $TOT;
+       EXIT();
        $SQL = "SELECT DISTINCT(RO_OT_OB),DATE, PLACE, DEPARTURE, ARRIVAL, MOT, TRANSPORTATION, PERDIEM, OTHERS, tbltravel_claim_ro.ID, TC_ID, tbltravel_claim_info.RO FROM `tbltravel_claim_info2`
        INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
        INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 

@@ -710,6 +710,7 @@ function isSubmit()
                                     <input type="text" disabled name="wor_txt[]"  class = "borderless wor_txt" style = "width:50%;"/>
                                     <br>
                                     <input style = "margin-left:14px"type="checkbox"  name = "wor_txt[]" class="minimal-red receipt wor" value ="Without Receipt"> Without Receipt
+                                  
                                   </div>
 
                                 </div>
