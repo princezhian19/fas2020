@@ -71,7 +71,7 @@ if(mysqli_num_rows($result) > 0)
             $totalamount = $_POST['transpo_fare'][$a]+$perdiem;
             $mot = $_POST['mot'][$a];
             $ro = $_POST['ro'][$a];
-            $ro_format = htmlspecialchars($ro);
+            // $ro_format = htmlspecialchars($ro);
 
             $date = $_POST['date'][$a];
 
@@ -88,7 +88,7 @@ if(mysqli_num_rows($result) > 0)
 
                     }else{
                         $insert_ro ="INSERT INTO `tbltravel_claim_ro`(`ID`, `RO_OT_OB`, `UNAME`) 
-                        VALUES (null, '".$ro_format."','".$_SESSION['username']."')";
+                        VALUES (null, '".$_POST['ro'][$a]."','".$_SESSION['username']."')";
                         if (mysqli_query($conn, $insert_ro)) {
                         } else {
                         }
@@ -99,7 +99,7 @@ if(mysqli_num_rows($result) > 0)
             }else{
                 
                 $insert_ro ="INSERT INTO `tbltravel_claim_ro`(`ID`, `RO_OT_OB`, `UNAME`) 
-                VALUES (null, '".$ro_format."','".$_SESSION['username']."')";
+                VALUES (null, '".$_POST['ro'][$a]."','".$_SESSION['username']."')";
                 if (mysqli_query($conn, $insert_ro)) {
                 } else {
                 }
