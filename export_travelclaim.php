@@ -133,6 +133,23 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
         }
         return $excelRow;
     }
+    function totalAmount()
+    {
+        $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+            $query = "SELECT SUM(TOTAL_AMOUNT) FROM `tbltravel_claim_info2`
+            INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
+            INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
+            WHERE  `RO_TO_OB`='".$_GET['id']."'  group by RO_OT_OB ";
+            $result = mysqli_query($conn, $query);
+            if(mysqli_num_rows($result) > 0)    
+            {
+                while($row1 = mysqli_fetch_array($result))
+                {
+                    $excelRow = $row1['count'];
+                }
+            }
+            return $excelRow;
+    }
    
     
         $query = "SELECT DISTINCT(RO_OT_OB),DATE, PLACE, DEPARTURE, ARRIVAL, MOT, TRANSPORTATION, PERDIEM, OTHERS, tbltravel_claim_ro.ID, TC_ID, tbltravel_claim_info.RO FROM `tbltravel_claim_info2`
@@ -191,11 +208,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
 
         $rowZero = '';
         $rowOne = '';
-        $TOTAL1 = '';
-        $TOTAL2 = '';
-        $TOTAL3 = '';
-        $TOTAL4 = '';
-        $TOTAL5 = '';
+       
         $TOT = '';
       for ($i=0; $i < $tc_id; $i++)
        { 
@@ -469,7 +482,7 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
             }
        }
   
-       $TOT = $TOTAL1 + $TOTAL2 + $TOTAL3 + $TOTAL4 + $TOTAL5;
+       $TOT = totalAmount();
        echo $TOT;
        EXIT();
        $SQL = "SELECT DISTINCT(RO_OT_OB),DATE, PLACE, DEPARTURE, ARRIVAL, MOT, TRANSPORTATION, PERDIEM, OTHERS, tbltravel_claim_ro.ID, TC_ID, tbltravel_claim_info.RO FROM `tbltravel_claim_info2`
