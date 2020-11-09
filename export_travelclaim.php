@@ -516,7 +516,6 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
        INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
        INNER JOIN `tbltravel_claim_ro` on `tbltravel_claim_info`.RO = `tbltravel_claim_ro`.ID 
        WHERE  `RO_TO_OB`= '".$_GET['id']."' group by RO_OT_OB ";
-       echo $SQL;
 
        $result5 = mysqli_query($conn, $SQL);
        if(mysqli_num_rows($result5) > 0)    
