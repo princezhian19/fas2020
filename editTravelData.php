@@ -70,6 +70,8 @@ only screen and (max-width: 760px),
    
 
      $result = mysqli_query($conn, $query);
+     $countRows = mysqli_num_rows($result); 
+
      if(mysqli_num_rows($result) > 0)    
      {
         while($row1 = mysqli_fetch_array($result))
@@ -90,6 +92,7 @@ only screen and (max-width: 760px),
                               <input type = "hidden" name = "ID[]" class = "form-control " value = "<?php echo $row1['PID']?>" required/>
                               <input type = "hidden" name = "TC_ID[]" class = "form-control " value = "<?php echo $_POST['ro']?>" required/>
                               <input type = "hidden" name = "RO[]" class = "form-control " value = "<?php echo $row1['RO']?>" required/>
+                              <input type = "hidden" name = "count[]" class = "form-control " value = "<?php echo $countRows;?>" required/>
                             </div>
                           </div>
                           <div class="col-md-12">

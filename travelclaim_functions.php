@@ -365,6 +365,8 @@ session_start();
     {
         for($a=0;$a < count($_POST['date']); $a++)
         {
+            echo count($_POST['date']);
+            echo $_POST['count'][$a];
             if(isset($_POST['breakfast'][$a]) || isset($_POST['lunch'][$a]) || isset($_POST['dinner'][$a]) || isset($_POST['wor_txt'][$a])) 
                 { 
                     $breakfast = $_POST['breakfast'][$a]; 
@@ -463,6 +465,7 @@ session_start();
             header('Location:CreateTravelClaim.php?username='.$_SESSION['username'].'&division='.$_SESSION['division'].'');
             
         }
+       
     }
     $func = '';
     if(isset($_POST['action']))
