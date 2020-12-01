@@ -282,7 +282,7 @@ $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowM.':C'.$rowM);
 $objPHPExcel->getActiveSheet()->getStyle('B'.$rowM.':C'.$rowM)->applyFromArray($stylebottom); 
         $objPHPExcel->getActiveSheet()->getStyle('B'.$rowM)->getFont()->setBold(true);
 $objPHPExcel->getActiveSheet()->getStyle('B'.$rowM)->applyFromArray($styler);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowM,'RESTITUTO B. NAÑEZ, III');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowM,'AGNES S. SANGEL');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowN,'Signature over Printed Name of Chief Accountant/Head of');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowM,'Amount : _____________________________');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('C'.$rowO,'Accounting Division/Unit');
