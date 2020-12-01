@@ -290,30 +290,195 @@ function isSubmit()
     <br>
         <div class="box-body">
             <div class="well" style = "padding:20px;">
-          
+	<button class="gototab btn btn-lg btn-success pull-right" style = "margin-left:5%;width:6%;" onclick="goToTabByDelta(+1)">Next</button>
+	<button class="gototab btn btn-lg btn-success pull-right" onclick="goToTabByDelta(-1)">Previous</button> 
 
-            <center>
-              
-          
-            <!-- START CUSTOM TABS -->
+            
+                
 
-<div class="row">
-  <div class="col-md-12">
-    <!-- Custom Tabs -->
-    <div class="nav-tabs-custom">
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab_1" data-toggle="tab">Itinerary</a></li>
-        <li><a href="#tab_2" data-toggle="tab">ORS</a></li>
-        <li><a href="#tab_3" data-toggle="tab">DV</a></li>
-      
-        
+
+<script>
+// Global var to store active tab index
+var activeTabIndex = 1;
+var numberOfTabs;
+
+window.onload=function() {
+  // get tab container
+  var container = document.getElementById("tabContainer");
+  // this adds click event to tabs
+  var tabs = container.getElementsByTagName("li");
+  // dynamic calculation of number of tab
+  numberOfTabs = tabs.length;
+  // attache on each tab header click event
+  tabs[0].onclick=displayPage1;
+  tabs[1].onclick=displayPage2;
+  tabs[2].onclick=displayPage3;
+  // active first tab by default
+  goToTabByIndex(1);
+};
+	
+
+// Tab 1 on-click
+function displayPage1(event) {
+  goToTabByIndex(1);
+}
+
+// Tab 2 on-click
+function displayPage2(event) {
+  goToTabByIndex(2);
+}
+
+// Tab 3 on-click
+function displayPage3(event) {
+  goToTabByIndex(3);
+} 
+ 
+/**
+ * Use to display a particular tab
+ */ 
+function displayTab(tabIndex) {
+  document.getElementById("tabHeader_" + tabIndex).setAttribute("class","tabActiveHeader");
+  document.getElementById("tabpage_" + tabIndex).setAttribute("style", "display: block");
+}
+ 
+/**
+ * Use to hide a particular tab
+ */ 
+function hideTab(tabIndex) {
+  document.getElementById("tabHeader_" + tabIndex).removeAttribute("class","tabActiveHeader");
+  document.getElementById("tabpage_" + tabIndex).setAttribute("style", "display: none");
+}
+ 
+/**
+ * Use by previous / next button
+ */
+function goToTabByDelta(deltaIndex) {
+  // Get previous/next tab 
+  activeTabIndex = activeTabIndex + deltaIndex;
+  if (activeTabIndex > numberOfTabs) { activeTabIndex = 1; }
+  if (activeTabIndex < 1) { activeTabIndex = numberOfTabs ; }
+  // Loop over every tab 
+  for (var i=1; i<=numberOfTabs; i++) {
+    if (i == activeTabIndex) {
+      displayTab(i);
+    } else {
+      hideTab(i); 
+    }
+  }
+}
+
+/**
+ * Use by tab on-click
+ */
+function goToTabByIndex(newActiveTabIndex) {
+  activeTabIndex = newActiveTabIndex
+  // Loop over every tab 
+  for (var i=1; i<=numberOfTabs; i++) {
+    if (i == newActiveTabIndex) {
+      displayTab(i);
+    } else {
+      hideTab(i); 
+    }
+  }
+}
+</script>
+<style>
+body {
+	font-family: arial;
+}
+.tabContainer  {
+ 
+	padding:15px;
+	-moz-border-radius: 4px;
+	border-radius: 4px; 
+}
+.tabs{
+	overflow:hidden;
+}
+.tabs > ul{
+	font: 1em;
+	list-style:none;
+}
+.tabs > ul > li {
+	margin:0 2px 0 0;
+	padding:7px 10px;
+	display:block;
+	float:left;
+	color:#333;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-top-left-radius:4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px; 
+	
+	background: #FFFFFF; /* old browsers */
+	background: -moz-linear-gradient(top, #FFFFFF 0%, #F3F3F3 10%, #F3F3F3 50%, #FFFFFF 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF)); /* webkit */
+	cursor:pointer;
+	border: 1px #ccc solid;
+}
+.tabs > ul > li:hover {
+	color:#ccc;
+	background: #C9C9C9; /* old browsers */
+	background: -moz-linear-gradient(top, #0C91EC 0%, #257AB6 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0C91EC), color-stop(100%,#257AB6)); /* webkit */
+}
+.tabs > ul > li.tabActiveHeader {
+	color:#FFF;
+	color: #333background: #C9C9C9; /* old browsers */
+	background: -moz-linear-gradient(top, #0C91EC 0%, #257AB6 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0C91EC), color-stop(100%,#257AB6)); /* webkit */
+}
+.tabscontent {
+	-moz-border-radius-topleft: 0px;
+	-moz-border-radius-topright: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px; 
+	padding:10px 10px 25px;
+	background: #FFFFFF; /* old browsers */
+	background: -moz-linear-gradient(top, #FFFFFF 0%, #FFFFFF 90%, #e4e9ed 100%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(90%,#FFFFFF), color-stop(100%,#e4e9ed)); /* webkit */
+	margin:0;
+	color:#333;
+	border: 1px #ccc solid;
+}
+/* .gototab {
+	cursor: pointer;
+	background: green;
+	color: #fff;
+	padding: 10px;
+	height: 30px;
+	line-height: 30px;
+	width: 100px;
+	text-align: center;
+	float: left;
+	margin: 10px;
+} */
+
+</style>
+<div id="tabContainer" class="tabContainer">
+    <div class="tabs" id="tabs">
+	<ul class="nav nav-tabs">
+        <li id="tabHeader_1">Page 1</li>
+        <li id="tabHeader_2">Page 2</li>
+        <li id="tabHeader_3">Page 3</li>
       </ul>
-      <div class="tab-content">
-        <div class="tab-pane active " id="tab_1">
-        <H5 style = "margin-left:1300px;font-weight:bold;"><i>Appendix 45</i></H5>
-        <form method = "POST" action = "travelclaim_functions.php?action=add">
-              <h1>ITINERARY OF TRAVEL </h1>
-              
+    </div>
+    <div id="tabscontent" class="tab-content">
+      <div class="tabpage" id="tabpage_1">
+        <h2>Itinerary of Travel</h2>
+        <p>Appendix 45</p>
+          <form method = "POST" action = "travelclaim_functions.php?action=add">
               <table  cellpadding="0" cellspacing="0" width="80%" border="1">
                 <thead>
                   <tr>
@@ -400,23 +565,23 @@ function isSubmit()
               
                   
               </table>
-            </form>
-        </div>
-        <!-- /.tab-pane -->
-        <div class="tab-pane " id="tab_2">
-        <H5 style = "margin-left:1300px;font-weight:bold;"><i>Appendix 11</i></H5>
+          </form>
+      </div>
+      <div class="tabpage" id="tabpage_2" style="display:none;">
+        <h2>ORS</h2>
+        <p>Appendix 11</p>
 
-         <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "border:1px solid black;">
+        <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "border:1px solid black;">
           <tr>
             <td style = "width:60%;">
               <h3 style = "text-align:center;font-family:Times New Roman;font-weight:bold;">
-               OBLIGATION REQUEST AND STATUS<br><u>DILG IV-A</u><br><span style = "font-size:20px;font-family:Times New Roamn;">Entity Name</span>
+                OBLIGATION REQUEST AND STATUS<br><u>DILG IV-A</u><br><span style = "font-size:20px;font-family:Times New Roamn;">Entity Name</span>
               </h3>
             </td>
             <td style = "background-color:#B0BEC5;font-family:Times New Roman;font-family:Times New Roman;font-weight:bold;">Serial No:<br>Date:<br>Fund Cluster:</td>
           </tr>
-         </table>
-         <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "font-family:Times New Roamn;border:1px solid black;">
+        </table>
+        <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "font-family:Times New Roamn;border:1px solid black;">
           <tr>
             <td style = "background-color:#B0BEC5;font-weight:bold;">a</td>
             <td colspan = 8>MARK KIM A. SACLUTI</td>
@@ -484,10 +649,10 @@ function isSubmit()
             <td colspan = 7 style = "text-align:center;font-weight:bold;"> STATUS OF OBLIGATION</td>
           </tr>
           <tr>
-            <td  colspan = 2 style = "background-color:#B0BEC5;text-align:center;font-weight:bold;font-family: Times New Roman;"> Reference </td>
-            <td colspan = 8 style = "background-color:#B0BEC5;text-align:center;font-weight:bold;font-family: Times New Roman;"> Amount </td>
-         </tr>
-         <tr>
+          <td  colspan = 2 style = "background-color:#B0BEC5;text-align:center;font-weight:bold;font-family: Times New Roman;"> Reference </td>
+          <td colspan = 8 style = "background-color:#B0BEC5;text-align:center;font-weight:bold;font-family: Times New Roman;"> Amount </td>
+          </tr>
+          <tr>
           <td rowspan = 2 style = "width:20%;">Date</td>
           <td rowspan = 2>Particulars</td>
           <td rowspan = 2>ORS/JEV/Check/ADA/TRA No.</td>
@@ -495,61 +660,48 @@ function isSubmit()
           <td>Payable</td>
           <td>Payment</td>
           <td  colspan = 2 style = "text-align:center;">Balance</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
           <td>(a)</td>
           <td>(b)</td>
           <td>(c)</td>
           <td>Not Yet Due</td>
           <td>Due and Demandable</td>
-        </tr>
-        <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        </tr>
-       
+          </tr>
+          <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          </tr>
 
-         </table>
-        </div>
-        <!-- /.tab-pane -->
-        <div class="tab-pane" id="tab_3">
-        
-        </div>
-        <!-- /.tab-pane -->
+
+        </table>  
+
       </div>
-      <!-- /.tab-content -->
+      <div class="tabpage" id="tabpage_3" style="display:none;">
+        <h2>Page 3</h2>
+        <p>
+		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+		</p>
+		<p>
+		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+		</p>
+      </div>
     </div>
-    <!-- nav-tabs-custom -->
-  </div>
-  
-</div>
-            </center>
-            
-                
-
+	</div>
+	
 </div>  
 </div>  
 
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>  
-<br>
+	
+	<div style="clear:both;">&nbsp;<div>
+	
+	<p style="margin-top: 150px;"></p>
 </body>
 <!-- ================= add travel =================== -->
 <div class="modal fade" id="editModal">
