@@ -58,7 +58,6 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
         } 
 }
  ?>
-  
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
@@ -101,8 +100,5 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     })
   })
 </script>
-
-
-
 </body>
 </html>
