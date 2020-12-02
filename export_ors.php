@@ -68,10 +68,10 @@ if ($po_no == '') {
   if ($prpmo == 'LGCDD') {
     $prpmo = 4;
   }
-  if ($prpmo == 'LGMED-PDMU') {
+  if ($prpmo == 'LGMED-MBRTG') {
     $prpmo = 6;
   }
-  if ($prpmo == 'LGCDD-MBRTG') {
+  if ($prpmo == 'LGCDD-PDMU') {
     $prpmo = 7;
   }
 

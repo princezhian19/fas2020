@@ -447,7 +447,7 @@ $objPHPExcel->getActiveSheet()->getStyle('F'.$rowF)->applyFromArray($styleConten
 $objPHPExcel->getActiveSheet()->getStyle('G'.$rowF.':G'.$rowG)->applyFromArray($styleRight);
 
 $objPHPExcel->getActiveSheet()->mergeCells('H'.$rowF.':H'.$rowG);
-$objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowF,"Recieved by:");
+$objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowF,"Received by:");
 $objPHPExcel->getActiveSheet()->getStyle('H'.$rowF)->applyFromArray($styleContent2);
 $objPHPExcel->getActiveSheet()->getStyle('H'.$rowF.':H'.$rowG)->applyFromArray($styleRight);
 
