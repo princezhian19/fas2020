@@ -162,6 +162,8 @@ $win_id = $abcrow['supplier_id'];
 $winneryey = mysqli_query($conn,"SELECT supplier_title FROM supplier WHERE id = $win_id");
 $rowWinY = mysqli_fetch_array($winneryey);
 $WinSupply = $rowWinY['supplier_title'];
+echo $WinSupply;
+exit();
 
 $select_rfqitems = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id");
 while ($rfqitems = mysqli_fetch_assoc($select_rfqitems)) {
