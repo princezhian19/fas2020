@@ -21,7 +21,7 @@ while ($allS = mysqli_fetch_assoc($all_selected_suppliers1)) {
   $count_supplier = $allS['count_supplier'];
 }
 
-if($count_supplier >= 3)
+if($count_supplier > 3)
 {
 header('Location: export_abstract2.php?rfq_id='.$rfq_id.'&abstract_no='.$abstract_no.'&pr_no='.$pr_no.'');
 }else{
