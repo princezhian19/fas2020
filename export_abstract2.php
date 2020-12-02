@@ -144,11 +144,11 @@ $qty = $row['qty'];
 $abc = $row['abc'];
 $item_unit_title = $row['item_unit_title'];
 
-$all_selected_suppliers1 = mysqli_query($conn, "SELECT count(*) as 'count_supplier', s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  ");
-$count_supplier = '';
+$all_selected_suppliers1 = mysqli_query($conn, "SELECT  s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  ");
+// $count_supplier = '';
 while ($allS = mysqli_fetch_assoc($all_selected_suppliers1)) {
   $Asupplier[] = $allS['sid'];
-  $count_supplier = $allS['count_supplier'];
+  // $count_supplier = $allS['count_supplier'];
 }
 
 
@@ -162,8 +162,7 @@ $win_id = $abcrow['supplier_id'];
 $winneryey = mysqli_query($conn,"SELECT supplier_title FROM supplier WHERE id = $win_id");
 $rowWinY = mysqli_fetch_array($winneryey);
 $WinSupply = $rowWinY['supplier_title'];
-echo $WinSupply;
-exit();
+
 
 $select_rfqitems = mysqli_query($conn,"SELECT id FROM rfq_items WHERE rfq_id = $rfq_id");
 while ($rfqitems = mysqli_fetch_assoc($select_rfqitems)) {
