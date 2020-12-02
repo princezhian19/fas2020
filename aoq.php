@@ -215,6 +215,21 @@ if (isset($_POST['create'])) {
 
 }
 
+if(isset($_POST['create1']))
+{
+ 
+  $abstract_no = $_POST['abstract_no'];
+  $supplier_id = $_POST['supplier_id_create'];
+  $date_opened1 = $_POST['date_opened'];
+  $time_opened = $_POST['time_opened'];
+  $date_opened = date('Y-m-d H:i:s', strtotime("$date_opened1 $time_opened"));
+  $remarks = $_POST['remarks'];
+
+    $INSERT_aoq = mysqli_query($conn,"INSERT INTO aoq_data(aoq_no,action_officer,datetime_created,date,remarks) VALUES('$abstract_no',14,'$date_opened','$date_opened','$remarks')");
+echo "INSERT INTO aoq_data(aoq_no,action_officer,datetime_created,date,remarks) VALUES('$abstract_no',14,'$date_opened','$date_opened','$remarks')";
+exit();
+}
+
 if (isset($_POST['update_changes'])) {
   $supplier_id_update = $_POST['supplier_id_update'];
   $suppQ_id = $_POST['suppQ_id'];
@@ -582,7 +597,7 @@ $rfq_id1 = $rowRFQ['rfq_id'];
                 <label>Remarks</label>
                 <textarea class="form-control" name="remarks" rows="8"><?php echo $remarks?></textarea>
               </div>
-              <button class="btn btn-primary pull-right" type="submit" name="create">Create</button>
+              <button class="btn btn-primary pull-right" type="submit" name="create1">Create</button>
             </div>
 
             <?php else: ?>
