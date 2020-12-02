@@ -28,7 +28,7 @@ $abs_date1 = $rowabs['datetime_created'];
 
 
 // $abs_date = date("Y-m-d\TH:i:s",strtotime($abs_date1));
-$abs_date = date("m-d-Y",strtotime($abs_date1));
+$abs_date = date("m/d/Y",strtotime($abs_date1));
 $abs_date2 = date("H:i",strtotime($abs_date1));
 
 function Allsupplier($connect)
@@ -151,14 +151,18 @@ if (isset($_POST['submit'])) {
     $supplier_id = $_POST['supplier_id_orig'];
     $date_opened1 = $_POST['date_opened'];
     $time_opened = $_POST['time_opened'];
+  
+    // $date_opened = date('Y-m-d', strtotime("$date_opened1 $time_opened"));
     $date_opened = date('Y-m-d H:i:s', strtotime("$date_opened1 $time_opened"));
     $remarks = $_POST['remarks'];
+
     $UPDATE_0 = mysqli_query($conn,"UPDATE abstract_of_quote SET abstract_no = NULL WHERE supplier_id = $supplier_id1 AND rfq_id = $rfq_id ");
 
     $UPDATE_1 = mysqli_query($conn,"UPDATE abstract_of_quote SET abstract_no = $abstract_no1 WHERE supplier_id = $supplier_id AND rfq_id = $rfq_id ");
 
     $UPDATE_2 = mysqli_query($conn,"UPDATE aoq_data SET aoq_no = '$abstract_no', datetime_created = '$date_opened',remarks = '$remarks' WHERE id = $abstract_no1 ");
-
+    // echo "UPDATE aoq_data SET aoq_no = '$abstract_no', datetime_created = '$date_opened',remarks = '$remarks' WHERE id = $abstract_no1";
+    // exit();
       $selectAOQ = mysqli_query($conn,"SELECT id FROM aoq_data WHERE aoq_no = '$abstract_no' ");
     $rowAOQ = mysqli_fetch_array($selectAOQ);
     $aoqID =$rowAOQ['id'];
