@@ -226,8 +226,8 @@ if(isset($_POST['create1']))
   $remarks = $_POST['remarks'];
 
     $INSERT_aoq = mysqli_query($conn,"INSERT INTO aoq_data(aoq_no,action_officer,datetime_created,date,remarks) VALUES('$abstract_no',14,'$date_opened','$date_opened','$remarks')");
-echo "INSERT INTO aoq_data(aoq_no,action_officer,datetime_created,date,remarks) VALUES('$abstract_no',14,'$date_opened','$date_opened','$remarks')";
-exit();
+// echo "INSERT INTO aoq_data(aoq_no,action_officer,datetime_created,date,remarks) VALUES('$abstract_no',14,'$date_opened','$date_opened','$remarks')";
+// exit();
 }
 
 if (isset($_POST['update_changes'])) {
