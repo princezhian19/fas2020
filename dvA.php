@@ -12,8 +12,27 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 // $query = mysqli_query($conn,"SELECT pmo_id FROM end_users WHERE username = '$UNAME'");
 // $row = mysqli_fetch_array($query);
 // $pmo_id = $row['pmo_id'];
-
-$pmo_id = 5;
+switch ($_GET['office']) {
+  case 'FAD':
+  $pmo_id = 5;
+  break;
+  case 'LGCDD':
+    $pmo_id = 4;
+  break;
+  case 'LGMED':
+    $pmo_id = 3;
+  break;
+  case 'LGCDD-PDMU':
+    $pmo_id = 6;
+  break;
+  case 'LGMED-MBRTG':
+    $pmo_id = 7;
+  break;
+  
+  default:
+    # code...
+    break;
+}
 $rfq_id = $_GET['rfq_id'];
 $supplier_id = $_GET['supplier_id'];
 $po_no = $_GET['po_no'];
