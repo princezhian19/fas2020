@@ -143,7 +143,7 @@ $description = $row['description'];
 $qty = $row['qty'];
 $abc = $row['abc'];
 $item_unit_title = $row['item_unit_title'];
-
+// count(*) as 'count_supplier',
 $all_selected_suppliers1 = mysqli_query($conn, "SELECT  s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  ");
 $count_supplier = '';
 while ($allS = mysqli_fetch_assoc($all_selected_suppliers1)) {
