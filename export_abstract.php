@@ -160,7 +160,7 @@ $abcrow = mysqli_fetch_array($abc_for_winner);
 $win_id = $abcrow['supplier_id'];
 
 $winneryey = mysqli_query($conn,"SELECT supplier_title FROM supplier WHERE id = $win_id");
-echo "SELECT supplier_title FROM supplier WHERE id = $win_id";
+echo "SELECT supplier_id FROM abstract_of_quote WHERE supplier_id in($implode) AND rfq_id = $rfq_id AND abstract_no IS NOT NULL";
 exit();
 $rowWinY = mysqli_fetch_array($winneryey);
 $WinSupply = $rowWinY['supplier_title'];
