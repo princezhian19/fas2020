@@ -226,7 +226,7 @@ if (mysqli_num_rows($sql_items)>0) {
     $objDrawing->setName('test_img');
     $objDrawing->setDescription('test_img');
     $objDrawing->setPath('checked.png');
-    $objDrawing->setCoordinates('F'.$row);                      
+    $objDrawing->setCoordinates('E'.$row);                      
 //setOffsetX works properly
     $objDrawing->setOffsetX(40); 
     $objDrawing->setOffsetY(1);                
