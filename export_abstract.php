@@ -144,7 +144,7 @@ $qty = $row['qty'];
 $abc = $row['abc'];
 $item_unit_title = $row['item_unit_title'];
 
-$all_selected_suppliers1 = mysqli_query($conn, "SELECT count(*) as 'count_supplier', s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  ");
+$all_selected_suppliers1 = mysqli_query($conn, "SELECT  s.id,rq.rfq_id,sq.id,s.id as sid,s.supplier_title,s.supplier_address,s.contact_details,s.remarks FROM supplier s LEFT JOIN supplier_quote sq on sq.supplier_id = s.id LEFT JOIN rfq_items rq on rq.id = sq.rfq_item_id WHERE sq.rfq_item_id = $rid  ");
 $count_supplier = '';
 while ($allS = mysqli_fetch_assoc($all_selected_suppliers1)) {
   $Asupplier[] = $allS['sid'];
@@ -155,13 +155,11 @@ while ($allS = mysqli_fetch_assoc($all_selected_suppliers1)) {
 $implode = implode(',', $Asupplier);
 
 
-$abc_for_winner = mysqli_query($conn,"SELECT supplier_id FROM abstract_of_quote WHERE supplier_id in($implode) AND rfq_id = $rfq_id ");
+$abc_for_winner = mysqli_query($conn,"SELECT supplier_id FROM abstract_of_quote WHERE supplier_id in($implode) AND rfq_id = $rfq_id AND abstract_no IS NOT NULL");
 $abcrow = mysqli_fetch_array($abc_for_winner);
 $win_id = $abcrow['supplier_id'];
 
 $winneryey = mysqli_query($conn,"SELECT supplier_title FROM supplier WHERE id = $win_id");
-echo "SELECT supplier_title FROM supplier WHERE id = $win_id";
-exit();
 $rowWinY = mysqli_fetch_array($winneryey);
 $WinSupply = $rowWinY['supplier_title'];
 
@@ -477,9 +475,6 @@ if ($rowabsno3 != NULL) {
   $fetch = mysqli_fetch_array($querycount);
   $num = $fetch['count'];
 
-  
-
-
   $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowB11,'For Item(s) 1 to '.$num." to ".$WinSupply);
 
 
@@ -538,7 +533,7 @@ if ($rowabsno3 != NULL) {
   $objPHPExcel->getActiveSheet()->getStyle('L'.$rowD)->applyFromArray($styleContent21);
   $objPHPExcel->getActiveSheet()->mergeCells('L'.$rowC.':'.'M'.$rowC);
   $objPHPExcel->getActiveSheet()->mergeCells('L'.$rowD.':'.'M'.$rowD);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowC,'HANNAH GRACE S. GUERRERO');
+  $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowC,'HANNAH GRACE S.GUERRERO');
   $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowD,'Alternate SSVPC Member');
 
   $objPHPExcel->getActiveSheet()->getStyle('I'.$rowE)->applyFromArray($styleContent2);
