@@ -475,6 +475,9 @@ if ($rowabsno3 != NULL) {
   $fetch = mysqli_fetch_array($querycount);
   $num = $fetch['count'];
 
+  
+
+
   $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowB11,'For Item(s) 1 to '.$num." to ".$WinSupply);
 
 
