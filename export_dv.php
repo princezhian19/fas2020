@@ -46,6 +46,8 @@ $chief = strtoupper($pmo_title);
 
 $objPHPExcel->setActiveSheetIndex()->setCellValue('E10',$supplier);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('E12',$address);
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E51','AGNES S. SANGEL');
+$objPHPExcel->setActiveSheetIndex()->setCellValue('E53','OIC-Regional Accountant');
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B16',$purpose);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('AB15',$amount);
 $objPHPExcel->setActiveSheetIndex()->setCellValue('B33',$chief);
