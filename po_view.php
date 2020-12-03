@@ -250,7 +250,7 @@ while($rowppu = mysqli_fetch_array($select_tots)){
 
                       <?php else: ?>
 
-                        <td><i class="" style="margin-right4px;"></i><a class="btn btn-success btn-xs" href="CreateDVa.php?supplier_id=<?php echo $supplier_id;?>&po_no=<?php echo $po_no;?>&rfq_id=<?php echo $rfq_id;?>&supplier_titleD=<?php echo $supplier_titleD; ?>&supplier_address=<?php echo $supplier_addressD; ?>&po_amount=<?php echo $po_amount2; ?>">  Create DV</a></td>
+                        <td><i class="" style="margin-right4px;"></i><a class="btn btn-success btn-xs" href="CreateDVa.php?supplier_id=<?php echo $supplier_id;?>&po_no=<?php echo $po_no;?>&rfq_id=<?php echo $rfq_id;?>&supplier_titleD=<?php echo $supplier_titleD; ?>&supplier_address=<?php echo $supplier_addressD; ?>&po_amount=<?php echo $po_amount2; ?>&office=<?php echo $office;?>">  Create DV</a></td>
 
                     <?php endif ?>
 

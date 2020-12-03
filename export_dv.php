@@ -37,8 +37,8 @@ $purpose = $row['purpose'];
 $amount = $row['amount'];
 
 $sql2 = mysqli_query($conn, "SELECT pmo.pmo_contact_person,pmo.designation FROM pmo LEFT JOIN dv on dv.office = pmo.id WHERE dv.id = '$id' ");
-ECHO "SELECT pmo.pmo_contact_person,pmo.designation FROM pmo LEFT JOIN dv on dv.office = pmo.id WHERE dv.id = '$id' ";
-exit();
+// ECHO "SELECT pmo.pmo_contact_person,pmo.designation FROM pmo LEFT JOIN dv on dv.office = pmo.id WHERE dv.id = '$id' ";
+// exit();
 $row2 = mysqli_fetch_array($sql2);
 $pmo_title = $row2['pmo_contact_person'];
 $designation = $row2['designation'];
