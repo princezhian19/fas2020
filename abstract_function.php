@@ -23,6 +23,8 @@ while ($allS = mysqli_fetch_assoc($all_selected_suppliers1)) {
 
 if($count_supplier > 3)
 {
+  echo 'yea';
+  exit();
 header('Location: export_abstract2.php?rfq_id='.$rfq_id.'&abstract_no='.$abstract_no.'&pr_no='.$pr_no.'');
 }else{
     header('Location: export_abstract.php?rfq_id='.$rfq_id.'&abstract_no='.$abstract_no.'&pr_no='.$pr_no.'');
