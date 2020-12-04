@@ -1,6 +1,5 @@
 <?php 
 include 'health_monitoring_functions.php';
-include 'TEST_01.php';
 if(!isset($_SESSION['username'])){
 header('location:index.php');
 }else{
