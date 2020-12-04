@@ -22,6 +22,13 @@ function getDivision()
   echo  $row['DIVISION_M']; 
 }
 
+function getAddress()
+{
+  include 'connection.php';
+  $sqlUsername = mysqli_query($conn,"SELECT CURRENT_ADDRESS FROM tblemployeeinfo where UNAME ='".$_SESSION['username']."'");
+  $row = mysqli_fetch_array($sqlUsername);
+  echo  $row['CURRENT_ADDRESS'];
+}
 function notification()
 {
   include 'connection.php';

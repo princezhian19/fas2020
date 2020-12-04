@@ -36,6 +36,7 @@ function aa($id)
                 while($row1 = mysqli_fetch_array($result1))
                 {
                     $saved[] = $row1["DATE"]; // you are missing []
+                    $TOT =sprintf("%.2f",$row1['TOTAL_AMOUNT']);
 
                   if($row1['DATE'] == $row1['DATE'])
                   {
@@ -290,8 +291,9 @@ function isSubmit()
     <br>
         <div class="box-body">
             <div class="well" style = "padding:20px;">
+            <button class="gototab btn btn-lg btn-success pull-left" onclick="goToTabByDelta(-1)">Previous</button> 
 	<button class="gototab btn btn-lg btn-success pull-right" style = "margin-left:5%;width:6%;" onclick="goToTabByDelta(+1)">Next</button>
-	<button class="gototab btn btn-lg btn-success pull-right" onclick="goToTabByDelta(-1)">Previous</button> 
+<br><br>
 
             
                 
@@ -469,9 +471,9 @@ body {
 <div id="tabContainer" class="tabContainer">
     <div class="tabs" id="tabs">
 	<ul class="nav nav-tabs">
-        <li id="tabHeader_1">Page 1</li>
-        <li id="tabHeader_2">Page 2</li>
-        <li id="tabHeader_3">Page 3</li>
+        <li id="tabHeader_1">Itinerary</li>
+        <li id="tabHeader_2">ORS</li>
+        <li id="tabHeader_3">DV</li>
       </ul>
     </div>
     <div id="tabscontent" class="tab-content">
@@ -535,7 +537,6 @@ body {
                     <td colspan = 10>
                         <button type = "button" class = "btn btn-success btn-md" style = "width:10.5%;font-family:Arial;" data-toggle="modal" data-target="#editModal" id= "editbtn" class = "btn btn-primary btn-xs"> Add Travel </button>
                         <button type = "button" class = "btn btn-primary btn-md" style = "font-family:Arial" data-toggle = "modal" data-target = "#add_travel_dates" id = "travelbtn"> Add Travel Dates </button>
-                        <button class = "btn btn-primary btn-md pull-right" type = "submit" style = "font-family:'Arial';"> Submit </button>
                     </td>
                 </tr>
                 <tr>
@@ -583,16 +584,16 @@ body {
         </table>
         <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "font-family:Times New Roamn;border:1px solid black;">
           <tr>
-            <td style = "background-color:#B0BEC5;font-weight:bold;">a</td>
-            <td colspan = 8>MARK KIM A. SACLUTI</td>
+            <td style = "background-color:#B0BEC5;font-weight:bold;">&nbsp;</td>
+            <td colspan = 8><?php echo $_SESSION['complete_name'];?></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;font-weight:bold;">Office</td>
-            <td colspan = 8></td>
+            <td colspan = 8><?php echo getDivision();?></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;font-weight:bold;">Address</td>
-            <td colspan = 8></td>
+            <td colspan = 8><?PHP echo getAddress();?></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;font-weight:bold;">Responsibility Center</td>
@@ -608,7 +609,7 @@ body {
             </td>
             <td><input type="text" name="q" class="form-control" disabled></td>
             <td><input type="text" name="q" class="form-control" disabled></td>
-            <td><input type="text" name="q" class="form-control"></td>
+            <td><input type="text" name="q" class="form-control" value = "<?PHP ECHO getOrsTotal();?>"></td>
           </tr>
           <tr>
             <td colspan = 3>
@@ -684,13 +685,189 @@ body {
 
       </div>
       <div class="tabpage" id="tabpage_3" style="display:none;">
-        <h2>Page 3</h2>
-        <p>
-		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-		</p>
-		<p>
-		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-		</p>
+      <h2>DISBURSEMENT VOUCHER</h2>
+        <p>Appendix 32</p>
+        <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "border:1px solid black;">
+            <tr>
+              <td style = "width:60%;" rowspan = 3>
+                <h3 style = "text-align:center;font-family:Times New Roman;font-weight:bold;">
+                  <u>DILG IV-A<br></u><span style = "font-size:20px;font-family:Times New Roamn;">Entity Name</span><br>DISBURSEMENT VOUCHER
+                </h3>
+              </td>
+              <td style = "background-color:#B0BEC5;font-family:Times New Roman;font-family:Times New Roman;font-weight:bold;">Fund Cluster:</td>
+             
+            </tr>
+            <tr>
+              <td style = "background-color:#B0BEC5;font-family:Times New Roman;font-family:Times New Roman;font-weight:bold;">Date:</td>
+            </tr>
+            <tr>
+              <td style = "background-color:#B0BEC5;font-family:Times New Roman;font-family:Times New Roman;font-weight:bold;">DV No:</td>
+            </tr>
+        </table>
+        <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "font-family:Times New Roamn;border:1px solid black;">
+          <tr>
+            <td style = "background-color:#B0BEC5;font-weight:bold;">Mode of Payment</td>
+            <td colspan = 8>
+            <input type = "checkbox"/> MDS Check &nbsp;&nbsp;&nbsp;
+            <input type = "checkbox"/> Commercial Check &nbsp;&nbsp;&nbsp;
+            <input type = "checkbox"/> ADA &nbsp;&nbsp;&nbsp;
+            <input type = "checkbox"/> Others (Please specify)
+            </td>
+          </tr>
+          <tr>
+            <td style = "background-color:#B0BEC5;font-weight:bold;">Payee:</td>
+            <td colspan = 2><?php echo $_SESSION['complete_name'];?></td>
+            <td colspan = 3>TIN/Employee No.:</td>
+            <td colspan = 2>ORS/BURS No.:</td>
+          </tr>
+          <tr>
+            <td style = "background-color:#B0BEC5;font-weight:bold;">Address</td>
+            <td colspan = 8><?PHP echo getAddress();?></td>
+          </tr>
+          <tr>
+            <td style = "background-color:#B0BEC5;font-weight:bold;">Particulars</td>
+            <td colspan = 2 style = "background-color:#B0BEC5;font-weight:bold;">Responsibility Center</td>
+            <td colspan = 4 style = "background-color:#B0BEC5;font-weight:bold;">MFO/PAP</td>
+            <td colspan = 4 style = "background-color:#B0BEC5;font-weight:bold;" >Amount</td>
+          </tr>
+          <tr>
+            <td>
+            <textarea style = "resize:none" rows = "4" cols = "70">
+              Payment for the travelling incurred for 
+              authorized travels for February 2020,, in the amount of..........													
+
+              Please refer to attached documents 
+
+              *ORS
+              *Signed Certificate of Travel Completed
+              *Signed Itinerary of Travel
+              *Department/Regional/Travel Order
+              *Certificate of Appearance
+              *Official Reciept
+            </textarea>
+            </td>
+            <td colspan = 2>
+            <input type="text" name="q" class="form-control" disabled>
+          
+            </td>
+            <td colspan = 4><input type="text" name="q" class="form-control" disabled></td>
+            <td><input type="text" name="q" class="form-control" value = "<?PHP ECHO getOrsTotal();?>"></td>
+          </tr>
+          <tr>
+            <td style = "text-align:center;">Amount</td>
+            <td colspan = 8><?php echo getTotal();?></td>
+          </tr>
+          <tr>
+            <td style= "width:10%;font-weight:bold;" colspan = 16>
+              A. Certified:  Expenses/Cash Advance necessary,  lawful and  incurred under my direct supervision.
+            </td>
+           
+          </tr>
+          <tr>
+            <td colspan = 8 style = "text-align:center;"><br><br>
+              <b>DR. CARINA S. CRUZ</b><br>
+              Chief, FAD
+              </td>
+          </tr>
+          <tr>
+            <td style= "width:10%;font-weight:bold;" colspan = 16>
+              B. Accounting Entry
+            </td>
+          </tr>
+          <tr style = "background-color:#B0BEC5;font-weight:bold;" >
+            <td>Account Title</td>
+            <td colspan = 2>UACS Code</td>
+            <td colspan = 4>Debit</td>
+            <td colspan = 2>Credit</td>
+          </tr>
+          <tr>
+            <td ></td>
+            <td colspan = 2 ></td>
+            <td colspan = 4 ></td>
+            <td colspan = 2 ></td>
+          </tr>
+          <tr style = "height:10%;">
+          <td ></td>
+            <td colspan = 2 >&nbsp;</td>
+            <td colspan = 4 >&nbsp;</td>
+            <td colspan = 2 >&nbsp;</td>
+          </tr>
+          <tr style = "height:10%;">
+          <td ></td>
+            <td colspan = 2 >&nbsp;</td>
+            <td colspan = 4 >&nbsp;</td>
+            <td colspan = 2 >&nbsp;</td>
+          </tr>
+          
+        
+          <tr>
+            <td style = "font-weight:bold;font-family:Times New Roman;">C. Certified</td>
+            <td colspan = 7 style = "text-align:left;font-weight:bold;">D. Approved for Payment</td>
+          </tr>
+          <tr>
+            <td>
+              <input type = "checkbox" />&nbsp; Cash Available<br>
+              <input type = "checkbox" />&nbsp; Subject to Authority to Debit Account (when applicable)<br>
+              <input type = "checkbox" />&nbsp; Supporting documents complete and amount claimed
+            </td>
+            <td colspan = 8></td>
+
+          </tr>
+         
+        
+        
+
+
+        </table> 
+
+        <table cellpadding="0" cellspacing="0" width="80%" border="1" style = "border:1px solid black;">
+        <tr>
+          <td style = "width:10%;">Signature</td>
+          <td>&nbsp;</td>
+          <td style = "width:10%;">Signature</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td style = "width:10%;">Printed Name</td>
+          <td>AGNES S. SANGEL</td>
+          <td style = "width:10%;">Printed Name</td>
+          <td>NOEL R. BARTOLABAC, CESO V</td>
+        </tr>
+        <tr>
+          <td style = "width:10%;">Position</td>
+          <td>OIC-Regional Accountant</td>
+          <td style = "width:10%;">Position</td>
+          <td>Assistant Regional Director</td>
+        </tr>
+        <tr>
+          <td style = "width:10%;">Date</td>
+          <td></td>
+          <td style = "width:10%;">Date</td>
+          <td></td>
+        </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0" width="80%" border="1" style = "border:1px solid black;">
+        <tr>
+          <td colspan = 16>E. Receipt of Payment</td>
+          <td rowspan = 2>JEV No.</td>
+        </tr>
+        <tr>
+          <td style = "width:10%;">Check/ADA No. :</td>
+          <td style = "width:36%;"></td>
+          <td style = "width:10%;">Date</td>
+          <td style = "width:36%;">Bank Name & Account Number:</td>
+        </tr>
+        <tr>
+          <td style = "width:10%;">signature:</td>
+          <td style = "width:36%;"></td>
+          <td style = "width:10%;">Date</td>
+          <td style = "width:36%;">Printed Name:</td>
+          <td style = "width:36%;" colspan = 2 rowspan = 2>Date:</td>
+        </tr>
+        <tr>
+        <td colspan= 16>Official Receipt No. & Date/Other Documents</td>
+        </tr>
+        </table>
       </div>
     </div>
 	</div>
