@@ -14,6 +14,7 @@ $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "htt
 
 
 
+
 function getDivision()
 {
   include 'connection.php';
