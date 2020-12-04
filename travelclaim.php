@@ -10,7 +10,11 @@ include 'travelclaim_functions.php';
 <html>
 <head>
   <script src="jquery.min.js"></script>
-  
+  <style>
+  table{
+    margin-left:auto; margin-right:auto;
+  }
+  </style>
 <?php
 // PHP FUNCTION
 
@@ -478,8 +482,8 @@ body {
     </div>
     <div id="tabscontent" class="tab-content">
       <div class="tabpage" id="tabpage_1">
-        <h2>Itinerary of Travel</h2>
-        <p>Appendix 45</p>
+        <h2 style = "text-align:center;">Itinerary of Travel</h2>
+        <p style = "text-align:center;">Appendix 45</p>
           <form method = "POST" action = "travelclaim_functions.php?action=add">
               <table  cellpadding="0" cellspacing="0" width="80%" border="1">
                 <thead>
@@ -569,8 +573,8 @@ body {
           </form>
       </div>
       <div class="tabpage" id="tabpage_2" style="display:none;">
-        <h2>ORS</h2>
-        <p>Appendix 11</p>
+        <h2 style = "text-align:center;">ORS</h2>
+        <p style = "text-align:center;">Appendix 11</p>
 
         <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "border:1px solid black;">
           <tr>
@@ -685,8 +689,8 @@ body {
 
       </div>
       <div class="tabpage" id="tabpage_3" style="display:none;">
-      <h2>DISBURSEMENT VOUCHER</h2>
-        <p>Appendix 32</p>
+      <h2 style = "text-align:center;">DISBURSEMENT VOUCHER</h2>
+        <p style = "text-align:center;">Appendix 32</p>
         <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "border:1px solid black;">
             <tr>
               <td style = "width:60%;" rowspan = 3>
@@ -848,8 +852,8 @@ body {
         </table>
         <table cellpadding="0" cellspacing="0" width="80%" border="1" style = "border:1px solid black;">
         <tr>
-          <td colspan = 16>E. Receipt of Payment</td>
-          <td rowspan = 2>JEV No.</td>
+          <td colspan = 14>E. Receipt of Payment</td>
+          <td rowspan = 4>JEV No.</td>
         </tr>
         <tr>
           <td style = "width:10%;">Check/ADA No. :</td>
@@ -858,11 +862,14 @@ body {
           <td style = "width:36%;">Bank Name & Account Number:</td>
         </tr>
         <tr>
-          <td style = "width:10%;">signature:</td>
+          <td style = "width:10%;">Signature:</td>
           <td style = "width:36%;"></td>
           <td style = "width:10%;">Date</td>
           <td style = "width:36%;">Printed Name:</td>
-          <td style = "width:36%;" colspan = 2 rowspan = 2>Date:</td>
+          <td rowspan = 4></td>
+
+
+         
         </tr>
         <tr>
         <td colspan= 16>Official Receipt No. & Date/Other Documents</td>
