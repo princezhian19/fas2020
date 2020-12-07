@@ -597,7 +597,7 @@ body {
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;font-weight:bold;">Address</td>
-            <td colspan = 8><?PHP echo getAddress();?></td>
+            <td colspan = 8><?PHP echo getAddress2();?></td>
           </tr>
           <tr>
             <td style = "background-color:#B0BEC5;font-weight:bold;">Responsibility Center</td>

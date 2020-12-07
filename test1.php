@@ -14,13 +14,20 @@ $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "htt
 
 
 
-
 function getDivision()
 {
   include 'connection.php';
   $sqlUsername = mysqli_query($conn,"SELECT * FROM tblpersonneldivision where DIVISION_N =".$_SESSION['division']."");
   $row = mysqli_fetch_array($sqlUsername);
   echo  $row['DIVISION_M']; 
+}
+
+function getAddress2()
+{
+  include 'connection.php';
+  $sqlUsername = mysqli_query($conn,"SELECT * FROM tblemployeeinfo where UNAME =".$_SESSION['username']."");
+  $row = mysqli_fetch_array($sqlUsername);
+  echo  $row['CURRENT_ADDRESS']; 
 }
 
 function notification()

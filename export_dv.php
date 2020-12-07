@@ -36,7 +36,7 @@ $address = $row['address'];
 $purpose = $row['purpose'];
 $amount = $row['amount'];
 
-$sql2 = mysqli_query($conn, "SELECT pmo.pmo_contact_person,pmo.designation FROM pmo LEFT JOIN dv on dv.office = pmo.id W  HERE dv.id = '$id' ");
+$sql2 = mysqli_query($conn, "SELECT pmo.pmo_contact_person,pmo.designation FROM pmo LEFT JOIN dv on dv.office = pmo.id WHERE dv.id = '$id' ");
 // ECHO "SELECT pmo.pmo_contact_person,pmo.designation FROM pmo LEFT JOIN dv on dv.office = pmo.id WHERE dv.id = '$id' ";
 // exit();
 $row2 = mysqli_fetch_array($sql2);
