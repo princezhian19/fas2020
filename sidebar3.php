@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(!isset($_SESSION['username']) || !isset($_SESSION['complete_name'])){
-  header('location:index.php');
+  header('location:logout.php');
 }else{
   error_reporting(0);
   ini_set('display_errors', 0);
@@ -239,8 +239,8 @@ function showRequest()
               <span class="pull-right-container">
               </span>
             </a>
-</li>
-   <li  class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
+          </li>
+          <li  class = "treeview <?php if($link == 'http://fas.calabarzon.dilg.gov.ph/databank.php?division='.$_SESSION['division'].''||$link == 'http://fas.calabarzon.dilg.gov.ph/issuances.php?division='.$_SESSION['division'].''){ echo 'active"';}?>">
             <a  href="#" >
               <i class="fa fa-users" style = "color:#black;"></i> 
               <span  style = "color:#black;font-weight:normal;">Personnel</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
@@ -255,12 +255,12 @@ function showRequest()
             
             </ul>
           </li>
-<li>
-  <a href="logout.php">
-    <i class="fa fa-sign-out " style = "color:#black;"></i> 
-    <span  style = "color:#black;font-weight:normal;">Log out</span>
-  </a>
-</li> 
+          <li>
+            <a href="logout.php">
+              <i class="fa fa-sign-out " style = "color:#black;"></i> 
+              <span  style = "color:#black;font-weight:normal;">Log out</span>
+            </a>
+          </li> 
 </ul>
 </section>
 <!-- /.sidebar -->

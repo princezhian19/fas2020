@@ -1,9 +1,9 @@
 <?php 
 include 'health_monitoring_functions.php';
-include 'TEST_01.php';
+// include 'TEST_01.php';
 
 if(!isset($_SESSION['username']) || !isset($_SESSION['complete_name'])){
-header('location:logout.php');
+header('location:index.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
@@ -16,18 +16,11 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 ?>
 <!DOCTYPE html>
 <html>
-<title>FAS | Dashboard</title>
 <head>
-<link rel="stylesheet" href="_includes/sweetalert.css">
-  <link href="_includes/sweetalert2.min.css" rel="stylesheet"/>
-
- 
-
-
-
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="shortcut icon" type="image/png" href="dilg.png">
-
+<link rel="shortcut icon"  type="image/png" href="dilg.png">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>FAS | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -55,7 +48,10 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <script src="_includes/sweetalert.min.js" type="text/javascript"></script>
-<link rel="stylesheet" href="_includes/sweetalert.css">
+    <link rel="stylesheet" href="_includes/sweetalert.css">
+    <link href="_includes/sweetalert2.min.css" rel="stylesheet"/>
+
+ 
     
  
     <style>
