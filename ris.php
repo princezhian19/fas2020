@@ -249,7 +249,7 @@ while($row = mysqli_fetch_array($result))
               <select  name="request_by" id="request_by" class="form-control">
                 <option selected disabled></option>
                 <option value="JAY-AR T. BELTRAN">JAY-AR T. BELTRAN</option>
-                <option value="JOHN M. CEREZO">JOHN M. CEREZO</option>
+                <option value="GILBERTO L. TUMAMAC">GILBERTO L. TUMAMAC</option>
                 <option value="DR. CARINA S. CRUZ">DR. CARINA S. CRUZ</option>
               </select>
             </div>

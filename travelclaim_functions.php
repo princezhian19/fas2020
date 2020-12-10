@@ -488,6 +488,16 @@ session_start();
         }
        
     }
+    function update()
+    {
+        UPDATE `tbltravel_claim_info` SET 
+        `ID`=[value-1],
+        `TC_ID`=[value-2],
+        `RO`=[value-3],
+        `DATE`=[value-4],
+        `PLACE`=[value-5],
+        `ARRIVAL`=[value-6],`DEPARTURE`=[value-7],`MOT`=[value-8],`TRANSPORTATION`=[value-9],`BREAKFAST`=[value-10],`LUNCH`=[value-11],`DINNER`=[value-12],`ACCOMODATION`=[value-13],`RECEIPT`=[value-14],`PERDIEM`=[value-15],`OTHERS`=[value-16],`TOTAL_AMOUNT`=[value-17] WHERE 1
+    }
     $func = '';
     if(isset($_POST['action']))
     {
@@ -498,6 +508,9 @@ session_start();
         }else if($action == 'deleteAll')
         {
             deleteAll();
+        }else if($action == 'update')
+        {
+            update();
         }
     }else if(isset($_GET['action'])){
         $action2 = $_GET['action'];

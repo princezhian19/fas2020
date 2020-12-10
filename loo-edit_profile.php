@@ -4557,8 +4557,8 @@ background-position: 215px 5px;
                                     ?>
                                 </tr>
                                   <tr class="myTemplate2" style="display:none">
-                                  <input placeholder = "N/A"type = "hidden" name ="we_id1[]" value = "<?php echo $id?>" />
-                                  <td style = "text-align:center;background-color:#F5F5F5;">
+                                    <input placeholder = "N/A"type = "hidden" name ="we_id1[]" value = "<?php echo $id?>" />
+                                    <td style = "text-align:center;background-color:#F5F5F5;">
                                                             <input placeholder = "N/A"style = "width:50px;" name = "e_from1[]" class = "datePicker22 alphanum subtxt" type = "text" value = "" />
                                                             <input placeholder = "N/A"style = "width:50px;" name = "e_to1[]" class = "datePicker22 alphanum subtxt" type = "text" value = "" />
                                                         </td>

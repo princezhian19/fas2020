@@ -306,7 +306,7 @@ function details($id)
                       }else
                       {
                           ?>
-                              <td style = "width:9.8%;"><input  id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+                              <td style = "width:11%;"><input  id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
                           <?php
                       }   
                       
@@ -318,30 +318,34 @@ function details($id)
                         <td ><textarea  cols = 13 style = "resize:none;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
                         <td><input  type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
                         <td><input  type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
-                        <td><input  type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
-                        <td><input  type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
-                        <td><input  type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$tot);?>"/></td>
+                        <td style = "width:12%;" ><input  type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
+                        <td style = "width:11%;"><input  type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
+                        <td style = "width:12%;">
+                          <input  type = "checkbox" />With Perdiem<br>
+                          <input  type = "checkbox" />Without Perdiem
+                          
+                          </td>
                         <td><input  type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
                         <td><input  type = "text" class = "form-control" style = "width:100%%;" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
                         <?php 
-                          if ( $_SESSION['complete_name2']  == $_POST['uname'] || $username == 'nrbartolabac' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') 
-                          {
-
-
-                            ?>
-                            <td style = "width:9%;">
-                            <!-- <span class = "btn btn-sm btn-primary" style = "width:100%;"><i class = "fa fa-edit"></i>&nbsp;Edit</span> -->
-                            <span class = "btn btn-sm btn-danger"  style = "width:100%;" id = "btnids<?php echo $row1['dID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-trash"></i>&nbsp;Delete</span>
-                            </td>
-                            <?php
-
-                          }else
-                          {
-                            ?>
-
-
-                            <?php
-                          }
+                            if ( $_SESSION['complete_name2']  == $_POST['uname'] || $username == 'nrbartolabac' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') 
+                            {
+  
+  
+                              ?>
+                              <td style = "width:9%;">
+                              <!-- <span class = "btn btn-sm btn-primary" style = "width:100%;"><i class = "fa fa-edit"></i>&nbsp;Edit</span> -->
+                              <span class = "btn btn-sm btn-success"  style = "width:100%;" id = "save<?php echo $row1['dID']; ?>" data-id = "<?php echo $row1['ID'];?>" value = "<?php echo $row1['ID'];?>"><i class = "fa fa-save"></i>&nbsp;Save</span>
+                              </td>
+                              <?php
+  
+                            }else
+                            {
+                              ?>
+  
+  
+                              <?php
+                            }
                         ?>
                     </tr>
         
@@ -349,39 +353,26 @@ function details($id)
                       $row1['DATE'] = '';
                     ?>
                     <script>
+                      
                       $(document).ready(function(){
-                          $( "#btnids<?php echo $row1['dID'];?>" ).click(function() {
-                            swal({
-                                  title: "Are you sure?",
-                                  text: "Your will not be able to recover this travel date!",
-                                  type: "warning",
-                                  showCancelButton: true,
-                                  confirmButtonClass: "btn btn-danger",
-                                  confirmButtonText: "Yes, delete it!",
-                                  closeOnConfirm: false
-                                  },
-                                  function(){
-                                  swal("Deleted!", "Your travel date  has been deleted.", "success");
-                                  
-                                          $.ajax({
-                                          url:"travelclaim_functions.php",
-                                          method:"POST",
-                                          data:{
-                                          "action": 'deleteTravelOrder',
-                                          "id": <?php echo $row1['dID'];?>,
-                                      },
-                                      success:function(data)
-                                      {
-                                  
-                                        setTimeout(function () {
-                                            window.location = "CreateTravelClaim.php?username=<?php echo $_SESSION['username'];?>&division=<?php echo $_SESSION['division'];?>";
-                                            }, 1000);
+                          $( "#save<?php echo $row1['dID'];?>" ).click(function() {
+                            swal("Good job!", "You clicked the button!", "success");
+                            $.ajax({
+                            type:'POST',
+                            data:{
+                              "action": 'update',
+                              "id": <?php echo $row1['dID'];?>,
+                            },
+                            url:'travelclaim_functions.php',
+                            success:function(data) {
+                             setTimeout(function(){
+                              location.reload();
+                            },1000);
+                            }
+                          });
 
-                                        
-                                      }
-                                      });
-                                  }
-                                  );
+                        
+                                
                           });
                       });
                     </script>
@@ -452,7 +443,7 @@ function editTravelData($id)
                             swal({
                                   title: "Are you sure?",
                                   text: "Your will not be able to recover this travel date!",
-                                  type: "warning",
+                                  type: "success",
                                   showCancelButton: true,
                                   confirmButtonClass: "btn btn-danger",
                                   confirmButtonText: "Yes, delete it!",
@@ -600,6 +591,7 @@ switch ($_POST['action']) {
               <th class = "table-header"  style = "text-align:center;" rowspan = 2>Per Diem</th>
               <th class = "table-header" style = "text-align:center;" rowspan = 2>Others</th>
               <th class = "table-header"  style = "text-align:center;" rowspan = 2>Total Amount</th>
+              <th class = "table-header"  style = "text-align:center;" rowspan = 2>Action</th>
               <?php 
                 $query1 = "SELECT * FROM `tbltravel_claim_info2`
                 INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
@@ -618,7 +610,7 @@ switch ($_POST['action']) {
                         
 
                           ?>
-                          <th class = "table-header"  style = "text-align:center;" rowspan =3>Action</th>
+                          <!-- <th class = "table-header"  style = "text-align:center;" rowspan =3>Action</th> -->
                           <?php
                         }
                     }
@@ -630,7 +622,6 @@ switch ($_POST['action']) {
               <th class = "table-header"  style = "text-align:center;">Departure</th>
             </tr>
           </thead>
-          <tbody id = "addTrave lDate">
       <?php
         if($rnums>0){
           rowCount();
@@ -642,46 +633,13 @@ switch ($_POST['action']) {
           ?>
           <tr>
               <td colspan = 10 style = "background-color:#B0BEC5;"><?php echo '<b>'.$row['RO_OT_OB'].'</b>'; ?> 
-                <span class = "pull-right" ><a style = "color:black;">Add Fare</a></span>
-                <img class =  "pull-right" src="images/add_rec.png" id = "add_fare<?php echo $row['RO_OT_OB'];?>" width = 20/>
+                
               </td>
           </tr>
-            <script>
-              var myCounter = 1;
-              $('#add_fare<?php echo $row['RO_OT_OB'];?>').click(function(){
-                $('.travelDatePanel')
-                .clone()
-                .removeClass("travelDatePanel")
-                .addClass("additionalDate")
-                .show()
-                .appendTo('#addTravelDate');
-              myCounter++;
-
-              $(".datepicker4").on('focus', function(){
-                var $this = $(this);
-                if(!$this.data('datepicker')) {
-                $this.removeClass("hasDatepicker");
-                $this.datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-                $this.datepicker("show");
-              }
-              });   
-              });
-            </script>
           <?php
           details($row['ID']);
         }
-        
         ?>
-        <tr class = "travelDatePanel" style="display:none;">
-        <td>a</td>
-        <td>a</td>
-        <td>a</td>
-        <td>a</td>
-        <td>a</td>
-        <td>a</td>
-        <td>a</td>
-
-        </tr>
       </tbody>
 
         <?php

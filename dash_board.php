@@ -685,6 +685,7 @@ if (isset($_POST['stamp4'])) {
               </div>
               <!-- /.box -->
             </div>
+            
             <!-- /.col -->
           </div>
 

@@ -1096,6 +1096,7 @@ body {
                   <div  style = "padding:10px;" id = "travelPanel">
                   </div>
                   <span class = "btn btn-primary btn-md pull-right" id= "add_fare" style = "margin-left:10px;"><i class = "fa fa-plus"></i>&nbsp;Add Fare</span>
+                  
 
                   <button type = "submit" class = "btn btn-success btn-md pull-right"><i class = "fa fa-save"></i>&nbsp;Save </button>
                   <script src="js/jquery.min.js"></script>
