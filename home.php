@@ -1,7 +1,9 @@
 <?php 
 include 'health_monitoring_functions.php';
-if(!isset($_SESSION['username'])){
-header('location:index.php');
+include 'TEST_01.php';
+
+if(!isset($_SESSION['username']) || !isset($_SESSION['complete_name'])){
+header('location:logout.php');
 }else{
   error_reporting(0);
 ini_set('display_errors', 0);
