@@ -268,6 +268,32 @@ function rowCount(){
 }
 
 //=================== E D I T =================================================
+function isPerdiem($id)
+{
+  include 'connection.php';
+  $query = "SELECT BREAKFAST, LUNCH, DINNER, PERDIEM from tbltravel_claim_info WHERE ID = '$id' ";
+  $result = mysqli_query($conn, $query);
+  $date = array();
+  if(mysqli_num_rows($result) > 0)
+  {
+      while($row = mysqli_fetch_array($result))
+      {
+        if($row['BREAKFAST'] == 0 && $row['LUNCH'] == 0 && $row['DINNER'] == 00 && $row['PERDIEM'] == 0)
+        {
+          ?>
+            <input  type = "checkbox" />With Perdiem<br>
+            <input  type = "checkbox" checked/>Without Perdiem
+          <?php
+
+        }else if($row['PERDIEM'] != 0){
+          ?>
+            <input  type = "checkbox" checked />With Perdiem<br>
+            <input  type = "checkbox" />Without Perdiem
+          <?php
+        }
+      }
+  }
+}
 function details($id)
 {
     include 'connection.php';
@@ -321,8 +347,7 @@ function details($id)
                         <td style = "width:12%;" ><input  type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
                         <td style = "width:11%;"><input  type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
                         <td style = "width:12%;">
-                          <input  type = "checkbox" />With Perdiem<br>
-                          <input  type = "checkbox" />Without Perdiem
+                          <?php isPerdiem($row1['dID']);?>
                           
                           </td>
                         <td><input  type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
