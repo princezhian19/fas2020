@@ -335,7 +335,7 @@ function getImage()
             $link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_GET['division'].'&username='.$_GET['username'].'' ||
             $link == 'http://fas.calabarzon.dilg.gov.ph/ViewCalendar.php?division='.$_GET['division'].'&flag='.$_GET['flag'].'' ||
             $link == 'http://fas.calabarzon.dilg.gov.ph/ManageCalendar.php?division='.$_GET['division'].'&username='.$_GET['username'].''){ echo 'class = "active"';}else{echo 'class = ""';}?>>
-            <a href="ViewCalendar.php?division=<?php echo $_SESSION['division'];?>username=<?php echo $_GET['username'];?>">
+            <a href="ViewCalendar.php?division=<?php echo $_SESSION['division'];?>&username=<?php echo $_SESSION['username'];?>">
               <i class="fa fa-calendar" style = "color:#black;"></i>
               <span  style = "color:#black;font-weight:normal;">Calendar</span>
               

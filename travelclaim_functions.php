@@ -490,24 +490,24 @@ session_start();
     }
     function update()
     {
-        // UPDATE `tbltravel_claim_info` SET 
-        // `ID`=[value-1],
-        // `TC_ID`=[value-2],
-        // `RO`=[value-3],
-        // `DATE`=[value-4],
-        // `PLACE`=[value-5],
-        // `ARRIVAL`=[value-6],
-        // `DEPARTURE`=[value-7],
-        // `MOT`=[value-8],
-        // `TRANSPORTATION`=[value-9],
-        // `BREAKFAST`=[value-10],
-        // `LUNCH`=[value-11],`
-        // DINNER`=[value-12],
-        // `ACCOMODATION`=[value-13],
-        // `RECEIPT`=[value-14],
-        // `PERDIEM`=[value-15],
-        // `OTHERS`=[value-16],
-        // `TOTAL_AMOUNT`=[value-17] WHERE 1
+        include "connection.php";
+        $place = $_POST['from']." to ".$_POST['to'];
+       $sqlUpdate = " UPDATE `tbltravel_claim_info` SET 
+        `DATE`='".$_POST['travelDate']."',
+        `PLACE`='$place',
+        `ARRIVAL`='".$_POST['arrival']."',
+        `DEPARTURE`='".$_POST['departure']."',
+        `MOT`='".$_POST['mot']."',
+        `TRANSPORTATION`='".$_POST['transpo']."',
+        `PERDIEM`='".$_POST['perdiem']."',
+        `OTHERS`='".$_POST['others']."',
+        `TOTAL_AMOUNT`='".$_POST['totalAmount']."' WHERE ID = '".$_POST['id']."' ";
+        if (mysqli_query($conn, $sqlUpdate)) {
+        } else {
+        }
+
+        echo $sqlUpdate;
+      
     }
     $func = '';
     if(isset($_POST['action']))

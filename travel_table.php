@@ -120,11 +120,11 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
         <h4 class="modal-title">Edit Travel Dates</h4>
         <span type="span" class="close" data-dismiss="modal">&times; </span>
       </div>
-        <div class="modal-body" style = " max-height: calc(500vh - 100px); overflow-y: auto;">
+        <div class="modal-body" style = " max-height: calc(500vh - 100px); overflow-y: auto;max-width:100%;">
           <div class="box-body">
             <form method = "POST" action = "travelclaim_functions.php?action=modifyTravelDate">
               <input type = "hidden" name = "hidden_ro" value = "<?php echo $_GET['ro'];?>" />
-               <table id = "travelDate_panel" border = 1>
+               <table id = "travelDate_panel" border = 1 >
                </table>
                 
 

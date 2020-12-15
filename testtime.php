@@ -278,18 +278,18 @@ function isPerdiem($id)
   {
       while($row = mysqli_fetch_array($result))
       {
-        if($row['BREAKFAST'] == 0 && $row['LUNCH'] == 0 && $row['DINNER'] == 00 && $row['PERDIEM'] == 0)
+       if ($row['BREAKFAST'] == 1 || $row['LUNCH'] == 1 || $row['DINNER'] == 1 ){
+          ?>
+            <input  type = "checkbox" checked />With Perdiem<br>
+            <input  type = "checkbox" />Without Perdiem
+          <?php
+        } else if($row['BREAKFAST'] == 0 || $row['LUNCH'] == 0 || $row['DINNER'] == 00 || $row['PERDIEM'] == 0 )
         {
           ?>
             <input  type = "checkbox" />With Perdiem<br>
             <input  type = "checkbox" checked/>Without Perdiem
           <?php
 
-        }else if($row['PERDIEM'] != 0){
-          ?>
-            <input  type = "checkbox" checked />With Perdiem<br>
-            <input  type = "checkbox" />Without Perdiem
-          <?php
         }
       }
   }
@@ -332,26 +332,38 @@ function details($id)
                       }else
                       {
                           ?>
-                              <td style = "width:11%;"><input  id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+                              <td style = "width:15%;">
+                              <input  hidden id = "dID" value = "<?php echo $row1['dID'];?>" />
+                              <input  id = "travel_date" type = "text" class = "form-control" style = "width:120%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
                           <?php
                       }   
-                      
                   }else{
                   ?>
                   
                     <tr style =" display:table; table-layout:fixed; width:100%;">
                         <?php }?>
-                        <td ><textarea  cols = 13 style = "resize:none;border:1px solid #CFD8DC;"><?php echo $row1['PLACE'];?></textarea></td>
-                        <td><input  type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
-                        <td><input  type = "text" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
-                        <td style = "width:12%;" ><input  type = "text" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
-                        <td style = "width:11%;"><input  type = "text" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
+                        <td>
+                        
+                        <?php 
+                        list($from,$to) = explode("to", $row1['PLACE']);
+                        ?>
+                        <input type = "text" id = "from" class = "form-control" style = "width:100%;" value = "<?php echo $from;?>"/><br>
+                        <input type = "text" id = "to" class = "form-control" style = "width:100%;" value = "<?php echo $to;?>"/>
+
+                        
+                        
+                        
+                        </td>
+                        <td><input  type = "text" id = "arrival" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
+                        <td><input  type = "text" id = "departure" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
+                        <td style = "width:12%;" ><input  type = "text" id = "mot" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
+                        <td style = "width:11%;"><input  type = "text" id= "transpo" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
                         <td style = "width:12%;">
                           <?php isPerdiem($row1['dID']);?>
                           
                           </td>
-                        <td><input  type = "text" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
-                        <td><input  type = "text" class = "form-control" style = "width:100%%;" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
+                        <td><input  type = "text" id = "others" class = "form-control" value = "<?php echo $row1['OTHERS'];?>"/></td>
+                        <td><input  type = "text" id = "totalAmount" class = "form-control" style = "width:100%%;" value = "<?php echo sprintf("%.2f",$row1['TOTAL_AMOUNT']);?>"/></td>
                         <?php 
                             if ( $_SESSION['complete_name2']  == $_POST['uname'] || $username == 'nrbartolabac' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') 
                             {
@@ -364,7 +376,7 @@ function details($id)
                               </td>
                               <?php
   
-                            }else
+                            }else 
                             {
                               ?>
   
@@ -375,22 +387,34 @@ function details($id)
                     </tr>
         
                     <?php
-                      $row1['DATE'] = '';
+                      // $row1['DATE'] = '';
                     ?>
                     <script>
                       
                       $(document).ready(function(){
                           $( "#save<?php echo $row1['dID'];?>" ).click(function() {
+                    
                             swal("Good job!", "You clicked the button!", "success");
                             $.ajax({
                             type:'POST',
                             data:{
                               "action": 'update',
-                              "id": <?php echo $row1['dID'];?>,
+                              "id": $('#dID').val(),
+                              "travelDate":$('#travel_date').val(),
+                              "from":$('#from').val(),
+                              "to":$('#to').val(),
+                              "arrival":$('#arrival').val(),
+                              "departure":$('#departure').val(),
+                              "mot":$('#mot').val(),
+                              "transpo":$('#transpo').val(),
+                              "perdiem":'0',
+                              "others":$('#others').val(),
+                              "totalAmount":$('#totalAmount').val()
                             },
                             url:'travelclaim_functions.php',
                             success:function(data) {
                              setTimeout(function(){
+                               alert(data);
                               location.reload();
                             },1000);
                             }

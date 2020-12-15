@@ -881,14 +881,14 @@ $(document).ready(function() {
   
   //WEATHER THEMES
   
-  document.getElementById('switchWeatherTheme').addEventListener('change', function(){
+  // document.getElementById('switchWeatherTheme').addEventListener('change', function(){
     
-    var valueTheme = $(this).val();
-    var widget = document.querySelector('.weatherwidget-io');
-    widget.setAttribute('data-theme', valueTheme);
-    __weatherwidget_init();
+  //   var valueTheme = $(this).val();
+  //   var widget = document.querySelector('.weatherwidget-io');
+  //   widget.setAttribute('data-theme', valueTheme);
+  //   __weatherwidget_init();
     
-  });
+  // });
   
   //WEATHER LOCATION
   var input = document.getElementById('searchTextField');
