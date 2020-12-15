@@ -103,7 +103,9 @@ if (isset($_POST['submit'])) {
 
   $d1 = date('Y-m-d', strtotime($pr_date1));
 
-  $purpose1 = $_POST['purpose'];
+  $purpose11 = $_POST['purpose'];
+$purpose1 = str_replace("'", "", $purpose11);
+  
   $pmo1 = $_POST['pmo'];
   $unit1 = $_POST['unit1'];
   $pr_no1 = $latest_pr_no;

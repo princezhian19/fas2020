@@ -332,9 +332,9 @@ function details($id)
                       }else
                       {
                           ?>
-                              <td style = "width:15%;">
+                              <td style = "width:5%;">
                               <input  hidden id = "dID" value = "<?php echo $row1['dID'];?>" />
-                              <input  id = "travel_date" type = "text" class = "form-control" style = "width:120%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+                              <input  type = "date" class = "form-control travelDate" id = 'travelDate' style = "width:75%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
                           <?php
                       }   
                   }else{
@@ -354,8 +354,8 @@ function details($id)
                         
                         
                         </td>
-                        <td><input  type = "text" id = "arrival" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['ARRIVAL']));?>"/></td>
-                        <td><input  type = "text" id = "departure" class = "form-control" value = "<?php echo date('g:i A',strtotime($row1['DEPARTURE']));?>"/></td>
+                        <td><input  type = "time" id = "arrival" class = "form-control"  value = "<?php echo $row1['ARRIVAL'];?>"/></td>
+                        <td><input  type = "time" id = "departure" class = "form-control" value = "<?php echo $row1['DEPARTURE'];?>"/></td>
                         <td style = "width:12%;" ><input  type = "text" id = "mot" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
                         <td style = "width:11%;"><input  type = "text" id= "transpo" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
                         <td style = "width:12%;">
@@ -414,8 +414,7 @@ function details($id)
                             url:'travelclaim_functions.php',
                             success:function(data) {
                              setTimeout(function(){
-                               alert(data);
-                              location.reload();
+                                location.reload();
                             },1000);
                             }
                           });
