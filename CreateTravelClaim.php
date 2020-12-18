@@ -110,7 +110,9 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 <script>
 
 $(document).ready(function(){
-
+$('#datepicker1').datepicker({
+      autoclose: true
+    })
   $('#datepicker1').datepicker({
       autoclose: true
     })

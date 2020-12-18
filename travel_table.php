@@ -124,7 +124,9 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
           <div class="box-body">
             <form method = "POST" action = "travelclaim_functions.php?action=modifyTravelDate">
               <input type = "hidden" name = "hidden_ro" value = "<?php echo $_GET['ro'];?>" />
+              
                <table id = "travelDate_panel" border = 1 >
+               
                </table>
                 
 
@@ -357,12 +359,4 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
               </script>
               <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
               <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-              <script>
-              
-$(document).ready(function(){
 
-$('#travelDate').datepicker({
-    autoclose: true
-  })
-});
-  </script>

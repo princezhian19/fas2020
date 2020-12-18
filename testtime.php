@@ -40,7 +40,7 @@ function aa($id)
                       }else
                       {
                           ?>
-                              <td style = "width:9.8%;"><input readonly id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+                              <td style = "width:9.8%;"><input readonly  type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
                           <?php
                       }   
                       
@@ -332,9 +332,11 @@ function details($id)
                       }else
                       {
                           ?>
-                              <td style = "width:5%;">
+                              <td style = "width:14%;">
                               <input  hidden id = "dID" value = "<?php echo $row1['dID'];?>" />
-                              <input  type = "date" class = "form-control travelDate" id = 'travelDate' style = "width:75%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+                              <input  type = "text"  id = "travel_date" class = "form-control tDate"  name = "start"  placeholder="mm/dd/yyyy"   value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>" autocomplete = off /></td>
+
+                              <!-- <input  type = "text" class = "form-control datepicker2" id = "datepicker2" style = "width:75%;" value = ""/></td> -->
                           <?php
                       }   
                   }else{
@@ -354,7 +356,8 @@ function details($id)
                         
                         
                         </td>
-                        <td><input  type = "time" id = "arrival" class = "form-control"  value = "<?php echo $row1['ARRIVAL'];?>"/></td>
+                        <td><input  type = "time" id = "arrival" class = "form-control" value = "<?php echo $row1['ARRIVAL'];?>"/></td>
+
                         <td><input  type = "time" id = "departure" class = "form-control" value = "<?php echo $row1['DEPARTURE'];?>"/></td>
                         <td style = "width:12%;" ><input  type = "text" id = "mot" class = "form-control" value = "<?php echo $row1['MOT'];?>"/></td>
                         <td style = "width:11%;"><input  type = "text" id= "transpo" class = "form-control" value = "<?php echo sprintf("%.2f",$row1['TRANSPORTATION']);?>"/></td>
@@ -462,7 +465,7 @@ function editTravelData($id)
                       }else
                       {
                           ?>
-                              <td style = "width:9.8%;"><input  id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/></td>
+                              <td style = "width:9.8%;"><input  id = "travel_date" type = "text" class = "form-control" style = "width:100%;" value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"/>d</td>
                           <?php
                       }   
                       
@@ -709,3 +712,15 @@ switch ($_POST['action']) {
 }
 
 ?>
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+
+<script>
+
+$(document).ready(function(){
+  $('.tDate').datepicker({
+      autoclose: true
+    })
+  });
+  </script>

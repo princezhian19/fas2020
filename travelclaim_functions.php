@@ -491,9 +491,10 @@ session_start();
     function update()
     {
         include "connection.php";
+        $date_format = date('Y-m-d',strtotime($_POST['travelDate']));
         $place = $_POST['from']." to ".$_POST['to'];
        $sqlUpdate = " UPDATE `tbltravel_claim_info` SET 
-        `DATE`='".$_POST['travelDate']."',
+        `DATE`='$date_format',
         `PLACE`='$place',
         `ARRIVAL`='".$_POST['arrival']."',
         `DEPARTURE`='".$_POST['departure']."',
@@ -507,7 +508,7 @@ session_start();
         }
 
         echo $sqlUpdate;
-      
+    //   exit();
     }
     $func = '';
     if(isset($_POST['action']))
