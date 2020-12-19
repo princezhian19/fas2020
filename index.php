@@ -1,10 +1,76 @@
 <?php session_start();
 
 include 'connection.php';
+class UnsafeCrypto
+{
+    const METHOD = 'aes-256-ctr';
+    
+    /**
+     * Encrypts (but does not authenticate) a message
+     * 
+     * @param string $message - plaintext message
+     * @param string $key - encryption key (raw binary expected)
+     * @param boolean $encode - set to TRUE to return a base64-encoded 
+     * @return string (raw binary)
+     */
+    public static function encrypt($message, $key, $encode = false)
+    {
+        $nonceSize = openssl_cipher_iv_length(self::METHOD);
+        $nonce = openssl_random_pseudo_bytes($nonceSize);
+        
+        $ciphertext = openssl_encrypt(
+            $message,
+            self::METHOD,
+            $key,
+            OPENSSL_RAW_DATA,
+            $nonce
+        );
+        
+        // Now let's pack the IV and the ciphertext together
+        // Naively, we can just concatenate
+        if ($encode) {
+            return base64_encode($nonce.$ciphertext);
+        }
+        return $nonce.$ciphertext;
+    }
+    
+   
+}
+
+$encrypted_name = '';
+$key = hex2bin('000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f');
+
+$encrypted = UnsafeCrypto::encrypt($encrypted_name, $key, true);
+
+
+
 error_reporting(0);
 if(!isset($_SESSION['username'])){
 // header('location:index.php');
 }else{
+
+  //  E N C R Y P T I O N
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 $username = $_SESSION['username'];
@@ -41,7 +107,13 @@ $pas1 = $_SESSION['pass'];
     $_SESSION['isPersonnel'] = $row['isPersonnel'];
 
       // if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-      if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
+      if ($username == 'itdummy1' || 
+          $username == 'mmmonteiro' || 
+          $username == 'jamonteiro' || 
+          $username == 'masacluti' || 
+          $username == 'cvferrer' || 
+          $username == 'seolivar' || 
+          $username == 'magonzales') {
       echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='home.php?division=".$division."&username=".$username."';
         </SCRIPT>");
@@ -91,7 +163,7 @@ if (isset($_POST['submit'])) {
     $_SESSION['OFFICE_STATION'] = $OFFICE_STATION;
     $division =$row['DIVISION_C'];
     $TIN_N =$row['TIN_N'];
-    $_SESSION['TIN_N'] = $TIN_N;
+    $_SESSION['TIN_N'] = $TIN_N;  
     $ORD =$row['ORD'];
     $_SESSION['ORD'] = $ORD;
     $DEPT_ID =$row['DEPT_ID'];
@@ -100,11 +172,18 @@ if (isset($_POST['submit'])) {
     $_SESSION['division'] = $division;
     $middle = $row['MIDDLE_M'];
     $_SESSION['complete_name'] = $row['FIRST_M'].' '.$middle[0].'. '.$row['LAST_M'];
+    $encrypted_name = $row['FIRST_M'].' '.$middle[0].'. '.$row['LAST_M'];
     $_SESSION['complete_name2'] = $row['FIRST_M'].' '.$row['LAST_M'];
     $_SESSION['complete_name3'] = $row['FIRST_M'].' '.$middle.' '.$row['LAST_M'];
 
       // if ($division == 14 || $division == 10 || $division == 11 || $division == 12 || $division == 13) {
-             if ($username == 'charlesodi' || $username == 'itdummy1' || $username == 'mmmonteiro' || $username == 'jamonteiro' || $username == 'rlsegunial' || $username == 'masacluti' || $username == 'cvferrer' || $username == 'seolivar' || $username == 'magonzales') {
+             if ($username == 'itdummy1' 
+             || $username == 'mmmonteiro' 
+             || $username == 'jamonteiro' 
+             || $username == 'masacluti' 
+             || $username == 'cvferrer' 
+             || $username == 'seolivar' 
+             || $username == 'magonzales') {
         
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.location.href='home.php?division=".$division."&username=".$username."';
@@ -113,7 +192,7 @@ if (isset($_POST['submit'])) {
         
         if ($OFFICE_STATION == 1) {
            echo ("<SCRIPT LANGUAGE='JavaScript'>
-        window.location.href='home1.php?division=".$division."&username=".$username."';
+        window.location.href='home1.php?division=".$division."&username=".$username."&complete_name=".$encrypted."';
         </SCRIPT>");
         }else{
            echo ("<SCRIPT LANGUAGE='JavaScript'>

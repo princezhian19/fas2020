@@ -1,5 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Manila');
+$username = $_SESSION['username'];
+
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $ip = $_SERVER['REMOTE_ADDR'];
 $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
@@ -52,19 +54,31 @@ if (isset($_POST['update'])) {
 <?php
 $date_now = date('Y-m-d');
 $now_date = date('Y-m-d H:i:s');
-$logs = mysqli_query($conn,"SELECT * FROM dtr WHERE UNAME = '$username' AND `date_today` LIKE '%$date_now%'");
-$rowl = mysqli_fetch_array($logs);
-$time_inL = $rowl['time_in'];
-$lunch_inL = $rowl['lunch_in'];
-$lunch_outL = $rowl['lunch_out'];
-$time_outL = $rowl['time_out'];
-$t1 = $rowl['t1'];
-$l1 = $rowl['l1'];
-$l2 = $rowl['l2'];
-$t2 = $rowl['t2'];
-$t_o = $rowl['t_o'];
-$o_b = $rowl['o_b'];
-date_default_timezone_set('Asia/Manila');
+
+
+  include 'connection.php';
+        
+  $logs = "SELECT * FROM dtr WHERE UNAME = '$username' AND `date_today` LIKE '%$date_now%'";
+        $result = mysqli_query($conn, $logs);
+        if(mysqli_num_rows($result) > 0)    
+        {
+          if($rowl= mysqli_fetch_array($result))
+          {
+            $time_inL = $rowl['time_in'];
+            $lunch_inL = $rowl['lunch_in'];
+            $lunch_outL = $rowl['lunch_out'];
+            $time_outL = $rowl['time_out'];
+            $t1 = $rowl['t1'];
+            $l1 = $rowl['l1'];
+            $l2 = $rowl['l2'];
+            $t2 = $rowl['t2'];
+            $t_o = $rowl['t_o'];
+            $o_b = $rowl['o_b'];
+
+          }
+
+        }
+// date_default_timezone_set('Asia/Manila');
 $time_now = (new DateTime('now'))->format('H:i');
 $newtime = date('Y-m-d H:i:s');
 
@@ -366,7 +380,7 @@ if (isset($_POST['stamp4'])) {
     <div class="box" >
       <div class="panel-heading">
         <strong><a href="DTR.php">ONLINE DTR</a></strong>
-        <?php if ($username == 'charlesodi' || $username = ''): ?>
+        <?php if ($username == 'masacluti' || $username = ''): ?>
 
           <?php if ($t_o != NULL || $o_b != NULL): ?>
 
@@ -1028,7 +1042,6 @@ if (isset($_POST['stamp4'])) {
           <?php
           $user_id = ""; 
           $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-          $username = $_SESSION['username'];
 
                 // echo "SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'";
           $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'");

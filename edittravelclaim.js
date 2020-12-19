@@ -16,26 +16,27 @@ $(document).ready(function()
     }
   });
 })
-   var myCounter = 1;
+  //  var myCounter = 1;
   
-   $('#add_fare').click(function(){
-      $('.myTemplate2')
-     .clone()
-     .removeClass("myTemplate2")
-     .addClass("additionalDate")
-     .show()
-     .appendTo('#travelPanel');
-    myCounter++;
+  //  $('#add_fare').click(function(){
+  //    alert('a');
+  //     $('.myTemplate2')
+  //    .clone()
+  //    .removeClass("myTemplate2")
+  //    .addClass("additionalDate")
+  //    .show()
+  //    .appendTo('#travelPanel');
+  //   myCounter++;
  
-    $(".datepicker4").on('focus', function(){
-        var $this = $(this);
-        if(!$this.data('datepicker')) {
-         $this.removeClass("hasDatepicker");
-         $this.datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
-         $this.datepicker("show");
-        }
-    });   
-  });
+  //   $(".datepicker4").on('focus', function(){
+  //       var $this = $(this);
+  //       if(!$this.data('datepicker')) {
+  //        $this.removeClass("hasDatepicker");
+  //        $this.datepicker({changeMonth: true, changeYear: true, yearRange: "1950:2020", dateFormat:'M dd, yy'});
+  //        $this.datepicker("show");
+  //       }
+  //   });   
+  // });
   $(document).on('click','#editbtn',function(e){
    
   

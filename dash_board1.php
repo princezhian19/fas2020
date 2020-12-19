@@ -1,5 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Manila');
+$username = $_SESSION['username'];
+
 $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
 $ip = $_SERVER['REMOTE_ADDR'];
 $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
@@ -193,6 +195,13 @@ if (isset($_POST['stamp4'])) {
    <div class="text-center"><?php echo date('F d, Y D')?></div>
    <script type="text/javascript">
     setInterval(displayclock, 1000);
+    toDisable();
+
+
+
+
+
+
     function displayclock(){
       var time = new Date();
       var hrs = time.getHours();
@@ -220,6 +229,8 @@ if (isset($_POST['stamp4'])) {
 
       document.getElementById('clock').innerHTML = hrs + ':' + min + ':' +sec;
     }
+
+
   </script>
 
 </div>
@@ -349,7 +360,7 @@ if (isset($_POST['stamp4'])) {
 
 
               <?php else: ?>
-                <td ><button class="btn btn-success " name="stamp1" id="" type="submit"><strong>Stamp</strong></button></td>
+                <td ><button class="btn btn-success " name="stamp1" id="stamp1" type="submit"><strong>Stamp</strong></button></td>
               <?php endif ?>
             </tr>
             <tr>
@@ -357,7 +368,7 @@ if (isset($_POST['stamp4'])) {
               <?php if (mysqli_num_rows($check2)>0): ?>
                 <td ><?php echo date('h:i A',strtotime($lunch_inL))?></td>
                 <?php else: ?>
-                  <td ><button class="btn btn-success " name="stamp2" id="" type="submit"><strong>Stamp</strong></button></td>
+                  <td ><button class="btn btn-success " name="stamp2" id="stamp2" type="submit"><strong>Stamp</strong></button></td>
                 <?php endif ?>
               </tr>
               <tr>
@@ -365,7 +376,7 @@ if (isset($_POST['stamp4'])) {
                 <?php if (mysqli_num_rows($check3)>0): ?>
                   <td ><?php echo date('h:i A',strtotime($lunch_outL))?></td>
                   <?php else: ?>
-                    <td ><button  class="btn btn-success" name="stamp3" type="submit"><strong>Stamp</strong></button></td>
+                    <td ><button  class="btn btn-success" name="stamp3" id ="stamp3" type="submit"><strong>Stamp</strong></button></td>
                   <?php endif ?>
                 </tr>
 
@@ -374,7 +385,7 @@ if (isset($_POST['stamp4'])) {
                   <?php if (mysqli_num_rows($check4)>0): ?>
                     <td ><?php echo date('h:i A',strtotime($time_outL))?></td>
                     <?php else: ?>
-                      <td ><button class="btn btn-success" name="stamp4" type="submit"><strong>Stamp</strong></button></td>
+                      <td ><button class="btn btn-success" name="stamp4" id = "stamp4" type="submit"><strong>Stamp</strong></button></td>
                     <?php endif ?>
                   </tr>
                 </form>
@@ -936,7 +947,6 @@ if (isset($_POST['stamp4'])) {
           <?php
           $user_id = ""; 
           $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-          $username = $_SESSION['username'];
 
                 // echo "SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'";
           $select_user = mysqli_query($conn,"SELECT DIVISION_C FROM tblemployeeinfo WHERE UNAME = '$username'");
@@ -1246,5 +1256,71 @@ if (isset($_POST['stamp4'])) {
         $('#s2').prop("disabled", true);
       }
     });
+    // ===================================
+    var time = new Date();
+      var hrs = time.getHours();
+      var min = time.getMinutes();
+      var sec = time.getSeconds();
+
+
+
+
+     var oras = parseInt(hrs);
+     var minuto = parseInt(min);
+     var segundo = parseInt(sec);
+      
+
+    //  switch (oras) {
+    //    case 8:
+    //       $('#stamp2').prop('disabled',true);
+    //       $('#stamp3').prop('disabled',true);
+    //       $('#stamp4').prop('disabled',true);
+    //      break;
+    //      case 9:
+    //       $('#stamp2').prop('disabled',true);
+    //       $('#stamp3').prop('disabled',true);
+    //       $('#stamp4').prop('disabled',true);
+    //      break;
+    //      case 10:
+    //       $('#stamp2').prop('disabled',true);
+    //       $('#stamp3').prop('disabled',true);
+    //       $('#stamp4').prop('disabled',true);
+    //      break;
+    //      case 11:
+    //       $('#stamp2').prop('disabled',true);
+    //       $('#stamp3').prop('disabled',true);
+    //       $('#stamp4').prop('disabled',true);
+    //      break;
+    //      case 13:
+    //       $('#stamp1').prop('disabled',true);
+    //       $('#stamp2').prop('disabled',true);
+    //       $('#stamp3').prop('disabled',true);
+    //      break;
+    //      case 5:
+    //       $('#stamp1').prop('disabled',true);
+    //       $('#stamp2').prop('disabled',true);
+    //       $('#stamp3').prop('disabled',true);
+    //      break;
+    //      case 2:
+    //       $('#stamp1').prop('disabled',true);
+    //       $('#stamp2').prop('disabled',true);
+    //       $('#stamp3').prop('disabled',true);
+    //      break;
+    //      case 3:
+    //       $('#stamp1').prop('disabled',true);
+    //       $('#stamp2').prop('disabled',true);
+    //       $('#stamp3').prop('disabled',true);
+    //      break;
+    //      case 4:
+    //       $('#stamp1').prop('disabled',true);
+    //       $('#stamp2').prop('disabled',true);
+    //       $('#stamp3').prop('disabled',true);
+    //      break;
+     
+    //    default:
+    //      break;
+    //  }
   });
+
+
 </script>

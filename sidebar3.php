@@ -6,18 +6,21 @@ if(!isset($_SESSION['username']) || !isset($_SESSION['complete_name'])){
   error_reporting(0);
   ini_set('display_errors', 0);
   $username = $_SESSION['username'];
+  $cn = $_SESSION['complete_name3'];
+
 $DEPT_ID = $_SESSION['DEPT_ID'];
 }
 
 $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] .   $_SERVER['REQUEST_URI']; 
+
+
 function getDivision()
 {
   include 'connection.php';
-  $sqlUsername = mysqli_query($conn,"SELECT * FROM  tblemployeeinfo INNER JOIN tblpersonneldivision ON tblemployeeinfo.DIVISION_C = tblpersonneldivision.DIVISION_N where  UNAME ='".$_SESSION['username']."'");
+  $sqlUsername = mysqli_query($conn,"SELECT * FROM  tblemployeeinfo INNER JOIN tblpersonneldivision ON tblemployeeinfo.DIVISION_C = tblpersonneldivision.DIVISION_N where  UNAME ='".$_GET['username']."'");
   $row = mysqli_fetch_array($sqlUsername);
   echo  $row['DIVISION_M']; 
 }
-$cn = $_SESSION['complete_name3'];
 
 function notification()
 {

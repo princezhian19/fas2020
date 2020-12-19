@@ -97,7 +97,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
       <table id = "table1" border="1"  width="100%" >
               
       </table>
-      <table id = "results" border="1" >
+      <table id = "results" width="100%" border = "1">
       </table>
       <table id = "table3" class="equalDivide" width="100%" border="1">          
       </table>
@@ -114,7 +114,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
 
 
 <div class="modal fade" id="add_travel_dates">
-  <div class="modal-dialog" style = "width:50%;">
+  <div class="modal-dialog" style = "width:60%;">
     <div class="modal-content" >
       <div class="modal-header">
         <h4 class="modal-title">Edit Travel Dates</h4>
@@ -124,8 +124,8 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
           <div class="box-body">
             <form method = "POST" action = "travelclaim_functions.php?action=modifyTravelDate">
               <input type = "hidden" name = "hidden_ro" value = "<?php echo $_GET['ro'];?>" />
-               <div id = "travelDate_panel">
-               </div>
+               <table id = "travelDate_panel" border = 1>
+               </table>
                 
 
             
@@ -247,17 +247,19 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
               // when users click edit button
               $('#example tbody').on( 'click', '#edit', function () {
                 var data = table.row( $(this).parents('tr') ).data();
-                var RO = data[0];
+                var RO = data[2];
                 var username = data[1];
                 $('#add_travel_dates').modal({ keyboard: false });
                 $('#or').val(data[2]);
                 $.ajax({
                   type: 'POST',
-                  url: 'editTravelData.php',
+                  url: 'testtime.php',
+                  // url: 'editTravelData.php',
                   data: (
                     {
                       ro:RO,
                       uname:username,
+                      action:"edit",
                     }),
                   cache: false,
                   success: function(data)
