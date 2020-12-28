@@ -125,7 +125,7 @@ echo '<input type = "hidden" id = "hidden_url" value = "'.$link.'"/>';
             <form method = "POST" action = "travelclaim_functions.php?action=modifyTravelDate">
               <input type = "hidden" name = "hidden_ro" value = "<?php echo $_GET['ro'];?>" />
               
-               <table id = "travelDate_panel" border = 1 >
+               <table id = "travelDate_panel" border = 1 h>
                
                </table>
                 

@@ -101,7 +101,7 @@ function aa($id)
                                           url:"travelclaim_functions.php",
                                           method:"POST",
                                           data:{
-                                          "action": 'deleteTravelOrder',
+                                          "action": 'deleteTravelOrdear',
                                           "id": <?php echo $row1['dID'];?>,
                                       },
                                       success:function(data)
@@ -267,7 +267,7 @@ function rowCount(){
   }
 }
 
-//=================== E D I T =================================================
+//=================== E D I T ============================================================================================================
 function isPerdiem($id)
 {
   include 'connection.php';
@@ -309,6 +309,7 @@ function details($id)
             tbltravel_claim_ro.`ID`, `RO_OT_OB`, `UNAME`  FROM tbltravel_claim_info 
             INNER JOIN tbltravel_claim_ro on tbltravel_claim_info.RO = tbltravel_claim_ro.ID 
             WHERE tbltravel_claim_info.`RO` = '".$id."' and tbltravel_claim_info.`DATE` = '".$date."' ORDER BY DATE";
+           
             $result1 = mysqli_query($conn, $query1);
             $saved = array();
             if(mysqli_num_rows($result1) > 0)
@@ -334,7 +335,7 @@ function details($id)
                           ?>
                               <td style = "width:14%;">
                               <input  hidden id = "dID" value = "<?php echo $row1['dID'];?>" />
-                              <input  type = "text"  id = "travel_date" class = "form-control tDate"  name = "start"  placeholder="mm/dd/yyyy"   value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>" autocomplete = off /></td>
+                              <input  type = "text" data-id = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>"  class = "form-control tDate"  name = "start"  placeholder="mm/dd/yyyy"   value = "<?php echo date('F d, Y', strtotime($row1['DATE']));?>" autocomplete = off /></td>
 
                               <!-- <input  type = "text" class = "form-control datepicker2" id = "datepicker2" style = "width:75%;" value = ""/></td> -->
                           <?php
@@ -342,14 +343,14 @@ function details($id)
                   }else{
                   ?>
                   
-                    <tr style =" display:table; table-layout:fixed; width:100%;">
+                    <tr style =" display:table; table-layout:fixed; width:100%;" data-id = "<?php echo $row1['dID'];?>">
                         <?php }?>
                         <td>
                         
                         <?php 
                         list($from,$to) = explode("to", $row1['PLACE']);
                         ?>
-                        <input type = "text" id = "from" class = "form-control" style = "width:100%;" value = "<?php echo $from;?>"/><br>
+                        <input type = "text" id = "from" class = "form-control" style = "width:100%;" value = "<?php echo $query1;?>"/><br>
                         <input type = "text" id = "to" class = "form-control" style = "width:100%;" value = "<?php echo $to;?>"/>
 
                         
@@ -396,14 +397,14 @@ function details($id)
                       
                       $(document).ready(function(){
                           $( "#save<?php echo $row1['dID'];?>" ).click(function() {
-                    
+                 
                             swal("Good job!", "You clicked the button!", "success");
                             $.ajax({
                             type:'POST',
                             data:{
                               "action": 'update',
                               "id": $('#dID').val(),
-                              "travelDate":$('#travel_date').val(),
+                              "travelDate":$('.tDate').val(),
                               "from":$('#from').val(),
                               "to":$('#to').val(),
                               "arrival":$('#arrival').val(),
@@ -417,7 +418,8 @@ function details($id)
                             url:'travelclaim_functions.php',
                             success:function(data) {
                              setTimeout(function(){
-                                location.reload();
+                               alert($('#dID').val());
+                                // location.reload();
                             },1000);
                             }
                           });
@@ -532,9 +534,6 @@ function editTravelData($id)
     }
 }
           
-    
-
-
 switch ($_POST['action']) {
   case 'view':
         include 'connection.php';
