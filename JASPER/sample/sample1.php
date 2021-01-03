@@ -111,6 +111,11 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
     
     $type_req = $_POST['req_type_category'][$i];
     $type_subreq = $_POST['req_type_subcategory'][$i];
+
+    if($type_req == 'OTHERS')
+    {
+        $type_subreq = 'Other software/s (please specify)';
+    }
     
      $sql_insert ="INSERT INTO `tbltechnical_assistance`(
                `ID`, 

@@ -21,6 +21,7 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
 
 
                 $query = "SELECT * FROM `tbltechnical_assistance` WHERE `CONTROL_NO` = '$cn'";
+            
                 $name = '';
                 $result = mysqli_query($conn, $query);
                 $val = array();

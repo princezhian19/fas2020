@@ -185,7 +185,7 @@ include 'connection.php';
                         <div class="col-md-2">
                               <select class="form-control " id="selectYear" style="width: 100%;">
                                 <?php 
-                                for($i= 2020; $i < 2021; $i++)
+                                for($i= 2020; $i < 2022; $i++)
                                 {
                                   echo '<option value='.$i.'>'.$i.'</option>';
                                 }
