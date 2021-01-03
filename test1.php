@@ -704,7 +704,7 @@ $link == 'http://fas.calabarzon.dilg.gov.ph/obtableViewMain.php?getsaroID='.$_GE
 </ul>
 </li>
 <?php endif ?>
-<li 
+<li
 <?PHP 
 if(
   $link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
