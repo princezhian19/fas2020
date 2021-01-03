@@ -713,7 +713,7 @@ function countAssigned()
                                 <li class="list-group-item">
                                     <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Jake">
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">ADA IV</span>
-                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-100.8px;font-size:12px;">Jake Banalan</span>
+                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-30.8px;font-size:12px;">Jake Banalan</span>
                                     <button onclick="$('#fourth_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right" >
                                   
                                         <span class="badge badge-light"><?php echo showICTload('Jake');?></span>
