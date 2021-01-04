@@ -714,7 +714,7 @@ function countAssigned()
                                     <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Jake">
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">ADA IV</span>
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-30.8px;font-size:12px;">Jake Banalan</span>
-                                    <button onclick="$('#fourth_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right" >
+                                    <button onclick="$('#third_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right" >
                                   
                                         <span class="badge badge-light"><?php echo showICTload('Jake');?></span>
 
@@ -724,7 +724,7 @@ function countAssigned()
                                     <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Shiela Mei">
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Data Analyst</span>
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-55.8px;font-size:12px;">Shiela Mei Olivar</span>
-                                    <button  onclick="$('#fifth_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
+                                    <button  onclick="$('#fourth_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
                                         <span class="badge badge-light"><?php echo showICTload('Shiela');?></span>
                                     </button>
                                 </li>
@@ -732,7 +732,7 @@ function countAssigned()
                                     <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Maybelline">
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Information Technology Officer I</span>
                                     <span style="font-size:10px;line-height:40px;50px;margin-left:-135.8px;font-size:12px;">Maybelline Monteiro</span>
-                                    <button  onclick="$('#six_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
+                                    <button  onclick="$('#fifth_tab').trigger('click')" type="button" class="btn btn-sm btn-danger pull-right">
                                         <span class="badge badge-light"><?php echo showICTload('Maybelline');?></span>
                                     </button>
                                 </li>
