@@ -114,7 +114,7 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
 
     if($type_req == 'OTHERS')
     {
-        $type_subreq = 'Other software/s (please specify)';
+        $type_subreq = 'OTHERS';
     }
     
      $sql_insert ="INSERT INTO `tbltechnical_assistance`(

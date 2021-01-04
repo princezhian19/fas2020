@@ -181,7 +181,7 @@ function getImage()
                 <span class="label label-success"><?php echo notification();?></span>
               </a>
               <ul class="dropdown-menu">
-                <li class="header">You have <?php echo notification();?> technical assistance request</li>
+                <li class="header">You have <?php echo notification();?> technical assidddstance request</li>
                 <li>
                   <!-- inner menu: contains the actual data -->
                   <ul class="menu">

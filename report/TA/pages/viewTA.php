@@ -28,6 +28,9 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                 while($row = mysqli_fetch_array($result))
                 {
                 $name =ucwords(strtolower($row['REQ_BY']));
+                $others1 = $row['TEXT6']; 
+                $others2 = $row['TEXT7'];
+                $others3 = $row['TEXT8'];
                
             
                 
@@ -610,6 +613,31 @@ switch($req_type_subcategory)
                                     "ip_address"=>$ip_address,
                                     "mac_address"=>$mac_address);
             break;
+        case 'OTHERS':
+            $PHPJasperXML->arrayParameter=array(
+                "control_no"=>$control_no,"started_date"=>$started_date,
+                "timeliness"=>$timeliness,"start_time"=>$started_time,
+                "quality"=>$quality,"completed_date"=>$completed_date,
+                "issue"=>$issue,"completed_time"=>$completed_time,"status_desc"=>$status_desc,
+                "req_type_subcategory21"=>'correct.png',
+                "others1"=>$others1,
+                "others2"=>$others2,
+                "others3"=>$others3,
+                "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
+                "assisted_by"=>$assisted_by,
+                "requested_date"=>$request_date,
+                "requested_time"=>$request_time,
+                "office"=>$office,
+                "position"=>$position,
+                "contact_no"=>$contact_no,
+                "email"=>$email_address,
+                "equipment_type"=>$equipment_type,
+                "brand_model"=>$brand_model,
+                "property_no"=>$property_no,
+                "serial_no"=>$serial_no,
+                "ip_address"=>$ip_address,
+                "mac_address"=>$mac_address);
+        break;
     
 
 
