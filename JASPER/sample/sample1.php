@@ -44,6 +44,7 @@ if(isset($_POST['req_type_subcategory']))
 
 $site =$_POST['site'];
 $softwares = $_POST['softwares'];
+$softwares2 = $_POST['softwares2'];
 $changeaccount = $_POST['changeaccount'];
 $others1 = $_POST['others1'];
 $others2 = $_POST['others2'];
@@ -55,6 +56,7 @@ $site = $_POST['site'];
 $purpose = $_POST['purpose'];
 $purpose2 = $_POST['purpose2'];
 $softwares = $_POST['softwares'];
+$softwares2 = $_POST['softwares2'];
 $changeaccount = $_POST['changeaccount'];
 $others1 = $_POST['others1'];
 $others2 = $_POST['others2'];
@@ -64,6 +66,7 @@ $others3 = $_POST['others3'];
     $purpose = '';
     $purpose2 ='';
     $softwares = '';
+    $softwares2 = '';
     $changeaccount = '';
     $others1 = '';
     $others2 = '';
@@ -139,6 +142,7 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                `TEXT2`,
                `TEXT3`,
                `TEXT4`,
+               `TEXT9`,
                `TEXT5`,
                `TEXT6`,
                `TEXT7`,
@@ -176,6 +180,7 @@ for($i = 0; $i < count($_POST['req_type_category']); $i++)
                '$purpose',
                '$purpose2',
                '$softwares',
+               '$softwares2',
                '$changeaccount',
                '$others1',
                '$others2',

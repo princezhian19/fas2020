@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5be4a1da-05bd-4f9e-8b3b-66b0111942f6">
-	<property name="ireport.zoom" value="2.8531167061101206"/>
-	<property name="ireport.x" value="638"/>
-	<property name="ireport.y" value="139"/>
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="964"/>
+	<property name="ireport.y" value="1063"/>
 	<parameter name="currentuser" class="java.lang.String"/>
 	<parameter name="defective" class="java.lang.String"/>
 	<parameter name="requested_date" class="java.lang.String"/>
@@ -49,6 +49,8 @@
 	<parameter name="req_type_subcategory21" class="java.lang.String"/>
 	<parameter name="others1" class="java.lang.String"/>
 	<parameter name="others2" class="java.lang.String"/>
+	<parameter name="other_software1" class="java.lang.String"/>
+    <parameter name="other_software2" class="java.lang.String"/>
 	<parameter name="others3" class="java.lang.String"/>
 	<parameter name="issue" class="java.lang.String"/>
 	<parameter name="status_desc" class="java.lang.String"/>
@@ -825,12 +827,6 @@
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</rectangle>
-			<line>
-				<reportElement x="451" y="320" width="81" height="1" uuid="a0de0250-b69f-41f9-a8c9-74d3a73e6562"/>
-			</line>
-			<line>
-				<reportElement x="451" y="330" width="81" height="1" uuid="fcd03158-173e-4a24-b283-6c689e126e94"/>
-			</line>
 			<staticText>
 				<reportElement x="47" y="375" width="92" height="10" uuid="b1d37efc-0310-49f2-878a-f99a093197e8"/>
 				<textElement>
@@ -1435,23 +1431,23 @@
 				<textFieldExpression><![CDATA[$P{changeaccount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="430" y="361" width="140" height="15" uuid="ad75fa9e-7e17-4bc7-a5f6-d0b77324d9cf"/>
+				<reportElement x="439" y="360" width="140" height="15" uuid="ad75fa9e-7e17-4bc7-a5f6-d0b77324d9cf"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="6" isUnderline="true"/>
+					<font fontName="Arial" size="6" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{others1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="430" y="373" width="140" height="15" uuid="2b68d820-5002-4ce5-96e9-943b481fcb71"/>
+				<reportElement x="439" y="372" width="140" height="15" uuid="2b68d820-5002-4ce5-96e9-943b481fcb71"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="6" isUnderline="true"/>
+					<font fontName="Arial" size="6" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{others2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="430" y="386" width="140" height="15" uuid="10483862-f61d-4215-92fe-fc26c1331229"/>
+				<reportElement x="439" y="385" width="140" height="15" uuid="10483862-f61d-4215-92fe-fc26c1331229"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="6" isUnderline="true"/>
+					<font fontName="Arial" size="6" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{others3}]]></textFieldExpression>
 			</textField>
@@ -1579,6 +1575,35 @@
 				<reportElement x="359" y="453" width="8" height="8" uuid="92f8aaab-4648-43c0-adf8-03847997ceda"/>
 				<imageExpression><![CDATA[$P{defective}]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="459" y="314" width="140" height="15" uuid="dca38bbd-10ee-4499-b568-af31cf6776f8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{others_software1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="459" y="324" width="140" height="15" uuid="7dd7d0c8-7916-4953-b2ff-ce147a62ec9b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="6" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{others_software2}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="460" y="325" width="82" height="1" uuid="7a2ffe4c-21e7-498a-80d0-772d98b50504"/>
+			</line>
+			<line>
+				<reportElement x="460" y="336" width="82" height="1" uuid="c49ccbbb-92a0-4256-9776-dc55f5bede57"/>
+			</line>
+			<line>
+				<reportElement x="440" y="372" width="82" height="1" uuid="563f18d4-417b-49d7-b9b7-5e69d233f572"/>
+			</line>
+			<line>
+				<reportElement x="440" y="384" width="82" height="1" uuid="66768236-ac55-479d-acfb-1a71af6f004b"/>
+			</line>
+			<line>
+				<reportElement x="440" y="397" width="82" height="1" uuid="a8e8dacd-e43d-4330-8fea-3611508ee9d8"/>
+			</line>
 		</band>
 	</title>
 </jasperReport>

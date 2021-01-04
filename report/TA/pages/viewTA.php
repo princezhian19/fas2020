@@ -31,6 +31,9 @@ $conn=mysqli_connect('localhost','fascalab_2020','w]zYV6X9{*BN','fascalab_2020')
                 $others1 = $row['TEXT6']; 
                 $others2 = $row['TEXT7'];
                 $others3 = $row['TEXT8'];
+
+                $softwares1 = $row['TEXT4'];
+                $softwares2 = $row['TEXT9'];
                
             
                 
@@ -455,6 +458,8 @@ switch($req_type_subcategory)
                                     "softwares"=>$softwares,    
                                     "req_type_category3"=>'correct.png',
                                     "req_type_subcategory14"=>'correct.png',
+                                    "others_software1" => $softwares1,
+                                    "others_software2" => $softwares2,
                                     "currentuser"=>$name,"resolve"=>$status,"defective"=>$status2,                                
                                     "assisted_by"=>$assisted_by,
                                     "requested_date"=>$request_date,
