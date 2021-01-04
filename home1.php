@@ -742,7 +742,7 @@ $(document).ready(function()
 });
 </script>
 <?php 
-  if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
+  if ($username == 'ljbanalan' || $username == 'mmmonteiro' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
 }else{ 
 
      if ($OFFICE_STATION == 1) {
