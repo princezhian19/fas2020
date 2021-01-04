@@ -64,13 +64,15 @@ function pmo($connect)
 $idGet='';
 $getDate = date('Y');
 $m = date('m');
-$auto = mysqli_query($conn,"SELECT min(id)+1 as a FROM pr order by id desc limit 1");
+$auto = mysqli_query($conn,"SELECT pr_no as a FROM pr order by id desc limit 1");
 while ($row = mysqli_fetch_assoc($auto)) {
 
-  $idGet = $row["a"];
+  $idGet1 = $row["a"];
+  $str = str_replace("2021-01-","",$idGet1);
+  $idGet = (int)$str + 1;
 }
 
-$latest_pr_no = $getDate.'-'.$m.'-'.'00'.$idGet;
+$latest_pr_no = $getDate.'-'.$m.'-'.'000'.$idGet;
 
 $pmo = $_GET['pmo'];
 $pr_date = $_GET['pr_date'];
@@ -480,9 +482,9 @@ if (isset($_POST['add'])) {
                 <div class="form-group">
                   <label>PR No. <label style="color: Red;" >*</label> </label>
                   <?php if ($pr_no != ''): ?>
-                   <input readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'00'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span>
+                   <input readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'000'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span>
                    <?php else:  ?>
-                    <input  readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'00'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
+                    <input  readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'000'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
                   <?php endif ?>
                 </div>
                 <div class="form-group">

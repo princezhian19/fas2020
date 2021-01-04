@@ -20,12 +20,20 @@ function fill_unit_select_box($connect)
 //auto generation of rfq no.
 $idGet='';
 $getDate = date('Y');
-$auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM rfq order by id desc limit 1");
+// $auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM rfq order by id desc limit 1"); == charles
+$auto = mysqli_query($conn,"SELECT rfq_no as a,YEAR(rfq_date) as year FROM rfq order by id desc limit 1");
 while ($row = mysqli_fetch_assoc($auto)) {
 
-  $idGet = $row["a"];
-}
 
+  $idGet1 = $row["a"];
+
+    $str = str_replace("2021-","",$idGet1);
+    $idGet = (int)$str + 1;
+
+
+
+    
+}
 
 $getid = $_GET['prID'];
 $query = mysqli_query($conn,"SELECT * FROM pr where id = '$getid' ");
@@ -326,7 +334,7 @@ function checkAvailability() {
                <div class="form-group">
                 <label>RFQ No.</label>
                 <!-- <input class="form-control" type="text" name="rfq_no"> -->
-                 <input class="form-control" name="rfq_no" type="text" id="rfq_no" value="<?php echo $getDate.'-'.$idGet?>">
+                 <input class="form-control" name="rfq_no" type="text" id="rfq_no" value="<?php echo $getDate.'-000'.$idGet?>">
                  <!-- <input class="form-control" name="rfq_no" type="text" id="rfq_no" class="demoInputBox" onBlur="checkAvailability()" value="<?php echo $getDate.'-'.'00'.$idGet?>"><span id="user-availability-status"></span> -->
               </div>
 
