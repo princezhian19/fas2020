@@ -715,23 +715,14 @@ function countAssigned()
                                     
                                 </li>
                                 <li class="list-group-item">
-                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Christian Paul">
-                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Network Administrator</span>
-                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-94.8px;font-size:12px;">Christian Paul Ferrer</span>
+                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Jake">
+                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">ADA IV</span>
+                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-30px;font-size:12px;">Jake Banalan</span>
                                     <button  disabled type="button" class="btn btn-sm btn-danger pull-right">
-                                        <span class="badge badge-light"><?php echo showICTload('Christian');?></span>
+                                        <span class="badge badge-light"><?php echo showICTload('Jake');?></span>
                                     </button>
                                 </li>
-                                <li class="list-group-item">
-                                    <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Charles Adrian">
-                                    <span style="font-size:10px;vertical-align:top;line-height:10px;">Database Administrator</span>
-                                    <span style="font-size:10px;line-height:40px;50px;margin-left:-100.8px;font-size:12px;">Charles Adrian Odi</span>
-                                    <button disabled type="button" class="btn btn-sm btn-danger pull-right" >
-                                  
-                                        <span class="badge badge-light"><?php echo showICTload('Charles');?></span>
-
-                                    </button>
-                                </li>
+                                
                                 <li class="list-group-item">
                                     <img style="vertical-align:top;"  class="round" width="30" height="30" avatar="Shiela Mei">
                                     <span style="font-size:10px;vertical-align:top;line-height:10px;">Data Analyst</span>
@@ -818,23 +809,20 @@ $('.sweet-14').click(function()
             input: 'select',
             inputOptions: {
             'Mark Kim A. Sacluti': 'Mark Kim A. Sacluti',
-            'Charles Adrian T. Odi': 'Charles Adrian T. Odi',
-            'Christian Paul V.  Ferrer': 'Christian Paul V. Ferrer',
+            'Jake Banalan': 'Jake Banalan',
             'Shiela Mei E. Olivar':'Shiela Mei E. Olivar',
             'Maybelline Monteiro':'Maybelline Monteiro',
             },
             inputPlaceholder: 'Select ICT Staff',
             showCancelButton: true,
             inputValidator: function (value) {
-            return new Promise(function (resolve, reject) {
+                return new Promise(function (resolve, reject) {
                 if (value === 'Mark Kim A. Sacluti') {
                 resolve()
-                }else if(value == 'Charles Adrian T. Odi')
+                }else if(value == 'Jake Banalan')
                 {
                 resolve()
-                } else if(value == 'Christian Paul V. Ferrer'){
-                resolve()
-                } else if(value == 'Shiela Mei E. Olivar'){
+                }else if(value == 'Shiela Mei E. Olivar'){
                 resolve()
                 }
                 else{
