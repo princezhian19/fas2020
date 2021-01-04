@@ -425,6 +425,7 @@ function fillCheckbox()
                                 <input style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "DILG Portals/Systems"> DILG Portals/Systems<br>
                                 <input checked style = "margin-bottom:10px;"type = "checkbox" name = "req_type_subcategory[]" class = "checkboxgroup_g3" value = "Other software/s (please specify)"> Other software/s (please specify)
                                 <br><input value = "<?php echo $row['TEST4'];?>" type = "text" name = "softwares" id= "softwares" value = "" style = "margin-left:10px;border:none;border-bottom:1px solid black;"/><br>
+                                <input value = "<?php echo $row['TEST9'];?>" type = "text" name = "softwares" id= "softwares" value = "" style = "margin-left:10px;border:none;border-bottom:1px solid black;"/>
                             </div>
                         <?php
                     break;                
