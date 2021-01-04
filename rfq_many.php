@@ -24,12 +24,17 @@ $getDate = date('Y');
 $auto = mysqli_query($conn,"SELECT rfq_no as a,YEAR(rfq_date) as year FROM rfq order by id desc limit 1");
 while ($row = mysqli_fetch_assoc($auto)) {
 
-
-  $idGet1 = $row["a"];
-
+if($row['year'] == '2020')
+{
+    $idGet1 = 0;
+    $str = str_replace("2020-","",$idGet1);
+    $idGet = (int)$str + 1;
+}else{
+    $idGet1 = $row["a"];
     $str = str_replace("2021-","",$idGet1);
     $idGet = (int)$str + 1;
-
+}
+    
 
 
     

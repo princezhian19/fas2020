@@ -4,6 +4,7 @@ $id = $_GET['id'];
 $username = $_SESSION['username'];
 $division = $_SESSION['division'];
 $select = mysqli_query($conn,"SELECT * FROM pr WHERE id = '$id' ");
+
 $row = mysqli_fetch_array($select);
 $pr_no = $row['pr_no'];
 $pmo = $row['pmo'];
