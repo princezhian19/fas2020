@@ -95,7 +95,8 @@ if (isset($_POST['submit'])) {
             }
 
             $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
-            $view_query11 = mysqli_query($conn, "SELECT * FROM pr where pmo = '$user_id' order by id desc ");
+            $view_query11 = mysqli_query($conn, "SELECT * FROM pr order by id desc ");
+            // $view_query11 = mysqli_query($conn, "SELECT * FROM pr where pmo = '$user_id' order by id desc ");
             while ($row = mysqli_fetch_assoc($view_query11)) {
               $getID = $row["id"];
               $id = $row["id"];
