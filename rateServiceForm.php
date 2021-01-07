@@ -1254,6 +1254,7 @@ $('document').ready(function()
   
     
 var c_n = $('#control_no').val();
+var type = 'user';
     document.querySelector('.sweet-14').onclick = function(){
           swal({
               title: "Are you sure you want to save?",
@@ -1276,7 +1277,15 @@ var c_n = $('#control_no').val();
                   setTimeout(function () {
                   swal("Record saved successfully!");
                   }, 3000);
-                  window.location = "processing.php?division=<?php echo $_GET['division'];?>&ticket_id=";
+
+                  if(type == "<?php echo $_GET['type'];?>")
+                  {
+                    window.location = "techassistance.php?division=<?php echo $_GET['division'];?>";
+
+                  }else{
+                    window.location = "processing.php?division=<?php echo $_GET['division'];?>&ticket_id=";
+
+                  }
               }
             });
         });

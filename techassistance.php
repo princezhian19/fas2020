@@ -285,8 +285,10 @@ function filldataTable()
                 {
                     if ($row['DATE_RATED'] != '' || $row['DATE_RATED'] != NULL){
                         ?>
-                <button    disabled class = "btn btn-danger btn-md col-lg-12 ">
-                        Rate Service
+                <button    class = "btn btn-danger btn-md col-lg-12 ">
+                <a href = "rateService.php?type=user&division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                                Rate Service
+                            </a>
                     
                 </button>
 
@@ -296,8 +298,10 @@ function filldataTable()
 
                     
                     ?>
-                <button  disabled class = "btn btn-danger btn-md col-lg-12 ">
-                        Rate Service
+                <button  class = "btn btn-danger btn-md col-lg-12 ">
+                <a href = "rateService.php?type=user&division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>" style = "decoration:none;color:#fff;" >
+                                Rate Service
+                            </a>
                 </button>
 
                    
@@ -311,7 +315,7 @@ function filldataTable()
 <?php
                 }else{
                     ?>
-                    <button disabled class = "btn btn-danger btn-md col-lg-12 ">
+                    <button  class = "btn btn-danger btn-md col-lg-12 ">
                             Rate Service
                     
                     </button>

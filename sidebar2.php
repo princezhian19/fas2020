@@ -99,8 +99,8 @@ $cn = $_SESSION['complete_name3'];
 function notification()
 {
   include 'connection.php';
-  $cn = $_SESSION['complete_name3'];
-  $query = "SELECT count(*) as 'count' from tbltechnical_assistance where REQ_BY ='$cn' and `STATUS_REQUEST` = 'Completed' and STATUS != '' ";
+  $cn = $_SESSION['complete_name2'];
+  $query = "SELECT count(*) as 'count' from tbltechnical_assistance where REQ_BY ='$cn' and `STATUS_REQUEST` = 'Completed'";
   $result = mysqli_query($conn, $query);
   $val = array();
   while($row = mysqli_fetch_array($result))
