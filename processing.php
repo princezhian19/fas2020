@@ -177,22 +177,18 @@ function filldataTable()
                         if($row['START_DATE'] == '0000-00-00' || $row['START_DATE'] == null   )
                         {
                         echo ' <button  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12">Receive</button>';
-
-                   
-
-                        
-                    }else{
-                        if($row['START_DATE'] != '0000-00-00' || $row['START_DATE'] != 'January 01, 1970')
-                        {
-
-                            echo '
-                            <button disabled title = "Received Date"  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
-                            Received Date<br>    
-                            <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
-                            </button>';
-                            echo '<br>';
+                            
+                        }else{
+                            if($row['START_DATE'] != '0000-00-00' || $row['START_DATE'] != 'January 01, 1970')
+                            {
+                                echo '
+                                <button disabled title = "Received Date"  data-id = '.$row['CONTROL_NO'].' class = "sweet-17 btn btn-md btn-primary col-lg-12 " >
+                                Received Date<br>    
+                                <b>'.date('F d, Y',strtotime($row['START_DATE'])).'</b>
+                                </button>';
+                                echo '<br>';
+                            }
                         }
-                    }
 
 
 
@@ -226,7 +222,7 @@ function filldataTable()
                         <?php
                     }else{
                         ?><br>
-                        <button  data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">
+                        <button  disabled data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">
                         <?php 
                         if($row['ASSIGN_DATE'] == null || $row['ASSIGN_DATE'] == '')
                         {

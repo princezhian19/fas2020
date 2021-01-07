@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5be4a1da-05bd-4f9e-8b3b-66b0111942f6">
 	<property name="ireport.zoom" value="4.0"/>
-	<property name="ireport.x" value="964"/>
+	<property name="ireport.x" value="1132"/>
 	<property name="ireport.y" value="1063"/>
 	<parameter name="currentuser" class="java.lang.String"/>
 	<parameter name="defective" class="java.lang.String"/>
@@ -49,8 +49,8 @@
 	<parameter name="req_type_subcategory21" class="java.lang.String"/>
 	<parameter name="others1" class="java.lang.String"/>
 	<parameter name="others2" class="java.lang.String"/>
-	<parameter name="other_software1" class="java.lang.String"/>
-    <parameter name="other_software2" class="java.lang.String"/>
+	<parameter name="others_software1" class="java.lang.String"/>
+	<parameter name="others_software2" class="java.lang.String"/>
 	<parameter name="others3" class="java.lang.String"/>
 	<parameter name="issue" class="java.lang.String"/>
 	<parameter name="status_desc" class="java.lang.String"/>

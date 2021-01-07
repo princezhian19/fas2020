@@ -113,6 +113,8 @@ function filldataTable()
                                             <div class="info-box-content" >
                                                     <span class="info-box-number"><i style = "font-size:16px;font-weight:bold;">Issue/Problem/Error Details</i>
                                                     </span>
+                                                    <span class="info-box-number pull-right" style = "margin-top:-15px;"><a href = "_editRequestTAuser.php?division=<?php echo $_GET['division'];?>&id=<?php echo $row['CONTROL_NO'];?>">Edit</a>
+                                                    </span>
                                                     <span  style ="font-size:15px;">
                                                     <?php 
                                                     echo $row['ISSUE_PROBLEM'];?>

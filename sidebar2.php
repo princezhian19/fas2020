@@ -175,7 +175,24 @@ function showRequest()
                     <?php echo showRequest();?>
                   </ul>
                 </li>
-                <li class="footer"><a href="processing.php?division=<?php echo $_GET['division'];?>&ticket_id=">See All Request</a></li>
+                <li class="footer">
+                    <?php 
+                      if ($username == 'ljbanalan' ||
+                          $username == 'mmmonteiro'|| 
+                          $username == 'masacluti' || 
+                          $username == 'seolivar' )
+                          { 
+                              ?>
+                             <a href="processing.php?division=<?php echo $_GET['division'];?>&ticket_id=">See All Request</a></li>
+
+                              <?php
+                           }else{ 
+                            ?>
+                            <a href="techassistance.php?division=<?php echo $_GET['division'];?>"  >See All Request</a></li>
+
+                            <?php
+                           }
+                    ?>
               </ul>
             </li>
             <!-- User Account: style can be found in dropdown.less -->
