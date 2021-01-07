@@ -222,7 +222,7 @@ function filldataTable()
                         <?php
                     }else{
                         ?><br>
-                        <button  disabled data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">
+                        <button   data-id ="<?php echo $row['CONTROL_NO'];?>" class = "col-lg-12 pull-right sweet-14 btn btn-danger" style = "background-color:orange;">
                         <?php 
                         if($row['ASSIGN_DATE'] == null || $row['ASSIGN_DATE'] == '')
                         {
