@@ -64,7 +64,10 @@ function pmo($connect)
 $idGet='';
 $getDate = date('Y');
 $m = date('m');
-$auto = mysqli_query($conn,"SELECT pr_no as a FROM pr order by id desc limit 1");
+// $auto = mysqli_query($conn,"SELECT pr_no as a FROM pr order by id desc limit 1");
+$auto = mysqli_query($conn,"SELECT count(*) FROM pr WHERE YEAR(pr_date) = '2021'");
+
+// 
 while ($row = mysqli_fetch_assoc($auto)) {
 
   $idGet1 = $row["a"];
