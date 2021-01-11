@@ -150,7 +150,24 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
             }
             return $excelRow;
     }
-   
+    
+    function getParticulars()
+    {
+        $conn=mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020");
+
+        $query = "SELECT PARTICULARS from tbltravel_claim inner join tbltravel_claim_info2 on tbltravel_claim.RO_TO_OB = tbltravel_claim_info2.RO_TO_OB ";
+
+        $result = mysqli_query($conn, $query);
+        if(mysqli_num_rows($result) > 0)    
+        {
+            while($row1 = mysqli_fetch_array($result))
+            {
+                $particulars = $row1['PARTICULARS'];
+                echo $particulars;
+            }
+        }
+        return $particulars;
+    }
     
         $query = "SELECT DISTINCT(RO_OT_OB),DATE, PLACE, DEPARTURE, ARRIVAL, MOT, TRANSPORTATION, PERDIEM, OTHERS, tbltravel_claim_ro.ID, TC_ID, tbltravel_claim_info.RO FROM `tbltravel_claim_info2`
         INNER JOIN `tbltravel_claim_info` on `tbltravel_claim_info2`.`ID` = `tbltravel_claim_info`.`TC_ID` 
@@ -615,7 +632,14 @@ $objPHPExcel = PHPExcel_IOFactory::load("library/export_travelclaim.xlsx");
 
 
     // ================== SHEET 2 =======================
-    // $objPHPExcel->setActiveSheetIndex(1)->setCellValue('D6',$_GET['username']);
+    $objPHPExcel->setActiveSheetIndex(1)->setCellValue('D6',$_GET['username']);
+
+    $objPHPExcel->setActiveSheetIndex(1)->setCellValue('D15',getParticulars());
+    $objPHPExcel->setActiveSheetIndex(2)->setCellValue('B17',getParticulars());
+
+    $objPHPExcel->setActiveSheetIndex(1)->setCellValue('L15',$TOT);
+    $objPHPExcel->setActiveSheetIndex(1)->setCellValue('L27',$TOT);
+
 
 
 

@@ -290,13 +290,13 @@ function isSubmit()
     <div class="box-header with-border">
     </div>
     <br>
-    &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="CreateTravelClaim.php?username=<?php echo $username;?>&division=<?php echo $_SESSION['division'];?>" style="color:white;text-decoration: none;">Back</a></li>
+    <!-- &nbsp &nbsp &nbsp   <li class="btn btn-warning"><i class="fa fa-fw fa-arrow-left"></i><a href="CreateTravelClaim.php?username=<?php echo $username;?>&division=<?php echo $_SESSION['division'];?>" style="color:white;text-decoration: none;">Back</a></li> -->
     <br>
     <br>
         <div class="box-body">
             <div class="well" style = "padding:20px;">
-            <button class="gototab btn btn-lg btn-success pull-left" onclick="goToTabByDelta(-1)">Previous</button> 
-	<button class="gototab btn btn-lg btn-success pull-right" style = "margin-left:5%;width:6%;" onclick="goToTabByDelta(+1)">Next</button>
+            <button class="gototab btn btn-lg btn-success pull-left" onclick="goToTabByDelta(-1)"><i class = "fa fa-arrow-left"></i></button> 
+	<button class="gototab btn btn-lg btn-success pull-right" style = "margin-left:5%;" onclick="goToTabByDelta(+1)"><i class = "fa fa-arrow-right"></i></button>
 <br><br>
 
             
@@ -475,16 +475,16 @@ body {
 <div id="tabContainer" class="tabContainer">
     <div class="tabs" id="tabs">
 	<ul class="nav nav-tabs">
-        <li id="tabHeader_1">Itinerary</li>
-        <li id="tabHeader_2">ORS</li>
-        <li id="tabHeader_3">DV</li>
+        <li id="tabHeader_1" ></li>
+        <li id="tabHeader_2" ></li>
+        <li id="tabHeader_3" ></li>
       </ul>
     </div>
     <div id="tabscontent" class="tab-content">
+    <form method = "POST" action = "travelclaim_functions.php?action=add">
       <div class="tabpage" id="tabpage_1">
         <h2 style = "text-align:center;">Itinerary of Travel</h2>
         <p style = "text-align:center;">Appendix 45</p>
-          <form method = "POST" action = "travelclaim_functions.php?action=add">
               <table  cellpadding="0" cellspacing="0" width="80%" border="1">
                 <thead>
                   <tr>
@@ -523,7 +523,7 @@ body {
                     <td class = "label-text">  <label>Position:</label></td>
                       <td colspan = 4 ><input type = "text" class = "form-control" value = "<?php echo getPosition();?>" readonly name = "position"/></td>
                         <td colspan = 5 rowspan = 2>
-                          <label>Purpose of Travel:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or" ><?php if($_GET['ro'] == 'null'){ }else{echo $_GET['ro'];}?></textarea>
+                          <label>Purpose of Travel:</label> <label style="color: Red;" >*</label><textarea rows = 4 col=10 style = "width:100%;resize:none;" id = "or" name ="ro"><?php if($_GET['ro'] == 'null'){ }else{echo $_GET['ro'];}?></textarea>
                           <input type = "hidden" value="<?php echo getPurposeTravel($_GET['username']);?>" name = "purpose_of_travel"/>
                           </td>
                   </tr>
@@ -570,7 +570,6 @@ body {
               
                   
               </table>
-          </form>
       </div>
       <div class="tabpage" id="tabpage_2" style="display:none;">
         <h2 style = "text-align:center;">ORS</h2>
@@ -609,7 +608,7 @@ body {
           <tr>
             <td><input type="text" name="q" class="form-control" disabled></td>
             <td colspan = 4>
-            <textarea style = "resize:none" rows = "4" cols = "70"></textarea>
+            <textarea style = "resize:none" rows = "4" cols = "70" name = "particulars" id = "particulars"></textarea>
             </td>
             <td><input type="text" name="q" class="form-control" disabled></td>
             <td><input type="text" name="q" class="form-control" disabled></td>
@@ -689,7 +688,7 @@ body {
 
       </div>
       <div class="tabpage" id="tabpage_3" style="display:none;">
-      <h2 style = "text-align:center;">DISBURSEMENT VOUCHER</h2>
+        <h2 style = "text-align:center;">DISBURSEMENT VOUCHER</h2>
         <p style = "text-align:center;">Appendix 32</p>
         <table  cellpadding="0" cellspacing="0" width="80%" border="1" style = "border:1px solid black;">
             <tr>
@@ -736,18 +735,8 @@ body {
           </tr>
           <tr>
             <td>
-            <textarea style = "resize:none" rows = "4" cols = "70">
-              Payment for the travelling incurred for 
-              authorized travels for February 2020,, in the amount of..........													
-
-              Please refer to attached documents 
-
-              *ORS
-              *Signed Certificate of Travel Completed
-              *Signed Itinerary of Travel
-              *Department/Regional/Travel Order
-              *Certificate of Appearance
-              *Official Reciept
+            <textarea style = "resize:none" rows = "4" cols = "70" id = "particulars2">
+              
             </textarea>
             </td>
             <td colspan = 2>
@@ -872,10 +861,17 @@ body {
          
         </tr>
         <tr>
-        <td colspan= 16>Official Receipt No. & Date/Other Documents</td>
+          <td colspan= 16>Official Receipt No. & Date/Other Documents</td>
+        </tr>
+
+        <tr>
+          <td colspan = 16>
+            <input type = "submit" value = "Submit"  class = "btn btn-success pull-right"/>
+          </td>   
         </tr>
         </table>
       </div>
+    </form>
     </div>
 	</div>
 	
@@ -1120,8 +1116,13 @@ body {
   
   
 $(document).ready(function(){
+  $('#particulars').on('keyup', function(){
+        $('#particulars2').html( $(this).val() );
+    });
 
-  $('#or').prop('required',true);
+
+
+  $('#or').prop('required',false);
   $("#editbtn").prop('disabled',true);
     if($("#or").val() != '')
     {

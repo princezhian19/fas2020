@@ -74,7 +74,7 @@ if (isset($_POST['submit'])) {
     $remarks0 = $rowID['remarks'];
     $unit_id0 = $rowID['unit_id'];
 
-    $insert_app = mysqli_query($conn,"INSERT INTO app(sn,code,new_entry,merge_code,procurement,unit_id,source_of_funds_id,category_id,pmo_id,qty,mode_of_proc_id,price,app_price,remarks,app_year) VALUES('$sn0','$code0',1,'$code0','$procurement0','$unit_id0','$source_of_funds_id0','$category_id0','$pmo_id0','$qty0','$mode_of_proc_id0','$price0','$app_price0','$remarks0','2020' )");
+    $insert_app = mysqli_query($conn,"INSERT INTO app(sn,code,new_entry,merge_code,procurement,unit_id,source_of_funds_id,category_id,pmo_id,qty,mode_of_proc_id,price,app_price,remarks,app_year) VALUES('$sn0','$code0',1,'$code0','$procurement0','$unit_id0','$source_of_funds_id0','$category_id0','$pmo_id0','$qty0','$mode_of_proc_id0','$price0','$app_price0','$remarks0','$year')");
 
     $select_app = mysqli_query($conn,"SELECT * FROM app ORDER BY id DESC LIMIT 1");
     $rowID = mysqli_fetch_array($select_app);

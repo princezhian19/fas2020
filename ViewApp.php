@@ -42,6 +42,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
+
 </head>
 <body class="hold-transition skin-red-light fixed sidebar-mini">
 <div class="wrapper">
@@ -99,6 +100,16 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
       'autoWidth'   : true
     })
   })
+</script>
+<script>
+  $(document).ready(function() {
+   var table =  $('#example1').DataTable();
+    
+     $('#dropdown1').on('change', function () {
+                    table.columns(7).search( this.value ).draw();
+                } );
+             
+});
 </script>
 </body>
 </html>

@@ -269,9 +269,17 @@ session_start();
 
         $station = $row['OFFICE_STATION'];
         
-        $insert ="INSERT INTO `tbltravel_claim`(`ID`, `ENTITY_NAME`, `FUND_CLASTER`, `NAME`, `NO`, `DATE_OF_TRAVEL`, `PURPOSE`, `POSITION`, `OFFICIAL_STATION`,`IS_SUBMIT`) VALUES 
-        (null,'".$_POST['entity_name']."','".$_POST['fund_cluster']."','".$_POST['complete_name']."','".$_POST['numero']."','".date('Y-m-d',strtotime($_POST['date_of_travel']))."','".$_POST['purpose_of_travel']."','".$_POST['position']."','".$station ."',1)";
-     
+        $insert ="INSERT INTO `tbltravel_claim`(`ID`, `ENTITY_NAME`, `RO_TO_OB`, `FUND_CLASTER`, `NAME`, `NO`, `DATE_OF_TRAVEL`, `PURPOSE`, `POSITION`, `OFFICIAL_STATION`,`PARTICULARS`) VALUES 
+        (null,
+        'DILG IV-A',
+        '".$_POST['ro']."',
+        '".$_POST['fund_cluster']."',
+        '".$_POST['complete_name']."',
+        '".$_POST['numero']."',
+        '".date('Y-m-d',strtotime($_POST['date_of_travel']))."',
+        '".$_POST['purpose_of_travel']."',
+        '".$_POST['position']."','".$station ."',
+        '".$_POST['particulars']."')";
      
      
         if (mysqli_query($conn, $insert)) {
