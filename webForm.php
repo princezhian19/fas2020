@@ -44,6 +44,8 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <script src="bower_components/chart.js/Chart.js"></script>
+
 
   
   
@@ -82,7 +84,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
                     <div class="box-body">      
                         <!-- <div> <h1>Website Posting Request</h1><br> </div> -->
                         <!-- Small boxes (Stat box) -->
-
+                          <form method = "POST">
                             <div class = "row">
                                 <div class = "col-lg-12">
                                     <div class = "col-lg-8">
@@ -147,13 +149,151 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
                                           <h3 class="box-title">BID DOCUMENTS</h3>                       
                                         </div>
                                         <div class="box-body">
-                                          The body of the box
+                                          <table border =1 style = "width:100%;" id = "table_name" class="table table-bordered table-hover">
+                                              <th>ID</th>
+                                              <th>RFQ NO</th>
+                                              <th>RFQ TITLE</th>
+                                              <tbody>
+                                                <tr>
+                                                  <td>Sakura Yamamoto</td>
+                                                  <td>Support Engineer</td>
+                                                  <td>Tokyo</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Sakura Yamamoto</td>
+                                                  <td>Support Engineer</td>
+                                                  <td>Tokyo</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Sakura Yamamoto</td>
+                                                  <td>Support Engineer</td>
+                                                  <td>Tokyo</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Sakura Yamamoto</td>
+                                                  <td>Support Engineer</td>
+                                                  <td>Tokyo</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Sakura Yamamoto</td>
+                                                  <td>Support Engineer</td>
+                                                  <td>Tokyo</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Sakura Yamamoto</td>
+                                                  <td>Support Engineer</td>
+                                                  <td>Tokyo</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Sakura Yamamoto</td>
+                                                  <td>Support Engineer</td>
+                                                  <td>Tokyo</td>
+                                                </tr>
+                                                
+                                              </tbody>
+                                          </table>
                                         </div>
-                                    </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
+                        
+                            </div>
+                            <div class = "row">
+                                <div class = "col-lg-12">
+                                    <div class = "col-lg-8">
+                                      <div class="box box-success box-solid">
+                                        <div class="box-header with-border">
+                                          <h3 class="box-title"><b>B. REQUEST FOR WEBSITE POSTING </b>(To be Accomplished by Requesting Office)</h3>
+                                        </div>
+                                        <div class="box-body">
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">Recieved Date</label>
+                                            <input class="form-control input-md-4" type="date">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">Received Time</label>
+                                            <input class="form-control input-md-4" type="time">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">Posted Date</label>
+                                            <input class="form-control input-md-4" type="text">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">Posted Time</label>
+                                            <input class="form-control input-md-4" type="text">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">Posted By</label>
+                                            <input class="form-control input-md-4" type="text">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">Remarks</label>
+                                            <input class="form-control input-md-4" type="text">
+                                          </div>
+                                         
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-lg-4">
+                                        <!-- AREA CHART -->
+                                        <div class="box box-primary">
+                                          <div class="box-header with-border">
+                                            <h3 class="box-title">Monitoring of Monthy Website Posting</h3>
+
+                                            
+                                          </div>
+                                          <div class="box-body">
+                                            <div class="chart">
+                                              <canvas id="areaChart" style="height:250px"></canvas>
+                                            </div>
+                                          </div>
+                                          <!-- /.box-body -->
+                                        </div>
+                                      </div>
+                                    </div>
+                              </div>
+                            </div>
+                            <div class = "row">
+                                <div class = "col-lg-12">
+                                    <div class = "col-lg-8">
+                                      <div class="box box-success box-solid">
+                                        <div class="box-header with-border">
+                                          <h3 class="box-title"><b>C. CONFIRMATION OF REQUESTING OFFICE </b></h3>
+                                        </div>
+                                        <div class="box-body">
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">Confirmed Date</label>
+                                            <input class="form-control input-md-4" type="date">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">Confirmed Time</label>
+                                            <input class="form-control input-md-4" type="time">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">Confirmed By</label>
+                                            <input class="form-control input-md-4" type="text">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">Approval</label>
+                                            <select class="form-control input-md-4">
+                                              <option>APPROVED</option>
+                                              <option>DISAPPROVED</option>
+                                            </select>
+                                          </div>
+                                         
+                                         
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                    <input type=  "button" class = "btn btn-success btn-lg" style = "width:100%;margin-top:32%;" value = "Save">
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                          </form>
                         </div>
                     </div>
                 </div>
@@ -550,4 +690,91 @@ if (typeof define === 'function' && define.amd) {
 }
 
 })(window, document);
+</script>
+<script>
+  $(function () {
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //--------------
+    //- AREA CHART -
+    //--------------
+
+    // Get context with jQuery - using jQuery's .get() method.
+    var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
+    // This will get the first returned node in the jQuery collection.
+    var areaChart       = new Chart(areaChartCanvas)
+
+    var areaChartData = {
+      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+        {
+          label               : 'Electronics',
+          fillColor           : 'rgba(210, 214, 222, 1)',
+          strokeColor         : 'rgba(210, 214, 222, 1)',
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : [645, 59, 80, 81, 56, 55, 40]
+        },
+        {
+          label               : 'Digital Goods',
+          fillColor           : 'rgba(60,141,188,0.9)',
+          strokeColor         : 'rgba(60,141,188,0.8)',
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [28, 48, 40, 19, 86, 27, 90]
+        }
+      ]
+    }
+
+    var areaChartOptions = {
+      //Boolean - If we should show the scale at all
+      showScale               : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : false,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - Whether the line is curved between points
+      bezierCurve             : true,
+      //Number - Tension of the bezier curve between points
+      bezierCurveTension      : 0.3,
+      //Boolean - Whether to show a dot for each point
+      pointDot                : false,
+      //Number - Radius of each point dot in pixels
+      pointDotRadius          : 4,
+      //Number - Pixel width of point dot stroke
+      pointDotStrokeWidth     : 1,
+      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+      pointHitDetectionRadius : 20,
+      //Boolean - Whether to show a stroke for datasets
+      datasetStroke           : true,
+      //Number - Pixel width of dataset stroke
+      datasetStrokeWidth      : 2,
+      //Boolean - Whether to fill the dataset with a color
+      datasetFill             : true,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio     : true,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive              : true
+    }
+
+    //Create the line chart
+    areaChart.Line(areaChartData, areaChartOptions)
+
+   
+  })
 </script>
