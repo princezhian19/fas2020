@@ -743,8 +743,8 @@ function countAssigned()
                 <li class="active"><a href="#first" data-toggle="tab" id="first_tab">Processing</a></li>
                 <li><a href="#second" data-toggle="tab" id="second_tab">Mark Kim A. Sacluti</a></li>
                 <li><a href="#third" data-toggle="tab" id="third_tab">Jake Banalan</a></li>
-                <li><a href="#fifth" data-toggle="tab" id="fourth_tab">Shiela Mei Olivar</a></li>
-                <li><a href="#six" data-toggle="tab" id="fifth_tab">Maybelline Monteiro</a></li>
+                <li><a href="#fourth" data-toggle="tab" id="fourth_tab">Shiela Mei Olivar</a></li>
+                <li><a href="#fifth" data-toggle="tab" id="fifth_tab">Maybelline Monteiro</a></li>
             </ul>
 
             <div class="tab-content" style = "background-color:#ECEFF1;padding:10px;">
