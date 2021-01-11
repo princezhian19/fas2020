@@ -86,41 +86,74 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
                             <div class = "row">
                                 <div class = "col-lg-12">
                                     <div class = "col-lg-8">
-                                    <div class="box box-success box-solid">
-            <div class="box-header with-border">
-              <h3 class="box-title">Removable</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-              <!-- /.box-tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              The body of the box
-            </div>
-            <!-- /.box-body -->
-          </div>
+                                      <div class="box box-success box-solid">
+                                        <div class="box-header with-border">
+                                          <h3 class="box-title"><b>A. REQUEST FOR WEBSITE POSTING </b>(To be Accomplished by Requesting Office)</h3>
+                                        </div>
+                                        <div class="box-body">
+                                          <div class="form-group col-md-4">
+                                            <label for="exampleInputEmail1">Requested Date</label>
+                                            <input class="form-control input-md-4" type="date">
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                            <label for="exampleInputEmail1">Requested Time</label>
+                                            <input class="form-control input-md-4" type="time">
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                            <label for="exampleInputEmail1">Requested By</label>
+                                            <input class="form-control input-md-4" type="text">
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                            <label for="exampleInputEmail1">Office</label>
+                                            <input class="form-control input-md-4" type="text">
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                            <label for="exampleInputEmail1">Position</label>
+                                            <input class="form-control input-md-4" type="text">
+                                          </div>
+                                          <div class="form-group col-md-4">
+                                            <label for="exampleInputEmail1">Mobile No.</label>
+                                            <input class="form-control input-md-4" type="text">
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">Category</label>
+                                            <select class="form-control input-md-6">
+                                              <option>News</option>
+                                              <option>LGUs</option>
+                                              <option>Photo</option>
+                                              <option>Banner</option>
+                                              <option>Procurement</option>
+                                              <option>Video</option>
+                                              <option>Transparency</option>
+                                              <option>Vacancies</option>
+                                              <option>Forms</option>
+                                              <option>Others</option>
+                                            </select>
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="exampleInputEmail1">File Attachement</label>
+                                            <input class="form-control input-md-5" type="file">
+                                          </div>
+                                          <div class="form-group col-md-12">
+                                            <label for="exampleInputEmail1">Purpose</label>
+                                            <textarea class="form-control input-md-4"></textarea>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                     <div class = "col-lg-4">
-                                    <div class="box box-danger box-solid">
-            <div class="box-header with-border">
-              <h3 class="box-title">Removable</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-              <!-- /.box-tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              The body of the box
-            </div>
-            <!-- /.box-body -->
-          </div>
+                                      <div class="box box-danger box-solid">
+                                        <div class="box-header with-border">
+                                          <h3 class="box-title">BID DOCUMENTS</h3>                       
+                                        </div>
+                                        <div class="box-body">
+                                          The body of the box
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
