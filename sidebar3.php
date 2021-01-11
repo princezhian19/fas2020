@@ -199,37 +199,7 @@ function showRequest()
                     <small><?php echo getDivision();?></small>
                   </p>
                 </li>
-                <li
-<?PHP 
-if(
-  $link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
-  $link == 'http://fas.calabarzon.dilg.gov.ph/techassistance.php?division='.$_GET['division'].'' ||
-  $link == 'http://fas.calabarzon.dilg.gov.ph/processing.php?division='.$_GET['division'].'&ticket_id=' ||
-  $link == 'http://fas.calabarzon.dilg.gov.ph/_editRequestTA.php?division='.$_GET['division'].'&id='.$_GET['id'].'' 
-){
-  echo 'class = "active" ';
-}
-?>
->
-<?php
-if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlsegunial'){
-  ?>
-  <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
-    <i class="fa fa-users" style = "color:#black;"></i>
-    <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
-  </a>
-  <?php
-}else{
-  ?>
-  <a href="processing.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
-    <i class="fa fa-users" style = "color:#black;"></i>
-    <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
-  </a>
-  <?php
-}
-?>
-
-</li>
+ 
                 <li class="user-footer">
                   <div class="pull-left">
                     <a href="UpdateEmployee.php?id=<?php echo  $_SESSION['currentuser'];?>&username=<?php echo  $_SESSION['username'];?>&3d=<?php echo '3';?>" class="btn btn-default btn-flat"><i class = "fa fa-cogs"></i>Profile</a>
@@ -285,6 +255,26 @@ if($username == 'jamonteiro' || $username == 'magonzales' || $username == 'rlseg
             
             </ul>
           </li>
+                         <li
+<?PHP 
+if(
+  $link == 'http://fas.calabarzon.dilg.gov.ph/requestForm.php?division='.$_GET['division'].'' ||
+  $link == 'http://fas.calabarzon.dilg.gov.ph/techassistance.php?division='.$_GET['division'].'' ||
+  $link == 'http://fas.calabarzon.dilg.gov.ph/processing.php?division='.$_GET['division'].'&ticket_id=' ||
+  $link == 'http://fas.calabarzon.dilg.gov.ph/_editRequestTA.php?division='.$_GET['division'].'&id='.$_GET['id'].'' 
+){
+  echo 'class = "active" ';
+}
+?>
+>
+
+  <a href="techassistance.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
+    <i class="fa fa-users" style = "color:#black;"></i>
+    <span  style = "color:#black;font-weight:normal;">ICT Technical Assistance</span>
+  </a>
+
+
+</li>
           <li>
             <a href="logout.php">
               <i class="fa fa-sign-out " style = "color:#black;"></i> 
