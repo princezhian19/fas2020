@@ -58,7 +58,7 @@ function filldataTable()
     $query = "SELECT * FROM tbltechnical_assistance 
     where `STATUS_REQUEST` != '' 
     GROUP by tbltechnical_assistance.ID
-    order by `CONTROL_NO` DESC ";
+    order by `CONTROL_NO` asc ";
 
     // -- order by `REQ_DATE` DESC, `REQ_TIME` desc ";
     $result = mysqli_query($conn, $query);
