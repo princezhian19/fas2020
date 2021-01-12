@@ -8,6 +8,69 @@ $username = $_SESSION['username'];
 $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
 
 }
+
+$query = "SELECT OFFICE_STATION   from tblemployeeinfo where UNAME = '".$_SESSION['username']."' ";
+
+// PHP FUNCTIONS
+function getOffice()
+    {
+        include 'connection.php';
+        $query = "SELECT OFFICE_STATION   from tblemployeeinfo where UNAME = '".$_SESSION['username']."' ";
+        $result = mysqli_query($conn, $query);
+        while($row = mysqli_fetch_array($result))
+        {
+            switch ($row['OFFICE_STATION']) {
+                case '1':
+                    ?>
+                        <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" selected>Regional Office</option>
+                            <option value="2">Provincial/HUC Office</option>
+                            <option value="3">Cluster Office</option>
+                            <option value="4">City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                case '2':
+                    ?>
+                            <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" >Regional Office</option>
+                            <option value="2" selected>Provincial/HUC Office</option>
+                            <option value="3">Cluster Office</option>
+                            <option value="4">City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                case '3':
+                    ?>
+                            <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" >Regional Office</option>
+                            <option value="2" >Provincial/HUC Office</option>
+                            <option value="3" selected>Cluster Office</option>
+                            <option value="4">City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                case '4':
+                    ?>
+                            <select required id="mySelect2" class="form-control" name="office" disabled>
+                            <option selected disabled></option>
+                            <option value="1" >Regional Office</option>
+                            <option value="2" >Provincial/HUC Office</option>
+                            <option value="3" >Cluster Office</option>
+                            <option value="4" selected>City/Municipal Office</option>
+                        </select>
+                    <?PHP
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -85,9 +148,22 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
                         <!-- <div> <h1>Website Posting Request</h1><br> </div> -->
                         <!-- Small boxes (Stat box) -->
                           <form method = "POST">
+                         
                             <div class = "row">
                                 <div class = "col-lg-12">
                                     <div class = "col-lg-8">
+                                    <table border =1 style = "width:100%;" id = "table_name" class="table table-bordered table-hover">
+                                    <tbody>
+                                    <tr> 
+                                      <td class = "box-title" colspan = 2 style = "color:black;font-size:25px;background-color:#90A4AE">A. REQUEST FOR WEBSITE POSTING </td>
+                                    </tr>
+                                      
+                                    </tbody>
+                                    </table>
+
+
+
+
                                       <div class="box box-success box-solid">
                                         <div class="box-header with-border">
                                           <h3 class="box-title"><b>A. REQUEST FOR WEBSITE POSTING </b>(To be Accomplished by Requesting Office)</h3>
@@ -107,7 +183,7 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
                                           </div>
                                           <div class="form-group col-md-4">
                                             <label for="exampleInputEmail1">Office</label>
-                                            <input class="form-control input-md-4" type="text">
+                                            <input class="form-control input-md-4" type="text" value = "<?php echo getOffice();?>">
                                           </div>
                                           <div class="form-group col-md-4">
                                             <label for="exampleInputEmail1">Position</label>

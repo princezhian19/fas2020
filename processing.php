@@ -57,7 +57,7 @@ function filldataTable()
     include 'connection.php';
     $query = "SELECT * FROM tbltechnical_assistance 
     where `STATUS_REQUEST` != '' 
-    GROUP by tbltechnical_assistance.ID
+    GROUP by tbltechnical_assistance.ID ORDER BY REQ_DATE DESC
    ";
 
     // -- order by `REQ_DATE` DESC, `REQ_TIME` desc ";

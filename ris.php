@@ -4,15 +4,16 @@ $conn = mysqli_connect("localhost","fascalab_2020","w]zYV6X9{*BN","fascalab_2020
 $idGet='';
 $getDate = date('Y');
 $m = date('m');
-$auto = mysqli_query($conn,"SELECT id, ris_no FROM ris order by id desc limit 1");
+// $auto = mysqli_query($conn,"SELECT id, ris_no FROM ris order by id desc limit 1");
+$auto = mysqli_query($conn,"SELECT id, ris_no, pr_no FROM ris WHERE YEAR(pr_no) = 2021 order by id desc limit 1");
 $rowqwe = mysqli_fetch_array($auto);
 $idGet1 = $rowqwe["ris_no"];
 
-$idGet  = str_replace('2020-','', $idGet1)+1;
+$idGet  = str_replace('2021-','', $idGet1)+1;
 
 
 
-$ris_latest = $getDate.'-'.'0'.$idGet;
+$ris_latest = $getDate.'-'.'000'.$idGet;
 
  function get_pr($connect)
   { 
@@ -320,8 +321,3 @@ while($row = mysqli_fetch_array($result))
     }
 
   </script>
-
-
-
-
-
