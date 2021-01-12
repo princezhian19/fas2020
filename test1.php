@@ -58,7 +58,7 @@ function showRequest()
           <img src="images/male-user.png" class="img-circle" alt="User Image">
         </div>
         <h4>
-          <?php echo $row['REQ_BY'];?>
+          <?php echo $row['REQ_BY'].'&nbsp<label style = "color:red;font-size:12px;">'.$row['CONTROL_NO'].'</label>';?>
         </h4>
         <p><?PHP echo $row['ISSUE_PROBLEM'];?></p>
       </a>

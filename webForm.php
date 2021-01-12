@@ -152,11 +152,30 @@ function getOffice()
                             <div class = "row">
                                 <div class = "col-lg-12">
                                     <div class = "col-lg-8">
-                                    <table border =1 style = "width:100%;" id = "table_name" class="table table-bordered table-hover">
+                                    <table border =1 style = "table-layout: fixed; width:100%;" id = "table_name"   = 10>
                                     <tbody>
-                                    <tr> 
-                                      <td class = "box-title" colspan = 2 style = "color:black;font-size:25px;background-color:#90A4AE">A. REQUEST FOR WEBSITE POSTING </td>
-                                    </tr>
+                                      <tr> 
+                                        <td class = "box-title" colspan = 7 style = "color:black;font-size:20px;font-weight:bold;background-color:#90A4AE">A. REQUEST FOR WEBSITE POSTING (To be Accomplished by Requesting Office)</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Requested Date:</td>
+                                        <td></td>
+                                        <td>Requested Time:</td>
+                                        <td></td>
+                                        <td rowspan = 2></td>
+                                        <td></td>
+                                        <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td>a</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                      </tr>
+                                       
+                                     
                                       
                                     </tbody>
                                     </table>
