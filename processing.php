@@ -155,8 +155,8 @@ function filldataTable()
                                                         echo date('F d, Y', strtotime($row['REQ_DATE'])).'&nbsp'.date('g:i A',strtotime($row['REQ_TIME']));?>
                                                     </span>
                                                 </div>
-                                               <br>
-                                               <br>
+                                          
+                                              
                                                
                                                 
                                              </div>
