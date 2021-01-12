@@ -145,14 +145,14 @@ function filldataTable()
                                                             ?>
                                                     </span>
                                                 </div>
-                                                <div class = "col-lg-3">
+                                                <div class = "col-lg-">
                                                     <span class="progress-description">
                                                         <b><i style = "font-size:13px;">Requested Date</i></b>
                                                     </span>
                                                     <span class="progress-description">
                                                         <?php  
                                                     
-                                                        echo date('F d, Y', strtotime($row['REQ_DATE']));?>
+                                                        echo date('F d, Y', strtotime($row['REQ_DATE'])).'&nbsp'.date('g:i A',strtotime($row['REQ_TIME']));?>
                                                     </span>
                                                 </div>
                                                <br>
