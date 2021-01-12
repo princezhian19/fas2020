@@ -114,6 +114,20 @@ function getOffice()
   
 <style>
         pre { margin: 20px 0; padding: 20px; background: #fafafa; } .round { border-radius: 50%;vertical-align: }
+
+        .tdTitle{
+          background-color: #B0BEC5;
+          font-family: 'Cambria';
+          font-weight: bold;
+        }
+
+      .table{
+        border: 1px solid black;
+      }
+      .th, td{
+        padding: 5px;
+
+      }
 </style>
 </head>
 
@@ -152,28 +166,59 @@ function getOffice()
                             <div class = "row">
                                 <div class = "col-lg-12">
                                     <div class = "col-lg-8">
-                                    <table border =1 style = "table-layout: fixed; width:100%;" id = "table_name"   = 10>
+                                    <table border =1 style = "table-layout: fixed; width:100%;border-width:medium;border-style:solid black;" id = "table_name" >
                                     <tbody>
                                       <tr> 
-                                        <td class = "box-title" colspan = 7 style = "color:black;font-size:20px;font-weight:bold;background-color:#90A4AE">A. REQUEST FOR WEBSITE POSTING (To be Accomplished by Requesting Office)</td>
+                                        <td class = "box-title" colspan = 8 style = "color:black;font-size:20px;font-weight:bold;background-color:#90A4AE">A. REQUEST FOR WEBSITE POSTING (To be Accomplished by Requesting Office)</td>
                                       </tr>
                                       <tr>
-                                        <td>Requested Date:</td>
+                                        <td class = "tdTitle">Requested Date:</td>
                                         <td></td>
-                                        <td>Requested Time:</td>
+                                        <td class = "tdTitle">Requested Time:</td>
                                         <td></td>
-                                        <td rowspan = 2></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td class = "tdTitle" rowspan = 3 style = "text-align:center;">Category</td>
+                                        <td><input type="checkbox"> News</td>
+                                        <td><input type="checkbox"> News</td>
+                                        <td><input type="checkbox"> News</td>
                                       </tr>
                                       <tr>
-                                        <td>a</td>
+                                        <td class = "tdTitle">Requested By:</td>
                                         <td></td>
+                                        <td class = "tdTitle">Office:</td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><input type="checkbox"> News</td>
+                                        <td><input type="checkbox"> News</td>
+                                        <td><input type="checkbox"> News</td>
                                       </tr>
+                                      <tr>
+                                        <td class = "tdTitle">Position:</td>
+                                        <td></td>
+                                        <td class = "tdTitle">Mobile No:</td>
+                                        <td></td>
+                                        <td><input type="checkbox"> News</td>
+                                        <td><input type="checkbox"> News</td>
+                                        <td><input type="checkbox"> News</td>
+                                      </tr>
+                                      <tr>
+                                        <td class = "tdTitle">Purpose:</td>
+                                        <td colspan = 3 class = "tdTitle"></td>
+                                        <td class = "tdTitle" rowspan =2>Files/<BR>Attachments:</td>
+                                        <td colspan = 3 rowspan = 2 class = "tdTitle"></td>
+                                      </tr>
+                                      <tr>
+                                        <td class = "tdTitle">Signature:</td>
+                                        <td colspan = "3"></td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan = 8 style = "border:3px solid black;"></td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan = 4 style = "text-align:center;" class = "tdTitle">B. APPROVAL</td>
+                                        <td colspan = 4 style = "text-align:center;" class = "tdTitle">C. WEBSITE POSTING<br> (To be Accomplished by RICTU)</td>
+                                      </tr>
+                                     
+
+                                  
                                        
                                      
                                       
@@ -183,211 +228,7 @@ function getOffice()
 
 
 
-                                      <div class="box box-success box-solid">
-                                        <div class="box-header with-border">
-                                          <h3 class="box-title"><b>A. REQUEST FOR WEBSITE POSTING </b>(To be Accomplished by Requesting Office)</h3>
-                                        </div>
-                                        <div class="box-body">
-                                          <div class="form-group col-md-4">
-                                            <label for="exampleInputEmail1">Requested Date</label>
-                                            <input class="form-control input-md-4" type="date">
-                                          </div>
-                                          <div class="form-group col-md-4">
-                                            <label for="exampleInputEmail1">Requested Time</label>
-                                            <input class="form-control input-md-4" type="time">
-                                          </div>
-                                          <div class="form-group col-md-4">
-                                            <label for="exampleInputEmail1">Requested By</label>
-                                            <input class="form-control input-md-4" type="text">
-                                          </div>
-                                          <div class="form-group col-md-4">
-                                            <label for="exampleInputEmail1">Office</label>
-                                            <input class="form-control input-md-4" type="text" value = "<?php echo getOffice();?>">
-                                          </div>
-                                          <div class="form-group col-md-4">
-                                            <label for="exampleInputEmail1">Position</label>
-                                            <input class="form-control input-md-4" type="text">
-                                          </div>
-                                          <div class="form-group col-md-4">
-                                            <label for="exampleInputEmail1">Mobile No.</label>
-                                            <input class="form-control input-md-4" type="text">
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">Category</label>
-                                            <select class="form-control input-md-6">
-                                              <option>News</option>
-                                              <option>LGUs</option>
-                                              <option>Photo</option>
-                                              <option>Banner</option>
-                                              <option>Procurement</option>
-                                              <option>Video</option>
-                                              <option>Transparency</option>
-                                              <option>Vacancies</option>
-                                              <option>Forms</option>
-                                              <option>Others</option>
-                                            </select>
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">File Attachement</label>
-                                            <input class="form-control input-md-5" type="file">
-                                          </div>
-                                          <div class="form-group col-md-12">
-                                            <label for="exampleInputEmail1">Purpose</label>
-                                            <textarea class="form-control input-md-4"></textarea>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class = "col-lg-4">
-                                      <div class="box box-danger box-solid">
-                                        <div class="box-header with-border">
-                                          <h3 class="box-title">BID DOCUMENTS</h3>                       
-                                        </div>
-                                        <div class="box-body">
-                                          <table border =1 style = "width:100%;" id = "table_name" class="table table-bordered table-hover">
-                                              <th>ID</th>
-                                              <th>RFQ NO</th>
-                                              <th>RFQ TITLE</th>
-                                              <tbody>
-                                                <tr>
-                                                  <td>Sakura Yamamoto</td>
-                                                  <td>Support Engineer</td>
-                                                  <td>Tokyo</td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Sakura Yamamoto</td>
-                                                  <td>Support Engineer</td>
-                                                  <td>Tokyo</td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Sakura Yamamoto</td>
-                                                  <td>Support Engineer</td>
-                                                  <td>Tokyo</td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Sakura Yamamoto</td>
-                                                  <td>Support Engineer</td>
-                                                  <td>Tokyo</td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Sakura Yamamoto</td>
-                                                  <td>Support Engineer</td>
-                                                  <td>Tokyo</td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Sakura Yamamoto</td>
-                                                  <td>Support Engineer</td>
-                                                  <td>Tokyo</td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Sakura Yamamoto</td>
-                                                  <td>Support Engineer</td>
-                                                  <td>Tokyo</td>
-                                                </tr>
-                                                
-                                              </tbody>
-                                          </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        
-                            </div>
-                            <div class = "row">
-                                <div class = "col-lg-12">
-                                    <div class = "col-lg-8">
-                                      <div class="box box-success box-solid">
-                                        <div class="box-header with-border">
-                                          <h3 class="box-title"><b>B. REQUEST FOR WEBSITE POSTING </b>(To be Accomplished by Requesting Office)</h3>
-                                        </div>
-                                        <div class="box-body">
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">Recieved Date</label>
-                                            <input class="form-control input-md-4" type="date">
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">Received Time</label>
-                                            <input class="form-control input-md-4" type="time">
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">Posted Date</label>
-                                            <input class="form-control input-md-4" type="text">
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">Posted Time</label>
-                                            <input class="form-control input-md-4" type="text">
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">Posted By</label>
-                                            <input class="form-control input-md-4" type="text">
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">Remarks</label>
-                                            <input class="form-control input-md-4" type="text">
-                                          </div>
-                                         
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-lg-4">
-                                        <!-- AREA CHART -->
-                                        <div class="box box-primary">
-                                          <div class="box-header with-border">
-                                            <h3 class="box-title">Monitoring of Monthy Website Posting</h3>
-
-                                            
-                                          </div>
-                                          <div class="box-body">
-                                            <div class="chart">
-                                              <canvas id="areaChart" style="height:250px"></canvas>
-                                            </div>
-                                          </div>
-                                          <!-- /.box-body -->
-                                        </div>
-                                      </div>
-                                    </div>
-                              </div>
-                            </div>
-                            <div class = "row">
-                                <div class = "col-lg-12">
-                                    <div class = "col-lg-8">
-                                      <div class="box box-success box-solid">
-                                        <div class="box-header with-border">
-                                          <h3 class="box-title"><b>C. CONFIRMATION OF REQUESTING OFFICE </b></h3>
-                                        </div>
-                                        <div class="box-body">
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">Confirmed Date</label>
-                                            <input class="form-control input-md-4" type="date">
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">Confirmed Time</label>
-                                            <input class="form-control input-md-4" type="time">
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">Confirmed By</label>
-                                            <input class="form-control input-md-4" type="text">
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                            <label for="exampleInputEmail1">Approval</label>
-                                            <select class="form-control input-md-4">
-                                              <option>APPROVED</option>
-                                              <option>DISAPPROVED</option>
-                                            </select>
-                                          </div>
-                                         
-                                         
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                    <input type=  "button" class = "btn btn-success btn-lg" style = "width:100%;margin-top:32%;" value = "Save">
-                                    </div>
-                                  
-                                </div>
-                            </div>
+                                 
                           </form>
                         </div>
                     </div>

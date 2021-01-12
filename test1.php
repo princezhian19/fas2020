@@ -747,18 +747,18 @@ if(
 ?>
 >
 <?php
-if($username == 'masacluti'){
+
   ?>
   <a href="webForm.php?division=<?php echo $_SESSION['division'];?>&ticket_id=" >
     <i class="fa fa-code" style = "color:#black;"></i>
     <span  style = "color:#black;font-weight:normal;">Website Posting</span>
   </a>
   <?php
-}else{
+
   ?>
   
   <?php
-}
+
 ?>
 
 </li>
