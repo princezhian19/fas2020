@@ -441,7 +441,7 @@ function showRequest()
 
 
     <!-- Records -->
-    <?php if ($DEPT_ID == 1): ?>
+    <?php if ($DEPT_ID == 1 || $username == 'lnpaquita'): ?>
       <li  class = "treeview <?php 
       if(
       $link == 'http://fas.calabarzon.dilg.gov.ph/ViewApp.php' ||  
@@ -472,12 +472,29 @@ function showRequest()
       <span  style = "color:#black;font-weight:normal;">Procurement</span>
       <span class="pull-right-container"><i class="fa fa-angle-left pull-right" style = "color:#black;"></i></span>
     </a>
-    <ul class="treeview-menu" >
+    <?php
+      if($username == 'lnpaquita')
+      {
+        ?>
+          <ul class="treeview-menu" >
+      <li><a href="ViewPR.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> Purchase Request</a></li>
+      <li><a href="ViewRFQ.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> Request for Quotation</a></li>
+    </ul>
+        <?php
+      }else{
+
+        ?>
+  <ul class="treeview-menu" >
       <li><a href="ViewApp.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> APP</a></li>
       <li><a href="ViewPR.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> Purchase Request</a></li>
       <li><a href="ViewRFQ.php?division=<?php echo $_SESSION['division'];?>" ><i class="fa" style = "color:#black;">&#xf0f6;</i> Request for Quotation</a></li>
       <li><a href="ViewSuppliers.php"><i class="fa" style = "color:#black;">&#xf0f6;</i><span>Supplier</span></a></li>
     </ul>
+        <?php
+      }
+
+    ?>
+  
   </li>
   <?php else: ?>
 
