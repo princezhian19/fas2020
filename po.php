@@ -78,9 +78,9 @@ while ($row = mysqli_fetch_assoc($auto)) {
  
   if($row['a'] == 1)
   {
-    $idGet = $row["a"];
-  }else{
     $idGet = $row["a"]+1;
+  }else{
+    $idGet = $row["a"];
   }
 }
 $autoNo = $getDate.'-'.$m.'-'.'000'.$idGet;

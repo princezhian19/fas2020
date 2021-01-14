@@ -1207,6 +1207,36 @@ switch ($row['STATUS']) {
 
  </body>
 </html>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle" style="text-align:center;font-family:'Cambria';font-size:24px;">CUSTOMER SATISFACTORY SURVEY FORM</h5>
+       
+      </div>
+      <div class="modal-body">
+      <table class = "table table-bordered">
+          <tr>
+            <td>a</td>
+          </tr>
+        </table>
+        <img src = "images/Isko.png" style = "width:auto;height:500px;margin-left:-100px;">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- jQuery 3 -->
