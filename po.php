@@ -76,12 +76,9 @@ $m = date('m');
 $auto = mysqli_query($conn,"SELECT count(*) as a FROM po WHERE YEAR(noa_date) = 2021 ");
 while ($row = mysqli_fetch_assoc($auto)) {
  
-  if($row['a'] == 1)
-  {
+
     $idGet = $row["a"]+1;
-  }else{
-    $idGet = $row["a"];
-  }
+ 
 }
 $autoNo = $getDate.'-'.$m.'-'.'000'.$idGet;
 
