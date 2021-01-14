@@ -42,7 +42,6 @@ $OFFICE_STATION = $_SESSION['OFFICE_STATION'];
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 <?php 
   if ($username == 'charlesodi' || $username == 'mmmonteiro' || $username == 'cvferrer' || $username == 'masacluti' || $username == 'seolivar' ) { include('test1.php'); 
