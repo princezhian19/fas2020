@@ -72,9 +72,10 @@ if (isset($_POST['submit'])) {
 $idGet='';
 $getDate = date('Y');
 $m = date('m');
-$auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM po order by id desc limit 1");
+// $auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM po order by id desc limit 1");
+$auto = mysqli_query($conn,"SELECT count(*) as a FROM po WHERE YEAR(noa_date) = 2021 ");
 while ($row = mysqli_fetch_assoc($auto)) {
-  $idGet = $row["a"];
+  $idGet = $row["a"]+1;
 }
 $autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
 

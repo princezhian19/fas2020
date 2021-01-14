@@ -216,6 +216,51 @@ function getOffice()
                                         <td colspan = 4 style = "text-align:center;" class = "tdTitle">B. APPROVAL</td>
                                         <td colspan = 4 style = "text-align:center;" class = "tdTitle">C. WEBSITE POSTING<br> (To be Accomplished by RICTU)</td>
                                       </tr>
+                                      <tr>
+                                        <td colspan = 2>APPROVED</td>
+                                        <td colspan = 2>DISAPPROVED</td>
+                                        <td class = "tdTitle">Received Date:</td>
+                                        <td></td>
+                                        <td class = "tdTitle">Received Time:</td>
+                                        <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan = 4 rowspan=3 style = "font-weight:bold;text-align:center;font-family:Cambria">
+                                        __________________________________________ <br>
+                                        MARK KIM A. SACLUTI</td>
+                                        <td class = "tdTitle">Posted Date:</td>
+                                        <td></td>
+                                        <td class = "tdTitle">Received Time:</td>
+                                        <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td class = "tdTitle">Posted By:</td>
+                                        <td></td>
+                                        <td class = "tdTitle">Signature:</td>
+                                        <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td class = "tdTitle">Remarks::</td>
+                                        <td colspan = 3></td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan = 8 style = "border:3px solid black;"></td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan = 8 class = "tdTitle" style = "text-align:center;">D. CONFIRMATION OF REQUESTING OFFICE</td>
+                                      </tr>
+                                      <tr>
+                                        <td class = "tdTitle">Confirmed Date:</td>
+                                        <td></td>
+                                        <td class = "tdTitle">Confirmed Time:</td>
+                                        <td></td>
+                                        <td class = "tdTitle">Confirmed By:</td>
+                                        <td></td>
+                                        <td class = "tdTitle">Signature:</td>
+                                        <td></td>
+
+                                      </tr>
+                                     
                                      
 
                                   
