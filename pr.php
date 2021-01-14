@@ -485,9 +485,9 @@ if (isset($_POST['add'])) {
                 <div class="form-group">
                   <label>PR No. <label style="color: Red;" >*</label> </label>
                   <?php if ($pr_no != ''): ?>
-                   <input readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'000'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span>
+                   <input readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'00'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span>
                    <?php else:  ?>
-                    <input  readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'000'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
+                    <input  readonly autocomplete = "off" value="<?php echo $getDate.'-'.$m.'-'.'00'.$idGet?>" class="form-control" name="pr_no" type="text" id="pr_no" class="demoInputBox" onBlur="checkAvailability()"><span id="user-availability-status"></span> 
                   <?php endif ?>
                 </div>
                 <div class="form-group">
