@@ -978,43 +978,64 @@ function setQuality()
   <title>FAS | Rate Service</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-  
-    .center-text{
-    text-align:center;
-    }
-    .left-text{
-    text-align:left;
-    }
-    .borderless{
-    border: none;
-    }
-    .sizeMax{
-    width:100%;
-    }
-    td.label-text{
-    background-color:#B0BEC5;
-    padding:5px 5px 5px 5px;
-    font-weight:bold;
-    }
-    input[type=checkbox]
-    {
-    /* Double-sized Checkboxes */
-    -ms-transform: scale(1); /* IE */
-    -moz-transform: scale(1); /* FF */
-    -webkit-transform: scale(1); /* Safari and Chrome */
-    -o-transform: scale(1); /* Opera */
-    transform: scale(1);
-    padding: 10px;
-    }
-    .setDateIcon{
-    background-image:url(images/cal.gif); 
-    background-repeat: no-repeat; 
-    background-position: 90px 5px;
-    }
-    .disabletxtarea{
-    pointer-events: none;
+body{
+  background: #16a085;
+ }
+.content{
+  width: 800px;
+  height: auto;
+}
+.nav-pills{
+  width: 450px;
+}
 
-    }
+.nav-pills .nav-link{
+  font-weight: bold;
+  padding-top: 13px;
+  text-align: center;
+  background: #343436;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 24px;
+
+  height: 100px;
+}
+.nav-pills .nav-link.active{
+  background: #fff;
+  color: #000;
+}
+.tab-content{
+  position: absolute;
+  width: 80%;
+  height: auto;
+  margin-top: -50px;
+  margin-left: -100px;
+  background: #fff;
+  color: #000;
+  border-radius: 30px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  margin-bottom: 50px;
+}
+.tab-content button{
+  border-radius: 15px;
+  width: 100px;
+  margin: 0 auto;
+  float: right;
+}
+.tdTitle{
+          background-color: #B0BEC5;
+          font-family: 'Cambria';
+          font-weight: bold;
+        }
+
+      .table{
+        border: 1px solid black;
+      }
+      .tdSpacing{
+        padding: 30px;
+
+      }
 </style>
 </head>
 
@@ -1213,20 +1234,91 @@ switch ($row['STATUS']) {
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" STYLE = >
+  <div class="modal-dialog modal-dialog-centered" role="document" style="width:70%;">
+    <div class="modal-content" style = "background-color:#CFD8DC;border-radius:30px;">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle" style="text-align:center;font-family:'Cambria';font-size:24px;">CUSTOMER SATISFACTORY SURVEY FORM</h5>
        
       </div>
       <div class="modal-body">
-      <table class = "table table-bordered">
-          <tr>
-            <td>a</td>
-          </tr>
-        </table>
-        <img src = "images/Isko.png" style = "width:auto;height:500px;margin-left:-100px;">
+      <div class = "row">
+        <div class = "col-lg-12">
+          <div class = "col-lg-2">
+            <img src = "images/Isko.png" style = "width:auto;height:500px;margin-left:-80px;">
+          </div>
+          <div class = "col-lg-10">
+            <div class="content">
+              <ul class="nav nav-pills" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="pill" href="#login">Rating Scale</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="pill" href="#regis">Register</a>
+                </li>
+              </ul>
+              <div class="tab-content bg-success">
+                <div id="login" class="container tab-pane active">
+                  <table style = "text-align:center;">
+                    <tr>
+                      <td>
+                          (5)<br>
+                          Strongly Agree<br>
+                          Lubos na 
+                          sumasang ayon
+                          <br><img src = "images/happy.gif" style = "width:50px;height:50px;">
+                      </td>
+                      <td>
+                        (4)<br>
+                        Agree<br>
+                        Sumasang ayon
+                        <br>
+                        <img src = "images/4.gif" style = "width:50px;height:50px;"></td>
+                      <td>
+                        (3)<br>
+                        Neutral<br>
+                        Sumasangayon o hindi sumasangayon<br>
+                        <img src = "images/3.gif" style = "width:50px;height:50px;"></td>
+                      <td>
+                        (2)<br>
+                        Disagree<br>
+                        Hindi 
+                        Sumasang ayon<br>
+                        <img src = "images/2.gif" style = "width:50px;height:50px;"></td>
+                      <td>
+                        (1)<br>
+                        Strongly Disagree<br>
+                        Lubos na hindi sumasang ayon<br>
+                      <img src = "images/1.gif" style = "width:50px;height:50px;"></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </table>
+
+                  <table>
+                    <tr>
+                      <td class = "tdTitle tdSpacing">Responsiveness</td>
+                      <td class = "tdSpacing" style = "text-align:justify;">
+                            The service was willingly and <br>
+                            promptly extended to the <br>client/customer.<br>
+                            Maagap na naibibigay ang<br> serbisyo sa kliyente </td>
+                      <td class = "tdSpacing" ><input type = "checkbox" style = "width:35px;height:35px;"/>5</td>
+                      <td class = "tdSpacing" ><input type = "checkbox" style = "width:35px;height:35px;"/>4</td>
+                      <td class = "tdSpacing" ><input type = "checkbox" style = "width:35px;height:35px;"/>3</td>
+                      <td class = "tdSpacing" ><input type = "checkbox" style = "width:35px;height:35px;"/>2</td>
+                      <td class = "tdSpacing" ><input type = "checkbox" style = "width:35px;height:35px;"/>1</td>
+                    </tr>
+                  </table>
+                </div>
+                <div id="regis" class="container tab-pane fade">
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
         
       </div>
       <div class="modal-footer">

@@ -75,7 +75,7 @@ while ($row = mysqli_fetch_assoc($auto)) {
   $idGet = (int)$str + 1;
 }
 
-$latest_pr_no = $getDate.'-'.$m.'-'.'000'.$idGet;
+$latest_pr_no = $getDate.'-'.$m.'-'.'00'.$idGet;
 
 $pmo = $_GET['pmo'];
 $pr_date = $_GET['pr_date'];
