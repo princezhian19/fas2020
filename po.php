@@ -77,7 +77,7 @@ $auto = mysqli_query($conn,"SELECT count(*) as a FROM po WHERE YEAR(noa_date) = 
 while ($row = mysqli_fetch_assoc($auto)) {
   $idGet = $row["a"]+1;
 }
-$autoNo = $getDate.'-'.$m.'-'.'0'.$idGet;
+$autoNo = $getDate.'-'.$m.'-'.'000'.$idGet;
 
 
 ?>
