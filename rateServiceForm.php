@@ -978,11 +978,9 @@ function setQuality()
   <title>FAS | Rate Service</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{
-  background: #16a085;
- }
+
 .content{
-  width: 800px;
+  width: 1000px;
   height: auto;
 }
 .nav-pills{
@@ -991,7 +989,7 @@ body{
 
 .nav-pills .nav-link{
   font-weight: bold;
-  padding-top: 13px;
+  padding-top: 1px;
   text-align: center;
   background: #343436;
   color: #fff;
@@ -1006,19 +1004,16 @@ body{
 }
 .tab-content{
   position: absolute;
-  width: 80%;
-  height: auto;
-  margin-top: -50px;
-  margin-left: -100px;
-  background: #fff;
-  color: #000;
+  width: 109%;
+  height: 190%;
+  margin-top: -40px;
+  margin-left: -140px;
   border-radius: 30px;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 5);
   padding: 30px;
   margin-bottom: 50px;
 }
 .tab-content button{
-  border-radius: 15px;
   width: 100px;
   margin: 0 auto;
   float: right;
@@ -1027,15 +1022,25 @@ body{
           background-color: #B0BEC5;
           font-family: 'Cambria';
           font-weight: bold;
+          font-style: Italic;
+          font-size:24px;
         }
 
       .table{
         border: 1px solid black;
       }
       .tdSpacing{
-        padding: 30px;
-
+        padding:15px;
+        font-family: 'Cambria';
+        font-size:20px;
+        font-style: Italic;
       }
+     
+     .table-scroll {
+    height: 300px;
+    display: inline-block;
+    overflow: auto;
+}
 </style>
 </head>
 
@@ -1234,85 +1239,134 @@ switch ($row['STATUS']) {
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" STYLE = >
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered" role="document" style="width:70%;">
-    <div class="modal-content" style = "background-color:#CFD8DC;border-radius:30px;">
-      <div class="modal-header">
+    <div class="modal-content" style = "background-color:rgba(57,58,56,0.1);border-radius:30px;">
+      <!-- <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle" style="text-align:center;font-family:'Cambria';font-size:24px;">CUSTOMER SATISFACTORY SURVEY FORM</h5>
        
-      </div>
+      </div> -->
       <div class="modal-body">
       <div class = "row">
         <div class = "col-lg-12">
           <div class = "col-lg-2">
-            <img src = "images/Isko.png" style = "width:auto;height:500px;margin-left:-80px;">
+            <!-- <img src = "images/Isko.png" style = "width:auto;height:500px;margin-left:-50px;float:left;z-index:1;"> -->
           </div>
           <div class = "col-lg-10">
             <div class="content">
-              <ul class="nav nav-pills" role="tablist">
+              <ul class="nav nav-pills" role="tablist" >
                 <li class="nav-item">
-                  <a class="nav-link active" data-toggle="pill" href="#login">Rating Scale</a>
+                  <a class="nav-link active" data-toggle="pill" href="#login" style= "margin-left:-140px;">CUSTOMER SATISFACTION SURVEY FORM </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" data-toggle="pill" href="#regis">Register</a>
                 </li>
               </ul>
-              <div class="tab-content bg-success">
+              <div class="tab-content bg-success"  style = "background-color:#fff;">
                 <div id="login" class="container tab-pane active">
-                  <table style = "text-align:center;">
+                  <table border = 1>
+                    <tbody class = "table-scroll">
                     <tr>
-                      <td>
+                      <td></td>
+                      <td></td>  
+                      <td style = "text-align:center;font-weight:bold;" class = "tdSpacing">
                           (5)<br>
                           Strongly Agree<br>
                           Lubos na 
                           sumasang ayon
                           <br><img src = "images/happy.gif" style = "width:50px;height:50px;">
                       </td>
-                      <td>
+                      <td style = "text-align:center;font-weight:bold;" class = "tdSpacing">
                         (4)<br>
                         Agree<br>
                         Sumasang ayon
                         <br>
                         <img src = "images/4.gif" style = "width:50px;height:50px;"></td>
-                      <td>
+                      <td style = "text-align:center;font-weight:bold;" class = "tdSpacing">
                         (3)<br>
                         Neutral<br>
                         Sumasangayon o hindi sumasangayon<br>
                         <img src = "images/3.gif" style = "width:50px;height:50px;"></td>
-                      <td>
+                      <td style = "text-align:center;font-weight:bold;" class = "tdSpacing">
                         (2)<br>
                         Disagree<br>
                         Hindi 
                         Sumasang ayon<br>
                         <img src = "images/2.gif" style = "width:50px;height:50px;"></td>
-                      <td>
+                      <td style = "text-align:center;font-weight:bold;" class = "tdSpacing">
                         (1)<br>
                         Strongly Disagree<br>
                         Lubos na hindi sumasang ayon<br>
                       <img src = "images/1.gif" style = "width:50px;height:50px;"></td>
-                      <td></td>
-                      <td></td>
                     </tr>
-                  </table>
-
-                  <table>
                     <tr>
                       <td class = "tdTitle tdSpacing">Responsiveness</td>
-                      <td class = "tdSpacing" style = "text-align:justify;">
+                      <td class = "tdSpacing" style = "text-align:justify;" class = "tdSpacing">
                             The service was willingly and <br>
                             promptly extended to the <br>client/customer.<br>
                             Maagap na naibibigay ang<br> serbisyo sa kliyente </td>
-                      <td class = "tdSpacing" ><input type = "checkbox" style = "width:35px;height:35px;"/>5</td>
-                      <td class = "tdSpacing" ><input type = "checkbox" style = "width:35px;height:35px;"/>4</td>
-                      <td class = "tdSpacing" ><input type = "checkbox" style = "width:35px;height:35px;"/>3</td>
-                      <td class = "tdSpacing" ><input type = "checkbox" style = "width:35px;height:35px;"/>2</td>
-                      <td class = "tdSpacing" ><input type = "checkbox" style = "width:35px;height:35px;"/>1</td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold; text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
                     </tr>
+                    <tr>
+                      <td class = "tdTitle tdSpacing">Reliability</td>
+                      <td class = "tdSpacing" style = "text-align:justify;">
+                      Performed the service within the expectations of the client/customer served.
+                      Naisagawa ang serbisyo ayon sa inaasahan ng kliyente.
+                      </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                    </tr>
+                    <tr>
+                      <td class = "tdTitle tdSpacing">Access & Facilities </td>
+                      <td class = "tdSpacing" style = "text-align:justify;">
+                      Facilities/resources/modes of technology were readily available for convenient transactions. 
+                      May maayos at angkop na pasilidad at sistema para sa serbisyo.
+                      </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                    </tr>
+                    <tr>
+                      <td class = "tdTitle tdSpacing">Communication</td>
+                      <td class = "tdSpacing" style = "text-align:justify;">
+                        Materials associated with the service are easily understood and feedback mechanisms are present relevant to the client’s concern. 
+                        May sapat na impormasyon na madaling maunawaan at may mekanismo para matugunan ang mga puna o mungkahi
+                      </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                    </tr>
+                    <tr>
+                      <td class = "tdTitle tdSpacing">Costs</td>
+                      <td class = "tdSpacing" style = "text-align:justify;">
+                        Value for money spent on services rendered.
+                        Tama ang kaukulang bayad para sa serbisyo o iba pang gastos para sa transaksyon.
+                        </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                    </tr>
+                    </tbody>
                   </table>
                 </div>
                 <div id="regis" class="container tab-pane fade">
                  
-                </div>
+                </div><br><br><br>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
@@ -1321,10 +1375,7 @@ switch ($row['STATUS']) {
       
         
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+   
     </div>
   </div>
 </div>
