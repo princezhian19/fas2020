@@ -1005,7 +1005,7 @@ function setQuality()
 .tab-content{
   position: absolute;
   width: 109%;
-  height: 190%;
+  height: 255%;
   margin-top: -40px;
   margin-left: -140px;
   border-radius: 30px;
@@ -1037,7 +1037,7 @@ function setQuality()
       }
      
      .table-scroll {
-    height: 300px;
+    height: 500px;
     display: inline-block;
     overflow: auto;
 }
@@ -1256,10 +1256,10 @@ switch ($row['STATUS']) {
             <div class="content">
               <ul class="nav nav-pills" role="tablist" >
                 <li class="nav-item">
-                  <a class="nav-link active" data-toggle="pill" href="#login" style= "margin-left:-140px;">CUSTOMER SATISFACTION SURVEY FORM </a>
+                  <a class="nav-link active" data-toggle="pill" href="#login" style= "margin-left:-140px;">A. SERVICE DIMENSION</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" data-toggle="pill" href="#regis">Register</a>
+                  <a class="nav-link" data-toggle="pill" href="#regis" style= "margin-right:-140px;">B. SUGGESTION FOR IMPROVEMENT</a>
                 </li>
               </ul>
               <div class="tab-content bg-success"  style = "background-color:#fff;">
@@ -1352,6 +1352,54 @@ switch ($row['STATUS']) {
                       <td class = "tdSpacing" style = "text-align:justify;">
                         Value for money spent on services rendered.
                         Tama ang kaukulang bayad para sa serbisyo o iba pang gastos para sa transaksyon.
+                        </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                    </tr>
+                    <tr>
+                      <td colspan = "4" class = "tdSpacing" style = "text-align:center;font-weight:bold;">
+                      <input type="radio" style = "width:25px; height:25px;"/> is free of charge 
+                      </td>
+                      <td colspan = "3" class = "tdSpacing" style = "text-align:center;font-weight:bold;">
+                      <input type="radio" style = "width:25px; height:25px;"/> not applicable
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class = "tdTitle tdSpacing">Integrity</td>
+                      <td class = "tdSpacing" style = "text-align:justify;">
+                      Provided services with high morale and spirit of honesty.
+                      Naglingkod nang may katapatan at mataas na integridad.
+
+                        </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                    </tr>
+                    <tr>
+                      <td class = "tdTitle tdSpacing">Assurance</td>
+                      <td class = "tdSpacing" style = "text-align:justify;">
+                      The service was provided by competent personnel.
+                      Naibigay ang serbisyo nang may sapat na kakayahan at kaalaman.
+
+                        </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                    </tr>
+                    <tr>
+                      <td class = "tdTitle tdSpacing">Outcome</td>
+                      <td class = "tdSpacing" style = "text-align:justify;">
+                      The overall expectations of the client are met.
+                      Nakamit ang kabuuang serbisyong inaasahan.
+
+
                         </td>
                       <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
                       <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
