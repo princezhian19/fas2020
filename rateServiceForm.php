@@ -1048,6 +1048,9 @@ function setQuality()
     display: inline-block;
     overflow: auto;
 }
+.label-text{
+          background-color: #B0BEC5;
+}
 </style>
 </head>
 
