@@ -1314,11 +1314,11 @@ switch ($row['STATUS']) {
                             The service was willingly and <br>
                             promptly extended to the <br>client/customer.<br>
                             Maagap na naibibigay ang<br> serbisyo sa kliyente </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold; text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold; text-align:center;" ><input type = "checkbox" class = "g1" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g1" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g1" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g1" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g1" style = "width:25px;height:25px;"/></td>
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Reliability</td>
@@ -1326,11 +1326,11 @@ switch ($row['STATUS']) {
                       Performed the service within the expectations of the client/customer served.
                       Naisagawa ang serbisyo ayon sa inaasahan ng kliyente.
                       </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" class = "g2" style = "width:25px;height:25px;" /> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g2" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g2" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g2" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g2" style = "width:25px;height:25px;"/></td>
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Access & Facilities </td>
@@ -1338,11 +1338,11 @@ switch ($row['STATUS']) {
                       Facilities/resources/modes of technology were readily available for convenient transactions. 
                       May maayos at angkop na pasilidad at sistema para sa serbisyo.
                       </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" class = "g3" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g3" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g3" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g3" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g3" style = "width:25px;height:25px;"/></td>
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Communication</td>
@@ -1350,11 +1350,11 @@ switch ($row['STATUS']) {
                         Materials associated with the service are easily understood and feedback mechanisms are present relevant to the client’s concern. 
                         May sapat na impormasyon na madaling maunawaan at may mekanismo para matugunan ang mga puna o mungkahi
                       </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" class = "g4" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g4" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g4" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g4" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g4" style = "width:25px;height:25px;"/></td>
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Costs</td>
@@ -1362,11 +1362,11 @@ switch ($row['STATUS']) {
                         Value for money spent on services rendered.
                         Tama ang kaukulang bayad para sa serbisyo o iba pang gastos para sa transaksyon.
                         </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" class = "g5" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g5" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g5" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g5" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g5" style = "width:25px;height:25px;"/></td>
                     </tr>
                     <tr>
                       <td colspan = "4" class = "tdSpacing" style = "text-align:center;font-weight:bold;">
@@ -1383,11 +1383,11 @@ switch ($row['STATUS']) {
                       Naglingkod nang may katapatan at mataas na integridad.
 
                         </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" class = "g6" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g6" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g6" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g6" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g6" style = "width:25px;height:25px;"/></td>
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Assurance</td>
@@ -1396,11 +1396,11 @@ switch ($row['STATUS']) {
                       Naibigay ang serbisyo nang may sapat na kakayahan at kaalaman.
 
                         </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" class = "g7" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g7" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g7" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g7" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g7" style = "width:25px;height:25px;"/></td>
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Outcome</td>
@@ -1410,11 +1410,11 @@ switch ($row['STATUS']) {
 
 
                         </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" style = "width:25px;height:25px;"/> </td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
-                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;" ><input type = "checkbox" class = "g8" style = "width:25px;height:25px;"/> </td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g8" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g8" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g8" style = "width:25px;height:25px;"/></td>
+                      <td class = "tdSpacing" style = "font-size:24px; font-weight:bold;text-align:center;"><input type = "checkbox" class = "g8" style = "width:25px;height:25px;"/></td>
                     </tr>
                     </tbody>
                   </table>
@@ -1495,7 +1495,42 @@ $('document').ready(function()
             $(this).val($(this).val().trim());
         }
     );
-   
+
+
+    // MODAL CHECKBOXES
+    $('.g1').on('change', function() {
+      $('.g1').not(this).prop('checked', false);  
+    });
+
+    $('.g2').on('change', function() {
+      $('.g2').not(this).prop('checked', false);  
+    });
+
+    $('.g3').on('change', function() {
+      $('.g3').not(this).prop('checked', false);  
+    });
+
+    $('.g4').on('change', function() {
+      $('.g4').not(this).prop('checked', false);  
+    });
+
+    $('.g5').on('change', function() {
+      $('.g5').not(this).prop('checked', false);  
+    });
+
+    $('.g6').on('change', function() {
+      $('.g6').not(this).prop('checked', false);  
+    });
+
+    $('.g7').on('change', function() {
+      $('.g7').not(this).prop('checked', false);  
+    });
+
+    $('.g8').on('change', function() {
+      $('.g8').not(this).prop('checked', false);  
+    });
+
+  
 });
 
   
