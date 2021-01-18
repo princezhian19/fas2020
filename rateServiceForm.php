@@ -1025,6 +1025,13 @@ function setQuality()
           font-style: Italic;
           font-size:24px;
         }
+    .spanTitle{
+      font-family: 'Cambria';
+      font-weight: bold;
+      font-style: Italic;
+          font-size:15px;
+
+    }
 
       .table{
         border: 1px solid black;
@@ -1250,7 +1257,6 @@ switch ($row['STATUS']) {
       <div class = "row">
         <div class = "col-lg-12">
           <div class = "col-lg-2">
-            <!-- <img src = "images/Isko.png" style = "width:auto;height:500px;margin-left:-50px;float:left;z-index:1;"> -->
           </div>
           <div class = "col-lg-10">
             <div class="content">
@@ -1411,7 +1417,24 @@ switch ($row['STATUS']) {
                   </table>
                 </div>
                 <div id="regis" class="container tab-pane fade">
-                 
+                  <span class = "spanTitle" style = "margin-left:15%;">Mga mungkahi at obserbasyon para sa pagpapabuti ng serbisyo </span>
+                 <textarea cols = 150 rows = 10 style = "resize:none;margin-left:15%;"></textarea>
+                 <div class = "spanTitle">
+            <img src = "images/Isko.png" style = "width:auto;height:500px;margin-left:-50px;margin-top:-245px;float:left;z-index:-10;position:static">
+
+                 Name of Client (Optional): ____________________________  Contact Number (Optional)_____________Date Accomplished: November 16, 2020
+                 <br<br>
+                 <br><br>
+                 <br<br>
+                 <br><br><br<br>
+         
+              ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                 Privacy Statement
+
+DILG is committed to protecting your privacy. Any information gathered using this tool will be treated with utmost confidentiality and shall be solely used to improve our services being provided to the public. Thank you very much. 
+
+(Ang DILG ay nangangako na protektahan ang iyong privacy. Anumang impormasyong natipon gamit ang sarbeyl na ito ay ituturing na lubos na pagiging kompidensiyal at gagamitin lamang upang mapabuti ang aming mga serbisyo. Maraming salamat.)
+                 </div>
                 </div><br><br><br>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
