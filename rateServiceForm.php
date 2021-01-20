@@ -65,7 +65,10 @@ function fillTableInfo()
                                 </tr>
                                 <tr>
                                     <td class = "label-text left-text">Office:</td>
-                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input id = "office" readonly type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['OFFICE'];?>" disabled/></td>
+                                    <td colspan = 3 style = "  padding:5px 5px 5px 5px;">
+                                    <input id = "office" readonly type = "text" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['OFFICE'];?>" disabled/>
+                                    <input id = "office" readonly type = "hidden" name = "office" class = "sizeMax alphanum subtxt" value = "<?php echo $row['OFFICE'];?>" />
+                                  </td>
                                     <td class = "label-text left-text">Property Number:</td>
                                     <td colspan = 3 style = "  padding:5px 5px 5px 5px;"><input  type = "text" name = "property_no" class = "sizeMax alphanum subtxt" value = "<?php echo $row['PROPERTY_NO'];?>" disabled /> </td>
                                 </tr>
@@ -1081,7 +1084,7 @@ white-space: normal;
                     <div>
                         <h1>ICT Technical Assistance</h1><br>
                     </div>
-                    <form method="POST" enctype="multipart/form-data" class="myformStyle" autocomplete="off" >    
+                    <form method="POST" enctype="multipart/form-data" class="myformStyle" autocomplete="off" id = "saveAll" >    
                     
                         <input type = "hidden" name = "curuser" value = "" id = "selectedUser" />
                         <?php echo fillTableInfo();?>
@@ -1250,8 +1253,6 @@ switch ($row['STATUS']) {
 
                           </table><br>
 
-                        <button class="btn btn-primary btn-s  sweet-14" style="float: right;" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Danger']); "id="finalizeButton" type="button" onclick="return confirm('Are you sure you want to save now?');">Save Changes</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -1261,8 +1262,8 @@ switch ($row['STATUS']) {
  </body>
 </html>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
+<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Save
 </button>
 
 <!-- Modal -->
@@ -1327,6 +1328,8 @@ switch ($row['STATUS']) {
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Responsiveness</td>
+                      <input type = "hidden" value = "Responsiveness" name = "sd[]" />
+
                       <td class = "tdSpacing" style = "text-align:justify;" class = "tdSpacing">
                             The service was willingly and <br>
                             promptly extended to the <br>client/customer.<br>
@@ -1339,6 +1342,8 @@ switch ($row['STATUS']) {
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Reliability</td>
+                      <input type = "hidden" value = "Reliability" name = "sd[]" />
+
                       <td class = "tdSpacing" style = "text-align:justify;">
                       Performed the service within the expectations of the client/customer served.
                       Naisagawa ang serbisyo ayon sa inaasahan ng kliyente.
@@ -1351,6 +1356,8 @@ switch ($row['STATUS']) {
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Access & Facilities </td>
+                      <input type = "hidden" value = "Access & Facilities" name = "sd[]" />
+                      
                       <td class = "tdSpacing" style = "text-align:justify;">
                       Facilities/resources/modes of technology were readily available for convenient transactions. 
                       May maayos at angkop na pasilidad at sistema para sa serbisyo.
@@ -1363,6 +1370,7 @@ switch ($row['STATUS']) {
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Communication</td>
+                      <input type = "hidden" value = "Communication" name = "sd[]" />
                       <td class = "tdSpacing" style = "text-align:justify;">
                         Materials associated with the service are easily understood and feedback mechanisms are present relevant to the client’s concern. 
                         May sapat na impormasyon na madaling maunawaan at may mekanismo para matugunan ang mga puna o mungkahi
@@ -1375,6 +1383,7 @@ switch ($row['STATUS']) {
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Costs</td>
+                      <input type = "hidden" value = "Costs" name = "sd[]" />
                       <td class = "tdSpacing" style = "text-align:justify;">
                         Value for money spent on services rendered.
                         Tama ang kaukulang bayad para sa serbisyo o iba pang gastos para sa transaksyon.
@@ -1395,6 +1404,7 @@ switch ($row['STATUS']) {
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Integrity</td>
+                      <input type = "hidden" value = "Integrity" name = "sd[]" />
                       <td class = "tdSpacing" style = "text-align:justify;">
                       Provided services with high morale and spirit of honesty.
                       Naglingkod nang may katapatan at mataas na integridad.
@@ -1408,6 +1418,7 @@ switch ($row['STATUS']) {
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Assurance</td>
+                      <input type = "hidden" value = "Assurance" name = "sd[]" />
                       <td class = "tdSpacing" style = "text-align:justify;">
                       The service was provided by competent personnel.
                       Naibigay ang serbisyo nang may sapat na kakayahan at kaalaman.
@@ -1421,6 +1432,7 @@ switch ($row['STATUS']) {
                     </tr>
                     <tr>
                       <td class = "tdTitle tdSpacing">Outcome</td>
+                      <input type = "hidden" value = "Outcome" name = "sd[]" />
                       <td class = "tdSpacing" style = "text-align:justify;">
                       The overall expectations of the client are met.
                       Nakamit ang kabuuang serbisyong inaasahan.
@@ -1435,12 +1447,15 @@ switch ($row['STATUS']) {
                     </tr>
                     </tbody>
                   </table>
+               
+
                 </div>
                 <div id="regis" class="container tab-pane fade">
                   <span class = "spanTitle" style = "margin-left:15%;">Mga mungkahi at obserbasyon para sa pagpapabuti ng serbisyo </span>
                  
-                 <textarea class = "cssTA" cols = 150 rows = 5  style="resize:none;border:groove 6px skyblue;font-stretch: ultra-expanded;font-size:24px;font-family:Lucida Grande,Verdana;" >
+                 <textarea name = "suggestion" class = "cssTA" cols = 150 rows = 5  style="resize:none;border:groove 6px skyblue;font-stretch: ultra-expanded;font-size:24px;font-family:Lucida Grande,Verdana;" >
                 </textarea>
+                </form>
                  <div class = "spanTitle">
                 <img src = "images/Isko.gif" style = "width:auto;height:500px;margin-left:-50px;margin-top:-245px;float:left;z-index:-10;position:static">
 
@@ -1459,7 +1474,7 @@ DILG is committed to protecting your privacy. Any information gathered using thi
                  </div>
                 </div><br><br><br>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id = "submit">Save changes</button>
+                <button type="button" class="btn btn-primary sweet-14" style="float: right;" onclick="_gaq.push(['_trackEvent', 'example, 'try', 'Danger']); "id="finalizeButton" type="button" onclick="return confirm('Are you sure you want to save now?');">Save changes</button>
               </div>
             </div>
           </div>
@@ -1550,37 +1565,7 @@ $('document').ready(function()
     });
 
   // check if theres no check on checkbox
- $('#submit').click(function(){
-  var count = document.querySelectorAll("#cssTable :checked").length;
-  if(count == 0)
-  {
-    alert(count);
-        alert('Kindly checked all checkboxes in the field.');
 
-  }else if(count <= 7){
-    alert('Kindly checked all checkboxes in the field.');
-
-  }else{
-   var g1 = $('.g1').val();
-   alert(g1);
-    // $.ajax({
-    //         url:"_fetchOfficeInfo.php",
-    //         method:"POST",
-    //         data:{
-    //         id:value
-    //         },
-    //         success:function(data)
-    //         {
-    //           var result = JSON.parse(data);
-    //           $('#selectedUser').val(result[0].currentuser);
-    //           $('#office').val(result[0].office);
-    //           $('#position').val(result[0].position);
-    //           $('#phone').val(result[0].phone);
-    //           $('#email').val(result[0].email);
-    //         }
-    //       });
-  }
- });
 
 
 });
@@ -1590,8 +1575,27 @@ $('document').ready(function()
 var c_n = $('#control_no').val();
 var type = 'user';
     document.querySelector('.sweet-14').onclick = function(){
+  var count = document.querySelectorAll("#cssTable :checked").length;
+  if(count == 0)
+  {
+    // alert(count);
+ 
+        alert('Kindly checked all checkboxes in the field.');
+
+  }else if(count <= 7){
+  var r = $("#cssTable .g1").val();
+
+    alert(r);
+
+    alert('Kindly checked all checkboxes in the field.');
+
+  }else{
+  
+
+  
+      // =================================
           swal({
-              title: "Are you sure you want to save?",
+              title: "Are you sure you want to saave?",
               text: "Control No:"+c_n,
               type: "info",
               showCancelButton: true,
@@ -1600,30 +1604,26 @@ var type = 'user';
       closeOnConfirm: false,
       showLoaderOnConfirm: true
           }, function () {
-            var queryString = $('#submit').serialize();
+            var queryString = $('#saveAll').serialize();
+            alert(queryString);
             $.ajax({
               url:"rateServiceForm_save.php",
               method:"POST",
-              data:$("#submit").serialize(),
-              
+              data: 
+                $("#saveAll, #info").serialize(),
+
               success:function(data)
               {
-                  setTimeout(function () {
+                setTimeout(function () {
                   swal("Record saved successfully!");
                   }, 3000);
-
-                  if(type == "<?php echo $_GET['type'];?>")
-                  {
-                    window.location = "techassistance.php?division=<?php echo $_GET['division'];?>";
-
-                  }else{
-                    window.location = "processing.php?division=<?php echo $_GET['division'];?>&ticket_id=";
-
-                  }
+                  window.location = "processing.php?division=<?php echo $_GET['division'];?>&ticket_id=";
               }
             });
         });
+        // ================================
     }
+  }
   $(function () {
   
     $('.select2').on('change', function()
