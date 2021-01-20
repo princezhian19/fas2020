@@ -12,7 +12,7 @@
 
   // $latest_pr_no = $getDate.'-'.$m.'-'.'0'.$idGet;
   // $latest_pr_no = $getDate.'-'.'0'.$idGet;
-  $latest_pr_no = $getDate.'-'.$idGet;
+  $latest_pr_no = $getDate.'-00'.$idGet;
 
   function get_pr($connect)
   { 
