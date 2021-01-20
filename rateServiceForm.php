@@ -1439,10 +1439,10 @@ switch ($row['STATUS']) {
                 <div id="regis" class="container tab-pane fade">
                   <span class = "spanTitle" style = "margin-left:15%;">Mga mungkahi at obserbasyon para sa pagpapabuti ng serbisyo </span>
                  
-                 <textarea class = "cssTA" cols = 150 rows = 10  >
+                 <textarea class = "cssTA" cols = 150 rows = 5  style="resize:none;border:groove 6px skyblue;font-stretch: ultra-expanded;font-size:24px;font-family:Lucida Grande,Verdana;" >
                 </textarea>
                  <div class = "spanTitle">
-                <img src = "images/Isko.png" style = "width:auto;height:500px;margin-left:-50px;margin-top:-245px;float:left;z-index:-10;position:static">
+                <img src = "images/Isko.gif" style = "width:auto;height:500px;margin-left:-50px;margin-top:-245px;float:left;z-index:-10;position:static">
 
                  Name of Client (Optional): <?php echo '<u>'.$_SESSION['complete_name'].'</u>'; ?>  Contact Number (Optional)_____________Date Accomplished: November 16, 2020
                  <br<br>
