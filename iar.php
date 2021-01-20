@@ -3,10 +3,11 @@
   $idGet='';
   $getDate = date('Y');
   $m = date('m');
-  $auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM iar order by id desc limit 1");
+  // $auto = mysqli_query($conn,"SELECT max(id)+1 as a FROM iar order by id desc limit 1");
+  $auto = mysqli_query($conn,"SELECT COUNT(*) as a FROM iar WHERE iar_no LIKE '%2021%' and tim3 > '2021-01-20'");
   while ($row = mysqli_fetch_assoc($auto)) {
 
-    $idGet = $row["a"];
+    $idGet = $row["a"]+1;
   }
 
   // $latest_pr_no = $getDate.'-'.$m.'-'.'0'.$idGet;
