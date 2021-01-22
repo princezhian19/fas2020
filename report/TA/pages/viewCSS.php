@@ -41,11 +41,12 @@ switch($service_dimension)
     {
        
         case 'Responsiveness':
+           
                     $PHPJasperXML->arrayParameter=array(
                         "office"=>$office,
                         "service_provided"=>$service_provided,
                         "action_officer"=>$action_officer,
-                        "rating_scale"=>'black.jpg',
+                        "rating_scale"=>'black.png',
                     );
           
             

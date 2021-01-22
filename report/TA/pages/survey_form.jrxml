@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="453" leftMargin="71" rightMargin="71" topMargin="49" bottomMargin="21" isSummaryWithPageHeaderAndFooter="true" uuid="5be4a1da-05bd-4f9e-8b3b-66b0111942f6">
-	<property name="ireport.zoom" value="3.6363636363637495"/>
-	<property name="ireport.x" value="707"/>
-	<property name="ireport.y" value="1536"/>
+	<property name="ireport.zoom" value="2.7320538214603673"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="office" class="java.lang.String"/>
 	<parameter name="service_provided" class="java.lang.String"/>
 	<parameter name="action_officer" class="java.lang.String"/>
@@ -192,7 +192,7 @@
 			</image>
 			<image>
 				<reportElement x="359" y="-2" width="95" height="64" uuid="827f2f3a-2657-4f84-8a06-8fc60cc965ea"/>
-				<imageExpression><![CDATA["C:\\xampp\\htdocs\\fas2020\\images\\cssForm.PNG"]]></imageExpression>
+				<imageExpression><![CDATA["cssForm.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="68" y="18" width="189" height="19" uuid="00904f75-6bd0-41dd-887d-c4fb47f32338"/>
