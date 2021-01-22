@@ -1,0 +1,959 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="453" leftMargin="71" rightMargin="71" topMargin="49" bottomMargin="21" isSummaryWithPageHeaderAndFooter="true" uuid="5be4a1da-05bd-4f9e-8b3b-66b0111942f6">
+	<property name="ireport.zoom" value="3.6363636363637495"/>
+	<property name="ireport.x" value="707"/>
+	<property name="ireport.y" value="1536"/>
+	<parameter name="office" class="java.lang.String"/>
+	<parameter name="service_provided" class="java.lang.String"/>
+	<parameter name="action_officer" class="java.lang.String"/>
+	<parameter name="rating_scale" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM `tblcustomer_satisfaction_survey`]]>
+	</queryString>
+	<field name="EMP_N" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EMP_NUMBER" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LAST_M" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FIRST_M" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MIDDLE_M" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SUFFIX" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BIRTH_D" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SEX_C" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REGION_C" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PROVINCE_C" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CITYMUN_C" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DIVISION_C" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OFFICE_STATION" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="POSITION_C" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DESIGNATION" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MOBILEPHONE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LANDPHONE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FAX_NO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EMAIL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PHOTO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ALTER_EMAIL" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AGENCY_EMP_NO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ACTIVATED" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CODE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="UNAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PSWORD" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="APPROVEDBY" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BLOCK" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ACCESSTYPE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DATE_CREATED" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ACCESSLIST" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SHOWDETAILS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ORD" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DEPT_ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SECTION_ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="INVI" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ACCESSKEY" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CLUSTER" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isPlanningOfficer" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isPersonnel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="STATUS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isTagged" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PROFILE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CIVIL_STATUS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SALARY_GRADE" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ELIGIBILITY" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="STATUS_OF_APP" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TIN_N" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="GSIS_N" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PHILH_N" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PAGIBIG_N" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DATE_HIRED" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="REMARKS_M" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DATE_LAST_PROMOTION" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SERVICE_RECORD_FILE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isCOS" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isRetired" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="67">
+			<image hAlign="Center">
+				<reportElement x="0" y="1" width="65" height="65" isRemoveLineWhenBlank="true" uuid="34562a29-1031-4022-9521-5b1a09817e31"/>
+				<imageExpression><![CDATA["dilg.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="359" y="-2" width="95" height="64" uuid="827f2f3a-2657-4f84-8a06-8fc60cc965ea"/>
+				<imageExpression><![CDATA["C:\\xampp\\htdocs\\fas2020\\images\\cssForm.PNG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="68" y="18" width="189" height="19" uuid="00904f75-6bd0-41dd-887d-c4fb47f32338"/>
+				<textElement>
+					<font fontName="Cambria" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[REPUBLIC OF THE PHILIPPINES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="27" width="384" height="22" uuid="aa144a95-a033-4392-8712-173de16b8a7c"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEPARTMENT OF THE LOCAL AND INTERIOR AND LOCAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="38" width="201" height="19" uuid="c1aa7e44-f524-46bb-a493-17763341afc5"/>
+				<textElement>
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GOVERNMENT (DILG)]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="642">
+			<staticText>
+				<reportElement x="101" y="281" width="66" height="43" uuid="c67ef090-01f1-49a6-85fd-ba808ab30bbe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(4)
+Agree
+Sumasang ayon
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="281" y="280" width="66" height="43" uuid="8c13a40a-bcde-4aa2-b66f-572128e77e62"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[  (2)
+Disagree
+Hindi
+Sumasang ayon
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="361" y="281" width="66" height="43" uuid="2d60f68c-a634-4c3b-b1f2-1d9f0f236d17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(1)
+Strongly Disagree
+ Lubos na hindi sumasang ayon
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="280" width="88" height="43" uuid="dd0c4926-2a4b-4f15-bffd-ee3a3c0b4d30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(3)
+Neutral
+Sumasangayon o hindi sumasangayon
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="264" width="84" height="16" uuid="a0390d76-7868-483f-a420-bffda1f493b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[RATING SCALE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="363" y="32" width="90" height="72" uuid="08ee50d8-eded-482e-b63a-bd6d798c2132"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="118" width="453" height="147" uuid="9f85fdb0-58f2-45d1-84ab-95acaf4865d8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Cambria" size="9" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[
+We at DILG-_________ endeavors to consistently provide effective and efficient services to meet our client’s needs. In this regard, may we request you to help us improve our services by allowing us to hear your voice.
+(Kami, sa DILG-________ ay lubos na nagsisikap upang patuloy na magbigay ng epektibo at mataas na kalidad na serbisyo upang matugunan ang mga pangangailangan ng aming mga kliyente. Sa bagay na ito, aming hinihiling na kami ay iyong matulungan sa patuloy na pagpapabuti ng aming mga serbisyo sa pamamagitan ng pag-papaalam sa amin ng inyong mga saloobin.)
+Kindly fill-up this survey form and reflect your impressions about our services and let us know your experience while transacting official business with us. Shade the rating that corresponds to your satisfaction level and/or write your observations/comments.
+
+(Kung maari lamang pong pakipunan itong Sarbey at ilahad ang inyong masasabi sa aming naibigay na serbisyo. Itiman ang bilog na katumbas ng numero na tutugma sa inyong antas ng kasiyahan.)
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="16" width="453" height="15" backcolor="#000000" uuid="00b70aab-b660-47f1-858d-9d6727d4a682"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="11" y="16" width="456" height="15" forecolor="#FFFFFF" backcolor="#000000" uuid="bb1a6211-6224-4779-9dff-02be54509356"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(To be accomplished by DILG Personnel)]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="32" width="363" height="24" uuid="33665428-af48-42ea-bc61-82ae7a2bbca3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="80" width="363" height="24" uuid="9f703171-4a57-47df-aa44-82a1b46f3d37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="56" width="363" height="24" uuid="e09cd979-dc5b-4c80-961d-76ed3a5efab6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="12" y="32" width="170" height="12" uuid="c1cda515-1f7b-4227-9a95-1bb6c03c05c9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Name of Office/Operating Unit:
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="56" width="170" height="12" uuid="d7c4a9b6-d388-44ae-a1f6-1926d4ce5809"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Name of Service Provided:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="80" width="184" height="12" uuid="818bc879-9c90-49ae-b50c-7b6eb761d0c7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Name of Action Officer (If applicable):
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="-6" width="448" height="22" uuid="06162603-1fa0-4bf6-9e7d-d84f524d325a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CUSTOMER SATISFACTION SURVEY FORM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="110" width="171" height="11" uuid="da8eb724-0a8f-484e-9122-7b3552d3800a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Cambria" size="9" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Dear Client (Minamahal naming Kliyente),]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="281" width="66" height="43" uuid="04a7c98d-387b-4acf-bd95-cc7aa43bb3cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[(5)
+Strongly Agree
+Lubos na
+sumasang ayon
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="19" y="343" width="109" height="16" uuid="c0058424-10be-4034-816c-640b8c2564ee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[A.   SERVICE DIMENSIONS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="367" width="80" height="30" backcolor="#E6E6E6" uuid="973a6864-8a43-4e73-9082-5abcf51dba3e"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="80" y="367" width="293" height="30" backcolor="#E6E6E6" uuid="7de2f0f7-a8ce-4c93-b605-927b1a6ccb91"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="437" y="367" width="16" height="30" backcolor="#E6E6E6" uuid="8585aa66-6ec7-4baa-ac28-7edda7c9f40a"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="405" y="367" width="16" height="30" backcolor="#E6E6E6" uuid="ae0b04e5-5c95-45d0-90a6-9fcbd8c12b9e"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="421" y="367" width="16" height="30" backcolor="#E6E6E6" uuid="355ce300-bb2e-468a-bef3-1bd7b6b42d5e"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="367" width="16" height="30" backcolor="#E6E6E6" uuid="adf148f3-9d0e-4874-b8a1-f80d6b83c393"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="389" y="367" width="16" height="30" backcolor="#E6E6E6" uuid="37c50708-554c-40b2-8adb-1133441c2003"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="8" y="367" width="72" height="30" uuid="4da35953-dae3-4313-84a7-8a790698fe02"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Responsiveness]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="367" width="206" height="30" uuid="f894ec4d-6fae-4c09-a737-6b0ef4004b4e"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[The service was willingly and promptly extended to the client/customer.
+Maagap na naibibigay ang serbisyo sa kliyente.
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="397" width="80" height="30" backcolor="#FFFFFF" uuid="79cef035-9c9f-47d4-b592-4e66287b3b61"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="80" y="397" width="293" height="30" backcolor="#FFFFFF" uuid="67714710-973b-4f4b-84f4-0b3224940ba6"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="397" width="16" height="30" backcolor="#FFFFFF" uuid="73c85c1d-778d-4032-9f77-c52702d7501a"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="389" y="397" width="16" height="30" backcolor="#FFFFFF" uuid="7115bc8d-cf1c-4feb-957e-7dc8bdb25fd5"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="421" y="397" width="16" height="30" backcolor="#FFFFFF" uuid="a98c61a6-a2f7-4a6f-9a16-09d482cd7810"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="405" y="397" width="16" height="30" backcolor="#FFFFFF" uuid="818c9ffb-0ca2-49cd-95e6-89cb95457c37"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="437" y="397" width="16" height="30" backcolor="#FFFFFF" uuid="ebfa8a1a-fa14-4dc0-bc87-4bdc1dcb9b48"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="8" y="397" width="72" height="30" uuid="58dce6ed-b665-433c-bc48-6f8935b8886a"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Reliability]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="397" width="261" height="30" uuid="896de18a-8b9c-454f-ac1b-b77fb06ef9e0"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Performed the service within the expectations of the client/customer served.
+Naisagawa ang serbisyo ayon sa inaasahan ng kliyente.
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="427" width="80" height="30" backcolor="#E6E6E6" uuid="b6195f79-938d-43b2-bde5-2f1a86adc2df"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="80" y="427" width="293" height="30" backcolor="#E6E6E6" uuid="5f10707a-46e5-4094-a142-05c657e5f8fe"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="427" width="16" height="30" backcolor="#E6E6E6" uuid="ee2a7132-7ab4-4c1f-93b9-542956b055df"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="389" y="427" width="16" height="30" backcolor="#E6E6E6" uuid="d63f1d4b-5b14-477c-814a-30d92b375097"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="421" y="427" width="16" height="30" backcolor="#E6E6E6" uuid="301282ac-08fe-490e-9a02-c3aefc7d404f"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="405" y="427" width="16" height="30" backcolor="#E6E6E6" uuid="d260ceb1-8d06-41bf-b2a1-f92d00b9acb4"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="437" y="427" width="16" height="30" backcolor="#E6E6E6" uuid="ee5657ae-d547-4ee0-840b-489a6be40fe8"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="8" y="427" width="72" height="30" uuid="31aebfd0-f4a1-49d2-9b90-fa65928bd9fd"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Access &
+Facilities
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="427" width="261" height="30" uuid="42a97533-39d0-4069-a245-c64371fd1628"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Facilities/resources/modes of technology were readily available for convenient transactions.
+May maayos at angkop na pasilidad at sistema para sa serbisyo.
+]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="457" width="80" height="40" backcolor="#FFFFFF" uuid="eac2f488-6db0-4576-9adf-86f2e3a79bc1"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="80" y="457" width="293" height="40" backcolor="#FFFFFF" uuid="ac450e00-ee98-4d4f-a9bf-693d3d1501b6"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="457" width="16" height="40" backcolor="#FFFFFF" uuid="04af1b08-8de1-4869-96a0-e62f50dca3b4"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="389" y="457" width="16" height="40" backcolor="#FFFFFF" uuid="88d900bb-9069-4d2a-9394-e13043f3723c"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="421" y="457" width="16" height="40" backcolor="#FFFFFF" uuid="3321f9e0-bf96-4d43-9fa6-67029656c2ee"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="405" y="457" width="16" height="40" backcolor="#FFFFFF" uuid="b31d3312-acde-4d9a-80d5-b60f0dc3bb91"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="437" y="457" width="16" height="40" backcolor="#FFFFFF" uuid="861ca3e3-d3eb-4025-9e7a-2ece1b5094a7"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="86" y="457" width="261" height="40" uuid="ac4073b9-d031-4031-91cc-296f9df07cd5"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Materials associated with the service are easily understood and feedback mechanisms are present relevant to the client’s concern.
+May sapat na impormasyon na madaling maunawaan at may mekanismo para matugunan ang mga puna o mungkahi
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="457" width="72" height="40" uuid="c8a7c220-d164-4f5c-8f24-1f5699ba97eb"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Communication]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="497" width="80" height="30" backcolor="#E6E6E6" uuid="912008b9-8949-4a82-b71a-257d9dfeb0dd"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="80" y="497" width="293" height="30" backcolor="#E6E6E6" uuid="e29691be-b8cf-40ed-b8a7-0e3719d0c04a"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="421" y="497" width="16" height="30" backcolor="#E6E6E6" uuid="6cdb9380-129b-44f4-9a88-b6888015f24b"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="437" y="497" width="16" height="30" backcolor="#E6E6E6" uuid="33aa0d64-2ae7-4e0e-b55f-6d70a05bd25c"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="405" y="497" width="16" height="30" backcolor="#E6E6E6" uuid="4ade264b-a299-44d8-aaf4-199b97182aa0"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="389" y="497" width="16" height="30" backcolor="#E6E6E6" uuid="6b274fe8-d416-4e46-abfc-9be6570f5ae7"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="497" width="16" height="30" backcolor="#E6E6E6" uuid="64b7b9f1-27cc-4161-b64b-3c84f6547e26"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="86" y="497" width="261" height="30" uuid="0e8ff163-683b-4e54-83c4-c27dc74722d4"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Value for money spent on services rendered.
+Tama ang kaukulang bayad para sa serbisyo o iba pang gastos para sa transaksyon.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="497" width="72" height="30" uuid="543ee4a7-1057-4437-9cd5-c44d1522229a"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Costs ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="527" width="80" height="15" backcolor="#FFFFFF" uuid="c126a100-9b6c-4b95-b1e9-a2436483ecf5"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="80" y="527" width="293" height="15" backcolor="#FFFFFF" uuid="3a9dd4e4-1716-4eae-877a-4c4d67f32151"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="527" width="16" height="15" backcolor="#FFFFFF" uuid="bd385967-9cc8-4f65-8385-d0773fd66d74"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="389" y="527" width="16" height="15" backcolor="#FFFFFF" uuid="b8ce4d48-d0ee-4f79-8189-1b4a464247b0"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="421" y="527" width="16" height="15" backcolor="#FFFFFF" uuid="9fc88a0c-43d7-4386-ba09-f577374035da"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="405" y="527" width="16" height="15" backcolor="#FFFFFF" uuid="27a33bf7-09a8-4328-954e-8471bcfd58b8"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="437" y="527" width="16" height="15" backcolor="#FFFFFF" uuid="1a9973b0-9616-4573-a7ed-567216413133"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="112" y="527" width="96" height="15" uuid="4b76bb6b-0da5-4d2f-bc96-efe02d30d45f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[service is free of charge]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="542" width="80" height="30" backcolor="#E6E6E6" uuid="ccb9eaf8-d119-478d-9b54-6ff06a40bf90"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="80" y="542" width="293" height="30" backcolor="#E6E6E6" uuid="024351e1-d6b3-463e-9fde-c4ffa5d3b2de"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="437" y="542" width="16" height="30" backcolor="#E6E6E6" uuid="b2fc6ae5-4cf6-42a9-ba21-971ef0450b27"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="405" y="542" width="16" height="30" backcolor="#E6E6E6" uuid="2a65b429-ece0-4b73-9e38-05895d99858a"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="421" y="542" width="16" height="30" backcolor="#E6E6E6" uuid="b2b63597-1aae-4d3d-a301-5d99f0d88018"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="542" width="16" height="30" backcolor="#E6E6E6" uuid="181cdbee-bb74-4169-9ebe-241b261ea441"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="389" y="542" width="16" height="30" backcolor="#E6E6E6" uuid="e9f92029-bb8f-4421-b3ae-5866d03ca547"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="86" y="542" width="261" height="30" uuid="4ffe3723-fb71-4373-a998-e748b0534430"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Provided services with high morale and spirit of honesty.
+Naglingkod nang may katapatan at mataas na integridad.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="542" width="72" height="30" uuid="f9d62f0a-960f-4b4d-87e8-7cd481324cd0"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Integrity]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="572" width="80" height="30" backcolor="#FFFFFF" uuid="96800632-6c9c-4d99-b0f1-c16e3ace847f"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="602" width="80" height="28" backcolor="#E6E6E6" uuid="6589bbcb-1d8e-4616-b576-df4a8504eece"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="80" y="572" width="293" height="30" backcolor="#FFFFFF" uuid="10191bc6-f0ad-4fb1-a837-76b07c2eb75b"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="80" y="602" width="293" height="28" backcolor="#E6E6E6" uuid="80b87959-9e93-4401-a186-830e9a25e2f7"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="572" width="16" height="30" backcolor="#FFFFFF" uuid="b827ab68-cabe-416b-95f2-14c935c456be"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="389" y="572" width="16" height="30" backcolor="#FFFFFF" uuid="0a44df07-d835-4c3a-a0f1-142abbd4c241"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="421" y="572" width="16" height="30" backcolor="#FFFFFF" uuid="60058cd4-bc45-44cc-9ad0-ce4a5d5afd09"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="405" y="572" width="16" height="30" backcolor="#FFFFFF" uuid="6ba7653b-a476-41c5-b25f-0ecd7e35ce84"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="437" y="572" width="16" height="30" backcolor="#FFFFFF" uuid="0501a50c-0ca6-4044-a3cb-2d070f8b2976"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="421" y="602" width="16" height="28" backcolor="#E6E6E6" uuid="924e3767-ac27-4298-9b0f-0faa0281e1b0"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="437" y="602" width="16" height="28" backcolor="#E6E6E6" uuid="0d0d1e65-4e87-48a1-ac24-b3908e415ba6"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="373" y="602" width="16" height="28" backcolor="#E6E6E6" uuid="e3b41a0c-7338-4e48-8f20-eb6d742793e4"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="389" y="602" width="16" height="28" backcolor="#E6E6E6" uuid="052c48d7-1acc-4e35-b2b9-03c4ae418ce8"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="405" y="602" width="16" height="28" backcolor="#E6E6E6" uuid="851f4eaf-f022-4f23-be9f-8a8af13d0bec"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="8" y="572" width="72" height="30" uuid="6b1387e3-0879-45a2-adfc-16a5592c8aa9"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Assurance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="572" width="261" height="30" uuid="a8940c42-b4b8-42c2-9829-6a6103c4fce5"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[The service was provided by competent personnel.
+Naibigay ang serbisyo nang may sapat na kakayahan at kaalaman.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="602" width="72" height="28" uuid="77c12d18-9c60-428f-904a-86ee590cdb2f"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Outcome ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="602" width="261" height="28" uuid="66a5c072-2c26-477d-abf1-2290cbc5d564"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[The overall expectations of the client are met.
+Nakamit ang kabuuang serbisyong inaasahan.
+
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="12" y="32" width="226" height="23" uuid="89926bc6-a609-41f8-9396-ad352abe1b0e"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Cambria" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{office}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="56" width="226" height="24" uuid="e2a73d21-df53-4067-9264-71f68dc14277"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Cambria" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{service_provided}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="80" width="226" height="24" uuid="48e49d5a-9f15-41c8-80af-d5641e63f971"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Cambria" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{action_officer}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="373" y="367" width="16" height="30" uuid="1206cd62-c8d0-4a96-abdd-b57fff296004"/>
+				<imageExpression><![CDATA[$P{rating_scale}]]></imageExpression>
+			</image>
+		</band>
+		<band height="514">
+			<staticText>
+				<reportElement x="26" y="82" width="138" height="16" uuid="ceadb5b7-f4b2-499a-b6df-02fb34dbcc58"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[B.   SUGGESTION FOR IMPROVEMENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="103" width="261" height="11" uuid="1e210596-0e51-4ff4-829d-3e00bcb1039d"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Mga mungkahi at obserbasyon para sa pagpapabuti ng serbisyo ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="26" y="122" width="426" height="70" backcolor="#FFFFFF" uuid="c846a117-0e61-49f1-80a4-b9e87e481953"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="26" y="203" width="426" height="11" uuid="7c85d6e7-45d9-49a6-889e-559d416c65ca"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="8" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[  Name of Client (Optional):  Laurice Fabellon Contact Number (Optional)_____________Date Accomplished: November 16, 2020]]></text>
+			</staticText>
+			<line>
+				<reportElement x="26" y="245" width="426" height="1" uuid="0ee754f6-cdb9-4593-917b-90cebfc27207"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="22" y="261" width="58" height="11" uuid="363c26fe-0842-40fa-ad7a-d3694b557c49"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Cambria" size="5" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Privacy Statement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="272" width="431" height="14" uuid="671c1d55-1d74-4fb7-9202-40f4828365ea"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Cambria" size="5" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[DILG is committed to protecting your privacy. Any information gathered using this tool will be treated with utmost confidentiality and shall be solely used to improve our services being provided to the public. Thank you very much. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="292" width="430" height="14" uuid="b1c06e0e-b678-4ab9-971a-23149685dc76"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Cambria" size="5" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[(Ang DILG ay nangangako na protektahan ang iyong privacy. Anumang impormasyong natipon gamit ang sarbeyl na ito ay ituturing na lubos na pagiging kompidensiyal at gagamitin lamang upang mapabuti ang aming mga serbisyo. Maraming salamat.)]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
