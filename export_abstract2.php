@@ -672,72 +672,72 @@ $objPHPExcel->getActiveSheet()->getStyle('T'.$rowsix)->applyFromArray($border);
   $objPHPExcel->setActiveSheetIndex()->setCellValue('A'.$rowB11,'For Item(s) 1 to '.$num." to ".$WinSupply);
 
 
-  if ($abc12 > 49999) {
-  $objPHPExcel->getActiveSheet()->getStyle('D'.$rowC)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('D'.$rowD)->applyFromArray($styleContent21);
-  $objPHPExcel->getActiveSheet()->mergeCells('D'.$rowC.':'.'G'.$rowC);
-  $objPHPExcel->getActiveSheet()->mergeCells('D'.$rowD.':'.'G'.$rowD);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowC,'DR. CARINA S. CRUZ');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('D'.$rowD,'BAC Chairman');
-
-  $objPHPExcel->getActiveSheet()->getStyle('K'.$rowC)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('K'.$rowD)->applyFromArray($styleContent21);
-  $objPHPExcel->getActiveSheet()->mergeCells('K'.$rowC.':'.'N'.$rowC);
-  $objPHPExcel->getActiveSheet()->mergeCells('K'.$rowD.':'.'N'.$rowD);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('K'.$rowC,'JOHN M. CEREZO');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('K'.$rowD,'BAC Vice Chairman');
-
-  $objPHPExcel->getActiveSheet()->getStyle('P'.$rowC)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('P'.$rowD)->applyFromArray($styleContent21);
-  $objPHPExcel->getActiveSheet()->mergeCells('P'.$rowC.':'.'S'.$rowC);
-  $objPHPExcel->getActiveSheet()->mergeCells('P'.$rowD.':'.'S'.$rowD);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('P'.$rowC,'ATTY. JORDAN V. NADAL');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('P'.$rowD,'BAC Member');
-
-  $objPHPExcel->getActiveSheet()->getStyle('H'.$rowE)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('H'.$rowF)->applyFromArray($styleContent21);
-  $objPHPExcel->getActiveSheet()->mergeCells('H'.$rowE.':'.'J'.$rowE);
-  $objPHPExcel->getActiveSheet()->mergeCells('H'.$rowF.':'.'J'.$rowF);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowE,'GILBERTO L. TUMAMAC');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowF,'BAC Member');
-
-   $objPHPExcel->getActiveSheet()->getStyle('N'.$rowE)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('N'.$rowF)->applyFromArray($styleContent21);
-  $objPHPExcel->getActiveSheet()->mergeCells('N'.$rowE.':'.'P'.$rowE);
-  $objPHPExcel->getActiveSheet()->mergeCells('N'.$rowF.':'.'P'.$rowF);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('N'.$rowE,'JAY-AR T. BELTRAN');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('N'.$rowF,'Alternate BAC Member');
-  }else{
+  // if ($abc12 > 49999) {
     $objPHPExcel->getActiveSheet()->getStyle('B'.$rowC)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('B'.$rowD)->applyFromArray($styleContent21);
-  $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowC.':'.'E'.$rowC);
-  $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowD.':'.'E'.$rowD);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowC,'MAYBELLINE M. MONTEIRO');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowD,'SSVPC Member');
+    $objPHPExcel->getActiveSheet()->getStyle('B'.$rowD)->applyFromArray($styleContent21);
+    $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowC.':'.'E'.$rowC);
+    $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowD.':'.'E'.$rowD);
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowC,'DR. CARINA S. CRUZ');
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowD,'BAC Chairman');
+  
+    $objPHPExcel->getActiveSheet()->getStyle('G'.$rowC)->applyFromArray($styleContent2);
+    $objPHPExcel->getActiveSheet()->getStyle('G'.$rowD)->applyFromArray($styleContent21);
+    $objPHPExcel->getActiveSheet()->mergeCells('G'.$rowC.':'.'K'.$rowC);
+    $objPHPExcel->getActiveSheet()->mergeCells('G'.$rowD.':'.'K'.$rowD);
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$rowC,'ATTY. JORDAN V. NADAL');
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$rowD,'BAC Vice Chairman');
+  
+    $objPHPExcel->getActiveSheet()->getStyle('L'.$rowC)->applyFromArray($styleContent2);
+    $objPHPExcel->getActiveSheet()->getStyle('L'.$rowD)->applyFromArray($styleContent21);
+    $objPHPExcel->getActiveSheet()->mergeCells('L'.$rowC.':'.'M'.$rowC);
+    $objPHPExcel->getActiveSheet()->mergeCells('L'.$rowD.':'.'M'.$rowD);
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowC,'DON AYER A. ABRAZALDO');
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowD,'BAC Member');
+  
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$rowE)->applyFromArray($styleContent2);
+    $objPHPExcel->getActiveSheet()->getStyle('E'.$rowF)->applyFromArray($styleContent21);
+    $objPHPExcel->getActiveSheet()->mergeCells('E'.$rowE.':'.'H'.$rowE);
+    $objPHPExcel->getActiveSheet()->mergeCells('E'.$rowF.':'.'H'.$rowF);
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowE,'GILBERTO L. TUMAMAC');
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('E'.$rowF,'BAC Member');
+  
+     $objPHPExcel->getActiveSheet()->getStyle('J'.$rowE)->applyFromArray($styleContent2);
+    $objPHPExcel->getActiveSheet()->getStyle('J'.$rowF)->applyFromArray($styleContent21);
+    $objPHPExcel->getActiveSheet()->mergeCells('J'.$rowE.':'.'L'.$rowE);
+    $objPHPExcel->getActiveSheet()->mergeCells('J'.$rowF.':'.'L'.$rowF);
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowE,'JAY-AR T. BELTRAN');
+    $objPHPExcel->setActiveSheetIndex()->setCellValue('J'.$rowF,'BAC Member');
+  // }else{
+  //   $objPHPExcel->getActiveSheet()->getStyle('B'.$rowC)->applyFromArray($styleContent2);
+  // $objPHPExcel->getActiveSheet()->getStyle('B'.$rowD)->applyFromArray($styleContent21);
+  // $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowC.':'.'E'.$rowC);
+  // $objPHPExcel->getActiveSheet()->mergeCells('B'.$rowD.':'.'E'.$rowD);
+  // $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowC,'MAYBELLINE M. MONTEIRO');
+  // $objPHPExcel->setActiveSheetIndex()->setCellValue('B'.$rowD,'SSVPC Member');
 
-  $objPHPExcel->getActiveSheet()->getStyle('G'.$rowC)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('G'.$rowD)->applyFromArray($styleContent21);
-  $objPHPExcel->getActiveSheet()->mergeCells('G'.$rowC.':'.'K'.$rowC);
-  $objPHPExcel->getActiveSheet()->mergeCells('G'.$rowD.':'.'K'.$rowD);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$rowC,'JOYCE ARLA PEACH B. ESCALANTE');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$rowD,'SSVPC Member');
+  // $objPHPExcel->getActiveSheet()->getStyle('G'.$rowC)->applyFromArray($styleContent2);
+  // $objPHPExcel->getActiveSheet()->getStyle('G'.$rowD)->applyFromArray($styleContent21);
+  // $objPHPExcel->getActiveSheet()->mergeCells('G'.$rowC.':'.'K'.$rowC);
+  // $objPHPExcel->getActiveSheet()->mergeCells('G'.$rowD.':'.'K'.$rowD);
+  // $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$rowC,'JOYCE ARLA PEACH B. ESCALANTE');
+  // $objPHPExcel->setActiveSheetIndex()->setCellValue('G'.$rowD,'SSVPC Member');
 
-  $objPHPExcel->getActiveSheet()->getStyle('L'.$rowC)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('L'.$rowD)->applyFromArray($styleContent21);
-  $objPHPExcel->getActiveSheet()->mergeCells('L'.$rowC.':'.'M'.$rowC);
-  $objPHPExcel->getActiveSheet()->mergeCells('L'.$rowD.':'.'M'.$rowD);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowC,'HANNAH GRACE P. SOLIS');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowD,'Alternate SSVPC Member');
+  // $objPHPExcel->getActiveSheet()->getStyle('L'.$rowC)->applyFromArray($styleContent2);
+  // $objPHPExcel->getActiveSheet()->getStyle('L'.$rowD)->applyFromArray($styleContent21);
+  // $objPHPExcel->getActiveSheet()->mergeCells('L'.$rowC.':'.'M'.$rowC);
+  // $objPHPExcel->getActiveSheet()->mergeCells('L'.$rowD.':'.'M'.$rowD);
+  // $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowC,'HANNAH GRACE P. SOLIS');
+  // $objPHPExcel->setActiveSheetIndex()->setCellValue('L'.$rowD,'Alternate SSVPC Member');
 
-  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowE)->applyFromArray($styleContent2);
-  $objPHPExcel->getActiveSheet()->getStyle('I'.$rowF)->applyFromArray($styleContent21);
-  $objPHPExcel->getActiveSheet()->mergeCells('I'.$rowE.':'.'J'.$rowE);
-  $objPHPExcel->getActiveSheet()->mergeCells('I'.$rowF.':'.'J'.$rowF);
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowE,'Noted By:');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$rowE,'BEZALEEL O. SOLTURA');
-  $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$rowF,'SSVPC Head');
+  // $objPHPExcel->getActiveSheet()->getStyle('I'.$rowE)->applyFromArray($styleContent2);
+  // $objPHPExcel->getActiveSheet()->getStyle('I'.$rowF)->applyFromArray($styleContent21);
+  // $objPHPExcel->getActiveSheet()->mergeCells('I'.$rowE.':'.'J'.$rowE);
+  // $objPHPExcel->getActiveSheet()->mergeCells('I'.$rowF.':'.'J'.$rowF);
+  // $objPHPExcel->setActiveSheetIndex()->setCellValue('H'.$rowE,'Noted By:');
+  // $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$rowE,'BEZALEEL O. SOLTURA');
+  // $objPHPExcel->setActiveSheetIndex()->setCellValue('I'.$rowF,'SSVPC Head');
 
-  }
+  // }
 
    $objPHPExcel->getActiveSheet()->getStyle('A'.$rowG)->applyFromArray($styleSam);
    $objPHPExcel->getActiveSheet()->getStyle('A'.$rowG)->getFont()->setItalic( true );
