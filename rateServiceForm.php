@@ -1605,7 +1605,6 @@ var type = 'user';
       showLoaderOnConfirm: true
           }, function () {
             var queryString = $('#saveAll').serialize();
-            alert(queryString);
             $.ajax({
               url:"rateServiceForm_save.php",
               method:"POST",

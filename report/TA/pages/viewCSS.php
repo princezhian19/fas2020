@@ -36,30 +36,39 @@ while($row = mysqli_fetch_array($result))
     $rating_scale = $row['RATING_SCALE'];
 
     $PHPJasperXML = new PHPJasperXML();
-// // $PHPJasperXML->debugsql=true;
-switch($service_dimension)
+    if($rating_scale == 5)
     {
-       
-        case 'Responsiveness':
-           
-                    $PHPJasperXML->arrayParameter=array(
-                        "office"=>$office,
-                        "service_provided"=>$service_provided,
-                        "action_officer"=>$action_officer,
-                        "rating_scale"=>'black.png',
-                    );
-          
-            
-              
-        break;
-      
-
-
+        $PHPJasperXML->arrayParameter=array(
+            "office"=>$office,
+            "service_provided"=>$service_provided,
+            "action_officer"=>$action_officer,
+            "rating_scale5"=>'black.png',
+            "rating_scale4"=>'white.png',
+            "rating_scale3"=>'white.png',
+            "rating_scale2"=>'white.png',
+            "rating_scale1"=>'white.png',
+        );
     }
+
+
+// // $PHPJasperXML->debugsql=true;
+
 }
          
         
+// switch($service_dimension)
+//     {
+       
+//         case 'Responsiveness':
+           
+                
+            
+              
+    //     break;
+      
 
+
+    // }
 
 
 

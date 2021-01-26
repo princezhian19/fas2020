@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="453" leftMargin="71" rightMargin="71" topMargin="49" bottomMargin="21" isSummaryWithPageHeaderAndFooter="true" uuid="5be4a1da-05bd-4f9e-8b3b-66b0111942f6">
 	<property name="ireport.zoom" value="2.7320538214603673"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="144"/>
 	<parameter name="office" class="java.lang.String"/>
 	<parameter name="service_provided" class="java.lang.String"/>
 	<parameter name="action_officer" class="java.lang.String"/>
@@ -898,6 +898,10 @@ Nakamit ang kabuuang serbisyong inaasahan.
 				<reportElement x="373" y="367" width="16" height="30" uuid="1206cd62-c8d0-4a96-abdd-b57fff296004"/>
 				<imageExpression><![CDATA[$P{rating_scale}]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="38" y="3" width="100" height="20" uuid="3148ae11-43ec-4093-bb45-0cd0cdf49184"/>
+				<textFieldExpression><![CDATA[$P{service_provided}]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="514">
 			<staticText>
