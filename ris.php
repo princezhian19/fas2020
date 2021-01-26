@@ -250,8 +250,10 @@ while($row = mysqli_fetch_array($result))
               <select  name="request_by" id="request_by" class="form-control">
                 <option selected disabled></option>
                 <option value="JAY-AR T. BELTRAN">JAY-AR T. BELTRAN</option>
-                <option value="GILBERTO L. TUMAMAC">GILBERTO L. TUMAMAC</option>
+                <option value="DON AYER A. ABRAZALDO">DON AYER A. ABRAZALDO</option>
                 <option value="DR. CARINA S. CRUZ">DR. CARINA S. CRUZ</option>
+                <option value="ATTY. JORDAN V. NADAL">ATTY. JORDAN V. NADAL</option>
+                <option value="NOEL R. BARTOLABAC">NOEL R. BARTOLABAC</option>
               </select>
             </div>
 
