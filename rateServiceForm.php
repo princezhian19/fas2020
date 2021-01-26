@@ -1590,6 +1590,7 @@ var type = 'user';
     alert('Kindly checked all checkboxes in the field.');
 
   }else{
+    
   
 
   
