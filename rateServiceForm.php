@@ -1617,7 +1617,7 @@ var type = 'user';
                 setTimeout(function () {
                   swal("Record saved successfully!");
                   }, 3000);
-                  window.location = "processing.php?division=<?php echo $_GET['division'];?>&ticket_id=";
+                  window.location = "techassistance.php?division=<?php echo $_GET['division'];?>&ticket_id=";
               }
             });
         });
